@@ -40,7 +40,7 @@
 </style>
 
 <div {% render 'section-properties', tight: true %}>
-  <div class="product">
+  <div class="product  {{ product.type | handleize }}">
     {%- if product.media.size > 0 -%}
       {%- render 'product-gallery', product: product -%}
     {%- endif -%}
