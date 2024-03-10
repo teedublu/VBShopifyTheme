@@ -1,0 +1,50 @@
+
+// voxblock.js
+import { Delegate } from "{{ 'vendor.min.js' | asset_url }}";
+
+// RIGHT CODE?
+// voxblock.js
+
+// Encapsulating the module in an IIFE is not strictly necessary with ES6+ modules,
+// but for the sake of direct integration into a script tag or existing build process, we'll keep functions scoped.
+
+const VoxBlock = (() => {
+    const audio = new Audio();
+
+    const initAudioDelegate = (selector) => {
+        const delegate = new Delegate(document.body);
+        delegate.on('click', selector, (event, target) => {
+            const srcfile = target.getAttribute('data-mp3');
+
+            if (!audio.src.includes(srcfile)) {
+                audio.src = srcfile;
+            }
+
+            if (target.classList.contains('playing')) {
+                target.classList.remove('playing');
+                audio.pause();
+            } else {
+                document.querySelectorAll(selector).forEach(el => el.classList.remove('playing'));
+                target.classList.add('playing');
+                audio.play();
+            }
+
+            event.preventDefault();
+        });
+    };
+
+    // Additional functions can be defined and added to the returned object as needed
+
+    return {
+        initAudioDelegate,
+        // other functions can be added here
+    };
+})();
+
+export default VoxBlock; // If using ES6 modules
+
+document.addEventListener('DOMContentLoaded', function() {
+    VoxBlock.initAudioDelegate('.bookpreview'); // Initialize audio playback
+    // Initialize other voxblock functionalities as needed
+});
+
