@@ -4,13 +4,13 @@
       "type": "collection-banner",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": true,
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
         "collection_title_size": "h0",
-        "image_size": "auto",
+        "image_size": "sm",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -27,7 +27,7 @@
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/baby-hands-and-feet.jpg",
-            "stretch_image": true,
+            "stretch_image": false,
             "link_text": "2 years +",
             "link_url": "",
             "background": "",
@@ -39,7 +39,8 @@
         "item_8pUpUB": {
           "type": "item",
           "settings": {
-            "stretch_image": true,
+            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "stretch_image": false,
             "link_text": "3-5 years",
             "link_url": "",
             "background": "#4cb6ac",
@@ -51,6 +52,7 @@
         "item_LKqLfH": {
           "type": "item",
           "settings": {
+            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -96,6 +98,46 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_image_4VEyzT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 33,
+            "column_span": "1",
+            "title": "Promote a product or a temporary offer",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "promotion_video_CHwxAJ": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/a9a664f20e584ebba2209365f40257f0.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How our books work",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_4VEyzT",
+        "promotion_video_CHwxAJ"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
@@ -107,11 +149,81 @@
         "show_filter_values_count": true,
         "open_first_filter_group": false
       }
+    },
+    "collection_link_blocks_HpwJbj": {
+      "type": "collection-link-blocks",
+      "blocks": {
+        "item_P4cM4p": {
+          "type": "item",
+          "settings": {
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_Y4GnXQ": {
+          "type": "item",
+          "settings": {
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_PHyCVd": {
+          "type": "item",
+          "settings": {
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_qpk6Bx": {
+          "type": "item",
+          "settings": {
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "item_P4cM4p",
+        "item_Y4GnXQ",
+        "item_PHyCVd",
+        "item_qpk6Bx"
+      ],
+      "settings": {
+        "full_width": false,
+        "block_size": "medium",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
     }
   },
   "order": [
     "banner",
     "image_link_blocks_nj9Y3t",
-    "main"
+    "main",
+    "collection_link_blocks_HpwJbj"
   ]
 }
