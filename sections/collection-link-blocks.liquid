@@ -33,6 +33,39 @@ CSS
       --collection-link-blocks-items-per-row: {% if block_size == 'small' %}7{% elsif block_size == 'medium' %}6{% else %}5{% endif %};
     }
   }
+
+  collection-link-blocks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(33.33%, 1fr));
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
+  }
+
+  .clickable-block {
+    display: grid;
+    grid-template-rows: 2fr 1fr; /* Creates a grid with 2 rows where the image row is twice as tall as the text row */
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    min-width: 33.33%; /* Ensures the blocks maintain their width even if content is smaller */
+  }
+
+  .clickable-block img {
+    width: 100%;
+    height: 100%; /* Makes the image fill its cell */
+    object-fit: cover; /* Ensures the image covers the area without losing its aspect ratio */
+    grid-row: 1; /* Positions the image in the first row */
+  }
+
+  .clickable-block h3 {
+    grid-row: 2; /* Positions the heading in the second row */
+    margin: 0; /* Removes margin to ensure text cell size is controlled only by the grid */
+    padding: 10px; /* Adds some padding for better readability */
+  }
+
+
 </style>
 
 {%- comment -%}
@@ -43,8 +76,7 @@ LIQUID
 
 <div {% render 'section-properties' %}>
   <div class="section-stack">
-    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url -%}
-
+    
     <div class="floating-controls-container">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
 
