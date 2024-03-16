@@ -8,29 +8,29 @@ CSS
 <style>
   {%- assign block_size = section.settings.block_size -%}
 
-  #shopify-section-{{ section.id }} .image-link-blocks {
-    --image-link-blocks-item-width: {% if block_size == 'small' %}32vw{% elsif block_size == 'medium' %}38vw{% else %}48vw{% endif %};
-    --image-link-blocks-grid: auto / auto-flow var(--image-link-blocks-item-width);
+  #shopify-section-{{ section.id }} .collection-link-blocks {
+    --collection-link-blocks-item-width: {% if block_size == 'small' %}32vw{% elsif block_size == 'medium' %}38vw{% else %}48vw{% endif %};
+    --collection-link-blocks-grid: auto / auto-flow var(--collection-link-blocks-item-width);
 
     --content-over-media-gap: var(--grid-gutter);
   }
 
   @media screen and (min-width: 700px) {
-    #shopify-section-{{ section.id }} .image-link-blocks {
-      --image-link-blocks-item-width: {% if block_size == 'small' %}18vw{% elsif block_size == 'medium' %}22vw{% else %}26vw{% endif %};
+    #shopify-section-{{ section.id }} .collection-link-blocks {
+      --collection-link-blocks-item-width: {% if block_size == 'small' %}18vw{% elsif block_size == 'medium' %}22vw{% else %}26vw{% endif %};
     }
   }
 
   @media screen and (min-width: 1000px) {
-    #shopify-section-{{ section.id }} .image-link-blocks {
-      --image-link-blocks-items-per-row: {% if block_size == 'small' %}6{% elsif block_size == 'medium' %}5{% else %}4{% endif %};
-      --image-link-blocks-grid: auto / auto-flow calc(var(--container-inner-width) / var(--image-link-blocks-items-per-row) - (var(--grid-gutter) / var(--image-link-blocks-items-per-row) * (var(--image-link-blocks-items-per-row) - 1)));
+    #shopify-section-{{ section.id }} .collection-link-blocks {
+      --collection-link-blocks-items-per-row: {% if block_size == 'small' %}6{% elsif block_size == 'medium' %}5{% else %}4{% endif %};
+      --collection-link-blocks-grid: auto / auto-flow calc(var(--container-inner-width) / var(--collection-link-blocks-items-per-row) - (var(--grid-gutter) / var(--collection-link-blocks-items-per-row) * (var(--collection-link-blocks-items-per-row) - 1)));
     }
   }
 
   @media screen and (min-width: 1400px) {
-    #shopify-section-{{ section.id }} .image-link-blocks {
-      --image-link-blocks-items-per-row: {% if block_size == 'small' %}7{% elsif block_size == 'medium' %}6{% else %}5{% endif %};
+    #shopify-section-{{ section.id }} .collection-link-blocks {
+      --collection-link-blocks-items-per-row: {% if block_size == 'small' %}7{% elsif block_size == 'medium' %}6{% else %}5{% endif %};
     }
   }
 </style>
@@ -48,73 +48,17 @@ LIQUID
     <div class="floating-controls-container">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
 
-      <image-link-blocks id="{{ scroll_area_id }}" class="image-link-blocks scroll-area bleed md:unbleed">
-        {%- for block in section.blocks -%}
-          <div {% render 'surface', class: 'image-link-blocks__item group rounded', background: block.settings.background, text_color: block.settings.text_color, background_fallback: 'bg-secondary' %} {{ block.shopify_attributes }}>
-            {%- if block.settings.stretch_image -%}
-              {%- capture item_content -%}
-                {%- if block.settings.image != blank -%}
-                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'zoom-image' -}}
-                {%- else -%}
-                  {{- 'image' | placeholder_svg_tag: 'zoom-image placeholder' -}}
-                {%- endif -%}
+      <collection-link-blocks id="{{ scroll_area_id }}" class="collection-link-blocks scroll-area bleed md:unbleed">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link }}" class="clickable-block">
+            {% if block.settings.image %}
+              <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
+            {% endif %}
+            <h3>{{ block.settings.heading }}</h3>
+          </a>
+        {% endfor %}
+      </collection-link-blocks>
 
-                {%- if block.settings.link_text != blank -%}
-                  <div class="place-self-end-start w-full bold">
-                    <div class="h-stack justify-between gap-2">
-                      {{ block.settings.link_text | escape }}
-
-                      {%- if block.settings.link_url != blank -%}
-                        {%- if block.settings.stretch_image -%}
-                          {% render 'icon' with 'circle-button-right-clipped', direction_aware: true %}
-                        {%- else -%}
-                          <span class="circle-chevron">{% render 'icon' with 'chevron-right-small', direction_aware: true %}</span>
-                        {%- endif -%}
-                      {%- endif -%}
-                    </div>
-                  </div>
-                {%- endif -%}
-              {%- endcapture -%}
-
-              <a {% if block.settings.link_url %}href="{{ block.settings.link_url }}"{% endif %} class="content-over-media rounded" style="--content-over-media-overlay: {{ block.settings.overlay_color.rgb }} / {{ block.settings.overlay_opacity | divided_by: 100.0 }}">
-                {{- item_content -}}
-              </a>
-            {%- else -%}
-              <a {% if block.settings.link_url != blank %}href="{{ block.settings.link_url }}"{% endif %} class="image-link-blocks__inner">
-                {%- if block.settings.image != blank -%}
-                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'image-link-blocks__image zoom-image' -}}
-                {%- else -%}
-                  {{- 'image' | placeholder_svg_tag: 'image-link-blocks__image placeholder' -}}
-                {%- endif -%}
-
-                {%- if block.settings.link_text != blank -%}
-                  <p class="image-link-blocks__title {% if block.settings.link_url != blank %}image-link-blocks__title--animate{% endif %} text-center bold">
-                    {{- block.settings.link_text | escape -}}
-
-                    {%- if block.settings.link_url != blank -%}
-                      {%- if block.settings.stretch_image -%}
-                        {% render 'icon' with 'circle-button-right-clipped', direction_aware: true %}
-                      {%- else -%}
-                        <span class="circle-chevron">{% render 'icon' with 'chevron-right-small', direction_aware: true %}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </p>
-                {%- endif -%}
-              </a>
-            {%- endif -%}
-          </div>
-        {%- endfor -%}
-      </image-link-blocks>
-
-      <button is="prev-button" class="circle-button circle-button--fill border group" aria-controls="{{ scroll_area_id }}" disabled>
-        <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
-        <span class="animated-arrow animated-arrow--reverse"></span>
-      </button>
-
-      <button is="next-button" class="circle-button circle-button--fill border group" aria-controls="{{ scroll_area_id }}">
-        <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
-        <span class="animated-arrow"></span>
-      </button>
     </div>
   </div>
 </div>
@@ -138,12 +82,6 @@ LIQUID
           "id": "image",
           "label": "Image",
           "info": "1200 x 1400px .jpg recommended"
-        },
-        {
-          "type": "checkbox",
-          "id": "stretch_image",
-          "label": "Stretch to fill",
-          "default": true
         },
         {
           "type": "text",
@@ -187,6 +125,7 @@ LIQUID
           "unit": "%",
           "default": 0
         }
+
       ]
     }
   ],
@@ -275,7 +214,7 @@ LIQUID
   ],
   "presets": [
     {
-      "name": "Image link blocks",
+      "name": "Collection link blocks",
       "blocks": [
         {
           "type": "item"
