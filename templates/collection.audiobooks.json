@@ -2,6 +2,7 @@
   "sections": {
     "banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -20,40 +21,13 @@
         "overlay_opacity": 30
       }
     },
-    "image_link_blocks_nj9Y3t": {
-      "type": "image-link-blocks",
+    "collection_link_blocks_HpwJbj": {
+      "type": "collection-link-blocks",
       "blocks": {
-        "item_eLr7yz": {
+        "item_P4cM4p": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/baby-hands-and-feet.jpg",
-            "stretch_image": false,
-            "link_text": "2 years +",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_8pUpUB": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
-            "stretch_image": false,
-            "link_text": "3-5 years",
-            "link_url": "",
-            "background": "#4cb6ac",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_LKqLfH": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
-            "stretch_image": true,
+            "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
             "link_text": "",
             "link_url": "",
             "background": "",
@@ -62,10 +36,32 @@
             "overlay_opacity": 0
           }
         },
-        "item_yQhYb6": {
+        "item_Y4GnXQ": {
           "type": "item",
           "settings": {
-            "stretch_image": true,
+            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "link_text": "Adventure",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_PHyCVd": {
+          "type": "item",
+          "settings": {
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_qpk6Bx": {
+          "type": "item",
+          "settings": {
             "link_text": "",
             "link_url": "",
             "background": "",
@@ -76,17 +72,17 @@
         }
       },
       "block_order": [
-        "item_eLr7yz",
-        "item_8pUpUB",
-        "item_LKqLfH",
-        "item_yQhYb6"
+        "item_P4cM4p",
+        "item_Y4GnXQ",
+        "item_PHyCVd",
+        "item_qpk6Bx"
       ],
       "settings": {
         "full_width": false,
         "block_size": "small",
-        "subheading": "Browse by age",
-        "title": "",
-        "content": "",
+        "subheading": "Age",
+        "title": "Group 1",
+        "content": "<p>All about age group p1<\/p>",
         "link_url": "",
         "link_text": "",
         "background": "",
@@ -149,81 +145,11 @@
         "show_filter_values_count": true,
         "open_first_filter_group": false
       }
-    },
-    "collection_link_blocks_HpwJbj": {
-      "type": "collection-link-blocks",
-      "blocks": {
-        "item_P4cM4p": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_Y4GnXQ": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_PHyCVd": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_qpk6Bx": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "item_P4cM4p",
-        "item_Y4GnXQ",
-        "item_PHyCVd",
-        "item_qpk6Bx"
-      ],
-      "settings": {
-        "full_width": false,
-        "block_size": "medium",
-        "subheading": "",
-        "title": "",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
     }
   },
   "order": [
     "banner",
-    "image_link_blocks_nj9Y3t",
-    "main",
-    "collection_link_blocks_HpwJbj"
+    "collection_link_blocks_HpwJbj",
+    "main"
   ]
 }
