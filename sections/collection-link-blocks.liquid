@@ -67,12 +67,12 @@ LIQUID
 
   <div class="scroll-container">
     {% for block in section.blocks %}
-    <a href="#" class="block">
-      {% if block.settings.image %}
-        <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
-      {% endif %}
-      <span>{{ block.settings.link_text }}</span>
-    </a>
+      <a href="{{ block.settings.link_url }}" class="block">
+        {% if block.settings.image %}
+          <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
+        {% endif %}
+        <span>{{ block.settings.link_text }}</span>
+      </a>
     {% endfor %}
 
 
@@ -108,38 +108,6 @@ LIQUID
           "type": "url",
           "id": "link_url",
           "label": "Link URL"
-        },
-        {
-          "type": "header",
-          "content": "Colors",
-          "info": "Overlay is ignored when \"Stretch to fill\" is disabled."
-        },
-        {
-          "type": "color",
-          "id": "background",
-          "label": "Background"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "overlay_color",
-          "label": "Overlay",
-          "default": "#000000"
-        },
-        {
-          "type": "range",
-          "id": "overlay_opacity",
-          "label": "Overlay opacity",
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "%",
-          "default": 0
         }
 
       ]
@@ -151,72 +119,6 @@ LIQUID
       "id": "full_width",
       "label": "Full width",
       "default": false
-    },
-    {
-      "type": "select",
-      "id": "block_size",
-      "label": "Block size",
-      "options": [
-        {
-          "value": "small",
-          "label": "Small"
-        },
-        {
-          "value": "medium",
-          "label": "Medium"
-        },
-        {
-          "value": "large",
-          "label": "Large"
-        }
-      ],
-      "default": "small"
-    },
-
-    {
-      "type": "richtext",
-      "id": "content",
-      "label": "Content"
-    },
-    {
-      "type": "url",
-      "id": "link_url",
-      "label": "Link URL"
-    },
-    {
-      "type": "text",
-      "id": "link_text",
-      "label": "Link text"
-    },
-    {
-      "type": "header",
-      "content": "Colors",
-      "info": "Gradient replaces solid colors when set."
-    },
-    {
-      "type": "color",
-      "id": "background",
-      "label": "Background"
-    },
-    {
-      "type": "color_background",
-      "id": "background_gradient",
-      "label": "Background gradient"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading color"
-    },
-    {
-      "type": "color_background",
-      "id": "heading_gradient",
-      "label": "Heading gradient"
     }
   ],
   "presets": [

@@ -29,7 +29,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
             "link_text": "Best Sellers",
-            "link_url": "",
+            "link_url": "?filter.v.availability=1",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -41,7 +41,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
             "link_text": "Adventure",
-            "link_url": "",
+            "link_url": "?filter.v.availability=0",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -65,7 +65,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Voxblock_for_Schools.png",
             "link_text": "Advanced Readers",
-            "link_url": "",
+            "link_url": "?filter.v.price.gte=32",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",

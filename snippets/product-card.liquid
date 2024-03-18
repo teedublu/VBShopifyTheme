@@ -43,8 +43,10 @@ Supported variables
 {%- endif -%}
 
 {%- if show_secondary_image and product.media.size > 1 -%}
-  {%- assign card_class = card_class | append: 'product-card--show-secondary-media' -%}
+  {%- assign card_class = card_class | append: 'product-card--show-secondary-media ' -%}
 {%- endif -%}
+
+{%- assign card_class = card_class | append: product.type | downcase -%}
 
 <product-card handle="{{ product.handle | escape }}" {% if reveal %}reveal-js{% endif %} {% render 'surface', class: card_class, background: card_background, text_color: card_text_color %}>
   {%- comment -%}
