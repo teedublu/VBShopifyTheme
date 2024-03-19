@@ -203,8 +203,10 @@
                         </a>
                       </div>
                     {%- endfor -%}
-
-                    {%- render 'product-card', product: product, stacked: true, show_badges: true -%}
+                    {%- if product.type == 'audiobooks' -%}
+                      {%- assign show_vendor = true -%}
+                    {%- endif -%}
+                    {%- render 'product-card', product: product, stacked: true, show_badges: true, show_vendor: show_vendor -%}
                   {%- endfor -%}
                 </product-list>
               </reveal-items>

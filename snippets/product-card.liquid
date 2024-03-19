@@ -127,6 +127,21 @@ Supported variables
 
   {%- comment -%}
   --------------------------------------------------------------------------------------------------------------------
+  PRODUCT SAMPLE
+  --------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+  <div class="product-card__sample">
+    {%- if product.metafields.book.preview -%}
+      <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}">
+        <span class="playpause"></span>
+        <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
+        <span class="sr-only">Play audio sample</span>
+      </button>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%}
+  --------------------------------------------------------------------------------------------------------------------
   PRODUCT INFO
   --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
@@ -229,4 +244,6 @@ Supported variables
       {%- endfor -%}
     {%- endif -%}
   </div>
+
+  
 </product-card>
