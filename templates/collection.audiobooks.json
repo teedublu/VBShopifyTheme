@@ -29,11 +29,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
             "link_text": "Best Sellers",
-            "link_url": "?filter.v.availability=1",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "link_url": ""
           }
         },
         "item_Y4GnXQ": {
@@ -41,11 +37,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
             "link_text": "Adventure",
-            "link_url": "?filter.v.availability=0",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "link_url": ""
           }
         },
         "item_PHyCVd": {
@@ -53,11 +45,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
             "link_text": "Under £5",
-            "link_url": "shopify:\/\/collections\/audiobooks",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "link_url": "shopify:\/\/collections\/audiobooks"
           }
         },
         "item_qpk6Bx": {
@@ -65,11 +53,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Voxblock_for_Schools.png",
             "link_text": "Advanced Readers",
-            "link_url": "?filter.v.price.gte=32",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "link_url": ""
           }
         }
       },
@@ -80,18 +64,7 @@
         "item_qpk6Bx"
       ],
       "settings": {
-        "full_width": false,
-        "block_size": "small",
-        "subheading": "Age",
-        "title": "Group 1",
-        "content": "<p>All about age group p1<\/p>",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
+        "full_width": false
       }
     },
     "main": {
@@ -140,7 +113,7 @@
         "products_per_page": 24,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
-        "filter_layout": "sidebar",
+        "filter_layout": "horizontal",
         "show_sort_by": true,
         "show_filters": true,
         "show_filter_group_name": false,
