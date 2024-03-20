@@ -3,12 +3,6 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
-        "liquid_HaW47K": {
-          "type": "liquid",
-          "settings": {
-            "liquid": ""
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -26,38 +20,8 @@
             "show_taxes_notice": false
           }
         },
-        "text_thkiB9": {
-          "type": "text",
-          "settings": {
-            "text": "<h5>Screen-free audiobook player<\/h5>"
-          }
-        },
-        "text_MA3Pah": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our screen free audiobook player enables you to play any of our story blocks.<\/p><p>100% Connection free. <\/p>"
-          }
-        },
         "separator": {
           "type": "separator",
-          "settings": {
-          }
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "disabled": true,
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
           "settings": {
           }
         },
@@ -107,24 +71,19 @@
         "associated_products_TcDTgA": {
           "type": "associated_products",
           "settings": {
-            "title": "Buy it with",
+            "title": "Popular add-ons",
             "stack_products": true,
-            "products_count": 5,
+            "products_count": 2,
             "background": "",
             "text_color": ""
           }
         }
       },
       "block_order": [
-        "liquid_HaW47K",
         "title",
         "badges",
         "price",
-        "text_thkiB9",
-        "text_MA3Pah",
         "separator",
-        "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "description",
         "offer_tcaCpM",
@@ -137,7 +96,7 @@
         "desktop_media_width": 55,
         "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "floating_dots",
+        "mobile_carousel_control": "dots",
         "enable_video_autoplay": true,
         "enable_video_looping": true,
         "enable_image_zoom": true,
@@ -147,140 +106,6 @@
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
-      }
-    },
-    "hot_spots_MbF79B": {
-      "type": "hot-spots",
-      "blocks": {
-        "item_mQLPQP": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 24,
-            "vertical_position": 70,
-            "horizontal_position_mobile": 24,
-            "vertical_position_mobile": 70,
-            "icon_width": 32,
-            "title": "Long battery life",
-            "content": "<p>Share useful information about your product features.<\/p>"
-          }
-        },
-        "item_g6EMKG": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 62,
-            "vertical_position": 14,
-            "horizontal_position_mobile": 62,
-            "vertical_position_mobile": 14,
-            "icon_width": 32,
-            "title": "Feature name",
-            "content": "<p>Share useful information about your product features.<\/p>"
-          }
-        },
-        "item_HiMrW4": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 83,
-            "vertical_position": 75,
-            "horizontal_position_mobile": 83,
-            "vertical_position_mobile": 75,
-            "icon_width": 32,
-            "title": "Feature name",
-            "content": "<p>Share useful information about your product features.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_mQLPQP",
-        "item_g6EMKG",
-        "item_HiMrW4"
-      ],
-      "settings": {
-        "full_width": true,
-        "image": "shopify:\/\/shop_images\/voxblock-player.jpg",
-        "title": "Features",
-        "content": "",
-        "button_text": "",
-        "button_url": "",
-        "desktop_text_position": "place-self-start text-start",
-        "image_background": "",
-        "image_background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#ffffff",
-        "overlay_button_background": "",
-        "overlay_button_text_color": "",
-        "hot_spot_dot_background": "#ffffff",
-        "hot_spot_dot_text_color": "#000000",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#000000",
-        "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
-      }
-    },
-    "faq_KiLD6K": {
-      "type": "faq",
-      "blocks": {
-        "item_ybUnkH": {
-          "type": "item",
-          "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
-          }
-        },
-        "item_zBxp3t": {
-          "type": "item",
-          "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
-          }
-        },
-        "item_J79MfC": {
-          "type": "item",
-          "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_ybUnkH",
-        "item_zBxp3t",
-        "item_J79MfC"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
-        "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
-      }
-    },
-    "image_with_text_overlay_aQ9U9p": {
-      "type": "image-with-text-overlay",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
       }
     },
     "text_with_icons_H9hBaT": {
@@ -342,13 +167,63 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "faq_KiLD6K": {
+      "type": "faq",
+      "blocks": {
+        "item_ybUnkH": {
+          "type": "item",
+          "settings": {
+            "title": "Do you ship overseas?",
+            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+          }
+        },
+        "item_zBxp3t": {
+          "type": "item",
+          "settings": {
+            "title": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+          }
+        },
+        "item_J79MfC": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_ybUnkH",
+        "item_zBxp3t",
+        "item_J79MfC"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
     }
   },
   "order": [
     "main",
-    "hot_spots_MbF79B",
-    "faq_KiLD6K",
-    "image_with_text_overlay_aQ9U9p",
-    "text_with_icons_H9hBaT"
+    "text_with_icons_H9hBaT",
+    "faq_KiLD6K"
   ]
 }
