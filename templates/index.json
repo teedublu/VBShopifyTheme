@@ -216,7 +216,7 @@
         "1664424434f5b7d0e0-2"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
         "mobile_image": "shopify:\/\/shop_images\/image1.jpg",
         "title": "Features",
@@ -337,11 +337,6 @@
             "size_chart_page": ""
           }
         },
-        "quantity-selector": {
-          "type": "quantity_selector",
-          "settings": {
-          }
-        },
         "buy-buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -363,7 +358,6 @@
         "separator",
         "description",
         "variant-picker",
-        "quantity-selector",
         "buy-buttons"
       ],
       "settings": {
