@@ -6,7 +6,7 @@
         "title": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h3"
           }
         },
         "badges": {
@@ -43,14 +43,9 @@
             "hide_sold_out_variants": false,
             "stack_blocks": true,
             "selector_style": "block",
-            "swatch_selector_style": "swatch",
+            "swatch_selector_style": "block_swatch",
             "variant_image_options": "",
             "size_chart_page": ""
-          }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {
           }
         },
         "buy_buttons": {
@@ -69,7 +64,7 @@
           "settings": {
             "title": "Buy it with",
             "stack_products": true,
-            "products_count": 5,
+            "products_count": 4,
             "background": "",
             "text_color": ""
           }
@@ -115,7 +110,6 @@
         "text_MA3Pah",
         "separator",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
         "associated_products_wELabA",
         "description",
