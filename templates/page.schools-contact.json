@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "image_with_text_overlay_gcfG3M": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_CbiMfw": {
+          "type": "subheading",
+          "settings": {
+            "text": "Schools"
+          }
+        },
+        "heading_GUwPTt": {
+          "type": "heading",
+          "settings": {
+            "text": "Voxblock Schools",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_hXqkLB": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Our school offer<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_CbiMfw",
+        "heading_GUwPTt",
+        "richtext_hXqkLB"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Voxblock_for_Schools_8c0b676b-2caa-448a-aa5a-29f2e7e437da.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_gcfG3M"
+  ]
+}
