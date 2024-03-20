@@ -1,0 +1,199 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "image_with_text_overlay_DgEzg3": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_GXkyck": {
+          "type": "subheading",
+          "settings": {
+            "text": "OUR STORY"
+          }
+        },
+        "heading_7mnWGm": {
+          "type": "heading",
+          "settings": {
+            "text": "Hi, we're Tom and Rebecca",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_DDnEf8": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>An English-Swedish couple based in Edinburgh, and the founders of Voxblock.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_GXkyck",
+        "heading_7mnWGm",
+        "richtext_DDnEf8"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": true,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/sven_header_crop.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "timeline_CNWaFC": {
+      "type": "timeline",
+      "blocks": {
+        "slide_f4VaXE": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/green_cassette_yellow_background.jpg",
+            "navigation_label": "2019",
+            "subheading": "",
+            "title": "The birth of an idea...",
+            "content": "<p>The <a href=\"https:\/\/voxblock.co.uk\/blogs\/news\/the-birth-of-an-idea\" title=\"The birth of an idea...\">idea for Voxblock began<\/a> when we came across some old cassettes and played them for our daughter. She loved listening to them, but struggled to insert the tapes and press the buttons by herself.<\/p><p>And since cassettes are not widely produced anymore, it was difficult to find new stories for her to listen to. We experimented with using a tablet, but that came with its own set of challenges. We needed to find a new way for her to listen to her favourite stories, and it needed to be screen free.<\/p>"
+          }
+        },
+        "slide_fHLq7b": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/two-children-swap-audiobooks.jpg",
+            "navigation_label": "2020",
+            "subheading": "",
+            "title": "Enter Voxblock",
+            "content": "<p>After some tinkering in the garage, the first Voxblock prototype was born. It ticked all our boxes, and our daughter loved using it too.<\/p><p>We shared this prototype with family and friends, whose enthusiasm confirmed there was a need for a simple, screen free audiobook player.<\/p>"
+          }
+        },
+        "slide_PLgFLc": {
+          "type": "slide",
+          "settings": {
+            "navigation_label": "2022",
+            "subheading": "",
+            "title": "Launching!",
+            "content": "<p>Finally after a lot of hard work navigating the hardware business, we launched at the Edinburgh book festival.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "slide_f4VaXE",
+        "slide_fHLq7b",
+        "slide_PLgFLc"
+      ],
+      "settings": {
+        "full_width": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_yfX6rm": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/tom-and-rebecca-voxblock-founders.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "media_with_text_wCfREr": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_kt4YnY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/green_cassette_yellow_background.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "The birth of an idea...",
+            "content": "<p>The <a href=\"https:\/\/voxblock.co.uk\/blogs\/news\/the-birth-of-an-idea\" title=\"The birth of an idea...\">idea for Voxblock began<\/a> when we came across some old cassettes and played them for our daughter. She loved listening to them, but struggled to insert the tapes and press the buttons by herself.<\/p><p>And since cassettes are not widely produced anymore, it was difficult to find new stories for her to listen to. We experimented with using a tablet, but that came with its own set of challenges. We needed to find a new way for her to listen to her favourite stories, and it needed to be screen free.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "image_pqe6Qf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/lightbulb.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "What now?",
+            "content": "<p>We experimented with several available audio players but they never quite delivered on our requirements. We wanted a player that was simple for children to use independently, and tangible books that they could bond with. Plus, we wanted a device that could survive the bumps and bangs of everyday use; it needed to be built to last.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "image_arXR9d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/two-children-swap-audiobooks.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Enter Voxblock",
+            "content": "<p>A few weeks of tinkering in the garage later, and the first Voxblock prototype was born. It ticked all our boxes, and our daughter loved using it too.<\/p><p>We shared this prototype with family and friends, whose enthusiasm confirmed there was a need for a simple, screen free audiobook player.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_kt4YnY",
+        "image_pqe6Qf",
+        "image_arXR9d"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_DgEzg3",
+    "timeline_CNWaFC",
+    "image_with_text_overlay_yfX6rm",
+    "media_with_text_wCfREr"
+  ]
+}
