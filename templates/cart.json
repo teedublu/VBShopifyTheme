@@ -14,11 +14,17 @@
           "type": "checkout_button",
           "settings": {
           }
+        },
+        "accelerated_buttons_bfJjUA": {
+          "type": "accelerated_buttons",
+          "settings": {
+          }
         }
       },
       "block_order": [
         "totals",
-        "checkout_button"
+        "checkout_button",
+        "accelerated_buttons_bfJjUA"
       ],
       "settings": {
         "show_shipping_estimator": false,
