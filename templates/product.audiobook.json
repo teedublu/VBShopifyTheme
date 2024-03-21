@@ -3,11 +3,7 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
-        "audiobook_properties_HK3Xb9": {
-          "type": "audiobook-properties",
-          "settings": {
-          }
-        },
+        
         "title": {
           "type": "title",
           "settings": {
@@ -85,7 +81,6 @@
         }
       },
       "block_order": [
-        "audiobook_properties_HK3Xb9",
         "title",
         "badges",
         "price",
@@ -225,46 +220,12 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
-    },
-    "audiobook_properties_ybgU3E": {
-      "type": "audiobook-properties",
-      "blocks": {
-        "item_TgqtzE": {
-          "type": "item",
-          "settings": {
-          }
-        },
-        "item_fQ874X": {
-          "type": "item",
-          "settings": {
-          }
-        },
-        "item_PEc6qG": {
-          "type": "item",
-          "settings": {
-          }
-        },
-        "item_Qn6L7d": {
-          "type": "item",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "item_TgqtzE",
-        "item_fQ874X",
-        "item_PEc6qG",
-        "item_Qn6L7d"
-      ],
-      "settings": {
-        "full_width": false
-      }
     }
+    
   },
   "order": [
     "main",
     "text_with_icons_H9hBaT",
-    "faq_KiLD6K",
-    "audiobook_properties_ybgU3E"
+    "faq_KiLD6K"
   ]
 }
