@@ -1,0 +1,252 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+CSS
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+<style>
+
+
+
+</style>
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+LIQUID
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+
+{%- comment-%}
+SVG play button example
+https://codepen.io/Harkko/pen/rVxvNM
+{%- endcomment %-}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+-%}
+<div class="audiobook_product_block larger-text">
+  {%- if product.metafields.custom.bundles -%}
+    <h5>A bundle of screen-free audiobooks</h5>
+  {%- else -%}
+    <h5>A screen-free audiobook</h5>
+  {%- endif -%}
+  {%- if product.metafields.book.abridged -%}
+    <p class="subtitle">Abridged</p>
+  {%- endif -%}
+  <h1 class="h2 product-single__title alt">{{ product.title }}</h1>
+  
+  <h2 class="h2 product-single__title ">
+    {%- render 'product-price' product: product, current_variant: product -%}
+  </h2>
+   
+
+  {%- assign property_line_major_y = "45%" -%}
+  {%- assign property_line_minor_y = "65%" -%}
+  {%- assign property_line_minor_dy = "0.25em" -%}
+
+  <div class="grid audiobook_properties audiobook_properties_icons">
+    <div class="grid__item one-quarter audiobook_property">
+      <svg viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="19" />
+        <g class="marks">
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+          <line x1="15" y1="0" x2="16" y2="0" />
+        </g>
+        {%liquid 
+          assign part1 = product.metafields.book.duration | split: "." | first
+          assign part2 = product.metafields.book.duration | split: "." | last 
+          if part1=="0"
+            assign part1 = part2
+            assign part2 = "min"
+          else
+            assign part1 = part1 | append:"hr"
+            assign part2 = part2 | append:"min"
+          endif 
+        -%}
+        <text class="major time" x="50%" y="{{ property_line_major_y }}" dy="{{ property_line_minor_dy }}">
+          {{ part1 }}
+        </text>
+        <text class="minor" x="50%" y="{{ property_line_minor_y }}" dy="{{ property_line_minor_dy }}">
+          {{ part2 }}
+        </text>
+      </svg>
+    </div>
+    <div class="grid__item one-quarter audiobook_property">
+      <svg viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="19" />
+        <text class="major" x="50%" y="{{ property_line_major_y }}" dy="{{ property_line_minor_dy }}">
+          {{ product.metafields.book.age_lower }}+
+        </text>
+        <text class="minor" x="50%" y="{{ property_line_minor_y }}" dy="{{ property_line_minor_dy }}">
+          Years
+        </text>
+      </svg>
+    </div>
+    <div class="grid__item one-quarter audiobook_property">
+      <svg viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="19" />
+        <text class="major" x="50%" y="{{ property_line_major_y }}" dy="{{ property_line_minor_dy }}">
+          en
+        </text>
+        <text class="minor" x="50%" y="{{ property_line_minor_y }}" dy="{{ property_line_minor_dy }}">
+          English
+        </text>
+      </svg>
+    </div>
+    <div class="grid__item one-quarter audiobook_property">
+      <div class="playicon bookpreview" data-mp3="{{product.metafields.book.preview | file_url}}">
+        <svg viewBox="0 0 60 60">
+        <circle class="solid"  cx="30" cy="30" r="29" />
+            <path class="pause" d="M28.03,19.06v21.88c0,0.86-0.7,1.56-1.56,1.56h-3.12c-0.86,0-1.56-0.7-1.56-1.56V19.06
+            c0-0.86,0.7-1.56,1.56-1.56h3.12C27.33,17.5,28.03,18.2,28.03,19.06z M38.46,19.06v21.88c0,0.86-0.7,1.56-1.56,1.56h-3.12
+            c-0.86,0-1.56-0.7-1.56-1.56V19.06c0-0.86,0.7-1.56,1.56-1.56h3.12C37.76,17.5,38.46,18.2,38.46,19.06z" />
+            
+
+            <path class="play" d="M24.89,40.84c-0.37,0.22-0.83,0.23-1.2,0.02s-0.6-0.61-0.6-1.04V20.2c0-0.43,0.23-0.83,0.6-1.04
+            c0.37-0.21,0.83-0.21,1.2,0.02l16.35,9.81c0.36,0.21,0.58,0.6,0.58,1.02s-0.22,0.81-0.58,1.02L24.89,40.84z" />
+            
+        </svg>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <div class="audiobook_properties audiobook_properties_text">
+    <div class="one-half author">
+      <div class="line1">{{ product.metafields.book.overrides.value['author'] | default: 'Author'}}{%- if product.metafields.custom.bundles -%}s{%- endif -%}</div>
+      <div class="line2">
+        {%  if product.metafields.bundles.products != blank %}
+          {%- assign people = null | sort -%}
+          {% for p in product.metafields.bundles.products.value %}
+            
+            {%- assign person = p.metafields.book.authors.value | first -%}
+            {%- assign name = person.name -%}
+            {%- comment -%} 
+              see https://ellodave.dev/blog/article/advanced-liquid-arrays/
+              for why using | sort here (makes it an array of objects)
+            {%- endcomment -%}
+            {% if name != previous_name %}
+              {%- assign person = person | sort -%} 
+              {%- assign people = people | concat: person -%}
+                            
+            {% endif %}
+            {% assign previous_name = name %}
+          {% endfor %}
+
+        
+          {% for person in people %}
+            {%- assign name = person.name -%}
+            {% render 'audiobook-person-link' person:person, linkText:name, urlFilter:'filter.p.m.book.author' %}
+            {% unless forloop.last %},{% endunless %}
+          {% endfor %}
+
+        {% elsif product.metafields.book.authors.value != blank  %}
+          {% for person in product.metafields.book.authors.value %}
+    
+            {%- assign name = person.name -%}
+            {% render 'audiobook-person-link' person:person, linkText:name, urlFilter:'filter.p.m.book.author' %}
+            {% unless forloop.last %},{% endunless %}
+          {% endfor %}
+
+        {% elsif product.metafields.book.author != blank %}
+          {%- assign name = product.metafields.book.author -%}
+          {% render 'audiobook-person-link' person:name, linkText:name, urlFilter:'filter.p.m.book.author' %}
+        {% else  %}
+          No author found
+        {% endif %}
+      </div>
+    </div>
+    <div class="one-half left-border reader">
+      <div class="line1">{{ product.metafields.book.overrides.value['reader'] | default: 'Read By'}}</div>
+      <div class="line2">
+        {%  if product.metafields.bundles.products != blank %}
+          {%- assign people = null | sort -%}
+          {%- assign previous_name = "" -%}
+          {% for p in product.metafields.bundles.products.value %}
+            
+            {%- assign person = p.metafields.book.narrator.value -%}
+            {%- assign name = p.metafields.book.reader -%}
+            {% if name != previous_name %}
+              {%- assign person = person | sort -%} 
+              {%- assign people = people | concat: person -%}
+              
+            {% endif %}
+            {% assign previous_name = name %}
+          {% endfor %}
+
+          {% for person in people %}
+            {%- assign name = person.name -%}
+            {% render 'audiobook-person-link' person:person, linkText:name, urlFilter:'filter.p.m.book.reader' %}
+            {% unless forloop.last %},{% endunless %}
+          {% endfor %}
+          
+        {% else %}
+          {%- assign person =  product.metafields.book.narrator.value -%}
+          {%- assign name =  product.metafields.book.reader -%}
+          {% render 'audiobook-person-link' person:person, linkText:name, urlFilter:'filter.p.m.book.reader' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+{% schema %}
+{
+  "name": "Audiobook Properties",
+  "class": "shopify-section--audiobook-properties",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Property block"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection link blocks",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
