@@ -1,4 +1,4 @@
-{%- render 'section-spacing-collapsing' -%}
+
 
 {%- comment -%}
 ------------------------------------------------------------------------------------------------------------------------
@@ -112,48 +112,3 @@ LIQUID
 
 </div>
 
-
-{% schema %}
-{
-  "name": "Audiobook Properties",
-  "class": "shopify-section--audiobook-properties",
-  "tag": "section",
-  "id": "audiobook-properties"
-  "enabled_on": {
-    "templates": ["product"]
-  },
-  "blocks": [
-    {
-      "type": "item",
-      "name": "Property block"
-    }
-  ],
-  "settings": [
-    {
-      "type": "checkbox",
-      "id": "full_width",
-      "label": "Full width",
-      "default": false
-    }
-  ],
-  "presets": [
-    {
-      "name": "Audiobook Properties",
-      "blocks": [
-        {
-          "type": "item"
-        },
-        {
-          "type": "item"
-        },
-        {
-          "type": "item"
-        },
-        {
-          "type": "item"
-        }
-      ]
-    }
-  ]
-}
-{% endschema %}
