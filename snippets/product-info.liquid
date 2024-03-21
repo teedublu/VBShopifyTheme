@@ -33,6 +33,9 @@
         <variant-sku form="{{ product_form_id }}" class="product-info__sku text-xs text-subdued" {% if product.selected_or_first_available_variant.sku == blank %}hidden{% endif %} {{ block.shopify_attributes }}>
           {{- 'product.general.sku' | t }} {{ product.selected_or_first_available_variant.sku -}}
         </variant-sku>
+      {%- when 'audiobook-properties' -%}
+        {%- render 'audiobook-properties', product: product, block: block -%}
+
 
       {%- when 'price' -%}
         <div class="product-info__price">
