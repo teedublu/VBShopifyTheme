@@ -1,7 +1,47 @@
 {
   "sections": {
+    "image_with_text_overlay_kaFYya": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_rRDkBx": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Author"
+          }
+        },
+        "heading_C8TdcH": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h3"
+          }
+        },
+        "richtext_agTbat": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_rRDkBx",
+        "heading_C8TdcH",
+        "richtext_agTbat"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    }
   },
   "order": [
-
+    "image_with_text_overlay_kaFYya"
   ]
 }
