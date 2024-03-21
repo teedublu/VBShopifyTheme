@@ -3,11 +3,15 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
-        
         "title": {
           "type": "title",
           "settings": {
             "heading_tag": "h2"
+          }
+        },
+        "audiobook_properties_eMQ6mq": {
+          "type": "audiobook-properties",
+          "settings": {
           }
         },
         "badges": {
@@ -82,6 +86,7 @@
       },
       "block_order": [
         "title",
+        "audiobook_properties_eMQ6mq",
         "badges",
         "price",
         "separator",
@@ -221,7 +226,6 @@
         "accordion_text_color": ""
       }
     }
-    
   },
   "order": [
     "main",
