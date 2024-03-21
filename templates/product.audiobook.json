@@ -3,6 +3,11 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
+        "audiobook_properties_HK3Xb9": {
+          "type": "audiobook-properties",
+          "settings": {
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -80,6 +85,7 @@
         }
       },
       "block_order": [
+        "audiobook_properties_HK3Xb9",
         "title",
         "badges",
         "price",
