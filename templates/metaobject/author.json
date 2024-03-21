@@ -1,22 +1,24 @@
 {
   "sections": {
-    "image_with_text_overlay_kaFYya": {
-      "type": "image-with-text-overlay",
+    "rich_text_ftQUQM": {
+      "type": "rich-text",
       "blocks": {
-        "subheading_rRDkBx": {
+        "subheading_GUK8kM": {
           "type": "subheading",
           "settings": {
             "text": "Audiobook Author"
           }
         },
-        "heading_C8TdcH": {
+        "heading_mbGAY8": {
           "type": "heading",
           "settings": {
             "text": "{{ metaobject.name.value }}",
-            "heading_tag": "h3"
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
           }
         },
-        "richtext_agTbat": {
+        "richtext_yAYLh4": {
           "type": "richtext",
           "settings": {
             "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
@@ -24,24 +26,49 @@
         }
       },
       "block_order": [
-        "subheading_rRDkBx",
-        "heading_C8TdcH",
-        "richtext_agTbat"
+        "subheading_GUK8kM",
+        "heading_mbGAY8",
+        "richtext_yAYLh4"
       ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_collection_dyWK9t": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "{{ metaobject.collection.value }}",
+        "products": [
+
+        ],
+        "full_width": false,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "{{ metaobject.name.value }} featured collection",
+        "content": "<p>We have these books from {{ metaobject.name.value }}<\/p>",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     }
   },
   "order": [
-    "image_with_text_overlay_kaFYya"
+    "rich_text_ftQUQM",
+    "featured_collection_dyWK9t"
   ]
 }
