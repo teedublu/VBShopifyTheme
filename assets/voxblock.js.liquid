@@ -8,6 +8,9 @@ import { Delegate } from "{{ 'vendor.min.js' | asset_url }}";
 const VoxBlock = (() => {
     const audio = new Audio();
 
+    audio.addEventListener('loadstart', function(){console.log('loadstart')})
+    audio.addEventListener('play', function(){console.log('play')})
+
     const initAudioDelegate = (selector) => {
         const delegate = new Delegate(document.body);
         delegate.on('click', selector, (event, target) => {
