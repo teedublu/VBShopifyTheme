@@ -12,8 +12,11 @@ CSS
   flex-wrap: nowrap;
   overflow-x: auto;
   gap: 20px;
-  padding: 20px;
+  padding: 20px 0px 0px 0px;
   justify-content: flex-start;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
 }
 
 .collection-links.scroll-container .link-block {
@@ -23,7 +26,6 @@ CSS
   height: 90px; /* Fixed height */
   flex-shrink: 0;
   text-align: center;
-  background-color: #f0f0f0; /* Example background color for visibility */
   align-items: center; /* Align items vertically */
 }
 
@@ -31,6 +33,7 @@ CSS
   width: 100%; /* Image fills the width of the block */
   height: 60px; /* Maintain aspect ratio */
   object-fit: cover; /* Ensures the image covers the area, cropping as needed */
+  border-radius: 7px;
 }
 
 .collection-links.scroll-container .link-block span {

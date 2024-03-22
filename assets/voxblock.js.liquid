@@ -33,18 +33,15 @@ const VoxBlock = (() => {
         });
     };
 
-    // Additional functions can be defined and added to the returned object as needed
-
     return {
         initAudioDelegate,
-        // other functions can be added here
     };
 })();
 
-export default VoxBlock; // If using ES6 modules
+export default VoxBlock;
 
 document.addEventListener('DOMContentLoaded', function() {
     VoxBlock.initAudioDelegate('.bookpreview'); // Initialize audio playback
-    // Initialize other voxblock functionalities as needed
+
 });
 

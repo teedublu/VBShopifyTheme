@@ -30,10 +30,9 @@ CSS
 .audiobook_product_block .audiobook_property .bookpreview.playing .pause {display:block}
 .audiobook_product_block .audiobook_property .bookpreview.playing .play {display:none}
 
-@keyframes pulse-animation {
-  0% {box-shadow: 0 0 0 0px  rgb(var(--button-background-secondary));}
-  100% {box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);}
-}  
+{%- comment -%} 
+The animation is in the voxblock.css.liquid as it applies in other places too
+{%- endcomment -%} 
   
 
 .audiobook_product_block svg .marks { transform: translate(20px, 20px); stroke-width: 1.5;}
