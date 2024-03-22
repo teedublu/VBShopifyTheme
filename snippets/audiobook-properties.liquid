@@ -19,8 +19,8 @@ CSS
 .audiobook_product_block div.audiobook_properties div.audiobook_property .major.time { font-size: 90%;}
 
 
-.audiobook_product_block svg { stroke:rgb(var(--button-background-secondary)) ;fill: transparent;border-radius: 50%;}
-.audiobook_product_block .audiobook_property .playing svg { animation: pulse-animation 3s infinite; }
+.audiobook_product_block svg { stroke:rgb(var(--button-background-secondary)); fill: transparent; border-radius: 50%;}
+.audiobook_product_block .audiobook_property .playing svg { animation: pulse-animation 2s infinite; }
 
 .audiobook_product_block .audiobook_property .bookpreview svg path.play { fill: rgb(var(--button-background-secondary));  }
 .audiobook_product_block .audiobook_property .bookpreview svg path.pause { fill: rgb(var(--button-background-secondary));   }
@@ -31,14 +31,10 @@ CSS
 .audiobook_product_block .audiobook_property .bookpreview.playing .play {display:none}
 
 @keyframes pulse-animation {
-  0% {
-    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
-  }
+  0% {box-shadow: 0 0 0 0px  rgb(var(--button-background-secondary));}
+  100% {box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);}
 }  
-    
+  
 
 .audiobook_product_block svg .marks { transform: translate(20px, 20px); stroke-width: 1.5;}
 .audiobook_product_block svg .marks > line:nth-child(1)  {transform: rotate(30deg); }

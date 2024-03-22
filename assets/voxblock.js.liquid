@@ -10,7 +10,11 @@ const VoxBlock = (() => {
     audio.addEventListener('loadstart', function(){console.log('loadstart')})
     audio.addEventListener('playing', function(){console.log('playing')})
     audio.addEventListener('ended', function(){console.log('ended'); audio.currentButton.classList.remove('playing');})
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
     const initAudioDelegate = (selector) => {
         const delegate = new Delegate(document.body);
         delegate.on('click', selector, (event, target) => {
