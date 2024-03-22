@@ -9,11 +9,13 @@ const VoxBlock = (() => {
     const audio = new Audio();
     audio.addEventListener('loadstart', function(){console.log('loadstart')})
     audio.addEventListener('playing', function(){console.log('playing')})
+    audio.addEventListener('ended', function(){console.log('ended'); audio.currentButton.classList.remove('playing');})
+    
     const initAudioDelegate = (selector) => {
         const delegate = new Delegate(document.body);
         delegate.on('click', selector, (event, target) => {
             const srcfile = target.getAttribute('data-mp3');
-
+            audio.currentButton = target;
             if (!audio.src.includes(srcfile)) {
                 audio.src = srcfile;
             }
