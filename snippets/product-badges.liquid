@@ -36,15 +36,36 @@ Supported variables
 
     {%- case stripped_badge_type -%}
       {%- when 'categories' -%}{%-comment -%}WATCH OUT FOR bookS {%-endcomment -%}
-
         {%- for cat in product.metafields.book.categories.value -%}
           {% assign urlencodedcat = cat | url_encode %}
           {% assign param = '?filter.p.m.books.categories=' | append: urlencodedcat %}
           {% assign link = collections.audiobooks.url | append: param %}
-          
-            {{ cat | link_to: link, class: 'badge badge--primary clickable'}}
-          
+          {{ cat | link_to: link, class: 'badge badge--primary clickable category'}}
         {%- endfor -%}
+
+      {%- when 'bookdata' -%}{%-comment -%}WATCH OUT FOR bookS {%-endcomment -%}
+        {% assign character = product.metafields.book.character.value %}
+        {% assign author = product.metafields.book.author.value %}
+        {% assign narrator = product.metafields.book.narrator.value %}
+
+        {% if character != blank %}
+          {{ character.name | link_to: character.collection.value.url, class: 'badge badge--primary clickable bookdata character'}}
+        {%- endif -%}
+
+        {% if author != blank %}
+        {{author}}
+          {{ author.name | link_to: author.collection.value.url, class: 'badge badge--primary clickable bookdata author'}}
+        {%- endif -%}
+
+        {% if narrator != blank %}
+          {{ narrator.name | link_to: narrator.collection.value.url, class: 'badge badge--primary clickable bookdata narrator'}}
+        {%- endif -%}
+
+        {% assign abridged = product.metafields.book.abridged.value %}
+        {% if abridged %}
+          {% assign link = collections.audiobooks.url | append: '?filter.p.m.book.abridged=1' %}
+          {{ 'Abridged' | link_to: link , class: 'badge badge--primary clickable abridged'}}
+        {%- endif -%}
 
       {%- when 'custom' -%}
         {%- assign custom_badges = product.metafields.custom.badges.value | sort -%}
