@@ -1,15 +1,21 @@
+<div class="container">
+  <div class="page">
+    <div class="metaobjects index-list">
+      {% paginate shop.metaobjects[section.settings.object_type].values  by section.settings.page_size %}
 
-{% paginate shop.metaobjects.author.values  by 20 %}
+        {% for a in shop.metaobjects[section.settings.object_type].values %}
+          {%- capture link -%}
+            /pages/{{ section.settings.object_type }}/{{ a.system.url }}
+          {%- endcapture -%}
+          {{ a.name.value | link_to: link, class: 'author'}}<br/>
+        {% endfor %}
 
-  {% for a in shop.metaobjects.author.values %}
-    {{ a.name.value }}<br/>
-  {% endfor %}
+        {{- paginate | default_pagination -}}
 
-  {{- paginate | default_pagination -}}
-
-{% endpaginate %}
-
-
+      {% endpaginate %}
+    </div>
+  </div>
+</div>
 
 {% schema %}
 {
@@ -21,19 +27,44 @@
     "groups": ["header", "custom.overlay"]
   },
   "settings": [
-    
-    {
-      "type": "range",
-      "id": "items_per_row",
-      "min": 3,
-      "max": 7,
-      "label": "Items per row (desktop)",
-      "default": 5
-    },
     {
       "type": "header",
-      "content": "Colors",
+      "content": "Metaobjects",
       "info": "Paginated list of metaobjects."
+    },
+    {
+      "type": "range",
+      "id": "page_size",
+      "label": "Page size",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 25
+    },
+    {
+      "type": "select",
+      "id": "object_type",
+      "label": "Object type",
+      "options": [
+        {
+          "value": "author",
+          "label": "Authors"
+        },
+        {
+          "value": "narrator",
+          "label": "Narrators"
+        },
+        {
+          "value": "character",
+          "label": "Characters"
+        },
+        {
+          "value": "publisher",
+          "label": "Publishers"
+        }
+      ],
+      "info": "Choose a metaobject to paginate over",
+      "default": "author"
     }
   ],
   "blocks": [
