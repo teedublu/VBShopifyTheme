@@ -45,21 +45,21 @@ Supported variables
 
       {%- when 'bookdata' -%}{%-comment -%}WATCH OUT FOR bookS {%-endcomment -%}
         {% assign character = product.metafields.book.character.value %}
-        {% assign author = product.metafields.book.author.value %}
-        {% assign narrator = product.metafields.book.narrator.value %}
+        {% assign authors = product.metafields.book.authors.value %}
+        {% assign narrators = product.metafields.book.narrators.value %}
 
         {% if character != blank %}
           {{ character.name | link_to: character.collection.value.url, class: 'badge badge--primary clickable bookdata character'}}
         {%- endif -%}
 
-        {% if author != blank %}
-        {{author}}
+        {% for author in authors %}
           {{ author.name | link_to: author.collection.value.url, class: 'badge badge--primary clickable bookdata author'}}
-        {%- endif -%}
+        {% endfor %}
 
-        {% if narrator != blank %}
+
+        {% for narrator in narrators %}
           {{ narrator.name | link_to: narrator.collection.value.url, class: 'badge badge--primary clickable bookdata narrator'}}
-        {%- endif -%}
+        {% endfor %}
 
         {% assign abridged = product.metafields.book.abridged.value %}
         {% if abridged %}

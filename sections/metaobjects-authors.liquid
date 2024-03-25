@@ -4,10 +4,7 @@
       {% paginate shop.metaobjects[section.settings.object_type].values  by section.settings.page_size %}
 
         {% for a in shop.metaobjects[section.settings.object_type].values %}
-          {%- capture link -%}
-            /pages/{{ section.settings.object_type }}/{{ a.system.url }}
-          {%- endcapture -%}
-          {{ a.name.value | link_to: link, class: 'author'}}<br/>
+          {{ a.name.value | link_to: a.system.url, class: 'author'}}<br/>
         {% endfor %}
 
         {{- paginate | default_pagination -}}

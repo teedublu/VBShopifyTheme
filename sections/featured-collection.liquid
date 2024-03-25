@@ -1,81 +1,92 @@
-{%- render 'section-spacing-collapsing' -%}
 
-<style>
-  {%- assign section_background = section.settings.background | default: settings.background -%}
-  {%- assign card_background = section.settings.product_card_background | default: settings.product_card_background -%}
-  {%- assign card_blends = false -%}
+{%-assign show_section =  true -%}
+{%-if section.settings.hide_empty -%}
+  {%-if section.settings.collection.products.count < 2 -%}
+    {%-assign show_section =  false -%}
+  {%- endif -%}
+{%- endif -%}
 
-  {%- unless section_background != 'rgba(0,0,0,0)' and card_background != 'rgba(0,0,0,0)' and section_background != card_background -%}
-    {%- assign card_blends = true -%}
-  {%- endunless -%}
 
-  #shopify-section-{{ section.id }} .product-list {
-    --product-list-gap: {% if section.settings.stack_products and section.settings.products_per_row_mobile == '2' %}{% if card_blends %}var(--product-list-row-gap){% endif %} var(--spacing-2){% else %}var(--product-list-row-gap) var(--product-list-column-gap){% endif %};
-    --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
-    --product-list-carousel-item-width: 74vw;
-    --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
-  }
+{%-if show_section -%}
+  {%- render 'section-spacing-collapsing' -%}
 
-  @media screen and (min-width: 700px) {
+  <style>
+    {%- assign section_background = section.settings.background | default: settings.background -%}
+    {%- assign card_background = section.settings.product_card_background | default: settings.product_card_background -%}
+    {%- assign card_blends = false -%}
+
+    {%- unless section_background != 'rgba(0,0,0,0)' and card_background != 'rgba(0,0,0,0)' and section_background != card_background -%}
+      {%- assign card_blends = true -%}
+    {%- endunless -%}
+
     #shopify-section-{{ section.id }} .product-list {
-      --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
-      --product-list-items-per-row: 2;
-      --product-list-carousel-item-width: 36vw;
+      --product-list-gap: {% if section.settings.stack_products and section.settings.products_per_row_mobile == '2' %}{% if card_blends %}var(--product-list-row-gap){% endif %} var(--spacing-2){% else %}var(--product-list-row-gap) var(--product-list-column-gap){% endif %};
+      --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+      --product-list-carousel-item-width: 74vw;
+      --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
     }
-  }
 
-  @media screen and (min-width: 1000px) {
-    #shopify-section-{{ section.id }} .product-list {
-      --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
-      --product-list-carousel-item-width: calc(var(--container-inner-width) / {{ section.settings.products_per_row_desktop }} - (var(--product-list-column-gap) / {{ section.settings.products_per_row_desktop }} * {{ section.settings.products_per_row_desktop | minus: 1 }}));
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} .product-list {
+        --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+        --product-list-items-per-row: 2;
+        --product-list-carousel-item-width: 36vw;
+      }
     }
-  }
-</style>
 
-<div {% render 'section-properties' %}>
-  <div class="section-stack">
-    {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
-    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: link_url -%}
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} .product-list {
+        --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+        --product-list-carousel-item-width: calc(var(--container-inner-width) / {{ section.settings.products_per_row_desktop }} - (var(--product-list-column-gap) / {{ section.settings.products_per_row_desktop }} * {{ section.settings.products_per_row_desktop | minus: 1 }}));
+      }
+    }
+  </style>
 
-    <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
-      {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+  <div {% render 'section-properties' %}>
+    <div class="section-stack">
+      {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
+      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: link_url -%}
 
-      <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
-        <reveal-items selector=".product-list > *">
-          <product-list class="product-list">
-            {%- assign products = section.settings.products | default: section.settings.collection.products -%}
+      <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
+        {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
 
-            {%- for product in products limit: section.settings.products_count -%}
-              {%- render 'product-card', product: product, stacked: section.settings.stack_products, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
-            {%- else -%}
-              {%- for i in (1..section.settings.products_count) -%}
-                {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
-                {%- render 'product-card-placeholder', stacked: section.settings.stack_products, placeholder_image: placeholder_image, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, text_alignment: settings.product_info_alignment -%}
+        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+          <reveal-items selector=".product-list > *">
+            <product-list class="product-list">
+              {%- assign products = section.settings.products | default: section.settings.collection.products -%}
+
+              {%- for product in products limit: section.settings.products_count -%}
+                {%- render 'product-card', product: product, stacked: section.settings.stack_products, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
+              {%- else -%}
+                {%- for i in (1..section.settings.products_count) -%}
+                  {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
+                  {%- render 'product-card-placeholder', stacked: section.settings.stack_products, placeholder_image: placeholder_image, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, text_alignment: settings.product_info_alignment -%}
+                {%- endfor -%}
               {%- endfor -%}
-            {%- endfor -%}
-          </product-list>
-        </reveal-items>
-      </scroll-carousel>
+            </product-list>
+          </reveal-items>
+        </scroll-carousel>
 
-      {%- if section.settings.stack_products == false -%}
-        {%- if section.settings.show_progress_bar -%}
-          {%- assign default_progress = section.settings.products_per_row_desktop | times: 1.0 | divided_by: section.settings.products_count -%}
-          {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
-        {%- else -%}
-          <button is="prev-button" class="circle-button circle-button--lg circle-button--fill border group" aria-controls="{{ scroll_area_id }}" disabled>
-            <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
-            <span class="animated-arrow animated-arrow--reverse"></span>
-          </button>
+        {%- if section.settings.stack_products == false -%}
+          {%- if section.settings.show_progress_bar -%}
+            {%- assign default_progress = section.settings.products_per_row_desktop | times: 1.0 | divided_by: section.settings.products_count -%}
+            {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
+          {%- else -%}
+            <button is="prev-button" class="circle-button circle-button--lg circle-button--fill border group" aria-controls="{{ scroll_area_id }}" disabled>
+              <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+              <span class="animated-arrow animated-arrow--reverse"></span>
+            </button>
 
-          <button is="next-button" class="circle-button circle-button--lg circle-button--fill border group" aria-controls="{{ scroll_area_id }}">
-            <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
-            <span class="animated-arrow"></span>
-          </button>
+            <button is="next-button" class="circle-button circle-button--lg circle-button--fill border group" aria-controls="{{ scroll_area_id }}">
+              <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+              <span class="animated-arrow"></span>
+            </button>
+          {%- endif -%}
         {%- endif -%}
-      {%- endif -%}
+      </div>
     </div>
   </div>
-</div>
+{%- endif -%}
 
 {% schema %}
 {
@@ -91,6 +102,12 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_empty",
+      "label": "Hide if empty or only one book",
+      "default": false
     },
     {
       "type": "product_list",
