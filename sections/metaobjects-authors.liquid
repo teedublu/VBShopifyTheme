@@ -1,0 +1,52 @@
+
+{% paginate shop.metaobjects.author.values  by 20 %}
+
+  {% for a in shop.metaobjects.author.values %}
+    {{ a.name.value }}<br/>
+  {% endfor %}
+
+  {{- paginate | default_pagination -}}
+
+{% endpaginate %}
+
+
+
+{% schema %}
+{
+  "name": "Metaobjects list",
+  "class": "shopify-section--logo-list",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    
+    {
+      "type": "range",
+      "id": "items_per_row",
+      "min": 3,
+      "max": 7,
+      "label": "Items per row (desktop)",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Paginated list of metaobjects."
+    }
+  ],
+  "blocks": [
+
+  ],
+  "presets": [
+    {
+      "name": "Metaobjects list",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}
+
