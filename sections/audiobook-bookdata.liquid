@@ -76,24 +76,22 @@
 
 {% schema %}
 {
-  "name": "Bookdata table",
-  "class": "shopify-section--bookdata-table",
-  "tag": "section",
-  "disabled_on": {
-    "templates": ["homepage"]
-  },
+  "name": "Book Data",
   "settings": [
-   {
-      "type": "header",
-      "content": "Display a table of book data"
-   }
-    
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading"
+    }
   ],
   "presets": [
     {
-      "name": "Bookdata table",
-      "blocks": []
+      "name": "Book Data",
+      "settings": {
+        "heading": "This is my new section"
+      }
     }
   ]
 }
+
 {% endschema %}
