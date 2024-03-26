@@ -1,0 +1,92 @@
+<table class="audiobooks-full-details">
+   <tbody>
+      <tr>
+         <td>Narrator</td>
+         <td>
+            {% for narrator in metaobject.narrators.value %}
+               {{ narrator.name | link_to: author.collection.value.url, class: 'narrator'}}
+            {% endfor %}
+         </td>
+      </tr>
+      <tr>
+         <td>Length</td>
+         <td>{{ metaobject.duration.value }}</td>
+      </tr>
+      <tr>
+         <td>Author</td>
+         <td>
+            {% for author in metaobject.authors.value %}
+               {{ author.name | link_to: author.collection.value.url, class: 'author'}}
+            {% endfor %}</td>
+      </tr>
+      <tr>
+         <td>Category</td>
+         <td>
+            <ul class="top-level-terms">
+               <li>
+                  <strong><a href="https://speechify.com/audiobooks/s/business-economics/">Business &amp; Economics</a></strong>
+                  <ul>
+                     <li><a href="https://speechify.com/audiobooks/s/21st-century-24721/">21st Century</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/economics-24721/">Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/economics-business-economics-24721/">Economics, Business &amp; Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/international-24721/">International</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/macroeconomics-history-24721/">Macroeconomics, History</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/modern-24721/">Modern</a></li>
+                  </ul>
+               </li>
+               <li>
+                  <strong><a href="https://speechify.com/audiobooks/s/economics/">Economics</a></strong>
+                  <ul>
+                     <li><a href="https://speechify.com/audiobooks/s/21st-century-25363/">21st Century</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/business-economics-25363/">Business &amp; Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/economics-business-economics-25363/">Economics, Business &amp; Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/international-25363/">International</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/macroeconomics-history-25363/">Macroeconomics, History</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/modern-25363/">Modern</a></li>
+                  </ul>
+               </li>
+               <li>
+                  <strong><a href="https://speechify.com/audiobooks/s/international/">International</a></strong>
+                  <ul>
+                     <li><a href="https://speechify.com/audiobooks/s/21st-century-25234/">21st Century</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/business-economics-25234/">Business &amp; Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/economics-25234/">Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/economics-business-economics-25234/">Economics, Business &amp; Economics</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/macroeconomics-history-25234/">Macroeconomics, History</a></li>
+                     <li><a href="https://speechify.com/audiobooks/s/modern-25234/">Modern</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </td>
+      </tr>
+      <tr>
+         <td>Publisher</td>
+         <td>Simon &amp; Schuster Audio</td>
+      </tr>
+      <tr>
+         <td>Release date</td>
+         <td>March 26, 2024</td>
+      </tr>
+      <tr>
+         <td>ISBN</td>
+         <td>9781797115788</td>
+      </tr>
+   </tbody>
+</table>
+
+{% schema %}
+{
+  "name": "Bookdata table",
+  "class": "shopify-section--bookdata-table",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    
+  ],
+  "presets": [
+    
+  ]
+}
+{% endschema %}
