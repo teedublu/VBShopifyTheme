@@ -1,7 +1,102 @@
 {
   "sections": {
+    "featured_product_B9E7nQ": {
+      "type": "featured-product",
+      "blocks": {
+        "title_EPVDNx": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_T7myUL": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_KetyNa": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_8XyeMq": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_AjYtQL": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_YFdEge": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "buy_buttons_mrnfcD": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_4xqnRq": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title_EPVDNx",
+        "badges_T7myUL",
+        "price_KetyNa",
+        "rating_8XyeMq",
+        "separator_AjYtQL",
+        "description_YFdEge",
+        "buy_buttons_mrnfcD",
+        "pickup_availability_4xqnRq"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.product.value }}",
+        "desktop_media_width": 35,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 1,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "custom_liquid_X4MXxq": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<table class=\"audiobooks-full-details\">\n   <tbody>\n      <tr>\n         <td>Narrator<\/td>\n         <td>{% for narrator in metaobject.narrators.value %}\n          {{ narrator.name | link_to: author.collection.value.url, class: 'author'}}\n        {% endfor %}<\/td>\n      <\/tr>\n      <tr>\n         <td>Length<\/td>\n         <td>{{ metaobject.publisher.value.name }}<\/td>\n      <\/tr>\n      <tr>\n         <td>Author<\/td>\n         <td>\n{% for author in metaobject.authors.value %}\n          {{ author.name | link_to: author.collection.value.url, class: 'author'}}\n        {% endfor %}<\/td>\n      <\/tr>\n      <tr>\n         <td>Category<\/td>\n         <td>\n            <ul class=\"top-level-terms\">\n               <li>\n                  <strong><a href=\"https:\/\/speechify.com\/audiobooks\/s\/business-economics\/\">Business &amp; Economics<\/a><\/strong>\n                  <ul>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/21st-century-24721\/\">21st Century<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/economics-24721\/\">Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/economics-business-economics-24721\/\">Economics, Business &amp; Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/international-24721\/\">International<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/macroeconomics-history-24721\/\">Macroeconomics, History<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/modern-24721\/\">Modern<\/a><\/li>\n                  <\/ul>\n               <\/li>\n               <li>\n                  <strong><a href=\"https:\/\/speechify.com\/audiobooks\/s\/economics\/\">Economics<\/a><\/strong>\n                  <ul>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/21st-century-25363\/\">21st Century<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/business-economics-25363\/\">Business &amp; Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/economics-business-economics-25363\/\">Economics, Business &amp; Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/international-25363\/\">International<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/macroeconomics-history-25363\/\">Macroeconomics, History<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/modern-25363\/\">Modern<\/a><\/li>\n                  <\/ul>\n               <\/li>\n               <li>\n                  <strong><a href=\"https:\/\/speechify.com\/audiobooks\/s\/international\/\">International<\/a><\/strong>\n                  <ul>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/21st-century-25234\/\">21st Century<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/business-economics-25234\/\">Business &amp; Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/economics-25234\/\">Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/economics-business-economics-25234\/\">Economics, Business &amp; Economics<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/macroeconomics-history-25234\/\">Macroeconomics, History<\/a><\/li>\n                     <li><a href=\"https:\/\/speechify.com\/audiobooks\/s\/modern-25234\/\">Modern<\/a><\/li>\n                  <\/ul>\n               <\/li>\n            <\/ul>\n         <\/td>\n      <\/tr>\n      <tr>\n         <td>Publisher<\/td>\n         <td>Simon &amp; Schuster Audio<\/td>\n      <\/tr>\n      <tr>\n         <td>Release date<\/td>\n         <td>March 26, 2024<\/td>\n      <\/tr>\n      <tr>\n         <td>ISBN<\/td>\n         <td>9781797115788<\/td>\n      <\/tr>\n   <\/tbody>\n<\/table>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
   },
   "order": [
-
+    "featured_product_B9E7nQ",
+    "custom_liquid_X4MXxq"
   ]
 }
