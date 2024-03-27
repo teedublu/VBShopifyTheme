@@ -134,34 +134,72 @@
         "button_text_color": ""
       }
     },
-    "multiple_images_with_text_fjrnYw": {
-      "type": "multiple-images-with-text",
+    "media_with_text_UEnEWB": {
+      "type": "media-with-text",
       "blocks": {
-        "item_WdNpTM": {
-          "type": "item",
+        "image_WXngG6": {
+          "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/best-bedtime-routine.jpg",
-            "image_rotation_degrees": -2,
-            "subheading": "DRAMA-FREE",
-            "title": "Best bedtime routine",
-            "content": "<p><strong>A great nights sleep is vital for the <\/strong>development of our future bookworms. Our <strong>screen-free <\/strong>audiobook means no <strong>distracting glow<\/strong> keeping kids awake. <\/p><p>Plus, you can easily enable <strong>bedtime mode<\/strong> to play your chosen story for 20 minutes before entering standby mode and drifting off to sleep. <\/p>",
-            "button_url": "",
-            "button_text": "Buy now"
+            "image": "shopify:\/\/shop_images\/child-drawing-listening-to-the-jungle-book-audiobook.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "KIDS IN CONTROL",
+            "title": "Learn and play",
+            "content": "<p>Just pick a audiobook, place it in your player and play. <strong>No need to rely on grown-ups. <\/strong>Build your collection of <strong>tactile audiobooks<\/strong> to display and treasure for life - unlike with digital files. <\/p>",
+            "link_text": "Buy now",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "item_WdNpTM"
+        "image_WXngG6"
       ],
       "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "media_with_text_4JQ7Cg": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_TKtmd8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/best-bedtime-routine.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-end-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "DRAMA-FREE",
+            "title": "Best bedtime routine",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_TKtmd8"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "image_with_text_overlay_n4GxFc": {
@@ -178,34 +216,6 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
-    },
-    "featured_collection_kRy9GQ": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": true,
-        "products": [
-          "alices-adventures-in-wonderland"
-        ],
-        "full_width": false,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "products_count": 2,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 2,
-        "subheading": "",
-        "title": "Immerse in the world of tangible audio",
-        "content": "<p>Each of our audiobooks lives on a physical block. They're made to be collected, swapped, displayed and loved.<\/p>",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     }
   },
   "order": [
@@ -214,8 +224,8 @@
     "multiple_images_with_text_XKQx9c",
     "multiple_images_with_text_iNETge",
     "multiple_images_with_text_CteG7W",
-    "multiple_images_with_text_fjrnYw",
-    "image_with_text_overlay_n4GxFc",
-    "featured_collection_kRy9GQ"
+    "media_with_text_UEnEWB",
+    "media_with_text_4JQ7Cg",
+    "image_with_text_overlay_n4GxFc"
   ]
 }
