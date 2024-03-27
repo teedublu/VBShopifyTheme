@@ -179,91 +179,32 @@
         "overlay_opacity": 0
       }
     },
-    "featured_product_FTbHVw": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_6DdeEN": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title_8hKfpj": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_CxjE9z": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "rating_yRRRBY": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_fjKX6D": {
-          "type": "separator",
-          "settings": {
-          }
-        },
-        "description_GdVWNw": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_VpdhjW": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "buy_buttons_kiTRGa": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor_6DdeEN",
-        "title_8hKfpj",
-        "badges_CxjE9z",
-        "rating_yRRRBY",
-        "separator_fjKX6D",
-        "description_GdVWNw",
-        "variant_picker_VpdhjW",
-        "buy_buttons_kiTRGa"
-      ],
+    "featured_collection_kRy9GQ": {
+      "type": "featured-collection",
       "settings": {
+        "collection": "",
+        "hide_empty": true,
+        "products": [
+          "alices-adventures-in-wonderland"
+        ],
         "full_width": false,
-        "product": "alices-adventures-in-wonderland",
-        "desktop_media_width": 35,
-        "desktop_media_layout": "grid_highlight",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 1.5,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 2,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 2,
+        "subheading": "",
+        "title": "Immerse in the world of tangible audio",
+        "content": "<p>Each of our audiobooks lives on a physical block. They're made to be collected, swapped, displayed and loved.<\/p>",
+        "link_url": "",
+        "link_text": "",
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     }
   },
@@ -275,6 +216,6 @@
     "multiple_images_with_text_CteG7W",
     "multiple_images_with_text_fjrnYw",
     "image_with_text_overlay_n4GxFc",
-    "featured_product_FTbHVw"
+    "featured_collection_kRy9GQ"
   ]
 }
