@@ -133,6 +133,138 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "multiple_images_with_text_fjrnYw": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_WdNpTM": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/best-bedtime-routine.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "DRAMA-FREE",
+            "title": "Best bedtime routine",
+            "content": "<p><strong>A great nights sleep is vital for the <\/strong>development of our future bookworms. Our <strong>screen-free <\/strong>audiobook means no <strong>distracting glow<\/strong> keeping kids awake. <\/p><p>Plus, you can easily enable <strong>bedtime mode<\/strong> to play your chosen story for 20 minutes before entering standby mode and drifting off to sleep. <\/p>",
+            "button_url": "",
+            "button_text": "Buy now"
+          }
+        }
+      },
+      "block_order": [
+        "item_WdNpTM"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "image_with_text_overlay_n4GxFc": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/still10.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "featured_product_FTbHVw": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_6DdeEN": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title_8hKfpj": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_CxjE9z": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "rating_yRRRBY": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_fjKX6D": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_GdVWNw": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_VpdhjW": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons_kiTRGa": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_6DdeEN",
+        "title_8hKfpj",
+        "badges_CxjE9z",
+        "rating_yRRRBY",
+        "separator_fjKX6D",
+        "description_GdVWNw",
+        "variant_picker_VpdhjW",
+        "buy_buttons_kiTRGa"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "alices-adventures-in-wonderland",
+        "desktop_media_width": 35,
+        "desktop_media_layout": "grid_highlight",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 1.5,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
     }
   },
   "order": [
@@ -140,6 +272,9 @@
     "video_CdTAhx",
     "multiple_images_with_text_XKQx9c",
     "multiple_images_with_text_iNETge",
-    "multiple_images_with_text_CteG7W"
+    "multiple_images_with_text_CteG7W",
+    "multiple_images_with_text_fjrnYw",
+    "image_with_text_overlay_n4GxFc",
+    "featured_product_FTbHVw"
   ]
 }
