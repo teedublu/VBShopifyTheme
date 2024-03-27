@@ -5,9 +5,41 @@
       "settings": {
         "content_width": "80ch"
       }
+    },
+    "video_CdTAhx": {
+      "type": "video",
+      "blocks": {
+        "play_m3CLiH": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "heading_3aUfTb": {
+          "type": "heading",
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_m3CLiH",
+        "heading_3aUfTb"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=cnCJDm3DpXE",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "video_CdTAhx"
   ]
 }
