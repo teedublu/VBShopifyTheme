@@ -194,6 +194,80 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "text_with_icons_PkEEJg": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_i4BahQ": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-gift",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "#4cb6ac",
+            "title": "Ideal Gifts",
+            "content": "<p>A gift you can treasure forever - not just another digital file.<\/p>"
+          }
+        },
+        "item_pWkQTx": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-leaf",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "#4cb6ac",
+            "title": "Conscious",
+            "content": "<p>Our blocks are made from card, not plastic. And best of all, they're designed to last.<\/p>"
+          }
+        },
+        "item_j9t8P4": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-validation",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "#4cb6ac",
+            "title": "Compatible with all bookshelves",
+            "content": "<p>From fantasy to adventure, familiar favourites to brand new releases, we have titles to suit every bookshelf.<\/p>"
+          }
+        },
+        "item_aVJqMn": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-music",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "#4cb6ac",
+            "title": "Ready to play",
+            "content": "<p>The audio is stored on the block and ready to play out of the box. No need for streaming or download.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_i4BahQ",
+        "item_pWkQTx",
+        "item_j9t8P4",
+        "item_aVJqMn"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -203,6 +277,7 @@
     "media_with_text_AQUhfj",
     "media_with_text_UEnEWB",
     "media_with_text_4JQ7Cg",
-    "image_with_text_overlay_n4GxFc"
+    "image_with_text_overlay_n4GxFc",
+    "text_with_icons_PkEEJg"
   ]
 }
