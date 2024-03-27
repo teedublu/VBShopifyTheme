@@ -282,6 +282,50 @@
         "background_gradient": "",
         "text_color": "#565656"
       }
+    },
+    "faq_nJ7pPx": {
+      "type": "faq",
+      "blocks": {
+        "item_FTnQ7H": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player require an internet connection?",
+            "content": "<p>Nope. The audio is physically stored on each block, meaning that we are completely connectivity free. There is no wifi or apps to configure and the Voxblock player just plays the blocks as soon as they are inserted.<\/p>"
+          }
+        },
+        "item_G8eM9r": {
+          "type": "item",
+          "settings": {
+            "title": "How do I charge the player?",
+            "content": "<p>You charge your player using a USB-C cable provided and any USB wall socket or brick.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_FTnQ7H",
+        "item_G8eM9r"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
     }
   },
   "order": [
@@ -292,6 +336,7 @@
     "media_with_text_UEnEWB",
     "media_with_text_4JQ7Cg",
     "image_with_text_overlay_n4GxFc",
-    "text_with_icons_PkEEJg"
+    "text_with_icons_PkEEJg",
+    "faq_nJ7pPx"
   ]
 }
