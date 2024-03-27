@@ -186,7 +186,7 @@
         "full_width": true,
         "allow_transparent_header": false,
         "enable_parallax": false,
-        "image_size": "auto",
+        "image_size": "md",
         "image": "shopify:\/\/shop_images\/still10.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -299,11 +299,19 @@
             "title": "How do I charge the player?",
             "content": "<p>You charge your player using a USB-C cable provided and any USB wall socket or brick.<\/p>"
           }
+        },
+        "item_c4AykB": {
+          "type": "item",
+          "settings": {
+            "title": "I have more questions",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" target=\"_blank\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
+          }
         }
       },
       "block_order": [
         "item_FTnQ7H",
-        "item_G8eM9r"
+        "item_G8eM9r",
+        "item_c4AykB"
       ],
       "settings": {
         "full_width": true,
