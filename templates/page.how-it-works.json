@@ -74,34 +74,38 @@
         "button_text_color": ""
       }
     },
-    "multiple_images_with_text_iNETge": {
-      "type": "multiple-images-with-text",
+    "media_with_text_E4JAKE": {
+      "type": "media-with-text",
       "blocks": {
-        "item_hm6Rxg": {
-          "type": "item",
+        "image_gJBpge": {
+          "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ideal-for-adventures.jpg",
-            "image_rotation_degrees": -2,
-            "subheading": "TRAVEL COMPANION",
-            "title": "Ideal for adventures",
-            "content": "<p><strong>Designed for kids<\/strong>, and <strong>made to last <\/strong>all the rough and tumble kids can throw at it. <\/p><p>You can carry your favourite companion with you <strong>wherever you go<\/strong>, whether that be in the car, on a plane, or a train. Plus, the battery lasts for days with just a single charge.<\/p>",
-            "button_url": "",
-            "button_text": "Buy now"
+            "image": "shopify:\/\/shop_images\/boy_headphones_circle_background.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "SCREEN FREE AUDIOBOOKS",
+            "title": "Simple to use",
+            "content": "<p>Bring stories to life by easily slotting your audiobook into the screen-free player. You have the freedom to<strong> pause or change<\/strong> your audiobook at any time, and return to where you left off the next time you listen.<\/p><p>No need for apps, downloads, or setups. Just <strong>play and go<\/strong>. Anytime, anywhere.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "item_hm6Rxg"
+        "image_gJBpge"
       ],
       "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "media_with_text_AQUhfj": {
@@ -226,7 +230,7 @@
     "main",
     "video_CdTAhx",
     "multiple_images_with_text_XKQx9c",
-    "multiple_images_with_text_iNETge",
+    "media_with_text_E4JAKE",
     "media_with_text_AQUhfj",
     "media_with_text_UEnEWB",
     "media_with_text_4JQ7Cg",
