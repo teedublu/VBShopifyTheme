@@ -103,12 +103,43 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "multiple_images_with_text_CteG7W": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_6THJGj": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/child-drawing-listening-to-the-jungle-book-audiobook.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "KIDS IN CONTROL",
+            "title": "Learn and play",
+            "content": "<p>Just pick a audiobook, place it in your player and play. <strong>No need to rely on grown-ups. <\/strong>Build your collection of <strong>tactile audiobooks<\/strong> to display and treasure for life - unlike with digital files.<\/p>",
+            "button_url": "",
+            "button_text": "Buy now"
+          }
+        }
+      },
+      "block_order": [
+        "item_6THJGj"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "video_CdTAhx",
     "multiple_images_with_text_XKQx9c",
-    "multiple_images_with_text_iNETge"
+    "multiple_images_with_text_iNETge",
+    "multiple_images_with_text_CteG7W"
   ]
 }
