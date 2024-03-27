@@ -104,34 +104,38 @@
         "button_text_color": ""
       }
     },
-    "multiple_images_with_text_CteG7W": {
-      "type": "multiple-images-with-text",
+    "media_with_text_AQUhfj": {
+      "type": "media-with-text",
       "blocks": {
-        "item_6THJGj": {
-          "type": "item",
+        "image_nqayAW": {
+          "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/child-drawing-listening-to-the-jungle-book-audiobook.jpg",
-            "image_rotation_degrees": -2,
-            "subheading": "KIDS IN CONTROL",
-            "title": "Learn and play",
-            "content": "<p>Just pick a audiobook, place it in your player and play. <strong>No need to rely on grown-ups. <\/strong>Build your collection of <strong>tactile audiobooks<\/strong> to display and treasure for life - unlike with digital files.<\/p>",
-            "button_url": "",
-            "button_text": "Buy now"
+            "image": "shopify:\/\/shop_images\/ideal-for-adventures.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "TRAVEL COMPANION",
+            "title": "Ideal for adventures",
+            "content": "<p><strong>Designed for kids<\/strong>, and <strong>made to last <\/strong>all the rough and tumble kids can throw at it. <\/p><p>You can carry your favourite companion with you <strong>wherever you go<\/strong>, whether that be in the car, on a plane, or a train. Plus, the battery lasts for days with just a single charge. <\/p>",
+            "link_text": "Buy now",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "item_6THJGj"
+        "image_nqayAW"
       ],
       "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "media_with_text_UEnEWB": {
@@ -223,7 +227,7 @@
     "video_CdTAhx",
     "multiple_images_with_text_XKQx9c",
     "multiple_images_with_text_iNETge",
-    "multiple_images_with_text_CteG7W",
+    "media_with_text_AQUhfj",
     "media_with_text_UEnEWB",
     "media_with_text_4JQ7Cg",
     "image_with_text_overlay_n4GxFc"
