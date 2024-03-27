@@ -73,11 +73,42 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "multiple_images_with_text_iNETge": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_hm6Rxg": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ideal-for-adventures.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "TRAVEL COMPANION",
+            "title": "Ideal for adventures",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_hm6Rxg"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "video_CdTAhx",
-    "multiple_images_with_text_XKQx9c"
+    "multiple_images_with_text_XKQx9c",
+    "multiple_images_with_text_iNETge"
   ]
 }
