@@ -1,7 +1,46 @@
 {
   "sections": {
+    "rich_text_xjk34z": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_EMbWJx": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_mcDepd": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_8MURDq": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ metaobject.bio | metafield_tag }}{{ metaobject.description | metafield_tag }}<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_EMbWJx",
+        "heading_mcDepd",
+        "richtext_8MURDq"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
   },
   "order": [
-
+    "rich_text_xjk34z"
   ]
 }
