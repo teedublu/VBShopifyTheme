@@ -68,8 +68,8 @@
         "full_width": false,
         "product": "{{ metaobject.product.value }}",
         "desktop_media_width": 35,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "contained",
         "mobile_carousel_control": "dots",
         "enable_video_autoplay": false,
         "enable_video_looping": false,
@@ -81,9 +81,115 @@
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
       }
+    },
+    "rich_text_iUjBAP": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_dM87AL": {
+          "type": "subheading",
+          "settings": {
+            "text": "{{ metaobject.title.value }} Author"
+          }
+        },
+        "heading_ypDaPy": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.authors | metafield_text: field: 'name' }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_EpBkf4": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_dM87AL",
+        "heading_ypDaPy",
+        "richtext_EpBkf4"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_8iRRVm": {
+      "type": "multi-column",
+      "blocks": {
+        "item_kNWNd3": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Author",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_w9M8Uf": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Narrator",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_7g9HY6": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Column title",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_kNWNd3",
+        "item_w9M8Uf",
+        "item_7g9HY6"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "About",
+        "title": "{{ metaobject.title.value }}",
+        "content": "<p>{{ metaobject.long_blurb | metafield_tag }}<\/p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "audiobook_bookdata_wtkEHX": {
+      "type": "audiobook-bookdata",
+      "settings": {
+        "heading": "This is my new section"
+      }
     }
   },
   "order": [
-    "featured_product_B9E7nQ"
+    "featured_product_B9E7nQ",
+    "rich_text_iUjBAP",
+    "multi_column_8iRRVm",
+    "audiobook_bookdata_wtkEHX"
   ]
 }

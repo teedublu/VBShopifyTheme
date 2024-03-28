@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "breadcrumbs_QBedAb": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_TzCwwp": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_BYbD39": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_rtJAbM": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_ttN4dd": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_BYbD39",
+        "heading_rtJAbM",
+        "richtext_ttN4dd"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_QBedAb",
+    "rich_text_TzCwwp"
+  ]
+}

@@ -5,9 +5,17 @@
       "settings": {
         "content_width": "80ch"
       }
+    },
+    "metaobjects_authors_Eknwid": {
+      "type": "metaobjects-authors",
+      "settings": {
+        "page_size": 25,
+        "object_type": "narrator"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "metaobjects_authors_Eknwid"
   ]
 }

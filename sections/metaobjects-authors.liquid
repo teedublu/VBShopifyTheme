@@ -3,8 +3,8 @@
     <div class="metaobjects index-list">
       {% paginate shop.metaobjects[section.settings.object_type].values  by section.settings.page_size %}
 
-        {% for a in shop.metaobjects[section.settings.object_type].values %}
-          {{ a.name.value | link_to: a.system.url, class: 'author'}}<br/>
+        {% for metaobject in shop.metaobjects[section.settings.object_type].values %}
+          {{ metaobject.name.value | link_to: metaobject.system.url, class: section.settings.object_type}}<br/>
         {% endfor %}
 
         {{- paginate | default_pagination -}}

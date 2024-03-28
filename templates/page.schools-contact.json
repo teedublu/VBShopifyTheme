@@ -47,10 +47,31 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30
       }
+    },
+    "contact_fKfQTM": {
+      "type": "contact",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Get in touch with the schools team",
+        "content": "<p>For any questions, or to make an order for a Schools Package, please get in touch via the form below, or email us on <a href=\"mailto:schools@voxblock.co.uk\" title=\"mailto:schools@voxblock.co.uk\">schools@voxblock.co.uk<\/a>.<\/p>",
+        "text_position": "center",
+        "contact_form_size": "large",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "contact_background": "",
+        "contact_text_color": "#000000",
+        "button_background": "#ff9e57",
+        "button_text_color": "#ffffff"
+      }
     }
   },
   "order": [
     "main",
-    "image_with_text_overlay_gcfG3M"
+    "image_with_text_overlay_gcfG3M",
+    "contact_fKfQTM"
   ]
 }
