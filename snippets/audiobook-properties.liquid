@@ -7,19 +7,26 @@ CSS
 {%- endcomment -%}
 <style>
 .audiobook_product_block { background-color: #f4f4f4; border-radius: 20px;}
-.audiobook_product_block .audiobook_properties {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 5px; padding: 10px;}
+.audiobook_product_block .audiobook_properties {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 5px; padding: 10px; margin: 0 auto;}
 
-
+@media only screen and (min-width: 600px) {
+  .audiobook_product_block .audiobook_properties { max-width: 80%; }
+}
+@media only screen and (min-width: 1000px) {
+  .audiobook_product_block .audiobook_properties { max-width: 100%; }
+}
 .audiobook_product_block div.audiobook_properties .line1 {font-size:110%; margin-bottom: 2px;}
 .audiobook_product_block div.audiobook_properties .line2 {font-weight:800; font-size:130%}
 
 .audiobook_product_block div.audiobook_properties div.audiobook_property { text-anchor: middle;}
+.audiobook_product_block div.audiobook_properties div.audiobook_property .playicon { cursor: pointer;}
 .audiobook_product_block div.audiobook_properties div.audiobook_property .minor { font-size: 40%; stroke-width: 0; fill: rgb(var(--button-background-secondary));}
 .audiobook_product_block div.audiobook_properties div.audiobook_property .major { font-size: 100%; stroke-width: 0; fill: rgb(var(--button-background-secondary)); font-weight: bold;}
 .audiobook_product_block div.audiobook_properties div.audiobook_property .major.time { font-size: 90%;}
 
+    
 
-.audiobook_product_block svg { stroke:rgb(var(--button-background-secondary)); fill: transparent; border-radius: 50%;}
+.audiobook_product_block svg { stroke:rgb(var(--button-background-secondary)); fill: transparent; border-radius: 50%; max-width: 100px; margin: auto}
 .audiobook_product_block .audiobook_property .playing svg { animation: pulse-animation 2s infinite; }
 
 .audiobook_product_block .audiobook_property .bookpreview svg path.play { fill: rgb(var(--button-background-secondary));  }
