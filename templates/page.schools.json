@@ -63,7 +63,7 @@
         "richtext_hyVwpe": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Experience the future of EdTech literacy with <a href=\"\/products\/voxblock-player\" title=\"Voxblock Audiobook Player\">Voxblock audiobook players<\/a>, a revolutionary but <strong>easy-to-use solution<\/strong> designed for classrooms and school libraries. Voxblock audiobook players are <strong>internet free<\/strong>, eliminating any requirement for connectivity, allowing students unrestricted access to audiobooks without internet dependency, addressing any privacy or GDPR concerns.  Voxblocks are suitable for use by <strong>individual students<\/strong>, <strong>small groups<\/strong> or a <strong>whole class. <\/strong>They are perfect for creating a <strong>listening station<\/strong> in the classroom or library. <\/p>"
+            "content": "<p>Experience the future of EdTech literacy with <a href=\"\/products\/voxblock-player\" title=\"Voxblock Audiobook Player\">Voxblock audiobook players<\/a>, a revolutionary but <strong>easy-to-use solution<\/strong> designed for classrooms and school libraries. Voxblock audiobook players are <strong>internet free<\/strong>, eliminating any requirement for connectivity, allowing students unrestricted access to audiobooks without internet dependency, addressing any privacy or GDPR concerns.  Voxblocks are suitable for use by <strong>individual students<\/strong>, <strong>small groups<\/strong> or a <strong>whole class. <\/strong>They are perfect for creating a <strong>listening station<\/strong> in the classroom or library. <\/p><p><\/p>"
           }
         },
         "heading_VMprRM": {
@@ -111,11 +111,11 @@
           "type": "button",
           "settings": {
             "style": "fill",
-            "size": "xl",
-            "text": "Button text",
+            "size": "lg",
+            "text": "Explore the library",
             "url": "",
-            "background": "",
-            "text_color": ""
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
           }
         }
       },
@@ -137,11 +137,27 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "image_with_text_overlay_4rVDwf": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Voxblock_Book_Shelf_2500_x_1184_px.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_gcfG3M",
-    "rich_text_PAeRfb"
+    "rich_text_PAeRfb",
+    "image_with_text_overlay_4rVDwf"
   ]
 }
