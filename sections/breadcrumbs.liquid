@@ -44,6 +44,8 @@
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
 {%- assign t = template | split: '.' | first -%}
+{%- assign t = t | split: '/' | first -%}
+{%- assign mo = t | split: '/' | last -%}
 
 <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
   <ol class="breadcrumbs__list">
@@ -99,6 +101,17 @@
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
         </li>
+      {%- when 'metaobject' -%}
+        <li class="breadcrumbs__item"> 
+          {% comment%}NOTE: requires the page handle be of the form "audiobook-[objecttype-pluralised]" {%endcomment%}
+          {% assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's' %}
+          {% assign page = pages[list_page] %}
+          {{page.title | link_to: page.url}}
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="{{ metaobject.url }}" aria-current="page">{{ metaobject.name }}121212</a>
+        </li>
+
       {%- else -%}
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
