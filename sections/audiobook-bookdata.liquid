@@ -5,7 +5,7 @@
             <td>Narrator</td>
             <td>
                {% for narrator in metaobject.narrators.value %}
-                  {{ narrator.name | link_to: author.collection.value.url, class: 'narrator'}}
+                  {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
@@ -17,10 +17,20 @@
             <td>Author</td>
             <td>
                {% for author in metaobject.authors.value %}
-                  {{ author.name | link_to: author.collection.value.url, class: 'author'}}
+                  {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
+         {%- if metaobject.characters.value -%}
+            <tr>
+               <td>Featuring</td>
+               <td>
+                  {% for character in metaobject.characters.value %}
+                     {{ character.name | link_to: character.system.url, class: 'character'}}{% unless forloop.last %}, {% endunless -%}
+                  {% endfor %}
+               </td>
+            </tr>
+         {% endif %}
          <tr>
             <td>Category</td>
             <td>
@@ -28,22 +38,34 @@
                   {% for cat in metaobject.product.value.metafields.book.categories.value %}
                      {%- assign urlencoded = cat | url_encode | lower -%}
                      {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
-                     {{ cat | link_to: url, class: 'book_category'}}
+                     {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
                   {% endfor %}
                </ul>
             </td>
          </tr>
          <tr>
             <td>Publisher</td>
-            <td>{{metaobject.publisher.value.name}}</td>
+            <td>{{metaobject.publisher.value.name | link_to: metaobject.publisher.system.url }}</td>
          </tr>
          <tr>
             <td>Release date</td>
-            <td>March 26, 2024</td>
+            <td>{{ metaobject.product.value.metafields.facts.isbn.value | metafield_tag }}</td>
          </tr>
          <tr>
             <td>ISBN</td>
-            <td>{{ metaobject.product.value.metafields.facts.isbn.value }}</td>
+            <td>{{ metaobject.product.value.metafields.facts.isbn.value | metafield_tag }}</td>
+         </tr>
+         <tr>
+            <td>Abdridged</td>
+            <td>{{ metaobject.product.value.metafields.book.abridged | metafield_tag }}</td>
+         </tr>
+         <tr>
+            <td>Language</td>
+            <td>{{ metaobject.product.value.metafields.book.language | metafield_tag }}</td>
+         </tr>
+         <tr>
+            <td>Preview</td>
+            <td>{{ metaobject.product.value.metafields.book.preview | metafield_tag }}</td>
          </tr>
       </tbody>
    </table>
