@@ -191,7 +191,34 @@ quick buy information in a template, that will be extracted in JS, but ensure it
     {
       "type": "audiobook-properties",
       "name": "Audiobook Properties",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+          {
+            "type": "color",
+            "id": "property_color",
+            "label": "Properties Color"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color"
+          },
+          {
+            "type": "range",
+            "id": "border_width",
+            "label": "Border Width",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          }
+        ]
     },
     {
       "type": "badges",
