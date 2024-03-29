@@ -2,11 +2,18 @@
   <div class="page">
     <div class="metaobjects index-list">
       {% paginate shop.metaobjects[section.settings.object_type].values  by section.settings.page_size %}
-
-        {% for metaobject in shop.metaobjects[section.settings.object_type].values %}
-          {{ metaobject.name.value | link_to: metaobject.system.url, class: section.settings.object_type}}<br/>
-        {% endfor %}
-
+        <ul>
+          {% for metaobject in shop.metaobjects[section.settings.object_type].values %}
+            <li>
+            {% case section.settings.object_type %}
+              {% when 'audiobook' %}
+                {{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}
+              {% else %}    
+                {{ metaobject.name.value | link_to: metaobject.system.url, class: section.settings.object_type}}
+            {% endcase %}
+            </li>
+          {% endfor %}
+        </ul>
         {{- paginate | default_pagination -}}
 
       {% endpaginate %}
