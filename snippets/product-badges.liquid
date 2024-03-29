@@ -35,6 +35,7 @@ Supported variables
     {%- assign stripped_badge_type = badge_type | strip -%}
 
     {%- case stripped_badge_type -%}
+
       {%- when 'categories' -%}{%-comment -%}WATCH OUT FOR bookS {%-endcomment -%}
         {%- for cat in product.metafields.book.categories.value -%}
           {% assign urlencodedcat = cat | url_encode %}
@@ -49,16 +50,16 @@ Supported variables
         {% assign narrators = product.metafields.book.narrators.value %}
 
         {% if character != blank %}
-          {{ character.name | link_to: character.collection.value.url, class: 'badge badge--primary clickable bookdata character'}}
+          {{ character.name | link_to: character.system.url, class: 'badge badge--primary clickable bookdata character'}}
         {%- endif -%}
 
         {% for author in authors %}
-          {{ author.name | link_to: author.collection.value.url, class: 'badge badge--primary clickable bookdata author'}}
+          {{ author.name | link_to: author.system.url, class: 'badge badge--primary clickable bookdata author'}}
         {% endfor %}
 
 
         {% for narrator in narrators %}
-          {{ narrator.name | link_to: narrator.collection.value.url, class: 'badge badge--primary clickable bookdata narrator'}}
+          {{ narrator.name | link_to: narrator.system.url, class: 'badge badge--primary clickable bookdata narrator'}}
         {% endfor %}
 
         {% assign abridged = product.metafields.book.abridged.value %}
