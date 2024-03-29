@@ -29,12 +29,19 @@
           "settings": {
             "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
           }
+        },
+        "richtext_pqxnAT": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Audiobooks by {{ metaobject.name.value }} available on Voxblock include <\/p>"
+          }
         }
       },
       "block_order": [
         "subheading_BYbD39",
         "heading_rtJAbM",
-        "richtext_ttN4dd"
+        "richtext_ttN4dd",
+        "richtext_pqxnAT"
       ],
       "settings": {
         "full_width": true,

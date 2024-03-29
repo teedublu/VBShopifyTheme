@@ -67,11 +67,50 @@
         "button_background": "#ff9e57",
         "button_text_color": "#ffffff"
       }
+    },
+    "rich_text_WMVWJd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3hLfgh": {
+          "type": "heading",
+          "settings": {
+            "text": "Schools email newsletter",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_3hLfgh"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_html_3meTET": {
+      "type": "custom-html",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<div class=\"klaviyo-form-T6GqsW\"><\/div>",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_gcfG3M",
-    "contact_fKfQTM"
+    "contact_fKfQTM",
+    "rich_text_WMVWJd",
+    "custom_html_3meTET"
   ]
 }

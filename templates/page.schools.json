@@ -47,10 +47,117 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30
       }
+    },
+    "rich_text_PAeRfb": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_G3AMPT": {
+          "type": "heading",
+          "settings": {
+            "text": "Voxblock in schools and nurseries",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_hyVwpe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Experience the future of EdTech literacy with <a href=\"\/products\/voxblock-player\" title=\"Voxblock Audiobook Player\">Voxblock audiobook players<\/a>, a revolutionary but <strong>easy-to-use solution<\/strong> designed for classrooms and school libraries. Voxblock audiobook players are <strong>internet free<\/strong>, eliminating any requirement for connectivity, allowing students unrestricted access to audiobooks without internet dependency, addressing any privacy or GDPR concerns.  Voxblocks are suitable for use by <strong>individual students<\/strong>, <strong>small groups<\/strong> or a <strong>whole class. <\/strong>They are perfect for creating a <strong>listening station<\/strong> in the classroom or library. <\/p><p><\/p>"
+          }
+        },
+        "heading_VMprRM": {
+          "type": "heading",
+          "settings": {
+            "text": "Internet-free audiobook player",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_KBzxQi": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Boasting a <strong>long battery life<\/strong> and simple design, Voxblock ensures uninterrupted audio throughout the school day, promoting a positive library experience. Its user-friendly interface empowers students of all ages to independently explore content, fostering a <strong>love of literacy. <\/strong><\/p><p>The audiobooks are physical blocks, children can easily select what they’d like to listen to and then slot it into the player.  <br\/><br\/>Key features:<\/p><ul><li>Screen-free<\/li><li>100% wifi and connectivity free<\/li><li>Built in speaker for shared listening and headphone jack that fits any standard headphones<\/li><li>Long battery life; 14 hours of play, 25 days of standby<\/li><li>Rechargeable with USB cable included<\/li><li>No set up required, use straight out of the box<\/li><li>Robust and simple to use<\/li><\/ul>"
+          }
+        },
+        "button_TKkkWP": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Learn more about the player",
+            "url": "",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        },
+        "heading_edxrAc": {
+          "type": "heading",
+          "settings": {
+            "text": "Audiobooks",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_YQYFRw": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Voxblock is dedicated to promoting literacy at every stage. There are <strong>hundreds of audiobooks<\/strong> to choose from with a curated library tailored for <strong>Early Years, Key Stage 1, <\/strong>and <strong>Key Stage 2<\/strong>, it provides a comprehensive and age-appropriate educational experience. Coupled with supporting <a href=\"https:\/\/voxblock.co.uk\/blogs\/news\/audiobook-teaching-resources\" title=\"https:\/\/voxblock.co.uk\/blogs\/news\/audiobook-teaching-resources\">learning resources<\/a>, Voxblock becomes an invaluable tool in nurturing a passion for reading among students.<\/p><p>Audiobooks play a vital role in promoting literacy, especially for <strong>reluctant readers<\/strong>. For those who find traditional reading challenging, audiobooks offer an alternative way to access literature. By listening to audiobooks, reluctant readers can absorb content, comprehend plots, and develop essential language skills.<\/p>"
+          }
+        },
+        "button_ajXFDm": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Explore the library",
+            "url": "",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_G3AMPT",
+        "richtext_hyVwpe",
+        "heading_VMprRM",
+        "richtext_KBzxQi",
+        "button_TKkkWP",
+        "heading_edxrAc",
+        "richtext_YQYFRw",
+        "button_ajXFDm"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_4rVDwf": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Voxblock_Book_Shelf_2500_x_1184_px.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
     "main",
-    "image_with_text_overlay_gcfG3M"
+    "image_with_text_overlay_gcfG3M",
+    "rich_text_PAeRfb",
+    "image_with_text_overlay_4rVDwf"
   ]
 }
