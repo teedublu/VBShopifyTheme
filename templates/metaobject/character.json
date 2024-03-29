@@ -1,7 +1,53 @@
 {
   "sections": {
+    "breadcrumbs_XHGrpm": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_3DUaDn": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_Eb8NgN": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Character"
+          }
+        },
+        "heading_3DPBXh": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_CVtQmh": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Eb8NgN",
+        "heading_3DPBXh",
+        "richtext_CVtQmh"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
   },
   "order": [
-
+    "breadcrumbs_XHGrpm",
+    "rich_text_3DUaDn"
   ]
 }
