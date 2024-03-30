@@ -6,7 +6,7 @@
         "subheading_ME6F8j": {
           "type": "subheading",
           "settings": {
-            "text": "Subheading"
+            "text": "Synopsis"
           }
         },
         "heading_Y9kqDK": {
@@ -21,7 +21,7 @@
         "richtext_3eBjTx": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.audiobook.value.long_blurb | metafield_tag }}<\/p>"
+            "content": "<p>{{ metaobject.about | metafield_tag }}<\/p>"
           }
         }
       },
@@ -33,7 +33,7 @@
       "settings": {
         "full_width": true,
         "content_width": "small",
-        "text_position": "center",
+        "text_position": "start",
         "background": "",
         "background_gradient": "",
         "text_color": ""
