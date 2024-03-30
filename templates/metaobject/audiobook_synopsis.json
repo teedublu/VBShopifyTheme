@@ -1,34 +1,34 @@
 {
   "sections": {
-    "rich_text_MbpFd7": {
+    "rich_text_kf8m8f": {
       "type": "rich-text",
       "blocks": {
-        "subheading_BggLgt": {
+        "subheading_ME6F8j": {
           "type": "subheading",
           "settings": {
             "text": "Subheading"
           }
         },
-        "heading_7EfjxW": {
+        "heading_Y9kqDK": {
           "type": "heading",
           "settings": {
-            "text": "Heading",
+            "text": "{{ metaobject.page_title.value }}",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
           }
         },
-        "richtext_8UYGQR": {
+        "richtext_3eBjTx": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.book.value.long_blurb | metafield_tag }}<\/p>"
+            "content": "<p>{{ metaobject.audiobook.value.long_blurb | metafield_tag }}<\/p>"
           }
         }
       },
       "block_order": [
-        "subheading_BggLgt",
-        "heading_7EfjxW",
-        "richtext_8UYGQR"
+        "subheading_ME6F8j",
+        "heading_Y9kqDK",
+        "richtext_3eBjTx"
       ],
       "settings": {
         "full_width": true,
@@ -38,116 +38,9 @@
         "background_gradient": "",
         "text_color": ""
       }
-    },
-    "featured_product_b9nPcM": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_wMnbEW": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title_EGJgqV": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_wjKJkM": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "price_jw8aUr": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "rating_iiM8Fe": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_gAdAte": {
-          "type": "separator",
-          "settings": {
-          }
-        },
-        "description_jmgLzL": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_NCrG9x": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "quantity_selector_DXj89F": {
-          "type": "quantity_selector",
-          "settings": {
-          }
-        },
-        "buy_buttons_9JNCrT": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "pickup_availability_XxyjRP": {
-          "type": "pickup_availability",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "vendor_wMnbEW",
-        "title_EGJgqV",
-        "badges_wjKJkM",
-        "price_jw8aUr",
-        "rating_iiM8Fe",
-        "separator_gAdAte",
-        "description_jmgLzL",
-        "variant_picker_NCrG9x",
-        "quantity_selector_DXj89F",
-        "buy_buttons_9JNCrT",
-        "pickup_availability_XxyjRP"
-      ],
-      "settings": {
-        "full_width": true,
-        "product": "{{ metaobject.book.value.product.value }}",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
     }
   },
   "order": [
-    "rich_text_MbpFd7",
-    "featured_product_b9nPcM"
+    "rich_text_kf8m8f"
   ]
 }
