@@ -38,9 +38,39 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "rich_text_3p3m7g": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_kgTYyk": {
+          "type": "subheading",
+          "settings": {
+            "text": "How to listen to {{ metaobject.t_itle.value }}"
+          }
+        },
+        "richtext_ytUgGy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The best way to listen to {{ metaobject.t_itle.value }} is of course with Voxblock.<\/p><p>Voxblock offers a screen-free audiobook player that has been made for kids to get the most out of {{ metaobject.t_itle.value }} without the constant distractions that most streaming or online solutions provide. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_kgTYyk",
+        "richtext_ytUgGy"
+      ],
+      "settings": {
+        "full_width": false,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
-    "rich_text_kf8m8f"
+    "rich_text_kf8m8f",
+    "rich_text_3p3m7g"
   ]
 }
