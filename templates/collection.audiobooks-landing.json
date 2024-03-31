@@ -1,0 +1,130 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "sm",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "collection_link_blocks_HpwJbj": {
+      "type": "collection-link-blocks",
+      "blocks": {
+        "item_P4cM4p": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
+            "link_text": "Best Sellers",
+            "link_url": ""
+          }
+        },
+        "item_Y4GnXQ": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "link_text": "Adventure",
+            "link_url": ""
+          }
+        },
+        "item_PHyCVd": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
+            "link_text": "Under £5",
+            "link_url": "shopify:\/\/collections\/audiobooks"
+          }
+        },
+        "item_qpk6Bx": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_for_Schools.png",
+            "link_text": "Advanced Readers",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_P4cM4p",
+        "item_Y4GnXQ",
+        "item_PHyCVd",
+        "item_qpk6Bx"
+      ],
+      "settings": {
+        "full_width": false
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_image_4VEyzT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 33,
+            "column_span": "1",
+            "title": "Promote a product or a temporary offer",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "promotion_video_CHwxAJ": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/a9a664f20e584ebba2209365f40257f0.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How our books work",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_4VEyzT",
+        "promotion_video_CHwxAJ"
+      ],
+      "settings": {
+        "products_per_page": 50,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 7,
+        "filter_layout": "horizontal",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collection_link_blocks_HpwJbj",
+    "main"
+  ]
+}
