@@ -39,16 +39,144 @@
         "text_color": ""
       }
     },
-    "metaobjects_authors_zhpEnM": {
-      "type": "metaobjects-list",
+    "featured_product_yNma3D": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_FwgdjF": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title_NWfyxW": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_UBBCnn": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_gQJHYB": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_Jd9myK": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_WEPxy3": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_KbLV6f": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_94hJQN": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_4pGGKt": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons_6fmydG": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_PJFTeP": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor_FwgdjF",
+        "title_NWfyxW",
+        "badges_UBBCnn",
+        "price_gQJHYB",
+        "rating_Jd9myK",
+        "separator_WEPxy3",
+        "description_KbLV6f",
+        "variant_picker_94hJQN",
+        "quantity_selector_4pGGKt",
+        "buy_buttons_6fmydG",
+        "pickup_availability_PJFTeP"
+      ],
       "settings": {
-        "page_size": 25,
-        "object_type": "character"
+        "full_width": false,
+        "product": "1001-nights",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "featured_collection_jwiBa3": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "{{ metaobject.collection.value }}",
+        "hide_empty": true,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     }
   },
   "order": [
     "rich_text_xjk34z",
-    "metaobjects_authors_zhpEnM"
+    "featured_product_yNma3D",
+    "featured_collection_jwiBa3"
   ]
 }

@@ -27,13 +27,13 @@
         "subheading_kaVbWh": {
           "type": "subheading",
           "settings": {
-            "text": "Audiobook Author"
+            "text": "Audiobook Publisher"
           }
         },
         "heading_njmXNJ": {
           "type": "heading",
           "settings": {
-            "text": "{{ collection.title }}",
+            "text": "{{ collection.metafields.related.publisher.value.name.value }}",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
@@ -42,7 +42,7 @@
         "richtext_GnEKX8": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ collection.metafields.related.author.value.bio | metafield_tag }}<\/p>"
+            "content": "<p>{{ collection.metafields.related.publisher.value.bio | metafield_tag }}<\/p>"
           }
         }
       },
