@@ -27,13 +27,13 @@
         "subheading_kaVbWh": {
           "type": "subheading",
           "settings": {
-            "text": "Audiobook Publisher"
+            "text": "Audiobook Author"
           }
         },
         "heading_njmXNJ": {
           "type": "heading",
           "settings": {
-            "text": "{{ collection.metafields.related.publisher.value.name.value }}",
+            "text": "{{ collection.metafields.related.author.value.name.value }}",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
