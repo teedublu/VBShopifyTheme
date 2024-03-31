@@ -21,52 +21,6 @@
         "overlay_opacity": 30
       }
     },
-    "collection_link_blocks_HpwJbj": {
-      "type": "collection-link-blocks",
-      "blocks": {
-        "item_P4cM4p": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
-            "link_text": "Best Sellers",
-            "link_url": ""
-          }
-        },
-        "item_Y4GnXQ": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
-            "link_text": "Adventure",
-            "link_url": ""
-          }
-        },
-        "item_PHyCVd": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
-            "link_text": "Under £5",
-            "link_url": "shopify:\/\/collections\/audiobooks"
-          }
-        },
-        "item_qpk6Bx": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_for_Schools.png",
-            "link_text": "Advanced Readers",
-            "link_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_P4cM4p",
-        "item_Y4GnXQ",
-        "item_PHyCVd",
-        "item_qpk6Bx"
-      ],
-      "settings": {
-        "full_width": false
-      }
-    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -114,17 +68,16 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 7,
         "filter_layout": "horizontal",
-        "show_sort_by": true,
-        "show_filters": true,
+        "show_sort_by": false,
+        "show_filters": false,
         "show_filter_group_name": false,
-        "show_filter_values_count": true,
+        "show_filter_values_count": false,
         "open_first_filter_group": false
       }
     }
   },
   "order": [
     "banner",
-    "collection_link_blocks_HpwJbj",
     "main"
   ]
 }
