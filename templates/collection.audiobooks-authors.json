@@ -42,7 +42,7 @@
         "richtext_GnEKX8": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ collection.metafields.related.publisher.value.bio | metafield_tag }}<\/p>"
+            "content": "<p>{{ collection.metafields.related.author.value.bio | metafield_tag }}<\/p>"
           }
         }
       },
