@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "rich_text_kf8m8f": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_ME6F8j": {
+          "type": "subheading",
+          "settings": {
+            "text": "Synopsis"
+          }
+        },
+        "heading_Y9kqDK": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_3eBjTx": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ metaobject.about | metafield_tag }}<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ME6F8j",
+        "heading_Y9kqDK",
+        "richtext_3eBjTx"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_3p3m7g": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_kgTYyk": {
+          "type": "subheading",
+          "settings": {
+            "text": "How to listen to {{ metaobject.t_itle.value }}"
+          }
+        },
+        "richtext_ytUgGy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The best way to listen to {{ metaobject.t_itle.value }} is of course with Voxblock.<\/p><p>Voxblock offers a screen-free audiobook player that has been made for kids to get the most out of {{ metaobject.t_itle.value }} without the constant distractions that most streaming or online solutions provide. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_kgTYyk",
+        "richtext_ytUgGy"
+      ],
+      "settings": {
+        "full_width": false,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "audiobook_bookdata_AFjFQE": {
+      "type": "audiobook-bookdata",
+      "settings": {
+        "heading": "Book data for an audiobook"
+      }
+    }
+  },
+  "order": [
+    "rich_text_kf8m8f",
+    "rich_text_3p3m7g",
+    "audiobook_bookdata_AFjFQE"
+  ]
+}

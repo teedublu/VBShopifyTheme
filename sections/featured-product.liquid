@@ -40,13 +40,29 @@
 </style>
 
 <div {% render 'section-properties', tight: true %}>
-  <div class="product">
-    {%- if section.settings.product != blank -%}
-      {%- if section.settings.product.media.size > 0 -%}
-        {%- render 'product-gallery', product: section.settings.product -%}
+  <div class="product {{ product.type | handleize }}">
+  {% comment %}
+    Metaobjects can use this section but dont want to have to specify a single book for each object
+    So to keep metaobjects easier to maintain:
+    If no product is specified, try to get one from a collection on the metaobject
+    
+  {% endcomment %}
+
+  {% assign featured_product = section.settings.product %}
+  {%- if featured_product == blank -%}
+    {% for product in metaobject.collection.value.products %}
+      {% assign featured_product = product %}
+      {% break %}
+    {% endfor %}
+
+  {%- endif -%}
+
+    {%- if featured_product != blank -%}
+      {%- if featured_product.media.size > 0 -%}
+        {%- render 'product-gallery', product: featured_product -%}
       {%- endif -%}
 
-      {%- render 'product-info', product: section.settings.product, update_url: false -%}
+      {%- render 'product-info', product: featured_product, update_url: false -%}
     {%- else -%}
       <product-gallery form="placeholder-{{ section.id }}" class="product-gallery {% if section.settings.mobile_carousel_control contains 'dots' %}product-gallery--mobile-dots{% endif %} {% if section.settings.desktop_media_layout contains 'grid' %}product-gallery--desktop-grid{% else %}product-gallery--desktop-carousel{% endif %} {% if section.settings.desktop_media_layout == 'carousel_thumbnails_left' %}product-gallery--desktop-thumbnails-left{% endif %} {% if section.settings.mobile_media_size == 'expanded' %}product-gallery--mobile-expanded{% endif %}">
         <div class="product-gallery__ar-wrapper">
@@ -68,6 +84,9 @@
           {%- case block.type -%}
             {%- when 'vendor' -%}
               <div class="product-info__vendor" {{ block.shopify_attributes }}>{{- 'general.on_boarding.product_vendor' | t -}}</div>
+
+            {%- when 'audiobook-properties' -%}
+              {%- render 'audiobook-properties', product: product, block: block -%}
 
             {%- when 'title' -%}
               <h2 class="product-info__title {{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>{{ 'general.on_boarding.product_title' | t }}</h2>
@@ -177,6 +196,38 @@
       "type": "sku",
       "name": "SKU",
       "limit": 1
+    },
+    {
+      "type": "audiobook-properties",
+      "name": "Audiobook Properties",
+      "limit": 1,
+      "settings": [
+          {
+            "type": "color",
+            "id": "property_color",
+            "label": "Properties Color"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color"
+          },
+          {
+            "type": "range",
+            "id": "border_width",
+            "label": "Border Width",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          }
+        ]
     },
     {
       "type": "badges",

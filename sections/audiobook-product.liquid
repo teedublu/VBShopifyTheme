@@ -40,7 +40,7 @@
 </style>
 
 <div {% render 'section-properties', tight: true %}>
-  <div class="product  {{ product.type | handleize }}">
+  <div class="product {{ product.type | handleize }}">
     {%- if product.media.size > 0 -%}
       {%- render 'product-gallery', product: product -%}
     {%- endif -%}
@@ -1318,6 +1318,11 @@ quick buy information in a template, that will be extracted in JS, but ensure it
       "type": "color",
       "id": "input_text_color",
       "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Audiobook Product page"
     }
   ]
 }

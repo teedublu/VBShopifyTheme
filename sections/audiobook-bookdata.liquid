@@ -1,33 +1,54 @@
+
+
+{%- assign book = metaobject.product.value.metafields.book -%}
+{%- assign narrators = metaobject.product.value.metafields.book.narrators.value -%}
+{%- assign authors = metaobject.product.value.metafields.book.authors.value -%}
+{%- assign handle = metaobject.system.handle -%}
+{%- assign title = metaobject.product.value.title -%}
+
+
+{%- assign characters = metaobject.characters.value -%}
+
 <div class="section section--tight  section-blends section-full">
    <table class="audiobooks-full-details">
       <tbody>
          <tr>
             <td>Narrator</td>
             <td>
-               {% for narrator in metaobject.narrators.value %}
+               {% for narrator in narrators %}
                   {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
          <tr>
             <td>Length</td>
-            <td>{{ metaobject.product.value.metafields.book.duration.value }}</td>
+            <td>{{ book.duration.value }}</td>
          </tr>
          <tr>
             <td>Author</td>
             <td>
-               {% for author in metaobject.authors.value %}
+               {% for author in authors %}
                   {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
-         {%- if metaobject.characters.value -%}
+         {%- if characters -%}
             <tr>
                <td>Featuring</td>
                <td>
-                  {% for character in metaobject.characters.value %}
+                  {% for character in characters %}
                      {{ character.name | link_to: character.system.url, class: 'character'}}{% unless forloop.last %}, {% endunless -%}
                   {% endfor %}
+               </td>
+            </tr>
+         {% endif %}
+         {%- if shop.metaobjects.audiobook_synopsis[handle] -%}
+            <tr>
+               <td>Synopsis</td>
+               <td>
+                  What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis'}} about?
+
+
                </td>
             </tr>
          {% endif %}
@@ -35,7 +56,7 @@
             <td>Category</td>
             <td>
                <ul class="top-level-terms">
-                  {% for cat in metaobject.product.value.metafields.book.categories.value %}
+                  {% for cat in book.categories.value %}
                      {%- assign urlencoded = cat | url_encode | lower -%}
                      {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
                      {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
@@ -45,11 +66,11 @@
          </tr>
          <tr>
             <td>Publisher</td>
-            <td>{{metaobject.publisher.value.name | link_to: metaobject.publisher.system.url }}</td>
+            <td>{{book.publisher.value.name | link_to: book.publisher.value.system.url }}</td>
          </tr>
          <tr>
             <td>Release date</td>
-            <td>{{ metaobject.product.value.metafields.facts.isbn.value | metafield_tag }}</td>
+            <td>{{ metaobject.product.value.published_at | date: "%Y-%m-%d" }}</td>
          </tr>
          <tr>
             <td>ISBN</td>
@@ -57,15 +78,23 @@
          </tr>
          <tr>
             <td>Abdridged</td>
-            <td>{{ metaobject.product.value.metafields.book.abridged | metafield_tag }}</td>
+            <td>{{ book.abridged | metafield_tag }}</td>
          </tr>
          <tr>
             <td>Language</td>
-            <td>{{ metaobject.product.value.metafields.book.language | metafield_tag }}</td>
+            <td>{{ book.language | metafield_tag }}</td>
          </tr>
          <tr>
             <td>Preview</td>
-            <td>{{ metaobject.product.value.metafields.book.preview | metafield_tag }}</td>
+            <td>
+
+               <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ book.preview | file_url}}">
+                 <span class="playpause"></span>
+                 <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
+                 <span class="sr-only">Play audio sample</span>
+               </button>
+
+            </td>
          </tr>
       </tbody>
    </table>
