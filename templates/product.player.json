@@ -134,72 +134,35 @@
         "input_text_color": ""
       }
     },
-    "hot_spots_MbF79B": {
-      "type": "hot-spots",
+    "video_tyCAQL": {
+      "type": "video",
       "blocks": {
-        "item_mQLPQP": {
-          "type": "item",
+        "play_fiM6Xf": {
+          "type": "play",
           "settings": {
-            "horizontal_position": 24,
-            "vertical_position": 70,
-            "horizontal_position_mobile": 24,
-            "vertical_position_mobile": 70,
-            "icon_width": 32,
-            "title": "Long battery life",
-            "content": "<p>Share useful information about your product features.<\/p>"
           }
         },
-        "item_g6EMKG": {
-          "type": "item",
+        "heading_kJtRma": {
+          "type": "heading",
           "settings": {
-            "horizontal_position": 62,
-            "vertical_position": 14,
-            "horizontal_position_mobile": 62,
-            "vertical_position_mobile": 14,
-            "icon_width": 32,
-            "title": "Feature name",
-            "content": "<p>Share useful information about your product features.<\/p>"
-          }
-        },
-        "item_HiMrW4": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 83,
-            "vertical_position": 75,
-            "horizontal_position_mobile": 83,
-            "vertical_position_mobile": 75,
-            "icon_width": 32,
-            "title": "Feature name",
-            "content": "<p>Share useful information about your product features.<\/p>"
+            "text": "Easy to use",
+            "heading_tag": "h3"
           }
         }
       },
       "block_order": [
-        "item_mQLPQP",
-        "item_g6EMKG",
-        "item_HiMrW4"
+        "play_fiM6Xf",
+        "heading_kJtRma"
       ],
       "settings": {
         "full_width": true,
-        "image": "shopify:\/\/shop_images\/voxblock-player.jpg",
-        "title": "Features",
-        "content": "",
-        "button_text": "",
-        "button_url": "",
-        "desktop_text_position": "place-self-start text-start",
-        "image_background": "",
-        "image_background_gradient": "",
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "external_video_url": "",
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#ffffff",
-        "overlay_button_background": "",
-        "overlay_button_text_color": "",
-        "hot_spot_dot_background": "#ffffff",
-        "hot_spot_dot_text_color": "#000000",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#000000",
-        "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
+        "overlay_opacity": 30
       }
     },
     "text_with_icons_H9hBaT": {
@@ -208,40 +171,43 @@
         "item_R6HYqD": {
           "type": "item",
           "settings": {
-            "icon": "picto-coupon",
+            "icon": "picto-star",
+            "custom_icon": "shopify:\/\/shop_images\/feature-parentfree-setup.png",
             "mobile_icon_width": 24,
-            "icon_width": 32,
+            "icon_width": 120,
             "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
-            "title": "Free shipping",
-            "content": "<p>Free worldwide shipping and returns - customs and duties taxes included<\/p>"
+            "title": "Parent free setup",
+            "content": "<p>The child is completely autonomous<\/p>"
           }
         },
         "item_YUGcwz": {
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/landing_page_icons_bedtime_-06.png",
             "mobile_icon_width": 24,
-            "icon_width": 32,
+            "icon_width": 120,
             "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
-            "title": "Customer service",
-            "content": "<p>We are available from monday to friday to answer your questions.<\/p>"
+            "title": "Unwind without screens",
+            "content": "<p>Don't worry about ads, inappropriate content or glowing light from a screen<\/p>"
           }
         },
         "item_tKhedV": {
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
             "mobile_icon_width": 24,
-            "icon_width": 32,
+            "icon_width": 120,
             "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
-            "title": "Secure payment",
-            "content": "<p>Your payment information is processed securely.<\/p>"
+            "title": "100% connection free",
+            "content": "<p>Travel wherever you want, no it support needed<\/p>"
           }
         }
       },
@@ -253,7 +219,7 @@
       "settings": {
         "full_width": true,
         "stack_on_mobile": false,
-        "title": "More reasons to love",
+        "title": "More reasons to love Voxblock",
         "heading_tag": "h2",
         "text_alignment": "center",
         "icon_spacing": "small",
@@ -317,7 +283,7 @@
   },
   "order": [
     "main",
-    "hot_spots_MbF79B",
+    "video_tyCAQL",
     "text_with_icons_H9hBaT",
     "faq_KiLD6K"
   ]
