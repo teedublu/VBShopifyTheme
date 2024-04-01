@@ -7,7 +7,17 @@
             <li>
             {% case section.settings.object_type %}
               {% when 'audiobook' %}
-                {{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}
+                <b>{{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}</b>
+
+                (written by : {% for author in metaobject.authors.value %} 
+                  {{ author.name | link_to: narrator.system.url, class: narrator.system.handle }}{% unless forloop.last %}, {% endunless %}
+                {% endfor %} | 
+                narrated by : {% for narrator in metaobject.narrators.value %} 
+                  {{ narrator.name | link_to: narrator.system.url, class: narrator.system.handle }}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+                )
+               
+
               {% else %}    
                 {{ metaobject.name.value | link_to: metaobject.system.url, class: section.settings.object_type}}
             {% endcase %}
