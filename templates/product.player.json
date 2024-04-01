@@ -14,16 +14,16 @@
           "settings": {
           }
         },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
         "text_thkiB9": {
           "type": "text",
           "settings": {
             "text": "<h5>Screen and WIFI free audiobook player<\/h5>"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
           }
         },
         "text_MA3Pah": {
@@ -105,8 +105,8 @@
       "block_order": [
         "title",
         "badges",
-        "price",
         "text_thkiB9",
+        "price",
         "text_MA3Pah",
         "separator",
         "variant_picker",
