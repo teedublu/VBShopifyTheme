@@ -43,79 +43,72 @@
 </style>
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
-{%- assign t = template | split: '.' | first -%}
-{%- assign t = t | split: '/' | first -%}
-{%- assign mo = t | split: '/' | last -%}
-{{template}}++{{template.name}}++{{template.suffix}}== {{t}}/{{mo}}__{{page.title}}
-  {% liquid
+{%- assign page_type = template | split: '.' | first -%}
+{%- assign page_subtype = template | split: '.' | last -%}
+{%- if page_type contains '/' -%}
+  {%- assign page_subtype = page_type | split: '/' | last -%}
+  {%- assign page_type = page_type | split: '/' | first -%}
+  
+{%- endif -%}
 
-    assign sep = "+,+"
-    assign sep1 = "-,-"
-    assign crumbs = shop.secure_url | append:sep | append: "Home"
-    assign template_name = template.name
-    
-    comment
-      url                                     template                    name        suffix 
-      /pages/audiobook-publishers             page.metaobjects-publishers page        metaobjects-publishers
-      /pages/audiobooks                       page.metaobjects-audiobooks page        metaobjects-audiobooks
-      /pages/publisher/alison-larkin-presents metaobject/publisher        publisher   ""
-      /pages/audiobook/get-me-out-of-here     metaobject/audiobook        audiobook   ""
-    endcomment
-    
-    if template_name == 'product' and template.suffix == 'audiobook-product'
+
+{%- liquid 
+  comment
+    url                                     template                    name        suffix 
+    /pages/audiobook-publishers             page.metaobjects-publishers page        metaobjects-publishers
+    /pages/audiobooks                       page.metaobjects-audiobooks page        metaobjects-audiobooks
+    /pages/publisher/alison-larkin-presents metaobject/publisher        publisher   ""
+    /pages/audiobook/get-me-out-of-here     metaobject/audiobook        audiobook   ""
+  endcomment
+
+  assign sep = "+,+"
+  assign sep1 = "-,-"
+  assign crumbs = shop.secure_url | append:sep | append: "Home"
+
+  case page_type
+    when 'page' 
       assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: product.type
-      assign crumbs = crumbs | append: sep1 | append: product.url | append: sep | append: product.title
+      assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: page.title
     
-    elsif template_name == 'product' 
-      assign crumbs = crumbs | append: sep1 | append: product.collections.first.url | append: sep | append: product.type
-      assign crumbs = crumbs | append: sep1 | append: product.url | append: sep | append: product.title
-  
-    elsif template_name == 'narrator'
-      assign crumbs = crumbs | append: sep1 | append: pages['audiobook-narrators'].url | append: sep | append: pages['audiobook-narrators'].title
-      assign crumbs = crumbs | append: sep1 | append: canonical_url | append: sep | append: page_title
-
-    elsif template_name == 'author'
-      assign crumbs = crumbs | append: sep1 | append: pages['audiobook-authors'].url | append: sep | append: pages['audiobook-authors'].title
-      assign crumbs = crumbs | append: sep1 | append: canonical_url | append: sep | append: page_title
-
-    elsif template_name == 'character'
-      assign crumbs = crumbs | append: sep1 | append: pages['audiobook-characters'].url | append: sep | append: pages['audiobook-characters'].title
-      assign crumbs = crumbs | append: sep1 | append: canonical_url | append: sep | append: page_title
-
-    elsif template_name == 'collection' and collection.handle
-  
-      if template.suffix == 'publisher-collection'
-        assign crumbs = crumbs | append: sep1 | append: pages['audiobook-publishers'].url | append: sep | append: pages['audiobook-publishers'].title
-        assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: collection.title
-  
-      elsif template.suffix == 'author-collection'
-        assign crumbs = crumbs | append: sep1 | append: pages['audiobook-authors'].url | append: sep | append: pages['audiobook-authors'].title
-        assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: collection.title
-
-    
-      elsif template.suffix == 'narrator-collection'
-        assign crumbs = crumbs | append: sep1 | append: shop.url | append: pages['audiobook-narrators'].url | append: sep | append: pages['audiobook-narrators'].title
-        assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: collection.title
-
-      else
+    when 'product' 
+      if collection.url 
         assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
-      endif
-    elsif template_name == 'article'
-      assign crumbs = crumbs | append: sep1 | append: blogs['news'].url | append: sep | append: blogs['news'].title
-      assign crumbs = crumbs | append: sep1 | append: canonical_url | append: sep | append: page_title
+      endif 
+      assign crumbs = crumbs | append: sep1 | append: product.url | append: sep | append: product.title
     
-    elsif template_name == 'search'
-      assign crumbs = crumbs | append: sep1 | append: canonical_url | append: sep | append: page_title | replace: '*', ''
-    
-    else
-      assign crumbs = crumbs | append: sep1 | append: canonical_url | append: sep | append: page_title | replace: '*', ''
-    endif 
-    
-    
-  assign crumb_list = crumbs | split:sep1
-  %}  
-     
+    when 'collection'
+      assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
 
+    when 'blog' 
+      assign crumbs = crumbs | append: sep1 | append: blog.url | append: sep | append: blog.title
+
+    when 'article' 
+      assign crumbs = crumbs | append: sep1 | append: article.url | append: sep | append: article.title
+
+    when 'metaobject' 
+      
+        comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
+        endcomment 
+        case metaobject.system.type  
+          when 'audiobook'  
+            assign list_page = 'audiobooks-1'  
+          else  
+            assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'  
+        endcase  
+        
+        assign parent_page = pages[list_page]
+
+      assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
+      assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: metaobject.title
+
+    else 
+      assign crumbs = crumbs | append: sep1 | append: request.path | append: sep | append: page_title
+  endcase 
+
+  assign crumb_list = crumbs | split:sep1
+
+  %}
+     
 <div class="section section--tight  section-blends section-full">
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
@@ -155,94 +148,6 @@
 {%- endunless -%}
 
 
-
-
-{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
-{%- assign t = template | split: '.' | first -%}
-{%- assign t = t | split: '/' | first -%}
-{%- assign mo = t | split: '/' | last -%}
-
-<div class="section section--tight  section-blends section-full">
-  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
-    <ol class="breadcrumbs__list">
-      <li class="breadcrumbs__item">
-        <a class="breadcrumbs__link" href="/">Home</a>
-      </li>
-      {%- case t -%}
-        {%- when 'page' -%}
-          <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{{ page.url }}" aria-current="page">{{ page.title }}</a>
-          </li>
-        {%- when 'product' -%}
-          {%- if collection.url -%}
-            <li class="breadcrumbs__item">
-              {{ collection.title | link_to: collection.url }}
-            </li>
-          {%- endif -%}
-          <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{{ product.url }}" aria-current="page">{{ product.title }}</a>
-          </li>
-        {%- when 'collection' and collection.handle -%}
-          {%- if current_tags -%}
-            <li class="breadcrumbs__item">
-              {{ collection.title | link_to: collection.url }}
-            </li>
-            <li class="breadcrumbs__item">
-              {%- capture tag_url -%}{{ collection.url }}/{{ current_tags | join: "+"}}{%- endcapture -%}
-              <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + "}}</a>
-            </li>
-          {%- else -%}
-            <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ collection.url }}" aria-current="page">{{ collection.title }}</a>
-            </li>
-          {%- endif -%}
-        {%- when 'blog' -%}
-          {%- if current_tags -%}
-            <li class="breadcrumbs__item">
-              {{ blog.title | link_to: blog.url }}
-            </li>
-            <li class="breadcrumbs__item">
-              {%- capture tag_url -%}{{blog.url}}/tagged/{{ current_tags | join: "+" }}{%- endcapture -%}
-              <a class="breadcrumbs__link" href="{{ tag_url }}" aria-current="page">{{ current_tags | join: " + " }}</a>
-            </li>
-          {%- else -%}
-            <li class="breadcrumbs__item">
-              <a class="breadcrumbs__link" href="{{ blog.url }}" aria-current="page">{{ blog.title }}</a>
-            </li>
-          {%- endif -%}
-        {%- when 'article' -%}
-          <li class="breadcrumbs__item">
-            {{ blog.title | link_to: blog.url }}
-          </li>
-          <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{{ article.url }}" aria-current="page">{{ article.title }}</a>
-          </li>
-        {%- when 'metaobject' -%}
-          <li class="breadcrumbs__item"> 
-            {% comment%}NOTE: requires the page handle be of the form "audiobook-[objecttype-pluralised]" {%endcomment%}
-            {% case metaobject.system.type %}
-              {% when 'audiobook' %}
-                {% assign list_page = 'audiobooks-1' %}
-              {% else %}
-                {% assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's' %}
-            {% endcase %}
-            
-            {% assign page = pages[list_page] %}
-            {{page.title | link_to: page.url}}
-          </li>
-          <li class="breadcrumbs__item">
-            <a class="breadcrumbs__link" href="{{ metaobject.url }}" aria-current="page">{{ metaobject.name | default: metaobject.title  }}</a>
-          </li>
-
-        {%- else -%}
-          <li class="breadcrumbs__item">here
-            <a class="breadcrumbs__link" href="{{ request.path }}" aria-current="page">{{ page_title }}</a>
-          </li>
-      {%- endcase -%}
-    </ol>
-  </nav>
-</div>
-{%- endunless -%}
 
 {% schema %}
 {
