@@ -230,63 +230,71 @@
         "text_color": "#565656"
       }
     },
-    "images_with_text_scrolling_XVrmW8": {
-      "type": "images-with-text-scrolling",
+    "media_with_text_UQdDDc": {
+      "type": "media-with-text",
       "blocks": {
-        "item_qDPPwW": {
-          "type": "item",
+        "image_c8L8XJ": {
+          "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/creativity-and-imagination.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-start text-start",
             "icon": "none",
             "icon_width": 48,
+            "subheading": "DEVELOPMENT",
             "title": "Creativity and imagination",
-            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>"
+            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>",
+            "link_text": "learn more",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
       "block_order": [
-        "item_qDPPwW"
+        "image_c8L8XJ"
       ],
       "settings": {
         "full_width": true,
-        "stack_on_mobile": false,
-        "show_counter": false,
-        "desktop_image_effect": "reveal",
-        "image_position": "end",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
+        "spacing": "none"
       }
     },
-    "images_with_text_scrolling_nRxxNz": {
-      "type": "images-with-text-scrolling",
+    "media_with_text_8FqE3W": {
+      "type": "media-with-text",
       "blocks": {
-        "item_zLtJk3": {
-          "type": "item",
+        "image_DaBpmJ": {
+          "type": "image",
           "settings": {
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
             "icon": "none",
             "icon_width": 48,
-            "title": "Heading 1",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "subheading": "",
+            "title": "Heading",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
       "block_order": [
-        "item_zLtJk3"
+        "image_DaBpmJ"
       ],
       "settings": {
         "full_width": true,
-        "stack_on_mobile": false,
-        "show_counter": false,
-        "desktop_image_effect": "reveal",
-        "image_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
+        "spacing": "none"
       }
     },
     "testimonials_cFMFmx": {
@@ -477,52 +485,17 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
-    },
-    "media_with_text_UQdDDc": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_c8L8XJ": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/creativity-and-imagination.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "DEVELOPMENT",
-            "title": "Creativity and imagination",
-            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>",
-            "link_text": "learn more",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_c8L8XJ"
-      ],
-      "settings": {
-        "full_width": true,
-        "spacing": "none"
-      }
     }
   },
   "order": [
     "main",
     "video_tyCAQL",
     "text_with_icons_H9hBaT",
-    "images_with_text_scrolling_XVrmW8",
-    "images_with_text_scrolling_nRxxNz",
+    "media_with_text_UQdDDc",
+    "media_with_text_8FqE3W",
     "testimonials_cFMFmx",
     "collection_list_Leiqmh",
     "revealed_image_on_scroll_iKqQdm",
-    "faq_KiLD6K",
-    "media_with_text_UQdDDc"
+    "faq_KiLD6K"
   ]
 }
