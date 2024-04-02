@@ -15,6 +15,12 @@
             "show_taxes_notice": false
           }
         },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
         "audiobook_properties_cU6Htk": {
           "type": "audiobook-properties",
           "settings": {
@@ -42,22 +48,15 @@
             "display_categories": true,
             "display_bookdata": true
           }
-        },
-        "description": {
-          "type": "description",
-          "disabled": true,
-          "settings": {
-            "collapse_content": false
-          }
         }
       },
       "block_order": [
         "title",
         "price",
+        "description",
         "audiobook_properties_cU6Htk",
         "buy_buttons",
-        "badges",
-        "description"
+        "badges"
       ],
       "settings": {
         "full_width": false,
