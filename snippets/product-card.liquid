@@ -245,5 +245,20 @@ Supported variables
     {%- endif -%}
   </div>
 
-  
+  {%- comment -%}
+  --------------------------------------------------------------------------------------------------------------------
+  SCHEMA SNIPPET
+  --------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+{% assign types = shop.metaobjects.schema.schema-helper.types.value | parse_json %}
+{% assign type = product.type | downcase %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+
+      "@type": "{{ types[type]  }}",
+      "@id":  "https://voxblock.co.uk{{ product.url }}#{{ type }}"
+    }
+  </script>
 </product-card>
