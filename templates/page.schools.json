@@ -227,34 +227,38 @@
         "overlay_opacity": 0
       }
     },
-    "multiple_images_with_text_GyqVCP": {
-      "type": "multiple-images-with-text",
+    "media_with_text_mXNahG": {
+      "type": "media-with-text",
       "blocks": {
-        "item_wDWQnJ": {
-          "type": "item",
+        "image_C8ezFX": {
+          "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/IMG_5112.jpg",
-            "image_rotation_degrees": -2,
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
             "subheading": "",
             "title": "How to order",
             "content": "<p>We have a dedicated Schools Account Manager to assist with your order.<\/p><ol><li>If you're ready to order, complete this <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" target=\"_blank\">form<\/a>. If you'd prefer to discuss your potential order get in touch on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<br\/><br\/><\/li><li>An invoice will be sent with payment is due in 30 days.<br\/><br\/><\/li><li>You should receive your order in 3-5 working days.<br\/><br\/><\/li><li>Get listening, the players are ready to use out of the box.<\/li><\/ol>",
-            "button_url": "",
-            "button_text": "Order here"
+            "link_text": "Order here",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "item_wDWQnJ"
+        "image_C8ezFX"
       ],
       "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
+        "full_width": false,
+        "spacing": "small"
       }
     }
   },
@@ -266,6 +270,6 @@
     "rich_text_aJ3KAb",
     "image_with_text_overlay_UkmWNX",
     "image_with_text_overlay_meAFQV",
-    "multiple_images_with_text_GyqVCP"
+    "media_with_text_mXNahG"
   ]
 }
