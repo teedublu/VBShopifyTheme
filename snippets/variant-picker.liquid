@@ -109,7 +109,10 @@ Supported variables
                   if value == option.selected_value
                     assign selected = true
                   endif
-  
+
+                  
+                  assign variant = product.variants | where:'title',value | first
+                  
                   case resolved_option_selector_style
                     when 'variant_image'
                       render 'option-value', type: 'thumbnail', value: value, image: value.variant.featured_media, selected: selected, name: name, form: form_id, bordered: true
@@ -118,6 +121,8 @@ Supported variables
                         render 'option-value', type: 'swatch', value: value, image: value.swatch.image, selected: selected, name: name, form: form_id
                       elsif value.swatch.color
                         render 'option-value', type: 'swatch', value: value, color: value.swatch.color, selected: selected, name: name, form: form_id
+                      elsif variant.metafields.bumper.colour
+                        render 'option-value', type: 'swatch', value: value, color: variant.metafields.bumper.colour, selected: selected, name: name, form: form_id
                       else
                         # Use the configuration based approach for compatibility reason
                         render 'option-value', type: 'swatch', value: value, selected: selected, name: name, form: form_id

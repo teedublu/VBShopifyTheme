@@ -157,11 +157,11 @@ Color swatch specific parameters:
     {%- assign value_downcase = value | downcase -%}
 
     {%- if href -%}
-      <a href="{{ href }}" class="color-swatch {% if settings.color_swatch_style == 'rectangle' %}color-swatch--rectangle{% endif %} {% if size == 'sm' %}color-swatch--sm{% endif %} {% if selected %}is-selected{% endif %} {% if white_label == value_downcase %}ring-inset{% endif %} {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %}" {% if show_tooltip %}data-tooltip="{{ label | default: value | escape }}"{% endif %} style="{{ swatch_style }}">
+      <a href="{{ href }}" class="color-swatch {{value_downcase}} {% if settings.color_swatch_style == 'rectangle' %}color-swatch--rectangle{% endif %} {% if size == 'sm' %}color-swatch--sm{% endif %} {% if selected %}is-selected{% endif %} {% if white_label == value_downcase %}ring-inset{% endif %} {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %}" {% if show_tooltip %}data-tooltip="{{ label | default: value | escape }}"{% endif %} style="{{ swatch_style }}">
         <span class="sr-only">{{ label | default: value }}</span>
       </a>
     {%- else -%}
-      <label class="color-swatch {% if settings.color_swatch_style == 'rectangle' %}color-swatch--rectangle{% endif %} {% if size == 'sm' %}color-swatch--sm{% endif %} {% if white_label == value_downcase %}ring-inset{% endif %} {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %}" for="{{ id | escape }}" data-option-value {% if show_tooltip %}data-tooltip="{{ label | default: value | escape }}"{% endif %} style="{{ swatch_style }}">
+      <label class="color-swatch {{value_downcase | replace: ' ', '-'}}{% if settings.color_swatch_style == 'rectangle' %}color-swatch--rectangle{% endif %} {% if size == 'sm' %}color-swatch--sm{% endif %} {% if white_label == value_downcase %}ring-inset{% endif %} {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %}" for="{{ id | escape }}" data-option-value {% if show_tooltip %}data-tooltip="{{ label | default: value | escape }}"{% endif %} style="{{ swatch_style }}">
         <span class="sr-only">{{ label | default: value }}</span>
       </label>
     {%- endif -%}
