@@ -274,9 +274,9 @@
               {%- assign carousel_id = 'carousel-' | append: block.id -%}
 
               {%- if block.settings.title != blank or block.settings.stack_products == false and recommendations.products_count > 1 -%}
-                <div class="h-stack justify-between gap-4">
+                <div class="h-stack justify-between gap-4 prose">
                   {%- if block.settings.title != blank -%}
-                    <p>{{ block.settings.title | escape }}</p>
+                    <h5>{{ block.settings.title | escape }}</h5>
                   {%- endif -%}
 
                   {%- if block.settings.stack_products == false and recommendations.products_count > 1 -%}
