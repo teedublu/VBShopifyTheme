@@ -1,4 +1,5 @@
-{%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+{%- assign default_media = product.selected_variant.featured_media | default: product.featured_media -%}
+
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 {%- capture product_gallery_id -%}product-gallery-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
