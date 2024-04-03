@@ -292,6 +292,170 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "multi_column_WyqeRx": {
+      "type": "multi-column",
+      "blocks": {
+        "item_Qr8Uie": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_in_schools_2.png",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_LyqfbX": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_in_schools_1.png",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_bQLexa": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_in_schools_3.png",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_MzR4P7": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_in_schools_4.png",
+            "column_size": "4",
+            "title": "",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_Qr8Uie",
+        "item_LyqfbX",
+        "item_bQLexa",
+        "item_MzR4P7"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_i3BEzb": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_wCQj8x": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Haddington_School_Children.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Case study",
+            "content": "<p>Haddington Primary School has had Voxblock in their classrooms since December 2022.  They have recently expanded their audio library across the school.<\/p><p><strong>The teachers thoughts<\/strong><\/p><ul><li>Children showed development in their storytelling skills<\/li><li>Stories have supported classwork<\/li><li>Voxblock provided an additional play-based learning tool<\/li><li>Players have been useful for reluctant or struggling readers <\/li><\/ul><p>You can read the complete case study below and watch the STV news clip <a href=\"https:\/\/voxblock.co.uk\/pages\/in-the-classroom\" target=\"_blank\" title=\"Voxblock on STV\">here<\/a><\/p>",
+            "link_text": "Read more",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_wCQj8x"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_eRwnN4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JBfytn": {
+          "type": "heading",
+          "settings": {
+            "text": "Teaching resources",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_Ve6kF4": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We're here to help teachers and school librarians make the most of Voxblock and our audiobooks in the classroom.<br\/><br\/>Access our<strong> free classroom resources <\/strong>including discussion notes, activity sheets and more <a href=\"https:\/\/voxblock.co.uk\/blogs\/news\/audiobook-teaching-resources\" target=\"_blank\" title=\"https:\/\/voxblock.co.uk\/blogs\/news\/audiobook-teaching-resources\">here<\/a>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JBfytn",
+        "richtext_Ve6kF4"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "video_Yp78J4": {
+      "type": "video",
+      "blocks": {
+        "play_NjmPe3": {
+          "type": "play",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "play_NjmPe3"
+      ],
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "external_video_url": "https:\/\/youtu.be\/lXc2bssarCA",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
@@ -303,6 +467,10 @@
     "image_with_text_overlay_UkmWNX",
     "image_with_text_overlay_meAFQV",
     "media_with_text_mXNahG",
-    "rich_text_Ey7HVq"
+    "rich_text_Ey7HVq",
+    "multi_column_WyqeRx",
+    "media_with_text_i3BEzb",
+    "rich_text_eRwnN4",
+    "video_Yp78J4"
   ]
 }
