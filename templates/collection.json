@@ -1,1 +1,42 @@
-{"sections":{"banner":{"type":"collection-banner","settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":true,"show_collection_title":true,"show_collection_description":true,"show_collection_image":true,"collection_title_size":"h0","image_size":"auto","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","featured_product":"","featured_product_heading":"Featured product","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"image_link_blocks_nj9Y3t":{"type":"image-link-blocks","blocks":{"item_eLr7yz":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/baby-hands-and-feet.jpg","stretch_image":true,"link_text":"2 years +","link_url":"","background":"","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"item_8pUpUB":{"type":"item","settings":{"stretch_image":true,"link_text":"3-5 years","link_url":"","background":"#4cb6ac","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"item_LKqLfH":{"type":"item","settings":{"stretch_image":true,"link_text":"","link_url":"","background":"","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"item_yQhYb6":{"type":"item","settings":{"stretch_image":true,"link_text":"","link_url":"","background":"","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}}},"block_order":["item_eLr7yz","item_8pUpUB","item_LKqLfH","item_yQhYb6"],"settings":{"full_width":false,"block_size":"small","subheading":"Browse by age","title":"","content":"","link_url":"","link_text":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":""}},"main":{"type":"main-collection","settings":{"products_per_page":24,"products_per_row_mobile":"2","products_per_row_desktop":3,"filter_layout":"sidebar","show_sort_by":true,"show_filters":true,"show_filter_group_name":false,"show_filter_values_count":true,"open_first_filter_group":false}}},"order":["banner","image_link_blocks_nj9Y3t","main"]}
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "main"
+  ]
+}
