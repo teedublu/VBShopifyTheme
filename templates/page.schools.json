@@ -152,12 +152,73 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "rich_text_aJ3KAb": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_GRCpCD": {
+          "type": "heading",
+          "settings": {
+            "text": "Schools packages",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_mafhUU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The <strong>Voxblock Schools Packages <\/strong>are an easy and affordable way for schools to invest in Voxblock; offering a unique discount on players, audiobooks and accessories, which isn't otherwise available. <\/p><p>Our Voxblock School Packages are designed for teachers, including all necessary practicalities. <br\/><br\/>Each package comes with:   <\/p><ul><li><strong>Voxblock players and protective bumpers: <\/strong>Players have both a speaker and headphone jack, allowing independent or shared listening.  Protective bumpers come in a choice of orange, green or red.<\/li><li><strong>Audiobooks:<\/strong> Select your preferred titles from our library of hundreds of audiobooks.   <\/li><li><strong>Supporting resources:<\/strong> Containing information on each title you've selected. There are activities and lesson plans for selected titles.<\/li><li><strong>Charging hub(s):<\/strong> To charge multiple players at the same time.<\/li><li><strong>Aux cable(s)<\/strong>: The cable allows the Voxblock to connect to either a speaker or a screen. <\/li><\/ul><p>Optional addition:<\/p><ul><li><strong>Headphones:<\/strong> These allow children to listen independently, or as a small group by daisy chaining the headphones together. Schools are entitled to 10% of our range which you can find <a href=\"\/products\/kids-headphones\" title=\"Kids Headphones\">here<\/a>. <\/li><\/ul><p>Our <strong>School Packages <\/strong>are available in various sizes, including:<\/p><ul><li><strong>Mini- <\/strong>5 players<\/li><li><strong>Small- <\/strong>10 players<\/li><li><strong>Medium-  <\/strong>15 players<\/li><li><strong>Large- <\/strong>20 players<\/li><\/ul><p>We also offer schools a 10% discount on our standard <a href=\"https:\/\/voxblock.myshopify.com\/products\/voxblock-starter-pack\" target=\"_blank\" title=\"Voxblock Starter Pack\">Starter Packs<\/a>, just email <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a><a href=\"mailto:\/\/schools@voxblock.co.uk\" target=\"_blank\"> <\/a>for your exclusive discount code.<\/p>"
+          }
+        },
+        "button_Fi7kLK": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Contact the schools team",
+            "url": "",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GRCpCD",
+        "richtext_mafhUU",
+        "button_Fi7kLK"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_UkmWNX": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "fill",
+        "image": "shopify:\/\/shop_images\/Schools-_offer_table_2023.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_gcfG3M",
     "rich_text_PAeRfb",
-    "image_with_text_overlay_4rVDwf"
+    "image_with_text_overlay_4rVDwf",
+    "rich_text_aJ3KAb",
+    "image_with_text_overlay_UkmWNX"
   ]
 }
