@@ -206,8 +206,56 @@
                     {%- if product.type == 'audiobooks' -%}
                       {%- assign show_vendor = true -%}
                     {%- endif -%}
+
+
                     {%- render 'product-card', product: product, stacked: true, show_badges: true, show_vendor: show_vendor -%}
+
+
                   {%- endfor -%}
+
+                  <script type="application/ld+json">
+                    {
+                      "@context": "http://schema.org",
+                      "@type": "CollectionPage",
+                      {% if collection.description != blank %}
+                        "description": {{ collection.description | strip_html | json }},
+                      {% endif %}
+                      {% if page_image %}
+                        {% assign image_size = page_image.width | append: 'x' %}
+                        "image": {
+                          "@type": "ImageObject",
+                          "height": {{ page_image.height | json }},
+                          "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+                          "width": {{ page_image.width | json }}
+                        },
+                      {% endif %}
+                      "name": {{ collection.title | json }},
+                      "url": "{{ shop.url }}{{ collection.url }}",
+                      {% if paginate.next %}
+                        "nextPage": "{{ shop.url }}{{ collection.url }}?page={{ paginate.next.page }}",
+                      {% endif %}
+                      {% if paginate.previous %}
+                        "previousPage": "{{ shop.url }}{{ collection.url }}?page={{ paginate.previous.page }}",
+                      {% endif %}
+                      "mainEntity" : {
+                        "@type": "ItemList",
+                        "itemListElement": [
+                          {%- for product in collection.products -%}
+                            {
+                              "@type": "ListItem",
+                              "position": {{ forloop.index }},
+                              "item": {
+                                "@type": "Audiobook",
+                                "url": "{{ shop.url }}{{ product.url }}#audiobook"
+                              }
+                            }{% unless forloop.last %},{% endunless %}
+                          {%- endfor -%}
+                        ]
+                      }
+                    }
+                  </script>
+
+
                 </product-list>
               </reveal-items>
             </div>

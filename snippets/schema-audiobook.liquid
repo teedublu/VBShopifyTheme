@@ -1,0 +1,79 @@
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@id":  "{{ shop.url }}{{ product.url }}",
+  "@type": "Audiobook",
+  "bookFormat": "AudiobookFormat",
+  "isbn": "{{ product.first_available_variant.barcode }}",
+  "inLanguage": "en",
+  "potentialAction": "ReadAction",
+  "author": {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": {{ product.metafields.book.author | json }},
+    "@id": "https://voxblock.co.uk/collections/{{ product.metafields.book.author | handleize }}-audiobooks"
+  },
+  "name": "{{ product.title }}",
+  "url": "{{ shop.url }}{{ product.url }}",
+  "abridged": "{{ product.metafields.book.abridged }}",
+  "description": {{ product.description | strip_html | json }},
+  "datePublished": "2022-01-01",
+  "duration": "{{ product.metafields.book.duration | prepend: 'PT'  | append: 'M' | replace:'.', 'H' }}",
+  "encodingFormat": "audio/mp3",
+  {% if product.metafields.book.sameas %}
+    "encodesCreativeWork": {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": "{{ product.metafields.book.sameas }}"
+    },
+  {% endif %}
+  "image": "{{ shop.url }}/{{ product.featured_image }}",
+  "playerType": "Voxblock",
+  "provider":  {
+    "@context": "https://schema.org/",
+    "@type": "Organization",
+    "name": "Voxblock",
+    "@id": "https://voxblock.co.uk/#organisation",
+    "url" : "https://voxblock.co.uk"
+  },
+  "publisher" : {
+    "type": "Organization",
+    "@id": "https://voxblock.co.uk/#organisation",
+    "name": "Voxblock"
+  },
+  "readBy": {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+  {%- if product.metafields.book.narrator -%}
+    "@id": "{{ shop.url }}{{ product.metafields.book.narrator.value.collection.value.url }}",
+  {%- endif -%}
+    "name": {{ product.metafields.book.reader | json }}
+  },
+  "offers": {
+    "@type": "Offer",
+    "availability": "http://schema.org/InStock",
+    "itemCondition": "http://schema.org/NewCondition",
+    "price": {{ product.price | times: 1.0 | divided_by: 100 }},
+    "priceCurrency": "GBP",
+{% assign start = "now" | date: '%s' %}
+{% assign seconds = 25 | times: 24 | times: 60 | times: 60 %}
+    "priceValidUntil": "{{ start | plus: seconds | date: "%Y-%m-%d" }}",
+    "sku": "{{ product.first_available_variant.sku }}",
+    "url": "{{ shop.url }}{{ product.url }}"
+  },
+  "height": "110mm",
+  "width": "70mm",
+  "audio": {
+    "@context": "https://schema.org/",
+    "@type": "AudioObject",
+    "name": "{{ product.name }} sample",
+    "contentUrl": "https:{{ product.metafields.book.preview.value.url | file_reference }}",
+    "duration": "PT0H05M",
+    "hasPart": {
+      "@type": "Clip",
+      "name": "Audio sample from {{ product.name }}"
+    }
+  }
+}
+</script>
