@@ -36,12 +36,16 @@
             {%- for block in section.blocks -%}
               {%- assign title = block.settings.title | default: block.settings.page.title -%}
 
-              {{block.settings.use_metaobject }}
+              {%- assign metaobjects = product.metafields.book[block.settings.use_metaobject].value -%}
 
-              {%- assign metaobjects = product.metafields.book['authors'].value -%}
               {%- for mo in metaobjects -%}
-                {%-assign metaobject_content = metaobject_content | append: mo.bio -%}
+                {%- assign metaobject_content = metaobject_content | append: mo.bio -%}
               {%- endfor -%}
+
+              {%- if block.settings.use_metaobject=='description' -%}
+                {%- assign metaobject_content = product.description -%}
+              {%- endif -%}
+
               {%- assign block_content = block.settings.page.content | default: block.settings.content -%}
 
               {%- if title and block_content -%}
@@ -52,8 +56,11 @@
                 {%- endif -%}
 
                 {%- capture accordion_content -%}
-                  <div class="prose">123{{ block_content }}
-                  456{{metaobject_content}}</div>
+                  <div class="prose">
+
+
+                    {{ block_content }}
+                    {{ metaobject_content }}</div>
                 {%- endcapture -%}
 
                 {%- render 'accordion', title: title, content: accordion_content, open: open -%}
