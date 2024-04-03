@@ -134,72 +134,37 @@
         "input_text_color": ""
       }
     },
-    "hot_spots_MbF79B": {
-      "type": "hot-spots",
+    "video_tyCAQL": {
+      "type": "video",
       "blocks": {
-        "item_mQLPQP": {
-          "type": "item",
+        "play_fiM6Xf": {
+          "type": "play",
           "settings": {
-            "horizontal_position": 24,
-            "vertical_position": 70,
-            "horizontal_position_mobile": 24,
-            "vertical_position_mobile": 70,
-            "icon_width": 32,
-            "title": "Long battery life",
-            "content": "<p>Share useful information about your product features.<\/p>"
           }
         },
-        "item_g6EMKG": {
-          "type": "item",
+        "heading_kJtRma": {
+          "type": "heading",
           "settings": {
-            "horizontal_position": 62,
-            "vertical_position": 14,
-            "horizontal_position_mobile": 62,
-            "vertical_position_mobile": 14,
-            "icon_width": 32,
-            "title": "Feature name",
-            "content": "<p>Share useful information about your product features.<\/p>"
-          }
-        },
-        "item_HiMrW4": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 83,
-            "vertical_position": 75,
-            "horizontal_position_mobile": 83,
-            "vertical_position_mobile": 75,
-            "icon_width": 32,
-            "title": "Feature name",
-            "content": "<p>Share useful information about your product features.<\/p>"
+            "text": "",
+            "heading_tag": "h0"
           }
         }
       },
       "block_order": [
-        "item_mQLPQP",
-        "item_g6EMKG",
-        "item_HiMrW4"
+        "play_fiM6Xf",
+        "heading_kJtRma"
       ],
       "settings": {
         "full_width": true,
-        "image": "shopify:\/\/shop_images\/voxblock-player.jpg",
-        "title": "Features",
-        "content": "",
-        "button_text": "",
-        "button_url": "",
-        "desktop_text_position": "place-self-start text-start",
-        "image_background": "",
-        "image_background_gradient": "",
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/498fbd3f54db4129920995d8acd054df.mp4",
+        "external_video_url": "",
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#ffffff",
-        "overlay_button_background": "",
-        "overlay_button_text_color": "",
-        "hot_spot_dot_background": "#ffffff",
-        "hot_spot_dot_text_color": "#000000",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#000000",
-        "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
+        "overlay_opacity": 0
       }
     },
     "text_with_icons_H9hBaT": {
@@ -208,40 +173,43 @@
         "item_R6HYqD": {
           "type": "item",
           "settings": {
-            "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
-            "icon_background_type": "circle",
+            "icon": "picto-star",
+            "custom_icon": "shopify:\/\/shop_images\/feature-parentfree-setup.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Free shipping",
-            "content": "<p>Free worldwide shipping and returns - customs and duties taxes included<\/p>"
+            "title": "Parent free setup",
+            "content": "<p>The child is completely autonomous<\/p>"
           }
         },
         "item_YUGcwz": {
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
-            "icon_background_type": "circle",
+            "custom_icon": "shopify:\/\/shop_images\/landing_page_icons_bedtime_-06.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Customer service",
-            "content": "<p>We are available from monday to friday to answer your questions.<\/p>"
+            "title": "Unwind without screens",
+            "content": "<p>Don't worry about ads, inappropriate content or glowing light from a screen<\/p>"
           }
         },
         "item_tKhedV": {
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
-            "icon_background_type": "circle",
+            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Secure payment",
-            "content": "<p>Your payment information is processed securely.<\/p>"
+            "title": "100% connection free",
+            "content": "<p>Travel wherever you want, no it support needed<\/p>"
           }
         }
       },
@@ -252,14 +220,220 @@
       ],
       "settings": {
         "full_width": true,
-        "stack_on_mobile": false,
-        "title": "More reasons to love",
-        "heading_tag": "h2",
+        "stack_on_mobile": true,
+        "title": "",
+        "heading_tag": "h4",
         "text_alignment": "center",
         "icon_spacing": "small",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
+    },
+    "media_with_text_UQdDDc": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_c8L8XJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/creativity-and-imagination.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "DEVELOPMENT",
+            "title": "Creativity and imagination",
+            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>",
+            "link_text": "",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_c8L8XJ"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "none"
+      }
+    },
+    "media_with_text_8FqE3W": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_DaBpmJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sleeping-child-listening-to-the-secret-garden-audiobook.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "DRAMA-FREE",
+            "title": "Best bedtime routine",
+            "content": "<p><strong>A great nights sleep is vital for the <\/strong>development of our future bookworms. Our <strong>screen-free <\/strong>audiobook means no <strong>distracting glow<\/strong> keeping kids awake.<\/p><p>Plus, you can easily enable <strong>bedtime mode<\/strong> to play your chosen story for 20 minutes before entering standby mode and drifting off to sleep.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_DaBpmJ"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "none"
+      }
+    },
+    "testimonials_cFMFmx": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_GfEg9L": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "John S.",
+            "title": "Testimonial 1",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_8YJAfa": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mary U.",
+            "title": "Testimonial 2",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_VLeHGP": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Joshua A.",
+            "title": "Testimonial 3",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_GfEg9L",
+        "testimonial_8YJAfa",
+        "testimonial_VLeHGP"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "Testimonials",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "collection_list_Leiqmh": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_8cj9pY": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_RPYpar": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_i6Ah6p": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "collection_8cj9pY",
+        "collection_RPYpar",
+        "collection_i6Ah6p"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_collections": false,
+        "collections_per_row": 3,
+        "show_progress_bar": false,
+        "subheading": "",
+        "title": "Discover our audiobooks",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "#ff9e57",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "revealed_image_on_scroll_iKqQdm": {
+      "type": "revealed-image-on-scroll",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/boy-with-player.jpg",
+        "subheading": "",
+        "title": "",
+        "background": "",
+        "text_color_inside": "#ffffff",
+        "text_color_outside": "#000000"
       }
     },
     "faq_KiLD6K": {
@@ -313,12 +487,46 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "featured_collection_MpWRBq": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "audiobooks",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "#ff9e57",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
     }
   },
   "order": [
     "main",
-    "hot_spots_MbF79B",
+    "video_tyCAQL",
     "text_with_icons_H9hBaT",
-    "faq_KiLD6K"
+    "media_with_text_UQdDDc",
+    "media_with_text_8FqE3W",
+    "testimonials_cFMFmx",
+    "collection_list_Leiqmh",
+    "revealed_image_on_scroll_iKqQdm",
+    "faq_KiLD6K",
+    "featured_collection_MpWRBq"
   ]
 }
