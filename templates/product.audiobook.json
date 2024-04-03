@@ -108,7 +108,7 @@
           "type": "tab",
           "settings": {
             "title": "Details",
-            "content": "<p><strong>Author<\/strong> -  Pip Murphy<br\/><strong>Narrator<\/strong> - Vanessa Labrie <br\/><strong>Publisher<\/strong>  - Sweet Cherry<br\/><strong>Abridged<\/strong> - No<br\/><strong>Runtime<\/strong> - 1h 1min<br\/><strong>Language<\/strong> - English<br\/><strong>Fiction\/Non-fiction<\/strong>  - Fiction<br\/><strong>ISBN<\/strong> - 9781739693695<br\/><strong>Thema Codes<\/strong> - <strong>YFP<\/strong> (CHILDREN’S \/ TEENAGE FICTION: NATURE AND ANIMAL STORIES)<strong>YNNJ23<\/strong> (CHILDREN’S \/ TEENAGE GENERAL INTEREST: BEARS)<strong>YFA<\/strong> (CHILDREN’S \/ TEENAGE FICTION: CLASSIC FICTION)<br\/><strong>Reading level<\/strong> - 5-7 Years<br\/><strong>Interest level<\/strong> - Lower Years (5-8)<br\/><strong>Content<\/strong> -  Adventure-Travel; Animals-Bears; Classics-Classics (All); Reading Promotions-Duchess's Bookshelf<\/p><p><\/p><p><\/p>",
+            "content": "<p><strong>Author<\/strong> -  Pip Murphy<br\/><strong>Narrator<\/strong> - Vanessa Labrie <br\/><strong>Publisher<\/strong>  - Sweet Cherry<br\/><strong>Abridged<\/strong> - No<br\/><strong>Runtime<\/strong> - 1h 1min<br\/><strong>Language<\/strong> - English<br\/><strong>Fiction\/Non-fiction<\/strong>  - Fiction<br\/><strong>ISBN<\/strong> - 9781739693695<br\/><strong>Thema Codes<\/strong> - <strong>YFP<\/strong> (CHILDREN’S \/ TEENAGE FICTION: NATURE AND ANIMAL STORIES)<strong>YNNJ23<\/strong> (CHILDREN’S \/ TEENAGE GENERAL INTEREST: BEARS)<strong>YFA<\/strong> (CHILDREN’S \/ TEENAGE FICTION: CLASSIC FICTION)<br\/><strong>Reading level<\/strong> - 5-7 Years<br\/><strong>Interest level<\/strong> - Lower Years (5-8)<br\/><strong>Content<\/strong> -  Adventure-Travel; Animals-Bears; Classics-Classics (All); Reading Promotions-Duchess's Bookshelf<br\/><strong>Copyright<\/strong> - <\/p><p><\/p><p><\/p>",
             "page": ""
           }
         },
@@ -172,13 +172,37 @@
         "overlay_opacity": 30
       }
     },
+    "related_products_NbRnrP": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "recently_viewed_products_FXQk8b": {
       "type": "recently-viewed-products",
       "settings": {
         "full_width": true,
         "products_count": 6,
-        "stack_products": true,
-        "show_progress_bar": false,
+        "stack_products": false,
+        "show_progress_bar": true,
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 3,
         "subheading": "",
@@ -191,66 +215,6 @@
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
-      }
-    },
-    "text_with_icons_H9hBaT": {
-      "type": "text-with-icons",
-      "blocks": {
-        "item_R6HYqD": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
-            "icon_background_type": "circle",
-            "icon_background": "",
-            "icon_color": "",
-            "title": "Free shipping",
-            "content": "<p>Free worldwide shipping and returns - customs and duties taxes included<\/p>"
-          }
-        },
-        "item_YUGcwz": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
-            "icon_background_type": "circle",
-            "icon_background": "",
-            "icon_color": "",
-            "title": "Customer service",
-            "content": "<p>We are available from monday to friday to answer your questions.<\/p>"
-          }
-        },
-        "item_tKhedV": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
-            "icon_background_type": "circle",
-            "icon_background": "",
-            "icon_color": "",
-            "title": "Secure payment",
-            "content": "<p>Your payment information is processed securely.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_R6HYqD",
-        "item_YUGcwz",
-        "item_tKhedV"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_on_mobile": false,
-        "title": "",
-        "heading_tag": "h5",
-        "text_alignment": "center",
-        "icon_spacing": "medium",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
       }
     },
     "faq_KiLD6K": {
@@ -310,8 +274,8 @@
     "main",
     "tabs_qeFVd8",
     "video_iK8JVC",
+    "related_products_NbRnrP",
     "recently_viewed_products_FXQk8b",
-    "text_with_icons_H9hBaT",
     "faq_KiLD6K"
   ]
 }
