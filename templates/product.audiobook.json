@@ -88,20 +88,20 @@
             "page": ""
           }
         },
-        "tab_DwMrp6": {
-          "type": "tab",
-          "settings": {
-            "title": "Narrator Bio",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "page": ""
-          }
-        },
         "tab_abACBq": {
           "type": "tab",
           "settings": {
             "title": "Author Bio",
             "content": "<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
             "page": "alex-rider-character"
+          }
+        },
+        "tab_DwMrp6": {
+          "type": "tab",
+          "settings": {
+            "title": "Narrator Bio",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "page": ""
           }
         },
         "tab_HcMpiJ": {
@@ -111,13 +111,22 @@
             "content": "<p><strong>Author<\/strong> -  Pip Murphy<br\/><strong>Narrator<\/strong> - Vanessa Labrie <br\/><strong>Publisher<\/strong>  - Sweet Cherry<br\/><strong>Abridged<\/strong> - No<br\/><strong>Runtime<\/strong> - 1h 1min<br\/><strong>Language<\/strong> - English<br\/><strong>Fiction\/Non-fiction<\/strong>  - Fiction<br\/><strong>ISBN<\/strong> - 9781739693695<br\/><strong>Thema Codes<\/strong> - <strong>YFP<\/strong> (CHILDREN’S \/ TEENAGE FICTION: NATURE AND ANIMAL STORIES)<strong>YNNJ23<\/strong> (CHILDREN’S \/ TEENAGE GENERAL INTEREST: BEARS)<strong>YFA<\/strong> (CHILDREN’S \/ TEENAGE FICTION: CLASSIC FICTION)<br\/><strong>Reading level<\/strong> - 5-7 Years<br\/><strong>Interest level<\/strong> - Lower Years (5-8)<br\/><strong>Content<\/strong> -  Adventure-Travel; Animals-Bears; Classics-Classics (All); Reading Promotions-Duchess's Bookshelf<\/p><p><\/p><p><\/p>",
             "page": ""
           }
+        },
+        "tab_MbxE8y": {
+          "type": "tab",
+          "settings": {
+            "title": "Reviews",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "page": ""
+          }
         }
       },
       "block_order": [
         "tab_r4GQ6g",
-        "tab_DwMrp6",
         "tab_abACBq",
-        "tab_HcMpiJ"
+        "tab_DwMrp6",
+        "tab_HcMpiJ",
+        "tab_MbxE8y"
       ],
       "settings": {
         "full_width": true,
@@ -130,6 +139,37 @@
         "text_color": "",
         "heading_color": "",
         "heading_gradient": ""
+      }
+    },
+    "video_iK8JVC": {
+      "type": "video",
+      "blocks": {
+        "play_zknpny": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "heading_cbja3f": {
+          "type": "heading",
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_zknpny",
+        "heading_cbja3f"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "external_video_url": "https:\/\/youtu.be\/T__P-COwpJE",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     },
     "text_with_icons_H9hBaT": {
@@ -248,6 +288,7 @@
   "order": [
     "main",
     "tabs_qeFVd8",
+    "video_iK8JVC",
     "text_with_icons_H9hBaT",
     "faq_KiLD6K"
   ]
