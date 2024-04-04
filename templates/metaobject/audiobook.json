@@ -88,39 +88,6 @@
         "input_text_color": ""
       }
     },
-    "rich_text_iUjBAP": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_dM87AL": {
-          "type": "subheading",
-          "settings": {
-            "text": "{{ metaobject.title.value }} Author"
-          }
-        },
-        "heading_ypDaPy": {
-          "type": "heading",
-          "settings": {
-            "product": "{{ metaobject.product }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_dM87AL",
-        "heading_ypDaPy",
-        "richtext_EpBkf4"
-      ],
-      "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "multi_column_8iRRVm": {
       "type": "multi-column",
       "blocks": {
@@ -189,7 +156,6 @@
   "order": [
     "breadcrumbs_DL4tEL",
     "featured_product_B9E7nQ",
-    "rich_text_iUjBAP",
     "multi_column_8iRRVm",
     "audiobook_bookdata_wtkEHX"
   ]

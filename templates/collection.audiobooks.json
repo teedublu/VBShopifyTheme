@@ -1,5 +1,89 @@
 {
   "sections": {
+    "slideshow_Q4e7Wj": {
+      "type": "slideshow",
+      "blocks": {
+        "image_pERNrc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WBD-illustration-header.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h6",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_Hb8RnT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Roald_Dahl_Banner.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_rcNxx7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/library_banner_-03.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_pERNrc",
+        "image_Hb8RnT",
+        "image_rcNxx7"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "image_size": "sm",
+        "controls_type": "filled_arrows",
+        "transition_type": "fade",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#F2F2F2",
+        "background_gradient": ""
+      }
+    },
     "banner": {
       "type": "collection-banner",
       "disabled": true,
@@ -35,24 +119,32 @@
         "item_Y4GnXQ": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
-            "link_text": "Adventure",
+            "image": "shopify:\/\/shop_images\/baby-hands-and-feet.jpg",
+            "link_text": "Under 5's",
             "link_url": ""
           }
         },
         "item_PHyCVd": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
-            "link_text": "Under £5",
+            "image": "shopify:\/\/shop_images\/1._Voxblock_children_listening.png",
+            "link_text": "5-8 years",
             "link_url": "shopify:\/\/collections\/audiobooks"
           }
         },
         "item_qpk6Bx": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_for_Schools.png",
-            "link_text": "Advanced Readers",
+            "image": "shopify:\/\/shop_images\/boy_headphones_circle_background.jpg",
+            "link_text": "8-10 years",
+            "link_url": ""
+          }
+        },
+        "item_KfF6ya": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ashley-banjo-audiobook-author.jpg",
+            "link_text": "10 - teens",
             "link_url": ""
           }
         }
@@ -61,7 +153,8 @@
         "item_P4cM4p",
         "item_Y4GnXQ",
         "item_PHyCVd",
-        "item_qpk6Bx"
+        "item_qpk6Bx",
+        "item_KfF6ya"
       ],
       "settings": {
         "full_width": false
@@ -112,8 +205,8 @@
       "settings": {
         "products_per_page": 50,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 7,
-        "filter_layout": "horizontal",
+        "products_per_row_desktop": 5,
+        "filter_layout": "drawer",
         "show_sort_by": true,
         "show_filters": true,
         "show_filter_group_name": false,
@@ -123,6 +216,7 @@
     }
   },
   "order": [
+    "slideshow_Q4e7Wj",
     "banner",
     "collection_link_blocks_HpwJbj",
     "main"

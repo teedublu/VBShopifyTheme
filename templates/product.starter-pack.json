@@ -77,6 +77,7 @@
         "collapsible_text_kBDw7a",
         "collapsible_text_ttWEUB"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "show_fixed_add_to_cart": true,
@@ -95,61 +96,488 @@
         "input_text_color": ""
       }
     },
-    "faq_KiLD6K": {
-      "type": "faq",
+    "featured_product_eFVFjB": {
+      "type": "featured-product",
       "blocks": {
-        "item_ybUnkH": {
-          "type": "item",
+        "title_rQRTLt": {
+          "type": "title",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "heading_tag": "h2"
           }
         },
-        "item_zBxp3t": {
-          "type": "item",
+        "badges_7htMMM": {
+          "type": "badges",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
           }
         },
-        "item_J79MfC": {
-          "type": "item",
+        "price_fRqaEL": {
+          "type": "price",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "show_taxes_notice": false
+          }
+        },
+        "description_qYRCi8": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_yyWhVK": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons_HCG9Ng": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "#ff9e57",
+            "payment_button_text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "item_ybUnkH",
-        "item_zBxp3t",
-        "item_J79MfC"
+        "title_rQRTLt",
+        "badges_7htMMM",
+        "price_fRqaEL",
+        "description_qYRCi8",
+        "variant_picker_yyWhVK",
+        "buy_buttons_HCG9Ng"
       ],
       "settings": {
         "full_width": true,
+        "product": "voxblock-starter-pack",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_bgbrXD": {
+      "type": "video",
+      "blocks": {
+        "heading_qBVpxQ": {
+          "type": "heading",
+          "settings": {
+            "text": "Easy to use",
+            "heading_tag": "h3"
+          }
+        },
+        "richtext_wx6Gx7": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Voxblock is ready to play right out of the box, with no wifi or setup required.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qBVpxQ",
+        "richtext_wx6Gx7"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "media_with_text_Eph8J6": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_MANNkz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "COLLECT TOKENS",
+            "title": "Free audiobooks",
+            "content": "<p>Voxblock tokens can be collected and then traded for free audiobooks. For every 10 tokens you'll receive one free book.  You'll receive three tokens with your Starter Pack, so start collecting today.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_MANNkz"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "media_with_text_WQfQGH": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_WWAdif": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/creativity-and-imagination.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "DEVELOPMENT",
+            "title": "Creativity and imagination",
+            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>",
+            "link_text": "learn more",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_WWAdif"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "text_with_icons_hRqMzj": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_Wd7U9m": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "",
+            "title": "Zero connectivity",
+            "content": ""
+          }
+        },
+        "item_DrrMex": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/feature-parentfree-setup.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Parent-free set-up",
+            "content": ""
+          }
+        },
+        "item_TYdbH7": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/landing_page_icons_bedtime_-06.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Unwind without screens",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_Wd7U9m",
+        "item_DrrMex",
+        "item_TYdbH7"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_xt4iqF": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_XP9FTB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/learning-and-play-made-easy-web.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "KIDS IN CONTROL",
+            "title": "Learning made easy",
+            "content": "<p>Encourage learning and enhance literacy skills with our easy-to-use screen-free audiobook player that will become your kids favourite companion.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_XP9FTB"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "media_with_text_9eFAbQ": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_6cEhpM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/homepage-image-happiness-guarantee.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "RISK FREE PURCHASE",
+            "title": "100 day money-back guarantee",
+            "content": "<p>We’re confident you’ll love Voxblock, but on the off chance it isn’t for you, you can send it back, no questions asked for a full refund.<\/p>",
+            "link_text": "Learn more",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_6cEhpM"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "testimonials_ph8Krm": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_YpA9aV": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "Samantha",
+            "title": "",
+            "content": "<p>Finally let's get our children off screens!!<\/p>"
+          }
+        },
+        "testimonial_K7FAFN": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "Mariola Seeruthun Kowalczyk",
+            "title": "",
+            "content": "<p>Genuinely one of the standout products of this decade.<\/p>"
+          }
+        },
+        "testimonial_Qy3fNM": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "Samantha",
+            "title": "",
+            "content": "<p>Finally let's get our children off screens!!<\/p>"
+          }
+        },
+        "testimonial_BxWc74": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "Samantha",
+            "title": "",
+            "content": "<p>Finally let's get our children off screens!!<\/p>"
+          }
+        },
+        "testimonial_zgMFaf": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "Samantha",
+            "title": "",
+            "content": "<p>Finally let's get our children off screens!!<\/p>"
+          }
+        },
+        "testimonial_U8pXmk": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "round_avatar": false,
+            "show_rating": false,
+            "rating": 4,
+            "author": "Samantha",
+            "title": "",
+            "content": "<p>Finally let's get our children off screens!!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_YpA9aV",
+        "testimonial_K7FAFN",
+        "testimonial_Qy3fNM",
+        "testimonial_BxWc74",
+        "testimonial_zgMFaf",
+        "testimonial_U8pXmk"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
         "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
-        "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
+        "title": "Why parents love Voxblock",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "press_HHNAef": {
+      "type": "press",
+      "blocks": {
+        "quote_fVqRFt": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "logo_width": 210,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_V77kAi": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_Bd6JNp": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_nGy33y": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        }
+      },
+      "block_order": [
+        "quote_fVqRFt",
+        "quote_V77kAi",
+        "quote_Bd6JNp",
+        "quote_nGy33y"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
         "background": "",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
+        "logo_item_background": "",
+        "logo_item_border": ""
       }
     }
   },
   "order": [
     "main",
-    "faq_KiLD6K"
+    "featured_product_eFVFjB",
+    "video_bgbrXD",
+    "media_with_text_Eph8J6",
+    "media_with_text_WQfQGH",
+    "text_with_icons_hRqMzj",
+    "media_with_text_xt4iqF",
+    "media_with_text_9eFAbQ",
+    "testimonials_ph8Krm",
+    "press_HHNAef"
   ]
 }

@@ -45,7 +45,7 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 0
       }
     },
     "rich_text_PAeRfb": {
@@ -55,7 +55,7 @@
           "type": "heading",
           "settings": {
             "text": "Voxblock in schools and nurseries",
-            "heading_tag": "h2",
+            "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
           }
@@ -70,7 +70,7 @@
           "type": "heading",
           "settings": {
             "text": "Internet-free audiobook player",
-            "heading_tag": "h2",
+            "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
           }
@@ -96,7 +96,7 @@
           "type": "heading",
           "settings": {
             "text": "Audiobooks",
-            "heading_tag": "h2",
+            "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
           }
@@ -160,7 +160,7 @@
           "type": "heading",
           "settings": {
             "text": "Schools packages",
-            "heading_tag": "h2",
+            "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
           }
@@ -241,7 +241,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "How to order",
-            "content": "<p>We have a dedicated Schools Account Manager to assist with your order.<\/p><ol><li>If you're ready to order, complete this <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" target=\"_blank\">form<\/a>. If you'd prefer to discuss your potential order get in touch on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<br\/><br\/><\/li><li>An invoice will be sent with payment is due in 30 days.<br\/><br\/><\/li><li>You should receive your order in 3-5 working days.<br\/><br\/><\/li><li>Get listening, the players are ready to use out of the box.<\/li><\/ol>",
+            "content": "<p>We have a dedicated Schools Account Manager to assist with your order.<\/p><ol><li>If you're ready to order, complete this <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" target=\"_blank\">form<\/a>. If you'd prefer to discuss your potential order, get in touch on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<br\/><br\/><\/li><li>An invoice will be sent where the payment is due in 30 days.<br\/><br\/><\/li><li>You should receive your order in 3-5 working days.<br\/><br\/><\/li><li>Get listening, the players are ready to use out of the box.<\/li><\/ol>",
             "link_text": "Order here",
             "link_url": "",
             "background": "#ffffff",
@@ -268,7 +268,7 @@
           "type": "heading",
           "settings": {
             "text": "What teachers say",
-            "heading_tag": "h1",
+            "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
           }
@@ -409,7 +409,7 @@
           "type": "heading",
           "settings": {
             "text": "Teaching resources",
-            "heading_tag": "h2",
+            "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
           }
@@ -434,27 +434,52 @@
         "text_color": ""
       }
     },
-    "video_Yp78J4": {
+    "rich_text_abXbaF": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_PreE7a": {
+          "type": "heading",
+          "settings": {
+            "text": "As seen on TV",
+            "heading_tag": "h3",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_PreE7a"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "video_9WpPY6": {
       "type": "video",
       "blocks": {
-        "play_NjmPe3": {
+        "play_iKBr4x": {
           "type": "play",
           "settings": {
           }
         }
       },
       "block_order": [
-        "play_NjmPe3"
+        "play_iKBr4x"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "allow_transparent_header": false,
         "autoplay": false,
         "video_size": "auto",
         "external_video_url": "https:\/\/youtu.be\/lXc2bssarCA",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 30
       }
     }
   },
@@ -471,6 +496,7 @@
     "multi_column_WyqeRx",
     "media_with_text_i3BEzb",
     "rich_text_eRwnN4",
-    "video_Yp78J4"
+    "rich_text_abXbaF",
+    "video_9WpPY6"
   ]
 }
