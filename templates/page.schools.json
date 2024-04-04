@@ -434,25 +434,42 @@
         "text_color": ""
       }
     },
-    "video_xUfjTE": {
-      "type": "video",
+    "rich_text_abXbaF": {
+      "type": "rich-text",
       "blocks": {
-        "play_TRnCUH": {
-          "type": "play",
-          "settings": {
-          }
-        },
-        "heading_4r69mT": {
+        "heading_PreE7a": {
           "type": "heading",
           "settings": {
             "text": "As seen on TV",
-            "heading_tag": "h2"
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
           }
         }
       },
       "block_order": [
-        "play_TRnCUH",
-        "heading_4r69mT"
+        "heading_PreE7a"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "video_9WpPY6": {
+      "type": "video",
+      "blocks": {
+        "play_iKBr4x": {
+          "type": "play",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "play_iKBr4x"
       ],
       "settings": {
         "full_width": true,
@@ -460,9 +477,9 @@
         "autoplay": false,
         "video_size": "auto",
         "external_video_url": "https:\/\/youtu.be\/lXc2bssarCA",
-        "text_color": "#ffb74a",
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 30
       }
     }
   },
@@ -479,6 +496,7 @@
     "multi_column_WyqeRx",
     "media_with_text_i3BEzb",
     "rich_text_eRwnN4",
-    "video_xUfjTE"
+    "rich_text_abXbaF",
+    "video_9WpPY6"
   ]
 }
