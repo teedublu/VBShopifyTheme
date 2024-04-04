@@ -1,0 +1,48 @@
+
+<div class="section section--tight  section-blends section-full">
+   {%- for block in section.blocks -%}
+      {% render 'icon' with block.setting.icon-name, width: 10, height: 2 %}{{block.setting.label}}
+   {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Player Features",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Player Features"
+    }
+  ],
+   "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon-name",
+          "label": "Icon name",
+          "info": "choose one of the available"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Player Features",
+      "settings": {
+        "heading": "Player features for players"
+      }
+    }
+  ]
+}
+
+{% endschema %}

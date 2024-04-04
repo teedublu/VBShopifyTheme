@@ -47,6 +47,12 @@
                 {%- assign metaobject_content = product.description -%}
               {%- endif -%}
 
+              {%- if block.settings.use_metaobject=='audiobooks' -%}
+                {%- capture metaobject_content -%}
+                  {%- render 'audiobook-productdata' book: product.metafields.book -%}
+                {%- endcapture -%}
+              {%- endif -%}
+
               {%- assign block_content = block.settings.page.content | default: block.settings.content -%}
 
               {%- if title -%}

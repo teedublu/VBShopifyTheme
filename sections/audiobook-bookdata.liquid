@@ -1,13 +1,14 @@
-
+{% comment %}
+This is the table of attributes that is shown in the audiobook page
+There is a similar but different one shown in the audiobook product - snippets/audiobook-productdata.liquid
+{% endcomment %}
 
 {%- assign book = metaobject.product.value.metafields.book -%}
-{%- assign narrators = metaobject.product.value.metafields.book.narrators.value -%}
-{%- assign authors = metaobject.product.value.metafields.book.authors.value -%}
+{%- assign narrators = book.narrators.value -%}
+{%- assign authors = book.authors.value -%}
+{%- assign characters = book.characters.value -%}
 {%- assign handle = metaobject.system.handle -%}
 {%- assign title = metaobject.product.value.title -%}
-
-
-{%- assign characters = metaobject.characters.value -%}
 
 <div class="section section--tight  section-blends section-full">
    <table class="audiobooks-full-details">
@@ -85,6 +86,10 @@
             <td>{{ book.language | metafield_tag }}</td>
          </tr>
          <tr>
+            <td>Product</td>
+            <td>{{ metaobject.product.value.title | link_to: metaobject.product.value.url }} {{ metaobject.product.value.price | money }}</td>
+         </tr>
+         <tr>
             <td>Preview</td>
             <td>
 
@@ -113,7 +118,7 @@
   ],
   "presets": [
     {
-      "name": "Book Data",
+      "name": "Audiobook Data",
       "settings": {
         "heading": "Book data for an audiobook"
       }

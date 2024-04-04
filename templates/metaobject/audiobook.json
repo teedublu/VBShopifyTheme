@@ -100,17 +100,10 @@
         "heading_ypDaPy": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobject.authors | metafield_text: field: 'name' }}",
+            "product": "{{ metaobject.product }}",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
-          }
-        },
-        "richtext_EpBkf4": {
-          "type": "richtext",
-          "repeater": "{{ metaobject.authors.value }}",
-          "settings": {
-            "content": "<p>{{ block.repeater.page_description.value }}<\/p>"
           }
         }
       },

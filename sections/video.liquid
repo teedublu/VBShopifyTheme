@@ -1,4 +1,4 @@
-{%- if section.settings.video -%}
+{%- if section.settings.video or section.settings.external_video_url -%}
 
 {%- unless section.settings.full_width -%}
   {%- render 'section-spacing-collapsing' -%}

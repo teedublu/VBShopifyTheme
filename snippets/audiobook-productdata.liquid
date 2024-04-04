@@ -1,0 +1,105 @@
+{% comment %}
+This is the table of attributes that is show in the audiobook product
+There is a similar but different one shown in the audiobook page - section/audiobook-bookdata.liquid
+{% endcomment %}
+
+{%- assign narrators = book.narrators.value -%}
+{%- assign authors = book.authors.value -%}
+{%- assign characters = book.characters.value -%}
+{%- assign handle = metaobject.system.handle -%}
+{%- assign title = metaobject.product.value.title -%}
+
+
+
+Abridged - No
+Runtime - 1h 1min
+Language - English
+Fiction/Non-fiction - Fiction
+ISBN - 9781739693695
+Thema Codes - YFP (CHILDREN’S / TEENAGE FICTION: NATURE AND ANIMAL STORIES)YNNJ23 (CHILDREN’S / TEENAGE GENERAL INTEREST: BEARS)YFA (CHILDREN’S / TEENAGE FICTION: CLASSIC FICTION)
+Reading level - 5-7 Years
+Interest level - Lower Years (5-8)
+Content - Adventure-Travel; Animals-Bears; Classics-Classics (All); Reading Promotions-Duchess's Bookshelf
+Copyright -
+
+<table class="audiobooks-full-details">
+   <tbody>
+      <tr>
+         <td>Narrator</td>
+         <td>
+            {% for narrator in narrators %}
+               {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
+            {% endfor %}
+         </td>
+      </tr>
+      <tr>
+         <td>Length</td>
+         <td>{{ book.duration.value }}</td>
+      </tr>
+      <tr>
+         <td>Author</td>
+         <td>
+            {% for author in authors %}
+               {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
+            {% endfor %}
+         </td>
+      </tr>
+      {%- if characters -%}
+         <tr>
+            <td>Featuring</td>
+            <td>
+               {% for character in characters %}
+                  {{ character.name | link_to: character.system.url, class: 'character'}}{% unless forloop.last %}, {% endunless -%}
+               {% endfor %}
+            </td>
+         </tr>
+      {% endif %}
+      <tr>
+         <td>Publisher</td>
+         <td>{{book.publisher.value.name | link_to: book.publisher.value.system.url }}</td>
+      </tr>
+      {%- if shop.metaobjects.audiobook_synopsis[handle] -%}
+         <tr>
+            <td>Synopsis</td>
+            <td>
+               What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis'}} about?
+
+
+            </td>
+         </tr>
+      {% endif %}
+      <tr>
+         <td>Category</td>
+         <td>
+            <ul class="top-level-terms">
+               {% for cat in book.categories.value %}
+                  {%- assign urlencoded = cat | url_encode | lower -%}
+                  {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+                  {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
+               {% endfor %}
+            </ul>
+         </td>
+      </tr>
+      <tr>
+         <td>Release date</td>
+         <td>{{ metaobject.product.value.published_at | date: "%Y-%m-%d" }}</td>
+      </tr>
+      <tr>
+         <td>ISBN</td>
+         <td>{{ metaobject.product.value.metafields.facts.isbn.value | metafield_tag }}</td>
+      </tr>
+      <tr>
+         <td>Abdridged</td>
+         <td>{{ book.abridged | metafield_tag }}</td>
+      </tr>
+      <tr>
+         <td>Fiction/Nonfiction</td>
+         <td>{{ book.fiction | metafield_tag }}</td>
+      </tr>
+      <tr>
+         <td>Language</td>
+         <td>{{ book.language | metafield_tag }}</td>
+      </tr>
+      
+   </tbody>
+</table>
