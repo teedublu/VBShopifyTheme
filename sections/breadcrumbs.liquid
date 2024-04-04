@@ -51,9 +51,10 @@
   
 {%- endif -%}
 
-
 {%- liquid 
   comment
+
+    {{page_type}}__{{page_subtype}}
     url                                     template                    name        suffix 
     /pages/audiobook-publishers             page.metaobjects-publishers page        metaobjects-publishers
     /pages/audiobooks                       page.metaobjects-audiobooks page        metaobjects-audiobooks
@@ -77,6 +78,7 @@
       assign crumbs = crumbs | append: sep1 | append: product.url | append: sep | append: product.title
     
     when 'collection'
+      assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: collections['audiobooks'].title
       assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
 
     when 'blog' 

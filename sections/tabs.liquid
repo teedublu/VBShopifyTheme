@@ -35,9 +35,20 @@
           <div class="sm:hidden">
             {%- for block in section.blocks -%}
               {%- assign title = block.settings.title | default: block.settings.page.title -%}
-              {%- assign content = block.settings.page.content | default: block.settings.content -%}
 
-              {%- if title and content -%}
+              {%- assign metaobjects = product.metafields.book[block.settings.use_metaobject].value -%}
+
+              {%- for mo in metaobjects -%}
+                {%- assign metaobject_content = metaobject_content | append: mo.bio -%}
+              {%- endfor -%}
+
+              {%- if block.settings.use_metaobject=='description' -%}
+                {%- assign metaobject_content = product.description -%}
+              {%- endif -%}
+
+              {%- assign block_content = block.settings.page.content | default: block.settings.content -%}
+
+              {%- if title and block_content -%}
                 {%- assign open = false -%}
 
                 {%- if forloop.first and section.settings.first_tab_open -%}
@@ -45,7 +56,11 @@
                 {%- endif -%}
 
                 {%- capture accordion_content -%}
-                  <div class="prose">{{ content }}</div>
+                  <div class="prose">
+
+
+                    {{ block_content }}
+                    {{ metaobject_content }}</div>
                 {%- endcapture -%}
 
                 {%- render 'accordion', title: title, content: accordion_content, open: open -%}
@@ -186,6 +201,35 @@
           "id": "page",
           "label": "Page",
           "info": "Replaces inline content if specified."
+        },
+        {
+          "type": "select",
+          "id": "use_metaobject",
+          "label": "Use object type",
+          "options": [
+            {
+              "value": "audiobook",
+              "label": "Audiobooks"
+            },
+            {
+              "value": "author",
+              "label": "Authors"
+            },
+            {
+              "value": "narrator",
+              "label": "Narrators"
+            },
+            {
+              "value": "description",
+              "label": "Page description"
+            },
+            {
+              "value": "",
+              "label": "None"
+            }
+          ],
+          "info": "Choose a object for content",
+          "default": ""
         }
       ]
     }
