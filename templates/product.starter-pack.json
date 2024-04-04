@@ -133,15 +133,28 @@
             "size_chart_page": ""
           }
         },
-        "buy_buttons_HCG9Ng": {
-          "type": "buy_buttons",
+        "button_wTTfkn": {
+          "type": "button",
           "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "#ff9e57",
-            "atc_button_text_color": "#ffffff",
-            "payment_button_background": "#ff9e57",
-            "payment_button_text_color": "#ffffff"
+            "link": "",
+            "text": "Add to cart",
+            "size": "xl",
+            "style": "fill",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "button_XDKBCL": {
+          "type": "button",
+          "settings": {
+            "link": "",
+            "text": "Buy now",
+            "size": "xl",
+            "style": "fill",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
           }
         }
       },
@@ -151,7 +164,8 @@
         "price_fRqaEL",
         "description_qYRCi8",
         "variant_picker_yyWhVK",
-        "buy_buttons_HCG9Ng"
+        "button_wTTfkn",
+        "button_XDKBCL"
       ],
       "settings": {
         "full_width": true,
