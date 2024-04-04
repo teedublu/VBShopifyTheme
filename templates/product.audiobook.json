@@ -95,7 +95,7 @@
             "title": "Author Bio",
             "content": "",
             "page": "",
-            "use_metaobject": "authors"
+            "use_metaobject": "author"
           }
         },
         "tab_DwMrp6": {
@@ -104,7 +104,7 @@
             "title": "Narrator Bio",
             "content": "",
             "page": "",
-            "use_metaobject": "narrators"
+            "use_metaobject": "narrator"
           }
         },
         "tab_HcMpiJ": {
@@ -170,8 +170,11 @@
         "full_width": true,
         "allow_transparent_header": false,
         "autoplay": false,
-        "video_size": "lg",
-        "external_video_url": "https:\/\/youtu.be\/T__P-COwpJE",
+        "video_size": "auto",
+        "video": "{{ product.metafields.book.audiogramme.value.desktop.value }}",
+        "mobile_video": "{{ product.metafields.book.audiogramme.value.mobile.value }}",
+        "external_video_url": "",
+        "poster": "{{ product.metafields.book.audiogramme.value.thumbnail.value }}",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
