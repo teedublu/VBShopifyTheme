@@ -48,22 +48,23 @@
 
               {%- assign block_content = block.settings.page.content | default: block.settings.content -%}
 
-              {%- if title and block_content -%}
-                {%- assign open = false -%}
+              {%- if title -%}
+                {%- if block_content != blank or metaobject_content != blank -%}
+                  {%- assign open = false -%}
 
-                {%- if forloop.first and section.settings.first_tab_open -%}
-                  {%- assign open = true -%}
+                  {%- if forloop.first and section.settings.first_tab_open -%}
+                    {%- assign open = true -%}
+                  {%- endif -%}
+
+                  {%- capture accordion_content -%}
+                    <div class="prose">
+                      {{ block_content }}
+                      {{ metaobject_content }}
+                    </div>
+                  {%- endcapture -%}
+
+                  {%- render 'accordion', title: title, content: accordion_content, open: open -%}
                 {%- endif -%}
-
-                {%- capture accordion_content -%}
-                  <div class="prose">
-
-
-                    {{ block_content }}
-                    {{ metaobject_content }}</div>
-                {%- endcapture -%}
-
-                {%- render 'accordion', title: title, content: accordion_content, open: open -%}
               {%- endif -%}
             {%- endfor -%}
           </div>
