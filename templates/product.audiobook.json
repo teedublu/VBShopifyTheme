@@ -157,14 +157,28 @@
         "heading_cbja3f": {
           "type": "heading",
           "settings": {
-            "text": "Video",
+            "text": "{{ product.title }}",
             "heading_tag": "h1"
+          }
+        },
+        "subheading_nQznDQ": {
+          "type": "subheading",
+          "settings": {
+            "text": "Narrated by {{ product.metafields.book.narrators | metafield_text: field: 'name' }}"
+          }
+        },
+        "richtext_zMc9b7": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Listen and read along to a sample of {{ product.title }}<\/p>"
           }
         }
       },
       "block_order": [
         "play_zknpny",
-        "heading_cbja3f"
+        "heading_cbja3f",
+        "subheading_nQznDQ",
+        "richtext_zMc9b7"
       ],
       "settings": {
         "full_width": true,
