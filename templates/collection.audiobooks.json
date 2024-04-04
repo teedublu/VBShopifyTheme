@@ -80,7 +80,7 @@
         "transition_type": "fade",
         "autoplay": false,
         "cycle_speed": 6,
-        "background": "#F2F2F2",
+        "background": "#f2f2f2",
         "background_gradient": ""
       }
     },
@@ -166,41 +166,23 @@
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
           "settings": {
-            "position": 33,
-            "column_span": "1",
-            "title": "Promote a product or a temporary offer",
-            "content": "",
+            "position": 9,
+            "column_span": "2",
+            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
+            "title": "orh3ohf3fh",
+            "content": "<p>hieufiwuefhiwefiewufhiwuefh<\/p><p>wfeihjfpwef<\/p><p>woefhowief<\/p><p>wlejfhojwef<\/p><p>ohjferf<\/p><p>ferkhfoerjf<\/p><p>erkfhejrf<\/p><p>kjerfnkjerf<\/p><p>ekfhjwekfhw<\/p>",
             "link_url": "",
-            "link_text": "View all",
+            "link_text": "",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "promotion_video_CHwxAJ": {
-          "type": "promotion_video",
-          "settings": {
-            "position": 4,
-            "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/a9a664f20e584ebba2209365f40257f0.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-            "title": "How our books work",
-            "content": "",
-            "link_url": "",
-            "link_text": "View all",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "overlay_opacity": 0
           }
         }
       },
       "block_order": [
-        "promotion_image_4VEyzT",
-        "promotion_video_CHwxAJ"
+        "promotion_image_4VEyzT"
       ],
       "settings": {
         "products_per_page": 50,
