@@ -433,6 +433,37 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "video_xUfjTE": {
+      "type": "video",
+      "blocks": {
+        "play_TRnCUH": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "heading_4r69mT": {
+          "type": "heading",
+          "settings": {
+            "text": "As seen on TV",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "play_TRnCUH",
+        "heading_4r69mT"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "external_video_url": "https:\/\/youtu.be\/lXc2bssarCA",
+        "text_color": "#ffb74a",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
@@ -447,6 +478,7 @@
     "rich_text_Ey7HVq",
     "multi_column_WyqeRx",
     "media_with_text_i3BEzb",
-    "rich_text_eRwnN4"
+    "rich_text_eRwnN4",
+    "video_xUfjTE"
   ]
 }
