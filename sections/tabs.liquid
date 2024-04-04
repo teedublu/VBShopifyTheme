@@ -37,6 +37,7 @@
               {%- assign title = block.settings.title | default: block.settings.page.title -%}
 
               {%- assign metaobjects = product.metafields.book[block.settings.use_metaobject].value -%}
+              {%- assign metaobject_content = nil -%}
 
               {%- for mo in metaobjects -%}
                 {%- assign metaobject_content = metaobject_content | append: mo.bio -%}
