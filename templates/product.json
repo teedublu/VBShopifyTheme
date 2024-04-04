@@ -1,1 +1,264 @@
-{"sections":{"main":{"type":"main-product","blocks":{"liquid_HaW47K":{"type":"liquid","settings":{"liquid":"<style>\n.product-gallery__media {padding: 0px 70px}\n<\/style>"}},"vendor":{"type":"vendor","settings":{}},"title":{"type":"title","settings":{"heading_tag":"h2"}},"badges":{"type":"badges","settings":{}},"price":{"type":"price","settings":{"show_taxes_notice":false}},"separator":{"type":"separator","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"hide_sold_out_variants":false,"stack_blocks":true,"selector_style":"block","swatch_selector_style":"swatch","variant_image_options":"","size_chart_page":""}},"quantity_selector":{"type":"quantity_selector","disabled":true,"settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_payment_button":true,"show_gift_card_recipient":true,"atc_button_background":"","atc_button_text_color":"","payment_button_background":"","payment_button_text_color":""}},"associated_products_hTYcmk":{"type":"associated_products","settings":{"title":"Buy it with","stack_products":true,"products_count":5,"background":"","text_color":""}},"description":{"type":"description","disabled":true,"settings":{"collapse_content":false}},"collapsible_text_4Fg6g7":{"type":"collapsible_text","settings":{"title":"Description","content":"<p>Share some content to your customers about your products.<\/p>","page":""}},"collapsible_text_kBDw7a":{"type":"collapsible_text","settings":{"title":"Product Details","content":"<p>Title :<br\/>Author :<br\/>Narrator :<br\/>Publisher:<br\/>Run time:<br\/>Age:<br\/>Language:<br\/>Genre:<br\/>Abridged\/Unabridged:<br\/>Thema Code :<br\/>Reading level :<br\/>Interest level :<br\/>Content subjects :<br\/>Fiction\/Non Fiction:<br\/>Series:<br\/>Characters:<\/p><p><\/p><p><\/p>","page":""}},"collapsible_text_ttWEUB":{"type":"collapsible_text","settings":{"title":"Audiogram","content":"<p>Share some content to your customers about your products.<\/p>","page":""}},"button_gtbrzG":{"type":"button","settings":{"link":"","text":"Author","size":"sm","style":"fill","stretch":false,"background":"","text_color":""}},"button_hGVMLQ":{"type":"button","settings":{"link":"","text":"Category 1","size":"sm","style":"fill","stretch":false,"background":"","text_color":""}},"share_buttons_NHcgEJ":{"type":"share_buttons","settings":{"alignment":"start"}}},"block_order":["liquid_HaW47K","vendor","title","badges","price","separator","variant_picker","quantity_selector","buy_buttons","associated_products_hTYcmk","description","collapsible_text_4Fg6g7","collapsible_text_kBDw7a","collapsible_text_ttWEUB","button_gtbrzG","button_hGVMLQ","share_buttons_NHcgEJ"],"settings":{"full_width":false,"show_fixed_add_to_cart":true,"desktop_media_width":55,"desktop_media_layout":"grid_highlight","mobile_media_size":"contained","mobile_carousel_control":"dots","enable_video_autoplay":false,"enable_video_looping":true,"enable_image_zoom":true,"max_image_zoom_level":3,"background":"","background_gradient":"","text_color":"","input_background":"rgba(0,0,0,0)","input_text_color":""}},"related-products":{"type":"related-products","settings":{"recommendations_count":6,"products":[],"full_width":true,"stack_products":false,"show_progress_bar":true,"products_per_row_mobile":"2","products_per_row_desktop":3,"subheading":"","title":"You may also like","content":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"recently_viewed_products_Bpryzy":{"type":"recently-viewed-products","settings":{"full_width":false,"products_count":6,"stack_products":false,"show_progress_bar":true,"products_per_row_mobile":"1","products_per_row_desktop":3,"subheading":"","title":"Recently viewed products","content":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"faq_KiLD6K":{"type":"faq","blocks":{"item_ybUnkH":{"type":"item","settings":{"title":"Do you ship overseas?","content":"<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"}},"item_zBxp3t":{"type":"item","settings":{"title":"How long will it take to get my orders?","content":"<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"}},"item_J79MfC":{"type":"item","settings":{"title":"Any question?","content":"<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"}}},"block_order":["item_ybUnkH","item_zBxp3t","item_J79MfC"],"settings":{"full_width":true,"subheading":"","title":"FAQ","content":"<p>Use this text to share information about your product or shipping policies.<\/p>","team_avatar_width":160,"support_hours":"Our customer support is available Monday to Friday: 8am-8:30pm.","answer_time":"Average answer time: 24h","button_text":"","button_url":"","text_position":"center","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","button_background":"","button_text_color":"","accordion_background":"","accordion_text_color":""}},"image_with_text_overlay_aQ9U9p":{"type":"image-with-text-overlay","settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":false,"image_size":"auto","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}}},"order":["main","related-products","recently_viewed_products_Bpryzy","faq_KiLD6K","image_with_text_overlay_aQ9U9p"]}
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "liquid_HaW47K": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n.product-gallery__media {padding: 0px 70px}\n<\/style>"
+          }
+        },
+        "vendor": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "associated_products_hTYcmk": {
+          "type": "associated_products",
+          "settings": {
+            "title": "Buy it with",
+            "stack_products": true,
+            "products_count": 5,
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "liquid_HaW47K",
+        "vendor",
+        "title",
+        "badges",
+        "price",
+        "separator",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "associated_products_hTYcmk"
+      ],
+      "settings": {
+        "full_width": false,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid_highlight",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "recently_viewed_products_Bpryzy": {
+      "type": "recently-viewed-products",
+      "settings": {
+        "full_width": false,
+        "products_count": 6,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Recently viewed products",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "faq_KiLD6K": {
+      "type": "faq",
+      "blocks": {
+        "item_ybUnkH": {
+          "type": "item",
+          "settings": {
+            "title": "Do you ship overseas?",
+            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+          }
+        },
+        "item_zBxp3t": {
+          "type": "item",
+          "settings": {
+            "title": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+          }
+        },
+        "item_J79MfC": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_ybUnkH",
+        "item_zBxp3t",
+        "item_J79MfC"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "image_with_text_overlay_aQ9U9p": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "featured_collection_igHKRU": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "accessories-for-voxblock",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "Our Accessories",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "recently_viewed_products_Bpryzy",
+    "faq_KiLD6K",
+    "image_with_text_overlay_aQ9U9p",
+    "featured_collection_igHKRU"
+  ]
+}
