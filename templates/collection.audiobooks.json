@@ -163,27 +163,10 @@
     "main": {
       "type": "main-collection",
       "blocks": {
-        "promotion_image_4VEyzT": {
-          "type": "promotion_image",
-          "settings": {
-            "position": 9,
-            "column_span": "2",
-            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
-            "title": "orh3ohf3fh",
-            "content": "<p>hieufiwuefhiwefiewufhiwuefh<\/p><p>wfeihjfpwef<\/p><p>woefhowief<\/p><p>wlejfhojwef<\/p><p>ohjferf<\/p><p>ferkhfoerjf<\/p><p>erkfhejrf<\/p><p>kjerfnkjerf<\/p><p>ekfhjwekfhw<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
         "promotion_video_79qxG8": {
           "type": "promotion_video",
           "settings": {
-            "position": 4,
+            "position": 9,
             "column_span": "1",
             "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-9_16.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
@@ -197,11 +180,46 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
+        },
+        "promotion_image_4VEyzT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 25,
+            "column_span": "2",
+            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
+            "title": "orh3ohf3fh",
+            "content": "<p>hieufiwuefhiwefiewufhiwuefh<\/p><p>wfeihjfpwef<\/p><p>woefhowief<\/p><p>wlejfhojwef<\/p><p>ohjferf<\/p><p>ferkhfoerjf<\/p><p>erkfhejrf<\/p><p>kjerfnkjerf<\/p><p>ekfhjwekfhw<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "promotion_image_FwKUTE": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 49,
+            "column_span": "2",
+            "image": "shopify:\/\/shop_images\/hands-on-hips-girls-fashion.jpg",
+            "title": "Refer a friend and get £15 off",
+            "content": "<p>ofhpwif<\/p><p>we'ofuhwoeifhw<\/p><p>ef'ohwfoiwef<\/p><p>]jrehgoiehrgpe<\/p><p>erlgljherg;l<\/p><p>elbgejg<\/p><p>gjelrkgje;r'g<\/p><p>]gjlepgje[g<\/p><p><\/p>",
+            "link_url": "",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
         }
       },
       "block_order": [
+        "promotion_video_79qxG8",
         "promotion_image_4VEyzT",
-        "promotion_video_79qxG8"
+        "promotion_image_FwKUTE"
       ],
       "settings": {
         "products_per_page": 50,
