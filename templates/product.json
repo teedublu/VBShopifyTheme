@@ -80,6 +80,14 @@
             "background": "",
             "text_color": ""
           }
+        },
+        "image_fydRzF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
+            "alignment": "start",
+            "max_width": 150
+          }
         }
       },
       "block_order": [
@@ -93,7 +101,8 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "associated_products_hTYcmk"
+        "associated_products_hTYcmk",
+        "image_fydRzF"
       ],
       "settings": {
         "full_width": false,
@@ -113,21 +122,25 @@
         "input_text_color": ""
       }
     },
-    "related-products": {
-      "type": "related-products",
+    "featured_collection_igHKRU": {
+      "type": "featured-collection",
       "settings": {
-        "recommendations_count": 6,
+        "collection": "accessories-for-voxblock",
+        "hide_empty": false,
         "products": [
 
         ],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
+        "products_count": 6,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
+        "products_per_row_desktop": 5,
         "subheading": "",
-        "title": "You may also like",
+        "title": "Our Accessories",
         "content": "",
+        "link_url": "",
+        "link_text": "",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -223,42 +236,13 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30
       }
-    },
-    "featured_collection_igHKRU": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "accessories-for-voxblock",
-        "hide_empty": false,
-        "products": [
-
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "Our Accessories",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     }
   },
   "order": [
     "main",
-    "related-products",
+    "featured_collection_igHKRU",
     "recently_viewed_products_Bpryzy",
     "faq_KiLD6K",
-    "image_with_text_overlay_aQ9U9p",
-    "featured_collection_igHKRU"
+    "image_with_text_overlay_aQ9U9p"
   ]
 }
