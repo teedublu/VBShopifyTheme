@@ -83,95 +83,6 @@
         "input_text_color": ""
       }
     },
-    "featured_product_eFVFjB": {
-      "type": "featured-product",
-      "blocks": {
-        "title_rQRTLt": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_7htMMM": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "price_fRqaEL": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "description_qYRCi8": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_yyWhVK": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "button_wTTfkn": {
-          "type": "button",
-          "settings": {
-            "link": "",
-            "text": "Add to cart",
-            "size": "xl",
-            "style": "fill",
-            "stretch": true,
-            "background": "",
-            "text_color": ""
-          }
-        },
-        "button_XDKBCL": {
-          "type": "button",
-          "settings": {
-            "link": "",
-            "text": "Buy now",
-            "size": "xl",
-            "style": "fill",
-            "stretch": true,
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "title_rQRTLt",
-        "badges_7htMMM",
-        "price_fRqaEL",
-        "description_qYRCi8",
-        "variant_picker_yyWhVK",
-        "button_wTTfkn",
-        "button_XDKBCL"
-      ],
-      "settings": {
-        "full_width": true,
-        "product": "voxblock-starter-pack",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
-    },
     "video_bgbrXD": {
       "type": "video",
       "blocks": {
@@ -587,7 +498,6 @@
   },
   "order": [
     "main",
-    "featured_product_eFVFjB",
     "video_bgbrXD",
     "media_with_text_Eph8J6",
     "media_with_text_WQfQGH",
