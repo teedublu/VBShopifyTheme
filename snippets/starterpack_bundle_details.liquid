@@ -1,1 +1,23 @@
-{{product.variants | json}} WTF
+
+{%- for variant in product.variants -%}
+<div class="starterpack bundle {% if product.selected_variant.id!=variant.id %}hidden{% endif %}" id="bundle_for_{{variant.id}}">
+	<h5>{{variant.metafields.bundle.products.value.description }}</h5>
+	<ul>
+	{%- for book in variant.metafields.bundle.products.value.products.value -%}
+		<li>{{book.title | link_to: book.url }}</li>
+	{%- endfor -%}
+	</ul>
+</div>
+{%- endfor -%}
+<script type="text/javascript">
+	document.addEventListener('variant:change', function(event) {
+	  let variant = event.detail.variant; // Gives you access to the whole variant details
+	  let previousVariant = event.detail.previousVariant; // Gives you access to the details of the previously selected variant
+	  let product = event.detail.product; // Gives you access to the whole product that the variant belongs to
+	  let form = event.target; // The form that triggers the change
+
+	  document.querySelectorAll('.starterpack.bundle').forEach(el => el.classList.add('hidden'));
+	  document.getElementById("bundle_for_"+variant.id).classList.remove('hidden');
+	});
+
+</script>
