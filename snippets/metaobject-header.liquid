@@ -1,9 +1,15 @@
 {% for photo in metaobject.photos.value %}
-	{{ photo | image_url: width: 200 | image_tag }}
+	{{- photo 
+		| image_url: width: 200 
+		| image_tag: 
+			preload: true,
+			style: 'border-radius: 50%; margin: auto; height: 200px;'
+		-}}
 	{% break %}
 {% endfor %}
-<h1> {{ metaobject.name }} </h1>
 <h3> Audiobook {{ metaobject.system.type }} </h3>
+<h1> {{ metaobject.name |metafield_tag }} </h1>
+
 <p>
-	{{ metaobject.bio }}
+	{{ metaobject.bio |metafield_tag }}
 </p>
