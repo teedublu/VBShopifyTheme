@@ -12,10 +12,50 @@
         "page_size": 25,
         "object_type": "audiobook"
       }
+    },
+    "rich_text_yMPFRF": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_GM8J3p": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_afqT6V": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.title }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_XADbex": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_GM8J3p",
+        "heading_afqT6V",
+        "richtext_XADbex"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "main",
-    "metaobjects_list_83MPdR"
+    "metaobjects_list_83MPdR",
+    "rich_text_yMPFRF"
   ]
 }

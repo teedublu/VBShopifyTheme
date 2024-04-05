@@ -9,10 +9,10 @@
               {% when 'audiobook' %}
                 <b>{{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}</b>
 
-                (written by : {% for author in metaobject.authors.value %} 
+                (written by : {% for author in metaobject.product.value.metafields.book.authors.value %} 
                   {{ author.name | link_to: narrator.system.url, class: narrator.system.handle }}{% unless forloop.last %}, {% endunless %}
                 {% endfor %} | 
-                narrated by : {% for narrator in metaobject.narrators.value %} 
+                narrated by : {% for narrator in metaobject.product.value.metafields.book.narrators.value %} 
                   {{ narrator.name | link_to: narrator.system.url, class: narrator.system.handle }}{% unless forloop.last %}, {% endunless %}
                 {% endfor %}
                 )
@@ -82,7 +82,7 @@
         }
       ],
       "info": "Choose a metaobject to paginate over",
-      "default": "author"
+      "default": "authors"
     }
   ],
   "blocks": [

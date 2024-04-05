@@ -133,15 +133,28 @@
             "size_chart_page": ""
           }
         },
-        "buy_buttons_HCG9Ng": {
-          "type": "buy_buttons",
+        "button_wTTfkn": {
+          "type": "button",
           "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "#ff9e57",
-            "atc_button_text_color": "#ffffff",
-            "payment_button_background": "#ff9e57",
-            "payment_button_text_color": "#ffffff"
+            "link": "",
+            "text": "Add to cart",
+            "size": "xl",
+            "style": "fill",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "button_XDKBCL": {
+          "type": "button",
+          "settings": {
+            "link": "",
+            "text": "Buy now",
+            "size": "xl",
+            "style": "fill",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
           }
         }
       },
@@ -151,7 +164,8 @@
         "price_fRqaEL",
         "description_qYRCi8",
         "variant_picker_yyWhVK",
-        "buy_buttons_HCG9Ng"
+        "button_wTTfkn",
+        "button_XDKBCL"
       ],
       "settings": {
         "full_width": true,
@@ -487,6 +501,7 @@
         "testimonial_zgMFaf",
         "testimonial_U8pXmk"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_testimonials": false,
@@ -512,48 +527,63 @@
           "settings": {
             "logo": "shopify:\/\/shop_images\/trustpilot-logo.png",
             "logo_width": 210,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "author": "Samantha",
+            "content": "Finally let's get our children off screens!!",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
           }
         },
-        "quote_V77kAi": {
+        "quote_gQJhfi": {
           "type": "quote",
           "settings": {
-            "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "logo": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "logo_width": 210,
+            "author": "Mariola Seeruthun Kowalczyk",
+            "content": "Genuinely one of the standout products of this decade.",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
           }
         },
-        "quote_Bd6JNp": {
+        "quote_j9WbAj": {
           "type": "quote",
           "settings": {
-            "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "logo": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "logo_width": 210,
+            "author": "Lisa",
+            "content": "My eight year old loves her new Voxblock!",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
           }
         },
-        "quote_nGy33y": {
+        "quote_Dtqidg": {
           "type": "quote",
           "settings": {
-            "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "logo": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "logo_width": 210,
+            "author": "A*",
+            "content": "Beautiful little thing!",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
+          }
+        },
+        "quote_b8GdBW": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/trustpilot-logo.png",
+            "logo_width": 210,
+            "author": "Angie",
+            "content": "Great product for 9 year old lots of book selections.",
+            "show_rating": true,
+            "rating": 5
           }
         }
       },
       "block_order": [
         "quote_fVqRFt",
-        "quote_V77kAi",
-        "quote_Bd6JNp",
-        "quote_nGy33y"
+        "quote_gQJhfi",
+        "quote_j9WbAj",
+        "quote_Dtqidg",
+        "quote_b8GdBW"
       ],
       "settings": {
         "full_width": true,
