@@ -71,34 +71,9 @@
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {
             "collapse_content": false
-          }
-        },
-        "offer_tcaCpM": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 20,
-            "title": "Free Shipping",
-            "content": "<p>Free shipping on all orders over £15<\/p>",
-            "background": "#eaf2ed",
-            "text_color": "#00a341"
-          }
-        },
-        "offer_wAzmdm": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-happy",
-            "icon_width": 24,
-            "title": "Happiness Guarantee",
-            "content": "<p>100 Day Happiness Guarantee<\/p>",
-            "background": "#eaf2ed",
-            "text_color": "#00a341"
           }
         },
         "separator_eAyTL4": {
@@ -235,6 +210,32 @@
             "background": "#ffffff",
             "text_color": "#565656"
           }
+        },
+        "offer_tcaCpM": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "icon_width": 20,
+            "title": "Free Shipping",
+            "content": "<p>Free shipping on all orders over £15<\/p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "offer_wAzmdm": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-happy",
+            "icon_width": 24,
+            "title": "Happiness Guarantee",
+            "content": "<p>100 Day Money back Guarantee<\/p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
         }
       },
       "block_order": [
@@ -248,8 +249,6 @@
         "buy_buttons",
         "associated_products_wELabA",
         "description",
-        "offer_tcaCpM",
-        "offer_wAzmdm",
         "separator_eAyTL4",
         "offer_1",
         "offer_2",
@@ -260,7 +259,9 @@
         "offer_7",
         "offer_8",
         "offer_9",
-        "offer_10"
+        "offer_10",
+        "offer_tcaCpM",
+        "offer_wAzmdm"
       ],
       "settings": {
         "full_width": false,
