@@ -9,35 +9,6 @@
     "rich_text_ftQUQM": {
       "type": "rich-text",
       "blocks": {
-        "subheading_GUK8kM": {
-          "type": "subheading",
-          "settings": {
-            "text": "Audiobook Author"
-          }
-        },
-        "heading_mbGAY8": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.name.value }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_yAYLh4": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
-          }
-        },
-        "image_E6NPte": {
-          "type": "image",
-          "settings": {
-            "width_mode": "custom",
-            "max_width": 600,
-            "mobile_max_width": 400
-          }
-        },
         "liquid_wwTTJp": {
           "type": "liquid",
           "settings": {
@@ -46,14 +17,11 @@
         }
       },
       "block_order": [
-        "subheading_GUK8kM",
-        "heading_mbGAY8",
-        "richtext_yAYLh4",
-        "image_E6NPte",
         "liquid_wwTTJp"
       ],
       "settings": {
         "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "center",
         "background": "",
