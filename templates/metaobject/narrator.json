@@ -6,45 +6,22 @@
         "heading": "Breadcrumbs"
       }
     },
-    "rich_text_TzCwwp": {
+    "rich_text_dggnp8": {
       "type": "rich-text",
       "blocks": {
-        "subheading_BYbD39": {
-          "type": "subheading",
+        "liquid_EKkAfj": {
+          "type": "liquid",
           "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_rtJAbM": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.name.value }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_ttN4dd": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
-          }
-        },
-        "richtext_pqxnAT": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Audiobooks by {{ metaobject.name.value }} available on Voxblock include <\/p>"
+            "liquid": "{%- render 'metaobject-header' -%}"
           }
         }
       },
       "block_order": [
-        "subheading_BYbD39",
-        "heading_rtJAbM",
-        "richtext_ttN4dd",
-        "richtext_pqxnAT"
+        "liquid_EKkAfj"
       ],
       "settings": {
         "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "center",
         "background": "",
@@ -55,6 +32,6 @@
   },
   "order": [
     "breadcrumbs_QBedAb",
-    "rich_text_TzCwwp"
+    "rich_text_dggnp8"
   ]
 }
