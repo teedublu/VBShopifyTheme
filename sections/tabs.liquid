@@ -16,6 +16,13 @@
     }
   </style>
 
+  {% comment%}
+
+  TODO: the logic for the content is duplicated in both mobile and desktop
+  no good
+  
+  {% endcomment%}
+
   <div {% render 'section-properties' %}>
     <div class="tabs">
       <div class="section-stack">
@@ -84,13 +91,34 @@
 
             {%- for block in section.blocks -%}
               {%- assign title = block.settings.title | default: block.settings.page.title -%}
-              {%- assign content = block.settings.page.content | default: block.settings.content -%}
 
-              {%- if title != blank and content != blank -%}
+              {%- assign metaobjects = product.metafields.book[block.settings.use_metaobject].value -%}
+              {%- assign metaobject_content = nil -%}
+
+              {%- for mo in metaobjects -%}
+                {%- assign metaobject_content = metaobject_content | append: mo.bio -%}
+              {%- endfor -%}
+
+              {%- if block.settings.use_metaobject=='description' -%}
+                {%- assign metaobject_content = product.description -%}
+              {%- endif -%}
+
+              {%- if block.settings.use_metaobject=='audiobooks' -%}
+                {%- capture metaobject_content -%}
+                  {%- render 'audiobook-productdata' book: product.metafields.book -%}
+                {%- endcapture -%}
+              {%- endif -%}
+
+              {%- assign block_content = block.settings.page.content | default: block.settings.content -%}
+
+              {%- if title -%}
+                {%- if block_content != blank or metaobject_content != blank -%}
                 <button type="button" slot="title" class="tabs-nav__button bold text-subdued text-center" {{ block.shopify_attributes }}>{{ title | escape }}</button>
                 <div role="tabpanel" class="tab-content prose" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden', 'hidden' %}>
-                  {{ content }}
+                  {{ block_content }}
+                      {{ metaobject_content }}
                 </div>
+              {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
           </x-tabs>
