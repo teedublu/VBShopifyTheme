@@ -9,35 +9,19 @@
     "rich_text_3DUaDn": {
       "type": "rich-text",
       "blocks": {
-        "subheading_Eb8NgN": {
-          "type": "subheading",
+        "liquid_MPRnXM": {
+          "type": "liquid",
           "settings": {
-            "text": "Audiobook Character"
-          }
-        },
-        "heading_3DPBXh": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.name.value }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_CVtQmh": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
+            "liquid": "{%- render 'metaobject-header' -%}"
           }
         }
       },
       "block_order": [
-        "subheading_Eb8NgN",
-        "heading_3DPBXh",
-        "richtext_CVtQmh"
+        "liquid_MPRnXM"
       ],
       "settings": {
         "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "center",
         "background": "",
