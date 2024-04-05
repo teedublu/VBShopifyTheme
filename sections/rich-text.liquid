@@ -1,6 +1,7 @@
 {%- if section.blocks.size > 0 -%}
   {%- render 'section-spacing-collapsing' -%}
 
+
   <style>
     #shopify-section-{{ section.id }} {
       --rich-text-max-width: {% if section.settings.content_width == 'small' %}650px{% elsif section.settings.content_width == 'medium' %}780px{% else %}100%{% endif %}
@@ -23,7 +24,7 @@
           {%- when 'heading' -%}
             {%- if block.settings.text != blank -%}
               <p class="{{ block.settings.heading_tag }} hyphenate" {{ block.shopify_attributes }}>
-                {%- render 'styled-text', content: block.settings.text, text_color: block.settings.text_color, gradient: block.settings.gradient -%}
+                {%- render 'styled-text', content: mo.bio | default: block.settings.text, text_color: block.settings.text_color, gradient: block.settings.gradient -%}
               </p>
             {%- endif -%}
 
@@ -144,6 +145,12 @@
       "type": "checkbox",
       "id": "full_width",
       "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_mo",
+      "label": "Use metaobject",
       "default": true
     },
     {
