@@ -1,11 +1,5 @@
 {
   "sections": {
-    "breadcrumbs_bEeqaB": {
-      "type": "breadcrumbs",
-      "settings": {
-        "heading": ""
-      }
-    },
     "banner": {
       "type": "collection-banner",
       "settings": {
@@ -15,15 +9,16 @@
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
-        "collection_title_size": "h0",
+        "collection_title_size": "h1",
         "image_size": "sm",
-        "mobile_text_position": "place-self-center text-center",
+        "image": "shopify:\/\/shop_images\/hands-on-hips-girls-fashion.jpg",
+        "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
         "featured_product_heading": "Featured product",
         "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_color": "#ffb74a",
+        "overlay_opacity": 100
       }
     },
     "main": {
@@ -83,7 +78,6 @@
     }
   },
   "order": [
-    "breadcrumbs_bEeqaB",
     "banner",
     "main"
   ]
