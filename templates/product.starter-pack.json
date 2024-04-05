@@ -57,14 +57,6 @@
             "content": "<p>Title :<br\/>Author :<br\/>Narrator :<br\/>Publisher:<br\/>Run time:<br\/>Age:<br\/>Language:<br\/>Genre:<br\/>Abridged\/Unabridged:<br\/>Thema Code :<br\/>Reading level :<br\/>Interest level :<br\/>Content subjects :<br\/>Fiction\/Non Fiction:<br\/>Series:<br\/>Characters:<\/p><p><\/p><p><\/p>",
             "page": ""
           }
-        },
-        "collapsible_text_ttWEUB": {
-          "type": "collapsible_text",
-          "settings": {
-            "title": "Audiogram",
-            "content": "",
-            "page": "charging-your-voxblock"
-          }
         }
       },
       "block_order": [
@@ -74,8 +66,7 @@
         "variant_picker",
         "buy_buttons",
         "collapsible_text_4Fg6g7",
-        "collapsible_text_kBDw7a",
-        "collapsible_text_ttWEUB"
+        "collapsible_text_kBDw7a"
       ],
       "disabled": true,
       "settings": {
@@ -171,9 +162,9 @@
         "full_width": true,
         "product": "voxblock-starter-pack",
         "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
+        "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
+        "mobile_carousel_control": "dots",
         "enable_video_autoplay": true,
         "enable_video_looping": false,
         "enable_image_zoom": true,
