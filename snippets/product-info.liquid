@@ -17,6 +17,13 @@
           </div>
         {%- endif -%}
 
+      {%- when 'bundle' -%}
+        
+          <div class="product-info__bundle" {{ block.shopify_attributes }}>
+            {%- render 'starterpack_bundle_details' with product -%}WTF
+          </div>
+        
+
       {%- when 'title' -%}
         {%- if request.page_type == 'product' -%}
           <h1 class="product-info__title {{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>{{ product.title }}</h1>
