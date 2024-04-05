@@ -29,12 +29,28 @@
           "settings": {
             "content": "<p>{{ metaobject.bio | metafield_tag }}<\/p>"
           }
+        },
+        "image_E6NPte": {
+          "type": "image",
+          "settings": {
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
+        "liquid_wwTTJp": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'metaobject-header'%}"
+          }
         }
       },
       "block_order": [
         "subheading_GUK8kM",
         "heading_mbGAY8",
-        "richtext_yAYLh4"
+        "richtext_yAYLh4",
+        "image_E6NPte",
+        "liquid_wwTTJp"
       ],
       "settings": {
         "full_width": true,
@@ -162,6 +178,5 @@
     "rich_text_ftQUQM",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t"
-    
   ]
 }
