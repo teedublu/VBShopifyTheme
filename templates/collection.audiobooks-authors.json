@@ -1,11 +1,5 @@
 {
   "sections": {
-    "breadcrumbs_bEeqaB": {
-      "type": "breadcrumbs",
-      "settings": {
-        "heading": ""
-      }
-    },
     "banner": {
       "type": "collection-banner",
       "settings": {
@@ -15,15 +9,16 @@
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
-        "collection_title_size": "h0",
+        "collection_title_size": "h1",
         "image_size": "sm",
-        "mobile_text_position": "place-self-center text-center",
+        "image": "shopify:\/\/shop_images\/hands-on-hips-girls-fashion.jpg",
+        "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
         "featured_product_heading": "Featured product",
         "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_color": "#ffb74a",
+        "overlay_opacity": 100
       }
     },
     "main": {
@@ -48,6 +43,7 @@
         },
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
+          "disabled": true,
           "settings": {
             "position": 4,
             "column_span": "1",
@@ -80,11 +76,79 @@
         "show_filter_values_count": false,
         "open_first_filter_group": false
       }
+    },
+    "faq_nMUH4U": {
+      "type": "faq",
+      "blocks": {
+        "item_U49Qan": {
+          "type": "item",
+          "settings": {
+            "title": "Do you ship overseas?",
+            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+          }
+        },
+        "item_DMti63": {
+          "type": "item",
+          "settings": {
+            "title": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+          }
+        },
+        "item_BfwVJD": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_U49Qan",
+        "item_DMti63",
+        "item_BfwVJD"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "image_with_text_overlay_rm3BPp": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Delivery_Info_Page_Banner.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
-    "breadcrumbs_bEeqaB",
     "banner",
-    "main"
+    "main",
+    "faq_nMUH4U",
+    "image_with_text_overlay_rm3BPp"
   ]
 }
