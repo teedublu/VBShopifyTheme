@@ -51,8 +51,8 @@
           "type": "collapsible_text",
           "settings": {
             "title": "Product Details",
-            "content": "<p>Title :<br\/>Author :<br\/>Narrator :<br\/>Publisher:<br\/>Run time:<br\/>Age:<br\/>Language:<br\/>Genre:<br\/>Abridged\/Unabridged:<br\/>Thema Code :<br\/>Reading level :<br\/>Interest level :<br\/>Content subjects :<br\/>Fiction\/Non Fiction:<br\/>Series:<br\/>Characters:<\/p><p><\/p><p><\/p>",
-            "page": ""
+            "content": "<p>{{ product.title }}<\/p>",
+            "page": "voxblock-audiobook-gift-pack"
           }
         }
       },
