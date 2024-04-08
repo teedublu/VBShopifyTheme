@@ -161,6 +161,68 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "slideshow_tcGz4a": {
+      "type": "slideshow",
+      "blocks": {
+        "image_cA4HcL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_9266.jpg",
+            "content_max_width": 400,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h6",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_7XDfAN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PLayer_render_orange.png",
+            "content_max_width": 400,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h6",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cA4HcL",
+        "image_7XDfAN"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "image_size": "md",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": true,
+        "cycle_speed": 6,
+        "background": "#F2F2F2",
+        "background_gradient": ""
+      }
     }
   },
   "order": [
@@ -168,6 +230,7 @@
     "image_with_text_overlay_UffLeY",
     "rich_text_iqRhE6",
     "image_with_text_overlay_m7xHiE",
-    "media_with_text_Nc7XeA"
+    "media_with_text_Nc7XeA",
+    "slideshow_tcGz4a"
   ]
 }
