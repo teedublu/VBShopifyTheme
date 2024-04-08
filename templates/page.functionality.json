@@ -41,6 +41,32 @@
         "overlay_opacity": 9
       }
     },
+    "rich_text_iqRhE6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_EkwnaX": {
+          "type": "heading",
+          "settings": {
+            "text": "The controls",
+            "heading_tag": "h1",
+            "text_color": "#ffb74a",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_EkwnaX"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#ff9e57"
+      }
+    },
     "image_with_text_overlay_m7xHiE": {
       "type": "image-with-text-overlay",
       "settings": {
@@ -60,6 +86,7 @@
   "order": [
     "main",
     "image_with_text_overlay_UffLeY",
+    "rich_text_iqRhE6",
     "image_with_text_overlay_m7xHiE"
   ]
 }
