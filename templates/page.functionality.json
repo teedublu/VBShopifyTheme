@@ -6,9 +6,44 @@
       "settings": {
         "content_width": "80ch"
       }
+    },
+    "image_with_text_overlay_UffLeY": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_kznxU8": {
+          "type": "heading",
+          "settings": {
+            "text": "How to use your Voxblock",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_nGrXgt": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Getting the most out of your player<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_kznxU8",
+        "richtext_nGrXgt"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify:\/\/shop_images\/Voxblock-goodtoyguide-images-1.0.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 9
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_with_text_overlay_UffLeY"
   ]
 }
