@@ -215,13 +215,81 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "image_size": "md",
+        "image_size": "lg",
         "controls_type": "dots",
         "transition_type": "fade_with_text",
         "autoplay": true,
         "cycle_speed": 6,
         "background": "#F2F2F2",
         "background_gradient": ""
+      }
+    },
+    "faq_LKWFwT": {
+      "type": "faq",
+      "blocks": {
+        "item_GdmMpY": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player require an internet connection?",
+            "content": "<p>Nope. The audio is physically stored on each block, meaning that we are completely connectivity free.<\/p>"
+          }
+        },
+        "item_qUPxYX": {
+          "type": "item",
+          "settings": {
+            "title": "How do I charge the player?",
+            "content": "<p>You can recharge your player using a USB-C cable.<\/p>"
+          }
+        },
+        "item_mDDetV": {
+          "type": "item",
+          "settings": {
+            "title": "I can't find my question",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" target=\"_blank\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_GdmMpY",
+        "item_qUPxYX",
+        "item_mDDetV"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "newsletter_3Wzye8": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": false,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "button_background": "#ff9e57",
+        "button_text_color": "#ffffff"
       }
     }
   },
@@ -231,6 +299,8 @@
     "rich_text_iqRhE6",
     "image_with_text_overlay_m7xHiE",
     "media_with_text_Nc7XeA",
-    "slideshow_tcGz4a"
+    "slideshow_tcGz4a",
+    "faq_LKWFwT",
+    "newsletter_3Wzye8"
   ]
 }
