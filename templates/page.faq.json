@@ -99,29 +99,37 @@
         "item_tp4QTi": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
+            "title": "How do I set up my player?",
             "content": "<p>Depending on the model you can find the on\/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on\/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.<\/p>"
           }
         },
         "item_MtR74C": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "title": "How do I use my Voxblock player?",
+            "content": "<p>The controls are very simple, read all about them <a href=\"\/pages\/how-does-it-work\" title=\"How does it work\">here<\/a><\/p>"
           }
         },
         "item_hEnQNp": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "title": "Do I need an internet connection to use my player?",
+            "content": "<p>Nope. We are completely connectivity free.<\/p>"
+          }
+        },
+        "item_hHnVzq": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player need batteries?",
+            "content": "<p>You can recharge the Voxblock player using a USB-C cable. Find out more about charging <a href=\"\/pages\/charging-your-voxblock\" title=\"Charging Your Voxblock\">here<\/a>.<\/p>"
           }
         }
       },
       "block_order": [
         "item_tp4QTi",
         "item_MtR74C",
-        "item_hEnQNp"
+        "item_hEnQNp",
+        "item_hHnVzq"
       ],
       "settings": {
         "full_width": true,
