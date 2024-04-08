@@ -81,12 +81,93 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "media_with_text_Nc7XeA": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_Pw8tgh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bedtime-mode-visuals.png",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 24,
+            "subheading": "WIND DOWN WITH VOXBLOCK",
+            "title": "Bedtime mode",
+            "content": "<p>Bedtime mide enables 20 minutes of playtime before automatically going into standby.<\/p><p>Enable and disable bedtime mode by holding down both chapter buttons until you hear a tone. You'll know that you're in bedtime mode because the status light will be red.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "image_3i4Ck9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/back-to-the-start-visual.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 24,
+            "subheading": "JUMP INTO STORIES",
+            "title": "Choose your chapter",
+            "content": "<p>Use the left and right arrows to navigate between chapters. If you want to jump right to the end of beginning of the audiobook, hold down the arrow till you hear a tone.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "image_KdeNWe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/charging_graphic-do-n-dont-02.png",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 24,
+            "subheading": "CHARGING YOUR VOXBLOCK",
+            "title": "Power",
+            "content": "<p>To get the best performance, always charge your Voxblock from a USB wall plug (and not a computer USB port, or a laptop charger).<\/p>",
+            "link_text": "",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_Pw8tgh",
+        "image_3i4Ck9",
+        "image_KdeNWe"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_UffLeY",
     "rich_text_iqRhE6",
-    "image_with_text_overlay_m7xHiE"
+    "image_with_text_overlay_m7xHiE",
+    "media_with_text_Nc7XeA"
   ]
 }
