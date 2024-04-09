@@ -142,12 +142,65 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "faq_QTETKt": {
+      "type": "faq",
+      "blocks": {
+        "item_FFV3p4": {
+          "type": "item",
+          "settings": {
+            "title": "Why is Voxblock screen free?",
+            "content": "<p>We're not anti-screen - we know that phones and tablets can be great educational tools. But we wanted to create a way of listening to audiobooks that's simple, with the focus on the story alone.<\/p>"
+          }
+        },
+        "item_UcgL66": {
+          "type": "item",
+          "settings": {
+            "title": "What age range is Voxblock suitable for?",
+            "content": "<p>The Voxblock player and <\/p>"
+          }
+        },
+        "item_gMHxYp": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_FFV3p4",
+        "item_UcgL66",
+        "item_gMHxYp"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "#ff9e57",
+        "button_text_color": "#ffffff",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_DgEzg3",
     "media_with_text_wCfREr",
-    "image_with_text_overlay_yfX6rm"
+    "image_with_text_overlay_yfX6rm",
+    "faq_QTETKt"
   ]
 }
