@@ -5,11 +5,11 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
-        "enable_parallax": true,
+        "enable_parallax": false,
         "show_collection_title": true,
         "show_collection_description": true,
-        "show_collection_image": true,
-        "collection_title_size": "h0",
+        "show_collection_image": false,
+        "collection_title_size": "h3",
         "image_size": "auto",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
@@ -22,11 +22,34 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_video_yUmpiY": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 5,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How it works",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "Read more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_yUmpiY"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
-        "filter_layout": "sidebar",
+        "filter_layout": "horizontal",
         "show_sort_by": true,
         "show_filters": true,
         "show_filter_group_name": false,
