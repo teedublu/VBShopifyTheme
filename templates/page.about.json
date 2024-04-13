@@ -142,12 +142,82 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "faq_QTETKt": {
+      "type": "faq",
+      "blocks": {
+        "item_FFV3p4": {
+          "type": "item",
+          "settings": {
+            "title": "Why is Voxblock screen free?",
+            "content": "<p>We're not anti-screen - we know that phones and tablets can be great educational tools. But we wanted to create a way of listening to audiobooks that's simple, with the focus on the story alone.<\/p>"
+          }
+        },
+        "item_UcgL66": {
+          "type": "item",
+          "settings": {
+            "title": "What age range is Voxblock suitable for?",
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
+          }
+        },
+        "item_gMHxYp": {
+          "type": "item",
+          "settings": {
+            "title": "I can't find my question",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_FFV3p4",
+        "item_UcgL66",
+        "item_gMHxYp"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "#ff9e57",
+        "button_text_color": "#ffffff",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "newsletter_kiWy3e": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": false,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "button_background": "#ff9e57",
+        "button_text_color": "#ffffff"
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_DgEzg3",
     "media_with_text_wCfREr",
-    "image_with_text_overlay_yfX6rm"
+    "image_with_text_overlay_yfX6rm",
+    "faq_QTETKt",
+    "newsletter_kiWy3e"
   ]
 }

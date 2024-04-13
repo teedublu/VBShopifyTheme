@@ -1,5 +1,51 @@
 {
   "sections": {
+    "image_with_text_overlay_mzRBYC": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_fERiaJ": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_nNhzcW": {
+          "type": "heading",
+          "settings": {
+            "text": "The screen-free audiobook player for kids",
+            "heading_tag": "h0"
+          }
+        },
+        "button_XtBmYV": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Button text",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fERiaJ",
+        "heading_nNhzcW",
+        "button_XtBmYV"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Players_stacked-Test.png",
+        "mobile_text_position": "place-self-center-end text-end",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
     "video_TnLHtB": {
       "type": "video",
       "blocks": {
@@ -32,6 +78,7 @@
         "heading_Nm74Wm",
         "button_Kh6D8i"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -67,7 +114,7 @@
         "richtext_n7wzRG": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Introducing Voxblock, the <strong>screen-free,<\/strong> <strong>easy-to-use<\/strong> audiobook player, that makes <strong>learning and listening fun and engaging. <\/strong><\/p>"
+            "content": "<h5>Introducing Voxblock, the screen-free, easy-to-use audiobook player, that makes learning and listening fun and engaging. <\/h5>"
           }
         }
       },
@@ -78,11 +125,363 @@
       ],
       "settings": {
         "full_width": true,
-        "content_width": "small",
+        "use_mo": true,
+        "content_width": "medium",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "video_N3TaA4": {
+      "type": "video",
+      "blocks": {
+        "play_dAmdVr": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "heading_rHfzRr": {
+          "type": "heading",
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_dAmdVr",
+        "heading_rHfzRr"
+      ],
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "md",
+        "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "impact_text_XqyFin": {
+      "type": "impact-text",
+      "blocks": {
+        "item_xg74WH": {
+          "type": "item",
+          "settings": {
+            "title": "5000",
+            "subheading": "hours of listening time in 2023",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 2
+          }
+        },
+        "item_46mgdd": {
+          "type": "item",
+          "settings": {
+            "title": "100%",
+            "subheading": "Showcase a benefit of your product",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "item_xg74WH",
+        "item_46mgdd"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 1,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "heading_text_color": "#4cb6ac",
+        "heading_gradient": "",
+        "text_color": "#4cb6ac",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "tabs_DjeVwp": {
+      "type": "tabs",
+      "blocks": {
+        "tab_kHX9ib": {
+          "type": "tab",
+          "settings": {
+            "title": "Under 5's",
+            "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
+            "page": "",
+            "use_metaobject": "audiobook"
+          }
+        },
+        "tab_QeFx9H": {
+          "type": "tab",
+          "settings": {
+            "title": "5-8 Years",
+            "content": "<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "page": "",
+            "use_metaobject": ""
+          }
+        },
+        "tab_AqaVp9": {
+          "type": "tab",
+          "settings": {
+            "title": "8-10 Years",
+            "content": "<p>Share information about your shipping rates, return policy or contact information.<\/p>",
+            "page": "",
+            "use_metaobject": ""
+          }
+        },
+        "tab_YATFne": {
+          "type": "tab",
+          "settings": {
+            "title": "10-Teens",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "page": "",
+            "use_metaobject": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_kHX9ib",
+        "tab_QeFx9H",
+        "tab_AqaVp9",
+        "tab_YATFne"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "subheading": "Audiobooks",
+        "title": "Discover our audio collection",
+        "first_tab_open": false,
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "text_color": "#fff7f0",
+        "heading_color": "#fff7f0",
+        "heading_gradient": ""
+      }
+    },
+    "image-with-text-overlay": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "1664424230c4756b0e-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "1664424230c4756b0e-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
+          }
+        },
+        "1664424230c4756b0e-2": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1664424230c4756b0e-0",
+        "1664424230c4756b0e-1",
+        "1664424230c4756b0e-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/landing-page-how-it-works.png",
+        "mobile_image": "shopify:\/\/shop_images\/landing-page-how-it-works-mobile.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "newsletter_dKNmAd": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Newsletter",
+        "content": "<p>Write something about what your customers will receive by subscribing to your newsletter.<\/p>",
+        "button_text": "Subscribe",
+        "subtext": "",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "hot-spots": {
+      "type": "hot-spots",
+      "blocks": {
+        "1664424434f5b7d0e0-0": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 22,
+            "vertical_position": 49,
+            "horizontal_position_mobile": 24,
+            "vertical_position_mobile": 70,
+            "icon_width": 32,
+            "title": "Long lasting",
+            "content": "<p>Created with the minimum number of necessary parts, our player is straightforward and simple, designed to live a long and happy life.<\/p>"
+          }
+        },
+        "1664424434f5b7d0e0-1": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 65,
+            "vertical_position": 14,
+            "horizontal_position_mobile": 62,
+            "vertical_position_mobile": 14,
+            "icon_width": 32,
+            "title": "Speaker or headphones",
+            "content": "<p>Use Voxblock's built in speaker, or plug in your own headphones for quiet listening.<\/p>"
+          }
+        },
+        "1664424434f5b7d0e0-2": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 67,
+            "vertical_position": 79,
+            "horizontal_position_mobile": 83,
+            "vertical_position_mobile": 75,
+            "icon_width": 32,
+            "title": "Sleep mode",
+            "content": "<p>Sleep mode that helps children wind down, and turns off after a pre-set time<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1664424434f5b7d0e0-0",
+        "1664424434f5b7d0e0-1",
+        "1664424434f5b7d0e0-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/image1.jpg",
+        "title": "Features",
+        "content": "<p>Simple to use, screen-free audiobook player.<\/p>",
+        "button_text": "",
+        "button_url": "",
+        "desktop_text_position": "place-self-start text-start",
+        "image_background": "",
+        "image_background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "overlay_text_color": "#ffffff",
+        "overlay_button_background": "",
+        "overlay_button_text_color": "",
+        "hot_spot_dot_background": "#ffffff",
+        "hot_spot_dot_text_color": "#000000",
+        "hot_spot_content_background": "#ffffff",
+        "hot_spot_content_text_color": "#000000",
+        "hot_spot_content_opacity": 90,
+        "hot_spot_content_blur_radius": 3
+      }
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant-picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "buy-buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "badges",
+        "price",
+        "description",
+        "variant-picker",
+        "buy-buttons"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
       }
     },
     "logo_list_LNWaw9": {
@@ -170,208 +569,123 @@
         "logo_item_border": ""
       }
     },
-    "hot-spots": {
-      "type": "hot-spots",
+    "multiple_images_with_text_qi7tAC": {
+      "type": "multiple-images-with-text",
       "blocks": {
-        "1664424434f5b7d0e0-0": {
+        "item_Db3xTP": {
           "type": "item",
           "settings": {
-            "horizontal_position": 22,
-            "vertical_position": 49,
-            "horizontal_position_mobile": 24,
-            "vertical_position_mobile": 70,
-            "icon_width": 32,
-            "title": "Long lasting",
-            "content": "<p>Created with the minimum number of necessary parts, our player is straightforward and simple, designed to live a long and happy life.<\/p>"
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "Heading 1",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
           }
         },
-        "1664424434f5b7d0e0-1": {
+        "item_maJpGC": {
           "type": "item",
           "settings": {
-            "horizontal_position": 65,
-            "vertical_position": 14,
-            "horizontal_position_mobile": 62,
-            "vertical_position_mobile": 14,
-            "icon_width": 32,
-            "title": "Speaker or headphones",
-            "content": "<p>Use Voxblock's built in speaker, or plug in your own headphones for quiet listening.<\/p>"
-          }
-        },
-        "1664424434f5b7d0e0-2": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 67,
-            "vertical_position": 79,
-            "horizontal_position_mobile": 83,
-            "vertical_position_mobile": 75,
-            "icon_width": 32,
-            "title": "Sleep mode",
-            "content": "<p>Sleep mode that helps children wind down, and turns off after a pre-set time<\/p>"
+            "image_rotation_degrees": 1.5,
+            "subheading": "",
+            "title": "Heading 2",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
           }
         }
       },
       "block_order": [
-        "1664424434f5b7d0e0-0",
-        "1664424434f5b7d0e0-1",
-        "1664424434f5b7d0e0-2"
+        "item_Db3xTP",
+        "item_maJpGC"
       ],
       "settings": {
         "full_width": true,
-        "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/image1.jpg",
-        "title": "Features",
-        "content": "<p>Simple to use, screen-free audiobook player.<\/p>",
-        "button_text": "",
-        "button_url": "",
-        "desktop_text_position": "place-self-start text-start",
-        "image_background": "",
-        "image_background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#ffffff",
-        "overlay_button_background": "",
-        "overlay_button_text_color": "",
-        "hot_spot_dot_background": "#ffffff",
-        "hot_spot_dot_text_color": "#000000",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#000000",
-        "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
-      }
-    },
-    "image-with-text-overlay": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "1664424230c4756b0e-0": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "1664424230c4756b0e-1": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Image with text overlay",
-            "heading_tag": "h1"
-          }
-        },
-        "1664424230c4756b0e-2": {
-          "type": "richtext",
-          "disabled": true,
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "1664424230c4756b0e-0",
-        "1664424230c4756b0e-1",
-        "1664424230c4756b0e-2"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/landing-page-how-it-works.png",
-        "mobile_image": "shopify:\/\/shop_images\/landing-page-how-it-works-mobile.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
-    "featured-product": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant-picker": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "buy-buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor",
-        "title",
-        "badges",
-        "price",
-        "description",
-        "variant-picker",
-        "buy-buttons"
-      ],
-      "settings": {
-        "full_width": false,
-        "product": "voxblock-player",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "#ffffff",
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "press_jJ3pDq": {
+      "type": "press",
+      "blocks": {
+        "quote_P9izfR": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_dDdJQh": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_awaEky": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_xQdLyh": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "",
+            "content": "Write some content about what they says about your store.",
+            "show_rating": true,
+            "rating": 4
+          }
+        }
+      },
+      "block_order": [
+        "quote_P9izfR",
+        "quote_dDdJQh",
+        "quote_awaEky",
+        "quote_xQdLyh"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
       }
     }
   },
   "order": [
+    "image_with_text_overlay_mzRBYC",
     "video_TnLHtB",
     "rich_text_K9xkcG",
-    "logo_list_LNWaw9",
-    "hot-spots",
+    "video_N3TaA4",
+    "impact_text_XqyFin",
+    "tabs_DjeVwp",
     "image-with-text-overlay",
-    "featured-product"
+    "newsletter_dKNmAd",
+    "hot-spots",
+    "featured-product",
+    "logo_list_LNWaw9",
+    "multiple_images_with_text_qi7tAC",
+    "press_jJ3pDq"
   ]
 }

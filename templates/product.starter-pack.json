@@ -51,8 +51,21 @@
           "type": "collapsible_text",
           "settings": {
             "title": "Product Details",
-            "content": "<p>Title :<br\/>Author :<br\/>Narrator :<br\/>Publisher:<br\/>Run time:<br\/>Age:<br\/>Language:<br\/>Genre:<br\/>Abridged\/Unabridged:<br\/>Thema Code :<br\/>Reading level :<br\/>Interest level :<br\/>Content subjects :<br\/>Fiction\/Non Fiction:<br\/>Series:<br\/>Characters:<\/p><p><\/p><p><\/p>",
-            "page": ""
+            "content": "<p>{{ product.title }}<\/p>",
+            "page": "voxblock-audiobook-gift-pack"
+          }
+        },
+        "product_variations_JarL4E": {
+          "type": "product_variations",
+          "settings": {
+            "option_name": "Color",
+            "option_value_metafield": "",
+            "products": [
+              "the-julia-donaldson-audiobook-bundle",
+              "the-younger-listeners-audiobook-bundle",
+              "the-roald-dahl-audiobook-bundle"
+            ],
+            "selector_style": "swatch"
           }
         }
       },
@@ -63,7 +76,8 @@
         "variant_picker",
         "bundle_M4k64R",
         "buy_buttons",
-        "collapsible_text_kBDw7a"
+        "collapsible_text_kBDw7a",
+        "product_variations_JarL4E"
       ],
       "settings": {
         "full_width": false,
