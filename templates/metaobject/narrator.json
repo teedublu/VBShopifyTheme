@@ -28,10 +28,103 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "featured_product_VzTNTN": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_A6kUKV": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title_9bBytY": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "price_ttt9Tw": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "description_PrnLTa": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "buy_buttons_ctCVat": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_A6kUKV",
+        "title_9bBytY",
+        "price_ttt9Tw",
+        "description_PrnLTa",
+        "buy_buttons_ctCVat"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.main_book.value }}",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "featured_collection_8w8rGq": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "{{ metaobject.collection.value }}",
+        "hide_empty": true,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
     }
   },
   "order": [
     "breadcrumbs_QBedAb",
-    "rich_text_dggnp8"
+    "rich_text_dggnp8",
+    "featured_product_VzTNTN",
+    "featured_collection_8w8rGq"
   ]
 }
