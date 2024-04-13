@@ -6,7 +6,7 @@
         "subheading_ME6F8j": {
           "type": "subheading",
           "settings": {
-            "text": "Synopsis"
+            "text": "Synopsis of {{ metaobject.t_itle.value }}"
           }
         },
         "heading_Y9kqDK": {
@@ -23,15 +23,28 @@
           "settings": {
             "content": "<p>{{ metaobject.about | metafield_tag }}<\/p>"
           }
+        },
+        "button_xDwDMG": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Buy the audiobook",
+            "url": "{{ metaobject.system.url }}",
+            "background": "",
+            "text_color": ""
+          }
         }
       },
       "block_order": [
         "subheading_ME6F8j",
         "heading_Y9kqDK",
-        "richtext_3eBjTx"
+        "richtext_3eBjTx",
+        "button_xDwDMG"
       ],
       "settings": {
         "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "start",
         "background": "",
@@ -61,6 +74,7 @@
       ],
       "settings": {
         "full_width": false,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "start",
         "background": "",
