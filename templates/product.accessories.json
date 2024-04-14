@@ -3,18 +3,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "liquid_HaW47K": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<style>\n.product-gallery__media {padding: 0px 70px}\n<\/style>"
-          }
-        },
-        "vendor": {
-          "type": "vendor",
-          "disabled": true,
-          "settings": {
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -67,8 +55,6 @@
         }
       },
       "block_order": [
-        "liquid_HaW47K",
-        "vendor",
         "title",
         "badges",
         "price",
