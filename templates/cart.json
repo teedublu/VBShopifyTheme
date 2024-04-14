@@ -34,18 +34,19 @@
     "featured_collection_DD7F86": {
       "type": "featured-collection",
       "settings": {
-        "collection": "audiobooks",
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
         "products": [
 
         ],
         "full_width": true,
-        "stack_products": false,
+        "stack_products": true,
         "show_progress_bar": false,
-        "products_count": 6,
+        "products_count": 4,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Best Sellers",
+        "subheading": "Best sellers",
+        "title": "Starter Packs",
         "content": "",
         "link_url": "",
         "link_text": "View all",
