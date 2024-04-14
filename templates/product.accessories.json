@@ -48,12 +48,6 @@
             "size_chart_page": ""
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -68,25 +62,7 @@
         "description": {
           "type": "description",
           "settings": {
-            "collapse_content": true
-          }
-        },
-        "associated_products_hTYcmk": {
-          "type": "associated_products",
-          "settings": {
-            "title": "Buy it with",
-            "stack_products": true,
-            "products_count": 5,
-            "background": "",
-            "text_color": ""
-          }
-        },
-        "image_fydRzF": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
-            "alignment": "start",
-            "max_width": 500
+            "collapse_content": false
           }
         }
       },
@@ -98,11 +74,8 @@
         "price",
         "separator",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons",
-        "description",
-        "associated_products_hTYcmk",
-        "image_fydRzF"
+        "description"
       ],
       "settings": {
         "full_width": false,
@@ -120,34 +93,6 @@
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
-      }
-    },
-    "featured_collection_igHKRU": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "accessories-for-voxblock",
-        "hide_empty": false,
-        "products": [
-
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "Our Accessories",
-        "content": "",
-        "link_url": "shopify:\/\/collections\/accessories-for-voxblock",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
       }
     },
     "recently_viewed_products_Bpryzy": {
@@ -170,27 +115,10 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
-    },
-    "image_with_text_overlay_aQ9U9p": {
-      "type": "image-with-text-overlay",
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/blue-and-orange-headphones-pattern.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
     }
   },
   "order": [
     "main",
-    "featured_collection_igHKRU",
-    "recently_viewed_products_Bpryzy",
-    "image_with_text_overlay_aQ9U9p"
+    "recently_viewed_products_Bpryzy"
   ]
 }
