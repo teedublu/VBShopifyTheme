@@ -66,6 +66,8 @@
   assign sep1 = "-,-"
   assign crumbs = shop.secure_url | append:sep | append: "Home"
 
+  assign crumbs = crumbs | append: sep1 | append: pages["audiobooks-1"].url | append: sep | append: "All audiobooks"
+
   case page_type
     when 'page' 
       assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: product.type
@@ -91,17 +93,18 @@
       
         comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
         endcomment 
-        case metaobject.system.type  
-          when 'audiobook'  
-            assign list_page = 'audiobooks-1'  
-          else  
-            assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'  
-        endcase  
         
-        assign parent_page = pages[list_page]
+        unless metaobject.system.type == 'audiobook'   
+          assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
+          assign parent_page = pages[list_page] 
+          assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
+        endunless  
+        
+        
 
-      assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
-      assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: metaobject.title
+      
+      assign title = metaobject.title | default : metaobject.name 
+      assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: title
 
     else 
       assign crumbs = crumbs | append: sep1 | append: request.path | append: sep | append: page_title
