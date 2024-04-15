@@ -213,62 +213,109 @@
         "button_text_color": ""
       }
     },
-    "tabs_DjeVwp": {
-      "type": "tabs",
+    "featured_collection_fGBEed": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "a-bear-called-paddington",
+          "famous-five-audiobook-bundle",
+          "james-and-the-giant-peach",
+          "old-bear-and-friends",
+          "the-gruffalo",
+          "the-magic-faraway-tree"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Bestselling Audiobooks",
+        "content": "<p>Add text here<\/p>",
+        "link_url": "shopify:\/\/collections\/audiobooks",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "image_link_blocks_9Yz7Pf": {
+      "type": "image-link-blocks",
       "blocks": {
-        "tab_kHX9ib": {
-          "type": "tab",
+        "item_BJgjGa": {
+          "type": "item",
           "settings": {
-            "title": "Under 5's",
-            "content": "<p>Use this text to share information about your brand with your customers.<\/p>",
-            "page": "",
-            "use_metaobject": "audiobook"
+            "stretch_image": true,
+            "link_text": "Under 5's",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
           }
         },
-        "tab_QeFx9H": {
-          "type": "tab",
+        "item_7mEnVQ": {
+          "type": "item",
           "settings": {
-            "title": "5-8 Years",
-            "content": "<p>Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "page": "",
-            "use_metaobject": ""
+            "stretch_image": true,
+            "link_text": "5-8 Years",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
           }
         },
-        "tab_AqaVp9": {
-          "type": "tab",
+        "item_rg7Mb3": {
+          "type": "item",
           "settings": {
-            "title": "8-10 Years",
-            "content": "<p>Share information about your shipping rates, return policy or contact information.<\/p>",
-            "page": "",
-            "use_metaobject": ""
+            "stretch_image": true,
+            "link_text": "8-10 Years",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
           }
         },
-        "tab_YATFne": {
-          "type": "tab",
+        "item_gEAxpz": {
+          "type": "item",
           "settings": {
-            "title": "10-Teens",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "page": "",
-            "use_metaobject": ""
+            "stretch_image": true,
+            "link_text": "10-Teens",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
           }
         }
       },
       "block_order": [
-        "tab_kHX9ib",
-        "tab_QeFx9H",
-        "tab_AqaVp9",
-        "tab_YATFne"
+        "item_BJgjGa",
+        "item_7mEnVQ",
+        "item_rg7Mb3",
+        "item_gEAxpz"
       ],
       "settings": {
         "full_width": true,
-        "content_size": "medium",
-        "subheading": "Audiobooks",
-        "title": "Discover our audio collection",
-        "first_tab_open": false,
-        "background": "#4cb6ac",
+        "block_size": "large",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
         "background_gradient": "",
-        "text_color": "#fff7f0",
-        "heading_color": "#fff7f0",
+        "text_color": "",
+        "heading_color": "",
         "heading_gradient": ""
       }
     },
@@ -679,7 +726,8 @@
     "rich_text_K9xkcG",
     "video_N3TaA4",
     "impact_text_XqyFin",
-    "tabs_DjeVwp",
+    "featured_collection_fGBEed",
+    "image_link_blocks_9Yz7Pf",
     "image-with-text-overlay",
     "newsletter_dKNmAd",
     "hot-spots",
