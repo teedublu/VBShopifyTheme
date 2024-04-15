@@ -9,10 +9,11 @@
         {%- render 'icon' with 'cart', width: 32, height: 32, stroke_width: 1 -%}
         <span class="count-bubble count-bubble--lg">0</span>
       </div>
-
+      
       <div class="prose">
         <p class="h5">{{ 'cart.general.empty' | t }}</p>
-
+        {% render 'empty-basket-recommended' %}
+        
         {%- assign button_content = 'cart.general.continue_shopping' | t -%}
         {%- render 'button', href: settings.cart_empty_button_link, size: 'xl', content: button_content -%}
       </div>
