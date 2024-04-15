@@ -38,7 +38,7 @@ LIQUID
 
 <div {% render 'section-properties' %}>
   <div class="section-stack">
-    {%- render 'section-header', subheading: "Why no try", heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
+    {%- render 'section-header', subheading: "Have you considered...", heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
 
     <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
       {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
@@ -47,7 +47,7 @@ LIQUID
         <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed is-scrollable">
           <reveal-items selector=".product-list > *">
             <product-list class="product-list">
-              {%- for product in collections['voxblock-starter-packs'].products -%}
+              {%- for product in collections['basket-suggestions'].products -%}
                 {%- render 'product-card', product: product, stacked: false, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
               {%- endfor -%}
             </product-list>
