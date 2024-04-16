@@ -1,70 +1,57 @@
-{%- render 'section-spacing-collapsing' -%}
 
-{%- comment -%}
-------------------------------------------------------------------------------------------------------------------------
-CSS
-------------------------------------------------------------------------------------------------------------------------
-{%- endcomment -%}
+  <div class="cart-drawer__recommendations">
+    <div class="v-stack gap-2.5 sm:gap-4">
+      {% comment %}
+        this is a copy of the code from main-cart that adds suggested items into cart display
+        consider making this a snippet and using in both places
+        pass in title param too
+      {% endcomment %}
 
-<style>
-  #shopify-section-{{ section.id }} .product-list {
-    --product-list-gap: {% if section.settings.stack_products %}{% if 4 == '1' %}var(--grid-gutter){% else %}var(--product-list-row-gap){% endif %} var(--spacing-2){% else %}var(--product-list-row-gap) var(--product-list-column-gap){% endif %};
-    --product-list-items-per-row: {{ 4 | times: 1 }};
-    --product-list-carousel-item-width: 34vw;
-    --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
-  }
+      {%- capture carousel_id -%}cart-drawer-recommendations{%- endcapture -%}
 
-  @media screen and (min-width: 700px) {
-    #shopify-section-{{ section.id }} .product-list {
-      --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
-      --product-list-items-per-row: 2;
-      --product-list-carousel-item-width: 36vw;
-    }
-  }
+      {%- liquid
+        assign horizontal_products_blends = true
+        assign product_card_background = section.settings.product_card_background | default: product.settings.product_card_background
 
-  @media screen and (min-width: 1000px) {
-    #shopify-section-{{ section.id }} .product-list {
-      --product-list-items-per-row: 4;
-      --product-list-carousel-item-width: calc(var(--container-inner-width) / 4 - (var(--product-list-column-gap) / 4 * 4minus: 1 }}));
-    }
-  }
-</style>
+        if product_card_background != 'rgba(0,0,0,0)' and product_card_background != blank and product_card_background != settings.dialog_background
+          assign horizontal_products_blends = false
+        endif
 
-{%- comment -%}
-------------------------------------------------------------------------------------------------------------------------
-LIQUID
-------------------------------------------------------------------------------------------------------------------------
-{%- endcomment -%}
+        assign rendered_recommendations = 0
 
-<div {% render 'section-properties' %}>
-  <div class="section-stack">
-    {%- render 'section-header', subheading: "Have you considered...", heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
+        capture recommendations
+          for recommended_product in collections['basket-suggestions'].products
+            assign item_count_in_cart = cart | line_items_for: recommended_product
 
-    <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
-      {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+            if item_count_in_cart.size == 0
+              render 'horizontal-product', product: recommended_product, show_add_to_cart: true, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color
+              assign rendered_recommendations = rendered_recommendations | plus: 1
+            endif
+          endfor
+        endcapture
+      -%}
 
-      {%- if true  -%}
-        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed is-scrollable">
-          <reveal-items selector=".product-list > *">
-            <product-list class="product-list">
-              {%- for product in collections['basket-suggestions'].products -%}
-                {%- render 'product-card', product: product, stacked: false, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
-              {%- endfor -%}
-            </product-list>
-          </reveal-items>
-        </scroll-carousel>
-
-        {%- if true -%}
-          {%- if true -%}
-            {%- assign default_progress = 4 -%}
-            {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
-          {%- else -%}
-            
+      {%- if rendered_recommendations > 0 -%}
+        <div class="h-stack justify-between gap-4">
+          {%- if section.settings.recommendations_title != blank -%}
+            <p>Have you considered...</p>
           {%- endif -%}
-        {%- endif -%}
-      {%- else -%}
-        
+
+          {%- if rendered_recommendations > 1 -%}
+            <div class="h-stack gap-2 hidden sm:flex">
+              <button is="prev-button" class="circle-chevron hover:colors" aria-controls="{{ carousel_id }}" aria-label="{{ 'general.accessibility.previous' | t | escape }}" disabled>{%- render 'icon' with 'chevron-left-small', direction_aware: true -%}</button>
+              <button is="next-button" class="circle-chevron hover:colors" aria-controls="{{ carousel_id }}" aria-label="{{ 'general.accessibility.next' | t | escape }}">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</button>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if recommendations != blank -%}
+        <scroll-carousel selector=".horizontal-product" id="{{ carousel_id }}" class="horizontal-product-list-carousel {% unless horizontal_products_blends %}separate{% endunless %} scroll-area bleed">
+          <div class="horizontal-product-list {% if horizontal_products_blends %}divide-x{% else %}separate{% endif %}">
+            {{- recommendations -}}
+          </div>
+        </scroll-carousel>
       {%- endif -%}
     </div>
   </div>
-</div>
