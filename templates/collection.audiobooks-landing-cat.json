@@ -11,6 +11,7 @@
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/puzzle-pieces-in-hand.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -26,12 +27,13 @@
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
           "settings": {
-            "position": 33,
+            "position": 5,
             "column_span": "1",
-            "title": "Promote a product or a temporary offer",
-            "content": "",
-            "link_url": "",
-            "link_text": "View all",
+            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "title": "Voxblock audiobook player",
+            "content": "<p>All these audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "link_text": "Lear more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
@@ -41,6 +43,7 @@
         },
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
+          "disabled": true,
           "settings": {
             "position": 4,
             "column_span": "1",
@@ -73,10 +76,50 @@
         "show_filter_values_count": false,
         "open_first_filter_group": false
       }
+    },
+    "image_with_text_overlay_qB9epV": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_JT9FVm": {
+          "type": "heading",
+          "settings": {
+            "text": "The screen-free audiobook player",
+            "heading_tag": "h1"
+          }
+        },
+        "button_pjiV7q": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Click here for more details",
+            "url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_JT9FVm",
+        "button_pjiV7q"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Delivery_Info_Page_Banner.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
     "banner",
-    "main"
+    "main",
+    "image_with_text_overlay_qB9epV"
   ]
 }

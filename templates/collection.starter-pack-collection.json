@@ -1,7 +1,35 @@
 {
   "sections": {
+    "image_with_text_overlay_rapDMw": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_VKNkXm": {
+          "type": "heading",
+          "settings": {
+            "text": "Voxblock Starter Packs",
+            "heading_tag": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VKNkXm"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": true,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Starter_Pack-lifestyle-Hero-Orange.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 22
+      }
+    },
     "banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -22,36 +50,13 @@
     },
     "main": {
       "type": "main-collection",
-      "blocks": {
-        "promotion_video_yUmpiY": {
-          "type": "promotion_video",
-          "settings": {
-            "position": 5,
-            "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-            "title": "How it works",
-            "content": "",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
-            "link_text": "Read more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "promotion_video_yUmpiY"
-      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
         "filter_layout": "horizontal",
-        "show_sort_by": true,
-        "show_filters": true,
+        "show_sort_by": false,
+        "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
         "open_first_filter_group": false
@@ -59,6 +64,7 @@
     }
   },
   "order": [
+    "image_with_text_overlay_rapDMw",
     "banner",
     "main"
   ]

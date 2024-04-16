@@ -77,60 +77,32 @@
         "open_first_filter_group": false
       }
     },
-    "faq_nMUH4U": {
-      "type": "faq",
+    "image_with_text_overlay_rm3BPp": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "item_U49Qan": {
-          "type": "item",
+        "heading_zUPQi8": {
+          "type": "heading",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "text": "The screen-free audiobook player",
+            "heading_tag": "h1"
           }
         },
-        "item_DMti63": {
-          "type": "item",
+        "button_NUpURQ": {
+          "type": "button",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
-          }
-        },
-        "item_BfwVJD": {
-          "type": "item",
-          "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "style": "fill",
+            "size": "lg",
+            "text": "Click here to learn more",
+            "url": "",
+            "background": "",
+            "text_color": ""
           }
         }
       },
       "block_order": [
-        "item_U49Qan",
-        "item_DMti63",
-        "item_BfwVJD"
+        "heading_zUPQi8",
+        "button_NUpURQ"
       ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
-      }
-    },
-    "image_with_text_overlay_rm3BPp": {
-      "type": "image-with-text-overlay",
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -141,14 +113,13 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 46
       }
     }
   },
   "order": [
     "banner",
     "main",
-    "faq_nMUH4U",
     "image_with_text_overlay_rm3BPp"
   ]
 }
