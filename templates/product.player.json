@@ -51,7 +51,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_payment_button": true,
+            "show_payment_button": false,
             "show_gift_card_recipient": false,
             "atc_button_background": "",
             "atc_button_text_color": "",
@@ -62,7 +62,7 @@
         "associated_products_wELabA": {
           "type": "associated_products",
           "settings": {
-            "title": "Add book bundles to get going",
+            "title": "Now add book bundles to get going",
             "stack_products": true,
             "products_count": 4,
             "background": "",
@@ -214,6 +214,11 @@
             "text_color": "#565656"
           }
         },
+        "separator_JnqTiQ": {
+          "type": "separator",
+          "settings": {
+          }
+        },
         "offer_tcaCpM": {
           "type": "offer",
           "settings": {
@@ -263,6 +268,7 @@
         "offer_8",
         "offer_9",
         "offer_10",
+        "separator_JnqTiQ",
         "offer_tcaCpM",
         "offer_wAzmdm"
       ],
