@@ -1,30 +1,91 @@
+<style>
+  .product-list {
+    list-style: none; /* Removes default list styling */
+    padding: 0; /* Removes default padding */
+  }
+  .product-item {
+    display: flex; /* Enables flexbox layout */
+    align-items: center; /* Vertical alignment */
+    margin-bottom: 10px; /* Adds space between items */
+  }
+  .product-image {
+    flex: 0 0 auto; /* Image does not grow or shrink */
+    width: 50px; /* Adjust width as needed */
+    height: auto;
+    margin-right: 10px; /* Adds space between the image and text */
+  }
+  .product-text {
+    flex: 1; /* Takes up the rest of the space */
+    display: flex;
+    flex-direction: column; /* Stacks the title and author/narrator info vertically */
+  }
+  .product-title, .product-authors-narrators {
+    flex: 1; /* Each text section takes equal vertical space */
+  }
+  .product-authors-narrators {
+    font-size: 80%;
+  }
+  .product-authors-narrators a{
+    font-weight: bold;
+  }
+</style>
+
+
 <div class="container">
   <div class="page">
-    <div class="metaobjects index-list">
+    <div class="metaobjects index-list collection">
       {% paginate shop.metaobjects[section.settings.object_type].values  by section.settings.page_size %}
-        <ul>
-          {% for metaobject in shop.metaobjects[section.settings.object_type].values %}
-            <li>
-            {% case section.settings.object_type %}
-              {% when 'audiobook' %}
-                <b>{{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}</b>
+        <ul class="product-list">
+        {% for metaobject in shop.metaobjects[section.settings.object_type].values %}
+          
+          <li class="product-item">
+            <div class="product-image">
+              {% if metaobject.product.value.featured_image %}
+                {% assign image = metaobject.product.value.featured_image %}
+              {% elsif metaobject.photos %}
+                {% assign image = metaobject.photos.value | first %}
+              {% else %}
+                {% assign image = metaobject %}
+              {% endif %}
 
-                (written by : {% for author in metaobject.product.value.metafields.book.authors.value %} 
-                  {{ author.name | link_to: narrator.system.url, class: narrator.system.handle }}{% unless forloop.last %}, {% endunless %}
-                {% endfor %} | 
-                narrated by : {% for narrator in metaobject.product.value.metafields.book.narrators.value %} 
-                  {{ narrator.name | link_to: narrator.system.url, class: narrator.system.handle }}{% unless forloop.last %}, {% endunless %}
-                {% endfor %}
-                )
-               
+              {{ image | image_url: width: 100 | image_tag: alt: metaobject.title.value | escape }}
+              
 
-              {% else %}    
-                {{ metaobject.name.value | link_to: metaobject.system.url, class: section.settings.object_type}}
-            {% endcase %}
-            </li>
-          {% endfor %}
-        </ul>
-        {{- paginate | default_pagination -}}
+            </div>
+            <div class="product-text">
+              {% case section.settings.object_type %}
+                {% when 'audiobook' %}
+                  <div class="product-title">
+                    <b>{{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}</b>
+                  </div>
+                  {% if  metaobject.product.value.metafields.book.authors.value %}
+                    <div class="product-authors-narrators">
+                      Written by: {% for author in metaobject.product.value.metafields.book.authors.value %} 
+                        {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  {% if  metaobject.product.value.metafields.book.narrators.value %}
+                    <div class="product-authors-narrators">
+                      Narrated by: {% for narrator in metaobject.product.value.metafields.book.narrators.value %} 
+                        {{ narrator.name | link_to: narrator.system.url, class: 'narrator' }}{% unless forloop.last %}, {% endunless %}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                {% else %}    
+                  <div class="product-title">{{ metaobject.name.value | link_to: metaobject.system.url, class: section.settings.object_type}}</div>
+              {% endcase %}
+            </div>
+          </li>
+          
+        {% endfor %}
+</ul>
+
+
+        
+
+        {%- render 'pagination', paginate: paginate -%}
 
       {% endpaginate %}
     </div>
