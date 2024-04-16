@@ -510,6 +510,20 @@
     "collection_list_Leiqmh": {
       "type": "collection-list",
       "blocks": {
+        "collection_i6Ah6p": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-funny-audiobooks",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
         "collection_FGjT6X": {
           "type": "collection",
           "settings": {
@@ -544,20 +558,7 @@
           "type": "collection",
           "settings": {
             "collection": "childrens-bedtime-calm-audiobooks",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_i6Ah6p": {
-          "type": "collection",
-          "settings": {
-            "collection": "childrens-family-favourites-audiobooks",
+            "image": "shopify:\/\/shop_images\/Starter_Pack-lifestyle-Hero-Orange.png",
             "subheading": "",
             "title": "",
             "url": "",
@@ -570,10 +571,10 @@
         }
       },
       "block_order": [
+        "collection_i6Ah6p",
         "collection_FGjT6X",
         "collection_8cj9pY",
-        "collection_RPYpar",
-        "collection_i6Ah6p"
+        "collection_RPYpar"
       ],
       "settings": {
         "full_width": true,
