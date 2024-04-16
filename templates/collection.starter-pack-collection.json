@@ -3,45 +3,33 @@
     "image_with_text_overlay_rapDMw": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_KRGjND": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
         "heading_VKNkXm": {
           "type": "heading",
           "settings": {
-            "text": "Voxblock Starter Packs - all you need to start listening",
+            "text": "Voxblock Starter Packs",
             "heading_tag": "h2"
-          }
-        },
-        "richtext_nHb4kJ": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, three audiobooks, a protective bumper and a charging cable.<\/p>"
           }
         }
       },
       "block_order": [
-        "subheading_KRGjND",
-        "heading_VKNkXm",
-        "richtext_nHb4kJ"
+        "heading_VKNkXm"
       ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
+        "allow_transparent_header": true,
+        "enable_parallax": true,
         "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/Starter_Pack-lifestyle-Hero-Orange.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 22
       }
     },
     "banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -67,8 +55,8 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
         "filter_layout": "horizontal",
-        "show_sort_by": true,
-        "show_filters": true,
+        "show_sort_by": false,
+        "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
         "open_first_filter_group": false
