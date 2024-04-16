@@ -1,5 +1,11 @@
 {
   "sections": {
+    "breadcrumbs_KgLCHB": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -45,6 +51,7 @@
       ],
       "settings": {
         "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "center",
         "background": "",
@@ -54,6 +61,7 @@
     }
   },
   "order": [
+    "breadcrumbs_KgLCHB",
     "main",
     "metaobjects_list_83MPdR",
     "rich_text_yMPFRF"
