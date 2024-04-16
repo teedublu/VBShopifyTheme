@@ -510,6 +510,21 @@
     "collection_list_Leiqmh": {
       "type": "collection-list",
       "blocks": {
+        "collection_FGjT6X": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-dinosaurs-audiobooks",
+            "image": "shopify:\/\/shop_images\/Harry_Dinosaurs_Bundle.png",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h3",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#ff9e57",
+            "overlay_opacity": 0
+          }
+        },
         "collection_8cj9pY": {
           "type": "collection",
           "settings": {
@@ -551,27 +566,13 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
-        },
-        "collection_FGjT6X": {
-          "type": "collection",
-          "settings": {
-            "collection": "childrens-dinosaurs-audiobooks",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h3",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#ff9e57",
-            "overlay_opacity": 0
-          }
         }
       },
       "block_order": [
+        "collection_FGjT6X",
         "collection_8cj9pY",
         "collection_RPYpar",
-        "collection_i6Ah6p",
-        "collection_FGjT6X"
+        "collection_i6Ah6p"
       ],
       "settings": {
         "full_width": true,
