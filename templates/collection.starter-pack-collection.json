@@ -1,5 +1,45 @@
 {
   "sections": {
+    "image_with_text_overlay_rapDMw": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_KRGjND": {
+          "type": "subheading",
+          "settings": {
+            "text": ""
+          }
+        },
+        "heading_VKNkXm": {
+          "type": "heading",
+          "settings": {
+            "text": "Voxblock Starter Packs - all you need to start listening",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_nHb4kJ": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, three audiobooks, a protective bumper and a charging cable.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_KRGjND",
+        "heading_VKNkXm",
+        "richtext_nHb4kJ"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "banner": {
       "type": "collection-banner",
       "settings": {
@@ -22,29 +62,6 @@
     },
     "main": {
       "type": "main-collection",
-      "blocks": {
-        "promotion_video_yUmpiY": {
-          "type": "promotion_video",
-          "settings": {
-            "position": 5,
-            "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-            "title": "How it works",
-            "content": "",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
-            "link_text": "Read more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "promotion_video_yUmpiY"
-      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
@@ -59,6 +76,7 @@
     }
   },
   "order": [
+    "image_with_text_overlay_rapDMw",
     "banner",
     "main"
   ]
