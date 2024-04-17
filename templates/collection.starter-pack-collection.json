@@ -17,7 +17,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "enable_parallax": true,
+        "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/Starter_Pack-lifestyle-Hero-Orange.png",
         "mobile_text_position": "place-self-center text-center",
@@ -25,6 +25,40 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 22
+      }
+    },
+    "rich_text_zhKLiA": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_mebDgA": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, three audiobooks, a protective bumper and a charging cable.<\/p>"
+          }
+        },
+        "heading_6NeKGH": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Heading",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "richtext_mebDgA",
+        "heading_6NeKGH"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656"
       }
     },
     "banner": {
@@ -50,6 +84,29 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_video_FFXEJa": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 5,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How it works",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_FFXEJa"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
@@ -61,11 +118,72 @@
         "show_filter_values_count": true,
         "open_first_filter_group": false
       }
+    },
+    "testimonials_n8PqFn": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_8ankzn": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "John S.",
+            "title": "Testimonial 1",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_hDdcgD": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mary U.",
+            "title": "Testimonial 2",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_eNcDWX": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Joshua A.",
+            "title": "Testimonial 3",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_8ankzn",
+        "testimonial_hDdcgD",
+        "testimonial_eNcDWX"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "Testimonials",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
     }
   },
   "order": [
     "image_with_text_overlay_rapDMw",
+    "rich_text_zhKLiA",
     "banner",
-    "main"
+    "main",
+    "testimonials_n8PqFn"
   ]
 }

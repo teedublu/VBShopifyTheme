@@ -16,30 +16,23 @@
             "text": "Voxblock tokens",
             "heading_tag": "h1"
           }
-        },
-        "richtext_pKJ4ED": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>10 tokens = 1 free audiobook<\/p><p>You'll receive a token each time you order an audiobook, and a token collection card with your very first order. When you have collected 10 tokens you can trade your completed collection card in for a free audiobook of your choice.<\/p>"
-          }
         }
       },
       "block_order": [
-        "heading_wyFqaQ",
-        "richtext_pKJ4ED"
+        "heading_wyFqaQ"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
         "enable_parallax": false,
-        "image_size": "auto",
+        "image_size": "sm",
         "image": "shopify:\/\/shop_images\/token-background.png",
         "mobile_image": "shopify:\/\/shop_images\/token-background.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
+        "text_color": "#ff9e57",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 0
       }
     },
     "media_with_text_K79gTA": {
@@ -56,7 +49,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "What are tokens?",
-            "content": "<p>Voxblock tokens can be redeemed for free audiobooks. You will be posted one token for each audiobook ordered. You then add these tokens to your collection card, when you have 10 tokens you can choose a free audiobook. You will receive a collection card with your first order.<\/p>",
+            "content": "<p>10 tokens = 1 free audiobook<\/p><p>Voxblock tokens can be redeemed for free audiobooks. You will be posted one token for each audiobook ordered. You then add these tokens to your collection card, when you have 10 tokens you can choose a free audiobook. You will receive a collection card with your first order.<\/p>",
             "link_text": "",
             "link_url": "",
             "background": "#ffffff",
@@ -164,7 +157,7 @@
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "get in touch",
+        "title": "Get in touch",
         "content": "",
         "text_position": "center",
         "contact_form_size": "small",
