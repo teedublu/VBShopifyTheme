@@ -50,6 +50,29 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_video_FFXEJa": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How it works",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_FFXEJa"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
