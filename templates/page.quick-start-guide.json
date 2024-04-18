@@ -152,6 +152,40 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "media_with_text_CVVViP": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_BK4WxT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/child-drawing-listening-to-the-jungle-book-audiobook.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Ideal for playtime",
+            "content": "<p><strong>Simple to use<\/strong><br\/>Just pick a block, place it in your player and play. No need to rely on grown-ups.<\/p><p><strong>Physical and tactile<\/strong><br\/>Children can collect, display and share their stories - unlike with digital files.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_BK4WxT"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
@@ -159,6 +193,7 @@
     "rich_text_WqbyMU",
     "media_with_text_w3mHEb",
     "custom_html_NYyqaj",
-    "text_with_icons_MTBqBf"
+    "text_with_icons_MTBqBf",
+    "media_with_text_CVVViP"
   ]
 }
