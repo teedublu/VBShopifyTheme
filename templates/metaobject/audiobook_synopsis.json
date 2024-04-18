@@ -21,7 +21,7 @@
         "richtext_3eBjTx": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.about | metafield_tag }}<\/p>"
+            "content": "{{ metaobject.about | metafield_tag }}"
           }
         },
         "button_xDwDMG": {
