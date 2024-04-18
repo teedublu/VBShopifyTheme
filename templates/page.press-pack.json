@@ -7,104 +7,270 @@
         "content_width": "80ch"
       }
     },
-    "rich_text_WqbyMU": {
-      "type": "rich-text",
+    "image_with_text_overlay_iVXBLV": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "heading_UNbn9q": {
+        "heading_DCK9G4": {
           "type": "heading",
           "settings": {
-            "text": "Charging your Voxblock player",
-            "heading_tag": "h1",
-            "text_color": "#ff9e57",
-            "gradient": ""
+            "text": "press pack",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_cmqqgg": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>FOR ALL PRESS REQUESTS, PLEASE CONTACT HELLO@VOXBLOCK.CO.UK<\/p>"
+          }
+        },
+        "button_fhkzGr": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Get in touch",
+            "url": "shopify:\/\/pages\/contact-us",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "heading_UNbn9q"
+        "heading_DCK9G4",
+        "richtext_cmqqgg",
+        "button_fhkzGr"
       ],
       "settings": {
         "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/newspaper-press-pack.jpg",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 12
+      }
+    },
+    "media_with_text_td9zHp": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_bNaJm7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/tom-and-rebecca-voxblock-founders.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Our Story",
+            "content": "<p>Voxblock was founded by Rebecca and Tom, a Swedish-English couple based in Edinburgh. The idea was born after seeing how much their young daughter enjoyed listening to Rebecca's old cassette tapes.<\/p><p>Realising that there was a gap in the market for a contemporary screen free audiobook player, the idea for Voxblock was born.<\/p><p>After many months of experimentation, testing and refining, Voxblock was launched at the 2022 Edinburgh International Book Festival. Our screen free audiobook player and physical audiobooks are now available to purchase from our website, with new titles being added to our library all the time.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_bNaJm7"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_n6Mch7": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cWEUBd": {
+          "type": "heading",
+          "settings": {
+            "text": "Selection of recent press coverage:",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_KDKWYe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><a href=\"https:\/\/news.stv.tv\/v\/edinburgh-mum-launches-childrens-audio-book-project\" target=\"_blank\" title=\"https:\/\/news.stv.tv\/v\/edinburgh-mum-launches-childrens-audio-book-project\">STV News<\/a><\/p><p><a href=\"https:\/\/www.independent.co.uk\/extras\/indybest\/kids\/best-kids-audio-player-books-stories-record-b1200082.html\" target=\"_blank\" title=\"The Independant - Cut down on the kids’ screen time with these audio players for children\">The Independant<\/a><br\/><br\/><a href=\"https:\/\/www.wired.com\/gallery\/best-kids-speakers\/\" target=\"_blank\" title=\"https:\/\/www.wired.com\/gallery\/best-kids-speakers\/\">Wired<\/a><br\/><br\/><a href=\"https:\/\/www.standard.co.uk\/shopping\/esbest\/kids\/best-kids-audio-players-b1067277.html\" target=\"_blank\" title=\"https:\/\/www.standard.co.uk\/shopping\/esbest\/kids\/best-kids-audio-players-b1067277.html\">The Evening Standard<br\/><br\/><\/a><a href=\"https:\/\/www.thetimes.co.uk\/article\/scottish-business-digest-2023-peter-vardy-port-of-aberdeen-bt-voxblock-qgjzbjngq\" target=\"_blank\" title=\"https:\/\/www.thetimes.co.uk\/article\/scottish-business-digest-2023-peter-vardy-port-of-aberdeen-bt-voxblock-qgjzbjngq\">The Times<\/a><\/p><p><a href=\"https:\/\/www.scottishfield.co.uk\/culture\/books\/voxblock-plays-audiobooks-without-a-screen\/\" target=\"_blank\" title=\"https:\/\/www.scottishfield.co.uk\/culture\/books\/voxblock-plays-audiobooks-without-a-screen\/\">Scottish Field<\/a><\/p><p><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cWEUBd",
+        "richtext_KDKWYe"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "center",
-        "background": "",
+        "background": "#fff7f0",
         "background_gradient": "",
         "text_color": ""
       }
     },
-    "media_with_text_UfAAKJ": {
-      "type": "media-with-text",
+    "image_link_blocks_BfTenX": {
+      "type": "image-link-blocks",
       "blocks": {
-        "image_TWj94f": {
-          "type": "image",
+        "item_e4zr6G": {
+          "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/charging_graphic-do-n-dont-01.png",
-            "media_width": 60,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Do",
-            "content": "<ul><li>use the USB C charging cable provided<\/li><\/ul><p><\/p><ul><li>charge using a USB adapter in a wall socket<\/li><\/ul><p><\/p><ul><li>allow the player to charge fully e.g. overnight<\/li><\/ul><p><\/p><ul><li>switch off the player when not in use<\/li><\/ul>",
-            "link_text": "Mains Plug Example",
-            "link_url": "https:\/\/amzn.eu\/d\/aIU6mND",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
+            "image": "shopify:\/\/shop_images\/folder-icon.png",
+            "stretch_image": true,
+            "link_text": "Download all assets",
+            "link_url": "https:\/\/drive.google.com\/file\/d\/1670U4c_iQLs5jVXI9udlGGB6MMcpko9V\/view?usp=sharing",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_qGPngw": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_kids_772c4b5a-4fb9-4c4c-8d00-3c6f60e02edd.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_tUJp7H": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ChildUsingVoxblockPlayer.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_pNX6t6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_creativity.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_9AHNa4": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-choosing_books.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_9LzmJX": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-bedtime_2624e7ab-5645-4ba8-95d3-a9f7a2119752.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_dVghfi": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-holding_product_to_camera.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_dq9Mje": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_zwTDwM": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
           }
         }
       },
       "block_order": [
-        "image_TWj94f"
+        "item_e4zr6G",
+        "item_qGPngw",
+        "item_tUJp7H",
+        "item_pNX6t6",
+        "item_9AHNa4",
+        "item_9LzmJX",
+        "item_dVghfi",
+        "item_dq9Mje",
+        "item_zwTDwM"
       ],
       "settings": {
         "full_width": false,
-        "spacing": "small"
-      }
-    },
-    "media_with_text_UWyjwx": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_KyFwUY": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/charging_graphic-do-n-dont-02.png",
-            "media_width": 60,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Avoid",
-            "content": "<ul><li>laptop chargers<\/li><\/ul><p><\/p><ul><li>charging in the car<\/li><\/ul><p><\/p><ul><li>charging from a USB port <\/li><\/ul>",
-            "link_text": "need more help? contact us",
-            "link_url": "shopify:\/\/pages\/contact-us",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "image_KyFwUY"
-      ],
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
+        "block_size": "medium",
+        "subheading": "",
+        "title": "Press assets",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ff9e57",
+        "heading_color": "",
+        "heading_gradient": ""
       }
     }
   },
   "order": [
     "main",
-    "rich_text_WqbyMU",
-    "media_with_text_UfAAKJ",
-    "media_with_text_UWyjwx"
+    "image_with_text_overlay_iVXBLV",
+    "media_with_text_td9zHp",
+    "rich_text_n6Mch7",
+    "image_link_blocks_BfTenX"
   ]
 }
