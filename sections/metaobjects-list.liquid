@@ -47,7 +47,7 @@
   <div class="page">
     <div class="metaobjects index-list collection">
 
-      {% assign object_type = section.settings.object_type %}{{object_type}}
+      {% assign object_type = section.settings.object_type %}
       {% unless object_type == 'audiobook'  %} 
         {% assign object_type = object_type | append: 's' %}
       {% endunless %}
@@ -71,20 +71,10 @@
         {% endfor %}
       {% endpaginate %}
 
-
-
-      There are {{ objects.size }} {{object_type}} ooo after sorting
-
       {% assign objects = objects | uniq %}
       {% assign objects = objects | sort: 'name' %}
-
-       {{objects.size}} 
       
       <ul class="object-list">
-
-
-
-
         {% for metaobject in objects  %}
           {% assign image = nil %}
           <li class="object-item">
