@@ -6,42 +6,70 @@
         "content_width": "80ch"
       }
     },
-    "media_with_text_Bd9MKk": {
-      "type": "media-with-text",
+    "multi_column_Vej8qr": {
+      "type": "multi-column",
       "blocks": {
-        "image_nNhMBg": {
-          "type": "image",
+        "item_99jCHi": {
+          "type": "item",
           "settings": {
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "Best loved",
+            "image": "shopify:\/\/shop_images\/green-and-white-marbled-coloring.jpg",
+            "column_size": "4",
             "title": "Authors",
-            "content": "<p>We have a wide selection of books written by well known and much loved authors, available in audio.<\/p>",
-            "link_text": "See all authors",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/audiobook-authors",
+            "link_text": "Browse authors",
+            "link_style": "button"
+          }
+        },
+        "item_TG4AWt": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
+            "column_size": "4",
+            "title": "Narrators",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/audiobook-narrators",
+            "link_text": "Browse narrators",
+            "link_style": "button"
+          }
+        },
+        "item_6PhWpF": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/orange-poles-create-a-tunnel.jpg",
+            "column_size": "4",
+            "title": "Titles",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/audiobooks-1",
+            "link_text": "Audiobooks",
+            "link_style": "button"
           }
         }
       },
       "block_order": [
-        "image_nNhMBg"
+        "item_99jCHi",
+        "item_TG4AWt",
+        "item_6PhWpF"
       ],
       "settings": {
-        "full_width": false,
-        "spacing": "small"
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "Audiobook library",
+        "title": "Explore our library",
+        "content": "<p>Our library of audiobooks is growing all the time. Browse in multiple ways the entire catalogue.<\/p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     }
   },
   "order": [
     "main",
-    "media_with_text_Bd9MKk"
+    "multi_column_Vej8qr"
   ]
 }
