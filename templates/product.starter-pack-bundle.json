@@ -20,6 +20,17 @@
             "show_taxes_notice": false
           }
         },
+        "description_bTNpDV": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "separator_PiCLpj": {
+          "type": "separator",
+          "settings": {
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -49,6 +60,7 @@
         },
         "collapsible_text_kBDw7a": {
           "type": "collapsible_text",
+          "disabled": true,
           "settings": {
             "title": "Product Details",
             "content": "<p>{{ product.title }}<\/p>",
@@ -73,6 +85,8 @@
         "title",
         "badges",
         "price",
+        "description_bTNpDV",
+        "separator_PiCLpj",
         "variant_picker",
         "bundle_M4k64R",
         "buy_buttons",
