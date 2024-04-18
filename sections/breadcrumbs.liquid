@@ -66,7 +66,7 @@
   assign sep1 = "-,-"
   assign crumbs = shop.secure_url | append:sep | append: "Home"
 
-  assign crumbs = crumbs | append: sep1 | append: pages["audiobooks-1"].url | append: sep | append: "All audiobooks"
+  assign crumbs = crumbs | append: sep1 | append: pages["audiobook-library"].url | append: sep | append: "Our content"
 
   case page_type
     when 'page' 
