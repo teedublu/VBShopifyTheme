@@ -88,70 +88,6 @@
         "input_text_color": ""
       }
     },
-    "multi_column_8iRRVm": {
-      "type": "multi-column",
-      "blocks": {
-        "item_kNWNd3": {
-          "type": "item",
-          "settings": {
-            "column_size": "3",
-            "title": "Author",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        },
-        "item_w9M8Uf": {
-          "type": "item",
-          "settings": {
-            "column_size": "3",
-            "title": "Narrator",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        },
-        "item_7g9HY6": {
-          "type": "item",
-          "settings": {
-            "column_size": "3",
-            "title": "Column title",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        }
-      },
-      "block_order": [
-        "item_kNWNd3",
-        "item_w9M8Uf",
-        "item_7g9HY6"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_on_mobile": false,
-        "gap": "medium",
-        "text_alignment": "start",
-        "subheading": "About",
-        "title": "{{ metaobject.title.value }}",
-        "content": "<p>{{ metaobject.long_blurb | metafield_tag }}<\/p>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "audiobook_bookdata_wtkEHX": {
-      "type": "audiobook-bookdata",
-      "settings": {
-        "heading": "This is my new section"
-      }
-    },
     "multi_column_audiobooks_WnDPxN": {
       "type": "multi-column-audiobooks",
       "blocks": {
@@ -209,13 +145,18 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "audiobook_bookdata_wtkEHX": {
+      "type": "audiobook-bookdata",
+      "settings": {
+        "heading": "This is my new section"
+      }
     }
   },
   "order": [
     "breadcrumbs_DL4tEL",
     "featured_product_B9E7nQ",
-    "multi_column_8iRRVm",
-    "audiobook_bookdata_wtkEHX",
-    "multi_column_audiobooks_WnDPxN"
+    "multi_column_audiobooks_WnDPxN",
+    "audiobook_bookdata_wtkEHX"
   ]
 }
