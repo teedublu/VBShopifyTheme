@@ -6,39 +6,6 @@
         "content_width": "80ch"
       }
     },
-    "media_with_text_Bd9MKk": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_nNhMBg": {
-          "type": "image",
-          "settings": {
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "Best loved",
-            "title": "Authors",
-            "content": "<p>We have a wide selection of books written by well known and much loved authors, available in audio.<\/p>",
-            "link_text": "See all authors",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_nNhMBg"
-      ],
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
-      }
-    },
     "multi_column_Vej8qr": {
       "type": "multi-column",
       "blocks": {
@@ -103,7 +70,6 @@
   },
   "order": [
     "main",
-    "media_with_text_Bd9MKk",
     "multi_column_Vej8qr"
   ]
 }
