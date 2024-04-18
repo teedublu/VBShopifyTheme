@@ -82,6 +82,7 @@
       "blocks": {
         "links": {
           "type": "links",
+          "disabled": true,
           "settings": {
             "menu": "footer",
             "show_menu_title": true,
@@ -90,6 +91,7 @@
         },
         "links_Vt63JE": {
           "type": "links",
+          "disabled": true,
           "settings": {
             "menu": "mo-pages",
             "show_menu_title": true,
@@ -98,6 +100,7 @@
         },
         "links_rJmKwY": {
           "type": "links",
+          "disabled": true,
           "settings": {
             "menu": "collections",
             "show_menu_title": true,
@@ -106,8 +109,17 @@
         },
         "links_YJcbpi": {
           "type": "links",
+          "disabled": true,
           "settings": {
             "menu": "products",
+            "show_menu_title": true,
+            "menu_title": ""
+          }
+        },
+        "links_n4KUMa": {
+          "type": "links",
+          "settings": {
+            "menu": "help",
             "show_menu_title": true,
             "menu_title": ""
           }
@@ -117,7 +129,8 @@
         "links",
         "links_Vt63JE",
         "links_rJmKwY",
-        "links_YJcbpi"
+        "links_YJcbpi",
+        "links_n4KUMa"
       ],
       "settings": {
         "show_social_media": true,
