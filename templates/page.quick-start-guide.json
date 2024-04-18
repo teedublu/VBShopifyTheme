@@ -186,6 +186,126 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "media_with_text_dJdTbE": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_CcdhD7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/boy-listening-to-audiobook-in-car.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Ideal for adventures",
+            "content": "<p><strong>Robust<br\/><\/strong>Voxblock's tough construction is made to endure all the rough and tumble kids can throw at it.<\/p><p><strong>Portable<\/strong><br\/>Voxblock is small enough to come with you in the car, on a plane, or on a train, and the battery lasts for days with just a single charge.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_CcdhD7"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "media_with_text_B38C7w": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_Ygd3JE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sleeping-child-listening-to-the-secret-garden-audiobook.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Ideal for bedtime",
+            "content": "<p><strong>Bedtime mode<br\/><\/strong>When bedtime mode is enabled, your chosen story will play for 20 minutes before entering standby mode.<\/p><p><strong>Glow-free<\/strong><br\/>No screen means no distracting glow keeping kids awake.<\/p>",
+            "link_text": "Buy now",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_Ygd3JE"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "faq_wtR9Hq": {
+      "type": "faq",
+      "blocks": {
+        "item_3NJzYX": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player require an internet connection?",
+            "content": "<p>Nope. The audio is physically stored on each block, meaning that we are completely connectivity free.<\/p>"
+          }
+        },
+        "item_i6PMdd": {
+          "type": "item",
+          "settings": {
+            "title": "How do I charge the player?",
+            "content": "<p>You can recharge your player using a USB-C cable.<\/p>"
+          }
+        },
+        "item_qawxCR": {
+          "type": "item",
+          "settings": {
+            "title": "I can't find my question",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" target=\"_blank\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_3NJzYX",
+        "item_i6PMdd",
+        "item_qawxCR"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "#ffffff",
+        "button_text_color": "#565656",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#565656"
+      }
     }
   },
   "order": [
@@ -194,6 +314,9 @@
     "media_with_text_w3mHEb",
     "custom_html_NYyqaj",
     "text_with_icons_MTBqBf",
-    "media_with_text_CVVViP"
+    "media_with_text_CVVViP",
+    "media_with_text_dJdTbE",
+    "media_with_text_B38C7w",
+    "faq_wtR9Hq"
   ]
 }
