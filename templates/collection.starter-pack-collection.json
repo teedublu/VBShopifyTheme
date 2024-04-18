@@ -18,32 +18,31 @@
     "rich_text_zhKLiA": {
       "type": "rich-text",
       "blocks": {
+        "heading_6NeKGH": {
+          "type": "heading",
+          "settings": {
+            "text": "Starter Packs",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
         "richtext_mebDgA": {
           "type": "richtext",
           "settings": {
-            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, three audiobooks, a protective bumper and a charging cable.<\/p>"
-          }
-        },
-        "heading_6NeKGH": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>"
           }
         }
       },
       "block_order": [
-        "richtext_mebDgA",
-        "heading_6NeKGH"
+        "heading_6NeKGH",
+        "richtext_mebDgA"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
         "content_width": "large",
-        "text_position": "center",
+        "text_position": "start",
         "background": "",
         "background_gradient": "",
         "text_color": "#565656"
