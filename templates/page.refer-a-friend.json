@@ -97,12 +97,53 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "rich_text_t6b73J": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_gdK9mf": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_NAmneE": {
+          "type": "heading",
+          "settings": {
+            "text": "Heading",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_NKAiFM": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>If you love your Voxblock then your friends will probably too. Give them £10 off a Voxblock Starter Pack and get a free audiobook in the form of a voucher for £13.99.<br\/><br\/>All you need to do is send them your unique referral code to use when they purchase.<br\/><br\/>You'll find this code at the bottom of your most recent email from us, if you can't see it just get in touch on <strong>hello@voxblock.co.uk <\/strong>and we'll send it straight to you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_gdK9mf",
+        "heading_NAmneE",
+        "richtext_NKAiFM"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_XFPhMC",
     "custom_html_hWyWU4",
-    "rich_text_CAC6Gk"
+    "rich_text_CAC6Gk",
+    "rich_text_t6b73J"
   ]
 }
