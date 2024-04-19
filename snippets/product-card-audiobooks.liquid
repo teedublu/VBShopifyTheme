@@ -251,16 +251,14 @@ Supported variables
   </div>
   
   <div class="product-card__row buy-price">
-    <div class="product-card__sample column left">
+
       {%- form 'product', product, is: 'product-form' -%}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
         
-        {%- render 'icon' with 'cart' -%}
+        <label><input type="submit" class="hide-with-svg" /><div class="icon-circle">{%- render 'icon' with 'cart' -%}</div></label>
       {%- endform -%}
-    </div>
-    <div class="product-card__wishlist column left">
-      {%- render 'price-list', product: product, text_alignment: text_alignment -%}
-    </div>
+      {%- render 'price-list', product: product, text_alignment: text_alignment, size: 'lg' -%}
+
   </div>
 
 
