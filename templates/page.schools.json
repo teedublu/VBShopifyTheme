@@ -487,6 +487,65 @@
         "overlay_color": "#000000",
         "overlay_opacity": 30
       }
+    },
+    "testimonials_GwV9jC": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_4DcwR4": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "John S.",
+            "title": "Testimonial 1",
+            "content": "<p><em>“The children are over the moon and it has really enhanced the library space. I'm a huge believer in the power of audiobooks to create readers and they are such an important tool for inclusion. It is the perfect product for schools as it doesn't require the internet and is so simple to use.”<\/em><\/p>"
+          }
+        },
+        "testimonial_bPCkqh": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mary U.",
+            "title": "Testimonial 2",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_ttXJ8J": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Joshua A.",
+            "title": "Testimonial 3",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_4DcwR4",
+        "testimonial_bPCkqh",
+        "testimonial_ttXJ8J"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Testimonials",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
     }
   },
   "order": [
@@ -503,6 +562,7 @@
     "media_with_text_i3BEzb",
     "rich_text_eRwnN4",
     "rich_text_abXbaF",
-    "video_9WpPY6"
+    "video_9WpPY6",
+    "testimonials_GwV9jC"
   ]
 }
