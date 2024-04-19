@@ -151,81 +151,97 @@
         "testimonial_card_text_color": ""
       }
     },
-    "image_link_blocks_REkDKP": {
-      "type": "image-link-blocks",
+    "image_with_text_overlay_kCDwBE": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "item_hWdkAp": {
-          "type": "item",
+        "subheading_FYGfFN": {
+          "type": "subheading",
           "settings": {
-            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "text": "Subheading"
           }
         },
-        "item_AATkUq": {
-          "type": "item",
+        "heading_ftpiYm": {
+          "type": "heading",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
           }
         },
-        "item_BbjhJD": {
-          "type": "item",
+        "richtext_7UgCcQ": {
+          "type": "richtext",
           "settings": {
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_LTcjWB": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
           }
         }
       },
       "block_order": [
-        "item_hWdkAp",
-        "item_AATkUq",
-        "item_BbjhJD",
-        "item_LTcjWB"
+        "subheading_FYGfFN",
+        "heading_ftpiYm",
+        "richtext_7UgCcQ"
       ],
       "settings": {
-        "full_width": false,
-        "block_size": "medium",
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "faq_t9iAtE": {
+      "type": "faq",
+      "blocks": {
+        "item_P64kBq": {
+          "type": "item",
+          "settings": {
+            "title": "Do you ship overseas?",
+            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+          }
+        },
+        "item_d4JLhf": {
+          "type": "item",
+          "settings": {
+            "title": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+          }
+        },
+        "item_Xxne47": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_P64kBq",
+        "item_d4JLhf",
+        "item_Xxne47"
+      ],
+      "settings": {
+        "full_width": true,
         "subheading": "",
-        "title": "#wearevoxblock",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
+        "title": "FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
         "background": "",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
-        "heading_gradient": ""
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     }
   },
@@ -234,6 +250,7 @@
     "banner",
     "main",
     "testimonials_n8PqFn",
-    "image_link_blocks_REkDKP"
+    "image_with_text_overlay_kCDwBE",
+    "faq_t9iAtE"
   ]
 }
