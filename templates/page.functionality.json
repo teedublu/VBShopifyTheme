@@ -167,13 +167,36 @@
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
           }
+        },
+        "image_fQwWyM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/v2-controls-full_visual.png",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-end-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "GET STARTED",
+            "title": "The Controls",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
         }
       },
       "block_order": [
         "image_Pw8tgh",
         "image_3i4Ck9",
         "image_kKLLi4",
-        "image_KdeNWe"
+        "image_KdeNWe",
+        "image_fQwWyM"
       ],
       "settings": {
         "full_width": true,
@@ -309,6 +332,39 @@
         "button_background": "#ff9e57",
         "button_text_color": "#ffffff"
       }
+    },
+    "media_with_text_7QzLNd": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_UMA7kA": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Heading",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_UMA7kA"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
@@ -318,6 +374,7 @@
     "media_with_text_Nc7XeA",
     "slideshow_tcGz4a",
     "faq_LKWFwT",
-    "newsletter_3Wzye8"
+    "newsletter_3Wzye8",
+    "media_with_text_7QzLNd"
   ]
 }
