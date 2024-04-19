@@ -150,12 +150,90 @@
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
       }
+    },
+    "image_link_blocks_REkDKP": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_hWdkAp": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_AATkUq": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_BbjhJD": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_LTcjWB": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "item_hWdkAp",
+        "item_AATkUq",
+        "item_BbjhJD",
+        "item_LTcjWB"
+      ],
+      "settings": {
+        "full_width": false,
+        "block_size": "medium",
+        "subheading": "",
+        "title": "#wearevoxblock",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
     }
   },
   "order": [
     "image_with_text_overlay_rapDMw",
     "banner",
     "main",
-    "testimonials_n8PqFn"
+    "testimonials_n8PqFn",
+    "image_link_blocks_REkDKP"
   ]
 }
