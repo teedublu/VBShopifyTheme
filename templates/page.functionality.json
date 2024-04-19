@@ -41,45 +41,31 @@
         "overlay_opacity": 9
       }
     },
-    "rich_text_iqRhE6": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_EkwnaX": {
-          "type": "heading",
-          "settings": {
-            "text": "The controls",
-            "heading_tag": "h1",
-            "text_color": "#ffb74a",
-            "gradient": ""
-          }
-        },
-        "image_jaxm7P": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/v2-controls-full_visual.png",
-            "width_mode": "full_width",
-            "max_width": 100,
-            "mobile_max_width": 100
-          }
-        }
-      },
-      "block_order": [
-        "heading_EkwnaX",
-        "image_jaxm7P"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "medium",
-        "text_position": "center",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "#ff9e57"
-      }
-    },
     "media_with_text_Nc7XeA": {
       "type": "media-with-text",
       "blocks": {
+        "image_fQwWyM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/v2-controls-full_visual.png",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "GET STARTED",
+            "title": "The Controls",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
         "image_Pw8tgh": {
           "type": "image",
           "settings": {
@@ -167,36 +153,14 @@
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
           }
-        },
-        "image_fQwWyM": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/v2-controls-full_visual.png",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-end-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "GET STARTED",
-            "title": "The Controls",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
         }
       },
       "block_order": [
+        "image_fQwWyM",
         "image_Pw8tgh",
         "image_3i4Ck9",
         "image_kKLLi4",
-        "image_KdeNWe",
-        "image_fQwWyM"
+        "image_KdeNWe"
       ],
       "settings": {
         "full_width": true,
@@ -370,7 +334,6 @@
   "order": [
     "main",
     "image_with_text_overlay_UffLeY",
-    "rich_text_iqRhE6",
     "media_with_text_Nc7XeA",
     "slideshow_tcGz4a",
     "faq_LKWFwT",
