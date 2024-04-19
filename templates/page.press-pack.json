@@ -217,6 +217,7 @@
         "item_dq9Mje": {
           "type": "item",
           "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-kids_choosing_books.jpg",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -229,6 +230,98 @@
         "item_zwTDwM": {
           "type": "item",
           "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-mr-bumble.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_iA8anR": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-gulliver.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_kUBUgp": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-tigerlily.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_iAzGJm": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-baloo.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_Cw8JXJ": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-merlin.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_Je4b84": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-huckleberry.jpg",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_f8VKbe": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-vertical.png",
+            "stretch_image": true,
+            "link_text": "",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_YJnFFi": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-horizontal.png",
             "stretch_image": true,
             "link_text": "",
             "link_url": "",
@@ -248,7 +341,14 @@
         "item_9LzmJX",
         "item_dVghfi",
         "item_dq9Mje",
-        "item_zwTDwM"
+        "item_zwTDwM",
+        "item_iA8anR",
+        "item_kUBUgp",
+        "item_iAzGJm",
+        "item_Cw8JXJ",
+        "item_Je4b84",
+        "item_f8VKbe",
+        "item_YJnFFi"
       ],
       "settings": {
         "full_width": false,
@@ -264,6 +364,74 @@
         "heading_color": "",
         "heading_gradient": ""
       }
+    },
+    "faq_UdwyVf": {
+      "type": "faq",
+      "blocks": {
+        "item_KB36d6": {
+          "type": "item",
+          "settings": {
+            "title": "What is Voxblock?",
+            "content": "<p>Voxblock is a screen free audiobook player for kids. Our content is stored on physical blocks to be played in our player, with no need for apps or wifi.<\/p>"
+          }
+        },
+        "item_idQyqH": {
+          "type": "item",
+          "settings": {
+            "title": "Why is Voxblock screen free?",
+            "content": "<p>We're not anti-screen - we know that phones and tablets can be great educational tools. But we wanted to create a way of listening to audiobooks that's simple, with the focus on the story alone.<\/p>"
+          }
+        },
+        "item_gYbGJR": {
+          "type": "item",
+          "settings": {
+            "title": "I can't find my question",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" target=\"_blank\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_KB36d6",
+        "item_idQyqH",
+        "item_gYbGJR"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#565656"
+      }
+    },
+    "newsletter_6Ticch": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": false,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
@@ -271,6 +439,8 @@
     "image_with_text_overlay_iVXBLV",
     "media_with_text_td9zHp",
     "rich_text_n6Mch7",
-    "image_link_blocks_BfTenX"
+    "image_link_blocks_BfTenX",
+    "faq_UdwyVf",
+    "newsletter_6Ticch"
   ]
 }
