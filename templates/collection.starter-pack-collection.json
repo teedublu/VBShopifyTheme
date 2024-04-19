@@ -2,50 +2,36 @@
   "sections": {
     "image_with_text_overlay_rapDMw": {
       "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_qXzqgD": {
+          "type": "heading",
+          "settings": {
+            "text": "Starter Packs",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_VKjrCY": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qXzqgD",
+        "richtext_VKjrCY"
+      ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": false,
         "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/contact-us-lettering.jpg",
+        "image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
         "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 22
-      }
-    },
-    "rich_text_zhKLiA": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_6NeKGH": {
-          "type": "heading",
-          "settings": {
-            "text": "Starter Packs",
-            "heading_tag": "h1",
-            "text_color": "#ff9e57",
-            "gradient": ""
-          }
-        },
-        "richtext_mebDgA": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_6NeKGH",
-        "richtext_mebDgA"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "large",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#565656"
       }
     },
     "banner": {
@@ -168,7 +154,6 @@
   },
   "order": [
     "image_with_text_overlay_rapDMw",
-    "rich_text_zhKLiA",
     "banner",
     "main",
     "testimonials_n8PqFn"
