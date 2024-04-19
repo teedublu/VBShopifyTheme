@@ -47,10 +47,23 @@
         "overlay_color": "#000000",
         "overlay_opacity": 44
       }
+    },
+    "custom_html_hWyWU4": {
+      "type": "custom-html",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "html": "<p style=\"text-align: center\">Write or copy\/paste HTML code<\/p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "main",
-    "image_with_text_overlay_XFPhMC"
+    "image_with_text_overlay_XFPhMC",
+    "custom_html_hWyWU4"
   ]
 }
