@@ -34,6 +34,7 @@ Supported variables
 {%- endcase -%}
 
 <price-list {% if form_id %}role="region" aria-live="polite"{% endif %} class="price-list {% if size == 'lg' %}price-list--lg{% endif %} {% if text_alignment == 'center' %}justify-center{% endif %}" {{ block.shopify_attributes }}>
+
   {%- if variant != blank -%}
     {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------

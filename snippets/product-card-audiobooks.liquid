@@ -130,17 +130,22 @@ Supported variables
   PRODUCT AUDIO SAMPLE
   --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
-  <div class="product-card__sample">
-    {%- if product.metafields.book.preview -%}
-      <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}">
-        <span class="playpause"></span>
-        <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
-        <span class="sr-only">Play audio sample</span>
-      </button>
-    {%- endif -%}
+
+  <div class="product-card__row sample-wishlist">
+    <div class="product-card__sample column left">
+      {%- if product.metafields.book.preview -%}
+        <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}">
+          <span class="playpause"></span>
+          <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
+          <span class="sr-only">Play audio sample</span>
+        </button>
+      {%- endif -%}
+    </div>
+    <div class="product-card__wishlist column right">
+      {%- render 'icon' with 'picto-love' class:'float-right'-%}
+    </div>
   </div>
-
-
+  {%- comment -%}
   --------------------------------------------------------------------------------------------------------------------
   PRODUCT INFO
   --------------------------------------------------------------------------------------------------------------------
@@ -173,8 +178,7 @@ Supported variables
       {%- else -%}
         <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
       {%- endif -%}
-      
-      {%- render 'price-list', product: product, text_alignment: text_alignment -%}
+
     </div>
 
     {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
@@ -243,6 +247,21 @@ Supported variables
         {%- endif -%}
       {%- endfor -%}
     {%- endif -%}
+
   </div>
+  
+  <div class="product-card__row buy-price">
+    <div class="product-card__sample column left">
+      {%- form 'product', product, is: 'product-form' -%}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        
+        {%- render 'icon' with 'cart' -%}
+      {%- endform -%}
+    </div>
+    <div class="product-card__wishlist column left">
+      {%- render 'price-list', product: product, text_alignment: text_alignment -%}
+    </div>
+  </div>
+
 
 </product-card>

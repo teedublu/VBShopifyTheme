@@ -203,12 +203,16 @@
                         </a>
                       </div>
                     {%- endfor -%}
-                    {%- if product.type == 'audiobooks' -%}
-                      {%- assign show_vendor = true -%}
-                    {%- endif -%}
 
-
-                    {%- render 'product-card', product: product, stacked: true, show_badges: true, show_vendor: show_vendor -%}
+                    {%- case product.type -%}
+                      {%- when 'Audiobooks' -%}
+                        {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true -%}
+                      {%- when 'Audiobooks Bundle' -%}
+                        {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true -%}
+                      {%- else -%}
+                        {%- render 'product-card', product: product, stacked: true, show_badges: true -%}
+                    {%- endcase -%}
+                    
 
 
                   {%- endfor -%}

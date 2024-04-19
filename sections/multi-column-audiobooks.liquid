@@ -8,6 +8,10 @@
     }
   </style>
 
+
+
+
+
   <div {% render 'section-properties' %}>
     <div class="section-stack">
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment -%}
@@ -15,9 +19,21 @@
       <div class="multi-column scroll-area bleed md:unbleed">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
+
+            {%- unless object_type == blank-%}
+              {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
+              {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
+              {%- assign publisher = metaobject.product.value.metafields.book.publisher.value | first  -%}
+
+              {% assign author_photo = author.photos.value | first %}
+
+              {%- assign block.settings.image = author_photo  -%}
+              
+            {%- endunless -%}
+
+
             {%- when 'item' -%}
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
-                {{metaobject.authors}}
 
                 {%- if block.settings.video != blank -%}
                   <video-media autoplay style="--aspect-ratio: {{ block.settings.video.aspect_ratio }}">
@@ -177,6 +193,26 @@
           "id": "image",
           "label": "Image",
           "info": "1400 x 1400px .jpg recommended"
+        },
+        {
+          "type": "select",
+          "id": "object_type",
+          "label": "Type of object to display",
+          "options": [
+            {
+              "value": "author",
+              "label": "Author"
+            },
+            {
+              "value": "narrator",
+              "label": "Narrator"
+            },
+            {
+              "value": "publisher",
+              "label": "Publisher"
+            }
+          ],
+          "default": "3"
         },
         {
           "type": "video",
