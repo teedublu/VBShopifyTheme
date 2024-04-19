@@ -38,27 +38,12 @@
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 44
+        "overlay_opacity": 12
       }
     },
     "rich_text_t6b73J": {
       "type": "rich-text",
       "blocks": {
-        "subheading_gdK9mf": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_NAmneE": {
-          "type": "heading",
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
         "richtext_NKAiFM": {
           "type": "richtext",
           "settings": {
@@ -67,14 +52,12 @@
         }
       },
       "block_order": [
-        "subheading_gdK9mf",
-        "heading_NAmneE",
         "richtext_NKAiFM"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "small",
+        "content_width": "large",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
