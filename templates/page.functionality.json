@@ -67,19 +67,38 @@
         "text_color": "#ff9e57"
       }
     },
-    "image_with_text_overlay_m7xHiE": {
-      "type": "image-with-text-overlay",
+    "media_with_text_Vch4Ya": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_m6nMqp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/v2-controls-full_visual.png",
+            "media_width": 60,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 24,
+            "subheading": "",
+            "title": "",
+            "content": "",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_m6nMqp"
+      ],
       "settings": {
         "full_width": false,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/controls-visuals_1.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "spacing": "small"
       }
     },
     "media_with_text_Nc7XeA": {
@@ -89,7 +108,7 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/bedtime-mode-visuals.png",
-            "media_width": 50,
+            "media_width": 55,
             "media_position": "end",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
@@ -111,14 +130,36 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/back-to-the-start-visual.png",
-            "media_width": 50,
+            "media_width": 55,
             "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 24,
             "subheading": "JUMP INTO STORIES",
             "title": "Choose your chapter",
-            "content": "<p>Use the left and right arrows to navigate between chapters. If you want to jump right to the end of beginning of the audiobook, hold down the arrow till you hear a tone.<\/p>",
+            "content": "<p>Use the left and right arrows to navigate between chapters. If you want to quickly advance through the audio, hold down the left or right arrow.<\/p><p>If you want to jump right to the end of beginning of the audiobook, hold down the main button and press the arrow until you hear a tone.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        },
+        "image_kKLLi4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/v2-controls-travel_mode.png",
+            "media_width": 55,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 24,
+            "subheading": "SAVE YOUR PROGRESS",
+            "title": "Travel mode",
+            "content": "<p>Travel mode allows you to take your Voxblock out and about, without the risk of accidentally skipping any chapters.<\/p><p>Hold both volume buttons until you hear a tone and the status button turns pink. To exit out of Travel mode, hold both volume buttons until it returns to its original colour.<\/p>",
             "link_text": "",
             "link_url": "",
             "background": "#ffffff",
@@ -133,8 +174,8 @@
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/charging_graphic-do-n-dont-02.png",
-            "media_width": 50,
-            "media_position": "end",
+            "media_width": 60,
+            "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 24,
@@ -155,11 +196,12 @@
       "block_order": [
         "image_Pw8tgh",
         "image_3i4Ck9",
+        "image_kKLLi4",
         "image_KdeNWe"
       ],
       "settings": {
-        "full_width": false,
-        "spacing": "small"
+        "full_width": true,
+        "spacing": "none"
       }
     },
     "slideshow_tcGz4a": {
@@ -297,7 +339,7 @@
     "main",
     "image_with_text_overlay_UffLeY",
     "rich_text_iqRhE6",
-    "image_with_text_overlay_m7xHiE",
+    "media_with_text_Vch4Ya",
     "media_with_text_Nc7XeA",
     "slideshow_tcGz4a",
     "faq_LKWFwT",
