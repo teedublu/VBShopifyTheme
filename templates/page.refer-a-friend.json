@@ -20,10 +20,31 @@
           "type": "heading",
           "settings": {
             "text": "Get free audiobooks",
-            "heading_tag": "h1"
+            "heading_tag": "h0"
           }
-        },
-        "richtext_eAPmRb": {
+        }
+      },
+      "block_order": [
+        "subheading_tehtwG",
+        "heading_b74EcT"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify:\/\/shop_images\/book_colleciton_render_26ad172f-10e0-44a2-a9c9-5ddd7aa9cfbb.png",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 12
+      }
+    },
+    "rich_text_t6b73J": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_NKAiFM": {
           "type": "richtext",
           "settings": {
             "content": "<p>If you love your Voxblock then your friends will probably too. Give them £10 off a Voxblock Starter Pack and get a free audiobook in the form of a voucher for £13.99.<br\/><br\/>All you need to do is send them your unique referral code to use when they purchase.<br\/><br\/>You'll find this code at the bottom of your most recent email from us, if you can't see it just get in touch on <strong>hello@voxblock.co.uk <\/strong>and we'll send it straight to you.<\/p>"
@@ -31,21 +52,16 @@
         }
       },
       "block_order": [
-        "subheading_tehtwG",
-        "heading_b74EcT",
-        "richtext_eAPmRb"
+        "richtext_NKAiFM"
       ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/book_colleciton_render_26ad172f-10e0-44a2-a9c9-5ddd7aa9cfbb.png",
-        "mobile_text_position": "place-self-center-start text-start",
-        "desktop_text_position": "sm:place-self-center-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 44
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "custom_html_hWyWU4": {
@@ -102,6 +118,7 @@
   "order": [
     "main",
     "image_with_text_overlay_XFPhMC",
+    "rich_text_t6b73J",
     "custom_html_hWyWU4",
     "rich_text_CAC6Gk"
   ]
