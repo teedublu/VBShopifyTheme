@@ -120,139 +120,6 @@
         "text_color": ""
       }
     },
-    "image_link_blocks_BfTenX": {
-      "type": "image-link-blocks",
-      "blocks": {
-        "item_zwTDwM": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-mr-bumble.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_iA8anR": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-gulliver.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_kUBUgp": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-tigerlily.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_iAzGJm": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-baloo.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_Cw8JXJ": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-merlin.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_Je4b84": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-huckleberry.jpg",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_f8VKbe": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-vertical.png",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_YJnFFi": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-horizontal.png",
-            "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "item_zwTDwM",
-        "item_iA8anR",
-        "item_kUBUgp",
-        "item_iAzGJm",
-        "item_Cw8JXJ",
-        "item_Je4b84",
-        "item_f8VKbe",
-        "item_YJnFFi"
-      ],
-      "settings": {
-        "full_width": false,
-        "block_size": "medium",
-        "subheading": "",
-        "title": "Press assets",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#ff9e57",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
     "faq_UdwyVf": {
       "type": "faq",
       "blocks": {
@@ -587,8 +454,35 @@
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
-        },
-        "image_d6fn6z": {
+        }
+      },
+      "block_order": [
+        "image_DXdpnD",
+        "image_tyPDeV",
+        "image_nEqEHC",
+        "image_TabHXx",
+        "image_DVDAnM",
+        "image_YkKTfp",
+        "image_EefXbP",
+        "image_YkGmCy",
+        "image_hwhHhm",
+        "image_6dtLFk",
+        "image_BrkFtE",
+        "image_RELpwF"
+      ],
+      "settings": {
+        "full_width": true,
+        "reduce_width": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
+    },
+    "media_grid_4nQKae": {
+      "type": "media-grid",
+      "blocks": {
+        "image_EQcET6": {
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/voxblock-logo-merlin.jpg",
@@ -610,13 +504,12 @@
             "overlay_opacity": 0
           }
         },
-        "image_WAhr7L": {
+        "image_8Ve3zN": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-huckleberry.jpg",
             "title": "Download",
             "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-huckleberry.jpg?v=1662384934",
+            "link_url": "",
             "link_text": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_column_span": 1,
@@ -632,19 +525,39 @@
             "overlay_opacity": 0
           }
         },
-        "image_h6xRzq": {
+        "image_4GEx6N": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-vertical.png",
             "title": "Download",
             "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_Logo-teal-vertical.png?v=1662544049",
+            "link_url": "",
             "link_text": "",
             "mobile_text_position": "place-self-center text-center",
             "desktop_column_span": 1,
             "desktop_row_span": 1,
             "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#ffffff",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_GDcYVL": {
+          "type": "image",
+          "settings": {
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
             "background_gradient": "",
             "text_color": "#ffffff",
             "text_gradient": "",
@@ -656,25 +569,14 @@
         }
       },
       "block_order": [
-        "image_DXdpnD",
-        "image_tyPDeV",
-        "image_nEqEHC",
-        "image_TabHXx",
-        "image_DVDAnM",
-        "image_YkKTfp",
-        "image_EefXbP",
-        "image_YkGmCy",
-        "image_hwhHhm",
-        "image_6dtLFk",
-        "image_BrkFtE",
-        "image_RELpwF",
-        "image_d6fn6z",
-        "image_WAhr7L",
-        "image_h6xRzq"
+        "image_EQcET6",
+        "image_8Ve3zN",
+        "image_4GEx6N",
+        "image_GDcYVL"
       ],
       "settings": {
         "full_width": true,
-        "reduce_width": true,
+        "reduce_width": false,
         "desktop_row_height": 290,
         "mobile_row_height": 150,
         "background": "",
@@ -687,9 +589,9 @@
     "image_with_text_overlay_iVXBLV",
     "media_with_text_td9zHp",
     "rich_text_n6Mch7",
-    "image_link_blocks_BfTenX",
     "faq_UdwyVf",
     "newsletter_6Ticch",
-    "media_grid_G9Y6wb"
+    "media_grid_G9Y6wb",
+    "media_grid_4nQKae"
   ]
 }
