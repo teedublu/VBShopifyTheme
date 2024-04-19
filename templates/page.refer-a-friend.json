@@ -66,16 +66,10 @@
         "heading_nKpUeG": {
           "type": "heading",
           "settings": {
-            "text": "Heading",
-            "heading_tag": "h1",
-            "text_color": "",
+            "text": "Not a customer yet?",
+            "heading_tag": "h3",
+            "text_color": "#ff9e57",
             "gradient": ""
-          }
-        },
-        "richtext_WJEPUV": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
           }
         },
         "button_gM4kDa": {
@@ -83,16 +77,15 @@
           "settings": {
             "style": "fill",
             "size": "xl",
-            "text": "Button text",
-            "url": "",
-            "background": "",
-            "text_color": ""
+            "text": "Shop here",
+            "url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
           }
         }
       },
       "block_order": [
         "heading_nKpUeG",
-        "richtext_WJEPUV",
         "button_gM4kDa"
       ],
       "settings": {
