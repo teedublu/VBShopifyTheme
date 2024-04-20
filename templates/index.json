@@ -171,8 +171,8 @@
         "item_xg74WH": {
           "type": "item",
           "settings": {
-            "title": "5000",
-            "subheading": "hours of listening time in 2023",
+            "title": "200",
+            "subheading": "audiobooks in our collection",
             "content": "",
             "button_text": "",
             "button_url": "",
@@ -183,8 +183,8 @@
         "item_46mgdd": {
           "type": "item",
           "settings": {
-            "title": "100%",
-            "subheading": "Showcase a benefit of your product",
+            "title": "3500+",
+            "subheading": "happy Voxblock listeners",
             "content": "",
             "button_text": "",
             "button_url": "",
@@ -448,6 +448,16 @@
         "button_text_color": ""
       }
     },
+    "revealed_image_on_scroll_mgNqPf": {
+      "type": "revealed-image-on-scroll",
+      "settings": {
+        "subheading": "",
+        "title": "Reveal text on scroll",
+        "background": "",
+        "text_color_inside": "#ffffff",
+        "text_color_outside": "#000000"
+      }
+    },
     "hot-spots": {
       "type": "hot-spots",
       "blocks": {
@@ -691,7 +701,7 @@
           "settings": {
             "image_rotation_degrees": -2,
             "subheading": "",
-            "title": "Heading 1",
+            "title": "Building Literacy",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
             "button_url": "",
             "button_text": ""
@@ -702,7 +712,18 @@
           "settings": {
             "image_rotation_degrees": 1.5,
             "subheading": "",
-            "title": "Heading 2",
+            "title": "Connectivity Free",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_GyF79b": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "Ideal Travel Companion",
             "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
             "button_url": "",
             "button_text": ""
@@ -711,7 +732,8 @@
       },
       "block_order": [
         "item_Db3xTP",
-        "item_maJpGC"
+        "item_maJpGC",
+        "item_GyF79b"
       ],
       "settings": {
         "full_width": true,
@@ -731,18 +753,18 @@
           "type": "quote",
           "settings": {
             "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "author": "Simone (April 2024)",
+            "content": "My daughter really enjoys the audiobooks and there is a great selection.",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
           }
         },
         "quote_dDdJQh": {
           "type": "quote",
           "settings": {
             "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "author": "The Independent",
+            "content": "What we found incredibly refreshing is there's no app, no download, no wifi set up...",
             "show_rating": true,
             "rating": 4
           }
@@ -751,18 +773,18 @@
           "type": "quote",
           "settings": {
             "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "author": "Emma (March 2024)",
+            "content": "Great product - looks good, very easy to use and charge but most importantly my son loves it!",
             "show_rating": true,
-            "rating": 4
+            "rating": 5
           }
         },
         "quote_xQdLyh": {
           "type": "quote",
           "settings": {
             "logo_width": 100,
-            "author": "",
-            "content": "Write some content about what they says about your store.",
+            "author": "The Evening Standard",
+            "content": "We love the battery life on the Voxblock, which unlike some other players will last days not hours.",
             "show_rating": true,
             "rating": 4
           }
@@ -798,6 +820,7 @@
     "image_link_blocks_9Yz7Pf",
     "image-with-text-overlay",
     "newsletter_dKNmAd",
+    "revealed_image_on_scroll_mgNqPf",
     "hot-spots",
     "featured-product",
     "logo_list_LNWaw9",
