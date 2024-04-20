@@ -10,6 +10,21 @@
 	width: auto;
 }
 
+/* have added second row to product card so overwrite original span */
+
+
+@media screen and (min-width: 700px) {
+  @supports (grid-template-rows: subgrid) {
+    .product-list > * {
+      grid-row: span 1;
+    }
+  }
+}
+
+/* make smaller bundle images align in center of image block */
+.product-card__figure { align-content: center; }
+
+
 .product-list {
 	gap: 1rem 1rem;
 }
@@ -26,7 +41,9 @@ input.hide-with-svg { display: none;}
 sale-price.text-lg {color: rgb(var(--button-background-primary)); font-weight: 700; }
 
 .price-list { color: rgb(var(--accent)) !important }
-.product-card.audiobooks { row-gap: var(--spacing-2); grid-template-rows: 22fr 2fr 3fr 3fr; align-items: center}
+.product-card.audiobooks { row-gap: var(--spacing-2); grid-template-rows: 2fr 1fr; }
+
+.product-card.audiobooks .product-card__details {display:grid; grid-template-rows: 1fr 1fr 1fr;}
 .product-card__info { padding-top: 0;}
 .product-card__row {display: flex; align-items: center;}
 .column { flex: 50%;}
