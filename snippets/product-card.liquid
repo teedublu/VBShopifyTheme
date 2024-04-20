@@ -14,6 +14,8 @@ Each product type has own product card if needed or product-card-default
     {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true -%}
   {%- when 'Audiobooks Bundle' -%}
     {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true -%}
+  {%- when 'Starter Pack' -%}
+    {%- render 'product-card-default', product: product, stacked: true, show_badges: true -%}
   {%- else -%}
     {%- render 'product-card-default', product: product, stacked: true, show_badges: true -%}
 {%- endcase -%}
