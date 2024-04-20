@@ -10,7 +10,7 @@
 
 
 
-
+WTF
 
   <div {% render 'section-properties' %}>
     <div class="section-stack">
@@ -18,18 +18,18 @@
 
       <div class="multi-column scroll-area bleed md:unbleed">
         {%- for block in section.blocks -%}
+          {%- unless object_type == blank-%}
+            {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
+            {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
+            {%- assign publisher = metaobject.product.value.metafields.book.publisher.value | first  -%}
+
+            {% assign author_photo = author.photos.value | first %}
+
+            {%- assign block.settings.image = author_photo  -%}
+            
+          {%- endunless -%}
+WTF{{block.type}}
           {%- case block.type -%}
-
-            {%- unless object_type == blank-%}
-              {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
-              {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
-              {%- assign publisher = metaobject.product.value.metafields.book.publisher.value | first  -%}
-
-              {% assign author_photo = author.photos.value | first %}
-
-              {%- assign block.settings.image = author_photo  -%}
-              
-            {%- endunless -%}
 
 
             {%- when 'item' -%}
@@ -50,9 +50,9 @@
                       <p class="{{ block.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
                     {%- endif -%}
 
-                    {%- if block.settings.content != blank or block.settings.link_text != blank -%}
+                    
                       <div class="prose">
-                        {{- block.settings.content -}}
+                        {{- author.bio -}}
 
                         {%- if block.settings.link_text != blank -%}
                           <div>
@@ -64,7 +64,7 @@
                           </div>
                         {%- endif -%}
                       </div>
-                    {%- endif -%}
+                    
                   </div>
                 {%- endif -%}
               </div>
