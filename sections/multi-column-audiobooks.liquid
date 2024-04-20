@@ -10,7 +10,7 @@
 
 
 
-WTF
+
 
   <div {% render 'section-properties' %}>
     <div class="section-stack">
@@ -18,19 +18,28 @@ WTF
 
       <div class="multi-column scroll-area bleed md:unbleed">
         {%- for block in section.blocks -%}
-          {%- unless object_type == blank-%}
-            {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
-            {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
-            {%- assign publisher = metaobject.product.value.metafields.book.publisher.value | first  -%}
+          {%- unless block.settings.object_type == blank-%}
+            {% case block.settings.object_type %}
+              {% when 'author %}
+                {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
+              {% when 'narrator %}
+                {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
+              {% when 'publisher %}
+                {%- assign publisher = metaobject.product.value.metafields.book.publisher.value | first  -%}
+            {%- endcase -%}
 
             {% assign author_photo = author.photos.value | first %}
 
             {%- assign block.settings.image = author_photo  -%}
             
           {%- endunless -%}
-WTF{{block.type}}
-          {%- case block.type -%}
 
+          {%- case block.type -%}
+            {%- when 'author' -%}
+              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
+                 {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
+                 {{ author.bio }}
+              </div>
 
             {%- when 'item' -%}
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
@@ -52,7 +61,7 @@ WTF{{block.type}}
 
                     
                       <div class="prose">
-                        {{- author.bio -}}
+                        {{- author.bio | metafield_tag}}
 
                         {%- if block.settings.link_text != blank -%}
                           <div>
@@ -195,26 +204,6 @@ WTF{{block.type}}
           "info": "1400 x 1400px .jpg recommended"
         },
         {
-          "type": "select",
-          "id": "object_type",
-          "label": "Type of object to display",
-          "options": [
-            {
-              "value": "author",
-              "label": "Author"
-            },
-            {
-              "value": "narrator",
-              "label": "Narrator"
-            },
-            {
-              "value": "publisher",
-              "label": "Publisher"
-            }
-          ],
-          "default": "author"
-        },
-        {
           "type": "video",
           "id": "video",
           "label": "Video",
@@ -349,6 +338,11 @@ WTF{{block.type}}
           "default": "12"
         }
       ]
+    },
+    {
+      "type": "author",
+      "name": "Author",
+      "settings": []
     }
   ],
   "presets": [
