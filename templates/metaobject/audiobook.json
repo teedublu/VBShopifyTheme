@@ -145,11 +145,11 @@
       "settings": {
         "full_width": true,
         "author": "wtf",
-        "gap": "medium",
+        "gap": "small",
         "text_alignment": "start",
         "subheading": "About",
-        "title": "Featured content",
-        "content": "<p>Organize content into multiple columns to share useful information to your customers about your products, values...<\/p>",
+        "title": "{{ metaobject.title.value }}",
+        "content": "<p>{{ metaobject.long_blurb | metafield_tag }}<\/p>",
         "background": "",
         "background_gradient": "",
         "text_color": ""
