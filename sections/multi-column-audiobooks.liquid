@@ -31,16 +31,25 @@
               {% assign content = block.settings.content %}
               {% assign title = block.settings.title %}
               {% assign sub_title = block.settings.sub_title %}
+              {% assign image = block.settings.image %}
+              
               
               {%- case block.settings.use_object -%}
                 {%- when 'author' -%}
                   {% assign author = metaobject.product.value.metafields.book.authors.value | first %}
-                  {% assign content = author.bio %}
+                  {% assign content = author.bio | metafield_tag %}
                   {% assign title = author.name %}
+                  {% assign image = author.photos | first %}
+                {%- when 'narrator' -%}
+                  {% assign narrator = metaobject.product.value.metafields.book.narrators.value | first %}
+                  {% assign content = narrator.bio | metafield_tag  %}
+                  {% assign title = narrator.name %}
+                {%- when 'publisher' -%}
+                  {% assign publisher = metaobject.product.value.metafields.book.publisher.value  %}
+                  {% assign content = publisher.bio | metafield_tag  %}
+                  {% assign title = publisher.name %}
               {%- endcase -%}
 
-              {% assign content = block.settings.content %}
-              
 
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
 
@@ -48,9 +57,9 @@
                   <video-media autoplay style="--aspect-ratio: {{ block.settings.video.aspect_ratio }}">
                     {{ block.settings.video | video_tag: playsinline: true, muted: true, loop: true, preload: 'metadata', class: 'rounded' }}
                   </video-media>
-                {%- elsif block.settings.image != blank -%}
+                {%- elsif image != blank -%}
                   {%- capture sizes -%}(max-width: 699px) calc(73vw - 40px), (max-width: 999px) calc(38vw - 64px), calc(min({{ settings.page_width }}px, 100vw) / {{ block.settings.column_size }}){%- endcapture -%}
-                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,800,1000,1200,1400,1600,1800', class: 'rounded' -}}
+                  {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,800,1000,1200,1400,1600,1800', class: 'rounded' -}}
                 {%- endif -%}
 
                 {%- if title != blank or content != blank or block.settings.link_text != blank -%}
@@ -103,12 +112,6 @@
       "label": "Full width",
       "default": true
     },
-    {
-      "type": "text",
-      "id": "author",
-      "label": "Full width",
-      "default": "wtf"
-    }, 
     {
       "type": "select",
       "id": "gap",
