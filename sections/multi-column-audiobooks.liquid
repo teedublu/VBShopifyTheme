@@ -21,9 +21,42 @@
 
           {%- case block.type -%}
             {%- when 'author' -%}
-              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>WTF
-                 {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
-                 {{ author.bio | metafield_tag }}
+              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
+                <div class="v-stack gap-4 text-left">
+                  <p class="h2">Author</p>
+                  <div class="prose">
+                    <div>
+                       {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
+                       {{ author.bio | metafield_tag }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {%- when 'narrator' -%}
+              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
+                <div class="v-stack gap-4 text-left">
+                  <p class="h2">Author</p>
+                  <div class="prose">
+                    <div>
+                       {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
+                       {{ narrator.bio | metafield_tag }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {%- when 'publisher' -%}
+              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
+                <div class="v-stack gap-4 text-left">
+                  <p class="h2">Author</p>
+                  <div class="prose">
+                    <div>
+                       {%- assign publisher = metaobject.product.value.metafields.book.publisher.value -%}
+                       {{ publisher.bio | metafield_tag }}
+                    </div>
+                  </div>
+                </div>
               </div>
 
             {%- when 'item' -%}
@@ -46,8 +79,7 @@
 
                     
                       <div class="prose">
-                        {{- author.bio | metafield_tag}}
-
+                        {{- block.settings.content -}}
                         {%- if block.settings.link_text != blank -%}
                           <div>
                             {%- if block.settings.link_style == 'link' -%}
@@ -327,6 +359,16 @@
     {
       "type": "author",
       "name": "Author",
+      "settings": []
+    },
+    {
+      "type": "narrator",
+      "name": "Narrator",
+      "settings": []
+    },
+    {
+      "type": "publisher",
+      "name": "Publisher",
       "settings": []
     }
   ],
