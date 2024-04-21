@@ -13,53 +13,35 @@
 
 
   <div {% render 'section-properties' %}>
+
     <div class="section-stack">
+
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment -%}
 
       <div class="multi-column scroll-area bleed md:unbleed">
+
+
+
         {%- for block in section.blocks -%}
 
           {%- case block.type -%}
-            {%- when 'author' -%}
-              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
-                <div class="v-stack gap-4 text-left">
-                  <p class="h2">Author</p>
-                  <div class="prose">
-                    <div>
-                       {%- assign author = metaobject.product.value.metafields.book.authors.value | first  -%}
-                       {{ author.bio | metafield_tag }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            {%- when 'narrator' -%}
-              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
-                <div class="v-stack gap-4 text-left">
-                  <p class="h2">Author</p>
-                  <div class="prose">
-                    <div>
-                       {%- assign narrator = metaobject.product.value.metafields.book.narrators.value | first  -%}
-                       {{ narrator.bio | metafield_tag }}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            {%- when 'publisher' -%}
-              <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
-                <div class="v-stack gap-4 text-left">
-                  <p class="h2">Author</p>
-                  <div class="prose">
-                    <div>
-                       {%- assign publisher = metaobject.product.value.metafields.book.publisher.value -%}
-                       {{ publisher.bio | metafield_tag }}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            
 
             {%- when 'item' -%}
+              {% assign content = block.settings.content %}
+              {% assign title = block.settings.title %}
+              {% assign sub_title = block.settings.sub_title %}
+              
+              {%- case block.settings.use_object -%}
+                {%- when 'author' -%}
+                  {% assign author = metaobject.product.value.metafields.book.authors.value | first %}
+                  {% assign content = author.bio %}
+                  {% assign title = author.name %}
+              {%- endcase -%}
+
+              {% assign content = block.settings.content %}
+              
+
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
 
                 {%- if block.settings.video != blank -%}
@@ -71,15 +53,16 @@
                   {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,800,1000,1200,1400,1600,1800', class: 'rounded' -}}
                 {%- endif -%}
 
-                {%- if block.settings.title != blank or block.settings.content != blank or block.settings.link_text != blank -%}
+                {%- if title != blank or content != blank or block.settings.link_text != blank -%}
                   <div class="v-stack gap-4 text-{{ section.settings.text_alignment }}">
-                    {%- if block.settings.title != blank -%}
-                      <p class="{{ block.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    {%- if title != blank -%}
+                      <p class="subheading">{{ sub_title | escape }}</p>
+                      <p class="{{ block.settings.heading_tag }}">{{ title | escape }}</p>
                     {%- endif -%}
 
                     
                       <div class="prose">
-                        {{- block.settings.content -}}
+                        {{- content -}}
                         {%- if block.settings.link_text != blank -%}
                           <div>
                             {%- if block.settings.link_style == 'link' -%}
@@ -121,11 +104,11 @@
       "default": true
     },
     {
-      "type": "checkbox",
-      "id": "stack_on_mobile",
-      "label": "Stack on mobile",
-      "default": false
-    },
+      "type": "text",
+      "id": "author",
+      "label": "Full width",
+      "default": "wtf"
+    }, 
     {
       "type": "select",
       "id": "gap",
@@ -215,6 +198,29 @@
       "name": "Item",
       "settings": [
         {
+          "type": "select",
+          "id": "use_object",
+          "label": "Use object",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "author",
+              "label": "Author"
+            },
+            {
+              "value": "narrator",
+              "label": "Narrator"
+            },
+            {
+              "value": "publisher",
+              "label": "Publisher"
+            }
+          ],
+          "default": "none"
+        },{
           "type": "image_picker",
           "id": "image",
           "label": "Image",
@@ -260,6 +266,12 @@
           "id": "title",
           "label": "Heading",
           "default": "Column title"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "Subtitle",
+          "default": "Column subtitle"
         },
         {
           "type": "select",
