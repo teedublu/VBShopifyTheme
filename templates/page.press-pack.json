@@ -94,107 +94,6 @@
         "spacing": "small"
       }
     },
-    "rich_text_n6Mch7": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_cWEUBd": {
-          "type": "heading",
-          "settings": {
-            "text": "Selection of recent press coverage:",
-            "heading_tag": "h2",
-            "text_color": "#ff9e57",
-            "gradient": ""
-          }
-        },
-        "richtext_KDKWYe": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p><a href=\"https:\/\/news.stv.tv\/v\/edinburgh-mum-launches-childrens-audio-book-project\" target=\"_blank\" title=\"https:\/\/news.stv.tv\/v\/edinburgh-mum-launches-childrens-audio-book-project\">STV News<\/a><\/p><p><a href=\"https:\/\/www.independent.co.uk\/extras\/indybest\/kids\/best-kids-audio-player-books-stories-record-b1200082.html\" target=\"_blank\" title=\"The Independant - Cut down on the kids’ screen time with these audio players for children\">The Independant<\/a><br\/><br\/><a href=\"https:\/\/www.wired.com\/gallery\/best-kids-speakers\/\" target=\"_blank\" title=\"https:\/\/www.wired.com\/gallery\/best-kids-speakers\/\">Wired<\/a><br\/><br\/><a href=\"https:\/\/www.standard.co.uk\/shopping\/esbest\/kids\/best-kids-audio-players-b1067277.html\" target=\"_blank\" title=\"https:\/\/www.standard.co.uk\/shopping\/esbest\/kids\/best-kids-audio-players-b1067277.html\">The Evening Standard<br\/><br\/><\/a><a href=\"https:\/\/www.thetimes.co.uk\/article\/scottish-business-digest-2023-peter-vardy-port-of-aberdeen-bt-voxblock-qgjzbjngq\" target=\"_blank\" title=\"https:\/\/www.thetimes.co.uk\/article\/scottish-business-digest-2023-peter-vardy-port-of-aberdeen-bt-voxblock-qgjzbjngq\">The Times<\/a><\/p><p><a href=\"https:\/\/www.scottishfield.co.uk\/culture\/books\/voxblock-plays-audiobooks-without-a-screen\/\" target=\"_blank\" title=\"https:\/\/www.scottishfield.co.uk\/culture\/books\/voxblock-plays-audiobooks-without-a-screen\/\">Scottish Field<\/a><\/p><p><\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_cWEUBd",
-        "richtext_KDKWYe"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "faq_UdwyVf": {
-      "type": "faq",
-      "blocks": {
-        "item_KB36d6": {
-          "type": "item",
-          "settings": {
-            "title": "What is Voxblock?",
-            "content": "<p>Voxblock is a screen free audiobook player for kids. Our content is stored on physical blocks to be played in our player, with no need for apps or wifi.<\/p>"
-          }
-        },
-        "item_idQyqH": {
-          "type": "item",
-          "settings": {
-            "title": "Why is Voxblock screen free?",
-            "content": "<p>We're not anti-screen - we know that phones and tablets can be great educational tools. But we wanted to create a way of listening to audiobooks that's simple, with the focus on the story alone.<\/p>"
-          }
-        },
-        "item_gYbGJR": {
-          "type": "item",
-          "settings": {
-            "title": "I can't find my question",
-            "content": "<p><a href=\"\/pages\/voxblock-faq\" target=\"_blank\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_KB36d6",
-        "item_idQyqH",
-        "item_gYbGJR"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "FAQs",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
-    },
-    "newsletter_6Ticch": {
-      "type": "newsletter",
-      "settings": {
-        "full_width": true,
-        "show_icon": false,
-        "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
-        "button_text": "Go",
-        "subtext": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
     "media_grid_G9Y6wb": {
       "type": "media-grid",
       "blocks": {
@@ -228,10 +127,10 @@
             "heading_tag": "h5",
             "link_url": "",
             "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
+            "mobile_text_position": "place-self-end-center text-center",
             "desktop_column_span": 1,
             "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
             "background": "#000000",
             "background_gradient": "",
             "text_color": "#ffffff",
@@ -486,6 +385,107 @@
         "background_gradient": ""
       }
     },
+    "rich_text_n6Mch7": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cWEUBd": {
+          "type": "heading",
+          "settings": {
+            "text": "Selection of recent press coverage:",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_KDKWYe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><a href=\"https:\/\/news.stv.tv\/v\/edinburgh-mum-launches-childrens-audio-book-project\" target=\"_blank\" title=\"https:\/\/news.stv.tv\/v\/edinburgh-mum-launches-childrens-audio-book-project\">STV News<\/a><\/p><p><a href=\"https:\/\/www.independent.co.uk\/extras\/indybest\/kids\/best-kids-audio-player-books-stories-record-b1200082.html\" target=\"_blank\" title=\"The Independant - Cut down on the kids’ screen time with these audio players for children\">The Independant<\/a><br\/><br\/><a href=\"https:\/\/www.wired.com\/gallery\/best-kids-speakers\/\" target=\"_blank\" title=\"https:\/\/www.wired.com\/gallery\/best-kids-speakers\/\">Wired<\/a><br\/><br\/><a href=\"https:\/\/www.standard.co.uk\/shopping\/esbest\/kids\/best-kids-audio-players-b1067277.html\" target=\"_blank\" title=\"https:\/\/www.standard.co.uk\/shopping\/esbest\/kids\/best-kids-audio-players-b1067277.html\">The Evening Standard<br\/><br\/><\/a><a href=\"https:\/\/www.thetimes.co.uk\/article\/scottish-business-digest-2023-peter-vardy-port-of-aberdeen-bt-voxblock-qgjzbjngq\" target=\"_blank\" title=\"https:\/\/www.thetimes.co.uk\/article\/scottish-business-digest-2023-peter-vardy-port-of-aberdeen-bt-voxblock-qgjzbjngq\">The Times<\/a><\/p><p><a href=\"https:\/\/www.scottishfield.co.uk\/culture\/books\/voxblock-plays-audiobooks-without-a-screen\/\" target=\"_blank\" title=\"https:\/\/www.scottishfield.co.uk\/culture\/books\/voxblock-plays-audiobooks-without-a-screen\/\">Scottish Field<\/a><\/p><p><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cWEUBd",
+        "richtext_KDKWYe"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_UdwyVf": {
+      "type": "faq",
+      "blocks": {
+        "item_KB36d6": {
+          "type": "item",
+          "settings": {
+            "title": "What is Voxblock?",
+            "content": "<p>Voxblock is a screen free audiobook player for kids. Our content is stored on physical blocks to be played in our player, with no need for apps or wifi.<\/p>"
+          }
+        },
+        "item_idQyqH": {
+          "type": "item",
+          "settings": {
+            "title": "Why is Voxblock screen free?",
+            "content": "<p>We're not anti-screen - we know that phones and tablets can be great educational tools. But we wanted to create a way of listening to audiobooks that's simple, with the focus on the story alone.<\/p>"
+          }
+        },
+        "item_gYbGJR": {
+          "type": "item",
+          "settings": {
+            "title": "I can't find my question",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" target=\"_blank\" title=\"FAQ : all about our screen free audiobook player\"><strong>See all FAQs<\/strong><\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_KB36d6",
+        "item_idQyqH",
+        "item_gYbGJR"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#565656"
+      }
+    },
+    "newsletter_6Ticch": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": false,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
     "media_grid_4nQKae": {
       "type": "media-grid",
       "blocks": {
@@ -598,10 +598,10 @@
     "main",
     "image_with_text_overlay_iVXBLV",
     "media_with_text_td9zHp",
+    "media_grid_G9Y6wb",
     "rich_text_n6Mch7",
     "faq_UdwyVf",
     "newsletter_6Ticch",
-    "media_grid_G9Y6wb",
     "media_grid_4nQKae"
   ]
 }
