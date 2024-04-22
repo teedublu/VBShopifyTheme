@@ -154,10 +154,10 @@
         "heading_rHfzRr"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "allow_transparent_header": false,
         "autoplay": false,
-        "video_size": "md",
+        "video_size": "auto",
         "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff",
@@ -204,258 +204,13 @@
         "impact_text_style": "fill",
         "text_divider": "none",
         "impact_text_size_ratio": 1,
-        "background": "#4cb6ac",
+        "background": "#ff9e57",
         "background_gradient": "",
         "heading_text_color": "#fff7f0",
         "heading_gradient": "",
         "text_color": "#fff7f0",
         "button_background": "",
         "button_text_color": ""
-      }
-    },
-    "featured_collection_fGBEed": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": false,
-        "products": [
-          "a-bear-called-paddington",
-          "famous-five-audiobook-bundle",
-          "james-and-the-giant-peach",
-          "old-bear-and-friends",
-          "the-gruffalo",
-          "the-magic-faraway-tree"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 6,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Bestselling Audiobooks",
-        "content": "<p><strong>There are hundreds of audiobooks in our collection. Ranging from well known classics, to meditation, to facts and learning. Our titles are suitable for toddlers up to teens.<\/strong><\/p>",
-        "link_url": "shopify:\/\/collections\/audiobooks",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "logo_list_3c8aHz": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_7CQymj": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/penguin-audiobook-puiblisher.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_3GcYMF": {
-          "type": "logo",
-          "settings": {
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_KYeWw4": {
-          "type": "logo",
-          "settings": {
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_VCQqJt": {
-          "type": "logo",
-          "settings": {
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_zWctWV": {
-          "type": "logo",
-          "settings": {
-            "logo_width": 120,
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_7CQymj",
-        "logo_3GcYMF",
-        "logo_KYeWw4",
-        "logo_VCQqJt",
-        "logo_zWctWV"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_mobile": false,
-        "title": "",
-        "content": "",
-        "text_alignment": "start",
-        "items_per_row": 5,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
-      }
-    },
-    "image_link_blocks_9Yz7Pf": {
-      "type": "image-link-blocks",
-      "blocks": {
-        "item_BJgjGa": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "Under 5's",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 25
-          }
-        },
-        "item_7mEnVQ": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "5-8 Years",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 25
-          }
-        },
-        "item_rg7Mb3": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "8-10 Years",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 25
-          }
-        },
-        "item_gEAxpz": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "stretch_image": true,
-            "link_text": "10-Teens",
-            "link_url": "",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 25
-          }
-        }
-      },
-      "block_order": [
-        "item_BJgjGa",
-        "item_7mEnVQ",
-        "item_rg7Mb3",
-        "item_gEAxpz"
-      ],
-      "settings": {
-        "full_width": true,
-        "block_size": "large",
-        "subheading": "",
-        "title": "Explore our collection",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "image-with-text-overlay": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "1664424230c4756b0e-0": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "1664424230c4756b0e-1": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Image with text overlay",
-            "heading_tag": "h1"
-          }
-        },
-        "1664424230c4756b0e-2": {
-          "type": "richtext",
-          "disabled": true,
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "1664424230c4756b0e-0",
-        "1664424230c4756b0e-1",
-        "1664424230c4756b0e-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/landing-page-how-it-works.png",
-        "mobile_image": "shopify:\/\/shop_images\/landing-page-how-it-works-mobile.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
-    "newsletter_dKNmAd": {
-      "type": "newsletter",
-      "settings": {
-        "full_width": true,
-        "show_icon": true,
-        "title": "Newsletter",
-        "content": "<p>Find out about new releases, offers and promotions and all things audiobooks.<\/p>",
-        "button_text": "Subscribe",
-        "subtext": "",
-        "background": "#4cb6ac",
-        "background_gradient": "",
-        "text_color": "#fff7f0",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
-    "revealed_image_on_scroll_mgNqPf": {
-      "type": "revealed-image-on-scroll",
-      "settings": {
-        "subheading": "",
-        "title": "Reveal text on scroll",
-        "background": "",
-        "text_color_inside": "#ffffff",
-        "text_color_outside": "#000000"
       }
     },
     "hot-spots": {
@@ -527,85 +282,37 @@
         "hot_spot_content_blur_radius": 3
       }
     },
-    "featured-product": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant-picker": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "buy-buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor",
-        "title",
-        "badges",
-        "price",
-        "description",
-        "variant-picker",
-        "buy-buttons"
-      ],
+    "featured_collection_fGBEed": {
+      "type": "featured-collection",
       "settings": {
-        "full_width": false,
-        "product": "voxblock-player",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "#fff7f0",
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "a-bear-called-paddington",
+          "famous-five-audiobook-bundle",
+          "james-and-the-giant-peach",
+          "old-bear-and-friends",
+          "the-gruffalo",
+          "the-magic-faraway-tree"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Bestselling Audiobooks",
+        "content": "<p><strong>There are hundreds of audiobooks in our collection. Ranging from well known classics, to meditation, to facts and learning. Our titles are suitable for toddlers up to teens.<\/strong><\/p>",
+        "link_url": "shopify:\/\/collections\/audiobooks",
+        "link_text": "View all",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     },
     "logo_list_LNWaw9": {
@@ -693,6 +400,220 @@
         "logo_item_border": ""
       }
     },
+    "image_link_blocks_9Yz7Pf": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_BJgjGa": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "Audiobooks for Under 5's",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        },
+        "item_7mEnVQ": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "Audiobooks for 5-8 Years",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        },
+        "item_rg7Mb3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "Audiobooks for 8-10 Years",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        },
+        "item_gEAxpz": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
+            "stretch_image": true,
+            "link_text": "Audiobooks for 10-Teens",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        }
+      },
+      "block_order": [
+        "item_BJgjGa",
+        "item_7mEnVQ",
+        "item_rg7Mb3",
+        "item_gEAxpz"
+      ],
+      "settings": {
+        "full_width": true,
+        "block_size": "large",
+        "subheading": "",
+        "title": "Explore our collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "image-with-text-overlay": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "1664424230c4756b0e-0": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "1664424230c4756b0e-1": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
+          }
+        },
+        "1664424230c4756b0e-2": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1664424230c4756b0e-0",
+        "1664424230c4756b0e-1",
+        "1664424230c4756b0e-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/landing-page-how-it-works.png",
+        "mobile_image": "shopify:\/\/shop_images\/landing-page-how-it-works-mobile.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "revealed_image_on_scroll_mgNqPf": {
+      "type": "revealed-image-on-scroll",
+      "settings": {
+        "subheading": "",
+        "title": "Reveal text on scroll",
+        "background": "",
+        "text_color_inside": "#ffffff",
+        "text_color_outside": "#000000"
+      }
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant-picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "buy-buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "badges",
+        "price",
+        "description",
+        "variant-picker",
+        "buy-buttons"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
     "multiple_images_with_text_qi7tAC": {
       "type": "multiple-images-with-text",
       "blocks": {
@@ -742,6 +663,22 @@
         "background": "",
         "background_gradient": "",
         "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "newsletter_dKNmAd": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Newsletter",
+        "content": "<p>Find out about new releases, offers and promotions and all things audiobooks.<\/p>",
+        "button_text": "Subscribe",
+        "subtext": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#4cb6ac",
         "button_background": "",
         "button_text_color": ""
       }
@@ -815,16 +752,15 @@
     "rich_text_K9xkcG",
     "video_N3TaA4",
     "impact_text_XqyFin",
+    "hot-spots",
     "featured_collection_fGBEed",
-    "logo_list_3c8aHz",
+    "logo_list_LNWaw9",
     "image_link_blocks_9Yz7Pf",
     "image-with-text-overlay",
-    "newsletter_dKNmAd",
     "revealed_image_on_scroll_mgNqPf",
-    "hot-spots",
     "featured-product",
-    "logo_list_LNWaw9",
     "multiple_images_with_text_qi7tAC",
+    "newsletter_dKNmAd",
     "press_jJ3pDq"
   ]
 }
