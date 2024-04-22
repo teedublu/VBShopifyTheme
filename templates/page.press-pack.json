@@ -94,6 +94,32 @@
         "spacing": "small"
       }
     },
+    "rich_text_JrKhFX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_QF7x4L": {
+          "type": "heading",
+          "settings": {
+            "text": "Press Assets",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_QF7x4L"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "media_grid_G9Y6wb": {
       "type": "media-grid",
       "blocks": {
@@ -592,57 +618,17 @@
         "button_background": "",
         "button_text_color": ""
       }
-    },
-    "rich_text_JrKhFX": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_VL9Vfj": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_QF7x4L": {
-          "type": "heading",
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_HqhwY7": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_VL9Vfj",
-        "heading_QF7x4L",
-        "richtext_HqhwY7"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_iVXBLV",
     "media_with_text_td9zHp",
+    "rich_text_JrKhFX",
     "media_grid_G9Y6wb",
     "media_grid_4nQKae",
     "rich_text_n6Mch7",
     "faq_UdwyVf",
-    "newsletter_6Ticch",
-    "rich_text_JrKhFX"
+    "newsletter_6Ticch"
   ]
 }
