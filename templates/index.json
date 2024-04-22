@@ -114,7 +114,7 @@
         "richtext_n7wzRG": {
           "type": "richtext",
           "settings": {
-            "content": "<h4>Introducing Voxblock, the screen-free, easy-to-use audiobook player, that makes learning and listening fun and engaging. <\/h4>"
+            "content": "<h4>Introducing Voxblock, the <strong>screen-free, easy-to-use<\/strong> audiobook player, that makes <strong>learning and listening fun and engaging<\/strong>. <\/h4>"
           }
         }
       },
@@ -140,29 +140,21 @@
           "type": "play",
           "settings": {
           }
-        },
-        "heading_rHfzRr": {
-          "type": "heading",
-          "settings": {
-            "text": "Video",
-            "heading_tag": "h1"
-          }
         }
       },
       "block_order": [
-        "play_dAmdVr",
-        "heading_rHfzRr"
+        "play_dAmdVr"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
-        "autoplay": false,
-        "video_size": "auto",
+        "autoplay": true,
+        "video_size": "md",
         "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 0
       }
     },
     "impact_text_XqyFin": {
@@ -303,13 +295,13 @@
         "products_per_row_desktop": 3,
         "subheading": "",
         "title": "Bestselling Audiobooks",
-        "content": "<p><strong>There are hundreds of audiobooks in our collection. Ranging from well known classics, to meditation, to facts and learning. Our titles are suitable for toddlers up to teens.<\/strong><\/p>",
+        "content": "<p>There are hundreds of audiobooks in our collection. Ranging from well known classics, to meditation, to facts and learning. Our titles are suitable for toddlers up to teens.<\/p>",
         "link_url": "shopify:\/\/collections\/audiobooks",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "",
+        "heading_color": "#ff9e57",
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
@@ -387,14 +379,14 @@
       "settings": {
         "full_width": true,
         "stack_mobile": false,
-        "title": "",
-        "content": "<h3>Featured in<\/h3>",
+        "title": "Featured in",
+        "content": "",
         "text_alignment": "center",
         "items_per_row": 7,
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "",
+        "heading_color": "#ff9e57",
         "heading_gradient": "",
         "logo_item_background": "",
         "logo_item_border": ""
@@ -473,8 +465,70 @@
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "",
+        "heading_color": "#ff9e57",
         "heading_gradient": ""
+      }
+    },
+    "press_jJ3pDq": {
+      "type": "press",
+      "blocks": {
+        "quote_P9izfR": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Simone (April 2024)",
+            "content": "My daughter really enjoys the audiobooks and there is a great selection.",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_dDdJQh": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "The Independent",
+            "content": "What we found incredibly refreshing is there's no app, no download, no wifi set up...",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_awaEky": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Emma (March 2024)",
+            "content": "Great product - looks good, very easy to use and charge but most importantly my son loves it!",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_xQdLyh": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "The Evening Standard",
+            "content": "We love the battery life on the Voxblock, which unlike some other players will last days not hours.",
+            "show_rating": true,
+            "rating": 4
+          }
+        }
+      },
+      "block_order": [
+        "quote_P9izfR",
+        "quote_dDdJQh",
+        "quote_awaEky",
+        "quote_xQdLyh"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
       }
     },
     "image-with-text-overlay": {
@@ -676,73 +730,39 @@
         "content": "<p>Find out about new releases, offers and promotions and all things audiobooks.<\/p>",
         "button_text": "Subscribe",
         "subtext": "",
-        "background": "#ffffff",
+        "background": "#4cb6ac",
         "background_gradient": "",
-        "text_color": "#4cb6ac",
+        "text_color": "#ffffff",
         "button_background": "",
         "button_text_color": ""
       }
     },
-    "press_jJ3pDq": {
-      "type": "press",
-      "blocks": {
-        "quote_P9izfR": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "Simone (April 2024)",
-            "content": "My daughter really enjoys the audiobooks and there is a great selection.",
-            "show_rating": true,
-            "rating": 5
-          }
-        },
-        "quote_dDdJQh": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "The Independent",
-            "content": "What we found incredibly refreshing is there's no app, no download, no wifi set up...",
-            "show_rating": true,
-            "rating": 4
-          }
-        },
-        "quote_awaEky": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "Emma (March 2024)",
-            "content": "Great product - looks good, very easy to use and charge but most importantly my son loves it!",
-            "show_rating": true,
-            "rating": 5
-          }
-        },
-        "quote_xQdLyh": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "The Evening Standard",
-            "content": "We love the battery life on the Voxblock, which unlike some other players will last days not hours.",
-            "show_rating": true,
-            "rating": 4
-          }
-        }
-      },
-      "block_order": [
-        "quote_P9izfR",
-        "quote_dDdJQh",
-        "quote_awaEky",
-        "quote_xQdLyh"
-      ],
+    "featured_collection_RbaTLW": {
+      "type": "featured-collection",
       "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+
+        ],
         "full_width": true,
-        "content_size": "medium",
-        "background": "#fff7f0",
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     }
   },
@@ -756,11 +776,12 @@
     "featured_collection_fGBEed",
     "logo_list_LNWaw9",
     "image_link_blocks_9Yz7Pf",
+    "press_jJ3pDq",
     "image-with-text-overlay",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
     "multiple_images_with_text_qi7tAC",
     "newsletter_dKNmAd",
-    "press_jJ3pDq"
+    "featured_collection_RbaTLW"
   ]
 }
