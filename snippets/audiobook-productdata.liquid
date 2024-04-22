@@ -1,10 +1,18 @@
 {% comment %}
 This is the table of attributes that is show in the audiobook product
-There is a similar but different one shown in the audiobook page - section/audiobook-bookdata.liquid
+
+This rendered by the section - section/audiobook-bookdata.liquid
+
+Expects product to be passed
+metafields var is shorthand for 'product.metafields.book' to give access to metafields on product
+Can use Audiobook metaobject saved on the product
 {% endcomment %}
 
-{%- assign narrators = book.narrators.value -%}
-{%- assign authors = book.authors.value -%}
+
+{%- assign metafields = product.metafields.book -%}
+{%- assign metaobject = metafields.audiobook -%}
+{%- assign narrators = metafields.narrators.value -%}
+{%- assign authors = metafields.authors.value -%}
 {%- assign characters = book.characters.value -%}
 {%- assign handle = metaobject.system.handle -%}
 {%- assign title = metaobject.product.value.title -%}
@@ -58,30 +66,30 @@ There is a similar but different one shown in the audiobook page - section/audio
       <tr>
          <td>Category</td>
          <td>
-            <ul class="top-level-terms">
-               {% for cat in book.categories.value %}
-                  {%- assign urlencoded = cat | url_encode | lower -%}
-                  {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
-                  {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
-               {% endfor %}
-            </ul>
+            {% for cat in book.categories.value %}
+               {%- assign urlencoded = cat | url_encode | lower -%}
+               {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+               {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
+            {% endfor %}
          </td>
       </tr>
       <tr>
          <td>Release date</td>
-         <td>{{ metaobject.product.value.published_at | date: "%Y-%m-%d" }}</td>
+         <td>{{ product.published_at | date: "%Y-%m-%d" }}</td>
       </tr>
       <tr>
          <td>ISBN</td>
-         <td>{{ metaobject.product.value.metafields.facts.isbn.value | metafield_tag }}</td>
+         <td>{{ product.metafields.facts.isbn.value | metafield_tag }}</td>
       </tr>
       <tr>
          <td>Abdridged</td>
-         <td>{{ book.abridged | metafield_tag }}</td>
+         {%- assign abridged = metafields.abridged -%}
+         <td>{% if abridged %}Yes{% else %}No{% endif %}</td>
       </tr>
       <tr>
          <td>Fiction/Nonfiction</td>
-         <td>{{ book.fiction | metafield_tag }}</td>
+         {%- assign fiction = metafields.fiction -%}
+         <td>{% if fiction %}Fiction{% else %}Nonfiction{% endif %}</td>
       </tr>
       <tr>
          <td>Language</td>
