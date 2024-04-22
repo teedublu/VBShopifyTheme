@@ -99,6 +99,47 @@
         "open_first_filter_group": false
       }
     },
+    "image_with_text_overlay_kCDwBE": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_FYGfFN": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_ftpiYm": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text overlay",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_7UgCcQ": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_FYGfFN",
+        "heading_ftpiYm",
+        "richtext_7UgCcQ"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "testimonials_n8PqFn": {
       "type": "testimonials",
       "blocks": {
@@ -157,63 +198,29 @@
         "full_width": true,
         "stack_testimonials": false,
         "subheading": "",
-        "title": "Testimonials",
+        "title": "Why parents love Voxblock",
         "content": "",
         "link_url": "",
         "link_text": "",
         "background": "",
         "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
         "heading_gradient": "",
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
       }
     },
-    "image_with_text_overlay_kCDwBE": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_FYGfFN": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_ftpiYm": {
-          "type": "heading",
-          "settings": {
-            "text": "Image with text overlay",
-            "heading_tag": "h1"
-          }
-        },
-        "richtext_7UgCcQ": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_FYGfFN",
-        "heading_ftpiYm",
-        "richtext_7UgCcQ"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
-      }
-    },
     "faq_t9iAtE": {
       "type": "faq",
       "blocks": {
+        "item_9TMQ3L": {
+          "type": "item",
+          "settings": {
+            "title": "Question",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>"
+          }
+        },
         "item_d4JLhf": {
           "type": "item",
           "settings": {
@@ -237,6 +244,7 @@
         }
       },
       "block_order": [
+        "item_9TMQ3L",
         "item_d4JLhf",
         "item_Xxne47",
         "item_P64kBq"
@@ -252,7 +260,7 @@
         "button_text": "",
         "button_url": "",
         "text_position": "center",
-        "background": "",
+        "background": "#fff7f0",
         "background_gradient": "",
         "text_color": "#ff9e57",
         "heading_color": "",
@@ -268,8 +276,8 @@
     "image_with_text_overlay_rapDMw",
     "banner",
     "main",
-    "testimonials_n8PqFn",
     "image_with_text_overlay_kCDwBE",
+    "testimonials_n8PqFn",
     "faq_t9iAtE"
   ]
 }
