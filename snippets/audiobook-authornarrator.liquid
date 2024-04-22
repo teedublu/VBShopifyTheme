@@ -5,6 +5,7 @@ There is the table of attributes that can also be shown in the audiobook product
 There is a similar but different one shown in the audiobook page - section/audiobook-bookdata.liquid
 {% endcomment %}
 
+{%- assign book = metaobject.product.value.metafields.book -%}
 {%- assign narrators = book.narrators.value -%}
 {%- assign authors = book.authors.value -%}
 
