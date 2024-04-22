@@ -64,30 +64,6 @@
         "text_color": ""
       }
     },
-    "custom_html_NYyqaj": {
-      "type": "custom-html",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "html": "<iframe src=\"https:\/\/drive.google.com\/file\/d\/1WACd6kTnTyZsXGgwsbsJw6ceA5mkacO6\/preview\" width=\"100%\" height=\"480\" allow=\"autoplay\"><\/iframe>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "custom_html_wtDwxC": {
-      "type": "custom-html",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "html": "<iframe src=\"https:\/\/drive.google.com\/file\/d\/1T_Cok1ENejS4dwebkM0BihvH-arnJ8ZJ\/view?usp=sharing\/preview\" width=\"640\" height=\"480\" allow=\"autoplay\"><\/iframe>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "text_with_icons_MTBqBf": {
       "type": "text-with-icons",
       "blocks": {
@@ -345,19 +321,100 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "media_grid_qtyG3G": {
+      "type": "media-grid",
+      "blocks": {
+        "image_xjqNNE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-player-no-bumper.png",
+            "title": "Quick Start Guide V1",
+            "heading_tag": "h3",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_Quick_Start_Guide_V1.pdf?v=1713799831",
+            "link_text": "Download here",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#ff9e57",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_3JhQrt": {
+          "type": "image",
+          "settings": {
+            "title": "Promote your products",
+            "heading_tag": "h4",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_EnTWfn": {
+          "type": "image",
+          "settings": {
+            "title": "Promote your products",
+            "heading_tag": "h4",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_xjqNNE",
+        "image_3JhQrt",
+        "image_EnTWfn"
+      ],
+      "settings": {
+        "full_width": true,
+        "reduce_width": false,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
     }
   },
   "order": [
     "main",
     "image_with_text_overlay_wWTrqh",
     "rich_text_WqbyMU",
-    "custom_html_NYyqaj",
-    "custom_html_wtDwxC",
     "text_with_icons_MTBqBf",
     "media_with_text_CVVViP",
     "media_with_text_dJdTbE",
     "media_with_text_B38C7w",
     "faq_wtR9Hq",
-    "newsletter_4V8X8B"
+    "newsletter_4V8X8B",
+    "media_grid_qtyG3G"
   ]
 }
