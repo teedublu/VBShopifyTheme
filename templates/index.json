@@ -469,6 +469,68 @@
         "heading_gradient": ""
       }
     },
+    "press_jJ3pDq": {
+      "type": "press",
+      "blocks": {
+        "quote_P9izfR": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Simone (April 2024)",
+            "content": "My daughter really enjoys the audiobooks and there is a great selection.",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_dDdJQh": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "The Independent",
+            "content": "What we found incredibly refreshing is there's no app, no download, no wifi set up...",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_awaEky": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Emma (March 2024)",
+            "content": "Great product - looks good, very easy to use and charge but most importantly my son loves it!",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_xQdLyh": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "The Evening Standard",
+            "content": "We love the battery life on the Voxblock, which unlike some other players will last days not hours.",
+            "show_rating": true,
+            "rating": 4
+          }
+        }
+      },
+      "block_order": [
+        "quote_P9izfR",
+        "quote_dDdJQh",
+        "quote_awaEky",
+        "quote_xQdLyh"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
     "image-with-text-overlay": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -668,73 +730,39 @@
         "content": "<p>Find out about new releases, offers and promotions and all things audiobooks.<\/p>",
         "button_text": "Subscribe",
         "subtext": "",
-        "background": "#ffffff",
+        "background": "#4cb6ac",
         "background_gradient": "",
-        "text_color": "#4cb6ac",
+        "text_color": "#ffffff",
         "button_background": "",
         "button_text_color": ""
       }
     },
-    "press_jJ3pDq": {
-      "type": "press",
-      "blocks": {
-        "quote_P9izfR": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "Simone (April 2024)",
-            "content": "My daughter really enjoys the audiobooks and there is a great selection.",
-            "show_rating": true,
-            "rating": 5
-          }
-        },
-        "quote_dDdJQh": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "The Independent",
-            "content": "What we found incredibly refreshing is there's no app, no download, no wifi set up...",
-            "show_rating": true,
-            "rating": 4
-          }
-        },
-        "quote_awaEky": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "Emma (March 2024)",
-            "content": "Great product - looks good, very easy to use and charge but most importantly my son loves it!",
-            "show_rating": true,
-            "rating": 5
-          }
-        },
-        "quote_xQdLyh": {
-          "type": "quote",
-          "settings": {
-            "logo_width": 100,
-            "author": "The Evening Standard",
-            "content": "We love the battery life on the Voxblock, which unlike some other players will last days not hours.",
-            "show_rating": true,
-            "rating": 4
-          }
-        }
-      },
-      "block_order": [
-        "quote_P9izfR",
-        "quote_dDdJQh",
-        "quote_awaEky",
-        "quote_xQdLyh"
-      ],
+    "featured_collection_RbaTLW": {
+      "type": "featured-collection",
       "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+
+        ],
         "full_width": true,
-        "content_size": "medium",
-        "background": "#fff7f0",
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     }
   },
@@ -748,11 +776,12 @@
     "featured_collection_fGBEed",
     "logo_list_LNWaw9",
     "image_link_blocks_9Yz7Pf",
+    "press_jJ3pDq",
     "image-with-text-overlay",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
     "multiple_images_with_text_qi7tAC",
     "newsletter_dKNmAd",
-    "press_jJ3pDq"
+    "featured_collection_RbaTLW"
   ]
 }
