@@ -207,38 +207,46 @@
     "faq_t9iAtE": {
       "type": "faq",
       "blocks": {
-        "item_P64kBq": {
-          "type": "item",
-          "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
-          }
-        },
         "item_d4JLhf": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "title": "How do I set up my player?",
+            "content": "<p>Depending on the model you can find the on\/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on\/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.<\/p>"
           }
         },
         "item_Xxne47": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "title": "Do I need an internet connection to use my player?",
+            "content": "<p>Nope. We are completely connectivity free.<\/p>"
+          }
+        },
+        "item_P64kBq": {
+          "type": "item",
+          "settings": {
+            "title": "What is the best way to charge my player?",
+            "content": "<ul><li>use the USB C charging cable provided<\/li><li>charge using a USB adapter in a wall socket<\/li><li>allow the player to charge fully e.g. overnight<\/li><li>switch off the player when not in use<\/li><\/ul>"
+          }
+        },
+        "item_P9gXcq": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player come with audiobooks?",
+            "content": "<p>If you want to buy books at the same time as our player, add a bundle or check out our starter packs.<\/p>"
           }
         }
       },
       "block_order": [
-        "item_P64kBq",
         "item_d4JLhf",
-        "item_Xxne47"
+        "item_Xxne47",
+        "item_P64kBq",
+        "item_P9gXcq"
       ],
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "title": "FAQs",
+        "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
@@ -247,13 +255,13 @@
         "text_position": "center",
         "background": "",
         "background_gradient": "",
-        "text_color": "",
+        "text_color": "#ff9e57",
         "heading_color": "",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#565656"
       }
     }
   },
