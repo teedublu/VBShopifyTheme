@@ -7,8 +7,53 @@
         "content_width": "80ch"
       }
     },
+    "image_with_text_overlay_wWTrqh": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_pieg4G": {
+          "type": "subheading",
+          "settings": {
+            "text": "GET STARTED"
+          }
+        },
+        "heading_X4kHpU": {
+          "type": "heading",
+          "settings": {
+            "text": "Quick Start Guide",
+            "heading_tag": "h0"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_pieg4G",
+        "heading_X4kHpU"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify:\/\/shop_images\/shipping-boxes-in-front-of-red-brick.jpg",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
     "rich_text_WqbyMU": {
       "type": "rich-text",
+      "blocks": {
+        "richtext_APjAcn": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Looking for help using the Voxblock screen free audiobook player? Lost the quick start guide that came with it?<\/p><p><\/p><p>Here are the documents you are looking for.<\/p><p><\/p><p>But if you still have questions <a href=\"\/pages\/contact-us\" title=\"Contact us\">you can always contact us.<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_APjAcn"
+      ],
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -17,40 +62,6 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
-    },
-    "media_with_text_w3mHEb": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_tqPzUA": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/shipping-boxes-in-front-of-red-brick.jpg",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Quick Start Guide",
-            "content": "<p>Looking for help using the Voxblock screen free audiobook player? Lost the quick start guide that came with it?<\/p><p><\/p><p>Here are the documents you are looking for.<\/p><p><\/p><p>But if you still have questions <a href=\"\/pages\/contact-us\" title=\"Contact us\">you can always contact us.<\/a><\/p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_tqPzUA"
-      ],
-      "settings": {
-        "full_width": true,
-        "spacing": "none"
       }
     },
     "custom_html_NYyqaj": {
@@ -338,8 +349,8 @@
   },
   "order": [
     "main",
+    "image_with_text_overlay_wWTrqh",
     "rich_text_WqbyMU",
-    "media_with_text_w3mHEb",
     "custom_html_NYyqaj",
     "custom_html_wtDwxC",
     "text_with_icons_MTBqBf",
