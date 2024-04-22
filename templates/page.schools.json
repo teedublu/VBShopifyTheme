@@ -13,39 +13,32 @@
         "subheading_CbiMfw": {
           "type": "subheading",
           "settings": {
-            "text": "Schools"
+            "text": "LEARN WITH VOXBLOCK"
           }
         },
         "heading_GUwPTt": {
           "type": "heading",
           "settings": {
             "text": "Voxblock Schools",
-            "heading_tag": "h1"
-          }
-        },
-        "richtext_hXqkLB": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Our school offer<\/p>"
+            "heading_tag": "h0"
           }
         }
       },
       "block_order": [
         "subheading_CbiMfw",
-        "heading_GUwPTt",
-        "richtext_hXqkLB"
+        "heading_GUwPTt"
       ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
-        "image_size": "auto",
+        "image_size": "md",
         "image": "shopify:\/\/shop_images\/Voxblock_for_Schools_8c0b676b-2caa-448a-aa5a-29f2e7e437da.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 31
       }
     },
     "rich_text_PAeRfb": {

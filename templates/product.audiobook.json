@@ -3,6 +3,14 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "display_metafields": true,
+            "display_categories": true,
+            "display_bookdata": false
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -35,14 +43,6 @@
             "payment_button_text_color": ""
           }
         },
-        "badges": {
-          "type": "badges",
-          "settings": {
-            "display_metafields": true,
-            "display_categories": true,
-            "display_bookdata": true
-          }
-        },
         "description": {
           "type": "description",
           "disabled": true,
@@ -52,11 +52,11 @@
         }
       },
       "block_order": [
+        "badges",
         "title",
         "price",
         "audiobook_properties_cU6Htk",
         "buy_buttons",
-        "badges",
         "description"
       ],
       "settings": {

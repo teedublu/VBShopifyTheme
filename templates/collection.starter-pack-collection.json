@@ -3,11 +3,17 @@
     "image_with_text_overlay_rapDMw": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "subheading_QRVg3f": {
+          "type": "subheading",
+          "settings": {
+            "text": "BEST VALUE"
+          }
+        },
         "heading_qXzqgD": {
           "type": "heading",
           "settings": {
             "text": "Starter Packs",
-            "heading_tag": "h1"
+            "heading_tag": "h0"
           }
         },
         "richtext_VKjrCY": {
@@ -18,6 +24,7 @@
         }
       },
       "block_order": [
+        "subheading_QRVg3f",
         "heading_qXzqgD",
         "richtext_VKjrCY"
       ],
@@ -27,7 +34,7 @@
         "enable_parallax": false,
         "image_size": "sm",
         "image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
-        "mobile_text_position": "place-self-center text-center",
+        "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
