@@ -462,10 +462,10 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "John S.",
-            "title": "Testimonial 1",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+            "rating": 5,
+            "author": "Kaz",
+            "title": "Amazing product",
+            "content": "<p>Amazing product! I’d looked at other types of audiobook players for my 6 year old but the books were only designed for young readers. I came across Voxblock and I’m so impressed. A wide variety of books suitable for young right up to teenagers. Really easy to use, volume and charge lasts a long time. My son was thrilled to receive his player for Christmas and we’ve now got great book ideas to get for his birthday. Fantastic quick delivery when I ordered right before Christmas and came quickly. Brilliant product, highly recommended.<\/p>"
           }
         },
         "testimonial_8YJAfa": {
@@ -474,9 +474,9 @@
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Mary U.",
-            "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+            "author": "Cob200",
+            "title": "Would highly recommend Voxblock",
+            "content": "<p>As soon as we gave the Voxblock to our nearly 8 year old grandson he loved it. No more tablet or watching dvd's, when we are in the car, he just sits and listens to his audiobooks. We found out when we bought the book that the audiobook follows the book so my grandson can now follow the written word while listening to the same story. Would highly recommend.<br\/>Would also like to say that their Customer Care is Outstanding. We had an issue with an order being delivered to the wrong address by Royal Mail. The Voxblock Customer Care team were superb in dealing with this issue.<\/p>"
           }
         },
         "testimonial_VLeHGP": {
@@ -484,17 +484,29 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "Joshua A.",
-            "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+            "rating": 5,
+            "author": "BEVERLEY Walton",
+            "title": "Absolutely fab product!",
+            "content": "<p>Absolutely fab product!<br\/>Brought for 7 year old - love the fact this has older books available as felt some of its competitors were very much pre school KS1.<br\/>Love the simplicity, reasonable price, solid device but LOVE the little book cartridges as still feels like choosing a book. Also provides opportunity to discuss the features of a book \/<br\/>Title, blurb, author etc.<br\/>Highly recommend!<br\/>Ps the sleep function is also brill!<\/p>"
+          }
+        },
+        "testimonial_xPTFQ7": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Kevin Seeruthun",
+            "title": "Genuinely one of the standout products…",
+            "content": "<p>While everything is switching to online always connected wireless and Bluetooth enabled, Voxblock's are going the other way.<br\/>The player connects via USB-C for easy recharging and requires no internet, WiFi or Bluetooth connection. The 'books' can be hot swapped out for another book and the device remembers where you stopped listening.<br\/>There is a rather impressive list of books available for all ages, with a range also available for adults, who want to disconnect.<br\/>My kids love there Voxblocks and rarely put them down. We've had ours nearly a year and the enthusiasm for it shows no signs of waining.<\/p>"
           }
         }
       },
       "block_order": [
         "testimonial_GfEg9L",
         "testimonial_8YJAfa",
-        "testimonial_VLeHGP"
+        "testimonial_VLeHGP",
+        "testimonial_xPTFQ7"
       ],
       "settings": {
         "full_width": true,
@@ -616,35 +628,43 @@
         "item_ybUnkH": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "title": "How do I set up my player?",
+            "content": "<p>Depending on the model you can find the on\/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on\/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.<\/p>"
           }
         },
         "item_zBxp3t": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "title": "What stories are available?",
+            "content": "<p>Our library audiobooks is aimed at children 3 and up. We are adding new stories all the time, and will be constantly adding new titles to keep the choice of stories fresh and exciting.<\/p>"
           }
         },
         "item_J79MfC": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "title": "What is the best way to charge my player?",
+            "content": "<ul><li>use the USB C charging cable provided<\/li><li>charge using a USB adapter in a wall socket<\/li><li>allow the player to charge fully e.g. overnight<\/li><li>switch off the player when not in use<\/li><\/ul>"
+          }
+        },
+        "item_yMd3fQ": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player come with audiobooks?",
+            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>"
           }
         }
       },
       "block_order": [
         "item_ybUnkH",
         "item_zBxp3t",
-        "item_J79MfC"
+        "item_J79MfC",
+        "item_yMd3fQ"
       ],
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "title": "FAQs",
+        "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
@@ -653,13 +673,13 @@
         "text_position": "center",
         "background": "",
         "background_gradient": "",
-        "text_color": "",
+        "text_color": "#ff9e57",
         "heading_color": "",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#565656"
       }
     }
   },

@@ -3,6 +3,14 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "display_metafields": true,
+            "display_categories": true,
+            "display_bookdata": false
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -24,6 +32,11 @@
             "border_width": 0
           }
         },
+        "author_narrator_yb9X3i": {
+          "type": "author_narrator",
+          "settings": {
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -35,14 +48,6 @@
             "payment_button_text_color": ""
           }
         },
-        "badges": {
-          "type": "badges",
-          "settings": {
-            "display_metafields": true,
-            "display_categories": true,
-            "display_bookdata": true
-          }
-        },
         "description": {
           "type": "description",
           "disabled": true,
@@ -52,11 +57,12 @@
         }
       },
       "block_order": [
+        "badges",
         "title",
         "price",
         "audiobook_properties_cU6Htk",
+        "author_narrator_yb9X3i",
         "buy_buttons",
-        "badges",
         "description"
       ],
       "settings": {
@@ -245,29 +251,37 @@
         "item_ybUnkH": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "title": "How do I listen to Voxblock audiobooks?",
+            "content": "<p>To listen to our stories, you'll need to purchase a <a href=\"https:\/\/voxblock.co.uk\/pages\/player\" title=\"The screen free audiobook player\">Voxblock audiobook player<\/a>.<\/p>"
           }
         },
         "item_zBxp3t": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "title": "Will I lose my place in the story if I remove a block?",
+            "content": "<p>No, the player will return to the same point next time you listen to that story.<\/p>"
           }
         },
         "item_J79MfC": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "title": "What other stories are available?",
+            "content": "<p>In addition to {{ product.title }} we have a growing library of world-class stories for children aged three and up.<\/p>"
+          }
+        },
+        "item_He9eGe": {
+          "type": "item",
+          "settings": {
+            "title": "What are the blocks made of?",
+            "content": "<p>Our audiobook blocks are made of recycled card.<\/p>"
           }
         }
       },
       "block_order": [
         "item_ybUnkH",
         "item_zBxp3t",
-        "item_J79MfC"
+        "item_J79MfC",
+        "item_He9eGe"
       ],
       "settings": {
         "full_width": true,

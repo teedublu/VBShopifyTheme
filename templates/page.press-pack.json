@@ -10,11 +10,17 @@
     "image_with_text_overlay_iVXBLV": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "subheading_GLytEb": {
+          "type": "subheading",
+          "settings": {
+            "text": "MEDIA"
+          }
+        },
         "heading_DCK9G4": {
           "type": "heading",
           "settings": {
-            "text": "press pack",
-            "heading_tag": "h1"
+            "text": "Press Pack",
+            "heading_tag": "h0"
           }
         },
         "richtext_cmqqgg": {
@@ -36,21 +42,22 @@
         }
       },
       "block_order": [
+        "subheading_GLytEb",
         "heading_DCK9G4",
         "richtext_cmqqgg",
         "button_fhkzGr"
       ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
-        "image_size": "auto",
+        "image_size": "md",
         "image": "shopify:\/\/shop_images\/newspaper-press-pack.jpg",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 12
+        "overlay_opacity": 20
       }
     },
     "media_with_text_td9zHp": {
@@ -85,6 +92,430 @@
       "settings": {
         "full_width": false,
         "spacing": "small"
+      }
+    },
+    "rich_text_JrKhFX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_QF7x4L": {
+          "type": "heading",
+          "settings": {
+            "text": "Press Assets",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_QF7x4L"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_grid_G9Y6wb": {
+      "type": "media-grid",
+      "blocks": {
+        "image_DXdpnD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/folder-icon.png",
+            "title": "Download all",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/drive.google.com\/file\/d\/1670U4c_iQLs5jVXI9udlGGB6MMcpko9V\/view?usp=sharing",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_tyPDeV": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_kids_772c4b5a-4fb9-4c4c-8d00-3c6f60e02edd.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_nEqEHC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/ChildUsingVoxblockPlayer.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_TabHXx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_creativity.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-colouring.jpg?v=1662389724",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_DVDAnM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-choosing_books.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_YkKTfp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-bedtime_2624e7ab-5645-4ba8-95d3-a9f7a2119752.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-bedtime.jpg?v=1662389725",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_EefXbP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-holding_product_to_camera.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_YkGmCy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock-kids_choosing_books.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-playtime.jpg?v=1662389727",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_hwhHhm": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-mr-bumble.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-mr-bumble.jpg?v=1662384934",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_6dtLFk": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-gulliver.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-gulliver.jpg?v=1662385037",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_BrkFtE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-tigerlily.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-tigerlily.jpg?v=1662384934",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_RELpwF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-baloo.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-baloo.jpg?v=1662385037",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_DXdpnD",
+        "image_tyPDeV",
+        "image_nEqEHC",
+        "image_TabHXx",
+        "image_DVDAnM",
+        "image_YkKTfp",
+        "image_EefXbP",
+        "image_YkGmCy",
+        "image_hwhHhm",
+        "image_6dtLFk",
+        "image_BrkFtE",
+        "image_RELpwF"
+      ],
+      "settings": {
+        "full_width": true,
+        "reduce_width": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
+    },
+    "media_grid_4nQKae": {
+      "type": "media-grid",
+      "blocks": {
+        "image_EQcET6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-merlin.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-merlin.jpg?v=1662384934",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_8Ve3zN": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock-logo-huckleberry.jpg",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-huckleberry.jpg?v=1662384934",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_4GEx6N": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-vertical.png",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_Logo-teal-vertical.png?v=1662544049",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_GDcYVL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-horizontal.png",
+            "title": "Download",
+            "heading_tag": "h5",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_Logo-teal-horizontal.png?v=1662544049",
+            "link_text": "",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_EQcET6",
+        "image_8Ve3zN",
+        "image_4GEx6N",
+        "image_GDcYVL"
+      ],
+      "settings": {
+        "full_width": true,
+        "reduce_width": false,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
       }
     },
     "rich_text_n6Mch7": {
@@ -181,409 +612,11 @@
         "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
         "button_text": "Go",
         "subtext": "",
-        "background": "",
+        "background": "#fff7f0",
         "background_gradient": "",
         "text_color": "",
         "button_background": "",
         "button_text_color": ""
-      }
-    },
-    "media_grid_G9Y6wb": {
-      "type": "media-grid",
-      "blocks": {
-        "image_DXdpnD": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/folder-icon.png",
-            "title": "Download all",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/drive.google.com\/file\/d\/1670U4c_iQLs5jVXI9udlGGB6MMcpko9V\/view?usp=sharing",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#4cb6ac",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_tyPDeV": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_kids_772c4b5a-4fb9-4c4c-8d00-3c6f60e02edd.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_nEqEHC": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/ChildUsingVoxblockPlayer.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_TabHXx": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_creativity.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-colouring.jpg?v=1662389724",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_DVDAnM": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock-choosing_books.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_YkKTfp": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock-bedtime_2624e7ab-5645-4ba8-95d3-a9f7a2119752.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-bedtime.jpg?v=1662389725",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_EefXbP": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock-holding_product_to_camera.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_YkGmCy": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock-kids_choosing_books.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-playtime.jpg?v=1662389727",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_hwhHhm": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-mr-bumble.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-mr-bumble.jpg?v=1662384934",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_6dtLFk": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-gulliver.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-gulliver.jpg?v=1662385037",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_BrkFtE": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-tigerlily.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-tigerlily.jpg?v=1662384934",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_RELpwF": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-baloo.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-baloo.jpg?v=1662385037",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "image_DXdpnD",
-        "image_tyPDeV",
-        "image_nEqEHC",
-        "image_TabHXx",
-        "image_DVDAnM",
-        "image_YkKTfp",
-        "image_EefXbP",
-        "image_YkGmCy",
-        "image_hwhHhm",
-        "image_6dtLFk",
-        "image_BrkFtE",
-        "image_RELpwF"
-      ],
-      "settings": {
-        "full_width": true,
-        "reduce_width": true,
-        "desktop_row_height": 290,
-        "mobile_row_height": 150,
-        "background": "",
-        "background_gradient": ""
-      }
-    },
-    "media_grid_4nQKae": {
-      "type": "media-grid",
-      "blocks": {
-        "image_EQcET6": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-merlin.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-merlin.jpg?v=1662384934",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_8Ve3zN": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock-logo-huckleberry.jpg",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/voxblock-logo-huckleberry.jpg?v=1662384934",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_4GEx6N": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-vertical.png",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_Logo-teal-vertical.png?v=1662544049",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "image_GDcYVL": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Voxblock_Logo-teal-horizontal.png",
-            "title": "Download",
-            "heading_tag": "h5",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_Logo-teal-horizontal.png?v=1662544049",
-            "link_text": "",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "text_gradient": "",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "image_EQcET6",
-        "image_8Ve3zN",
-        "image_4GEx6N",
-        "image_GDcYVL"
-      ],
-      "settings": {
-        "full_width": true,
-        "reduce_width": false,
-        "desktop_row_height": 290,
-        "mobile_row_height": 150,
-        "background": "",
-        "background_gradient": ""
       }
     }
   },
@@ -591,10 +624,11 @@
     "main",
     "image_with_text_overlay_iVXBLV",
     "media_with_text_td9zHp",
+    "rich_text_JrKhFX",
+    "media_grid_G9Y6wb",
+    "media_grid_4nQKae",
     "rich_text_n6Mch7",
     "faq_UdwyVf",
-    "newsletter_6Ticch",
-    "media_grid_G9Y6wb",
-    "media_grid_4nQKae"
+    "newsletter_6Ticch"
   ]
 }

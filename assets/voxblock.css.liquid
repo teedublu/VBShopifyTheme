@@ -34,6 +34,14 @@
     padding: 10px;
     border: 1px solid silver;
 }
+
+/* adjust single product layout to suit books */
+@media screen and (min-width: 1000px) {
+	.product.audiobooks {grid-template-columns: 300px minmax(auto, 600px);}
+}
+table.audiobooks-full-details {text-align: left;}
+
+
 /* hide the submit button when in a label group with scg icon */
 input.hide-with-svg { display: none;}
 

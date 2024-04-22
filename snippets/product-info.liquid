@@ -44,6 +44,8 @@
       {%- when 'audiobook-properties' -%}
         {%- render 'audiobook-properties', product: product, block: block -%}
 
+      {%- when 'author_narrator' -%}
+        {%- render 'audiobook-authornarrator', product: product, block: block -%}
 
       {%- when 'price' -%}
         <div class="product-info__price">
