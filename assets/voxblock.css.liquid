@@ -1,7 +1,7 @@
 /*! All customisations of theme to suit Voxblock go here */
 @media screen and (min-width: 700px) {
 	:root product-card{
-	--image-max-width: 40vh;
+	--image-max-width: 30vh;
 	}
 }
 /* Any specific product changes */
@@ -27,6 +27,7 @@
 
 .product-list {
 	gap: 1rem 1rem;
+	grid-template-rows: auto;
 }
 
 .product-card{
@@ -41,8 +42,10 @@ input.hide-with-svg { display: none;}
 sale-price.text-lg {color: rgb(var(--button-background-primary)); font-weight: 700; }
 
 .price-list { color: rgb(var(--accent)) !important }
-.product-card.audiobooks { row-gap: var(--spacing-2); grid-template-rows: 2fr 1fr; }
-.product-card.starter-pack { row-gap: var(--spacing-2); grid-template-rows: 2fr 1fr; }
+
+.product-card.audiobooks { row-gap: var(--spacing-2); grid-template-rows: 1fr; }
+.product-card.starter-pack { row-gap: var(--spacing-2); grid-template-rows: 1fr }
+
 
 .product-card.audiobooks .product-card__details {display:grid; grid-template-rows: 1fr 1fr 1fr;}
 .product-card.starter-pack .product-card__details {display:grid; grid-template-rows: 1fr 1fr 1fr;}
