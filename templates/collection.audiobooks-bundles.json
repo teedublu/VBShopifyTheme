@@ -1,5 +1,46 @@
 {
   "sections": {
+    "image_with_text_overlay_yP4Nmk": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_chweia": {
+          "type": "subheading",
+          "settings": {
+            "text": "GROW YOU COLLECTION FASTER"
+          }
+        },
+        "heading_F9Aqw9": {
+          "type": "heading",
+          "settings": {
+            "text": "Bundles",
+            "heading_tag": "h0"
+          }
+        },
+        "richtext_Xgf6qe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Get more of your favourite audiobook characters with a bundle from Voxblock.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_chweia",
+        "heading_F9Aqw9",
+        "richtext_Xgf6qe"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify:\/\/shop_images\/book_colleciton_render_26ad172f-10e0-44a2-a9c9-5ddd7aa9cfbb.png",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 10
+      }
+    },
     "banner": {
       "type": "collection-banner",
       "disabled": true,
@@ -192,54 +233,13 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
-    },
-    "image_with_text_overlay_yP4Nmk": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_chweia": {
-          "type": "subheading",
-          "settings": {
-            "text": "GROW YOU COLLECTION FASTER"
-          }
-        },
-        "heading_F9Aqw9": {
-          "type": "heading",
-          "settings": {
-            "text": "Bundles",
-            "heading_tag": "h0"
-          }
-        },
-        "richtext_Xgf6qe": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Get more of your favourite audiobook characters with a bundle from Voxblock.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_chweia",
-        "heading_F9Aqw9",
-        "richtext_Xgf6qe"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "enable_parallax": false,
-        "image_size": "md",
-        "image": "shopify:\/\/shop_images\/book_colleciton_render_26ad172f-10e0-44a2-a9c9-5ddd7aa9cfbb.png",
-        "mobile_text_position": "place-self-end-start text-start",
-        "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 10
-      }
     }
   },
   "order": [
+    "image_with_text_overlay_yP4Nmk",
     "banner",
     "main",
     "featured_product_WaN6mR",
-    "faq_UUi7Qn",
-    "image_with_text_overlay_yP4Nmk"
+    "faq_UUi7Qn"
   ]
 }
