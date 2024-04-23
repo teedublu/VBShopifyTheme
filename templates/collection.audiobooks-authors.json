@@ -1,26 +1,13 @@
 {
   "sections": {
-    "custom_liquid_iKx7Yg": {
-      "type": "custom-liquid",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "liquid": "{% render 'metaobject-header' metaobject: collection.metafields.related.author.value, use_title: 'Audiobooks from name' %}",
-        "background": "#ffb74a",
-        "background_gradient": "",
-        "text_color": "#ffffff"
-      }
-    },
     "banner": {
       "type": "collection-banner",
-      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": false,
         "show_collection_title": true,
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_collection_image": true,
         "collection_title_size": "h1",
         "image_size": "sm",
@@ -131,7 +118,6 @@
     }
   },
   "order": [
-    "custom_liquid_iKx7Yg",
     "banner",
     "main",
     "image_with_text_overlay_rm3BPp"
