@@ -64,6 +64,45 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_image_JNdmEc": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 6,
+            "column_span": "2",
+            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
+            "title": "",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "promotion_image_Y8aKHT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "title": "Promote a product or a temporary offer",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_JNdmEc",
+        "promotion_image_Y8aKHT"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
