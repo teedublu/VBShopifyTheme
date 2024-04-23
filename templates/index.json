@@ -531,6 +531,7 @@
         "item_rg7Mb3",
         "item_gEAxpz"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "block_size": "large",
@@ -606,6 +607,88 @@
         "heading_gradient": "",
         "logo_item_background": "",
         "logo_item_border": ""
+      }
+    },
+    "multiple_images_with_text_qi7tAC": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_Db3xTP": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "Building Literacy",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_maJpGC": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 1.5,
+            "subheading": "",
+            "title": "Connectivity Free",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_GyF79b": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "Ideal Travel Companion",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_Db3xTP",
+        "item_maJpGC",
+        "item_GyF79b"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "featured_collection_RbaTLW": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "roald-dahl-starter-pack",
+          "older-listeners-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Get started with our Starter Packs",
+        "content": "",
+        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     },
     "image-with-text-overlay": {
@@ -746,59 +829,6 @@
         "input_text_color": ""
       }
     },
-    "multiple_images_with_text_qi7tAC": {
-      "type": "multiple-images-with-text",
-      "blocks": {
-        "item_Db3xTP": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": -2,
-            "subheading": "",
-            "title": "Building Literacy",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_maJpGC": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 1.5,
-            "subheading": "",
-            "title": "Connectivity Free",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_GyF79b": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 0,
-            "subheading": "",
-            "title": "Ideal Travel Companion",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_Db3xTP",
-        "item_maJpGC",
-        "item_GyF79b"
-      ],
-      "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
     "newsletter_dKNmAd": {
       "type": "newsletter",
       "settings": {
@@ -814,35 +844,6 @@
         "button_background": "",
         "button_text_color": ""
       }
-    },
-    "featured_collection_RbaTLW": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": false,
-        "products": [
-          "roald-dahl-starter-pack",
-          "older-listeners-starter-pack"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Get started with our Starter Packs",
-        "content": "",
-        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     }
   },
   "order": [
@@ -857,11 +858,11 @@
     "image_link_blocks_hdtLUw",
     "image_link_blocks_9Yz7Pf",
     "press_jJ3pDq",
+    "multiple_images_with_text_qi7tAC",
+    "featured_collection_RbaTLW",
     "image-with-text-overlay",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
-    "multiple_images_with_text_qi7tAC",
-    "newsletter_dKNmAd",
-    "featured_collection_RbaTLW"
+    "newsletter_dKNmAd"
   ]
 }
