@@ -6,39 +6,32 @@
         "subheading_chweia": {
           "type": "subheading",
           "settings": {
-            "text": "GROW YOU COLLECTION FASTER"
+            "text": "VOXBLOCK FOR ANY AGE"
           }
         },
         "heading_F9Aqw9": {
           "type": "heading",
           "settings": {
-            "text": "Bundles",
+            "text": "Audiobooks for Older Listeners",
             "heading_tag": "h0"
-          }
-        },
-        "richtext_Xgf6qe": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Get more of your favourite audiobook characters with a bundle from Voxblock.<\/p>"
           }
         }
       },
       "block_order": [
         "subheading_chweia",
-        "heading_F9Aqw9",
-        "richtext_Xgf6qe"
+        "heading_F9Aqw9"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": false,
         "image_size": "md",
-        "image": "shopify:\/\/shop_images\/book_colleciton_render_26ad172f-10e0-44a2-a9c9-5ddd7aa9cfbb.png",
+        "image": "shopify:\/\/shop_images\/old-man-thinking-by-the-harbor.jpg",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 10
+        "overlay_opacity": 17
       }
     },
     "banner": {
@@ -64,46 +57,6 @@
     },
     "main": {
       "type": "main-collection",
-      "blocks": {
-        "promotion_image_JNdmEc": {
-          "type": "promotion_image",
-          "settings": {
-            "position": 6,
-            "column_span": "2",
-            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
-            "title": "",
-            "content": "",
-            "link_url": "shopify:\/\/pages\/voxblock-tokens-collect-for-free-audiobooks",
-            "link_text": "",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "promotion_image_Y8aKHT": {
-          "type": "promotion_image",
-          "settings": {
-            "position": 10,
-            "column_span": "2",
-            "image": "shopify:\/\/shop_images\/Two-girls-on-beanbags-listening-to-audiobook.png",
-            "title": "Refer a friend and get a free book",
-            "content": "",
-            "link_url": "shopify:\/\/pages\/refer-a-friend",
-            "link_text": "Read more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "promotion_image_JNdmEc",
-        "promotion_image_Y8aKHT"
-      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
@@ -114,6 +67,199 @@
         "show_filter_group_name": false,
         "show_filter_values_count": true,
         "open_first_filter_group": false
+      }
+    },
+    "rich_text_LJNbWU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6LgqCf": {
+          "type": "heading",
+          "settings": {
+            "text": "Screen-free audiobook player",
+            "heading_tag": "h3",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_Th7tDk": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Our screen free audiobook player enables you to play any of our story blocks.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6LgqCf",
+        "richtext_Th7tDk"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_wrTPmW": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_wxHrtM": {
+          "type": "vendor",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "title_ckLhrQ": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_YiCEVj": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_7aEf4R": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_rQXMCT": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "description_LdR9JN": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "separator_cUXKAh": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "variant_picker_Q8JkNG": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_MaQ6D8": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons_yxkhim": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_qGmmaa": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor_wxHrtM",
+        "title_ckLhrQ",
+        "badges_YiCEVj",
+        "price_7aEf4R",
+        "rating_rQXMCT",
+        "description_LdR9JN",
+        "separator_cUXKAh",
+        "variant_picker_Q8JkNG",
+        "quantity_selector_MaQ6D8",
+        "buy_buttons_yxkhim",
+        "pickup_availability_qGmmaa"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "faq_KCW3XB": {
+      "type": "faq",
+      "blocks": {
+        "item_j4hAeK": {
+          "type": "item",
+          "settings": {
+            "title": "Do you ship overseas?",
+            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+          }
+        },
+        "item_cAbGgi": {
+          "type": "item",
+          "settings": {
+            "title": "How long will it take to get my orders?",
+            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+          }
+        },
+        "item_pMWXXx": {
+          "type": "item",
+          "settings": {
+            "title": "Any question?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_j4hAeK",
+        "item_cAbGgi",
+        "item_pMWXXx"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
     "image_with_text_overlay_artdUK": {
@@ -128,7 +274,7 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 0
       }
     }
   },
@@ -136,6 +282,9 @@
     "image_with_text_overlay_yP4Nmk",
     "banner",
     "main",
+    "rich_text_LJNbWU",
+    "featured_product_wrTPmW",
+    "faq_KCW3XB",
     "image_with_text_overlay_artdUK"
   ]
 }
