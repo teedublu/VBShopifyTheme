@@ -1,0 +1,95 @@
+
+<style>
+#transcript {
+  max-height: 160px; /* Set to desired height */
+  overflow-y: auto; /* Enables vertical scrolling */
+  position: relative; /* For positioning context */
+  width: 100%; /* Set to the desired width */
+  box-sizing: border-box;
+  border: 1px solid #ccc; /* Just for visibility */
+  font-size: 200%;
+  scroll-behavior: smooth;
+}
+
+span.transcript-word {
+  padding: 0px 5px 1px 5px;
+  margin: 0px 4px;
+  transform-origin: bottom;
+}
+
+.highlight {
+    background-color: red;
+    position: relative;
+    color: white;
+    border-radius: 6px;
+    animation: bounce 0.5s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.2); /* Scaled up by 20% */
+  }
+}
+
+</style>
+
+  <audio id="audioPlayer" controls>
+    <source src="https://cdn.shopify.com/s/files/1/0565/2050/7467/files/paddington-audiobook-sample.mp3?v=1710005662" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+
+{% assign data = metaobject.transcript.value  %}
+{% assign data = data | parse_json %}
+
+
+<div id="transcript">
+  {% for result in data.results %}
+    {% for alternative in result.alternatives %}
+      <p>
+        {% for word in alternative.words %}
+          <span class="transcript-word" data-start="{{ word.startTime }}" data-end="{{ word.endTime }}">
+            {{ word.word }}
+          </span>
+        {% endfor %}
+      </p>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const audioPlayer = document.getElementById('audioPlayer');
+  const transcriptDiv = document.getElementById('transcript');
+  
+  function updateHighlight() {
+    const currentTime = audioPlayer.currentTime; // Current time of audio in seconds
+    const words = document.querySelectorAll('.transcript-word');
+    let activeWord = null; // Ensures activeWord is reset each call
+
+    words.forEach(word => {
+      const start = parseFloat(word.dataset.start);
+      const end = parseFloat(word.dataset.end);
+      if (currentTime >= start && currentTime < end) {
+        word.classList.add('highlight');
+        activeWord = word; // Update activeWord to current
+      } else {
+        word.classList.remove('highlight');
+      }
+    });
+
+    if (activeWord) {
+      const wordPos = activeWord.offsetTop;
+      const scrollPos = wordPos - transcriptDiv.offsetHeight / 2 + activeWord.offsetHeight / 2;
+      transcriptDiv.scrollTop = scrollPos; // Smooth scroll to center the highlighted word
+    }
+  }
+
+  // Attach the time update event to the audio player
+  audioPlayer.addEventListener('timeupdate', updateHighlight);
+});
+</script>
