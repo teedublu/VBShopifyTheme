@@ -9,7 +9,7 @@
 		{% break %}
 	{% endfor %}
 	{% if metaobject.logo %}
-		{{- metaobject.logo 
+		{{- metaobject.logo.value 
 			| image_url: width: 200 
 			| image_tag: 
 				preload: true,
