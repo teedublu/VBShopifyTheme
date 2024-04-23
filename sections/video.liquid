@@ -72,7 +72,7 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="place-self-center text-center">
+      <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}">
         <div class="prose">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -199,6 +199,94 @@
       "id": "poster",
       "label": "Poster image",
       "info": "3200 x 1600px .jpg recommended. Poster is not visible when autoplay is enabled."
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_position",
+      "label": "Mobile content position",
+      "options": [
+        {
+          "value": "place-self-start text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "place-self-start-center text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "place-self-start-end text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "place-self-center-start text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "place-self-center text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "place-self-center-end text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "place-self-end-start text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "place-self-end-center text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "place-self-end text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "place-self-center text-center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_text_position",
+      "label": "Desktop content position",
+      "options": [
+        {
+          "value": "sm:place-self-start sm:text-start",
+          "label": "Top left"
+        },
+        {
+          "value": "sm:place-self-start-center sm:text-center",
+          "label": "Top center"
+        },
+        {
+          "value": "sm:place-self-start-end sm:text-end",
+          "label": "Top right"
+        },
+        {
+          "value": "sm:place-self-center-start sm:text-start",
+          "label": "Middle left"
+        },
+        {
+          "value": "sm:place-self-center sm:text-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "sm:place-self-center-end sm:text-end",
+          "label": "Middle right"
+        },
+        {
+          "value": "sm:place-self-end-start sm:text-start",
+          "label": "Bottom left"
+        },
+        {
+          "value": "sm:place-self-end-center sm:text-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "sm:place-self-end sm:text-end",
+          "label": "Bottom right"
+        }
+      ],
+      "default": "sm:place-self-center sm:text-center"
     },
     {
       "type": "header",
