@@ -228,12 +228,28 @@
         "show_filter_values_count": true,
         "open_first_filter_group": false
       }
+    },
+    "image_with_text_overlay_LzDB3n": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/library_banner_-03.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
     "slideshow_Q4e7Wj",
     "banner",
     "collection_link_blocks_HpwJbj",
-    "main"
+    "main",
+    "image_with_text_overlay_LzDB3n"
   ]
 }
