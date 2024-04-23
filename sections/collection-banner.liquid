@@ -8,7 +8,7 @@
   {%- if collection.metafields.related.author.value -%}
     {% render 'metaobject-header' metaobject: collection.metafields.related.author.value, use_title: 'Audiobooks from name' %}
   {%- elsif collection.metafields.related.narrator.value -%}
-    {% render 'metaobject-header' metaobject: collection.metafields.related.narrator.value, use_title: 'Audiobooks from name' %}
+    {% render 'metaobject-header' metaobject: collection.metafields.related.narrator.value, use_title: 'Audiobooks read by name' %}
   {%- elsif collection.metafields.related.publisher.value -%}
     {% render 'metaobject-header' metaobject: collection.metafields.related.publisher.value, use_title: 'Audiobooks from name' %}
   
