@@ -11,6 +11,9 @@
 	{%- if use_title -%}
 		{%- assign name =  metaobject.name | metafield_tag -%}
 		<h1> {{ use_title | replace:'name', name  }} </h1>
+		<p>
+			{{ collection.description }}
+		</p>
 	{%- else -%}
 		<h3> Audiobook {{ metaobject.system.type }} </h3>
 		<h1> {{ metaobject.name | metafield_tag }} </h1>
