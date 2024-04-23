@@ -7,13 +7,14 @@
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
         "liquid": "{% render 'metaobject-header' metaobject: collection.metafields.related.author.value, use_title: 'Audiobooks from name' %}",
-        "background": "",
+        "background": "#ffb74a",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "#ffffff"
       }
     },
     "banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
