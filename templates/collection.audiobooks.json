@@ -112,40 +112,35 @@
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
-            "link_text": "Best Sellers",
-            "link_url": "shopify:\/\/collections\/audiobooks"
+            "link_text": "Best Sellers"
           }
         },
         "item_Y4GnXQ": {
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/baby-hands-and-feet.jpg",
-            "link_text": "Under 5's",
-            "link_url": ""
+            "link_text": "Under 5's"
           }
         },
         "item_PHyCVd": {
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/1._Voxblock_children_listening.png",
-            "link_text": "5-8 years",
-            "link_url": "shopify:\/\/collections\/audiobooks"
+            "link_text": "5-8 years"
           }
         },
         "item_qpk6Bx": {
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/boy_headphones_circle_background.jpg",
-            "link_text": "8-10 years",
-            "link_url": ""
+            "link_text": "8-10 years"
           }
         },
         "item_KfF6ya": {
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/ashley-banjo-audiobook-author.jpg",
-            "link_text": "10 - teens",
-            "link_url": ""
+            "link_text": "10 - teens"
           }
         }
       },
@@ -187,9 +182,10 @@
             "position": 25,
             "column_span": "1",
             "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
-            "title": "orh3ohf3fh",
-            "content": "<p>hieufiwuefhiwefiewufhiwuefh<\/p><p>wfeihjfpwef<\/p><p>woefhowief<\/p><p>wlejfhojwef<\/p><p>ohjferf<\/p><p>ferkhfoerjf<\/p><p>erkfhejrf<\/p><p>kjerfnkjerf<\/p><p>ekfhjwekfhw<\/p>",
-            "link_url": "",
+            "mobile_image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
+            "title": "",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/voxblock-tokens-collect-for-free-audiobooks",
             "link_text": "",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
@@ -232,12 +228,28 @@
         "show_filter_values_count": true,
         "open_first_filter_group": false
       }
+    },
+    "image_with_text_overlay_LzDB3n": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/library_banner_-03.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
     "slideshow_Q4e7Wj",
     "banner",
     "collection_link_blocks_HpwJbj",
-    "main"
+    "main",
+    "image_with_text_overlay_LzDB3n"
   ]
 }
