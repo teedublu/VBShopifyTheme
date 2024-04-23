@@ -6,7 +6,7 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "liquid": "<p style=\"text-align: center\">Write or copy\/paste Liquid code<\/p>",
+        "liquid": "{% render 'audiogramme' %}",
         "background": "",
         "background_gradient": "",
         "text_color": ""
