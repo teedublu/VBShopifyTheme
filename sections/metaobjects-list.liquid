@@ -43,6 +43,49 @@
 </style>
 
 
+{%- comment -%}
+<script type="application/ld+json">
+{%- endcomment -%}
+{%- assign title = page.metafields.global.title_tag | default: page.title -%}
+<textarea cols="100" rows="100">
+  {
+    "@context": "http://schema.org",
+    "@type": "CollectionPage",
+    {% if collection.description != blank %}
+      "description": {{ collection.description | strip_html | json }},
+    {% endif %}
+
+    "name": {{ title | json }},
+    "url": "{{ shop.url }}{{ collection.url }}",
+
+    "mainEntity" : {
+      "@type": "ItemList",
+      "itemListElement": [
+        {% paginate collections['audiobooks'].products by 1000 %}
+    
+          {% for product in collections['audiobooks'].products  %}
+            {%- assign author = product.metafields.book.authors.value | first -%}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.index }},
+              "item": {
+                "@type": "Audiobook",
+                "url": "{{ shop.url }}{{ product.url }}#audiobook",
+                "name": "{{ product.title }}",
+                "author": "{{ author.name }}",
+                "description": "{{ product.description | strip_html }}",
+                "image"
+              }
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        {%- endpaginate -%}
+      ]
+    }
+  }
+</textarea>
+  {%- comment -%}
+</script>
+{%- endcomment -%}
 <div class="container">
   <div class="page">
     <div class="metaobjects index-list collection">
@@ -124,39 +167,6 @@
   </div>
 </div>
 
-<script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "CollectionPage",
-    {% if collection.description != blank %}
-      "description": {{ collection.description | strip_html | json }},
-    {% endif %}
-
-    "name": {{ page.title | json }},
-    "url": "{{ shop.url }}{{ collection.url }}",
-    {% if paginate.next %}
-      "nextPage": "{{ shop.url }}{{ collection.url }}?page={{ paginate.next.page }}",
-    {% endif %}
-    {% if paginate.previous %}
-      "previousPage": "{{ shop.url }}{{ collection.url }}?page={{ paginate.previous.page }}",
-    {% endif %}
-    "mainEntity" : {
-      "@type": "ItemList",
-      "itemListElement": [
-        {%- for product in collection.products -%}
-          {
-            "@type": "ListItem",
-            "position": {{ forloop.index }},
-            "item": {
-              "@type": "Audiobook",
-              "url": "{{ shop.url }}{{ product.url }}#audiobook"
-            }
-          }{% unless forloop.last %},{% endunless %}
-        {%- endfor -%}
-      ]
-    }
-  }
-</script>
 
 {% schema %}
 {
