@@ -1,5 +1,10 @@
 /*! All customisations of theme to suit Voxblock go here */
 
+@media screen and (min-width: 700px)
+:root { 
+	--text-lg: 1.9375rem !important;
+}
+
 /* Any specific product changes */
 .product.audiobooks .product-gallery__media img, .product.audiobook_bundle product-gallery__media img{
 	max-height: 50vh;
@@ -71,9 +76,26 @@
 /* PRODUCT PAGE                 */
 /* ---------------------------- */
 
-/* GENERAL                      */
+/* AUDIOBOOKS                   */
 @media screen and (min-width: 1000px) {
-	.product.audiobooks {grid-template-columns: 300px minmax(auto, 600px);} /* adjust single product layout to suit books */
+	.product {
+	    display: flex;               
+	    justify-content: space-between; 
+	    align-items: center;         
+	    width: 80%;                 
+	    padding: 10px;               
+	}
+	.product .product-info {
+	    margin-right: auto;
+	    width: 50%;   
+	}
+
+	.product .product-gallery {
+	    margin-left: auto;
+	    width: 50%;
+	    max-width: 240px;       
+	}
+
 }
 
 

@@ -5,29 +5,46 @@ There is the table of attributes that can also be shown in the audiobook product
 There is a similar but different one shown in the audiobook page - section/audiobook-bookdata.liquid
 {% endcomment %}
 
+<style type="text/css">
+.audiobooks-authornarrator-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0px;
+}
+
+.grid-row {
+    display: contents;
+}
+
+.grid-cell {
+   padding: 2px 8px;
+}
+
+.grid-cell.label {text-align: right}
+.grid-cell.value {font-weight: 800}
+
+</style>
+
 {%- assign book = product.metafields.book -%}
 {%- assign narrators = book.narrators.value -%}
 {%- assign authors = book.authors.value -%}
 
 
-<table class="audiobooks-authornarrator">
-   <tbody>
-
-      <tr>
-         <td>Author</td>
-         <td>
+<div class="audiobooks-authornarrator-grid">
+    <div class="grid-row">
+        <div class="grid-cell label">Author</div>
+        <div class="grid-cell value">
             {% for author in authors %}
-               {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
+               {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
-         </td>
-      </tr>
-      <tr>
-         <td>Read By</td>
-         <td>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="grid-cell label">Read By</div>
+        <div class="grid-cell value">
             {% for narrator in narrators %}
-               {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
+               {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
             {% endfor %}
-         </td>
-      </tr>
-   </tbody>
-</table>
+        </div>
+    </div>
+</div>
