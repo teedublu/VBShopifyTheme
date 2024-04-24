@@ -37,7 +37,7 @@
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
-      <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}">
+      <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="max-width:{{section.settings.max_width}}%;">
         <div class="prose">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -48,11 +48,9 @@
 
               {%- when 'heading' -%}
                 {%- if block.settings.text != blank -%}
-                  <div style="max-width:{{block.settings.max_width}}%; float:inline-end; ">
-                  <p class="{{ block.settings.heading_tag }}{%- if block.settings.scale_with -%}scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                  <p class="{{ block.settings.heading_tag }}{%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
                   </p>
-                </div>
                 {%- endif -%}
 
               {%- when 'richtext' -%}
@@ -104,6 +102,16 @@
       "label": "Allow transparent header",
       "info": "This setting only applies when this section is the first one.",
       "default": false
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width text",
+      "min": 30,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 80
     },
     {
       "type": "checkbox",
@@ -296,16 +304,6 @@
           "id": "scale_with",
           "label": "Scale text",
           "default": false
-        },
-        {
-          "type": "range",
-          "id": "max_width",
-          "label": "Max width",
-          "min": 30,
-          "max": 100,
-          "step": 1,
-          "unit": "%",
-          "default": 80
         },
         {
           "type": "select",
