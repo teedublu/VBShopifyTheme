@@ -13,7 +13,10 @@
     {%- if section.settings.allow_transparent_header -%}
       margin-block-start: calc(-1 * var(--header-height) * var(--section-is-first));
     {%- endif -%}
+
+    .h0.scaled {font-size: calc(var(--text-h0) - 50%)}
   }
+
 </style>
 
 <div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
@@ -45,9 +48,11 @@
 
               {%- when 'heading' -%}
                 {%- if block.settings.text != blank -%}
-                  <p class="{{ block.settings.heading_tag }}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                  <div style="max-width:{{block.settings.max_width}}%; float:inline-end; ">
+                  <p class="{{ block.settings.heading_tag }}{%- if block.settings.scale_with -%}scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
                   </p>
+                </div>
                 {%- endif -%}
 
               {%- when 'richtext' -%}
@@ -285,6 +290,22 @@
           "id": "text",
           "label": "Text",
           "default": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "scale_with",
+          "label": "Scale text",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 30,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 80
         },
         {
           "type": "select",
