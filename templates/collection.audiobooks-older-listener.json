@@ -60,7 +60,7 @@
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
+        "products_per_row_desktop": 5,
         "filter_layout": "sidebar",
         "show_sort_by": true,
         "show_filters": false,
@@ -231,27 +231,19 @@
           "type": "item",
           "settings": {
             "title": "Will I lose my place in the story if I remove a block?",
-            "content": "<p>No, the player will return to the same point next time you listen to that story.<\/p>"
-          }
-        },
-        "item_pBxEYw": {
-          "type": "item",
-          "settings": {
-            "title": "I can't find my question",
-            "content": "<p><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">See all FAQs<\/a><\/p>"
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
           }
         }
       },
       "block_order": [
         "item_j4hAeK",
         "item_cAbGgi",
-        "item_pMWXXx",
-        "item_pBxEYw"
+        "item_pMWXXx"
       ],
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "FAQs",
+        "title": "FAQ",
         "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
@@ -262,12 +254,12 @@
         "background": "#fff7f0",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "#fff7f0",
-        "accordion_text_color": "#565656"
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
     "image_with_text_overlay_artdUK": {
