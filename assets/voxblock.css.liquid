@@ -5,43 +5,83 @@
 	max-height: 50vh;
 	width: auto;
 }
+/* ---------------------------- */
+/* PRODUCT CARDS                */
+/* ---------------------------- */
 
-/* have added second row to product card so overwrite original span */
+/* GENERAL                      */
+.product-card { padding: 10px; border: 1px solid silver; align-items: center; height: 100%;}
+.product-card { row-gap: var(--spacing-2); grid-template-rows: 1fr auto; }
+.product-card__figure { align-content: center; } /* make smaller bundle images align in center of image block */
+.product-card__details { display: grid; grid-template-rows: 1fr 1fr 1fr; align-items: start; row-gap: var(--spacing-2); }
+.product-card__details > :nth-child(2) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+.product-card__info { padding-top: 0;}
+.product-card__row { display: flex; align-items: center; }
+
+.product-card .price-list {flex-wrap: nowrap};
+
+/* AUDIOBOOKS                   */
+
+
+.from-price::before {
+    content: 'from';
+    font-size: 8px;
+    position: absolute;
+    margin-top: -4px;
+ }
+
+ .product-card .price-list compare-at-price.text-subdued.line-through {
+    position: absolute;
+    margin-top: -14px;
+}
+
+/* STARTER PACKS                */
+
+
+.column { flex: 50%;}
+.column.left { text-align: left; }
+.column.right {  text-align: right; }
+.float-right {  float: right; }
+
+/* SCREEN SPECIFIC              */
+
+@media screen and (max-width: 700px) {
+	/*.product-card { row-gap: var(--spacing-2); grid-template-rows: 2fr 1fr; }*/
+}
 
 
 @media screen and (min-width: 700px) {
   @supports (grid-template-rows: subgrid) {
     .product-list > * {
-      grid-row: span 1;
+      grid-row: span 1; /* have added second row to product card so overwrite original span */
     }
   }
 }
 
-/* make smaller bundle images align in center of image block */
-.product-card__figure { align-content: center; }
+
+/* UNUNSED?              */
+.product-list { gap: 1rem 1rem; grid-template-rows: auto; }
 
 
-.product-list {
-	gap: 1rem 1rem;
-	grid-template-rows: auto;
-}
 
-.product-card{
-    padding: 10px;
-    border: 1px solid silver;
-    align-items: center;
-    height: 100%;
-}
 
-/* adjust single product layout to suit books */
+
+/* ---------------------------- */
+/* PRODUCT PAGE                 */
+/* ---------------------------- */
+
+/* GENERAL                      */
 @media screen and (min-width: 1000px) {
-	.product.audiobooks {grid-template-columns: 300px minmax(auto, 600px);}
+	.product.audiobooks {grid-template-columns: 300px minmax(auto, 600px);} /* adjust single product layout to suit books */
 }
+
+
+
 table.audiobooks-full-details {text-align: left;}
 
 
-/* hide the submit button when in a label group with scg icon */
-input.hide-with-svg { display: none;}
+
+input.hide-with-svg { display: none;} /* hide the submit button when in a label group with svg icon */
 
 .icon-circle { border: 0px solid; padding: 8px; border-radius: 50%; margin-right: 10px; background-color: rgb(var(--button-background-primary)); color: rgb(var(--button-text-primary));}
 
@@ -52,34 +92,6 @@ sale-price.text-lg {color: rgb(var(--button-background-primary)); font-weight: 7
 
 
 
-.product-card.audiobooks { row-gap: var(--spacing-2); grid-template-rows: 3fr 1fr; }
-.product-card.audiobooks .product-card__details {display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    align-items: start;
-    row-gap: var(--spacing-2);}
-
- .product-card__details > :nth-child(2) { 
-    white-space: nowrap; /* Keeps the text on a single line */
-    overflow: hidden; /* Hides text that goes beyond the bounds of the element */
-    text-overflow: ellipsis; /* Adds an ellipsis to text that overflows */
-    width: 100%; /* Ensures the cell uses full width of its container */
-}
-
-
-
-.product-card.starter-pack { row-gap: var(--spacing-2); grid-template-rows: auto 1fr }
-
-
-
-.product-card.starter-pack .product-card__details {display:grid; grid-template-rows: 1fr 1fr 1fr;}
-
-
-.product-card__info { padding-top: 0;}
-.product-card__row {display: flex; align-items: center;}
-.column { flex: 50%;}
-.column.left { text-align: left; }
-.column.right {  text-align: right; }
-.float-right {  float: right; }
 
 /* Book preview buttons */
 button.bookpreview .playpause { width:30px; height:30px; border-radius: 50%;}

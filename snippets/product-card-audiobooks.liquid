@@ -147,7 +147,9 @@ Supported variables
         {%- endif -%}
       </div>
       <div class="product-card__wishlist column right">
-        {%- render 'icon' with 'picto-love' class:'float-right'-%}
+        {%- if section.settings.wishlist -%}
+          {%- render 'icon' with 'picto-love' class:'float-right'-%}
+        {%- endif -%}
       </div>
     </div>
     {%- comment -%}
@@ -255,6 +257,11 @@ Supported variables
 
     </div>
     
+    {%- comment -%}
+    --------------------------------------------------------------------------------------------------------------------
+    PRODUCT BUY BUTTON
+    --------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
     <div class="product-card__row buy-price">
 
         {%- form 'product', product, is: 'product-form' -%}
