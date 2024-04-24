@@ -48,7 +48,7 @@
 
               {%- when 'heading' -%}
                 {%- if block.settings.text != blank -%}
-                  <p class="{{ block.settings.heading_tag }}{%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                  <p class="{{ block.settings.heading_tag }} {%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
                   </p>
                 {%- endif -%}
