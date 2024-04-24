@@ -233,12 +233,20 @@
             "title": "Will I lose my place in the story if I remove a block?",
             "content": "<p>No, the player will return to the same point next time you listen to that story.<\/p>"
           }
+        },
+        "item_pBxEYw": {
+          "type": "item",
+          "settings": {
+            "title": "I can't find my question",
+            "content": "<p><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">See all FAQs<\/a><\/p>"
+          }
         }
       },
       "block_order": [
         "item_j4hAeK",
         "item_cAbGgi",
-        "item_pMWXXx"
+        "item_pMWXXx",
+        "item_pBxEYw"
       ],
       "settings": {
         "full_width": true,
