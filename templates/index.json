@@ -3,12 +3,18 @@
     "image_with_text_overlay_mzRBYC": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "heading_nNhzcW": {
+        "subheading_BY3n4M": {
+          "type": "subheading",
+          "settings": {
+            "text": "FOR KIDS"
+          }
+        },
+        "heading_EBfnGt": {
           "type": "heading",
           "settings": {
             "text": "Screen-free audiobook player",
             "scale_with": true,
-            "heading_tag": "h0"
+            "heading_tag": "h1"
           }
         },
         "button_XtBmYV": {
@@ -24,7 +30,8 @@
         }
       },
       "block_order": [
-        "heading_nNhzcW",
+        "subheading_BY3n4M",
+        "heading_EBfnGt",
         "button_XtBmYV"
       ],
       "settings": {
