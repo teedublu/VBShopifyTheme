@@ -3,6 +3,12 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
+        "text_RffQCL": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>A screen-free audiobook<\/h5>"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -57,6 +63,7 @@
         }
       },
       "block_order": [
+        "text_RffQCL",
         "title",
         "price",
         "audiobook_properties_cU6Htk",
