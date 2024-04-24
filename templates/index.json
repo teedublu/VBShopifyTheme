@@ -3,18 +3,11 @@
     "image_with_text_overlay_mzRBYC": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_fERiaJ": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
         "heading_nNhzcW": {
           "type": "heading",
           "settings": {
             "text": "The screen-free audiobook player for kids",
-            "scale_with": false,
-            "max_width": 70,
+            "scale_with": true,
             "heading_tag": "h0"
           }
         },
@@ -31,13 +24,13 @@
         }
       },
       "block_order": [
-        "subheading_fERiaJ",
         "heading_nNhzcW",
         "button_XtBmYV"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/Player-Lifestyle-Stacked-Rework-Current_View.png",
@@ -740,7 +733,6 @@
           "settings": {
             "text": "Image with text overlay",
             "scale_with": false,
-            "max_width": 80,
             "heading_tag": "h1"
           }
         },
@@ -761,6 +753,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/landing-page-how-it-works.png",
