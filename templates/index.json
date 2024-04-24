@@ -628,6 +628,77 @@
         "logo_item_border": ""
       }
     },
+    "testimonials_UiMYnt": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_JcCpbT": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Simone (April 2024)",
+            "title": "Great audio books",
+            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.<\/p>"
+          }
+        },
+        "testimonial_nwDgQd": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mary U.",
+            "title": "Testimonial 2",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_Ch8DLJ": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Joshua A.",
+            "title": "Testimonial 3",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_qJkA8D": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "",
+            "title": "Testimonial",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_JcCpbT",
+        "testimonial_nwDgQd",
+        "testimonial_Ch8DLJ",
+        "testimonial_qJkA8D"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Testimonials",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
     "multiple_images_with_text_qi7tAC": {
       "type": "multiple-images-with-text",
       "blocks": {
@@ -923,6 +994,7 @@
     "image_link_blocks_hdtLUw",
     "image_link_blocks_9Yz7Pf",
     "press_jJ3pDq",
+    "testimonials_UiMYnt",
     "multiple_images_with_text_qi7tAC",
     "featured_collection_RbaTLW",
     "image-with-text-overlay",
