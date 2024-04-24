@@ -21,8 +21,8 @@
           "settings": {
             "style": "fill",
             "size": "lg",
-            "text": "Button text",
-            "url": "",
+            "text": "Find out more",
+            "url": "shopify:\/\/products\/voxblock-player",
             "background": "",
             "text_color": ""
           }
@@ -38,7 +38,8 @@
         "allow_transparent_header": true,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/Players_stacked-Test.png",
+        "image": "shopify:\/\/shop_images\/Homepage-Hero-3200x1600.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Homepage-Hero_Image-1300x1500.jpg",
         "mobile_text_position": "place-self-center-end text-end",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
@@ -255,7 +256,7 @@
         "1664424434f5b7d0e0-2"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
         "mobile_image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-mobile.jpg",
         "title": "Features",
@@ -531,6 +532,7 @@
         "item_rg7Mb3",
         "item_gEAxpz"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "block_size": "large",
@@ -608,6 +610,91 @@
         "logo_item_border": ""
       }
     },
+    "multiple_images_with_text_qi7tAC": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_Db3xTP": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-Literacy-1000x1200.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "Building Literacy",
+            "content": "<p>Audiobooks are great at supporting literacy development and improving a child's vocabulary, pronunciation, and listening skills. But most importantly they unlock a world of imagination transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_maJpGC": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-wifi_free-1000x1200.jpg",
+            "image_rotation_degrees": 1.5,
+            "subheading": "",
+            "title": "Connectivity Free",
+            "content": "<p>Designed with kids in mind, our player is completely connectivity free. This means no wifi, no apps, no downloads or set-up. All our audio is stored in our audiobook blocks, that automatically play as soon as they are placed in the player.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_GyF79b": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-Travel-1000x1200.jpg",
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "Ideal Travel Companion",
+            "content": "<p>You can carry your favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to last all the rough and tumble kids can throw at it.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_Db3xTP",
+        "item_maJpGC",
+        "item_GyF79b"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "featured_collection_RbaTLW": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "roald-dahl-starter-pack",
+          "older-listeners-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Get started with our Starter Packs",
+        "content": "",
+        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "image-with-text-overlay": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -657,8 +744,10 @@
     "revealed_image_on_scroll_mgNqPf": {
       "type": "revealed-image-on-scroll",
       "settings": {
+        "image": "shopify:\/\/shop_images\/Homepage-Reveal_Image-3200x1600.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Homepage-Reveal-mobile-1125x2000.jpg",
         "subheading": "",
-        "title": "Reveal text on scroll",
+        "title": "Be immersed in stories, from toddlers to teens",
         "background": "",
         "text_color_inside": "#ffffff",
         "text_color_outside": "#000000"
@@ -746,59 +835,6 @@
         "input_text_color": ""
       }
     },
-    "multiple_images_with_text_qi7tAC": {
-      "type": "multiple-images-with-text",
-      "blocks": {
-        "item_Db3xTP": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": -2,
-            "subheading": "",
-            "title": "Building Literacy",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_maJpGC": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 1.5,
-            "subheading": "",
-            "title": "Connectivity Free",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_GyF79b": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 0,
-            "subheading": "",
-            "title": "Ideal Travel Companion",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_Db3xTP",
-        "item_maJpGC",
-        "item_GyF79b"
-      ],
-      "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
     "newsletter_dKNmAd": {
       "type": "newsletter",
       "settings": {
@@ -814,35 +850,6 @@
         "button_background": "",
         "button_text_color": ""
       }
-    },
-    "featured_collection_RbaTLW": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": false,
-        "products": [
-          "roald-dahl-starter-pack",
-          "older-listeners-starter-pack"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Get started with our Starter Packs",
-        "content": "",
-        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     }
   },
   "order": [
@@ -857,11 +864,11 @@
     "image_link_blocks_hdtLUw",
     "image_link_blocks_9Yz7Pf",
     "press_jJ3pDq",
+    "multiple_images_with_text_qi7tAC",
+    "featured_collection_RbaTLW",
     "image-with-text-overlay",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
-    "multiple_images_with_text_qi7tAC",
-    "newsletter_dKNmAd",
-    "featured_collection_RbaTLW"
+    "newsletter_dKNmAd"
   ]
 }

@@ -118,7 +118,7 @@
           "type": "heading",
           "settings": {
             "text": "Easy to use",
-            "heading_tag": "h3"
+            "heading_tag": "h1"
           }
         },
         "richtext_wx6Gx7": {
@@ -136,80 +136,14 @@
         "full_width": true,
         "allow_transparent_header": true,
         "autoplay": true,
-        "video_size": "auto",
+        "video_size": "md",
         "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
-      }
-    },
-    "media_with_text_Eph8J6": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_MANNkz": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "COLLECT TOKENS",
-            "title": "Free audiobooks",
-            "content": "<p>Voxblock tokens can be collected and then traded for free audiobooks. For every 10 tokens you'll receive one free book.  You'll receive three tokens with your Starter Pack, so start collecting today.<\/p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_MANNkz"
-      ],
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
-      }
-    },
-    "media_with_text_WQfQGH": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_WWAdif": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/creativity-and-imagination.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "DEVELOPMENT",
-            "title": "Creativity and imagination",
-            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>",
-            "link_text": "learn more",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "image_WWAdif"
-      ],
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
       }
     },
     "text_with_icons_hRqMzj": {
@@ -273,6 +207,75 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "media_with_text_Eph8J6": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_MANNkz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/tokens-banner-mob-08.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "COLLECT TOKENS",
+            "title": "Free audiobooks",
+            "content": "<p>Voxblock tokens can be collected and then traded for free audiobooks. For every 10 tokens you'll receive one free book.  You'll receive three tokens with your Starter Pack, so start collecting today.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_MANNkz"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "media_with_text_WQfQGH": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_WWAdif": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/creativity-and-imagination.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "DEVELOPMENT",
+            "title": "Creativity and imagination",
+            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.<\/p>",
+            "link_text": "learn more",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_WWAdif"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "media_with_text_xt4iqF": {
@@ -527,9 +530,9 @@
   "order": [
     "main",
     "video_bgbrXD",
+    "text_with_icons_hRqMzj",
     "media_with_text_Eph8J6",
     "media_with_text_WQfQGH",
-    "text_with_icons_hRqMzj",
     "media_with_text_xt4iqF",
     "media_with_text_9eFAbQ",
     "testimonials_ph8Krm",
