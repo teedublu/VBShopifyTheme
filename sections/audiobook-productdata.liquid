@@ -46,8 +46,9 @@
 {%- assign title = audiobook_metaobject.product.value.title -%}
 
 {%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle].value -%}
-{%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle].value -%}
+{%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
 
+{{synopsis_metaobject}}
 
 <div {% render 'section-properties', tight: true %}>
     <div class="audiobooks-full-details">
@@ -99,9 +100,9 @@
                     </div>
                 {% endif %}
                 
-            <!-- Similar blocks for other types like 'reference_isbn', 'genre', 'bisac_codes', etc., follow the same pattern -->
+            <!-- Similar blocks for other types like 'print_isbn', 'genre', 'bisac_codes', etc., follow the same pattern -->
 
-            {% when 'genre' %}
+            {% when 'genres' %}
                 {% if audiobook_metaobject.genres.value %}
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
@@ -113,12 +114,12 @@
                     </div>
                 {% endif %}
 
-            {% when 'reference_isbn' %}
-                {% if audiobook_metaobject.reference_isbn.value %}
+            {% when 'print_isbn' %}
+                {% if audiobook_metaobject.print_isbn.value %}
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{audiobook_metaobject.reference_isbn.value}}
+                            {{audiobook_metaobject.print_isbn.value}}
                         </div>
                     </div>
                 {% endif %}
@@ -179,12 +180,12 @@
                     </div>
                 {% endif %}
 
-            {% when 'atos_booklevel' %}
-                {% if audiobook_metaobject.atos_booklevel.value %}
+            {% when 'atos_book_level' %}
+                {% if audiobook_metaobject.atos_book_level.value %}
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ audiobook_metaobject.atos_booklevel.value }}
+                            {{ audiobook_metaobject.atos_book_level.value }}
                         </div>
                     </div>
                 {% endif %}
@@ -341,14 +342,14 @@
             "limit": 1
         },
         {
-            "type": "reference_isbn",
-            "name": "Reference ISBN",
+            "type": "print_isbn",
+            "name": "Print ISBN",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
                     "label": "Section Title for Reference ISBN",
-                    "default": "Reference ISBN"
+                    "default": "Print ISBN"
                 }
             ],
             "limit": 1
