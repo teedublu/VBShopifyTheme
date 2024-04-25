@@ -83,6 +83,7 @@
         },
         "image_fydRzF": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/WBD-Coupon_without_code.png",
             "alignment": "start",
@@ -105,9 +106,9 @@
         "image_fydRzF"
       ],
       "settings": {
-        "full_width": false,
+        "full_width": true,
         "show_fixed_add_to_cart": true,
-        "desktop_media_width": 55,
+        "desktop_media_width": 65,
         "desktop_media_layout": "grid_highlight",
         "mobile_media_size": "contained",
         "mobile_carousel_control": "dots",
@@ -176,6 +177,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "sm",
         "image": "shopify:\/\/shop_images\/blue-and-orange-headphones-pattern.jpg",
