@@ -166,12 +166,6 @@
             "title": "Narrators"
           }
         },
-        "publisher_6RR4Lq": {
-          "type": "publisher",
-          "settings": {
-            "title": "Publisher"
-          }
-        },
         "authors_4qT6WC": {
           "type": "authors",
           "settings": {
@@ -184,19 +178,53 @@
             "title": "Synopsis"
           }
         },
+        "publisher_6RR4Lq": {
+          "type": "publisher",
+          "settings": {
+            "title": "Publisher"
+          }
+        },
         "release_date_iDzaVD": {
           "type": "release_date",
           "settings": {
             "title": "Release Date"
           }
+        },
+        "characters_6diBjh": {
+          "type": "characters",
+          "settings": {
+            "title": "Featuring"
+          }
+        },
+        "isbn_ftc8tP": {
+          "type": "isbn",
+          "settings": {
+            "title": "ISBN Details"
+          }
+        },
+        "categories_DHkkR7": {
+          "type": "categories",
+          "settings": {
+            "title": "Categories"
+          }
+        },
+        "additional_details_EPCcNh": {
+          "type": "additional_details",
+          "settings": {
+            "title": "Additional Details"
+          }
         }
       },
       "block_order": [
         "narrators_9VDD4E",
-        "publisher_6RR4Lq",
         "authors_4qT6WC",
         "synopsis_r33KEz",
-        "release_date_iDzaVD"
+        "publisher_6RR4Lq",
+        "release_date_iDzaVD",
+        "characters_6diBjh",
+        "isbn_ftc8tP",
+        "categories_DHkkR7",
+        "additional_details_EPCcNh"
       ],
       "settings": {
       }
