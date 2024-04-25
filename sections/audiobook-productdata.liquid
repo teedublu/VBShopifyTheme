@@ -48,8 +48,6 @@
 {%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle] -%}
 {%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
 
-{{synopsis_metaobject}}
-
 <div {% render 'section-properties', tight: true %}>
     <div class="audiobooks-full-details">
     {% for block in section.blocks %}
@@ -283,7 +281,11 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ metafields.preview | link_to: metafields.preview, class: 'synopsis link'}}
+                            <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{metafields.preview | file_url}}">
+                                <span class="playpause"></span>
+                                <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
+                                <span class="sr-only">Play audio sample</span>
+                            </button>
                         </div>
                     </div>
                 {% endif %}
