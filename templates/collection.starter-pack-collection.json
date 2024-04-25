@@ -45,6 +45,48 @@
         "overlay_opacity": 0
       }
     },
+    "rich_text_BAVNeG": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_n8jhbw": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_xL7A7w": {
+          "type": "heading",
+          "settings": {
+            "text": "The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.",
+            "heading_tag": "h6",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_7d3b9F": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_n8jhbw",
+        "heading_xL7A7w",
+        "richtext_7d3b9F"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "banner": {
       "type": "collection-banner",
       "disabled": true,
@@ -273,6 +315,7 @@
   },
   "order": [
     "image_with_text_overlay_rapDMw",
+    "rich_text_BAVNeG",
     "banner",
     "main",
     "image_with_text_overlay_kCDwBE",
