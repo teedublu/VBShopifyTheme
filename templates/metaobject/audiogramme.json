@@ -3,8 +3,8 @@
     "audiogramme_TQQXXE": {
       "type": "audiogramme",
       "settings": {
-        "title": "Audio Transcription {{ metaobject.name.value }}",
-        "subtitle": "Read along"
+        "title": "{{ metaobject.name.value }}",
+        "subtitle": "Audio Transcription"
       }
     }
   },
