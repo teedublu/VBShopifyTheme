@@ -13,6 +13,7 @@
           "type": "heading",
           "settings": {
             "text": "Starter Packs",
+            "scale_with": false,
             "heading_tag": "h0"
           }
         },
@@ -31,6 +32,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 64,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-3200x1300.jpg",
@@ -39,7 +41,7 @@
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 22
+        "overlay_opacity": 0
       }
     },
     "banner": {
@@ -114,6 +116,7 @@
           "type": "heading",
           "settings": {
             "text": "Hundreds of stories to choose from",
+            "scale_with": false,
             "heading_tag": "h1"
           }
         },
@@ -132,6 +135,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "sm",
         "image": "shopify:\/\/shop_images\/Pupil_Holding_Voxblock_in_School.jpg",
