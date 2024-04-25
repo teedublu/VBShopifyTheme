@@ -1,21 +1,3 @@
-{% if product %}
-  <!-- This is a product template -->
-  {%- assign handle = product.handle -%}
-  {%- assign audiobook_metaobject = shop.metaobjects.audiobooks[handle] -%}
-
-{% elsif metaobject %}
-   <!-- This is a metaobject template but can be lots of diff types but all should have same handle -->
-   {%- assign handle = metaobject.system.handle -%}
-   {%- assign audiobook_metaobject = shop.metaobjects.audiobook[handle] -%}
-   {%- assign product = audiobook_metaobject.product.value -%}
-{% endif %}
-
-{%- assign metafields = product.metafields.book -%}
-{%- assign narrators = metafields.narrators.value -%}
-{%- assign authors = metafields.authors.value -%}
-{%- assign characters = book.characters.value -%}
-{%- assign handle = audiobook_metaobject.system.handle -%}
-{%- assign title = audiobook_metaobject.product.value.title -%}
 <style>
 .audiobooks-full-details {
     display: flex;
@@ -41,58 +23,148 @@
 }
 
 </style>
+
+
+{% if product %}
+  <!-- This is a product template -->
+  {%- assign handle = product.handle -%}
+  {%- assign audiobook_metaobject = shop.metaobjects.audiobooks[handle] -%}
+
+{% elsif metaobject %}
+   <!-- This is a metaobject template but can be lots of diff types but all should have same handle -->
+   {%- assign handle = metaobject.system.handle -%}
+   {%- assign audiobook_metaobject = shop.metaobjects.audiobook[handle] -%}
+   {%- assign product = audiobook_metaobject.product.value -%}
+{% endif %}
+
+{%- assign metafields = product.metafields.book -%}
+{%- assign narrators = metafields.narrators.value -%}
+{%- assign authors = metafields.authors.value -%}
+{%- assign characters = metafields.characters.value -%}
+{%- assign handle = audiobook_metaobject.system.handle -%}
+{%- assign title = audiobook_metaobject.product.value.title -%}
+
 <div {% render 'section-properties', tight: true %}>
     <div class="audiobooks-full-details">
-        {% for block in section.blocks %}
-            <div class="detail-row">
-                <div class="detail-label">{{ block.settings.title }}</div>
-                <div class="detail-value">
-                    {% case block.type %}
-                        {% when 'narrators' %}
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'narrators' %}
+                {% if narrators %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
                             {% for narrator in narrators %}
                                 {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
-                        {% when 'authors' %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'authors' %}
+                {% if authors %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
                             {% for author in authors %}
                                 {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
-                        {% when 'characters' %}
-                            {% if characters %}
-                                {% for character in characters %}
-                                    {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless %}
-                                {% endfor %}
-                            {% endif %}
-                        {% when 'publisher' %}
-                            {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url }}
-                        {% when 'synopsis' %}
-                            {% if shop.metaobjects.audiobook_synopsis[handle] %}
-                                What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis link'}} about?
-                            {% endif %}
-                        {% when 'categories' %}
-                            {% for cat in metafields.categories.value %}
-                                {%- assign urlencoded = cat | url_encode | lower -%}
-                                {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
-                                {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'characters' %}
+                {% if characters %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for character in characters %}
+                                {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
-                        {% when 'release_date' %}
-                            {{ product.published_at | date: "%Y-%m-%d" }}
-                        {% when 'isbn' %}
-                            {{ product.metafields.facts.isbn.value | metafield_tag }}
-                        {% when 'additional_details' %}
-                            {{ metafields.additional_details | metafield_tag }}
-                        {% when 'educational_levels' %}
-                            Display educational levels and any other relevant details here.
-                    {% endcase %}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'publisher' %}
+                {% if metafields.publisher.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url, class: 'publisher link' }}
+                        </div>
+                    </div>
+                {% endif %}
+                
+            <!-- Similar blocks for other types like 'reference_isbn', 'genre', 'bisac_codes', etc., follow the same pattern -->
+
+            {% when 'genre' %}
+                {% if audiobook_metaobject.genres.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for genre in audiobook_metaobject.genres.value %}
+                                {{ genre }}{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'reference_isbn' %}
+                {% if audiobook_metaobject.reference_isbn.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{audiobook_metaobject.reference_isbn.value}}
+                        </div>
+                    </div>
+                {% endif %}
+            
+            {% when 'bisac_codes' %}
+                {% if audiobook_metaobject.bisac_codes.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for bisac_code in audiobook_metaobject.bisac_codes.value %}
+                                {{ bisac_code }}{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'thema_codes' %}
+                {% if audiobook_metaobject.thema_codes.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for thema_code in audiobook_metaobject.thema_codes.value %}
+                                {{ thema_code }}{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                    
+            {% when 'content_themes' %}
+                {% if audiobook_metaobject.content_themes.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for theme in audiobook_metaobject.content_themes.value %}
+                                {{ theme }}{% unless forloop.last %}<br/>{% endunless %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+            <!-- Add additional blocks as needed for the other types you've defined in the schema -->
+        {% endcase %}
+    {% endfor %}
+</div>
+
 </div>
 
 {% schema %}
 {
     "name": "Audiobook Data",
-    "max_blocks": 50,
+    "max_blocks": 40,
     "blocks": [
         {
             "type": "narrators",
@@ -147,79 +219,157 @@
             "limit": 1
         },
         {
-            "type": "synopsis",
-            "name": "Synopsis",
+            "type": "reference_isbn",
+            "name": "Reference ISBN",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for Synopsis",
-                    "default": "Synopsis"
+                    "label": "Section Title for Reference ISBN",
+                    "default": "Reference ISBN"
                 }
             ],
             "limit": 1
         },
         {
-            "type": "categories",
-            "name": "Categories",
+            "type": "genres",
+            "name": "Genres",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for Categories",
-                    "default": "Categories"
+                    "label": "Section Title for Genre",
+                    "default": "Genres"
                 }
             ],
             "limit": 1
         },
         {
-            "type": "release_date",
-            "name": "Release Date",
+            "type": "bisac_codes",
+            "name": "BISAC Codes",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for Release Date",
-                    "default": "Release Date"
+                    "label": "Section Title for BISAC Codes",
+                    "default": "BISAC Codes"
                 }
             ],
             "limit": 1
         },
         {
-            "type": "isbn",
-            "name": "ISBN Details",
+            "type": "thema_codes",
+            "name": "Thema Codes",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for ISBN",
-                    "default": "ISBN Details"
+                    "label": "Section Title for Thema Codes",
+                    "default": "Thema Codes"
                 }
             ],
             "limit": 1
         },
         {
-            "type": "additional_details",
-            "name": "Additional Details",
+            "type": "reading_level",
+            "name": "Reading Level",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for Additional Details",
-                    "default": "Additional Details"
+                    "label": "Section Title for Reading Level",
+                    "default": "Reading Level"
                 }
             ],
             "limit": 1
         },
         {
-            "type": "educational_levels",
-            "name": "Educational Levels",
+            "type": "interest_level",
+            "name": "Interest Level",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for Educational Levels",
-                    "default": "Educational Levels"
+                    "label": "Section Title for Interest Level",
+                    "default": "Interest Level"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "key_stage",
+            "name": "Key Stage",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Key Stage",
+                    "default": "Key Stage"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "elt",
+            "name": "ELT",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for ELT",
+                    "default": "ELT"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "atos_book_level",
+            "name": "ATOS Book Level",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for ATOS Book Level",
+                    "default": "ATOS Book Level"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "ar_points",
+            "name": "AR Points",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for AR Points",
+                    "default": "AR Points"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "word_count",
+            "name": "Word Count",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Word Count",
+                    "default": "Word Count"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "content_themes",
+            "name": "Content Themes",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Content Themes",
+                    "default": "Content Themes"
                 }
             ],
             "limit": 1
@@ -227,10 +377,11 @@
     ],
     "presets": [
         {
-            "name": "Audiobook Data",
+            "name": "Default Audiobook Data",
             "category": "Custom Content"
         }
     ]
 }
 {% endschema %}
+
 
