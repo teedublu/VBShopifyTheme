@@ -17,7 +17,7 @@
         "text_thkiB9": {
           "type": "text",
           "settings": {
-            "text": "<h5>Screen and WIFI free audiobook player<\/h5>"
+            "text": "<h5>Screen and wifi free audiobook player<\/h5>"
           }
         },
         "price": {
@@ -29,7 +29,7 @@
         "text_MA3Pah": {
           "type": "text",
           "settings": {
-            "text": "<p>Our screen free audiobook player enables you to play any of our audiobooks. Wi-Fi-free, with built-in speakers and headphone jack, featuring sleep and travel modes.<\/p><p>100% Connection free. 100% Hassle free.<\/p>"
+            "text": "<p>Our screen free audiobook player enables you to play any of our audiobooks. wifi-free, with built-in speakers and headphone jack, featuring sleep and travel modes.<\/p><p>100% Connection free. 100% Hassle free.<\/p>"
           }
         },
         "separator": {
@@ -87,8 +87,8 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "vb-wififree",
-            "custom_icon": "shopify:\/\/shop_images\/icons_no_wifi_240x240_7babc4e2-e49e-41eb-84d5-e05583ae79a8.png",
-            "icon_width": 24,
+            "custom_icon": "shopify:\/\/shop_images\/icons_no_wifi_240x240_306ec834-391f-453a-bbf4-dfe237668bfc.png",
+            "icon_width": 60,
             "title": "No wifi required",
             "content": "",
             "background": "#ffffff",
@@ -101,8 +101,9 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "icon_width": 32,
-            "title": "From toddler to teens",
+            "custom_icon": "shopify:\/\/shop_images\/icons_toddler_to_teen_240x240_662612d4-1bb1-4e2a-b531-2b4d2ff39010.png",
+            "icon_width": 60,
+            "title": "Toddler to teens",
             "content": "",
             "background": "#ffffff",
             "text_color": "#565656"
@@ -114,8 +115,8 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-like",
-            "custom_icon": "shopify:\/\/shop_images\/icon-speaker.png",
-            "icon_width": 64,
+            "custom_icon": "shopify:\/\/shop_images\/icons_built_in_speaker_240x240_67fde8d7-7a88-4f09-b39a-023abd054ab8.png",
+            "icon_width": 60,
             "title": "Built in speaker",
             "content": "",
             "background": "#ffffff",
@@ -128,7 +129,7 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "custom_icon": "shopify:\/\/shop_images\/icons-headphone_jack.png",
+            "custom_icon": "shopify:\/\/shop_images\/icons_headphone_jack_240x240_573d140a-f133-4b0b-ab63-9abe4fd26e12.png",
             "icon_width": 60,
             "title": "Headphone jack",
             "content": "",
@@ -142,7 +143,8 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "icon_width": 24,
+            "custom_icon": "shopify:\/\/shop_images\/icons_rechargable_240x240_16750ae4-201b-4818-9c40-0bf42213ce1a.png",
+            "icon_width": 60,
             "title": "Rechargable",
             "content": "",
             "background": "#ffffff",
@@ -155,7 +157,8 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "icon_width": 24,
+            "custom_icon": "shopify:\/\/shop_images\/icons_long_battery_240x240_301b6091-16c6-4e24-9412-eed84d254899.png",
+            "icon_width": 60,
             "title": "Long battery life",
             "content": "",
             "background": "#ffffff",
@@ -168,8 +171,8 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "custom_icon": "shopify:\/\/shop_images\/landing_page_icons_bedtime_-05.png",
-            "icon_width": 72,
+            "custom_icon": "shopify:\/\/shop_images\/icons_bedtime_mode_240x240_dacc5214-28f9-4fe6-a73d-05c7accd8e37.png",
+            "icon_width": 60,
             "title": "Bedtime mode",
             "content": "",
             "background": "#ffffff",
@@ -182,7 +185,8 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "icon_width": 24,
+            "custom_icon": "shopify:\/\/shop_images\/icons_bookmark_240x240_e5138ba4-7a22-49ab-996e-894285798b9d.png",
+            "icon_width": 60,
             "title": "Bookmarks",
             "content": "",
             "background": "#ffffff",
@@ -195,21 +199,9 @@
             "text_alignment": "start",
             "icon_position": "aligned",
             "icon": "picto-coupon",
-            "icon_width": 24,
+            "custom_icon": "shopify:\/\/shop_images\/icons_audio_skipping_240x240_b9c99893-3966-4af3-ab97-5e487d7afc31.png",
+            "icon_width": 60,
             "title": "Audio scrubbing",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_10": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Headphone jack",
             "content": "",
             "background": "#ffffff",
             "text_color": "#565656"
@@ -268,7 +260,6 @@
         "offer_7",
         "offer_8",
         "offer_9",
-        "offer_10",
         "separator_JnqTiQ",
         "offer_tcaCpM",
         "offer_wAzmdm"
@@ -337,7 +328,7 @@
             "mobile_icon_width": 120,
             "icon_width": 120,
             "icon_background_type": "circle",
-            "icon_background": "#ffffff",
+            "icon_background": "#fff7f0",
             "icon_color": "",
             "title": "Parent free setup",
             "content": ""
@@ -534,60 +525,60 @@
         "collection_i6Ah6p": {
           "type": "collection",
           "settings": {
-            "collection": "childrens-funny-audiobooks",
+            "collection": "voxblock-audiobooks-under-5s",
             "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
             "subheading": "",
-            "title": "",
+            "title": "Under 5's",
             "url": "",
             "heading_tag": "h2",
             "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
-            "overlay_color": "#000000",
+            "overlay_color": "#565656",
             "overlay_opacity": 30
           }
         },
         "collection_FGjT6X": {
           "type": "collection",
           "settings": {
-            "collection": "childrens-dinosaurs-audiobooks",
+            "collection": "voxblock-audiobooks-5-8-years",
             "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
             "subheading": "",
-            "title": "",
+            "title": "5-8 Years",
             "url": "",
-            "heading_tag": "h3",
+            "heading_tag": "h2",
             "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
-            "overlay_color": "#ff9e57",
-            "overlay_opacity": 0
+            "overlay_color": "#565656",
+            "overlay_opacity": 30
           }
         },
         "collection_8cj9pY": {
           "type": "collection",
           "settings": {
-            "collection": "childrens-adventure-audiobooks",
+            "collection": "voxblock-audiobooks-8-10-years",
             "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
             "subheading": "",
-            "title": "",
+            "title": "8-10 Years",
             "url": "",
             "heading_tag": "h2",
             "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
-            "overlay_color": "#000000",
+            "overlay_color": "#565656",
             "overlay_opacity": 30
           }
         },
         "collection_RPYpar": {
           "type": "collection",
           "settings": {
-            "collection": "childrens-bedtime-calm-audiobooks",
+            "collection": "voxblock-audiobooks-10-teens",
             "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
             "subheading": "",
-            "title": "",
+            "title": "10-Teens",
             "url": "",
             "heading_tag": "h2",
             "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
-            "overlay_color": "#000000",
+            "overlay_color": "#565656",
             "overlay_opacity": 30
           }
         }
