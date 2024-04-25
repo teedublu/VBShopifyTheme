@@ -62,12 +62,11 @@
   .sticky-filterbar {
     position: -webkit-sticky; /* For Safari */
     position: sticky;
-    top: 92;
-    background-color: white;
+    top: 72px;
+    background-color: #ffffffdb;
     z-index: 1000;
     width: 100%;
     padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 </style>
@@ -103,7 +102,7 @@
           {%- if section.settings.filter_layout == 'horizontal' -%}
             {%- render 'collection-top-bar', results: collection, show_filters: show_filters, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by, sticky: section.settings.sticky -%}
           {%- else -%}
-            {%- render 'collection-top-bar', results: collection, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
+            {%- render 'collection-top-bar', results: collection, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by, sticky: section.settings.sticky -%}
           {%- endif -%}
 
           {%- comment -%}We also need to render the button, that is floating on mobile{%- endcomment -%}
