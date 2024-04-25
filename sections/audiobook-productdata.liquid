@@ -41,9 +41,14 @@
 {%- assign narrators = metafields.narrators.value -%}
 {%- assign authors = metafields.authors.value -%}
 {%- assign characters = metafields.characters.value -%}
+
 {%- assign handle = audiobook_metaobject.system.handle -%}
 {%- assign title = audiobook_metaobject.product.value.title -%}
 
+{%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle] -%}
+{%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
+
+{{synopsis_metaobject}}WTF
 <div {% render 'section-properties', tight: true %}>
     <div class="audiobooks-full-details">
     {% for block in section.blocks %}
@@ -153,7 +158,98 @@
                         </div>
                     </div>
                 {% endif %}
-                
+
+            {% when 'word_count' %}
+                {% if audiobook_metaobject.word_count.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.word_count.value }}
+                        </div>
+                    </div>
+                {% endif %}
+            
+            {% when 'ar_points' %}
+                {% if audiobook_metaobject.ar_points.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.ar_points.value }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'atos_booklevel' %}
+                {% if audiobook_metaobject.atos_booklevel.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.atos_booklevel.value }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'elt' %}
+                {% if audiobook_metaobject.elt.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.elt.value }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'key_stage' %}
+                {% if audiobook_metaobject.key_stage.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.key_stage.value }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'interest_level' %}
+                {% if audiobook_metaobject.interest_level.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.interest_level.value }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'reading_level' %}
+                {% if audiobook_metaobject.reading_level.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiobook_metaobject.reading_level.value }}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'audiogramme' %}
+                {% if audiogramme_metaobject %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ audiogramme_metaobject.value.name | link_to: audiogramme_metaobject.system.url, class: 'audiogramme link'}}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'synopsis' %}
+                {% if synopsis_metaobject %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ synopsis_metaobject | link_to: synopsis_metaobject.system.url, class: 'synopsis link'}}
+                        </div>
+                    </div>
+                {% endif %}
+             
+
             <!-- Add additional blocks as needed for the other types you've defined in the schema -->
         {% endcase %}
     {% endfor %}
@@ -166,6 +262,32 @@
     "name": "Audiobook Data",
     "max_blocks": 40,
     "blocks": [
+        {
+            "type": "audiogramme",
+            "name": "Audiogramme",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Audiogramme",
+                    "default": "Audiogramme"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "synopsis",
+            "name": "Synopsis",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Synopsis",
+                    "default": "Synopsis"
+                }
+            ],
+            "limit": 1
+        },
         {
             "type": "narrators",
             "name": "Narrators",
