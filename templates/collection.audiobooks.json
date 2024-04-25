@@ -20,7 +20,7 @@
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 20,
+            "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
           }
@@ -287,6 +287,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/library_banner_-03.png",
