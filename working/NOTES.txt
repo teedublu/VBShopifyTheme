@@ -28,6 +28,7 @@ METAOBJECTS
 -- Create new Audiobook Synposis for top 10 books
 -- Update all book data
 -- include quotes where possible
+-- import the BookData sheet https://docs.google.com/spreadsheets/d/1P15l0MDeGTEoON2zf-_9nubonuCHNyhnetjhP848Flc/edit#gid=962954203
 
 AUDIOGRAMMES
 -- upload to Shopify CDN and link file to metafield (rather than Youtube link)
@@ -51,3 +52,4 @@ SCHEMA
 -- wishlist
 -- expand audio transcription (initial work done)
 -- expand templates per audiobook metaobject to include other keywords per template (put this in gemini = 'suggest some keyword phrases that include a books title')
+-- add more and use the quotes field on audiobook metaobjects

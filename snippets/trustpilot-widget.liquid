@@ -1,0 +1,36 @@
+
+<style>
+   .trustpilot-widget {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.rating-stars {
+    color: #FFCC00; /* Gold color for stars */
+}
+
+.rating-stars .star {
+    font-size: 24px;
+}
+
+.rating-stars .star.filled {
+    color: #FFCC00;
+}
+
+.rating-stars .star:not(.filled) {
+    color: #ccc;
+}
+
+</style>
+
+<div> 
+   <div class="trustpilot-widget">
+    <h3>Our Trustpilot Rating</h3>
+    <div class="rating-stars">
+        {% for i in (1..5) %}
+            <span class="star {% if i <= 5 %}filled{% endif %}">&#9733;</span> <!-- Adjust the number in 'i <= 4' to change the displayed static rating -->
+        {% endfor %}
+    </div>
+    <p>Based on 123 reviews</p> <!-- Static number of reviews -->
+</div>

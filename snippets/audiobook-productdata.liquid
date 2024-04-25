@@ -29,14 +29,14 @@ Can use Audiobook metaobject saved on the product
 
 
 
-<div>
+
    <table class="audiobooks-full-details">
       <tbody>
          <tr>
             <td>Narrator</td>
             <td>
                {% for narrator in narrators %}
-                  {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
+                  {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
@@ -48,7 +48,7 @@ Can use Audiobook metaobject saved on the product
             <td>Author</td>
             <td>
                {% for author in authors %}
-                  {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
+                  {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
@@ -57,7 +57,7 @@ Can use Audiobook metaobject saved on the product
                <td>Featuring</td>
                <td>
                   {% for character in characters %}
-                     {{ character.name | link_to: character.system.url, class: 'character'}}{% unless forloop.last %}, {% endunless -%}
+                     {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless -%}
                   {% endfor %}
                </td>
             </tr>
@@ -70,7 +70,7 @@ Can use Audiobook metaobject saved on the product
             <tr>
                <td>Synopsis</td>
                <td>
-                  What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis'}} about?
+                  What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synop sis link'}} about?
 
 
                </td>
@@ -82,7 +82,7 @@ Can use Audiobook metaobject saved on the product
                {% for cat in metafields.categories.value %}
                   {%- assign urlencoded = cat | url_encode | lower -%}
                   {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
-                  {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
+                  {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
                {% endfor %}
             </td>
          </tr>
@@ -91,9 +91,15 @@ Can use Audiobook metaobject saved on the product
             <td>{{ product.published_at | date: "%Y-%m-%d" }}</td>
          </tr>
          <tr>
-            <td>ISBN</td>
+            <td>Voxblock ISBN</td>
             <td>{{ product.metafields.facts.isbn.value | metafield_tag }}</td>
          </tr>
+         {%- if audiobook_metaobject.print_isbn -%}
+            <tr>
+               <td>Printed Book ISBN</td>
+               <td>{{ audiobook_metaobject.print_isbn | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
          <tr>
             <td>Abdridged</td>
             {%- assign abridged = metafields.abridged -%}
@@ -108,6 +114,84 @@ Can use Audiobook metaobject saved on the product
             <td>Language</td>
             <td>{{ metafields.language | metafield_tag }}</td>
          </tr>
+
+         {%- if audiobook_metaobject.reading_level -%}
+            <tr>
+               <td>Reading level</td>
+               <td>{{ audiobook_metaobject.reading_level | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.interest_level -%}
+            <tr>
+               <td>Interest level</td>
+               <td>{{ audiobook_metaobject.interest_level | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.key_stage -%}
+            <tr>
+               <td>Key stage</td>
+               <td>{{ audiobook_metaobject.key_stage | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.elt -%}
+            <tr>
+               <td>ELT</td>
+               <td>{{ audiobook_metaobject.elt | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.interest_level -%}
+            <tr>
+               <td>ATOS book level</td>
+               <td>{{ audiobook_metaobject.atos_book_level | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.ar_points -%}
+            <tr>
+               <td>AR points</td>
+               <td>{{ audiobook_metaobject.ar_points | metafield_tag }}</td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.content_themes -%}
+            <tr>
+               <td>Content themes</td>
+               <td>
+                  {% for theme in audiobook_metaobject.content_themes.value %}
+                     {{ theme }}{% unless forloop.last %} <br/>{% endunless -%}
+                  {% endfor %}
+
+               </td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.thema_codes -%}
+            <tr>
+               <td>Thema codes</td>
+               <td>
+                  {% for code in audiobook_metaobject.thema_codes.value %}
+                     {{ code }}{% unless forloop.last %}, {% endunless -%}
+                  {% endfor %}
+               </td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.bisac_codes -%}
+            <tr>
+               <td>BISAC codes</td>
+               <td>
+                  {% for code in audiobook_metaobject.bisac_codes.value %}
+                     {{ code }}{% unless forloop.last %}, {% endunless -%}
+                  {% endfor %}
+               </td>
+            </tr>
+         {%- endif -%}
+         {%- if audiobook_metaobject.genres -%}
+            <tr>
+               <td>Genres</td>
+               <td>
+                  {% for genre in audiobook_metaobject.genres.value %}
+                     {{ genre }}{% unless forloop.last %}, {% endunless -%}
+                  {% endfor %}
+               </td>
+            </tr>
+         {%- endif -%}
          
       </tbody>
    </table>
