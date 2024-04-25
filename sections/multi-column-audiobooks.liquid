@@ -25,6 +25,8 @@
 
 
         {%- for block in section.blocks -%}
+        {% assign image = nil %}
+              {% assign image_url = nil %}
 
           {%- case block.type -%}
             
@@ -56,6 +58,7 @@
                   {% assign image = narrator.photos.value | first %}
                   {% assign link_url = narrator.system.url %}
                   {% assign link_text = 'read more' %}
+
                 {%- when 'publisher' -%}
                   {% assign publisher = metaobject.product.value.metafields.book.publisher.value %}
                   {% assign content = publisher.description | metafield_tag | strip_html | truncate: 200 %}
@@ -63,18 +66,30 @@
                   {% assign image = publisher.logo %}
                   {% assign link_url = publisher.system.url %}
                   {% assign link_text = 'read more' %}
+
+                {%- else -%}
+                  {% assign image = nil %}
+
               {%- endcase -%}
+
+              {%- capture sizes -%}(max-width: 699px) calc(73vw - 40px), (max-width: 999px) calc(38vw - 64px), calc(min({{ settings.page_width }}px, 100vw) / {{ block.settings.column_size }}){%- endcapture -%}
+
+              {%- if image!=nil -%}
+                {% assign image_url = image | image_url: width: image.width %}
+
+              {%- else -%}
+                {% assign image_url = 'https://cdn.shopify.com/s/files/1/0565/2050/7467/files/placeholder-profile.jpg' | image_url: width: 200 %}
+
+              {%- endif -%}
 
 
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
 
-                {%- if block.settings.video != blank -%}
-                  <video-media autoplay style="--aspect-ratio: {{ block.settings.video.aspect_ratio }}">
-                    {{ block.settings.video | video_tag: playsinline: true, muted: true, loop: true, preload: 'metadata', class: 'rounded' }}
-                  </video-media>
-                {%- elsif image != blank -%}
-                  {%- capture sizes -%}(max-width: 699px) calc(73vw - 40px), (max-width: 999px) calc(38vw - 64px), calc(min({{ settings.page_width }}px, 100vw) / {{ block.settings.column_size }}){%- endcapture -%}
+                {%- if image!=nil -%}
                   {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,800,1000,1200,1400,1600,1800', class: 'rounded audioook-object-image' -}}
+                {%- else -%}
+                    <img src="https://cdn.shopify.com/s/files/1/0565/2050/7467/files/placeholder-profile.jpg" alt="Descriptive text" class="rounded audioook-object-image">
+                  
                 {%- endif -%}
 
                 {%- if title != blank or content != blank or block.settings.link_text != blank -%}
