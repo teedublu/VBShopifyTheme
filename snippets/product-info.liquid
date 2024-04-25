@@ -25,7 +25,6 @@
         
 
       {%- when 'title' -%}
-        <h3 class="h5">{{ product.type }}</h3>
         {%- if request.page_type == 'product' -%}
           <h1 class="product-info__title {{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>{{ product.title }}</h1>
         {%- else -%}
