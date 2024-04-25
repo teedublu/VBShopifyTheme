@@ -43,11 +43,11 @@
 </style>
 
 
-{%- comment -%}
+
 <script type="application/ld+json">
-{%- endcomment -%}
+
 {%- assign title = page.metafields.global.title_tag | default: page.title -%}
-<textarea cols="100" rows="100">
+
   {
     "@context": "http://schema.org",
     "@type": "CollectionPage",
@@ -70,11 +70,11 @@
               "position": {{ forloop.index }},
               "item": {
                 "@type": "Audiobook",
+                "@id":  "{{ shop.url }}{{ product.url }}",
                 "url": "{{ shop.url }}{{ product.url }}#audiobook",
                 "name": "{{ product.title }}",
                 "author": "{{ author.name }}",
-                "description": "{{ product.description | strip_html }}",
-                "image"
+                "description": "{{ product.title }} as a physical audiobook"
               }
             }{% unless forloop.last %},{% endunless %}
           {%- endfor -%}
@@ -82,10 +82,9 @@
       ]
     }
   }
-</textarea>
-  {%- comment -%}
+  
 </script>
-{%- endcomment -%}
+
 <div class="container">
   <div class="page">
     <div class="metaobjects index-list collection">
