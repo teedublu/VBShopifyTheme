@@ -147,7 +147,6 @@
       ],
       "settings": {
         "full_width": true,
-        "author": "wtf",
         "gap": "small",
         "text_alignment": "start",
         "subheading": "About",
@@ -163,12 +162,57 @@
       "settings": {
         "heading": "This is my new section"
       }
+    },
+    "audiobook_productdata_zmqU7J": {
+      "type": "audiobook-productdata",
+      "blocks": {
+        "narrators_9VDD4E": {
+          "type": "narrators",
+          "settings": {
+            "narrator_title": "Narrators"
+          }
+        },
+        "publisher_6RR4Lq": {
+          "type": "publisher",
+          "settings": {
+            "publisher_title": "Publisher"
+          }
+        },
+        "authors_4qT6WC": {
+          "type": "authors",
+          "settings": {
+            "author_title": "Authors"
+          }
+        },
+        "synopsis_r33KEz": {
+          "type": "synopsis",
+          "settings": {
+            "synopsis_title": "Synopsis"
+          }
+        },
+        "release_date_iDzaVD": {
+          "type": "release_date",
+          "settings": {
+            "release_date_title": "Release Date"
+          }
+        }
+      },
+      "block_order": [
+        "narrators_9VDD4E",
+        "publisher_6RR4Lq",
+        "authors_4qT6WC",
+        "synopsis_r33KEz",
+        "release_date_iDzaVD"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
     "breadcrumbs_DL4tEL",
     "featured_product_B9E7nQ",
     "multi_column_audiobooks_WnDPxN",
-    "audiobook_bookdata_wtkEHX"
+    "audiobook_bookdata_wtkEHX",
+    "audiobook_productdata_zmqU7J"
   ]
 }
