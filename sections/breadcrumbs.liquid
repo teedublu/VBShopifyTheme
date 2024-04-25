@@ -56,11 +56,12 @@
   comment
 
     {{page_type}}__{{page_subtype}}
-    url                                     template                    name        suffix 
-    /pages/audiobook-publishers             page.metaobjects-publishers page        metaobjects-publishers
-    /pages/audiobooks                       page.metaobjects-audiobooks page        metaobjects-audiobooks
-    /pages/publisher/alison-larkin-presents metaobject/publisher        publisher   ""
-    /pages/audiobook/get-me-out-of-here     metaobject/audiobook        audiobook   ""
+    url                                     template                      name        suffix 
+    /pages/audiobook-publishers             page.metaobjects-publishers   page        metaobjects-publishers
+    /pages/audiobook                        page.metaobjects-audiobooks   page        metaobjects-audiobooks
+    /pages/audiogramme                      page.metaobjects-audiogrammes page        metaobjects-audiogrammes
+    /pages/publisher/alison-larkin-presents metaobject/publisher          publisher   ""
+    /pages/audiobook/get-me-out-of-here     metaobject/audiobook          audiobook   ""
   endcomment
 
   assign sep = "+,+"
@@ -99,10 +100,7 @@
           assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
           assign parent_page = pages[list_page] 
           assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
-        endunless  
-        
-        
-
+        endunless 
       
       assign title = metaobject.title | default : metaobject.name 
       assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: title

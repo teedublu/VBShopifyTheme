@@ -99,12 +99,12 @@ span.transcript-word {
 {% assign product = all_products[metaobject.system.handle] %}
 
 <div {% render 'section-properties', tight: true %}>
-  {%- if section.settings.subheading != blank -%}
-    <p class="subheading">{{ section.settings.subheading | escape }}</p>
+  {%- if section.settings.subtitle != blank -%}
+    <p class="subheading">{{ section.settings.subtitle | escape }}</p>
   {%- endif -%}
   {%- if section.settings.title != blank -%}
     <h2 class="h2">
-      {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+      {{ section.settings.title }}
     </h2>
   {%- endif -%}
   <div class="section-stack">
