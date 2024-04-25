@@ -165,7 +165,17 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ audiobook_metaobject.word_count.value }}
+                            {{ audiobook_metaobject.word_count.value | number_with_delimiter: ',' }} words
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'duration' %}
+                {% if metafields.duration %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ metafields.duration | number_with_delimiter: ',' }}
                         </div>
                     </div>
                 {% endif %}
@@ -235,7 +245,11 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ audiogramme_metaobject.name | link_to: audiogramme_metaobject.system.url, class: 'audiogramme link'}}
+                            {%- capture link_text -%}
+                                Transcript of {{ audiogramme_metaobject.name }}
+                            {%- endcapture -%}
+
+                            {{ link_text | link_to: audiogramme_metaobject.system.url, class: 'audiogramme link'}}
                         </div>
                     </div>
                 {% endif %}
@@ -245,11 +259,52 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ synopsis_metaobject | link_to: synopsis_metaobject.system.url, class: 'synopsis link'}}
+                            {%- capture link_text -%}
+                                What is {{ synopsis_metaobject.title }} about?
+                            {%- endcapture -%}
+                            {{ link_text | link_to: synopsis_metaobject.system.url, class: 'synopsis link'}}
                         </div>
                     </div>
                 {% endif %}
-             
+
+             {% when 'preview' %}
+                {% if metafields.preview %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ metafields.preview | link_to: metafields.preview, class: 'synopsis link'}}
+                        </div>
+                    </div>
+                {% endif %}
+            {% when 'categories' %}
+                {% if metafields.categories %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for category in metafields.categories %}
+                                {{ category }}{% unless forloop.last %}<br/>{% endunless %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% when 'language' %}
+                {% if metafields.language %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ metafields.language }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% when 'abridged' %}
+                {% if metafields.abridged %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ abridged }}
+                        </div>
+                    </div>
+                {% endif %}
 
             <!-- Add additional blocks as needed for the other types you've defined in the schema -->
         {% endcase %}
@@ -363,6 +418,71 @@
                     "id": "title",
                     "label": "Section Title for Genre",
                     "default": "Genres"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "duration",
+            "name": "Duration",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Duration",
+                    "default": "Duration"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "preview",
+            "name": "Preview",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Preview",
+                    "default": "Preview"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "categories",
+            "name": "Categories",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Categories",
+                    "default": "Categories"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "language",
+            "name": "Language",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Language",
+                    "default": "Language"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "abridged",
+            "name": "Abridged",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Abridged",
+                    "default": "Abridged"
                 }
             ],
             "limit": 1
