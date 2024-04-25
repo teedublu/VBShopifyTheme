@@ -45,10 +45,10 @@
 {%- assign handle = audiobook_metaobject.system.handle -%}
 {%- assign title = audiobook_metaobject.product.value.title -%}
 
-{%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle] -%}
-{%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
+{%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle].value -%}
+{%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle].value -%}
 
-{{synopsis_metaobject}}WTF
+
 <div {% render 'section-properties', tight: true %}>
     <div class="audiobooks-full-details">
     {% for block in section.blocks %}
@@ -234,7 +234,7 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ audiogramme_metaobject.value.name | link_to: audiogramme_metaobject.system.url, class: 'audiogramme link'}}
+                            {{ audiogramme_metaobject.name | link_to: audiogramme_metaobject.system.url, class: 'audiogramme link'}}
                         </div>
                     </div>
                 {% endif %}
