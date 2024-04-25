@@ -20,7 +20,7 @@
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 20,
+            "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
           }
@@ -38,11 +38,11 @@
             "heading_tag": "h1",
             "button_text": "Buy here",
             "button_link": "shopify:\/\/collections\/audiobooks-by-roald-dahl",
-            "text_color": "#ffffff",
+            "text_color": "#ff9e57",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 20,
+            "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
           }
@@ -59,11 +59,11 @@
             "heading_tag": "h1",
             "button_text": "Buy here",
             "button_link": "shopify:\/\/products\/dinosaurs",
-            "text_color": "#ffffff",
+            "text_color": "#565656",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 20,
+            "overlay_opacity": 0,
             "background": "",
             "background_gradient": ""
           }
@@ -161,7 +161,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Illustration-single-image.png",
             "link_text": "Best Sellers",
-            "url_params": ""
+            "url_params": "?filter.p.m.book.age_groups=35"
           }
         },
         "item_Y4GnXQ": {
@@ -169,7 +169,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
             "link_text": "Under 5's",
-            "url_params": ""
+            "url_params": "?filter.p.m.book.age_groups=35"
           }
         },
         "item_PHyCVd": {
@@ -177,7 +177,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
             "link_text": "5-8 years",
-            "url_params": ""
+            "url_params": "?filter.p.m.book.age_groups=58"
           }
         },
         "item_qpk6Bx": {
@@ -287,6 +287,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/library_banner_-03.png",

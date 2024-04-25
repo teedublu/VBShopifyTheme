@@ -6,13 +6,13 @@
         "subheading_BY3n4M": {
           "type": "subheading",
           "settings": {
-            "text": "FOR KIDS"
+            "text": "THE SCREEN-FREE AUDIOBOOK PLAYER"
           }
         },
         "heading_EBfnGt": {
           "type": "heading",
           "settings": {
-            "text": "The Screen-free audiobook player",
+            "text": "Loved by kids",
             "scale_with": false,
             "heading_tag": "h1"
           }
@@ -40,8 +40,8 @@
         "max_width": 76,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/homepage_hero_web_3200x1600_f736d605-096a-428a-bd4c-929bed0cdc96.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/homepage_hero_mob_1300x1600_aeb3eb65-c91c-4fa6-bd1f-3356e66b0b3b.jpg",
+        "image": "shopify:\/\/shop_images\/homepage_hero_image_deskt_3200x1600_ceb52ad3-0766-4208-bddd-33c480f786b2.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/homepage_hero_image_mob_1300x1600_5d12e6c8-7438-4153-9b56-f20a71ac1d37.jpg",
         "mobile_text_position": "place-self-start-end text-end",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
@@ -170,7 +170,7 @@
         "item_xg74WH": {
           "type": "item",
           "settings": {
-            "title": "200",
+            "title": "202",
             "subheading": "audiobooks in our collection",
             "content": "",
             "button_text": "",
@@ -218,8 +218,8 @@
         "1664424434f5b7d0e0-0": {
           "type": "item",
           "settings": {
-            "horizontal_position": 22,
-            "vertical_position": 49,
+            "horizontal_position": 35,
+            "vertical_position": 40,
             "horizontal_position_mobile": 24,
             "vertical_position_mobile": 70,
             "icon_width": 32,
@@ -230,8 +230,8 @@
         "1664424434f5b7d0e0-1": {
           "type": "item",
           "settings": {
-            "horizontal_position": 65,
-            "vertical_position": 14,
+            "horizontal_position": 55,
+            "vertical_position": 9,
             "horizontal_position_mobile": 62,
             "vertical_position_mobile": 14,
             "icon_width": 32,
@@ -242,20 +242,33 @@
         "1664424434f5b7d0e0-2": {
           "type": "item",
           "settings": {
-            "horizontal_position": 67,
-            "vertical_position": 79,
+            "horizontal_position": 58,
+            "vertical_position": 68,
             "horizontal_position_mobile": 83,
             "vertical_position_mobile": 75,
             "icon_width": 32,
             "title": "Sleep mode",
             "content": "<p>Sleep mode that helps children wind down, and turns off after a pre-set time<\/p>"
           }
+        },
+        "item_VCFDJB": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 57,
+            "vertical_position": 36,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "icon_width": 32,
+            "title": "Physical audiobooks",
+            "content": "<p>Made of 100% recycled material. Audiobooks automatically play once placed in the player.<\/p>"
+          }
         }
       },
       "block_order": [
         "1664424434f5b7d0e0-0",
         "1664424434f5b7d0e0-1",
-        "1664424434f5b7d0e0-2"
+        "1664424434f5b7d0e0-2",
+        "item_VCFDJB"
       ],
       "settings": {
         "full_width": false,
@@ -815,6 +828,7 @@
     },
     "revealed_image_on_scroll_mgNqPf": {
       "type": "revealed-image-on-scroll",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Homepage-Reveal_Image-3200x1600.jpg",
         "mobile_image": "shopify:\/\/shop_images\/Homepage-Reveal-mobile-1125x2000.jpg",
