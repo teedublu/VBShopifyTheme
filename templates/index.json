@@ -218,8 +218,8 @@
         "1664424434f5b7d0e0-0": {
           "type": "item",
           "settings": {
-            "horizontal_position": 22,
-            "vertical_position": 49,
+            "horizontal_position": 35,
+            "vertical_position": 40,
             "horizontal_position_mobile": 24,
             "vertical_position_mobile": 70,
             "icon_width": 32,
@@ -230,8 +230,8 @@
         "1664424434f5b7d0e0-1": {
           "type": "item",
           "settings": {
-            "horizontal_position": 65,
-            "vertical_position": 14,
+            "horizontal_position": 55,
+            "vertical_position": 9,
             "horizontal_position_mobile": 62,
             "vertical_position_mobile": 14,
             "icon_width": 32,
@@ -242,20 +242,33 @@
         "1664424434f5b7d0e0-2": {
           "type": "item",
           "settings": {
-            "horizontal_position": 67,
-            "vertical_position": 79,
+            "horizontal_position": 58,
+            "vertical_position": 68,
             "horizontal_position_mobile": 83,
             "vertical_position_mobile": 75,
             "icon_width": 32,
             "title": "Sleep mode",
             "content": "<p>Sleep mode that helps children wind down, and turns off after a pre-set time<\/p>"
           }
+        },
+        "item_VCFDJB": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 57,
+            "vertical_position": 36,
+            "horizontal_position_mobile": 30,
+            "vertical_position_mobile": 30,
+            "icon_width": 32,
+            "title": "Physical audiobooks",
+            "content": "<p>Made of 100% recycled material. Audiobooks automatically play once placed in the player.<\/p>"
+          }
         }
       },
       "block_order": [
         "1664424434f5b7d0e0-0",
         "1664424434f5b7d0e0-1",
-        "1664424434f5b7d0e0-2"
+        "1664424434f5b7d0e0-2",
+        "item_VCFDJB"
       ],
       "settings": {
         "full_width": false,
