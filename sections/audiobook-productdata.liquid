@@ -41,52 +41,53 @@
 }
 
 </style>
-<div class="audiobooks-full-details">
-    {% for block in section.blocks %}
-        <div class="detail-row">
-            <div class="detail-label">{{ block.settings.title }}</div>
-            <div class="detail-value">
-                {% case block.type %}
-                    {% when 'narrators' %}
-                        {% for narrator in narrators %}
-                            {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                    {% when 'authors' %}
-                        {% for author in authors %}
-                            {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                    {% when 'characters' %}
-                        {% if characters %}
-                            {% for character in characters %}
-                                {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless %}
+<div {% render 'section-properties', tight: true %}>
+    <div class="audiobooks-full-details">
+        {% for block in section.blocks %}
+            <div class="detail-row">
+                <div class="detail-label">{{ block.settings.title }}</div>
+                <div class="detail-value">
+                    {% case block.type %}
+                        {% when 'narrators' %}
+                            {% for narrator in narrators %}
+                                {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
-                        {% endif %}
-                    {% when 'publisher' %}
-                        {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url }}
-                    {% when 'synopsis' %}
-                        {% if shop.metaobjects.audiobook_synopsis[handle] %}
-                            What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis link'}} about?
-                        {% endif %}
-                    {% when 'categories' %}
-                        {% for cat in metafields.categories.value %}
-                            {%- assign urlencoded = cat | url_encode | lower -%}
-                            {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
-                            {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
-                        {% endfor %}
-                    {% when 'release_date' %}
-                        {{ product.published_at | date: "%Y-%m-%d" }}
-                    {% when 'isbn' %}
-                        {{ product.metafields.facts.isbn.value | metafield_tag }}
-                    {% when 'additional_details' %}
-                        {{ metafields.additional_details | metafield_tag }}
-                    {% when 'educational_levels' %}
-                        Display educational levels and any other relevant details here.
-                {% endcase %}
+                        {% when 'authors' %}
+                            {% for author in authors %}
+                                {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        {% when 'characters' %}
+                            {% if characters %}
+                                {% for character in characters %}
+                                    {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless %}
+                                {% endfor %}
+                            {% endif %}
+                        {% when 'publisher' %}
+                            {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url }}
+                        {% when 'synopsis' %}
+                            {% if shop.metaobjects.audiobook_synopsis[handle] %}
+                                What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis link'}} about?
+                            {% endif %}
+                        {% when 'categories' %}
+                            {% for cat in metafields.categories.value %}
+                                {%- assign urlencoded = cat | url_encode | lower -%}
+                                {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+                                {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
+                            {% endfor %}
+                        {% when 'release_date' %}
+                            {{ product.published_at | date: "%Y-%m-%d" }}
+                        {% when 'isbn' %}
+                            {{ product.metafields.facts.isbn.value | metafield_tag }}
+                        {% when 'additional_details' %}
+                            {{ metafields.additional_details | metafield_tag }}
+                        {% when 'educational_levels' %}
+                            Display educational levels and any other relevant details here.
+                    {% endcase %}
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
-
 
 {% schema %}
 {
