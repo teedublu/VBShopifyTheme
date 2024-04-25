@@ -8,93 +8,107 @@ metafields var is shorthand for 'product.metafields.book' to give access to meta
 Can use Audiobook metaobject saved on the product
 {% endcomment %}
 
+{% if product %}
+  <!-- This is a product template -->
+  {%- assign handle = product.handle -%}
+  {%- assign audiobook_metaobject = shop.metaobjects.audiobooks[handle] -%}
+
+{% elsif metaobject %}
+   <!-- This is a metaobject template but can be lots of diff types but all should have same handle -->
+   {%- assign handle = metaobject.system.handle -%}
+   {%- assign audiobook_metaobject = shop.metaobjects.audiobook[handle] -%}
+   {%- assign product = audiobook_metaobject.product.value -%}
+{% endif %}
 
 {%- assign metafields = product.metafields.book -%}
-{%- assign metaobject = metafields.audiobook -%}
 {%- assign narrators = metafields.narrators.value -%}
 {%- assign authors = metafields.authors.value -%}
 {%- assign characters = book.characters.value -%}
-{%- assign handle = metaobject.system.handle -%}
-{%- assign title = metaobject.product.value.title -%}
+{%- assign handle = audiobook_metaobject.system.handle -%}
+{%- assign title = audiobook_metaobject.product.value.title -%}
 
-<table class="audiobooks-full-details">
-   <tbody>
-      <tr>
-         <td>Narrator</td>
-         <td>
-            {% for narrator in narrators %}
-               {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
-            {% endfor %}
-         </td>
-      </tr>
-      <tr>
-         <td>Length</td>
-         <td>{{ book.duration.value }}</td>
-      </tr>
-      <tr>
-         <td>Author</td>
-         <td>
-            {% for author in authors %}
-               {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
-            {% endfor %}
-         </td>
-      </tr>
-      {%- if characters -%}
+
+
+<div>
+   <table class="audiobooks-full-details">
+      <tbody>
          <tr>
-            <td>Featuring</td>
+            <td>Narrator</td>
             <td>
-               {% for character in characters %}
-                  {{ character.name | link_to: character.system.url, class: 'character'}}{% unless forloop.last %}, {% endunless -%}
+               {% for narrator in narrators %}
+                  {{ narrator.name | link_to: narrator.system.url, class: 'narrator'}}{% unless forloop.last %}, {% endunless -%}
                {% endfor %}
             </td>
          </tr>
-      {% endif %}
-      <tr>
-         <td>Publisher</td>
-         <td>{{book.publisher.value.name | link_to: book.publisher.value.system.url }}</td>
-      </tr>
-      {%- if shop.metaobjects.audiobook_synopsis[handle] -%}
          <tr>
-            <td>Synopsis</td>
+            <td>Length</td>
+            <td>{{ metafields.duration.value }}</td>
+         </tr>
+         <tr>
+            <td>Author</td>
             <td>
-               What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis'}} about?
-
-
+               {% for author in authors %}
+                  {{ author.name | link_to: author.system.url, class: 'author'}}{% unless forloop.last %}, {% endunless -%}
+               {% endfor %}
             </td>
          </tr>
-      {% endif %}
-      <tr>
-         <td>Category</td>
-         <td>
-            {% for cat in book.categories.value %}
-               {%- assign urlencoded = cat | url_encode | lower -%}
-               {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
-               {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
-            {% endfor %}
-         </td>
-      </tr>
-      <tr>
-         <td>Release date</td>
-         <td>{{ product.published_at | date: "%Y-%m-%d" }}</td>
-      </tr>
-      <tr>
-         <td>ISBN</td>
-         <td>{{ product.metafields.facts.isbn.value | metafield_tag }}</td>
-      </tr>
-      <tr>
-         <td>Abdridged</td>
-         {%- assign abridged = metafields.abridged -%}
-         <td>{% if abridged %}Yes{% else %}No{% endif %}</td>
-      </tr>
-      <tr>
-         <td>Fiction/Nonfiction</td>
-         {%- assign fiction = metafields.fiction -%}
-         <td>{% if fiction %}Fiction{% else %}Nonfiction{% endif %}</td>
-      </tr>
-      <tr>
-         <td>Language</td>
-         <td>{{ book.language | metafield_tag }}</td>
-      </tr>
-      
-   </tbody>
-</table>
+         {%- if characters -%}
+            <tr>
+               <td>Featuring</td>
+               <td>
+                  {% for character in characters %}
+                     {{ character.name | link_to: character.system.url, class: 'character'}}{% unless forloop.last %}, {% endunless -%}
+                  {% endfor %}
+               </td>
+            </tr>
+         {% endif %}
+         <tr>
+            <td>Publisher</td>
+            <td>{{metafields.publisher.value.name | link_to: metafields.publisher.value.system.url }}</td>
+         </tr>
+         {%- if shop.metaobjects.audiobook_synopsis[handle] -%}
+            <tr>
+               <td>Synopsis</td>
+               <td>
+                  What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis'}} about?
+
+
+               </td>
+            </tr>
+         {% endif %}
+         <tr>
+            <td>Category</td>
+            <td>
+               {% for cat in metafields.categories.value %}
+                  {%- assign urlencoded = cat | url_encode | lower -%}
+                  {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+                  {{ cat | link_to: url, class: 'book_category'}}{% unless forloop.last %} | {% endunless -%}
+               {% endfor %}
+            </td>
+         </tr>
+         <tr>
+            <td>Release date</td>
+            <td>{{ product.published_at | date: "%Y-%m-%d" }}</td>
+         </tr>
+         <tr>
+            <td>ISBN</td>
+            <td>{{ product.metafields.facts.isbn.value | metafield_tag }}</td>
+         </tr>
+         <tr>
+            <td>Abdridged</td>
+            {%- assign abridged = metafields.abridged -%}
+            <td>{% if abridged %}Yes{% else %}No{% endif %}</td>
+         </tr>
+         <tr>
+            <td>Fiction/Nonfiction</td>
+            {%- assign fiction = metafields.fiction -%}
+            <td>{% if fiction %}Fiction{% else %}Nonfiction{% endif %}</td>
+         </tr>
+         <tr>
+            <td>Language</td>
+            <td>{{ metafields.language | metafield_tag }}</td>
+         </tr>
+         
+      </tbody>
+   </table>
+</div>

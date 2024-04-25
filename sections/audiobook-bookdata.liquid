@@ -10,8 +10,9 @@ There is a similar but different one shown in the audiobook product - snippets/a
 {%- assign handle = metaobject.system.handle -%}
 {%- assign title = metaobject.product.value.title -%}
 
-{%- render 'audiobook-productdata' product: product-%}
-
+<div {% render 'section-properties', tight: true %}>
+  {%- render 'audiobook-productdata' product: product-%}
+</div>
 {% schema %}
 {
   "name": "Book Data",
