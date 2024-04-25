@@ -45,7 +45,7 @@
 {%- assign handle = audiobook_metaobject.system.handle -%}
 {%- assign title = audiobook_metaobject.product.value.title -%}
 
-{%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle].value -%}
+{%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle] -%}
 {%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
 
 {{synopsis_metaobject}}
