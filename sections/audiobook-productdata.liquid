@@ -1,0 +1,235 @@
+{% if product %}
+  <!-- This is a product template -->
+  {%- assign handle = product.handle -%}
+  {%- assign audiobook_metaobject = shop.metaobjects.audiobooks[handle] -%}
+
+{% elsif metaobject %}
+   <!-- This is a metaobject template but can be lots of diff types but all should have same handle -->
+   {%- assign handle = metaobject.system.handle -%}
+   {%- assign audiobook_metaobject = shop.metaobjects.audiobook[handle] -%}
+   {%- assign product = audiobook_metaobject.product.value -%}
+{% endif %}
+
+{%- assign metafields = product.metafields.book -%}
+{%- assign narrators = metafields.narrators.value -%}
+{%- assign authors = metafields.authors.value -%}
+{%- assign characters = book.characters.value -%}
+{%- assign handle = audiobook_metaobject.system.handle -%}
+{%- assign title = audiobook_metaobject.product.value.title -%}
+<style>
+.audiobooks-full-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.detail-label {
+    font-weight: bold;
+    width: 20%; /* Adjust as needed */
+}
+
+.detail-value {
+    width: 80%; /* Adjust as needed */
+    text-align: left;
+}
+
+</style>
+<div class="audiobooks-full-details">
+    {% for block in section.blocks %}
+        <div class="detail-row">
+            <div class="detail-label">{{ block.settings.title }}</div>
+            <div class="detail-value">
+                {% case block.type %}
+                    {% when 'narrators' %}
+                        {% for narrator in narrators %}
+                            {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    {% when 'authors' %}
+                        {% for author in authors %}
+                            {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                    {% when 'characters' %}
+                        {% if characters %}
+                            {% for character in characters %}
+                                {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless %}
+                            {% endfor %}
+                        {% endif %}
+                    {% when 'publisher' %}
+                        {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url }}
+                    {% when 'synopsis' %}
+                        {% if shop.metaobjects.audiobook_synopsis[handle] %}
+                            What is {{ title | link_to: shop.metaobjects.audiobook_synopsis[handle].system.url, class: 'synopsis link'}} about?
+                        {% endif %}
+                    {% when 'categories' %}
+                        {% for cat in metafields.categories.value %}
+                            {%- assign urlencoded = cat | url_encode | lower -%}
+                            {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+                            {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
+                        {% endfor %}
+                    {% when 'release_date' %}
+                        {{ product.published_at | date: "%Y-%m-%d" }}
+                    {% when 'isbn' %}
+                        {{ product.metafields.facts.isbn.value | metafield_tag }}
+                    {% when 'additional_details' %}
+                        {{ metafields.additional_details | metafield_tag }}
+                    {% when 'educational_levels' %}
+                        Display educational levels and any other relevant details here.
+                {% endcase %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% schema %}
+{
+    "name": "Audiobook Details",
+    "max_blocks": 10,
+    "blocks": [
+        {
+            "type": "narrators",
+            "name": "Narrators",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "narrator_title",
+                    "label": "Section Title for Narrators",
+                    "default": "Narrators"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "authors",
+            "name": "Authors",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "author_title",
+                    "label": "Section Title for Authors",
+                    "default": "Authors"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "characters",
+            "name": "Characters",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "characters_title",
+                    "label": "Section Title for Characters",
+                    "default": "Featuring"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "publisher",
+            "name": "Publisher",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "publisher_title",
+                    "label": "Section Title for Publisher",
+                    "default": "Publisher"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "synopsis",
+            "name": "Synopsis",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "synopsis_title",
+                    "label": "Section Title for Synopsis",
+                    "default": "Synopsis"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "categories",
+            "name": "Categories",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "categories_title",
+                    "label": "Section Title for Categories",
+                    "default": "Categories"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "release_date",
+            "name": "Release Date",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "release_date_title",
+                    "label": "Section Title for Release Date",
+                    "default": "Release Date"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "isbn",
+            "name": "ISBN Details",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "isbn_title",
+                    "label": "Section Title for ISBN",
+                    "default": "ISBN Details"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "additional_details",
+            "name": "Additional Details",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "additional_details_title",
+                    "label": "Section Title for Additional Details",
+                    "default": "Additional Details"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "educational_levels",
+            "name": "Educational Levels",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "educational_levels_title",
+                    "label": "Section Title for Educational Levels",
+                    "default": "Educational Levels"
+                }
+            ],
+            "limit": 1
+        }
+    ],
+    "presets": [
+        {
+            "name": "Default Audiobook Details",
+            "category": "Custom Content"
+        }
+    ]
+}
+{% endschema %}
+
