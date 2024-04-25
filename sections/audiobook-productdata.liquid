@@ -114,6 +114,16 @@
                     </div>
                 {% endif %}
 
+            {% when 'isbn' %}
+                {% if product.metafields.facts.isbn.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {{ product.metafields.facts.isbn.value | metafield_tag }}
+                        </div>
+                    </div>
+                {% endif %}
+
             {% when 'print_isbn' %}
                 {% if audiobook_metaobject.print_isbn.value %}
                     <div class="detail-row">
@@ -123,6 +133,7 @@
                         </div>
                     </div>
                 {% endif %}
+
             
             {% when 'bisac_codes' %}
                 {% if audiobook_metaobject.bisac_codes.value %}
@@ -281,9 +292,11 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {% for category in metafields.categories %}
-                                {{ category }}{% unless forloop.last %}<br/>{% endunless %}
-                            {% endfor %}
+                            {% for cat in metafields.categories.value %}
+                              {%- assign urlencoded = cat | url_encode | lower -%}
+                              {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+                              {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
+                           {% endfor %}
                         </div>
                     </div>
                 {% endif %}
@@ -301,10 +314,21 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ abridged }}
+                            {% if metafields.abridged %}Yes{% else %}No{% endif %}
                         </div>
                     </div>
                 {% endif %}
+            {% when 'fiction' %}
+                {% if metafields.fiction %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% if metafields.fiction %}Fiction{% else %}Nonfiction{% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+            
 
             <!-- Add additional blocks as needed for the other types you've defined in the schema -->
         {% endcase %}
@@ -316,7 +340,7 @@
 {% schema %}
 {
     "name": "Audiobook Data",
-    "max_blocks": 40,
+    "max_blocks": 50,
     "blocks": [
         {
             "type": "audiogramme",
@@ -397,13 +421,26 @@
             "limit": 1
         },
         {
+            "type": "isbn",
+            "name": "ISBN",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for ISBN",
+                    "default": "Voxblock ISBN"
+                }
+            ],
+            "limit": 1
+        },
+        {
             "type": "print_isbn",
             "name": "Print ISBN",
             "settings": [
                 {
                     "type": "text",
                     "id": "title",
-                    "label": "Section Title for Reference ISBN",
+                    "label": "Section Title for Print ISBN",
                     "default": "Print ISBN"
                 }
             ],
@@ -613,6 +650,19 @@
                     "id": "title",
                     "label": "Section Title for Content Themes",
                     "default": "Content Themes"
+                }
+            ],
+            "limit": 1
+        },
+        {
+            "type": "fiction",
+            "name": "Fiction",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Section Title for Fiction",
+                    "default": "Fiction/Nonfiction"
                 }
             ],
             "limit": 1
