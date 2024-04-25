@@ -318,6 +318,8 @@
         "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
         "mobile_video": "shopify:\/\/files\/videos\/498fbd3f54db4129920995d8acd054df.mp4",
         "external_video_url": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
@@ -532,6 +534,7 @@
           "type": "collection",
           "settings": {
             "collection": "childrens-funny-audiobooks",
+            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
             "subheading": "",
             "title": "",
             "url": "",
@@ -546,7 +549,7 @@
           "type": "collection",
           "settings": {
             "collection": "childrens-dinosaurs-audiobooks",
-            "image": "shopify:\/\/shop_images\/Harry_Dinosaurs_Bundle.png",
+            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
             "subheading": "",
             "title": "",
             "url": "",
@@ -561,7 +564,7 @@
           "type": "collection",
           "settings": {
             "collection": "childrens-adventure-audiobooks",
-            "image": "shopify:\/\/shop_images\/ideal-for-adventures.jpg",
+            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
             "subheading": "",
             "title": "",
             "url": "",
@@ -576,7 +579,7 @@
           "type": "collection",
           "settings": {
             "collection": "childrens-bedtime-calm-audiobooks",
-            "image": "shopify:\/\/shop_images\/Starter_Pack-lifestyle-Hero-Orange.png",
+            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
             "subheading": "",
             "title": "",
             "url": "",
@@ -614,7 +617,8 @@
     "revealed_image_on_scroll_iKqQdm": {
       "type": "revealed-image-on-scroll",
       "settings": {
-        "image": "shopify:\/\/shop_images\/boy-with-player.jpg",
+        "image": "shopify:\/\/shop_images\/Homepage-Reveal_Image-3200x1600.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Homepage-Reveal-mobile-1125x2000.jpg",
         "subheading": "",
         "title": "",
         "background": "",
@@ -650,7 +654,7 @@
           "type": "item",
           "settings": {
             "title": "Does the player come with audiobooks?",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>"
+            "content": "<p>If you want to buy books at the same time as our player, add a bundle or check out our starter packs.<\/p>"
           }
         }
       },

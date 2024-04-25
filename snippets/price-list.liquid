@@ -105,10 +105,16 @@ Supported variables
       {%- endcapture -%}
 
       {%- if cheapest_variant.price < cheapest_variant.compare_at_price -%}
+
+        <sale-price class="from-price {{ regular_price_classes }}">
+          {{ price_min }}
+        </sale-price>
+        {%- comment -%}
         <sale-price class="{{ on_sale_price_classes }}">
           <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
           {{- 'product.price.from_price_html' | t: price_min: price_min -}}
         </sale-price>
+        {%- endcomment -%}
 
         <compare-at-price class="{{ compare_at_price_classes }}">
           <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
@@ -120,10 +126,15 @@ Supported variables
           {%- endif -%}
         </compare-at-price>
       {%- else -%}
+        <sale-price class="from-price {{ regular_price_classes }}">
+          {{ price_min }}
+        </sale-price>
+        {%- comment -%}
         <sale-price class="{{ regular_price_classes }}">
           <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
           {{- 'product.price.from_price_html' | t: price_min: price_min -}}
         </sale-price>
+        {%- endcomment -%}
       {%- endif -%}
     {%- elsif product.price < product.compare_at_price -%}
       <sale-price class="{{ on_sale_price_classes }}">
@@ -162,10 +173,16 @@ Supported variables
         {%- endif -%}
       {%- endcapture -%}
 
+      <sale-price class="from-price {{ regular_price_classes }}">
+        {{ price_min }}
+      </sale-price>
+
+      {%- comment -%}
       <sale-price class="{{ regular_price_classes }}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
         {{- 'product.price.from_price_html' | t: price_min: price_min, price_max: price_max -}}
       </sale-price>
+      {%- endcomment -%}
     {%- else -%}
       <sale-price class="{{ regular_price_classes }}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>

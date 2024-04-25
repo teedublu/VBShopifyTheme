@@ -124,124 +124,136 @@ Supported variables
       {%- endif -%}
     </div>
   {%- endif -%}
+  <div class="product-card__details">
+    {%- comment -%}
+    --------------------------------------------------------------------------------------------------------------------
+    ROW 1
+    --------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+    <div class="product-card__row">
+      {%- if settings.product_color_display != 'hide' and show_swatches != false -%}
+        {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+        {%- for color_label in color_label_list -%}
+          {%- if product.options_by_name[color_label] != blank -%}
+            {%- assign product_option = product.options_by_name[color_label] -%}
+            {%- capture name -%}swatch-{{ section.id }}-{{ product.id }}-{{ product_option.position }}{%- endcapture -%}
 
-  {%- comment -%}
-  --------------------------------------------------------------------------------------------------------------------
-  PRODUCT AUDIO SAMPLE
-  --------------------------------------------------------------------------------------------------------------------
-  {%- endcomment -%}
-  <div class="product-card__sample">
-    {%- if product.metafields.book.preview -%}
-      <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}">
-        <span class="playpause"></span>
-        <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
-        <span class="sr-only">Play audio sample</span>
-      </button>
-    {%- endif -%}
-  </div>
+            <div class="product-card__aside">
+              {%- case settings.product_color_display -%}
+                {%- when 'count' -%}
+                  <p class="product-card__color-count text-sm text-subdued">{{- 'product.general.available_colors_count' | t: count: product_option.values.size -}}</p>
 
-  {%- comment -%}
-  --------------------------------------------------------------------------------------------------------------------
-  PRODUCT INFO
-  --------------------------------------------------------------------------------------------------------------------
-  {%- endcomment -%}
+                {%- when 'swatch' -%}
+                  <fieldset class="product-card__swatch-list h-stack {% if settings.color_swatch_style == 'rectangle' %}gap-2.5{% else %}gap-0.5{% endif %}" data-option-position="{{ product_option.position }}">
+                    {%- liquid
+                      for option_value in product_option.values limit: 4
+                        if forloop.first or product.selected_or_first_available_variant.matched and option_value == product_option.selected_value
+                          assign selected = true
+                        else
+                          assign selected = false
+                        endif
+    
+                        if option_value.swatch.image
+                          render 'option-value', type: 'swatch', value: option_value, image: option_value.swatch.image, name: name, selected: selected, size: 'sm'
+                        elsif option_value.swatch.color
+                          render 'option-value', type: 'swatch', value: option_value, color: option_value.swatch.color, name: name, selected: selected, size: 'sm'
+                        else
+                          render 'option-value', type: 'swatch', value: option_value, name: name, selected: selected, size: 'sm'
+                        endif
+                      endfor
+                    -%}
 
-  <div class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
-    {%- if show_vendor and product.vendor != blank -%}
-      {%- if show_rating and text_alignment != 'center' -%}
-        <div class="rating-with-text w-full">
-          {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
+                    {% if product_option.values.size > 4 %}
+                      <a href="{{ product.url }}" data-instant class="color-swatch__view-more {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %} text-xxs text-subdued">+{{ product_option.values.size | minus: 4 }}</a>
+                    {% endif %}
+                  </fieldset>
 
-          {%- capture rating_class -%}{% if mobile_reduced %}hidden sm:flex{% endif %}{%- endcapture -%}
-          {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
-        </div>
-      {%- else -%}
-        {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
-      {%- endif -%}
-    {%- endif -%}
+                {%- when 'variant' -%}
+                  <fieldset class="product-card__variant-list" data-option-position="{{ product_option.position }}">
+                    {%- for option_value in product_option.values limit: 4 -%}
+                      {%- if forloop.first or option_value.variant.matched and option_value == product_option.selected_value -%}
+                        {%- assign selected = true -%}
+                      {%- else -%}
+                        {%- assign selected = false -%}
+                      {%- endif -%}
 
-    <div class="v-stack gap-0.5 w-full {% if text_alignment == 'center' %}justify-items-center{% endif %}">
-      {%- if show_rating and show_vendor == false or product.vendor == blank -%}
-        <div class="rating-with-text">
-          <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
+                      {%- render 'option-value', type: 'thumbnail', image: option_value.variant.featured_media, value: option_value, name: name, size: 'sm', selected: selected -%}
+                    {%- endfor -%}
 
-          {%- if text_alignment != 'center' -%}
-            {%- capture rating_class -%}{% if mobile_reduced %}hidden sm:flex{% endif %}{%- endcapture -%}
-            {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
+                    {%- if product_option.values.size > 4 -%}
+                      <a href="{{ product.url }}" data-instant class="thumbnail-swatch__view-more text-xs text-subdued">+{{ product_option.values.size | minus: 4 }}</a>
+                    {%- endif -%}
+                  </fieldset>
+                {%- endcase -%}
+            </div>
+
+            {%- break -%}
           {%- endif -%}
-        </div>
-      {%- else -%}
-        <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
+        {%- endfor -%}
       {%- endif -%}
-      
-      {%- render 'price-list', product: product, text_alignment: text_alignment -%}
     </div>
 
-    {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
-      {%- capture rating_class -%}{% unless text_alignment == 'center' %}sm:hidden{% endunless %}{%- endcapture -%}
-      {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
-    {%- endif -%}
+    {%- comment -%}
+    --------------------------------------------------------------------------------------------------------------------
+    ROW 2 PRODUCT INFO
+    --------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
 
-    {%- if settings.product_color_display != 'hide' and show_swatches != false -%}
-      {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
-      {%- for color_label in color_label_list -%}
-        {%- if product.options_by_name[color_label] != blank -%}
-          {%- assign product_option = product.options_by_name[color_label] -%}
-          {%- capture name -%}swatch-{{ section.id }}-{{ product.id }}-{{ product_option.position }}{%- endcapture -%}
+    <div class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
+      {%- if show_vendor and product.vendor != blank -%}
+        {%- if show_rating and text_alignment != 'center' -%}
+          <div class="rating-with-text w-full">
+            {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
 
-          <div class="product-card__aside">
-            {%- case settings.product_color_display -%}
-              {%- when 'count' -%}
-                <p class="product-card__color-count text-sm text-subdued">{{- 'product.general.available_colors_count' | t: count: product_option.values.size -}}</p>
-
-              {%- when 'swatch' -%}
-                <fieldset class="product-card__swatch-list h-stack {% if settings.color_swatch_style == 'rectangle' %}gap-2.5{% else %}gap-0.5{% endif %}" data-option-position="{{ product_option.position }}">
-                  {%- liquid
-                    for option_value in product_option.values limit: 4
-                      if forloop.first or product.selected_or_first_available_variant.matched and option_value == product_option.selected_value
-                        assign selected = true
-                      else
-                        assign selected = false
-                      endif
-  
-                      if option_value.swatch.image
-                        render 'option-value', type: 'swatch', value: option_value, image: option_value.swatch.image, name: name, selected: selected, size: 'sm'
-                      elsif option_value.swatch.color
-                        render 'option-value', type: 'swatch', value: option_value, color: option_value.swatch.color, name: name, selected: selected, size: 'sm'
-                      else
-                        render 'option-value', type: 'swatch', value: option_value, name: name, selected: selected, size: 'sm'
-                      endif
-                    endfor
-                  -%}
-
-                  {% if product_option.values.size > 4 %}
-                    <a href="{{ product.url }}" data-instant class="color-swatch__view-more {% if settings.color_swatch_style == 'round' %}rounded-full{% endif %} text-xxs text-subdued">+{{ product_option.values.size | minus: 4 }}</a>
-                  {% endif %}
-                </fieldset>
-
-              {%- when 'variant' -%}
-                <fieldset class="product-card__variant-list" data-option-position="{{ product_option.position }}">
-                  {%- for option_value in product_option.values limit: 4 -%}
-                    {%- if forloop.first or option_value.variant.matched and option_value == product_option.selected_value -%}
-                      {%- assign selected = true -%}
-                    {%- else -%}
-                      {%- assign selected = false -%}
-                    {%- endif -%}
-
-                    {%- render 'option-value', type: 'thumbnail', image: option_value.variant.featured_media, value: option_value, name: name, size: 'sm', selected: selected -%}
-                  {%- endfor -%}
-
-                  {%- if product_option.values.size > 4 -%}
-                    <a href="{{ product.url }}" data-instant class="thumbnail-swatch__view-more text-xs text-subdued">+{{ product_option.values.size | minus: 4 }}</a>
-                  {%- endif -%}
-                </fieldset>
-              {%- endcase -%}
+            {%- capture rating_class -%}{% if mobile_reduced %}hidden sm:flex{% endif %}{%- endcapture -%}
+            {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
           </div>
-
-          {%- break -%}
+        {%- else -%}
+          {%- render 'vendor' with product.vendor, class: 'text-xs' -%}
         {%- endif -%}
-      {%- endfor -%}
-    {%- endif -%}
+      {%- endif -%}
+
+      <div class="v-stack gap-0.5 w-full {% if text_alignment == 'center' %}justify-items-center{% endif %}">
+        {%- if show_rating and show_vendor == false or product.vendor == blank -%}
+          <div class="rating-with-text">
+            <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
+
+            {%- if text_alignment != 'center' -%}
+              {%- capture rating_class -%}{% if mobile_reduced %}hidden sm:flex{% endif %}{%- endcapture -%}
+              {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <span class="product-card__title"><a href="{{ product.url }}" class="bold" data-instant>{{ product.title }}</a></span>
+        {%- endif -%}
+        
+        
+      </div>
+
+      {%- if show_rating and mobile_reduced or text_alignment == 'center' -%}
+        {%- capture rating_class -%}{% unless text_alignment == 'center' %}sm:hidden{% endunless %}{%- endcapture -%}
+        {%- render 'product-rating', product: product, class: rating_class, display_mode: settings.product_rating_mode -%}
+      {%- endif -%}
+
+      
+    </div>
+
+    {%- comment -%}
+    --------------------------------------------------------------------------------------------------------------------
+    ROW 3
+    --------------------------------------------------------------------------------------------------------------------
+    {%- endcomment -%}
+    <div class="product-card__row buy-price">
+
+        {%- form 'product', product, is: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          
+          <label><input type="submit" class="hide-with-svg" /><div class="icon-circle">{%- render 'icon' with 'cart' -%}</div></label>
+        {%- endform -%}
+        {%- render 'price-list', product: product, text_alignment: text_alignment, size: 'lg' -%}
+
+    </div>
+
   </div>
 
 </product-card>

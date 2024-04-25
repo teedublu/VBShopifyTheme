@@ -3,12 +3,10 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
-        "badges": {
-          "type": "badges",
+        "text_RffQCL": {
+          "type": "text",
           "settings": {
-            "display_metafields": true,
-            "display_categories": true,
-            "display_bookdata": false
+            "text": "<h5>A screen-free audiobook<\/h5>"
           }
         },
         "title": {
@@ -54,16 +52,25 @@
           "settings": {
             "collapse_content": false
           }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "display_metafields": true,
+            "display_categories": true,
+            "display_bookdata": false
+          }
         }
       },
       "block_order": [
-        "badges",
+        "text_RffQCL",
         "title",
         "price",
         "audiobook_properties_cU6Htk",
         "author_narrator_yb9X3i",
         "buy_buttons",
-        "description"
+        "description",
+        "badges"
       ],
       "settings": {
         "full_width": false,
@@ -195,6 +202,8 @@
         "mobile_video": "{{ product.metafields.book.audiogramme.value.mobile.value }}",
         "external_video_url": "",
         "poster": "{{ product.metafields.book.audiogramme.value.thumbnail.value }}",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
@@ -287,16 +296,16 @@
         "full_width": true,
         "subheading": "",
         "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
-        "background": "",
+        "background": "#4cb6ac",
         "background_gradient": "",
-        "text_color": "",
+        "text_color": "#ffffff",
         "heading_color": "",
         "heading_gradient": "",
         "button_background": "",

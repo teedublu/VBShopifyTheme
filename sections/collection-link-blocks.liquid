@@ -68,7 +68,7 @@ LIQUID
 
   <div class="collection-links scroll-container">
     {% for block in section.blocks %}
-      <a href="{{ block.settings.link_url }}" class="link-block">
+      <a href="{{ request.path | append: block.settings.url_params }}" class="link-block">
         {% if block.settings.image %}
           <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
         {% endif %}
@@ -106,9 +106,9 @@ LIQUID
           "label": "Link text"
         },
         {
-          "type": "url",
-          "id": "link_url",
-          "label": "Link URL"
+          "type": "text",
+          "id": "url_params",
+          "label": "Url params"
         }
 
       ]

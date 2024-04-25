@@ -2,11 +2,10 @@
   "sections": {
     "banner": {
       "type": "collection-banner",
-      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "enable_parallax": true,
+        "enable_parallax": false,
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
@@ -17,47 +16,8 @@
         "featured_product": "",
         "featured_product_heading": "Featured product",
         "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
-      }
-    },
-    "rich_text_Pf87Ve": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_kaVbWh": {
-          "type": "subheading",
-          "settings": {
-            "text": "Audiobook Author"
-          }
-        },
-        "heading_njmXNJ": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ collection.title }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_GnEKX8": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>{{ collection.metafields.related.author.value.bio | metafield_tag }}<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_kaVbWh",
-        "heading_njmXNJ",
-        "richtext_GnEKX8"
-      ],
-      "settings": {
-        "full_width": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
+        "overlay_color": "#ffb74a",
+        "overlay_opacity": 100
       }
     },
     "main": {
@@ -117,7 +77,6 @@
   },
   "order": [
     "banner",
-    "rich_text_Pf87Ve",
     "main"
   ]
 }

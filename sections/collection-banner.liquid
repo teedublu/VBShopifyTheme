@@ -5,7 +5,15 @@
 {%- endif -%}
 
 {%- capture collection_header -%}
-  {%- if section.settings.show_collection_title -%}
+  {%- if collection.metafields.related.author.value -%}
+    {% render 'metaobject-header' metaobject: collection.metafields.related.author.value, use_title: 'Audiobooks from name' %}
+  {%- elsif collection.metafields.related.narrator.value -%}
+    {% render 'metaobject-header' metaobject: collection.metafields.related.narrator.value, use_title: 'Audiobooks read by name' %}
+  {%- elsif collection.metafields.related.publisher.value -%}
+    {% render 'metaobject-header' metaobject: collection.metafields.related.publisher.value, use_title: 'Audiobooks from name' %}
+  
+    
+  {%- elsif section.settings.show_collection_title -%}
     <h1 class="{{ section.settings.collection_title_size }}" {% if settings.heading_apparition != 'none' and show_image %}reveal-on-scroll="true"{% endif %}>
       {%- render 'styled-text', content: collection.title, apparition_effect: true -%}
     </h1>
@@ -18,8 +26,7 @@
   {%- endif -%}
 {%- endcapture -%}
 
-{%- if show_image -%}
-  <style>
+<style>
     #shopify-section-{{ section.id }} {
       {%- if section.settings.full_width -%}
         --section-outer-spacing-block: 0;
@@ -41,6 +48,8 @@
     {%- endunless -%}
   </style>
 
+
+{%- if show_image or true -%}
   <div {% render 'section-properties' %} {%- if section.settings.allow_transparent_header -%}allow-transparent-header{% endif %}>
     {%- capture class -%}collection-banner content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
 

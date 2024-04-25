@@ -7,11 +7,10 @@
         "allow_transparent_header": true,
         "enable_parallax": false,
         "show_collection_title": true,
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_collection_image": true,
         "collection_title_size": "h1",
         "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/hands-on-hips-girls-fashion.jpg",
         "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -93,7 +92,7 @@
             "style": "fill",
             "size": "lg",
             "text": "Click here to learn more",
-            "url": "",
+            "url": "shopify:\/\/products\/voxblock-player",
             "background": "",
             "text_color": ""
           }
@@ -113,7 +112,7 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 46
+        "overlay_opacity": 16
       }
     }
   },

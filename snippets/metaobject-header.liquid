@@ -1,15 +1,35 @@
-{% for photo in metaobject.photos.value %}
-	{{- photo 
-		| image_url: width: 200 
-		| image_tag: 
-			preload: true,
-			style: 'border-radius: 50%; margin: auto; height: 200px;'
-		-}}
-	{% break %}
-{% endfor %}
-<h3> Audiobook {{ metaobject.system.type }} </h3>
-<h1> {{ metaobject.name |metafield_tag }} </h1>
+<div class="prose justify-items-center text-center">
+	{% for photo in metaobject.photos.value %}
+		{{- photo 
+			| image_url: width: 200 
+			| image_tag: 
+				preload: true,
+				style: 'border-radius: 50%; margin: auto; height: 200px;'
+			-}}
+		{% break %}
+	{% endfor %}
+	{% if metaobject.logo %}
+		{{- metaobject.logo.value 
+			| image_url: width: 200 
+			| image_tag: 
+				preload: true,
+				style: 'border-radius: 50%; margin: auto; height: 200px;'
+			-}}
 
-<p>
-	{{ metaobject.bio |metafield_tag }}
-</p>
+	{% endif %}
+
+	{%- if use_title -%}
+		{%- assign name =  metaobject.name | metafield_tag -%}
+		<h1> {{ use_title | replace:'name', name  }} </h1>
+		<p>
+			{{ collection.description }}
+		</p>
+	{%- else -%}
+		<h3> Audiobook {{ metaobject.system.type }} </h3>
+		<h1> {{ metaobject.name | metafield_tag }} </h1>
+		<p>
+			{{ metaobject.bio | metafield_tag }}
+		</p>
+	{%- endif -%}
+	
+</div>

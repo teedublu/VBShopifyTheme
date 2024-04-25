@@ -41,6 +41,7 @@
     text-decoration: underline;
   }
 </style>
+{%- assign title = page.metafields.global.title_tag | default: page.title -%}
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
 {%- assign page_type = template | split: '.' | first -%}
@@ -71,7 +72,7 @@
   case page_type
     when 'page' 
       assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: product.type
-      assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: page.title
+      assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: title
     
     when 'product' 
       if collection.url 

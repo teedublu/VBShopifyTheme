@@ -48,6 +48,8 @@
         "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
         "mobile_video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-9_16.mp4",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=cnCJDm3DpXE",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
@@ -325,7 +327,7 @@
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "FAQ",
+        "title": "FAQs",
         "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
@@ -340,7 +342,7 @@
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "",
+        "accordion_background": "#ffffff",
         "accordion_text_color": ""
       }
     },

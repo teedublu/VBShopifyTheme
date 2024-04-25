@@ -3,17 +3,18 @@
     "image_with_text_overlay_mzRBYC": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_fERiaJ": {
+        "subheading_BY3n4M": {
           "type": "subheading",
           "settings": {
-            "text": ""
+            "text": "FOR KIDS"
           }
         },
-        "heading_nNhzcW": {
+        "heading_EBfnGt": {
           "type": "heading",
           "settings": {
-            "text": "The screen-free audiobook player for kids",
-            "heading_tag": "h0"
+            "text": "Screen-free audiobook player",
+            "scale_with": true,
+            "heading_tag": "h1"
           }
         },
         "button_XtBmYV": {
@@ -21,26 +22,28 @@
           "settings": {
             "style": "fill",
             "size": "lg",
-            "text": "Button text",
-            "url": "",
+            "text": "Find out more",
+            "url": "shopify:\/\/products\/voxblock-player",
             "background": "",
             "text_color": ""
           }
         }
       },
       "block_order": [
-        "subheading_fERiaJ",
-        "heading_nNhzcW",
+        "subheading_BY3n4M",
+        "heading_EBfnGt",
         "button_XtBmYV"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 76,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/Players_stacked-Test.png",
-        "mobile_text_position": "place-self-center-end text-end",
-        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "image": "shopify:\/\/shop_images\/homepage_hero_web_3200x1600_f736d605-096a-428a-bd4c-929bed0cdc96.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/homepage_hero_mob_1300x1600_aeb3eb65-c91c-4fa6-bd1f-3356e66b0b3b.jpg",
+        "mobile_text_position": "place-self-start-end text-end",
+        "desktop_text_position": "sm:place-self-start-end sm:text-end",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
@@ -86,6 +89,8 @@
         "video_size": "lg",
         "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 9
@@ -152,6 +157,8 @@
         "video_size": "md",
         "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
@@ -251,7 +258,7 @@
         "1664424434f5b7d0e0-2"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
         "mobile_image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-mobile.jpg",
         "title": "Features",
@@ -392,6 +399,97 @@
         "logo_item_border": ""
       }
     },
+    "image_link_blocks_hdtLUw": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_tNzUqA": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-UGC-In_Car-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on Instagram",
+            "link_url": "https:\/\/www.instagram.com\/wearevoxblock\/",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_PTAQk9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-UGC-Headphones-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on Facebook",
+            "link_url": "https:\/\/www.facebook.com\/wearevoxblock",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_6HyzKK": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-UGC-listening-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on X",
+            "link_url": "https:\/\/twitter.com\/wearevoxblock",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_xAAHJd": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-UGC-Tokens-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on TikTok",
+            "link_url": "https:\/\/www.tiktok.com\/@voxblock",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_dJ3j9q": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-UGC-Collection-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on Pinterest",
+            "link_url": "https:\/\/www.pinterest.co.uk\/voxblock\/",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "item_tNzUqA",
+        "item_PTAQk9",
+        "item_6HyzKK",
+        "item_xAAHJd",
+        "item_dJ3j9q"
+      ],
+      "settings": {
+        "full_width": true,
+        "block_size": "medium",
+        "subheading": "",
+        "title": "#wearevoxblock",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ff9e57",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
     "image_link_blocks_9Yz7Pf": {
       "type": "image-link-blocks",
       "blocks": {
@@ -454,6 +552,7 @@
         "item_rg7Mb3",
         "item_gEAxpz"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "block_size": "large",
@@ -469,66 +568,160 @@
         "heading_gradient": ""
       }
     },
-    "press_jJ3pDq": {
-      "type": "press",
+    "testimonials_UiMYnt": {
+      "type": "testimonials",
       "blocks": {
-        "quote_P9izfR": {
-          "type": "quote",
+        "testimonial_JcCpbT": {
+          "type": "testimonial",
           "settings": {
-            "logo_width": 100,
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
             "author": "Simone (April 2024)",
-            "content": "My daughter really enjoys the audiobooks and there is a great selection.",
-            "show_rating": true,
-            "rating": 5
+            "title": "Great audio books",
+            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.<\/p>"
           }
         },
-        "quote_dDdJQh": {
-          "type": "quote",
+        "testimonial_nwDgQd": {
+          "type": "testimonial",
           "settings": {
-            "logo_width": 100,
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
             "author": "The Independent",
-            "content": "What we found incredibly refreshing is there's no app, no download, no wifi set up...",
-            "show_rating": true,
-            "rating": 4
+            "title": "Best kids’ audio player for ease of use",
+            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.<\/p>"
           }
         },
-        "quote_awaEky": {
-          "type": "quote",
+        "testimonial_Ch8DLJ": {
+          "type": "testimonial",
           "settings": {
-            "logo_width": 100,
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
             "author": "Emma (March 2024)",
-            "content": "Great product - looks good, very easy to use and charge but most importantly my son loves it!",
-            "show_rating": true,
-            "rating": 5
+            "title": "Great product",
+            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.<\/p>"
           }
         },
-        "quote_xQdLyh": {
-          "type": "quote",
+        "testimonial_qJkA8D": {
+          "type": "testimonial",
           "settings": {
-            "logo_width": 100,
-            "author": "The Evening Standard",
-            "content": "We love the battery life on the Voxblock, which unlike some other players will last days not hours.",
+            "round_avatar": true,
             "show_rating": true,
-            "rating": 4
+            "rating": 5,
+            "author": "The Evening Standard",
+            "title": "Best for user friendliness",
+            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.<\/p>"
           }
         }
       },
       "block_order": [
-        "quote_P9izfR",
-        "quote_dDdJQh",
-        "quote_awaEky",
-        "quote_xQdLyh"
+        "testimonial_JcCpbT",
+        "testimonial_nwDgQd",
+        "testimonial_Ch8DLJ",
+        "testimonial_qJkA8D"
       ],
       "settings": {
         "full_width": true,
-        "content_size": "medium",
-        "background": "#fff7f0",
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Testimonials",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "",
+        "heading_color": "#ff9e57",
         "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "multiple_images_with_text_qi7tAC": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_Db3xTP": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-Literacy-1000x1200.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "",
+            "title": "Building Literacy",
+            "content": "<p>Audiobooks are great at supporting literacy development and improving a child's vocabulary, pronunciation, and listening skills. But most importantly they unlock a world of imagination transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_maJpGC": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-wifi_free-1000x1200.jpg",
+            "image_rotation_degrees": 1.5,
+            "subheading": "",
+            "title": "Connectivity Free",
+            "content": "<p>Designed with kids in mind, our player is completely connectivity free. This means no wifi, no apps, no downloads or set-up. All our audio is stored in our audiobook blocks, that automatically play as soon as they are placed in the player.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_GyF79b": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Homepage-Travel-1000x1200.jpg",
+            "image_rotation_degrees": 0,
+            "subheading": "",
+            "title": "Ideal Travel Companion",
+            "content": "<p>You can carry your favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to last all the rough and tumble kids can throw at it.<\/p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_Db3xTP",
+        "item_maJpGC",
+        "item_GyF79b"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "featured_collection_RbaTLW": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "roald-dahl-starter-pack",
+          "older-listeners-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Get started with our Starter Packs",
+        "content": "",
+        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     },
     "image-with-text-overlay": {
@@ -546,6 +739,7 @@
           "disabled": true,
           "settings": {
             "text": "Image with text overlay",
+            "scale_with": false,
             "heading_tag": "h1"
           }
         },
@@ -566,6 +760,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/landing-page-how-it-works.png",
@@ -577,11 +772,54 @@
         "overlay_opacity": 0
       }
     },
+    "rich_text_hdcMV6": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_HgXj7R": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_9YqhiX": {
+          "type": "heading",
+          "settings": {
+            "text": "The benefits of audiobooks",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_LaYC8U": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Audiobooks for children are a transformative tool in nurturing a lifelong love for literature and enhancing cognitive growth. They unlock a world of imagination, transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.<\/p><p>But the benefits don't stop at the mere joy of storytelling. Audiobooks are instrumental in <em>improving a child's vocabulary, pronunciation, and listening skills<\/em>. They cater to children with different learning styles, especially auditory learners, by allowing them to absorb content more efficiently.<\/p><p>For children who face reading challenges, audiobooks provide an inclusive medium, ensuring they're not left behind in the literary world. The rich, expressive narration aids in better comprehension and retention of the story. By listening to the cadence, emotion, and tone of a skilled narrator, children also develop an appreciation for the rhythm and beauty of language. Beyond the educational facets, audiobooks foster multitasking, letting kids engage in other creative tasks or simple relaxation while they listen. In essence, audiobooks for children are not just stories told; they're doorways to enhanced learning, deeper imagination, and a stronger connection to the vast world of literature.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_HgXj7R",
+        "heading_9YqhiX",
+        "richtext_LaYC8U"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
+    },
     "revealed_image_on_scroll_mgNqPf": {
       "type": "revealed-image-on-scroll",
       "settings": {
+        "image": "shopify:\/\/shop_images\/Homepage-Reveal_Image-3200x1600.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Homepage-Reveal-mobile-1125x2000.jpg",
         "subheading": "",
-        "title": "Reveal text on scroll",
+        "title": "Be immersed in stories, from toddlers to teens",
         "background": "",
         "text_color_inside": "#ffffff",
         "text_color_outside": "#000000"
@@ -650,6 +888,7 @@
         "variant-picker",
         "buy-buttons"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "product": "voxblock-player",
@@ -668,59 +907,6 @@
         "input_text_color": ""
       }
     },
-    "multiple_images_with_text_qi7tAC": {
-      "type": "multiple-images-with-text",
-      "blocks": {
-        "item_Db3xTP": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": -2,
-            "subheading": "",
-            "title": "Building Literacy",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_maJpGC": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 1.5,
-            "subheading": "",
-            "title": "Connectivity Free",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_GyF79b": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 0,
-            "subheading": "",
-            "title": "Ideal Travel Companion",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_Db3xTP",
-        "item_maJpGC",
-        "item_GyF79b"
-      ],
-      "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
     "newsletter_dKNmAd": {
       "type": "newsletter",
       "settings": {
@@ -736,34 +922,6 @@
         "button_background": "",
         "button_text_color": ""
       }
-    },
-    "featured_collection_RbaTLW": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": false,
-        "products": [
-
-        ],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Featured collection",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
     }
   },
   "order": [
@@ -775,13 +933,15 @@
     "hot-spots",
     "featured_collection_fGBEed",
     "logo_list_LNWaw9",
+    "image_link_blocks_hdtLUw",
     "image_link_blocks_9Yz7Pf",
-    "press_jJ3pDq",
+    "testimonials_UiMYnt",
+    "multiple_images_with_text_qi7tAC",
+    "featured_collection_RbaTLW",
     "image-with-text-overlay",
+    "rich_text_hdcMV6",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
-    "multiple_images_with_text_qi7tAC",
-    "newsletter_dKNmAd",
-    "featured_collection_RbaTLW"
+    "newsletter_dKNmAd"
   ]
 }

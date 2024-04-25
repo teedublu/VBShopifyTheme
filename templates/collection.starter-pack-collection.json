@@ -32,8 +32,9 @@
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-3200x1300.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-mob-1300x1600.jpg",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
@@ -104,6 +105,7 @@
       "blocks": {
         "subheading_FYGfFN": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "Subheading"
           }
@@ -111,14 +113,14 @@
         "heading_ftpiYm": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "Hundreds of stories to choose from",
             "heading_tag": "h1"
           }
         },
         "richtext_7UgCcQ": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "content": "<p>Grow a tangible library of audiobooks with a collection from fantasy to facts, and The Gruffalo to Alex Rider. We have something for every literacy stage, from toddlers to teens.<\/p>"
           }
         }
       },
@@ -214,13 +216,6 @@
     "faq_t9iAtE": {
       "type": "faq",
       "blocks": {
-        "item_9TMQ3L": {
-          "type": "item",
-          "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..<\/p>"
-          }
-        },
         "item_d4JLhf": {
           "type": "item",
           "settings": {
@@ -244,7 +239,6 @@
         }
       },
       "block_order": [
-        "item_9TMQ3L",
         "item_d4JLhf",
         "item_Xxne47",
         "item_P64kBq"
