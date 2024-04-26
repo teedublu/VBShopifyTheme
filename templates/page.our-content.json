@@ -16,7 +16,7 @@
             "column_size": "4",
             "title": "Authors",
             "heading_tag": "h4",
-            "content": "",
+            "content": "<p>From world famous to up and coming authors, we work hard to create our catalogue.<\/p>",
             "link_url": "shopify:\/\/pages\/audiobook-authors",
             "link_text": "Browse authors",
             "link_style": "button"
@@ -29,7 +29,7 @@
             "column_size": "4",
             "title": "Narrators",
             "heading_tag": "h4",
-            "content": "",
+            "content": "<p>The narrator is so important. See who narrates our library.<\/p>",
             "link_url": "shopify:\/\/pages\/audiobook-narrators",
             "link_text": "Browse narrators",
             "link_style": "button"
@@ -42,9 +42,34 @@
             "column_size": "4",
             "title": "Titles",
             "heading_tag": "h4",
-            "content": "",
+            "content": "<p>We have a growing library of audiobooks. Browse the whole catalogue here.<\/p>",
             "link_url": "shopify:\/\/pages\/audiobooks",
             "link_text": "Audiobooks",
+            "link_style": "button"
+          }
+        },
+        "item_Gdcabp": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/silver-lamp-on-a-white-table-next-to-books.jpg",
+            "column_size": "2",
+            "title": "Synopsis",
+            "heading_tag": "h4",
+            "content": "<p>Read more about many of our titles with our summaries of what each story is about.<\/p>",
+            "link_url": "shopify:\/\/pages\/synopsis",
+            "link_text": "Synopsis",
+            "link_style": "button"
+          }
+        },
+        "item_87nc3r": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Audiogrammes",
+            "heading_tag": "h4",
+            "content": "<p>Read along as you listen to the extract from the audiobook.<\/p>",
+            "link_url": "shopify:\/\/pages\/audiogrammes",
+            "link_text": "Audiogrammes",
             "link_style": "button"
           }
         }
@@ -52,7 +77,9 @@
       "block_order": [
         "item_99jCHi",
         "item_TG4AWt",
-        "item_6PhWpF"
+        "item_6PhWpF",
+        "item_Gdcabp",
+        "item_87nc3r"
       ],
       "settings": {
         "full_width": true,
