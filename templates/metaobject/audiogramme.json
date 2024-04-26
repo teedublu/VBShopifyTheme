@@ -12,10 +12,18 @@
         "title": "{{ metaobject.name.value }}",
         "subtitle": "Audio Transcription"
       }
+    },
+    "microdata_rtcdXV": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "none"
+      }
     }
   },
   "order": [
     "breadcrumbs_DJmzNb",
-    "audiogramme_TQQXXE"
+    "audiogramme_TQQXXE",
+    "microdata_rtcdXV"
   ]
 }
