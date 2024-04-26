@@ -1,7 +1,15 @@
 {
   "@context": "http://schema.org/",
-  "@type": "Author",
-  "name": "{{ author.name }}",
-  "image": "{{logo |img_url:'300x' }}",
+  "@type": "Person",
+  "jobTitle":"Author",
+  "name": {{ author.name | json }},
+  "image": {{author.photos.value | first |img_url:'300x' |json }},
   "url": "{{ author.system.url | prepend: shop.url }}"
+  {%- if author.same_as.value -%}
+    ,"sameAs": [
+      {%- for same in author.same_as.value -%}
+        {{same | json }}{%unless forloop.last%},{%endunless%}
+      {%- endfor -%}
+    ]
+  {%- endif -%}
 }

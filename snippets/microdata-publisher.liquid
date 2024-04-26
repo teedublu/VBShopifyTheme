@@ -1,7 +1,7 @@
 {
   "@context": "http://schema.org/",
-  "@type": "Author",
-  "name": "{{ author.name }}",
-  "image": "{{logo |img_url:'300x' }}",
+  "@type": "Organization",
+  "name": "{{ publisher.name }}",
+  "image": "{{ publisher.logo |img_url:'300x' }}",
   "url": "{{ publisher.system.url | prepend: shop.url }}"
 }
