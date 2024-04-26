@@ -77,7 +77,6 @@
   
   case page_type
     when 'page' 
-      assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: product.type
       assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: title
     
     when 'product' 
@@ -101,11 +100,15 @@
         comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
         endcomment 
         
-        unless metaobject.system.type == 'audiobook'   
+        if metaobject.system.type == 'audiobook'
+          assign list_page = 'audiobooks'
+          assign parent_page = pages[list_page] 
+          assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
+        else
           assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
           assign parent_page = pages[list_page] 
           assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
-        endunless 
+        endif 
       
       assign title = metaobject.title | default : metaobject.name 
       assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: title
