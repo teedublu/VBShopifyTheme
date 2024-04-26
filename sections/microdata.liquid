@@ -1,0 +1,120 @@
+
+<{% unless section.settings.debug %}
+  <script type="application/ld+json">  
+{% endunless %}
+
+
+{%- assign title = page.metafields.global.title_tag | default: page.title -%}
+
+  {
+    "@context": "http://schema.org",
+    "@type": "CollectionPage",
+    {% if collection.description != blank %}
+      "description": {{ collection.description | strip_html | json }},
+    {% endif %}
+
+    "name": {{ title | json }},
+    "url": "{{ shop.url }}{{ collection.url }}",
+
+    "mainEntity" : {
+      "@type": "ItemList",
+      "itemListElement": [
+        {%- for object in objects -%}
+          {%- case object_type -%}
+
+            {%- when 'audiobook' -%}
+            {%- else -%}
+              {
+                "@type": "ListItem",
+                "position": {{ forloop.index }},
+                "item": {
+                  "@type": "{{object_type}}",
+                  "@id":  "{{ shop.url }}{{ product.url }}",
+                  "url": "{{ shop.url }}{{ product.url }}#audiobook",
+                  "name": {{ object.title | json }},
+                  "description": "{{ product.title }} as a physical audiobook"
+                }
+              }{%- unless forloop.last -%},{%- endunless -%}
+              
+          {%- endcase -%}
+        {%- endfor -%}
+      ]
+    }
+  }
+<{% unless section.settings.debug %}
+  </script>
+{% endunless %}
+
+{% schema %}
+{
+  "name": "Microdata",
+  "class": "",
+  "tag": "script",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Microdata",
+      "info": "Script tag with microdata."
+    },
+    {
+      "type": "checkbox",
+      "id": "debug",
+      "label": "DEBUG?",
+      "info": "Put in textarea not script tag.",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "object_type",
+      "label": "Object type",
+      "options": [
+        {
+          "value": "audiobook",
+          "label": "Audiobooks"
+        },
+        {
+          "value": "author",
+          "label": "Author"
+        },
+        {
+          "value": "narrator",
+          "label": "Narrator"
+        },
+        {
+          "value": "character",
+          "label": "Character"
+        },
+        {
+          "value": "publisher",
+          "label": "Publisher"
+        },
+        {
+          "value": "synopsis",
+          "label": "Synopsis"
+        },
+        {
+          "value": "audiogramme",
+          "label": "Audiogramme"
+        }
+      ],
+      "info": "Choose a metaobject for script",
+      "default": ""
+    }
+  ],
+  "blocks": [
+
+  ],
+  "presets": [
+    {
+      "name": "Microdata",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}

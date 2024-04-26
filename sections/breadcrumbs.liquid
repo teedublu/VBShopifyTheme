@@ -58,8 +58,14 @@
 
 {%- liquid 
   comment
+{{page_type}}__{{page_subtype}}__{{metaobject_type}}
+page__metaobjects-audiobooks__
+page__metaobjects-authors__
+page__metaobjects-narrators__
 
-    {{page_type}}__{{page_subtype}}
+metaobject__audiobook__audiobook
+
+
     url                                     template                      name        suffix 
     /pages/audiobook-publishers             page.metaobjects-publishers   page        metaobjects-publishers
     /pages/audiobook                        page.metaobjects-audiobooks   page        metaobjects-audiobooks
@@ -77,6 +83,14 @@
   
   case page_type
     when 'page' 
+
+      unless page_subtype contains 'metaobjects-'
+
+        assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
+        assign parent_page = pages[list_page] 
+        assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: title
+      endunless 
+
       assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: title
     
     when 'product' 
@@ -100,15 +114,9 @@
         comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
         endcomment 
         
-        if metaobject.system.type == 'audiobook'
-          assign list_page = 'audiobooks'
-          assign parent_page = pages[list_page] 
-          assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
-        else
-          assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
-          assign parent_page = pages[list_page] 
-          assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.title
-        endif 
+        assign list_page = 'audiobook-'| append: page_subtype | append: 's' | replace: 'audiobook-audiobooks','audiobooks'
+        assign parent_page = pages[list_page] 
+        assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
       
       assign title = metaobject.title | default : metaobject.name 
       assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: title

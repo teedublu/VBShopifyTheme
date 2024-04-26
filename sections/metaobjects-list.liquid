@@ -44,6 +44,137 @@
 
 
 
+<div class="container">
+  <div class="page">
+    <div class="metaobjects index-list collection">
+
+      {% assign object_type = section.settings.object_type %}
+      {% assign audiobooks = null | sort %}
+      {% assign narrators = null | sort %}
+      {% assign audiogrammes = null | sort %}
+      
+      {% assign objects = null | sort %}
+
+      {% paginate collections['audiobooks'].products by 1000 %}
+        {% comment %}
+          Loop over all products as this is the only thing that can paginate 1000
+          use handle to audiobook MO instead of product (doesnt have all other objects but mo does)
+          use object_type to get MOs in question from there          
+         {% endcomment %}
+
+        {% for product in collections['audiobooks'].products  %}
+          {% assign audiobook = product.metafields.book['audiobook'].value  %}
+          {% assign audiobook_as_array = audiobook | sort  %}
+          {% assign audiobooks = audiobooks | concat: audiobook_as_array  %}
+
+          {% assign narrator = product.metafields.book['narrators'].value  %}
+          {% assign narrator_as_array = narrator | sort  %}
+          {% assign narrators = narrators | concat: narrator_as_array  %}
+
+          {% assign author = product.metafields.book['authors'].value  %}
+          {% assign author_as_array = author | sort  %}
+          {% assign authors = authors | concat: author_as_array  %}
+
+          {% assign publisher = product.metafields.book['publisher'].value  %}
+          {% assign publisher_as_array = publisher | sort  %}
+          {% assign publishers = narrators | concat: publisher_as_array  %}
+
+          {%- if audiobook.audiogramme.value -%}
+            {% assign audiogramme_as_array = audiobook.audiogramme.value | sort  %}
+            {% assign audiogrammes = audiogrammes | concat: audiogramme_as_array  %}
+          {%- endif -%}
+
+        {% endfor %}
+
+        {% assign authors = authors | uniq | sort: 'name' %}
+        {% assign publishers = publishers | uniq | sort: 'name' %}
+        {% assign narrators = narrators | uniq | sort: 'name' %}
+        {% assign audiogrammes = audiogrammes | uniq | sort: 'name' %}
+
+        
+      {% endpaginate %}
+
+      {% comment %}
+        Now use the array of audiobook metaobjects
+        either the object itself or a field containing the metaobject in question
+      {% endcomment %}
+
+      {% liquid 
+        case object_type
+          when 'author'
+            assign objects = authors 
+          when 'narrator'
+            assign objects = narrators 
+          when 'audiobook'
+            assign objects = audiobooks 
+          when 'synopsis'
+            assign objects = synopsis
+          when 'audiogrammes' 
+            assign objects = audiogrammes
+        endcase
+
+      %}
+  
+      <ul class="object-list">
+        {% for object in objects %}
+          {% if object.name != blank or object.title != blank %}
+            {% assign product = object.product.value  %}
+            
+            {% assign image = nil %}
+            <li class="object-item">
+              <div class="object-image">{{product.value}}
+                {% if product.featured_image %}
+                  {% assign image = product.featured_image %}
+                {% elsif object.photos %}
+                  {% assign image = object.photos.value | first %}
+                {% endif %}
+                {% if image != blank %}
+                  {{ image | image_url: width: 100 | image_tag: alt: object.title.value | escape }}
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+                {% endif %}
+              </div>
+              <div class="object-text">
+                {% case object_type %}
+
+                  {% when 'audiobook' %}
+                    <div class="object-title">
+                      <b>{{ object.title.value | link_to: object.system.url, class: object_type }}</b>
+                    </div>
+                    {% if object.product.value.metafields.book.authors.value %}
+                      <div class="object-authors-narrators">
+                        Written by: 
+                        {% for author in object.product.value.metafields.book.authors.value %} 
+                          {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                    {% if object.product.value.metafields.book.narrators.value %}
+                      <div class="object-authors-narrators">
+                        Narrated by: 
+                        {% for narrator in object.product.value.metafields.book.narrators.value %} 
+                          {{ narrator.name | link_to: narrator.system.url, class: 'narrator link' }}{% unless forloop.last %}, {% endunless %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  {% else %}
+                    {% assign class = object_type | append: ' link' %}
+                    <div class="object-title">
+                    {{ object.name | link_to: object.system.url, class: class}}
+                    </div>
+                {% endcase %}
+              </div>
+            </li>
+          {% endif %}  
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
 <script type="application/ld+json">
 
 {%- assign title = page.metafields.global.title_tag | default: page.title -%}
@@ -61,112 +192,30 @@
     "mainEntity" : {
       "@type": "ItemList",
       "itemListElement": [
-        {% paginate collections['audiobooks'].products by 1000 %}
-    
-          {% for product in collections['audiobooks'].products  %}
-            {%- assign author = product.metafields.book.authors.value | first -%}
-            {
-              "@type": "ListItem",
-              "position": {{ forloop.index }},
-              "item": {
-                "@type": "Audiobook",
-                "@id":  "{{ shop.url }}{{ product.url }}",
-                "url": "{{ shop.url }}{{ product.url }}#audiobook",
-                "name": "{{ product.title }}",
-                "author": "{{ author.name }}",
-                "description": "{{ product.title }} as a physical audiobook"
-              }
-            }{% unless forloop.last %},{% endunless %}
-          {%- endfor -%}
-        {%- endpaginate -%}
+        {%- for object in objects -%}
+          {%- case object_type -%}
+
+            {%- when 'audiobook' -%}
+            {%- else -%}
+              {
+                "@type": "ListItem",
+                "position": {{ forloop.index }},
+                "item": {
+                  "@type": "{{object_type}}",
+                  "@id":  "{{ shop.url }}{{ product.url }}",
+                  "url": "{{ shop.url }}{{ product.url }}#audiobook",
+                  "name": {{ object.title | json }},
+                  "description": "{{ product.title }} as a physical audiobook"
+                }
+              }{%- unless forloop.last -%},{%- endunless -%}
+              
+          {%- endcase -%}
+        {%- endfor -%}
       ]
     }
   }
   
 </script>
-
-<div class="container">
-  <div class="page">
-    <div class="metaobjects index-list collection">
-
-      {% assign object_type = section.settings.object_type %}
-      {% assign audiobooks = null | sort %}
-      {% assign objects = null | sort %}
-
-      {% paginate collections['audiobooks'].products by 1000 %}
-        {% comment %}
-          Loop over all products as this is the only thing that can paginate 1000
-          use handle to audiobook MO instead of product (doesnt have all other objects but mo does)
-          use object_type to get MOs in question from there          
-         {% endcomment %}
-
-        {% for product in collections['audiobooks'].products  %}
-          {% assign o = product.metafields.book['audiobook'].value | sort  %}
-          {% assign audiobooks = audiobooks | concat: o  %}
-        {% endfor %}
-      {% endpaginate %}
-
-      {% comment %}
-        Now use the array of audiobook metaobjects
-        either the object itself or a field containing the metaobject in question
-      {% endcomment %}
-
-      
-      <ul class="object-list">
-        {% for audiobook in audiobooks %}
-          {% if audiobook[object_type].value != nil or object_type=='audiobook' %}
-            {% assign product = audiobook.product.value  %}
-            {% assign metaobject = audiobook[object_type].value | default: audiobook %}
-            {% assign image = nil %}
-            <li class="object-item">
-              <div class="object-image">{{product.value}}
-                {% if product.featured_image %}
-                  {% assign image = product.featured_image %}
-                {% elsif audiobook.photos %}
-                  {% assign image = audiobook.photos.value | first %}
-                {% endif %}
-                {% if image != blank %}
-                  {{ image | image_url: width: 100 | image_tag: alt: audiobook.title.value | escape }}
-                {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder' }}
-                {% endif %}
-              </div>
-              <div class="object-text">
-                {% case section.settings.object_type %}
-                  {% when 'audiobook' %}
-                    <div class="object-title">
-                      <b>{{ metaobject.title.value | link_to: metaobject.system.url, class: section.settings.object_type}}</b>
-                    </div>
-                    {% if metaobject.product.value.metafields.book.authors.value %}
-                      <div class="object-authors-narrators">
-                        Written by: 
-                        {% for author in metaobject.product.value.metafields.book.authors.value %} 
-                          {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                    {% if metaobject.product.value.metafields.book.narrators.value %}
-                      <div class="object-authors-narrators">
-                        Narrated by: 
-                        {% for narrator in metaobject.product.value.metafields.book.narrators.value %} 
-                          {{ narrator.name | link_to: narrator.system.url, class: 'narrator link' }}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                  {% else %}
-                    {% assign class = section.settings.object_type | append: ' link' %}
-                    <div class="object-title">{{ metaobject.name | link_to: metaobject.system.url, class: class}}</div>
-                {% endcase %}
-              </div>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-
-    </div>
-  </div>
-</div>
-
 
 {% schema %}
 {
