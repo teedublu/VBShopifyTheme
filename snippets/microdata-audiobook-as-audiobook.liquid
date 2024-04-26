@@ -1,9 +1,11 @@
-{%- assign product = shop.products[audiobook.system.handle] -%}    
+{%- assign product = all_products[audiobook.system.handle] -%}
+{%- assign author = product.metafields.book.authors.value | first -%}    
+{%- assign narrator = product.metafields.book.narrators.value | first -%}    
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id":  "{{ shop.url }}{{ product.url }}",
+  "@id":  {{ product.url | prepend: shop.url | json }},
   "@type": "Audiobook",
   "bookFormat": "AudiobookFormat",
   "isbn": "{{ product.first_available_variant.barcode }}",
@@ -12,21 +14,21 @@
   "author": {
     "@context": "https://schema.org/",
     "@type": "Person",
-    "name": {{ product.metafields.book.author | json }},
-    "@id": "https://voxblock.co.uk/collections/{{ product.metafields.book.author | handleize }}-audiobooks"
+    "name": {{ author.name | json }},
+    "@id": {{ author.system.url | prepend: shop.url | json }}
   },
   "name": "{{ product.title }}",
-  "url": "{{ shop.url }}{{ product.url }}",
+  "url": {{ audiobook.system.url | prepend: shop.url | json }},
   "abridged": "{{ product.metafields.book.abridged }}",
   "description": {{ product.description | strip_html | json }},
   "datePublished": "2022-01-01",
-  "duration": "{{ product.metafields.book.duration | prepend: 'PT'  | append: 'M' | replace:'.', 'H' }}",
+  "duration": {{ product.metafields.book.duration | prepend: 'PT'  | append: 'M' | replace:'.', 'H' | json }},
   "encodingFormat": "audio/mp3",
-  {% if product.metafields.book.sameas %}
+  {% if product.metafields.book.same_as %}
     "encodesCreativeWork": {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
-      "@id": "{{ product.metafields.book.sameas }}"
+      "@id": "{{ product.metafields.book.same_as }}"
     },
   {% endif %}
   "image": "{{ shop.url }}/{{ product.featured_image }}",
@@ -46,10 +48,8 @@
   "readBy": {
     "@context": "https://schema.org/",
     "@type": "Person",
-  {%- if product.metafields.book.narrator -%}
-    "@id": "{{ shop.url }}{{ product.metafields.book.narrator.value.collection.value.url }}",
-  {%- endif -%}
-    "name": {{ product.metafields.book.reader | json }}
+    "@id": {{ narrator.system.url | prepend: shop.url | json }},
+    "name": {{ narrator.name | json }}
   },
   "offers": {
     "@type": "Offer",
@@ -68,12 +68,12 @@
   "audio": {
     "@context": "https://schema.org/",
     "@type": "AudioObject",
-    "name": "{{ product.name }} sample",
+    "name": "{{ product.title }} sample",
     "contentUrl": "https:{{ product.metafields.book.preview.value.url | file_reference }}",
     "duration": "PT0H05M",
     "hasPart": {
       "@type": "Clip",
-      "name": "Audio sample from {{ product.name }}"
+      "name": "Audio sample from {{ product.title }}"
     }
   }
 }
