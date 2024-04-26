@@ -1,0 +1,7 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Author",
+  "name": "{{ author.name }}",
+  "image": "{{logo |img_url:'300x' }}",
+  "url": "{{ author.system.url | prepend: shop.url }}"
+}

@@ -3,44 +3,18 @@
   <script type="application/ld+json">  
 {% endunless %}
 
+{% liquid 
+  case section.settings.object_type
+    when 'audiobook'
+      render 'microdata-audiobook-as-audiobook', audiobook: metaobject
+    when 'author'
+      render 'microdata-author', author: metaobject
+    when 'narrator'
+      render 'microdata-narrator', narrator: metaobject
+  endcase
+%}
+ 
 
-{%- assign title = page.metafields.global.title_tag | default: page.title -%}
-
-  {
-    "@context": "http://schema.org",
-    "@type": "CollectionPage",
-    {% if collection.description != blank %}
-      "description": {{ collection.description | strip_html | json }},
-    {% endif %}
-
-    "name": {{ title | json }},
-    "url": "{{ shop.url }}{{ collection.url }}",
-
-    "mainEntity" : {
-      "@type": "ItemList",
-      "itemListElement": [
-        {%- for object in objects -%}
-          {%- case object_type -%}
-
-            {%- when 'audiobook' -%}
-            {%- else -%}
-              {
-                "@type": "ListItem",
-                "position": {{ forloop.index }},
-                "item": {
-                  "@type": "{{object_type}}",
-                  "@id":  "{{ shop.url }}{{ product.url }}",
-                  "url": "{{ shop.url }}{{ product.url }}#audiobook",
-                  "name": {{ object.title | json }},
-                  "description": "{{ product.title }} as a physical audiobook"
-                }
-              }{%- unless forloop.last -%},{%- endunless -%}
-              
-          {%- endcase -%}
-        {%- endfor -%}
-      ]
-    }
-  }
 <{% unless section.settings.debug %}
   </script>
 {% endunless %}
