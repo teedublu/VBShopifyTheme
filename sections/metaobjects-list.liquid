@@ -92,13 +92,12 @@
         {% assign narrators = narrators | uniq | sort: 'name' %}
         {% assign audiogrammes = audiogrammes | uniq | sort: 'name' %}
 
-        {% comment %}
-          These ones wont hit the 50 limit in pagination any time soon so can access directly         
-        {% endcomment %}
-        {% assign series = metaobjects.series %}
-
-        
       {% endpaginate %}
+
+      {% comment %}
+        These ones wont hit the 50 limit in pagination any time soon so can access directly         
+      {% endcomment %}
+      {% assign series = shop.metaobjects.series.values %}
 
       {% comment %}
         Now use the array of audiobook metaobjects
@@ -122,7 +121,6 @@
         endcase
 
       %}
-  
       <ul class="object-list">
         {% for object in objects %}
           {% if object.name != blank or object.title != blank %}
