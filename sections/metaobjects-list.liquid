@@ -52,6 +52,7 @@
       {% assign audiobooks = null | sort %}
       {% assign narrators = null | sort %}
       {% assign audiogrammes = null | sort %}
+      {% assign series = null | sort %}
       
       {% assign objects = null | sort %}
 
@@ -91,6 +92,11 @@
         {% assign narrators = narrators | uniq | sort: 'name' %}
         {% assign audiogrammes = audiogrammes | uniq | sort: 'name' %}
 
+        {% comment %}
+          These ones wont hit the 50 limit in pagination any time soon so can access directly         
+        {% endcomment %}
+        {% assign series = metaobjects.series %}
+
         
       {% endpaginate %}
 
@@ -111,6 +117,8 @@
             assign objects = synopsis
           when 'audiogrammes' 
             assign objects = audiogrammes
+          when 'series' 
+            assign objects = series
         endcase
 
       %}
@@ -273,6 +281,10 @@
         {
           "value": "audiogrammes",
           "label": "Audiogrammes"
+        },
+        {
+          "value": "series",
+          "label": "Series"
         }
       ],
       "info": "Choose a metaobject to paginate over",
