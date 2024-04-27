@@ -53,9 +53,9 @@
 {%- if page_type contains '/' -%}
   {%- assign page_subtype = page_type | split: '/' | last -%}
   {%- assign page_type = page_type | split: '/' | first -%}
-  
 {%- endif -%}
 
+{{page_type}}__{{page_subtype}}__{{metaobject_type}}
 {%- liquid 
   comment
 {{page_type}}__{{page_subtype}}__{{metaobject_type}}
@@ -85,8 +85,14 @@ metaobject__audiobook__audiobook
     when 'page' 
 
       unless page_subtype contains 'metaobjects-'
-
-        assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
+        case metaobject_type
+          when 'audiobook'
+            assign list_page = 'audiobooks'
+          when 'audiogramme'
+            assign list_page = 'audiogrammes'
+          else
+            assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
+        endcase
         assign parent_page = pages[list_page] 
         assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: title
       endunless 

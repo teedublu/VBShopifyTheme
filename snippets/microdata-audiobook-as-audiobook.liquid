@@ -1,6 +1,8 @@
 {%- assign product = all_products[audiobook.system.handle] -%}
 {%- assign author = product.metafields.book.authors.value | first -%}    
-{%- assign narrator = product.metafields.book.narrators.value | first -%}    
+{%- assign narrator = product.metafields.book.narrators.value | first -%} 
+{%- assign audiogramme = audiobook.audiogramme.value -%}
+{%- assign transcript = audiogramme.transcript | metafield_tag -%}
 
 <script type="application/ld+json">
 {
@@ -16,6 +18,12 @@
     "@type": "Person",
     "name": {{ author.name | json }},
     "@id": {{ author.system.url | prepend: shop.url | json }}
+  },
+  "narrator": {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": {{ narrator.name | json }},
+    "@id": {{ narrator.system.url | prepend: shop.url | json }}
   },
   "name": "{{ product.title }}",
   "url": {{ audiobook.system.url | prepend: shop.url | json }},
@@ -71,10 +79,17 @@
     "name": "{{ product.title }} sample",
     "contentUrl": "https:{{ product.metafields.book.preview.value.url | file_reference }}",
     "duration": "PT0H05M",
+    {%- if transcript -%}
+      "transcript": {
+        "@type": "Document",
+        "url": {{ audiogramme.system.url | prepend: shop.url | json }}
+      },
+    {%- endif -%}
     "hasPart": {
       "@type": "Clip",
       "name": "Audio sample from {{ product.title }}"
     }
+
   }
 }
 </script>

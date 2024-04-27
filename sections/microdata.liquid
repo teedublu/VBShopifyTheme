@@ -13,6 +13,12 @@
       render 'microdata-narrator', narrator: metaobject
     when 'publisher'
       render 'microdata-publisher', publisher: metaobject
+    when 'character'
+      render 'microdata-character', character: metaobject
+    when 'audiogramme'
+      render 'microdata-audiogramme', audiogramme: metaobject
+    when 'synopsis'
+      render 'microdata-synopsis', synopsis: metaobject
   endcase
 %}
  

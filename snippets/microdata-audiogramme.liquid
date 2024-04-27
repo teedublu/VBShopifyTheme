@@ -1,0 +1,74 @@
+
+{%- assign handle = audiogramme.system.handle -%}
+{%- assign product = all_products[handle] -%}
+{%- assign audiobook = shop.metaobjects[handle].value -%}
+{%- assign author = product.metafields.book.authors.value | first -%}    
+{%- assign narrator = product.metafields.book.narrators.value | first -%} 
+{%- assign transcript = audiogramme.transcript | metafield_tag -%}
+{%- assign desktop = audiogramme.desktop.value.sources | where: 'format','mp4' | first -%}
+{%- assign mobile = audiogramme.mobile.value.sources | where: 'format','mp4' | first  -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "mainEntity": {
+    "@type": "Audiobook",
+    "name": "{{ product.title }}",
+    "url": {{ audiobook.system.url | prepend: shop.url | json }},
+    "description": {{ product.description | strip_html | json }},
+    "datePublished": "2022-01-01",
+    "author": {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": {{ author.name | json }},
+      "@id": {{ author.system.url | prepend: shop.url | json }}
+    },
+    "readBy": {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": {{ narrator.name | json }},
+      "@id": {{ narrator.system.url | prepend: shop.url | json }}
+    }
+  },
+  "associatedMedia": {
+    "@type": "MediaObject",
+    "name": "Media for {{ product.title }}",
+    "description": "Media resources related to the audiobook",
+    "contentUrl": [  
+      "{{ desktop.url }}"  // Desktop video
+    ],
+    "alternativeHeadlines": [  
+      "{{ mobile.url }}"  // mobile video
+    ],
+    "thumbnail": {
+      "@type": "ImageObject",
+      "url": "{{ audiogramme.thumbnail.value | asset_url | prepend:'https:' }}"
+    },
+    "representativeSample": {
+      "@type": "AudioObject",
+      "name": "{{ product.title }} sample",
+      "contentUrl": "{{ product.metafields.book.preview.value.url | prepend:'https:' }}",
+      "duration": "PT0H05M",
+      {%- if transcript -%}
+        "transcript": {
+          "@type": "Document",
+          "content": {{ audiogramme.transcript }}
+        },
+      {%- endif -%}
+      "hasPart": {
+        "@type": "Clip",
+        "name": "Audio sample from {{ product.title }}",
+        "startTime": "PT0M0S",  "endTime": "PT5M0S"
+      }
+    },
+    "video": {
+      "@type": "VideoObject",
+      "name": "Animated GIF",
+      "embedUrl": "{{ audiogramme.gif.value | asset_url | prepend:'https:' }}"
+    }
+  }
+}
+
+</script>
+

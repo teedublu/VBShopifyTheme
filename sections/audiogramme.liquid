@@ -148,22 +148,6 @@ span.transcript-word {
   </div>
 </div>    
 
-<script type="application/ld+json">
-  {
-      "@context": "https://schema.org/",
-      "@type": "AudioObject",
-      "name": {{ product.title | append: ' Audiogramme and Transcript' | json }} ,
-      "description": {{ product.title | append: ' audiogramme and transcript of the sample of the audiobook.' | json }} ,
-      "url": "https://example.com/path_to_audio_file.mp3",
-      "duration": "PT10M30S",  // ISO 8601 duration format, e.g., 10 minutes and 30 seconds
-      "transcript": {{ transcript | json }},
-      "uploadDate": "2021-01-01",  // The date the audio was uploaded
-      "encodingFormat": "audio/mpeg",
-      "thumbnailUrl": "https://example.com/image_of_product.jpg"  // Image associated with the audio, typically of the product
-  }
-</script>
-
-
 <script>
 (function() {
     // Local references to DOM elements
