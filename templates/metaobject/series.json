@@ -1,9 +1,49 @@
 {
   "sections": {
+    "rich_text_4cfhpC": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_Je7ayn": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Series"
+          }
+        },
+        "heading_Vdmief": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_XHRTEr": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><\/p>{{ metaobject.description | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Je7ayn",
+        "heading_Vdmief",
+        "richtext_XHRTEr"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "featured_collection_kMNaHU": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
+        "collection": "{{ metaobject.collection.value }}",
         "hide_empty": false,
         "products": [
 
@@ -13,9 +53,9 @@
         "show_progress_bar": false,
         "products_count": 6,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
+        "products_per_row_desktop": 5,
         "subheading": "",
-        "title": "Featured collection",
+        "title": "{{ section.settings.collection.title }}",
         "content": "",
         "link_url": "",
         "link_text": "View all",
@@ -27,9 +67,18 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
+    },
+    "microdata_V9KiM3": {
+      "type": "microdata",
+      "settings": {
+        "debug": true,
+        "object_type": "none"
+      }
     }
   },
   "order": [
-    "featured_collection_kMNaHU"
+    "rich_text_4cfhpC",
+    "featured_collection_kMNaHU",
+    "microdata_V9KiM3"
   ]
 }
