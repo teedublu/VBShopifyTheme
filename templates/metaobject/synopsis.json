@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "rich_text_kf8m8f": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_ME6F8j": {
+          "type": "subheading",
+          "settings": {
+            "text": "Synopsis of {{ metaobject.title.value }}"
+          }
+        },
+        "heading_Y9kqDK": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_3eBjTx": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.about | metafield_tag }}"
+          }
+        },
+        "button_xDwDMG": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Buy the audiobook",
+            "url": "{{ metaobject.system.url }}",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ME6F8j",
+        "heading_Y9kqDK",
+        "richtext_3eBjTx",
+        "button_xDwDMG"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_collection_WMmHLF": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "Voxblock starter packs",
+        "title": "Start listening",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "microdata_KC6pKQ": {
+      "type": "microdata",
+      "settings": {
+        "debug": true,
+        "object_type": "synopsis"
+      }
+    }
+  },
+  "order": [
+    "rich_text_kf8m8f",
+    "featured_collection_WMmHLF",
+    "microdata_KC6pKQ"
+  ]
+}

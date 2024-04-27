@@ -1,0 +1,7 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Synopsis",
+  "name": "{{ synopsis.name }}",
+  "image": "{{ synopsis.logo |img_url:'300x' }}",
+  "url": "{{ synopsis.system.url | prepend: shop.url }}"
+}
