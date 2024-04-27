@@ -101,11 +101,11 @@
 
       {% liquid 
         case object_type
-          when 'author'
+          when 'authors'
             assign objects = authors 
-          when 'narrator'
+          when 'narrators'
             assign objects = narrators 
-          when 'audiobook'
+          when 'audiobooks'
             assign objects = audiobooks 
           when 'synopsis'
             assign objects = synopsis
@@ -114,7 +114,7 @@
         endcase
 
       %}
-  
+  {{objects}}
       <ul class="object-list">
         {% for object in objects %}
           {% if object.name != blank or object.title != blank %}
@@ -247,7 +247,7 @@
       "label": "Object type",
       "options": [
         {
-          "value": "audiobook",
+          "value": "audiobooks",
           "label": "Audiobooks"
         },
         {
@@ -263,7 +263,7 @@
           "label": "Characters"
         },
         {
-          "value": "publisher",
+          "value": "publishers",
           "label": "Publishers"
         },
         {
@@ -271,7 +271,7 @@
           "label": "Synopsis"
         },
         {
-          "value": "audiogramme",
+          "value": "audiogrammes",
           "label": "Audiogrammes"
         }
       ],

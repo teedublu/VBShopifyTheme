@@ -55,7 +55,6 @@
   {%- assign page_type = page_type | split: '/' | first -%}
 {%- endif -%}
 
-{{page_type}}__{{page_subtype}}__{{metaobject_type}}
 {%- liquid 
   comment
 {{page_type}}__{{page_subtype}}__{{metaobject_type}}
@@ -94,7 +93,7 @@ metaobject__audiobook__audiobook
             assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
         endcase
         assign parent_page = pages[list_page] 
-        assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: title
+        assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
       endunless 
 
       assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: title
@@ -120,7 +119,7 @@ metaobject__audiobook__audiobook
         comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
         endcomment 
         
-        assign list_page = 'audiobook-'| append: page_subtype | append: 's' | replace: 'audiobook-audiobooks','audiobooks'
+        assign list_page = 'audiobook-'| append: page_subtype | append: 's' | replace: 'audiobook-audiobooks','audiobooks'| replace: 'audiobook-audiogrammes','audiogrammes'
         assign parent_page = pages[list_page] 
         assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
       
