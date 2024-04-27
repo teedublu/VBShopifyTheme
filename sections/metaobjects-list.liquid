@@ -100,7 +100,7 @@
         These ones wont hit the 50 limit in pagination any time soon so can access directly         
       {% endcomment %}
       {% assign series = shop.metaobjects.series.values %}
-      {% assign synopsis = shop.metaobjects.audiobook_synopsis.values %}
+      {% assign overviews = shop.metaobjects.overviews.values %}
 
       {% comment %}
         Now use the array of audiobook metaobjects
@@ -121,6 +121,8 @@
             assign objects = audiogrammes
           when 'series' 
             assign objects = series
+          when 'overviews' 
+            assign objects = overviews
         endcase
 
       %}
@@ -277,8 +279,8 @@
           "label": "Publishers"
         },
         {
-          "value": "synopsis",
-          "label": "Synopsis"
+          "value": "overviews",
+          "label": "Overviews"
         },
         {
           "value": "audiogrammes",
