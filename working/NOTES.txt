@@ -7,30 +7,34 @@ SHOPIFY SETUP
 -- social links
 -- GA and pixels
 -- redirects
--- check pages and templates
--- check schmema snippets are in place
--- create new "AudiobookS" page lists all titles
--- create metaobjects for Audiogrammes (any videos that we have done, with files mp4 uploaded)
 -- redir from /pages/publisher/<pub-handle> to /collections/audiobooks-from-<publisher-handle>
--- check tags for auto collections by category are correct /collections/chdildrens-adventure-audiobooks
--- check/create a collection with handle "basket-suggestions" containing prodcuts to disply in empty basket
--- check collections "Childrens <genre>" contain useful books update tags as required, update header image for each collection
--- choose which collections to use in player template section presenting collections
 -- check sitemap.xml is correct
+-- review images names and alts in file section
+-- review metfields on products (especially books)
+
+PAGES
+-- create new "AudiobookS" page lists all titles
+-- check pages and templates
 
 STARTER PACKS
 -- make sure SPs are using native bundles not standalone products
 
 COLLECTIONS
 -- Check templates, titles and descriptions of all collection during import
+-- check/create a collection with handle "basket-suggestions" containing prodcuts to disply in empty basket
+-- check tags for auto collections by category are correct /collections/chdildrens-adventure-audiobooks
+-- check collections "Childrens <genre>" contain useful books update tags as required, update header image for each collection
+-- choose which collections to use in player template section presenting collections
 
 METAOBJECTS
 -- Create new Audiobook Synposis for top 10 books
+-- Create new Audiobook Series for top 10 series
+-- create metaobjects for Audiogrammes (any videos that we have done, with files mp4 uploaded)
 -- Update all book data
 -- include quotes where possible
 -- import the BookData sheet https://docs.google.com/spreadsheets/d/1P15l0MDeGTEoON2zf-_9nubonuCHNyhnetjhP848Flc/edit#gid=962954203
 
-AUDIOGRAMMES
+-AUDIOGRAMMES
 -- upload to Shopify CDN and link file to metafield (rather than Youtube link)
 -- create Audiogramme Metaobjects
 
@@ -38,14 +42,13 @@ METAFIELDS
 -- export all values from store before starting
 -- Add a colour metafield to player variants?
 
-
 KLAVIYO
 -- have any urls changed and triggers for forms etc
 -- signups from webiste
 
 SCHEMA
 -- check pages for valid microdata
-
+-- check schmema snippets are in place
 
 2DO LATER
 -- create new section for cart that looks what is in cart and suggests upsell (hp & books if player, hp if books etc)
