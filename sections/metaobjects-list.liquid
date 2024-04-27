@@ -114,7 +114,7 @@
         endcase
 
       %}
-  {{objects}}
+  
       <ul class="object-list">
         {% for object in objects %}
           {% if object.name != blank or object.title != blank %}
@@ -137,7 +137,7 @@
               <div class="object-text">
                 {% case object_type %}
 
-                  {% when 'audiobook' %}
+                  {% when 'audiobooks' %}
                     <div class="object-title">
                       <b>{{ object.title.value | link_to: object.system.url, class: object_type }}</b>
                     </div>
