@@ -149,20 +149,6 @@
     "text_with_icons_hRqMzj": {
       "type": "text-with-icons",
       "blocks": {
-        "item_Wd7U9m": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-coupon",
-            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
-            "mobile_icon_width": 120,
-            "icon_width": 120,
-            "icon_background_type": "none",
-            "icon_background": "#ffffff",
-            "icon_color": "",
-            "title": "100% connection free",
-            "content": ""
-          }
-        },
         "item_DrrMex": {
           "type": "item",
           "settings": {
@@ -190,18 +176,32 @@
             "title": "Unwind without screens",
             "content": ""
           }
+        },
+        "item_Wd7U9m": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "",
+            "title": "100% connection free",
+            "content": ""
+          }
         }
       },
       "block_order": [
-        "item_Wd7U9m",
         "item_DrrMex",
-        "item_TYdbH7"
+        "item_TYdbH7",
+        "item_Wd7U9m"
       ],
       "settings": {
         "full_width": true,
         "stack_on_mobile": false,
         "title": "",
-        "heading_tag": "h5",
+        "heading_tag": "h4",
         "text_alignment": "center",
         "icon_spacing": "small",
         "background": "",
