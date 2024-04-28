@@ -120,8 +120,19 @@ metaobject__audiobook__audiobook
       
         comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
         endcomment 
+        case metaobject_type
+          when 'audiobook'
+            assign list_page = 'audiobooks'
+          when 'audiogramme'
+            assign list_page = 'audiogrammes'
+          when 'series'
+            assign list_page = 'audiobook-series'
+          when 'overview'
+            assign list_page = 'overviews'
+          else
+            assign list_page = 'audiobook-'| append: page_subtype | append: 's'
+        endcase
         
-        assign list_page = 'audiobook-'| append: page_subtype | append: 's' | replace: 'audiobook-audiobooks','audiobooks'| replace: 'audiobook-audiogrammes','audiogrammes'| replace: 'audiobook-seriess','audiobook-series'
         assign parent_page = pages[list_page] 
         assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
       

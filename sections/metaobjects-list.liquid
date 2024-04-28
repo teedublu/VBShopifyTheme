@@ -88,7 +88,7 @@
 
 
         {% endfor %}
-
+{{product|json}}
         {% assign authors = authors | uniq | sort: 'name' %}
         {% assign publishers = publishers | uniq | sort: 'name' %}
         {% assign narrators = narrators | uniq | sort: 'name' %}
@@ -100,7 +100,7 @@
         These ones wont hit the 50 limit in pagination any time soon so can access directly         
       {% endcomment %}
       {% assign series = shop.metaobjects.series.values %}
-      {% assign overviews = shop.metaobjects.overviews.values %}
+      {% assign overviews = shop.metaobjects.overview.values %}
 
       {% comment %}
         Now use the array of audiobook metaobjects
@@ -115,8 +115,6 @@
             assign objects = narrators 
           when 'audiobooks'
             assign objects = audiobooks 
-          when 'synopsis'
-            assign objects = synopsis
           when 'audiogrammes' 
             assign objects = audiogrammes
           when 'series' 
