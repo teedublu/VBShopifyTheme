@@ -79,124 +79,6 @@
             ],
             "selector_style": "block"
           }
-        },
-        "offer_ytit6Y": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "No wifi required",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_eR9LM8": {
-          "type": "offer",
-          "disabled": true,
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Toddler to teens",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_qcQLA8": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Built in speaker",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_884e9Q": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Headphone jack",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_JC3LCn": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Rechargable",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_kf9TJ9": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Long battery life",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_YFepCJ": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Bedtime mode",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_aL76fp": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Bookmarks",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
-        "offer_chednq": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "icon_width": 24,
-            "title": "Audio scrubbing",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
         }
       },
       "block_order": [
@@ -209,22 +91,13 @@
         "bundle_M4k64R",
         "buy_buttons",
         "collapsible_text_kBDw7a",
-        "product_variations_JarL4E",
-        "offer_ytit6Y",
-        "offer_eR9LM8",
-        "offer_qcQLA8",
-        "offer_884e9Q",
-        "offer_JC3LCn",
-        "offer_kf9TJ9",
-        "offer_YFepCJ",
-        "offer_aL76fp",
-        "offer_chednq"
+        "product_variations_JarL4E"
       ],
       "settings": {
         "full_width": false,
         "show_fixed_add_to_cart": true,
         "desktop_media_width": 55,
-        "desktop_media_layout": "grid_highlight",
+        "desktop_media_layout": "carousel_thumbnails_bottom",
         "mobile_media_size": "contained",
         "mobile_carousel_control": "dots",
         "enable_video_autoplay": false,
@@ -276,6 +149,20 @@
     "text_with_icons_hRqMzj": {
       "type": "text-with-icons",
       "blocks": {
+        "item_Wd7U9m": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "",
+            "title": "Zero connectivity",
+            "content": ""
+          }
+        },
         "item_DrrMex": {
           "type": "item",
           "settings": {
@@ -286,7 +173,7 @@
             "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Parent-free setup",
+            "title": "Parent-free set-up",
             "content": ""
           }
         },
@@ -303,32 +190,18 @@
             "title": "Unwind without screens",
             "content": ""
           }
-        },
-        "item_Wd7U9m": {
-          "type": "item",
-          "settings": {
-            "icon": "picto-coupon",
-            "custom_icon": "shopify:\/\/shop_images\/feature-zero-connectivity.png",
-            "mobile_icon_width": 120,
-            "icon_width": 120,
-            "icon_background_type": "none",
-            "icon_background": "#ffffff",
-            "icon_color": "",
-            "title": "100% connection free",
-            "content": ""
-          }
         }
       },
       "block_order": [
+        "item_Wd7U9m",
         "item_DrrMex",
-        "item_TYdbH7",
-        "item_Wd7U9m"
+        "item_TYdbH7"
       ],
       "settings": {
         "full_width": true,
-        "stack_on_mobile": false,
+        "stack_on_mobile": true,
         "title": "",
-        "heading_tag": "h4",
+        "heading_tag": "h5",
         "text_alignment": "center",
         "icon_spacing": "small",
         "background": "",
