@@ -284,25 +284,32 @@
         "heading_kJtRma": {
           "type": "heading",
           "settings": {
-            "text": "",
+            "text": "Easy to use",
             "heading_tag": "h0"
+          }
+        },
+        "richtext_PYD9tK": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Voxblock is ready to play right out of the box, with no wifi or setup required.<\/p>"
           }
         }
       },
       "block_order": [
         "play_fiM6Xf",
-        "heading_kJtRma"
+        "heading_kJtRma",
+        "richtext_PYD9tK"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
         "autoplay": true,
-        "video_size": "auto",
+        "video_size": "md",
         "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
         "mobile_video": "shopify:\/\/files\/videos\/498fbd3f54db4129920995d8acd054df.mp4",
         "external_video_url": "",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
