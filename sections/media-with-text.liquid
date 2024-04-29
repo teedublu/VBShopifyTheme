@@ -113,7 +113,7 @@ LIQUID
             {%- endif -%}
 
             {%- if block.settings.title != blank -%}
-              <p class="h2">
+              <p class="h2" style="color:{{- block.settings.heading_text_color -}}">
                 {%- render 'styled-text', content: block.settings.title, gradient: block.settings.text_gradient -%}
               </p>
             {%- endif -%}
@@ -584,6 +584,12 @@ LIQUID
           "id": "text_color",
           "label": "Text",
           "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "heading_text_color",
+          "label": "Heading text",
+          "default": "#ff9d57"
         },
         {
           "type": "color_background",
