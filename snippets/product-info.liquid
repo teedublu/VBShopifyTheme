@@ -248,14 +248,19 @@
 
       {%- when 'collapsible_text' -%}
         {%- if block.settings.title != blank and block.settings.content != blank or block.settings.page.content != blank -%}
-          {%- capture accordion_content -%}
-            <div class="prose">
-              {%- for product in product.metafields.bundle.products.value -%}
+          {%- capture bundle_products_content -%}
+            {%- for product in product.metafields.bundle.products.value -%}
                 {{ product.title | link_to: product.url }}{% unless forloop.last %} | {% endunless %}
               {%- endfor -%}
+          {%- endcapture -%}
+          {%- capture accordion_content -%}
+            <div class="prose">
               {{ block.settings.page.content | default: block.settings.content }}
             </div>
           {%- endcapture -%}
+          {%- if block.settings.bundle_products -%}
+            {%- assign accordion_content = accordion_content | replace: '[[bp]]', bundle_products_content -%}
+          {%- endif -%}
           {%- render 'accordion', title: block.settings.title, content: accordion_content, class: 'product-info__accordion', block: block -%}
         {%- endif -%}
 
