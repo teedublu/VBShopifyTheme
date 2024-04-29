@@ -5,6 +5,16 @@
 	--text-lg: 1.9375rem !important;
 }
 
+sale-price.text-lg {
+	/* this affects product cards too */
+	font-size: 240%;
+}
+product-card sale-price.text-lg {
+	/* this affects product cards too */
+	font-size: var(--text-lg);
+}
+
+
 /* Any specific product changes */
 .product.audiobooks .product-gallery__media img, .product.audiobook_bundle product-gallery__media img{
 	/*max-height: 50vh;*/
