@@ -39,15 +39,17 @@
           "settings": {
             "title": "What's included",
             "content": "<ul><li>3 Audiobooks<\/li><li>1 Voxblock Audiobook Player<\/li><li>1 Voxblock Protective Bumper<\/li><li>1 Voxblock USB Charging Cable<\/li><\/ul>",
-            "page": ""
+            "page": "",
+            "bundle_products": true
           }
         },
         "collapsible_text_ap8RrK": {
           "type": "collapsible_text",
           "settings": {
             "title": "Audiobooks",
-            "content": "<p>This starter pack includes 3 audiobooks.<\/p>",
-            "page": ""
+            "content": "<p>This starter pack includes 3 audiobooks. [[bp]]<\/p>",
+            "page": "",
+            "bundle_products": true
           }
         },
         "separator_PiCLpj": {
@@ -89,7 +91,8 @@
           "settings": {
             "title": "Product Details",
             "content": "<p>{{ product.title }}<\/p>",
-            "page": "voxblock-audiobook-gift-pack"
+            "page": "voxblock-audiobook-gift-pack",
+            "bundle_products": true
           }
         },
         "product_variations_JarL4E": {
