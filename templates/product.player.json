@@ -20,18 +20,18 @@
             "text": "<h5>Screen and wifi free audiobook player<\/h5>"
           }
         },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
         "image_dihJHC": {
           "type": "image",
           "settings": {
             "image": "shopify:\/\/shop_images\/voxblock-rating-4_9out-of-5.png",
             "alignment": "start",
-            "max_width": 270
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
+            "max_width": 170
           }
         },
         "text_MA3Pah": {
@@ -252,8 +252,8 @@
         "title",
         "badges",
         "text_thkiB9",
-        "image_dihJHC",
         "price",
+        "image_dihJHC",
         "text_MA3Pah",
         "separator",
         "variant_picker",
