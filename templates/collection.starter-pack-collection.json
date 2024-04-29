@@ -115,7 +115,7 @@
         "promotion_video_FFXEJa": {
           "type": "promotion_video",
           "settings": {
-            "position": 5,
+            "position": 6,
             "column_span": "1",
             "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
@@ -129,17 +129,35 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
+        },
+        "promotion_image_gkWQ36": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "title": "Our Starter Packs",
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h5",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#4cb6ac",
+            "overlay_opacity": 100
+          }
         }
       },
       "block_order": [
-        "promotion_video_FFXEJa"
+        "promotion_video_FFXEJa",
+        "promotion_image_gkWQ36"
       ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
+        "products_per_row_desktop": 5,
         "filter_layout": "horizontal",
         "show_sort_by": false,
+        "sticky": true,
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
