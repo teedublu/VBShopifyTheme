@@ -20,6 +20,7 @@
           "type": "heading",
           "settings": {
             "text": "Quick Start Guide",
+            "scale_with": false,
             "heading_tag": "h0"
           }
         }
@@ -31,6 +32,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "md",
         "image": "shopify:\/\/shop_images\/shipping-boxes-in-front-of-red-brick.jpg",
@@ -345,6 +347,7 @@
         "item_i6PMdd",
         "item_qawxCR"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "subheading": "",
@@ -376,9 +379,9 @@
         "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
         "button_text": "Go",
         "subtext": "",
-        "background": "",
+        "background": "#4cb6ac",
         "background_gradient": "",
-        "text_color": "",
+        "text_color": "#ffffff",
         "button_background": "",
         "button_text_color": ""
       }
