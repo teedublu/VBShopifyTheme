@@ -115,7 +115,7 @@
         "promotion_video_FFXEJa": {
           "type": "promotion_video",
           "settings": {
-            "position": 6,
+            "position": 5,
             "column_span": "1",
             "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
@@ -132,6 +132,7 @@
         },
         "promotion_image_gkWQ36": {
           "type": "promotion_image",
+          "disabled": true,
           "settings": {
             "position": 3,
             "column_span": "1",
@@ -142,7 +143,7 @@
             "heading_tag": "h5",
             "text_position": "place-self-center text-center",
             "text_color": "#ffffff",
-            "overlay_color": "#4cb6ac",
+            "overlay_color": "#ffb74a",
             "overlay_opacity": 100
           }
         }
