@@ -48,13 +48,13 @@
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
             "title": "How our books work",
             "content": "",
-            "link_url": "",
-            "link_text": "View all",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "Learn more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "overlay_opacity": 20
           }
         }
       },
@@ -65,9 +65,10 @@
       "settings": {
         "products_per_page": 50,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 7,
+        "products_per_row_desktop": 5,
         "filter_layout": "horizontal",
         "show_sort_by": false,
+        "sticky": true,
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": false,
