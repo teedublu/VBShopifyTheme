@@ -25,12 +25,13 @@
       "blocks": {
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
+          "disabled": true,
           "settings": {
             "position": 3,
             "column_span": "1",
             "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
             "title": "Voxblock audiobook player",
-            "content": "<p>All these audiobooks from {{ collection.metafields.related.author.value.name.value }}are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "content": "",
             "link_url": "shopify:\/\/products\/voxblock-player",
             "link_text": "See more",
             "heading_tag": "h1",
