@@ -107,13 +107,25 @@
           "settings": {
             "content": "<p>Start listening with Voxblock now.<\/p>"
           }
+        },
+        "button_Ybj4Ph": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "lg",
+            "text": "Find out more",
+            "url": "shopify:\/\/products\/voxblock-player",
+            "background": "",
+            "text_color": "#ffffff"
+          }
         }
       },
       "block_order": [
         "play_f9hiqJ",
         "subheading_YJHa3W",
         "heading_pd3NCr",
-        "richtext_EPAhBU"
+        "richtext_EPAhBU",
+        "button_Ybj4Ph"
       ],
       "settings": {
         "full_width": true,
