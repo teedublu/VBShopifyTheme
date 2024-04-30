@@ -74,10 +74,52 @@
         "show_filter_values_count": false,
         "open_first_filter_group": false
       }
+    },
+    "image_with_text_overlay_qnd4LP": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_b4B73g": {
+          "type": "heading",
+          "settings": {
+            "text": "The screen-free audiobook player",
+            "scale_with": false,
+            "heading_tag": "h1"
+          }
+        },
+        "button_XGX8e4": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Click here to learn more",
+            "url": "shopify:\/\/products\/voxblock-player",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_b4B73g",
+        "button_XGX8e4"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 20
+      }
     }
   },
   "order": [
     "banner",
-    "main"
+    "main",
+    "image_with_text_overlay_qnd4LP"
   ]
 }
