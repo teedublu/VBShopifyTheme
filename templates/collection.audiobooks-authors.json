@@ -25,17 +25,16 @@
       "blocks": {
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
-          "disabled": true,
           "settings": {
             "position": 3,
             "column_span": "1",
             "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
             "title": "Voxblock audiobook player",
-            "content": "",
+            "content": "<p>All these audiobooks from {{ collection.metafields.related.author.value.name.value }}are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
             "link_url": "shopify:\/\/products\/voxblock-player",
-            "link_text": "See more",
-            "heading_tag": "h1",
-            "text_position": "place-self-start text-start",
+            "link_text": "Learn more",
+            "heading_tag": "h3",
+            "text_position": "place-self-center-start text-start",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 30
