@@ -70,6 +70,7 @@
         "products_per_row_desktop": 7,
         "filter_layout": "horizontal",
         "show_sort_by": false,
+        "sticky": true,
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": false,
@@ -83,6 +84,7 @@
           "type": "heading",
           "settings": {
             "text": "The screen-free audiobook player",
+            "scale_with": false,
             "heading_tag": "h1"
           }
         },
@@ -105,9 +107,10 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/Delivery_Info_Page_Banner.png",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
