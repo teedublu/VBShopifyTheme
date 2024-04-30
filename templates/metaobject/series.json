@@ -80,12 +80,62 @@
         "debug": true,
         "object_type": "none"
       }
+    },
+    "video_Yka7Wm": {
+      "type": "video",
+      "blocks": {
+        "play_f9hiqJ": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "subheading_YJHa3W": {
+          "type": "subheading",
+          "settings": {
+            "text": "How to listen to...."
+          }
+        },
+        "heading_pd3NCr": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_EPAhBU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Start listening with Voxblock now.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "play_f9hiqJ",
+        "subheading_YJHa3W",
+        "heading_pd3NCr",
+        "richtext_EPAhBU"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-9_16.mp4",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
     "breadcrumbs_wf8k7Y",
     "rich_text_4cfhpC",
     "featured_collection_kMNaHU",
-    "microdata_V9KiM3"
+    "microdata_V9KiM3",
+    "video_Yka7Wm"
   ]
 }
