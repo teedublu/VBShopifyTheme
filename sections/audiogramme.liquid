@@ -12,6 +12,7 @@
     border: 2px dashed #ff9d57;
     border-radius: 12px;
     color: #167176;
+    max-height: 75vh;
 }
 
 span.transcript-word {
@@ -94,7 +95,7 @@ span.transcript-word {
 
 
 </style>
-{% assign data = metaobject.transcript.value %}
+{% assign data = metaobject.captions.value %}
 {% assign data = data | parse_json %}
 {% assign product = all_products[metaobject.system.handle] %}
 
