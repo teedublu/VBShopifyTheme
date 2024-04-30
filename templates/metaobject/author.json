@@ -143,8 +143,50 @@
     "microdata_kKw6gU": {
       "type": "microdata",
       "settings": {
-        "debug": true,
+        "debug": false,
         "object_type": "author"
+      }
+    },
+    "video_CxV7PV": {
+      "type": "video",
+      "blocks": {
+        "play_nWTHJY": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "subheading_k6nFXi": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobooks by {{ metaobject.name.value }}"
+          }
+        },
+        "heading_paPY9L": {
+          "type": "heading",
+          "settings": {
+            "text": "Listen with Voxblock",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_nWTHJY",
+        "subheading_k6nFXi",
+        "heading_paPY9L"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-9_16.mp4",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     }
   },
@@ -153,6 +195,7 @@
     "rich_text_ftQUQM",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t",
-    "microdata_kKw6gU"
+    "microdata_kKw6gU",
+    "video_CxV7PV"
   ]
 }
