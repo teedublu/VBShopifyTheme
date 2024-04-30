@@ -61,22 +61,24 @@
         {% comment %}
           Loop over all products as this is the only thing that can paginate 1000
           use handle to audiobook MO instead of product (doesnt have all other objects but mo does)
-          use object_type to get MOs in question from there          
+          use object_type to get MOs in question from there      
+
+            
          {% endcomment %}
 
         {% for product in collections['audiobooks'].products  %}
           {% assign audiobook = product.metafields.book['audiobook'].value  %}
           {% assign audiobook_as_array = audiobook | sort  %}
           {% assign audiobooks = audiobooks | concat: audiobook_as_array  %}
-
-          {% assign narrator = product.metafields.book['narrators'].value  %}
-          {% assign narrator_as_array = narrator | sort  %}
-          {% assign narrators = narrators | concat: narrator_as_array  %}
-
+          
           {% assign author = product.metafields.book['authors'].value  %}
           {% assign author_as_array = author | sort  %}
           {% assign authors = authors | concat: author_as_array  %}
 
+          {% assign narrator = product.metafields.book['narrators'].value  %}
+          {% assign narrator_as_array = narrator | sort  %}
+          {% assign narrators = narrators | concat: narrator_as_array  %}
+          
           {% assign publisher = product.metafields.book['publisher'].value  %}
           {% assign publisher_as_array = publisher | sort  %}
           {% assign publishers = narrators | concat: publisher_as_array  %}
@@ -86,9 +88,8 @@
             {% assign audiogrammes = audiogrammes | concat: audiogramme_as_array  %}
           {%- endif -%}
 
-
         {% endfor %}
-{{product|json}}
+
         {% assign authors = authors | uniq | sort: 'name' %}
         {% assign publishers = publishers | uniq | sort: 'name' %}
         {% assign narrators = narrators | uniq | sort: 'name' %}
