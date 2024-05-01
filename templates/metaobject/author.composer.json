@@ -146,6 +146,46 @@
         "debug": false,
         "object_type": "author"
       }
+    },
+    "rich_text_qQeVea": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_fLrteG": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_GyxVnM": {
+          "type": "heading",
+          "settings": {
+            "text": "Heading",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_BPakEj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_fLrteG",
+        "heading_GyxVnM",
+        "richtext_BPakEj"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -153,6 +193,7 @@
     "rich_text_ftQUQM",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t",
-    "microdata_kKw6gU"
+    "microdata_kKw6gU",
+    "rich_text_qQeVea"
   ]
 }
