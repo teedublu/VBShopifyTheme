@@ -12,7 +12,7 @@
         "liquid_wwTTJp": {
           "type": "liquid",
           "settings": {
-            "liquid": "{% render 'metaobject-header'%}"
+            "liquid": "{% render 'metaobject-header', use_title: 'Composer name' %}"
           }
         }
       },
