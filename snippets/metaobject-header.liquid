@@ -20,7 +20,7 @@
 		{%- assign name =  metaobject.name | metafield_tag -%}
 		<h1> {{ use_title | replace:'name', name  }} </h1>
 		<p>
-			{{ collection.description }}
+			{{ collection.description | default: metaobject.bio | metafield_tag }}
 		</p>
 	{%- else -%}
 		<h3> Audiobook {{ metaobject.system.type }} </h3>

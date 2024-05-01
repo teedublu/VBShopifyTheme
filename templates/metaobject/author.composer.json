@@ -153,12 +153,15 @@
         "image_hbjjVd": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Sue-elliott-nichols-audiobook-narrator.jpg",
+            "image": "{{metaobject.photos.value | first | replace: 'files/', 'shopify:\/\/shop_images\/' | json }}",
             "width_mode": "custom",
             "max_width": 600,
             "mobile_max_width": 400
           }
         },
+
+
+
         "subheading_fLrteG": {
           "type": "subheading",
           "settings": {
@@ -177,7 +180,7 @@
         "richtext_BPakEj": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "content": "{{metaobject.photos.value | first | replace: 'files/', 'shopify:\/\/shop_images\/' | json }}"
           }
         }
       },
