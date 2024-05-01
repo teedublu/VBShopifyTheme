@@ -1,0 +1,158 @@
+{
+  "sections": {
+    "breadcrumbs_pWhnx7": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_ftQUQM": {
+      "type": "rich-text",
+      "blocks": {
+        "liquid_wwTTJp": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{% render 'metaobject-header'%}"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_wwTTJp"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "featured_product_EU4RWM": {
+      "type": "featured-product",
+      "blocks": {
+        "text_rmf7mk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Featured audiobook from {{ metaobject.name.value }}<\/p>"
+          }
+        },
+        "title_7FG9XT": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_LGEkgc": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_pBW8cb": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_k3i8MX": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_zQBKVm": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_GDTV6R": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "buy_buttons_NpyNjH": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_rmf7mk",
+        "title_7FG9XT",
+        "badges_LGEkgc",
+        "price_pBW8cb",
+        "rating_k3i8MX",
+        "separator_zQBKVm",
+        "description_GDTV6R",
+        "buy_buttons_NpyNjH"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.main_book.value }}",
+        "desktop_media_width": 35,
+        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 2,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "featured_collection_dyWK9t": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "{{ metaobject.collection.value }}",
+        "hide_empty": true,
+        "products": [
+
+        ],
+        "full_width": false,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "More audiobooks from {{ metaobject.name.value }}",
+        "title": "",
+        "content": "",
+        "link_url": "{{ metaobject.system.url }}",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "microdata_kKw6gU": {
+      "type": "microdata",
+      "settings": {
+        "debug": true,
+        "object_type": "author"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_pWhnx7",
+    "rich_text_ftQUQM",
+    "featured_product_EU4RWM",
+    "featured_collection_dyWK9t",
+    "microdata_kKw6gU"
+  ]
+}
