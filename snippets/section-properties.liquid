@@ -67,6 +67,8 @@ but you can override them by manually passing a different value (although this s
   class="section {% if tight %}section--tight{% endif %} {% if narrow %}section--narrow{% endif %} {{ class | strip }}"
 {%- endif -%}
 
+{%- assign style_attributes = style_attributes | append: extra_style_attributes -%}
+
 {%- if style_attributes != blank -%}
   style="{{ style_attributes | strip }}"
 {%- endif -%}

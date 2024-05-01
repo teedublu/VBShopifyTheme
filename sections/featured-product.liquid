@@ -41,21 +41,25 @@
 
 <div {% render 'section-properties', tight: true %}>
   <div class="product {{ product.type | handleize }}">
-  {% comment %}
-    Metaobjects can use this section but dont want to have to specify a single book for each object
-    So to keep metaobjects easier to maintain:
-    If no product is specified, try to get one from a collection on the metaobject
-    
-  {% endcomment %}
+    {% comment %}
+      Metaobjects can use this section but dont want to have to specify a single book for each object
+      So to keep metaobjects easier to maintain:
+      If no product is specified, try to get one from main_book failing that a collection on the metaobject
+      
+    {% endcomment %}
 
-  {% assign featured_product = section.settings.product %}
-  {%- if featured_product == blank -%}
-    {% for product in metaobject.collection.value.products %}
-      {% assign featured_product = product %}
-      {% break %}
-    {% endfor %}
+    {% assign featured_product = section.settings.product %}
+    {%- if featured_product == blank -%}
+        {% assign featured_product = metaobject.main_book.value %}
+    {%- endif -%}
+    {%- if featured_product == blank -%}
+      {% for product in metaobject.collection.value.products %}
+        {% assign featured_product = product %}
+        {% break %}
+      {% endfor %}
+    {%- endif -%}
 
-  {%- endif -%}
+
 
     {%- if featured_product != blank -%}
       {%- if featured_product.media.size > 0 -%}

@@ -1,3 +1,4 @@
+{%- render 'section-spacing-collapsing' -%}
 <style>
   .breadcrumbs {
     margin: 0 0 2em;
@@ -146,8 +147,7 @@ metaobject__audiobook__audiobook
   assign crumb_list = crumbs | split:sep1
 
   %}
-     
-<div class="section section--tight  section-blends section-full">
+<div {% render 'section-properties', tight: true, extra_style_attributes: '' %}>     
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
       {%- for crumb_pair in crumb_list -%}
@@ -163,6 +163,7 @@ metaobject__audiobook__audiobook
     </ol>
   </nav>
 </div>
+
 
 <script type="application/ld+json">
   {
