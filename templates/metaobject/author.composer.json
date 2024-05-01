@@ -150,6 +150,14 @@
     "rich_text_qQeVea": {
       "type": "rich-text",
       "blocks": {
+        "image_hbjjVd": {
+          "type": "image",
+          "settings": {
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
         "subheading_fLrteG": {
           "type": "subheading",
           "settings": {
@@ -173,6 +181,7 @@
         }
       },
       "block_order": [
+        "image_hbjjVd",
         "subheading_fLrteG",
         "heading_GyxVnM",
         "richtext_BPakEj"
