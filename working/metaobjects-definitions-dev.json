@@ -1,0 +1,633 @@
+{
+  "data": {
+    "metaobjectDefinitions": {
+      "nodes": [
+        {
+          "id": "gid://shopify/MetaobjectDefinition/852426827",
+          "name": "Publisher",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Bio",
+              "key": "bio",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Logo",
+              "key": "logo",
+              "type": {
+                "name": "file_reference"
+              }
+            },
+            {
+              "name": "Collection",
+              "key": "collection",
+              "type": {
+                "name": "collection_reference"
+              }
+            },
+            {
+              "name": "Website",
+              "key": "website",
+              "type": {
+                "name": "url"
+              }
+            },
+            {
+              "name": "Main book",
+              "key": "main_book",
+              "type": {
+                "name": "metaobject_reference"
+              }
+            },
+            {
+              "name": "Description",
+              "key": "description",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "multi_line_text_field"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/852492363",
+          "name": "Audiobook",
+          "fieldDefinitions": [
+            {
+              "name": "Title",
+              "key": "title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Product",
+              "key": "product",
+              "type": {
+                "name": "product_reference"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "multi_line_text_field"
+              }
+            },
+            {
+              "name": "Audiogramme",
+              "key": "audiogramme",
+              "type": {
+                "name": "metaobject_reference"
+              }
+            },
+            {
+              "name": "Copyright",
+              "key": "copyright",
+              "type": {
+                "name": "multi_line_text_field"
+              }
+            },
+            {
+              "name": "Quotes",
+              "key": "quotes",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Genres",
+              "key": "genres",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Bisac codes",
+              "key": "bisac_codes",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Thema codes",
+              "key": "thema_codes",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Print ISBN",
+              "key": "print_isbn",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Reading level",
+              "key": "reading_level",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Interest level",
+              "key": "interest_level",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Key stage",
+              "key": "key_stage",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "ELT",
+              "key": "elt",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "ATOS book level",
+              "key": "atos_book_level",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "AR points",
+              "key": "ar_points",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Word count",
+              "key": "word_count",
+              "type": {
+                "name": "number_integer"
+              }
+            },
+            {
+              "name": "Content themes",
+              "key": "content_themes",
+              "type": {
+                "name": "list.single_line_text_field"
+              }
+            },
+            {
+              "name": "Concise blurb",
+              "key": "concise_blurb",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Short blurb",
+              "key": "short_blurb",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Long blurb",
+              "key": "long_blurb",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "External blurb",
+              "key": "external_blurb",
+              "type": {
+                "name": "rich_text_field"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/852525131",
+          "name": "Character",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Photos",
+              "key": "photos",
+              "type": {
+                "name": "list.file_reference"
+              }
+            },
+            {
+              "name": "Main book",
+              "key": "main_book",
+              "type": {
+                "name": "product_reference"
+              }
+            },
+            {
+              "name": "Bio",
+              "key": "bio",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Collection",
+              "key": "collection",
+              "type": {
+                "name": "collection_reference"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/852623435",
+          "name": "Series",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Description",
+              "key": "description",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Collection",
+              "key": "collection",
+              "type": {
+                "name": "collection_reference"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "multi_line_text_field"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/854523979",
+          "name": "Author",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Bio",
+              "key": "bio",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Main book",
+              "key": "main_book",
+              "type": {
+                "name": "product_reference"
+              }
+            },
+            {
+              "name": "Collection",
+              "key": "collection",
+              "type": {
+                "name": "collection_reference"
+              }
+            },
+            {
+              "name": "Photos",
+              "key": "photos",
+              "type": {
+                "name": "list.file_reference"
+              }
+            },
+            {
+              "name": "Related",
+              "key": "related",
+              "type": {
+                "name": "list.mixed_reference"
+              }
+            },
+            {
+              "name": "Same as",
+              "key": "same_as",
+              "type": {
+                "name": "list.url"
+              }
+            },
+            {
+              "name": "Twitter",
+              "key": "twitter",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Email",
+              "key": "email",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Facebook",
+              "key": "facebook",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Series",
+              "key": "series",
+              "type": {
+                "name": "metaobject_reference"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/870940747",
+          "name": "Narrator",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Collection",
+              "key": "collection",
+              "type": {
+                "name": "collection_reference"
+              }
+            },
+            {
+              "name": "Main book",
+              "key": "main_book",
+              "type": {
+                "name": "product_reference"
+              }
+            },
+            {
+              "name": "Photos",
+              "key": "photos",
+              "type": {
+                "name": "list.file_reference"
+              }
+            },
+            {
+              "name": "Same As",
+              "key": "same_as",
+              "type": {
+                "name": "list.url"
+              }
+            },
+            {
+              "name": "Bio",
+              "key": "bio",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "multi_line_text_field"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/907509835",
+          "name": "Schema",
+          "fieldDefinitions": [
+            {
+              "name": "types",
+              "key": "types",
+              "type": {
+                "name": "json"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/921829451",
+          "name": "Audiogramme",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Desktop",
+              "key": "desktop",
+              "type": {
+                "name": "file_reference"
+              }
+            },
+            {
+              "name": "Mobile",
+              "key": "mobile",
+              "type": {
+                "name": "file_reference"
+              }
+            },
+            {
+              "name": "Thumbnail",
+              "key": "thumbnail",
+              "type": {
+                "name": "file_reference"
+              }
+            },
+            {
+              "name": "GIF",
+              "key": "gif",
+              "type": {
+                "name": "file_reference"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Captions",
+              "key": "captions",
+              "type": {
+                "name": "json"
+              }
+            },
+            {
+              "name": "Caption file",
+              "key": "caption_file",
+              "type": {
+                "name": "file_reference"
+              }
+            }
+          ]
+        },
+        {
+          "id": "gid://shopify/MetaobjectDefinition/1011089483",
+          "name": "Overview",
+          "fieldDefinitions": [
+            {
+              "name": "Name",
+              "key": "name",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page title",
+              "key": "page_title",
+              "type": {
+                "name": "single_line_text_field"
+              }
+            },
+            {
+              "name": "Page description",
+              "key": "page_description",
+              "type": {
+                "name": "multi_line_text_field"
+              }
+            },
+            {
+              "name": "About",
+              "key": "about",
+              "type": {
+                "name": "rich_text_field"
+              }
+            },
+            {
+              "name": "Product",
+              "key": "product",
+              "type": {
+                "name": "product_reference"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "extensions": {
+    "cost": {
+      "requestedQueryCost": 14,
+      "actualQueryCost": 14,
+      "throttleStatus": {
+        "maximumAvailable": 2000,
+        "currentlyAvailable": 1986,
+        "restoreRate": 100
+      }
+    }
+  }
+}

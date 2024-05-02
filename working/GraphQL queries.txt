@@ -1,0 +1,16 @@
+GET defintions
+{
+    metaobjectDefinitions (first:10) {
+        nodes {
+            id
+            name
+          	fieldDefinitions {
+            	name
+              key
+              type{
+                name
+              }
+          }
+        }
+    }
+}

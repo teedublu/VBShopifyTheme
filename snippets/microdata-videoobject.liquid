@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "{{ product.title }}",
+  "description": "{{ product.description | strip_html | escape | strip_newlines }}",
+  "thumbnailUrl": [
+    "https://img.youtube.com/vi/{{ section.settings.video_url_metafield }}/default.jpg",
+    "https://img.youtube.com/vi/{{ section.settings.video_url_metafield }}/sddefault.jpg",
+    "https://img.youtube.com/vi/{{ section.settings.video_url_metafield }}/mqdefault.jpg",
+    "https://img.youtube.com/vi/{{ section.settings.video_url_metafield }}/maxresdefault.jpg"
+   ],
+  "uploadDate": "2022-08-31T08:00:00+08:00",
+  "contentUrl": "https://www.youtube.com/watch?v={{ section.settings.video_url_metafield }}",
+  "embedUrl": "https://www.youtube.com/embed/{{ section.settings.video_url_metafield }}"
+}
