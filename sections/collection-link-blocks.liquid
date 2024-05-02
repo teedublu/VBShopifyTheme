@@ -69,7 +69,7 @@ LIQUID
 
   <div class="collection-links scroll-container">
     {% for block in section.blocks %}
-      <a href="{{ rcollection_url | append: block.settings.url_params }}" class="link-block">
+      <a href="{{ rcollection_url | append: '?' | append: block.settings.url_params }}" class="link-block">
         {% if block.settings.image %}
           <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
         {% endif %}
