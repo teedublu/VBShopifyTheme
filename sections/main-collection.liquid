@@ -89,9 +89,9 @@
           </facet-drawer>
 
           {%- if section.settings.filter_layout == 'horizontal' -%}
-            {%- render 'collection-top-bar', results: collection, show_filters: show_filters, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by, sticky: section.settings.sticky -%}
+            {%- render 'collection-top-bar', results: collection, show_filters: show_filters, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by, sticky_filters: section.settings.sticky_filters -%}
           {%- else -%}
-            {%- render 'collection-top-bar', results: collection, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by, sticky: section.settings.sticky -%}
+            {%- render 'collection-top-bar', results: collection, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by, sticky_filters: section.settings.sticky_filters -%}
           {%- endif -%}
 
           {%- comment -%}We also need to render the button, that is floating on mobile{%- endcomment -%}
@@ -683,7 +683,7 @@
     },
     {
       "type": "checkbox",
-      "id": "sticky",
+      "id": "sticky_filters",
       "label": "Make sticky",
       "default": true
     },

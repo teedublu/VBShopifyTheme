@@ -19,7 +19,7 @@ Supported variables
 {%- assign selected_sort_by_value = results.sort_by | default: results.default_sort_by -%}
 {%- assign selected_sort_by = results.sort_options | where: 'value', selected_sort_by_value | first -%}
 
-<div class="collection__top-bar {% if sticky %} sticky-filterbar{% endif %}">
+<div class="collection__top-bar {% if sticky_filters %} sticky-filterbar{% endif %}">
   {%- if show_active_filters -%}
     {%- if section.settings.filter_layout == 'drawer' -%}
       <button class="text-with-icon group justify-self-start" aria-controls="facets-drawer" aria-expanded="false">
