@@ -4,11 +4,11 @@
       "type": "collection-banner",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
         "show_collection_title": true,
         "show_collection_description": true,
-        "show_collection_image": false,
+        "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "sm",
         "mobile_text_position": "place-self-center text-center",
@@ -18,62 +18,6 @@
         "text_color": "#ffffff",
         "overlay_color": "#ffb74a",
         "overlay_opacity": 100
-      }
-    },
-    "collection_link_blocks_LakbVh": {
-      "type": "collection-link-blocks",
-      "blocks": {
-        "item_azpjpV": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/our_content-overview-image-1400x1000.jpg",
-            "link_text": "All audiobooks",
-            "url_params": ""
-          }
-        },
-        "item_9K4PhP": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Audiobooks_by_Age_9dfa0d5a-5482-4bd7-9a40-8ece5c808dfb.png",
-            "link_text": "under 5's",
-            "url_params": "filter.p.m.book.age_groups=Under+5%27s"
-          }
-        },
-        "item_8AzUKC": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/our_content-titles-image-1400x1000.jpg",
-            "link_text": "5 to 8 years",
-            "url_params": "filter.p.m.book.age_groups=5+to+8+years"
-          }
-        },
-        "item_DA6Amk": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/our_content-audiogram-image-1400x1000.jpg",
-            "link_text": "8 to 10 years",
-            "url_params": "filter.p.m.book.age_groups=8+to+10+years"
-          }
-        },
-        "item_3GBHY7": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "link_text": "10 to teens",
-            "url_params": "filter.p.m.book.age_groups=10+to+teens"
-          }
-        }
-      },
-      "block_order": [
-        "item_azpjpV",
-        "item_9K4PhP",
-        "item_8AzUKC",
-        "item_DA6Amk",
-        "item_3GBHY7"
-      ],
-      "settings": {
-        "full_width": false,
-        "nav_collection": "audiobooks"
       }
     },
     "main": {
@@ -123,7 +67,7 @@
       "settings": {
         "products_per_page": 50,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 7,
+        "products_per_row_desktop": 5,
         "filter_layout": "horizontal",
         "show_sort_by": false,
         "sticky": true,
@@ -177,7 +121,6 @@
   },
   "order": [
     "banner",
-    "collection_link_blocks_LakbVh",
     "main",
     "image_with_text_overlay_qB9epV"
   ]
