@@ -161,7 +161,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/audiobooks-collection-bestseller-1200x1400.png",
             "link_text": "Best Sellers",
-            "url_params": "?filter.p.m.book.age_groups=35"
+            "url_params": "filter.p.m.book.bestseller=1"
           }
         },
         "item_Y4GnXQ": {
@@ -169,7 +169,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
             "link_text": "Under 5's",
-            "url_params": "?filter.p.m.book.age_groups=35"
+            "url_params": "filter.p.m.book.age_groups=Under+5%27s"
           }
         },
         "item_PHyCVd": {
@@ -205,7 +205,8 @@
         "item_KfF6ya"
       ],
       "settings": {
-        "full_width": false
+        "full_width": false,
+        "nav_collection": ""
       }
     },
     "main": {
