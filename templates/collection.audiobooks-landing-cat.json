@@ -35,8 +35,8 @@
           "type": "item",
           "settings": {
             "image": "shopify:\/\/shop_images\/Audiobooks_by_Age_9dfa0d5a-5482-4bd7-9a40-8ece5c808dfb.png",
-            "link_text": "Dinosaurs",
-            "url_params": ""
+            "link_text": "under 5's",
+            "url_params": "filter.p.m.book.age_groups=Under+5%27s"
           }
         },
         "item_8AzUKC": {
@@ -63,7 +63,8 @@
         "item_DA6Amk"
       ],
       "settings": {
-        "full_width": false
+        "full_width": false,
+        "nav_collection": "audiobooks"
       }
     },
     "main": {
