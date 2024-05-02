@@ -1,13 +1,11 @@
 <div class="prose justify-items-center text-center">
-	{% for photo in metaobject.photos.value %}
-		{{- photo 
-			| image_url: width: 200 
-			| image_tag: 
-				preload: true,
-				style: 'border-radius: 50%; margin: auto; height: 200px;'
-			-}}
-		{% break %}
-	{% endfor %}
+	<div class="person-image" style="border-radius: 50%; height:200px; width: 200px; overflow:hidden;">
+	{% if metaobject.photos.value != blank %}
+      {{ metaobject.photos.value |  first | image_url: width: 200 | image_tag: alt: object.title.value | escape }}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+    {% endif %}
+
 	{% if metaobject.logo %}
 		{{- metaobject.logo.value 
 			| image_url: width: 200 
@@ -17,18 +15,22 @@
 			-}}
 
 	{% endif %}
-
+	</div>
 	{%- if use_title -%}
 		{%- assign name =  metaobject.name | metafield_tag -%}
 		<h1> {{ use_title | replace:'name', name  }} </h1>
 		<p>
-			{{ collection.description }}
+			{{ collection.description | default: metaobject.bio | metafield_tag }}
 		</p>
 	{%- else -%}
 		<h3> Audiobook {{ metaobject.system.type }} </h3>
 		<h1> {{ metaobject.name | metafield_tag }} </h1>
 		<p>
-			{{ metaobject.bio | metafield_tag }}
+			{% if metaobject.bio != blank %}
+				{{ metaobject.bio | metafield_tag }}
+			{% else %}
+				{{ metaobject.name | metafield_tag }} is an audiobook {{ metaobject.system.type }}. Some of their books will be available on Voxblock.
+			{% endif %}
 		</p>
 	{%- endif -%}
 	

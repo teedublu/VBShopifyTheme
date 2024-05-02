@@ -47,7 +47,7 @@
             {% assign collections_list = section.settings.collections | default: collections %}
 
             {%- for collection in collections_list -%}
-              <a href="{{ collection.url }}" class="collection-card" reveal-js>
+              <a href="{{ collection.url }}" class="collection-card {{collection.template_suffix}}" reveal-js>
                 <div class="content-over-media group rounded-sm" style="--content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }}">
                   {%- if collection.featured_image != blank -%}
                     {%- capture sizes -%}(max-width: 699px) 73vw, {{ settings.page_width | divided_by: section.settings.collections_per_row }}px{%- endcapture -%}

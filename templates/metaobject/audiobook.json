@@ -6,6 +6,75 @@
         "heading": "Breadcrumbs"
       }
     },
+    "multi_column_audiobooks_WnDPxN": {
+      "type": "multi-column-audiobooks",
+      "blocks": {
+        "item_nDiJND": {
+          "type": "item",
+          "settings": {
+            "use_object": "author",
+            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
+            "product": "",
+            "column_size": "3",
+            "title": "Column title",
+            "sub_title": "Author",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_eXbL6H": {
+          "type": "item",
+          "settings": {
+            "use_object": "narrator",
+            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
+            "product": "",
+            "column_size": "3",
+            "title": "Column title",
+            "sub_title": "Narrator",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_AigfQx": {
+          "type": "item",
+          "settings": {
+            "use_object": "publisher",
+            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
+            "product": "",
+            "column_size": "3",
+            "title": "Column title",
+            "sub_title": "Publisher",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_nDiJND",
+        "item_eXbL6H",
+        "item_AigfQx"
+      ],
+      "settings": {
+        "full_width": true,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "The Audiobook",
+        "title": "{{ metaobject.title.value }}",
+        "content": "{{ metaobject.long_blurb | metafield_tag }}",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "featured_product_B9E7nQ": {
       "type": "featured-product",
       "blocks": {
@@ -88,78 +157,15 @@
         "input_text_color": ""
       }
     },
-    "multi_column_audiobooks_WnDPxN": {
-      "type": "multi-column-audiobooks",
-      "blocks": {
-        "item_nDiJND": {
-          "type": "item",
-          "settings": {
-            "use_object": "author",
-            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
-            "product": "",
-            "column_size": "3",
-            "title": "Column title",
-            "sub_title": "Author",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        },
-        "item_eXbL6H": {
-          "type": "item",
-          "settings": {
-            "use_object": "narrator",
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "product": "",
-            "column_size": "3",
-            "title": "Column title",
-            "sub_title": "Narrator",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        },
-        "item_AigfQx": {
-          "type": "item",
-          "settings": {
-            "use_object": "publisher",
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "product": "",
-            "column_size": "3",
-            "title": "Column title",
-            "sub_title": "Publisher",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        }
-      },
-      "block_order": [
-        "item_nDiJND",
-        "item_eXbL6H",
-        "item_AigfQx"
-      ],
-      "settings": {
-        "full_width": true,
-        "gap": "small",
-        "text_alignment": "start",
-        "subheading": "About",
-        "title": "{{ metaobject.title.value }}",
-        "content": "<p>{{ metaobject.long_blurb | metafield_tag }}<\/p>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "audiobook_productdata_zmqU7J": {
       "type": "audiobook-productdata",
       "blocks": {
+        "preview_J6rbiA": {
+          "type": "preview",
+          "settings": {
+            "title": "Preview"
+          }
+        },
         "narrators_9VDD4E": {
           "type": "narrators",
           "settings": {
@@ -184,10 +190,58 @@
             "title": "Featuring"
           }
         },
+        "duration_QBHBh7": {
+          "type": "duration",
+          "settings": {
+            "title": "Duration"
+          }
+        },
+        "language_wcTGmf": {
+          "type": "language",
+          "settings": {
+            "title": "Language"
+          }
+        },
+        "word_count_xYDYb3": {
+          "type": "word_count",
+          "settings": {
+            "title": "Word Count"
+          }
+        },
+        "genres_YUBAeq": {
+          "type": "genres",
+          "settings": {
+            "title": "Genres"
+          }
+        },
+        "content_themes_icJ7en": {
+          "type": "content_themes",
+          "settings": {
+            "title": "Content Themes"
+          }
+        },
+        "categories_HTFkEz": {
+          "type": "categories",
+          "settings": {
+            "title": "Categories"
+          }
+        },
+        "isbn_kpdmch": {
+          "type": "isbn",
+          "settings": {
+            "title": "Voxblock ISBN"
+          }
+        },
         "print_isbn_H4NrKJ": {
           "type": "print_isbn",
           "settings": {
             "title": "Print ISBN"
+          }
+        },
+        "audiogramme_xr8wFH": {
+          "type": "audiogramme",
+          "settings": {
+            "title": "Audiogramme"
           }
         },
         "bisac_codes_xWC7Jj": {
@@ -232,34 +286,10 @@
             "title": "AR Points"
           }
         },
-        "duration_QBHBh7": {
-          "type": "duration",
-          "settings": {
-            "title": "Duration"
-          }
-        },
-        "word_count_xYDYb3": {
-          "type": "word_count",
-          "settings": {
-            "title": "Word Count"
-          }
-        },
         "atos_book_level_UBbFBe": {
           "type": "atos_book_level",
           "settings": {
             "title": "ATOS Book Level"
-          }
-        },
-        "genres_YUBAeq": {
-          "type": "genres",
-          "settings": {
-            "title": "Genres"
-          }
-        },
-        "content_themes_icJ7en": {
-          "type": "content_themes",
-          "settings": {
-            "title": "Content Themes"
           }
         },
         "synopsis_meq7hz": {
@@ -268,40 +298,10 @@
             "title": "Synopsis"
           }
         },
-        "audiogramme_xr8wFH": {
-          "type": "audiogramme",
-          "settings": {
-            "title": "Audiogramme"
-          }
-        },
-        "preview_J6rbiA": {
-          "type": "preview",
-          "settings": {
-            "title": "Preview"
-          }
-        },
-        "categories_HTFkEz": {
-          "type": "categories",
-          "settings": {
-            "title": "Categories"
-          }
-        },
-        "language_wcTGmf": {
-          "type": "language",
-          "settings": {
-            "title": "Language"
-          }
-        },
         "abridged_pqGcmk": {
           "type": "abridged",
           "settings": {
             "title": "Abridged"
-          }
-        },
-        "isbn_kpdmch": {
-          "type": "isbn",
-          "settings": {
-            "title": "Voxblock ISBN"
           }
         },
         "fiction_EGHU8Q": {
@@ -312,11 +312,20 @@
         }
       },
       "block_order": [
+        "preview_J6rbiA",
         "narrators_9VDD4E",
         "authors_4qT6WC",
         "publisher_6RR4Lq",
         "characters_6diBjh",
+        "duration_QBHBh7",
+        "language_wcTGmf",
+        "word_count_xYDYb3",
+        "genres_YUBAeq",
+        "content_themes_icJ7en",
+        "categories_HTFkEz",
+        "isbn_kpdmch",
         "print_isbn_H4NrKJ",
+        "audiogramme_xr8wFH",
         "bisac_codes_xWC7Jj",
         "thema_codes_tE9ekt",
         "reading_level_UtqLTp",
@@ -324,18 +333,9 @@
         "key_stage_8aTCmw",
         "elt_eBpaGD",
         "ar_points_NiBP6m",
-        "duration_QBHBh7",
-        "word_count_xYDYb3",
         "atos_book_level_UBbFBe",
-        "genres_YUBAeq",
-        "content_themes_icJ7en",
         "synopsis_meq7hz",
-        "audiogramme_xr8wFH",
-        "preview_J6rbiA",
-        "categories_HTFkEz",
-        "language_wcTGmf",
         "abridged_pqGcmk",
-        "isbn_kpdmch",
         "fiction_EGHU8Q"
       ],
       "settings": {
@@ -351,9 +351,9 @@
   },
   "order": [
     "breadcrumbs_DL4tEL",
-    "featured_product_B9E7nQ",
     "multi_column_audiobooks_WnDPxN",
-    "audiobook_productdata_zmqU7J", 
+    "featured_product_B9E7nQ",
+    "audiobook_productdata_zmqU7J",
     "microdata_kKw6gU"
   ]
 }
