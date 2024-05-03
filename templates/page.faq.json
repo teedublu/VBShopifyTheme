@@ -20,6 +20,7 @@
           "type": "heading",
           "settings": {
             "text": "FAQs",
+            "scale_with": false,
             "heading_tag": "h0"
           }
         }
@@ -31,6 +32,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "md",
         "image": "shopify:\/\/shop_images\/blue-question-mark-orange-background.png",
@@ -341,14 +343,14 @@
       "type": "newsletter",
       "settings": {
         "full_width": true,
-        "show_icon": false,
+        "show_icon": true,
         "title": "Sign up to our newsletter",
         "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
         "button_text": "Go",
         "subtext": "",
-        "background": "#ffffff",
+        "background": "#4cb6ac",
         "background_gradient": "",
-        "text_color": "#565656",
+        "text_color": "#ffffff",
         "button_background": "#ff9e57",
         "button_text_color": "#ffffff"
       }
