@@ -146,6 +146,41 @@
         "debug": false,
         "object_type": "author"
       }
+    },
+    "media_with_text_ciY3Ct": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_QCmjPr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-end-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Voxblock audiobook player",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "link_text": "Learn more",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_QCmjPr"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
@@ -153,6 +188,7 @@
     "breadcrumbs_pWhnx7",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t",
-    "microdata_kKw6gU"
+    "microdata_kKw6gU",
+    "media_with_text_ciY3Ct"
   ]
 }
