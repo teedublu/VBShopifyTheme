@@ -20,6 +20,7 @@
           "type": "heading",
           "settings": {
             "text": "Voxblock Schools",
+            "scale_with": false,
             "heading_tag": "h0"
           }
         }
@@ -31,14 +32,15 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "md",
-        "image": "shopify:\/\/shop_images\/Voxblock_for_Schools_8c0b676b-2caa-448a-aa5a-29f2e7e437da.png",
+        "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 31
+        "overlay_opacity": 20
       }
     },
     "rich_text_PAeRfb": {
@@ -137,6 +139,7 @@
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/Voxblock_Book_Shelf_2500_x_1184_px.png",
@@ -197,6 +200,7 @@
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/School-tier-graphic-April-2024_1_1600x_369712e1-a928-4c79-beb8-f53d069962b0.webp",
@@ -212,6 +216,7 @@
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/Schools-_example_medium_pack_Sep_23.jpg",
@@ -242,6 +247,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
@@ -351,6 +357,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
@@ -441,8 +448,11 @@
         "allow_transparent_header": false,
         "autoplay": false,
         "video_size": "md",
+        "youtube_id": "",
         "external_video_url": "https:\/\/youtu.be\/lXc2bssarCA",
         "poster": "shopify:\/\/shop_images\/Voxblock_in_schools_3.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
