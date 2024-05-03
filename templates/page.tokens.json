@@ -20,6 +20,7 @@
           "type": "heading",
           "settings": {
             "text": "Voxblock tokens",
+            "scale_with": false,
             "heading_tag": "h0"
           }
         }
@@ -31,6 +32,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "md",
         "image": "shopify:\/\/shop_images\/token-background.png",
@@ -62,6 +64,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -96,6 +99,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -115,6 +119,7 @@
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/collection_card_1.png",
@@ -145,6 +150,7 @@
             "background": "#ffb74a",
             "background_gradient": "",
             "text_color": "#ffffff",
+            "heading_text_color": "#ffffff",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -156,7 +162,7 @@
       ],
       "settings": {
         "full_width": false,
-        "spacing": "medium"
+        "spacing": "small"
       }
     },
     "contact_CJJrdg": {
