@@ -223,15 +223,22 @@
         "item_dpCpac": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "title": "What is Voxblock?",
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+          }
+        },
+        "item_JwG9hG": {
+          "type": "item",
+          "settings": {
+            "title": "What stories are available?",
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "title": "What age is Voxblock suitable for?",
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
           }
         },
         "item_M9imEA": {
@@ -244,6 +251,7 @@
       },
       "block_order": [
         "item_dpCpac",
+        "item_JwG9hG",
         "item_c3zFfM",
         "item_M9imEA"
       ],
@@ -251,10 +259,10 @@
         "full_width": true,
         "subheading": "",
         "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "content": "",
         "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
+        "support_hours": "",
+        "answer_time": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
