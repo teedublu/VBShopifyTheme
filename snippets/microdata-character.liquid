@@ -1,0 +1,13 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": {{ character.main_book.title | json }},
+  "description": {{ character.page_description | json }},
+  "image": "{{ character.photos |first  | image_url }}",
+  "memberOf": {
+    "@type": "CreativeWork",
+    "name": "{{ character.main_book.title }}"
+  },
+  "url": "Direct URL to the character page on your site"
+}
+
