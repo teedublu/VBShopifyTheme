@@ -1,0 +1,18 @@
+{%- assign poster_image = section.settings.desktop_video.preview_image -%}
+{%- assign youtube_id = section.settings.desktop_video.youtube_id -%}
+
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ product.title | json }},
+  "description": "{{ product.description | strip_html | escape | strip_newlines }}",
+    "thumbnailUrl": [
+    "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
+    "https://img.youtube.com/vi/{{ youtube_id }}/sddefault.jpg",
+    "https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg",
+    "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
+   ],
+  "uploadDate": "2022-08-31T08:00:00+08:00",
+  "contentUrl": "https://www.youtube.com/watch?v={{ youtube_id }}",
+  "embedUrl": "https://www.youtube.com/embed/{{ youtube_id }}"
+}

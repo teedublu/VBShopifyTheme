@@ -1,11 +1,5 @@
 {
   "sections": {
-    "breadcrumbs_pWhnx7": {
-      "type": "breadcrumbs",
-      "settings": {
-        "heading": "Breadcrumbs"
-      }
-    },
     "rich_text_ftQUQM": {
       "type": "rich-text",
       "blocks": {
@@ -27,6 +21,12 @@
         "background": "#4cb6ac",
         "background_gradient": "",
         "text_color": "#ffffff"
+      }
+    },
+    "breadcrumbs_pWhnx7": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
       }
     },
     "featured_product_EU4RWM": {
@@ -143,14 +143,14 @@
     "microdata_kKw6gU": {
       "type": "microdata",
       "settings": {
-        "debug": true,
+        "debug": false,
         "object_type": "author"
       }
     }
   },
   "order": [
-    "breadcrumbs_pWhnx7",
     "rich_text_ftQUQM",
+    "breadcrumbs_pWhnx7",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU"

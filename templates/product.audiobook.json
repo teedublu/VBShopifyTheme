@@ -160,6 +160,23 @@
         "heading_gradient": ""
       }
     },
+    "video_QYECT4": {
+      "type": "video",
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "video": "{{ product.metafields.book.audiobook.value.audiogramme.value.desktop.value }}",
+        "mobile_video": "{{ product.metafields.book.audiobook.value.audiogramme.value.mobile.value }}",
+        "external_video_url": "",
+        "mobile_text_position": "place-self-start text-start",
+        "desktop_text_position": "sm:place-self-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "related_products_NbRnrP": {
       "type": "related-products",
       "settings": {
@@ -285,6 +302,7 @@
   "order": [
     "main",
     "tabs_qeFVd8",
+    "video_QYECT4",
     "related_products_NbRnrP",
     "recently_viewed_products_FXQk8b",
     "faq_KiLD6K",

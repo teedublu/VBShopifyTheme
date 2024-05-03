@@ -64,11 +64,12 @@ LIQUID
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 
+{%- assign collection_url = section.settings.nav_collection.url | default: request.path -%}
 <div>
 
   <div class="collection-links scroll-container">
     {% for block in section.blocks %}
-      <a href="{{ request.path | append: block.settings.url_params }}" class="link-block">
+      <a href="{{ collection_url | append: '?' | append: block.settings.url_params }}" class="link-block">
         {% if block.settings.image %}
           <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
         {% endif %}
@@ -120,7 +121,12 @@ LIQUID
       "id": "full_width",
       "label": "Full width",
       "default": false
-    }
+    },
+    {
+      "type": "collection",
+      "id": "nav_collection",
+      "label": "Navigate relative to"
+    } 
   ],
   "presets": [
     {

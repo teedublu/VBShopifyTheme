@@ -4,20 +4,21 @@
       "type": "collection-banner",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "enable_parallax": false,
         "show_collection_title": true,
         "show_collection_description": false,
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/audiobooks-library_banner-web-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
         "featured_product_heading": "Featured product",
-        "text_color": "#ff9e57",
+        "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 25
       }
     },
     "main": {
@@ -25,119 +26,14 @@
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "filter_layout": "sidebar",
+        "products_per_row_desktop": 5,
+        "filter_layout": "drawer",
         "show_sort_by": true,
-        "show_filters": false,
+        "sticky": false,
+        "show_filters": true,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
         "open_first_filter_group": false
-      }
-    },
-    "featured_product_WaN6mR": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_xPjjVV": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title_8jXahM": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_yAyV8i": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "price_RBV9iw": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "rating_HtjAqp": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_EgtGxC": {
-          "type": "separator",
-          "settings": {
-          }
-        },
-        "description_LYEy94": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_6FAJEk": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "quantity_selector_cTmax4": {
-          "type": "quantity_selector",
-          "settings": {
-          }
-        },
-        "buy_buttons_4Xfwrm": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "pickup_availability_ayefUM": {
-          "type": "pickup_availability",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "vendor_xPjjVV",
-        "title_8jXahM",
-        "badges_yAyV8i",
-        "price_RBV9iw",
-        "rating_HtjAqp",
-        "separator_EgtGxC",
-        "description_LYEy94",
-        "variant_picker_6FAJEk",
-        "quantity_selector_cTmax4",
-        "buy_buttons_4Xfwrm",
-        "pickup_availability_ayefUM"
-      ],
-      "settings": {
-        "full_width": true,
-        "product": "voxblock-player",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
       }
     },
     "faq_UUi7Qn": {
@@ -170,6 +66,7 @@
         "item_rW3xP3",
         "item_XHYf8i"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "subheading": "",
@@ -196,7 +93,6 @@
   "order": [
     "banner",
     "main",
-    "featured_product_WaN6mR",
     "faq_UUi7Qn"
   ]
 }
