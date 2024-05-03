@@ -102,6 +102,7 @@
       {% endcomment %}
       {% assign series = shop.metaobjects.series.values %}
       {% assign overviews = shop.metaobjects.overview.values %}
+      {% assign characters = shop.metaobjects.characters.values %}
 
       {% comment %}
         Now use the array of audiobook metaobjects
@@ -122,6 +123,8 @@
             assign objects = series
           when 'overviews' 
             assign objects = overviews
+          when 'characters' 
+            assign objects = characters
         endcase
 
       %}
@@ -138,6 +141,8 @@
                   {% assign image = product.featured_image %}
                 {% elsif object.photos %}
                   {% assign image = object.photos.value | first %}
+                {% elsif object.product %}
+                  {% assign image = object.product.value.featured_image | first %}
                 {% endif %}
                 {% if image != blank %}
                   {{ image | image_url: width: 100 | image_tag: alt: object.title.value | escape }}
