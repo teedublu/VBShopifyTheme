@@ -139,6 +139,8 @@
               <div class="object-image">{{product.value}}
                 {% if product.featured_image %}
                   {% assign image = product.featured_image %}
+                {% elsif object.image %}
+                  {% assign image = object.image %}
                 {% elsif object.photos %}
                   {% assign image = object.photos.value | first %}
                 {% elsif object.product %}
@@ -166,7 +168,7 @@
                       </div>
                     {% endif %}
                     {% if object.product.value.metafields.book.narrators.value %}
-                      <div class="object-authors-narrators">
+                      <div class="object-authors-narrators object-description">
                         Narrated by: 
                         {% for narrator in object.product.value.metafields.book.narrators.value %} 
                           {{ narrator.name | link_to: narrator.system.url, class: 'narrator link' }}{% unless forloop.last %}, {% endunless %}
@@ -178,6 +180,11 @@
                     <div class="object-title">
                     {{ object.name | link_to: object.system.url, class: class}}
                     </div>
+                    {% if object.description %}
+                      <div class="object-description">
+                        {{ object.description | metafield_tag | truncate: 170 }}
+                      </div>
+                    {% endif %}
                 {% endcase %}
               </div>
             </li>
