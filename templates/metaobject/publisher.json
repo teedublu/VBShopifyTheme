@@ -128,38 +128,10 @@
         "input_text_color": ""
       }
     },
-    "featured_collection_jwiBa3": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "{{ metaobject.collection.value }}",
-        "hide_empty": true,
-        "products": [
-
-        ],
-        "full_width": false,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "Audiobooks available on Voxblock",
-        "title": "{{ section.settings.collection.metafields.related.publisher.value.name.value }}",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all {{ section.settings.collection.metafields.related.publisher.value.name.value }} audiobooks",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "microdata_KYThUE": {
       "type": "microdata",
       "settings": {
-        "debug": true,
+        "debug": false,
         "object_type": "publisher"
       }
     }
@@ -168,7 +140,6 @@
     "breadcrumbs_fDF3Bt",
     "rich_text_xjk34z",
     "featured_product_LpJTG9",
-    "featured_collection_jwiBa3",
     "microdata_KYThUE"
   ]
 }
