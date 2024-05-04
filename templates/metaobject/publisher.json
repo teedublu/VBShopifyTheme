@@ -27,7 +27,7 @@
         "richtext_8MURDq": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.bio | metafield_tag }}{{ metaobject.description | metafield_tag }}<\/p>"
+            "content": "<p>{{ metaobject.description | metafield_tag }}<\/p>"
           }
         }
       },
