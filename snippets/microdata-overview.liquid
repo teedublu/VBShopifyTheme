@@ -1,29 +1,15 @@
-{
-  "@context": "http://schema.org/",
-  "@type": "Synopsis",
-  "name": "{{ synopsis.name }}",
-  "image": "{{ synopsis.logo |img_url:'300x' }}",
-  "url": "{{ synopsis.system.url | prepend: shop.url }}"
-}
+{%- assign handle = audiogramme.system.handle -%}
+{%- assign product = all_products[handle] -%}
 
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "What is The Gruffalo about?",
-  "description": "Explore the enchanting tale of The Gruffalo, a beloved children's book by Julia Donaldson. Follow the adventures of a clever mouse as it encounters mythical creatures in the deep, dark wood.",
-  "image": "https://example.com/gruffalo.jpg",
-  "author": {
-    "@type": "Person",
-    "name": "Your Name"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Your Publisher",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://example.com/logo.jpg"
-    }
-  },
+  "headline": {{ overview.page_title | json }},
+  "description": {{ overview.page_description.value | json }},
+  "image": "{{ product.featured_image | image_url: '300x' | prepend: 'https:'  }}",
+  "articleBody": {{ overview.about | metafield_tag | strip_html | json }},
+  "author": {%- render 'microdata-snippet-publisher' -%},
+  "publisher": {%- render 'microdata-snippet-publisher' -%},
   "datePublished": "2024-05-10",
   "dateModified": "2024-05-10"
 }
