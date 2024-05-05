@@ -6,6 +6,39 @@
         "heading": "Breadcrumbs"
       }
     },
+    "video_X6dW6K": {
+      "type": "video",
+      "blocks": {
+        "play_NGYXUy": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "heading_Y6jgNz": {
+          "type": "heading",
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_NGYXUy",
+        "heading_Y6jgNz"
+      ],
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "youtube_id": "{{ metaobject.youtube_id.value }}",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "audiogramme_TQQXXE": {
       "type": "audiogramme",
       "settings": {
@@ -23,6 +56,7 @@
   },
   "order": [
     "breadcrumbs_DJmzNb",
+    "video_X6dW6K",
     "audiogramme_TQQXXE",
     "microdata_rtcdXV"
   ]
