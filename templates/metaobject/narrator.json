@@ -77,8 +77,8 @@
       "settings": {
         "full_width": false,
         "product": "{{ metaobject.main_book.value }}",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "desktop_media_width": 35,
+        "desktop_media_layout": "grid",
         "mobile_media_size": "contained",
         "mobile_carousel_control": "dots",
         "enable_video_autoplay": false,
@@ -161,6 +161,7 @@
         "video_size": "auto",
         "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
         "mobile_video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-9_16.mp4",
+        "youtube_id": "",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
