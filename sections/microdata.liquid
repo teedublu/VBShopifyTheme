@@ -17,8 +17,8 @@
       render 'microdata-character', character: metaobject
     when 'audiogramme'
       render 'microdata-audiogramme', audiogramme: metaobject
-    when 'synopsis'
-      render 'microdata-synopsis', synopsis: metaobject
+    when 'overview'
+      render 'microdata-overview', overview: metaobject
   endcase
 %}
  
@@ -79,8 +79,8 @@
           "label": "Publisher"
         },
         {
-          "value": "synopsis",
-          "label": "Synopsis"
+          "value": "overview",
+          "label": "Overview"
         },
         {
           "value": "audiogramme",
