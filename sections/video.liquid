@@ -1,4 +1,4 @@
-{%- if section.settings.video or section.settings.external_video_url or section.settings.youtube_id -%}
+{%- if section.settings.video or section.settings.external_video_url -%}
   {%- unless section.settings.full_width -%}
     {%- render 'section-spacing-collapsing' -%}
   {%- endunless -%}
@@ -55,6 +55,10 @@
         <video-media {% if section.settings.autoplay %}autoplay{% endif %} {% if section.settings.mobile_video != blank %}class="hidden sm:block"{% endif %} {% if section.settings.video_size == 'auto' %}style="--aspect-ratio: {{ section.settings.video.aspect_ratio }}"{% endif %}>
           {{- section.settings.video | video_tag: playsinline: true, preload: 'metadata', muted: section.settings.autoplay, loop: section.settings.autoplay, controls: show_controls, image_size: '800x' -}}
           {{- poster -}}
+        </video-media>
+      {%- elsif section.settings.youtube_id -%}
+        <video-media host="youtube" loaded>
+          <iframe src="https://www.youtube.com/embed/{{ section.settings.youtube_id }}?si=CLZp6PzCPrZUVb6F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </video-media>
       {%- else -%}
         <video-media host="{{ section.settings.external_video_url.type }}" {% if section.settings.autoplay %}autoplay class="pointer-events-none"{% endif %}>

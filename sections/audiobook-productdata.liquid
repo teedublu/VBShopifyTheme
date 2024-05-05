@@ -55,7 +55,7 @@
             {% when 'narrators' %}
                 {% if narrators %}
                     <div class="detail-row">
-                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-label">{{ block.settings.title }}{%-if narrators.count > 1 -%}s{%-endif-%}</div>
                         <div class="detail-value">
                             {% for narrator in narrators %}
                                 {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
@@ -67,7 +67,7 @@
             {% when 'authors' %}
                 {% if authors %}
                     <div class="detail-row">
-                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-label">{{ block.settings.title }}{%-if authors.count > 1 -%}s{%-endif-%}</div>
                         <div class="detail-value">
                             {% for author in authors %}
                                 {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
