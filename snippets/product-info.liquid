@@ -256,7 +256,7 @@
           {%- capture bundle_products_content_x -%}
             <ul>
               {%- for product in product.metafields.bundles.products.value -%}
-                {%- assign blurb =  product.metafields.book.audiobook.value.short_blurb | default: product.metafields.book.audiobook.value.page_description -%}
+                {%- assign blurb =  product.metafields.book.audiobook.value.short_blurb | default: product.metafields.book.audiobook.value.page_description | metafield_tag -%}
                 <li>{{ product.title | link_to: product.url }} : {{ blurb | truncate: 300 }}</li>
               {%- endfor -%}
             </ul>
