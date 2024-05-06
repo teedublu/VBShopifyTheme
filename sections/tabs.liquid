@@ -47,7 +47,8 @@
               {%- assign metaobject_content = nil -%}
 
               {%- for mo in metaobjects -%}
-                {%- assign metaobject_content = metaobject_content | append: mo.bio -%}
+                {%- assign temp =  mo.bio | metafield_tag -%}
+                {%- assign metaobject_content = metaobject_content | append: temp -%}
               {%- endfor -%}
 
               {%- if block.settings.use_metaobject=='description' -%}
@@ -56,7 +57,8 @@
 
               {%- if block.settings.use_metaobject=='audiobooks' -%}
                 {%- capture metaobject_content -%}
-                  {%- render 'audiobook-productdata' book: product.metafields.book -%}
+                  {%- assign my_section = shop.metaobjects.helper.website.audiobook_data_config.value -%}
+                  {%- render 'audiobook-productdata1' product: product, section: my_section -%}
                 {%- endcapture -%}
               {%- endif -%}
 
@@ -96,7 +98,8 @@
               {%- assign metaobject_content = nil -%}
 
               {%- for mo in metaobjects -%}
-                {%- assign metaobject_content = metaobject_content | append: mo.bio -%}
+                {%- assign temp =  mo.bio | metafield_tag -%}
+                {%- assign metaobject_content = metaobject_content | append: temp -%}
               {%- endfor -%}
 
               {%- if block.settings.use_metaobject=='description' -%}
@@ -105,7 +108,8 @@
 
               {%- if block.settings.use_metaobject=='audiobooks' -%}
                 {%- capture metaobject_content -%}
-                  {%- render 'audiobook-productdata' book: product.metafields.book -%}
+                  {%- assign my_section = shop.metaobjects.helper.website.audiobook_data_config.value -%}
+                  {%- render 'audiobook-productdata1' product: product, section: my_section -%}
                 {%- endcapture -%}
               {%- endif -%}
 
@@ -116,7 +120,7 @@
                 <button type="button" slot="title" class="tabs-nav__button bold text-subdued text-center" {{ block.shopify_attributes }}>{{ title | escape }}</button>
                 <div role="tabpanel" class="tab-content prose" slot="content" {% cycle '', 'hidden', 'hidden', 'hidden', 'hidden' %}>
                   {{ block_content }}
-                      {{ metaobject_content }}
+                  {{ metaobject_content }}
                 </div>
               {%- endif -%}
               {%- endif -%}

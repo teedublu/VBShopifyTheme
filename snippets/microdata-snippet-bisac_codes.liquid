@@ -1,0 +1,6 @@
+{%- assign bisac_codes = shop.metaobjects.helper.website.bisac_codes.value -%}
+{%- for bisac_code in audiobook.bisac_codes.value -%}
+  {%- if bisac_codes[bisac_code] -%}
+    {{bisac_codes[bisac_code].description | json }}{%- unless forloop.last -%},{%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
