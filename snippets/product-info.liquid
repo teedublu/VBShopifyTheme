@@ -249,13 +249,13 @@
       {%- when 'collapsible_text' -%}
         {%- if block.settings.title != blank and block.settings.content != blank or block.settings.page.content != blank -%}
           {%- capture bundle_products_content -%}
-            {%- for product in product.metafields.bundle.products.value -%}
+            {%- for product in product.metafields.bundles.products.value -%}
                 {{ product.title | link_to: product.url }}{% unless forloop.last %} | {% endunless %}
               {%- endfor -%}
           {%- endcapture -%}
           {%- capture bundle_products_content_x -%}
             <ul>
-              {%- for product in product.metafields.bundle.products.value -%}
+              {%- for product in product.metafields.bundles.products.value -%}
                 {%- assign blurb =  product.metafields.book.audiobook.value.short_blurb | default: product.metafields.book.audiobook.value.page_description -%}
                 <li>{{ product.title | link_to: product.url }} : {{ blurb | truncate: 300 }}</li>
               {%- endfor -%}
