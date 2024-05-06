@@ -1,5 +1,9 @@
 {%- render 'section-spacing-collapsing' -%}
-
+<style>
+  input[type="email"] {
+      border-color: rgb(var(--text-color) / 1);
+    }
+</style>
 {%- if section.settings.image -%}
   <style>
     #shopify-section-{{ section.id }} {
@@ -15,6 +19,9 @@
         padding-inline-start: 0;
       }
     {%- endif -%}
+
+    
+    
   </style>
 {%- endif -%}
 
