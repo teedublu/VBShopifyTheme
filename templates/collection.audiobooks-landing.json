@@ -38,21 +38,15 @@
             "text_color": "",
             "gradient": ""
           }
-        },
-        "richtext_GnEKX8": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>{{ collection.metafields.related.author.value.bio | metafield_tag }}<\/p>"
-          }
         }
       },
       "block_order": [
         "subheading_kaVbWh",
-        "heading_njmXNJ",
-        "richtext_GnEKX8"
+        "heading_njmXNJ"
       ],
       "settings": {
         "full_width": true,
+        "use_mo": true,
         "content_width": "small",
         "text_position": "center",
         "background": "",
@@ -108,6 +102,7 @@
         "products_per_row_desktop": 7,
         "filter_layout": "horizontal",
         "show_sort_by": false,
+        "sticky_filters": true,
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": false,
