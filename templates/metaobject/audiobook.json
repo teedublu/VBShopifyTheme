@@ -378,6 +378,7 @@
       ],
       "settings": {
         "full_width": false,
+        "product": "{{ metaobject.product.value }}",
         "spacing": "small"
       }
     }
