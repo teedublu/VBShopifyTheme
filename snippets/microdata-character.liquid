@@ -1,0 +1,14 @@
+{%- assign photo = character.photos.value | first -%}
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "name": {{ character.name | json }},
+  "description": {{ character.description | json }},
+  "image": "{{ photo  | image_url | prepend: 'https:' }}",
+  "memberOf": {
+    "@type": "CreativeWork",
+    "name": "{{ character.main_book.value.title }}"
+  },
+  "url": "{{ shop.domain | append: character.system.url | prepend: 'https://' }}
+}
+

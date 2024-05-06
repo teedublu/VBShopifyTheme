@@ -92,6 +92,8 @@ metaobject__audiobook__audiobook
             assign list_page = 'audiogrammes'
           when 'series'
             assign list_page = 'audiobook-series'
+          when 'character'
+            assign list_page = 'audiobook-characters'
           else
             assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
         endcase
@@ -133,7 +135,7 @@ metaobject__audiobook__audiobook
           else
             assign list_page = 'audiobook-'| append: page_subtype | append: 's'
         endcase
-        
+
         assign parent_page = pages[list_page] 
         assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
       
@@ -147,6 +149,7 @@ metaobject__audiobook__audiobook
   assign crumb_list = crumbs | split:sep1
 
   %}
+
 <div {% render 'section-properties', tight: true, extra_style_attributes: '' %}>     
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">

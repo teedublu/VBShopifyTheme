@@ -17,8 +17,8 @@
       render 'microdata-character', character: metaobject
     when 'audiogramme'
       render 'microdata-audiogramme', audiogramme: metaobject
-    when 'synopsis'
-      render 'microdata-synopsis', synopsis: metaobject
+    when 'overview'
+      render 'microdata-overview', overview: metaobject
   endcase
 %}
  
@@ -29,7 +29,7 @@
 
 {% schema %}
 {
-  "name": "Microdata for Metaobjects",
+  "name": "JSONLD for Metaobjects",
   "class": "schema",
   "tag": "div",
   "disabled_on": {
@@ -39,8 +39,8 @@
   "settings": [
     {
       "type": "header",
-      "content": "Microdata",
-      "info": "Script tag with microdata."
+      "content": "json ld",
+      "info": "Script tag with json ld."
     },
     {
       "type": "checkbox",
@@ -79,8 +79,8 @@
           "label": "Publisher"
         },
         {
-          "value": "synopsis",
-          "label": "Synopsis"
+          "value": "overview",
+          "label": "Overview"
         },
         {
           "value": "audiogramme",
@@ -96,7 +96,7 @@
   ],
   "presets": [
     {
-      "name": "Microdata for Metaobjects",
+      "name": "JSONLD for Metaobjects",
       "blocks": [
         
       ]

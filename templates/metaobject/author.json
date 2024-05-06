@@ -29,11 +29,38 @@
         "heading": "Breadcrumbs"
       }
     },
+    "rich_text_MK4VdP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rz8PzY": {
+          "type": "heading",
+          "settings": {
+            "text": "Featured audiobook from {{ metaobject.name.value }}",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_rz8PzY"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ff9e57"
+      }
+    },
     "featured_product_EU4RWM": {
       "type": "featured-product",
       "blocks": {
         "text_rmf7mk": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Featured audiobook from {{ metaobject.name.value }}<\/p>"
           }
@@ -41,7 +68,7 @@
         "title_7FG9XT": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h3"
           }
         },
         "badges_LGEkgc": {
@@ -98,7 +125,7 @@
         "full_width": false,
         "product": "{{ metaobject.main_book.value }}",
         "desktop_media_width": 35,
-        "desktop_media_layout": "carousel_thumbnails_bottom",
+        "desktop_media_layout": "grid",
         "mobile_media_size": "contained",
         "mobile_carousel_control": "dots",
         "enable_video_autoplay": false,
@@ -126,14 +153,14 @@
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
-        "subheading": "More audiobooks from {{ metaobject.name.value }}",
-        "title": "",
+        "subheading": "",
+        "title": "More audiobooks from {{ metaobject.name.value }}",
         "content": "",
         "link_url": "{{ metaobject.system.url }}",
         "link_text": "",
         "background": "",
         "background_gradient": "",
-        "text_color": "",
+        "text_color": "#ff9e57",
         "heading_color": "",
         "heading_gradient": "",
         "product_card_background": "",
@@ -158,9 +185,9 @@
             "media_position": "start",
             "text_position": "place-self-end-start text-start",
             "icon": "none",
-            "icon_width": 48,
+            "icon_width": 68,
             "subheading": "",
-            "title": "Voxblock audiobook player",
+            "title": "Listen with Voxblock",
             "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
             "link_text": "Learn more",
             "link_url": "shopify:\/\/products\/voxblock-player",
@@ -210,6 +237,7 @@
         "video_size": "md",
         "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
         "youtube_id": "",
+        "external_video_url": "",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -223,15 +251,22 @@
         "item_dpCpac": {
           "type": "item",
           "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.<\/p>"
+            "title": "What is Voxblock?",
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+          }
+        },
+        "item_JwG9hG": {
+          "type": "item",
+          "settings": {
+            "title": "What stories are available?",
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.<\/p>"
+            "title": "What age is Voxblock suitable for?",
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
           }
         },
         "item_M9imEA": {
@@ -244,6 +279,7 @@
       },
       "block_order": [
         "item_dpCpac",
+        "item_JwG9hG",
         "item_c3zFfM",
         "item_M9imEA"
       ],
@@ -251,10 +287,10 @@
         "full_width": true,
         "subheading": "",
         "title": "FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.<\/p>",
+        "content": "",
         "team_avatar_width": 160,
-        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
+        "support_hours": "",
+        "answer_time": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
@@ -289,6 +325,7 @@
   "order": [
     "rich_text_ftQUQM",
     "breadcrumbs_pWhnx7",
+    "rich_text_MK4VdP",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",

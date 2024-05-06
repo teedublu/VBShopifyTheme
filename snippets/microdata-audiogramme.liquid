@@ -56,17 +56,19 @@
           "content": {{ audiogramme.transcript }}
         },
       {%- endif -%}
+      {%- if audiogramme.gif -%}
+        "video": {
+          "@type": "VideoObject",
+          "name": "Animated GIF",
+          "embedUrl": "{{ audiogramme.gif.value | asset_url | prepend:'https:' }}"
+        },
+      {%- endif -%}
       "hasPart": {
         "@type": "Clip",
         "name": "Audio sample from {{ product.title }}",
         "startTime": "PT0M0S",  "endTime": "PT5M0S"
       }
-    },
-    "video": {
-      "@type": "VideoObject",
-      "name": "Animated GIF",
-      "embedUrl": "{{ audiogramme.gif.value | asset_url | prepend:'https:' }}"
-    }
+    }    
   }
 }
 

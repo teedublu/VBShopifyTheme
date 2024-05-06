@@ -27,7 +27,7 @@
         "richtext_8MURDq": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.bio | metafield_tag }}{{ metaobject.description | metafield_tag }}<\/p>"
+            "content": "<p>{{ metaobject.description | metafield_tag }}<\/p>"
           }
         }
       },
@@ -46,89 +46,14 @@
         "text_color": ""
       }
     },
-    "featured_product_LpJTG9": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_C3nhPy": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title_c8JAAk": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_QFY9aC": {
-          "type": "badges",
-          "settings": {
-          }
-        },
-        "price_dePiVE": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "rating_Ue4H3e": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_YY7AxV": {
-          "type": "separator",
-          "settings": {
-          }
-        },
-        "description_pFDeaC": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "buy_buttons_kCWMVM": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor_C3nhPy",
-        "title_c8JAAk",
-        "badges_QFY9aC",
-        "price_dePiVE",
-        "rating_Ue4H3e",
-        "separator_YY7AxV",
-        "description_pFDeaC",
-        "buy_buttons_kCWMVM"
-      ],
+    "microdata_KYThUE": {
+      "type": "microdata",
       "settings": {
-        "full_width": false,
-        "product": "{{ metaobject.main_book.value.product.value }}",
-        "desktop_media_width": 35,
-        "desktop_media_layout": "grid",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "debug": false,
+        "object_type": "publisher"
       }
     },
-    "featured_collection_jwiBa3": {
+    "featured_collection_yTREpY": {
       "type": "featured-collection",
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
@@ -139,14 +64,14 @@
         "full_width": false,
         "stack_products": true,
         "show_progress_bar": false,
-        "products_count": 6,
+        "products_count": 50,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "Audiobooks available on Voxblock",
-        "title": "{{ section.settings.collection.metafields.related.publisher.value.name.value }}",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "{{ section.settings.collection.title }}",
         "content": "",
         "link_url": "",
-        "link_text": "View all {{ section.settings.collection.metafields.related.publisher.value.name.value }} audiobooks",
+        "link_text": "View all",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -155,20 +80,12 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
-    },
-    "microdata_KYThUE": {
-      "type": "microdata",
-      "settings": {
-        "debug": true,
-        "object_type": "publisher"
-      }
     }
   },
   "order": [
     "breadcrumbs_fDF3Bt",
     "rich_text_xjk34z",
-    "featured_product_LpJTG9",
-    "featured_collection_jwiBa3",
-    "microdata_KYThUE"
+    "microdata_KYThUE",
+    "featured_collection_yTREpY"
   ]
 }

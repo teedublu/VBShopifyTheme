@@ -10,12 +10,12 @@
           "settings": {
             "icon": "picto-box",
             "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
+            "icon_width": 48,
+            "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
             "title": "Free shipping",
-            "content": "<p>Tell your customers about your shipping offer.<\/p>"
+            "content": "<p>On all orders over £15 in the UK<\/p>"
           }
         },
         "customer-support": {
@@ -23,12 +23,12 @@
           "settings": {
             "icon": "picto-customer-support",
             "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
+            "icon_width": 48,
+            "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
             "title": "Customer service",
-            "content": "<p>Tell your customers how they can reach you.<\/p>"
+            "content": "<p>Here to <a href=\"\/pages\/contact-us\" title=\"Contact us\">help<\/a> when you need it.<\/p>"
           }
         },
         "discount": {
@@ -36,12 +36,12 @@
           "settings": {
             "icon": "picto-coupon",
             "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
+            "icon_width": 48,
+            "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
-            "title": "Refer a friend",
-            "content": "<p>Tell your customers about your promotional offers.<\/p>"
+            "title": "Free audiobooks",
+            "content": "<p>Each time you <a href=\"\/pages\/refer-a-friend\" title=\"Refer a Friend\">refer a friend<\/a> to buy a player.<\/p>"
           }
         },
         "payment": {
@@ -49,12 +49,12 @@
           "settings": {
             "icon": "picto-lock",
             "mobile_icon_width": 24,
-            "icon_width": 24,
-            "icon_background_type": "none",
+            "icon_width": 48,
+            "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
             "title": "Secure payment",
-            "content": "<p>Tel your customers about your payment methods.<\/p>"
+            "content": "<p>Pay securely online with confidence<\/p>"
           }
         }
       },
@@ -64,7 +64,6 @@
         "discount",
         "payment"
       ],
-      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_on_mobile": false,
@@ -72,9 +71,9 @@
         "heading_tag": "h6",
         "text_alignment": "center",
         "icon_spacing": "small",
-        "background": "",
+        "background": "#2a555a",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "#ffffff"
       }
     },
     "footer": {
@@ -83,7 +82,7 @@
         "links_n4KUMa": {
           "type": "links",
           "settings": {
-            "menu": "help",
+            "menu": "footer-help",
             "show_menu_title": true,
             "menu_title": ""
           }
@@ -91,7 +90,7 @@
         "links_WaM44P": {
           "type": "links",
           "settings": {
-            "menu": "customer",
+            "menu": "footer-customer",
             "show_menu_title": true,
             "menu_title": ""
           }
@@ -99,16 +98,7 @@
         "links_Vt63JE": {
           "type": "links",
           "settings": {
-            "menu": "about",
-            "show_menu_title": true,
-            "menu_title": ""
-          }
-        },
-        "links_rJmKwY": {
-          "type": "links",
-          "disabled": true,
-          "settings": {
-            "menu": "collections",
+            "menu": "footer-about",
             "show_menu_title": true,
             "menu_title": ""
           }
@@ -116,7 +106,7 @@
         "links_YJcbpi": {
           "type": "links",
           "settings": {
-            "menu": "more",
+            "menu": "footer-more",
             "show_menu_title": true,
             "menu_title": ""
           }
@@ -126,7 +116,6 @@
         "links_n4KUMa",
         "links_WaM44P",
         "links_Vt63JE",
-        "links_rJmKwY",
         "links_YJcbpi"
       ],
       "settings": {

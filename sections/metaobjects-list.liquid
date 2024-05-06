@@ -53,7 +53,7 @@
       {% assign narrators = null | sort %}
       {% assign audiogrammes = null | sort %}
       {% assign series = null | sort %}
-      {% assign synopsis = null | sort %}
+      {% assign overviews = null | sort %}
       
       {% assign objects = null | sort %}
 
@@ -103,6 +103,7 @@
       {% assign series = shop.metaobjects.series.values %}
       {% assign overviews = shop.metaobjects.overview.values %}
       {% assign characters = shop.metaobjects.character.values %}
+      {% assign publishers = shop.metaobjects.publisher.values %}
 
       {% comment %}
         Now use the array of audiobook metaobjects
@@ -125,6 +126,8 @@
             assign objects = overviews
           when 'characters' 
             assign objects = characters
+          when 'publishers' 
+            assign objects = publishers
         endcase
 
       %}
@@ -139,6 +142,10 @@
               <div class="object-image">{{product.value}}
                 {% if product.featured_image %}
                   {% assign image = product.featured_image %}
+                {% elsif object.image %}
+                  {% assign image = object.image %}
+                {% elsif object.logo %}
+                  {% assign image = object.logo %}
                 {% elsif object.photos %}
                   {% assign image = object.photos.value | first %}
                 {% elsif object.product %}
@@ -166,7 +173,7 @@
                       </div>
                     {% endif %}
                     {% if object.product.value.metafields.book.narrators.value %}
-                      <div class="object-authors-narrators">
+                      <div class="object-authors-narrators object-description">
                         Narrated by: 
                         {% for narrator in object.product.value.metafields.book.narrators.value %} 
                           {{ narrator.name | link_to: narrator.system.url, class: 'narrator link' }}{% unless forloop.last %}, {% endunless %}
@@ -178,6 +185,11 @@
                     <div class="object-title">
                     {{ object.name | link_to: object.system.url, class: class}}
                     </div>
+                    {% if object.description %}
+                      <div class="object-description">
+                        {{ object.description | metafield_tag | truncate: 170 }}
+                      </div>
+                    {% endif %}
                 {% endcase %}
               </div>
             </li>
