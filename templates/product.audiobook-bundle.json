@@ -146,54 +146,6 @@
         "heading_gradient": ""
       }
     },
-    "video_iK8JVC": {
-      "type": "video",
-      "blocks": {
-        "play_zknpny": {
-          "type": "play",
-          "settings": {
-          }
-        },
-        "heading_cbja3f": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ product.title }}",
-            "heading_tag": "h1"
-          }
-        },
-        "subheading_nQznDQ": {
-          "type": "subheading",
-          "settings": {
-            "text": "Narrated by {{ product.metafields.book.narrators | metafield_text: field: 'name' }}"
-          }
-        },
-        "richtext_zMc9b7": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Listen and read along to a sample of {{ product.title }}<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "play_zknpny",
-        "heading_cbja3f",
-        "subheading_nQznDQ",
-        "richtext_zMc9b7"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "autoplay": false,
-        "video_size": "auto",
-        "video": "{{ product.metafields.book.audiogramme.value.desktop.value }}",
-        "mobile_video": "{{ product.metafields.book.audiogramme.value.mobile.value }}",
-        "external_video_url": "",
-        "poster": "{{ product.metafields.book.audiogramme.value.thumbnail.value }}",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
-      }
-    },
     "related_products_NbRnrP": {
       "type": "related-products",
       "settings": {
@@ -296,6 +248,7 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
+        "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/library_banner_-03.png",
@@ -310,7 +263,6 @@
   "order": [
     "main",
     "tabs_qeFVd8",
-    "video_iK8JVC",
     "related_products_NbRnrP",
     "recently_viewed_products_FXQk8b",
     "faq_KiLD6K",
