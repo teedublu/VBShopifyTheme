@@ -1,4 +1,4 @@
-{%- if section.blocks.size > 0 -%}
+
   {%- render 'section-spacing-collapsing' -%}
 
   <style>
@@ -52,19 +52,10 @@
 
       <div class="text-with-icons">
         <scroll-carousel class="text-with-icons__list scroll-area full-bleed {% if section.blocks.size <= 3 %}md:unbleed{% else %}lg:unbleed{% endif %}" id="carousel-{{ section.id }}" role="region">
-          {%- for block in section.settings.product.metafields.book.characters.value -%}{{block}}
-            <div id="block-{{ section.id }}-{{ block.id }}" class="text-with-icons__item snap-center" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: section.blocks.size }}" {{ block.shopify_attributes }}>
-              {%- capture icon -%}
-                {%- if block.settings.custom_icon != blank -%}
-                  {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
-                  {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
-                  {%- capture style -%}--mobile-icon-max-width: {{ block.settings.mobile_icon_width }}px; --icon-max-width: {{ block.settings.icon_width }}px{%- endcapture -%}
-                  {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, style: style, class: 'image-icon' -}}
-                {%- else -%}
-                  {%- render 'icon' with block.settings.icon, width: block.settings.mobile_icon_width, height: block.settings.mobile_icon_width, class: 'sm:hidden' -%}
-                  {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'hidden sm:block' -%}
-                {%- endif -%}
-              {%- endcapture -%}
+          {%- assign characters = section.settings.product.metafields.book.characters.value -%}
+          {%- for character in characters -%}
+            <div id="block-{{ section.id }}-{{ character.id }}" class="text-with-icons__item snap-center" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: characters.size }}" {{ block.shopify_attributes }}>
+              {%- assign icon = character.photos.value | first -%}
 
               {%- if icon != blank -%}
                 {%- if block.settings.icon_background_type == 'none' -%}
@@ -82,10 +73,10 @@
               <div class="text-with-icons__text-wrapper">
                 <div class="prose">
                   {%- if block.settings.title != blank -%}
-                    <p class="{{ section.settings.heading_tag }}">{{ block.settings.title | escape }}</p>
+                    <p class="{{ section.settings.heading_tag }}">{{ character.name | escape }}</p>
                   {%- endif -%}
 
-                  {{- block.settings.content -}}
+                  {{- character.bio -}}
                 </div>
               </div>
             </div>
@@ -104,7 +95,7 @@
       </div>
     </div>
   </div>
-{%- endif -%}
+
 
 {% schema %}
 {
