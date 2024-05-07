@@ -29,32 +29,6 @@
         "heading": "Breadcrumbs"
       }
     },
-    "rich_text_MK4VdP": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_rz8PzY": {
-          "type": "heading",
-          "settings": {
-            "text": "Featured audiobook from {{ metaobject.name.value }}",
-            "heading_tag": "h2",
-            "text_color": "",
-            "gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_rz8PzY"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "large",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#ff9e57"
-      }
-    },
     "featured_product_EU4RWM": {
       "type": "featured-product",
       "blocks": {
@@ -143,7 +117,7 @@
       "type": "featured-collection",
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
-        "hide_empty": true,
+        "hide_empty": false,
         "products": [
 
         ],
@@ -153,8 +127,8 @@
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "More audiobooks from {{ metaobject.name.value }}",
+        "subheading": "More audiobooks",
+        "title": "Read by {{ metaobject.name.value }}",
         "content": "",
         "link_url": "{{ metaobject.system.url }}",
         "link_text": "",
@@ -324,7 +298,6 @@
   "order": [
     "rich_text_ftQUQM",
     "breadcrumbs_pWhnx7",
-    "rich_text_MK4VdP",
     "featured_product_EU4RWM",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",
