@@ -7,10 +7,11 @@
         "allow_transparent_header": true,
         "enable_parallax": false,
         "show_collection_title": true,
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -18,6 +19,12 @@
         "text_color": "#ffffff",
         "overlay_color": "#ffb74a",
         "overlay_opacity": 100
+      }
+    },
+    "breadcrumbs_aNUPDW": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
       }
     },
     "main": {
@@ -118,6 +125,7 @@
   },
   "order": [
     "banner",
+    "breadcrumbs_aNUPDW",
     "main",
     "image_with_text_overlay_VezrQa"
   ]
