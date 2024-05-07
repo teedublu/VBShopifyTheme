@@ -126,6 +126,36 @@
     "collection_list_LXeRzF": {
       "type": "collection-list",
       "blocks": {
+        "collection_aLY3QG": {
+          "type": "collection",
+          "settings": {
+            "collection": "voxblock-audiobooks-under-5s",
+            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_a3gj4V": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-5-8-years",
+            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
         "collection_3hHUG6": {
           "type": "collection",
           "settings": {
@@ -155,43 +185,13 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
-        },
-        "collection_a3gj4V": {
-          "type": "collection",
-          "settings": {
-            "collection": "audiobooks-5-8-years",
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h4",
-            "text_position": "place-self-end text-end",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_aLY3QG": {
-          "type": "collection",
-          "settings": {
-            "collection": "voxblock-audiobooks-under-5s",
-            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
-            "subheading": "",
-            "title": "",
-            "url": "",
-            "heading_tag": "h4",
-            "text_position": "place-self-end text-end",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
         }
       },
       "block_order": [
-        "collection_3hHUG6",
-        "collection_abWHLk",
+        "collection_aLY3QG",
         "collection_a3gj4V",
-        "collection_aLY3QG"
+        "collection_3hHUG6",
+        "collection_abWHLk"
       ],
       "settings": {
         "full_width": true,
