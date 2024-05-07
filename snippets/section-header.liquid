@@ -17,8 +17,9 @@ Supported variables
 * text_alignment: can be "start", "center" or "end" (default to start, which is a left alignment on LTR environment)
 * link_text: the text of the link
 * link_url: the link URL
+* tag: the type of tag to use h1 h2 h3...
 {%- endcomment -%}
-
+{%- assign tag = tag | default: 'h2' -%}
 {% if subheading != blank or heading != blank or content != blank or link_text != blank %}
   <section-header class="section-header {% if text_alignment != blank %}justify-{{ text_alignment | escape }} justify-items-{{ text_alignment | escape }} text-{{ text_alignment | escape }}{% endif %}">
     {%- if subheading != blank or heading != blank or content != blank -%}
@@ -28,9 +29,9 @@ Supported variables
         {%- endif -%}
 
         {%- if heading != blank -%}
-          <h2 class="h2" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %}>
+          <{{- tag }} class="h2" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %}>
             {%- render 'styled-text', content: heading, text_color: heading_color, gradient: heading_gradient, apparition_effect: true -%}
-          </h2>
+          </{{- tag -}} >
         {%- endif -%}
 
         {{- content -}}
