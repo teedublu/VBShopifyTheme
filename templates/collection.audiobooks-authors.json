@@ -21,48 +21,10 @@
         "overlay_opacity": 100
       }
     },
-    "collection_link_blocks_7ptnDf": {
-      "type": "collection-link-blocks",
-      "blocks": {
-        "item_7TERFi": {
-          "type": "item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
-            "link_text": "Under 5's",
-            "url_params": ""
-          }
-        },
-        "item_zjwh9m": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "url_params": ""
-          }
-        },
-        "item_mqHB6C": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "url_params": ""
-          }
-        },
-        "item_6DM4JB": {
-          "type": "item",
-          "settings": {
-            "link_text": "",
-            "url_params": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_7TERFi",
-        "item_zjwh9m",
-        "item_mqHB6C",
-        "item_6DM4JB"
-      ],
+    "breadcrumbs_bJ6VmP": {
+      "type": "breadcrumbs",
       "settings": {
-        "full_width": false,
-        "nav_collection": "audiobooks"
+        "heading": "Breadcrumbs"
       }
     },
     "main": {
@@ -147,7 +109,7 @@
   },
   "order": [
     "banner",
-    "collection_link_blocks_7ptnDf",
+    "breadcrumbs_bJ6VmP",
     "main",
     "image_with_text_overlay_rm3BPp"
   ]
