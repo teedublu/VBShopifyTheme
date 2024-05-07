@@ -39,62 +39,14 @@
         "allow_transparent_header": true,
         "max_width": 76,
         "enable_parallax": false,
-        "image_size": "md",
-        "image": "shopify:\/\/shop_images\/homepage-hero-desktop-3200x1600.jpg",
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/homepage-hero_image_med-desktop.jpg",
         "mobile_image": "shopify:\/\/shop_images\/homepage-hero-image-mobile-1300x1600.jpg",
         "mobile_text_position": "place-self-start-end text-end",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
-      }
-    },
-    "video_TnLHtB": {
-      "type": "video",
-      "blocks": {
-        "play_BVcxLj": {
-          "type": "play",
-          "settings": {
-          }
-        },
-        "heading_Nm74Wm": {
-          "type": "heading",
-          "settings": {
-            "text": "The screen-free audiobook player for kids",
-            "heading_tag": "h2"
-          }
-        },
-        "button_Kh6D8i": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "base",
-            "text": "buy now",
-            "url": "",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "play_BVcxLj",
-        "heading_Nm74Wm",
-        "button_Kh6D8i"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "autoplay": true,
-        "video_size": "lg",
-        "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
-        "youtube_id": "",
-        "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 9
       }
     },
     "rich_text_K9xkcG": {
@@ -156,7 +108,7 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "md",
-        "video": "shopify:\/\/files\/videos\/93bd850e687845e2b68fff0dcb2fb636.mp4",
+        "video": "shopify:\/\/files\/videos\/voxblock intro_desktop.mp4",
         "youtube_id": "",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
         "mobile_text_position": "place-self-center text-center",
@@ -172,7 +124,7 @@
         "item_xg74WH": {
           "type": "item",
           "settings": {
-            "title": "202",
+            "title": "210",
             "subheading": "audiobooks in our collection",
             "content": "",
             "button_text": "",
@@ -262,7 +214,7 @@
             "vertical_position_mobile": 30,
             "icon_width": 32,
             "title": "Physical audiobooks",
-            "content": "<p>Made of 100% recycled material. Audiobooks automatically play once placed in the player.<\/p>"
+            "content": "<p>Made of over 90% recycled material. Audiobooks automatically play once placed in the player.<\/p>"
           }
         }
       },
@@ -714,20 +666,19 @@
     "featured_collection_RbaTLW": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
+        "collection": "voxblock-starter-pack-collection",
         "hide_empty": false,
         "products": [
-          "roald-dahl-starter-pack",
-          "older-listeners-starter-pack"
+
         ],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
         "products_count": 6,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
+        "products_per_row_desktop": 5,
         "subheading": "",
-        "title": "Get started with our Starter Packs",
+        "title": "Begin with our Starter Packs",
         "content": "",
         "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
         "link_text": "View all",
@@ -943,7 +894,6 @@
   },
   "order": [
     "image_with_text_overlay_mzRBYC",
-    "video_TnLHtB",
     "rich_text_K9xkcG",
     "video_N3TaA4",
     "impact_text_XqyFin",

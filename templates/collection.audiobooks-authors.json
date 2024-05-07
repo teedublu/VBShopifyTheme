@@ -23,30 +23,12 @@
     "main": {
       "type": "main-collection",
       "blocks": {
-        "promotion_image_4VEyzT": {
-          "type": "promotion_image",
-          "settings": {
-            "position": 3,
-            "column_span": "1",
-            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
-            "title": "Voxblock audiobook player",
-            "content": "<p>All these audiobooks from {{ collection.metafields.related.author.value.name.value }}are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
-            "link_url": "shopify:\/\/products\/voxblock-player",
-            "link_text": "Learn more",
-            "heading_tag": "h3",
-            "text_position": "place-self-center-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
           "disabled": true,
           "settings": {
             "position": 4,
             "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/a9a664f20e584ebba2209365f40257f0.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
             "title": "How our books work",
             "content": "",
@@ -61,7 +43,6 @@
         }
       },
       "block_order": [
-        "promotion_image_4VEyzT",
         "promotion_video_CHwxAJ"
       ],
       "settings": {
@@ -70,7 +51,7 @@
         "products_per_row_desktop": 5,
         "filter_layout": "horizontal",
         "show_sort_by": false,
-        "sticky": true,
+        "sticky_filters": true,
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": false,

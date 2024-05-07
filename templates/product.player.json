@@ -324,8 +324,9 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "md",
-        "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
-        "mobile_video": "shopify:\/\/files\/videos\/498fbd3f54db4129920995d8acd054df.mp4",
+        "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "youtube_id": "",
         "external_video_url": "",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
@@ -417,6 +418,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -451,6 +453,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -625,6 +628,7 @@
     },
     "revealed_image_on_scroll_iKqQdm": {
       "type": "revealed-image-on-scroll",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Homepage-Reveal_Image-3200x1600.jpg",
         "mobile_image": "shopify:\/\/shop_images\/Homepage-Reveal-mobile-1125x2000.jpg",
@@ -694,6 +698,22 @@
         "accordion_background": "#ffffff",
         "accordion_text_color": "#565656"
       }
+    },
+    "image_with_text_overlay_Hrihhe": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
     }
   },
   "order": [
@@ -705,6 +725,7 @@
     "testimonials_cFMFmx",
     "collection_list_Leiqmh",
     "revealed_image_on_scroll_iKqQdm",
-    "faq_KiLD6K"
+    "faq_KiLD6K",
+    "image_with_text_overlay_Hrihhe"
   ]
 }

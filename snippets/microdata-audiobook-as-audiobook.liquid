@@ -3,6 +3,10 @@
 {%- assign narrator = product.metafields.book.narrators.value | first -%} 
 {%- assign audiogramme = audiobook.audiogramme.value -%}
 {%- assign captions = audiogramme.captions.value -%}
+
+{% assign start = "now" | date: '%s' %}
+{% assign seconds = 25 | times: 24 | times: 60 | times: 60 %}
+
 {%- if captions -%}
   {%- capture transcript_text -%}
       {%- for transcript in captions.results -%}
@@ -18,7 +22,7 @@
   "@context": "https://schema.org/",
   "@id":  {{ product.url | prepend: shop.url | json }},
   "@type": "Audiobook",
-  "bookFormat": "AudiobookFormat",
+  "bookFormat": "Audiobook",
   "isbn": "{{ product.first_available_variant.barcode }}",
   "inLanguage": "en",
   "potentialAction": "ReadAction",
@@ -62,14 +66,20 @@
     "@id": "https://voxblock.co.uk/#organisation",
     "name": "Voxblock"
   },
+  {%- if audiobook.genres.value -%}
+    "genre": [
+      {%- for genre in audiobook.genres.value -%}
+          {{ genre | json }}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+  {%- endif -%}
   "offers": {
     "@type": "Offer",
     "availability": "http://schema.org/InStock",
     "itemCondition": "http://schema.org/NewCondition",
     "price": {{ product.price | times: 1.0 | divided_by: 100 }},
     "priceCurrency": "GBP",
-{% assign start = "now" | date: '%s' %}
-{% assign seconds = 25 | times: 24 | times: 60 | times: 60 %}
+
     "priceValidUntil": "{{ start | plus: seconds | date: "%Y-%m-%d" }}",
     "sku": "{{ product.first_available_variant.sku }}",
     "url": "{{ shop.url }}{{ product.url }}"
@@ -84,12 +94,6 @@
     "duration": "PT0H05M",
     {%- if transcript_text -%}
       "transcript": {{ transcript_text | json }},
-    {%- endif -%}
-    {%- if captions != blank -%}
-      "caption": {
-        "@type": "Document",
-        "@id": {{ audiogramme.system.url | prepend: shop.url | json }}
-      },
     {%- endif -%}
     "hasPart": {
       "@type": "Clip",

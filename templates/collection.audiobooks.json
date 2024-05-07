@@ -50,15 +50,16 @@
         "image_rcNxx7": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Audiobook_of_the_month_9.png",
+            "image": "shopify:\/\/shop_images\/audiobook-aotm-banner-3200x1200.png",
+            "mobile_image": "shopify:\/\/shop_images\/audiobook-aotm-banner-mobile-1600x1200.png",
             "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
+            "mobile_text_position": "place-self-center-end text-end",
             "desktop_text_position": "sm:place-self-start-end sm:text-end",
             "subheading": "AUDIOBOOK OF THE MONTH",
-            "title": "Get 10% off with code DINO10",
+            "title": "Get 10% off with code ALIENS10",
             "heading_tag": "h1",
             "button_text": "Buy here",
-            "button_link": "shopify:\/\/products\/dinosaurs",
+            "button_link": "shopify:\/\/products\/baby-aliens-got-my-teacher",
             "text_color": "#565656",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -214,10 +215,11 @@
       "blocks": {
         "promotion_video_79qxG8": {
           "type": "promotion_video",
+          "disabled": true,
           "settings": {
             "position": 9,
             "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-9_16.mp4",
+            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
             "title": "How it works",
             "content": "<p><\/p><p><\/p><p><\/p>",
@@ -278,7 +280,7 @@
         "products_per_row_desktop": 5,
         "filter_layout": "drawer",
         "show_sort_by": true,
-        "sticky": true,
+        "sticky_filters": true,
         "show_filters": true,
         "show_filter_group_name": false,
         "show_filter_values_count": true,

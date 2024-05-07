@@ -15,7 +15,7 @@
             "icon_background": "",
             "icon_color": "",
             "title": "Free shipping",
-            "content": "<p>On all orders over £15 in the UK<\/p>"
+            "content": "<p>On all orders over £15 in the UK.<\/p>"
           }
         },
         "customer-support": {
@@ -54,7 +54,7 @@
             "icon_background": "",
             "icon_color": "",
             "title": "Secure payment",
-            "content": "<p>Pay securely online with confidence<\/p>"
+            "content": "<p>Pay securely online with confidence.<\/p>"
           }
         }
       },
@@ -121,10 +121,10 @@
       "settings": {
         "show_social_media": true,
         "show_payment_icons": true,
-        "show_country_selector": true,
-        "show_country_flag": true,
-        "show_country_name": true,
-        "show_locale_selector": true
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "show_country_name": false,
+        "show_locale_selector": false
       }
     }
   },

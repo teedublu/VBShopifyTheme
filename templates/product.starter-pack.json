@@ -52,7 +52,8 @@
           "settings": {
             "title": "Product Details",
             "content": "<p>{{ product.title }}<\/p>",
-            "page": "voxblock-audiobook-gift-pack"
+            "page": "voxblock-audiobook-gift-pack",
+            "bundle_products": true
           }
         },
         "product_variations_JarL4E": {
@@ -123,8 +124,12 @@
         "allow_transparent_header": true,
         "autoplay": true,
         "video_size": "auto",
-        "video": "shopify:\/\/files\/videos\/VOX002-Voxblock Journey-16_9.mp4",
+        "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "youtube_id": "",
         "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
@@ -150,6 +155,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -184,6 +190,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
@@ -281,6 +288,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
@@ -315,6 +323,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
             "text_gradient": "",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff"
