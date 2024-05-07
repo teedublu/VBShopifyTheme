@@ -205,11 +205,80 @@
         "heading_color": "",
         "heading_gradient": ""
       }
+    },
+    "collection_list_Tx3KgY": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_jwEHQ7": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-action-audiobooks",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_XBEqVR": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-bedtime-calm-audiobooks",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_T7tQLd": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-facts-and-learning-audiobooks",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "collection_jwEHQ7",
+        "collection_XBEqVR",
+        "collection_T7tQLd"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_collections": true,
+        "collections_per_row": 3,
+        "show_progress_bar": false,
+        "subheading": "Browse by",
+        "title": "Theme",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
     }
   },
   "order": [
     "main",
     "multi_column_Vej8qr",
-    "collection_list_LXeRzF"
+    "collection_list_LXeRzF",
+    "collection_list_Tx3KgY"
   ]
 }
