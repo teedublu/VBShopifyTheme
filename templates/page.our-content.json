@@ -90,8 +90,8 @@
         "item_rp3DUi": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/our_content-characters-images-1400x1000.jpg",
-            "column_size": "4",
+            "image": "shopify:\/\/shop_images\/green-and-white-marbled-coloring.jpg",
+            "column_size": "3",
             "title": "Characters",
             "heading_tag": "h4",
             "content": "<p>Read about your favourites characters from much loved stories.<\/p>",
@@ -122,10 +122,218 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "collection_list_LXeRzF": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_aLY3QG": {
+          "type": "collection",
+          "settings": {
+            "collection": "voxblock-audiobooks-under-5s",
+            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_a3gj4V": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-5-8-years",
+            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_3hHUG6": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-8-10-years",
+            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_abWHLk": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-10-to-teens",
+            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "collection_aLY3QG",
+        "collection_a3gj4V",
+        "collection_3hHUG6",
+        "collection_abWHLk"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_collections": true,
+        "collections_per_row": 5,
+        "show_progress_bar": false,
+        "subheading": "Browse by",
+        "title": "Age group",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "collection_list_Tx3KgY": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_jwEHQ7": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-action-audiobooks",
+            "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+            "subheading": "Audiobooks",
+            "title": "Action and Adventure",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#f83a3a",
+            "overlay_opacity": 66
+          }
+        },
+        "collection_6xrdMV": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-mysteries-audiobooks",
+            "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+            "subheading": "Audiobooks",
+            "title": "Mystery and Intrigue",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#803cee",
+            "overlay_opacity": 68
+          }
+        },
+        "collection_XBEqVR": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-bedtime-calm-audiobooks",
+            "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+            "subheading": "Audiobooks",
+            "title": "Wind down before bed",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#00a341",
+            "overlay_opacity": 59
+          }
+        },
+        "collection_T7tQLd": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-facts-and-learning-audiobooks",
+            "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+            "subheading": "Audiobooks",
+            "title": "Facts and Learning",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#4cb6ac",
+            "overlay_opacity": 68
+          }
+        },
+        "collection_GhQwgE": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-family-favourites-audiobooks",
+            "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+            "subheading": "Audiobooks",
+            "title": "Family Favourites",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#1720e8",
+            "overlay_opacity": 79
+          }
+        },
+        "collection_CfVzkk": {
+          "type": "collection",
+          "settings": {
+            "collection": "childrens-musical-stories-audiobooks",
+            "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+            "subheading": "Music",
+            "title": "Musical Stories",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end text-end",
+            "text_color": "#ffffff",
+            "overlay_color": "#f77617",
+            "overlay_opacity": 83
+          }
+        }
+      },
+      "block_order": [
+        "collection_jwEHQ7",
+        "collection_6xrdMV",
+        "collection_XBEqVR",
+        "collection_T7tQLd",
+        "collection_GhQwgE",
+        "collection_CfVzkk"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_collections": true,
+        "collections_per_row": 3,
+        "show_progress_bar": false,
+        "subheading": "Browse by",
+        "title": "Theme",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
     }
   },
   "order": [
     "main",
-    "multi_column_Vej8qr"
+    "multi_column_Vej8qr",
+    "collection_list_LXeRzF",
+    "collection_list_Tx3KgY"
   ]
 }
