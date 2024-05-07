@@ -90,8 +90,8 @@
         "item_rp3DUi": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/our_content-characters-images-1400x1000.jpg",
-            "column_size": "4",
+            "image": "shopify:\/\/shop_images\/green-and-white-marbled-coloring.jpg",
+            "column_size": "3",
             "title": "Characters",
             "heading_tag": "h4",
             "content": "<p>Read about your favourites characters from much loved stories.<\/p>",
@@ -122,10 +122,94 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "collection_list_LXeRzF": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_3hHUG6": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-8-10-years",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_abWHLk": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-10-to-teens",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_a3gj4V": {
+          "type": "collection",
+          "settings": {
+            "collection": "audiobooks-5-8-years",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "collection_aLY3QG": {
+          "type": "collection",
+          "settings": {
+            "collection": "voxblock-audiobooks-under-5s",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "collection_3hHUG6",
+        "collection_abWHLk",
+        "collection_a3gj4V",
+        "collection_aLY3QG"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_collections": true,
+        "collections_per_row": 3,
+        "show_progress_bar": false,
+        "subheading": "Browse by",
+        "title": "Age group",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
     }
   },
   "order": [
     "main",
-    "multi_column_Vej8qr"
+    "multi_column_Vej8qr",
+    "collection_list_LXeRzF"
   ]
 }
