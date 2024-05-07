@@ -143,7 +143,7 @@
       "type": "featured-collection",
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
-        "hide_empty": true,
+        "hide_empty": false,
         "products": [
 
         ],
@@ -156,7 +156,7 @@
         "subheading": "Audiobooks by",
         "title": "{{ metaobject.name.value }}",
         "content": "<p>More captivating titles to listen to written by your favorite author.<\/p>",
-        "link_url": "{{ metaobject.system.url }}",
+        "link_url": "",
         "link_text": "See all",
         "background": "",
         "background_gradient": "",
