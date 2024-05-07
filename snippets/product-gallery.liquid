@@ -60,20 +60,23 @@ only way to do it on Shopify right now.
       {%- endcomment -%}
       <media-carousel desktop-mode="{{ section.settings.desktop_media_layout }}" adaptive-height initial-index="{{ default_media.position | minus: 1 }}" {% if section.settings.enable_video_autoplay %}autoplay{% endif %} id="{{ product_gallery_id }}" class="product-gallery__media-list {% if section.settings.mobile_media_size == 'expanded' %}full-bleed{% else %}bleed{% endif %} scroll-area md:unbleed">
         {%- assign media_attached_to_variant = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
-
+        {%- assign width_reduction = '740' -%}
+        {%- if product.type == 'Audiobooks' -%}
+          {%- assign width_reduction = '300' -%}
+        {%- endif -%}
         {%- for media in product.media -%}
           {%- case section.settings.desktop_media_layout -%}
             {%- when 'carousel_thumbnails_bottom' -%}
-              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min(760px, 42vw){%- endcapture -%}
+              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(760px, 42vw){%- endcapture -%}
 
             {%- when 'carousel_thumbnails_left' -%}
-              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min(730px, 40vw){%- endcapture -%}
+              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(730px, 40vw){%- endcapture -%}
 
             {%- when 'grid' -%}
-              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min(580px, 30vw){%- endcapture -%}
+              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(580px, 30vw){%- endcapture -%}
 
             {% when 'grid_highlight' %}
-              {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), {% if forloop.first or media_attached_to_variant contains media.src %}min(1200px, 60vw){% else %}min(580px, 30vw){% endif %}{%- endcapture -%}
+              {%- capture sizes -%}(max-width: 740px) calc(100vw - 240px), (max-width: 999px) calc(100vw - 264px), {% if forloop.first or media_attached_to_variant contains media.src %}min(1200px, 60vw){% else %}min(580px, 30vw){% endif %}{%- endcapture -%}
           {%- endcase -%}
 
           <div class="product-gallery__media {% if media.alt contains '@expand' %}product-gallery__media--expand{% endif %} {% if section.settings.mobile_carousel_control != 'free_scroll' %}snap-center{% endif %}" data-media-type="{{ media.media_type }}" data-media-id="{{ media.id }}" {% if filtered_indexes contains media.position %}hidden{% endif %}>
@@ -82,8 +85,10 @@ only way to do it on Shopify right now.
             {%- else -%}
               {%- assign preload = false -%}
             {%- endif -%}
-
-            {%- render 'media', media: media, sizes: sizes, preload: preload, autoplay: section.settings.enable_video_autoplay, loop: section.settings.enable_video_looping, group: 'product' -%}
+            {%- if product.type == 'Audiobooks' -%}
+              {%- assign width = 300 -%}
+            {%- endif -%}
+            {%- render 'media', media: media, sizes: sizes, preload: preload, autoplay: section.settings.enable_video_autoplay, loop: section.settings.enable_video_looping, group: 'product', width: width -%}
 
             {%- if section.settings.enable_image_zoom and section.settings.desktop_media_layout contains 'grid' and media.media_type == 'image' -%}
               <div class="product-gallery__zoom hidden md:block">
