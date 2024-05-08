@@ -58,6 +58,20 @@
         {% break %}
       {% endfor %}
     {%- endif -%}
+    {%- if featured_product == blank and metaobject -%}
+      {%- assign handle_to_find = metaobject.system.handle -%}
+      {%- assign object_type = metaobject.system.type | append: 's' -%}
+      {%- paginate collections['audiobooks'].products by 1000 -%}
+        {% for product_to_check in collections['audiobooks'].products  %}
+          {% for object_to_check in product_to_check.metafields.book[object_type].value %}
+            {%- if object_to_check.system.handle == handle_to_find -%}
+              {%- assign featured_product =  product_to_check -%}
+              {%- break -%}
+            {%- endif -%}
+          {% endfor %}
+        {% endfor %}
+      {%- endpaginate -%}
+    {%- endif -%}
 
 
 
