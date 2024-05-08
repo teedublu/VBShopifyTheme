@@ -875,6 +875,22 @@
         "input_text_color": ""
       }
     },
+    "image_with_text_overlay_BMA9zD": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
     "newsletter_dKNmAd": {
       "type": "newsletter",
       "settings": {
@@ -909,6 +925,7 @@
     "rich_text_hdcMV6",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
+    "image_with_text_overlay_BMA9zD",
     "newsletter_dKNmAd"
   ]
 }
