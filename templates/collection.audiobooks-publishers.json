@@ -30,27 +30,12 @@
     "main": {
       "type": "main-collection",
       "blocks": {
-        "promotion_image_4VEyzT": {
-          "type": "promotion_image",
-          "settings": {
-            "position": 33,
-            "column_span": "1",
-            "title": "Promote a product or a temporary offer",
-            "content": "",
-            "link_url": "",
-            "link_text": "View all",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
           "settings": {
             "position": 4,
             "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
             "title": "How our books work",
             "content": "",
@@ -65,7 +50,6 @@
         }
       },
       "block_order": [
-        "promotion_image_4VEyzT",
         "promotion_video_CHwxAJ"
       ],
       "settings": {
