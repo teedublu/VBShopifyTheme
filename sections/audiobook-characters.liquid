@@ -5,33 +5,30 @@
 CSS
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
-
+{%- assign block = section.blocks | first -%}
 <style>
-  #shopify-section-{{ section.id }} {
-    --media-with-text-gap: {% if section.settings.spacing == 'none' %}0{% else %}var(--grid-gutter){% endif %};
-    --media-with-text-item-grid-template: "media" "content" / auto;
-  }
+  
 
-  @media screen and (min-width: 1000px) {
-    #shopify-section-{{ section.id }} {
-      --media-with-text-gap: {% if section.settings.spacing == 'none' %}0{% elsif section.settings.spacing == 'small' %}var(--spacing-6){% elsif section.settings.spacing == 'medium' %}var(--spacing-12){% else %}var(--spacing-18){% endif %};
-    }
-  }
+  
 
-  {%- for block in section.blocks -%}
-    {%- assign media_ratio = block.settings.media_width | divided_by: 50.0 -%}
-    {%- assign content_ratio = 2.0 | minus: media_ratio -%}
+    .character {margin-bottom: 10px}
+    .character .bio {padding: 27px; border-radius: 20px;}
+    .character .photo {padding: 10px}
+    .character .photo img {width: 100%; border-radius: 50%; object-fit: cover; border: 1px solid red;}
 
-    #block-{{ section.id }}-{{ block.id }} {
-      --media-with-text-item-icon-width: {{ block.settings.icon_width }}px;
+
+    .character-grid {
+      display: grid;
+        grid-template-columns: 1fr 2fr;
+            grid-gap: 15px;
     }
 
-    @media screen and (min-width: 1000px) {
-      #block-{{ section.id }}-{{ block.id }} {
-        --media-with-text-item-grid-template: {% if block.settings.media_position == 'start' %}"media content" / minmax(0, {{ media_ratio }}fr) minmax(0, {{ content_ratio }}fr){% else %}"content media" / minmax(0, {{ content_ratio }}fr) minmax(0, {{ media_ratio }}fr){% endif %};
+    @media screen and (max-width: 1000px) {
+      .character-grid {
+        grid-template-columns: 1fr
       }
     }
-  {%- endfor -%}
+  
 </style>
 
 {%- comment -%}
@@ -40,41 +37,30 @@ LIQUID
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
   {%- assign characters = section.settings.product.metafields.book.characters.value -%}
-  {%- for character in characters -%}
-    {%- assign photo = character.photos.value | first -%}
+  
     <div {% render 'section-properties' %}>
-      <media-with-text class="media-with-text {% if section.settings.spacing == 'none' %}{% if section.settings.full_width %}full-bleed{% else %}rounded{% endif %}{% endif %}">
-        {%- for block in section.blocks -%}
-          <div id="block-{{ section.id }}-{{ block.id }}" class="media-with-text__item" {{ block.shopify_attributes }}>
-            <div class="media-with-text__media {% unless section.settings.spacing == 'none' %}rounded{% endunless %}" reveal-on-scroll="true">
-              {%- if block.type == 'image' -%}
-                  {%- assign width_ratio = 100.0 | divided_by: block.settings.media_width -%}
-                  {%- assign maximum_image_width = settings.page_width | divided_by: width_ratio -%}
+      
+      
+        <media-with-text class="character" >
+          <div class="character-grid">
+        {%- for character in characters -%}
+        {%- assign photo = character.photos.value | first -%}
 
-                  {%- capture sizes -%}(max-width: 999px) 100vw, min({{ maximum_image_width | ceil }}px, {{ block.settings.media_width }}vw){% endcapture %}
+            <div class="photo" >
 
-                  {{- photo | image_url: width: '300px', height: '300px' | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600' -}}
+              {%- assign width_ratio = 100.0 | divided_by: block.settings.media_width -%}
+              {%- assign maximum_image_width = settings.page_width | divided_by: width_ratio -%}
 
-              {%- else -%}
-                {%- capture poster -%}
-                  {%- assign poster_image = block.settings.poster_image | default: block.settings.video.preview_image -%}
+              {%- capture sizes -%}(max-width: 999px) 100vw, min({{ maximum_image_width | ceil }}px, {{ block.settings.media_width }}vw){% endcapture %}
 
-                  {%- if poster_image -%}
-                    {{- poster_image | image_url: width: poster_image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 400px, 800px', widths: '200,300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: 'rounded' -}}
-                  {%- else -%}
-                    {{ 'image' | placeholder_svg_tag: 'rounded' }}
-                  {%- endif -%}
-                {%- endcapture -%}
+              {{- photo | image_url: width: '300px', height: '300px' | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600' -}}
 
-                
-              {%- endif -%}
+              
             </div>
 
-            {%- capture content_class -%}media-with-text__content {% unless section.settings.spacing == 'none' %}rounded{% endunless %}{%- endcapture -%}
-            <div {% render 'surface', class: content_class, background: block.settings.background, background_gradient: block.settings.background_gradient, text_color: block.settings.text_color %}>
-              <div class="prose break-all {{ block.settings.text_position }}" reveal-on-scroll="true">
-                
-
+            <div {% render 'surface', class: "bio", background: block.settings.background, background_gradient: block.settings.background_gradient, text_color: block.settings.text_color %}>
+              <div class="prose break-all {{ block.settings.text_position }}">
+              
                 {%- if block.settings.subheading != blank -%}
                   <p class="subheading">{{ block.settings.subheading | escape }}</p>
                 {%- endif -%}
@@ -85,18 +71,22 @@ LIQUID
                   </p>
                 {%- endif -%}
 
-                {{- character.bio | metafield_tag | truncate: 400 -}}
+                {{- character.bio | metafield_tag | truncate: 400 | strip_html | truncate: 400 -}}
 
                 {%- if block.settings.link_text != blank -%}
                   {{ block.settings.link_text | link_to: character.system.url, class: 'link'}}
                 {%- endif -%}
               </div>
+
             </div>
-          </div>
+          
+
         {%- endfor -%}
-      </media-with-text>
+      </div>
+        </media-with-text>  
+      
     </div>
-  {%- endfor -%}
+
 {% schema %}
 {
   "name": "Audiobook Characters",
