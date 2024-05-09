@@ -29,7 +29,7 @@ Supported variables
         {%- endif -%}
 
         {%- if heading != blank -%}
-          <{{- tag }} class="h2" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %}>
+          <{{- tag }} class="h2">
             {%- render 'styled-text', content: heading, text_color: heading_color, gradient: heading_gradient, apparition_effect: true -%}
           </{{- tag -}} >
         {%- endif -%}

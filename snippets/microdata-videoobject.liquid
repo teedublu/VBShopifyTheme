@@ -35,7 +35,7 @@
     "description": "Learn how Voxblock plays screen-free audiobooks. See how simple it is to use.",
     "uploadDate": "2022-08-31T08:00:00+08:00",
     "contentUrl": "{{ content_url }}",
-    {%- if youtube_id -%}
+    {% if youtube_id != blank %}
       "thumbnailUrl": [
         {{ video_object.preview_image | img_url: '300x300' }},
         "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
@@ -44,7 +44,7 @@
         "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
       ],
       "embedUrl": "https://www.youtube.com/embed/{{ youtube_id }}",
-    {%- endif -%}
+    {% endif %}
     "publisher": {%- render 'microdata-snippet-publisher' -%},
 
     "encodesCreativeWork": {
