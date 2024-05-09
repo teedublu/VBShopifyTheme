@@ -48,9 +48,9 @@
 
               {%- when 'heading' -%}
                 {%- if block.settings.text != blank -%}
-                  <p class="{{ block.settings.heading_tag }} {%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                  <{{-block.settings. heading_tag_html}} class="{{ block.settings.heading_tag }} {%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
-                  </p>
+                  </{{-block.settings. heading_tag_html-}}>
                 {%- endif -%}
 
               {%- when 'richtext' -%}
@@ -340,6 +340,38 @@
             }
           ],
           "default": "h1"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag_html",
+          "label": "HTML tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            }
+          ],
+          "default": "p"
         }
       ]
     },
