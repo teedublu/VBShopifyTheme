@@ -5,19 +5,59 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "enable_parallax": true,
+        "enable_parallax": false,
         "show_collection_title": true,
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "sm",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "mobile_text_position": "place-self-end text-end",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "featured_product": "",
         "featured_product_heading": "Featured product",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
+      }
+    },
+    "rich_text_wUCBHR": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_KWWRRg": {
+          "type": "subheading",
+          "settings": {
+            "text": "Just for schools"
+          }
+        },
+        "heading_ktbVzd": {
+          "type": "heading",
+          "settings": {
+            "text": "Best Value Packs",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_DpghrY": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Boasting a <strong>long battery life<\/strong> and simple design, Voxblock ensures uninterrupted audio throughout the school day, promoting a positive library experience. Its user-friendly interface empowers students of all ages to independently explore content, fostering a <strong>love of literacy.<\/strong><\/p><p>The audiobooks are physical blocks, children can easily select what they’d like to listen to and then slot it into the player.  <br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_KWWRRg",
+        "heading_ktbVzd",
+        "richtext_DpghrY"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "main": {
@@ -26,12 +66,12 @@
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
           "settings": {
-            "position": 33,
+            "position": 1,
             "column_span": "1",
-            "title": "Promote a product or a temporary offer",
-            "content": "",
+            "title": "Designed for schools",
+            "content": "<p>Available via purchase order. Dedicated school support.<\/p>",
             "link_url": "",
-            "link_text": "View all",
+            "link_text": "",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
@@ -67,7 +107,7 @@
         "products_per_row_desktop": 7,
         "filter_layout": "horizontal",
         "show_sort_by": false,
-        "sticky_filters": true,
+        "sticky_filters": false,
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": false,
@@ -77,6 +117,7 @@
   },
   "order": [
     "banner",
+    "rich_text_wUCBHR",
     "main"
   ]
 }
