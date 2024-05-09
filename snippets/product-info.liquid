@@ -96,6 +96,17 @@
       {%- when 'separator' -%}
         <hr class="product-info__separator" {{ block.shopify_attributes }}>
 
+      {%- when 'object_link'-%}
+
+        {%- assign handle = product.handle -%}
+        {%- assign audiobook = shop.metaobjects.audiobook[handle] -%}
+        {%- capture object_link_text -%}
+          {{ audiobook.title.value | link_to: audiobook.system.url, class: 'link' }}
+        {%- endcapture -%}
+        {{ block.settings.text | replace: '[o]', object_link_text }}
+
+
+
       {%- when 'description' -%}
         {%- if block.settings.collapse_content -%}
           {%- if product.description != blank -%}
