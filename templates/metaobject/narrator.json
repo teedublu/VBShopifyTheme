@@ -50,6 +50,13 @@
           "settings": {
           }
         },
+        "author_narrator_jtCn4y": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": false
+          }
+        },
         "price_pBW8cb": {
           "type": "price",
           "settings": {
@@ -83,17 +90,25 @@
             "payment_button_background": "",
             "payment_button_text_color": ""
           }
+        },
+        "object_link_w7wMVM": {
+          "type": "object_link",
+          "settings": {
+            "text": "<p>More details of \"[o]\".<\/p>"
+          }
         }
       },
       "block_order": [
         "text_rmf7mk",
         "title_7FG9XT",
         "badges_LGEkgc",
+        "author_narrator_jtCn4y",
         "price_pBW8cb",
         "rating_k3i8MX",
         "separator_zQBKVm",
         "description_GDTV6R",
-        "buy_buttons_NpyNjH"
+        "buy_buttons_NpyNjH",
+        "object_link_w7wMVM"
       ],
       "settings": {
         "full_width": false,
