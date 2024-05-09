@@ -1,9 +1,10 @@
-{%- if product -%}
-  {%- assign video_object = section.settings.video.sources | where: 'format', 'mp4' | first -%}
-  {%- assign content_url = video_object.url -%}
-  {%- assign youtube_id = section.settings.youtube_id -%}
-  {%- assign audiobook = product.metafields.book.audiobook -%}
+{%- assign video_object = section.settings.video.sources | where: 'format', 'mp4' | first -%}
+{%- assign content_url = video_object.url -%}
+{%- assign youtube_id = section.settings.youtube_id -%}
+{%- assign audiobook = product.metafields.book.audiobook -%}
 
+{%- if product -%}
+  
   {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -36,6 +37,7 @@
     "contentUrl": "{{ content_url }}",
     {%- if youtube_id -%}
       "thumbnailUrl": [
+        {{ video_object.preview_image | img_url: '300x300' }},
         "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
         "https://img.youtube.com/vi/{{ youtube_id }}/sddefault.jpg",
         "https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg",

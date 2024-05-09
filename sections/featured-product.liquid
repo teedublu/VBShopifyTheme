@@ -44,7 +44,7 @@
     {% comment %}
       Metaobjects can use this section but dont want to have to specify a single book for each object
       So to keep metaobjects easier to maintain:
-      If no product is specified, try to get one from main_book failing that a collection on the metaobject
+      If no product is specified, try to get one from main_book failing that first product from a collection on the metaobject
       
     {% endcomment %}
 
@@ -58,6 +58,7 @@
         {% break %}
       {% endfor %}
     {%- endif -%}
+
     {%- if featured_product == blank and metaobject -%}
       {%- assign handle_to_find = metaobject.system.handle -%}
       {%- assign object_type = metaobject.system.type | append: 's' -%}
@@ -1159,7 +1160,42 @@
           "default": "start"
         }
       ]
+    },
+    {
+      "type": "object_link",
+      "name": "Metaobject link",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Use [o] and text. [o] replaced with linked title."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>[o] link</p>"
+        }
+      ]
+    },
+    {
+      "type": "author_narrator",
+      "name": "Author and Narrator",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_author",
+          "label": "Show Author",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_narrator",
+          "label": "Show Narrator",
+          "default": true
+        }
+      ]
     }
+    
   ],
   "settings": [
     {

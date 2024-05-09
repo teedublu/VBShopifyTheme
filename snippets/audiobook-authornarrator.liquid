@@ -31,20 +31,24 @@ There is a similar but different one shown in the audiobook page - section/audio
 
 
 <div class="audiobooks-authornarrator-grid">
-    <div class="grid-row">
-        <div class="grid-cell label">Author</div>
-        <div class="grid-cell value">
-            {% for author in authors %}
-               {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
+    {%- if block.settings.show_author -%}
+        <div class="grid-row">
+            <div class="grid-cell label">Author</div>
+            <div class="grid-cell value">
+                {% for author in authors %}
+                   {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
-    <div class="grid-row">
-        <div class="grid-cell label">Read By</div>
-        <div class="grid-cell value">
-            {% for narrator in narrators %}
-               {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
+    {%- endif -%}
+    {%- if block.settings.show_narrator -%}
+        <div class="grid-row">
+            <div class="grid-cell label">Read By</div>
+            <div class="grid-cell value">
+                {% for narrator in narrators %}
+                   {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+    {%- endif -%}
 </div>
