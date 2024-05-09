@@ -73,10 +73,51 @@
         "show_filter_values_count": false,
         "open_first_filter_group": false
       }
+    },
+    "rich_text_wUCBHR": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_KWWRRg": {
+          "type": "subheading",
+          "settings": {
+            "text": "Just for schools"
+          }
+        },
+        "heading_ktbVzd": {
+          "type": "heading",
+          "settings": {
+            "text": "Best Value Packs",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_DpghrY": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Boasting a <strong>long battery life<\/strong> and simple design, Voxblock ensures uninterrupted audio throughout the school day, promoting a positive library experience. Its user-friendly interface empowers students of all ages to independently explore content, fostering a <strong>love of literacy.<\/strong><\/p><p>The audiobooks are physical blocks, children can easily select what they’d like to listen to and then slot it into the player.  <br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_KWWRRg",
+        "heading_ktbVzd",
+        "richtext_DpghrY"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "banner",
-    "main"
+    "main",
+    "rich_text_wUCBHR"
   ]
 }
