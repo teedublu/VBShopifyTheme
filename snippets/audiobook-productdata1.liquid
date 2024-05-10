@@ -335,7 +335,13 @@
                         </div>
                     </div>
                 {% endif %}
-
+            {% when 'book_page' %}
+                <div class="detail-row">
+                    <div class="detail-label">{{ block.settings.title }}</div>
+                    <div class="detail-value">
+                        {{ audiobook_metaobject.title | link_to: audiobook_metaobject.system.url, class: 'book link' }}
+                    </div>
+                </div>
             
 
             <!-- Add additional blocks as needed for the other types you've defined in the schema -->
