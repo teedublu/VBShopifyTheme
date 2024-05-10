@@ -1,55 +1,70 @@
-{%- assign video_object = section.settings.video.sources | where: 'format', 'mp4' | first -%}
-{%- assign content_url = video_object.url -%}
-{%- assign youtube_id = section.settings.youtube_id -%}
-{%- assign audiobook = product.metafields.book.audiobook -%}
 
-{%- if product -%}
-  
+{%- assign page_type = request.page_type -%}
+{%- assign youtube_id = section.settings.youtube_id -%}
+
+{%- case page_type -%}
+  {%- when 'product' -%}
+    {%- assign audiobook = product.metafields.book.audiobook -%}
+
+    {%- assign title = product.title | prepend: 'Video of ' -%}
+    {%- assign description = product.description | strip_html | escape | strip_newlines -%}
+    {%- assign encodes = product.title  -%}
+
+  {%- when 'metaobject' -%}
+    {%- assign audiobook = metaobject -%}
+    {%- assign product = all_products[metaobject.system.handle] -%}
+    {%- assign title = product.title | prepend: 'Video of ' -%}
+    {%- assign description = product.description | strip_html | escape | strip_newlines -%}
+    {%- assign encodes = product.title  -%}
+
+  {%- else -%}
+    {%- assign title = section.settings.jsonld_title -%}
+    {%- assign description = section.settings.jsonld_description -%}
+
+{%- endcase -%}
+
+
+{%- assign encodes = product.title  -%}
+
+
+{%- if section.settings.video -%}
+  {%- assign video_object = section.settings.video.sources | where: 'format', 'mp4' | first -%}
+  {%- assign content_url = video_object.url -%}
+  {%- assign thumbnail =  video_object.preview_image | img_url: '300x' | prepend: 'https:' | json -%}
+
+{%- elsif youtube_id -%}
+  {%- assign content_url = "https://www.youtube.com/watch?v=" | append: youtube_id -%}
+  {%- capture thumbnail -%}
+    [
+      "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
+      "https://img.youtube.com/vi/{{ youtube_id }}/sddefault.jpg",
+      "https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg",
+      "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
+    ]
+  {%- endcapture -%}
+  {%- capture embedUrl -%}https://www.youtube.com/embed/{{ youtube_id }}{%- endcapture -%}
+
+{%- endif -%}
+
+
+{%- if content_url -%}
   {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "name": {{ product.title | prepend: 'Video of ' | json }},
-    "description": "{{ product.description | strip_html | escape | strip_newlines }}",
+    "name": "{{ title }}",
+    "description": "{{ description }}",
     "uploadDate": "2022-08-31T08:00:00+08:00",
     "contentUrl": "{{ content_url }}",
-    {%- if youtube_id -%}
-      "thumbnailUrl": [
-        "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
-        "https://img.youtube.com/vi/{{ youtube_id }}/sddefault.jpg",
-        "https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg",
-        "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
-      ],
-      "embedUrl": "https://www.youtube.com/embed/{{ youtube_id }}",
-    {%- endif -%}
-    "publisher": {%- render 'microdata-snippet-publisher' -%},
+
+    "thumbnailUrl": {{ thumbnail }},
+    "embedUrl": "{{- embedUrl -}}",
+    {%- if encodes -%}
     "encodesCreativeWork": {
       "@type": "Audiobook",
       "name": {{ product.title | json }}
-    }
-  }
-{%- else -%}
-  {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "How Voxblock works",
-    "description": "Learn how Voxblock plays screen-free audiobooks. See how simple it is to use.",
-    "uploadDate": "2022-08-31T08:00:00+08:00",
-    "contentUrl": "{{ content_url }}",
-    {% if youtube_id != blank %}
-      "thumbnailUrl": [
-        {{ video_object.preview_image | img_url: '300x300' }},
-        "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
-        "https://img.youtube.com/vi/{{ youtube_id }}/sddefault.jpg",
-        "https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg",
-        "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
-      ],
-      "embedUrl": "https://www.youtube.com/embed/{{ youtube_id }}",
-    {% endif %}
-    "publisher": {%- render 'microdata-snippet-publisher' -%},
+    },
+    {%- endif -%}
+    "publisher": {%- render 'microdata-snippet-publisher' -%}
 
-    "encodesCreativeWork": {
-      "@type": "HowTo",
-      "name": "How Voxblock works"
-    }
   }
 {%- endif -%}
