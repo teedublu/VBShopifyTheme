@@ -151,6 +151,41 @@
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
       }
+    },
+    "media_with_text_xVFYLG": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_7944mQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Screen-free audiobooks",
+            "title": "Listen with Voxblock",
+            "content": "<p>Simply select an audiobook, insert it into your player, and hit play. There’s no need for assistance from adults. Start building your own collection of <strong>physical audiobooks<\/strong> to display proudly and cherish for a lifetime.<\/p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_7944mQ"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
@@ -159,6 +194,7 @@
     "video_X6dW6K",
     "audiogramme_TQQXXE",
     "microdata_rtcdXV",
-    "featured_product_qPmHbt"
+    "featured_product_qPmHbt",
+    "media_with_text_xVFYLG"
   ]
 }
