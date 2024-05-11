@@ -1,1 +1,164 @@
-{"sections":{"breadcrumbs_DJmzNb":{"type":"breadcrumbs","settings":{"heading":"Breadcrumbs"}},"video_X6dW6K":{"type":"video","blocks":{"play_NGYXUy":{"type":"play","settings":{}}},"block_order":["play_NGYXUy"],"settings":{"full_width":false,"allow_transparent_header":false,"autoplay":false,"video_size":"auto","video":"{{ metaobject.desktop.value }}","mobile_video":"{{ metaobject.mobile.value }}","youtube_id":"{{ metaobject.youtube_id.value }}","external_video_url":"https:\/\/www.youtube.com\/watch?v=dQw4w9WgXcQ","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"audiogramme_TQQXXE":{"type":"audiogramme","settings":{"title":"{{ metaobject.name.value }}","subtitle":"Audio Transcription"}},"microdata_rtcdXV":{"type":"microdata","settings":{"debug":false,"object_type":"audiogramme"}}},"order":["breadcrumbs_DJmzNb","video_X6dW6K","audiogramme_TQQXXE","microdata_rtcdXV"]}
+{
+  "sections": {
+    "breadcrumbs_DJmzNb": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "custom_liquid_4cXU8f": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<h1 class=\"h1\">{{metaobject.name}} Audiogramme<\/h1>\n<p>Listen and read along to an excerpt from {{metaobject.name}}.<\/p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "video_X6dW6K": {
+      "type": "video",
+      "blocks": {
+        "play_NGYXUy": {
+          "type": "play",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "play_NGYXUy"
+      ],
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "autoplay": false,
+        "video_size": "auto",
+        "video": "{{ metaobject.desktop.value }}",
+        "mobile_video": "{{ metaobject.mobile.value }}",
+        "youtube_id": "{{ metaobject.youtube_id.value }}",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=dQw4w9WgXcQ",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    },
+    "audiogramme_TQQXXE": {
+      "type": "audiogramme",
+      "settings": {
+        "title": "{{ metaobject.name.value }}",
+        "subtitle": "Audio Transcription"
+      }
+    },
+    "microdata_rtcdXV": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "audiogramme"
+      }
+    },
+    "featured_product_qPmHbt": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_xfhUne": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title_Q3mEwe": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "author_narrator_f3bPjH": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": true
+          }
+        },
+        "badges_7zdA86": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_xGnkXf": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "separator_kzHU4J": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_4xzBpq": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "object_link_6DgXaV": {
+          "type": "object_link",
+          "settings": {
+            "text": "<p>More [o] details<\/p>"
+          }
+        },
+        "buy_buttons_X3dCGi": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_xfhUne",
+        "title_Q3mEwe",
+        "author_narrator_f3bPjH",
+        "badges_7zdA86",
+        "price_xGnkXf",
+        "separator_kzHU4J",
+        "description_4xzBpq",
+        "object_link_6DgXaV",
+        "buy_buttons_X3dCGi"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "{{ metaobject.product.value }}",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_DJmzNb",
+    "custom_liquid_4cXU8f",
+    "video_X6dW6K",
+    "audiogramme_TQQXXE",
+    "microdata_rtcdXV",
+    "featured_product_qPmHbt"
+  ]
+}
