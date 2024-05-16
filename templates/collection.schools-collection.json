@@ -1,7 +1,53 @@
 {
   "sections": {
+    "image_with_text_overlay_zRRwUB": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_Yt9DWV": {
+          "type": "subheading",
+          "settings": {
+            "text": "Schools Packs"
+          }
+        },
+        "heading_VGfGYz": {
+          "type": "heading",
+          "settings": {
+            "text": "Audio in the Classroom",
+            "scale_with": false,
+            "heading_tag": "h2",
+            "heading_tag_html": "h1"
+          }
+        },
+        "richtext_NfzLck": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>An easy to use solution designed for classrooms and schools.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Yt9DWV",
+        "heading_VGfGYz",
+        "richtext_NfzLck"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 65,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/voxblock_website_banner_1.png",
+        "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_8.png",
+        "mobile_text_position": "place-self-end text-end",
+        "desktop_text_position": "sm:place-self-end sm:text-end",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "banner": {
       "type": "collection-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -62,7 +108,7 @@
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "small",
+        "content_width": "large",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -127,6 +173,7 @@
     }
   },
   "order": [
+    "image_with_text_overlay_zRRwUB",
     "banner",
     "rich_text_wUCBHR",
     "main"
