@@ -37,6 +37,9 @@
   .object-authors-narrators {
     font-size: 80%;
   }
+  .review {
+    font-size: 80%;
+  }
   .object-authors-narrators a{
     font-weight: bold;
   }
@@ -136,6 +139,7 @@
         {% for object in objects %}
           {% if object.name != blank or object.title != blank %}
             {% assign product = object.product.value  %}
+            {% assign review = shop.metaobjects.review[product.handle] %}
             
             {% assign image = nil %}
             <li class="object-item">
@@ -163,6 +167,9 @@
                   {% when 'audiobooks' %}
                     <div class="object-title">
                       <b>{{ object.title.value | link_to: object.system.url, class: object_type }}</b>
+                      {% if review %}
+                        ({{ 'read the review' | link_to: review.system.url, class: 'link review' }})
+                      {% endif %}
                     </div>
                     {% if object.product.value.metafields.book.authors.value %}
                       <div class="object-authors-narrators">
