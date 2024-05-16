@@ -1,5 +1,11 @@
 {
   "sections": {
+    "breadcrumbs_zWWLRY": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
     "rich_text_Hfy3GP": {
       "type": "rich-text",
       "blocks": {
@@ -39,9 +45,17 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "audiobook_bookdata_THnKkE": {
+      "type": "audiobook-bookdata",
+      "settings": {
+        "heading": "Book data for an audiobook"
+      }
     }
   },
   "order": [
-    "rich_text_Hfy3GP"
+    "breadcrumbs_zWWLRY",
+    "rich_text_Hfy3GP",
+    "audiobook_bookdata_THnKkE"
   ]
 }
