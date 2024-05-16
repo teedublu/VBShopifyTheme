@@ -1,7 +1,115 @@
 {
   "sections": {
+    "rich_text_8D7GPw": {
+      "type": "rich-text",
+      "blocks": {
+        "icon_aRp4KC": {
+          "type": "icon",
+          "settings": {
+            "icon": "picto-comment",
+            "icon_width": 68,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": ""
+          }
+        },
+        "subheading_GkXmq7": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook review"
+          }
+        },
+        "heading_EEjVaQ": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_8z4JC3": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.audiobook.value.long_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "icon_aRp4KC",
+        "subheading_GkXmq7",
+        "heading_EEjVaQ",
+        "richtext_8z4JC3"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_NUCd4W": {
+      "type": "featured-product",
+      "blocks": {
+        "title_bXxMgq": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_bthk3H": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_P7Rhae": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "buy_buttons_MeirLM": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_bXxMgq",
+        "badges_bthk3H",
+        "price_P7Rhae",
+        "buy_buttons_MeirLM"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.product.value }}",
+        "desktop_media_width": 45,
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    }
   },
   "order": [
-
+    "rich_text_8D7GPw",
+    "featured_product_NUCd4W"
   ]
 }
