@@ -303,6 +303,73 @@
         "testimonial_card_text_color": ""
       }
     },
+    "logo_list_mHU9dT": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_L66yqJ": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/school_logo_1.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_LUeYx9": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/school_logo_4.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_cU7nMx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/school_logo_5.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_NQj4LF": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/school_logo_3.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_TBBacg": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/school_logo_6.png",
+            "logo_width": 180,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_L66yqJ",
+        "logo_LUeYx9",
+        "logo_cU7nMx",
+        "logo_NQj4LF",
+        "logo_TBBacg"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "Who is listening to Voxblock?",
+        "content": "",
+        "text_alignment": "start",
+        "items_per_row": 5,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ff9e57",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "#ffffff",
+        "logo_item_border": ""
+      }
+    },
     "faq_emTHqx": {
       "type": "faq",
       "blocks": {
@@ -370,73 +437,6 @@
         "accordion_background": "",
         "accordion_text_color": "#ffffff"
       }
-    },
-    "logo_list_mHU9dT": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_L66yqJ": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/school_logo_1.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_LUeYx9": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/school_logo_4.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_cU7nMx": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/school_logo_2.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_NQj4LF": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/school_logo_3.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_TBBacg": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify:\/\/shop_images\/school_logo_6.png",
-            "logo_width": 300,
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_L66yqJ",
-        "logo_LUeYx9",
-        "logo_cU7nMx",
-        "logo_NQj4LF",
-        "logo_TBBacg"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "title": "Logo list",
-        "content": "",
-        "text_alignment": "start",
-        "items_per_row": 5,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
-      }
     }
   },
   "order": [
@@ -447,7 +447,7 @@
     "media_with_text_GdbnrX",
     "image_with_text_overlay_a9jEYR",
     "testimonials_MwfRRh",
-    "faq_emTHqx",
-    "logo_list_mHU9dT"
+    "logo_list_mHU9dT",
+    "faq_emTHqx"
   ]
 }
