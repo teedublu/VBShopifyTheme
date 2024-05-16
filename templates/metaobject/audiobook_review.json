@@ -1,7 +1,47 @@
 {
   "sections": {
+    "rich_text_Hfy3GP": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_a3iyVr": {
+          "type": "subheading",
+          "settings": {
+            "text": "A review of"
+          }
+        },
+        "heading_QEQfC9": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_N6R9zL": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.audiobook.value.long_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_a3iyVr",
+        "heading_QEQfC9",
+        "richtext_N6R9zL"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
   },
   "order": [
-
+    "rich_text_Hfy3GP"
   ]
 }
