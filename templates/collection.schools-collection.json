@@ -137,6 +137,7 @@
         },
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
+          "disabled": true,
           "settings": {
             "position": 4,
             "column_span": "1",
@@ -152,11 +153,29 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
+        },
+        "promotion_image_UmRcxw": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/CORRECT_School-tier-graphic-April-2024_1.png",
+            "title": "",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
         }
       },
       "block_order": [
         "promotion_image_4VEyzT",
-        "promotion_video_CHwxAJ"
+        "promotion_video_CHwxAJ",
+        "promotion_image_UmRcxw"
       ],
       "settings": {
         "products_per_page": 50,
@@ -201,50 +220,6 @@
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify:\/\/shop_images\/audiobooks-library_banner-web-3200x1200.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
-      }
-    },
-    "image_with_text_overlay_UqwcAY": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_rUQKJx": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
-        "heading_fwtCXJ": {
-          "type": "heading",
-          "settings": {
-            "text": "",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "p"
-          }
-        },
-        "richtext_UXNCgL": {
-          "type": "richtext",
-          "settings": {
-            "content": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_rUQKJx",
-        "heading_fwtCXJ",
-        "richtext_UXNCgL"
-      ],
-      "settings": {
-        "full_width": false,
-        "allow_transparent_header": false,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/CORRECT_School-tier-graphic-April-2024_1.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -386,7 +361,6 @@
     "rich_text_wUCBHR",
     "main",
     "image_with_text_overlay_a9jEYR",
-    "image_with_text_overlay_UqwcAY",
     "testimonials_MwfRRh",
     "faq_emTHqx"
   ]
