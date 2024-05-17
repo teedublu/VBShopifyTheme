@@ -6,74 +6,6 @@
         "heading": "Breadcrumbs"
       }
     },
-    "multi_column_audiobooks_WnDPxN": {
-      "type": "multi-column-audiobooks",
-      "blocks": {
-        "item_nDiJND": {
-          "type": "item",
-          "settings": {
-            "use_object": "author",
-            "product": "",
-            "column_size": "3",
-            "title": "Column title",
-            "sub_title": "Author",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        },
-        "item_eXbL6H": {
-          "type": "item",
-          "settings": {
-            "use_object": "narrator",
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "product": "",
-            "column_size": "3",
-            "title": "Column title",
-            "sub_title": "Narrator",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        },
-        "item_AigfQx": {
-          "type": "item",
-          "settings": {
-            "use_object": "publisher",
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "product": "",
-            "column_size": "3",
-            "title": "Column title",
-            "sub_title": "Publisher",
-            "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_url": "",
-            "link_text": "",
-            "link_style": "link"
-          }
-        }
-      },
-      "block_order": [
-        "item_nDiJND",
-        "item_eXbL6H",
-        "item_AigfQx"
-      ],
-      "settings": {
-        "full_width": true,
-        "gap": "small",
-        "text_alignment": "start",
-        "subheading": "The Audiobook",
-        "title": "{{ metaobject.title.value }}",
-        "content": "{{ metaobject.long_blurb | metafield_tag }}",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "featured_product_B9E7nQ": {
       "type": "featured-product",
       "blocks": {
@@ -242,12 +174,6 @@
           "settings": {
             "title": "Synopsis"
           }
-        },
-        "fiction_EGHU8Q": {
-          "type": "fiction",
-          "settings": {
-            "title": "Fiction\/Nonfiction"
-          }
         }
       },
       "block_order": [
@@ -264,8 +190,7 @@
         "isbn_kpdmch",
         "print_isbn_H4NrKJ",
         "audiogramme_xr8wFH",
-        "synopsis_meq7hz",
-        "fiction_EGHU8Q"
+        "synopsis_meq7hz"
       ],
       "settings": {
       }
@@ -315,7 +240,6 @@
   },
   "order": [
     "breadcrumbs_DL4tEL",
-    "multi_column_audiobooks_WnDPxN",
     "featured_product_B9E7nQ",
     "audiobook_productdata_zmqU7J",
     "microdata_kKw6gU",
