@@ -10,7 +10,7 @@
     "checkoutRootDomain": "",
     "storefrontAccessToken": ""
   },
-  "tsPublished": 1716203172,
+  "tsPublished": 1716203508,
   "declaration": {
     "showPurpose": false,
     "showProvider": false,
@@ -325,15 +325,15 @@
       "target": "_blank",
       "logo": "<img class=\"cc-banner-logo\" height=\"40\" width=\"40\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/t\/122\/assets\/pandectes-logo.png?v=1716202240\" alt=\"Voxblock\" \/>"
     },
-    "window": "<div role=\"dialog\" aria-live=\"polite\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\" id=\"pandectes-banner\" class=\"cc-window-wrapper cc-top-wrapper\"><div class=\"pd-cookie-banner-window cc-window {{classes}}\"><!--googleoff: all-->{{children}}<!--googleon: all--><\/div><\/div>",
+    "window": "<div role=\"dialog\" aria-live=\"polite\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\" id=\"pandectes-banner\" class=\"cc-window-wrapper cc-popup-wrapper\"><div class=\"pd-cookie-banner-window cc-window {{classes}}\"><!--googleoff: all-->{{children}}<!--googleon: all--><\/div><\/div>",
     "compliance": {
-      "opt-both": "<div class=\"cc-compliance cc-highlight\">{{deny}}{{allow}}<\/div>"
+      "custom": "<div class=\"cc-compliance cc-highlight\">{{preferences}}{{allow}}<\/div>"
     },
-    "type": "opt-both",
+    "type": "custom",
     "layouts": {
-      "basic": "{{logo}}{{messagelink}}{{compliance}}{{close}}"
+      "basic": "{{logo}}{{messagelink}}{{compliance}}"
     },
-    "position": "top",
+    "position": "popup",
     "theme": "wired",
     "revokable": false,
     "animateRevokable": false,
@@ -366,17 +366,17 @@
   },
   "banner": {
     "resetTs": 1716202239,
-    "extraCss": "        .cc-banner-logo {max-width: 24em!important;}    @media(min-width: 768px) {.cc-window.cc-floating{max-width: 24em!important;width: 24em!important;}}    .cc-message, .pd-cookie-banner-window .cc-header, .cc-logo {text-align: left}    .cc-window-wrapper{z-index: 2147483647;}    .cc-window{z-index: 2147483647;font-family: inherit;}    .pd-cookie-banner-window .cc-header{font-family: inherit;}    .pd-cp-ui{font-family: inherit; background-color: #1D8A8A;color:#FFDDDD;}    button.pd-cp-btn, a.pd-cp-btn{}    input + .pd-cp-preferences-slider{background-color: rgba(255, 221, 221, 0.3)}    .pd-cp-scrolling-section::-webkit-scrollbar{background-color: rgba(255, 221, 221, 0.3)}    input:checked + .pd-cp-preferences-slider{background-color: rgba(255, 221, 221, 1)}    .pd-cp-scrolling-section::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 221, 1)}    .pd-cp-ui-close{color:#FFDDDD;}    .pd-cp-preferences-slider:before{background-color: #1D8A8A}    .pd-cp-title:before {border-color: #FFDDDD!important}    .pd-cp-preferences-slider{background-color:#FFDDDD}    .pd-cp-toggle{color:#FFDDDD!important}    @media(max-width:699px) {.pd-cp-ui-close-top svg {fill: #FFDDDD}}    .pd-cp-toggle:hover,.pd-cp-toggle:visited,.pd-cp-toggle:active{color:#FFDDDD!important}    .pd-cookie-banner-window {box-shadow: 0 0 18px rgb(0 0 0 \/ 20%);}  ",
+    "extraCss": "        .cc-banner-logo {max-width: 24em!important;}    @media(min-width: 768px) {.cc-window.cc-floating{max-width: 24em!important;width: 24em!important;}}    .cc-message, .pd-cookie-banner-window .cc-header, .cc-logo {text-align: left}    .cc-window-wrapper{z-index: 2147483647;-webkit-transition: opacity 1s ease;  transition: opacity 1s ease;}    .cc-window{z-index: 2147483647;font-family: inherit;}    .pd-cookie-banner-window .cc-header{font-family: inherit;}    .pd-cp-ui{font-family: inherit; background-color: #1D8A8A;color:#FFDDDD;}    button.pd-cp-btn, a.pd-cp-btn{}    input + .pd-cp-preferences-slider{background-color: rgba(255, 221, 221, 0.3)}    .pd-cp-scrolling-section::-webkit-scrollbar{background-color: rgba(255, 221, 221, 0.3)}    input:checked + .pd-cp-preferences-slider{background-color: rgba(255, 221, 221, 1)}    .pd-cp-scrolling-section::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 221, 1)}    .pd-cp-ui-close{color:#FFDDDD;}    .pd-cp-preferences-slider:before{background-color: #1D8A8A}    .pd-cp-title:before {border-color: #FFDDDD!important}    .pd-cp-preferences-slider{background-color:#FFDDDD}    .pd-cp-toggle{color:#FFDDDD!important}    @media(max-width:699px) {.pd-cp-ui-close-top svg {fill: #FFDDDD}}    .pd-cp-toggle:hover,.pd-cp-toggle:visited,.pd-cp-toggle:active{color:#FFDDDD!important}    .pd-cookie-banner-window {box-shadow: 0 0 18px rgb(0 0 0 \/ 20%);}  ",
     "customJavascript": null,
     "showPoweredBy": false,
     "revokableTrigger": false,
     "hybridStrict": false,
     "cookiesBlockedByDefault": "7",
     "isActive": true,
-    "implicitSavePreferences": false,
+    "implicitSavePreferences": true,
     "cookieIcon": false,
     "blockBots": false,
-    "showCookiesDetails": false,
+    "showCookiesDetails": true,
     "hasTransition": true,
     "blockingPage": false,
     "showOnlyLandingPage": false,
