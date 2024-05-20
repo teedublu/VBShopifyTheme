@@ -1,7 +1,7 @@
 {
   "store": {
     "id": 53128724635,
-    "plan": null,
+    "plan": "basic",
     "theme": "VBShopifyTheme\/main",
     "primaryLocale": "en",
     "adminMode": false,
@@ -10,7 +10,7 @@
     "checkoutRootDomain": "",
     "storefrontAccessToken": ""
   },
-  "tsPublished": 1716202271,
+  "tsPublished": 1716202695,
   "declaration": {
     "showPurpose": false,
     "showProvider": false,
@@ -372,7 +372,7 @@
     "revokableTrigger": false,
     "hybridStrict": false,
     "cookiesBlockedByDefault": "7",
-    "isActive": false,
+    "isActive": true,
     "implicitSavePreferences": false,
     "cookieIcon": false,
     "blockBots": false,
