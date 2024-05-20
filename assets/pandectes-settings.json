@@ -1,7 +1,7 @@
 {
   "store": {
     "id": 53128724635,
-    "plan": "basic",
+    "plan": "plus",
     "theme": "VBShopifyTheme\/main",
     "primaryLocale": "en",
     "adminMode": false,
@@ -10,7 +10,7 @@
     "checkoutRootDomain": "",
     "storefrontAccessToken": ""
   },
-  "tsPublished": 1716202731,
+  "tsPublished": 1716202755,
   "declaration": {
     "showPurpose": false,
     "showProvider": false,
@@ -376,7 +376,7 @@
     "implicitSavePreferences": false,
     "cookieIcon": false,
     "blockBots": false,
-    "showCookiesDetails": true,
+    "showCookiesDetails": false,
     "hasTransition": true,
     "blockingPage": false,
     "showOnlyLandingPage": false,
@@ -385,19 +385,456 @@
   },
   "cookies": {
     "0": [
-
+      {
+        "name": "secure_customer_sig",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Used in connection with customer login."
+        }
+      },
+      {
+        "name": "keep_alive",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "30 minute(s)",
+        "expires": 30,
+        "unit": "declMinutes",
+        "purpose": {
+          "en": "Used in connection with buyer localization."
+        }
+      },
+      {
+        "name": "localization",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Shopify store localization"
+        }
+      },
+      {
+        "name": "cart_currency",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "2 ",
+        "expires": 2,
+        "unit": "declSession",
+        "purpose": {
+          "en": "The cookie is necessary for the secure checkout and payment function on the website. This function is provided by shopify.com."
+        }
+      },
+      {
+        "name": "_cmp_a",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "1 day(s)",
+        "expires": 1,
+        "unit": "declDays",
+        "purpose": {
+          "en": "Used for managing customer privacy settings."
+        }
+      },
+      {
+        "name": "_tracking_consent",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Tracking preferences."
+        }
+      },
+      {
+        "name": "_pandectes_gdpr",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Pandectes",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Used for the functionality of the cookies consent banner."
+        }
+      },
+      {
+        "name": "shopify_pay_redirect",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "1 hour(s)",
+        "expires": 1,
+        "unit": "declHours",
+        "purpose": {
+          "en": "The cookie is necessary for the secure checkout and payment function on the website. This function is provided by shopify.com."
+        }
+      }
     ],
     "1": [
-
+      {
+        "name": "wpm-domain-test",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "Session",
+        "expires": 1,
+        "unit": "declSeconds",
+        "purpose": {
+          "en": "Used to test the storage of parameters about products added to the cart or payment currency"
+        }
+      },
+      {
+        "name": "wpm-domain-test",
+        "domain": "co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": false,
+        "retention": "Session",
+        "expires": 1,
+        "unit": "declSeconds",
+        "purpose": {
+          "en": "Used to test the storage of parameters about products added to the cart or payment currency"
+        }
+      },
+      {
+        "name": "wpm-domain-test",
+        "domain": "uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": false,
+        "retention": "Session",
+        "expires": 1,
+        "unit": "declSeconds",
+        "purpose": {
+          "en": "Used to test the storage of parameters about products added to the cart or payment currency"
+        }
+      }
     ],
     "2": [
-
+      {
+        "name": "_ga",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Google",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Cookie is set by Google Analytics with unknown functionality"
+        }
+      },
+      {
+        "name": "_orig_referrer",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "2 ",
+        "expires": 2,
+        "unit": "declSession",
+        "purpose": {
+          "en": "Tracks landing pages."
+        }
+      },
+      {
+        "name": "_shopify_s",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "30 minute(s)",
+        "expires": 30,
+        "unit": "declMinutes",
+        "purpose": {
+          "en": "Shopify analytics."
+        }
+      },
+      {
+        "name": "_shopify_sa_t",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "30 minute(s)",
+        "expires": 30,
+        "unit": "declMinutes",
+        "purpose": {
+          "en": "Shopify analytics relating to marketing & referrals."
+        }
+      },
+      {
+        "name": "_shopify_sa_p",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "30 minute(s)",
+        "expires": 30,
+        "unit": "declMinutes",
+        "purpose": {
+          "en": "Shopify analytics relating to marketing & referrals."
+        }
+      },
+      {
+        "name": "_landing_page",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "2 ",
+        "expires": 2,
+        "unit": "declSession",
+        "purpose": {
+          "en": "Tracks landing pages."
+        }
+      },
+      {
+        "name": "_shopify_y",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Shopify analytics."
+        }
+      },
+      {
+        "name": "_shopify_s",
+        "domain": "co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": false,
+        "retention": "Session",
+        "expires": 1,
+        "unit": "declSeconds",
+        "purpose": {
+          "en": "Shopify analytics."
+        }
+      },
+      {
+        "name": "_shopify_s",
+        "domain": "uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": false,
+        "retention": "Session",
+        "expires": 1,
+        "unit": "declSeconds",
+        "purpose": {
+          "en": "Shopify analytics."
+        }
+      },
+      {
+        "name": "_boomr_clss",
+        "domain": "https:\/\/voxblock.co.uk",
+        "path": "\/",
+        "provider": "Shopify",
+        "firstParty": true,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Used to monitor and optimize the performance of Shopify stores."
+        }
+      },
+      {
+        "name": "_ga_3TJ0DBEKEE",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Google",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      },
+      {
+        "name": "_ga_Y2C73X80VN",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Google",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      }
     ],
     "4": [
-
+      {
+        "name": "_gcl_au",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Google",
+        "firstParty": true,
+        "retention": "3 month(s)",
+        "expires": 3,
+        "unit": "declMonths",
+        "purpose": {
+          "en": "Cookie is placed by Google Tag Manager to track conversions."
+        }
+      },
+      {
+        "name": "_fbp",
+        "domain": ".voxblock.co.uk",
+        "path": "\/",
+        "provider": "Facebook",
+        "firstParty": true,
+        "retention": "3 month(s)",
+        "expires": 3,
+        "unit": "declMonths",
+        "purpose": {
+          "en": "Cookie is placed by Facebook to track visits across websites."
+        }
+      },
+      {
+        "name": "test_cookie",
+        "domain": ".doubleclick.net",
+        "path": "\/",
+        "provider": "Google",
+        "firstParty": false,
+        "retention": "15 minute(s)",
+        "expires": 15,
+        "unit": "declMinutes",
+        "purpose": {
+          "en": "To measure the visitors’ actions after they click through from an advert. Expires after each visit."
+        }
+      },
+      {
+        "name": "IDE",
+        "domain": ".doubleclick.net",
+        "path": "\/",
+        "provider": "Google",
+        "firstParty": false,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "To measure the visitors’ actions after they click through from an advert. Expires after 1 year."
+        }
+      },
+      {
+        "name": "lastExternalReferrer",
+        "domain": "https:\/\/voxblock.co.uk",
+        "path": "\/",
+        "provider": "Facebook",
+        "firstParty": true,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Detects how the user reached the website by registering their last URL-address."
+        }
+      },
+      {
+        "name": "lastExternalReferrerTime",
+        "domain": "https:\/\/voxblock.co.uk",
+        "path": "\/",
+        "provider": "Facebook",
+        "firstParty": true,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": "Contains the timestamp of the last update of the lastExternalReferrer cookie."
+        }
+      }
     ],
     "8": [
-
+      {
+        "name": "_shopify_essential",
+        "domain": "voxblock.co.uk",
+        "path": "\/",
+        "provider": "Unknown",
+        "firstParty": true,
+        "retention": "1 year(s)",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      },
+      {
+        "name": "local-storage-test",
+        "domain": "https:\/\/voxblock.co.uk",
+        "path": "\/",
+        "provider": "Unknown",
+        "firstParty": true,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      },
+      {
+        "name": "localstorage.test",
+        "domain": "https:\/\/voxblock.co.uk",
+        "path": "\/",
+        "provider": "Unknown",
+        "firstParty": true,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      },
+      {
+        "name": "bugsnag-anonymous-id",
+        "domain": "https:\/\/pay.shopify.com",
+        "path": "\/",
+        "provider": "Unknown",
+        "firstParty": false,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      },
+      {
+        "name": "gtmBrowserId",
+        "domain": "https:\/\/voxblock.co.uk",
+        "path": "\/",
+        "provider": "Unknown",
+        "firstParty": true,
+        "retention": "Persistent",
+        "expires": 1,
+        "unit": "declYears",
+        "purpose": {
+          "en": ""
+        }
+      }
     ]
   },
   "blocker": {
