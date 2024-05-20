@@ -1,7 +1,7 @@
 {
   "store": {
     "id": 53128724635,
-    "plan": "plus",
+    "plan": "basic",
     "theme": "VBShopifyTheme\/main",
     "primaryLocale": "en",
     "adminMode": false,
@@ -10,7 +10,7 @@
     "checkoutRootDomain": "",
     "storefrontAccessToken": ""
   },
-  "tsPublished": 1715591279,
+  "tsPublished": 1716202242,
   "declaration": {
     "showPurpose": false,
     "showProvider": false,
@@ -31,7 +31,7 @@
         "en": "We respect your privacy"
       },
       "consentText": {
-        "en": "This website uses cookies."
+        "en": "This website uses cookies to ensure you get the best experience."
       },
       "dismissButtonText": {
         "en": "Ok"
@@ -301,44 +301,44 @@
         "text": "#000000"
       },
       "button": {
-        "background": "#000000",
+        "background": "transparent",
         "backgroundForCalculations": {
-          "a": 1,
-          "b": 0,
-          "g": 0,
-          "r": 0
-        },
-        "text": "#FFFFFF",
-        "textForCalculation": {
           "a": 1,
           "b": 255,
           "g": 255,
           "r": 255
         },
-        "border": "transparent"
+        "text": "#000000",
+        "textForCalculation": {
+          "a": 1,
+          "b": 0,
+          "g": 0,
+          "r": 0
+        },
+        "border": "#000000"
       }
     },
     "content": {
-      "href": "https:\/\/voxblock.co.uk\/policies\/privacy-policy",
+      "href": "https:\/\/voxblock.myshopify.com\/policies\/privacy-policy",
       "imprintHref": "\/",
       "close": "&#10005;",
-      "target": "_blank",
-      "logo": ""
+      "target": "",
+      "logo": "<img class=\"cc-banner-logo\" height=\"40\" width=\"40\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/t\/122\/assets\/pandectes-logo.png?v=1716202240\" alt=\"Voxblock\" \/>"
     },
-    "window": "<div role=\"dialog\" aria-live=\"polite\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\" id=\"pandectes-banner\" class=\"cc-window-wrapper cc-bottom-wrapper\"><div class=\"pd-cookie-banner-window cc-window {{classes}}\"><!--googleoff: all-->{{children}}<!--googleon: all--><\/div><\/div>",
+    "window": "<div role=\"dialog\" aria-live=\"polite\" aria-label=\"cookieconsent\" aria-describedby=\"cookieconsent:desc\" id=\"pandectes-banner\" class=\"cc-window-wrapper cc-top-wrapper\"><div class=\"pd-cookie-banner-window cc-window {{classes}}\"><!--googleoff: all-->{{children}}<!--googleon: all--><\/div><\/div>",
     "compliance": {
-      "opt-in": "<div class=\"cc-compliance cc-highlight\">{{allow}}<\/div>"
+      "opt-both": "<div class=\"cc-compliance cc-highlight\">{{deny}}{{allow}}<\/div>"
     },
-    "type": "opt-in",
+    "type": "opt-both",
     "layouts": {
-      "basic": "{{messagelink}}{{compliance}}{{close}}"
+      "basic": "{{logo}}{{messagelink}}{{compliance}}{{close}}"
     },
-    "position": "bottom",
-    "theme": "block",
-    "revokable": false,
+    "position": "top",
+    "theme": "wired",
+    "revokable": true,
     "animateRevokable": false,
     "revokableReset": false,
-    "revokableLogoUrl": "",
+    "revokableLogoUrl": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/t\/122\/assets\/pandectes-reopen-logo.png?v=1716202240",
     "revokablePlacement": "bottom-left",
     "revokableMarginHorizontal": 15,
     "revokableMarginVertical": 15,
@@ -353,28 +353,30 @@
     "brOnly": false,
     "caOnly": false,
     "chOnly": false,
-    "euOnly": true,
+    "euOnly": false,
     "jpOnly": false,
     "thOnly": false,
+    "zaOnly": false,
     "canadaOnly": false,
-    "globalVisibility": false
+    "globalVisibility": true
   },
   "dsr": {
     "guestsSupport": false,
     "accessSectionDownloadReportAuto": false
   },
   "banner": {
-    "resetTs": 1699360864,
-    "extraCss": "        .cc-banner-logo {max-width: 24em!important;}    @media(min-width: 768px) {.cc-window.cc-floating{max-width: 24em!important;width: 24em!important;}}    .cc-message, .pd-cookie-banner-window .cc-header, .cc-logo {text-align: left}    .cc-window-wrapper{z-index: 2147483647;}    .cc-window{z-index: 2147483647;font-family: inherit;}    .pd-cookie-banner-window .cc-header{font-family: inherit;}    .pd-cp-ui{font-family: inherit; background-color: #FFFFFF;color:#000000;}    button.pd-cp-btn, a.pd-cp-btn{background-color:#000000;color:#FFFFFF!important;}    input + .pd-cp-preferences-slider{background-color: rgba(0, 0, 0, 0.3)}    .pd-cp-scrolling-section::-webkit-scrollbar{background-color: rgba(0, 0, 0, 0.3)}    input:checked + .pd-cp-preferences-slider{background-color: rgba(0, 0, 0, 1)}    .pd-cp-scrolling-section::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 1)}    .pd-cp-ui-close{color:#000000;}    .pd-cp-preferences-slider:before{background-color: #FFFFFF}    .pd-cp-title:before {border-color: #000000!important}    .pd-cp-preferences-slider{background-color:#000000}    .pd-cp-toggle{color:#000000!important}    @media(max-width:699px) {.pd-cp-ui-close-top svg {fill: #000000}}    .pd-cp-toggle:hover,.pd-cp-toggle:visited,.pd-cp-toggle:active{color:#000000!important}    .pd-cookie-banner-window {}  ",
+    "resetTs": 1716202239,
+    "extraCss": "        .cc-banner-logo {max-width: 24em!important;}    @media(min-width: 768px) {.cc-window.cc-floating{max-width: 24em!important;width: 24em!important;}}    .cc-message, .pd-cookie-banner-window .cc-header, .cc-logo {text-align: left}    .cc-window-wrapper{z-index: 2147483647;}    .cc-window{z-index: 2147483647;font-family: inherit;}    .pd-cookie-banner-window .cc-header{font-family: inherit;}    .pd-cp-ui{font-family: inherit; background-color: #FFFFFF;color:#000000;}    button.pd-cp-btn, a.pd-cp-btn{}    input + .pd-cp-preferences-slider{background-color: rgba(0, 0, 0, 0.3)}    .pd-cp-scrolling-section::-webkit-scrollbar{background-color: rgba(0, 0, 0, 0.3)}    input:checked + .pd-cp-preferences-slider{background-color: rgba(0, 0, 0, 1)}    .pd-cp-scrolling-section::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, 1)}    .pd-cp-ui-close{color:#000000;}    .pd-cp-preferences-slider:before{background-color: #FFFFFF}    .pd-cp-title:before {border-color: #000000!important}    .pd-cp-preferences-slider{background-color:#000000}    .pd-cp-toggle{color:#000000!important}    @media(max-width:699px) {.pd-cp-ui-close-top svg {fill: #000000}}    .pd-cp-toggle:hover,.pd-cp-toggle:visited,.pd-cp-toggle:active{color:#000000!important}    .pd-cookie-banner-window {box-shadow: 0 0 18px rgb(0 0 0 \/ 20%);}  ",
     "customJavascript": null,
     "showPoweredBy": false,
+    "revokableTrigger": false,
     "hybridStrict": false,
     "cookiesBlockedByDefault": "7",
-    "isActive": true,
+    "isActive": false,
     "implicitSavePreferences": false,
     "cookieIcon": false,
     "blockBots": false,
-    "showCookiesDetails": false,
+    "showCookiesDetails": true,
     "hasTransition": true,
     "blockingPage": false,
     "showOnlyLandingPage": false,
@@ -383,716 +385,19 @@
   },
   "cookies": {
     "0": [
-      {
-        "name": "keep_alive",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used in connection with buyer localization."
-        }
-      },
-      {
-        "name": "secure_customer_sig",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used in connection with customer login."
-        }
-      },
-      {
-        "name": "localization",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify store localization"
-        }
-      },
-      {
-        "name": "cart_currency",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "The cookie is necessary for the secure checkout and payment function on the website. This function is provided by shopify.com."
-        }
-      },
-      {
-        "name": "shopify_pay_redirect",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "The cookie is necessary for the secure checkout and payment function on the website. This function is provided by shopify.com."
-        }
-      },
-      {
-        "name": "_cmp_a",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used for managing customer privacy settings."
-        }
-      },
-      {
-        "name": "_tracking_consent",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Tracking preferences."
-        }
-      },
-      {
-        "name": "cookietest",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used to ensure our systems are working correctly."
-        }
-      },
-      {
-        "name": "_secure_session_id",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used in connection with navigation through a storefront."
-        }
-      },
-      {
-        "name": "_shopify_tm",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used for managing customer privacy settings."
-        }
-      },
-      {
-        "name": "_shopify_tw",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used for managing customer privacy settings."
-        }
-      },
-      {
-        "name": "_shopify_m",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used for managing customer privacy settings."
-        }
-      }
+
     ],
     "1": [
-      {
-        "name": "LANG",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "It is used to store language preferences."
-        }
-      },
-      {
-        "name": "enforce_policy",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "This cookie is provided by Paypal. The cookie is used in context with transactions on the website - The cookie is necessary for secure transactions."
-        }
-      },
-      {
-        "name": "x-pp-s",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "This cookie is generally provided by PayPal and supports payment services in the website."
-        }
-      },
-      {
-        "name": "tsrce",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "PayPal cookie: when making a payment via PayPal these cookies are issued – PayPal session\/security"
-        }
-      },
-      {
-        "name": "l7_az",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "This cookie is necessary for the PayPal login-function on the website."
-        }
-      },
-      {
-        "name": "ts_c",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used in context with the PayPal payment-function on the website. The cookie is necessary for making a safe transaction through PayPal."
-        }
-      },
-      {
-        "name": "x-csrf-jwt",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "This cookie is associated with PayPal. When making a payment via PayPal this cookie is issued."
-        }
-      },
-      {
-        "name": "ts",
-        "domain": ".paypal.com",
-        "path": "\/",
-        "provider": "Paypal",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used in context with the PayPal payment-function on the website. The cookie is necessary for making a safe transaction through PayPal."
-        }
-      }
+
     ],
     "2": [
-      {
-        "name": "_shopify_y",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics."
-        }
-      },
-      {
-        "name": "_shopify_s",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics."
-        }
-      },
-      {
-        "name": "_orig_referrer",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Tracks landing pages."
-        }
-      },
-      {
-        "name": "_landing_page",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Tracks landing pages."
-        }
-      },
-      {
-        "name": "_ga",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Cookie is set by Google Analytics with unknown functionality"
-        }
-      },
-      {
-        "name": "_clck",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Microsoft",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used by Microsoft Clarity to store a unique user ID."
-        }
-      },
-      {
-        "name": "_clsk",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Microsoft",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used by Microsoft Clarity to store a unique user ID.\t"
-        }
-      },
-      {
-        "name": "_shopify_d",
-        "domain": "uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics."
-        }
-      },
-      {
-        "name": "_shopify_d",
-        "domain": "co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics."
-        }
-      },
-      {
-        "name": "_shopify_d",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics."
-        }
-      },
-      {
-        "name": "_shopify_sa_t",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics relating to marketing & referrals."
-        }
-      },
-      {
-        "name": "_shopify_sa_p",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Shopify",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Shopify analytics relating to marketing & referrals."
-        }
-      },
-      {
-        "name": "_ga_3TJ0DBEKEE",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "_ga_Y2C73X80VN",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      }
+
     ],
     "4": [
-      {
-        "name": "_gcl_au",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Cookie is placed by Google Tag Manager to track conversions."
-        }
-      },
-      {
-        "name": "MUID",
-        "domain": ".bing.com",
-        "path": "\/",
-        "provider": "Microsoft",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Cookie is placed by Microsoft to track visits across websites."
-        }
-      },
-      {
-        "name": "__kla_id",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Klaviyo",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Tracks when someone clicks through a Klaviyo email to your website."
-        }
-      },
-      {
-        "name": "test_cookie",
-        "domain": ".doubleclick.net",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "To measure the visitors’ actions after they click through from an advert. Expires after each visit."
-        }
-      },
-      {
-        "name": "_fbp",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Facebook",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Cookie is placed by Facebook to track visits across websites."
-        }
-      },
-      {
-        "name": "_uetsid",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Bing",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "This cookie is used by Bing to determine what ads should be shown that may be relevant to the end user perusing the site."
-        }
-      },
-      {
-        "name": "_uetvid",
-        "domain": ".voxblock.co.uk",
-        "path": "\/",
-        "provider": "Bing",
-        "firstParty": true,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Used to track visitors on multiple websites, in order to present relevant advertisement based on the visitor's preferences."
-        }
-      },
-      {
-        "name": "MUID",
-        "domain": ".clarity.ms",
-        "path": "\/",
-        "provider": "Microsoft",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "Cookie is placed by Microsoft to track visits across websites."
-        }
-      },
-      {
-        "name": "IDE",
-        "domain": ".doubleclick.net",
-        "path": "\/",
-        "provider": "Google",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": "To measure the visitors’ actions after they click through from an advert. Expires after 1 year."
-        }
-      }
+
     ],
     "8": [
-      {
-        "name": "CLID",
-        "domain": "www.clarity.ms",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "MR",
-        "domain": ".c.clarity.ms",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "ANONCHK",
-        "domain": ".c.clarity.ms",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "MR",
-        "domain": ".c.bing.com",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "SM",
-        "domain": ".c.clarity.ms",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "SRM_B",
-        "domain": ".c.bing.com",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "wpm-domain-test",
-        "domain": "uk",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "wpm-domain-test",
-        "domain": "voxblock.co.uk",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": true,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "wpm-domain-test",
-        "domain": "co.uk",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "NID",
-        "domain": ".google.com",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "1 day(s)",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      },
-      {
-        "name": "nsid",
-        "domain": "www.paypal.com",
-        "path": "\/",
-        "provider": "Unknown",
-        "firstParty": false,
-        "retention": "Session",
-        "expires": 1,
-        "unit": "declDays",
-        "purpose": {
-          "en": ""
-        }
-      }
+
     ]
   },
   "blocker": {
@@ -1100,15 +405,19 @@
     "googleConsentMode": {
       "id": "",
       "analyticsId": "",
-      "isActive": true,
+      "adwordsId": "",
+      "isActive": false,
       "adStorageCategory": 4,
       "analyticsStorageCategory": 2,
       "personalizationStorageCategory": 1,
       "functionalityStorageCategory": 1,
-      "customEvent": true,
+      "customEvent": false,
       "securityStorageCategory": 0,
-      "redactData": true,
-      "urlPassthrough": false
+      "redactData": false,
+      "urlPassthrough": false,
+      "dataLayerProperty": "dataLayer",
+      "waitForUpdate": 0,
+      "useNativeChannel": false
     },
     "facebookPixel": {
       "id": "",
@@ -1120,6 +429,7 @@
       "cmp": false,
       "ccpa": false
     },
+    "klaviyoIsActive": false,
     "gpcIsActive": false,
     "defaultBlocked": 7,
     "patterns": {
