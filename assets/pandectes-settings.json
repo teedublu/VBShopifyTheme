@@ -10,7 +10,7 @@
     "checkoutRootDomain": "",
     "storefrontAccessToken": ""
   },
-  "tsPublished": 1716205590,
+  "tsPublished": 1716212243,
   "declaration": {
     "showPurpose": false,
     "showProvider": false,
@@ -848,13 +848,13 @@
       "analyticsStorageCategory": 2,
       "personalizationStorageCategory": 1,
       "functionalityStorageCategory": 1,
-      "customEvent": false,
+      "customEvent": true,
       "securityStorageCategory": 0,
-      "redactData": false,
+      "redactData": true,
       "urlPassthrough": false,
       "dataLayerProperty": "dataLayer",
       "waitForUpdate": 0,
-      "useNativeChannel": false
+      "useNativeChannel": true
     },
     "facebookPixel": {
       "id": "",
