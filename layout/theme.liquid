@@ -58,9 +58,6 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'voxblock.css' | asset_url | stylesheet_tag: preload: true -}}
 
-    <noscript id="content-for-header-inspect">
-    {{ content_for_header }}
-  </noscript>
   </head>
 
   <body class="{% if settings.show_page_transition %}page-transition{% endif %} {% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
