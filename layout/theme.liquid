@@ -69,7 +69,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 {% assign pagespeed_template_suffix_liquid = template.suffix | append: ".liquid" %}
 {% assign pagespeed_page_type = template.name | replace: template_suffix_liquid, "" %}
 {%- if handle != 'flashspeed-test-site' and pagespeed_page_type == 'page' -%}
-{{ content_for_header | remove: "https:\/\/ecommplugins-trustboxsettings.trustpilot.com\/voxblock.myshopify.com.js?settings=1666000226578\u0026shop=voxblock.myshopify.com" | remove: "https:\/\/ecommplugins-scripts.trustpilot.com\/v2.1\/js\/header.min.js?settings=eyJrZXkiOiJFVHI3RjBFMG03SWI4a1RmIiwicyI6Im5vbmUifQ==\u0026v=2.5\u0026shop=voxblock.myshopify.com"  }}
+{{ content_for_header | remove: "\/\/cdn.shopify.com\/proxy\/062cdbf0527a05880a6429c9c1ccffc31429d9ea6d91d29ea179194c34115388\/s.pandect.es\/scripts\/pandectes-core.js?shop=voxblock.myshopify.com\u0026sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA" | remove: "https:\/\/ecommplugins-trustboxsettings.trustpilot.com\/voxblock.myshopify.com.js?settings=1666000226578\u0026shop=voxblock.myshopify.com" | remove: "https:\/\/ecommplugins-scripts.trustpilot.com\/v2.1\/js\/header.min.js?settings=eyJrZXkiOiJFVHI3RjBFMG03SWI4a1RmIiwicyI6Im5vbmUifQ==\u0026v=2.5\u0026shop=voxblock.myshopify.com"  }}
 {%- else -%}
 {{ content_for_header }}
 {%- endif -%}
