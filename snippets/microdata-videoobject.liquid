@@ -6,8 +6,8 @@
   {%- when 'product' -%}
     {%- assign audiobook = product.metafields.book.audiobook -%}
 
-    {%- assign title = product.title | prepend: 'Video of ' -%}
-    {%- assign description = product.description | strip_html | escape | strip_newlines -%}
+    {%- assign title = product.title | prepend: 'Transcript of ' | append: ' Audiobook' -%}
+    {%- assign description = "Video displays the scrolling transcript of [t] audiobook, showing text as it's narrated." | replace: '[t]', product.title -%}
     {%- assign encodes = product.title  -%}
 
   {%- when 'metaobject' -%}

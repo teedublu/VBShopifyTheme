@@ -1,0 +1,248 @@
+{
+  "sections": {
+    "breadcrumbs_DL4tEL": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "featured_product_B9E7nQ": {
+      "type": "featured-product",
+      "blocks": {
+        "title_EPVDNx": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_T7myUL": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_KetyNa": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_8XyeMq": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_AjYtQL": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_YFdEge": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "buy_buttons_mrnfcD": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_4xqnRq": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title_EPVDNx",
+        "badges_T7myUL",
+        "price_KetyNa",
+        "rating_8XyeMq",
+        "separator_AjYtQL",
+        "description_YFdEge",
+        "buy_buttons_mrnfcD",
+        "pickup_availability_4xqnRq"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.product.value }}",
+        "desktop_media_width": 35,
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 1,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "audiobook_productdata_zmqU7J": {
+      "type": "audiobook-productdata",
+      "blocks": {
+        "preview_J6rbiA": {
+          "type": "preview",
+          "settings": {
+            "title": "Preview"
+          }
+        },
+        "narrators_9VDD4E": {
+          "type": "narrators",
+          "settings": {
+            "title": "Narrator"
+          }
+        },
+        "authors_4qT6WC": {
+          "type": "authors",
+          "settings": {
+            "title": "Composer"
+          }
+        },
+        "publisher_6RR4Lq": {
+          "type": "publisher",
+          "settings": {
+            "title": "Publisher"
+          }
+        },
+        "characters_6diBjh": {
+          "type": "characters",
+          "settings": {
+            "title": "Featuring"
+          }
+        },
+        "duration_QBHBh7": {
+          "type": "duration",
+          "settings": {
+            "title": "Duration"
+          }
+        },
+        "language_wcTGmf": {
+          "type": "language",
+          "settings": {
+            "title": "Language"
+          }
+        },
+        "genres_YUBAeq": {
+          "type": "genres",
+          "settings": {
+            "title": "Genres"
+          }
+        },
+        "content_themes_icJ7en": {
+          "type": "content_themes",
+          "settings": {
+            "title": "Content Themes"
+          }
+        },
+        "categories_HTFkEz": {
+          "type": "categories",
+          "settings": {
+            "title": "Categories"
+          }
+        },
+        "isbn_kpdmch": {
+          "type": "isbn",
+          "settings": {
+            "title": "Voxblock ISBN"
+          }
+        },
+        "print_isbn_H4NrKJ": {
+          "type": "print_isbn",
+          "settings": {
+            "title": "Print ISBN"
+          }
+        },
+        "audiogramme_xr8wFH": {
+          "type": "audiogramme",
+          "settings": {
+            "title": "Audiogramme"
+          }
+        },
+        "synopsis_meq7hz": {
+          "type": "synopsis",
+          "settings": {
+            "title": "Synopsis"
+          }
+        }
+      },
+      "block_order": [
+        "preview_J6rbiA",
+        "narrators_9VDD4E",
+        "authors_4qT6WC",
+        "publisher_6RR4Lq",
+        "characters_6diBjh",
+        "duration_QBHBh7",
+        "language_wcTGmf",
+        "genres_YUBAeq",
+        "content_themes_icJ7en",
+        "categories_HTFkEz",
+        "isbn_kpdmch",
+        "print_isbn_H4NrKJ",
+        "audiogramme_xr8wFH",
+        "synopsis_meq7hz"
+      ],
+      "settings": {
+      }
+    },
+    "microdata_kKw6gU": {
+      "type": "microdata",
+      "settings": {
+        "debug": true,
+        "object_type": "audiobook"
+      }
+    },
+    "audiobook_characters_jNjL6n": {
+      "type": "audiobook-characters",
+      "blocks": {
+        "image_3CXimJ": {
+          "type": "image",
+          "settings": {
+            "media_width": 30,
+            "media_position": "start",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "FEATURING",
+            "title": "Heading",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "link_text": "read more",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3CXimJ"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.product.value }}",
+        "spacing": "small"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_DL4tEL",
+    "featured_product_B9E7nQ",
+    "audiobook_productdata_zmqU7J",
+    "microdata_kKw6gU",
+    "audiobook_characters_jNjL6n"
+  ]
+}
