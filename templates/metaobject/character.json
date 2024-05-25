@@ -1,138 +1,306 @@
 {
-  "sections": {
-    "rich_text_3DUaDn": {
-      "type": "rich-text",
+    "sections":
+    {
+        "breadcrumbs_XHGrpm":
+        {
+            "type": "breadcrumbs",
+            "settings":
+            {
+                "heading": "Breadcrumbs"
+            }
+        },
+        "rich_text_3DUaDn":
+        {
+            "type": "rich-text",
+            "blocks":
+            {
+                "liquid_MPRnXM":
+                {
+                    "type": "liquid",
+                    "settings":
+                    {
+                        "liquid": "{%- render 'metaobject-header' -%}"
+                    }
+                }
+            },
+            "block_order": ["liquid_MPRnXM"],
+            "settings":
+            {
+                "full_width": true,
+                "use_mo": true,
+                "content_width": "small",
+                "text_position": "center",
+                "background": "",
+                "background_gradient": "",
+                "text_color": ""
+            }
+        },
+        "featured_collection_KrTR6V":
+        {
+            "type": "featured-collection",
+            "settings":
+            {
+                "collection": "",
+                "hide_empty": true,
+                "products": [],
+                "full_width": true,
+                "stack_products": true,
+                "show_progress_bar": false,
+                "products_count": 6,
+                "products_per_row_mobile": "2",
+                "products_per_row_desktop": 3,
+                "subheading": "",
+                "title": "Featured collection",
+                "content": "",
+                "link_url": "",
+                "link_text": "View all",
+                "background": "",
+                "background_gradient": "",
+                "text_color": "",
+                "heading_color": "",
+                "heading_gradient": "",
+                "product_card_background": "",
+                "product_card_text_color": ""
+            }
+        },
+        "featured_product_4UMUnK":
+        {
+            "type": "featured-product",
+            "blocks":
+            {
+                "vendor_wtcnVW":
+                {
+                    "type": "vendor",
+                    "settings":
+                    {}
+                },
+                "title_xcheWy":
+                {
+                    "type": "title",
+                    "settings":
+                    {
+                        "heading_tag": "h2"
+                    }
+                },
+                "price_DMqzhR":
+                {
+                    "type": "price",
+                    "settings":
+                    {
+                        "show_taxes_notice": false
+                    }
+                },
+                "description_EhTk6a":
+                {
+                    "type": "description",
+                    "settings":
+                    {
+                        "collapse_content": false
+                    }
+                },
+                "buy_buttons_tiUTNc":
+                {
+                    "type": "buy_buttons",
+                    "settings":
+                    {
+                        "show_payment_button": false,
+                        "show_gift_card_recipient": false,
+                        "atc_button_background": "",
+                        "atc_button_text_color": "",
+                        "payment_button_background": "",
+                        "payment_button_text_color": ""
+                    }
+                }
+            },
+            "block_order": ["vendor_wtcnVW", "title_xcheWy", "price_DMqzhR", "description_EhTk6a", "buy_buttons_tiUTNc"],
+            "settings":
+            {
+                "full_width": false,
+                "product": "{{ metaobject.main_book.value }}",
+                "desktop_media_width": 55,
+                "desktop_media_layout": "grid",
+                "mobile_media_size": "contained",
+                "mobile_carousel_control": "dots",
+                "enable_video_autoplay": true,
+                "enable_video_looping": false,
+                "enable_image_zoom": false,
+                "max_image_zoom_level": 3,
+                "background": "",
+                "background_gradient": "",
+                "text_color": "",
+                "input_background": "rgba(0,0,0,0)",
+                "input_text_color": ""
+            }
+        },
+        "microdata_8YzdEG":
+        {
+            "type": "microdata",
+            "settings":
+            {
+                "debug": false,
+                "object_type": "character"
+            }
+        },
+    "media_with_text_ciY3Ct": {
+      "type": "media-with-text",
       "blocks": {
-        "liquid_MPRnXM": {
-          "type": "liquid",
+        "image_QCmjPr": {
+          "type": "image",
           "settings": {
-            "liquid": "{%- render 'metaobject-header' -%}"
+            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-end-start text-start",
+            "icon": "none",
+            "icon_width": 68,
+            "subheading": "",
+            "title": "Listen with Voxblock",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "link_text": "Learn more",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
       "block_order": [
-        "liquid_MPRnXM"
+        "image_QCmjPr"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "video_7z6xfc": {
+      "type": "video",
+      "blocks": {
+        "play_zAwMFi": {
+          "type": "play",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "heading_nLz6aH": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_zAwMFi",
+        "heading_nLz6aH"
       ],
       "settings": {
         "full_width": true,
-        "use_mo": true,
-        "content_width": "large",
-        "text_position": "center",
-        "background": "#803cee",
-        "background_gradient": "",
-        "text_color": "#ffffff"
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "md",
+        "video": "shopify:\/\/files\/videos\/voxblock intro_desktop.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "youtube_id": "",
+        "external_video_url": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
-    "breadcrumbs_XHGrpm": {
-      "type": "breadcrumbs",
+    "faq_PWkrrR": {
+      "type": "faq",
+      "blocks": {
+        "item_dpCpac": {
+          "type": "item",
+          "settings": {
+            "title": "What is Voxblock?",
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+          }
+        },
+        "item_JwG9hG": {
+          "type": "item",
+          "settings": {
+            "title": "What stories are available?",
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
+          }
+        },
+        "item_c3zFfM": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock suitable for?",
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
+          }
+        },
+        "item_M9imEA": {
+          "type": "item",
+          "settings": {
+            "title": "Any questions?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br\/><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_dpCpac",
+        "item_JwG9hG",
+        "item_c3zFfM",
+        "item_M9imEA"
+      ],
       "settings": {
-        "heading": "Breadcrumbs"
-      }
-    },
-    "featured_collection_KrTR6V": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": true,
-        "products": [
-
-        ],
         "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
         "subheading": "",
-        "title": "Featured collection",
+        "title": "FAQ",
         "content": "",
-        "link_url": "",
-        "link_text": "View all",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
         "background": "",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
-    "featured_product_4UMUnK": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_wtcnVW": {
-          "type": "vendor",
-          "settings": {
-          }
-        },
-        "title_xcheWy": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "price_DMqzhR": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "description_EhTk6a": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "buy_buttons_tiUTNc": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor_wtcnVW",
-        "title_xcheWy",
-        "price_DMqzhR",
-        "description_EhTk6a",
-        "buy_buttons_tiUTNc"
-      ],
-      "settings": {
-        "full_width": false,
-        "product": "{{ metaobject.main_book.value }}",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "grid",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": false,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
+    "newsletter_jK33Dy": {
+	      "type": "newsletter",
+	      "settings": {
+	        "full_width": true,
+	        "show_icon": true,
+	        "title": "Sign up to our newsletter",
+	        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+	        "button_text": "Go",
+	        "subtext": "",
+	        "background": "#4cb6ac",
+	        "background_gradient": "",
+	        "text_color": "#ffffff",
+	        "button_background": "",
+	        "button_text_color": ""
+	      }	
+	    }
     },
-    "microdata_8YzdEG": {
-      "type": "microdata",
-      "settings": {
-        "debug": false,
-        "object_type": "character"
-      }
-    }
-  },
-  "order": [
-    "rich_text_3DUaDn",
-    "breadcrumbs_XHGrpm",
-    "featured_collection_KrTR6V",
-    "featured_product_4UMUnK",
-    "microdata_8YzdEG"
-  ]
+    "order": [
+    	"breadcrumbs_XHGrpm",
+    	"rich_text_3DUaDn",
+    	"featured_collection_KrTR6V",
+    	"featured_product_4UMUnK",
+    	"microdata_8YzdEG",
+    	"media_with_text_ciY3Ct",
+	    "video_7z6xfc",
+	    "faq_PWkrrR",
+	    "newsletter_jK33Dy"
+    ]
 }

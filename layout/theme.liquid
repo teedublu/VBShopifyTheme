@@ -11,7 +11,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
   <head>
+
 	{% render 'pandectes-rules' %}
+
 	
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
@@ -33,7 +35,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
     <link rel="preconnect" href="https://cdn.shopify.com">
     <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+    {%- comment -%} DONT THINK WE NEED THIS <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">{%- endcomment -%}
 
     {%- unless settings.heading_font.system? -%}
       <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
@@ -53,7 +55,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <script type="module" src="{{ 'sections.js' | asset_url }}"></script>
     <script type="module" src="{{ 'voxblock.js' | asset_url }}"></script>
 
+    <!--/ START content_for_header /-->
     {{ content_for_header }}
+    <!--/ END content_for_header /-->
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'voxblock.css' | asset_url | stylesheet_tag: preload: true -}}
