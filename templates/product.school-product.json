@@ -38,7 +38,7 @@
           "type": "collapsible_text",
           "settings": {
             "title": "What's included",
-            "content": "<ul><li>1 Voxblock Audiobook Player<\/li><li>1 Voxblock Protective Bumper<\/li><li>1 Voxblock USB Charging Cable<\/li><li>3 Audiobooks<\/li><\/ul><p>[[bp]]<\/p>",
+            "content": "<ul><li>Voxblock audiobook players with USB-C charging cables<\/li><li>Protective bumpers in a choice of colours (green \/ red\/ orange)<\/li><li>Audiobooks of your choice<\/li><li>Resource folder<\/li><li>Charging bank<\/li><li>Aux cable<\/li><\/ul><p>[[bp]]<\/p>",
             "page": "",
             "bundle_products": true
           }
@@ -60,11 +60,6 @@
             "size_chart_page": ""
           }
         },
-        "bundle_M4k64R": {
-          "type": "bundle",
-          "settings": {
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -78,7 +73,6 @@
         },
         "collapsible_text_kBDw7a": {
           "type": "collapsible_text",
-          "disabled": true,
           "settings": {
             "title": "Product Details",
             "content": "<p>{{ product.title }}<\/p>",
@@ -113,6 +107,20 @@
             "custom_icon": "shopify:\/\/shop_images\/icons-features-no-wifi-240x240.png",
             "icon_width": 40,
             "title": "No wifi needed",
+            "content": "",
+            "background": "#ffffff",
+            "text_color": "#565656"
+          }
+        },
+        "offer_zc9khn": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/icons-feature-long-battery-240x240.png",
+            "icon_width": 40,
+            "title": "Long battery life",
             "content": "",
             "background": "#ffffff",
             "text_color": "#565656"
@@ -160,22 +168,9 @@
             "text_color": "#565656"
           }
         },
-        "offer_zc9khn": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-coupon",
-            "custom_icon": "shopify:\/\/shop_images\/icons-feature-long-battery-240x240.png",
-            "icon_width": 40,
-            "title": "Long battery life",
-            "content": "",
-            "background": "#ffffff",
-            "text_color": "#565656"
-          }
-        },
         "offer_FPn4qP": {
           "type": "offer",
+          "disabled": true,
           "settings": {
             "text_alignment": "start",
             "icon_position": "aligned",
@@ -204,6 +199,7 @@
         },
         "offer_rgkYg6": {
           "type": "offer",
+          "disabled": true,
           "settings": {
             "text_alignment": "start",
             "icon_position": "aligned",
@@ -257,16 +253,15 @@
         "collapsible_text_cVRMDH",
         "separator_PiCLpj",
         "variant_picker",
-        "bundle_M4k64R",
         "buy_buttons",
         "collapsible_text_kBDw7a",
         "product_variations_JarL4E",
         "separator_6JxJFe",
         "offer_zbdXL4",
+        "offer_zc9khn",
         "offer_mq4Bzw",
         "offer_8kMgBF",
         "offer_PkAwDa",
-        "offer_zc9khn",
         "offer_FPn4qP",
         "offer_VHwbwd",
         "offer_rgkYg6",

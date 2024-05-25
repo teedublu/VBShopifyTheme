@@ -21,7 +21,8 @@
           "settings": {
             "text": "Voxblock Schools",
             "scale_with": false,
-            "heading_tag": "h0"
+            "heading_tag": "h0",
+            "heading_tag_html": "p"
           }
         }
       },
@@ -136,6 +137,7 @@
     },
     "image_with_text_overlay_4rVDwf": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
@@ -227,13 +229,42 @@
         "overlay_opacity": 0
       }
     },
+    "featured_collection_gagcw4": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "schools-packs",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": true,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "",
+        "content": "<p>If you're ready to order, you can either order <a href=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\" title=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\">online<\/a> and pay via credit card or if you prefer to order and pay via invoice, please place your order <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" title=\"Voxblock School Order Form\">here<\/a>. If you'd like to discuss your potential order, get in touch with our School Account Manager on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<\/p>",
+        "link_url": "https:\/\/voxblock.co.uk\/collections\/schools-packs",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "media_with_text_mXNahG": {
       "type": "media-with-text",
       "blocks": {
         "image_C8ezFX": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_5112.jpg",
+            "image": "shopify:\/\/shop_images\/school_flatlay.jpg",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-center-start text-start",
@@ -242,7 +273,7 @@
             "subheading": "",
             "title": "How to order",
             "content": "<p>We have a dedicated Schools Account Manager to assist with your order.<\/p><ol><li>If you're ready to order, you can either order online <a href=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\" title=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\">here<\/a> and pay via credit card or complete this <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" target=\"_blank\">form<\/a> if you prefer to pay via invoice. If you'd like to discuss your potential order, get in touch on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<br\/><br\/>An invoice will be sent where the payment is due in 30 days.<br\/><\/li><li>You should receive your order in 3-5 working days.<br\/><br\/><\/li><li>Get listening, the players are ready to use out of the box.<\/li><\/ol>",
-            "link_text": "Order  online here",
+            "link_text": "Order online here",
             "link_url": "https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform?usp=sf_link",
             "background": "#ffffff",
             "background_gradient": "",
@@ -257,37 +288,45 @@
       "block_order": [
         "image_C8ezFX"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "spacing": "small"
       }
     },
-    "featured_collection_gagcw4": {
-      "type": "featured-collection",
+    "media_with_text_i3BEzb": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_wCQj8x": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Haddington_School_Children.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Case study",
+            "content": "<p>Haddington Primary School has had Voxblock in their classrooms since December 2022.  They have recently expanded their audio library across the school.<\/p><p><strong>The teachers thoughts<\/strong><\/p><ul><li>Children showed development in their storytelling skills<\/li><li>Stories have supported classwork<\/li><li>Voxblock provided an additional play-based learning tool<\/li><li>Players have been useful for reluctant or struggling readers <\/li><\/ul><p>You can read the complete case study below and watch the STV news clip <a href=\"https:\/\/voxblock.co.uk\/pages\/in-the-classroom\" target=\"_blank\" title=\"Voxblock on STV\">here<\/a><\/p>",
+            "link_text": "Read more",
+            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_and_Haddington_Primary_School_Case_Study-compressed_1.pdf?v=1696316994",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_wCQj8x"
+      ],
       "settings": {
-        "collection": "schools-packs",
-        "hide_empty": false,
-        "products": [
-
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 4,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 2,
-        "subheading": "",
-        "title": "Schools Packs",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "multi_column_WyqeRx": {
@@ -363,41 +402,6 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
-    },
-    "media_with_text_i3BEzb": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_wCQj8x": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Haddington_School_Children.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Case study",
-            "content": "<p>Haddington Primary School has had Voxblock in their classrooms since December 2022.  They have recently expanded their audio library across the school.<\/p><p><strong>The teachers thoughts<\/strong><\/p><ul><li>Children showed development in their storytelling skills<\/li><li>Stories have supported classwork<\/li><li>Voxblock provided an additional play-based learning tool<\/li><li>Players have been useful for reluctant or struggling readers <\/li><\/ul><p>You can read the complete case study below and watch the STV news clip <a href=\"https:\/\/voxblock.co.uk\/pages\/in-the-classroom\" target=\"_blank\" title=\"Voxblock on STV\">here<\/a><\/p>",
-            "link_text": "Read more",
-            "link_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0531\/2872\/4635\/files\/Voxblock_and_Haddington_Primary_School_Case_Study-compressed_1.pdf?v=1696316994",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
-            "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "image_wCQj8x"
-      ],
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
       }
     },
     "rich_text_eRwnN4": {
@@ -483,7 +487,9 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 30,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
     "testimonials_GwV9jC": {
@@ -528,6 +534,7 @@
         "testimonial_bPCkqh",
         "testimonial_ttXJ8J"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_testimonials": true,
@@ -554,10 +561,10 @@
     "rich_text_aJ3KAb",
     "image_with_text_overlay_UkmWNX",
     "image_with_text_overlay_meAFQV",
-    "media_with_text_mXNahG",
     "featured_collection_gagcw4",
-    "multi_column_WyqeRx",
+    "media_with_text_mXNahG",
     "media_with_text_i3BEzb",
+    "multi_column_WyqeRx",
     "rich_text_eRwnN4",
     "rich_text_abXbaF",
     "video_9WpPY6",

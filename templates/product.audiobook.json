@@ -1,5 +1,11 @@
 {
   "sections": {
+    "breadcrumbs_UCTtKj": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
     "main": {
       "type": "audiobook-product",
       "blocks": {
@@ -35,29 +41,6 @@
           "settings": {
           }
         },
-        "iwish_wishlist_app_block_XYcE4E": {
-          "type": "shopify:\/\/apps\/iwish-wishlist\/blocks\/app-block\/7f9269b0-1b45-4d0c-8479-faf04f05d8ac",
-          "settings": {
-            "is_collection": false,
-            "is_text_only_col": true,
-            "iwish_add_txt": "Add To Wishlist",
-            "iwish_added_txt": "Added To Wishlist",
-            "outline_icon": "default_outline",
-            "filled_icon": "default_filled",
-            "iwish_add_icon_outline": "",
-            "iwish_added_icon_filled": "",
-            "iwish_theme_class": "",
-            "txt_font_size": 14,
-            "iwish_text_clr": "#000000",
-            "iwish_text_hover_clr": "#000000",
-            "variant_change_wrapper": "",
-            "variant_name_id_selector": "[name=id]",
-            "iwish_qvWrapper": "",
-            "iwish_qvBtn_click": "",
-            "iwish_custom_filters": "",
-            "filter_timeout": 1500
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -89,7 +72,6 @@
         "price",
         "audiobook_properties_cU6Htk",
         "author_narrator_yb9X3i",
-        "iwish_wishlist_app_block_XYcE4E",
         "buy_buttons",
         "description",
         "liquid_CnBU6U"
@@ -327,6 +309,7 @@
     }
   },
   "order": [
+    "breadcrumbs_UCTtKj",
     "main",
     "tabs_qeFVd8",
     "video_QYECT4",

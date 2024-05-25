@@ -146,7 +146,7 @@
       "type": "featured-collection",
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
-        "hide_empty": false,
+        "hide_empty": true,
         "products": [
 
         ],

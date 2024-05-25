@@ -25,14 +25,15 @@
     "secondary_button_text_color": "#ffffff",
     "product_card_text_color": "#2a555a",
     "product_primary_badge_background": "#803cee",
-    "heading_font": "poppins_n6",
+    "heading_font": "poppins_n5",
     "heading_font_size": "large",
     "heading_text_transform": "normal",
     "heading_letter_spacing": -1,
     "text_font": "poppins_n4",
     "text_font_size_desktop": 15,
-    "show_page_transition": true,
-    "heading_apparition": "split_fade",
+    "show_page_transition": false,
+    "zoom_image_on_hover": false,
+    "heading_apparition": "none",
     "show_vendor": false,
     "show_secondary_image": false,
     "show_quick_buy": false,
@@ -51,6 +52,7 @@
     "social_youtube": "https:\/\/www.youtube.com\/@voxblock",
     "social_tiktok": "https:\/\/www.tiktok.com\/@voxblock",
     "social_linkedin": "https:\/\/www.linkedin.com\/company\/voxblock\/",
+    "favicon": "shopify:\/\/shop_images\/Voxblock_Logo-02_copy.png",
     "checkout_logo_image": "shopify:\/\/shop_images\/Voxblock-Horizontal-Colour.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "small",
@@ -64,34 +66,23 @@
 
     ],
     "blocks": {
-      "10603822535667782919": {
-        "type": "shopify:\/\/apps\/iwish-wishlist\/blocks\/app-embed\/7f9269b0-1b45-4d0c-8479-faf04f05d8ac",
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": true,
         "settings": {
-          "hide_float_icon": false,
-          "is_show_vendor": true,
-          "heart_icon_color": "",
-          "iwish_count_clr": "#FFFFFF",
-          "iwish_float_custom_icon": "",
-          "float_heart_position": "middle",
-          "float_heart_alignment": "right",
-          "open_drawer_once": false,
-          "multi_category_wishlist": false,
-          "is_old_cur_convertor": false,
-          "drawer_is_add_all_to_cart": false,
-          "cart_icon_class": ".cart-count-bubble",
-          "iwish_img_col": "2",
-          "iwish_img_size": "50X50",
-          "is_multi_language": true,
-          "drawer_title": "My Wishlist",
-          "drawer_empty_description": "Explore more and shortlist some items",
-          "drawer_empty_msg": "Your wishlist is empty!",
-          "drawer_login_msg": "Wishlist is not saved permanently yet. Please <a class=\"link-text\" href=\"\/account\/login\">log in<\/a> or <a class=\"link-text\" href=\"\/account\/register\">Create Account<\/a> to save it.",
-          "add_to_cart_txt": "Add To Cart",
-          "add_all_to_cart_txt": "Add All To Cart",
-          "drawer_sold_out": "Sold Out",
-          "main_wishlist_text": "Main Wishlist",
-          "save_btn_text": "SAVE"
+        }
+      },
+      "12512365888938011351": {
+        "type": "shopify:\/\/apps\/analyzify-ga4-ads-tracking\/blocks\/app-embed\/69637cfd-dd6f-4511-aa97-7037cfb5515c",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "15351435345818755577": {
+        "type": "shopify:\/\/apps\/pandectes-gdpr-compliance\/blocks\/banner\/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
+        "disabled": true,
+        "settings": {
+          "programmatic_inject": false
         }
       }
     }
