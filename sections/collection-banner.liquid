@@ -1,5 +1,19 @@
 {%- assign show_image = false -%}
 
+{% assign first_book = collection.products | first %}
+{% assign author = first_book.metafields.book.authors.value | first %}
+{% assign narrator = first_book.metafields.book.narrators.value | first %}
+{% capture author_link %}
+  {{author.name | link_to: author.system.url, class: 'link' }}
+{% endcapture %}
+{% capture narrator_link %}
+  {{narrator.name | link_to: narrator.system.url, class: 'link' }}
+{% endcapture %}
+
+{% assign description = collection.description | default: 'A pge about Stephen Fry' %}
+{% assign description = description | replace: author.name, author_link  %}
+{% assign description = description | replace: narrator.name, narrator_link  %}
+
 {%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
   {%- assign show_image = true -%}
 {%- endif -%}
@@ -13,15 +27,17 @@
     {% render 'metaobject-header' metaobject: collection.metafields.related.publisher.value, use_title: 'Audiobooks from name' %}
   
     
-  {%- elsif section.settings.show_collection_title -%}
+  {%- elsif section.settings.show_collection_title or true-%}
     <h1 class="{{ section.settings.collection_title_size }}" {% if settings.heading_apparition != 'none' and show_image %}reveal-on-scroll="true"{% endif %}>
-      {%- render 'styled-text', content: collection.title, apparition_effect: true -%}
+      {%- render 'styled-text', content: collection.title, apparition_effect: false -%}
     </h1>
   {%- endif -%}
 
-  {%- if section.settings.show_collection_description and collection.description != blank -%}
+  {%- if section.settings.show_collection_description or true -%}
     <div class="prose">
-      {{- collection.description -}}
+
+      {{- description -}}
+      
     </div>
   {%- endif -%}
 {%- endcapture -%}

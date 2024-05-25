@@ -22,7 +22,7 @@
   "@context": "https://schema.org/",
   "@id":  {{ product.url | prepend: shop.url | json }},
   "@type": "Audiobook",
-  "bookFormat": "Audiobook",
+  "bookFormat": "AudiobookFormat",
   "isbn": "{{ product.first_available_variant.barcode }}",
   "inLanguage": "en",
   "potentialAction": "ReadAction",
