@@ -11,8 +11,11 @@
 {% endcapture %}
 
 {% assign description = collection.description | default: 'A pge about Stephen Fry' %}
-{% assign description = description | replace: author.name, author_link  %}
-{% assign description = description | replace: narrator.name, narrator_link  %}
+
+{%- if section.settings.link_objects -%}
+  {% assign description = description | replace: author.name, author_link  %}
+  {% assign description = description | replace: narrator.name, narrator_link  %}
+{%- endif -%}
 
 {%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
   {%- assign show_image = true -%}
@@ -27,13 +30,13 @@
     {% render 'metaobject-header' metaobject: collection.metafields.related.publisher.value, use_title: 'Audiobooks from name' %}
   
     
-  {%- elsif section.settings.show_collection_title or true-%}
+  {%- elsif section.settings.show_collection_title-%}
     <h1 class="{{ section.settings.collection_title_size }}" {% if settings.heading_apparition != 'none' and show_image %}reveal-on-scroll="true"{% endif %}>
       {%- render 'styled-text', content: collection.title, apparition_effect: false -%}
     </h1>
   {%- endif -%}
 
-  {%- if section.settings.show_collection_description or true -%}
+  {%- if section.settings.show_collection_description -%}
     <div class="prose">
 
       {{- description -}}
@@ -146,6 +149,13 @@
       "type": "checkbox",
       "id": "enable_parallax",
       "label": "Enable parallax effect",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "link_objects",
+      "label": "Link to metaobjects",
+      "info": "Try to add links to author/narrator names",
       "default": true
     },
     {
