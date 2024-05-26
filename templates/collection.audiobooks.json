@@ -6,6 +6,8 @@
         "image_yXy8xr": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/school_website_banner.png",
+            "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_7.png",
             "content_max_width": 680,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-start-end sm:text-end",
@@ -69,6 +71,8 @@
         "image_rcNxx7": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/audiobook-aotm-banner-3200x1200.png",
+            "mobile_image": "shopify:\/\/shop_images\/audiobook-aotm-banner-mobile-1600x1200.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-center-end text-end",
             "desktop_text_position": "sm:place-self-start-end sm:text-end",
@@ -135,6 +139,7 @@
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": true,
+        "link_objects": true,
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
