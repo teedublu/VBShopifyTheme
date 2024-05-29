@@ -5,9 +5,22 @@
       "settings": {
         "content_width": "80ch"
       }
+    },
+    "custom_liquid_KFCWV3": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "{% render 'customer-referrals' %}",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_liquid_KFCWV3"
   ]
 }
