@@ -1,26 +1,24 @@
 {
   "sections": {
     "main": {
-      "type": "main-page",
+      "type": "customers-referral",
       "settings": {
         "content_width": "80ch"
       }
     },
-    "custom_liquid_KFCWV3": {
-      "type": "custom-liquid",
+    "banner": {
+      "type": "account-banner",
       "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "liquid": "{% render 'customer-referrals' %}",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
       }
+    }
+    ,
+    "referal-promote": {
+      "type": "refer-a-friend"
     }
   },
   "order": [
+    "banner",
     "main",
-    "custom_liquid_KFCWV3"
+    "referal-promote"
   ]
 }

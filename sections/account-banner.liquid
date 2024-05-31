@@ -10,6 +10,16 @@
         --content-over-media-height: {% if section.settings.image_size == 'sm' %}300px{% elsif section.settings.image_size == 'md' %}400px{% elsif section.settings.image_size == 'lg' %}500px{% else %}auto{% endif %};
       }
     }
+    @media screen and (min-width: 700px) {
+      .account-nav__item--raf {
+        position: absolute;
+        left: 0;
+      }
+    }
+    .account-nav__item--raf {
+        position: absolute;
+        left: 0;
+      }
   </style>
 
   <div class="content-over-media">
@@ -33,14 +43,20 @@
         {%- assign addresses_tab_active = true -%}
       {%- endif -%}
 
-      <li class="account-nav__item">
-        RAFABC123
+      <li class="account-nav__item account-nav__item--raf">
+        Your Referral Code : {{ customer.metafields.referrals.code}}
       </li>
 
 
       <li class="account-nav__item" {% if orders_tab_active %}aria-current="page"{% endif %}>
         <a href="{{ routes.account_url }}" class="bold {% unless orders_tab_active %}link-faded{% endunless %}">
           {{- 'customer.account.orders' | t -}}
+        </a>
+      </li>
+
+      <li class="account-nav__item" {% if addresses_tab_active %}aria-current="page"{% endif %}>
+        <a href="/pages/customer-referrals" class="bold {% unless addresses_tab_active %}link-faded{% endunless %}">
+          Referrals
         </a>
       </li>
 
