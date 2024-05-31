@@ -10,16 +10,7 @@
         --content-over-media-height: {% if section.settings.image_size == 'sm' %}300px{% elsif section.settings.image_size == 'md' %}400px{% elsif section.settings.image_size == 'lg' %}500px{% else %}auto{% endif %};
       }
     }
-    @media screen and (min-width: 700px) {
-      .account-nav__item--raf {
-        position: absolute;
-        left: 0;
-      }
-    }
-    .account-nav__item--raf {
-        position: absolute;
-        left: 0;
-      }
+
   </style>
 
   <div class="content-over-media">
@@ -33,7 +24,23 @@
     </div>
   </div>
 {%- endif -%}
+<style type="text/css">
+  .account-nav__item--raf {
+    display: none;
+  }
+  @media screen and (min-width: 700px) {
+      .account-nav__item--raf {
+        display: block;
+        position: absolute;
+        left: 0;
+      }
+    }
 
+  .account-nav__item .raf-button {
+    padding: 0px 10px;
+  }
+</style>
+{%- assign raf_code = customer.metafields.referrals.code -%}
 <nav class="account-nav bg-secondary">
   <div class="relative container">
     <ul class="h-stack justify-center gap-8" role="list">
@@ -44,7 +51,9 @@
       {%- endif -%}
 
       <li class="account-nav__item account-nav__item--raf">
-        Your Referral Code : {{ customer.metafields.referrals.code}}
+        {%- if raf_code -%}
+          Your Referral Code :  <button type="button" class="button button--subdued raf-button" is="copy-button" data-text="{{ raf_code }}">{{ raf_code }} </button>
+        {%- endif -%}
       </li>
 
 
