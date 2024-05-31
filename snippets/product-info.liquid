@@ -23,7 +23,6 @@
             {%- render 'starterpack_bundle_details' with product -%}
           </div>
         
-
       {%- when 'title' -%}
         {%- if request.page_type == 'product' -%}
           <h1 class="product-info__title {{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>{{ product.title }}</h1>
@@ -104,8 +103,6 @@
           {{ audiobook.title.value | link_to: audiobook.system.url, class: 'link' }}
         {%- endcapture -%}
         {{ block.settings.text | replace: '[o]', object_link_text }}
-
-
 
       {%- when 'description' -%}
         {%- if block.settings.collapse_content -%}

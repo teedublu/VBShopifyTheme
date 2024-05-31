@@ -32,6 +32,32 @@ CSS
       }
     }
   {%- endfor -%}
+
+
+  .section .refer-a-friend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px; /* Adjust the gap as needed */
+  }
+
+  .section .refer-a-friend__media {
+    /* Styles for the media div */
+  }
+
+  .section .refer-a-friend__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Adjust the gap as needed */
+  }
+
+  .section .refer-a-friend__blocks .block {
+    /* Styles for each block div */
+  }
+  @media (max-width: 700px) {
+    .section .refer-a-friend {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 {%- comment -%}
@@ -41,53 +67,105 @@ LIQUID
 {%- endcomment -%}
 
 <div {% render 'section-properties' %}>
-  <refer-a-friend class="refer-a-friend {% if section.settings.spacing == 'none' %}{% if section.settings.full_width %}full-bleed{% else %}rounded{% endif %}{% endif %}">
+  <div class="refer-a-friend__container {% if section.settings.spacing == 'none' %}{% if section.settings.full_width %}full-bleed{% else %}rounded{% endif %}{% endif %}">
     
-    <div id="block-{{ section.id }}-{{ block.id }}" class="refer-a-friend__item" {{ block.shopify_attributes }}>
-      <div class="refer-a-friend__media {% unless section.settings.spacing == 'none' %}rounded{% endunless %}" reveal-on-scroll="true">WTF {{block.settings.image}}
-        {%- if block.settings.image != blank -%}
-          {%- assign width_ratio = 100.0 | divided_by: block.settings.media_width -%}
-          {%- assign maximum_image_width = settings.page_width | divided_by: width_ratio -%}
+    <div id="block-{{ section.id }}-{{ block.id }}" class="" {{ block.shopify_attributes }}>
+      <div class="refer-a-friend">
+        <div class="refer-a-friend__media">
+          {%- if section.settings.image != blank -%}
+            {%- assign width_ratio = 100.0 | divided_by: section.settings.media_width -%}
+            {%- assign maximum_image_width = settings.page_width | divided_by: width_ratio -%}
 
-          {%- capture sizes -%}(max-width: 999px) 100vw, min({{ maximum_image_width | ceil }}px, {{ block.settings.media_width }}vw){% endcapture %}
+            {%- capture sizes -%}(max-width: 999px) 100vw, min({{ maximum_image_width | ceil }}px, {{ section.settings.media_width }}vw){% endcapture %}
 
-          {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600' -}}
-        {%- else -%}
-          {{- 'image' | placeholder_svg_tag: 'aspect-short placeholder' -}}
-        {%- endif -%}
-      </div>
-
-      {%- capture content_class -%}refer-a-friend__content {% unless section.settings.spacing == 'none' %}rounded{% endunless %}{%- endcapture -%}
-      <div {% render 'surface', class: content_class, background: block.settings.background, background_gradient: block.settings.background_gradient, text_color: block.settings.text_color %}>
-        <div class="prose break-all {{ block.settings.text_position }}" reveal-on-scroll="true">
-          {%- if block.settings.custom_icon != blank -%}
-            {%- capture sizes -%}{{ block.settings.icon_width }}px{%- endcapture -%}
-            {%- capture widths -%}{{ block.settings.icon_width }}, {{ block.settings.icon_width | times: 2 | at_most: block.settings.custom_icon.width }}{%- endcapture -%}
-            {{- block.settings.custom_icon | image_url: width: block.settings.custom_icon.width | image_tag: loading: 'lazy', sizes: sizes, widths: widths, class: 'refer-a-friend__icon' -}}
-          {%- elsif block.settings.icon != 'none' -%}
-            {%- render 'icon' with block.settings.icon, width: block.settings.icon_width, height: block.settings.icon_width, class: 'refer-a-friend__icon' -%}
-          {%- endif -%}
-
-          {%- if block.settings.subheading != blank -%}
-            <p class="subheading">{{ block.settings.subheading | escape }}</p>
-          {%- endif -%}
-
-          {%- if block.settings.title != blank -%}
-            <p class="h2" style="color:{{- block.settings.heading_text_color -}}">
-              {%- render 'styled-text', content: block.settings.title, gradient: block.settings.text_gradient -%}
-            </p>
-          {%- endif -%}
-
-          {{- block.settings.content -}}
-
-          {%- if block.settings.link_text != blank -%}
-            {%- render 'button', href: block.settings.link_url, content: block.settings.link_text, size: 'xl', background: block.settings.button_background, text_color: block.settings.button_text_color -%}
+            {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600' -}}
+          {%- else -%}
+            {{- 'image' | placeholder_svg_tag: 'aspect-short placeholder' -}}
           {%- endif -%}
         </div>
+        <div class="refer-a-friend__blocks">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'separator' -%}
+                <hr class="product-info__separator" {{ block.shopify_attributes }}>
+
+              {%- when 'text' -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="product-info__text" {{ block.shopify_attributes }}>
+                    <div class="prose">
+                      {{- block.settings.text -}}
+                    </div>
+                  </div>
+                {%- endif -%}
+
+              {%- when 'collapsible_text' -%}
+                {%- if block.settings.title != blank and block.settings.content != blank or block.settings.page.content != blank -%}
+                  {%- capture bundle_products_content -%}
+                    {%- for product in product.metafields.bundles.products.value -%}
+                        {{ product.title | link_to: product.url }}{% unless forloop.last %} | {% endunless %}
+                      {%- endfor -%}
+                  {%- endcapture -%}
+                  {%- capture bundle_products_content_x -%}
+                    <ul>
+                      {%- for product in product.metafields.bundles.products.value -%}
+                        {%- assign blurb =  product.metafields.book.audiobook.value.short_blurb | default: product.metafields.book.audiobook.value.page_description | metafield_tag -%}
+                        <li>{{ product.title | link_to: product.url }} : {{ blurb | truncate: 300 }}</li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endcapture -%}
+                  {%- capture accordion_content -%}
+                    <div class="prose">
+                      {{ block.settings.page.content | default: block.settings.content }}
+                    </div>
+                  {%- endcapture -%}
+                  {%- if block.settings.bundle_products -%}
+                    {%- assign accordion_content = accordion_content | replace: '[[bp]]', bundle_products_content | replace: '[[bpx]]', bundle_products_content_x -%}
+                  {%- endif -%}
+                  {%- render 'accordion', title: block.settings.title, content: accordion_content, class: 'product-info__accordion', block: block -%}
+                {%- endif -%}
+
+              {%- when 'button' -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="product-info__button" {{ block.shopify_attributes }}>
+                    {%- render 'button', content: block.settings.text, href: block.settings.link, size: block.settings.size, style: block.settings.style, stretch: block.settings.stretch, background: block.settings.background, text_color: block.settings.text_color -%}
+                  </div>
+                {%- endif -%}
+
+              {%- when 'liquid' -%}
+                {%- if block.settings.liquid != blank -%}
+                  <div class="product-info__liquid" {{ block.shopify_attributes }}>
+                    {{ block.settings.liquid }}
+                  </div>
+                {%- endif -%}
+
+              {%- when 'share_buttons' -%}
+                <div class="product-form__share {% if block.settings.alignment == 'center' %}justify-self-center{% elsif block.settings.alignment == 'end' %}justify-self-end{% endif %}" {{ block.shopify_attributes }}>
+                  <div class="product-info__share-buttons">
+                    <div class="share-buttons">
+                      <span class="text-subdued">{{- 'general.social.share' | t -}}</span>
+
+                      <ul class="h-stack" role="list">
+                        <li><a href="{% render 'share-link', host: 'facebook', title: product.title, description: product.description, url: product.url %}" class="share-buttons__item" aria-label="{{ 'general.social.share_on' | t: social_media: 'Facebook' }}">{%- render 'icon' with 'facebook', width: 20, height: 20 -%}</a></li>
+                        <li><a href="{% render 'share-link', host: 'twitter', title: product.title, description: product.description, url: product.url %}" class="share-buttons__item" aria-label="{{ 'general.social.share_on' | t: social_media: 'Twitter' }}">{%- render 'icon' with 'twitter', width: 20, height: 20 -%}</a></li>
+                        <li><a href="{% render 'share-link', host: 'pinterest', title: product.title, description: product.description, url: product.url %}" class="share-buttons__item" aria-label="{{ 'general.social.share_on' | t: social_media: 'Pinterest' }}">{%- render 'icon' with 'pinterest', width: 20, height: 20 -%}</a></li>
+                        <li><a href="{% render 'share-link', host: 'email', title: product.title, description: product.description, url: product.url %}" class="share-buttons__item" aria-label="{{ 'general.social.share_email' | t }}">{%- render 'icon' with 'email' -%}</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <button is="share-button" class="product-info__native-share">
+                    {%- render 'icon' with 'share' -%} {{- 'general.social.share' | t -}}
+                  </button>
+                </div>
+
+              
+
+            {%- endcase -%}
+          {%- endfor -%}
       </div>
     </div>
     
-  </refer-a-friend>
+  </div>
 </div>
 
 {% schema %}
@@ -126,165 +204,167 @@ LIQUID
         }
       ],
       "default": "small"
+    },
+    {
+      "type": "image_picker",
+      "label": "Image",
+      "id": "image"
     }
   ],
   "blocks": [
     {
-      "type": "image",
-      "name": "Image",
+      "type": "@app"
+    },    
+    {
+      "type": "separator",
+      "name": "Separator"
+    },    
+    {
+      "type": "text",
+      "name": "Text",
       "settings": [
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image",
-          "info": "1500 x 1500px .jpg recommended"
-        },
-        {
-          "type": "range",
-          "id": "media_width",
-          "label": "Image width",
-          "min": 30,
-          "max": 60,
-          "step": 5,
-          "unit": "%",
-          "default": 50
-        },
-        {
-          "type": "image_picker",
-          "id": "custom_icon",
-          "label": "Custom icon",
-          "info": "240 x 240px .png recommended"
-        },
-        {
-          "type": "range",
-          "id": "icon_width",
-          "min": 24,
-          "max": 120,
-          "step": 4,
-          "unit": "px",
-          "label": "Icon width",
-          "default": 48
-        },
-        {
-          "type": "text",
-          "id": "subheading",
-          "label": "Subheading"
-        },
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Share some content to your customers about your products.</p>"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_text",
+      "name": "Collapsible text",
+      "settings": [
         {
           "type": "text",
           "id": "title",
-          "label": "Heading",
-          "default": "Heading"
+          "label": "Title",
+          "default": "Title"
         },
         {
           "type": "richtext",
           "id": "content",
           "label": "Content",
-          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          "default": "<p>Share some content to your customers about your products.</p>"
         },
         {
-          "type": "text",
-          "id": "link_text",
-          "label": "Button text"
+          "type": "page",
+          "id": "page",
+          "label": "Page",
+          "info": "Replaces inline content if specified."
+        }
+      ]
+    },
+    
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Create link to your contact page, external marketplace..."
         },
         {
           "type": "url",
-          "id": "link_url",
-          "label": "Button URL"
+          "id": "link",
+          "label": "Link"
         },
         {
-          "type": "header",
-          "content": "Colors",
-          "info": "Gradient replaces solid colors when set. Background is ignored when image is used."
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Button"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            {
+              "value": "sm",
+              "label": "Small"
+            },
+            {
+              "value": "base",
+              "label": "Medium"
+            },
+            {
+              "value": "lg",
+              "label": "Large"
+            },
+            {
+              "value": "xl",
+              "label": "X-Large"
+            }
+          ],
+          "default": "xl"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            {
+              "value": "outline",
+              "label": "Outline"
+            },
+            {
+              "value": "fill",
+              "label": "Fill"
+            }
+          ],
+          "default": "fill"
+        },
+        {
+          "type": "checkbox",
+          "id": "stretch",
+          "label": "Stretch",
+          "default": true
         },
         {
           "type": "color",
           "id": "background",
-          "label": "Background",
-          "default": "#000000"
-        },
-        {
-          "type": "color_background",
-          "id": "background_gradient",
-          "label": "Background gradient"
+          "label": "Background"
         },
         {
           "type": "color",
           "id": "text_color",
-          "label": "Text",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "heading_text_color",
-          "label": "Heading text",
-          "default": "#ff9d57"
-        },
-        {
-          "type": "color_background",
-          "id": "text_gradient",
-          "label": "Text gradient"
-        },
-        {
-          "type": "color",
-          "id": "button_background",
-          "label": "Button background"
-        },
-        {
-          "type": "color",
-          "id": "button_text_color",
-          "label": "Button text"
+          "label": "Text"
         }
       ]
     },
     {
-      "type": "video",
-      "name": "Video",
+      "type": "liquid",
+      "name": "Custom Liquid",
       "settings": [
         {
-          "type": "video",
-          "id": "video",
-          "label": "Video",
-          "info": "Replaces external video if both are set. For best visual results and avoid platform branding, we recommend uploading a MP4 file."
-        },
+          "type": "liquid",
+          "id": "liquid",
+          "label": "Liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    },
+    {
+      "type": "share_buttons",
+      "name": "Share buttons",
+      "settings": [
         {
-          "type": "video_url",
-          "id": "external_video_url",
-          "accept": ["vimeo", "youtube"],
-          "label": "Video URL",
-          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-        },
-        {
-          "type": "image_picker",
-          "id": "poster_image",
-          "label": "Poster image",
-          "info": "Only used when autoplay is disabled."
-        },
-        {
-          "type": "checkbox",
-          "id": "autoplay",
-          "label": "Autoplay",
-          "info": "Video are muted to allow autoplay.",
-          "default": true
-        },
-        {
-          "type": "range",
-          "id": "media_width",
-          "label": "Video width",
-          "min": 30,
-          "max": 70,
-          "step": 5,
-          "unit": "%",
-          "default": 50
+          "type": "paragraph",
+          "content": "To improve user experience and performance, native share buttons are used when supported."
         },
         {
           "type": "select",
-          "id": "media_position",
-          "label": "Video position",
+          "id": "alignment",
+          "label": "Alignment",
           "options": [
             {
               "value": "start",
               "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
             },
             {
               "value": "end",
@@ -292,141 +372,16 @@ LIQUID
             }
           ],
           "default": "start"
-        },
-        {
-          "type": "select",
-          "id": "text_position",
-          "label": "Content position",
-          "options": [
-            {
-              "value": "place-self-start text-start",
-              "label": "Top left"
-            },
-            {
-              "value": "place-self-start-center text-center",
-              "label": "Top center"
-            },
-            {
-              "value": "place-self-start-end text-end",
-              "label": "Top right"
-            },
-            {
-              "value": "place-self-center-start text-start",
-              "label": "Middle left"
-            },
-            {
-              "value": "place-self-center text-center",
-              "label": "Middle center"
-            },
-            {
-              "value": "place-self-center-end text-end",
-              "label": "Middle right"
-            },
-            {
-              "value": "place-self-end-start text-start",
-              "label": "Bottom left"
-            },
-            {
-              "value": "place-self-end-center text-center",
-              "label": "Bottom center"
-            },
-            {
-              "value": "place-self-end text-end",
-              "label": "Bottom right"
-            }
-          ],
-          "default": "place-self-center text-center"
-        },
-        {
-          "type": "image_picker",
-          "id": "custom_icon",
-          "label": "Custom icon",
-          "info": "240 x 240px .png recommended"
-        },
-        {
-          "type": "range",
-          "id": "icon_width",
-          "min": 24,
-          "max": 120,
-          "step": 4,
-          "unit": "px",
-          "label": "Icon width",
-          "default": 48
-        },
-        {
-          "type": "text",
-          "id": "subheading",
-          "label": "Subheading"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Heading",
-          "default": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "content",
-          "label": "Content",
-          "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-        },
-        {
-          "type": "text",
-          "id": "link_text",
-          "label": "Button text"
-        },
-        {
-          "type": "url",
-          "id": "link_url",
-          "label": "Button URL"
-        },
-        {
-          "type": "header",
-          "content": "Colors",
-          "info": "Gradient replaces solid colors when set. Background is ignored when image is used."
-        },
-        {
-          "type": "color",
-          "id": "background",
-          "label": "Background",
-          "default": "#000000"
-        },
-        {
-          "type": "color_background",
-          "id": "background_gradient",
-          "label": "Background gradient"
-        },
-        {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color_background",
-          "id": "text_gradient",
-          "label": "Text gradient"
-        },
-        {
-          "type": "color",
-          "id": "button_background",
-          "label": "Button background"
-        },
-        {
-          "type": "color",
-          "id": "button_text_color",
-          "label": "Button text"
         }
       ]
     }
+    
   ],
   "presets": [
     {
       "name": "Refer a friend",
       "blocks": [
-        {
-          "type": "image"
-        }
+        
       ]
     }
   ]
