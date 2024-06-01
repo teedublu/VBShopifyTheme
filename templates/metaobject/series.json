@@ -1,1 +1,156 @@
-{"sections":{"breadcrumbs_wf8k7Y":{"type":"breadcrumbs","settings":{"heading":"Breadcrumbs"}},"rich_text_4cfhpC":{"type":"rich-text","blocks":{"subheading_Je7ayn":{"type":"subheading","settings":{"text":"Audiobook Series"}},"heading_Vdmief":{"type":"heading","settings":{"text":"{{ metaobject.name.value }}","heading_tag":"h1","text_color":"","gradient":""}},"richtext_XHRTEr":{"type":"richtext","settings":{"content":"<p><\/p>{{ metaobject.description | metafield_tag }}"}}},"block_order":["subheading_Je7ayn","heading_Vdmief","richtext_XHRTEr"],"settings":{"full_width":true,"use_mo":true,"content_width":"small","text_position":"start","background":"","background_gradient":"","text_color":""}},"featured_collection_kMNaHU":{"type":"featured-collection","settings":{"collection":"{{ metaobject.collection.value }}","hide_empty":false,"products":[],"full_width":true,"stack_products":true,"show_progress_bar":false,"products_count":6,"products_per_row_mobile":"2","products_per_row_desktop":5,"subheading":"","title":"{{ section.settings.collection.title }}","content":"","link_url":"","link_text":"View all","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"microdata_V9KiM3":{"type":"microdata","settings":{"debug":true,"object_type":"none"}},"video_Yka7Wm":{"type":"video","blocks":{"play_f9hiqJ":{"type":"play","settings":{}},"subheading_YJHa3W":{"type":"subheading","settings":{"text":"How to listen to...."}},"heading_pd3NCr":{"type":"heading","settings":{"text":"{{ metaobject.page_title.value }}","heading_tag":"h1"}},"richtext_EPAhBU":{"type":"richtext","settings":{"content":"<p>Start listening with Voxblock now.<\/p>"}},"button_Ybj4Ph":{"type":"button","settings":{"style":"outline","size":"lg","text":"Find out more","url":"shopify:\/\/products\/voxblock-player","background":"","text_color":"#ffffff"}}},"block_order":["play_f9hiqJ","subheading_YJHa3W","heading_pd3NCr","richtext_EPAhBU","button_Ybj4Ph"],"settings":{"full_width":true,"allow_transparent_header":false,"autoplay":true,"video_size":"auto","external_video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}}},"order":["breadcrumbs_wf8k7Y","rich_text_4cfhpC","featured_collection_kMNaHU","microdata_V9KiM3","video_Yka7Wm"]}
+{
+  "sections": {
+    "breadcrumbs_wf8k7Y": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_4cfhpC": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_Je7ayn": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Series"
+          }
+        },
+        "heading_Vdmief": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_XHRTEr": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><\/p>{{ metaobject.description | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Je7ayn",
+        "heading_Vdmief",
+        "richtext_XHRTEr"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_collection_kMNaHU": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "{{ metaobject.collection.value }}",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "{{ section.settings.collection.title }}",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "microdata_V9KiM3": {
+      "type": "microdata",
+      "settings": {
+        "debug": true,
+        "object_type": "none"
+      }
+    },
+    "video_Yka7Wm": {
+      "type": "video",
+      "blocks": {
+        "play_f9hiqJ": {
+          "type": "play",
+          "settings": {
+          }
+        },
+        "subheading_YJHa3W": {
+          "type": "subheading",
+          "settings": {
+            "text": "How to listen to...."
+          }
+        },
+        "heading_pd3NCr": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_EPAhBU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Start listening with Voxblock now.<\/p>"
+          }
+        },
+        "button_Ybj4Ph": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "lg",
+            "text": "Find out more",
+            "url": "shopify:\/\/products\/voxblock-player",
+            "background": "",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "play_f9hiqJ",
+        "subheading_YJHa3W",
+        "heading_pd3NCr",
+        "richtext_EPAhBU",
+        "button_Ybj4Ph"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "youtube_id": "",
+        "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_wf8k7Y",
+    "rich_text_4cfhpC",
+    "featured_collection_kMNaHU",
+    "microdata_V9KiM3",
+    "video_Yka7Wm"
+  ]
+}

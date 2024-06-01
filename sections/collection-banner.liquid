@@ -1,5 +1,5 @@
 {%- assign show_image = false -%}
-
+{% assign default_description = 'Voxblock' %}
 {% assign first_book = collection.products | first %}
 {% assign author = first_book.metafields.book.authors.value | first %}
 {% assign narrator = first_book.metafields.book.narrators.value | first %}
@@ -9,8 +9,8 @@
 {% capture narrator_link %}
   {{narrator.name | link_to: narrator.system.url, class: 'link' }}
 {% endcapture %}
-
-{% assign description = collection.description | default: 'A pge about Stephen Fry' %}
+{% assign default_description = 'Welcome to our exclusive book collection on Voxblock. Explore a diverse range of captivating stories and immerse yourself in exciting narratives. Whether you are a longtime reader or just discovering new titles, you will find something special here.' %}
+{% assign description = collection.description | default: default_description %}
 
 {%- if section.settings.link_objects -%}
   {% assign description = description | replace: author.name, author_link  %}
