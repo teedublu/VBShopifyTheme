@@ -82,7 +82,9 @@
 
     "priceValidUntil": "{{ start | plus: seconds | date: "%Y-%m-%d" }}",
     "sku": "{{ product.first_available_variant.sku }}",
-    "url": "{{ shop.url }}{{ product.url }}"
+    "url": "{{ shop.url }}{{ product.url }}",
+    {%- render 'microdata-shippingdetails', product: product -%},
+    {%- render 'microdata-returnpolicy', product: product -%}
   },
   "height": "110mm",
   "width": "70mm",
