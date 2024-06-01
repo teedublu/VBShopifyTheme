@@ -261,19 +261,27 @@
             "title": "What are the blocks made of?",
             "content": "<p>Our audiobook blocks are made of recycled card.<\/p>"
           }
+        },
+        "item_CKpbzy": {
+          "type": "item",
+          "settings": {
+            "title": "How long is \"{{ product.title }}\"",
+            "content": "<p>{{ product.title }} audiobook is {{ product.metafields.book.duration.value }} hours long.<\/p>"
+          }
         }
       },
       "block_order": [
         "item_ybUnkH",
         "item_zBxp3t",
         "item_J79MfC",
-        "item_He9eGe"
+        "item_He9eGe",
+        "item_CKpbzy"
       ],
       "settings": {
         "full_width": true,
-        "subheading": "{{ product.title }} FAQ",
-        "title": "Common Questions",
-        "content": "<p>Voxblock is new physical format. Here are some quick answers to common questions about this new way of listening.<\/p>",
+        "subheading": "Common questions about {{ product.title }}",
+        "title": "FAQ",
+        "content": "<p>Here are some quick answers to common questions asked about listening to  {{ product.title }} on Voxblock. <\/p>",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
