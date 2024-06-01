@@ -34,55 +34,9 @@
         "priceCurrency" : {{ cart.currency.iso_code | json }},
         "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_price_valid_until | date: '%Y-%m-%d' }}",
         "url" : {{ shop.url | append: variant.url | json }},
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "GBP"
-          },
-          "shippingDestination": [
-            {
-              "@type": "DefinedRegion",
-              "addressCountry": "UK"
-            }
-          ],
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "businessDays": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "https://schema.org/Monday",
-                    "https://schema.org/Tuesday",
-                    "https://schema.org/Wednesday",
-                    "https://schema.org/Thursday",
-                    "https://schema.org/Friday"
-                ]
-            },
-            "cutoffTime": "12:00:15Z",
-            "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "d"
-            },
-            "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 2,
-                "unitCode": "d"
-            }
-          }
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "UK",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 30,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
-          "refundType": "FullRefund"
-        }
+        {%- render 'microdata-shippingdetails', product: product -%},
+        {%- render 'microdata-returnpolicy', product: product -%}
+
       }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
 
@@ -96,7 +50,6 @@
   "description": {{ product.description | strip_html | json }},
   "category": "",
   "url": "{{ shop.url }}{{ product.url }}",
-  "isbn": {{ current_variant.barcode | json }},
   "gtin13": {{ current_variant.barcode | json }},
   
   "image": {

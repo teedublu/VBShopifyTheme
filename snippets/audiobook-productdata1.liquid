@@ -16,7 +16,8 @@
 {%- assign characters = metafields.characters.value -%}
 {%- assign title = audiobook_metaobject.product.value.title -%}
 {%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle] -%}
-{%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
+{%- assign overview_metaobject = shop.metaobjects.overview[handle] -%}
+{%- assign review_metaobject = shop.metaobjects.review[handle] -%}
 
 <style>
     .audiobooks-full-details {
@@ -269,15 +270,28 @@
                     </div>
                 {% endif %}
 
-            {% when 'synopsis' %}
-                {% if synopsis_metaobject %}
+            {% when 'overview' %}
+                {% if overview_metaobject %}
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {%- capture link_text -%}
-                                What is {{ synopsis_metaobject.title }} about?
+                                What is {{ overview_metaobject.name }} about?
                             {%- endcapture -%}
-                            {{ link_text | link_to: synopsis_metaobject.system.url, class: 'synopsis link'}}
+                            {{ link_text | link_to: overview_metaobject.system.url, class: 'overview link'}}
+                        </div>
+                    </div>
+                {% endif %}
+
+            {% when 'review' %}
+                {% if review_metaobject %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {%- capture link_text -%}
+                                Read {{ review_metaobject.name }} Review.
+                            {%- endcapture -%}
+                            {{ link_text | link_to: review_metaobject.system.url, class: 'review link'}}
                         </div>
                     </div>
                 {% endif %}

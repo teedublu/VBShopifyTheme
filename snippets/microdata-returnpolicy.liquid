@@ -1,0 +1,24 @@
+{%- case product.type -%}
+    
+    {%- when 'Starter Pack' -%}
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "UK",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 100,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "returnLabelSource": "ReturnLabelDownloadAndPrint",
+            "refundType": "FullRefund"
+        }
+    {%- else -%}
+        "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "UK",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+            "refundType": "FullRefund"
+        }
+{%- endcase -%}
