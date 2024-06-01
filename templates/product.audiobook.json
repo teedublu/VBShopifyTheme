@@ -237,14 +237,14 @@
         "item_ybUnkH": {
           "type": "item",
           "settings": {
-            "title": "How do I listen to Voxblock audiobooks?",
-            "content": "<p>To listen to our stories, you'll need to purchase a <a href=\"https:\/\/voxblock.co.uk\/pages\/player\" title=\"The screen free audiobook player\">Voxblock audiobook player<\/a>.<\/p>"
+            "title": "How do I listen to \"{{ product.title }}\"?",
+            "content": "<p>To listen to {{ product.title }} or any Voxblock stories, you'll need to first purchase a <a href=\"https:\/\/voxblock.co.uk\/pages\/player\" title=\"The screen free audiobook player\">Voxblock audiobook player<\/a>.<\/p>"
           }
         },
         "item_zBxp3t": {
           "type": "item",
           "settings": {
-            "title": "Will I lose my place in the story if I remove a block?",
+            "title": "Will I lose my place in the story if I remove the block?",
             "content": "<p>No, the player will return to the same point next time you listen to that story.<\/p>"
           }
         },
@@ -271,9 +271,9 @@
       ],
       "settings": {
         "full_width": true,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "",
+        "subheading": "{{ product.title }} FAQ",
+        "title": "Common Questions",
+        "content": "<p>Voxblock is new physical format. Here are some quick answers to common questions about this new way of listening.<\/p>",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
