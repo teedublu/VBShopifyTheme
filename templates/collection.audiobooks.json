@@ -6,6 +6,8 @@
         "image_yXy8xr": {
           "type": "image",
           "settings": {
+            "image": "shopify:\/\/shop_images\/voxblock_website_banner_1.png",
+            "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_8.png",
             "content_max_width": 680,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-start-end sm:text-end",
@@ -135,6 +137,7 @@
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": true,
+        "link_objects": true,
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
