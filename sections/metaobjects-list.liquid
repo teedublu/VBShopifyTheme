@@ -187,6 +187,13 @@
                         {% endfor %}
                       </div>
                     {% endif %}
+                  {% when 'narrators' %}
+                    {% assign class = object_type | append: ' link' %}
+                    <div class="object-title">
+                    {{ 'titles read by' | link_to: object.collection.value.url, class: 'link' }} {{ object.name | link_to: object.system.url, class: class}}
+                    
+                    </div>
+
                   {% else %}
                     {% assign class = object_type | append: ' link' %}
                     <div class="object-title">
