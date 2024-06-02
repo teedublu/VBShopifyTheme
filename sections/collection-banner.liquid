@@ -10,11 +10,15 @@
   {{narrator.name | link_to: narrator.system.url, class: 'link' }}
 {% endcapture %}
 
-{% assign description = collection.description | default: 'A pge about Stephen Fry' %}
+{% assign description = collection.description | default: 'A page about your favourite audiobook narrator.' %}
 
 {%- if section.settings.link_objects -%}
-  {% assign description = description | replace: author.name, author_link  %}
-  {% assign description = description | replace: narrator.name, narrator_link  %}
+  {%- if author -%}
+    {% assign description = description | replace: author.name, author_link  %}
+  {%- endif -%}
+  {%- if narrator -%}
+    {% assign description = description | replace: narrator.name, narrator_link  %}
+  {%- endif -%}
 {%- endif -%}
 
 {%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
