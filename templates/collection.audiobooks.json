@@ -47,28 +47,6 @@
             "background_gradient": ""
           }
         },
-        "image_Hb8RnT": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Roald_Dahl_Banner.png",
-            "mobile_image": "shopify:\/\/shop_images\/Roald_Dahl_71f203e4-c965-4341-bf8d-653d415581bd.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "Roald Dahl",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify:\/\/collections\/audiobooks-by-roald-dahl",
-            "text_color": "#ff9e57",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
         "image_rcNxx7": {
           "type": "image",
           "settings": {
@@ -83,6 +61,28 @@
             "button_text": "Buy here",
             "button_link": "shopify:\/\/products\/baby-aliens-got-my-teacher",
             "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_Hb8RnT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Roald_Dahl_Banner.png",
+            "mobile_image": "shopify:\/\/shop_images\/Roald_Dahl_71f203e4-c965-4341-bf8d-653d415581bd.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-end-start text-start",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "NEW ARRIVAL",
+            "title": "Roald Dahl",
+            "heading_tag": "h1",
+            "button_text": "Buy here",
+            "button_link": "shopify:\/\/collections\/audiobooks-by-roald-dahl",
+            "text_color": "#ff9e57",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -117,8 +117,8 @@
       "block_order": [
         "image_yXy8xr",
         "image_pERNrc",
-        "image_Hb8RnT",
         "image_rcNxx7",
+        "image_Hb8RnT",
         "image_iQ9TMA"
       ],
       "settings": {
@@ -197,6 +197,14 @@
             "link_text": "10-teens",
             "url_params": "filter.p.m.book.age_groups=10+to+teens"
           }
+        },
+        "item_RLAWAH": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/audiobooks-collection-bundles-1200x1400.png",
+            "link_text": "Bundles",
+            "url_params": "https:\/\/voxblock.co.uk\/collections\/audiobooks?sort_by=title-ascending&filter.p.m.books.categories=Bundles"
+          }
         }
       },
       "block_order": [
@@ -204,7 +212,8 @@
         "item_Y4GnXQ",
         "item_PHyCVd",
         "item_qpk6Bx",
-        "item_KfF6ya"
+        "item_KfF6ya",
+        "item_RLAWAH"
       ],
       "settings": {
         "full_width": false,
