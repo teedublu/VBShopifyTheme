@@ -91,7 +91,6 @@ LIQUID
               {% when 'title' %}
                 {% assign title_tag = block.settings.title_tag %}
                 <{{ title_tag }}>{{ block.settings.title_text }}</{{ title_tag }}>
-              {% endif %}
               
               {%- when 'text' -%}
                 {%- if block.settings.text != blank -%}
