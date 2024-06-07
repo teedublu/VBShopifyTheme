@@ -65,7 +65,7 @@ CSS
 LIQUID
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
-
+{{section.settings}}
 <div {% render 'section-properties' %}>
   <div class="refer-a-friend__container {% if section.settings.spacing == 'none' %}{% if section.settings.full_width %}full-bleed{% else %}rounded{% endif %}{% endif %}">
     
