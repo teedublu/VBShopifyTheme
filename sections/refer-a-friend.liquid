@@ -65,7 +65,6 @@ CSS
 LIQUID
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
-{{section.settings}}
 <div {% render 'section-properties' %}>
   <div class="refer-a-friend__container {% if section.settings.spacing == 'none' %}{% if section.settings.full_width %}full-bleed{% else %}rounded{% endif %}{% endif %}">
     
@@ -89,6 +88,11 @@ LIQUID
               {%- when 'separator' -%}
                 <hr class="product-info__separator" {{ block.shopify_attributes }}>
 
+              {% when 'title' %}
+                {% assign title_tag = block.settings.title_tag %}
+                <{{ title_tag }}>{{ block.settings.title_text }}</{{ title_tag }}>
+              {% endif %}
+              
               {%- when 'text' -%}
                 {%- if block.settings.text != blank -%}
                   <div class="product-info__text" {{ block.shopify_attributes }}>
@@ -218,6 +222,38 @@ LIQUID
     {
       "type": "separator",
       "name": "Separator"
+    },
+    {
+      "type": "text",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title_text",
+          "label": "Tite Text",
+          "default": "Refer a Friend"
+        },
+        {
+          "type": "select",
+          "id": "title_tag",
+          "label": "Title Tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            }
+          ],
+          "default": "h1"
+        }
+      ]
     },    
     {
       "type": "text",
