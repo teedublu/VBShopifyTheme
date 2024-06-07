@@ -1,19 +1,57 @@
 {
   "sections": {
-    "main": {
-      "type": "customers-referral",
-      "settings": {
-        "content_width": "80ch"
-      }
-    },
     "banner": {
       "type": "account-banner",
       "settings": {
+        "image_size": "md",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
-    }
-    ,
+    },
+    "main": {
+      "type": "customers-referral",
+      "settings": {
+      }
+    },
     "referal-promote": {
-      "type": "refer-a-friend"
+      "type": "refer-a-friend",
+      "blocks": {
+        "text_PinpG7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share some content to your customers about your products.<\/p>"
+          }
+        },
+        "separator_6CbGhi": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "share_buttons_8jyymA": {
+          "type": "share_buttons",
+          "settings": {
+            "alignment": "start"
+          }
+        },
+        "text_TMjgqw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share some content to your customers about your products.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_PinpG7",
+        "separator_6CbGhi",
+        "share_buttons_8jyymA",
+        "text_TMjgqw"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "none",
+        "image": "shopify:\/\/shop_images\/audiobooks-ad-raf-mob-1000x1000.jpg"
+      }
     }
   },
   "order": [
