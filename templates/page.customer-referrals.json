@@ -17,6 +17,13 @@
     "referal-promote": {
       "type": "refer-a-friend",
       "blocks": {
+        "title_kdnRd9": {
+          "type": "title",
+          "settings": {
+            "title_text": "Refer a Friend",
+            "title_tag": "h1"
+          }
+        },
         "text_PinpG7": {
           "type": "text",
           "settings": {
@@ -54,6 +61,7 @@
         }
       },
       "block_order": [
+        "title_kdnRd9",
         "text_PinpG7",
         "separator_6CbGhi",
         "share_buttons_8jyymA",
