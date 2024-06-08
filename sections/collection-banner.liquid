@@ -10,7 +10,7 @@
   {{narrator.name | link_to: narrator.system.url, class: 'link' }}
 {% endcapture %}
 
-{% assign description = collection.description | default: 'A page about your favourite audiobook narrator.' %}
+{% assign description = collection.description | default: 'A page about your favourite audiobooks.' %}
 
 {%- if section.settings.link_objects -%}
   {%- if author -%}

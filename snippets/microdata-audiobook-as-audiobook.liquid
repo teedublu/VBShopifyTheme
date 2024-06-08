@@ -73,6 +73,25 @@
       {%- endfor -%}
     ],
   {%- endif -%}
+  {%- if audiobook.thema_codes.value -%}
+    "identifier": [
+      {% for bisac_code in audiobook.bisac_codes.value %}
+      {
+        "@type": "PropertyValue",
+        "propertyID": "BISAC",
+        "value": "{{ bisac_code }}"
+      }{% if forloop.last == false %},{% endif %}
+      {% endfor %},
+      {% for thema_code in audiobook.thema_codes.value %}
+      {
+        "@type": "PropertyValue",
+        "propertyID": "Thema",
+        "value": "{{ thema_code }}"
+      }{% if forloop.last == false %},{% endif %}
+      {% endfor %}
+    ],
+  {%- endif -%}
+
   "offers": {
     "@type": "Offer",
     "availability": "http://schema.org/InStock",
