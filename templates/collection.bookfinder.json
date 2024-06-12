@@ -1,138 +1,5 @@
 {
   "sections": {
-    "slideshow_Q4e7Wj": {
-      "type": "slideshow",
-      "blocks": {
-        "image_yXy8xr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/voxblock_website_banner_1.png",
-            "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_8.png",
-            "content_max_width": 680,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "From fairytales to Sherlock Holmes",
-            "title": "Hundreds of audiobooks that grow with you",
-            "heading_tag": "h1",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_pERNrc": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/audiobooks-banner-signup-desktop-2000x612.png",
-            "mobile_image": "shopify:\/\/shop_images\/Audiobooks_banner_signup_mob_850x880_5061b76a-6862-4e74-849f-643a74c9513e.png",
-            "content_max_width": 820,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "NEWSLETTER",
-            "title": "Find out about new releases",
-            "heading_tag": "h2",
-            "button_text": "Sign up here",
-            "button_link": "shopify:\/\/pages\/newsletter",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_Hb8RnT": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Roald_Dahl_Banner.png",
-            "mobile_image": "shopify:\/\/shop_images\/Roald_Dahl_71f203e4-c965-4341-bf8d-653d415581bd.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "Roald Dahl",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify:\/\/collections\/audiobooks-by-roald-dahl",
-            "text_color": "#ff9e57",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_rcNxx7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/audiobook-aotm-banner-3200x1200.png",
-            "mobile_image": "shopify:\/\/shop_images\/audiobook-aotm-banner-mobile-1600x1200.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center-end text-end",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "AUDIOBOOK OF THE MONTH",
-            "title": "Get 10% off with code ALIENS10",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify:\/\/products\/baby-aliens-got-my-teacher",
-            "text_color": "#565656",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_iQ9TMA": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/The_Gruffalo_Banner_af48d40f-6343-49e1-b83c-004ce3a14bea.png",
-            "mobile_image": "shopify:\/\/shop_images\/The_Gruffalo_a3f4bc3c-7100-409c-8ccd-21ae0b8f2886.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "Julia Donaldson",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify:\/\/collections\/audiobooks-by-julia-donaldson",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_yXy8xr",
-        "image_pERNrc",
-        "image_Hb8RnT",
-        "image_rcNxx7",
-        "image_iQ9TMA"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "image_size": "sm",
-        "controls_type": "numbers",
-        "transition_type": "fade",
-        "autoplay": false,
-        "cycle_speed": 4,
-        "background": "#f2f2f2",
-        "background_gradient": ""
-      }
-    },
     "banner": {
       "type": "collection-banner",
       "disabled": true,
@@ -161,7 +28,6 @@
         "item_P4cM4p": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/audiobooks-collection-best-1200x1400.jpg",
             "link_text": "Best Sellers",
             "url_params": "filter.p.m.custom.badges=Bestseller"
           }
@@ -306,7 +172,6 @@
     }
   },
   "order": [
-    "slideshow_Q4e7Wj",
     "banner",
     "collection_link_blocks_HpwJbj",
     "main",
