@@ -33,11 +33,7 @@
         {%- assign addresses_tab_active = true -%}
       {%- endif -%}
 
-      <li class="account-nav__item">
-        RAFABC123
-      </li>
-
-
+      
       <li class="account-nav__item" {% if orders_tab_active %}aria-current="page"{% endif %}>
         <a href="{{ routes.account_url }}" class="bold {% unless orders_tab_active %}link-faded{% endunless %}">
           {{- 'customer.account.orders' | t -}}

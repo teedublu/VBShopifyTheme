@@ -92,7 +92,7 @@ Can use Audiobook metaobject saved on the product
             <td>
                {% for cat in metafields.categories.value %}
                   {%- assign urlencoded = cat | url_encode | lower -%}
-                  {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.books.categories=' | append: urlencoded -%}
+                  {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.book.categories=' | append: urlencoded -%}
                   {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
                {% endfor %}
             </td>

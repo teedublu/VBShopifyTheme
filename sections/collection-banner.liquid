@@ -9,12 +9,16 @@
 {% capture narrator_link %}
   {{narrator.name | link_to: narrator.system.url, class: 'link' }}
 {% endcapture %}
-{% assign default_description = 'Welcome to our exclusive book collection on Voxblock. Explore a diverse range of captivating stories and immerse yourself in exciting narratives. Whether you are a longtime reader or just discovering new titles, you will find something special here.' %}
-{% assign description = collection.description | default: default_description %}
+
+{% assign description = collection.description | default: 'A page about your favourite audiobooks.' %}
 
 {%- if section.settings.link_objects -%}
-  {% assign description = description | replace: author.name, author_link  %}
-  {% assign description = description | replace: narrator.name, narrator_link  %}
+  {%- if author -%}
+    {% assign description = description | replace: author.name, author_link  %}
+  {%- endif -%}
+  {%- if narrator -%}
+    {% assign description = description | replace: narrator.name, narrator_link  %}
+  {%- endif -%}
 {%- endif -%}
 
 {%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
