@@ -39,7 +39,7 @@ Supported variables
       {%- when 'categories' -%}{%-comment -%}WATCH OUT FOR bookS {%-endcomment -%}
         {%- for cat in product.metafields.book.categories.value -%}
           {% assign urlencodedcat = cat | url_encode %}
-          {% assign param = '?filter.p.m.books.categories=' | append: urlencodedcat %}
+          {% assign param = '?filter.p.m.book.categories=' | append: urlencodedcat %}
           {% assign link = collections.audiobooks.url | append: param %}
           {{ cat | link_to: link, class: 'badge badge--primary clickable category'}}
         {%- endfor -%}

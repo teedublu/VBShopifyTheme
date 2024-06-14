@@ -4,11 +4,21 @@
 {%- assign audiobook = shop.metaobjects[handle].value -%}
 {%- assign author = product.metafields.book.authors.value | first -%}    
 {%- assign narrator = product.metafields.book.narrators.value | first -%} 
-{%- assign transcript = audiogramme.transcript | metafield_tag -%}
 {%- assign desktop = audiogramme.desktop.value.sources | where: 'format','mp4' | first -%}
 {%- assign mobile = audiogramme.mobile.value.sources | where: 'format','mp4' | first  -%}
+{%- assign audiogramme = audiobook.audiogramme.value -%}
+{%- assign captions = audiogramme.captions.value -%}
 
-<script type="application/ld+json">
+{%- if captions -%}
+  {%- capture transcript_text -%}
+      {%- for transcript in captions.results -%}
+        {%- for alt in transcript.alternatives -%}
+          {{alt.transcript}}
+        {%- endfor -%}
+      {%- endfor -%}
+  {%- endcapture -%}
+{%- endif -%}
+
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -35,26 +45,25 @@
     "@type": "MediaObject",
     "name": "Media for {{ product.title }}",
     "description": "Media resources related to the audiobook",
-    "contentUrl": [  
-      "{{ desktop.url }}"  // Desktop video
-    ],
-    "alternativeHeadlines": [  
-      "{{ mobile.url }}"  // mobile video
-    ],
-    "thumbnail": {
-      "@type": "ImageObject",
-      "url": "{{ audiogramme.thumbnail.value | asset_url | prepend:'https:' }}"
-    },
+    {% if desktop.url or mobile.url %}
+      "contentUrl": [
+          "{{ desktop.url }}", "{{ mobile.url }}"
+      ],
+    {% endif %}
+
+    {% if audiogramme.thumbnail.value %}
+      "thumbnail": {
+        "@type": "ImageObject",
+        "url": "{{ audiogramme.thumbnail.value | asset_url | prepend:'https:' }}"
+      },
+    {% endif %}
     "representativeSample": {
       "@type": "AudioObject",
-      "name": "{{ product.title }} sample",
+      "name": "{{ product.title }} Audiobook Sample",
       "contentUrl": "{{ product.metafields.book.preview.value.url | prepend:'https:' }}",
       "duration": "PT0H05M",
-      {%- if transcript -%}
-        "transcript": {
-          "@type": "Document",
-          "content": {{ audiogramme.transcript }}
-        },
+      {%- if transcript_text -%}
+        "transcript": {{ transcript_text | json }},
       {%- endif -%}
       {%- if audiogramme.gif -%}
         "video": {
@@ -71,6 +80,4 @@
     }    
   }
 }
-
-</script>
 
