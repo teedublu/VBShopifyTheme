@@ -191,7 +191,10 @@
                   {% else %}
                     {% assign class = object_type | append: ' link' %}
                     <div class="object-title">
-                    {{ object.name | link_to: object.system.url, class: class}} ({{ 'view collection' | link_to: object.collection.value.url, class: 'link' }} )
+                    {{ object.name | link_to: object.system.url, class: class}} 
+                    {%- if object.collection.value -%}
+                      ({{ 'view collection' | link_to: object.collection.value.url, class: 'link' }} )
+                    {%- endif -%}
                     </div>
                     {% if object.description %}
                       <div class="object-description">
