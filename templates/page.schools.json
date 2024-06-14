@@ -19,9 +19,9 @@
         "heading_GUwPTt": {
           "type": "heading",
           "settings": {
-            "text": "Voxblock Schools",
+            "text": "Audiobook Players for Schools",
             "scale_with": false,
-            "heading_tag": "h0",
+            "heading_tag": "h1",
             "heading_tag_html": "p"
           }
         }
@@ -44,13 +44,79 @@
         "overlay_opacity": 20
       }
     },
+    "featured_collection_mn6DLG": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "school-mini-pack",
+          "school-small-pack",
+          "school-medium-pack",
+          "school-large-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "School Packages",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#ff9e57",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "rich_text_aJ3KAb": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_mafhUU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The <a href=\"\/collections\/schools-packs\" title=\"Schools Packs\"><strong>Voxblock Schools Packages <\/strong><\/a>are an easy and affordable way for schools to invest in Voxblock; offering a unique discount on players, audiobooks and accessories, which isn't otherwise available. <\/p><p>Our Voxblock School Packages are designed for teachers, including all necessary practicalities. <br\/><br\/>Each package comes with:   <\/p><ul><li><a href=\"\/products\/voxblock-player\" target=\"_blank\" title=\"Voxblock Audiobook Player\"><strong>Voxblock players and protective bumpers<\/strong><\/a><strong>: <\/strong>Players have both a speaker and headphone jack, allowing independent or shared listening.  Protective bumpers come in a choice of orange, green or red.<\/li><li><strong>Audiobooks:<\/strong> Select your preferred titles from our library of hundreds of audiobooks.   <\/li><li><strong>Supporting resources:<\/strong> Containing information on each title you've selected. There are activities and lesson plans for selected titles.<\/li><li><strong>Charging hub(s):<\/strong> To charge multiple players at the same time.<\/li><li><strong>Aux cable(s)<\/strong>: The cable allows the Voxblock to connect to either a speaker or a screen. <\/li><\/ul><p>Optional addition:<\/p><ul><li><strong>Headphones:<\/strong> These allow children to listen independently, or as a small group by daisy chaining the headphones together. Schools are entitled to 10% of our range which you can find <a href=\"\/products\/kids-headphones\" title=\"Kids Headphones\">here<\/a>. <\/li><\/ul><p>Our <strong>School Packages <\/strong>are available in various sizes, including:<\/p><ul><li><a href=\"\/products\/school-mini-pack\" target=\"_blank\" title=\"Schools Package - Mini\"><strong>Mini<\/strong><\/a><strong> - <\/strong>5 players<\/li><li><a href=\"\/products\/school-small-pack\" target=\"_blank\" title=\"Schools Package - Small\"><strong>Small <\/strong><\/a><strong>- <\/strong>10 players<\/li><li><a href=\"\/products\/school-medium-pack\" target=\"_blank\" title=\"Schools Package - Medium\"><strong>Medium<\/strong><\/a><strong> -  <\/strong>15 players<\/li><li><a href=\"\/products\/school-large-pack\" target=\"_blank\" title=\"Schools Package - Large\"><strong>Large <\/strong><\/a><strong>- <\/strong>20 players<\/li><\/ul><p>You can order our schools packages <a href=\"\/collections\/schools-packs\" target=\"_blank\" title=\"Schools Packs\">online<\/a> or if you prefer to pay via invoice place your order <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" target=\"_blank\" title=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\">here<\/a> and we will be in touch to confirm. <\/p><p>We also offer schools a 10% discount on our standard <a href=\"\/collections\/voxblock-starter-packs\" target=\"_blank\" title=\"Voxblock Starter Packs\">Starter Packs<\/a>, just email <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a><a href=\"mailto:\/\/schools@voxblock.co.uk\" target=\"_blank\"> <\/a>for your exclusive discount code.<\/p>"
+          }
+        },
+        "button_Fi7kLK": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Contact the schools team",
+            "url": "shopify:\/\/pages\/schools-contact-page",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_mafhUU",
+        "button_Fi7kLK"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "rich_text_PAeRfb": {
       "type": "rich-text",
       "blocks": {
         "heading_G3AMPT": {
           "type": "heading",
           "settings": {
-            "text": "Voxblock in schools and nurseries",
+            "text": "Using audiobooks in schools and nurseries",
             "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
@@ -65,7 +131,7 @@
         "heading_VMprRM": {
           "type": "heading",
           "settings": {
-            "text": "Internet-free audiobook player",
+            "text": "Simple audiobook player",
             "heading_tag": "h3",
             "text_color": "#ff9e57",
             "gradient": ""
@@ -152,53 +218,9 @@
         "overlay_opacity": 0
       }
     },
-    "rich_text_aJ3KAb": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_GRCpCD": {
-          "type": "heading",
-          "settings": {
-            "text": "Schools packages",
-            "heading_tag": "h3",
-            "text_color": "#ff9e57",
-            "gradient": ""
-          }
-        },
-        "richtext_mafhUU": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>The <strong>Voxblock Schools Packages <\/strong>are an easy and affordable way for schools to invest in Voxblock; offering a unique discount on players, audiobooks and accessories, which isn't otherwise available. <\/p><p>Our Voxblock School Packages are designed for teachers, including all necessary practicalities. <br\/><br\/>Each package comes with:   <\/p><ul><li><strong>Voxblock players and protective bumpers: <\/strong>Players have both a speaker and headphone jack, allowing independent or shared listening.  Protective bumpers come in a choice of orange, green or red.<\/li><li><strong>Audiobooks:<\/strong> Select your preferred titles from our library of hundreds of audiobooks.   <\/li><li><strong>Supporting resources:<\/strong> Containing information on each title you've selected. There are activities and lesson plans for selected titles.<\/li><li><strong>Charging hub(s):<\/strong> To charge multiple players at the same time.<\/li><li><strong>Aux cable(s)<\/strong>: The cable allows the Voxblock to connect to either a speaker or a screen. <\/li><\/ul><p>Optional addition:<\/p><ul><li><strong>Headphones:<\/strong> These allow children to listen independently, or as a small group by daisy chaining the headphones together. Schools are entitled to 10% of our range which you can find <a href=\"\/products\/kids-headphones\" title=\"Kids Headphones\">here<\/a>. <\/li><\/ul><p>Our <strong>School Packages <\/strong>are available in various sizes, including:<\/p><ul><li><strong>Mini- <\/strong>5 players<\/li><li><strong>Small- <\/strong>10 players<\/li><li><strong>Medium-  <\/strong>15 players<\/li><li><strong>Large- <\/strong>20 players<\/li><\/ul><p>We also offer schools a 10% discount on our standard <a href=\"https:\/\/voxblock.myshopify.com\/products\/voxblock-starter-pack\" target=\"_blank\" title=\"Voxblock Starter Pack\">Starter Packs<\/a>, just email <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a><a href=\"mailto:\/\/schools@voxblock.co.uk\" target=\"_blank\"> <\/a>for your exclusive discount code.<\/p>"
-          }
-        },
-        "button_Fi7kLK": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "xl",
-            "text": "Contact the schools team",
-            "url": "shopify:\/\/pages\/schools-contact-page",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_GRCpCD",
-        "richtext_mafhUU",
-        "button_Fi7kLK"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "large",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "image_with_text_overlay_UkmWNX": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
@@ -215,6 +237,7 @@
     },
     "image_with_text_overlay_meAFQV": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
@@ -227,71 +250,6 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
-      }
-    },
-    "featured_collection_gagcw4": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "schools-packs",
-        "hide_empty": false,
-        "products": [
-
-        ],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": true,
-        "products_count": 4,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "",
-        "content": "<p>If you're ready to order, you can either order <a href=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\" title=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\">online<\/a> and pay via credit card or if you prefer to order and pay via invoice, please place your order <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" title=\"Voxblock School Order Form\">here<\/a>. If you'd like to discuss your potential order, get in touch with our School Account Manager on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<\/p>",
-        "link_url": "https:\/\/voxblock.co.uk\/collections\/schools-packs",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "media_with_text_mXNahG": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_C8ezFX": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/school_flatlay.jpg",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "How to order",
-            "content": "<p>We have a dedicated Schools Account Manager to assist with your order.<\/p><ol><li>If you're ready to order, you can either order online <a href=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\" title=\"https:\/\/voxblock.co.uk\/collections\/schools-packs\">here<\/a> and pay via credit card or complete this <a href=\"https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform\" target=\"_blank\">form<\/a> if you prefer to pay via invoice. If you'd like to discuss your potential order, get in touch on <a href=\"mailto:schools@voxblock.co.uk\" target=\"_blank\">schools@voxblock.co.uk<\/a>.<br\/><br\/>An invoice will be sent where the payment is due in 30 days.<br\/><\/li><li>You should receive your order in 3-5 working days.<br\/><br\/><\/li><li>Get listening, the players are ready to use out of the box.<\/li><\/ol>",
-            "link_text": "Order online here",
-            "link_url": "https:\/\/docs.google.com\/forms\/d\/e\/1FAIpQLScIJ1HXq0hAOZQLOEkFqC4eqxh5scQp-85Os7_Lq821q9S0NA\/viewform?usp=sf_link",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
-            "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "image_C8ezFX"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
       }
     },
     "media_with_text_i3BEzb": {
@@ -492,13 +450,13 @@
         "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
-    "custom_liquid_a4TJAB": {
-      "type": "custom-liquid",
+    "custom_html_rD84wF": {
+      "type": "custom-html",
       "settings": {
         "full_width": false,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "liquid": "<p style=\"text-align: center\"><div class=\"klaviyo-form-T6GqsW\"><\/div><\/p>",
+        "html": "<div style=\"text-align:center\"><div style=\"margin: 0 auto; max-width:500px\" class=\"klaviyo-form-T6GqsW\"><\/div><\/div>",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -568,19 +526,18 @@
   "order": [
     "main",
     "image_with_text_overlay_gcfG3M",
+    "featured_collection_mn6DLG",
+    "rich_text_aJ3KAb",
     "rich_text_PAeRfb",
     "image_with_text_overlay_4rVDwf",
-    "rich_text_aJ3KAb",
     "image_with_text_overlay_UkmWNX",
     "image_with_text_overlay_meAFQV",
-    "featured_collection_gagcw4",
-    "media_with_text_mXNahG",
     "media_with_text_i3BEzb",
     "multi_column_WyqeRx",
     "rich_text_eRwnN4",
     "rich_text_abXbaF",
     "video_9WpPY6",
-    "custom_liquid_a4TJAB",
+    "custom_html_rD84wF",
     "testimonials_GwV9jC"
   ]
 }

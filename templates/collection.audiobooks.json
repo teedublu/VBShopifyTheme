@@ -3,6 +3,28 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_qAKY4C": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Summer_audiobook_banner-14.png",
+            "mobile_image": "shopify:\/\/shop_images\/Summer_audiobook_banner-mob.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "LIMITED TIME ONLY",
+            "title": "Get a bonus token with any bundle",
+            "heading_tag": "h1",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 4,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_yXy8xr": {
           "type": "image",
           "settings": {
@@ -47,6 +69,28 @@
             "background_gradient": ""
           }
         },
+        "image_rcNxx7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Audiobook_of_the_month_11_bcaa505e-63ca-4091-9f88-f77076d78feb.png",
+            "mobile_image": "shopify:\/\/shop_images\/Audiobook_of_the_month_12_2ba9d4fc-4e6c-427e-bd1d-6adb9dd1b154.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center-end text-end",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "AUDIOBOOK OF THE MONTH",
+            "title": "Get 10% off with code BEETLE10",
+            "heading_tag": "h1",
+            "button_text": "Buy here",
+            "button_link": "shopify:\/\/products\/baby-aliens-got-my-teacher",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_Hb8RnT": {
           "type": "image",
           "settings": {
@@ -68,58 +112,14 @@
             "background": "",
             "background_gradient": ""
           }
-        },
-        "image_rcNxx7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/audiobook-aotm-banner-3200x1200.png",
-            "mobile_image": "shopify:\/\/shop_images\/audiobook-aotm-banner-mobile-1600x1200.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center-end text-end",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "AUDIOBOOK OF THE MONTH",
-            "title": "Get 10% off with code ALIENS10",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify:\/\/products\/baby-aliens-got-my-teacher",
-            "text_color": "#565656",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_iQ9TMA": {
-          "type": "image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/The_Gruffalo_Banner_af48d40f-6343-49e1-b83c-004ce3a14bea.png",
-            "mobile_image": "shopify:\/\/shop_images\/The_Gruffalo_a3f4bc3c-7100-409c-8ccd-21ae0b8f2886.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-start-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "Julia Donaldson",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify:\/\/collections\/audiobooks-by-julia-donaldson",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
         }
       },
       "block_order": [
+        "image_qAKY4C",
         "image_yXy8xr",
         "image_pERNrc",
-        "image_Hb8RnT",
         "image_rcNxx7",
-        "image_iQ9TMA"
+        "image_Hb8RnT"
       ],
       "settings": {
         "full_width": true,
@@ -197,6 +197,14 @@
             "link_text": "10-teens",
             "url_params": "filter.p.m.book.age_groups=10+to+teens"
           }
+        },
+        "item_RLAWAH": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/audiobooks-collection-bundles-1200x1400.png",
+            "link_text": "Bundles",
+            "url_params": "filter.p.product_type=Audiobooks+Bundle"
+          }
         }
       },
       "block_order": [
@@ -204,7 +212,8 @@
         "item_Y4GnXQ",
         "item_PHyCVd",
         "item_qpk6Bx",
-        "item_KfF6ya"
+        "item_KfF6ya",
+        "item_RLAWAH"
       ],
       "settings": {
         "full_width": false,
@@ -238,8 +247,8 @@
           "settings": {
             "position": 25,
             "column_span": "1",
-            "image": "shopify:\/\/shop_images\/audiobooks-ad-tokens-desktop-1600x1000.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/audiobook-ad-tokens-mobile-1000x1000.jpg",
+            "image": "shopify:\/\/shop_images\/Summer_audiobook_ad_graphic-15.png",
+            "mobile_image": "shopify:\/\/shop_images\/Summer_audiobook_ad_graphic-15.png",
             "title": "",
             "content": "",
             "link_url": "shopify:\/\/pages\/voxblock-tokens-collect-for-free-audiobooks",
