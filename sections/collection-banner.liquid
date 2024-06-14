@@ -1,5 +1,5 @@
 {%- assign show_image = false -%}
-
+{% assign default_description = 'Voxblock' %}
 {% assign first_book = collection.products | first %}
 {% assign author = first_book.metafields.book.authors.value | first %}
 {% assign narrator = first_book.metafields.book.narrators.value | first %}
