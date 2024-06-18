@@ -289,7 +289,7 @@
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {%- capture link_text -%}
-                                Read {{ review_metaobject.name }} Review.
+                                Read a review of "{{ review_metaobject.name }}".
                             {%- endcapture -%}
                             {{ link_text | link_to: review_metaobject.system.url, class: 'review link'}}
                         </div>

@@ -86,6 +86,10 @@
           {% assign publisher_as_array = publisher | sort  %}
           {% assign publishers = narrators | concat: publisher_as_array  %}
 
+          {% assign review = product.metafields.book['review'].value  %}
+          {% assign review_as_array = review | sort  %}
+          {% assign reviews = reviews | concat: review_as_array  %}
+
           {%- if audiobook.audiogramme.value -%}
             {% assign audiogramme_as_array = audiobook.audiogramme.value | sort  %}
             {% assign audiogrammes = audiogrammes | concat: audiogramme_as_array  %}
@@ -97,6 +101,7 @@
         {% assign publishers = publishers | uniq | sort: 'name' %}
         {% assign narrators = narrators | uniq | sort: 'name' %}
         {% assign audiogrammes = audiogrammes | uniq | sort: 'name' %}
+        {% assign reviews = reviews | uniq | sort: 'name' %}
 
       {% endpaginate %}
 
@@ -139,8 +144,7 @@
         {% for object in objects %}
           {% if object.name != blank or object.title != blank %}
             {% assign product = object.product.value  %}
-            {% assign review = shop.metaobjects.review[product.handle] %}
-            
+            {% assign review = reviews[product.handle] %}
             {% assign image = nil %}
             <li class="object-item">
               <div class="object-image">{{product.value}}
