@@ -338,6 +338,55 @@
         "background_gradient": "",
         "text_color": "#565656"
       }
+    },
+    "rich_text_r94Lmg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_K6wdkJ": {
+          "type": "heading",
+          "settings": {
+            "text": "Return cycle",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_nd8UnD": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We don't want any Voxblock player to just lay around on the shelf being forgotten. <\/p><p>We want you to send the player back to us anytime for free so we can repair broken players, reuse good parts, refurbish, send it back to you or donate them.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_K6wdkJ",
+        "richtext_nd8UnD"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "newsletter_F6q46M": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
@@ -346,6 +395,8 @@
     "text_with_icons_ekk8rA",
     "faq_AWpptn",
     "faq_UPXHkj",
-    "text_with_icons_nx6FFA"
+    "text_with_icons_nx6FFA",
+    "rich_text_r94Lmg",
+    "newsletter_F6q46M"
   ]
 }
