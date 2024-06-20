@@ -275,6 +275,69 @@
         "accordion_background": "#ffffff",
         "accordion_text_color": "#565656"
       }
+    },
+    "text_with_icons_nx6FFA": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_JRJDiR": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Screenshot_2022-10-18_at_11.09.32.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "#ffffff",
+            "title": "repair it",
+            "content": "<p>We made the Voxblock player easy to repair. If there is a problem we can fix it.<\/p>"
+          }
+        },
+        "item_HWiCwg": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Screenshot_2022-10-18_at_11.09.40.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "#ffffff",
+            "title": "reuse it",
+            "content": "<p>We reuse all working parts <br\/>to reduce waste while <br\/>we correctly recycle overused parts.<\/p>"
+          }
+        },
+        "item_kzrym3": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Screenshot_2022-10-18_at_11.09.48.png",
+            "mobile_icon_width": 120,
+            "icon_width": 120,
+            "icon_background_type": "none",
+            "icon_background": "#ffffff",
+            "icon_color": "#ffffff",
+            "title": "redeploy it",
+            "content": "<p>We want to ensure our players have a long and happy life, as well as being accessible for many children. Send them back to us so we can give them a new life!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_JRJDiR",
+        "item_HWiCwg",
+        "item_kzrym3"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "Return it to us and we will:",
+        "heading_tag": "h4",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
@@ -282,6 +345,7 @@
     "image_with_text_overlay_BbDYQ3",
     "text_with_icons_ekk8rA",
     "faq_AWpptn",
-    "faq_UPXHkj"
+    "faq_UPXHkj",
+    "text_with_icons_nx6FFA"
   ]
 }
