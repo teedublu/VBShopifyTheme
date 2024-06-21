@@ -40,9 +40,7 @@
         "show_view_cart_button": true,
         "show_checkout_button": true,
         "recommendations_title": "Why not include...",
-        "products": [
-          "kids-headphones"
-        ],
+        "products": "{{ localization.market.metafields.custom.basket_suggestions.value }}",
         "product_card_background": "#ffead7",
         "product_card_text_color": "#2a555a"
       }
