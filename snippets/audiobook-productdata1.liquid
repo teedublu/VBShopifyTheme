@@ -55,7 +55,8 @@
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {% for narrator in narrators %}
-                                {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
+                                {% assign link_title = "Audiobook Narrator " | append: narrator.name %}
+                                {{ narrator.name | link_to: narrator.system.url, class: 'narrator link', title: link_title }}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
                         </div>
                     </div>
@@ -67,7 +68,8 @@
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {% for author in authors %}
-                                {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
+                                {% assign link_title = "Audiobook Author " | append: author.name %}
+                                {{ author.name | link_to: author.system.url, class: 'author link', title: link_title }}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
                         </div>
                     </div>
@@ -79,7 +81,8 @@
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {% for character in characters %}
-                                {{ character.name | link_to: character.system.url, class: 'character link'}}{% unless forloop.last %}, {% endunless %}
+                                {% assign link_title = "Audiobook Character " | append: character.name %}
+                                {{ character.name | link_to: character.system.url, class: 'character link', title: link_title }}{% unless forloop.last %}, {% endunless %}
                             {% endfor %}
                         </div>
                     </div>
@@ -90,7 +93,8 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url, class: 'publisher link' }}
+                            {% assign link_title = "Audiobook Publisher " | append: metafields.publisher.value.name %}
+                            {{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url, class: 'publisher link', title: link_title  }}
                         </div>
                     </div>
                 {% endif %}
@@ -137,7 +141,6 @@
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {% for bisac_code in audiobook_metaobject.bisac_codes.value %}
-
                                 {{ bisac_code }} {{bisac_codes[bisac_code].description}}{% unless forloop.last %},<br/> {% endunless %}
                             {% endfor %}
                         </div>
@@ -264,8 +267,7 @@
                             {%- capture link_text -%}
                                 Transcript of {{ audiogramme_metaobject.name }}
                             {%- endcapture -%}
-
-                            {{ link_text | link_to: audiogramme_metaobject.system.url, class: 'audiogramme link'}}
+                            {{ link_text | link_to: audiogramme_metaobject.system.url, title: link_text , class: 'audiogramme link'}}
                         </div>
                     </div>
                 {% endif %}
@@ -278,7 +280,7 @@
                             {%- capture link_text -%}
                                 What is {{ overview_metaobject.name }} about?
                             {%- endcapture -%}
-                            {{ link_text | link_to: overview_metaobject.system.url, class: 'overview link'}}
+                            {{ link_text | link_to: overview_metaobject.system.url, title: link_text , class: 'overview link'}}
                         </div>
                     </div>
                 {% endif %}
@@ -291,7 +293,7 @@
                             {%- capture link_text -%}
                                 Read a review of "{{ review_metaobject.name }}".
                             {%- endcapture -%}
-                            {{ link_text | link_to: review_metaobject.system.url, class: 'review link'}}
+                            {{ link_text | link_to: review_metaobject.system.url, title: link_text , class: 'review link'}}
                         </div>
                     </div>
                 {% endif %}
@@ -317,7 +319,8 @@
                             {% for cat in metafields.categories.value %}
                               {%- assign urlencoded = cat | url_encode | lower -%}
                               {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.book.categories=' | append: urlencoded -%}
-                              {{ cat | link_to: url, class: 'book_category link'}}{% unless forloop.last %} | {% endunless -%}
+                              {% assign link_title = " audiobooks" | prepend: cat %}
+                              {{ cat | link_to: url, class: 'book_category link', title: link_title }}{% unless forloop.last %} | {% endunless -%}
                            {% endfor %}
                         </div>
                     </div>
@@ -345,7 +348,13 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            {% if metafields.fiction %}Fiction{% else %}Nonfiction{% endif %}
+                            {% if metafields.fiction %}
+                                {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.book.fiction=1' -%}
+                                {{ 'Fiction' | link_to: url, title: 'Fiction Audiobooks' , class: 'book link' }}
+                            {% else %}
+                                {%- assign url =  collections.audiobooks.url | append: '?filter.p.m.book.fiction=0' -%}
+                                {{ 'Non Fiction' | link_to: url, title: 'Non-Fiction Audiobooks' , class: 'book link' }}
+                            {% endif %}
                         </div>
                     </div>
                 {% endif %}
@@ -353,12 +362,10 @@
                 <div class="detail-row">
                     <div class="detail-label">{{ block.settings.title }}</div>
                     <div class="detail-value">
-                        {{ audiobook_metaobject.title | link_to: audiobook_metaobject.system.url, class: 'book link' }}
+                        {{ audiobook_metaobject.title | link_to: audiobook_metaobject.system.url, title: audiobook_metaobject.title , class: 'book link' }}
                     </div>
                 </div>
             
-
-            <!-- Add additional blocks as needed for the other types you've defined in the schema -->
         {% endcase %}
     {% endfor %}
 </div>
