@@ -445,6 +445,7 @@
       "block_order": [
         "image_c8L8XJ"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "spacing": "small"
@@ -480,6 +481,7 @@
       "block_order": [
         "image_DaBpmJ"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "spacing": "small"
@@ -554,137 +556,6 @@
         "heading_gradient": "",
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
-      }
-    },
-    "collection_list_Leiqmh": {
-      "type": "collection-list",
-      "blocks": {
-        "collection_i6Ah6p": {
-          "type": "collection",
-          "settings": {
-            "collection": "voxblock-audiobooks-under-5s",
-            "image": "shopify:\/\/shop_images\/Under5s-link-image.jpg",
-            "subheading": "",
-            "title": "Under 5's",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#565656",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_FGjT6X": {
-          "type": "collection",
-          "settings": {
-            "collection": "audiobooks-5-8-years",
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "subheading": "",
-            "title": "5-8 Years",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#565656",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_8cj9pY": {
-          "type": "collection",
-          "settings": {
-            "collection": "audiobooks-8-10-years",
-            "image": "shopify:\/\/shop_images\/8-10Years-link-image.jpg",
-            "subheading": "",
-            "title": "8-10 Years",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#565656",
-            "overlay_opacity": 30
-          }
-        },
-        "collection_RPYpar": {
-          "type": "collection",
-          "settings": {
-            "collection": "audiobooks-10-to-teens",
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "subheading": "",
-            "title": "10-Teens",
-            "url": "",
-            "heading_tag": "h2",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#565656",
-            "overlay_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "collection_i6Ah6p",
-        "collection_FGjT6X",
-        "collection_8cj9pY",
-        "collection_RPYpar"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_collections": false,
-        "collections_per_row": 4,
-        "show_progress_bar": false,
-        "subheading": "",
-        "title": "Discover our audiobooks",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "#ff9e57",
-        "background_gradient": "",
-        "text_color": "#ffffff",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "related_products_AYjAFd": {
-      "type": "related-products",
-      "settings": {
-        "recommendations_count": 6,
-        "products": [
-          "roald-dahl-selection-starter-pack",
-          "older-listeners-starter-pack",
-          "gruffalo-and-friends-starter-pack",
-          "feeling-funny-starter-pack",
-          "famous-five-intro-pack",
-          "fairy-tales-intro-pack",
-          "bedtime-stories-starter-pack",
-          "younger-listeners-starter-pack"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 3,
-        "subheading": "Starter Packs",
-        "title": "Ready to go...",
-        "content": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "revealed_image_on_scroll_iKqQdm": {
-      "type": "revealed-image-on-scroll",
-      "disabled": true,
-      "settings": {
-        "image": "shopify:\/\/shop_images\/Homepage-Reveal_Image-3200x1600.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/Homepage-Reveal-mobile-1125x2000.jpg",
-        "subheading": "",
-        "title": "",
-        "background": "",
-        "text_color_inside": "#ffffff",
-        "text_color_outside": "#000000"
       }
     },
     "faq_KiLD6K": {
@@ -762,6 +633,34 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "featured_collection_zFiwCJ": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "audiobooks-for-older-listeners",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 16,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "Titles for Older Listeners",
+        "title": "Audiobooks",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
     }
   },
   "order": [
@@ -772,10 +671,8 @@
     "media_with_text_UQdDDc",
     "media_with_text_8FqE3W",
     "testimonials_cFMFmx",
-    "collection_list_Leiqmh",
-    "related_products_AYjAFd",
-    "revealed_image_on_scroll_iKqQdm",
     "faq_KiLD6K",
-    "image_with_text_overlay_Hrihhe"
+    "image_with_text_overlay_Hrihhe",
+    "featured_collection_zFiwCJ"
   ]
 }
