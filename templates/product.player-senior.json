@@ -403,6 +403,7 @@
         "item_YUGcwz",
         "item_tKhedV"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_on_mobile": true,
@@ -561,6 +562,13 @@
     "faq_KiLD6K": {
       "type": "faq",
       "blocks": {
+        "item_yxqic9": {
+          "type": "item",
+          "settings": {
+            "title": "Is Voxblock for kids or adults?",
+            "content": "<p>Although we started initially making an audiobook player for children, many older people love its simplicity too!<\/p>"
+          }
+        },
         "item_ybUnkH": {
           "type": "item",
           "settings": {
@@ -572,7 +580,7 @@
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>Our library audiobooks is aimed at children 3 and up. We are adding new stories all the time, and will be constantly adding new titles to keep the choice of stories fresh and exciting.<\/p>"
+            "content": "<p>We have started to include some classic titles for adult listeners. See the full range <a href=\"\/collections\/audiobooks-for-older-listeners\" title=\"Audiobooks for Older Listeners\">available<\/a> here.<\/p>"
           }
         },
         "item_J79MfC": {
@@ -591,6 +599,7 @@
         }
       },
       "block_order": [
+        "item_yxqic9",
         "item_ybUnkH",
         "item_zBxp3t",
         "item_J79MfC",
