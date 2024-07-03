@@ -40,9 +40,11 @@ Supported variables
   {% if required %}required{% endif %}
   {% if pattern %}pattern="{{ pattern }}"{% endif %}
 {%- endcapture -%}
-
+{{type}}WTF
 {%- if type == 'hidden' -%}
   <input type="hidden" name="{{ name }}" value="{{ value }}">
+{%- elsif type == 'audio' -%}
+  Audio goes here <input type="file" accept="all" name="{{ name }}" value="{{ value }}">
 {%- else -%}
   <div class="form-control" {{ block.shopify_attributes }}>
     {%- if multiline != blank -%}

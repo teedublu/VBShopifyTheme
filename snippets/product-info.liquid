@@ -208,6 +208,8 @@
               {%- else -%}
                 {%- render 'input', type: 'text', label: block.settings.label, name: name, form: product_form_id, required: block.settings.required, maxlength: block.settings.max_length -%}
               {%- endif -%}
+            {%- elif block.settings.type == 'audio' -%}
+              {%- render 'input', type: 'audio', label: block.settings.label, name: name, form: product_form_id, required: block.settings.required, maxlength: block.settings.max_length -%}
             {%- else -%}
               {%- render 'checkbox', label: block.settings.label, name: name, required: block.settings.required, form: product_form_id -%}
             {%- endif -%}
