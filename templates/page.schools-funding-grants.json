@@ -52,7 +52,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/Voxblock_for_Schools_8c0b676b-2caa-448a-aa5a-29f2e7e437da.png",
+        "image": "shopify:\/\/shop_images\/Grants_for_Schools.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -72,13 +72,46 @@
             "gradient": ""
           }
         },
+        "richtext_3V39qT": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Seeking Extra Funding for Audio Resources in Your School or Library?<\/p><p>If your school needs additional funding to bring audio resources to your classroom or library, there are numerous funding sources available to support your needs. We've compiled the following information to help you on your journey towards an audio-filled classroom!<\/p>"
+          }
+        },
+        "subheading_VBJVxb": {
+          "type": "subheading",
+          "settings": {
+            "text": "Grants for Schools and Nurseries"
+          }
+        },
+        "richtext_bfQdm4": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>There are many sources of funding available, but knowing where and when to look is crucial. Grants for literacy and SEN (Special Educational Needs) projects are available throughout the UK. Here are some useful sites to help you find the right grants:<\/p><p>- <a href=\"https:\/\/www.grantsonline.org.uk\/search\/grants?f=1\" target=\"_blank\" title=\"Grants Online\"><strong>Grants Online<\/strong><\/a><strong>:<\/strong> Filter your search by location, category, organisation type, funding agency, type, and status to find a suitable grant.<\/p><p>- <a href=\"https:\/\/www.grantfinder.co.uk\/\" target=\"_blank\" title=\"Grant Finder\"><strong>Grant Finder<\/strong><\/a><strong>:<\/strong> This resource helps you discover local, national, and international funding opportunities and includes writing services to assist with your grant applications.<\/p><p>- <a href=\"https:\/\/www.getgrants.org.uk\/funding-finder\/\" target=\"_blank\" title=\"Get Grants\"><strong>Get Grants<\/strong><\/a><strong>:<\/strong> A free site that offers information on hundreds of grants, including descriptions, amounts, and application processes.<\/p>"
+          }
+        },
+        "heading_ftBGLD": {
+          "type": "heading",
+          "settings": {
+            "text": "Try Voxblock For Free",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_dx6wkx": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Looking to introduce a new audio resource in your classroom? Voxblock offers demo packs that schools can try for a two-week period. <a href=\"\/pages\/schools-contact-page\" target=\"_blank\" title=\"Schools Contact Page\"><strong>Contact us<\/strong><\/a> to find out more.<\/p>"
+          }
+        },
         "button_hDra3A": {
           "type": "button",
           "settings": {
             "style": "fill",
             "size": "xl",
-            "text": "Explore our audiobook library",
-            "url": "shopify:\/\/collections\/audiobooks",
+            "text": "Explore our school packages",
+            "url": "shopify:\/\/collections\/schools-packs",
             "background": "#ff9e57",
             "text_color": "#ffffff"
           }
@@ -86,6 +119,11 @@
       },
       "block_order": [
         "heading_AXhj3y",
+        "richtext_3V39qT",
+        "subheading_VBJVxb",
+        "richtext_bfQdm4",
+        "heading_ftBGLD",
+        "richtext_dx6wkx",
         "button_hDra3A"
       ],
       "settings": {
