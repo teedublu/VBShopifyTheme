@@ -82,12 +82,18 @@
             "payment_button_text_color": ""
           }
         },
+        "text_KV3rbn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pick a bundle here for quick start or choose from our entire <a href=\"\/collections\/audiobooks\" title=\"Audiobooks\">catalogue<\/a>.<\/p>"
+          }
+        },
         "associated_products_wELabA": {
           "type": "associated_products",
           "settings": {
-            "title": "Now add book bundles to get going",
+            "title": "Suggested bundles to get you going",
             "stack_products": true,
-            "products_count": 4,
+            "products_count": 5,
             "background": "",
             "text_color": ""
           }
@@ -273,6 +279,7 @@
         "separator",
         "variant_picker",
         "buy_buttons",
+        "text_KV3rbn",
         "associated_products_wELabA",
         "description",
         "separator_eAyTL4",
