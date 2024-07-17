@@ -171,6 +171,18 @@
                     </div>
                 {% endif %}
 
+            {% when 'content_notes' %}
+                {% if audiobook_metaobject.content_notes.value %}
+                    <div class="detail-row">
+                        <div class="detail-label">{{ block.settings.title }}</div>
+                        <div class="detail-value">
+                            {% for note in audiobook_metaobject.content_notes.value %}
+                                {{ note }}{% unless forloop.last %}<br/>{% endunless %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
             {% when 'word_count' %}
                 {% if audiobook_metaobject.word_count.value %}
                     <div class="detail-row">
