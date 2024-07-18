@@ -14,12 +14,30 @@
         --section-stack-spacing-block: var(--spacing-10);
       }
     }
+    .tab-content .content_notes {
+      border: solid silver;
+      padding: 2px;
+      font-size: smaller;
+      font-weight: 100;
+    }
+    .tab-content .content_notes ul li:before {
+      content: "\261E";
+      margin-left: 10px;
+      margin-right: 5px;
+      font-size: large;
+      vertical-align: middle;
+    }
+    .tab-content .content_notes ul {display: flow;}
+    .tab-content .content_notes ul li {display: inline;}
+    
   </style>
 
   {% comment%}
 
   TODO: the logic for the content is duplicated in both mobile and desktop
   no good
+  First section is mobile (despite sm:hidden ??)
+  Second scetion is desktop
   
   {% endcomment%}
 
@@ -40,6 +58,7 @@
 
         <div class="tabs-container">
           <div class="sm:hidden">
+            {%- assign audiobook = product.metafields.book.audiobook.value -%}
             {%- for block in section.blocks -%}
               {%- assign title = block.settings.title | default: block.settings.page.title -%}
 
@@ -53,6 +72,16 @@
 
               {%- if block.settings.use_metaobject=='description' -%}
                 {%- assign metaobject_content = product.description -%}
+                
+                  
+                {%- if audiobook.content_notes.value  -%}
+                  {%- capture notes -%}
+                    <div class="content_notes">{{ audiobook.content_notes | metafield_tag }}</div>
+                  {%- endcapture -%}
+                  
+                  {%- assign metaobject_content = metaobject_content | append: notes -%}
+                {%- endif -%}
+             
               {%- endif -%}
 
               {%- if block.settings.use_metaobject=='audiobooks' -%}
@@ -104,6 +133,10 @@
 
               {%- if block.settings.use_metaobject=='description' -%}
                 {%- assign metaobject_content = product.description -%}
+                {%- if audiobook.content_notes.value  -%}
+                  {%- assign notes = audiobook.content_notes.value | metafield_tag -%}
+                  {%- assign metaobject_content = metaobject_content | append: notes -%}
+                {%- endif -%}
               {%- endif -%}
 
               {%- if block.settings.use_metaobject=='audiobooks' -%}
