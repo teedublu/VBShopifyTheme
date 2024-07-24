@@ -28,7 +28,6 @@
       {%- assign loading = 'lazy' -%}
       {%- assign fetchpriority = 'auto' -%}
 
-      fetchpriority: high
       {%- unless section.index0 > 0 -%}
         {%- assign preload = true -%}
         {%- assign loading = 'eager' -%}
