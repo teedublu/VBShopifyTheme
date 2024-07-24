@@ -27,6 +27,9 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     <link rel="canonical" href="{{ canonical_url }}">
 
+    {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
+    {{- 'voxblock.css' | asset_url | stylesheet_tag: preload: true -}}
+
     {%- if settings.favicon -%}
       <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 96 }}">
       <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180 }}">
@@ -58,9 +61,6 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <!--/ START content_for_header /-->
     {{ content_for_header }}
     <!--/ END content_for_header /-->
-
-    {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
-    {{- 'voxblock.css' | asset_url | stylesheet_tag: preload: true -}}
 
   </head>
 
