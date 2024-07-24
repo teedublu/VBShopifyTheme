@@ -26,18 +26,22 @@
     {%- if section.settings.image != blank -%}
       {%- assign preload = false -%}
       {%- assign loading = 'lazy' -%}
+      {%- assign fetchpriority = 'auto' -%}
+
+      fetchpriority: high
       {%- unless section.index0 > 0 -%}
         {%- assign preload = true -%}
         {%- assign loading = 'eager' -%}
+        {%- assign fetchpriority = 'high' -%}
       {%- endunless -%}
-      
+
       {%- capture image_class -%}{% if section.settings.mobile_image != blank %}hidden sm:block{% endif %}{%- endcapture -%}
       {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
 
-      {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: preload: preload, loading: loading, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: image_class -}}
+      {{- section.settings.image | image_url: width: section.settings.image.width | image_tag: preload: preload, loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200', class: image_class -}}
 
       {%- if section.settings.mobile_image != blank -%}
-        {{- section.settings.mobile_image | image_url: width: section.settings.mobile_image.width | image_tag: preload: preload, loading: loading, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600', class: 'sm:hidden' -}}
+        {{- section.settings.mobile_image | image_url: width: section.settings.mobile_image.width | image_tag: preload: preload, loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600', class: 'sm:hidden' -}}
       {%- endif -%}
     {%- else -%}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
