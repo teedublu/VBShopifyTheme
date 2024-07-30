@@ -69,12 +69,13 @@
         padding-block-start: max(var(--section-inner-max-spacing-block), var(--header-height));
       }
     {%- endunless -%}
-  </style>
 
+  </style>
+  {%- capture class -%}collection-banner content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
 
 {%- if show_image -%}
   <div {% render 'section-properties' %} {%- if section.settings.allow_transparent_header -%}allow-transparent-header{% endif %}>
-    {%- capture class -%}collection-banner content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+    
 
     <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
       {%- assign desktop_image = section.settings.image | default: collection.image -%}
@@ -120,10 +121,12 @@
   </div>
 {%- else -%}
   {%- if collection_header != blank -%}
-    <div class="collection-header">
-      <div class="container">
-        <div class="v-stack gap-4 sm:gap-6">
-          {{- collection_header -}}
+    <div {% render 'section-properties' %} {%- if section.settings.allow_transparent_header -%}allow-transparent-header{% endif %}>
+      <div {% render 'surface', class: class, text_color: section.settings.text_color %}>
+        <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}">
+          <div class="v-stack gap-4 sm:gap-6">
+            {{- collection_header -}}
+          </div>
         </div>
       </div>
     </div>
