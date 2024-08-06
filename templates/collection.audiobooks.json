@@ -12,8 +12,31 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_Fk3KYX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/New_Arrivals.png",
+            "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_10.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "NEW ARRIVALS",
+            "title": "Discover what's new",
+            "heading_tag": "h0",
+            "button_text": "Shop here",
+            "button_link": "https:\/\/voxblock.co.uk\/collections\/audiobooks?sort_by=title-ascending&filter.p.m.custom.badges=New",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_nP9d9t": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Jolley-Rogers_website_banner.png",
             "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_9.png",
@@ -102,6 +125,7 @@
         }
       },
       "block_order": [
+        "image_Fk3KYX",
         "image_nP9d9t",
         "image_rcNxx7",
         "image_pERNrc",
