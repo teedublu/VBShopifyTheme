@@ -3,15 +3,11 @@
 {% assign first_book = collection.products | first %}
 {% assign author = first_book.metafields.book.authors.value | first %}
 {% assign narrator = first_book.metafields.book.narrators.value | first %}
-{% assign character = collection.metafields.custom.related_owner.value %}
 {% capture author_link %}
   {{author.name | link_to: author.system.url, class: 'link' }}
 {% endcapture %}
 {% capture narrator_link %}
   {{narrator.name | link_to: narrator.system.url, class: 'link' }}
-{% endcapture %}
-{% capture character_link %}
-  {{character.name | link_to: character.system.url, class: 'link' }}
 {% endcapture %}
 
 {% assign description = collection.description | default: 'A page about your favourite audiobooks.' %}
@@ -22,9 +18,6 @@
   {%- endif -%}
   {%- if narrator -%}
     {% assign description = description | replace: narrator.name, narrator_link  %}
-  {%- endif -%}
-  {%- if character -%}
-    {% assign description = description | replace: character.name, character_link  %}
   {%- endif -%}
 {%- endif -%}
 
@@ -39,6 +32,8 @@
     {% render 'metaobject-header' metaobject: collection.metafields.related.narrator.value, use_title: 'Audiobooks read by name' %}
   {%- elsif collection.metafields.related.publisher.value -%}
     {% render 'metaobject-header' metaobject: collection.metafields.related.publisher.value, use_title: 'Audiobooks from name' %}
+  
+    
   {%- elsif section.settings.show_collection_title-%}
     <h1 class="{{ section.settings.collection_title_size }}" {% if settings.heading_apparition != 'none' and show_image %}reveal-on-scroll="true"{% endif %}>
       {%- render 'styled-text', content: collection.title, apparition_effect: false -%}
@@ -47,6 +42,7 @@
 
   {%- if section.settings.show_collection_description -%}
     <div class="prose">
+
       {{- description -}}
       
     </div>
@@ -73,11 +69,13 @@
         padding-block-start: max(var(--section-inner-max-spacing-block), var(--header-height));
       }
     {%- endunless -%}
+
   </style>
+  {%- capture class -%}collection-banner content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
 
 {%- if show_image -%}
   <div {% render 'section-properties' %} {%- if section.settings.allow_transparent_header -%}allow-transparent-header{% endif %}>
-    {%- capture class -%}collection-banner content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+    
 
     <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
       {%- assign desktop_image = section.settings.image | default: collection.image -%}
@@ -123,10 +121,12 @@
   </div>
 {%- else -%}
   {%- if collection_header != blank -%}
-    <div class="collection-header">
-      <div class="container">
-        <div class="v-stack gap-4 sm:gap-6">
-          {{- collection_header -}}
+    <div {% render 'section-properties' %} {%- if section.settings.allow_transparent_header -%}allow-transparent-header{% endif %}>
+      <div {% render 'surface', class: class, text_color: section.settings.text_color %}>
+        <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}">
+          <div class="v-stack gap-4 sm:gap-6">
+            {{- collection_header -}}
+          </div>
         </div>
       </div>
     </div>
