@@ -3,11 +3,15 @@
 {% assign first_book = collection.products | first %}
 {% assign author = first_book.metafields.book.authors.value | first %}
 {% assign narrator = first_book.metafields.book.narrators.value | first %}
+{% assign character = collection.metafields.custom.related_owner.value %}
 {% capture author_link %}
   {{author.name | link_to: author.system.url, class: 'link' }}
 {% endcapture %}
 {% capture narrator_link %}
   {{narrator.name | link_to: narrator.system.url, class: 'link' }}
+{% endcapture %}
+{% capture character_link %}
+  {{character.name | link_to: character.system.url, class: 'link' }}
 {% endcapture %}
 
 {% assign description = collection.description | default: 'A page about your favourite audiobooks.' %}
@@ -19,10 +23,9 @@
   {%- if narrator -%}
     {% assign description = description | replace: narrator.name, narrator_link  %}
   {%- endif -%}
-{%- endif -%}
-
-{%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
-  {%- assign show_image = true -%}
+  {%- if character -%}
+    {% assign description = description | replace: character.name, character_link  %}
+  {%- endif -%}
 {%- endif -%}
 
 {%- capture collection_header -%}
