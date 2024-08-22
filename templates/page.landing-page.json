@@ -32,12 +32,24 @@
           "settings": {
             "content": "<p>{{ page.metafields.custom.heading_description | metafield_tag }}<\/p>"
           }
+        },
+        "button_p4UxyD": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Meet Voxblock",
+            "url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "",
+            "text_color": ""
+          }
         }
       },
       "block_order": [
         "subheading_QhbKca",
         "heading_DenFnj",
-        "richtext_AL8YMf"
+        "richtext_AL8YMf",
+        "button_p4UxyD"
       ],
       "settings": {
         "full_width": true,
