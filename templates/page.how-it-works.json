@@ -1,10 +1,20 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
       "settings": {
-        "content_width": "80ch"
+        "content_width": "80ch",
+        "show_title": true
       }
     },
     "video_CdTAhx": {
@@ -319,6 +329,13 @@
             "content": "<p>You charge your player using a USB-C cable provided and any USB wall socket or brick.<\/p>"
           }
         },
+        "item_bdV36M": {
+          "type": "item",
+          "settings": {
+            "title": "How does Voxblock compare to others?",
+            "content": "<p>Here are some comparisons and <a href=\"\/pages\/alternative-to-toniebox\" title=\"Alternative to Toniebox\">factors<\/a> to <a href=\"\/pages\/alternative-to-yoto\" title=\"Alternative to Yoto\">think about<\/a> when comparing alternative audiobook players.<\/p>"
+          }
+        },
         "item_c4AykB": {
           "type": "item",
           "settings": {
@@ -330,6 +347,7 @@
       "block_order": [
         "item_FTnQ7H",
         "item_G8eM9r",
+        "item_bdV36M",
         "item_c4AykB"
       ],
       "settings": {
