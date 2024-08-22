@@ -9,26 +9,41 @@
 */
 {
   "sections": {
+    "image_with_text_overlay_aQeLjj": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_DenFnj": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.title }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "p"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DenFnj"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/voxblock_website_banner_1.png",
+        "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_8.png",
+        "mobile_text_position": "place-self-end-center text-center",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
         "content_width": "120ch"
-      }
-    },
-    "newsletter_F6q46M": {
-      "type": "newsletter",
-      "settings": {
-        "full_width": true,
-        "show_icon": true,
-        "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
-        "button_text": "Go",
-        "subtext": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
       }
     },
     "featured_collection_jtUkxt": {
@@ -58,11 +73,28 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
+    },
+    "newsletter_F6q46M": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
+    "image_with_text_overlay_aQeLjj",
     "main",
-    "newsletter_F6q46M",
-    "featured_collection_jtUkxt"
+    "featured_collection_jtUkxt",
+    "newsletter_F6q46M"
   ]
 }
