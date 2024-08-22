@@ -10,7 +10,9 @@
 <div class="container">
   <div class="page-spacer">
     <div class="page">
-      <h1 class="h1 text-center">{{ title }}</h1>
+      {%- if section.settings.show_title -%}
+        <h1 class="h1 text-center">{{ title }}</h1>
+      {%- endif -%}
       {%- if page.content != empty -%}
         <div class="prose">
           {{ page.content }}
@@ -53,6 +55,13 @@
         }
       ],
       "default": "80ch"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show title above content?",
+      "default": true
+
     }
   ]
 }
