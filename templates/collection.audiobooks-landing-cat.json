@@ -90,6 +90,25 @@
     "main": {
       "type": "main-collection",
       "blocks": {
+        "promotion_video_CHwxAJ": {
+          "type": "promotion_video",
+          "disabled": true,
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How our books work",
+            "content": "",
+            "link_url": "shopify:\/\/collections\/audiobooks",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
           "settings": {
@@ -106,29 +125,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
-        },
-        "promotion_video_CHwxAJ": {
-          "type": "promotion_video",
-          "disabled": true,
-          "settings": {
-            "position": 4,
-            "column_span": "1",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-            "title": "How our books work",
-            "content": "",
-            "link_url": "",
-            "link_text": "View all",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
         }
       },
       "block_order": [
-        "promotion_image_4VEyzT",
-        "promotion_video_CHwxAJ"
+        "promotion_video_CHwxAJ",
+        "promotion_image_4VEyzT"
       ],
       "settings": {
         "products_per_page": 15,
