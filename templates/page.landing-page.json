@@ -116,12 +116,25 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "custom_liquid_GyghNe": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "HERE {% render 'microdata-organisation' %}",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "image_with_text_overlay_aQeLjj",
     "main",
     "featured_collection_jtUkxt",
-    "newsletter_F6q46M"
+    "newsletter_F6q46M",
+    "custom_liquid_GyghNe"
   ]
 }
