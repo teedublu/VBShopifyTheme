@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "breadcrumbs_DL4tEL": {
@@ -370,6 +379,58 @@
         "product": "{{ metaobject.product.value }}",
         "spacing": "small"
       }
+    },
+    "faq_jyHPPb": {
+      "type": "faq",
+      "blocks": {
+        "item_QTzBaN": {
+          "type": "item",
+          "settings": {
+            "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
+            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to <\/p>{{ metaobject.reading_level | metafield_tag }}"
+          }
+        },
+        "item_fnqArC": {
+          "type": "item",
+          "settings": {
+            "title": "How can I listen to the audiobook \"{{ metaobject.title.value }}\" ?",
+            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to great stories.<\/p>"
+          }
+        },
+        "item_PdCExW": {
+          "type": "item",
+          "settings": {
+            "title": "What is \"{{ metaobject.title.value }}\" about?",
+            "content": "{{ metaobject.concise_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "item_QTzBaN",
+        "item_fnqArC",
+        "item_PdCExW"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Questions about \"{{ metaobject.title.value }}\" audiobook",
+        "title": "People also ask:",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
     }
   },
   "order": [
@@ -378,6 +439,7 @@
     "featured_product_B9E7nQ",
     "audiobook_productdata_zmqU7J",
     "microdata_kKw6gU",
-    "audiobook_characters_jNjL6n"
+    "audiobook_characters_jNjL6n",
+    "faq_jyHPPb"
   ]
 }

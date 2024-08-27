@@ -1,0 +1,152 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "featured_product_wP4963": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_48wK9T": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title_EkciRc": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_MiVmWf": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_xWJjND": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_AePCkr": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_JmfYBc": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_HrPt8R": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_WRqDWk": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons_7hyT74": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_9qWqhd": {
+          "type": "pickup_availability",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor_48wK9T",
+        "title_EkciRc",
+        "badges_MiVmWf",
+        "price_xWJjND",
+        "rating_AePCkr",
+        "separator_JmfYBc",
+        "description_HrPt8R",
+        "variant_picker_WRqDWk",
+        "buy_buttons_7hyT74",
+        "pickup_availability_9qWqhd"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "featured_collection_hy8bdk": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "audiobooks",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 11,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "A selection of titles",
+        "content": "<p>Here are some of the titles we have selected for older and adult listeners.<\/p>",
+        "link_url": "shopify:\/\/collections\/audiobooks-for-older-listeners",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "featured_product_wP4963",
+    "featured_collection_hy8bdk"
+  ]
+}
