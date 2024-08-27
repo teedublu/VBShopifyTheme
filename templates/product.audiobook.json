@@ -30,6 +30,12 @@
             "heading_tag": "h2"
           }
         },
+        "text_t6JGDa": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.book.audiobook.value.concise_blurb | metafield_tag }}"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -78,6 +84,7 @@
       "block_order": [
         "text_RffQCL",
         "title",
+        "text_t6JGDa",
         "price",
         "audiobook_properties_cU6Htk",
         "author_narrator_yb9X3i",

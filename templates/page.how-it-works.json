@@ -1,10 +1,20 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
       "settings": {
-        "content_width": "80ch"
+        "content_width": "80ch",
+        "show_title": true
       }
     },
     "video_CdTAhx": {
@@ -312,11 +322,25 @@
             "content": "<p>Nope. The audio is physically stored on each block, meaning that we are completely connectivity free. There is no wifi or apps to configure and the Voxblock player just plays the blocks as soon as they are inserted.<\/p>"
           }
         },
+        "item_4mD8Ec": {
+          "type": "item",
+          "settings": {
+            "title": "Do I need to install an app?",
+            "content": "<p>Voxblock does not depend on apps to make it work. Its simple to use and our stories are ready to go, no apps to install, no wifi to configure. Simple.<\/p>"
+          }
+        },
         "item_G8eM9r": {
           "type": "item",
           "settings": {
             "title": "How do I charge the player?",
             "content": "<p>You charge your player using a USB-C cable provided and any USB wall socket or brick.<\/p>"
+          }
+        },
+        "item_bdV36M": {
+          "type": "item",
+          "settings": {
+            "title": "How does Voxblock compare to others?",
+            "content": "<p>Here are some <a href=\"\/blogs\/news\/which-kids-audio-player-is-best\" title=\"Which audio player is best for my children?\">comparisons<\/a> and <a href=\"\/pages\/alternative-to-toniebox\" title=\"Alternative to Toniebox\">factors<\/a> to <a href=\"\/pages\/alternative-to-yoto\" title=\"Alternative to Yoto\">think about<\/a> when comparing alternative audiobook players.<\/p>"
           }
         },
         "item_c4AykB": {
@@ -329,7 +353,9 @@
       },
       "block_order": [
         "item_FTnQ7H",
+        "item_4mD8Ec",
         "item_G8eM9r",
+        "item_bdV36M",
         "item_c4AykB"
       ],
       "settings": {

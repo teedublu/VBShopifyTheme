@@ -64,31 +64,26 @@
       "blocks": {
         "subheading_d393bA": {
           "type": "subheading",
-          "disabled": true,
           "settings": {
-            "text": "Subheading"
+            "text": "Introducing Voxblock"
           }
         },
-        "heading_Xm6NtK": {
-          "type": "heading",
-          "disabled": true,
+        "liquid_xCHYgW": {
+          "type": "liquid",
           "settings": {
-            "text": "Heading",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
+            "liquid": "<h1 class=\"h2\">\nThe Screen-free Audiobook Player<\/h1>"
           }
         },
         "richtext_n7wzRG": {
           "type": "richtext",
           "settings": {
-            "content": "<h4>Introducing Voxblock, the <strong>screen-free, easy-to-use<\/strong> audiobook player, that makes <strong>learning and listening fun and engaging<\/strong>. <\/h4>"
+            "content": "<p>Loved by kids and welcomed by parents, Voxblock is a <strong>screen-free, easy-to-use<\/strong> audiobook player, that makes <strong>learning and listening fun and engaging<\/strong>. <\/p>"
           }
         }
       },
       "block_order": [
         "subheading_d393bA",
-        "heading_Xm6NtK",
+        "liquid_xCHYgW",
         "richtext_n7wzRG"
       ],
       "settings": {
@@ -144,7 +139,7 @@
         "logo_9Trcbd": {
           "type": "logo",
           "settings": {
-            "logo": "shopify:\/\/shop_images\/Indy-best-badge-logo-colour-23.png",
+            "logo": "shopify:\/\/shop_images\/Indy_AsFeaturedIn_2024.png",
             "logo_width": 300,
             "link": "https:\/\/www.independent.co.uk\/extras\/indybest\/kids\/best-kids-audio-player-books-stories-record-b1200082.html"
           }
@@ -188,6 +183,14 @@
             "logo_width": 300,
             "link": "https:\/\/absolutely-mama.co.uk\/absolutely-mama-awards-2023\/voxblock\/"
           }
+        },
+        "logo_RrNMhT": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/Toy-Awards-2024-Best-Toy-Brand.png",
+            "logo_width": 300,
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -197,7 +200,8 @@
         "logo_UTwwRn",
         "logo_j3AmgR",
         "logo_jrDbg6",
-        "logo_8zQpgf"
+        "logo_8zQpgf",
+        "logo_RrNMhT"
       ],
       "settings": {
         "full_width": true,
@@ -221,7 +225,7 @@
         "item_xg74WH": {
           "type": "item",
           "settings": {
-            "title": "210",
+            "title": "230",
             "subheading": "audiobooks in our collection",
             "content": "",
             "button_text": "",
