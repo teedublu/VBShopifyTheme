@@ -72,6 +72,7 @@ metaobject__audiobook__audiobook
     /pages/audiogramme                      page.metaobjects-audiogrammes page        metaobjects-audiogrammes
     /pages/publisher/alison-larkin-presents metaobject/publisher          publisher   ""
     /pages/audiobook/get-me-out-of-here     metaobject/audiobook          audiobook   ""
+    /products/bedtime-stories-starter-pack
   endcomment
 
   assign sep = "+,+"
@@ -106,9 +107,16 @@ metaobject__audiobook__audiobook
       assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: title
     
     when 'product' 
-      if collection.url 
-        assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
-      endif 
+      case page_subtype
+        when 'starter-pack-bundle'
+          assign crumbs = shop.secure_url | append:sep | append: "Home"
+          assign crumbs = crumbs | append: sep1 | append: collections['voxblock-starter-pack-collection'].url | append: sep | append: collections['voxblock-starter-pack-collection'].title
+        else
+          if collection.url 
+            assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
+          endif
+      endcase
+
       assign crumbs = crumbs | append: sep1 | append: product.url | append: sep | append: product.title
     
     when 'collection'

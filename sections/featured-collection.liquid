@@ -55,6 +55,14 @@
               {%- assign products = section.settings.products | default: section.settings.collection.products -%}
 
               {%- for product in products limit: section.settings.products_count -%}
+
+                {%- for block in section.blocks -%}
+                  {%- if forloop.parentloop.index != block.settings.position -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                  {%- render 'collection-promo-item', product: product, block: block, section: section -%}
+                  
+                {%- endfor -%}
                 {%- render 'product-card', product: product, stacked: section.settings.stack_products, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
               {%- else -%}
                 {%- for i in (1..section.settings.products_count) -%}
@@ -97,6 +105,351 @@
     "templates": ["password"],
     "groups": ["header", "custom.overlay"]
   },
+  "blocks": [
+    {
+      "type": "promotion_image",
+      "name": "Promotion image",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Blocks may be hidden if not enough products are visible."
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "min": 1,
+          "max": 50,
+          "label": "Position in grid",
+          "default": 4
+        },
+        {
+          "type": "select",
+          "id": "column_span",
+          "label": "Desktop item size",
+          "info": "Size is adjusted automatically on smaller screen to improve user experience.",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1600 x 1000px .jpg recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image",
+          "info": "1000 x 1000px .jpg recommended. Default to desktop image."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Promote a product or a temporary offer"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "View all"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h4"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "place-self-start text-start",
+              "label": "Top left"
+            },
+            {
+              "value": "place-self-start-center text-center",
+              "label": "Top center"
+            },
+            {
+              "value": "place-self-start-end text-end",
+              "label": "Top right"
+            },
+            {
+              "value": "place-self-center-start text-start",
+              "label": "Middle left"
+            },
+            {
+              "value": "place-self-center text-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "place-self-center-end text-end",
+              "label": "Middle right"
+            },
+            {
+              "value": "place-self-end-start text-start",
+              "label": "Bottom left"
+            },
+            {
+              "value": "place-self-end-center text-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "place-self-end text-end",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "place-self-end-start text-start"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "promotion_video",
+      "name": "Promotion video",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Blocks may be hidden if not enough products are visible. Video are muted to allow autoplay. For best visual results and avoid platform branding, we recommend uploading a MP4 file."
+        },
+        {
+          "type": "range",
+          "id": "position",
+          "min": 1,
+          "max": 50,
+          "label": "Position in grid",
+          "default": 4
+        },
+        {
+          "type": "select",
+          "id": "column_span",
+          "label": "Desktop item size",
+          "info": "Size is adjusted automatically on smaller screen to improve user experience.",
+          "options": [
+            {
+              "value": "1",
+              "label": "1 column"
+            },
+            {
+              "value": "2",
+              "label": "2 columns"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Replaces external video if both are set."
+        },
+        {
+          "type": "video_url",
+          "id": "external_video_url",
+          "accept": ["vimeo", "youtube"],
+          "label": "External video URL",
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Promote a product or a temporary offer"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "View all"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Heading style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h4"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "place-self-start text-start",
+              "label": "Top left"
+            },
+            {
+              "value": "place-self-start-center text-center",
+              "label": "Top center"
+            },
+            {
+              "value": "place-self-start-end text-end",
+              "label": "Top right"
+            },
+            {
+              "value": "place-self-center-start text-start",
+              "label": "Middle left"
+            },
+            {
+              "value": "place-self-center text-center",
+              "label": "Middle center"
+            },
+            {
+              "value": "place-self-center-end text-end",
+              "label": "Middle right"
+            },
+            {
+              "value": "place-self-end-start text-start",
+              "label": "Bottom left"
+            },
+            {
+              "value": "place-self-end-center text-center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "place-self-end text-end",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "place-self-end-start text-start"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Overlay opacity",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    }
+  ],
   "settings": [
     {
       "type": "collection",
