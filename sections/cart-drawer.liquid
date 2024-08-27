@@ -65,7 +65,7 @@
                     assign item_count_in_cart = cart | line_items_for: recommended_product
 
                     if item_count_in_cart.size == 0
-                      render 'horizontal-product', product: recommended_product, show_add_to_cart: false, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color
+                      render 'horizontal-product', product: recommended_product, show_add_to_cart: true, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color
                       assign rendered_recommendations = rendered_recommendations | plus: 1
                     endif
                   endfor
