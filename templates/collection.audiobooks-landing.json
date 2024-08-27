@@ -1,1 +1,128 @@
-{"sections":{"banner":{"type":"collection-banner","disabled":true,"settings":{"full_width":true,"allow_transparent_header":true,"enable_parallax":true,"show_collection_title":true,"show_collection_description":true,"show_collection_image":true,"collection_title_size":"h0","image_size":"sm","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","featured_product":"","featured_product_heading":"Featured product","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"rich_text_Pf87Ve":{"type":"rich-text","blocks":{"subheading_kaVbWh":{"type":"subheading","settings":{"text":"Audiobook Author"}},"heading_njmXNJ":{"type":"heading","settings":{"text":"{{ collection.title }}","heading_tag":"h1","text_color":"","gradient":""}}},"block_order":["subheading_kaVbWh","heading_njmXNJ"],"settings":{"full_width":true,"use_mo":true,"content_width":"small","text_position":"center","background":"","background_gradient":"","text_color":""}},"main":{"type":"main-collection","blocks":{"promotion_image_4VEyzT":{"type":"promotion_image","settings":{"position":33,"column_span":"1","title":"Promote a product or a temporary offer","content":"","link_url":"","link_text":"View all","heading_tag":"h4","text_position":"place-self-end-start text-start","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"promotion_video_CHwxAJ":{"type":"promotion_video","settings":{"position":4,"column_span":"1","external_video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","title":"How our books work","content":"","link_url":"","link_text":"View all","heading_tag":"h4","text_position":"place-self-end-start text-start","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}}},"block_order":["promotion_image_4VEyzT","promotion_video_CHwxAJ"],"settings":{"products_per_page":50,"products_per_row_mobile":"2","products_per_row_desktop":7,"filter_layout":"horizontal","show_sort_by":false,"sticky_filters":true,"show_filters":false,"show_filter_group_name":false,"show_filter_values_count":false,"open_first_filter_group":false}}},"order":["banner","rich_text_Pf87Ve","main"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": true,
+        "link_objects": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "sm",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "rich_text_Pf87Ve": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_kaVbWh": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Author"
+          }
+        },
+        "heading_njmXNJ": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ collection.title }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_kaVbWh",
+        "heading_njmXNJ"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_image_4VEyzT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 33,
+            "column_span": "1",
+            "title": "Promote a product or a temporary offer",
+            "content": "",
+            "link_url": "",
+            "link_text": "View all",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "promotion_video_CHwxAJ": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 4,
+            "column_span": "2",
+            "video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+            "external_video_url": "",
+            "title": "How our books work",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "Read more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_4VEyzT",
+        "promotion_video_CHwxAJ"
+      ],
+      "settings": {
+        "products_per_page": 50,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 7,
+        "filter_layout": "horizontal",
+        "show_sort_by": false,
+        "sticky_filters": true,
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": false,
+        "open_first_filter_group": false
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "rich_text_Pf87Ve",
+    "main"
+  ]
+}
