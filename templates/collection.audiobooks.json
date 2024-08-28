@@ -12,6 +12,29 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_mkF7jk": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Double_Tokens.png",
+            "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_11.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "29th AUGUST",
+            "title": "Double Tokens TODAY ONLY",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_Fk3KYX": {
           "type": "image",
           "settings": {
@@ -27,29 +50,6 @@
             "button_link": "https:\/\/voxblock.co.uk\/collections\/audiobooks?sort_by=title-ascending&filter.p.m.custom.badges=New",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_nP9d9t": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Jolley-Rogers_website_banner.png",
-            "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_9.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "NEW RELEASE",
-            "title": "The Jolley-Rogers",
-            "heading_tag": "h0",
-            "button_text": "Buy here",
-            "button_link": "https:\/\/voxblock.co.uk\/collections\/audiobooks?sort_by=title-ascending&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F48171876507",
-            "text_color": "#ffffff",
-            "button_background": "#ffb74a",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
@@ -125,8 +125,8 @@
         }
       },
       "block_order": [
+        "image_mkF7jk",
         "image_Fk3KYX",
-        "image_nP9d9t",
         "image_rcNxx7",
         "image_pERNrc",
         "image_yXy8xr"
