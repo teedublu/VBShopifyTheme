@@ -13,7 +13,7 @@
   {%- when 'metaobject' -%}
     {%- assign audiobook = metaobject -%}
     {%- assign product = all_products[metaobject.system.handle] -%}
-    {%- assign title = metaobject.title | prepend: 'Video of ' -%}
+    {%- assign title = metaobject.name | prepend: 'Video oof ' -%}
     {%- assign description = product.description | strip_html | escape | strip_newlines -%}
     {%- assign encodes = product.title  -%}
 
