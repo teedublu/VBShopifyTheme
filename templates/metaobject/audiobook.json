@@ -390,6 +390,13 @@
     "faq_jyHPPb": {
       "type": "faq",
       "blocks": {
+        "item_9Umcxq": {
+          "type": "item",
+          "settings": {
+            "title": "Who wrote \"{{ metaobject.title.value }}\"?",
+            "content": "<p>{{ metaobject.title.value }} is written by <\/p>{{ metaobject.authors | metafield_tag: field: 'name' }}"
+          }
+        },
         "item_QTzBaN": {
           "type": "item",
           "settings": {
@@ -413,13 +420,14 @@
         }
       },
       "block_order": [
+        "item_9Umcxq",
         "item_QTzBaN",
         "item_fnqArC",
         "item_PdCExW"
       ],
       "settings": {
         "full_width": true,
-        "subheading": "Questions about \"{{ metaobject.title.value }}\" audiobook",
+        "subheading": "Questions and Answers",
         "title": "People also ask:",
         "content": "",
         "team_avatar_width": 160,
