@@ -55,13 +55,6 @@
         "text_color": ""
       }
     },
-    "microdata_KC6pKQ": {
-      "type": "microdata",
-      "settings": {
-        "debug": false,
-        "object_type": "overview"
-      }
-    },
     "featured_product_79njaq": {
       "type": "featured-product",
       "blocks": {
@@ -136,12 +129,19 @@
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
       }
+    },
+    "microdata_KC6pKQ": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "overview"
+      }
     }
   },
   "order": [
     "breadcrumbs_Vf3K4D",
     "rich_text_kf8m8f",
-    "microdata_KC6pKQ",
-    "featured_product_79njaq"
+    "featured_product_79njaq",
+    "microdata_KC6pKQ"
   ]
 }
