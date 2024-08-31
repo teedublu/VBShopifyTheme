@@ -136,10 +136,28 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30
           }
+        },
+        "promotion_image_xREMmQ": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 1,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/player-adults-lifestyle.png",
+            "title": "Audiobooks for Adults",
+            "content": "<p>Simple and easy to use<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
         }
       },
       "block_order": [
-        "promotion_video_dq9Qdc"
+        "promotion_video_dq9Qdc",
+        "promotion_image_xREMmQ"
       ],
       "settings": {
         "collection": "audiobooks-for-older-listeners",
