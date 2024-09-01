@@ -147,8 +147,10 @@ Supported variables
         {%- endif -%}
       </div>
       <div class="product-card__wishlist column right">
-        {%- if section.settings.wishlist -%}
-          {%- render 'icon' with 'picto-love' class:'float-right'-%}
+        {%- if wishlist -%}
+          <div data-product-id="{{product.id}}" class="float-right wishlist">
+            {%- render 'icon' with 'picto-love' -%}
+          </div>
         {%- endif -%}
       </div>
     </div>

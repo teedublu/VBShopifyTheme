@@ -1,17 +1,106 @@
-
-
 // voxblock.js
 import { Delegate } from "{{ 'vendor.min.js' | asset_url }}";
 
+var _learnq = _learnq || [];
+  _learnq.push(['identify', {
+    // Change the line below to dynamically print the user's email.
+    '$email' : 'snow7374@gmail.com'
+  }]);
+
 // Encapsulating the module in an IIFE is not strictly necessary with ES6+ modules,
 // but for the sake of direct integration into a script tag or existing build process, we'll keep functions scoped.
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if Shopify.customer object exists, indicating a logged-in user
+    if (typeof Shopify !== 'undefined' && Shopify.customer) {
+        const customerEmail = Shopify.customer.email;
+        const customerId = Shopify.customer.id; // Optional: use if you have customer ID in Klaviyo
+        window.ShopifyAnalytics.meta.page.customerId
+        // Check if Klaviyo's identify function is available
+        if (window._learnq) {
+            // Identify the user in Klaviyo
+            window._learnq.push(['identify', {
+                '$email': customerEmail,  // Required: The user's email
+                '$first_name': Shopify.customer.first_name,  // Optional: User's first name
+                '$last_name': Shopify.customer.last_name,    // Optional: User's last name
+                '$id': customerId  // Optional: Unique identifier (if used in Klaviyo)
+            }]);
+
+            console.log('User identified in Klaviyo:', customerEmail);
+        } else {
+            console.error('Klaviyo JavaScript API is not initialized');
+        }
+    } else {
+        console.log('No logged-in user found');
+    }
+});
+
 
 const VoxBlock = (() => {
     const audio = new Audio();
-    audio.addEventListener('loadstart', function(){console.log('loadstart')})
-    audio.addEventListener('playing', function(){console.log('playing')})
-    audio.addEventListener('ended', function(){console.log('ended'); audio.currentButton.classList.remove('playing');})
+    audio.addEventListener('loadstart', function(){console.log('loadstart')});
+    audio.addEventListener('playing', function(){console.log('playing')});
+    audio.addEventListener('ended', function(){
+        console.log('ended');
+        audio.currentButton.classList.remove('playing');
+    });
 
+    const wishlist = [];  // JSON object to keep track of the wishlist
+
+    // Function to sync wishlist with the server
+    const syncWishlist = () => {
+        // Sync with the server
+        fetch('/wishlist/sync', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ wishlist }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Wishlist synced:', data);
+            // Sync with Klaviyo
+            syncWishlistWithKlaviyo();
+        })
+        .catch(error => {
+            console.error('Error syncing wishlist:', error);
+        });
+    };
+
+    // Function to sync wishlist with Klaviyo
+    const syncWishlistWithKlaviyo = () => {
+        if (window._learnq) {
+            window._learnq.push(['identify', {
+                '$wishlist': wishlist  // Set the wishlist as a custom property
+            }]);
+            console.log('Wishlist synced with Klaviyo');
+        } else {
+            console.error('Klaviyo not initialized');
+        }
+    };
+
+    // Initialize wishlist event delegation
+    const initWishlistDelegate = (selector) => {
+        const delegate = new Delegate(document.body);
+        delegate.on('click', selector, (event, target) => {
+            const productId = target.getAttribute('data-product-id');
+            if (target.classList.contains('in-wishlist')) {
+                // Remove from wishlist
+                const index = wishlist.indexOf(productId);
+                if (index > -1) wishlist.splice(index, 1);
+                target.classList.remove('in-wishlist');
+            } else {
+                // Add to wishlist
+                wishlist.push(productId);
+                target.classList.add('in-wishlist');
+            }
+
+            syncWishlistWithKlaviyo();  // Sync the updated wishlist with the server and Klaviyo
+            event.preventDefault();
+        });
+    };
+
+    // Initialize audio playback delegation
     const initAudioDelegate = (selector) => {
         const delegate = new Delegate(document.body);
         delegate.on('click', selector, (event, target) => {
@@ -36,13 +125,13 @@ const VoxBlock = (() => {
 
     return {
         initAudioDelegate,
+        initWishlistDelegate
     };
 })();
 
 export default VoxBlock;
 
 document.addEventListener('DOMContentLoaded', function() {
-    VoxBlock.initAudioDelegate('.bookpreview'); // Initialize audio playback
-
+    VoxBlock.initAudioDelegate('.bookpreview');  // Initialize audio playback
+    VoxBlock.initWishlistDelegate('.wishlist');  // Initialize wishlist functionality
 });
-
