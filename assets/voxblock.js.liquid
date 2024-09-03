@@ -1,39 +1,6 @@
 // voxblock.js
 import { Delegate } from "{{ 'vendor.min.js' | asset_url }}";
 
-var _learnq = _learnq || [];
-  _learnq.push(['identify', {
-    // Change the line below to dynamically print the user's email.
-    '$email' : 'snow7374@gmail.com'
-  }]);
-
-// Encapsulating the module in an IIFE is not strictly necessary with ES6+ modules,
-// but for the sake of direct integration into a script tag or existing build process, we'll keep functions scoped.
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if Shopify.customer object exists, indicating a logged-in user
-    if (typeof Shopify !== 'undefined' && Shopify.customer) {
-        const customerEmail = Shopify.customer.email;
-        const customerId = Shopify.customer.id; // Optional: use if you have customer ID in Klaviyo
-        window.ShopifyAnalytics.meta.page.customerId
-        // Check if Klaviyo's identify function is available
-        if (window._learnq) {
-            // Identify the user in Klaviyo
-            window._learnq.push(['identify', {
-                '$email': customerEmail,  // Required: The user's email
-                '$first_name': Shopify.customer.first_name,  // Optional: User's first name
-                '$last_name': Shopify.customer.last_name,    // Optional: User's last name
-                '$id': customerId  // Optional: Unique identifier (if used in Klaviyo)
-            }]);
-
-            console.log('User identified in Klaviyo:', customerEmail);
-        } else {
-            console.error('Klaviyo JavaScript API is not initialized');
-        }
-    } else {
-        console.log('No logged-in user found');
-    }
-});
-
 
 const VoxBlock = (() => {
     const audio = new Audio();
