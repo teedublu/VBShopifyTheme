@@ -46,6 +46,12 @@
         </a>
       </li>
 
+      <li class="account-nav__item" {% if addresses_tab_active %}aria-current="page"{% endif %}>
+        <a href="{{ pages['your-books'].url }}" class="bold {% unless book_tab_active %}link-faded{% endunless %}">
+          Your books
+        </a>
+      </li>
+
       <li class="account-nav__item account-nav__item--logout">
         <a href="{{ routes.account_logout_url }}" class="link-faded" data-no-instant>
           {{- 'customer.account.logout' | t -}}
