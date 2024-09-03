@@ -101,7 +101,7 @@
         "products_per_row_desktop": 5,
         "subheading": "Screen free audiobooks",
         "title": "{{ section.settings.collection.title }}",
-        "content": "<p>These are the audiobooks on Voxblock from {{ section.settings.collection.metafields.custom.publisher.value.name.value }}<\/p>",
+        "content": "<p>These are the titles from <strong>{{ section.settings.collection.metafields.custom.publisher.value.name.value }}<\/strong> available on Voxblock - the most simple way of listening to audiobooks without needing a screen, wifi or apps.<\/p>",
         "link_url": "",
         "link_text": "",
         "background": "",
