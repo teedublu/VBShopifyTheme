@@ -1,0 +1,39 @@
+
+<div {% render 'section-properties' %}>
+  {% if customer %}
+    <!-- Content for logged-in users -->
+    <div class="customer-audiobooks">
+      <h1>Your Purchased Audiobooks</h1>
+      {% comment %}
+      The purchased audiobooks will be listed here.
+      {% endcomment %}
+      <ul id="audiobooks-list">
+        {% assign customer_orders = customer.orders %}
+        {% for order in customer_orders %}
+          {% for line_item in order.line_items %}
+            {% if line_item.product.tags contains "audiobook" %}
+              <li>
+                {{ line_item.title }} - Purchased on {{ order.created_at | date: "%B %d, %Y" }}
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% else %}
+    <!-- Content for users who are not logged in -->
+    <p>Please log in to view your purchased audiobooks.</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Customer Audiobooks",
+  "class": "shopify-section--customer-audiobooks",
+  "tag": "section",
+
+  "settings": [
+    
+  ]
+}
+{% endschema %}
