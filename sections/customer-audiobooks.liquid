@@ -1,19 +1,25 @@
 
 <div {% render 'section-properties' %}>
   {% if customer %}
+    {% assign children = customer.metafields.custom.children.value | parse_json %}
     <!-- Content for logged-in users -->
     <div class="customer-audiobooks">
       <h1>Your Purchased Audiobooks</h1>
-      {% comment %}
-      The purchased audiobooks will be listed here.
-      {% endcomment %}
+      
       <ul id="audiobooks-list">
         {% assign customer_orders = customer.orders %}
-        {% for order in customer_orders %}
+        {% for order in customer_orders %} 
           {% for line_item in order.line_items %}
-            {% if line_item.product.tags contains "audiobook" %}
+          {%- assign current_variant = line_item.product.selected_or_first_available_variant -%}
+
+            {% if current_variant.sku contains "BK-" %}{{order.id}}//{{line_item.id}}
               <li>
-                {{ line_item.title }} - Purchased on {{ order.created_at | date: "%B %d, %Y" }}
+                {{ line_item.title }} - Purchased on {{ order.created_at | date: "%B %d, %Y" }}{{children|json}}
+                <ul id="children">
+                  {% for child in children %}
+                    <li>{{ child.name }}</li>
+                  {%- endfor -%}
+                </ul>
               </li>
             {% endif %}
           {% endfor %}
@@ -39,13 +45,12 @@
       "default": "Placeholder text"
     }
   ],
-  "presets": {
-    "default": [
-      {
-        "name": "Customer Audiobooks",
-        "category": "Custom Sections"
-      }
-    ]
-  }
+  "presets":  [
+    {
+      "name": "Customer Audiobooks",
+      "category": "Custom Sections"
+    }
+  ]
+
 }
 {% endschema %}
