@@ -11,29 +11,59 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
-        "content_width": "80ch"
+        "content_width": "80ch",
+        "show_title": true
       }
     },
-    "newsletter_F6q46M": {
-      "type": "newsletter",
+    "image_with_text_overlay_qXXyJM": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_B86QQA": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_FpwV3j": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text overlay",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "p"
+          }
+        },
+        "richtext_fiXkFp": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_B86QQA",
+        "heading_FpwV3j",
+        "richtext_fiXkFp"
+      ],
       "settings": {
         "full_width": true,
-        "show_icon": true,
-        "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
-        "button_text": "Go",
-        "subtext": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/paddington_1879201e-653c-4bde-8f2d-869292983e58.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
       }
     }
   },
   "order": [
     "main",
-    "newsletter_F6q46M"
+    "image_with_text_overlay_qXXyJM"
   ]
 }
