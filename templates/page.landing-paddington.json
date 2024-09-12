@@ -19,51 +19,69 @@
     },
     "image_with_text_overlay_qXXyJM": {
       "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_B86QQA": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_FpwV3j": {
-          "type": "heading",
-          "settings": {
-            "text": "Image with text overlay",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "p"
-          }
-        },
-        "richtext_fiXkFp": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_B86QQA",
-        "heading_FpwV3j",
-        "richtext_fiXkFp"
-      ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "max_width": 80,
         "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/paddington_1879201e-653c-4bde-8f2d-869292983e58.png",
+        "image_size": "fill",
+        "image": "shopify:\/\/shop_images\/paddington_7b6cedc3-2292-4f42-a9cd-28e3a5954c9a.png",
+        "mobile_image": "shopify:\/\/shop_images\/paddington_7b6cedc3-2292-4f42-a9cd-28e3a5954c9a.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "overlay_opacity": 0
+      }
+    },
+    "featured_collection_KKXqAg": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "audiobooks-featuring-paddington",
+        "hide_empty": false,
+        "products": [
+          "a-bear-called-paddington",
+          "gruffalo-and-friends-starter-pack",
+          "feeling-funny-starter-pack-1",
+          "bedtime-stories-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "#e72726",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "heading_gradient": "",
+        "product_card_background": "#f83a3a",
+        "product_card_text_color": "#ff9e57"
+      }
+    },
+    "custom_liquid_U8teyT": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<style>\n.body{background-color:red}\n<\/style>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     }
   },
   "order": [
     "main",
-    "image_with_text_overlay_qXXyJM"
+    "image_with_text_overlay_qXXyJM",
+    "featured_collection_KKXqAg",
+    "custom_liquid_U8teyT"
   ]
 }
