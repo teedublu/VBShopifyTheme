@@ -1,7 +1,11 @@
 {%- render 'section-spacing-collapsing' -%}
 <style>
+  .breadcrumbs_section {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
   .breadcrumbs {
-    margin: 0 0 2em;
+    margin: 0 0 0em;
   }
 
   .breadcrumbs__list {
@@ -41,6 +45,34 @@
   .breadcrumbs__link[aria-current="page"]:focus {
     text-decoration: underline;
   }
+
+
+
+.breadcrumbs__item:first-child .breadcrumbs__link {
+    position: relative;
+    padding-left: 20px; 
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumbs__item:first-child .breadcrumbs__link::before {
+    content: "\2302"; 
+    font-size: 1.7em;  
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-65%);
+}
+
+.breadcrumbs__item:first-child .breadcrumbs__link span {
+    visibility: hidden;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
 </style>
 {%- assign title = page.metafields.global.title_tag | default: page.title -%}
 
@@ -111,6 +143,9 @@ metaobject__audiobook__audiobook
         when 'starter-pack-bundle'
           assign crumbs = shop.secure_url | append:sep | append: "Home"
           assign crumbs = crumbs | append: sep1 | append: collections['voxblock-starter-pack-collection'].url | append: sep | append: collections['voxblock-starter-pack-collection'].title
+        when 'audiobook'
+          assign crumbs = shop.secure_url | append:sep | append: "Home"
+          assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: collections['audiobooks'].title
         else
           if collection.url 
             assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
@@ -165,16 +200,18 @@ metaobject__audiobook__audiobook
 
   %}
 
-<div {% render 'section-properties', tight: true, extra_style_attributes: '' %}>     
+<div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>     
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
       {%- for crumb_pair in crumb_list -%}
         <li class="breadcrumbs__item">
         {%- assign crumb = crumb_pair | split:sep -%}
+        {%- assign text =  crumb[1] -%}
+        {%- assign link =  crumb[0] -%}
         {% if forloop.last %}
-          {{ crumb[1] }}
+          <span>{{ text }}</span>
         {% else %}
-          <a href="{{ crumb[0] }}"{% if forloop.last %} aria-current="page"{% endif %}class="breadcrumbs__link">{{ crumb[1] }}</a>
+          <a href="{{ link }}"{% if forloop.last %} aria-current="page"{% endif %}class="breadcrumbs__link"><span>{{ text }}</span></a>
         {% endif %}
         </li>
       {%- endfor -%}

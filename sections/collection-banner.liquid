@@ -1,4 +1,9 @@
-{%- assign show_image = false -%}
+{% assign show_image = false %}
+
+{%- if section.settings.show_collection_image and collection.image or section.settings.image -%}
+  {%- assign show_image = true -%}
+{%- endif -%}
+
 {% assign default_description = 'Voxblock' %}
 {% assign first_book = collection.products | first %}
 {% assign author = first_book.metafields.book.authors.value | first %}
