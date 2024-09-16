@@ -72,6 +72,28 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_image_6nMiVT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/player-adults-lifestyle.png",
+            "title": "Voxblock for older listeners",
+            "content": "",
+            "link_url": "shopify:\/\/products\/audiobook-player-elderly",
+            "link_text": "Read more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_6nMiVT"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
