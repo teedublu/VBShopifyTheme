@@ -19,16 +19,30 @@
     },
     "image_with_text_overlay_N46hzJ": {
       "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_Haxk6a": {
+          "type": "heading",
+          "settings": {
+            "text": "Paddington",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Haxk6a"
+      ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "fill",
-        "image": "shopify:\/\/shop_images\/paddington_7b6cedc3-2292-4f42-a9cd-28e3a5954c9a.png",
-        "mobile_image": "shopify:\/\/shop_images\/paddington-mobile.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "image": "shopify:\/\/shop_images\/paddington_b8f9fe65-dcf2-4285-902d-7661fe1eff57.png",
+        "mobile_image": "shopify:\/\/shop_images\/paddington-mobile_e46d25bf-0eb6-43d7-a290-39bbb8d96d91.png",
+        "mobile_text_position": "place-self-end-center text-center",
+        "desktop_text_position": "sm:place-self-start sm:text-start",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0
@@ -40,11 +54,7 @@
         "collection": "",
         "hide_empty": false,
         "products": [
-          "a-bear-called-paddington",
-          "gruffalo-and-friends-starter-pack",
-          "roald-dahl-starter-pack",
-          "a-mole-like-no-other",
-          "adventure-bundle"
+          "a-bear-called-paddington"
         ],
         "full_width": true,
         "stack_products": true,
