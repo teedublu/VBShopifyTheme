@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "banner": {
@@ -6,6 +15,7 @@
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": false,
+        "link_objects": true,
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": true,
@@ -27,9 +37,8 @@
       "blocks": {
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
-          "disabled": true,
           "settings": {
-            "position": 4,
+            "position": 1,
             "column_span": "1",
             "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
             "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",

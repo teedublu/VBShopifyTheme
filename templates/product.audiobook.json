@@ -30,6 +30,12 @@
             "heading_tag": "h2"
           }
         },
+        "text_t6JGDa": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.book.audiobook.value.concise_blurb | metafield_tag }}"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -60,30 +66,16 @@
             "payment_button_background": "",
             "payment_button_text_color": ""
           }
-        },
-        "description": {
-          "type": "description",
-          "disabled": true,
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "liquid_CnBU6U": {
-          "type": "liquid",
-          "settings": {
-            "liquid": ""
-          }
         }
       },
       "block_order": [
         "text_RffQCL",
         "title",
+        "text_t6JGDa",
         "price",
         "audiobook_properties_cU6Htk",
         "author_narrator_yb9X3i",
-        "buy_buttons",
-        "description",
-        "liquid_CnBU6U"
+        "buy_buttons"
       ],
       "custom_css": [
         "@media screen and (min-width: 1000px) {.section--tight {margin: auto; max-width: 1100px; } .product.audiobooks {grid-template-columns: 1fr 1fr; }}"

@@ -1,1 +1,195 @@
-{"sections":{"banner":{"type":"collection-banner","settings":{"full_width":true,"allow_transparent_header":true,"enable_parallax":false,"show_collection_title":true,"show_collection_description":true,"show_collection_image":true,"collection_title_size":"h0","image_size":"md","image":"shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","featured_product":"","featured_product_heading":"Featured product","text_color":"#ffffff","overlay_color":"#ffb74a","overlay_opacity":100}},"collection_link_blocks_t7tQjD":{"type":"collection-link-blocks","blocks":{"item_YBPfxp":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/audiobooks-library_banner-web-3200x1200.jpg","link_text":"All audiobooks","url_params":""}},"item_rRYnxH":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/Under5s-link-image.jpg","link_text":"Under 5's","url_params":"filter.p.m.book.age_groups=Under+5%27s"}},"item_7rh8X6":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/5-8Years-link-image.jpg","link_text":"5-8 years","url_params":"filter.p.m.book.age_groups=5+to+8+years"}},"item_GtzyNk":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/8-10Years-link-image.jpg","link_text":"8-10 years","url_params":"filter.p.m.book.age_groups=8+to+10+years"}},"item_r7wCbW":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/10-Teen-link-image.jpg","link_text":"10 to teens","url_params":"filter.p.m.book.age_groups=10+to+teens"}}},"block_order":["item_YBPfxp","item_rRYnxH","item_7rh8X6","item_GtzyNk","item_r7wCbW"],"settings":{"full_width":false,"nav_collection":"audiobooks"}},"main":{"type":"main-collection","blocks":{"promotion_image_4VEyzT":{"type":"promotion_image","settings":{"position":5,"column_span":"1","image":"shopify:\/\/shop_images\/IMG_5604.jpg","title":"Voxblock audiobook player","content":"<p>All these audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>","link_url":"shopify:\/\/products\/voxblock-player","link_text":"Lear more","heading_tag":"h4","text_position":"place-self-end-start text-start","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"promotion_video_CHwxAJ":{"type":"promotion_video","disabled":true,"settings":{"position":4,"column_span":"1","external_video_url":"https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc","title":"How our books work","content":"","link_url":"","link_text":"View all","heading_tag":"h4","text_position":"place-self-end-start text-start","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}}},"block_order":["promotion_image_4VEyzT","promotion_video_CHwxAJ"],"settings":{"products_per_page":50,"products_per_row_mobile":"2","products_per_row_desktop":5,"filter_layout":"drawer","show_sort_by":false,"sticky_filters":true,"show_filters":true,"show_filter_group_name":false,"show_filter_values_count":false,"open_first_filter_group":false}},"image_with_text_overlay_qB9epV":{"type":"image-with-text-overlay","blocks":{"heading_JT9FVm":{"type":"heading","settings":{"text":"The screen-free audiobook player","scale_with":false,"heading_tag":"h1"}},"button_pjiV7q":{"type":"button","settings":{"style":"fill","size":"lg","text":"Click here for more details","url":"shopify:\/\/pages\/how-does-it-work","background":"","text_color":""}}},"block_order":["heading_JT9FVm","button_pjiV7q"],"settings":{"full_width":true,"allow_transparent_header":false,"max_width":80,"enable_parallax":false,"image_size":"auto","image":"shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":20}}},"order":["banner","collection_link_blocks_t7tQjD","main","image_with_text_overlay_qB9epV"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": false,
+        "link_objects": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "md",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#ffb74a",
+        "overlay_opacity": 100
+      }
+    },
+    "collection_link_blocks_t7tQjD": {
+      "type": "collection-link-blocks",
+      "blocks": {
+        "item_YBPfxp": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/audiobooks-image-link-category-200x150.jpg",
+            "link_text": "All audiobooks",
+            "url_params": ""
+          }
+        },
+        "item_rRYnxH": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/under5s-image-link-category-200x150.jpg",
+            "link_text": "Under 5's",
+            "url_params": "filter.p.m.book.age_groups=Under+5%27s"
+          }
+        },
+        "item_7rh8X6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/5-8years-image-link-category-200x150.jpg",
+            "link_text": "5-8 years",
+            "url_params": "filter.p.m.book.age_groups=5+to+8+years"
+          }
+        },
+        "item_GtzyNk": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/8-10years-image-link-category-200x150.jpg",
+            "link_text": "8-10 years",
+            "url_params": "filter.p.m.book.age_groups=8+to+10+years"
+          }
+        },
+        "item_r7wCbW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/10-teens-image-link-category-200x150.jpg",
+            "link_text": "10 to teens",
+            "url_params": "filter.p.m.book.age_groups=10+to+teens"
+          }
+        }
+      },
+      "block_order": [
+        "item_YBPfxp",
+        "item_rRYnxH",
+        "item_7rh8X6",
+        "item_GtzyNk",
+        "item_r7wCbW"
+      ],
+      "settings": {
+        "full_width": false,
+        "nav_collection": "audiobooks"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_video_CHwxAJ": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 1,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "",
+            "content": "",
+            "link_url": "shopify:\/\/collections\/audiobooks",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "promotion_image_4VEyzT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 10,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "title": "Voxblock audiobook player",
+            "content": "<p>All these audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_CHwxAJ",
+        "promotion_image_4VEyzT"
+      ],
+      "settings": {
+        "products_per_page": 15,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "filter_layout": "drawer",
+        "show_sort_by": false,
+        "sticky_filters": true,
+        "show_filters": true,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
+      }
+    },
+    "image_with_text_overlay_qB9epV": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_JT9FVm": {
+          "type": "heading",
+          "settings": {
+            "text": "The screen-free audiobook player",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "p"
+          }
+        },
+        "button_pjiV7q": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Click here for more details",
+            "url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_JT9FVm",
+        "button_pjiV7q"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 20
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collection_link_blocks_t7tQjD",
+    "main",
+    "image_with_text_overlay_qB9epV"
+  ]
+}

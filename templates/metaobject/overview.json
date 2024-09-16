@@ -1,1 +1,147 @@
-{"sections":{"breadcrumbs_Vf3K4D":{"type":"breadcrumbs","settings":{"heading":"Breadcrumbs"}},"rich_text_kf8m8f":{"type":"rich-text","blocks":{"subheading_ME6F8j":{"type":"subheading","settings":{"text":"Synopsis of {{ metaobject.name.value }}"}},"heading_Y9kqDK":{"type":"heading","settings":{"text":"{{ metaobject.page_title.value }}","heading_tag":"h1","text_color":"","gradient":""}},"richtext_3eBjTx":{"type":"richtext","settings":{"content":"{{ metaobject.about | metafield_tag }}"}},"button_xDwDMG":{"type":"button","settings":{"style":"fill","size":"lg","text":"Buy the audiobook","url":"{{ metaobject.system.url }}","background":"","text_color":""}}},"block_order":["subheading_ME6F8j","heading_Y9kqDK","richtext_3eBjTx","button_xDwDMG"],"settings":{"full_width":true,"use_mo":true,"content_width":"small","text_position":"start","background":"","background_gradient":"","text_color":""}},"featured_collection_WMmHLF":{"type":"featured-collection","settings":{"collection":"voxblock-starter-pack-collection","hide_empty":false,"products":[],"full_width":true,"stack_products":false,"show_progress_bar":false,"products_count":6,"products_per_row_mobile":"2","products_per_row_desktop":5,"subheading":"Voxblock starter packs","title":"Start listening","content":"","link_url":"","link_text":"View all","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"microdata_KC6pKQ":{"type":"microdata","settings":{"debug":false,"object_type":"overview"}}},"order":["breadcrumbs_Vf3K4D","rich_text_kf8m8f","featured_collection_WMmHLF","microdata_KC6pKQ"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "breadcrumbs_Vf3K4D": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_kf8m8f": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_ME6F8j": {
+          "type": "subheading",
+          "settings": {
+            "text": "Synopsis of {{ metaobject.name.value }}"
+          }
+        },
+        "heading_Y9kqDK": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_3eBjTx": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.about | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_ME6F8j",
+        "heading_Y9kqDK",
+        "richtext_3eBjTx"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_79njaq": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_xFkrYe": {
+          "type": "vendor",
+          "settings": {
+          }
+        },
+        "title_PMpyrq": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_cUfwcY": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_FLj3qa": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "separator_GjHqfb": {
+          "type": "separator",
+          "settings": {
+          }
+        },
+        "description_nrBYac": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "buy_buttons_mzykK9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor_xFkrYe",
+        "title_PMpyrq",
+        "badges_cUfwcY",
+        "price_FLj3qa",
+        "separator_GjHqfb",
+        "description_nrBYac",
+        "buy_buttons_mzykK9"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.product.value }}",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "microdata_KC6pKQ": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "overview"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_Vf3K4D",
+    "rich_text_kf8m8f",
+    "featured_product_79njaq",
+    "microdata_KC6pKQ"
+  ]
+}

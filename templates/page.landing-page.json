@@ -1,0 +1,140 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "image_with_text_overlay_aQeLjj": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_QhbKca": {
+          "type": "subheading",
+          "settings": {
+            "text": "{{ page.metafields.custom.subheading.value }}"
+          }
+        },
+        "heading_DenFnj": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.metafields.custom.page_title.value }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        },
+        "richtext_AL8YMf": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ page.metafields.custom.heading_description | metafield_tag }}<\/p>"
+          }
+        },
+        "button_p4UxyD": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "Meet Voxblock",
+            "url": "shopify:\/\/pages\/how-does-it-work",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QhbKca",
+        "heading_DenFnj",
+        "richtext_AL8YMf",
+        "button_p4UxyD"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/voxblock_website_banner_1.png",
+        "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_8.png",
+        "mobile_text_position": "place-self-end-center text-center",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 10
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "120ch",
+        "show_title": false
+      }
+    },
+    "featured_collection_jtUkxt": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 27,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "QUICK START",
+        "title": "Voxblock Starter Packs",
+        "content": "",
+        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "newsletter_F6q46M": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "custom_liquid_GyghNe": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "{% render 'microdata-organisation' %}",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_aQeLjj",
+    "main",
+    "featured_collection_jtUkxt",
+    "newsletter_F6q46M",
+    "custom_liquid_GyghNe"
+  ]
+}

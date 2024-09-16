@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "breadcrumbs_wf8k7Y": {
@@ -48,6 +57,29 @@
     },
     "featured_collection_kMNaHU": {
       "type": "featured-collection",
+      "blocks": {
+        "promotion_video_Dpt7QA": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 3,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/voxblock intro_desktop.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "Listen with Voxblock",
+            "content": "<p>Listen to {{ section.settings.collection.title }} on Voxblock<\/p>",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "How it works",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 20
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_Dpt7QA"
+      ],
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
         "hide_empty": false,
