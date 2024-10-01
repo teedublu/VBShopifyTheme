@@ -11,11 +11,11 @@ Each product type has own product card if needed or product-card-default
 
 {%- case product.type -%}
   {%- when 'Audiobooks' -%}
-    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, settings: section.settings -%}
+    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
   {%- when 'Audiobooks Bundle' -%}
-    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, settings: section.settings -%}
+    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
   {%- when 'Starter Pack' -%}
-    {%- render 'product-card-starterpack', product: product, stacked: true, show_badges: true, settings: section.settings -%}
+    {%- render 'product-card-starterpack', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
   {%- else -%}
-    {%- render 'product-card-default', product: product, stacked: true, show_badges: true, settings: section.settings -%}
+    {%- render 'product-card-default', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
 {%- endcase -%}
