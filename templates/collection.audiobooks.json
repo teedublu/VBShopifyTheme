@@ -12,6 +12,28 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_yzXge3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/The_Worst_Witch_Banner.png",
+            "mobile_image": "shopify://shop_images/The_Worst_Witch_-_mob.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "NEW ARRIVAL",
+            "title": "The Worst Witch",
+            "heading_tag": "h0",
+            "button_text": "Shop here",
+            "button_link": "shopify://collections/audiobooks-by-jill-murphy",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_rcNxx7": {
           "type": "image",
           "settings": {
@@ -66,7 +88,7 @@
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
             "subheading": "NEWSLETTER",
             "title": "Find out about new releases",
-            "heading_tag": "h2",
+            "heading_tag": "h0",
             "button_text": "Sign up here",
             "button_link": "shopify://pages/newsletter",
             "text_color": "#ffffff",
@@ -102,6 +124,7 @@
         }
       },
       "block_order": [
+        "image_yzXge3",
         "image_rcNxx7",
         "image_Fk3KYX",
         "image_pERNrc",
