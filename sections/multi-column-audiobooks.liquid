@@ -10,18 +10,29 @@
     .audiobook.multi-column img.audioook-object-image { border-radius: 50%; aspect-ratio: 1 / 1; max-width: 30%; }
   </style>
 
-
-
-
-
   <div {% render 'section-properties' %}>
 
     <div class="section-stack">
 
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
 
-      <div class="audiobook multi-column scroll-area bleed md:unbleed ">
+      {%- if metaobject.chapters.value  -%}
+        {%- capture chapter_content -%}
+          {% assign chapters = metaobject.chapters.value  %}
+          <ul>
+            {%- for chapter in chapters -%}
+              <li>
+                  <b>Chapter {{chapter.number }}. {{chapter.title}}</b>{{ chapter.summary | metafield_tag}}
+              </li>
+            {%- endfor -%}
+          </ul>
 
+        {%- endcapture -%}
+        {%- render 'section-header', subheading: 'Chapters', content: chapter_content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
+
+      {%- endif -%}
+
+      <div class="audiobook multi-column scroll-area bleed md:unbleed ">
 
 
         {%- for block in section.blocks -%}
@@ -112,11 +123,6 @@
                   </div>
                 {%- endif -%}
               </div>
-
-            {%- when 'chapters' -%}
-              {%- for chapter in metaobject.chapters -%}
-                {{chapter}}WTF
-              {%- endfor -%}
 
             {%- when 'spacer' -%}
               <div class="multi-column__item hidden md:block" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}></div>

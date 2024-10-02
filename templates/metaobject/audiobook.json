@@ -390,13 +390,7 @@
     "faq_jyHPPb": {
       "type": "faq",
       "blocks": {
-        "item_9Umcxq": {
-          "type": "item",
-          "settings": {
-            "title": "Who wrote \"{{ metaobject.title.value }}\"?",
-            "content": "<p>{{ metaobject.title.value }} is written by <\/p>{{ metaobject.authors | metafield_tag: field: 'name' }}"
-          }
-        },
+       
         "item_QTzBaN": {
           "type": "item",
           "settings": {

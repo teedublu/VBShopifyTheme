@@ -3,6 +3,7 @@
 {%- assign narrator = product.metafields.book.narrators.value | first -%} 
 {%- assign audiogramme = audiobook.audiogramme.value -%}
 {%- assign captions = audiogramme.captions.value -%}
+{%- assign chapters = audiobook.chapters.value -%}
 
 {% assign start = "now" | date: '%s' %}
 {% assign seconds = 25 | times: 24 | times: 60 | times: 60 %}
@@ -42,7 +43,7 @@
   "url": {{ audiobook.system.url | prepend: shop.url | json }},
   "abridged": "{{ product.metafields.book.abridged }}",
   "description": {{ product.description | strip_html | json }},
-  "datePublished": "2022-01-01",
+  "datePublished": {{ product.published_at | strip_html | json }},
   "duration": {{ product.metafields.book.duration | prepend: 'PT'  | append: 'M' | replace:'.', 'H' | json }},
   "encodingFormat": "audio/mp3",
   {% if product.metafields.book.same_as %}
@@ -66,10 +67,23 @@
     "@id": "https://voxblock.co.uk/#organisation",
     "name": "Voxblock"
   },
-  {%- if audiobook.genres.value -%}
+   {%- if audiobook.genres.value -%}
     "genre": [
       {%- for genre in audiobook.genres.value -%}
           {{ genre | json }}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+  {%- endif -%}
+  {%- if chapters -%}
+    "hasPart": [
+      {%- for chapter in chapters -%}
+        {
+          "@type": "Chapter",
+          "name": "{{chapter.title}}",
+          "position": {{forloop.index}},
+          "description": "{{chapter.summary|metafield_tag|strip_html}}"
+        }
+        {%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
     ],
   {%- endif -%}
