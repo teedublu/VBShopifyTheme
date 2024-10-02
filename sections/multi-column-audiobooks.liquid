@@ -30,7 +30,6 @@
 
           {%- case block.type -%}
             
-
             {%- when 'item' -%}
               {% assign content = block.settings.content %}
               {% assign title = block.settings.title %}
@@ -38,9 +37,6 @@
               {% assign image = block.settings.image %}
               {% assign link_url = block.settings.link_url %}
               {% assign link_text = block.settings.link_text %}
-
-
-              
               
               {%- case block.settings.use_object -%}
                 {%- when 'author' -%}
@@ -116,6 +112,11 @@
                   </div>
                 {%- endif -%}
               </div>
+
+            {%- when 'chapters' -%}
+              {%- for chapter in metaobject.chapters -%}
+                {{chapter}}WTF
+              {%- endfor -%}
 
             {%- when 'spacer' -%}
               <div class="multi-column__item hidden md:block" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}></div>
@@ -419,6 +420,11 @@
     {
       "type": "publisher",
       "name": "Publisher",
+      "settings": []
+    },
+    {
+      "type": "chapters",
+      "name": "Chapters",
       "settings": []
     }
   ],
