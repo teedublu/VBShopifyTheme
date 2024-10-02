@@ -12,28 +12,12 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "content_width": "80ch"
-      }
-    },
-    "newsletter_F6q46M": {
-      "type": "newsletter",
-      "settings": {
-        "full_width": true,
-        "show_icon": true,
-        "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.</p>",
-        "button_text": "Go",
-        "subtext": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "button_background": "",
-        "button_text_color": ""
+        "content_width": "80ch",
+        "show_title": true
       }
     }
   },
   "order": [
-    "main",
-    "newsletter_F6q46M"
+    "main"
   ]
 }
