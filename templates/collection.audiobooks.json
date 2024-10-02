@@ -12,6 +12,28 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_rcNxx7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Audiobook_of_the_Month_18.png",
+            "mobile_image": "shopify://shop_images/Audiobook_of_the_Month_-_mob.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "AUDIOBOOK OF THE MONTH",
+            "title": "Get 10% off",
+            "heading_tag": "h1",
+            "button_text": "Shop here",
+            "button_link": "shopify://products/the-witches",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_Fk3KYX": {
           "type": "image",
           "settings": {
@@ -25,29 +47,6 @@
             "heading_tag": "h0",
             "button_text": "Shop here",
             "button_link": "shopify://collections/audiobooks-featuring-peppa-pig",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_rcNxx7": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Audiobook_of_the_Month_17.png",
-            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_12.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "AUDIOBOOK OF THE MONTH",
-            "title": "Get 10% off",
-            "heading_tag": "h1",
-            "button_text": "Buy here",
-            "button_link": "shopify://products/the-little-prince",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -103,8 +102,8 @@
         }
       },
       "block_order": [
-        "image_Fk3KYX",
         "image_rcNxx7",
+        "image_Fk3KYX",
         "image_pERNrc",
         "image_yXy8xr"
       ],
