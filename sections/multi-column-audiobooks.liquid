@@ -18,18 +18,17 @@
 
       {%- if metaobject.chapters.value  -%}
         {%- capture chapter_content -%}
-          {% assign chapters = metaobject.chapters.value  %}
+          {% assign chapters = metaobject.chapters.value  | sort:'index' %}
           <ul>
             {%- for chapter in chapters -%}
               <li>
-                  <b>Chapter {{chapter.number }}. {{chapter.title}}</b>{{ chapter.summary | metafield_tag}}
+                <b>Chapter {{chapter.number }}</b>
+                {{chapter.summary | metafield_tag }}
               </li>
             {%- endfor -%}
           </ul>
-
         {%- endcapture -%}
         {%- render 'section-header', subheading: 'Chapters', content: chapter_content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
-
       {%- endif -%}
 
       <div class="audiobook multi-column scroll-area bleed md:unbleed ">
