@@ -59,10 +59,10 @@
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/adult-collection-image.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/adult-collection-image.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "image": "shopify:\/\/shop_images\/older-listeners-main-header.png",
+        "mobile_image": "shopify:\/\/shop_images\/older-listeners-header-image-mobile.png",
+        "mobile_text_position": "place-self-end-center text-center",
+        "desktop_text_position": "sm:place-self-start-center sm:text-center",
         "featured_product": "",
         "featured_product_heading": "Featured product",
         "text_color": "#ffffff",
@@ -72,6 +72,28 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_image_6nMiVT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/player-adults-lifestyle.png",
+            "title": "Voxblock for older listeners",
+            "content": "",
+            "link_url": "shopify:\/\/products\/audiobook-player-elderly",
+            "link_text": "Read more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_6nMiVT"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
