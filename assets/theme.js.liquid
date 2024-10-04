@@ -1009,6 +1009,7 @@ var BaseCarousel = class extends HTMLElement {
         this.addEventListener("carousel:settle", this._adjustHeight);
         this._adjustHeight();
       }
+      
       this.addEventListener("carousel:select", this._preloadImages, { signal: this._abortController.signal });
       this.addEventListener("carousel:filter", this._filterItems, { signal: this._abortController.signal });
       this.addEventListener("control:prev", this.previous, { signal: this._abortController.signal });
@@ -1070,11 +1071,13 @@ var BaseCarousel = class extends HTMLElement {
     this.items.forEach((item, index) => item.hidden = event.detail.filteredIndexes.includes(index));
   }
   _preloadImages() {
-    [this.previousSlide, this.nextSlide].forEach((item) => {
-      if (item) {
-        Array.from(item.querySelectorAll('img[loading="lazy"]')).forEach((img) => img.setAttribute("loading", "eager"));
-      }
-    });
+    if (!this.hasAttribute("disable-preloading")) {
+      [this.previousSlide, this.nextSlide].forEach((item) => {
+        if (item) {
+          Array.from(item.querySelectorAll('img[loading="lazy"]')).forEach((img) => img.setAttribute("loading", "eager"));
+        }
+      });
+    }
   }
   _dispatchEvent(eventName, index) {
     this.dispatchEvent(new CustomEvent(eventName, { bubbles: true, detail: { slide: this.items[index], index } }));

@@ -132,13 +132,13 @@ Supported variables
     --------------------------------------------------------------------------------------------------------------------
     {%- endcomment -%}
     <div class="product-card__sample">
-            {%- if settings.product_color_display != 'hide' and show_swatches != false -%}
+      {%- if settings.product_color_display != 'hide' and show_swatches != false -%}
         {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
         {%- for color_label in color_label_list -%}
           {%- if product.options_by_name[color_label] != blank -%}
             {%- assign product_option = product.options_by_name[color_label] -%}
             {%- capture name -%}swatch-{{ section.id }}-{{ product.id }}-{{ product_option.position }}{%- endcapture -%}
-
+            
             <div class="product-card__aside">
               {%- case settings.product_color_display -%}
                 {%- when 'count' -%}

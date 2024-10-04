@@ -10,18 +10,28 @@
     .audiobook.multi-column img.audioook-object-image { border-radius: 50%; aspect-ratio: 1 / 1; max-width: 30%; }
   </style>
 
-
-
-
-
   <div {% render 'section-properties' %}>
 
     <div class="section-stack">
 
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
 
-      <div class="audiobook multi-column scroll-area bleed md:unbleed ">
+      {%- if metaobject.chapters.value  -%}
+        {%- capture chapter_content -%}
+          {% assign chapters = metaobject.chapters.value  | sort:'index' %}
+          <ol>
+            {%- for chapter in chapters -%}
+              <li>
+                <b>{{chapter.title }}</b>
+                {{chapter.summary | metafield_tag }}
+              </li>
+            {%- endfor -%}
+          </ol>
+        {%- endcapture -%}
+        {%- render 'section-header', subheading: 'Chapters', content: chapter_content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
+      {%- endif -%}
 
+      <div class="audiobook multi-column scroll-area bleed md:unbleed ">
 
 
         {%- for block in section.blocks -%}
@@ -30,7 +40,6 @@
 
           {%- case block.type -%}
             
-
             {%- when 'item' -%}
               {% assign content = block.settings.content %}
               {% assign title = block.settings.title %}
@@ -38,9 +47,6 @@
               {% assign image = block.settings.image %}
               {% assign link_url = block.settings.link_url %}
               {% assign link_text = block.settings.link_text %}
-
-
-              
               
               {%- case block.settings.use_object -%}
                 {%- when 'author' -%}
@@ -419,6 +425,11 @@
     {
       "type": "publisher",
       "name": "Publisher",
+      "settings": []
+    },
+    {
+      "type": "chapters",
+      "name": "Chapters",
       "settings": []
     }
   ],
