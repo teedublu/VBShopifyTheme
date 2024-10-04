@@ -41,7 +41,7 @@
   },
   "name": "{{ product.title }}",
   "url": {{ audiobook.system.url | prepend: shop.url | json }},
-  "abridged": "{{ product.metafields.book.abridged }}",
+  "abridged": {{ product.metafields.book.abridged }},
   "description": {{ product.description | strip_html | json }},
   "datePublished": {{ product.published_at | strip_html | json }},
   "duration": {{ product.metafields.book.duration | prepend: 'PT'  | append: 'M' | replace:'.', 'H' | json }},
@@ -63,7 +63,7 @@
     "url" : "https://voxblock.co.uk"
   },
   "publisher" : {
-    "type": "Organization",
+    "@type": "Organization",
     "@id": "https://voxblock.co.uk/#organisation",
     "name": "Voxblock"
   },
