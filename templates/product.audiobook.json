@@ -21,7 +21,7 @@
         "text_RffQCL": {
           "type": "text",
           "settings": {
-            "text": "<h5>A screen-free audiobook<\/h5>"
+            "text": "<h5>A screen-free audiobook</h5>"
           }
         },
         "title": {
@@ -54,6 +54,8 @@
         "author_narrator_yb9X3i": {
           "type": "author_narrator",
           "settings": {
+            "show_author": true,
+            "show_narrator": true
           }
         },
         "buy_buttons": {
@@ -98,29 +100,6 @@
         "input_text_color": ""
       }
     },
-    "rich_text_dLMPyC": {
-      "type": "rich-text",
-      "blocks": {
-        "richtext_AgENH4": {
-          "type": "richtext",
-          "settings": {
-            "content": "{{ product.metafields.book.audiobook.value.content_notes | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "richtext_AgENH4"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "tabs_qeFVd8": {
       "type": "tabs",
       "blocks": {
@@ -163,7 +142,7 @@
         "tab_MbxE8y": {
           "type": "tab",
           "settings": {
-            "title": "Reviews\/Resources",
+            "title": "Reviews/Resources",
             "content": "",
             "page": "",
             "use_metaobject": ""
@@ -262,35 +241,35 @@
           "type": "item",
           "settings": {
             "title": "How do I listen to \"{{ product.title }}\"?",
-            "content": "<p>To listen to {{ product.title }} or any other stories from Voxblock, place the block on the <a href=\"https:\/\/voxblock.co.uk\/pages\/player\" title=\"The screen free audiobook player\">Voxblock audiobook player<\/a>. Its simple to use and requires no apps or wifi to use.<\/p>"
+            "content": "<p>To listen to {{ product.title }} or any other stories from Voxblock, place the block on the <a href=\"https://voxblock.co.uk/pages/player\" title=\"The screen free audiobook player\">Voxblock audiobook player</a>. Its simple to use and requires no apps or wifi to use.</p>"
           }
         },
         "item_zBxp3t": {
           "type": "item",
           "settings": {
             "title": "Will I lose my place in the story if I remove the block?",
-            "content": "<p>No, the player will return to the same point next time you listen to that story.<\/p>"
+            "content": "<p>No, the player will return to the same point next time you listen to that story.</p>"
           }
         },
         "item_J79MfC": {
           "type": "item",
           "settings": {
             "title": "What other stories are available?",
-            "content": "<p>In addition to {{ product.title }} we have an always growing library of world-class stories for children aged three and up.<\/p>"
+            "content": "<p>In addition to {{ product.title }} we have an always growing library of world-class stories for children aged three and up.</p>"
           }
         },
         "item_He9eGe": {
           "type": "item",
           "settings": {
             "title": "What are the blocks made of?",
-            "content": "<p>All our physical audiobooks come with a beautifully designed cover just like a book are made principally of recycled card. <\/p>"
+            "content": "<p>All our physical audiobooks come with a beautifully designed cover just like a book are made principally of recycled card. </p>"
           }
         },
         "item_CKpbzy": {
           "type": "item",
           "settings": {
             "title": "How long is \"{{ product.title }}\"",
-            "content": "<p>{{ product.title }} audiobook is {{ product.metafields.book.duration.value }} hours long.<\/p>"
+            "content": "<p>{{ product.title }} audiobook is {{ product.metafields.book.duration.value }} hours long.</p>"
           }
         }
       },
@@ -305,7 +284,7 @@
         "full_width": true,
         "subheading": "Common questions about {{ product.title }}",
         "title": "FAQ",
-        "content": "<p>Here are some quick answers to common questions asked about listening to  {{ product.title }} on Voxblock. <\/p>",
+        "content": "<p>Here are some quick answers to common questions asked about listening to  {{ product.title }} on Voxblock. </p>",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
@@ -331,7 +310,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/audiobooks-library_banner-web-3200x1200.jpg",
+        "image": "shopify://shop_images/audiobooks-library_banner-web-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -343,7 +322,6 @@
   "order": [
     "breadcrumbs_UCTtKj",
     "main",
-    "rich_text_dLMPyC",
     "tabs_qeFVd8",
     "video_QYECT4",
     "related_products_NbRnrP",

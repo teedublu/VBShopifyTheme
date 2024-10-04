@@ -35,8 +35,11 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- endif -%}
 
     {%- comment -%}Few prefetch to increase performance on commonly used third-parties{%- endcomment -%}
-    <link rel="preconnect" href="https://cdn.shopify.com">
-    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+    {%- comment -%}Removing these below as using webfonts{%- endcomment -%}
+    {%- comment -%} <link rel="preconnect" href="https://cdn.shopify.com">{%- endcomment -%}
+    {%- comment -%} <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>{%- endcomment -%}
+
     {%- comment -%} DONT THINK WE NEED THIS <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">{%- endcomment -%}
 
     {%- unless settings.heading_font.system? -%}

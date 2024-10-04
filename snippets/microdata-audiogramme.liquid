@@ -57,7 +57,7 @@
         "url": "{{ audiogramme.thumbnail.value | asset_url | prepend:'https:' }}"
       },
     {% endif %}
-    "representativeSample": {
+    "hasPart": {
       "@type": "AudioObject",
       "name": "{{ product.title }} Audiobook Sample",
       "contentUrl": "{{ product.metafields.book.preview.value.url | prepend:'https:' }}",
@@ -75,7 +75,7 @@
       "hasPart": {
         "@type": "Clip",
         "name": "Audio sample from {{ product.title }}",
-        "startTime": "PT0M0S",  "endTime": "PT5M0S"
+        "duration": "PT0H05M"
       }
     }    
   }

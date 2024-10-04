@@ -132,8 +132,12 @@ Supported variables
     {%- endcomment -%}
     <div class="product-card__row">
       {%- if settings.product_color_display != 'hide' and show_swatches != false -%}
+
+
         {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
         {%- for color_label in color_label_list -%}
+          {%- comment -%} This requires the option to be called 'color' or 'colour' which dont want{%- endcomment -%}
+
           {%- if product.options_by_name[color_label] != blank -%}
             {%- assign product_option = product.options_by_name[color_label] -%}
             {%- capture name -%}swatch-{{ section.id }}-{{ product.id }}-{{ product_option.position }}{%- endcapture -%}

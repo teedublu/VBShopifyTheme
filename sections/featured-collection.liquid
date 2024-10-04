@@ -49,7 +49,7 @@
       <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
         {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
 
-        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if section.settings.products_count > section.settings.products_per_row_desktop %}is-scrollable{% endif %}" disable-preloading>
           <reveal-items selector=".product-list > *">
             <product-list class="product-list">
               {%- assign products = section.settings.products | default: section.settings.collection.products -%}

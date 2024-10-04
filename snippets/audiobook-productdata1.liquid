@@ -149,11 +149,12 @@
 
             {% when 'thema_codes' %}
                 {% if audiobook_metaobject.thema_codes.value %}
+                    {%- assign thema_codes = shop.metaobjects.helper.website.thema_codes.value -%}
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {% for thema_code in audiobook_metaobject.thema_codes.value %}
-                                {{ thema_code }}{% unless forloop.last %}, {% endunless %}
+                                {{ thema_code }}  {{thema_codes[thema_code].Heading}}{% unless forloop.last %},<br/> {% endunless %}
                             {% endfor %}
                         </div>
                     </div>
