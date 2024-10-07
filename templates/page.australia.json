@@ -125,6 +125,7 @@
         "video_size": "sm",
         "video": "shopify://files/videos/voxblock intro_desktop.mp4",
         "youtube_id": "",
+        "external_video_url": "",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -443,6 +444,7 @@
         "logo_nmCppy": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/Trustpilot_icon_v3.png",
             "logo_width": 120,
             "link": ""
           }
@@ -450,13 +452,15 @@
         "logo_LtC3f6": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/Indy_AsFeaturedIn_2024.png",
             "logo_width": 120,
             "link": ""
           }
         },
-        "logo_8GAGVD": {
+        "logo_R3zrTb": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/GOOD_PLAY_GUIDE-01_copy.png",
             "logo_width": 120,
             "link": ""
           }
@@ -464,13 +468,15 @@
         "logo_cykwBx": {
           "type": "logo",
           "settings": {
-            "logo_width": 120,
+            "logo": "shopify://shop_images/JDA_2023_Logo_Silver_2ca8e977-0c5b-4e18-93bc-9b33e69137f0.png",
+            "logo_width": 90,
             "link": ""
           }
         },
         "logo_Mj7afL": {
           "type": "logo",
           "settings": {
+            "logo": "shopify://shop_images/Toy-Awards-2024-Best-Toy-Brand.png",
             "logo_width": 120,
             "link": ""
           }
@@ -479,7 +485,7 @@
       "block_order": [
         "logo_nmCppy",
         "logo_LtC3f6",
-        "logo_8GAGVD",
+        "logo_R3zrTb",
         "logo_cykwBx",
         "logo_Mj7afL"
       ],
@@ -507,10 +513,10 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "John S.",
-            "title": "Testimonial 1",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "rating": 5,
+            "author": "Simone (April 2024)",
+            "title": "Great audio books",
+            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.</p>"
           }
         },
         "testimonial_FDmkry": {
@@ -518,10 +524,10 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 5,
-            "author": "Mary U.",
-            "title": "Testimonial 2",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "rating": 4,
+            "author": "The Independent",
+            "title": "Best Kids' audio player for ease of use",
+            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.</p>"
           }
         },
         "testimonial_iCBMpf": {
@@ -529,17 +535,29 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "Joshua A.",
-            "title": "Testimonial 3",
-            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.</p>"
+            "rating": 5,
+            "author": "Emma (March 2024)",
+            "title": "Great product",
+            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.</p>"
+          }
+        },
+        "testimonial_DDNy9M": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "The Evening Standard",
+            "title": "Best for user friendliness",
+            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
           }
         }
       },
       "block_order": [
         "testimonial_md4XwU",
         "testimonial_FDmkry",
-        "testimonial_iCBMpf"
+        "testimonial_iCBMpf",
+        "testimonial_DDNy9M"
       ],
       "settings": {
         "full_width": true,
@@ -561,12 +579,26 @@
     "image_link_blocks_krpwkL": {
       "type": "image-link-blocks",
       "blocks": {
+        "item_yBbdE9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-In_Car-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on Instagram",
+            "link_url": "https://www.instagram.com/wearevoxblock/",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
         "item_UEwKHL": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-Headphones-1200x1400.jpg",
             "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
+            "link_text": "Follow us on Facebook",
+            "link_url": "https://www.facebook.com/wearevoxblock",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -576,9 +608,10 @@
         "item_69WJyV": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-listening-1200x1400.jpg",
             "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
+            "link_text": "Follow us on X",
+            "link_url": "https://x.com/wearevoxblock",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -588,9 +621,10 @@
         "item_ND64z6": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-Tokens-1200x1400.jpg",
             "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
+            "link_text": "Follow us on TikTok",
+            "link_url": "https://www.tiktok.com/@voxblock",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -600,9 +634,10 @@
         "item_DmfwUn": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-Collection-1200x1400.jpg",
             "stretch_image": true,
-            "link_text": "",
-            "link_url": "",
+            "link_text": "Follow us on Pinterest",
+            "link_url": "https://uk.pinterest.com/voxblock/",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -611,6 +646,7 @@
         }
       },
       "block_order": [
+        "item_yBbdE9",
         "item_UEwKHL",
         "item_69WJyV",
         "item_ND64z6",
