@@ -69,6 +69,12 @@ but you can override them by manually passing a different value (although this s
 
 {%- assign style_attributes = style_attributes | append: extra_style_attributes -%}
 
-{%- if style_attributes != blank -%}
-  style="{{ style_attributes | strip }}"
+{%- if section.index0 > 5 -%}
+  {%- assign style_attributes = style_attributes | append: 'content-visibility: auto' -%}
 {%- endif -%}
+
+{%- if style_attributes != blank -%}
+  style="{{ style_attributes | strip }};"
+{%- endif -%}
+
+data-section-index="{{section.index0}}"
