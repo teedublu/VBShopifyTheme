@@ -1,13 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "landingpage_person_header_ftQUQM": {
       "type": "landingpage-person-header",
       "blocks": {
-        "subheading_ABC123": {
-          "type": "subheading"
+        "subheading_cG3xBU": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_mfVrN3": {
+          "type": "heading",
+          "settings": {
+            "text": "Heading",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "image_RbFpX7": {
+          "type": "image",
+          "settings": {
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
         }
+      },
+      "block_order": [
+        "subheading_cG3xBU",
+        "heading_mfVrN3",
+        "image_RbFpX7"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
-
     },
     "rich_text_ftQUQM": {
       "type": "rich-text",
@@ -71,7 +111,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<p>Featured audiobook from {{ metaobject.name.value }}<\/p>"
+            "text": "<p>Featured audiobook from {{ metaobject.name.value }}</p>"
           }
         },
         "title_7FG9XT": {
@@ -118,7 +158,7 @@
         "object_link_6U3FMg": {
           "type": "object_link",
           "settings": {
-            "text": "<p>More detail of \"[o]\" here.<\/p>"
+            "text": "<p>More detail of \"[o]\" here.</p>"
           }
         }
       },
@@ -167,7 +207,7 @@
         "products_per_row_desktop": 5,
         "subheading": "Audiobooks by",
         "title": "{{ metaobject.name.value }}",
-        "content": "<p>More captivating titles to listen to written by your favorite author.<\/p>",
+        "content": "<p>More captivating titles to listen to written by your favorite author.</p>",
         "link_url": "",
         "link_text": "See all",
         "background": "",
@@ -192,7 +232,7 @@
         "image_QCmjPr": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "image": "shopify://shop_images/IMG_5604.jpg",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-end-start text-start",
@@ -200,9 +240,9 @@
             "icon_width": 68,
             "subheading": "",
             "title": "Listen with Voxblock",
-            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p>",
             "link_text": "Learn more",
-            "link_url": "shopify:\/\/products\/voxblock-player",
+            "link_url": "shopify://products/voxblock-player",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -247,8 +287,8 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "md",
-        "video": "shopify:\/\/files\/videos\/voxblock intro_desktop.mp4",
-        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "video": "shopify://files/videos/voxblock intro_desktop.mp4",
+        "mobile_video": "shopify://files/videos/how does it work_mobile.mp4",
         "youtube_id": "",
         "external_video_url": "",
         "mobile_text_position": "place-self-center text-center",
@@ -267,28 +307,28 @@
           "type": "item",
           "settings": {
             "title": "What is Voxblock?",
-            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"/pages/how-does-it-work\" title=\"How it works\">here.</a></p>"
           }
         },
         "item_JwG9hG": {
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
             "title": "What age is Voxblock suitable for?",
-            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.</p>"
           }
         },
         "item_M9imEA": {
           "type": "item",
           "settings": {
             "title": "Any questions?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br\/><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.<\/a><\/p>"
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br/><a href=\"/pages/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.</a></p>"
           }
         }
       },
@@ -326,7 +366,7 @@
         "full_width": true,
         "show_icon": true,
         "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.</p>",
         "button_text": "Go",
         "subtext": "",
         "background": "#4cb6ac",
