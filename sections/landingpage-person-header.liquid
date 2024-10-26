@@ -1,0 +1,240 @@
+WTF{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --rich-text-max-width: {% if section.settings.content_width == 'small' %}650px{% elsif section.settings.content_width == 'medium' %}780px{% else %}100%{% endif %}
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="person-image" style="border-radius: 50%; height:200px; width: 200px; overflow:hidden;">
+    
+
+    {% if metaobject.logo %}
+      {{- metaobject.logo.value 
+        | image_url: width: 200 
+        | image_tag: 
+          preload: true,
+          style: 'border-radius: 50%; margin: auto; height: 200px;'
+        -}}
+
+    {% endif %}
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'image' -%}
+          {% if metaobject.photos.value != blank %}
+            {{ metaobject.photos.value | first | image_url: width: 200 | image_tag: alt: object.title.value | escape }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+          {% endif %}
+
+        {%- when 'heading' -%}
+          <h1 class="h1"> {{ use_title | replace:'name', name  }} </h1>
+
+        {%- when 'subheading' -%}
+          <h2 class="h2"> Audiobook {{ metaobject.system.type }} </h3>
+
+        {%- when 'description' -%}
+          <p>
+            {{ collection.description | default: metaobject.bio | metafield_tag }}
+            {% if metaobject.bio != blank %}
+              {{ metaobject.bio | metafield_tag }}
+            {% else %}
+              {{ metaobject.name | metafield_tag }} is an audiobook {{ metaobject.system.type }}. Some of their books will be available on Voxblock.
+            {% endif %}
+          </p>
+      {%- endcase -%}
+
+    {%- endfor -%}
+    
+  </div>
+
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Person Header",
+  "class": "shopify-section--person-header",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Heading"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h1"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color_background",
+          "id": "gradient",
+          "label": "Gradient"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1600 x 800px .jpg recommended"
+        },
+        {
+          "type": "radio",
+          "id": "width_mode",
+          "label": "Image width",
+          "options": [
+            {
+              "value": "full_width",
+              "label": "Full width"
+            },
+            {
+              "value": "custom",
+              "label": "Custom"
+            }
+          ],
+          "default": "custom"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "min": 100,
+          "max": 1000,
+          "step": 10,
+          "unit": "px",
+          "label": "Maximum width",
+          "default": 600
+        },
+        {
+          "type": "range",
+          "id": "mobile_max_width",
+          "min": 100,
+          "max": 600,
+          "step": 10,
+          "unit": "px",
+          "label": "Mobile maximum width",
+          "default": 400
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Person Header",
+      "blocks": [
+        
+      ]
+    }
+  ]
+}
+{% endschema %}
