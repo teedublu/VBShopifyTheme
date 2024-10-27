@@ -18,7 +18,7 @@
         "heading_QEQfC9": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobject.name.value }}",
+            "text": "",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
@@ -27,7 +27,7 @@
         "richtext_N6R9zL": {
           "type": "richtext",
           "settings": {
-            "content": "{{ metaobject.audiobook.value.long_blurb | metafield_tag }}"
+            "content": ""
           }
         }
       },
@@ -93,7 +93,7 @@
       ],
       "settings": {
         "full_width": false,
-        "product": "{{ metaobject.product.value }}",
+        "product": "",
         "desktop_media_width": 55,
         "desktop_media_layout": "grid",
         "mobile_media_size": "contained",
