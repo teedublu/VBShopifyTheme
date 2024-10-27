@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs_fDF3Bt": {
@@ -36,7 +36,7 @@
         "richtext_8MURDq": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.description | metafield_tag }}<\/p>"
+            "content": "<p>{{ metaobject.description | metafield_tag }}</p>"
           }
         }
       },
@@ -64,29 +64,6 @@
     },
     "featured_collection_yTREpY": {
       "type": "featured-collection",
-      "blocks": {
-        "promotion_video_rwdhMQ": {
-          "type": "promotion_video",
-          "settings": {
-            "position": 1,
-            "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-            "title": "How Voxblock works",
-            "content": "<p>So simple to listen to<\/p>",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
-            "link_text": "Read more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        }
-      },
-      "block_order": [
-        "promotion_video_rwdhMQ"
-      ],
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
         "hide_empty": false,
@@ -99,11 +76,11 @@
         "products_count": 50,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
-        "subheading": "Screen free audiobooks",
-        "title": "{{ section.settings.collection.title }}",
-        "content": "<p>These are the titles from <strong>{{ section.settings.collection.metafields.custom.publisher.value.name.value }}<\/strong> available on Voxblock - the most simple way of listening to audiobooks without needing a screen, wifi or apps.<\/p>",
+        "subheading": "",
+        "title": "Audiobooks from {{ metaobject.name.value }}",
+        "content": "",
         "link_url": "",
-        "link_text": "",
+        "link_text": "View all",
         "background": "",
         "background_gradient": "",
         "text_color": "",
