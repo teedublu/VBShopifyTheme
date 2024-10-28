@@ -1,4 +1,4 @@
-LOCALHOST{%- if section.blocks.size > 0 -%}
+{%- if section.blocks.size > 0 -%}
   {%- render 'section-spacing-collapsing' -%}
 
 
@@ -6,9 +6,37 @@ LOCALHOST{%- if section.blocks.size > 0 -%}
     #shopify-section-{{ section.id }} {
       --rich-text-max-width: {% if section.settings.content_width == 'small' %}650px{% elsif section.settings.content_width == 'medium' %}780px{% else %}100%{% endif %}
     }
+    .person-image { display: flex; justify-content: center; align-items: center; margin: auto;}
+    .person-image img { width: 100%; height: auto; object-fit: cover;}
+
   </style>
 
+  <div {% render 'section-properties' %}>
+    <div class="prose {%- if section.settings.text_position == 'center' -%}justify-items-center text-center"{%- endif -%}>
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'image' -%}
+            <div class="person-image" style="border-radius: {{block.settings.radius}}%; height:{{block.settings.max_width}}px; width: {{block.settings.max_width}}px; overflow:hidden;">
+            {% if metaobject.photos.value != blank %}
+              {{ metaobject.photos.value | first | image_url: width: block.settings.max_width | image_tag: alt: object.title.value | escape }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+            {% endif %}
+            </div>
 
+          {%- when 'heading' -%}
+            <h1 class="{{block.settings.heading_tag}}">{{block.settings.text}} </h1>
+
+          {%- when 'subheading' -%}
+            <h2 class="{{block.settings.subheading_tag}}">{{block.settings.text}} </h2>
+
+          {%- when 'description' -%}
+            {{block.settings.description}}
+        {%- endcase -%}
+
+      {%- endfor -%}
+    </div>
+  </div>
 
 {%- endif -%}
 
@@ -40,10 +68,6 @@ LOCALHOST{%- if section.blocks.size > 0 -%}
         {
           "value": "center",
           "label": "Center"
-        },
-        {
-          "value": "end",
-          "label": "Right"
         }
       ],
       "default": "center"
@@ -71,14 +95,14 @@ LOCALHOST{%- if section.blocks.size > 0 -%}
   ],
   "blocks": [
     {
-      "type": "subheading",
-      "name": "Subheading",
+      "type": "description",
+      "name": "Description",
       "settings": [
         {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Subheading"
+          "type": "richtext",
+          "id": "description",
+          "label": "Content",
+          "default": "<p>Description</p>"
         }
       ]
     },
@@ -90,7 +114,7 @@ LOCALHOST{%- if section.blocks.size > 0 -%}
           "type": "text",
           "id": "text",
           "label": "Text",
-          "default": "Heading"
+          "default": "My Heading"
         },
         {
           "type": "select",
@@ -123,64 +147,76 @@ LOCALHOST{%- if section.blocks.size > 0 -%}
             }
           ],
           "default": "h1"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "My Sub Heading"
         },
         {
-          "type": "color",
-          "id": "text_color",
-          "label": "Text"
-        },
-        {
-          "type": "color_background",
-          "id": "gradient",
-          "label": "Gradient"
+          "type": "select",
+          "id": "subheading_tag",
+          "label": "Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h1"
         }
       ]
     },
     {
       "type": "image",
       "name": "Image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image",
-          "info": "1600 x 800px .jpg recommended"
-        },
-        {
-          "type": "radio",
-          "id": "width_mode",
-          "label": "Image width",
-          "options": [
-            {
-              "value": "full_width",
-              "label": "Full width"
-            },
-            {
-              "value": "custom",
-              "label": "Custom"
-            }
-          ],
-          "default": "custom"
-        },
+      "settings": [          
         {
           "type": "range",
           "id": "max_width",
           "min": 100,
-          "max": 1000,
+          "max": 500,
           "step": 10,
           "unit": "px",
           "label": "Maximum width",
-          "default": 600
+          "default": 200
         },
         {
           "type": "range",
-          "id": "mobile_max_width",
-          "min": 100,
-          "max": 600,
+          "id": "radius",
+          "min": 0,
+          "max": 50,
           "step": 10,
-          "unit": "px",
-          "label": "Mobile maximum width",
-          "default": 400
+          "unit": "%",
+          "label": "Image radius",
+          "default": 30
         }
       ]
     }
