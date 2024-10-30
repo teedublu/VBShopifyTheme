@@ -1,4 +1,12 @@
-{%- if section.blocks.size > 0 -%}
+{% assign character_pointer = 0 %}
+{% assign show = true %}
+{% assign characters = metaobject.characters.value %}
+
+{%- if section.settings.hide_if_no_chars and characters == nil -%}
+  {% assign show = false %}
+{%- endif -%}
+
+{%- if section.blocks.size > 0 and show -%}
   {%- render 'section-spacing-collapsing' -%}
   {%- assign image_size = section.settings.image_size |times: 3 -%}
   <style>
@@ -35,9 +43,7 @@
       {%- endcomment -%}
 
       <div class="audiobook multi-column scroll-area bleed md:unbleed ">
-        {% assign character_pointer = 0 %}
-        {% assign characters = metaobject.characters.value %}
-
+        
         {%- for block in section.blocks -%}
           {% assign image = nil %}
           {% assign image_url = nil %}
@@ -161,6 +167,13 @@
     "groups": ["header", "custom.overlay"]
   },
   "settings": [
+    
+    {
+      "type": "checkbox",
+      "id": "hide_if_no_chars",
+      "label": "Hide if no Characters",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "full_width",
