@@ -1,21 +1,23 @@
 {%- if section.blocks.size > 0 -%}
   {%- render 'section-spacing-collapsing' -%}
-
+  {%- assign image_size = section.settings.image_size |times: 3 -%}
   <style>
     #shopify-section-{{ section.id }} {
       --multi-column-grid: {% if section.settings.stack_on_mobile %}none{% else %}auto / auto-flow 73vw{% endif %};
       --multi-column-list-gap: {% if section.settings.gap == 'small' %}var(--grid-gutter){% elsif section.settings.gap == 'medium' %}var(--spacing-12){% elsif section.settings.gap == 'large' %}var(--spacing-20){% else %}var(--spacing-28){% endif %};
     }
 
-    .audiobook.multi-column img.audioook-object-image { border-radius: 50%; aspect-ratio: 1 / 1; max-width: 30%; }
+    #shopify-section-{{ section.id }}  .audiobook.multi-column img.audioook-object-image { border-radius: 50%; aspect-ratio: 1 / 1; max-width: 100%; margin: auto; object-fit: cover; overflow: hidden; height: {{image_size}}px; width: {{image_size}}px }
   </style>
 
   <div {% render 'section-properties' %}>
 
     <div class="section-stack">
 
+      
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
 
+      {%- comment -%}
       {%- if metaobject.chapters.value  -%}
         {%- capture chapter_content -%}
           {% assign chapters = metaobject.chapters.value  | sort:'index' %}
@@ -30,9 +32,11 @@
         {%- endcapture -%}
         {%- render 'section-header', subheading: 'Chapters', content: chapter_content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
       {%- endif -%}
+      {%- endcomment -%}
 
       <div class="audiobook multi-column scroll-area bleed md:unbleed ">
-
+        {% assign character_pointer = 0 %}
+        {% assign characters = metaobject.characters.value %}
 
         {%- for block in section.blocks -%}
           {% assign image = nil %}
@@ -47,6 +51,7 @@
               {% assign image = block.settings.image %}
               {% assign link_url = block.settings.link_url %}
               {% assign link_text = block.settings.link_text %}
+              {% assign found = nil %}
               
               {%- case block.settings.use_object -%}
                 {%- when 'author' -%}
@@ -56,6 +61,7 @@
                   {% assign image = author.photos.value | first %}
                   {% assign link_url = author.system.url %}
                   {% assign link_text = 'read more' %}
+                  {% assign found = author %}
 
                 {%- when 'narrator' -%}
                   {% assign narrator = metaobject.product.value.metafields.book.narrators.value | first %}
@@ -64,6 +70,7 @@
                   {% assign image = narrator.photos.value | first %}
                   {% assign link_url = narrator.system.url %}
                   {% assign link_text = 'read more' %}
+                  {% assign found = narrator %}
 
                 {%- when 'publisher' -%}
                   {% assign publisher = metaobject.product.value.metafields.book.publisher.value %}
@@ -72,7 +79,22 @@
                   {% assign image = publisher.logo %}
                   {% assign link_url = publisher.system.url %}
                   {% assign link_text = 'read more' %}
+                  {% assign found = publisher %}
 
+                {%- when 'character' -%}
+                  {%- for character in characters -%}
+                    {%- if forloop.index0 == character_pointer -%}
+                      {% assign character = metaobject.characters.value | first %}
+                      {% assign content = character.bio | metafield_tag | strip_html | truncate: 200 %}
+                      {% assign title = character.name %}
+                      {% assign image = character.photos.value | first %}
+                      {% assign link_url = character.system.url %}
+                      {% assign link_text = 'read more' %}
+                      {% assign found = character %}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {% assign character_pointer = character_pointer | plus: 1 %}
+                  
                 {%- else -%}
                   {% assign image = nil %}
 
@@ -82,20 +104,17 @@
 
               {%- if image!=nil -%}
                 {% assign image_url = image | image_url: width: image.width %}
-
               {%- else -%}
                 {% assign image_url = 'https://cdn.shopify.com/s/files/1/0565/2050/7467/files/placeholder-profile.jpg' | image_url: width: 200 %}
-
               {%- endif -%}
 
-
+              {%- unless block.settings.use_object and found == nil -%}
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
 
                 {%- if image!=nil -%}
                   {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,800,1000,1200,1400,1600,1800', class: 'rounded audioook-object-image' -}}
                 {%- else -%}
                     <img src="https://cdn.shopify.com/s/files/1/0565/2050/7467/files/placeholder-profile.jpg" alt="Descriptive text" class="rounded audioook-object-image">
-                  
                 {%- endif -%}
 
                 {%- if title != blank or content != blank or block.settings.link_text != blank -%}
@@ -105,7 +124,6 @@
                       <p class="{{ block.settings.heading_tag }}">{{ title | escape }}</p>
                     {%- endif -%}
 
-                    
                       <div class="prose">
                         {{- content -}}
                         {%- if block.settings.link_text != blank or true-%}
@@ -122,6 +140,7 @@
                   </div>
                 {%- endif -%}
               </div>
+              {%- endunless -%}
 
             {%- when 'spacer' -%}
               <div class="multi-column__item hidden md:block" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}></div>
@@ -193,6 +212,14 @@
       "default": "start"
     },
     {
+      "type": "range",
+      "id": "image_size",
+      "label": "Image Size",
+      "min": 20,
+      "max": 100,
+      "default": 50
+    },
+    {
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
@@ -256,25 +283,19 @@
             {
               "value": "publisher",
               "label": "Publisher"
+            },
+            {
+              "value": "character",
+              "label": "Character"
             }
           ],
           "default": "none"
-        },{
+        },
+        {
           "type": "image_picker",
           "id": "image",
           "label": "Image",
           "info": "1400 x 1400px .jpg recommended"
-        },
-        {
-          "type": "video",
-          "id": "video",
-          "label": "Video",
-          "info": "Video are muted automatically and will autoplay."
-        },
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Select Product"
         },
         {
           "type": "select",
@@ -425,11 +446,6 @@
     {
       "type": "publisher",
       "name": "Publisher",
-      "settings": []
-    },
-    {
-      "type": "chapters",
-      "name": "Chapters",
       "settings": []
     }
   ],
