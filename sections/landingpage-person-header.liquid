@@ -4,14 +4,18 @@
 
   <style>
     #shopify-section-{{ section.id }} {
+      {%- if section.settings.allow_transparent_header -%}
+        margin-block-start: calc(-1 * var(--header-height) * var(--section-is-first));
+      {%- endif -%}
       --rich-text-max-width: {% if section.settings.content_width == 'small' %}650px{% elsif section.settings.content_width == 'medium' %}780px{% else %}100%{% endif %}
     }
+
     .person-image { display: flex; justify-content: center; align-items: center; margin: auto;}
     .person-image img { width: 100%; height: auto; object-fit: cover;}
 
   </style>
 
-  <div {% render 'section-properties' %}>
+  {%- capture section_content -%}
     <div class="prose {%- if section.settings.text_position == 'center' -%}justify-items-center text-center"{%- endif -%}>
       {%- for block in section.blocks -%}
         {%- case block.type -%}
@@ -36,6 +40,13 @@
 
       {%- endfor -%}
     </div>
+  {%- endcapture -%}
+  {%- capture class -%}person-header content-over-media content-over-media--auto {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+
+  <div {% render 'section-properties' %} {%- if section.settings.allow_transparent_header -%}allow-transparent-header{% endif %} >
+    <div {% render 'surface', class: class %}>
+      {{- section_content -}}
+    </div>
   </div>
 
 {%- endif -%}
@@ -50,6 +61,13 @@
   },
   "settings": [
     
+    {
+      "type": "checkbox",
+      "id": "allow_transparent_header",
+      "label": "Allow transparent header",
+      "info": "This setting only applies when this section is the first one.",
+      "default": false
+    },
     {
       "type": "checkbox",
       "id": "full_width",
@@ -71,6 +89,12 @@
         }
       ],
       "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "IMPORTANT: this needs to be optimsed in size and weight as used on all screens.",
     },
     {
       "type": "header",
