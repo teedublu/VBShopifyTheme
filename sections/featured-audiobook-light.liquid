@@ -53,7 +53,7 @@
 {%- assign media = product.media | first -%}
 {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(580px, 30vw){%- endcapture -%}
 
-<div {% render 'section-properties', tight: true %}>
+<div {% render 'section-properties', class: 'mobile_float' %}>
   <div class="product {{ product.type | handleize }}">
     {%- if product.media.size > 0 -%}
       {%- render 'media', media: media | first, sizes: sizes, preload: true, width: '300' -%}
@@ -81,6 +81,45 @@
         {
           "type": "select",
           "id": "heading_tag",
+          "label": "Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h2"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Sub Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "subheading_tag",
           "label": "Style",
           "options": [
             {

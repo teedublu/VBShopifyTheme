@@ -48,8 +48,12 @@
 {%- assign audiogramme_metaobject = shop.metaobjects.audiogramme[handle] -%}
 {%- assign synopsis_metaobject = shop.metaobjects.audiobook_synopsis[handle] -%}
 
-<div {% render 'section-properties', tight: true %}>
-    {%- render 'audiobook-productdata1' -%}
+<div {% render 'section-properties', tight: true, class: 'mobile_float' %}>
+    {%- comment -%}
+    The content is rendered as a snippet so it can be reused as part of other sections (such as the product tab sections)
+    {%- endcomment -%}
+
+    {%- render 'audiobook-productdata' -%}
 </div>
 
 {% schema %}

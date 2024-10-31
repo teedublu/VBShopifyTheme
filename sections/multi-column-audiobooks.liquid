@@ -22,27 +22,9 @@
 
     <div class="section-stack">
 
-      
-      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
+      {%- render 'section-header', heading_color: section.settings.heading_color, subheading: section.settings.subheading, heading: section.settings.title, content: section.settings.content, text_alignment: section.settings.header_alignment , tag:'h1' -%}
 
-      {%- comment -%}
-      {%- if metaobject.chapters.value  -%}
-        {%- capture chapter_content -%}
-          {% assign chapters = metaobject.chapters.value  | sort:'index' %}
-          <ol>
-            {%- for chapter in chapters -%}
-              <li>
-                <b>{{chapter.title }}</b>
-                {{chapter.summary | metafield_tag }}
-              </li>
-            {%- endfor -%}
-          </ol>
-        {%- endcapture -%}
-        {%- render 'section-header', subheading: 'Chapters', content: chapter_content, text_alignment: section.settings.text_alignment , tag:'h1' -%}
-      {%- endif -%}
-      {%- endcomment -%}
-
-      <div class="audiobook multi-column scroll-area bleed md:unbleed ">
+      <div class="audiobook multi-column scroll-area bleed md:unbleed">
         
         {%- for block in section.blocks -%}
           {% assign image = nil %}
@@ -206,6 +188,26 @@
     },
     {
       "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
       "id": "text_alignment",
       "label": "Text alignment",
       "options": [
@@ -269,6 +271,11 @@
       "type": "color",
       "id": "text_color",
       "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading"
     }
   ],
   "blocks": [
