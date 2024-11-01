@@ -1,0 +1,214 @@
+{%- assign quotes = metaobject.quotes.value -%}
+{%- if quotes -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  {%- comment -%}
+  COPIED AND MODIFIED FROM THE PRESS.LIQUID SECTION
+
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --press-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
+      --press-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
+    }
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+
+<hr/>
+          
+{% assign count = 0 %}
+{% for quote in quotes %}
+  {% assign count = count | plus: 1 %}
+{% endfor %}
+
+<p>There are {{ count }} quotes.</p>
+<hr/>
+  <div {% render 'section-properties' %}>
+    <div class="section-stack">
+      <div class="press">
+        <press-carousel id="carousel-{{ section.id }}" class="press__list full-bleed text-center sm:unbleed" role="region">
+
+          {%- for quote in quotes -%}
+
+            <div id="block-{{ section.id }}-{{ forloop.index }}" class="press__list-item snap-center {% if forloop.first %}is-selected{% endif %}" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: count }}" {{ section.shopify_attributes }}>
+              
+              <blockquote class="blockquote h3" reveal-on-scroll="true">
+                {%- render 'styled-text', content: quote.content, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+              </blockquote>
+
+
+
+                {%- assign character = quote.character -%}
+                {%- if character -%}
+                  {%- assign photo = quote.character.value.photos.value | first -%}
+                {%- endif -%}
+
+                <div class="v-stack gap-2">
+                   
+                  {%- if photo  -%}
+                   <div {% render 'surface', class: 'press__logo rounded', background: section.settings.logo_item_background %}>
+                      {{- photo | image_url: width: '100' | image_tag: style: max_width, loading: 'lazy', widths: '100', class: 'press__image', sizes: sizes -}}
+                    </div>
+                  {%- endif -%}
+                  
+                  <p class="press__author text-subdued">{{ quote.character.value.name| default: quote.said_by }}</p>
+
+                </div>
+              
+            </div>
+          {%- endfor -%}
+        </press-carousel>
+
+        {%- if section.blocks.size > 1 -%}
+          <div class="press__controls">
+            <button class="circle-button ring group" is="prev-button" aria-controls="carousel-{{ section.id }}">
+              <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+              <span class="animated-arrow animated-arrow--reverse"></span>
+            </button>
+
+            <page-dots aria-controls="carousel-{{ section.id }}" class="page-dots">
+              {%- for index in (1..section.blocks.size) -%}
+                <button type="button" class="tap-area" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+                  <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: index }}</span>
+                </button>
+              {%- endfor -%}
+            </page-dots>
+
+            <button class="circle-button ring group" is="next-button" aria-controls="carousel-{{ section.id }}">
+              <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+              <span class="animated-arrow"></span>
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Quotes",
+  "class": "shopify-section--press",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_character",
+      "label": "Show character",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "max_quotes",
+      "label": "Max quotes",
+      "min": 1,
+      "max": 5,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "photo_width",
+      "min": 50,
+      "max": 350,
+      "unit": "px",
+      "step": 5,
+      "label": "Photo width",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "content_size",
+      "label": "Content size",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "fill",
+          "label": "Fill page"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "color",
+      "id": "logo_item_background",
+      "label": "Logo background"
+    },
+    {
+      "type": "color",
+      "id": "logo_item_border",
+      "label": "Logo border"
+    }
+  ],
+  "blocks": [
+
+  ],
+  "presets": [
+    {
+      "name": "Quotes",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
