@@ -21,11 +21,34 @@
     width: 80%; /* Adjust as needed */
     text-align: left;
 }
+
+
+
 </style>
 
-<div>
+
+    
+
+<div {% render 'section-properties', tight: true, class: 'mobile_float' %}>
+
+{%- assign chapters = metaobject.chapters.value | sort: 'index' %}
+<div class="chapters-container">
+  <ol class="chapters-list">
+    {%- for chapter in chapters -%}
+      <li class="chapter-item">
+        <div class="chapter-content">
+          <b>{{ chapter.title }}</b>
+          {{ chapter.summary | metafield_tag }}
+        </div>
+      </li>
+    {%- endfor -%}
+  </ol>
+</div>
+
+
 
 </div>
+
 {% schema %}
 {
     "name": "Audiobook Chapters",
