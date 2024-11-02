@@ -9,69 +9,7 @@
  */
 {
   "sections": {
-    "landingpage_person_header_ftQUQM": {
-      "type": "landingpage-person-header",
-      "blocks": {
-        "image_RbFpX7": {
-          "type": "image",
-          "settings": {
-            "width_mode": "custom",
-            "max_width": 600,
-            "mobile_max_width": 400
-          }
-        },
-        "subheading_cG3xBU": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_mfVrN3": {
-          "type": "heading",
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "h3",
-            "text_color": "",
-            "gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_cG3xBU",
-        "heading_mfVrN3",
-        "image_RbFpX7"
-      ],
-      "settings": {
-        "full_width": true,
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "rich_text_ftQUQM": {
-      "type": "rich-text",
-      "blocks": {
-        "liquid_wwTTJp": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "{% render 'metaobject-header'%}"
-          }
-        }
-      },
-      "block_order": [
-        "liquid_wwTTJp"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "#4cb6ac",
-        "background_gradient": "",
-        "text_color": "#ffffff"
-      }
-    },
+    
     "breadcrumbs_pWhnx7": {
       "type": "breadcrumbs",
       "settings": {

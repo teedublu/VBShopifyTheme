@@ -15,6 +15,18 @@
       --press-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
       --press-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
     }
+    .quote__image {
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      max-width: 100%;
+      margin: auto;
+      object-fit: cover;
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+    }
+
+
   </style>
 
   {%- comment -%}
@@ -24,23 +36,23 @@
   {%- endcomment -%}
 
 
-<hr/>
-          
-{% assign count = 0 %}
+{%- comment -%}
+Cant get size to work for qoutes objects, so resorting to manual counting first :(
+{%- endcomment -%}     
+{% assign quotecount = 0 %}
 {% for quote in quotes %}
-  {% assign count = count | plus: 1 %}
+  {% assign quotecount = quotecount | plus: 1 %}
 {% endfor %}
+{% assign quotecount = quotecount | at_most: section.settings.max_quotes %}
 
-<p>There are {{ count }} quotes.</p>
-<hr/>
   <div {% render 'section-properties' %}>
     <div class="section-stack">
-      <div class="press">
+      <div class="press qoutes">
         <press-carousel id="carousel-{{ section.id }}" class="press__list full-bleed text-center sm:unbleed" role="region">
 
           {%- for quote in quotes -%}
 
-            <div id="block-{{ section.id }}-{{ forloop.index }}" class="press__list-item snap-center {% if forloop.first %}is-selected{% endif %}" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: count }}" {{ section.shopify_attributes }}>
+            <div id="block-{{ section.id }}-{{ forloop.index }}" class="press__list-item snap-center {% if forloop.first %}is-selected{% endif %}" role="group" aria-label="{{ 'general.accessibility.item_nth_of_count' | t: index: forloop.index, count: quotecount }}" {{ section.shopify_attributes }}>
               
               <blockquote class="blockquote h3" reveal-on-scroll="true">
                 {%- render 'styled-text', content: quote.content, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
@@ -57,11 +69,17 @@
                    
                   {%- if photo  -%}
                    <div {% render 'surface', class: 'press__logo rounded', background: section.settings.logo_item_background %}>
-                      {{- photo | image_url: width: '100' | image_tag: style: max_width, loading: 'lazy', widths: '100', class: 'press__image', sizes: sizes -}}
+                      {%- capture widths -%}{{ section.settings.photo_width }}, {{ section.settings.photo_width | times: 2 | at_most: '200' }}{%- endcapture -%}
+                      {%- capture max_width -%}--press-image-max-width: {{ section.settings.photo_width }}px{%- endcapture -%}
+                      {{- photo | image_url: width: '200' | image_tag: style: max_width, loading: 'lazy', widths: widths, class: 'press__image quote__image', sizes: sizes -}}
                     </div>
                   {%- endif -%}
                   
-                  <p class="press__author text-subdued">{{ quote.character.value.name| default: quote.said_by }}</p>
+                  <p class="press__author text-subdued">
+                    
+                    {{ quote.character.value.name| default: quote.said_by | link_to: character.value.system.url, class: 'link' }}
+                  </p>
+
 
                 </div>
               
@@ -69,7 +87,7 @@
           {%- endfor -%}
         </press-carousel>
 
-        {%- if section.blocks.size > 1 -%}
+        {%- if quotecount > 1 -%}
           <div class="press__controls">
             <button class="circle-button ring group" is="prev-button" aria-controls="carousel-{{ section.id }}">
               <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
@@ -77,7 +95,7 @@
             </button>
 
             <page-dots aria-controls="carousel-{{ section.id }}" class="page-dots">
-              {%- for index in (1..section.blocks.size) -%}
+              {%- for index in (1..quotecount) -%}
                 <button type="button" class="tap-area" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
                   <span class="sr-only">{{ 'general.accessibility.go_to_item' | t: index: index }}</span>
                 </button>
@@ -129,12 +147,12 @@
     {
       "type": "range",
       "id": "photo_width",
-      "min": 50,
-      "max": 350,
+      "min": 20,
+      "max": 150,
       "unit": "px",
       "step": 5,
       "label": "Photo width",
-      "default": 100
+      "default": 40
     },
     {
       "type": "select",
