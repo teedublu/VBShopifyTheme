@@ -63,6 +63,9 @@ Cant get size to work for qoutes objects, so resorting to manual counting first 
                 {%- assign character = quote.character -%}
                 {%- if character -%}
                   {%- assign photo = quote.character.value.photos.value | first -%}
+                  <script type="application/ld+json">  
+                    {%- render 'microdata-quotation' audiobook: metaobject, character: character.value, quote: quote -%}
+                  </script>
                 {%- endif -%}
 
                 <div class="v-stack gap-2">
@@ -84,6 +87,8 @@ Cant get size to work for qoutes objects, so resorting to manual counting first 
                 </div>
               
             </div>
+            
+            
           {%- endfor -%}
         </press-carousel>
 

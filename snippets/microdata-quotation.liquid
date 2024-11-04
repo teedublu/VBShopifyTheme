@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Quotation",
+  "text": {{ quote.content | json }},
+  "spokenByCharacter": {
+    "@type": "Person",
+    "name": {{ character.name | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ character.system.url | prepend: shop.url | json }}
+    }
+  },
+  "isPartOf": {
+    "@type": "Audiobook",
+    "name": {{ audiobook.title | json}},
+    "url": {{ audiobook.system.url | prepend: shop.url | json }},
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ audiobook.system.url | prepend: shop.url | json }}
+    }
+  }
+}

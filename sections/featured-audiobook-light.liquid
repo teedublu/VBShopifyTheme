@@ -50,6 +50,18 @@
 
 </style>
 {%- assign product = metaobject.product.value | default: product -%}
+
+{%- case metaobject.system.type -%}
+  {%- when 'author' -%}
+    {%- assign product = metaobject.main_book.value -%}
+  {%- when 'narrator' -%}
+    {%- assign product = metaobject.main_book.value -%}
+  {%- when 'character' -%}
+    {%- assign product = metaobject.main_book.value -%}
+
+
+{%- endcase -%}
+
 {%- assign media = product.media | first -%}
 {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(580px, 30vw){%- endcapture -%}
 
