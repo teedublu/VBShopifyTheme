@@ -1,0 +1,144 @@
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  CSS
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --press-items-border: {{ section.settings.logo_item_border.rgb }} / {{ section.settings.logo_item_border.alpha }};
+      --press-max-width: {% if section.settings.content_size == 'small' %}760{% elsif section.settings.content_size == 'medium' %}1000{% elsif section.settings.content_size == 'large' %}1260{% endif %}px;
+    }
+
+    .school_resources {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .school_resources .table-header,
+    .school_resources .table-row {
+      display: grid;
+      grid-template-columns: 1fr repeat(5, 3fr);
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .school_resources .table-header {
+      font-weight: bold;
+    }
+
+    .school_resources .column {
+      padding: 8px;
+    }
+
+    @media (max-width: 767px) {
+      /* Adjust grid columns for mobile */
+      .school_resources .table-header,
+      .school_resources .table-row {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      /* Hide unnecessary columns on mobile */
+      .school_resources .column.author,
+      .school_resources .column.publisher,
+      .school_resources .column.title {
+        display: none;
+      }
+    }
+
+  </style>
+
+  {%- comment -%}
+  ------------------------------------------------------------------------------------------------------------------------
+  LIQUID
+  ------------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  <div {% render 'section-properties' %}>
+    <div class="section-stack">
+      <div class="school_resources">
+        <div class="table-header">
+          <div class="column title">Product</div>
+          <div class="column title">Title</div>
+          <div class="column author">Author</div>
+          <div class="column publisher">Publisher</div>
+          <div class="column key-stage">Key Stage</div>
+          <div class="column resource">Resource</div>
+        </div>
+        {%- for block in section.blocks -%}
+          {%- assign product =  block.settings.product -%}
+          {%- assign metafields = product.metafields.book -%}
+          {%- assign audiobook_metaobject = shop.metaobjects.audiobook[product.handle] -%}
+          <div class="table-row">
+            <div class="column product">{{ product | image_url: width:50 | image_tag | link_to: product }}</div>
+            <div class="column title">{{ product.title | link_to: product, class: 'title link' }}</div>
+            <div class="column author"> 
+              {% for author in metafields.authors.value %}
+                    {% assign link_title = "Audiobook Author " | append: author.name %}
+                    {{ author.name | link_to: author.system.url, class: 'author link', title: link_title }}{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+            </div>
+            <div class="column publisher">{{ metafields.publisher.value.name | link_to: metafields.publisher.value.system.url, class: 'publisher link', title: link_title  }}</div>
+            <div class="column key-stage">{{ audiobook_metaobject.key_stage.value }}</div>
+            
+            <div class="column resource">{{ block.settings.resource_name | link_to: block.settings.resource_url , class: 'resource link' }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "School Resources Table",
+  "class": "shopify-section--school_resources",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "resource",
+      "name": "Resource",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Audiobook"
+        },
+        {
+          "type": "text",
+          "id": "resource_name",
+          "label": "Resource Name"
+        },
+        {
+          "type": "url",
+          "id": "resource_url",
+          "label": "Url of resource"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "School Resources",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
