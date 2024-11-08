@@ -1,18 +1,148 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "image_with_text_overlay_qgF8Xk": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_zXAhUW": {
+          "type": "subheading",
+          "settings": {
+            "text": "AUDIOBOOK",
+            "subheading_tag": "h5",
+            "subheading_tag_html": "h2"
+          }
+        },
+        "heading_THzjKE": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.title.value }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_zXAhUW",
+        "heading_THzjKE"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
     "breadcrumbs_DL4tEL": {
       "type": "breadcrumbs",
       "settings": {
         "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_rDm4QR": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_zQg6yT": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.long_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_zQg6yT"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_audiobook_light_DTXA9d": {
+      "type": "featured-audiobook-light",
+      "blocks": {
+        "text_zKRhDf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A screen-free audiobook</p>"
+          }
+        },
+        "title_6dDQLi": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_YANb9V": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p>{{ metaobject.concise_blurb | metafield_tag }}"
+          }
+        },
+        "price_CwqEwb": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "audiobook_properties_zBPQaJ": {
+          "type": "audiobook-properties",
+          "settings": {
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
+          }
+        },
+        "buy_buttons_4CYw8F": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_zKRhDf",
+        "title_6dDQLi",
+        "text_YANb9V",
+        "price_CwqEwb",
+        "audiobook_properties_zBPQaJ",
+        "buy_buttons_4CYw8F"
+      ],
+      "settings": {
+        "full_width": false,
+        "float_up": 15,
+        "squeeze_in": 100,
+        "desktop_media_width": 55,
+        "mobile_media_size": "expanded",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "multi_column_audiobooks_WnDPxN": {
@@ -22,12 +152,11 @@
           "type": "item",
           "settings": {
             "use_object": "author",
-            "product": "",
             "column_size": "3",
             "title": "Column title",
             "sub_title": "Author",
             "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_url": "",
             "link_text": "",
             "link_style": "link"
@@ -37,13 +166,12 @@
           "type": "item",
           "settings": {
             "use_object": "narrator",
-            "image": "shopify:\/\/shop_images\/10-Teen-link-image.jpg",
-            "product": "",
+            "image": "shopify://shop_images/10-Teen-link-image.jpg",
             "column_size": "3",
             "title": "Column title",
             "sub_title": "Narrator",
             "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_url": "",
             "link_text": "",
             "link_style": "link"
@@ -53,13 +181,12 @@
           "type": "item",
           "settings": {
             "use_object": "publisher",
-            "image": "shopify:\/\/shop_images\/5-8Years-link-image.jpg",
-            "product": "",
+            "image": "shopify://shop_images/5-8Years-link-image.jpg",
             "column_size": "3",
             "title": "Column title",
             "sub_title": "Publisher",
             "heading_tag": "h4",
-            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_url": "",
             "link_text": "",
             "link_style": "link"
@@ -72,15 +199,19 @@
         "item_AigfQx"
       ],
       "settings": {
+        "hide_if_no_chars": false,
         "full_width": true,
         "gap": "small",
+        "header_alignment": "start",
         "text_alignment": "start",
-        "subheading": "The Audiobook",
-        "title": "{{ metaobject.title.value }}",
-        "content": "{{ metaobject.long_blurb | metafield_tag }}",
+        "image_size": 50,
+        "subheading": "",
+        "title": "",
+        "content": "",
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "heading_color": ""
       }
     },
     "featured_product_B9E7nQ": {
@@ -94,8 +225,7 @@
         },
         "badges_T7myUL": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "price_KetyNa": {
           "type": "price",
@@ -304,7 +434,7 @@
         "fiction_EGHU8Q": {
           "type": "fiction",
           "settings": {
-            "title": "Fiction\/Nonfiction"
+            "title": "Fiction/Nonfiction"
           }
         },
         "review_mj8Qfi": {
@@ -342,8 +472,7 @@
         "fiction_EGHU8Q",
         "review_mj8Qfi"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "microdata_kKw6gU": {
       "type": "microdata",
@@ -365,7 +494,7 @@
             "icon_width": 48,
             "subheading": "FEATURING",
             "title": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
             "link_text": "read more",
             "link_url": "",
             "background": "#000000",
@@ -390,19 +519,18 @@
     "faq_jyHPPb": {
       "type": "faq",
       "blocks": {
-       
         "item_QTzBaN": {
           "type": "item",
           "settings": {
             "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
-            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to <\/p>{{ metaobject.reading_level | metafield_tag }}"
+            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
           }
         },
         "item_fnqArC": {
           "type": "item",
           "settings": {
             "title": "How can I listen to the audiobook \"{{ metaobject.title.value }}\" ?",
-            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to great stories.<\/p>"
+            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to great stories.</p>"
           }
         },
         "item_PdCExW": {
@@ -414,7 +542,6 @@
         }
       },
       "block_order": [
-        "item_9Umcxq",
         "item_QTzBaN",
         "item_fnqArC",
         "item_PdCExW"
@@ -443,7 +570,10 @@
     }
   },
   "order": [
+    "image_with_text_overlay_qgF8Xk",
     "breadcrumbs_DL4tEL",
+    "rich_text_rDm4QR",
+    "featured_audiobook_light_DTXA9d",
     "multi_column_audiobooks_WnDPxN",
     "featured_product_B9E7nQ",
     "audiobook_productdata_zmqU7J",
