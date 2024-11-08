@@ -63,6 +63,29 @@
         "heading": "Breadcrumbs"
       }
     },
+    "rich_text_hW6GQq": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_WxhnKT": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.bio | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_WxhnKT"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "featured_audiobook_light_hqQrgh": {
       "type": "featured-audiobook-light",
       "settings": {
@@ -262,6 +285,7 @@
   "order": [
     "image_with_text_overlay_Xdkkz8",
     "breadcrumbs_pWhnx7",
+    "rich_text_hW6GQq",
     "featured_audiobook_light_hqQrgh",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",
