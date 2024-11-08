@@ -30,21 +30,23 @@
     
 
 <div {% render 'section-properties', tight: true, class: 'mobile_float' %}>
+    <div class="section-stack">
+        {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.heading, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url -%}
 
-{%- assign chapters = metaobject.chapters.value | sort: 'index' %}
-<div class="chapters-container">
-  <ol class="chapters-list">
-    {%- for chapter in chapters -%}
-      <li class="chapter-item">
-        <div class="chapter-content">
-          <b>{{ chapter.title }}</b>
-          {{ chapter.summary | metafield_tag }}
+        {%- assign chapters = metaobject.chapters.value | sort: 'index' %}
+        <div class="chapters-container">
+          <ol class="chapters-list">
+            {%- for chapter in chapters -%}
+              <li class="chapter-item">
+                <div class="chapter-content">
+                  <b>{{ chapter.title }}</b>
+                  {{ chapter.summary | metafield_tag }}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ol>
         </div>
-      </li>
-    {%- endfor -%}
-  </ol>
-</div>
-
+    </div>
 
 
 </div>
@@ -52,6 +54,62 @@
 {% schema %}
 {
     "name": "Audiobook Chapters",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "What's inside"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Chapters"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "Here are the chapters in this audiobook."
+        },
+        {
+          "type": "header",
+          "content": "Section colors",
+          "info": "Gradient replaces solid colors when set."
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Background gradient"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading color"
+        },
+        {
+          "type": "color_background",
+          "id": "heading_gradient",
+          "label": "Heading gradient"
+        }
+      ],
     "blocks": [ ],
     "presets": [
         {
