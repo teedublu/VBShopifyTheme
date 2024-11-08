@@ -145,6 +145,73 @@
         "text_color": ""
       }
     },
+    "multi_column_audiobooks_cQV6Xt": {
+      "type": "multi-column-audiobooks",
+      "blocks": {
+        "item_93Vibq": {
+          "type": "item",
+          "settings": {
+            "use_object": "character",
+            "column_size": "3",
+            "title": "Character 1",
+            "sub_title": "",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_CUEdar": {
+          "type": "item",
+          "settings": {
+            "use_object": "character",
+            "column_size": "3",
+            "title": "Character 2",
+            "sub_title": "",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_UW6A6Q": {
+          "type": "item",
+          "settings": {
+            "use_object": "character",
+            "column_size": "3",
+            "title": "Character 3",
+            "sub_title": "Column subtitle",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_93Vibq",
+        "item_CUEdar",
+        "item_UW6A6Q"
+      ],
+      "settings": {
+        "hide_if_no_chars": false,
+        "full_width": true,
+        "gap": "medium",
+        "header_alignment": "start",
+        "text_alignment": "center",
+        "image_size": 50,
+        "subheading": "",
+        "title": "Featuring",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": ""
+      }
+    },
     "multi_column_audiobooks_WnDPxN": {
       "type": "multi-column-audiobooks",
       "blocks": {
@@ -574,6 +641,7 @@
     "breadcrumbs_DL4tEL",
     "rich_text_rDm4QR",
     "featured_audiobook_light_DTXA9d",
+    "multi_column_audiobooks_cQV6Xt",
     "multi_column_audiobooks_WnDPxN",
     "featured_product_B9E7nQ",
     "audiobook_productdata_zmqU7J",
