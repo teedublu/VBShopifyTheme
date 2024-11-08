@@ -15,13 +15,13 @@
         "subheading_QhbKca": {
           "type": "subheading",
           "settings": {
-            "text": "{{ page.metafields.custom.subheading.value }}"
+            "text": ""
           }
         },
         "heading_DenFnj": {
           "type": "heading",
           "settings": {
-            "text": "{{ page.metafields.custom.page_title.value }}",
+            "text": "",
             "scale_with": false,
             "heading_tag": "h1",
             "heading_tag_html": "h1"
@@ -30,7 +30,7 @@
         "richtext_AL8YMf": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ page.metafields.custom.heading_description | metafield_tag }}<\/p>"
+            "content": "<p><\/p>"
           }
         },
         "button_p4UxyD": {
