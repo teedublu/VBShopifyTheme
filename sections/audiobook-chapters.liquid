@@ -39,7 +39,7 @@
             {%- for chapter in chapters -%}
               <li class="chapter-item">
                 <div class="chapter-content">
-                  <b>{{ chapter.title }}</b>
+                  <b>Chapter {{forloop.index}} : {{ chapter.title }}</b>
                   {{ chapter.summary | metafield_tag }}
                 </div>
               </li>
