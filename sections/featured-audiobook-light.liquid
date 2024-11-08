@@ -1,3 +1,18 @@
+
+{%- case metaobject.system.type -%}
+  {%- when 'audiobook' -%}
+    {%- assign product =  metaobject.product.value | default: product -%}
+  {%- when 'author' -%}
+    {%- assign product = metaobject.main_book.value | default: metaobject.collection.value.products | first -%}
+  {%- when 'narrator' -%}
+    {%- assign product = metaobject.main_book.value | default: metaobject.collection.value.products | first -%}
+  {%- when 'character' -%}
+    {%- assign product = metaobject.main_book.value | default: metaobject.collection.value.products | first -%}-%}
+  {%- else -%}
+    {%- assign product = product -%}
+{%- endcase -%}
+{%- if product -%}
+
 {%- render 'section-spacing-collapsing' -%}
 {%- render 'microdata-audiobook-as-product' -%}
 
@@ -14,6 +29,13 @@
   #shopify-section-{{ section.id }} .product.audiobooks img{
     margin: auto;
     margin-top:{{float_up}}px;
+
+  }
+
+  @media screen and (min-width: 999px) {
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info{
+
+    margin-top:{{float_up| times: -1}}px;
 
   }
 
@@ -49,18 +71,7 @@
   }
 
 </style>
-{%- assign product = metaobject.product.value | default: product -%}
 
-{%- case metaobject.system.type -%}
-  {%- when 'author' -%}
-    {%- assign product = metaobject.main_book.value -%}
-  {%- when 'narrator' -%}
-    {%- assign product = metaobject.main_book.value -%}
-  {%- when 'character' -%}
-    {%- assign product = metaobject.main_book.value -%}
-
-
-{%- endcase -%}
 
 {%- assign media = product.media | first -%}
 {%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(580px, 30vw){%- endcapture -%}
@@ -76,7 +87,7 @@
 </div>
 
 
-
+{%- endif -%}
 
 
 {% schema %}
@@ -556,7 +567,7 @@
       "max": 100,
       "step": 5,
       "unit": "%",
-      "default": 100
+      "default": 20
     },
     {
       "type": "range",

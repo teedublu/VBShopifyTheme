@@ -9,6 +9,8 @@ boils down to
 
 {%- render 'section-spacing-collapsing' -%}
 
+{% assign product = all_products[metaobject.system.handle] %}
+
 {%- assign text_position = section.settings.text_position -%}
 
 <style>
@@ -37,21 +39,20 @@ boils down to
 
     {%- capture subcontent -%}
       <div class="faq-availability">
-        {%- if section.settings.team_avatar != blank or section.settings.support_hours != blank or section.settings.answer_time != blank -%}
+        {%- if section.settings.book_image != blank or section.settings.extra_info != blank or section.settings.extra_info_2 != blank -%}
           <div class="v-stack gap-4">
-            {%- if section.settings.team_avatar != blank -%}
-              {%- capture sizes -%}{{ section.settings.team_avatar_width }}px{%- endcapture -%}
-              {%- capture widths -%}{{ section.settings.team_avatar_width }}, {{ section.settings.team_avatar_width | times: 2 | at_most: section.settings.team_avatar.width }}{%- endcapture -%}
-              {%- capture style -%}max-width: {{ section.settings.team_avatar_width }}px{%- endcapture -%}
-              {{- section.settings.team_avatar | image_url: width: section.settings.team_avatar.width | image_tag: loading: 'lazy', style: style, sizes: sizes, widths: widths -}}
+            {%- if section.settings.book_image != blank -%}
+              {%- capture sizes -%}{{ section.settings.book_image_width }}px{%- endcapture -%}
+              {%- capture widths -%}{{ section.settings.book_image_width }}, {{ section.settings.book_image_width | times: 2 }}{%- endcapture -%}
+              {%- capture style -%}max-width: {{ section.settings.book_image_width }}px{%- endcapture -%}
+              {{- product | image_url: width: section.settings.book_image.width | image_tag: loading: 'lazy', style: style, sizes: sizes, widths: widths -}}
             {%- endif -%}
-
-            {%- if section.settings.support_hours != blank or section.settings.answer_time != blank -%}
+            {%- if section.settings.extra_info != blank or section.settings.extra_info_2 != blank -%}
               <div class="v-stack">
-                {{- section.settings.support_hours -}}
+                {{- section.settings.extra_info -}}
 
-                {%- if section.settings.answer_time != blank -%}
-                  <span class="text-subdued">{{ section.settings.answer_time }}</span>
+                {%- if section.settings.extra_info_2 != blank -%}
+                  <span class="text-subdued">{{ section.settings.extra_info_2 }}</span>
                 {%- endif -%}
               </div>
             {%- endif -%}
@@ -86,13 +87,14 @@ boils down to
       <div class="section-stack__main" >
         <div {% render 'surface', class: 'accordion-box rounded', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
           {%- for block in section.blocks -%}
-            {%- if block.settings.title != blank and block.settings.content != blank and block.settings.check_for !=blank-%}
+            {%- unless block.settings.check_for_text == blank and block.settings.check_for_richtext == blank -%}
+            
               {%- capture accordion_content -%}
                 <div class="prose">{{ block.settings.content }}</div>
               {%- endcapture -%}
 
               {%- render 'accordion', title: block.settings.title, content: accordion_content, block: block -%}
-            {%- endif -%}
+            {%- endunless -%}  
           {%- endfor -%}
         </div>
       </div>
@@ -146,7 +148,12 @@ boils down to
         },
         {
           "type": "text",
-          "id": "check_for",
+          "id": "check_for_text",
+          "label": "Check for"
+        },
+        {
+          "type": "richtext",
+          "id": "check_for_richtext",
           "label": "Check for"
         },
         {
@@ -175,6 +182,10 @@ boils down to
       "label": "Subheading"
     },
     {
+      "type": "paragraph",
+      "content": "One of the following is required to show the FAQ item. If no dynamic data is being used, just use 'Title' as the value below (all audiobook object have a title)"
+    },
+    {
       "type": "text",
       "id": "title",
       "label": "Heading",
@@ -187,32 +198,31 @@ boils down to
       "default": "<p>Use this text to share information about your product or shipping policies.</p>"
     },
     {
-      "type": "image_picker",
-      "id": "team_avatar",
-      "label": "Team avatar",
-      "info": "700 x 160px .jpg recommended"
+      "type": "checkbox",
+      "id": "book_image",
+      "label": "Show Book Image"
     },
     {
       "type": "range",
-      "id": "team_avatar_width",
+      "id": "book_image_width",
       "min": 50,
       "max": 350,
       "step": 10,
       "unit": "px",
-      "label": "Team avatar width",
+      "label": "Book image width",
       "default": 160
     },
     {
       "type": "text",
-      "id": "support_hours",
-      "label": "Support operating hours",
-      "default": "Our customer support is available Monday to Friday: 8am-8:30pm."
+      "id": "extra_info",
+      "label": "Extra information",
+      "default": "Ask us more questions via email"
     },
     {
       "type": "text",
-      "id": "answer_time",
-      "label": "Average answer time",
-      "default": "Average answer time: 24h"
+      "id": "extra_info_2",
+      "label": "More info",
+      "default": "More info"
     },
     {
       "type": "text",
@@ -298,29 +308,7 @@ boils down to
   "presets": [
     {
       "name": "Book FAQ",
-      "blocks": [
-        {
-          "type": "item",
-          "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
-          }
-        },
-        {
-          "type": "item",
-          "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
-          }
-        },
-        {
-          "type": "item",
-          "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
-          }
-        }
-      ]
+      "blocks": []
     }
   ]
 }
