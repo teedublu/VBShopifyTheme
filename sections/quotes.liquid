@@ -61,6 +61,7 @@ Cant get size to work for qoutes objects, so resorting to manual counting first 
 
 
                 {%- assign character = quote.character -%}
+                {%- assign photo = nil -%}
                 {%- if character -%}
                   {%- assign photo = quote.character.value.photos.value | first -%}
                   <script type="application/ld+json">  
@@ -70,7 +71,7 @@ Cant get size to work for qoutes objects, so resorting to manual counting first 
 
                 <div class="v-stack gap-2">
                    
-                  {%- if photo  -%}
+                  {%- if photo !=nil -%}
                    <div {% render 'surface', class: 'press__logo rounded', background: section.settings.logo_item_background %}>
                       {%- capture widths -%}{{ section.settings.photo_width }}, {{ section.settings.photo_width | times: 2 | at_most: '200' }}{%- endcapture -%}
                       {%- capture max_width -%}--press-image-max-width: {{ section.settings.photo_width }}px{%- endcapture -%}
@@ -79,8 +80,11 @@ Cant get size to work for qoutes objects, so resorting to manual counting first 
                   {%- endif -%}
                   
                   <p class="press__author text-subdued">
-                    
+                    {%- if photo !=nil -%}
                     {{ quote.character.value.name| default: quote.said_by | link_to: character.value.system.url, class: 'link' }}
+                    {%- else -%}
+                      {{ quote.said_by }}
+                    {%- endif -%}
                   </p>
 
 
