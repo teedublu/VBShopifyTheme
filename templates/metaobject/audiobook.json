@@ -272,9 +272,9 @@
       "settings": {
         "hide_if_no_chars": false,
         "full_width": true,
-        "gap": "small",
+        "gap": "large",
         "header_alignment": "start",
-        "text_alignment": "start",
+        "text_alignment": "center",
         "image_size": 50,
         "subheading": "",
         "title": "",
@@ -482,41 +482,6 @@
         "object_type": "audiobook"
       }
     },
-    "audiobook_characters_jNjL6n": {
-      "type": "audiobook-characters",
-      "blocks": {
-        "image_3CXimJ": {
-          "type": "image",
-          "settings": {
-            "media_width": 30,
-            "media_position": "start",
-            "text_position": "place-self-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "FEATURING",
-            "title": "Heading",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
-            "link_text": "read more",
-            "link_url": "",
-            "background": "#000000",
-            "background_gradient": "",
-            "text_color": "#ffffff",
-            "heading_text_color": "#ff9d57",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_3CXimJ"
-      ],
-      "settings": {
-        "full_width": false,
-        "product": "{{ metaobject.product.value }}",
-        "spacing": "small"
-      }
-    },
     "faq_book_Ji9KrX": {
       "type": "faq-book",
       "blocks": {
@@ -571,66 +536,6 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
-    },
-    "faq_jyHPPb": {
-      "type": "faq",
-      "blocks": {
-        "item_QTzBaN": {
-          "type": "item",
-          "settings": {
-            "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
-            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
-          }
-        },
-        "item_fnqArC": {
-          "type": "item",
-          "settings": {
-            "title": "How can I listen to the audiobook \"{{ metaobject.title.value }}\" ?",
-            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to great stories.</p>"
-          }
-        },
-        "item_PdCExW": {
-          "type": "item",
-          "settings": {
-            "title": "What is \"{{ metaobject.title.value }}\" about?",
-            "content": "{{ metaobject.concise_blurb | metafield_tag }}<p></p>"
-          }
-        },
-        "item_fxNnff": {
-          "type": "item",
-          "settings": {
-            "title": "Question",
-            "content": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_QTzBaN",
-        "item_fnqArC",
-        "item_PdCExW",
-        "item_fxNnff"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "Questions and Answers",
-        "title": "People also ask:",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
-      }
     }
   },
   "order": [
@@ -643,8 +548,6 @@
     "multi_column_audiobooks_WnDPxN",
     "audiobook_productdata_zmqU7J",
     "microdata_kKw6gU",
-    "audiobook_characters_jNjL6n",
-    "faq_book_Ji9KrX",
-    "faq_jyHPPb"
+    "faq_book_Ji9KrX"
   ]
 }
