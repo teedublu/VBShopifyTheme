@@ -16,7 +16,7 @@
           "type": "image",
           "settings": {
             "max_width": 200,
-            "radius": 30
+            "radius": 50
           }
         },
         "subheading_7LMNib": {
@@ -30,7 +30,7 @@
         "heading_BEKdDd": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "{{ metaobject.name.value }}",
             "scale_with": false,
             "heading_tag": "h1",
             "heading_tag_html": "h1"
@@ -63,101 +63,17 @@
         "heading": "Breadcrumbs"
       }
     },
-    "featured_product_EU4RWM": {
-      "type": "featured-product",
-      "blocks": {
-        "text_rmf7mk": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Featured audiobook from {{ metaobject.name.value }}</p>"
-          }
-        },
-        "title_7FG9XT": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h3"
-          }
-        },
-        "badges_LGEkgc": {
-          "type": "badges",
-          "settings": {}
-        },
-        "author_narrator_jtCn4y": {
-          "type": "author_narrator",
-          "settings": {
-            "show_author": true,
-            "show_narrator": false
-          }
-        },
-        "price_pBW8cb": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "rating_k3i8MX": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_zQBKVm": {
-          "type": "separator",
-          "settings": {}
-        },
-        "description_GDTV6R": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "object_link_w7wMVM": {
-          "type": "object_link",
-          "settings": {
-            "text": "<p>More details of \"[o]\".</p>"
-          }
-        },
-        "buy_buttons_NpyNjH": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "text_rmf7mk",
-        "title_7FG9XT",
-        "badges_LGEkgc",
-        "author_narrator_jtCn4y",
-        "price_pBW8cb",
-        "rating_k3i8MX",
-        "separator_zQBKVm",
-        "description_GDTV6R",
-        "object_link_w7wMVM",
-        "buy_buttons_NpyNjH"
-      ],
+    "featured_audiobook_light_eXXMXA": {
+      "type": "featured-audiobook-light",
       "settings": {
         "full_width": false,
-        "product": "{{ metaobject.main_book.value }}",
-        "desktop_media_width": 35,
-        "desktop_media_layout": "grid",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": false,
-        "enable_video_looping": false,
-        "enable_image_zoom": false,
-        "max_image_zoom_level": 2,
+        "float_up": 100,
+        "squeeze_in": 100,
+        "desktop_media_width": 55,
+        "mobile_media_size": "expanded",
         "background": "",
         "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "text_color": ""
       }
     },
     "featured_collection_dyWK9t": {
@@ -344,7 +260,7 @@
   "order": [
     "image_with_text_overlay_Dg7w6q",
     "breadcrumbs_pWhnx7",
-    "featured_product_EU4RWM",
+    "featured_audiobook_light_eXXMXA",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",
     "media_with_text_ciY3Ct",
