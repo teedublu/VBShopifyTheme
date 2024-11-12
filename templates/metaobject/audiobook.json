@@ -489,7 +489,8 @@
           "type": "item",
           "settings": {
             "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
-            "check_for": "{{ metaobject.title.value }}",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
             "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
           }
         },
@@ -497,7 +498,8 @@
           "type": "item",
           "settings": {
             "title": "What is the best way to listen to \"{{ metaobject.title.value }}\" ?",
-            "check_for": "{{ metaobject.title.value }}",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
             "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to {{ metaobject.title.value }} and many other great stories.</p>"
           }
         },
@@ -505,24 +507,36 @@
           "type": "item",
           "settings": {
             "title": "What is \"{{ metaobject.title.value }}\" about?",
-            "check_for": "",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
             "content": "{{ metaobject.concise_blurb | metafield_tag }}"
+          }
+        },
+        "item_xERghq": {
+          "type": "item",
+          "settings": {
+            "title": "Who is the audiobook  \"{{ metaobject.title.value }}\" for?",
+            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
+            "check_for_richtext": "",
+            "content": "<p>The audiobook \"{{ metaobject.title.value }}\" is aimed at listeners in these age groups:</p>{{ metaobject.interest_level | metafield_tag }}"
           }
         }
       },
       "block_order": [
         "item_bmzGFg",
         "item_xCAt3F",
-        "item_kwQGtG"
+        "item_kwQGtG",
+        "item_xERghq"
       ],
       "settings": {
         "full_width": true,
         "subheading": "Questions about \"{{ metaobject.title.value }}\" on Voxblock",
         "title": "People also ask",
         "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
+        "book_image": false,
+        "book_image_width": 160,
+        "extra_info": "Ask us more questions via email",
+        "extra_info_2": "More info",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
