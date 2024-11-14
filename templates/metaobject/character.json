@@ -150,68 +150,6 @@
         "text_color": ""
       }
     },
-    "featured_product_4UMUnK": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_wtcnVW": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title_xcheWy": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "price_DMqzhR": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "description_EhTk6a": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "buy_buttons_tiUTNc": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor_wtcnVW",
-        "title_xcheWy",
-        "price_DMqzhR",
-        "description_EhTk6a",
-        "buy_buttons_tiUTNc"
-      ],
-      "settings": {
-        "full_width": false,
-        "product": "{{ metaobject.main_book.value }}",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "grid",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": false,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
-    },
     "microdata_8YzdEG": {
       "type": "microdata",
       "settings": {
@@ -375,7 +313,6 @@
     "rich_text_M8Hw43",
     "featured_collection_KrTR6V",
     "featured_audiobook_light_64rg4L",
-    "featured_product_4UMUnK",
     "microdata_8YzdEG",
     "media_with_text_ciY3Ct",
     "video_7z6xfc",
