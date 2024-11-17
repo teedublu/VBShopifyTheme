@@ -1,8 +1,19 @@
+# Shopify #
+###################
+config/settings_data.json
 
+templates/
+
+# Local working #
+###################
+working/
+
+# OS generated files #
+######################
 .DS_Store
-working/player.html
-working/paddington-audiobook-sample.mp3
-working/Paddington.vtt
-working/player.html
-working/player.html
-/working
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
