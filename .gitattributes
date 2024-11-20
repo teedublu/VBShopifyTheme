@@ -1,4 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-config/settings_data.json merge=ours
+config/* merge=ours
 templates/* merge=ours
