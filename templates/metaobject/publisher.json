@@ -1,0 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_fDF3Bt": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_xjk34z": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_EMbWJx": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Publisher"
+          }
+        },
+        "heading_mcDepd": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_8MURDq": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>{{ metaobject.description | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_EMbWJx",
+        "heading_mcDepd",
+        "richtext_8MURDq"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "microdata_KYThUE": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "publisher"
+      }
+    },
+    "featured_collection_yTREpY": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "{{ metaobject.collection.value }}",
+        "hide_empty": false,
+        "products": [
+
+        ],
+        "full_width": false,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 50,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "Audiobooks from {{ metaobject.name.value }}",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_fDF3Bt",
+    "rich_text_xjk34z",
+    "microdata_KYThUE",
+    "featured_collection_yTREpY"
+  ]
+}

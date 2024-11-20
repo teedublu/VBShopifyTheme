@@ -1,0 +1,134 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_zWWLRY": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_Hfy3GP": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_a3iyVr": {
+          "type": "subheading",
+          "settings": {
+            "text": "A review of the audiobook"
+          }
+        },
+        "heading_QEQfC9": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_N6R9zL": {
+          "type": "richtext",
+          "settings": {
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_a3iyVr",
+        "heading_QEQfC9",
+        "richtext_N6R9zL"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_7KQcgq": {
+      "type": "featured-product",
+      "blocks": {
+        "title_tpadry": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_ALKHEb": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_Bh76pE": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_QVm4pB": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "buy_buttons_WjBhCH": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_tpadry",
+        "badges_ALKHEb",
+        "price_Bh76pE",
+        "rating_QVm4pB",
+        "buy_buttons_WjBhCH"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "audiobook_bookdata_THnKkE": {
+      "type": "audiobook-bookdata",
+      "settings": {
+        "heading": "Book data for an audiobook"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_zWWLRY",
+    "rich_text_Hfy3GP",
+    "featured_product_7KQcgq",
+    "audiobook_bookdata_THnKkE"
+  ]
+}

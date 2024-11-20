@@ -1,0 +1,283 @@
+{
+  "sections": {
+    "breadcrumbs_bDg7mc": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_8D7GPw": {
+      "type": "rich-text",
+      "blocks": {
+        "icon_aRp4KC": {
+          "type": "icon",
+          "settings": {
+            "icon": "picto-comment",
+            "icon_width": 68,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": ""
+          }
+        },
+        "subheading_GkXmq7": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook review"
+          }
+        },
+        "heading_EEjVaQ": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.page_title.value }}",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_8z4JC3": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.audiobook.value.long_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "icon_aRp4KC",
+        "subheading_GkXmq7",
+        "heading_EEjVaQ",
+        "richtext_8z4JC3"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_product_NUCd4W": {
+      "type": "featured-product",
+      "blocks": {
+        "title_bXxMgq": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_bthk3H": {
+          "type": "badges",
+          "settings": {
+          }
+        },
+        "price_P7Rhae": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "buy_buttons_MeirLM": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_bXxMgq",
+        "badges_bthk3H",
+        "price_P7Rhae",
+        "buy_buttons_MeirLM"
+      ],
+      "settings": {
+        "full_width": false,
+        "product": "{{ metaobject.product.value }}",
+        "desktop_media_width": 45,
+        "desktop_media_layout": "grid",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "audiobook_bookdata_kReDhE": {
+      "type": "audiobook-bookdata",
+      "settings": {
+        "heading": "Book data for an audiobook"
+      }
+    },
+    "media_with_text_ciY3Cs": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_QCmjPr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-end-start text-start",
+            "icon": "none",
+            "icon_width": 68,
+            "subheading": "",
+            "title": "Listen with Voxblock",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "link_text": "Learn more",
+            "link_url": "shopify:\/\/products\/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_QCmjPr"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "video_7z6xfc": {
+      "type": "video",
+      "blocks": {
+        "play_zAwMFi": {
+          "type": "play",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "heading_nLz6aH": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_zAwMFi",
+        "heading_nLz6aH"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "md",
+        "video": "shopify:\/\/files\/videos\/voxblock intro_desktop.mp4",
+        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "youtube_id": "",
+        "external_video_url": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    },
+    "faq_PWkrrR": {
+      "type": "faq",
+      "blocks": {
+        "item_dpCpac": {
+          "type": "item",
+          "settings": {
+            "title": "What is Voxblock?",
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+          }
+        },
+        "item_JwG9hG": {
+          "type": "item",
+          "settings": {
+            "title": "What stories are available?",
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
+          }
+        },
+        "item_c3zFfM": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock suitable for?",
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
+          }
+        },
+        "item_M9imEA": {
+          "type": "item",
+          "settings": {
+            "title": "Any questions?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br\/><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.<\/a><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_dpCpac",
+        "item_JwG9hG",
+        "item_c3zFfM",
+        "item_M9imEA"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "newsletter_jK33Dy": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_bDg7mc",
+    "rich_text_8D7GPw",
+    "featured_product_NUCd4W",
+    "audiobook_bookdata_kReDhE",
+    "media_with_text_ciY3Cs",
+    "video_7z6xfc",
+    "faq_PWkrrR",
+    "newsletter_jK33Dy"
+  ]
+}

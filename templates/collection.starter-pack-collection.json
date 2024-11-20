@@ -1,0 +1,346 @@
+{
+  "sections": {
+    "image_with_text_overlay_rapDMw": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_QRVg3f": {
+          "type": "subheading",
+          "settings": {
+            "text": "BEST VALUE"
+          }
+        },
+        "heading_qXzqgD": {
+          "type": "heading",
+          "settings": {
+            "text": "Starter Packs",
+            "scale_with": false,
+            "heading_tag": "h0",
+            "heading_tag_html": "h1"
+          }
+        },
+        "richtext_VKjrCY": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_QRVg3f",
+        "heading_qXzqgD",
+        "richtext_VKjrCY"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 64,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-3200x1300.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-mob-1300x1600.jpg",
+        "mobile_text_position": "place-self-start-end text-end",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_BAVNeG": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_n8jhbw": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_xL7A7w": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.",
+            "heading_tag": "h6",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_7d3b9F": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_n8jhbw",
+        "heading_xL7A7w",
+        "richtext_7d3b9F"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "collection_title_size": "h3",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_video_FFXEJa": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 5,
+            "column_span": "1",
+            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
+            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "title": "How it works",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 20
+          }
+        },
+        "promotion_image_gkWQ36": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 3,
+            "column_span": "1",
+            "title": "Our Starter Packs",
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h5",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#ffb74a",
+            "overlay_opacity": 100
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_FFXEJa",
+        "promotion_image_gkWQ36"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "filter_layout": "horizontal",
+        "show_sort_by": false,
+        "sticky_filters": true,
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
+      }
+    },
+    "image_with_text_overlay_kCDwBE": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_FYGfFN": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_ftpiYm": {
+          "type": "heading",
+          "settings": {
+            "text": "Hundreds of stories to choose from",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "p"
+          }
+        },
+        "richtext_7UgCcQ": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Grow a tangible library of audiobooks with a collection from fantasy to facts, and The Gruffalo to Alex Rider. We have something for every literacy stage, from toddlers to teens.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_FYGfFN",
+        "heading_ftpiYm",
+        "richtext_7UgCcQ"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "image": "shopify:\/\/shop_images\/Pupil_Holding_Voxblock_in_School.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 20
+      }
+    },
+    "testimonials_n8PqFn": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_8ankzn": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Alexandra Kouliakioti",
+            "title": "Voxblock is brilliant",
+            "content": "<p>Voxblock is brilliant, I cannot recommend it enough! Ordering it was a seamless shopping experience and the product is very easy for children to use. You can get a very good range of classics and well-known modern children’s books at very good prices. My 6 year-old daughter loves listening to it when she goes to bed, but also can be used when we’re travelling, as it’s portable and not too chunky. Simply amazing!<\/p>"
+          }
+        },
+        "testimonial_hDdcgD": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Sarah McPherson",
+            "title": "Best gift idea!",
+            "content": "<p>Voxblock has been such an amazing gift for my niece, and I love the fact it’s a never ending gift idea being able to get her new stories for her library. She really enjoys spending time listening to books and is happy to replay stories. She’s even got the animals (dog and cat) chilled out listening with her.<\/p>"
+          }
+        },
+        "testimonial_eNcDWX": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Cara",
+            "title": "Brilliant product and company",
+            "content": "<p>Brilliant product!<br\/>Very quick from order to delivery. This is great for my 3 year old as I looked at the Tonie but wanted something a little less character based and more story focused. She can operate the system herself and loves choosing a story for herself every night. Totally recommend.<\/p>"
+          }
+        },
+        "testimonial_wnjJdw": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Maz Puchalski",
+            "title": "We absolutely love our Voxblock's",
+            "content": "<p>We absolutely love our Voxblock's. We have had them for a year or more now. So many books now available. Really happy.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_8ankzn",
+        "testimonial_hDdcgD",
+        "testimonial_eNcDWX",
+        "testimonial_wnjJdw"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": false,
+        "subheading": "",
+        "title": "Why parents love Voxblock",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "faq_t9iAtE": {
+      "type": "faq",
+      "blocks": {
+        "item_d4JLhf": {
+          "type": "item",
+          "settings": {
+            "title": "How do I set up my player?",
+            "content": "<p>Depending on the model you can find the on\/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on\/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.<\/p>"
+          }
+        },
+        "item_Xxne47": {
+          "type": "item",
+          "settings": {
+            "title": "Do I need an internet connection to use my player?",
+            "content": "<p>Nope. We are completely connectivity free.<\/p>"
+          }
+        },
+        "item_P64kBq": {
+          "type": "item",
+          "settings": {
+            "title": "What is the best way to charge my player?",
+            "content": "<ul><li>use the USB C charging cable provided<\/li><li>charge using a USB adapter in a wall socket<\/li><li>allow the player to charge fully e.g. overnight<\/li><li>switch off the player when not in use<\/li><\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "item_d4JLhf",
+        "item_Xxne47",
+        "item_P64kBq"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "rgba(0,0,0,0)",
+        "accordion_text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_rapDMw",
+    "rich_text_BAVNeG",
+    "banner",
+    "main",
+    "image_with_text_overlay_kCDwBE",
+    "testimonials_n8PqFn",
+    "faq_t9iAtE"
+  ]
+}

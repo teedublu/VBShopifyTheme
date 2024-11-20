@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "rich_text_MPmxRw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XUDGAr": {
+          "type": "heading",
+          "settings": {
+            "text": "The Voxblock Library",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_tHF3JC": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The library is always growing and changing. Here are all the collections we have put together to gather our large audiobook library into useful groups.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XUDGAr",
+        "richtext_tHF3JC"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "collections": [
+
+        ],
+        "collections_per_row_mobile": "2",
+        "collections_per_row": 5,
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    }
+  },
+  "order": [
+    "rich_text_MPmxRw",
+    "main"
+  ]
+}

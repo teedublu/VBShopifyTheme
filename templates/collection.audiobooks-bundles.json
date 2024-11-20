@@ -1,0 +1,146 @@
+{
+  "sections": {
+    "image_with_text_overlay_yP4Nmk": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_chweia": {
+          "type": "subheading",
+          "settings": {
+            "text": "GROW YOUR COLLECTION"
+          }
+        },
+        "heading_F9Aqw9": {
+          "type": "heading",
+          "settings": {
+            "text": "Bundles",
+            "scale_with": false,
+            "heading_tag": "h0",
+            "heading_tag_html": "p"
+          }
+        },
+        "richtext_Xgf6qe": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Get more of your favourite audiobook characters with a bundle from Voxblock.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_chweia",
+        "heading_F9Aqw9",
+        "richtext_Xgf6qe"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "md",
+        "image": "shopify:\/\/shop_images\/book_collection_render.png",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 10
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": true,
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "collection_title_size": "h0",
+        "image_size": "sm",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ff9e57",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_image_JNdmEc": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 6,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/audiobooks-ad-tokens-desktop-1600x1000.jpg",
+            "title": "",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/voxblock-tokens-collect-for-free-audiobooks",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "promotion_image_Y8aKHT": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 20,
+            "column_span": "1",
+            "image": "shopify:\/\/shop_images\/Two-girls-on-beanbags-listening-to-audiobook.png",
+            "title": "Refer a friend and get a free book",
+            "content": "",
+            "link_url": "shopify:\/\/pages\/refer-a-friend",
+            "link_text": "Read more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_JNdmEc",
+        "promotion_image_Y8aKHT"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "sticky_filters": true,
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
+      }
+    },
+    "image_with_text_overlay_artdUK": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify:\/\/shop_images\/audiobooks-library_banner-web-3200x1200.jpg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_yP4Nmk",
+    "banner",
+    "main",
+    "image_with_text_overlay_artdUK"
+  ]
+}
