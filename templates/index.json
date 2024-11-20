@@ -11,47 +11,14 @@
   "sections": {
     "image_with_text_overlay_mzRBYC": {
       "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_BY3n4M": {
-          "type": "subheading",
-          "settings": {
-            "text": "The Screen-Free Audiobook Player"
-          }
-        },
-        "heading_EBfnGt": {
-          "type": "heading",
-          "settings": {
-            "text": "Loved by kids!",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "p"
-          }
-        },
-        "button_XtBmYV": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "Find out more",
-            "url": "shopify://products/voxblock-player",
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_BY3n4M",
-        "heading_EBfnGt",
-        "button_XtBmYV"
-      ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
         "max_width": 76,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/homepage-hero_image_med-desktop.jpg",
-        "mobile_image": "shopify://shop_images/homepage-hero-image-mobile-1300x1600.jpg",
+        "image": "shopify://shop_images/BF24-website-home-main-banner.png",
+        "mobile_image": "shopify://shop_images/BF24-website-home-main-banner-mob.png",
         "mobile_text_position": "place-self-start-end text-end",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
@@ -101,8 +68,7 @@
       "blocks": {
         "play_dAmdVr": {
           "type": "play",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -697,9 +663,7 @@
       "settings": {
         "collection": "voxblock-starter-pack-collection",
         "hide_empty": false,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
@@ -828,8 +792,7 @@
       "blocks": {
         "vendor": {
           "type": "vendor",
-          "settings": {
-          }
+          "settings": {}
         },
         "title": {
           "type": "title",
@@ -839,8 +802,7 @@
         },
         "badges": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
