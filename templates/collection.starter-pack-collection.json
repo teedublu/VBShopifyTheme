@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_with_text_overlay_rapDMw": {
@@ -5,12 +14,14 @@
       "blocks": {
         "subheading_QRVg3f": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "BEST VALUE"
           }
         },
         "heading_qXzqgD": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "text": "Starter Packs",
             "scale_with": false,
@@ -22,7 +33,7 @@
           "type": "richtext",
           "disabled": true,
           "settings": {
-            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>"
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.</p>"
           }
         }
       },
@@ -37,8 +48,8 @@
         "max_width": 64,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-3200x1300.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/SP_Page-Hero_Image-mob-1300x1600.jpg",
+        "image": "shopify://shop_images/BF24-website-banner.png",
+        "mobile_image": "shopify://shop_images/SP_Page-Hero_Image-mob-1300x1600.jpg",
         "mobile_text_position": "place-self-start-end text-end",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
@@ -70,7 +81,7 @@
           "type": "richtext",
           "disabled": true,
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
           }
         }
       },
@@ -96,6 +107,7 @@
         "full_width": true,
         "allow_transparent_header": false,
         "enable_parallax": false,
+        "link_objects": true,
         "show_collection_title": true,
         "show_collection_description": true,
         "show_collection_image": false,
@@ -115,14 +127,15 @@
       "blocks": {
         "promotion_video_FFXEJa": {
           "type": "promotion_video",
+          "disabled": true,
           "settings": {
             "position": 5,
             "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video": "shopify://files/videos/how does it work_desktop.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "How it works",
             "content": "",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_url": "shopify://pages/how-does-it-work",
             "link_text": "Learn more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
@@ -137,7 +150,7 @@
             "position": 3,
             "column_span": "1",
             "title": "Our Starter Packs",
-            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.<\/p>",
+            "content": "<p>The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including some well known characters and much loved stories. Our Starter Packs include a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.</p>",
             "link_url": "",
             "link_text": "",
             "heading_tag": "h5",
@@ -146,11 +159,30 @@
             "overlay_color": "#ffb74a",
             "overlay_opacity": 100
           }
+        },
+        "promotion_image_aDtCKY": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "image": "shopify://shop_images/BF24-website-ad-mob.png",
+            "mobile_image": "shopify://shop_images/BF24-website-ad-mob.png",
+            "title": "",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
         }
       },
       "block_order": [
         "promotion_video_FFXEJa",
-        "promotion_image_gkWQ36"
+        "promotion_image_gkWQ36",
+        "promotion_image_aDtCKY"
       ],
       "settings": {
         "products_per_page": 24,
@@ -187,7 +219,7 @@
         "richtext_7UgCcQ": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Grow a tangible library of audiobooks with a collection from fantasy to facts, and The Gruffalo to Alex Rider. We have something for every literacy stage, from toddlers to teens.<\/p>"
+            "content": "<p>Grow a tangible library of audiobooks with a collection from fantasy to facts, and The Gruffalo to Alex Rider. We have something for every literacy stage, from toddlers to teens.</p>"
           }
         }
       },
@@ -202,7 +234,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/Pupil_Holding_Voxblock_in_School.jpg",
+        "image": "shopify://shop_images/Pupil_Holding_Voxblock_in_School.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -221,7 +253,7 @@
             "rating": 5,
             "author": "Alexandra Kouliakioti",
             "title": "Voxblock is brilliant",
-            "content": "<p>Voxblock is brilliant, I cannot recommend it enough! Ordering it was a seamless shopping experience and the product is very easy for children to use. You can get a very good range of classics and well-known modern children’s books at very good prices. My 6 year-old daughter loves listening to it when she goes to bed, but also can be used when we’re travelling, as it’s portable and not too chunky. Simply amazing!<\/p>"
+            "content": "<p>Voxblock is brilliant, I cannot recommend it enough! Ordering it was a seamless shopping experience and the product is very easy for children to use. You can get a very good range of classics and well-known modern children’s books at very good prices. My 6 year-old daughter loves listening to it when she goes to bed, but also can be used when we’re travelling, as it’s portable and not too chunky. Simply amazing!</p>"
           }
         },
         "testimonial_hDdcgD": {
@@ -232,7 +264,7 @@
             "rating": 5,
             "author": "Sarah McPherson",
             "title": "Best gift idea!",
-            "content": "<p>Voxblock has been such an amazing gift for my niece, and I love the fact it’s a never ending gift idea being able to get her new stories for her library. She really enjoys spending time listening to books and is happy to replay stories. She’s even got the animals (dog and cat) chilled out listening with her.<\/p>"
+            "content": "<p>Voxblock has been such an amazing gift for my niece, and I love the fact it’s a never ending gift idea being able to get her new stories for her library. She really enjoys spending time listening to books and is happy to replay stories. She’s even got the animals (dog and cat) chilled out listening with her.</p>"
           }
         },
         "testimonial_eNcDWX": {
@@ -243,7 +275,7 @@
             "rating": 5,
             "author": "Cara",
             "title": "Brilliant product and company",
-            "content": "<p>Brilliant product!<br\/>Very quick from order to delivery. This is great for my 3 year old as I looked at the Tonie but wanted something a little less character based and more story focused. She can operate the system herself and loves choosing a story for herself every night. Totally recommend.<\/p>"
+            "content": "<p>Brilliant product!<br/>Very quick from order to delivery. This is great for my 3 year old as I looked at the Tonie but wanted something a little less character based and more story focused. She can operate the system herself and loves choosing a story for herself every night. Totally recommend.</p>"
           }
         },
         "testimonial_wnjJdw": {
@@ -254,7 +286,7 @@
             "rating": 5,
             "author": "Maz Puchalski",
             "title": "We absolutely love our Voxblock's",
-            "content": "<p>We absolutely love our Voxblock's. We have had them for a year or more now. So many books now available. Really happy.<\/p>"
+            "content": "<p>We absolutely love our Voxblock's. We have had them for a year or more now. So many books now available. Really happy.</p>"
           }
         }
       },
@@ -288,21 +320,21 @@
           "type": "item",
           "settings": {
             "title": "How do I set up my player?",
-            "content": "<p>Depending on the model you can find the on\/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on\/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.<\/p>"
+            "content": "<p>Depending on the model you can find the on/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.</p>"
           }
         },
         "item_Xxne47": {
           "type": "item",
           "settings": {
             "title": "Do I need an internet connection to use my player?",
-            "content": "<p>Nope. We are completely connectivity free.<\/p>"
+            "content": "<p>Nope. We are completely connectivity free.</p>"
           }
         },
         "item_P64kBq": {
           "type": "item",
           "settings": {
             "title": "What is the best way to charge my player?",
-            "content": "<ul><li>use the USB C charging cable provided<\/li><li>charge using a USB adapter in a wall socket<\/li><li>allow the player to charge fully e.g. overnight<\/li><li>switch off the player when not in use<\/li><\/ul>"
+            "content": "<ul><li>use the USB C charging cable provided</li><li>charge using a USB adapter in a wall socket</li><li>allow the player to charge fully e.g. overnight</li><li>switch off the player when not in use</li></ul>"
           }
         }
       },

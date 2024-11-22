@@ -16,10 +16,23 @@
       "blocks": {
         "message_CVXwBN": {
           "type": "message",
-          "disabled": true,
           "settings": {
-            "text": "Double Tokens - TODAY! (29th August)",
+            "text": "BLACK FRIDAY: 20% off Everything*",
             "url": "shopify://products/voxblock-player"
+          }
+        },
+        "message_N7RbUz": {
+          "type": "message",
+          "settings": {
+            "text": "BLACK FRIDAY: 29th Nov - 2nd Dec",
+            "url": ""
+          }
+        },
+        "message_azpcE6": {
+          "type": "message",
+          "settings": {
+            "text": "BLACK FRIDAY: Discount applied at checkout",
+            "url": ""
           }
         },
         "message": {
@@ -28,25 +41,18 @@
             "text": "Free UK delivery for orders over £15",
             "url": ""
           }
-        },
-        "message_N7RbUz": {
-          "type": "message",
-          "disabled": true,
-          "settings": {
-            "text": "4.9 Rating on Trustpilot",
-            "url": ""
-          }
         }
       },
       "block_order": [
         "message_CVXwBN",
-        "message",
-        "message_N7RbUz"
+        "message_N7RbUz",
+        "message_azpcE6",
+        "message"
       ],
       "settings": {
         "enable_sticky": false,
         "text_size": "text-base",
-        "navigation_mode": "arrows",
+        "navigation_mode": "scrolling",
         "scrolling_speed": 26,
         "background": "#ff9e57",
         "background_gradient": "",
