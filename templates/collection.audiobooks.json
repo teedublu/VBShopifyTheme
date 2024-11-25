@@ -260,6 +260,24 @@
             "overlay_opacity": 0
           }
         },
+        "promotion_image_pMBTL3": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 9,
+            "column_span": "1",
+            "image": "shopify://shop_images/BF24-website-ad-web.png",
+            "mobile_image": "shopify://shop_images/BF24-website-ad-mob.png",
+            "title": "",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
           "settings": {
@@ -299,6 +317,7 @@
       },
       "block_order": [
         "promotion_video_79qxG8",
+        "promotion_image_pMBTL3",
         "promotion_image_4VEyzT",
         "promotion_image_FwKUTE"
       ],
