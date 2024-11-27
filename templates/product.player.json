@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs_TMg6RL": {
@@ -18,6 +18,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "image_Q38M6p": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/BF24-website-player-banner.png",
+            "alignment": "start",
+            "max_width": 430
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -26,8 +34,7 @@
         },
         "badges": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "text_thkiB9": {
           "type": "text",
@@ -57,8 +64,7 @@
         },
         "separator": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -113,8 +119,7 @@
         },
         "separator_eAyTL4": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "offer_1": {
           "type": "offer",
@@ -245,8 +250,7 @@
         },
         "separator_JnqTiQ": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "offer_tcaCpM": {
           "type": "offer",
@@ -276,6 +280,7 @@
         }
       },
       "block_order": [
+        "image_Q38M6p",
         "title",
         "badges",
         "text_thkiB9",
@@ -325,8 +330,7 @@
       "blocks": {
         "play_fiM6Xf": {
           "type": "play",
-          "settings": {
-          }
+          "settings": {}
         },
         "heading_kJtRma": {
           "type": "heading",
