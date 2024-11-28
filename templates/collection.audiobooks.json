@@ -14,6 +14,7 @@
       "blocks": {
         "image_rcNxx7": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Audiobook_of_the_Month_19.png",
             "mobile_image": "shopify://shop_images/Audiobook_of_the_month_20.png",
@@ -56,28 +57,6 @@
             "background_gradient": ""
           }
         },
-        "image_Fk3KYX": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Peppa_website_banner.png",
-            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_13.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "Peppa Pig",
-            "heading_tag": "h0",
-            "button_text": "Shop here",
-            "button_link": "shopify://collections/audiobooks-featuring-peppa-pig",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
         "image_pERNrc": {
           "type": "image",
           "settings": {
@@ -91,6 +70,28 @@
             "heading_tag": "h0",
             "button_text": "Sign up here",
             "button_link": "shopify://pages/newsletter",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_Fk3KYX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Peppa_website_banner.png",
+            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_13.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "NEW ARRIVAL",
+            "title": "Peppa Pig",
+            "heading_tag": "h0",
+            "button_text": "Shop here",
+            "button_link": "shopify://collections/audiobooks-featuring-peppa-pig",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -126,8 +127,8 @@
       "block_order": [
         "image_rcNxx7",
         "image_yzXge3",
-        "image_Fk3KYX",
         "image_pERNrc",
+        "image_Fk3KYX",
         "image_yXy8xr"
       ],
       "settings": {
