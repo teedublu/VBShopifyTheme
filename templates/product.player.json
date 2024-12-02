@@ -18,14 +18,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "image_Q38M6p": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/BF24-website-player-banner.png",
-            "alignment": "start",
-            "max_width": 430
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -59,7 +51,7 @@
         "text_MA3Pah": {
           "type": "text",
           "settings": {
-            "text": "<p>BLACK FRIDAY: *excludes gift cards and school packages. Offer ends 2nd December.</p><p>Our screen free audiobook player enables you to play any of our audiobooks. wifi-free, with built-in speakers and headphone jack, featuring sleep and travel modes.</p><p>100% Connection free. 100% Hassle free.</p>"
+            "text": "<p>Our screen free audiobook player enables you to play any of our audiobooks. wifi-free, with built-in speakers and headphone jack, featuring sleep and travel modes.</p><p>100% Connection free. 100% Hassle free.</p>"
           }
         },
         "separator": {
@@ -280,7 +272,6 @@
         }
       },
       "block_order": [
-        "image_Q38M6p",
         "title",
         "badges",
         "text_thkiB9",
