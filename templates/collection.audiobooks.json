@@ -15,8 +15,6 @@
         "image_rcNxx7": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Audiobook_of_the_Month_19.png",
-            "mobile_image": "shopify://shop_images/Audiobook_of_the_month_20.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
@@ -37,8 +35,6 @@
         "image_yzXge3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/The_Worst_Witch_Banner_59f7865f-e0c5-4622-92b5-ca39d5ea8ea1.png",
-            "mobile_image": "shopify://shop_images/The_Worst_Witch_-_mob.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
@@ -59,8 +55,6 @@
         "image_Fk3KYX": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Peppa_website_banner.png",
-            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_13.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
@@ -81,7 +75,6 @@
         "image_pERNrc": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/audiobooks-banner-signup-desktop-2000x612.png",
             "mobile_image": "shopify://shop_images/Audiobooks_banner_signup_mob_850x880_5061b76a-6862-4e74-849f-643a74c9513e.png",
             "content_max_width": 820,
             "mobile_text_position": "place-self-end-start text-start",
@@ -103,8 +96,6 @@
         "image_yXy8xr": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/voxblock_website_banner_1.png",
-            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_8.png",
             "content_max_width": 680,
             "mobile_text_position": "place-self-center text-center",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
@@ -170,7 +161,6 @@
         "item_P4cM4p": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/bestseller-image-link-category-200x150.jpg",
             "link_text": "Best Sellers",
             "url_params": "filter.p.m.custom.badges=Bestseller"
           }
@@ -178,7 +168,6 @@
         "item_a4Jzjj": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/new-image-link-category-200x150.jpg",
             "link_text": "New Releases",
             "url_params": "filter.p.m.custom.badges=New"
           }
@@ -186,7 +175,6 @@
         "item_Y4GnXQ": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/under5s-image-link-category-200x150.jpg",
             "link_text": "Under 5's",
             "url_params": "filter.p.m.book.age_groups=Under+5%27s"
           }
@@ -194,7 +182,6 @@
         "item_PHyCVd": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/5-8years-image-link-category-200x150.jpg",
             "link_text": "5-8 years",
             "url_params": "filter.p.m.book.age_groups=5+to+8+years"
           }
@@ -202,7 +189,6 @@
         "item_qpk6Bx": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/8-10years-image-link-category-200x150.jpg",
             "link_text": "8-10 years",
             "url_params": "filter.p.m.book.age_groups=8+to+10+years"
           }
@@ -210,7 +196,6 @@
         "item_KfF6ya": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/10-teens-image-link-category-200x150.jpg",
             "link_text": "10-teens",
             "url_params": "filter.p.m.book.age_groups=10+to+teens"
           }
@@ -218,9 +203,16 @@
         "item_RLAWAH": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/bundle-image-link-category-200x150.jpg",
             "link_text": "Bundles",
             "url_params": "filter.p.product_type=Audiobooks+Bundle"
+          }
+        },
+        "item_kCEr4P": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/player_lifestyle_5_2048x2048_12f3471e-122d-40a3-b80b-ff378e5086ee.png",
+            "link_text": "",
+            "url_params": "filter.p.product_type=Literacy+Ladder"
           }
         }
       },
@@ -231,7 +223,8 @@
         "item_PHyCVd",
         "item_qpk6Bx",
         "item_KfF6ya",
-        "item_RLAWAH"
+        "item_RLAWAH",
+        "item_kCEr4P"
       ],
       "settings": {
         "full_width": false,
@@ -327,6 +320,8 @@
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
