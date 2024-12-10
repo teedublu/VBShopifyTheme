@@ -1,3 +1,5 @@
+{%- assign chapters = metaobject.chapters.value | sort: 'index' %}
+{%- if chapters.size>0 -%}
 <style>
 .audiobooks-full-details {
     display: flex;
@@ -33,7 +35,6 @@
     <div class="section-stack">
         {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.heading, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url -%}
 
-        {%- assign chapters = metaobject.chapters.value | sort: 'index' %}
         <div class="chapters-container">
           <ol class="chapters-list">
             {%- for chapter in chapters -%}
@@ -50,7 +51,7 @@
 
 
 </div>
-
+{%- endif -%}
 {% schema %}
 {
     "name": "Audiobook Chapters",
