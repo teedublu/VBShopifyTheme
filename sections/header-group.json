@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -18,8 +18,8 @@
           "type": "message",
           "disabled": true,
           "settings": {
-            "text": "Double Tokens - TODAY! (29th August)",
-            "url": "shopify:\/\/products\/voxblock-player"
+            "text": "Order by",
+            "url": "shopify://products/voxblock-player"
           }
         },
         "message": {
@@ -57,7 +57,7 @@
       "settings": {
         "enable_sticky": true,
         "hide_on_scroll": false,
-        "logo": "shopify:\/\/shop_images\/Voxblock-Horizontal-Colour.png",
+        "logo": "shopify://shop_images/Voxblock-Horizontal-Colour.png",
         "logo_max_width": 120,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
@@ -72,7 +72,7 @@
         "show_country_flag": false,
         "show_country_name": false,
         "transparent_header_text_color": "#ffffff",
-        "transparent_logo": "shopify:\/\/shop_images\/Voxblock-Horizontal-White.png",
+        "transparent_logo": "shopify://shop_images/Voxblock-Horizontal-White.png",
         "reduce_padding": true,
         "background_opacity": 100,
         "background_blur_radius": 0
