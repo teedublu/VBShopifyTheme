@@ -525,10 +525,10 @@
         "item_xERghq": {
           "type": "item",
           "settings": {
-            "title": "Who is the audiobook  \"{{ metaobject.title.value }}\" for?",
+            "title": "What are the key themes in audiobook  \"{{ metaobject.title.value }}\"?",
             "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
             "check_for_richtext": "",
-            "content": "<p>The audiobook \"{{ metaobject.title.value }}\" is aimed at listeners in these age groups:</p>{{ metaobject.interest_level | metafield_tag }}"
+            "content": "<p>The audiobook \"{{ metaobject.title.value }}\" has the following key themes featured throughout the plot:</p>{{ metaobject.content_themes | metafield_tag }}"
           }
         }
       },
