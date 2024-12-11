@@ -71,7 +71,7 @@
       "settings": {
         "full_width": false,
         "use_mo": true,
-        "content_width": "large",
+        "content_width": "medium",
         "text_position": "start",
         "background": "",
         "background_gradient": "",
@@ -136,10 +136,10 @@
       ],
       "settings": {
         "full_width": false,
-        "float_up": 15,
-        "squeeze_in": 100,
-        "desktop_media_width": 55,
-        "mobile_media_size": "expanded",
+        "float_up": 30,
+        "squeeze_in": 90,
+        "desktop_media_width": 45,
+        "mobile_media_size": "contained",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -202,7 +202,7 @@
         "gap": "medium",
         "header_alignment": "start",
         "text_alignment": "center",
-        "image_size": 50,
+        "image_size": 63,
         "subheading": "",
         "title": "Featuring",
         "content": "",
@@ -214,7 +214,17 @@
     },
     "audiobook_chapters_yCUz7W": {
       "type": "audiobook-chapters",
-      "settings": {}
+      "settings": {
+        "full_width": true,
+        "subheading": "What's inside",
+        "heading": "Chapters",
+        "content": "<p>Here are the chapters in this audiobook.</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
     },
     "multi_column_audiobooks_WnDPxN": {
       "type": "multi-column-audiobooks",

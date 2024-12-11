@@ -130,10 +130,10 @@
       ],
       "settings": {
         "full_width": false,
-        "float_up": 20,
+        "float_up": 30,
         "squeeze_in": 100,
-        "desktop_media_width": 55,
-        "mobile_media_size": "expanded",
+        "desktop_media_width": 45,
+        "mobile_media_size": "contained",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -147,7 +147,7 @@
         "products": [],
         "full_width": false,
         "stack_products": false,
-        "show_progress_bar": false,
+        "show_progress_bar": true,
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
