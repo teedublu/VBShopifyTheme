@@ -1,29 +1,36 @@
 {%- assign chapters = metaobject.chapters.value | sort: 'index' %}
 {%- if chapters.size>0 -%}
 <style>
-.audiobooks-full-details {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+
+.chapters-container {
+  max-height: 30vh;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: auto; /* Disables vertical scrolling */
+  white-space: nowrap; /* Prevents line wrapping */
+  scroll-behavior: smooth; /* Smooth scrolling for better UX */
+  position: relative; /* For gradient overlay */
 }
 
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+
+ol.chapters-list {
+  display: inline-block; /* Makes the list inline for horizontal scrolling */
+  column-width: clamp(15rem, 20rem, 25rem); /* Adjust column width responsively */
+  column-gap: 1rem; /* Space between columns */
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  white-space: normal; /* Normalizes text wrapping inside columns */
 }
 
-.detail-label {
-    font-weight: bold;
-    width: 20%; /* Adjust as needed */
+ol.chapters-list li {
+  break-inside: avoid; /* Prevents list items from breaking across columns */
+  padding: 0.5rem 0;
 }
 
-.detail-value {
-    width: 80%; /* Adjust as needed */
-    text-align: left;
+.chapter-item b {
+  display: block;
+  margin-bottom: 0.3rem;
 }
-
 
 
 </style>
