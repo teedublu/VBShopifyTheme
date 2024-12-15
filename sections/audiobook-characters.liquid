@@ -1,3 +1,6 @@
+{%- assign characters = section.settings.product.metafields.book.characters.value -%}
+
+{%- if characters.size > 0 -%}
 {%- render 'section-spacing-collapsing' -%}
 
 {%- comment -%}
@@ -36,7 +39,7 @@ CSS
 LIQUID
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
-  {%- assign characters = section.settings.product.metafields.book.characters.value -%}
+  
   
     <div {% render 'section-properties' %}>
       
@@ -86,7 +89,7 @@ LIQUID
         </media-with-text>  
       
     </div>
-
+{%- endif -%}
 {% schema %}
 {
   "name": "Audiobook Characters",

@@ -1,16 +1,17 @@
-
+{%- assign try_here = metaobject.collection.value.products | first -%}
 {%- case metaobject.system.type -%}
   {%- when 'audiobook' -%}
     {%- assign product =  metaobject.product.value | default: product -%}
   {%- when 'author' -%}
-    {%- assign product = metaobject.main_book.value | default: metaobject.collection.value.products | first -%}
+    {%- assign product = metaobject.main_book.value | default: try_here -%}
   {%- when 'narrator' -%}
-    {%- assign product = metaobject.main_book.value | default: metaobject.collection.value.products | first -%}
+    {%- assign product = metaobject.main_book.value | default: try_here -%}
   {%- when 'character' -%}
-    {%- assign product = metaobject.main_book.value | default: metaobject.collection.value.products | first -%}-%}
+    {%- assign product = metaobject.main_book.value | default: try_here -%}
   {%- else -%}
     {%- assign product = product -%}
 {%- endcase -%}
+
 {%- if product -%}
 
 {%- render 'section-spacing-collapsing' -%}
