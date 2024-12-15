@@ -40,7 +40,11 @@
             {%- for chapter in chapters -%}
               <li class="chapter-item">
                 <div class="chapter-content">
-                  <b>Chapter {{forloop.index}} : {{ chapter.title }}</b>
+                  {%- if chapter.label -%}
+                    <b>{{ chapter.label }}</b>
+                  {%- else -%}
+                    <b>Chapter {{forloop.index}} : {{ chapter.title }}</b>
+                  {%- endif -%}
                   {{ chapter.summary | metafield_tag }}
                 </div>
               </li>
