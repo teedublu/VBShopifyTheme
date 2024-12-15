@@ -9,6 +9,55 @@
  */
 {
   "sections": {
+    "image_with_text_overlay_JwNXhf": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "image_BY36cH": {
+          "type": "image",
+          "source": "{{ metaobject }}",
+          "settings": {
+            "max_width": 200,
+            "radius": 50
+          }
+        },
+        "subheading_LYWNDk": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading",
+            "subheading_tag": "h1",
+            "subheading_tag_html": "h2"
+          }
+        },
+        "heading_wUxTkH": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text overlay",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "image_BY36cH",
+        "subheading_LYWNDk",
+        "heading_wUxTkH"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
     "breadcrumbs_fDF3Bt": {
       "type": "breadcrumbs",
       "settings": {
@@ -18,38 +67,21 @@
     "rich_text_xjk34z": {
       "type": "rich-text",
       "blocks": {
-        "subheading_EMbWJx": {
-          "type": "subheading",
-          "settings": {
-            "text": "Audiobook Publisher"
-          }
-        },
-        "heading_mcDepd": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.name.value }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
         "richtext_8MURDq": {
           "type": "richtext",
           "settings": {
-            "content": "<p>{{ metaobject.description | metafield_tag }}</p>"
+            "content": "{{ metaobject.description | metafield_tag }}"
           }
         }
       },
       "block_order": [
-        "subheading_EMbWJx",
-        "heading_mcDepd",
         "richtext_8MURDq"
       ],
       "settings": {
         "full_width": false,
         "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
+        "content_width": "large",
+        "text_position": "start",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -67,9 +99,7 @@
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
         "hide_empty": false,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": false,
         "stack_products": true,
         "show_progress_bar": false,
@@ -92,6 +122,7 @@
     }
   },
   "order": [
+    "image_with_text_overlay_JwNXhf",
     "breadcrumbs_fDF3Bt",
     "rich_text_xjk34z",
     "microdata_KYThUE",
