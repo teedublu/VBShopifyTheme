@@ -15,6 +15,8 @@
         "image_rcNxx7": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Audiobook_of_the_Month_2d95b253-f711-4be3-8716-a043dfc33d26.png",
+            "mobile_image": "shopify://shop_images/Audiobook_of_the_month_1_21f8130f-d394-436d-be39-93e4af08c2a2.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
@@ -22,7 +24,7 @@
             "title": "Get 10% off",
             "heading_tag": "h1",
             "button_text": "Shop here",
-            "button_link": "shopify://products/shifty-mcgifty-and-slippery-sam-jingle-bells",
+            "button_link": "shopify://products/the-polar-bear-explorers-club",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -32,17 +34,41 @@
             "background_gradient": ""
           }
         },
-        "image_yzXge3": {
+        "image_jtFhdT": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Christmas_Stories_1.png",
+            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_14.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "The Worst Witch",
+            "subheading": "COLLECTION",
+            "title": "Christmas Stories",
             "heading_tag": "h0",
             "button_text": "Shop here",
-            "button_link": "shopify://collections/audiobooks-by-jill-murphy",
+            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.book.categories=Christmas+%26+Winter",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_pERNrc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/audiobooks-banner-signup-desktop-2000x612.png",
+            "mobile_image": "shopify://shop_images/Audiobooks_banner_signup_mob_850x880_5061b76a-6862-4e74-849f-643a74c9513e.png",
+            "content_max_width": 820,
+            "mobile_text_position": "place-self-end-start text-start",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "NEWSLETTER",
+            "title": "Find out about new releases",
+            "heading_tag": "h0",
+            "button_text": "Sign up here",
+            "button_link": "shopify://pages/newsletter",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -55,6 +81,8 @@
         "image_Fk3KYX": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Peppa_website_banner.png",
+            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_13.png",
             "content_max_width": 780,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
@@ -63,27 +91,6 @@
             "heading_tag": "h0",
             "button_text": "Shop here",
             "button_link": "shopify://collections/audiobooks-featuring-peppa-pig",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_pERNrc": {
-          "type": "image",
-          "settings": {
-            "mobile_image": "shopify://shop_images/Audiobooks_banner_signup_mob_850x880_5061b76a-6862-4e74-849f-643a74c9513e.png",
-            "content_max_width": 820,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "NEWSLETTER",
-            "title": "Find out about new releases",
-            "heading_tag": "h0",
-            "button_text": "Sign up here",
-            "button_link": "shopify://pages/newsletter",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -116,9 +123,9 @@
       },
       "block_order": [
         "image_rcNxx7",
-        "image_yzXge3",
-        "image_Fk3KYX",
+        "image_jtFhdT",
         "image_pERNrc",
+        "image_Fk3KYX",
         "image_yXy8xr"
       ],
       "settings": {
