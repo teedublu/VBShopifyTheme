@@ -115,13 +115,13 @@
     "featured_audiobook_light_64rg4L": {
       "type": "featured-audiobook-light",
       "blocks": {
-        "text_jk8nM4": {
+        "text_xm6AAp": {
           "type": "text",
           "settings": {
             "text": "<p>A screen-free audiobook</p>"
           }
         },
-        "title_kMK4Vw": {
+        "title_BEcEy4": {
           "type": "title",
           "settings": {
             "heading_tag": "h2"
@@ -131,14 +131,6 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
-          }
-        },
-        "collapsible_text_JyhmY4": {
-          "type": "collapsible_text",
-          "settings": {
-            "title": "Who is Paddington Bear",
-            "content": "{{ metaobject.bio | metafield_tag }}",
-            "page": ""
           }
         },
         "audiobook_properties_7wHX3G": {
@@ -163,17 +155,16 @@
         }
       },
       "block_order": [
-        "text_jk8nM4",
-        "title_kMK4Vw",
+        "text_xm6AAp",
+        "title_BEcEy4",
         "price_hkRLUL",
-        "collapsible_text_JyhmY4",
         "audiobook_properties_7wHX3G",
         "buy_buttons_3wDUDa"
       ],
       "settings": {
         "full_width": false,
         "float_up": 55,
-        "squeeze_in": 85,
+        "squeeze_in": 100,
         "desktop_media_width": 35,
         "mobile_media_size": "contained",
         "background": "",
