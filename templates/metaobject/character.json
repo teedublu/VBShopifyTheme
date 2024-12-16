@@ -115,6 +115,12 @@
     "featured_audiobook_light_64rg4L": {
       "type": "featured-audiobook-light",
       "blocks": {
+        "text_jk8nM4": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>A screen-free audiobook</h5>"
+          }
+        },
         "title_kMK4Vw": {
           "type": "title",
           "settings": {
@@ -127,24 +133,49 @@
             "show_taxes_notice": false
           }
         },
-        "text_Wpb9rk": {
-          "type": "text",
+        "collapsible_text_JyhmY4": {
+          "type": "collapsible_text",
           "settings": {
-            "text": "<p>Share some content to your customers about your products.</p>"
+            "title": "Who is Paddington Bear",
+            "content": "{{ metaobject.bio | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "audiobook_properties_7wHX3G": {
+          "type": "audiobook-properties",
+          "settings": {
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
+          }
+        },
+        "buy_buttons_3wDUDa": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
           }
         }
       },
       "block_order": [
+        "text_jk8nM4",
         "title_kMK4Vw",
         "price_hkRLUL",
-        "text_Wpb9rk"
+        "collapsible_text_JyhmY4",
+        "audiobook_properties_7wHX3G",
+        "buy_buttons_3wDUDa"
       ],
       "settings": {
         "full_width": false,
-        "float_up": 20,
-        "squeeze_in": 100,
-        "desktop_media_width": 55,
-        "mobile_media_size": "expanded",
+        "float_up": 55,
+        "squeeze_in": 85,
+        "desktop_media_width": 35,
+        "mobile_media_size": "contained",
         "background": "",
         "background_gradient": "",
         "text_color": ""
