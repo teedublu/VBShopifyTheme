@@ -63,10 +63,19 @@
         "heading": "Breadcrumbs"
       }
     },
-    "rich_text_M8Hw43": {
+    "rich_text_77Fmmq": {
       "type": "rich-text",
       "blocks": {
-        "richtext_cJ7jDd": {
+        "heading_BAHrW4": {
+          "type": "heading",
+          "settings": {
+            "text": "Who is {{ metaobject.name.value }}?",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_gX7DT3": {
           "type": "richtext",
           "settings": {
             "content": "{{ metaobject.bio | metafield_tag }}"
@@ -74,12 +83,13 @@
         }
       },
       "block_order": [
-        "richtext_cJ7jDd"
+        "heading_BAHrW4",
+        "richtext_gX7DT3"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "medium",
+        "content_width": "small",
         "text_position": "start",
         "background": "",
         "background_gradient": "",
@@ -332,7 +342,7 @@
   "order": [
     "image_with_text_overlay_DH8cex",
     "breadcrumbs_XHGrpm",
-    "rich_text_M8Hw43",
+    "rich_text_77Fmmq",
     "featured_collection_KrTR6V",
     "featured_audiobook_light_64rg4L",
     "microdata_8YzdEG",
