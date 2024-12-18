@@ -1,0 +1,135 @@
+{%- assign chapters = metaobject.chapters.value | sort: 'index' %}
+{%- if chapters.size>0 -%}
+<style>
+
+.chapters-container {
+  max-height: 30vh;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: auto; /* Disables vertical scrolling */
+  white-space: nowrap; /* Prevents line wrapping */
+  scroll-behavior: smooth; /* Smooth scrolling for better UX */
+  position: relative; /* For gradient overlay */
+}
+
+
+ol.chapters-list {
+  display: inline-block; /* Makes the list inline for horizontal scrolling */
+  column-width: clamp(15rem, 20rem, 25rem); /* Adjust column width responsively */
+  column-gap: 1rem; /* Space between columns */
+  margin: 0;
+  padding: 0;
+  list-style-position: inside;
+  white-space: normal; /* Normalizes text wrapping inside columns */
+}
+
+ol.chapters-list li {
+  break-inside: avoid; /* Prevents list items from breaking across columns */
+  padding: 0.5rem 0;
+}
+
+.chapter-item b {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+
+</style>
+
+
+    
+
+<div {% render 'section-properties', tight: true, class: 'mobile_float' %}>
+    <div class="section-stack">
+        {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.heading, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url -%}
+
+        <div class="chapters-container">
+          <ol class="chapters-list">
+            {%- for chapter in chapters -%}
+              <li class="chapter-item">
+                <div class="chapter-content">
+                  {%- if chapter.label -%}
+                    <b>{{ chapter.label }}</b>
+                  {%- else -%}
+                    <b>Chapter {{forloop.index}} : {{ chapter.title }}</b>
+                  {%- endif -%}
+                  {{ chapter.summary | metafield_tag }}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ol>
+        </div>
+    </div>
+
+
+</div>
+{%- endif -%}
+{% schema %}
+{
+    "name": "Audiobook Chapters",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "What's inside"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Chapters"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Here are the chapters in this audiobook.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Section colors",
+          "info": "Gradient replaces solid colors when set."
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background"
+        },
+        {
+          "type": "color_background",
+          "id": "background_gradient",
+          "label": "Background gradient"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Heading color"
+        },
+        {
+          "type": "color_background",
+          "id": "heading_gradient",
+          "label": "Heading gradient"
+        }
+      ],
+    "blocks": [ ],
+    "presets": [
+        {
+            "name": "Default Audiobook Chapters",
+            "category": "Custom Content"
+        }
+    ]
+}
+{% endschema %}
+
+

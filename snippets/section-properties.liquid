@@ -20,6 +20,10 @@ but you can override them by manually passing a different value (although this s
 * input_background: an optional color for input background
 * input_text_color: an optional color for input text color
 * full_width: a boolean saying if the section is full width or not
+
+* VB - added in
+* background_image : an optional image to set covering div
+
 {%- endcomment -%}
 
 {%- assign full_width = full_width | default: section.settings.full_width, allow_false: true -%}
@@ -28,10 +32,12 @@ but you can override them by manually passing a different value (although this s
 {%- assign text_color = text_color | default: section.settings.text_color -%}
 {%- assign input_background = input_background | default: section.settings.input_background -%}
 {%- assign input_text_color = input_text_color | default: section.settings.input_text_color -%}
+{%- assign background_image = background_image | default: section.settings.background_image -%}
 
 {%- if background_gradient == blank and background == blank or background == 'rgba(0,0,0,0)' or background == settings.background -%}
   {%- comment -%}The section blends, so we have to use vertical margin, and set a container{%- endcomment -%}
   {%- capture class -%}{{ class }} section-blends section-full{%- endcapture -%}
+
 {%- else -%}
   {%- if full_width -%}
     {%- capture class -%}{{ class }} section-full{%- endcapture -%}
@@ -49,6 +55,11 @@ but you can override them by manually passing a different value (although this s
     {%- capture style_attributes -%}{{ style_attributes }} --background: {{ background.rgb }};{%- endcapture -%}
   {%- endif -%}
 {%- endif -%}
+
+{%- unless background_image == blank -%}
+  {%- capture class -%}{{ class }} background-image{%- endcapture -%}
+  {%- capture style_attributes -%}{{ style_attributes }} background-image: url('{{ background_image | image_url }}'); background-size:cover;background-position: center;{%- endcapture -%}
+{%- endunless -%}
 
 {%- unless text_color == 'rgba(0,0,0,0)' or text_color == blank -%}
   {%- capture class -%}{{ class }} text-custom{%- endcapture -%}

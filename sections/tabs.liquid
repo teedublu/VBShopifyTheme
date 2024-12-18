@@ -87,7 +87,7 @@
               {%- if block.settings.use_metaobject=='audiobooks' -%}
                 {%- capture metaobject_content -%}
                   {%- assign my_section = shop.metaobjects.helper.website.audiobook_data_config.value -%}
-                  {%- render 'audiobook-productdata1' product: product, section: my_section -%}
+                  {%- render 'audiobook-productdata' product: product, section: my_section -%}
                 {%- endcapture -%}
               {%- endif -%}
 
@@ -141,8 +141,9 @@
 
               {%- if block.settings.use_metaobject=='audiobooks' -%}
                 {%- capture metaobject_content -%}
+                  {%- comment -%}This helper sets out which blocks to show in the tab{%- endcomment -%}
                   {%- assign my_section = shop.metaobjects.helper.website.audiobook_data_config.value -%}
-                  {%- render 'audiobook-productdata1' product: product, section: my_section -%}
+                  {%- render 'audiobook-productdata' product: product, section: my_section -%}
                 {%- endcapture -%}
               {%- endif -%}
 

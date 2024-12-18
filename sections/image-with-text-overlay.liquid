@@ -15,7 +15,12 @@
     {%- endif -%}
 
     .h0.scaled {font-size: calc(var(--text-h0) - 50%)}
+
+    .person-image {margin: auto}
+
   }
+
+
 
 </style>
 
@@ -23,7 +28,8 @@
   {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
 
   <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
-    {%- if section.settings.image != blank -%}
+
+    {%- if section.settings.image != blank-%}
       {%- assign preload = false -%}
       {%- assign loading = 'lazy' -%}
       {%- assign fetchpriority = 'auto' -%}
@@ -42,8 +48,6 @@
       {%- if section.settings.mobile_image != blank -%}
         {{- section.settings.mobile_image | image_url: width: section.settings.mobile_image.width | image_tag: preload: preload, loading: loading, fetchpriority: fetchpriority, sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600', class: 'sm:hidden' -}}
       {%- endif -%}
-    {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
     {%- endif -%}
 
     {%- if section.blocks.size > 0 -%}
@@ -53,14 +57,16 @@
             {%- case block.type -%}
               {%- when 'subheading' -%}
                 {%- if block.settings.text != blank -%}
-                  <p class="bold" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+                  <{{-block.settings.subheading_tag_html}} class="{{ block.settings.subheading_tag }}">
+                      {{ block.settings.text | escape }}
+                  </{{-block.settings.subheading_tag_html-}}>
                 {%- endif -%}
 
               {%- when 'heading' -%}
                 {%- if block.settings.text != blank -%}
-                  <{{-block.settings. heading_tag_html}} class="{{ block.settings.heading_tag }} {%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
+                  <{{-block.settings.heading_tag_html}} class="{{ block.settings.heading_tag }} {%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
-                  </{{-block.settings. heading_tag_html-}}>
+                  </{{-block.settings.heading_tag_html-}}>
                 {%- endif -%}
 
               {%- when 'richtext' -%}
@@ -76,6 +82,17 @@
                     {{- block.settings.liquid -}}
                   </div>
                 {%- endif -%}
+
+               {%- when 'image' -%}
+                  <div class="person-image" style="border-radius: {{block.settings.radius}}%; height:{{block.settings.max_width}}px; width: {{block.settings.max_width}}px; overflow:hidden;">
+                  {% if metaobject.photos.value != blank %}
+                    {{ metaobject.photos.value | first | image_url: width: block.settings.max_width | image_tag: alt: object.title.value | escape }}
+                  {% elsif metaobject.logo.value != blank %}
+                    {{ metaobject.logo.value | image_url: width: block.settings.max_width | image_tag: alt: object.title.value | escape }}
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+                  {% endif %}
+                  </div>
 
               {%- when 'button' -%}
                 {%- if block.settings.text != blank -%}
@@ -261,13 +278,25 @@
     },
     {
       "type": "header",
-      "content": "Colors"
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
     },
     {
       "type": "color",
       "id": "text_color",
       "label": "Text",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#eaeaea"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
     },
     {
       "type": "color",
@@ -288,6 +317,32 @@
   ],
   "blocks": [
     {
+      "type": "image",
+      "name": "Image",
+      "settings": [          
+        {
+          "type": "range",
+          "id": "max_width",
+          "min": 100,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "label": "Maximum width",
+          "default": 200
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "min": 0,
+          "max": 50,
+          "step": 10,
+          "unit": "%",
+          "label": "Image radius",
+          "default": 30
+        }
+      ]
+    },
+    {
       "type": "subheading",
       "name": "Subheading",
       "settings": [
@@ -296,6 +351,74 @@
           "id": "text",
           "label": "Text",
           "default": "Subheading"
+        },
+        {
+          "type": "select",
+          "id": "subheading_tag",
+          "label": "Style",
+          "options": [
+            {
+              "value": "h0",
+              "label": "XX-Large"
+            },
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h1"
+        },
+        {
+          "type": "select",
+          "id": "subheading_tag_html",
+          "label": "HTML tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "h1"
+            },
+            {
+              "value": "h2",
+              "label": "h2"
+            },
+            {
+              "value": "h3",
+              "label": "h3"
+            },
+            {
+              "value": "h4",
+              "label": "h4"
+            },
+            {
+              "value": "h5",
+              "label": "h5"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            }
+          ],
+          "default": "h2"
         }
       ]
     },
@@ -381,7 +504,7 @@
               "label": "p"
             }
           ],
-          "default": "p"
+          "default": "h1"
         }
       ]
     },

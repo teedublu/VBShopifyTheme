@@ -1,26 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "rich_text_ftQUQM": {
-      "type": "rich-text",
+    "image_with_text_overlay_Dg7w6q": {
+      "type": "image-with-text-overlay",
       "blocks": {
-        "liquid_wwTTJp": {
-          "type": "liquid",
+        "image_6TVgaD": {
+          "type": "image",
           "settings": {
-            "liquid": "{% render 'metaobject-header'%}"
+            "max_width": 200,
+            "radius": 50
+          }
+        },
+        "subheading_7LMNib": {
+          "type": "subheading",
+          "settings": {
+            "text": "AUDIOBOOK NARRATOR",
+            "subheading_tag": "h4",
+            "subheading_tag_html": "h2"
+          }
+        },
+        "heading_BEKdDd": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
           }
         }
       },
       "block_order": [
-        "liquid_wwTTJp"
+        "image_6TVgaD",
+        "subheading_7LMNib",
+        "heading_BEKdDd"
       ],
       "settings": {
         "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "#4cb6ac",
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#ff9e57",
         "background_gradient": "",
-        "text_color": "#ffffff"
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
       }
     },
     "breadcrumbs_pWhnx7": {
@@ -29,68 +63,58 @@
         "heading": "Breadcrumbs"
       }
     },
-    "featured_product_EU4RWM": {
-      "type": "featured-product",
+    "rich_text_FGW9TQ": {
+      "type": "rich-text",
       "blocks": {
-        "text_rmf7mk": {
-          "type": "text",
-          "disabled": true,
+        "richtext_xYiXJe": {
+          "type": "richtext",
           "settings": {
-            "text": "<p>Featured audiobook from {{ metaobject.name.value }}<\/p>"
+            "content": "{{ metaobject.bio | metafield_tag }}"
           }
-        },
-        "title_7FG9XT": {
+        }
+      },
+      "block_order": [
+        "richtext_xYiXJe"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "large",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_audiobook_light_eXXMXA": {
+      "type": "featured-audiobook-light",
+      "blocks": {
+        "title_cRhph4": {
           "type": "title",
           "settings": {
-            "heading_tag": "h3"
+            "heading_tag": "h2"
           }
         },
-        "badges_LGEkgc": {
-          "type": "badges",
+        "audiobook_properties_ceD86m": {
+          "type": "audiobook-properties",
           "settings": {
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
           }
         },
-        "author_narrator_jtCn4y": {
-          "type": "author_narrator",
-          "settings": {
-            "show_author": true,
-            "show_narrator": false
-          }
-        },
-        "price_pBW8cb": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "rating_k3i8MX": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_zQBKVm": {
-          "type": "separator",
-          "settings": {
-          }
-        },
-        "description_GDTV6R": {
+        "description_R6Enaq": {
           "type": "description",
           "settings": {
             "collapse_content": false
           }
         },
-        "object_link_w7wMVM": {
-          "type": "object_link",
-          "settings": {
-            "text": "<p>More details of \"[o]\".<\/p>"
-          }
-        },
-        "buy_buttons_NpyNjH": {
+        "buy_buttons_bzPzGf": {
           "type": "buy_buttons",
           "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
             "atc_button_background": "",
             "atc_button_text_color": "",
             "payment_button_background": "",
@@ -99,33 +123,20 @@
         }
       },
       "block_order": [
-        "text_rmf7mk",
-        "title_7FG9XT",
-        "badges_LGEkgc",
-        "author_narrator_jtCn4y",
-        "price_pBW8cb",
-        "rating_k3i8MX",
-        "separator_zQBKVm",
-        "description_GDTV6R",
-        "object_link_w7wMVM",
-        "buy_buttons_NpyNjH"
+        "title_cRhph4",
+        "audiobook_properties_ceD86m",
+        "description_R6Enaq",
+        "buy_buttons_bzPzGf"
       ],
       "settings": {
         "full_width": false,
-        "product": "{{ metaobject.main_book.value }}",
-        "desktop_media_width": 35,
-        "desktop_media_layout": "grid",
+        "float_up": 30,
+        "squeeze_in": 100,
+        "desktop_media_width": 45,
         "mobile_media_size": "contained",
-        "mobile_carousel_control": "dots",
-        "enable_video_autoplay": false,
-        "enable_video_looping": false,
-        "enable_image_zoom": false,
-        "max_image_zoom_level": 2,
         "background": "",
         "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "text_color": ""
       }
     },
     "featured_collection_dyWK9t": {
@@ -133,12 +144,10 @@
       "settings": {
         "collection": "{{ metaobject.collection.value }}",
         "hide_empty": true,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": false,
         "stack_products": false,
-        "show_progress_bar": false,
+        "show_progress_bar": true,
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
@@ -169,7 +178,7 @@
         "image_QCmjPr": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "image": "shopify://shop_images/IMG_5604.jpg",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-end-start text-start",
@@ -177,9 +186,9 @@
             "icon_width": 68,
             "subheading": "",
             "title": "Listen with Voxblock",
-            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p>",
             "link_text": "Learn more",
-            "link_url": "shopify:\/\/products\/voxblock-player",
+            "link_url": "shopify://products/voxblock-player",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -204,8 +213,7 @@
         "play_zAwMFi": {
           "type": "play",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "heading_nLz6aH": {
           "type": "heading",
@@ -230,7 +238,9 @@
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
     "faq_PWkrrR": {
@@ -240,28 +250,28 @@
           "type": "item",
           "settings": {
             "title": "What is Voxblock?",
-            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"/pages/how-does-it-work\" title=\"How it works\">here.</a></p>"
           }
         },
         "item_JwG9hG": {
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
             "title": "What age is Voxblock suitable for?",
-            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.</p>"
           }
         },
         "item_M9imEA": {
           "type": "item",
           "settings": {
             "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<\/p>"
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
           }
         }
       },
@@ -299,7 +309,7 @@
         "full_width": true,
         "show_icon": true,
         "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.</p>",
         "button_text": "Go",
         "subtext": "",
         "background": "#4cb6ac",
@@ -311,9 +321,10 @@
     }
   },
   "order": [
-    "rich_text_ftQUQM",
+    "image_with_text_overlay_Dg7w6q",
     "breadcrumbs_pWhnx7",
-    "featured_product_EU4RWM",
+    "rich_text_FGW9TQ",
+    "featured_audiobook_light_eXXMXA",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",
     "media_with_text_ciY3Ct",

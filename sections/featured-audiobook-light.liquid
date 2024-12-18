@@ -1,0 +1,645 @@
+{%- assign try_here = metaobject.collection.value.products | first -%}
+{%- case metaobject.system.type -%}
+  {%- when 'audiobook' -%}
+    {%- assign product =  metaobject.product.value | default: product -%}
+  {%- when 'author' -%}
+    {%- assign product = metaobject.main_book.value | default: try_here -%}
+  {%- when 'narrator' -%}
+    {%- assign product = metaobject.main_book.value | default: try_here -%}
+  {%- when 'character' -%}
+    {%- assign product = metaobject.main_book.value | default: try_here -%}
+  {%- else -%}
+    {%- assign product = product -%}
+{%- endcase -%}
+
+{%- if product -%}
+
+{%- render 'section-spacing-collapsing' -%}
+{%- render 'microdata-audiobook-as-product' -%}
+
+{%- assign pad_down = section.settings.float_up | times: 200 | divided_by: 100-%}
+{%- assign float_up = section.settings.float_up | times: -200 | divided_by: 100-%}
+<style>
+  #shopify-section-{{ section.id }} {
+    --product-grid: auto / minmax(0, 1fr);
+    --product-gallery-media-list-grid: auto / auto-flow {% if section.settings.mobile_carousel_control == 'free_scroll' %}{% if section.settings.mobile_media_size == 'expanded' %}84vw{% else %}73vw{% endif %}{% else %}100%{% endif %};
+    
+      margin-top: {{pad_down}}px;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks img{
+    margin: auto;
+    margin-top:{{float_up}}px;
+
+  }
+
+  @media screen and (min-width: 999px) {
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info{
+
+    margin-top:{{float_up| times: -1}}px;
+
+  }
+
+  @media screen and (max-width: 999px) {
+    #shopify-section-{{ section.id }} {
+      --section-spacing-block-start: {% if section.settings.mobile_media_size == 'expanded' %}0px{% else %}var(--container-gutter){% endif %};
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} {
+      {%- assign media_ratio = section.settings.desktop_media_width | divided_by: 50.0 -%}
+      --product-grid: auto / minmax(0, {{ media_ratio }}fr) minmax(0, {{ 2.0 | minus: media_ratio }}fr);
+      --product-gallery-media-list-grid: {% if section.settings.desktop_media_layout contains 'grid' %}auto-flow dense / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 100%{% endif %};
+      --product-gallery-media-list-gap: calc(var(--grid-gutter) / 2);
+    }
+
+    {%- if section.settings.desktop_media_layout == 'grid_highlight' -%}
+      #shopify-section-{{ section.id }} .product-gallery__media-list > :not([hidden]) {
+        grid-column: span 2;
+      }
+
+      #shopify-section-{{ section.id }} .product-gallery__media-list > :not([hidden]) ~ *:not(.product-gallery__media--expand) {
+        grid-column: span 1;
+      }
+    {%- endif -%}
+  }
+
+  @media screen and (min-width: 1400px) {
+    #shopify-section-{{ section.id }} {
+      --product-gallery-media-list-gap: var(--grid-gutter);
+    }
+  }
+
+</style>
+
+
+{%- assign media = product.media | first -%}
+{%- capture sizes -%}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 264px), min(580px, 30vw){%- endcapture -%}
+
+<div {% render 'section-properties', class: 'mobile_float' %}>
+  <div class="product {{ product.type | handleize }}">
+    {%- if product.media.size > 0 -%}
+      {%- render 'media', media: media | first, sizes: sizes, preload: true, width: '300' -%}
+    {%- endif -%}
+
+    {%- render 'product-info', product: product, update_url: true -%}
+  </div>
+</div>
+
+
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Featured Audiobook Light",
+  "class": "shopify-section--light-product",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "label": "Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h2"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Sub Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "subheading_tag",
+          "label": "Style",
+          "options": [
+            {
+              "value": "h1",
+              "label": "X-Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            },
+            {
+              "value": "h5",
+              "label": "X-Small"
+            },
+            {
+              "value": "h6",
+              "label": "XX-Small"
+            }
+          ],
+          "default": "h2"
+        }
+      ]
+    },
+    {
+      "type": "sku",
+      "name": "SKU",
+      "limit": 1
+    },
+    {
+      "type": "audiobook-properties",
+      "name": "Audiobook Properties",
+      "limit": 1,
+      "settings": [
+          {
+            "type": "color",
+            "id": "property_color",
+            "label": "Properties Color"
+          },
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Border Color"
+          },
+          {
+            "type": "range",
+            "id": "border_width",
+            "label": "Border Width",
+            "min": 0,
+            "max": 5,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+          }
+        ]
+    },
+    {
+      "type": "badges",
+      "name": "Badges",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Use metafields to add custom badges. [Learn more](https://support.maestrooo.com/article/75-collection-displaying-custom-label)"
+        },
+        {
+          "type": "checkbox",
+          "id": "display_metafields",
+          "label": "Display metafields",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "display_categories",
+          "label": "Display categories",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "display_bookdata",
+          "label": "Display bookdata",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "author_narrator",
+      "name": "Author Narrator Info",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_author",
+          "label": "Display Author",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_narrator",
+          "label": "Display Narrator",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_taxes_notice",
+          "label": "Show taxes notice",
+          "default": false
+        }
+      ]
+    },
+    
+    {
+      "type": "rating",
+      "name": "Rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To display a rating, add a product rating app. [Learn more](https://apps.shopify.com/categories/store-design-social-proof-product-reviews)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_empty",
+          "label": "Show if no reviews",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "separator",
+      "name": "Separator"
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "collapse_content",
+          "label": "Collapse content",
+          "default": false
+        }
+      ]
+    },
+
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_payment_button",
+          "label": "Show dynamic checkout button",
+          "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient",
+          "label": "Show recipient information form for gift cards",
+          "info": "Allow buyers to send gift cards along with a personal message. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "atc_button_background",
+          "label": "Add to cart background"
+        },
+        {
+          "type": "color",
+          "id": "atc_button_text_color",
+          "label": "Add to cart color"
+        },
+        {
+          "type": "color",
+          "id": "payment_button_background",
+          "label": "Buy now button background"
+        },
+        {
+          "type": "color",
+          "id": "payment_button_text_color",
+          "label": "Buy now button color"
+        }
+      ]
+    },
+    
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Share some content to your customers about your products.</p>"
+        }
+      ]
+    },
+    
+    {
+      "type": "collapsible_text",
+      "name": "Collapsible text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Share some content to your customers about your products.</p>"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page",
+          "info": "Replaces inline content if specified."
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Right"
+            }
+          ],
+          "default": "start"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "label": "Width",
+          "default": 150
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Create link to your contact page, external marketplace..."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Button"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            {
+              "value": "sm",
+              "label": "Small"
+            },
+            {
+              "value": "base",
+              "label": "Medium"
+            },
+            {
+              "value": "lg",
+              "label": "Large"
+            },
+            {
+              "value": "xl",
+              "label": "X-Large"
+            }
+          ],
+          "default": "xl"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            {
+              "value": "outline",
+              "label": "Outline"
+            },
+            {
+              "value": "fill",
+              "label": "Fill"
+            }
+          ],
+          "default": "fill"
+        },
+        {
+          "type": "checkbox",
+          "id": "stretch",
+          "label": "Stretch",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "background",
+          "label": "Background"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "liquid",
+          "label": "Liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    },
+    {
+      "type": "share_buttons",
+      "name": "Share buttons",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To improve user experience and performance, native share buttons are used when supported."
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "Right"
+            }
+          ],
+          "default": "start"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Info: Audiobooks have their own template"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "float_up",
+      "label": "Float up",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "squeeze_in",
+      "label": "Squeeze in",
+      "min": 80,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+    },
+    {
+      "type": "range",
+      "id": "desktop_media_width",
+      "label": "Desktop media size",
+      "min": 35,
+      "max": 65,
+      "step": 5,
+      "unit": "%",
+      "default": 55
+    },
+    
+    {
+      "type":"select",
+      "id": "mobile_media_size",
+      "label": "Mobile media size",
+      "options": [
+        {
+          "value": "expanded",
+          "label": "Expanded"
+        },
+        {
+          "value": "contained",
+          "label": "Contained"
+        }
+      ],
+      "default": "expanded"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Audiobook Light"
+    }
+  ]
+}
+{% endschema %}

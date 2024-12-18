@@ -1,16 +1,12 @@
 {% comment %}
 This is the table of attributes that is shown in the audiobook page
 There is a similar but different one shown in the audiobook product - snippets/audiobook-productdata.liquid
+
+OLD???
 {% endcomment %}
 
-{%- assign book = metaobject.product.value.metafields.book -%}
-{%- assign narrators = book.narrators.value -%}
-{%- assign authors = book.authors.value -%}
-{%- assign characters = book.characters.value -%}
-{%- assign handle = metaobject.system.handle -%}
-{%- assign title = metaobject.product.value.title -%}
 
-<div {% render 'section-properties', tight: true %}>
+<div {% render 'section-properties', tight: true,  class: 'mobile_float'%}>
   {%- render 'audiobook-productdata' product: product-%}
 </div>
 {% schema %}

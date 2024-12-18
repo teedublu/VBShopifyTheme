@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs_bDg7mc": {
@@ -68,8 +77,7 @@
         },
         "badges_bthk3H": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "price_P7Rhae": {
           "type": "price",
@@ -113,19 +121,13 @@
         "input_text_color": ""
       }
     },
-    "audiobook_bookdata_kReDhE": {
-      "type": "audiobook-bookdata",
-      "settings": {
-        "heading": "Book data for an audiobook"
-      }
-    },
     "media_with_text_ciY3Cs": {
       "type": "media-with-text",
       "blocks": {
         "image_QCmjPr": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "image": "shopify://shop_images/IMG_5604.jpg",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-end-start text-start",
@@ -133,9 +135,9 @@
             "icon_width": 68,
             "subheading": "",
             "title": "Listen with Voxblock",
-            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p>",
             "link_text": "Learn more",
-            "link_url": "shopify:\/\/products\/voxblock-player",
+            "link_url": "shopify://products/voxblock-player",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -160,8 +162,7 @@
         "play_zAwMFi": {
           "type": "play",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "heading_nLz6aH": {
           "type": "heading",
@@ -180,8 +181,8 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "md",
-        "video": "shopify:\/\/files\/videos\/voxblock intro_desktop.mp4",
-        "mobile_video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
+        "video": "shopify://files/videos/voxblock intro_desktop.mp4",
+        "mobile_video": "shopify://files/videos/how does it work_mobile.mp4",
         "youtube_id": "",
         "external_video_url": "",
         "mobile_text_position": "place-self-center text-center",
@@ -200,28 +201,28 @@
           "type": "item",
           "settings": {
             "title": "What is Voxblock?",
-            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"\/pages\/how-does-it-work\" title=\"How it works\">here.<\/a><\/p>"
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"/pages/how-does-it-work\" title=\"How it works\">here.</a></p>"
           }
         },
         "item_JwG9hG": {
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!<\/p>"
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
             "title": "What age is Voxblock suitable for?",
-            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.<\/p>"
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.</p>"
           }
         },
         "item_M9imEA": {
           "type": "item",
           "settings": {
             "title": "Any questions?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br\/><a href=\"\/pages\/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.<\/a><\/p>"
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br/><a href=\"/pages/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.</a></p>"
           }
         }
       },
@@ -259,7 +260,7 @@
         "full_width": true,
         "show_icon": true,
         "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.</p>",
         "button_text": "Go",
         "subtext": "",
         "background": "#4cb6ac",
@@ -274,7 +275,6 @@
     "breadcrumbs_bDg7mc",
     "rich_text_8D7GPw",
     "featured_product_NUCd4W",
-    "audiobook_bookdata_kReDhE",
     "media_with_text_ciY3Cs",
     "video_7z6xfc",
     "faq_PWkrrR",
