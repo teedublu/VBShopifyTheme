@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_with_text_overlay_FGkmqR": {
@@ -15,7 +15,9 @@
         "subheading_LC7TER": {
           "type": "subheading",
           "settings": {
-            "text": "MORE FROM VOXBLOCK"
+            "text": "MORE FROM VOXBLOCK",
+            "subheading_tag": "h5",
+            "subheading_tag_html": "h2"
           }
         },
         "heading_tLtn4p": {
@@ -42,6 +44,8 @@
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
@@ -117,6 +121,8 @@
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
