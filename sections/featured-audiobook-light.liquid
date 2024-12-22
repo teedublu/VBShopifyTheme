@@ -15,7 +15,7 @@
 {%- if product -%}
 
 {%- render 'section-spacing-collapsing' -%}
-{%- render 'microdata-audiobook-as-product' -%}
+<script type="application/ld+json">{%- render 'microdata-audiobook-as-product' product:product -%}</script>
 
 {%- assign pad_down = section.settings.float_up | times: 200 | divided_by: 100-%}
 {%- assign float_up = section.settings.float_up | times: -200 | divided_by: 100-%}

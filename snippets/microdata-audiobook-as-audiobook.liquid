@@ -17,8 +17,6 @@
       {%- endfor -%}
   {%- endcapture -%}
 {%- endif -%}
-
-<script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@id":  {{ product.url | prepend: shop.url | json }},
@@ -137,4 +135,3 @@
 
   }
 }
-</script>
