@@ -1,9 +1,16 @@
+{%- comment -%}
+no longer passing this as a param as too easy to leave in live site, now just a handy flag to make debugging in dev clearer
+{%- endcomment -%}
+{%- assign use_debug = false -%}
 
-{% unless section.settings.debug %}
+
+{%- if use_debug -%}
+  <textarea style="width:100%; height:50vh">
+{%- else -%}
   <script type="application/ld+json">  
-{% endunless %}
+{%- endif -%}
 
-{% liquid 
+{%- liquid 
   case section.settings.object_type
     when 'audiobook'
       render 'microdata-audiobook-as-audiobook', audiobook: metaobject
@@ -20,12 +27,14 @@
     when 'overview'
       render 'microdata-overview', overview: metaobject
   endcase
-%}
+-%}
  
 
-{% unless section.settings.debug %}
+{%- if use_debug -%}
+  </textarea>
+{%- else -%}
   </script>
-{% endunless %}
+{%- endif -%}
 
 {% schema %}
 {

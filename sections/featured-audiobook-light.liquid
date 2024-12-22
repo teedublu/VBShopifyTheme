@@ -15,7 +15,7 @@
 {%- if product -%}
 
 {%- render 'section-spacing-collapsing' -%}
-{%- render 'microdata-audiobook-as-product' -%}
+<script type="application/ld+json">{%- render 'microdata-audiobook-as-product' product:product -%}</script>
 
 {%- assign pad_down = section.settings.float_up | times: 200 | divided_by: 100-%}
 {%- assign float_up = section.settings.float_up | times: -200 | divided_by: 100-%}
@@ -23,8 +23,14 @@
   #shopify-section-{{ section.id }} {
     --product-grid: auto / minmax(0, 1fr);
     --product-gallery-media-list-grid: auto / auto-flow {% if section.settings.mobile_carousel_control == 'free_scroll' %}{% if section.settings.mobile_media_size == 'expanded' %}84vw{% else %}73vw{% endif %}{% else %}100%{% endif %};
-    
-      margin-top: {{pad_down}}px;
+      {%- if section.settings.full_width -%}
+        width:100%;
+      {%- else -%}
+        margin: auto;
+        margin-top: {{pad_down}}px;
+        max-width: {{section.settings.squeeze_in}}vw;
+      {%- endif -%}
+
   }
 
   #shopify-section-{{ section.id }} .product.audiobooks img{
@@ -574,7 +580,7 @@
       "type": "range",
       "id": "squeeze_in",
       "label": "Squeeze in",
-      "min": 80,
+      "min": 50,
       "max": 100,
       "step": 5,
       "unit": "%",
@@ -638,7 +644,12 @@
   ],
   "presets": [
     {
-      "name": "Featured Audiobook Light"
+      "name": "Featured Audiobook Light",
+      "blocks": [
+        {"type": "title"},
+        {"type": "subtitle"},
+        {"type": "sku"}
+      ]
     }
   ]
 }
