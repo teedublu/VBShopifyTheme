@@ -1,5 +1,5 @@
 {%- render 'section-spacing-collapsing' -%}
-{%- render 'microdata-audiobook-as-product' -%}
+<script type="application/ld+json">{%- render 'microdata-audiobook-as-product' product:product -%}</script>
 
 <style>
   #shopify-section-{{ section.id }} {
