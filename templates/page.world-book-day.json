@@ -166,6 +166,42 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "media_with_text_JczeAV": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_cbyneC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-double-tokens_1186c913-0c9d-43cc-b868-f13217ba5f3d.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "It's Back!",
+            "content": "<p>Double Tokens Day is back at Voxblock giving you the chance to earn double tokens with every audiobook purchased on the 6th March. That means you can fill up your tokens card twice as fast and earn that free audiobook even faster!</p><p><a href=\"https://voxblock.co.uk/pages/voxblock-tokens-collect-for-free-audiobooks\" title=\"https://voxblock.co.uk/pages/voxblock-tokens-collect-for-free-audiobooks\">Discover more about our tokens here.</a></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_cbyneC"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
@@ -174,6 +210,7 @@
     "image_with_text_overlay_6JXtLd",
     "rich_text_YjGbKd",
     "media_with_text_H6XCn6",
-    "rich_text_GQVPxC"
+    "rich_text_GQVPxC",
+    "media_with_text_JczeAV"
   ]
 }
