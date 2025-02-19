@@ -9,10 +9,29 @@
  */
 {
   "sections": {
+    "image_with_text_overlay_zpPtRn": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/WBD-Landing-Page-header-image.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
-        "content_width": "80ch"
+        "content_width": "80ch",
+        "show_title": true
       }
     },
     "newsletter_F6q46M": {
@@ -33,6 +52,7 @@
     }
   },
   "order": [
+    "image_with_text_overlay_zpPtRn",
     "main",
     "newsletter_F6q46M"
   ]
