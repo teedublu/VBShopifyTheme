@@ -98,12 +98,48 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "media_with_text_H6XCn6": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_3LYV4A": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "What Your School Will Win",
+            "content": "<p>1 of five mini school packs worth <strong>£360</strong>.</p><p>The packs include:</p><ul><li>5x Voxblock audiobooks with bumpers</li><li>10x audiobooks (of schools choice)</li><li>1x charging bank</li><li>1x aux cable</li><li>and school resources</li></ul>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3LYV4A"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
     }
   },
   "order": [
     "image_with_text_overlay_zpPtRn",
     "main",
     "image_with_text_overlay_6JXtLd",
-    "rich_text_YjGbKd"
+    "rich_text_YjGbKd",
+    "media_with_text_H6XCn6"
   ]
 }
