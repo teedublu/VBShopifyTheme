@@ -113,7 +113,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "What Your School Will Win",
-            "content": "<p>1 of five mini school packs worth <strong>£360</strong>.</p><p>The packs include:</p><ul><li>5x Voxblock audiobooks with bumpers</li><li>10x audiobooks (of schools choice)</li><li>1x charging bank</li><li>1x aux cable</li><li>and school resources</li></ul>",
+            "content": "<p>1 of five mini school packs worth <strong>£360</strong>.</p><p>The packs include:</p><ul><li>5x Voxblock audiobooks with bumpers</li><li>10x audiobooks (of schools choice)</li><li>1x charging bank</li><li>1x aux cable</li><li>and school resources</li></ul><p>Good Luck!</p>",
             "link_text": "",
             "link_url": "",
             "background": "#fff7f0",
@@ -133,6 +133,39 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "rich_text_GQVPxC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xeHTjG": {
+          "type": "heading",
+          "settings": {
+            "text": "Fill Out Your Nomination",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_QNVwJa": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Opens on the 28th February.</p><p>See you then!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xeHTjG",
+        "richtext_QNVwJa"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -140,6 +173,7 @@
     "main",
     "image_with_text_overlay_6JXtLd",
     "rich_text_YjGbKd",
-    "media_with_text_H6XCn6"
+    "media_with_text_H6XCn6",
+    "rich_text_GQVPxC"
   ]
 }
