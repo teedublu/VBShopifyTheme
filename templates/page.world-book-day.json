@@ -202,6 +202,88 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "rich_text_UE8wxU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3NLTHp": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Exciting Releases for March",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_3NLTHp"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multiple_images_with_text_fjABie": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_fFDqYE": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": -2,
+            "subheading": "4th March",
+            "title": "Science for Curious Kids",
+            "content": "<p>An exciting new fact series from The Audio Agency allowing kids to learn all about Biology, Chemistry and Physics</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_RhK3ba": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 1.5,
+            "subheading": "11th March",
+            "title": "A New Award Winning Series",
+            "content": "<p>We have a four audiobook series launching that is not only award winning but are also great 'bad' guides to mischief.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_qUKFTQ": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 0,
+            "subheading": "17th March",
+            "title": "A New Accessory is Launching",
+            "content": "<p>We are working very hard this year to create some new products for you, and the first is just about ready. Join us on the 17th for this brand new launch!</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_fFDqYE",
+        "item_RhK3ba",
+        "item_qUKFTQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
@@ -211,6 +293,8 @@
     "rich_text_YjGbKd",
     "media_with_text_H6XCn6",
     "rich_text_GQVPxC",
-    "media_with_text_JczeAV"
+    "media_with_text_JczeAV",
+    "rich_text_UE8wxU",
+    "multiple_images_with_text_fjABie"
   ]
 }
