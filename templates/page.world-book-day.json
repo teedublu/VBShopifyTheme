@@ -145,23 +145,49 @@
             "text_color": "",
             "gradient": ""
           }
-        },
-        "richtext_QNVwJa": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Opens on the 28th February.</p><p>See you then!</p>"
-          }
         }
       },
       "block_order": [
-        "heading_xeHTjG",
-        "richtext_QNVwJa"
+        "heading_xeHTjG"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17406727039ba573b2": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_TYEhxy": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "360532",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_TYEhxy"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -344,6 +370,7 @@
     "rich_text_YjGbKd",
     "media_with_text_H6XCn6",
     "rich_text_GQVPxC",
+    "17406727039ba573b2",
     "media_with_text_WG798Q",
     "rich_text_UE8wxU",
     "multiple_images_with_text_fjABie",
