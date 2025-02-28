@@ -70,9 +70,20 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/SFS-home-page-image.png",
-            "width_mode": "custom",
+            "width_mode": "full_width",
             "max_width": 600,
             "mobile_max_width": 400
+          }
+        },
+        "button_qfBpaY": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Nominate my school",
+            "url": "shopify://pages/world-book-day-2025",
+            "background": "",
+            "text_color": ""
           }
         },
         "subheading_d393bA": {
@@ -96,6 +107,7 @@
       },
       "block_order": [
         "image_YNm9cY",
+        "button_qfBpaY",
         "subheading_d393bA",
         "liquid_xCHYgW",
         "richtext_n7wzRG"
