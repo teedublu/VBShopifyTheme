@@ -66,6 +66,15 @@
     "rich_text_K9xkcG": {
       "type": "rich-text",
       "blocks": {
+        "image_YNm9cY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SFS-home-page-image.png",
+            "width_mode": "custom",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
         "subheading_d393bA": {
           "type": "subheading",
           "settings": {
@@ -86,6 +95,7 @@
         }
       },
       "block_order": [
+        "image_YNm9cY",
         "subheading_d393bA",
         "liquid_xCHYgW",
         "richtext_n7wzRG"
