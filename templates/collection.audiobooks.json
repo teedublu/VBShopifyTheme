@@ -12,6 +12,27 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_PGfxt7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SFS-schools-page-banner-without-text.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "Nominate your School",
+            "heading_tag": "h0",
+            "button_text": "Find out more",
+            "button_link": "shopify://pages/world-book-day-2025",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_rcNxx7": {
           "type": "image",
           "disabled": true,
@@ -29,28 +50,6 @@
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_AHyh7D": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/LPBD_audiobook_banner.png",
-            "mobile_image": "shopify://shop_images/LPBD_mob_audiobook_banner.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "NEW ARRIVAL",
-            "title": "Little People, BIG DREAMS",
-            "heading_tag": "h2",
-            "button_text": "Shop here",
-            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F59415036059",
-            "text_color": "#4cb6ac",
-            "button_background": "#4cb6ac",
-            "button_text_color": "#fff7f0",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "background": "",
@@ -103,8 +102,8 @@
         }
       },
       "block_order": [
+        "image_PGfxt7",
         "image_rcNxx7",
-        "image_AHyh7D",
         "image_pERNrc",
         "image_yXy8xr"
       ],
