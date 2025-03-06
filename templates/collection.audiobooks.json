@@ -12,28 +12,6 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
-        "image_PGfxt7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/WBD-banner.png",
-            "mobile_image": "shopify://shop_images/WBD-SFS-banner-mob_ebe2084f-600e-48fd-b9c6-23c53706685f.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-end-center sm:text-center",
-            "subheading": "",
-            "title": "Nominate your School",
-            "heading_tag": "h0",
-            "button_text": "Find out more",
-            "button_link": "shopify://pages/world-book-day-2025",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
         "image_rcNxx7": {
           "type": "image",
           "settings": {
@@ -47,6 +25,28 @@
             "heading_tag": "h1",
             "button_text": "",
             "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_PGfxt7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WBD-banner.png",
+            "mobile_image": "shopify://shop_images/WBD-SFS-banner-mob_ebe2084f-600e-48fd-b9c6-23c53706685f.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "subheading": "",
+            "title": "Nominate your School",
+            "heading_tag": "h0",
+            "button_text": "Find out more",
+            "button_link": "shopify://pages/world-book-day-2025",
             "text_color": "#ffffff",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
@@ -102,8 +102,8 @@
         }
       },
       "block_order": [
-        "image_PGfxt7",
         "image_rcNxx7",
+        "image_PGfxt7",
         "image_pERNrc",
         "image_yXy8xr"
       ],
