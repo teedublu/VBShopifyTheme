@@ -15,7 +15,9 @@
         "subheading_BY3n4M": {
           "type": "subheading",
           "settings": {
-            "text": "The Screen-Free Audiobook Player"
+            "text": "The Screen-Free Audiobook Player",
+            "subheading_tag": "h1",
+            "subheading_tag_html": "h2"
           }
         },
         "heading_EBfnGt": {
@@ -55,6 +57,8 @@
         "mobile_text_position": "place-self-start-end text-end",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
@@ -112,7 +116,7 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "md",
-        "video": "shopify://files/videos/voxblock intro_desktop.mp4",
+        "video": "shopify://files/videos/compressed-video.mp4",
         "youtube_id": "",
         "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "mobile_text_position": "place-self-center text-center",
@@ -724,7 +728,9 @@
           "type": "subheading",
           "disabled": true,
           "settings": {
-            "text": "Subheading"
+            "text": "Subheading",
+            "subheading_tag": "h1",
+            "subheading_tag_html": "h2"
           }
         },
         "1664424230c4756b0e-1": {
@@ -762,6 +768,8 @@
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
