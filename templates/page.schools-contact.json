@@ -20,44 +20,28 @@
     "image_with_text_overlay_gcfG3M": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_CbiMfw": {
-          "type": "subheading",
-          "settings": {
-            "text": "Schools",
-            "subheading_tag": "h1",
-            "subheading_tag_html": "h2"
-          }
-        },
         "heading_GUwPTt": {
           "type": "heading",
           "settings": {
-            "text": "Schools Contact",
+            "text": "Schools Enquiry Form",
             "scale_with": false,
             "heading_tag": "h1",
             "heading_tag_html": "p"
           }
-        },
-        "richtext_hXqkLB": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Our school offer</p>"
-          }
         }
       },
       "block_order": [
-        "subheading_CbiMfw",
-        "heading_GUwPTt",
-        "richtext_hXqkLB"
+        "heading_GUwPTt"
       ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
         "max_width": 80,
         "enable_parallax": false,
-        "image_size": "auto",
+        "image_size": "sm",
         "image": "shopify://shop_images/Voxblock_for_Schools_8c0b676b-2caa-448a-aa5a-29f2e7e437da.png",
         "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
         "background": "#eaeaea",
         "background_gradient": "",
@@ -111,7 +95,7 @@
         "full_width": true,
         "subheading": "",
         "title": "Get in touch with the schools team",
-        "content": "<p>Our Schools Account Manager is available for all questions or sales enquiries. Get in touch to find out more about using Voxblock audiobook players in the classroom or school library. You can contact us via the form below, or email us on <a href=\"mailto:schools@voxblock.co.uk\" title=\"mailto:schools@voxblock.co.uk\">schools@voxblock.co.uk</a>.</p><p>Please use our <a href=\"https://cdn.shopify.com/s/files/1/0531/2872/4635/files/Audiobook-catalogue-schools-ed.pdf?v=1742462676\" target=\"_blank\" title=\"Voxblock Schools Audiobook Catalogue\">Schools Audiobook Catalogue </a>to select the audiobooks included in your pack. It makes the process run smoothly if you know this prior to ordering.</p><p>We look forward to hearing from you!</p>",
+        "content": "<p>Our Schools Account Manager is available for all questions or sales enquiries. Get in touch to find out more about using Voxblock audiobook players in the classroom or school library. You can contact us via the form below, or email us on <a href=\"mailto:schools@voxblock.co.uk\" title=\"mailto:schools@voxblock.co.uk\">schools@voxblock.co.uk</a>.</p><p>Please use our <a href=\"https://cdn.shopify.com/s/files/1/0531/2872/4635/files/catalogue-audiobooks-schools-ed-v1-2025.pdf?v=1742464439\" target=\"_blank\" title=\"Voxblock school audiobook catalogue\">Schools Audiobook Catalogue </a>to select the audiobooks included in your pack. It makes the process run smoothly if you know this prior to ordering.</p><p>We look forward to hearing from you!</p>",
         "text_position": "center",
         "contact_form_size": "large",
         "background": "",
