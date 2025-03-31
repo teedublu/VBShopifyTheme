@@ -140,15 +140,22 @@
         "heading_xeHTjG": {
           "type": "heading",
           "settings": {
-            "text": "Fill Out Your Nomination",
+            "text": "Thank you for all your submissions",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
           }
+        },
+        "richtext_XQYefQ": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We will announce winners early to mid April.</p>"
+          }
         }
       },
       "block_order": [
-        "heading_xeHTjG"
+        "heading_xeHTjG",
+        "richtext_XQYefQ"
       ],
       "settings": {
         "full_width": true,
@@ -165,6 +172,7 @@
       "blocks": {
         "forms_inline_TYEhxy": {
           "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "disabled": true,
           "settings": {
             "form_id": "360532",
             "text_color": "#202020",
