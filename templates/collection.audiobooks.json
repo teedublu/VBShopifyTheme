@@ -12,6 +12,27 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_TxdTJA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Audiobook_of_the_Month_0332e36b-b871-4ee5-8004-aa9b783de7dd.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "AUDIOBOOK OF THE MONTH",
+            "title": "Little Dreamers",
+            "heading_tag": "h0",
+            "button_text": "Shop now",
+            "button_link": "shopify://products/little-people-big-dreams-little-dreamers",
+            "text_color": "#4cb6ac",
+            "button_background": "#4cb6ac",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_rcNxx7": {
           "type": "image",
           "settings": {
@@ -103,6 +124,7 @@
         }
       },
       "block_order": [
+        "image_TxdTJA",
         "image_rcNxx7",
         "image_PGfxt7",
         "image_pERNrc",
