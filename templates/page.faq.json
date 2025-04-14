@@ -230,6 +230,58 @@
         "accordion_text_color": "#565656"
       }
     },
+    "faq_EHcqEk": {
+      "type": "faq",
+      "blocks": {
+        "item_DTGWLG": {
+          "type": "item",
+          "settings": {
+            "title": "The player is stuck on a pink light",
+            "content": "<p>You are stuck in travel mode. Press the two volume buttons at the same time until the blue light appears.</p>"
+          }
+        },
+        "item_WCpz3E": {
+          "type": "item",
+          "settings": {
+            "title": "The player is stuck on an orange light",
+            "content": "<p>You are in bedtime mode. Press the two chapter buttons at the same time until the blue light appears.</p>"
+          }
+        },
+        "item_mBNq67": {
+          "type": "item",
+          "settings": {
+            "title": "How do I switch the player off?",
+            "content": "<p>The player switches itself off after 5 minutes of inactivity but if you would like to switch it off before this, do a long press on the play button.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_DTGWLG",
+        "item_WCpz3E",
+        "item_mBNq67"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Troubleshooting",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": ""
+      }
+    },
     "faq_UE4NYB": {
       "type": "faq",
       "blocks": {
@@ -385,6 +437,7 @@
     "faq_tnEfFh",
     "faq_GgNMAJ",
     "faq_7DNJPa",
+    "faq_EHcqEk",
     "faq_UE4NYB",
     "faq_4fmFXn",
     "faq_QGtYmk",
