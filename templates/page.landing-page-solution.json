@@ -72,6 +72,15 @@
             "gradient": ""
           }
         },
+        "image_TmdLHf": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Comparison_table.png",
+            "width_mode": "full_width",
+            "max_width": 600,
+            "mobile_max_width": 400
+          }
+        },
         "richtext_Yg3mpw": {
           "type": "richtext",
           "disabled": true,
@@ -83,12 +92,13 @@
       "block_order": [
         "subheading_3xXLDa",
         "heading_9PXAAq",
+        "image_TmdLHf",
         "richtext_Yg3mpw"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "small",
+        "content_width": "medium",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -101,6 +111,41 @@
       "settings": {
         "content_width": "80ch",
         "show_title": true
+      }
+    },
+    "media_with_text_pkVrkm": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_H7CP7U": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/headphones-lifestyle-web-image-5_af451681-b05b-4eb0-8a50-bdfef7f2dcc2.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Just Pop In a Book and Play",
+            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>",
+            "link_text": "Discover our player",
+            "link_url": "shopify://products/voxblock-player",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9e57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_H7CP7U"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "video_MiPbPL": {
@@ -119,7 +164,7 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "sm",
-        "video": "shopify://files/videos/voxblock intro_desktop.mp4",
+        "video": "shopify://files/videos/Voxblock Intro Stop Motion New.mp4",
         "youtube_id": "",
         "external_video_url": "",
         "mobile_text_position": "place-self-center text-center",
@@ -309,6 +354,73 @@
         "hot_spot_content_blur_radius": 3
       }
     },
+    "logo_list_paF9D9": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_nmCppy": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Trustpilot_icon_v3.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_LtC3f6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Indy_AsFeaturedIn_2024.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_R3zrTb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/GOOD_PLAY_GUIDE-01_copy.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_cykwBx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/JDA_2023_Logo_Silver_2ca8e977-0c5b-4e18-93bc-9b33e69137f0.png",
+            "logo_width": 90,
+            "link": ""
+          }
+        },
+        "logo_Mj7afL": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Toy-Awards-2024-Best-Toy-Brand.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_nmCppy",
+        "logo_LtC3f6",
+        "logo_R3zrTb",
+        "logo_cykwBx",
+        "logo_Mj7afL"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "Featured In",
+        "content": "",
+        "text_alignment": "center",
+        "items_per_row": 5,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
     "impact_text_jYW6eK": {
       "type": "impact-text",
       "blocks": {
@@ -341,6 +453,7 @@
         "item_PRdpXH",
         "item_FDrVUw"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_mobile": true,
@@ -422,6 +535,7 @@
         "heading_ajYdCx",
         "richtext_FHEBLg"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -430,73 +544,6 @@
         "background": "#fff7f0",
         "background_gradient": "",
         "text_color": ""
-      }
-    },
-    "logo_list_paF9D9": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_nmCppy": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Trustpilot_icon_v3.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_LtC3f6": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Indy_AsFeaturedIn_2024.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_R3zrTb": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/GOOD_PLAY_GUIDE-01_copy.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_cykwBx": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/JDA_2023_Logo_Silver_2ca8e977-0c5b-4e18-93bc-9b33e69137f0.png",
-            "logo_width": 90,
-            "link": ""
-          }
-        },
-        "logo_Mj7afL": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Toy-Awards-2024-Best-Toy-Brand.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_nmCppy",
-        "logo_LtC3f6",
-        "logo_R3zrTb",
-        "logo_cykwBx",
-        "logo_Mj7afL"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "title": "Featured In",
-        "content": "",
-        "text_alignment": "center",
-        "items_per_row": 5,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
       }
     },
     "testimonials_dbdAFc": {
@@ -682,14 +729,15 @@
     "image_with_text_overlay_J6Gykk",
     "rich_text_yLTnHN",
     "main",
+    "media_with_text_pkVrkm",
     "video_MiPbPL",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
     "hot_spots_ABkh3k",
+    "logo_list_paF9D9",
     "impact_text_jYW6eK",
     "featured_collection_7QMKLN",
     "rich_text_d6cFLE",
-    "logo_list_paF9D9",
     "testimonials_dbdAFc",
     "image_link_blocks_krpwkL",
     "newsletter_F6q46M"
