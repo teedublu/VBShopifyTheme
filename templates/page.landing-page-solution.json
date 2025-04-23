@@ -15,16 +15,9 @@
         "subheading_cMEphi": {
           "type": "subheading",
           "settings": {
-            "text": "The Screen-free Audiobook Player"
-          }
-        },
-        "heading_mtKX8B": {
-          "type": "heading",
-          "settings": {
-            "text": "Now available in Australia!",
-            "scale_with": false,
-            "heading_tag": "h2",
-            "heading_tag_html": "p"
+            "text": "Looking for a Screen-free Audiobook Player?",
+            "subheading_tag": "h4",
+            "subheading_tag_html": "h2"
           }
         },
         "button_BUJMNL": {
@@ -41,7 +34,6 @@
       },
       "block_order": [
         "subheading_cMEphi",
-        "heading_mtKX8B",
         "button_BUJMNL"
       ],
       "settings": {
@@ -55,15 +47,10 @@
         "mobile_text_position": "place-self-start-end text-end",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
-      }
-    },
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "content_width": "80ch",
-        "show_title": true
       }
     },
     "rich_text_yLTnHN": {
@@ -71,6 +58,7 @@
       "blocks": {
         "subheading_3xXLDa": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "Introducing Voxblock"
           }
@@ -78,14 +66,15 @@
         "heading_9PXAAq": {
           "type": "heading",
           "settings": {
-            "text": "The Screen-Free Audiobook Player",
-            "heading_tag": "h1",
+            "text": "Unlike Yoto and Tonies, Voxblock needs no wifi, no apps, and works right out the box.",
+            "heading_tag": "h4",
             "text_color": "",
             "gradient": ""
           }
         },
         "richtext_Yg3mpw": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "content": "<p>Loved by kids and welcomed by parents, Voxblock is a <strong>screen-free, easy-to-use </strong>audiobook player, that makes <strong>learning and listening, fun and engaging</strong>.</p>"
           }
@@ -104,6 +93,14 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch",
+        "show_title": true
       }
     },
     "video_MiPbPL": {
@@ -683,8 +680,8 @@
   },
   "order": [
     "image_with_text_overlay_J6Gykk",
-    "main",
     "rich_text_yLTnHN",
+    "main",
     "video_MiPbPL",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
