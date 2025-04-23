@@ -176,89 +176,6 @@
         "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
-    "multiple_images_with_text_6ef3gj": {
-      "type": "multiple-images-with-text",
-      "blocks": {
-        "item_pNDpjC": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Homepage-Literacy-1000x1200.jpg",
-            "image_rotation_degrees": -2,
-            "subheading": "Supporting Development",
-            "title": "Building Literacy",
-            "content": "<p>Audiobooks are great at supporting literacy development and improving a child's vocabulary, pronunciation, and listening skills. But most importantly they unlock a world of imagination transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.</p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_KhkYR6": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Homepage-wifi_free-1000x1200.jpg",
-            "image_rotation_degrees": 1.5,
-            "subheading": "No apps, no wi-fi, no set-up",
-            "title": "Connectivity Free",
-            "content": "<p>Designed with kids in mind, the Voxblock player is completely connectivity free. All Voxblock audio is stored on our audiobook blocks, that automatically play as soon as they are placed in the player. This means no wifi, no apps, no downloads or set-up.</p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        },
-        "item_PbfHzh": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Homepage-Travel-1000x1200.jpg",
-            "image_rotation_degrees": 0,
-            "subheading": "On the go",
-            "title": "Travel Companion",
-            "content": "<p>Your child can carry their favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to handle all the rough and tumble kids can throw at it.</p>",
-            "button_url": "",
-            "button_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_pNDpjC",
-        "item_KhkYR6",
-        "item_PbfHzh"
-      ],
-      "settings": {
-        "full_width": true,
-        "images_layout": "stacked",
-        "collage_images_alignment": "middle",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
-    "featured_collection_7cDbfR": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "voxblock-starter-pack-collection",
-        "hide_empty": false,
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 8,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "Begin with our Starter Packs",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "hot_spots_ABkh3k": {
       "type": "hot-spots",
       "blocks": {
@@ -352,6 +269,161 @@
         "hot_spot_content_text_color": "#000000",
         "hot_spot_content_opacity": 90,
         "hot_spot_content_blur_radius": 3
+      }
+    },
+    "testimonials_dbdAFc": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_md4XwU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Simone (April 2024)",
+            "title": "Great audio books",
+            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.</p>"
+          }
+        },
+        "testimonial_FDmkry": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "The Independent",
+            "title": "Best Kids' audio player for ease of use",
+            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.</p>"
+          }
+        },
+        "testimonial_iCBMpf": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Emma (March 2024)",
+            "title": "Great product",
+            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.</p>"
+          }
+        },
+        "testimonial_DDNy9M": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "The Evening Standard",
+            "title": "Best for user friendliness",
+            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_md4XwU",
+        "testimonial_FDmkry",
+        "testimonial_iCBMpf",
+        "testimonial_DDNy9M"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Trusted by Parents",
+        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "multiple_images_with_text_6ef3gj": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_pNDpjC": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-Literacy-1000x1200.jpg",
+            "image_rotation_degrees": -2,
+            "subheading": "Supporting Development",
+            "title": "Building Literacy",
+            "content": "<p>Audiobooks are great at supporting literacy development and improving a child's vocabulary, pronunciation, and listening skills. But most importantly they unlock a world of imagination transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_KhkYR6": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-wifi_free-1000x1200.jpg",
+            "image_rotation_degrees": 1.5,
+            "subheading": "No apps, no wi-fi, no set-up",
+            "title": "Connectivity Free",
+            "content": "<p>Designed with kids in mind, the Voxblock player is completely connectivity free. All Voxblock audio is stored on our audiobook blocks, that automatically play as soon as they are placed in the player. This means no wifi, no apps, no downloads or set-up.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_PbfHzh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-Travel-1000x1200.jpg",
+            "image_rotation_degrees": 0,
+            "subheading": "On the go",
+            "title": "Travel Companion",
+            "content": "<p>Your child can carry their favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to handle all the rough and tumble kids can throw at it.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_pNDpjC",
+        "item_KhkYR6",
+        "item_PbfHzh"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "featured_collection_7cDbfR": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 8,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Begin with our Starter Packs",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     },
     "logo_list_paF9D9": {
@@ -546,77 +618,6 @@
         "text_color": ""
       }
     },
-    "testimonials_dbdAFc": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_md4XwU": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Simone (April 2024)",
-            "title": "Great audio books",
-            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.</p>"
-          }
-        },
-        "testimonial_FDmkry": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 4,
-            "author": "The Independent",
-            "title": "Best Kids' audio player for ease of use",
-            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.</p>"
-          }
-        },
-        "testimonial_iCBMpf": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Emma (March 2024)",
-            "title": "Great product",
-            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.</p>"
-          }
-        },
-        "testimonial_DDNy9M": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "The Evening Standard",
-            "title": "Best for user friendliness",
-            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_md4XwU",
-        "testimonial_FDmkry",
-        "testimonial_iCBMpf",
-        "testimonial_DDNy9M"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_testimonials": true,
-        "subheading": "",
-        "title": "Testimonials",
-        "content": "",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "testimonial_card_background": "",
-        "testimonial_card_text_color": ""
-      }
-    },
     "image_link_blocks_krpwkL": {
       "type": "image-link-blocks",
       "blocks": {
@@ -731,14 +732,14 @@
     "main",
     "media_with_text_pkVrkm",
     "video_MiPbPL",
+    "hot_spots_ABkh3k",
+    "testimonials_dbdAFc",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
-    "hot_spots_ABkh3k",
     "logo_list_paF9D9",
     "impact_text_jYW6eK",
     "featured_collection_7QMKLN",
     "rich_text_d6cFLE",
-    "testimonials_dbdAFc",
     "image_link_blocks_krpwkL",
     "newsletter_F6q46M"
   ]
