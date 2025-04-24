@@ -280,6 +280,65 @@
         "text_color": ""
       }
     },
+    "multi_column_EGXYfD": {
+      "type": "multi-column",
+      "blocks": {
+        "item_CUdHN3": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Simple controls",
+            "heading_tag": "h4",
+            "content": "<p>No screens or complex buttons. Just a big play button, volume control, and the freedom to listen without grown-up help.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_zCFm9J": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Portable",
+            "heading_tag": "h4",
+            "content": "<p>Lightweight and connectivity free, Voxblock is built for storytime anywhere, from the bedroom to the plane.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_kYBMhY": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Durable",
+            "heading_tag": "h4",
+            "content": "<p>Tough enough for little hands, Voxblock can handle drops, bumps, and everything in between.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_CUdHN3",
+        "item_zCFm9J",
+        "item_kYBMhY"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "Designed for Children",
+        "content": "<p>To encourage independent play and foster a love of reading.</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "hot_spots_ABkh3k": {
       "type": "hot-spots",
       "blocks": {
@@ -840,6 +899,7 @@
     "video_MiPbPL",
     "rich_text_AnGbBK",
     "text_with_icons_jAdwKw",
+    "multi_column_EGXYfD",
     "hot_spots_ABkh3k",
     "testimonials_dbdAFc",
     "multiple_images_with_text_6ef3gj",
