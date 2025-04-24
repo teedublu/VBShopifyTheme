@@ -74,6 +74,7 @@
         },
         "image_TmdLHf": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Comparison_table.png",
             "width_mode": "full_width",
@@ -105,6 +106,152 @@
         "text_color": ""
       }
     },
+    "feature_chart_QAemkB": {
+      "type": "feature-chart",
+      "blocks": {
+        "headings_ewWc99": {
+          "type": "headings",
+          "settings": {
+            "heading_1": "Brand",
+            "heading_2": "No wifi needed",
+            "heading_3": "No apps required",
+            "heading_4": "Physical books",
+            "heading_5": "Works out the box",
+            "heading_6": "",
+            "heading_7": "",
+            "heading_8": "",
+            "heading_9": "",
+            "heading_10": "",
+            "heading_11": "",
+            "heading_12": "",
+            "heading_13": "",
+            "heading_14": "",
+            "heading_15": "",
+            "heading_16": "",
+            "heading_17": "",
+            "heading_18": "",
+            "heading_19": "",
+            "heading_20": ""
+          }
+        },
+        "values_DCddy4": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p><strong>Voxblock</strong></p>",
+            "value_2": "<p>Yes</p>",
+            "value_3": "<p>No</p>",
+            "value_4": "<p>No</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        },
+        "values_KJrHUc": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p><strong>Yoto</strong></p>",
+            "value_2": "<p>Yes</p>",
+            "value_3": "<p>Yes</p>",
+            "value_4": "<p>No</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        },
+        "values_W7HXQk": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p><strong>Tonies</strong></p>",
+            "value_2": "",
+            "value_3": "",
+            "value_4": "",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "headings_ewWc99",
+        "values_DCddy4",
+        "values_KJrHUc",
+        "values_W7HXQk"
+      ],
+      "name": "Feature chart",
+      "settings": {
+        "full_width": true,
+        "subheading": "Compare",
+        "title": "Voxblock vs others",
+        "content": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "view_product": "View",
+        "viewing_product": "",
+        "show_product_swatch": true,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "#fff7f0",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -113,39 +260,144 @@
         "show_title": true
       }
     },
-    "media_with_text_pkVrkm": {
-      "type": "media-with-text",
+    "blog_posts_d8xUp4": {
+      "type": "blog-posts",
       "blocks": {
-        "image_H7CP7U": {
-          "type": "image",
+        "article_Dg9xaB": {
+          "type": "article",
           "settings": {
-            "image": "shopify://shop_images/headphones-lifestyle-web-image-5_af451681-b05b-4eb0-8a50-bdfef7f2dcc2.png",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-center text-center",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "Just Pop In a Book and Play",
-            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>",
-            "link_text": "Discover our player",
-            "link_url": "shopify://products/voxblock-player",
-            "background": "#fff7f0",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#ff9e57",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "article": "",
+            "background": "",
+            "text_color": ""
           }
         }
       },
       "block_order": [
-        "image_H7CP7U"
+        "article_Dg9xaB"
+      ],
+      "name": "Featured blog post",
+      "settings": {
+        "full_width": true,
+        "show_excerpt": true,
+        "show_date": true,
+        "show_author": false,
+        "show_comments_count": false,
+        "show_category": true,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "shopify://blogs/news/voxblock-vs-yoto-vs-tonies-which-audio-player-is-best-for-your-child",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "rich_text_7XfET4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KRdjBC": {
+          "type": "heading",
+          "settings": {
+            "text": "Just Pop In a Book and Play",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_ftanmj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KRdjBC",
+        "richtext_ftanmj"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "testimonials_dbdAFc": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_md4XwU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Simone (April 2024)",
+            "title": "Great audio books",
+            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.</p>"
+          }
+        },
+        "testimonial_FDmkry": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "The Independent",
+            "title": "Best Kids' audio player for ease of use",
+            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.</p>"
+          }
+        },
+        "testimonial_iCBMpf": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Emma (March 2024)",
+            "title": "Great product",
+            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.</p>"
+          }
+        },
+        "testimonial_DDNy9M": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "The Evening Standard",
+            "title": "Best for user friendliness",
+            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_md4XwU",
+        "testimonial_FDmkry",
+        "testimonial_iCBMpf",
+        "testimonial_DDNy9M"
       ],
       "settings": {
-        "full_width": false,
-        "spacing": "small"
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Trusted by Parents",
+        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
       }
     },
     "video_MiPbPL": {
@@ -247,6 +499,7 @@
         "item_3xKcm4",
         "item_cwJWWg"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "image": "shopify://shop_images/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
@@ -269,77 +522,6 @@
         "hot_spot_content_text_color": "#000000",
         "hot_spot_content_opacity": 90,
         "hot_spot_content_blur_radius": 3
-      }
-    },
-    "testimonials_dbdAFc": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_md4XwU": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Simone (April 2024)",
-            "title": "Great audio books",
-            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.</p>"
-          }
-        },
-        "testimonial_FDmkry": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 4,
-            "author": "The Independent",
-            "title": "Best Kids' audio player for ease of use",
-            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.</p>"
-          }
-        },
-        "testimonial_iCBMpf": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Emma (March 2024)",
-            "title": "Great product",
-            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.</p>"
-          }
-        },
-        "testimonial_DDNy9M": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "The Evening Standard",
-            "title": "Best for user friendliness",
-            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_md4XwU",
-        "testimonial_FDmkry",
-        "testimonial_iCBMpf",
-        "testimonial_DDNy9M"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_testimonials": true,
-        "subheading": "",
-        "title": "Trusted by Parents",
-        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability.</p>",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "testimonial_card_background": "",
-        "testimonial_card_text_color": ""
       }
     },
     "multiple_images_with_text_6ef3gj": {
@@ -729,11 +911,13 @@
   "order": [
     "image_with_text_overlay_J6Gykk",
     "rich_text_yLTnHN",
+    "feature_chart_QAemkB",
     "main",
-    "media_with_text_pkVrkm",
+    "blog_posts_d8xUp4",
+    "rich_text_7XfET4",
+    "testimonials_dbdAFc",
     "video_MiPbPL",
     "hot_spots_ABkh3k",
-    "testimonials_dbdAFc",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
     "logo_list_paF9D9",
