@@ -223,8 +223,9 @@
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
-            "mobile_icon_width": 24,
-            "icon_width": 32,
+            "custom_icon": "shopify://shop_images/Insert_57919958-fc5d-484c-897a-f943e176bc71.png",
+            "mobile_icon_width": 64,
+            "icon_width": 120,
             "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
@@ -236,8 +237,9 @@
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Play.png",
             "mobile_icon_width": 24,
-            "icon_width": 32,
+            "icon_width": 120,
             "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
@@ -249,8 +251,9 @@
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/Listen.png",
             "mobile_icon_width": 24,
-            "icon_width": 32,
+            "icon_width": 120,
             "icon_background_type": "circle",
             "icon_background": "",
             "icon_color": "",
@@ -382,9 +385,9 @@
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Simone (April 2024)",
-            "title": "Great audio books",
-            "content": "<p>My daughter really enjoys the audiobooks and there is a great selection. The battery on the player lasts for a good amount of time and it has become a part of her bedtime routine.</p>"
+            "author": "Vicky (Apr, 2025)",
+            "title": "Brilliant",
+            "content": "<p>I bought this for my daughter to help her get to sleep at night. She really loves listening to the stories. It's easy to use & the choice of stories is huge.</p>"
           }
         },
         "testimonial_FDmkry": {
@@ -392,10 +395,10 @@
           "settings": {
             "round_avatar": true,
             "show_rating": true,
-            "rating": 4,
-            "author": "The Independent",
-            "title": "Best Kids' audio player for ease of use",
-            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup, the Voxblock is ready and raring to go.</p>"
+            "rating": 5,
+            "author": "Anne (Mar, 2025)",
+            "title": "Happy Grandchildren",
+            "content": "<p>Receiving my order in Australia so quickly. My grandchildren love their new books to add to their Christmas collection. We enjoy listening to the previews together which help them choose their next adventure.</p>"
           }
         },
         "testimonial_iCBMpf": {
@@ -404,9 +407,9 @@
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Emma (March 2024)",
-            "title": "Great product",
-            "content": "<p>Great product - looks good, very easy to use and charge but most importantly my son loves it! It seems quite robust too, think it will be great for taking on holidays.</p>"
+            "author": "Ari (Mar, 2025)",
+            "title": "The Best Thing Ever",
+            "content": "<p>We really love our voxblock for our 3 kids. We like how it makes bedtime easier. We like collecting the books. We like the loyalty stamps. We hope more books are released for under 5s ! They also ship and deliver very fast. Would recommend for autism and kids that like to skip pages when you read them books.</p>"
           }
         },
         "testimonial_DDNy9M": {
@@ -415,9 +418,9 @@
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "The Evening Standard",
-            "title": "Best for user friendliness",
-            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
+            "author": "Harriet (Feb, 2025)",
+            "title": "I absolutely love our Voxblock",
+            "content": "<p>I absolutely love our Vox Block - my 5yr old loves to listen to it on long car journeys or on airplanes. I find it much more portable than a Toni's box. There is an endless selection of books to choose from and I really do think this is the best quality and value audio player on the market! I keep recommending to anyone who'll listen!</p>"
           }
         }
       },
@@ -515,8 +518,8 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "subheading": "",
-        "title": "Begin with our Starter Packs",
-        "content": "",
+        "title": "Try Voxblock Today",
+        "content": "<p>Getting started is easy with one of our Starter Packs. </p>",
         "link_url": "",
         "link_text": "View all",
         "background": "",
@@ -646,6 +649,7 @@
     },
     "featured_collection_7QMKLN": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "collection": "",
         "hide_empty": false,
