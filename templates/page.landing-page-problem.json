@@ -83,9 +83,8 @@
         },
         "richtext_Yg3mpw": {
           "type": "richtext",
-          "disabled": true,
           "settings": {
-            "content": "<p>Loved by kids and welcomed by parents, Voxblock is a <strong>screen-free, easy-to-use </strong>audiobook player, that makes <strong>learning and listening, fun and engaging</strong>.</p>"
+            "content": "<p>It’s hard to get kids to read when they’re surrounded by screens. But audiobooks can help bridge the gap, boosting language skills, focus and imagination while giving kids a break from the constant glow of devices.</p>"
           }
         }
       },
@@ -118,7 +117,7 @@
         "image_H7CP7U": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/headphones-lifestyle-web-image-5_af451681-b05b-4eb0-8a50-bdfef7f2dcc2.png",
+            "image": "shopify://shop_images/product-literacy-ladder-infographic_6c99c82a-843f-4bd0-aabd-f5980f54e5bd.png",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center text-center",
@@ -173,6 +172,109 @@
         "overlay_opacity": 0,
         "jsonld_title": "Voxblock video",
         "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    },
+    "rich_text_AnGbBK": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_baBUqD": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_Mfdrcj": {
+          "type": "heading",
+          "settings": {
+            "text": "Meet Voxblock",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_THyJ4m": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Voxblock is a child-friendly audiobook player that works without the need for WiFi, apps, or complicated setup. Children simply pick a story, insert the block, and press play. It’s tactile, intuitive and gives them complete control over their listening experience.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_baBUqD",
+        "heading_Mfdrcj",
+        "richtext_THyJ4m"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "text_with_icons_jAdwKw": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_HeYNp8": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Insert a block",
+            "content": ""
+          }
+        },
+        "item_YL9LjC": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Press play",
+            "content": ""
+          }
+        },
+        "item_t4cFUL": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "mobile_icon_width": 24,
+            "icon_width": 32,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Listen",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_HeYNp8",
+        "item_YL9LjC",
+        "item_t4cFUL"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "hot_spots_ABkh3k": {
@@ -246,6 +348,7 @@
         "item_3xKcm4",
         "item_cwJWWg"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "image": "shopify://shop_images/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
@@ -731,6 +834,8 @@
     "main",
     "media_with_text_pkVrkm",
     "video_MiPbPL",
+    "rich_text_AnGbBK",
+    "text_with_icons_jAdwKw",
     "hot_spots_ABkh3k",
     "testimonials_dbdAFc",
     "multiple_images_with_text_6ef3gj",
