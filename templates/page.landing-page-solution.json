@@ -364,39 +364,6 @@
     "testimonials_dbdAFc": {
       "type": "testimonials",
       "blocks": {
-        "testimonial_md4XwU": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Vicky (Apr, 2025)",
-            "title": "Brilliant",
-            "content": "<p>I bought this for my daughter to help her get to sleep at night. She really loves listening to the stories. It's easy to use & the choice of stories is huge.</p>"
-          }
-        },
-        "testimonial_FDmkry": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Anne (Mar, 2025)",
-            "title": "Happy Grandchildren",
-            "content": "<p>Receiving my order in Australia so quickly. My grandchildren love their new books to add to their Christmas collection. We enjoy listening to the previews together which help them choose their next adventure.</p>"
-          }
-        },
-        "testimonial_iCBMpf": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Ari (Mar, 2025)",
-            "title": "The Best Thing Ever",
-            "content": "<p>We really love our voxblock for our 3 kids. We like how it makes bedtime easier. We like collecting the books. We like the loyalty stamps. We hope more books are released for under 5s ! They also ship and deliver very fast. Would recommend for autism and kids that like to skip pages when you read them books.</p>"
-          }
-        },
         "testimonial_DDNy9M": {
           "type": "testimonial",
           "settings": {
@@ -407,20 +374,54 @@
             "title": "I absolutely love our Voxblock",
             "content": "<p>I absolutely love our Voxblock - my 5yr old loves to listen to it on long car journeys or on airplanes. I find it much more portable than a Toni's box. There is an endless selection of books to choose from and I really do think this is the best quality and value audio player on the market! I keep recommending to anyone who'll listen!</p>"
           }
+        },
+        "testimonial_md4XwU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ian (Feb, 2025)",
+            "title": "So easy to use, no downloads required, charge up and ready to go!",
+            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books, bought for 5 year old grandson, thinking of purchasing another for 10 year old granddaughter, tokens to collect to obtain free books, very easy order process, delivered 3 days after purchase, like the idea of matching headphones too, excellent information and taster audios on website. Would highly recommend.</p>"
+          }
+        },
+        "testimonial_FDmkry": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "E Joyce (Nov, 2024)",
+            "title": "Great, great, great",
+            "content": "<p>They've always promptly responded to any queries and are very helpful. The blocks are robust and the audio books look like the actual books which I think is great. We love that it isn't connected to the wi-fi and is very portable. The books are quite expensive but in line with similar products and they sometimes offer discounted books or you can save tokens for a free book.</p>"
+          }
+        },
+        "testimonial_iCBMpf": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ari (Mar, 2025)",
+            "title": "The Best Thing Ever",
+            "content": "<p>We really love our voxblock for our 3 kids. We like how it makes bedtime easier. We like collecting the books. We like the loyalty stamps. We hope more books are released for under 5s ! They also ship and deliver very fast. Would recommend for autism and kids that like to skip pages when you read them books.</p>"
+          }
         }
       },
       "block_order": [
+        "testimonial_DDNy9M",
         "testimonial_md4XwU",
         "testimonial_FDmkry",
-        "testimonial_iCBMpf",
-        "testimonial_DDNy9M"
+        "testimonial_iCBMpf"
       ],
       "settings": {
         "full_width": true,
         "stack_testimonials": true,
         "subheading": "",
-        "title": "Trusted by Parents",
-        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability.</p>",
+        "title": "Why parents choose Voxblock",
+        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
         "link_url": "",
         "link_text": "",
         "background": "",
@@ -438,7 +439,7 @@
         "heading_KRdjBC": {
           "type": "heading",
           "settings": {
-            "text": "Just Pop In a Book and Play",
+            "text": "The simplest audiobook player on the market",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
@@ -674,6 +675,41 @@
         "product_card_text_color": ""
       }
     },
+    "featured_collection_7QMKLN": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "a-bear-called-paddington",
+          "james-and-the-giant-peach",
+          "famous-five-audiobook-bundle",
+          "the-gruffalo",
+          "charlie-and-the-chocolate-factory",
+          "pippi-longstocking",
+          "the-worst-witch",
+          "adventures-with-peppa"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 8,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "Our library",
+        "title": "Bestselling audiobooks",
+        "content": "<p>There are hundreds of audiobooks in our collection: ranging from well-known classics, to meditation, to facts and learning, our titles are suitable for toddlers up to teens.</p>",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "logo_list_paF9D9": {
       "type": "logo-list",
       "blocks": {
@@ -728,9 +764,9 @@
       "settings": {
         "full_width": true,
         "stack_mobile": true,
-        "title": "Featured In",
+        "title": "Press and awards",
         "content": "",
-        "text_alignment": "center",
+        "text_alignment": "start",
         "items_per_row": 5,
         "background": "",
         "background_gradient": "",
@@ -788,41 +824,6 @@
         "text_color": "#fff7f0",
         "button_background": "",
         "button_text_color": ""
-      }
-    },
-    "featured_collection_7QMKLN": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": false,
-        "products": [
-          "a-bear-called-paddington",
-          "james-and-the-giant-peach",
-          "famous-five-audiobook-bundle",
-          "the-gruffalo",
-          "charlie-and-the-chocolate-factory",
-          "pippi-longstocking",
-          "the-worst-witch",
-          "adventures-with-peppa"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 8,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "Our library",
-        "title": "Bestselling audiobooks",
-        "content": "<p>There are hundreds of audiobooks in our collection: ranging from well-known classics, to meditation, to facts and learning, our titles are suitable for toddlers up to teens.</p>",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
       }
     },
     "rich_text_d6cFLE": {
@@ -987,9 +988,9 @@
     "hot_spots_ABkh3k",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
+    "featured_collection_7QMKLN",
     "logo_list_paF9D9",
     "impact_text_jYW6eK",
-    "featured_collection_7QMKLN",
     "rich_text_d6cFLE",
     "image_link_blocks_krpwkL",
     "newsletter_F6q46M"
