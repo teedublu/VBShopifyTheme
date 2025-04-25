@@ -12,8 +12,18 @@
     "image_with_text_overlay_J6Gykk": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "heading_irrpEJ": {
+          "type": "heading",
+          "settings": {
+            "text": "Looking for a screen-free audiobook player?",
+            "scale_with": false,
+            "heading_tag": "h3",
+            "heading_tag_html": "h1"
+          }
+        },
         "subheading_cMEphi": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "Looking for a Screen-free Audiobook Player?",
             "subheading_tag": "h4",
@@ -22,6 +32,7 @@
         },
         "button_BUJMNL": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "style": "fill",
             "size": "lg",
@@ -33,6 +44,7 @@
         }
       },
       "block_order": [
+        "heading_irrpEJ",
         "subheading_cMEphi",
         "button_BUJMNL"
       ],
@@ -66,7 +78,7 @@
         "heading_9PXAAq": {
           "type": "heading",
           "settings": {
-            "text": "Unlike Yoto and Tonies, Voxblock needs no wifi, no apps, and works right out the box.",
+            "text": "Voxblock needs no wifi, no apps, and works right out the box, unlike Yoto and Tonies.",
             "heading_tag": "h4",
             "text_color": "",
             "gradient": ""
@@ -266,6 +278,7 @@
         "item_8LJbD4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/land-sol-connect-featimg-v1.25.png",
             "icon": "none",
             "icon_width": 48,
             "title": "Connectivity-free",
@@ -275,6 +288,7 @@
         "item_iLrUHG": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/land-sol-simple-featimg-v1.25.png",
             "icon": "none",
             "icon_width": 48,
             "title": "Simple to use",
@@ -284,6 +298,7 @@
         "item_gJHTJE": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/land-sol-physical-featimg-v1.25.png",
             "icon": "none",
             "icon_width": 48,
             "title": "Physical audiobooks",
