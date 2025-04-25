@@ -260,6 +260,46 @@
         "show_title": true
       }
     },
+    "images_with_text_scrolling_EqDQza": {
+      "type": "images-with-text-scrolling",
+      "blocks": {
+        "item_8LJbD4": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 48,
+            "title": "Connectivity-free",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "item_iLrUHG": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 48,
+            "title": "Heading 2",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_8LJbD4",
+        "item_iLrUHG"
+      ],
+      "name": "Images and text scrolling",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "show_counter": true,
+        "desktop_image_effect": "reveal",
+        "image_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
     "blog_posts_d8xUp4": {
       "type": "blog-posts",
       "blocks": {
@@ -275,6 +315,7 @@
       "block_order": [
         "article_Dg9xaB"
       ],
+      "disabled": true,
       "name": "Featured blog post",
       "settings": {
         "full_width": true,
@@ -293,40 +334,6 @@
         "text_color": "",
         "heading_color": "",
         "heading_gradient": ""
-      }
-    },
-    "rich_text_7XfET4": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_KRdjBC": {
-          "type": "heading",
-          "settings": {
-            "text": "Just Pop In a Book and Play",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_ftanmj": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_KRdjBC",
-        "richtext_ftanmj"
-      ],
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
       }
     },
     "testimonials_dbdAFc": {
@@ -398,6 +405,40 @@
         "heading_gradient": "",
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
+      }
+    },
+    "rich_text_7XfET4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KRdjBC": {
+          "type": "heading",
+          "settings": {
+            "text": "Just Pop In a Book and Play",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_ftanmj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KRdjBC",
+        "richtext_ftanmj"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "video_MiPbPL": {
@@ -913,6 +954,7 @@
     "rich_text_yLTnHN",
     "feature_chart_QAemkB",
     "main",
+    "images_with_text_scrolling_EqDQza",
     "blog_posts_d8xUp4",
     "testimonials_dbdAFc",
     "rich_text_7XfET4",
