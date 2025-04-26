@@ -85,7 +85,7 @@
                {%- when 'image' -%}
                   
 
-                    <div class="person-image" style="border-radius: {{ block.settings.radius }}%; height:{{ block.settings.max_width }}px; width: {{ block.settings.max_width }}px; overflow:hidden; background: #4A90E2; display: flex; align-items: center; justify-content: center;">
+                    <div class="person-image" style="border-radius: {{ block.settings.radius }}%; height:{{ block.settings.max_width }}px; width: {{ block.settings.max_width }}px; overflow:hidden; background: {{ block.settings.avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
                       {% case block.settings.avatar_display %}
                         {% when 'image' %}
                           {% if metaobject.photos.value != blank %}
@@ -377,7 +377,14 @@
             { "value": "initials", "label": "Initials" },
             { "value": "placeholder", "label": "Placeholder" }
           ]
+        },
+        {
+          "type": "color",
+          "id": "avatar_bg_color",
+          "label": "Avatar background color",
+          "default": "#4A90E2"
         }
+
       ]
     },
     {
