@@ -7,6 +7,13 @@
         {{ 'image' | placeholder_svg_tag: 'placeholder' }}
       {% endif %}
     {% when 'initials' %}
+      {% assign name_parts = metaobject.name | split: ' ' %}
+        {% assign first_initial = name_parts[0] | slice: 0, 1 | upcase %}
+        {% assign second_initial = '' %}
+        {% if name_parts.size > 1 %}
+          {% assign second_initial = name_parts[1] | slice: 0, 1 | upcase %}
+        {% endif %}
+        {% assign initials = first_initial | append: second_initial %}
       <svg width="100%" height="100%" viewBox="0 0 100 100">
         <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
               fill="{{ initials_color }}" font-family="sans-serif" font-weight="700" font-size="48">
