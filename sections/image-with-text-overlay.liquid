@@ -108,7 +108,10 @@
 
                           </span>
                         {% when 'placeholder' %}
-                          {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+                          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" width="120" height="120">
+                            <circle cx="24" cy="24" r="24" fill="#E3E3E3"/>
+                            <path d="M24 24c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8Zm0 4c-5.333 0-16 2.667-16 8v4h32v-4c0-5.333-10.667-8-16-8Z" fill="#B5B5B5"/>
+                          </svg>
                         {% else %}
                           <span style="color: #fff; font-size: 72px;">?</span>
                       {% endcase %}
