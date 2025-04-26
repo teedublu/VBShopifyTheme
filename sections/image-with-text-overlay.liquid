@@ -95,7 +95,14 @@
                             {{ 'image' | placeholder_svg_tag: 'placeholder' }}
                           {% endif %}
                         {% when 'initials' %}
-                          <span style="color: #fff; font-size: 72px; font-weight: 700; font-family: sans-serif; letter-spacing: 2px; user-select: none;">
+                          <span style="
+                            color: {{ section.settings.initials_color }};
+                            font-size: {{ section.settings.initials_font_size }}px;
+                            font-weight: 700;
+                            font-family: sans-serif;
+                            letter-spacing: 2px;
+                            user-select: none;
+                            ">
                             {% assign name_parts = metaobject.name | split: ' ' %}
                             {% assign first_initial = name_parts[0] | slice: 0, 1 | upcase %}
                             {% assign second_initial = '' %}
@@ -383,7 +390,24 @@
           "id": "avatar_bg_color",
           "label": "Avatar background color",
           "default": "#4A90E2"
+        },
+        {
+          "type": "range",
+          "id": "initials_font_size",
+          "label": "Initials font size",
+          "min": 24,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 72
+        },
+        {
+          "type": "color",
+          "id": "initials_color",
+          "label": "Initials color",
+          "default": "#ffffff"
         }
+
 
       ]
     },
