@@ -82,17 +82,29 @@
                     {{- block.settings.liquid -}}
                   </div>
                 {%- endif -%}
-
                {%- when 'image' -%}
-                  <div class="person-image" style="border-radius: {{block.settings.radius}}%; height:{{block.settings.max_width}}px; width: {{block.settings.max_width}}px; overflow:hidden;">
-                  {% if metaobject.photos.value != blank %}
-                    {{ metaobject.photos.value | first | image_url: width: block.settings.max_width | image_tag: alt: object.title.value | escape }}
-                  {% elsif metaobject.logo.value != blank %}
-                    {{ metaobject.logo.value | image_url: width: block.settings.max_width | image_tag: alt: object.title.value | escape }}
-                  {% else %}
-                    {{ 'image' | placeholder_svg_tag: 'placeholder' }}
-                  {% endif %}
-                  </div>
+                  
+
+                    <div class="person-image" style="border-radius: {{ block.settings.radius }}%; height:{{ block.settings.max_width }}px; width: {{ block.settings.max_width }}px; overflow:hidden; background: #4A90E2; display: flex; align-items: center; justify-content: center;">
+                      {% case block.settings.avatar_display %}
+                        {% when 'image' %}
+                          {% if metaobject.photos.value != blank %}
+                            {{ metaobject.photos.value | first | image_url: width: block.settings.max_width | image_tag: alt: object.title.value | escape }}
+                          {% else %}
+                            <!-- Fallback: maybe show placeholder if image missing -->
+                            {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+                          {% endif %}
+                        {% when 'initials' %}
+                          <span style="color: #fff; font-size: 72px; font-weight: 700; font-family: sans-serif; letter-spacing: 2px; user-select: none;">
+                            {{ block.settings.initials | default: 'AB' }}
+                          </span>
+                        {% when 'placeholder' %}
+                          {{ 'image' | placeholder_svg_tag: 'placeholder' }}
+                        {% else %}
+                          <span style="color: #fff; font-size: 72px;">?</span>
+                      {% endcase %}
+                    </div>
+
 
               {%- when 'button' -%}
                 {%- if block.settings.text != blank -%}
@@ -339,6 +351,17 @@
           "unit": "%",
           "label": "Image radius",
           "default": 30
+        },
+        {
+          "type": "radio",
+          "id": "avatar_display",
+          "label": "Avatar display style",
+          "default": "image",
+          "options": [
+            { "value": "image", "label": "Image" },
+            { "value": "initials", "label": "Initials" },
+            { "value": "placeholder", "label": "Placeholder" }
+          ]
         }
       ]
     },
