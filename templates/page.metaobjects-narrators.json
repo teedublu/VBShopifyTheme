@@ -1,1 +1,43 @@
-{"sections":{"breadcrumbs_JDgHEY":{"type":"breadcrumbs","settings":{"heading":"Breadcrumbs"}},"main":{"type":"main-page","settings":{"content_width":"80ch"}},"metaobjects_authors_Eknwid":{"type":"metaobjects-list","settings":{"page_size":25,"object_type":"narrators"}}},"order":["breadcrumbs_JDgHEY","main","metaobjects_authors_Eknwid"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_JDgHEY": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "80ch",
+        "show_title": true
+      }
+    },
+    "metaobjects_authors_Eknwid": {
+      "type": "metaobjects-list",
+      "settings": {
+        "page_size": 25,
+        "object_type": "narrators",
+        "avatar_display": "initials",
+        "max_width": 200,
+        "radius": 30,
+        "initials_font_size": 24,
+        "initials_color": "#4cb6ac"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_JDgHEY",
+    "main",
+    "metaobjects_authors_Eknwid"
+  ]
+}
