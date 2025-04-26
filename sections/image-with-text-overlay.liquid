@@ -96,7 +96,16 @@
                           {% endif %}
                         {% when 'initials' %}
                           <span style="color: #fff; font-size: 72px; font-weight: 700; font-family: sans-serif; letter-spacing: 2px; user-select: none;">
-                            {{ block.settings.initials | default: 'AB' }}
+                            {% assign name_parts = metaobject.name | split: ' ' %}
+                            {% assign first_initial = name_parts[0] | slice: 0, 1 | upcase %}
+                            {% assign second_initial = '' %}
+                            {% if name_parts.size > 1 %}
+                              {% assign second_initial = name_parts[1] | slice: 0, 1 | upcase %}
+                            {% endif %}
+                            {% assign initials = first_initial | append: second_initial %}
+                            
+                            {{ initials | default: 'AB' }}
+
                           </span>
                         {% when 'placeholder' %}
                           {{ 'image' | placeholder_svg_tag: 'placeholder' }}
