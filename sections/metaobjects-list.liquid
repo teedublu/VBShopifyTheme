@@ -170,11 +170,7 @@
                         initials_font_size: section.settings.initials_font_size
                     %}
                 
-                {% if image != blank %}
-                  {{ image | image_url: width: 100 | image_tag: alt: object.title.value | escape }}
-                {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder' }}
-                {% endif %}
+                
               </div>
               <div class="object-text">
                 {% case object_type %}
