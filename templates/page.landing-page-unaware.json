@@ -15,7 +15,7 @@
         "subheading_cMEphi": {
           "type": "subheading",
           "settings": {
-            "text": "Worried about screen-time?",
+            "text": "Not every child loves reading",
             "subheading_tag": "h2",
             "subheading_tag_html": "h2"
           }
@@ -23,13 +23,14 @@
         "subheading_Vq7XRN": {
           "type": "subheading",
           "settings": {
-            "text": "Try a Story Led Alternative",
+            "text": "But every child loves a good story",
             "subheading_tag": "h5",
             "subheading_tag_html": "h2"
           }
         },
         "button_BUJMNL": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "style": "fill",
             "size": "lg",
@@ -75,7 +76,7 @@
         "heading_9PXAAq": {
           "type": "heading",
           "settings": {
-            "text": "Voxblock reduces screen-time without needing a screen, WiFi, or app. Bringing stories to life.",
+            "text": "What if story time didn't need screens, apps or stress?",
             "heading_tag": "h4",
             "text_color": "",
             "gradient": ""
@@ -84,7 +85,7 @@
         "richtext_Yg3mpw": {
           "type": "richtext",
           "settings": {
-            "content": "<p>It’s hard to get kids to read when they’re surrounded by screens. But audiobooks can help bridge the gap, boosting language skills, focus and imagination while giving kids a break from the constant glow of devices.</p>"
+            "content": "<p>Many parents struggle to get their kids into books, especially with screens everywhere. Reading can feel like a chore, but stories don’t have to be.</p><p>We get it, between school, after-school clubs and everything else, finding the right moment to sit down and read can be tough.</p>"
           }
         }
       },
@@ -117,15 +118,15 @@
         "image_H7CP7U": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/land-prob-graphic-v1.25.png",
+            "image": "shopify://shop_images/Lifestyle_landing_page.png",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center text-center",
             "icon": "none",
             "icon_width": 48,
             "subheading": "",
-            "title": "Benefits of reducing screen time",
-            "content": "<p>Reducing screen-time can have a big impact on children’s wellbeing. It helps improve sleep, encourages better focus and attention spans, and gives kids more time for creative play and imagination. Swapping out screens for storytelling is a simple way to support healthy development.</p>",
+            "title": "A new way to enjoy books",
+            "content": "<p>Voxblock turns books into something kids can experience independently and joyfully. It’s storytelling made simple. Here are some benefits of listening to audio with Voxblock:</p><ul><li>Screen-free listening experience </li><li>Encourages imagination and concentration</li><li>Easy for kids to use on their own</li></ul>",
             "link_text": "",
             "link_url": "",
             "background": "#fff7f0",
@@ -223,42 +224,42 @@
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/Insert_57919958-fc5d-484c-897a-f943e176bc71.png",
-            "mobile_icon_width": 64,
+            "custom_icon": "shopify://shop_images/icons-landing-page-04_1.png",
+            "mobile_icon_width": 120,
             "icon_width": 120,
-            "icon_background_type": "circle",
+            "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Insert an audiobook",
-            "content": ""
+            "title": "Simple to use",
+            "content": "<p>No screens or complex buttons. Just a big play button. volume control, and the freedom to listen without grown-up help.</p>"
           }
         },
         "item_YL9LjC": {
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/Play.png",
-            "mobile_icon_width": 64,
+            "custom_icon": "shopify://shop_images/icons-landing-page-05_1.png",
+            "mobile_icon_width": 120,
             "icon_width": 120,
-            "icon_background_type": "circle",
+            "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Press play",
-            "content": ""
+            "title": "Portable for little hands",
+            "content": "<p>Lightweight and connectivity free, Voxblock is built for storytime anywhere, from the bedroom to the plane.</p>"
           }
         },
         "item_t4cFUL": {
           "type": "item",
           "settings": {
             "icon": "picto-coupon",
-            "custom_icon": "shopify://shop_images/Listen.png",
-            "mobile_icon_width": 64,
+            "custom_icon": "shopify://shop_images/icons-landing-page-03.png",
+            "mobile_icon_width": 120,
             "icon_width": 120,
-            "icon_background_type": "circle",
+            "icon_background_type": "none",
             "icon_background": "",
             "icon_color": "",
-            "title": "Listen",
-            "content": ""
+            "title": "Kid resistant",
+            "content": "<p>Tough enough for little hands, Voxblock can handle drops, bumps, and everything in between.</p>"
           }
         }
       },
@@ -325,6 +326,7 @@
         "item_zCFm9J",
         "item_kYBMhY"
       ],
+      "disabled": true,
       "name": "Multi-column",
       "settings": {
         "full_width": true,
@@ -515,8 +517,8 @@
             "image": "shopify://shop_images/Homepage-Literacy-1000x1200.jpg",
             "image_rotation_degrees": -2,
             "subheading": "Supporting Development",
-            "title": "Building Literacy",
-            "content": "<p>Audiobooks are great at supporting literacy development and improving a child's vocabulary, pronunciation, and listening skills. But most importantly they unlock a world of imagination transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.</p>",
+            "title": "Spark a love of reading",
+            "content": "<p>What really matters is helping them fall in love with stories. Listening to audiobooks can build that love early, making books feel exciting, not like homework. When children enjoy stories, they’re more likely to pick up books for pleasure later on. Voxblock makes it easy, giving kids the freedom to explore brilliant tales in their own way, at their own pace.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -526,9 +528,9 @@
           "settings": {
             "image": "shopify://shop_images/Homepage-wifi_free-1000x1200.jpg",
             "image_rotation_degrees": 1.5,
-            "subheading": "No apps, no wi-fi, no set-up",
-            "title": "Connectivity Free",
-            "content": "<p>Designed with kids in mind, the Voxblock player is completely connectivity free. All Voxblock audio is stored on our audiobook blocks, that automatically play as soon as they are placed in the player. This means no wifi, no apps, no downloads or set-up.</p>",
+            "subheading": "Supporting Development",
+            "title": "Builds Imagination",
+            "content": "<p>Listening to stories invites children into new worlds, characters, and ideas. Without a screen showing everything for them, they naturally picture the scenes in their minds, developing creativity, critical thinking, and a lifelong curiosity for new stories and knowledge.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -536,11 +538,11 @@
         "item_PbfHzh": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/Homepage-Travel-1000x1200.jpg",
+            "image": "shopify://shop_images/land-sol-connect-featimg-v1.25.png",
             "image_rotation_degrees": 0,
-            "subheading": "On the go",
-            "title": "Travel Companion",
-            "content": "<p>Your child can carry their favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to handle all the rough and tumble kids can throw at it.</p>",
+            "subheading": "Supporting Development",
+            "title": "Reading for Pleasure",
+            "content": "<p>For many kids, being told to \"read more\" can feel like a chore. Audiobooks remove that pressure by making storytime easy, fun and engaging. It turns books into something they <em>choose</em> to enjoy, laying the groundwork for a more positive relationship with reading as they grow.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -551,7 +553,6 @@
         "item_KhkYR6",
         "item_PbfHzh"
       ],
-      "disabled": true,
       "settings": {
         "full_width": true,
         "images_layout": "stacked",
@@ -641,6 +642,7 @@
         "logo_cykwBx",
         "logo_Mj7afL"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_mobile": true,
