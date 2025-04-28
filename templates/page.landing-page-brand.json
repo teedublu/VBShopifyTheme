@@ -117,152 +117,6 @@
         "text_color": ""
       }
     },
-    "feature_chart_QAemkB": {
-      "type": "feature-chart",
-      "blocks": {
-        "headings_ewWc99": {
-          "type": "headings",
-          "settings": {
-            "heading_1": "Brand",
-            "heading_2": "No wifi needed",
-            "heading_3": "No apps required",
-            "heading_4": "Physical books",
-            "heading_5": "Works out the box",
-            "heading_6": "",
-            "heading_7": "",
-            "heading_8": "",
-            "heading_9": "",
-            "heading_10": "",
-            "heading_11": "",
-            "heading_12": "",
-            "heading_13": "",
-            "heading_14": "",
-            "heading_15": "",
-            "heading_16": "",
-            "heading_17": "",
-            "heading_18": "",
-            "heading_19": "",
-            "heading_20": ""
-          }
-        },
-        "values_DCddy4": {
-          "type": "values",
-          "settings": {
-            "product": "",
-            "value_1": "<p><strong>Voxblock</strong></p>",
-            "value_2": "<p>Yes</p>",
-            "value_3": "<p>Yes</p>",
-            "value_4": "<p>Yes</p>",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
-          }
-        },
-        "values_KJrHUc": {
-          "type": "values",
-          "settings": {
-            "product": "",
-            "value_1": "<p><strong>Yoto</strong></p>",
-            "value_2": "<p>No</p>",
-            "value_3": "<p>No</p>",
-            "value_4": "<p>Cards</p>",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
-          }
-        },
-        "values_W7HXQk": {
-          "type": "values",
-          "settings": {
-            "product": "",
-            "value_1": "<p><strong>Tonies</strong></p>",
-            "value_2": "<p>No</p>",
-            "value_3": "<p>No</p>",
-            "value_4": "<p>Figures</p>",
-            "value_5": "",
-            "value_6": "",
-            "value_7": "",
-            "value_8": "",
-            "value_9": "",
-            "value_10": "",
-            "value_11": "",
-            "value_12": "",
-            "value_13": "",
-            "value_14": "",
-            "value_15": "",
-            "value_16": "",
-            "value_17": "",
-            "value_18": "",
-            "value_19": "",
-            "value_20": "",
-            "view_button_background": "",
-            "view_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "headings_ewWc99",
-        "values_DCddy4",
-        "values_KJrHUc",
-        "values_W7HXQk"
-      ],
-      "name": "Feature chart",
-      "settings": {
-        "full_width": true,
-        "subheading": "Compare",
-        "title": "Voxblock vs others",
-        "content": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "center",
-        "max_rows": 6,
-        "view_all_text": "View all",
-        "view_less_text": "View less",
-        "view_product": "View",
-        "viewing_product": "",
-        "show_product_swatch": true,
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "chart_background": "#fff7f0",
-        "chart_text_color": "",
-        "chart_true_false_color": ""
-      }
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -324,40 +178,32 @@
         "heading_gradient": ""
       }
     },
-    "blog_posts_d8xUp4": {
-      "type": "blog-posts",
+    "video_MiPbPL": {
+      "type": "video",
       "blocks": {
-        "article_Dg9xaB": {
-          "type": "article",
-          "settings": {
-            "article": "news/voxblock-vs-yoto-vs-tonies-which-audio-player-is-best-for-your-child",
-            "background": "",
-            "text_color": ""
-          }
+        "play_V4wQrU": {
+          "type": "play",
+          "settings": {}
         }
       },
       "block_order": [
-        "article_Dg9xaB"
+        "play_V4wQrU"
       ],
-      "disabled": true,
-      "name": "Featured blog post",
       "settings": {
         "full_width": true,
-        "show_excerpt": true,
-        "show_date": true,
-        "show_author": false,
-        "show_comments_count": false,
-        "show_category": true,
-        "subheading": "",
-        "title": "",
-        "content": "",
-        "link_url": "shopify://blogs/news/voxblock-vs-yoto-vs-tonies-which-audio-player-is-best-for-your-child",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "sm",
+        "video": "shopify://files/videos/Voxblock Intro Stop Motion New.mp4",
+        "youtube_id": "",
+        "external_video_url": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
     "testimonials_dbdAFc": {
@@ -432,6 +278,73 @@
         "testimonial_card_text_color": ""
       }
     },
+    "logo_list_paF9D9": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_nmCppy": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Trustpilot_icon_v3.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_LtC3f6": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Indy_AsFeaturedIn_2024.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_R3zrTb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/GOOD_PLAY_GUIDE-01_copy.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        },
+        "logo_cykwBx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/JDA_2023_Logo_Silver_2ca8e977-0c5b-4e18-93bc-9b33e69137f0.png",
+            "logo_width": 90,
+            "link": ""
+          }
+        },
+        "logo_Mj7afL": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/Toy-Awards-2024-Best-Toy-Brand.png",
+            "logo_width": 120,
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_nmCppy",
+        "logo_LtC3f6",
+        "logo_R3zrTb",
+        "logo_cykwBx",
+        "logo_Mj7afL"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "title": "Press and awards",
+        "content": "",
+        "text_alignment": "start",
+        "items_per_row": 5,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
     "rich_text_7XfET4": {
       "type": "rich-text",
       "blocks": {
@@ -464,130 +377,6 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
-    },
-    "video_MiPbPL": {
-      "type": "video",
-      "blocks": {
-        "play_V4wQrU": {
-          "type": "play",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "play_V4wQrU"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "autoplay": true,
-        "video_size": "sm",
-        "video": "shopify://files/videos/Voxblock Intro Stop Motion New.mp4",
-        "youtube_id": "",
-        "external_video_url": "",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "jsonld_title": "Voxblock video",
-        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
-      }
-    },
-    "hot_spots_ABkh3k": {
-      "type": "hot-spots",
-      "blocks": {
-        "item_UpGgpf": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 52,
-            "vertical_position": 9,
-            "horizontal_position_mobile": 62,
-            "vertical_position_mobile": 14,
-            "icon_width": 32,
-            "title": "Speaker or headphones",
-            "content": "<p>Use Voxblock's built in speaker, or plug in your own headphones for quiet listening.</p>"
-          }
-        },
-        "item_FEejK8": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 36,
-            "vertical_position": 15,
-            "horizontal_position_mobile": 30,
-            "vertical_position_mobile": 30,
-            "icon_width": 32,
-            "title": "Simple-to-use",
-            "content": "<p>No wifi, no apps, no set-up and no parents needed.</p>"
-          }
-        },
-        "item_ctaFb8": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 35,
-            "vertical_position": 54,
-            "horizontal_position_mobile": 24,
-            "vertical_position_mobile": 70,
-            "icon_width": 32,
-            "title": "Long lasting",
-            "content": "<p>Created with the minimum number of necessary parts, our player is straightforward and simple, designed to live a long and happy life.</p>"
-          }
-        },
-        "item_3xKcm4": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 55,
-            "vertical_position": 36,
-            "horizontal_position_mobile": 83,
-            "vertical_position_mobile": 75,
-            "icon_width": 32,
-            "title": "Physical audiobooks",
-            "content": "<p>Made from over 90% recycled material. Audiobooks automatically play once placed in the player.</p>"
-          }
-        },
-        "item_cwJWWg": {
-          "type": "item",
-          "settings": {
-            "horizontal_position": 56,
-            "vertical_position": 68,
-            "horizontal_position_mobile": 30,
-            "vertical_position_mobile": 30,
-            "icon_width": 32,
-            "title": "Sleep mode",
-            "content": "<p>Sleep mode that helps children wind down, and turns off after a pre-set time.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_UpGgpf",
-        "item_FEejK8",
-        "item_ctaFb8",
-        "item_3xKcm4",
-        "item_cwJWWg"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "image": "shopify://shop_images/Player-FRONT-and_books-lifestyle-TEST2-Current_View.jpg",
-        "mobile_image": "shopify://shop_images/Player-FRONT-and_books-lifestyle-mobile.jpg",
-        "title": "Features",
-        "content": "<p>Our simple-to-use, screen-free audiobook player</p>",
-        "button_text": "",
-        "button_url": "",
-        "desktop_text_position": "place-self-start text-start",
-        "image_background": "",
-        "image_background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#ffffff",
-        "overlay_button_background": "",
-        "overlay_button_text_color": "",
-        "hot_spot_dot_background": "#ffffff",
-        "hot_spot_dot_text_color": "#000000",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#000000",
-        "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
       }
     },
     "multiple_images_with_text_6ef3gj": {
@@ -709,163 +498,6 @@
         "product_card_text_color": ""
       }
     },
-    "logo_list_paF9D9": {
-      "type": "logo-list",
-      "blocks": {
-        "logo_nmCppy": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Trustpilot_icon_v3.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_LtC3f6": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Indy_AsFeaturedIn_2024.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_R3zrTb": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/GOOD_PLAY_GUIDE-01_copy.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        },
-        "logo_cykwBx": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/JDA_2023_Logo_Silver_2ca8e977-0c5b-4e18-93bc-9b33e69137f0.png",
-            "logo_width": 90,
-            "link": ""
-          }
-        },
-        "logo_Mj7afL": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/Toy-Awards-2024-Best-Toy-Brand.png",
-            "logo_width": 120,
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_nmCppy",
-        "logo_LtC3f6",
-        "logo_R3zrTb",
-        "logo_cykwBx",
-        "logo_Mj7afL"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "title": "Press and awards",
-        "content": "",
-        "text_alignment": "start",
-        "items_per_row": 5,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "logo_item_background": "",
-        "logo_item_border": ""
-      }
-    },
-    "impact_text_jYW6eK": {
-      "type": "impact-text",
-      "blocks": {
-        "item_PRdpXH": {
-          "type": "item",
-          "settings": {
-            "title": "230",
-            "subheading": "audiobooks in our collection",
-            "content": "",
-            "button_text": "",
-            "button_url": "",
-            "animate_impact_text": false,
-            "animate_impact_text_duration": 2
-          }
-        },
-        "item_FDrVUw": {
-          "type": "item",
-          "settings": {
-            "title": "3500+",
-            "subheading": "happy Voxblock listeners",
-            "content": "",
-            "button_text": "",
-            "button_url": "",
-            "animate_impact_text": false,
-            "animate_impact_text_duration": 2
-          }
-        }
-      },
-      "block_order": [
-        "item_PRdpXH",
-        "item_FDrVUw"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "text_alignment": "center",
-        "impact_text_style": "fill",
-        "text_divider": "none",
-        "impact_text_size_ratio": 1,
-        "background": "#ff9e57",
-        "background_gradient": "",
-        "heading_text_color": "#fff7f0",
-        "heading_gradient": "",
-        "text_color": "#fff7f0",
-        "button_background": "",
-        "button_text_color": ""
-      }
-    },
-    "rich_text_d6cFLE": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_TEL8eC": {
-          "type": "subheading",
-          "settings": {
-            "text": ""
-          }
-        },
-        "heading_ajYdCx": {
-          "type": "heading",
-          "settings": {
-            "text": "The Benefit of Audiobooks",
-            "heading_tag": "h1",
-            "text_color": "#ff9e57",
-            "gradient": ""
-          }
-        },
-        "richtext_FHEBLg": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Audiobooks for children are a transformative tool by nurturing a lifelong love for literature and enhancing cognitive growth.</p><p>But the benefits don't stop at the mere joy of storytelling. Audiobooks are instrumental in <em>improving a child's vocabulary, pronunciation, and listening skills</em>. They cater to children with different learning styles - especially auditory learners - by allowing them to absorb content more efficiently.</p><p>For children who face reading challenges, audiobooks provide an inclusive medium, ensuring they're not left behind in the literary world. The rich, expressive narration aids improved comprehension and retention of the story. By listening to the cadence, emotion, and tone of a skilled narrator, children also develop an appreciation for the rhythm and beauty of language. Beyond the educational aspects, audiobooks foster multitasking, letting kids engage in other creative tasks or simple relaxation while they listen. In essence, audiobooks for children are not just stories told; they're a gateway to enhanced learning, a deeper imagination and, hopefully, a lifelong love of literature</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_TEL8eC",
-        "heading_ajYdCx",
-        "richtext_FHEBLg"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "image_link_blocks_krpwkL": {
       "type": "image-link-blocks",
       "blocks": {
@@ -977,20 +609,15 @@
   "order": [
     "image_with_text_overlay_J6Gykk",
     "rich_text_yLTnHN",
-    "feature_chart_QAemkB",
     "main",
     "images_with_text_scrolling_EqDQza",
-    "blog_posts_d8xUp4",
-    "testimonials_dbdAFc",
-    "rich_text_7XfET4",
     "video_MiPbPL",
-    "hot_spots_ABkh3k",
+    "testimonials_dbdAFc",
+    "logo_list_paF9D9",
+    "rich_text_7XfET4",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
     "featured_collection_7QMKLN",
-    "logo_list_paF9D9",
-    "impact_text_jYW6eK",
-    "rich_text_d6cFLE",
     "image_link_blocks_krpwkL",
     "newsletter_F6q46M"
   ]
