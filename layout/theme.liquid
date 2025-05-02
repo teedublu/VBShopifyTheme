@@ -74,9 +74,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       <script type="text/javascript">  
       // Near entry of your product, init Mixpanel
       mixpanel.init("c99c8aabf17bf3b9b5184f092fffca3b", {
-        debug: true,
-        track_pageview: true,
-        persistence: "localStorage",
+        autocapture: true,    // enable autocapture
       });
     </script>
   </head>
