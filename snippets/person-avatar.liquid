@@ -1,4 +1,7 @@
-<div class="person-image" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
+<style>
+  .person-image img {margin: 0px}
+</style>
+<div class="person-image {{metaobject.system.type}}" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
   {% case avatar_display %}
     {% when 'image' %}
       {% if metaobject.photos.value != blank %}
