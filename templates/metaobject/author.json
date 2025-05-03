@@ -16,7 +16,11 @@
           "type": "image",
           "settings": {
             "max_width": 200,
-            "radius": 50
+            "radius": 50,
+            "avatar_display": "initials",
+            "avatar_bg_color": "#197177",
+            "initials_font_size": 74,
+            "initials_color": "#ffffff"
           }
         },
         "subheading_Bng4Uf": {
@@ -89,10 +93,10 @@
     "featured_audiobook_light_hqQrgh": {
       "type": "featured-audiobook-light",
       "blocks": {
-        "price_TtcNnL": {
-          "type": "price",
+        "text_VyTfeH": {
+          "type": "text",
           "settings": {
-            "show_taxes_notice": false
+            "text": "<p>A screen-free audiobook</p>"
           }
         },
         "title_xzPUKA": {
@@ -101,22 +105,44 @@
             "heading_tag": "h2"
           }
         },
-        "text_VyTfeH": {
-          "type": "text",
+        "price_TtcNnL": {
+          "type": "price",
           "settings": {
-            "text": "<p>Share some content to your customers about your products.</p>"
+            "show_taxes_notice": false
+          }
+        },
+        "audiobook_properties_w93H7C": {
+          "type": "audiobook-properties",
+          "settings": {
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
+          }
+        },
+        "buy_buttons_Mgij9h": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
           }
         }
       },
       "block_order": [
-        "price_TtcNnL",
+        "text_VyTfeH",
         "title_xzPUKA",
-        "text_VyTfeH"
+        "price_TtcNnL",
+        "audiobook_properties_w93H7C",
+        "buy_buttons_Mgij9h"
       ],
       "settings": {
         "full_width": false,
-        "float_up": 20,
-        "squeeze_in": 100,
+        "float_up": 35,
+        "squeeze_in": 90,
         "desktop_media_width": 55,
         "mobile_media_size": "expanded",
         "background": "",

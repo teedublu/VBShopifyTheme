@@ -63,10 +63,19 @@
         "heading": "Breadcrumbs"
       }
     },
-    "rich_text_M8Hw43": {
+    "rich_text_77Fmmq": {
       "type": "rich-text",
       "blocks": {
-        "richtext_cJ7jDd": {
+        "heading_BAHrW4": {
+          "type": "heading",
+          "settings": {
+            "text": "Who is {{ metaobject.name.value }}?",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_gX7DT3": {
           "type": "richtext",
           "settings": {
             "content": "{{ metaobject.bio | metafield_tag }}"
@@ -74,12 +83,13 @@
         }
       },
       "block_order": [
-        "richtext_cJ7jDd"
+        "heading_BAHrW4",
+        "richtext_gX7DT3"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "medium",
+        "content_width": "small",
         "text_position": "start",
         "background": "",
         "background_gradient": "",
@@ -115,7 +125,13 @@
     "featured_audiobook_light_64rg4L": {
       "type": "featured-audiobook-light",
       "blocks": {
-        "title_kMK4Vw": {
+        "text_xm6AAp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A screen-free audiobook</p>"
+          }
+        },
+        "title_BEcEy4": {
           "type": "title",
           "settings": {
             "heading_tag": "h2"
@@ -127,24 +143,40 @@
             "show_taxes_notice": false
           }
         },
-        "text_Wpb9rk": {
-          "type": "text",
+        "audiobook_properties_7wHX3G": {
+          "type": "audiobook-properties",
           "settings": {
-            "text": "<p>Share some content to your customers about your products.</p>"
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
+          }
+        },
+        "buy_buttons_3wDUDa": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
           }
         }
       },
       "block_order": [
-        "title_kMK4Vw",
+        "text_xm6AAp",
+        "title_BEcEy4",
         "price_hkRLUL",
-        "text_Wpb9rk"
+        "audiobook_properties_7wHX3G",
+        "buy_buttons_3wDUDa"
       ],
       "settings": {
         "full_width": false,
-        "float_up": 20,
+        "float_up": 55,
         "squeeze_in": 100,
-        "desktop_media_width": 55,
-        "mobile_media_size": "expanded",
+        "desktop_media_width": 35,
+        "mobile_media_size": "contained",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -310,7 +342,7 @@
   "order": [
     "image_with_text_overlay_DH8cex",
     "breadcrumbs_XHGrpm",
-    "rich_text_M8Hw43",
+    "rich_text_77Fmmq",
     "featured_collection_KrTR6V",
     "featured_audiobook_light_64rg4L",
     "microdata_8YzdEG",

@@ -1,0 +1,387 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_zpPtRn": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/WBD-Landing-Page-header-image.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "80ch",
+        "show_title": true
+      }
+    },
+    "image_with_text_overlay_6JXtLd": {
+      "type": "image-with-text-overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/SFS-banner-email-simple.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_YjGbKd": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_nEy3cr": {
+          "type": "subheading",
+          "settings": {
+            "text": "Stories for Schools"
+          }
+        },
+        "heading_DR4qwb": {
+          "type": "heading",
+          "settings": {
+            "text": "Nominate Your School",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_AwNbQL": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>In partnership with the Scottish Book Trust</strong></p>"
+          }
+        },
+        "richtext_t7PU3Q": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>To celebrate World Book Day, we’re pledging mini school packs to <strong>five</strong> schools across <strong>five</strong> regions in the <strong>UK</strong>. These packs offer a fantastic new tool for literacy development, perfect for use in the classroom or for creating listening stations in your school library.</p><p>But we need your help! We’re looking for nominations, and we’d love to hear about your school’s commitment to literacy, both within the school and throughout the wider community.</p><p>We also want to hear from schools that are passionate about literacy but are facing challenges, whether it’s obstacles or a lack of funding, that make it difficult to grow their literacy initiatives.</p><p>It’s easy, just fill out the short application form below (it takes less than five minutes).</p><p>A panel of Voxblock team members and the Scottish Book Trust will review the submissions and select a winner for each region.</p><p><strong>Regions:</strong> Scotland, North England, South England, Wales and Northern Ireland</p><p><strong>Deadline:</strong> <strong>28th March</strong></p><p><strong>Who can apply:</strong> Everyone! Whether you’re a teacher, headteacher, or a parent, we’d love to hear from you.</p><p><a href=\"https://voxblock.co.uk/pages/competition-t-cs?_pos=1&_psq=comp&_ss=e&_v=1.0\" title=\"https://voxblock.co.uk/pages/competition-t-cs?_pos=1&_psq=comp&_ss=e&_v=1.0\">View all Terms and Conditions and judging criteria here.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_nEy3cr",
+        "heading_DR4qwb",
+        "richtext_AwNbQL",
+        "richtext_t7PU3Q"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_H6XCn6": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_3LYV4A": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-schools.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "What Your School May Win",
+            "content": "<p>1 of five mini school packs worth <strong>£360</strong>.</p><p>The packs include:</p><ul><li>5x Voxblock audiobooks with bumpers</li><li>10x audiobooks (of schools choice)</li><li>1x charging bank</li><li>1x aux cable</li><li>and school resources</li></ul><p>Good Luck!</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3LYV4A"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_GQVPxC": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_xeHTjG": {
+          "type": "heading",
+          "settings": {
+            "text": "Thank you for all your submissions",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_XQYefQ": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We will announce winners early to mid April.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xeHTjG",
+        "richtext_XQYefQ"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "17406727039ba573b2": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_TYEhxy": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "disabled": true,
+          "settings": {
+            "form_id": "360532",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_TYEhxy"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_WG798Q": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_hiXKyi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-SBT.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "",
+            "content": "<p>We are thrilled to have the <strong>Scottish Book Trust </strong>partnering with us for Stories for Schools!</p><p>The Scottish Book Trust is a national charity dedicated to changing lives through reading, writing, and books. One of their key messages is simple but powerful: <a href=\"https://www.scottishbooktrust.com/articles/all-reading-is-good-reading-audiobooks\" title=\"All Reading is Good Reading - Scottish Book Trust Blog\">all reading is good reading.</a></p><p>They are also the organisation behind the brilliant <a href=\"https://www.scottishbooktrust.com/authors-live-on-demand\" title=\"Author Live on Demand - Scottish Book Trust\">Authors Live</a> events, where they have interviewed some of the amazing authors featured on the Voxblock bookshelf.</p><p></p><p></p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_hiXKyi"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_UE8wxU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3NLTHp": {
+          "type": "heading",
+          "settings": {
+            "text": "What else to expect",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_3NLTHp"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multiple_images_with_text_fjABie": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_fFDqYE": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-book-launch-1.png",
+            "image_rotation_degrees": -2,
+            "subheading": "Coming 4th March",
+            "title": "Science for Curious Kids",
+            "content": "<p>An exciting new fact series from The Audio Agency allowing kids to learn all about Biology, Chemistry and Physics</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_RhK3ba": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 1.5,
+            "subheading": "Coming 11th March",
+            "title": "Louie Stowell's Loki Series",
+            "content": "<p>We have a four audiobook series launching that is not only award winning but are also great 'bad' guides to mischief.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_qUKFTQ": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 0,
+            "subheading": "Coming 17th March",
+            "title": "A New Accessory is Launching",
+            "content": "<p>We are working very hard this year to create some new products for you, and the first is just about ready. Join us on the 17th for this brand new launch!</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_fFDqYE",
+        "item_RhK3ba",
+        "item_qUKFTQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "images_with_text_scrolling_MLdhcd": {
+      "type": "images-with-text-scrolling",
+      "blocks": {
+        "item_XhGmiE": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-double-tokens_1186c913-0c9d-43cc-b868-f13217ba5f3d.png",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "It's Back!",
+            "content": "<p>Double Tokens Day is back at Voxblock giving you the chance to earn double tokens with every audiobook purchased on the 6th March. That means you can fill up your tokens card twice as fast and earn that free audiobook even faster!</p><p><a href=\"https://voxblock.co.uk/pages/voxblock-tokens-collect-for-free-audiobooks\" title=\"https://voxblock.co.uk/pages/voxblock-tokens-collect-for-free-audiobooks\">Discover more about our tokens here.</a></p>"
+          }
+        },
+        "item_aiiBa3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-book-launch-1.png",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "New audiobook launches",
+            "content": "<p>We have some exciting new audiobook launches coming throughout March. Including a new collection of science titles from The Audio Agency and a four audiobook series launching that is not only award winning but are also great 'bad' guides to mischief.</p>"
+          }
+        },
+        "item_VKbAqM": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/WBD-Landing-Page-coming-soon.png",
+            "icon": "none",
+            "icon_width": 48,
+            "title": "New Accessory launch",
+            "content": "<p>We are working very hard this year to create some new products for you, and the first is just about ready. Join us on the 17th for this brand new launch!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_XhGmiE",
+        "item_aiiBa3",
+        "item_VKbAqM"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "show_counter": true,
+        "desktop_image_effect": "reveal",
+        "image_position": "end",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_zpPtRn",
+    "main",
+    "image_with_text_overlay_6JXtLd",
+    "rich_text_YjGbKd",
+    "media_with_text_H6XCn6",
+    "rich_text_GQVPxC",
+    "17406727039ba573b2",
+    "media_with_text_WG798Q",
+    "rich_text_UE8wxU",
+    "multiple_images_with_text_fjABie",
+    "images_with_text_scrolling_MLdhcd"
+  ]
+}

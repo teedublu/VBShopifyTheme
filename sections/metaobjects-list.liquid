@@ -159,11 +159,18 @@
                 {% elsif object.product %}
                   {% assign image = object.product.value.featured_image | first %}
                 {% endif %}
-                {% if image != blank %}
-                  {{ image | image_url: width: 100 | image_tag: alt: object.title.value | escape }}
-                {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder' }}
-                {% endif %}
+
+                 {% render 'person-avatar',
+                        metaobject: object,
+                        radius: section.settings.radius,
+                        max_width: section.settings.max_width,
+                        avatar_bg_color: section.settings.avatar_bg_color,
+                        avatar_display: section.settings.avatar_display,
+                        initials_color: section.settings.initials_color,
+                        initials_font_size: section.settings.initials_font_size
+                    %}
+                
+                
               </div>
               <div class="object-text">
                 {% case object_type %}
@@ -324,6 +331,59 @@
       ],
       "info": "Choose a metaobject to paginate over",
       "default": "authors"
+    },
+    {
+      "type": "radio",
+      "id": "avatar_display",
+      "label": "Avatar display style",
+      "default": "image",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "initials", "label": "Initials" },
+        { "value": "placeholder", "label": "Placeholder" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "radius",
+      "min": 0,
+      "max": 50,
+      "step": 10,
+      "unit": "%",
+      "label": "Image radius",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "initials_font_size",
+      "label": "Initials font size",
+      "min": 5,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "initials_color",
+      "label": "Initials color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "avatar_bg_color",
+      "label": "Initials background",
+      "default": "#ffffff"
     }
   ],
   "blocks": [

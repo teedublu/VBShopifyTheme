@@ -34,43 +34,59 @@
         "show_title": true
       }
     },
-    "17424005196059d51a": {
-      "type": "apps",
+    "tabs_cXefHr": {
+      "type": "tabs",
       "blocks": {
-        "forms_inline_VTTGWV": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "tab_LJe8WW": {
+          "type": "tab",
           "settings": {
-            "form_id": "395570",
-            "text_color": "#202020",
-            "button_background_color": "#202020",
-            "button_label_color": "#FFFFFF",
-            "links_color": "#1878B9",
-            "errors_color": "#E02229",
-            "text_alignment": "center",
-            "form_alignment": "center",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "padding_right": 0,
-            "padding_left": 0
+            "title": "Scotland",
+            "content": "<p></p><p></p>",
+            "page": "",
+            "use_metaobject": ""
+          }
+        },
+        "tab_YpYTqr": {
+          "type": "tab",
+          "settings": {
+            "title": "England",
+            "content": "<p>Describe a product, share announcements, or welcome customers to your store.</p>",
+            "page": "",
+            "use_metaobject": ""
+          }
+        },
+        "tab_8L4rbA": {
+          "type": "tab",
+          "settings": {
+            "title": "Online retailers",
+            "content": "<p>Share information about your shipping rates, return policy or contact information.</p>",
+            "page": "",
+            "use_metaobject": ""
           }
         }
       },
       "block_order": [
-        "forms_inline_VTTGWV"
+        "tab_LJe8WW",
+        "tab_YpYTqr",
+        "tab_8L4rbA"
       ],
       "settings": {
         "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
+        "content_size": "medium",
+        "subheading": "Subheading",
+        "title": "Heading",
+        "first_tab_open": false,
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
       }
     }
   },
   "order": [
     "image_with_text_overlay_EErBBx",
     "main",
-    "17424005196059d51a"
+    "tabs_cXefHr"
   ]
 }
