@@ -14,9 +14,9 @@
       "blocks": {
         "image_MMNaPz": {
           "type": "image",
+          "source": "{{ metaobject }}",
           "settings": {
-            "max_width": 200,
-            "radius": 50
+            "avatar_bg_color": "#4A90E2"
           }
         },
         "subheading_W84qfT": {
@@ -48,6 +48,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
+        "image": "{{ metaobject.header_image.value }}",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
