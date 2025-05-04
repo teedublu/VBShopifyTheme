@@ -72,11 +72,28 @@
           "settings": {
             "content": "{{ metaobject.bio | metafield_tag }}"
           }
+        },
+        "heading_LFPKnY": {
+          "type": "heading",
+          "settings": {
+            "text": "Listen to the Story",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_h7YwRT": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Voxblock make listening to {{ metaobject.name.value }} easy and fun. Available as a screen-free audiobook all children big and small can enjoy {{ metaobject.name.value }} without the need for apps, screens or downloads.</p>"
+          }
         }
       },
       "block_order": [
         "heading_BAHrW4",
-        "richtext_gX7DT3"
+        "richtext_gX7DT3",
+        "heading_LFPKnY",
+        "richtext_h7YwRT"
       ],
       "settings": {
         "full_width": true,
