@@ -81,19 +81,12 @@
             "text_color": "",
             "gradient": ""
           }
-        },
-        "richtext_h7YwRT": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Voxblock make listening to {{ metaobject.name.value }} easy and fun. Available as a screen-free audiobook all children big and small can enjoy {{ metaobject.name.value }} without the need for apps, screens or downloads.</p>"
-          }
         }
       },
       "block_order": [
         "heading_BAHrW4",
         "richtext_gX7DT3",
-        "heading_LFPKnY",
-        "richtext_h7YwRT"
+        "heading_LFPKnY"
       ],
       "settings": {
         "full_width": true,
@@ -103,32 +96,6 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
-    },
-    "featured_collection_KrTR6V": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": true,
-        "products": [],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Featured collection",
-        "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
       }
     },
     "featured_audiobook_light_64rg4L": {
@@ -150,6 +117,12 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
+          }
+        },
+        "text_JVfdTG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Voxblock make listening to {{ metaobject.name.value }} easy and fun. Available as a screen-free audiobook all children big and small can enjoy {{ metaobject.name.value }} without the need for apps, screens or downloads.</p>"
           }
         },
         "audiobook_properties_7wHX3G": {
@@ -177,6 +150,7 @@
         "text_xm6AAp",
         "title_BEcEy4",
         "price_hkRLUL",
+        "text_JVfdTG",
         "audiobook_properties_7wHX3G",
         "buy_buttons_3wDUDa"
       ],
@@ -314,7 +288,6 @@
     "image_with_text_overlay_DH8cex",
     "breadcrumbs_XHGrpm",
     "rich_text_77Fmmq",
-    "featured_collection_KrTR6V",
     "featured_audiobook_light_64rg4L",
     "microdata_8YzdEG",
     "media_with_text_ciY3Ct",
