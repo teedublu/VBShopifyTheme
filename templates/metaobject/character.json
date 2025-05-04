@@ -16,7 +16,11 @@
           "type": "image",
           "settings": {
             "max_width": 200,
-            "radius": 50
+            "radius": 50,
+            "avatar_display": "image",
+            "avatar_bg_color": "#4a90e2",
+            "initials_font_size": 72,
+            "initials_color": "#ffffff"
           }
         },
         "subheading_W84qfT": {
@@ -48,6 +52,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
+        "image": "{{ metaobject.header_image.value }}",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
