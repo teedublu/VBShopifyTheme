@@ -72,21 +72,11 @@
           "settings": {
             "content": "{{ metaobject.bio | metafield_tag }}"
           }
-        },
-        "heading_LFPKnY": {
-          "type": "heading",
-          "settings": {
-            "text": "Listen to the Story",
-            "heading_tag": "h2",
-            "text_color": "",
-            "gradient": ""
-          }
         }
       },
       "block_order": [
         "heading_BAHrW4",
-        "richtext_gX7DT3",
-        "heading_LFPKnY"
+        "richtext_gX7DT3"
       ],
       "settings": {
         "full_width": true,
