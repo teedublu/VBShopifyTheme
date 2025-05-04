@@ -23,14 +23,6 @@
             "initials_color": "#ffffff"
           }
         },
-        "subheading_W84qfT": {
-          "type": "subheading",
-          "settings": {
-            "text": "AUDIOBOOK CHARACTER",
-            "subheading_tag": "h4",
-            "subheading_tag_html": "h2"
-          }
-        },
         "heading_X4DUy3": {
           "type": "heading",
           "settings": {
@@ -43,7 +35,6 @@
       },
       "block_order": [
         "image_MMNaPz",
-        "subheading_W84qfT",
         "heading_X4DUy3"
       ],
       "settings": {
@@ -142,6 +133,12 @@
             "heading_tag": "h2"
           }
         },
+        "text_PmE9j4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Voxblock make listening to {{ metaobject.name.value }} easy and fun. Available as a screen-free audiobook all children big and small can enjoy {{ metaobject.name.value }} without the need for apps, screens or downloads.</p>"
+          }
+        },
         "price_hkRLUL": {
           "type": "price",
           "settings": {
@@ -172,6 +169,7 @@
       "block_order": [
         "text_xm6AAp",
         "title_BEcEy4",
+        "text_PmE9j4",
         "price_hkRLUL",
         "audiobook_properties_7wHX3G",
         "buy_buttons_3wDUDa"
