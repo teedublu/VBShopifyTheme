@@ -190,6 +190,108 @@
         "testimonial_card_text_color": ""
       }
     },
+    "featured_product_hdgDXd": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_A9migG": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title_YkheaN": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_RbeQLc": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_Q6aPTP": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_wRPyt6": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_idrF6V": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_RYbB99": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_eBNXy6": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_j9HUcP": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_86t8NY": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_xJrpix": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_A9migG",
+        "title_YkheaN",
+        "badges_RbeQLc",
+        "price_Q6aPTP",
+        "rating_wRPyt6",
+        "separator_idrF6V",
+        "description_RYbB99",
+        "variant_picker_eBNXy6",
+        "quantity_selector_j9HUcP",
+        "buy_buttons_86t8NY",
+        "pickup_availability_xJrpix"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -329,7 +431,7 @@
         "logo_LtC3f6": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/Indy_AsFeaturedIn_2024.png",
+            "logo": "shopify://shop_images/INDY-Best-AFI.png",
             "logo_width": 120,
             "link": ""
           }
@@ -416,6 +518,41 @@
         "text_color": ""
       }
     },
+    "featured_collection_7QMKLN": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": false,
+        "products": [
+          "a-bear-called-paddington",
+          "james-and-the-giant-peach",
+          "famous-five-audiobook-bundle",
+          "the-gruffalo",
+          "charlie-and-the-chocolate-factory",
+          "pippi-longstocking",
+          "the-worst-witch",
+          "adventures-with-peppa"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 8,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "Our library",
+        "title": "Bestselling audiobooks",
+        "content": "<p>There are hundreds of audiobooks in our collection: ranging from well-known classics, to meditation, to facts and learning, our titles are suitable for toddlers up to teens.</p>",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "multiple_images_with_text_6ef3gj": {
       "type": "multiple-images-with-text",
       "blocks": {
@@ -487,43 +624,8 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "subheading": "",
-        "title": "Begin with our Starter Packs",
+        "title": "Or Begin with our Starter Packs",
         "content": "",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "featured_collection_7QMKLN": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "",
-        "hide_empty": false,
-        "products": [
-          "a-bear-called-paddington",
-          "james-and-the-giant-peach",
-          "famous-five-audiobook-bundle",
-          "the-gruffalo",
-          "charlie-and-the-chocolate-factory",
-          "pippi-longstocking",
-          "the-worst-witch",
-          "adventures-with-peppa"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 8,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 3,
-        "subheading": "Our library",
-        "title": "Bestselling audiobooks",
-        "content": "<p>There are hundreds of audiobooks in our collection: ranging from well-known classics, to meditation, to facts and learning, our titles are suitable for toddlers up to teens.</p>",
         "link_url": "",
         "link_text": "View all",
         "background": "",
@@ -647,15 +749,16 @@
     "image_with_text_overlay_J6Gykk",
     "rich_text_yLTnHN",
     "testimonials_dbdAFc",
+    "featured_product_hdgDXd",
     "main",
     "images_with_text_scrolling_EqDQza",
     "video_MiPbPL",
     "rich_text_xgD4V3",
     "logo_list_paF9D9",
     "rich_text_7XfET4",
+    "featured_collection_7QMKLN",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
-    "featured_collection_7QMKLN",
     "image_link_blocks_krpwkL",
     "newsletter_F6q46M"
   ]
