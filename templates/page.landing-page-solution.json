@@ -23,10 +23,9 @@
         },
         "subheading_cMEphi": {
           "type": "subheading",
-          "disabled": true,
           "settings": {
-            "text": "Looking for a Screen-free Audiobook Player?",
-            "subheading_tag": "h4",
+            "text": "Try Voxblock today",
+            "subheading_tag": "h5",
             "subheading_tag_html": "h2"
           }
         },
@@ -63,6 +62,40 @@
         "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
+      }
+    },
+    "rich_text_7XfET4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KRdjBC": {
+          "type": "heading",
+          "settings": {
+            "text": "The simplest audiobook player on the market",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_ftanmj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Just insert a book and press play, its that easy! No fighting over complicated setups and connecting to apps, giving control back to the kids. </p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KRdjBC",
+        "richtext_ftanmj"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "rich_text_yLTnHN": {
@@ -108,6 +141,7 @@
         "image_TmdLHf",
         "richtext_Yg3mpw"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -116,6 +150,180 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "testimonials_dbdAFc": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_DDNy9M": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Harriet (Feb, 2025)",
+            "title": "I absolutely love our Voxblock",
+            "content": "<p>I absolutely love our Voxblock - my 5yr old loves to listen to it on long car journeys or on airplanes. I find it much more portable than a Toni's box. There is an endless selection of books to choose from and I really do think this is the best quality and value audio player on the market! I keep recommending to anyone who'll listen!</p>"
+          }
+        },
+        "testimonial_md4XwU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ian (Feb, 2025)",
+            "title": "So easy to use, no downloads required, charge up and ready to go!",
+            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books, bought for 5 year old grandson, thinking of purchasing another for 10 year old granddaughter, tokens to collect to obtain free books, very easy order process, delivered 3 days after purchase, like the idea of matching headphones too, excellent information and taster audios on website. Would highly recommend.</p>"
+          }
+        },
+        "testimonial_FDmkry": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "E Joyce (Nov, 2024)",
+            "title": "Great, great, great",
+            "content": "<p>They've always promptly responded to any queries and are very helpful. The blocks are robust and the audio books look like the actual books which I think is great. We love that it isn't connected to the wi-fi and is very portable. The books are quite expensive but in line with similar products and they sometimes offer discounted books or you can save tokens for a free book.</p>"
+          }
+        },
+        "testimonial_iCBMpf": {
+          "type": "testimonial",
+          "disabled": true,
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ari (Mar, 2025)",
+            "title": "The Best Thing Ever",
+            "content": "<p>We really love our voxblock for our 3 kids. We like how it makes bedtime easier. We like collecting the books. We like the loyalty stamps. We hope more books are released for under 5s ! They also ship and deliver very fast. Would recommend for autism and kids that like to skip pages when you read them books.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_DDNy9M",
+        "testimonial_md4XwU",
+        "testimonial_FDmkry",
+        "testimonial_iCBMpf"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Why parents choose Voxblock",
+        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#ff9e57",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "featured_product_mXDeCp": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_mfRBX9": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title_EjBXeG": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_DyDaKT": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_qgwxrg": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_kgJLa9": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_ULippp": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_NeHBNJ": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_tQLtRK": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_AmN7GA": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_XhUgNQ": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_HEXRBB": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_mfRBX9",
+        "title_EjBXeG",
+        "badges_DyDaKT",
+        "price_qgwxrg",
+        "rating_kgJLa9",
+        "separator_ULippp",
+        "description_NeHBNJ",
+        "variant_picker_tQLtRK",
+        "quantity_selector_AmN7GA",
+        "buy_buttons_XhUgNQ",
+        "pickup_availability_HEXRBB"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
       }
     },
     "feature_chart_QAemkB": {
@@ -264,180 +472,6 @@
         "chart_true_false_color": ""
       }
     },
-    "featured_product_mXDeCp": {
-      "type": "featured-product",
-      "blocks": {
-        "vendor_mfRBX9": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title_EjBXeG": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_DyDaKT": {
-          "type": "badges",
-          "settings": {}
-        },
-        "price_qgwxrg": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "rating_kgJLa9": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "separator_ULippp": {
-          "type": "separator",
-          "settings": {}
-        },
-        "description_NeHBNJ": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_tQLtRK": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "quantity_selector_AmN7GA": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_XhUgNQ": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "pickup_availability_HEXRBB": {
-          "type": "pickup_availability",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "vendor_mfRBX9",
-        "title_EjBXeG",
-        "badges_DyDaKT",
-        "price_qgwxrg",
-        "rating_kgJLa9",
-        "separator_ULippp",
-        "description_NeHBNJ",
-        "variant_picker_tQLtRK",
-        "quantity_selector_AmN7GA",
-        "buy_buttons_XhUgNQ",
-        "pickup_availability_HEXRBB"
-      ],
-      "name": "Featured product",
-      "settings": {
-        "full_width": true,
-        "product": "voxblock-player",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
-    },
-    "testimonials_dbdAFc": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_DDNy9M": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Harriet (Feb, 2025)",
-            "title": "I absolutely love our Voxblock",
-            "content": "<p>I absolutely love our Voxblock - my 5yr old loves to listen to it on long car journeys or on airplanes. I find it much more portable than a Toni's box. There is an endless selection of books to choose from and I really do think this is the best quality and value audio player on the market! I keep recommending to anyone who'll listen!</p>"
-          }
-        },
-        "testimonial_md4XwU": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Ian (Feb, 2025)",
-            "title": "So easy to use, no downloads required, charge up and ready to go!",
-            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books, bought for 5 year old grandson, thinking of purchasing another for 10 year old granddaughter, tokens to collect to obtain free books, very easy order process, delivered 3 days after purchase, like the idea of matching headphones too, excellent information and taster audios on website. Would highly recommend.</p>"
-          }
-        },
-        "testimonial_FDmkry": {
-          "type": "testimonial",
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "E Joyce (Nov, 2024)",
-            "title": "Great, great, great",
-            "content": "<p>They've always promptly responded to any queries and are very helpful. The blocks are robust and the audio books look like the actual books which I think is great. We love that it isn't connected to the wi-fi and is very portable. The books are quite expensive but in line with similar products and they sometimes offer discounted books or you can save tokens for a free book.</p>"
-          }
-        },
-        "testimonial_iCBMpf": {
-          "type": "testimonial",
-          "disabled": true,
-          "settings": {
-            "round_avatar": true,
-            "show_rating": true,
-            "rating": 5,
-            "author": "Ari (Mar, 2025)",
-            "title": "The Best Thing Ever",
-            "content": "<p>We really love our voxblock for our 3 kids. We like how it makes bedtime easier. We like collecting the books. We like the loyalty stamps. We hope more books are released for under 5s ! They also ship and deliver very fast. Would recommend for autism and kids that like to skip pages when you read them books.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_DDNy9M",
-        "testimonial_md4XwU",
-        "testimonial_FDmkry",
-        "testimonial_iCBMpf"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_testimonials": true,
-        "subheading": "",
-        "title": "Why parents choose Voxblock",
-        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
-        "link_url": "",
-        "link_text": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "testimonial_card_background": "",
-        "testimonial_card_text_color": ""
-      }
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -474,40 +508,6 @@
         "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
-    "rich_text_7XfET4": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_KRdjBC": {
-          "type": "heading",
-          "settings": {
-            "text": "The simplest audiobook player on the market",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_ftanmj": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_KRdjBC",
-        "richtext_ftanmj"
-      ],
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "featured_collection_7QMKLN": {
       "type": "featured-collection",
       "settings": {
@@ -530,8 +530,8 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
         "subheading": "Our library",
-        "title": "Bestselling audiobooks",
-        "content": "<p>There are hundreds of audiobooks in our collection: ranging from well-known classics, to meditation, to facts and learning, our titles are suitable for toddlers up to teens.</p>",
+        "title": "Audiobooks from toddlers to teens",
+        "content": "<p>At Voxblock we have a vast collection of audiobooks for every age group, meaning Voxblock can grow with your child. Our library is filled with beloved favourites and contemporary wonders.</p>",
         "link_url": "",
         "link_text": "View all",
         "background": "",
@@ -1079,13 +1079,13 @@
   },
   "order": [
     "image_with_text_overlay_J6Gykk",
+    "rich_text_7XfET4",
     "rich_text_yLTnHN",
-    "feature_chart_QAemkB",
-    "featured_product_mXDeCp",
     "testimonials_dbdAFc",
+    "featured_product_mXDeCp",
+    "feature_chart_QAemkB",
     "main",
     "video_MiPbPL",
-    "rich_text_7XfET4",
     "featured_collection_7QMKLN",
     "logo_list_paF9D9",
     "images_with_text_scrolling_EqDQza",
