@@ -108,5 +108,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {%- sections 'footer-group' -%}
       {%- endif -%}
     </main>
+    <!-- Add this in your theme.liquid or checkout.liquid file (before the closing </body> tag) -->
+    {%-  render 'posthog-identify' -%}
   </body>
 </html>
