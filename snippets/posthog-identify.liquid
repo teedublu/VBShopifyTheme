@@ -1,0 +1,40 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize PostHog (only if not already initialized)
+      (function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(t,o,n){
+        function p(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){
+          t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}var r=e;"undefined"!=typeof window&&
+          (r=window.posthog=e),r.people=r.people||[],r.toString=function(t){var e="posthog";
+          return"posthog"!==t&&(e+="."+t),e},r.people.toString=function(){return r.toString(1)+".people (stub)"};
+          var i="capture identify alias people.set people.set_once track_pageview register register_once".split(" ");
+          for(var s=0;s<i.length;s++)p(r,i[s]);e._i.push([t,o,n])},e.__SV=1.2,o=t.createElement("script"),
+          o.type="text/javascript",o.async=!0,o.src="https://cdn.posthog.com/posthog.js",n=t.getElementsByTagName("script")[0],
+          n.parentNode.insertBefore(o,n)})(document,window.posthog||[]);
+  
+      // Initialize PostHog with your Project API Key
+      posthog.init("phc_qdTMDgYcwGoMMmehmBZ2eQVqUYPl2ZGJSJSuAAtKHJf", {
+        api_host: "https://app.posthog.com", // Replace if using self-hosted PostHog
+        capture_pageview: true,
+      });
+  
+      // Identify Shopify User by Email or Customer ID
+      var customerEmail = "{{ customer.email | json }}";
+      var customerId = "{{ customer.id | json }}";
+  
+      if (customerEmail) {
+        // Identify by Email (Preferred)
+        posthog.identify(customerEmail);
+        posthog.people.set({
+          email: customerEmail,
+          name: "{{ customer.first_name | json }} {{ customer.last_name | json }}",
+          first_purchase_date: "{{ customer.created_at | date: '%Y-%m-%d' }}"
+        });
+      } else if (customerId) {
+        // Fallback: Identify by Shopify Customer ID (Prefixed)
+        posthog.identify("shopify-" + customerId);
+      } else {
+        // Automatically use Anonymous ID (Handled by PixieHog)
+        console.log("User is anonymous. PostHog will use default anonymous tracking.");
+      }
+    });
+  </script>
