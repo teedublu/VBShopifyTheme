@@ -1,12 +1,4 @@
-<script>
-  // Prevent PixieHog from using process.env in the browser
-  if (typeof process === "undefined") {
-    window.process = { env: {} };
-  } else {
-    process.env = process.env || {};
-  }
-  console.log("blocked process...");
-</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Wait for PostHog to fully load
