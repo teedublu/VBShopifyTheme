@@ -1,10 +1,18 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Ensure PostHog is loaded
-    if (typeof window.posthog !== "undefined") {
-      console.log("PostHog is already loaded. Identifying user...");
+    // Wait for PostHog to fully load
+    function waitForPostHog() {
+      if (typeof window.posthog !== "undefined" && window.posthog.__loaded) {
+        console.log("PostHog loaded. Identifying user...");
+        identifyPostHogUser();
+      } else {
+        console.log("Waiting for PostHog to load...");
+        setTimeout(waitForPostHog, 50); // Check every 50ms
+      }
+    }
 
-      // Identify Shopify User by Email or Customer ID
+    // User Identification Logic
+    function identifyPostHogUser() {
       var customerEmail = "{{ customer.email | json }}";
       var customerId = "{{ customer.id | json }}";
 
@@ -24,11 +32,11 @@
         posthog.identify("shopify-" + customerId);
         console.log("User identified by Shopify Customer ID:", customerId);
       } else {
-        // Automatically use Anonymous ID (Handled by PixieHog)
         console.warn("User is anonymous. Default anonymous tracking in PostHog.");
       }
-    } else {
-      console.error("PostHog not loaded. User identification skipped.");
     }
+
+    // Start waiting for PostHog
+    waitForPostHog();
   });
 </script>
