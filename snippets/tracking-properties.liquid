@@ -6,12 +6,10 @@
   1. Metaobject support — use type and title if present
 {%- endcomment %}
 {%- if request.page_type == 'metaobject' and metaobject != nil -%}
-  {%- assign page_subject = metaobject.type.name | capitalize -%}
+  {%- assign page_subject = metaobject.system.type | capitalize -%}
   {%- assign page_value = metaobject.title | default: metaobject.name | default: metaobject.handle -%}
 {%- endif -%}
-<script>
-  console.log('{{ request.page_type }}', '{{metaobject.system.type}}')
-</script>
+
 {%- comment %}
   2. Product/Collection/Blog/Page fallbacks
 {%- endcomment %}
