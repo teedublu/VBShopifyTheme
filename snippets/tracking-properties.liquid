@@ -18,6 +18,7 @@
     {%- assign page_subject = product.category -%}
     {%- assign page_value = product.title -%}
   {%- elsif request.page_type == 'collection' -%}
+    {%- assign page_subject = collection.all_types | first -%}
     {%- assign page_value = collection.title -%}
   {%- elsif request.page_type == 'article' -%}
     {%- assign page_value = article.title -%}
