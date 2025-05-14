@@ -15,7 +15,8 @@
 {%- endcomment %}
 {%- if page_value == nil -%}
   {%- if request.page_type == 'product' -%}
-    {%- assign page_value = product.title -%}
+    {%- assign page_subject = product.category -%}
+    {%- assign page_value = page.title -%}
   {%- elsif request.page_type == 'collection' -%}
     {%- assign page_value = collection.title -%}
   {%- elsif request.page_type == 'article' -%}
@@ -25,23 +26,7 @@
   {%- endif -%}
 {%- endif -%}
 
-{%- comment %}
-  3. URL path pattern matching (e.g. /pages/narrator/...)
-{%- endcomment %}
-{%- assign path_parts = request.path | split: '/' -%}
-{%- if page_subject == nil and path_parts.size > 2 and path_parts[1] == 'pages' -%}
-  {%- case path_parts[2] -%}
-    {%- when 'author' -%}
-      {%- assign page_subject = 'Author' -%}
-      {%- assign page_value = path_parts[3] | replace: '-', ' ' | capitalize -%}
-    {%- when 'narrator' -%}
-      {%- assign page_subject = 'Narrator' -%}
-      {%- assign page_value = path_parts[3] | replace: '-', ' ' | capitalize -%}
-    {%- when 'character' -%}
-      {%- assign page_subject = 'Character' -%}
-      {%- assign page_value = path_parts[3] | replace: '-', ' ' | capitalize -%}
-  {%- endcase -%}
-{%- endif -%}
+
 
 {%- comment %}
   4. Metafield overrides (for Shopify Pages only, not metaobjects)
