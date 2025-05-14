@@ -15,6 +15,7 @@
 {%- endcomment %}
 {%- if page_value == nil -%}
   {%- if request.page_type == 'product' -%}
+    {%- assign page_subject = product.category -%}
     {%- assign page_value = product.title -%}
   {%- elsif request.page_type == 'collection' -%}
     {%- assign page_value = collection.title -%}
