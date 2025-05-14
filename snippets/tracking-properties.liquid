@@ -10,7 +10,7 @@
   {%- assign page_value = metaobject.title | default: metaobject.name | default: metaobject.handle -%}
 {%- endif -%}
 <script>
-  console.log('{{ page_subject }}')
+  console.log('{{ request.page_type }}')
 </script>
 {%- comment %}
   2. Product/Collection/Blog/Page fallbacks
