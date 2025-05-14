@@ -9,7 +9,9 @@
   {%- assign page_subject = metaobject.type.name | capitalize -%}
   {%- assign page_value = metaobject.title | default: metaobject.name | default: metaobject.handle -%}
 {%- endif -%}
-
+<script>
+  console.log('{{ page_subject }}')
+</script>
 {%- comment %}
   2. Product/Collection/Blog/Page fallbacks
 {%- endcomment %}
@@ -63,5 +65,4 @@
             }
         });
     });
-  console.log('{{ request.page_type }}')
 </script>
