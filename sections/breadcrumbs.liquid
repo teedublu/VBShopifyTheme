@@ -210,17 +210,6 @@ metaobject__audiobook__audiobook
         {%- assign link =  crumb[0] -%}
         {% if forloop.last %}
           <span>{{ text }}</span>
-
-          <script>
-              document.addEventListener("DOMContentLoaded", function() {
-                  plausible('pageview', {
-                      props: {
-                          landingpage_subject: '{{ text }}'
-                      }
-                  });
-              });
-          </script>
-
         {% else %}
           <a href="{{ link }}"{% if forloop.last %} aria-current="page"{% endif %}class="breadcrumbs__link"><span>{{ text }}</span></a>
         {% endif %}
