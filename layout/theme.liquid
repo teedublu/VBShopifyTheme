@@ -68,13 +68,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <!--/ END content_for_header /-->
     <script defer data-domain="voxblock.co.uk" src="https://plausible.io/js/script.pageview-props.revenue.tagged-events.js"></script>    
     <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('a, button').forEach(el => {
-                el.addEventListener('click', () => plausible('Click'));
-            });
-        });
-    </script>
+
+    {% render 'tracking-properties' %}
      
       <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
