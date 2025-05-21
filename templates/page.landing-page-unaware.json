@@ -85,7 +85,7 @@
         "richtext_Yg3mpw": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Many parents struggle to get their kids into books, especially with screens everywhere. Reading for both parents and children can feel like a chore, but stories don’t have to be.</p><p>We get it, between school, after-school clubs and everything else, finding the right moment to sit down and read can be tough. But that's where audio come in.</p>"
+            "content": "<p>Many parents find it hard to get their kids into books, especially with screens competing for attention. Reading can feel like a chore for both children and adults. But stories don’t have to be difficult.</p><p>We know how busy family life can be. Between school, clubs, and everything in between, finding time to sit down and read isn’t always easy. That’s where audiobooks help. They make stories simple to enjoy, anytime, anywhere.</p>"
           }
         }
       },
@@ -565,32 +565,6 @@
         "button_text_color": ""
       }
     },
-    "featured_collection_7cDbfR": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "voxblock-starter-pack-collection",
-        "hide_empty": false,
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 8,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "subheading": "",
-        "title": "Try Voxblock Today",
-        "content": "<p>Getting started is easy with one of our Starter Packs. </p>",
-        "link_url": "",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "#ff9e57",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "logo_list_paF9D9": {
       "type": "logo-list",
       "blocks": {
@@ -785,6 +759,136 @@
         "text_color": ""
       }
     },
+    "featured_product_c3xjyy": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_L7iwDL": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title_xF4Paz": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_KCCeem": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_ExcRrV": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_tCG4Mi": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_ygLBVm": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_J6hiFA": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_E4kkjb": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_V3D8xb": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_ch6Eft": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_UXym8E": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_L7iwDL",
+        "title_xF4Paz",
+        "badges_KCCeem",
+        "price_ExcRrV",
+        "rating_tCG4Mi",
+        "separator_ygLBVm",
+        "description_J6hiFA",
+        "variant_picker_E4kkjb",
+        "quantity_selector_V3D8xb",
+        "buy_buttons_ch6Eft",
+        "pickup_availability_UXym8E"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "roald-dahl-selection-starter-pack",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_KiNDLL": {
+      "type": "video",
+      "blocks": {
+        "play_UmCK9T": {
+          "type": "play",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "play_UmCK9T"
+      ],
+      "name": "Video",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify://files/videos/24e8f7d32c994acf821d7fb8abddbb80_78bd9f77-6f68-4d2c-9de0-d5baf0e3f03d.mp4",
+        "youtube_id": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    },
     "image_link_blocks_krpwkL": {
       "type": "image-link-blocks",
       "blocks": {
@@ -905,11 +1009,12 @@
     "hot_spots_ABkh3k",
     "testimonials_dbdAFc",
     "multiple_images_with_text_6ef3gj",
-    "featured_collection_7cDbfR",
     "logo_list_paF9D9",
     "impact_text_jYW6eK",
     "featured_collection_7QMKLN",
     "rich_text_d6cFLE",
+    "featured_product_c3xjyy",
+    "video_KiNDLL",
     "image_link_blocks_krpwkL",
     "newsletter_F6q46M"
   ]
