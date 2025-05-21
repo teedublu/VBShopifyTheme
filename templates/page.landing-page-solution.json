@@ -71,7 +71,7 @@
           "type": "heading",
           "settings": {
             "text": "The simplest audiobook player on the market",
-            "heading_tag": "h1",
+            "heading_tag": "h2",
             "text_color": "",
             "gradient": ""
           }
@@ -212,7 +212,7 @@
         "stack_testimonials": true,
         "subheading": "",
         "title": "Why parents choose Voxblock",
-        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
+        "content": "<p>Parents choose Voxblock because it’s simple, screen-free, and built for kids aged 3 and up. With no apps, Wi-Fi, or subscriptions, children can listen independently while building literacy and imagination. </p><p>It’s a trusted choice for families who want an easy, hands-on way to enjoy stories. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
         "link_url": "",
         "link_text": "",
         "background": "",
@@ -222,6 +222,42 @@
         "heading_gradient": "",
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
+      }
+    },
+    "video_K8xewi": {
+      "type": "video",
+      "blocks": {
+        "play_Cqn4zM": {
+          "type": "play",
+          "settings": {}
+        },
+        "heading_4BpxfJ": {
+          "type": "heading",
+          "settings": {
+            "text": "Video",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_Cqn4zM",
+        "heading_4BpxfJ"
+      ],
+      "name": "Video",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "youtube_id": "",
+        "external_video_url": "https://youtu.be/T__P-COwpJE?si=C7PumZ3RULx8oKje",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
     "featured_product_mXDeCp": {
@@ -310,7 +346,7 @@
       "name": "Featured product",
       "settings": {
         "full_width": true,
-        "product": "voxblock-player",
+        "product": "paddington-bear-intro-pack",
         "desktop_media_width": 55,
         "desktop_media_layout": "carousel_thumbnails_left",
         "mobile_media_size": "expanded",
@@ -1082,6 +1118,7 @@
     "rich_text_7XfET4",
     "rich_text_yLTnHN",
     "testimonials_dbdAFc",
+    "video_K8xewi",
     "featured_product_mXDeCp",
     "feature_chart_QAemkB",
     "main",
