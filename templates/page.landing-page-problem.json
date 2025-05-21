@@ -590,6 +590,136 @@
         "product_card_text_color": ""
       }
     },
+    "featured_product_fQPBkt": {
+      "type": "featured-product",
+      "blocks": {
+        "vendor_c7979d": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title_BJyN8w": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges_mQBggk": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price_dnFWXM": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating_KyUGYG": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "separator_FPFFjT": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description_emgqaA": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "variant_picker_HQExWc": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector_4Qej43": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_wqn4V9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "pickup_availability_VtWL9m": {
+          "type": "pickup_availability",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor_c7979d",
+        "title_BJyN8w",
+        "badges_mQBggk",
+        "price_dnFWXM",
+        "rating_KyUGYG",
+        "separator_FPFFjT",
+        "description_emgqaA",
+        "variant_picker_HQExWc",
+        "quantity_selector_4Qej43",
+        "buy_buttons_wqn4V9",
+        "pickup_availability_VtWL9m"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "full_width": true,
+        "product": "bedtime-stories-starter-pack",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": true,
+        "enable_video_looping": false,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "video_L6TPyc": {
+      "type": "video",
+      "blocks": {
+        "play_DJd88Y": {
+          "type": "play",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "play_DJd88Y"
+      ],
+      "name": "Video",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "auto",
+        "video": "shopify://files/videos/27fe92dcb105417ebe21e616758b1dca_98e410a4-e79d-4567-a6ba-ae33403c2228.mp4",
+        "youtube_id": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    },
     "logo_list_paF9D9": {
       "type": "logo-list",
       "blocks": {
@@ -904,6 +1034,8 @@
     "testimonials_dbdAFc",
     "multiple_images_with_text_6ef3gj",
     "featured_collection_7cDbfR",
+    "featured_product_fQPBkt",
+    "video_L6TPyc",
     "logo_list_paF9D9",
     "impact_text_jYW6eK",
     "featured_collection_7QMKLN",
