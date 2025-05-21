@@ -24,6 +24,7 @@
     {%- assign page_value = article.title -%}
   {%- elsif request.page_type == 'page' -%}
     {%- assign page_value = page.title -%}
+    {%- assign page_subject = 'General Page' -%}
   {%- endif -%}
 {%- endif -%}
 
