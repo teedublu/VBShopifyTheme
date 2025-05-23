@@ -57,15 +57,17 @@
 {%- endif -%}
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        plausible('pageview', {
-            props: {
-              page_type: '{{ page_type | escape }}',
-              page_subject: '{{ page_subject | escape }}',
-              page_value: '{{ page_value | escape }}'
-            }
-        });
-        console.log('Tracking {{ page_type }} / {{ page_subject }} / {{ page_value }}');
-    });
+  window.plausible = window.plausible || function() {
+    (window.plausible.q = window.plausible.q || []).push(arguments);
+  };
+  plausible('pageview', {
+      props: {
+        page_type: '{{ page_type | escape }}',
+        page_subject: '{{ page_subject | escape }}',
+        page_value: '{{ page_value | escape }}'
+      }
+  });
+  console.log('Tracking {{ page_type }} / {{ page_subject }} / {{ page_value }}');
+    
   
 </script>
