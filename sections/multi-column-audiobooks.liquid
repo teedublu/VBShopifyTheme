@@ -82,6 +82,7 @@
                       {% assign content = character.bio | metafield_tag | strip_html | truncate: 200 %}
                       {% assign title = character.name %}
                       {% assign image = character.photos.value | first %}
+                      {% assign avatar_display = 'image' %}
                       {% assign link_url = character.system.url %}
                       {% assign link_text = 'read more' %}
                       {% assign found = character %}
