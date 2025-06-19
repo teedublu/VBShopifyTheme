@@ -1,13 +1,17 @@
+{% if metaobject_to_use != blank %}
+  {%  assign metaobject_to_use = metaobject%}
+{% endif %}
+
 <div class="person-image" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
   {% case avatar_display %}
     {% when 'image' %}
-      {% if metaobject.photos.value != blank %}
-        {{ metaobject.photos.value | first | image_url: width: max_width | image_tag: alt: object.title.value | escape }}
+      {% if metaobject_to_use.photos.value != blank %}
+        {{ metaobject_to_use.photos.value | first | image_url: width: max_width | image_tag: alt: object.title.value | escape }}
       {% else %}
         {{ 'image' | placeholder_svg_tag: 'placeholder' }}
       {% endif %}
     {% when 'initials' %}
-      {% assign name_parts = metaobject.name | split: ' ' %}
+      {% assign name_parts = metaobject_to_use.name | split: ' ' %}
         {% assign first_initial = name_parts[0] | slice: 0, 1 | upcase %}
         {% assign second_initial = '' %}
         {% if name_parts.size > 1 %}
