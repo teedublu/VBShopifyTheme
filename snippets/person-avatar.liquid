@@ -1,12 +1,15 @@
 {% if metaobject_to_use == blank %}
   {%  assign metaobject_to_use = metaobject%}
 {% endif %}
+{% if image_to_use == blank %}
+  {%  assign image_to_use = metaobject_to_use.photos.value | first%}
+{% endif %}
 
 <div class="person-image place-self-center" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
   {% case avatar_display %}
     {% when 'image' %}
-      {% if metaobject_to_use.photos.value != blank %}
-        {{ metaobject_to_use.photos.value | first | image_url: width: max_width | image_tag: alt: object.title.value | escape }}
+      {% if image_to_use != blank %}
+        {{ image_to_use | image_url: width: max_width | image_tag: alt: object.title.value | escape }}
       {% else %}
         {{ 'image' | placeholder_svg_tag: 'placeholder' }}
       {% endif %}
