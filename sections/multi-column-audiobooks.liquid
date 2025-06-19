@@ -70,7 +70,7 @@
                   {% assign content = publisher.description | metafield_tag | strip_html | truncate: 200 %}
                   {% assign avatar_display = 'image' %}
                   {% assign title = publisher.name %}
-                  {% assign image_to_use = publisher.logo %}
+                  {% assign image = publisher.logo %}
                   {% assign link_url = publisher.system.url %}
                   {% assign link_text = 'read more' %}
                   {% assign found = publisher %}
@@ -109,7 +109,7 @@
                   
                   {% render 'person-avatar',
                       metaobject: metaobject_to_use,
-                     image_to_use: image_to_use,
+                     image_to_use: image,
                       radius: '50',
                       max_width: '150',
                       avatar_bg_color: '#eee',
