@@ -46,13 +46,8 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- comment -%} DONT THINK WE NEED THIS <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">{%- endcomment -%}
 
     {%- unless settings.heading_font.system? -%}
-      <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
+      {{ settings.heading_font | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {%- endunless -%}
-
-    {%- comment -%}{%- unless settings.text_font.system? -%}
-      <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
-    {%- endunless -%}
-    {%- endcomment -%}
 
     {%- unless settings.text_font.system? -%}
       {{ settings.text_font | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
