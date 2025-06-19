@@ -44,6 +44,7 @@
               {%- case block.settings.use_object -%}
                 {%- when 'author' -%}
                   {% assign author = metaobject.product.value.metafields.book.authors.value | first %}
+                  {% assign metaobject_to_use = metaobject.product.value.metafields.book.authors.value | first %}
                   {% assign content = author.bio | metafield_tag | strip_html | truncate: 200 %}
                   {% assign title = author.name %}
                   {% assign image = author.photos.value | first %}
@@ -102,7 +103,7 @@
                 {%- if image!=nil -%}
                   
                   {% render 'person-avatar',
-                      metaobject: metaobject,
+                      metaobject: metaobject_to_use,
                       radius: block.settings.radius,
                       max_width: block.settings.max_width,
                       avatar_bg_color: block.settings.avatar_bg_color,
