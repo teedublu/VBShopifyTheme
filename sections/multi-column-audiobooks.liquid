@@ -100,7 +100,16 @@
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
 
                 {%- if image!=nil -%}
-                  {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,800,1000,1200,1400,1600,1800', class: 'rounded audioook-object-image' -}}
+                  
+                  {% render 'person-avatar',
+                      metaobject: metaobject,
+                      radius: block.settings.radius,
+                      max_width: block.settings.max_width,
+                      avatar_bg_color: block.settings.avatar_bg_color,
+                      avatar_display: block.settings.avatar_display,
+                      initials_color: block.settings.initials_color,
+                      initials_font_size: block.settings.initials_font_size
+                  %}
                 {%- else -%}
                     <img src="https://cdn.shopify.com/s/files/1/0565/2050/7467/files/placeholder-profile.jpg" alt="Descriptive text" class="rounded audioook-object-image">
                 {%- endif -%}
