@@ -44,7 +44,7 @@
               {%- case block.settings.use_object -%}
                 {%- when 'author' -%}
                   {% assign author = metaobject.product.value.metafields.book.authors.value | first %}
-                  {% assign metaobject = metaobject.product.value.metafields.book.authors.value | first %}
+                  {% assign metaobject_to_use = metaobject.product.value.metafields.book.authors.value | first %}
                   {% assign content = author.bio | metafield_tag | strip_html | truncate: 200 %}
                   {% assign title = author.name %}
                   {% assign image = author.photos.value | first %}
@@ -54,7 +54,7 @@
 
                 {%- when 'narrator' -%}
                   {% assign narrator = metaobject.product.value.metafields.book.narrators.value | first %}
-                  {% assign metaobject = metaobject.product.value.metafields.book.narrators.value | first %}
+                  {% assign metaobject_to_use = metaobject.product.value.metafields.book.narrators.value | first %}
                   {% assign content = narrator.bio | metafield_tag | strip_html | truncate: 200 %}
                   {% assign title = narrator.name %}
                   {% assign image = narrator.photos.value | first %}
