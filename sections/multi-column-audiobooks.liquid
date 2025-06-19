@@ -66,6 +66,7 @@
 
                 {%- when 'publisher' -%}
                   {% assign publisher = metaobject.product.value.metafields.book.publisher.value %}
+                  {% assign metaobject_to_use = metaobject.product.value.metafields.book.publisher.value | first %}
                   {% assign content = publisher.description | metafield_tag | strip_html | truncate: 200 %}
                   {% assign avatar_display = 'image' %}
                   {% assign title = publisher.name %}
