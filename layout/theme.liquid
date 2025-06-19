@@ -49,9 +49,15 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin>
     {%- endunless -%}
 
-    {%- unless settings.text_font.system? -%}
+    {%- comment -%}{%- unless settings.text_font.system? -%}
       <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
     {%- endunless -%}
+    {%- endcomment -%}
+
+    {%- unless settings.text_font.system? -%}
+      {{ settings.text_font | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {%- endunless -%}
+
     
     {%- render 'social-meta-tags' -%}
     {%- render 'microdata-schema' -%}
