@@ -2,7 +2,7 @@
   {%  assign metaobject_to_use = metaobject%}
 {% endif %}
 
-<div class="person-image" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
+<div class="person-image place-self-center" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
   {% case avatar_display %}
     {% when 'image' %}
       {% if metaobject_to_use.photos.value != blank %}
