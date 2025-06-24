@@ -15,19 +15,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 	
 	
 
-  	<!-- BEGIN MerchantWidget Code -->
-<script id='merchantWidgetScript'
-        src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
-        defer>
-</script>
-<script type="text/javascript">
-  merchantWidgetScript.addEventListener('load', function () {
-    merchantwidget.start({
-     position: 'RIGHT_BOTTOM'
-   });
-  });
-</script>
-<!-- END MerchantWidget Code -->
+  	
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0">
@@ -87,6 +75,19 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
             person_profiles: 'always', // or 'always' to create profiles for anonymous users as well
         })
     </script>
+    <!-- BEGIN MerchantWidget Code -->
+    <script id='merchantWidgetScript'
+            src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
+            defer>
+    </script>
+    <script type="text/javascript">
+      merchantWidgetScript.addEventListener('load', function () {
+        merchantwidget.start({
+         position: 'RIGHT_BOTTOM'
+       });
+      });
+    </script>
+    <!-- END MerchantWidget Code -->
     
   </head>
   <body class="{% if settings.show_page_transition %}page-transition{% endif %} {% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}"><!-- Google Tag Manager (noscript) -->
