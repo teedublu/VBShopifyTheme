@@ -179,6 +179,40 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "rich_text_4eqFgE": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_zMewJt": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Applications are open until the 31st July and you will be contacted after the closing date to advised on if you have been successful or not. If you have not been successful this time around, we will have opportunities later in the year to apply again.</p>"
+          }
+        },
+        "heading_8KRixe": {
+          "type": "heading",
+          "settings": {
+            "text": "We look forward to working with you!",
+            "heading_tag": "h4",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "richtext_zMewJt",
+        "heading_8KRixe"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
@@ -186,6 +220,7 @@
     "rich_text_rr7dDR",
     "media_with_text_nTcmUD",
     "rich_text_mDXjW9",
-    "collabs"
+    "collabs",
+    "rich_text_4eqFgE"
   ]
 }
