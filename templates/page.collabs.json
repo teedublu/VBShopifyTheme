@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "image_with_text_overlay_APMfz4": {
+      "type": "image-with-text-overlay",
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/Voxblock_insider.png",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
     "collabs": {
       "type": "apps",
       "blocks": {
@@ -16,19 +35,33 @@
           "type": "shopify://apps/collabs/blocks/application-page/54758706-9f25-4fa9-a553-64720a4c998b",
           "settings": {
             "heading": "Let’s work together!",
+            "show_square_logo": true,
+            "show_partnership_info": true,
             "button_text": "Apply now",
+            "number_of_images": "4",
+            "logo_position": "above",
+            "corner_style": "square",
             "button_background_color": "#f1a801",
-            "button_label_color": "#FFFFFF"
+            "button_label_color": "#ffffff",
+            "link_color": "#2c6ecb"
           }
         }
       },
       "block_order": [
         "7095d135-6299-417f-beed-40eb419d6049"
       ],
-      "settings": {}
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
+    "image_with_text_overlay_APMfz4",
     "collabs"
   ]
 }
