@@ -65,6 +65,40 @@
         "overlay_opacity": 0
       }
     },
+    "rich_text_7XfET4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KRdjBC": {
+          "type": "heading",
+          "settings": {
+            "text": "The simplest audiobook player on the market",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_ftanmj": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KRdjBC",
+        "richtext_ftanmj"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "rich_text_yLTnHN": {
       "type": "rich-text",
       "blocks": {
@@ -512,40 +546,6 @@
         "text_color": ""
       }
     },
-    "rich_text_7XfET4": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_KRdjBC": {
-          "type": "heading",
-          "settings": {
-            "text": "The simplest audiobook player on the market",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_ftanmj": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>No app setup, no downloading, no waiting. Voxblock is ready to go straight out of the box. Just insert a book block and press play, it’s that easy!</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_KRdjBC",
-        "richtext_ftanmj"
-      ],
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "featured_collection_7QMKLN": {
       "type": "featured-collection",
       "settings": {
@@ -642,7 +642,7 @@
     "featured_collection_7cDbfR": {
       "type": "featured-collection",
       "settings": {
-        "collection": "voxblock-starter-pack-collection",
+        "collection": "accessories-for-voxblock",
         "hide_empty": false,
         "products": [],
         "full_width": true,
@@ -652,8 +652,8 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "subheading": "",
-        "title": "Or Begin with our Starter Packs",
-        "content": "",
+        "title": "Travel anywhere and everywhere",
+        "content": "<p>Travel anywhere and everywhere with Voxblock with our exclusive travel case and kid friendly headphones.</p>",
         "link_url": "",
         "link_text": "View all",
         "background": "",
