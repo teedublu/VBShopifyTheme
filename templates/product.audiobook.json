@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs_UCTtKj": {
@@ -35,6 +35,10 @@
           "settings": {
             "text": "{{ product.metafields.book.audiobook.value.concise_blurb | metafield_tag }}"
           }
+        },
+        "klaviyo_email_marketing_sms_customer_hub_wishlist_MrAXHC": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/customer-hub-wishlist/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {}
         },
         "price": {
           "type": "price",
@@ -74,6 +78,7 @@
         "text_RffQCL",
         "title",
         "text_t6JGDa",
+        "klaviyo_email_marketing_sms_customer_hub_wishlist_MrAXHC",
         "price",
         "audiobook_properties_cU6Htk",
         "author_narrator_yb9X3i",
@@ -193,9 +198,7 @@
       "type": "related-products",
       "settings": {
         "recommendations_count": 8,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
@@ -314,8 +317,21 @@
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
+      }
+    },
+    "17556745048923a92f": {
+      "type": "apps",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     }
   },
@@ -327,6 +343,7 @@
     "related_products_NbRnrP",
     "recently_viewed_products_FXQk8b",
     "faq_KiLD6K",
-    "image_with_text_overlay_DFnfFe"
+    "image_with_text_overlay_DFnfFe",
+    "17556745048923a92f"
   ]
 }
