@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,8 +15,12 @@
         "liquid_HaW47K": {
           "type": "liquid",
           "settings": {
-            "liquid": "<style>\n.product-gallery__media {padding: 0px 70px}\n<\/style>"
+            "liquid": "<style>\n.product-gallery__media {padding: 0px 70px}\n</style>"
           }
+        },
+        "klaviyo_email_marketing_sms_customer_hub_wishlist_fjAP7x": {
+          "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/customer-hub-wishlist/2632fe16-c075-4321-a88b-50b567f42507",
+          "settings": {}
         },
         "title": {
           "type": "title",
@@ -17,8 +30,7 @@
         },
         "badges": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "price": {
           "type": "price",
@@ -57,6 +69,7 @@
       },
       "block_order": [
         "liquid_HaW47K",
+        "klaviyo_email_marketing_sms_customer_hub_wishlist_fjAP7x",
         "title",
         "badges",
         "price",
@@ -87,9 +100,7 @@
       "settings": {
         "collection": "accessories-for-voxblock",
         "hide_empty": false,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
@@ -99,7 +110,7 @@
         "subheading": "",
         "title": "Our Accessories",
         "content": "",
-        "link_url": "shopify:\/\/collections\/accessories-for-voxblock",
+        "link_url": "shopify://collections/accessories-for-voxblock",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
@@ -139,10 +150,12 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/blue-and-orange-headphones-pattern.jpg",
+        "image": "shopify://shop_images/blue-and-orange-headphones-pattern.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
