@@ -50,47 +50,6 @@
         "text_color": ""
       }
     },
-    "rich_text_6XHw7r": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_cFY6xD": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_eXwqLE": {
-          "type": "heading",
-          "settings": {
-            "text": "Heading",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_j4hP6N": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_cFY6xD",
-        "heading_eXwqLE",
-        "richtext_j4hP6N"
-      ],
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "custom_liquid_XWUYJr": {
       "type": "custom-liquid",
       "name": "Custom Liquid",
@@ -98,7 +57,7 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "liquid": "{% render 'portable-text', portableText: product.metafields.app--h2okhvxc--sanity.published.value.body %}",
+        "liquid": "WTF{% render 'portable-text', portableText: metaobject.blurb.value %} \n\n-- {{ metaobject.blurb}}",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -107,7 +66,6 @@
   },
   "order": [
     "rich_text_qch6EM",
-    "rich_text_6XHw7r",
     "custom_liquid_XWUYJr"
   ]
 }
