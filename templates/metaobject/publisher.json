@@ -17,31 +17,35 @@
           "source": "{{ metaobject }}",
           "settings": {
             "max_width": 200,
-            "radius": 50
-          }
-        },
-        "subheading_LYWNDk": {
-          "type": "subheading",
-          "settings": {
-            "text": "Subheading",
-            "subheading_tag": "h1",
-            "subheading_tag_html": "h2"
+            "radius": 50,
+            "avatar_display": "initials",
+            "avatar_bg_color": "#4a90e2",
+            "initials_font_size": 72,
+            "initials_color": "#ffffff"
           }
         },
         "heading_wUxTkH": {
           "type": "heading",
           "settings": {
-            "text": "Image with text overlay",
+            "text": "{{ metaobject.page_title.value }}",
             "scale_with": false,
             "heading_tag": "h1",
             "heading_tag_html": "h1"
+          }
+        },
+        "subheading_LYWNDk": {
+          "type": "subheading",
+          "settings": {
+            "text": "Audiobook Publisher",
+            "subheading_tag": "h3",
+            "subheading_tag_html": "h2"
           }
         }
       },
       "block_order": [
         "image_BY36cH",
-        "subheading_LYWNDk",
-        "heading_wUxTkH"
+        "heading_wUxTkH",
+        "subheading_LYWNDk"
       ],
       "settings": {
         "full_width": true,
@@ -52,7 +56,7 @@
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
-        "background": "#eaeaea",
+        "background": "#ffb74a",
         "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 30
