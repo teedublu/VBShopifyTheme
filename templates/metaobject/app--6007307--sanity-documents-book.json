@@ -57,7 +57,7 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "liquid": "WTF{% render 'portable-text', portableText: metaobject.blurb.value %} \n\n-- {{ metaobject.blurb}}",
+        "liquid": "{% render 'portable-text', portableText: metaobject. longBlurb.value%} WTFF\n\n-- {{ metaobject.longBlurb.value}}",
         "background": "",
         "background_gradient": "",
         "text_color": ""

@@ -5,6 +5,7 @@
   endcomment
 
   for block in portableText
+    echo block
     case block._type
       when "block"
         render 'portable-text-block' with block as block, lastListItem: lastListItem, lastListLevel: lastListLevel, errors: errors
