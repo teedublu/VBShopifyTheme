@@ -3,9 +3,9 @@
     This snippet is used to render a portable text block. It looks through each block and render the correct partial based on the block type.
     If you have custom blocks, you can add them here. We've got a couple of examples here to render an accordion and a callout, which will work in Shopify's Dawn theme out of the box. The Sanity schema for these blocks is provided in the readme.
   endcomment
-
+echo portableText
   for block in portableText
-    echo block
+    
     case block._type
       when "block"
         render 'portable-text-block' with block as block, lastListItem: lastListItem, lastListLevel: lastListLevel, errors: errors
