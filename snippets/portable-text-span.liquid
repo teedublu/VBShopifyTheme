@@ -1,52 +1,78 @@
-{%- liquid
-  comment
-    We need to apply marks to the text - we'll define those here
-    We also need to deal with markdefs - these will also need to be defined here
-  endcomment
+{%- comment -%}
+Inputs:
+- span: { text, marks: [...] }
+- markDefs: array of mark definitions from the parent block (docLink/externalLink live here)
 
-  assign tags = ""
-  assign closingTags = ""
+Resolves structured marks:
+- 'strong', 'em', 'underline', 'code' (inline marks)
+- markDefs: { _key, _type: 'docLink'|'externalLink', ... }
+{%- endcomment -%}
 
-  for mark in span.marks
-    case mark
-      when "em"
-        assign tags = tags | append: "<em>"
-        assign closingTags = closingTags | append: "</em>"
-      when "strong"
-        assign tags = tags | append: "<strong>"
-        assign closingTags = closingTags | append: "</strong>"
-      when "code"
-        assign tags = tags | append: "<code>"
-        assign closingTags = closingTags | append: "</code>"
-      when "underline"
-        assign tags = tags | append: '<span style="text-decoration:underline">'
-        assign closingTags = closingTags | append: "</span>"
-      when "strike-through"
-        assign tags = tags | append: "<del>"
-        assign closingTags = closingTags | append: "</del>"
-      else
-        assign currentMark = markDefs | where: "_key", mark | first
-        if currentMark
-          if currentMark._type == "link"
-            assign tags = tags | append: '<a href="' | append: currentMark.href | append: '">'
-            assign closingTags = closingTags | append: "</a>"
-          else
-            comment
-              We don't know what to do with this mark - so we'll just ignore it unless errors are true
-              in which case we'll highlight the problem with some styling
-            endcomment
-            if errors != false
-              echo '<script type="text/javascript">console.warn("Unknown mark type: {type}")</script>' | replace: "{type}", currentMark._type
-            endif
-          endif
-          comment
-            More custom marks can be defined here
-          endcomment
-        endif
-    endcase
-  endfor
+{%- assign base = settings.voxblock_routes_base | default: 'https://voxblock.co.uk/something' -%}
 
-  assign text = span.text | escape | newline_to_br
+{%- assign out = span.text | escape -%}
 
-  echo tags | append: text | append: closingTags
--%}
+{%- if span.marks and span.marks.size > 0 -%}
+  {%- for m in span.marks -%}
+    {%- comment -%}Inline style marks first{%- endcomment -%}
+    {%- if m == 'strong' -%}
+      {%- assign out = '<strong>' | append: out | append: '</strong>' -%}
+      {%- continue -%}
+    {%- elsif m == 'em' -%}
+      {%- assign out = '<em>' | append: out | append: '</em>' -%}
+      {%- continue -%}
+    {%- elsif m == 'underline' -%}
+      {%- assign out = '<u>' | append: out | append: '</u>' -%}
+      {%- continue -%}
+    {%- elsif m == 'code' -%}
+      {%- assign out = '<code>' | append: out | append: '</code>' -%}
+      {%- continue -%}
+    {%- endif -%}
+
+    {%- comment -%}Otherwise look up a markDef by key{%- endcomment -%}
+    {%- assign def = blank -%}
+    {%- if markDefs and markDefs.size > 0 -%}
+      {%- for d in markDefs -%}
+        {%- if d._key == m -%}{%- assign def = d -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if def == blank -%}{%- continue -%}{%- endif -%}
+
+    {%- case def._type -%}
+      {%- when 'docLink' -%}
+        {%- comment -%}
+        Expected def shape (sent from Sanity):
+        { _type:'docLink', linkType:'product|details|review', docType:'book|character|person|series|publisher', handle:'the-handle', anchor?, newTab? }
+        {%- endcomment -%}
+        {%- assign href = base | append: '/' | append: def.docType | append: '/' | append: def.handle -%}
+        {%- case def.linkType -%}
+          {%- when 'details' -%}{%- assign href = href | append: '/details' -%}
+          {%- when 'review' -%}{%- assign href = href | append: '/reviews' -%}
+          {%- else -%}{% comment %}product/default{% endcomment %}
+        {%- endcase -%}
+        {%- if def.anchor and def.anchor != '' -%}
+          {%- assign href = href | append: '#' | append: def.anchor -%}
+        {%- endif -%}
+
+        {%- assign target = '' -%}{%- assign rel = '' -%}
+        {%- if def.newTab == true -%}
+          {%- assign target = ' target="_blank"' -%}
+          {%- assign rel = ' rel="noopener"' -%}
+        {%- endif -%}
+
+        {%- assign out = '<a href="' | append: href | append: '"' | append: target | append: rel | append: '>' | append: out | append: '</a>' -%}
+
+      {%- when 'externalLink' -%}
+        {%- assign href = def.href -%}
+        {%- assign target = '' -%}{%- assign rel = '' -%}
+        {%- if def.newTab == true -%}
+          {%- assign target = ' target="_blank"' -%}
+          {%- assign rel = ' rel="noopener"' -%}
+        {%- endif -%}
+        {%- assign out = '<a href="' | append: href | append: '"' | append: target | append: rel | append: '>' | append: out | append: '</a>' -%}
+    {%- endcase -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{{- out -}}
