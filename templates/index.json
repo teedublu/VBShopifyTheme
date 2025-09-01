@@ -125,34 +125,6 @@
         "text_color": ""
       }
     },
-    "video_N3TaA4": {
-      "type": "video",
-      "blocks": {
-        "play_dAmdVr": {
-          "type": "play",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "play_dAmdVr"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "autoplay": true,
-        "video_size": "md",
-        "video": "shopify://files/videos/Voxblock Intro Stop Motion New.mp4",
-        "youtube_id": "",
-        "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "jsonld_title": "Voxblock video",
-        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
-      }
-    },
     "logo_list_LNWaw9": {
       "type": "logo-list",
       "blocks": {
@@ -246,6 +218,34 @@
         "heading_gradient": "",
         "logo_item_background": "",
         "logo_item_border": ""
+      }
+    },
+    "video_N3TaA4": {
+      "type": "video",
+      "blocks": {
+        "play_dAmdVr": {
+          "type": "play",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "play_dAmdVr"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "md",
+        "video": "shopify://files/videos/Voxblock Intro Stop Motion New.mp4",
+        "youtube_id": "",
+        "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
     "impact_text_XqyFin": {
@@ -953,8 +953,8 @@
   "order": [
     "image_with_text_overlay_mzRBYC",
     "rich_text_K9xkcG",
-    "video_N3TaA4",
     "logo_list_LNWaw9",
+    "video_N3TaA4",
     "impact_text_XqyFin",
     "hot-spots",
     "featured_collection_fGBEed",
