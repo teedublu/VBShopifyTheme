@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -23,15 +23,17 @@
         "subheading_9hALqg": {
           "type": "subheading",
           "settings": {
-            "text": "FREE AUDIOBOOKS"
+            "text": "EARN FREE AUDIOBOOKS",
+            "subheading_tag": "h4",
+            "subheading_tag_html": "h2"
           }
         },
         "heading_wyFqaQ": {
           "type": "heading",
           "settings": {
-            "text": "Voxblock tokens",
+            "text": "Collect Voxblock tokens",
             "scale_with": false,
-            "heading_tag": "h0",
+            "heading_tag": "h1",
             "heading_tag_html": "p"
           }
         }
@@ -46,12 +48,49 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "md",
-        "image": "shopify:\/\/shop_images\/tokens-hero-image-desktop-3200x1200.jpg",
+        "image": "shopify://shop_images/Tokens-banner-web-v2.25.jpg",
+        "mobile_image": "shopify://shop_images/Tokens-banner-mob-v2.25.jpg",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
+      }
+    },
+    "rich_text_9R8JXg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dKpBgM": {
+          "type": "heading",
+          "settings": {
+            "text": "A reward for every story adventure",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_JJFwCm": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>With every audiobook purchased, you will earn Voxblock tokens. Collect them as you go and once you have 10, you will receive a FREE audiobook of your choice.</p><p>Helping you build your child build their collection a little faster.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dKpBgM",
+        "richtext_JJFwCm"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "media_with_text_K79gTA": {
@@ -60,7 +99,7 @@
         "image_nrPq66": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2-4.png",
+            "image": "shopify://shop_images/2-4.png",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-center-start text-start",
@@ -68,7 +107,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "What are tokens?",
-            "content": "<p>10 tokens = 1 free audiobook<\/p><p>Voxblock tokens can be redeemed for free audiobooks. You will be posted one token for each audiobook ordered. You then add these tokens to your collection card, when you have 10 tokens you can choose a free audiobook. You will receive a collection card with your first order.<\/p>",
+            "content": "<p>10 tokens = 1 free audiobook</p><p>Voxblock tokens can be redeemed for free audiobooks. You will be posted one token for each audiobook ordered. You then add these tokens to your collection card, when you have 10 tokens you can choose a free audiobook. You will receive a collection card with your first order.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#ffffff",
@@ -84,9 +123,74 @@
       "block_order": [
         "image_nrPq66"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "spacing": "none"
+      }
+    },
+    "text_with_icons_EXxLGF": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_ymJTDf": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/icon-token-v1.25_000ef63c-edc7-4daa-b23c-3eb59ce95364.png",
+            "mobile_icon_width": 28,
+            "icon_width": 64,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Collect tokens",
+            "content": "<p>10 tokens = 1 free audiobook</p>"
+          }
+        },
+        "item_fMrYne": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/icon-token-card-v1.25.png",
+            "mobile_icon_width": 24,
+            "icon_width": 64,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Fill your card",
+            "content": "<p>We are available from monday to friday to answer your questions.</p>"
+          }
+        },
+        "item_kmMqHW": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-coupon",
+            "custom_icon": "shopify://shop_images/icon-stamp-v1.25.png",
+            "mobile_icon_width": 24,
+            "icon_width": 64,
+            "icon_background_type": "circle",
+            "icon_background": "",
+            "icon_color": "",
+            "title": "Post to Us",
+            "content": "<p>Put a stamp on your card and send it to us</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_ymJTDf",
+        "item_fMrYne",
+        "item_kmMqHW"
+      ],
+      "name": "Text with icons",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h5",
+        "text_alignment": "center",
+        "icon_spacing": "medium",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "media_with_text_AhWecP": {
@@ -95,15 +199,15 @@
         "image_f8VJRF": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/collection_card_1080x_d8900392-e1ee-4847-96ec-320a92aa03dc.png",
+            "image": "shopify://shop_images/collection_card_1_720x_78463bdb-734e-4d3c-8c3d-a029297ca016.png",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
             "subheading": "",
-            "title": "How do I redeem my tokens?",
-            "content": "<ul><li>Collect 10 tokens and stick them to your collection card<\/li><li>Choose the audiobook you would like from our library<\/li><li>Fill out the card with your chosen audiobook and postal address<\/li><li>Attach a stamp and post the card in a letter box - and that's it!<\/li><\/ul>",
+            "title": "Filling Out Your Card",
+            "content": "<ol><li>Fill out which audiobook you would like</li><li>Fill out your address</li><li>Place a stamp on the card and post</li></ol>",
             "link_text": "",
             "link_url": "",
             "background": "#ffffff",
@@ -126,16 +230,19 @@
     },
     "image_with_text_overlay_mHhfGX": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "full_width": false,
         "allow_transparent_header": false,
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/collection_card_1.png",
+        "image": "shopify://shop_images/collection_card_1.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
@@ -146,7 +253,7 @@
         "image_UYL4hF": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Summer_email_graphic-05.png",
+            "image": "shopify://shop_images/Summer_email_graphic-05.png",
             "media_width": 60,
             "media_position": "start",
             "text_position": "place-self-center text-center",
@@ -154,7 +261,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "Summer is here!",
-            "content": "<p>Until the 30th June, you can get a bonus token when you purchase ANY bundle. So if you buy a three book bundle you will receive four tokens. <\/p>",
+            "content": "<p>Until the 30th June, you can get a bonus token when you purchase ANY bundle. So if you buy a three book bundle you will receive four tokens. </p>",
             "link_text": "",
             "link_url": "",
             "background": "#ffb74a",
@@ -174,6 +281,89 @@
       "settings": {
         "full_width": false,
         "spacing": "small"
+      }
+    },
+    "multi_column_Bk8wiU": {
+      "type": "multi-column",
+      "blocks": {
+        "item_8C4Hw3": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Physical shiny tokens for you to collect",
+            "heading_tag": "h4",
+            "content": "<p>We send you holographic tokens with every purchase that contains audiobooks. These can be used to fill up your card. </p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_qynigA": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Double Tokens Days so you can collect faster*",
+            "heading_tag": "h4",
+            "content": "<p>Every World Book Day (March) and our birthday (August), we host double tokens days to give you an opportunity to fill up your cards even faster</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_4jrAm4": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Build your audio library with a little help from us",
+            "heading_tag": "h4",
+            "content": "<p>We offer our loyalty tokens as a great big thank you for your continued support in our small business. </p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_8C4Hw3",
+        "item_qynigA",
+        "item_4jrAm4"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "More reasons to love our tokens",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_KiA3gh": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_Rb7KzD": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>*please note these are days are classed as an offer and may be subject to change.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_Rb7KzD"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "contact_CJJrdg": {
@@ -200,10 +390,14 @@
   "order": [
     "main",
     "image_with_text_overlay_aAw7fM",
+    "rich_text_9R8JXg",
     "media_with_text_K79gTA",
+    "text_with_icons_EXxLGF",
     "media_with_text_AhWecP",
     "image_with_text_overlay_mHhfGX",
     "media_with_text_fJdxEA",
+    "multi_column_Bk8wiU",
+    "rich_text_KiA3gh",
     "contact_CJJrdg"
   ]
 }
