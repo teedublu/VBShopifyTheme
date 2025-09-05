@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "custom.overlay",
   "name": "Overlay group",
@@ -29,20 +29,24 @@
       "disabled": true,
       "settings": {
         "privacy_bar_title": "We use cookies",
-        "privacy_bar_content": "<p>See our Privacy Policy for more information.<\/p>"
+        "privacy_bar_content": "<p>See our Privacy Policy for more information.</p>"
       }
     },
     "cart-drawer": {
       "type": "cart-drawer",
       "settings": {
-        "show_cart_note": true,
+        "show_cart_note": false,
         "show_shipping_text": true,
         "show_view_cart_button": true,
         "show_checkout_button": true,
-        "recommendations_title": "Trending this month",
-        "products": "{{ localization.market.metafields.custom.basket_upsells.value }}",
-        "product_card_background": "#ffffff",
-        "product_card_text_color": ""
+        "recommendations_title": "Why not include...",
+        "products": [
+          "voxblock-player",
+          "voxblock-travel-case",
+          "voxblock-headphones"
+        ],
+        "product_card_background": "#ffead7",
+        "product_card_text_color": "#2a555a"
       }
     },
     "search-drawer": {
