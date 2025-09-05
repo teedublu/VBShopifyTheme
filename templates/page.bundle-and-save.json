@@ -17,7 +17,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/accessories-banner-v1-web-2025.png",
+        "image": "shopify://shop_images/bundle-banner-web-v1.25.png",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
@@ -29,9 +29,219 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "content_width": "80ch",
         "show_title": true
+      }
+    },
+    "rich_text_6ATx6w": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_AhAxMT": {
+          "type": "subheading",
+          "settings": {
+            "text": "Bundle and Save"
+          }
+        },
+        "heading_mGbHLe": {
+          "type": "heading",
+          "settings": {
+            "text": "Save This September",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_Tk7tdt": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Discover a new way to shop with us this September. We are putting our audiobooks front and centre, allowing you a discount on our player based on the number you buy.</p>"
+          }
+        },
+        "button_hDycJV": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Get saving now",
+            "url": "https://voxblock.co.uk/collections/audiobooks",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_AhAxMT",
+        "heading_mGbHLe",
+        "richtext_Tk7tdt",
+        "button_hDycJV"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_zDMBTL": {
+      "type": "multi-column",
+      "blocks": {
+        "item_GNThpy": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/bundle-image-15-web-v1.25.png",
+            "column_size": "3",
+            "title": "Buy 3 audiobooks, get 15% off a player",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_UQMKTy": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/bundle-image-25-web-v1.25.png",
+            "column_size": "3",
+            "title": "Buy 5 audiobooks, get 25% off a player",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_FPU6wG": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/bundle-image-50-web-v1.25.png",
+            "column_size": "3",
+            "title": "Buy 10 audiobooks, get 50% off a player",
+            "heading_tag": "h4",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_GNThpy",
+        "item_UQMKTy",
+        "item_FPU6wG"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "Save up to 50% off",
+        "content": "<p>Save up to 50% on a player when you buy audiobooks. The amount you save depends on the number of audiobooks you buy (terms and conditions apply) :</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_kq7bJM": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_gYVdXp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/headphones-lifestyle-web-image-5.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "How claim your discount",
+            "content": "<ol><li>Add your desired number of audiobooks* to your basket (3, 5 or 10 audiobooks)</li><li>Add your player to the basket</li><li>Discount will automatically be applied</li></ol>",
+            "link_text": "Browse our audiobooks",
+            "link_url": "https://voxblock.co.uk/collections/audiobooks",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_gYVdXp"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_QFWDVJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_qh3ULh": {
+          "type": "heading",
+          "settings": {
+            "text": "Don't want to bundle and save?",
+            "heading_tag": "h1",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_LxjNKq": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Not to worry, we don't want you to miss out on the savings. For September, we have also brought down our player by £10. But be quick, this is for a limited time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_qh3ULh",
+        "richtext_LxjNKq"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_Gtcwrp": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_PHT8hq": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Bundle and Save terms and conditions: </strong>Limited time offer. While stocks last. Offer ends 30th September. Offer does not extend to audiobook bundles. Basket must contain individual audiobooks AND a player to be applicable.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_PHT8hq"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "17424005196059d51a": {
@@ -72,6 +282,11 @@
   "order": [
     "image_with_text_overlay_EErBBx",
     "main",
+    "rich_text_6ATx6w",
+    "multi_column_zDMBTL",
+    "media_with_text_kq7bJM",
+    "rich_text_QFWDVJ",
+    "rich_text_Gtcwrp",
     "17424005196059d51a"
   ]
 }
