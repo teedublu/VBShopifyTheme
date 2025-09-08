@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs_TMg6RL": {
@@ -26,8 +26,7 @@
         },
         "badges": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "text_thkiB9": {
           "type": "text",
@@ -49,6 +48,16 @@
             "max_width": 170
           }
         },
+        "separator_eYhQVx": {
+          "type": "separator",
+          "settings": {}
+        },
+        "text_B7QjHH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Read what other families say about Voxblock.</p>"
+          }
+        },
         "text_MA3Pah": {
           "type": "text",
           "settings": {
@@ -57,8 +66,7 @@
         },
         "separator": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -113,8 +121,7 @@
         },
         "separator_eAyTL4": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "offer_1": {
           "type": "offer",
@@ -245,8 +252,7 @@
         },
         "separator_JnqTiQ": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "offer_tcaCpM": {
           "type": "offer",
@@ -281,6 +287,8 @@
         "text_thkiB9",
         "price",
         "image_dihJHC",
+        "separator_eYhQVx",
+        "text_B7QjHH",
         "text_MA3Pah",
         "separator",
         "variant_picker",
@@ -325,8 +333,7 @@
       "blocks": {
         "play_fiM6Xf": {
           "type": "play",
-          "settings": {
-          }
+          "settings": {}
         },
         "heading_kJtRma": {
           "type": "heading",
@@ -772,6 +779,8 @@
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
