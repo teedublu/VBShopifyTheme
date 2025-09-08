@@ -11,6 +11,29 @@
   "sections": {
     "image_with_text_overlay_EErBBx": {
       "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_7qT6fF": {
+          "type": "subheading",
+          "settings": {
+            "text": "Our Purpose",
+            "subheading_tag": "h3",
+            "subheading_tag_html": "h2"
+          }
+        },
+        "heading_WrpjUa": {
+          "type": "heading",
+          "settings": {
+            "text": "Meet Voxblock",
+            "scale_with": false,
+            "heading_tag": "h0",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_7qT6fF",
+        "heading_WrpjUa"
+      ],
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -18,9 +41,9 @@
         "enable_parallax": false,
         "image_size": "auto",
         "image": "shopify://shop_images/accessories-banner-v1-web-2025.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ff9e57",
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
@@ -29,10 +52,304 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "content_width": "80ch",
         "show_title": true
       }
+    },
+    "rich_text_pgWRQG": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_AeeN8A": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_xHXdFN": {
+          "type": "heading",
+          "settings": {
+            "text": "Made by parents, backed by you",
+            "heading_tag": "h2",
+            "text_color": "#ff9e57",
+            "gradient": ""
+          }
+        },
+        "richtext_FYHA8d": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>When you chose Voxblock, you’re not just buying a player you are backing a small, independent business with a mission.</p><p>We’re not a big tech company, and that’s the point. Voxblock is designed to be a calm alternative to today’s high-tech gadgets. Made for families who value stories, independence and simplicity.</p><p>Every Voxblock sold helps us grow and gives us the chance to bring the joy of storytelling to more families.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_AeeN8A",
+        "heading_xHXdFN",
+        "richtext_FYHA8d"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "media_with_text_QGP9qr": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_CWP4DW": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Hi, we're Tom and Rebecca",
+            "content": "<p>We started Voxblock to create a simple, stripped back player that was completely screen and wifi free inspired by our daughters love of our old cassette tapes.</p><p>Not only that but we wanted to help reignite a love for stories by making physical audiobooks that could be displayed and cherished like books.</p><p>We love it. Our children love it and we know yours will too!</p><p>Read more about Tom and Rebecca’s story here:</p>",
+            "link_text": "Our story",
+            "link_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_CWP4DW"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "rich_text_PKcFKq": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_JkUwNr": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_9pthCF": {
+          "type": "heading",
+          "settings": {
+            "text": "Be the world’s preferred physical audio format",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_YXbdtc": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_JkUwNr",
+        "heading_9pthCF",
+        "richtext_YXbdtc"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multiple_images_with_text_ktTAVH": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_KgGfzD": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": -2,
+            "subheading": "GRAND PLANS",
+            "title": "Make Your Own",
+            "content": "<p>Right from the beginning we have wanted to introduce a feature that allows you to record your own content. It is something we are continuously working on to bring to you in the future.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_ni8tmf": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 1.5,
+            "subheading": "GRAND PLANS",
+            "title": "Growing the audio library",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_6rDM3E": {
+          "type": "item",
+          "settings": {
+            "image_rotation_degrees": 0,
+            "subheading": "GRAND PLANS",
+            "title": "International Expansion",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_KgGfzD",
+        "item_ni8tmf",
+        "item_6rDM3E"
+      ],
+      "name": "Multiple images with text",
+      "settings": {
+        "full_width": true,
+        "images_layout": "scattered",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "multi_column_MxCiaG": {
+      "type": "multi-column",
+      "blocks": {
+        "item_kQBVEF": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Bringing Voxblock to schools",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_rrKYtf": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Indie Bookshop Stockists",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_9YkkY7": {
+          "type": "item",
+          "settings": {
+            "column_size": "3",
+            "title": "Working with Charities and Trusts",
+            "heading_tag": "h4",
+            "content": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_kQBVEF",
+        "item_rrKYtf",
+        "item_9YkkY7"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "Partnering with your local communities",
+        "content": "<p>Organize content into multiple columns to share useful information to your customers about your products, values...</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "1757345173d5222de3": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_d0a0294_ReUXh7": {
+          "type": "ai_gen_block_d0a0294",
+          "settings": {
+            "heading": "Meet Our Team",
+            "description": "<p>Get to know the amazing people behind our Voxblock.</p>",
+            "text_alignment": "center",
+            "columns_desktop": "3",
+            "columns_mobile": "1",
+            "grid_gap": 30,
+            "image_size": 140,
+            "image_style": "circle",
+            "image_border_radius": 8,
+            "image_border_width": 1,
+            "image_border_color": "#e0e0e0",
+            "card_padding": 25,
+            "card_border_radius": 12,
+            "card_background": "#ffffff",
+            "heading_size": 42,
+            "text_size": 16,
+            "name_size": 20,
+            "role_size": 14,
+            "bio_size": 14,
+            "background_color": "#ffffff",
+            "heading_color": "#565656",
+            "text_color": "#666666",
+            "name_color": "#000000",
+            "role_color": "#888888",
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "member_1_name": "Tom Williams",
+            "member_1_role": "Co-Founder",
+            "member_1_bio": "",
+            "member_2_name": "Rebecca Lundgren",
+            "member_2_role": "Co-Founder",
+            "member_2_bio": "",
+            "member_3_name": "Wis Jantarasorn",
+            "member_3_role": "Director of Sales",
+            "member_3_bio": "",
+            "member_4_name": "Rachel Bishop",
+            "member_4_role": "Head of Operations",
+            "member_4_bio": "",
+            "member_5_name": "Stephanie Hall",
+            "member_5_role": "Marketing Executive",
+            "member_5_bio": "",
+            "member_6_name": "Jemima Cullen",
+            "member_6_role": "Customer Service and Fulfilment Assistant",
+            "member_6_bio": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_d0a0294_ReUXh7"
+      ],
+      "settings": {}
     },
     "17424005196059d51a": {
       "type": "apps",
@@ -43,9 +360,9 @@
             "form_id": "395570",
             "text_color": "#202020",
             "button_background_color": "#202020",
-            "button_label_color": "#FFFFFF",
-            "links_color": "#1878B9",
-            "errors_color": "#E02229",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
             "text_alignment": "center",
             "form_alignment": "center",
             "padding_top": 0,
@@ -58,6 +375,7 @@
       "block_order": [
         "forms_inline_VTTGWV"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
@@ -71,6 +389,12 @@
   "order": [
     "image_with_text_overlay_EErBBx",
     "main",
+    "rich_text_pgWRQG",
+    "media_with_text_QGP9qr",
+    "rich_text_PKcFKq",
+    "multiple_images_with_text_ktTAVH",
+    "multi_column_MxCiaG",
+    "1757345173d5222de3",
     "17424005196059d51a"
   ]
 }
