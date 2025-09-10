@@ -36,14 +36,14 @@
       ],
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
+        "allow_transparent_header": true,
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/accessories-banner-v1-web-2025.png",
-        "mobile_text_position": "place-self-end-start text-start",
-        "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ff9e57",
+        "image": "shopify://shop_images/our-purpose-banner-web-v1.25.png",
+        "mobile_text_position": "place-self-end text-end",
+        "desktop_text_position": "sm:place-self-end sm:text-end",
+        "text_color": "#ffffff",
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
@@ -106,6 +106,7 @@
         "image_CWP4DW": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/our-purpose-image-web-v1.25.png",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-center text-center",
@@ -184,6 +185,7 @@
         "item_KgGfzD": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/our-purpose-carousel-image-web-v1.25.png",
             "image_rotation_degrees": -2,
             "subheading": "GRAND PLANS",
             "title": "Make Your Own",
@@ -195,10 +197,11 @@
         "item_ni8tmf": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/our-purpose-carousel-image-2-v1.25.png",
             "image_rotation_degrees": 1.5,
             "subheading": "GRAND PLANS",
             "title": "Growing the audio library",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "content": "<p>Continuing to grow our library with literature for all ages groups is a huge priority for us. The more we grow the more bigger name titles we will be add too.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -206,10 +209,11 @@
         "item_6rDM3E": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/our-purpose-carosuel-image-3-v1.25.png",
             "image_rotation_degrees": 0,
             "subheading": "GRAND PLANS",
             "title": "International Expansion",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "content": "<p>We see you Voxblock admirers far and wide. We have big plans to grow Voxblock globally. Although this is a massive task, we work towards it everyday. We have already made the first step with launching in Australia.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -349,6 +353,7 @@
       "block_order": [
         "ai_gen_block_d0a0294_ReUXh7"
       ],
+      "disabled": true,
       "settings": {}
     },
     "17424005196059d51a": {
