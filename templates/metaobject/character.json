@@ -110,7 +110,7 @@
         "liquid_a7ceGe": {
           "type": "liquid",
           "settings": {
-            "liquid": "<a href=\"{{ metaobject.main_book.value.product.url }}\" class=\"button\">\n  View Audiobook\n</a>"
+            "liquid": "<a href=\"{{ metaobject.main_book.value.url }}\" class=\"button\">\n  View Audiobook \n</a>"
           }
         }
       },
