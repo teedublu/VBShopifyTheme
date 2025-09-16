@@ -12,20 +12,43 @@
     "slideshow_Q4e7Wj": {
       "type": "slideshow",
       "blocks": {
+        "image_yXy8xr": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/voxblock_website_banner_1.png",
+            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_8.png",
+            "content_max_width": 680,
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "From fairytales to Sherlock Holmes",
+            "title": "Hundreds of audiobooks that grow with you",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_b4aRqU": {
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/bundle-banner-simple-web-v1.25.png",
             "mobile_image": "shopify://shop_images/bundle-banner-simple-mob-v2.25.png",
-            "content_max_width": 840,
+            "content_max_width": 400,
             "mobile_text_position": "place-self-end-center text-center",
-            "desktop_text_position": "sm:place-self-end-center sm:text-center",
-            "subheading": "",
-            "title": "",
+            "desktop_text_position": "sm:place-self-start-end sm:text-end",
+            "subheading": "Bundle and Save",
+            "title": "Save up to £25 on a player, when you buy audiobooks",
             "heading_tag": "h3",
             "button_text": "Find out more",
             "button_link": "shopify://pages/bundle-and-save",
-            "text_color": "#ffffff",
+            "text_color": "#4cb6ac",
             "button_background": "#ff9e57",
             "button_text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -99,36 +122,14 @@
             "background": "",
             "background_gradient": ""
           }
-        },
-        "image_yXy8xr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/voxblock_website_banner_1.png",
-            "mobile_image": "shopify://shop_images/Mobile_Website_Banners_8.png",
-            "content_max_width": 680,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "From fairytales to Sherlock Holmes",
-            "title": "Hundreds of audiobooks that grow with you",
-            "heading_tag": "h2",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
         }
       },
       "block_order": [
+        "image_yXy8xr",
         "image_b4aRqU",
         "image_TxdTJA",
         "image_rcNxx7",
-        "image_pERNrc",
-        "image_yXy8xr"
+        "image_pERNrc"
       ],
       "settings": {
         "full_width": true,
@@ -136,7 +137,7 @@
         "image_size": "sm",
         "controls_type": "numbers",
         "transition_type": "fade",
-        "autoplay": false,
+        "autoplay": true,
         "cycle_speed": 4,
         "background": "#f2f2f2",
         "background_gradient": ""
