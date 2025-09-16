@@ -92,6 +92,44 @@
         "text_color": ""
       }
     },
+    "rich_text_4ndi6L": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_f7YiN3": {
+          "type": "subheading",
+          "settings": {
+            "text": "Listen to {{ metaobject.name.value }} Stories on Voxblock"
+          }
+        },
+        "richtext_gUTnq9": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Bring this character to life with Voxblock — the screen-free audiobook player that lets kids explore stories independently. No apps, no setup, just pop in the block and they’re instantly listening. Perfect for growing curiosity without adding more screen time.</p>"
+          }
+        },
+        "liquid_a7ceGe": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<a href=\"{{ metaobject.main_book.value.product.url }}\" class=\"button\">\n  View Audiobook\n</a>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_f7YiN3",
+        "richtext_gUTnq9",
+        "liquid_a7ceGe"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "featured_collection_KrTR6V": {
       "type": "featured-collection",
       "settings": {
@@ -346,6 +384,7 @@
     "image_with_text_overlay_DH8cex",
     "breadcrumbs_XHGrpm",
     "rich_text_77Fmmq",
+    "rich_text_4ndi6L",
     "featured_collection_KrTR6V",
     "featured_audiobook_light_64rg4L",
     "microdata_8YzdEG",
