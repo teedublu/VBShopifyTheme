@@ -9,7 +9,7 @@
   {% case avatar_display %}
     {% when 'image' %}
       {% if image_to_use != blank %}
-        {{ image_to_use | image_url: width: max_width | image_tag: alt: object.title.value | escape }}
+        {{ image_to_use | image_url: width: max_width | image_tag: alt: object.title.value, style: "margin:0px;" | escape}}
       {% else %}
         {{ 'image' | placeholder_svg_tag: 'placeholder' }}
       {% endif %}
