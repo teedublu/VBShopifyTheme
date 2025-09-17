@@ -295,6 +295,81 @@
         "button_text_color": ""
       }
     },
+    "image_link_blocks_xnFNpP": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_pWVtqq": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "Shop our player",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_awmKrU": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "Shop audiobooks",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_7AMjN4": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "Shop audio bundles",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "item_4MXKTw": {
+          "type": "item",
+          "settings": {
+            "stretch_image": true,
+            "link_text": "Shop Accessories",
+            "link_url": "",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "item_pWVtqq",
+        "item_awmKrU",
+        "item_7AMjN4",
+        "item_4MXKTw"
+      ],
+      "disabled": true,
+      "name": "Image link blocks",
+      "settings": {
+        "full_width": false,
+        "block_size": "medium",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
     "hot-spots": {
       "type": "hot-spots",
       "blocks": {
@@ -435,33 +510,7 @@
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_PTAQk9": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Homepage-UGC-Headphones-1200x1400.jpg",
-            "stretch_image": true,
-            "link_text": "Follow us on Facebook",
-            "link_url": "https://www.facebook.com/wearevoxblock",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "item_6HyzKK": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Homepage-UGC-listening-1200x1400.jpg",
-            "stretch_image": true,
-            "link_text": "Follow us on X",
-            "link_url": "https://twitter.com/wearevoxblock",
-            "background": "",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "overlay_opacity": 35
           }
         },
         "item_xAAHJd": {
@@ -474,7 +523,33 @@
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "overlay_opacity": 35
+          }
+        },
+        "item_PTAQk9": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-Headphones-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on Facebook",
+            "link_url": "https://www.facebook.com/wearevoxblock",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
+          }
+        },
+        "item_6HyzKK": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-listening-1200x1400.jpg",
+            "stretch_image": true,
+            "link_text": "Follow us on X",
+            "link_url": "https://twitter.com/wearevoxblock",
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 35
           }
         },
         "item_dJ3j9q": {
@@ -487,15 +562,15 @@
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "overlay_opacity": 35
           }
         }
       },
       "block_order": [
         "item_tNzUqA",
+        "item_xAAHJd",
         "item_PTAQk9",
         "item_6HyzKK",
-        "item_xAAHJd",
         "item_dJ3j9q"
       ],
       "settings": {
@@ -961,6 +1036,7 @@
     "logo_list_LNWaw9",
     "video_N3TaA4",
     "impact_text_XqyFin",
+    "image_link_blocks_xnFNpP",
     "hot-spots",
     "featured_collection_fGBEed",
     "image_link_blocks_hdtLUw",
