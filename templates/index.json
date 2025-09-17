@@ -301,11 +301,12 @@
         "item_pWVtqq": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/home-link-player-v1.25_1.png",
             "stretch_image": true,
-            "link_text": "Shop our player",
+            "link_text": "Shop Player",
             "link_url": "",
             "background": "",
-            "text_color": "#ffffff",
+            "text_color": "#ff9e57",
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
@@ -313,11 +314,12 @@
         "item_awmKrU": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/home-link-audio-v1.25.png",
             "stretch_image": true,
             "link_text": "Shop audiobooks",
             "link_url": "",
             "background": "",
-            "text_color": "#ffffff",
+            "text_color": "#ff9e57",
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
@@ -325,11 +327,12 @@
         "item_7AMjN4": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/home-link-access-v1.25.png",
             "stretch_image": true,
             "link_text": "Shop audio bundles",
             "link_url": "",
             "background": "",
-            "text_color": "#ffffff",
+            "text_color": "#ff9e57",
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
@@ -337,11 +340,12 @@
         "item_4MXKTw": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/home-link-bundles-v1.25.png",
             "stretch_image": true,
             "link_text": "Shop Accessories",
             "link_url": "",
             "background": "",
-            "text_color": "#ffffff",
+            "text_color": "#ff9e57",
             "overlay_color": "#000000",
             "overlay_opacity": 0
           }
@@ -353,11 +357,10 @@
         "item_7AMjN4",
         "item_4MXKTw"
       ],
-      "disabled": true,
       "name": "Image link blocks",
       "settings": {
-        "full_width": false,
-        "block_size": "medium",
+        "full_width": true,
+        "block_size": "large",
         "subheading": "",
         "title": "",
         "content": "",
