@@ -33,12 +33,12 @@
         "button_XtBmYV": {
           "type": "button",
           "settings": {
-            "style": "fill",
+            "style": "outline",
             "size": "base",
             "text": "Explore our screen-free player",
             "url": "shopify://products/voxblock-player",
             "background": "",
-            "text_color": ""
+            "text_color": "#ffffff"
           }
         }
       },
@@ -50,13 +50,13 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "max_width": 76,
+        "max_width": 97,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/homepage-hero_image_med-desktop.jpg",
-        "mobile_image": "shopify://shop_images/homepage-hero-image-mobile-1300x1600.jpg",
+        "image": "shopify://shop_images/home-header-web-v1.25.png",
+        "mobile_image": "shopify://shop_images/home-header-mob-v1.25.png",
         "mobile_text_position": "place-self-start-end text-end",
-        "desktop_text_position": "sm:place-self-center-end sm:text-end",
+        "desktop_text_position": "sm:place-self-start-end sm:text-end",
         "text_color": "#ffffff",
         "background": "#eaeaea",
         "background_gradient": "",
