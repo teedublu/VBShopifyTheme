@@ -77,18 +77,6 @@
             "mobile_max_width": 400
           }
         },
-        "button_qfBpaY": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "style": "fill",
-            "size": "xl",
-            "text": "Nominate my school",
-            "url": "shopify://pages/world-book-day-2025",
-            "background": "",
-            "text_color": ""
-          }
-        },
         "subheading_d393bA": {
           "type": "subheading",
           "settings": {
@@ -106,14 +94,25 @@
           "settings": {
             "content": "<p>Designed to be a calm alternative to today’s high tech gadgets. Voxblock focuses on stories and giving your child the independence to grow their literacy all on their own.</p>"
           }
+        },
+        "button_qfBpaY": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Discover how it works",
+            "url": "shopify://pages/how-does-it-work",
+            "background": "",
+            "text_color": ""
+          }
         }
       },
       "block_order": [
         "image_YNm9cY",
-        "button_qfBpaY",
         "subheading_d393bA",
         "liquid_xCHYgW",
-        "richtext_n7wzRG"
+        "richtext_n7wzRG",
+        "button_qfBpaY"
       ],
       "settings": {
         "full_width": true,
