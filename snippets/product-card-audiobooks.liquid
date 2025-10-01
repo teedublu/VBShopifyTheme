@@ -138,18 +138,6 @@ Supported variables
 
     <div class="product-card__row sample-wishlist">
       <div class="product-card__sample column left">
-        <div
-
-            class="klaviyo-favorites-plp-slot"
-
-            data-product-id="{{ product.id }}"
-
-            data-product-url="{{ product.url }}"
-
-            data-variant-id="{{product.selected_or_first_available_variant.id}}"
-
-            ></div>
-
         {%- if product.metafields.book.preview -%}
           <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}">
             <span class="playpause"></span>
@@ -159,8 +147,9 @@ Supported variables
         {%- endif -%}
       </div>
       <div class="product-card__wishlist column right">
-        {%- if section.settings.wishlist -%}
+        {%- if section.settings.wishlist or true -%}
           {%- render 'icon' with 'picto-love' class:'float-right'-%}
+          <div class="klaviyo-favorites-plp-slot" data-product-id="{{ product.id }}" data-product-url="{{ product.url }}" data-variant-id="{{product.selected_or_first_available_variant.id}}" ></div>
         {%- endif -%}
       </div>
     </div>
