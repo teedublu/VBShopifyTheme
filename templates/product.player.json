@@ -68,87 +68,6 @@
           "type": "separator",
           "settings": {}
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "repeater": "{{ product.metafields.shopify[\"color-pattern\"].value }}",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "{{ block.repeater.label.value }}",
-            "size_chart_page": ""
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "offer_tcaCpM": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-box",
-            "icon_width": 20,
-            "title": "Free Shipping",
-            "content": "<p>Free shipping on all orders over £25</p><p><a href=\"https://voxblock.co.uk/pages/delivery-information\" title=\"https://voxblock.co.uk/pages/delivery-information\">Read more here...</a></p>",
-            "background": "#eaf2ed",
-            "text_color": "#00a341"
-          }
-        },
-        "offer_wAzmdm": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-happy",
-            "icon_width": 24,
-            "title": "Money back Guarantee",
-            "content": "<p>100 Day Money back Guarantee</p>",
-            "background": "#eaf2ed",
-            "text_color": "#00a341"
-          }
-        },
-        "text_KV3rbn": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pick a bundle here for a quick start or choose from our entire <a href=\"/collections/audiobooks\" title=\"Audiobooks\">catalogue</a>.</p>"
-          }
-        },
-        "associated_products_wELabA": {
-          "type": "associated_products",
-          "settings": {
-            "title": "Suggested bundles to get you going",
-            "stack_products": true,
-            "products_count": 5,
-            "background": "",
-            "text_color": ""
-          }
-        },
-        "button_6pyUdt": {
-          "type": "button",
-          "settings": {
-            "link": "shopify://collections/audiobooks",
-            "text": "Shop audiobooks",
-            "size": "lg",
-            "style": "outline",
-            "stretch": true,
-            "background": "",
-            "text_color": ""
-          }
-        },
-        "separator_eAyTL4": {
-          "type": "separator",
-          "settings": {}
-        },
         "offer_1": {
           "type": "offer",
           "settings": {
@@ -276,6 +195,87 @@
             "text_color": "#565656"
           }
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "repeater": "{{ product.metafields.shopify[\"color-pattern\"].value }}",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "{{ block.repeater.label.value }}",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "offer_tcaCpM": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Free Shipping",
+            "content": "<p>Free shipping on all orders over £25</p><p><a href=\"https://voxblock.co.uk/pages/delivery-information\" title=\"https://voxblock.co.uk/pages/delivery-information\">Read more here...</a></p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "offer_wAzmdm": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-happy",
+            "icon_width": 24,
+            "title": "Money back Guarantee",
+            "content": "<p>100 Day Money back Guarantee</p>",
+            "background": "#eaf2ed",
+            "text_color": "#00a341"
+          }
+        },
+        "text_KV3rbn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pick a bundle here for a quick start or choose from our entire <a href=\"/collections/audiobooks\" title=\"Audiobooks\">catalogue</a>.</p>"
+          }
+        },
+        "associated_products_wELabA": {
+          "type": "associated_products",
+          "settings": {
+            "title": "Suggested bundles to get you going",
+            "stack_products": true,
+            "products_count": 5,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "button_6pyUdt": {
+          "type": "button",
+          "settings": {
+            "link": "shopify://collections/audiobooks",
+            "text": "Shop audiobooks",
+            "size": "lg",
+            "style": "outline",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "separator_eAyTL4": {
+          "type": "separator",
+          "settings": {}
+        },
         "separator_JnqTiQ": {
           "type": "separator",
           "settings": {}
@@ -291,14 +291,6 @@
         "separator_eYhQVx",
         "text_MA3Pah",
         "separator",
-        "variant_picker",
-        "buy_buttons",
-        "offer_tcaCpM",
-        "offer_wAzmdm",
-        "text_KV3rbn",
-        "associated_products_wELabA",
-        "button_6pyUdt",
-        "separator_eAyTL4",
         "offer_1",
         "offer_2",
         "offer_3",
@@ -308,6 +300,14 @@
         "offer_7",
         "offer_8",
         "offer_9",
+        "variant_picker",
+        "buy_buttons",
+        "offer_tcaCpM",
+        "offer_wAzmdm",
+        "text_KV3rbn",
+        "associated_products_wELabA",
+        "button_6pyUdt",
+        "separator_eAyTL4",
         "separator_JnqTiQ"
       ],
       "settings": {
