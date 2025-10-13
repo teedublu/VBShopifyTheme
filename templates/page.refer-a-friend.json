@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -20,16 +20,10 @@
     "image_with_text_overlay_XFPhMC": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_tehtwG": {
-          "type": "subheading",
-          "settings": {
-            "text": "REFER A FRIEND"
-          }
-        },
         "heading_b74EcT": {
           "type": "heading",
           "settings": {
-            "text": "Get free audiobooks",
+            "text": "Share stories. Earn rewards.",
             "scale_with": false,
             "heading_tag": "h0",
             "heading_tag_html": "p"
@@ -37,7 +31,6 @@
         }
       },
       "block_order": [
-        "subheading_tehtwG",
         "heading_b74EcT"
       ],
       "settings": {
@@ -46,11 +39,13 @@
         "max_width": 88,
         "enable_parallax": false,
         "image_size": "md",
-        "image": "shopify:\/\/shop_images\/raf-hero-desktop-3200x1200_0b925f09-7d66-431c-bfeb-a861e5e309e8.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/raf-hero-mobile-1000x1600.jpg",
+        "image": "shopify://shop_images/Website_Banner_2.png",
+        "mobile_image": "shopify://shop_images/Website_Banner_2.png",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
@@ -61,7 +56,7 @@
         "richtext_NKAiFM": {
           "type": "richtext",
           "settings": {
-            "content": "<p>If you love your Voxblock then your friends will probably too. Give your friends £10 off a Voxblock Starter Pack and get a voucher for £10 for you to spend on audiobooks.<br\/><br\/>All you need to do is send them your unique referral code to use when they purchase.<br\/><br\/>You'll find this code at the bottom of your most recent email from us, if you can't see it just get in touch on <strong>hello@voxblock.co.uk <\/strong>and we'll send it straight to you.<\/p>"
+            "content": "<p>Stories are even better when they’re shared. With Voxblock’s <strong>Refer a Friend</strong> programme, you can give your friends a discount on their first Voxblock player and earn rewards for yourself.</p><h2><strong>Why it matters</strong></h2><ul><li>For you: Collect golden tokens every time a friend buys their first Voxblock player. With 3 tokens, choose from headphones, a travel case, or a £30 Voxblock gift card.<br/></li><li>For your friends<strong>:</strong> They’ll receive a special discount on their first Voxblock player.<br/></li><li>For others: £1 from every referral goes to the Scottish Book Trust, helping more children discover the joy of reading.<br/><br/>You'll find this code at the bottom of your most recent email from us, if you can't see it just get in touch on <strong>hello@voxblock.co.uk </strong>and we'll send it straight to you.</li></ul>"
           }
         }
       },
@@ -84,7 +79,7 @@
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
-        "html": "<div class=\"klaviyo-form-WbFQD4\"><\/div>",
+        "html": "<div class=\"klaviyo-form-WbFQD4\"></div>",
         "background": "#ffffff",
         "background_gradient": "",
         "text_color": "#565656"
@@ -108,7 +103,7 @@
             "style": "fill",
             "size": "xl",
             "text": "Shop here",
-            "url": "shopify:\/\/products\/voxblock-player",
+            "url": "shopify://products/voxblock-player",
             "background": "#ff9e57",
             "text_color": "#ffffff"
           }
