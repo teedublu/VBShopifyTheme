@@ -58,6 +58,28 @@
             "background_gradient": ""
           }
         },
+        "image_rcNxx7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/banner-percy-jackson-web-v1.25.png",
+            "mobile_image": "shopify://shop_images/banner-percy-jackson-mob.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "New Arrival",
+            "title": "Percy Jackson",
+            "heading_tag": "h2",
+            "button_text": "Shop here",
+            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F399138357632",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_TxdTJA": {
           "type": "image",
           "settings": {
@@ -74,28 +96,6 @@
             "text_color": "#ff9e57",
             "button_background": "#ff9e57",
             "button_text_color": "#fff7f0",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_rcNxx7": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Website_Banner_8b57e2fa-9af2-4572-a473-5e09aa5386d2.png",
-            "mobile_image": "shopify://shop_images/website_banner_zog.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "New Arrival",
-            "title": "Zog and Friends",
-            "heading_tag": "h2",
-            "button_text": "Shop here",
-            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.custom.badges=New&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F23249092763",
-            "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "background": "",
@@ -128,8 +128,8 @@
       "block_order": [
         "image_yXy8xr",
         "image_b4aRqU",
-        "image_TxdTJA",
         "image_rcNxx7",
+        "image_TxdTJA",
         "image_pERNrc"
       ],
       "settings": {
