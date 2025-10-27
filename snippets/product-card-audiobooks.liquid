@@ -148,7 +148,7 @@ Supported variables
       </div>
       <div class="product-card__wishlist column right">
         <div class="klaviyo-favorites-plp-slot kl-hub-favorites-slot" data-product-id="{{ product.id }}" data-product-url="{{ product.url }}" data-variant-id="{{product.selected_or_first_available_variant.id}}" ></div>
-        {%- if section.settings.wishlist -%}
+        {%- if section.settings.wishlist || true -%}
           {%- render 'icon' with 'picto-love' class:'float-right'-%}
         {%- endif -%}
       </div>
