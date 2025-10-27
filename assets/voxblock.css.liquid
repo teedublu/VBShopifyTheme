@@ -57,6 +57,44 @@ shopify-accelerated-checkout {
 .product-card .price-list {flex-wrap: nowrap};
 
 
+/* Klaviyo Customer Hub Favourites */
+/* Neutralize Atlas default positioning for faves*/
+.klaviyo-favorites-plp-slot .kl-hub-favorites-icon-widget {
+  position: static !important;  /* was absolute */
+  inset: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  display: inline-flex !important; /* or block/flex as you prefer */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: size/tweak the icon */
+.klaviyo-favorites-plp-slot .kl-hub-wishlist-icon {
+  --kl-local-icon-size: 20px;
+}
+
+.klaviyo-favorites-plp-slot {
+  position: static !important;
+}
+
+.kl-hub-favorites-icon-widget .kl-hub-button {
+  max-height: 24px !important;
+}
+
+.klaviyo-favorites-plp-slot{
+  display:inline-flex;             /* or block, depending on where it sits */
+  width:30px; height:30px;         /* match the final heart size */
+  align-items:center; justify-content:center;
+  visibility:hidden;               /* space reserved, but hidden initially */
+}
+
+/* 2) Show once the widget has rendered (Klaviyo sets data-rendered="true") */
+.klaviyo-favorites-plp-slot[data-rendered="true"]{
+  visibility:visible;
+}
+
+
 .badge { border-radius: 3px;}
 .badge.new { background: linear-gradient(180deg, #f8eb1f, #f2ca06); color: black}
 .badge.bestseller { background: linear-gradient(180deg, #e90e10, #bc0000); color: white}
