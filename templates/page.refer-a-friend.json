@@ -73,8 +73,52 @@
         "text_color": ""
       }
     },
+    "17617247680bb6b576": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_7f7d62a_rePUwm": {
+          "type": "ai_gen_block_7f7d62a",
+          "settings": {
+            "api_endpoint": "https://europe-west2-voxblock.cloudfunctions.net/apiV2/raf/resend",
+            "header_1_name": "token",
+            "header_1_value": "A2oxi9231BxbRphtdq7aCDvjN",
+            "header_2_name": "",
+            "header_2_value": "",
+            "header_3_name": "",
+            "header_3_value": "",
+            "heading": "<p>Refer a friend</p>",
+            "subtext": "<p>Enter your email address to resend your referral link</p>",
+            "email_placeholder": "Enter your email",
+            "button_label": "Send link",
+            "success_message": "Success! Check your email for your referral link.",
+            "error_message": "Something went wrong. Please try again.",
+            "max_width": 600,
+            "padding": 40,
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#565656",
+            "input_background_color": "#ffffff",
+            "input_border_color": "#e0e0e0",
+            "primary_button_background": "#ff9e57",
+            "primary_button_text_color": "#ffffff",
+            "button_hover_color": "#4cb6ac",
+            "border_radius": 20,
+            "input_border_radius": 8,
+            "button_border_radius": 60,
+            "heading_size": 28,
+            "text_size": 15
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_7f7d62a_rePUwm"
+      ],
+      "settings": {}
+    },
     "custom_html_hWyWU4": {
       "type": "custom-html",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
@@ -128,6 +172,7 @@
     "main",
     "image_with_text_overlay_XFPhMC",
     "rich_text_t6b73J",
+    "17617247680bb6b576",
     "custom_html_hWyWU4",
     "rich_text_CAC6Gk"
   ]
