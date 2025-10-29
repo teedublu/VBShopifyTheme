@@ -190,8 +190,8 @@
         };
 
         for (let i = 1; i <= 3; i++) {
-          const headerName = this.dataset[`header${i}Name`];
-          const headerValue = this.dataset[`header${i}Value`];
+          const headerName = this.dataset[`header-${i}Name`];
+          const headerValue = this.dataset[`header-${i}Value`];
           console.log(i,this.dataset, headerName,headerValue)
           if (headerName && headerName.trim() !== '' && headerValue && headerValue.trim() !== '') {
             headers[headerName.trim()] = headerValue.trim();
