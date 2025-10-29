@@ -1,6 +1,516 @@
+{% doc %}
+  @prompt
+    a form to submit an email address to https://europe-west2-voxblock.cloudfunctions.net/apiV2/raf/resend using POST and the email in the body as JSON, add settings for the destination url, any headers to add the post request.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-raf-form-{{ ai_gen_id }} {
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-raf-form__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-raf-form__heading-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    margin: 0;
+    font-size: {{ block.settings.heading_size }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-raf-form__subtext-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    text-align: {{ block.settings.text_alignment }};
+    margin: 0;
+  }
+
+  .ai-raf-form__field-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-raf-form__field-{{ ai_gen_id }} {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ai-raf-form__input-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 200px;
+    padding: 14px 18px;
+    border: 2px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    font-size: 15px;
+    background-color: {{ block.settings.input_background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-raf-form__input-{{ ai_gen_id }}:focus {
+    outline: none;
+    border-color: {{ block.settings.primary_button_background }};
+  }
+
+  .ai-raf-form__button-{{ ai_gen_id }} {
+    padding: 14px 32px;
+    background-color: {{ block.settings.primary_button_background }};
+    color: {{ block.settings.primary_button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .ai-raf-form__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-raf-form__button-{{ ai_gen_id }}:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .ai-raf-form__message-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    display: none;
+  }
+
+  .ai-raf-form__message-{{ ai_gen_id }}.visible {
+    display: block;
+  }
+
+  .ai-raf-form__message-{{ ai_gen_id }}.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+
+  .ai-raf-form__message-{{ ai_gen_id }}.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-raf-form__field-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-raf-form__input-{{ ai_gen_id }} {
+      min-width: 100%;
+    }
+
+    .ai-raf-form__button-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<raf-email-form-{{ ai_gen_id }}
+  class="ai-raf-form-{{ ai_gen_id }}"
+  data-endpoint="{{ block.settings.api_endpoint }}"
+  data-header-1-name="{{ block.settings.header_1_name }}"
+  data-header-1-value="{{ block.settings.header_1_value }}"
+  data-header-2-name="{{ block.settings.header_2_name }}"
+  data-header-2-value="{{ block.settings.header_2_value }}"
+  data-header-3-name="{{ block.settings.header_3_name }}"
+  data-header-3-value="{{ block.settings.header_3_value }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-raf-form__content-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-raf-form__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    {% if block.settings.subtext != blank %}
+      <div class="ai-raf-form__subtext-{{ ai_gen_id }}">{{ block.settings.subtext }}</div>
+    {% endif %}
+
+    <div class="ai-raf-form__field-wrapper-{{ ai_gen_id }}">
+      <div class="ai-raf-form__field-{{ ai_gen_id }}">
+        <input
+          type="email"
+          class="ai-raf-form__input-{{ ai_gen_id }}"
+          placeholder="{{ block.settings.email_placeholder }}"
+          aria-label="Email address"
+          required
+        >
+        <button
+          type="submit"
+          class="ai-raf-form__button-{{ ai_gen_id }}"
+        >
+          {{ block.settings.button_label }}
+        </button>
+      </div>
+      <div
+        class="ai-raf-form__message-{{ ai_gen_id }}"
+        role="alert"
+        aria-live="polite"
+      ></div>
+    </div>
+  </div>
+</raf-email-form-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class RafEmailForm{{ai_gen_id}} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.endpoint = this.dataset.endpoint;
+        this.input = this.querySelector('.ai-raf-form__input-{{ ai_gen_id }}');
+        this.button = this.querySelector('.ai-raf-form__button-{{ ai_gen_id }}');
+        this.message = this.querySelector('.ai-raf-form__message-{{ ai_gen_id }}');
+        this.buttonLabel = this.button.textContent;
+        
+        this.headers = this.buildHeaders();
+        
+        this.button.addEventListener('click', this.handleSubmit.bind(this));
+        this.input.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            this.handleSubmit(e);
+          }
+        });
+      }
+
+      buildHeaders() {
+        const headers = {
+          'Content-Type': 'application/json'
+        };
+
+        for (let i = 1; i <= 3; i++) {
+          const headerName = this.dataset[`header${i}Name`];
+          const headerValue = this.dataset[`header${i}Value`];
+          
+          if (headerName && headerName.trim() !== '' && headerValue && headerValue.trim() !== '') {
+            headers[headerName.trim()] = headerValue.trim();
+          }
+        }
+
+        return headers;
+      }
+
+      async handleSubmit(e) {
+        e.preventDefault();
+        
+        const email = this.input.value.trim();
+        
+        if (!email) {
+          this.showMessage('Please enter an email address', 'error');
+          return;
+        }
+
+        if (!this.isValidEmail(email)) {
+          this.showMessage('Please enter a valid email address', 'error');
+          return;
+        }
+
+        if (!this.endpoint || this.endpoint.trim() === '') {
+          this.showMessage('API endpoint not configured', 'error');
+          return;
+        }
+
+        this.button.disabled = true;
+        this.button.textContent = 'Sending...';
+
+        try {
+          const response = await fetch(this.endpoint, {
+            method: 'POST',
+            headers: this.headers,
+            body: JSON.stringify({ email: email })
+          });
+
+          if (response.ok) {
+            this.showMessage('{{ block.settings.success_message }}', 'success');
+            this.input.value = '';
+          } else {
+            const errorData = await response.json().catch(() => ({}));
+            this.showMessage(errorData.message || '{{ block.settings.error_message }}', 'error');
+          }
+        } catch (error) {
+          this.showMessage('{{ block.settings.error_message }}', 'error');
+        } finally {
+          this.button.disabled = false;
+          this.button.textContent = this.buttonLabel;
+        }
+      }
+
+      isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      showMessage(text, type) {
+        this.message.textContent = text;
+        this.message.className = 'ai-raf-form__message-{{ ai_gen_id }} visible ' + type;
+        
+        setTimeout(() => {
+          this.message.classList.remove('visible');
+        }, 5000);
+      }
+    }
+
+    customElements.define('raf-email-form-{{ ai_gen_id }}', RafEmailForm{{ai_gen_id}});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Refer a friend form",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "API configuration"
+    },
+    {
+      "type": "text",
+      "id": "api_endpoint",
+      "label": "API endpoint URL",
+      "default": "https://europe-west2-voxblock.cloudfunctions.net/apiV2/raf/resend",
+      "info": "The URL where the form data will be sent"
+    },
+    {
+      "type": "header",
+      "content": "Custom headers"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add custom headers to the POST request (e.g., Authorization, API-Key)"
+    },
+    {
+      "type": "text",
+      "id": "header_1_name",
+      "label": "Header 1 name"
+    },
+    {
+      "type": "text",
+      "id": "header_1_value",
+      "label": "Header 1 value"
+    },
+    {
+      "type": "text",
+      "id": "header_2_name",
+      "label": "Header 2 name"
+    },
+    {
+      "type": "text",
+      "id": "header_2_value",
+      "label": "Header 2 value"
+    },
+    {
+      "type": "text",
+      "id": "header_3_name",
+      "label": "Header 3 name"
+    },
+    {
+      "type": "text",
+      "id": "header_3_value",
+      "label": "Header 3 value"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Refer a friend</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "<p>Enter your email address to resend your referral link</p>"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Send link"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Success! Check your email for your referral link."
+    },
+    {
+      "type": "text",
+      "id": "error_message",
+      "label": "Error message",
+      "default": "Something went wrong. Please try again."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#565656"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Input border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_background",
+      "label": "Button background",
+      "default": "#ff9e57"
+    },
+    {
+      "type": "color",
+      "id": "primary_button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover",
+      "default": "#4cb6ac"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Form border radius",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Input border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Refer a friend form"
+    }
+  ]
+}
 {% endschema %}
