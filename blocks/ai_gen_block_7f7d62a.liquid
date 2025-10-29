@@ -226,6 +226,7 @@
         this.button.textContent = 'Sending...';
 
         try {
+          this.headers = this.buildHeaders();
           console.log (this.headers);
           const response = await fetch(this.endpoint, {
             method: 'POST',
