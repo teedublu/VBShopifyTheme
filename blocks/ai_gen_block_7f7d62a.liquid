@@ -6,10 +6,6 @@
 
 {% style %}
   .ai-raf-form-{{ ai_gen_id }} {
-    padding: {{ block.settings.padding }}px;
-    background-color: {{ block.settings.background_color }};
-    border-radius: {{ block.settings.border_radius }}px;
-    max-width: {{ block.settings.max_width }}px;
     margin: 0 auto;
   }
 
@@ -229,6 +225,7 @@
         this.button.textContent = 'Sending...';
 
         try {
+          console.log (headers);
           const response = await fetch(this.endpoint, {
             method: 'POST',
             headers: this.headers,
