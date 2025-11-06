@@ -35,45 +35,22 @@
             "background_gradient": ""
           }
         },
-        "image_b4aRqU": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/bundle-banner-simple-web-v2.25.png",
-            "mobile_image": "shopify://shop_images/bundle-banner-simple-mob-v3.25_1.png",
-            "content_max_width": 520,
-            "mobile_text_position": "place-self-end-center text-center",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "",
-            "title": "Save up to £25 on a player, when you buy audiobooks",
-            "heading_tag": "h3",
-            "button_text": "Find out more",
-            "button_link": "shopify://pages/bundle-and-save",
-            "text_color": "#4cb6ac",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_rcNxx7": {
+        "image_rmcgy3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/banner-percy-jackson-web-v1.25.png",
-            "mobile_image": "shopify://shop_images/banner-percy-jackson-mob.png",
-            "content_max_width": 780,
+            "image": "shopify://shop_images/banner-scottish-web-v1.25.png",
+            "mobile_image": "shopify://shop_images/banner-scottish-mob-v1.25.png",
+            "content_max_width": 660,
             "mobile_text_position": "place-self-start-end text-end",
             "desktop_text_position": "sm:place-self-center-end sm:text-end",
             "subheading": "New Arrival",
-            "title": "Percy Jackson",
+            "title": "The Scottish Treasuries",
             "heading_tag": "h2",
-            "button_text": "Shop here",
-            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F399138357632",
+            "button_text": "Shop now",
+            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F405229928832",
             "text_color": "#ffffff",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "background": "",
@@ -96,6 +73,28 @@
             "text_color": "#ff9e57",
             "button_background": "#ff9e57",
             "button_text_color": "#fff7f0",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_rcNxx7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/banner-percy-jackson-web-v1.25.png",
+            "mobile_image": "shopify://shop_images/banner-percy-jackson-mob.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "New Arrival",
+            "title": "Percy Jackson",
+            "heading_tag": "h2",
+            "button_text": "Shop here",
+            "button_link": "https://voxblock.co.uk/collections/audiobooks?sort_by=title-ascending&filter.p.m.book.authors=gid%3A%2F%2Fshopify%2FMetaobject%2F399138357632",
+            "text_color": "#ffffff",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 0,
             "background": "",
@@ -127,9 +126,9 @@
       },
       "block_order": [
         "image_yXy8xr",
-        "image_b4aRqU",
-        "image_rcNxx7",
+        "image_rmcgy3",
         "image_TxdTJA",
+        "image_rcNxx7",
         "image_pERNrc"
       ],
       "settings": {
