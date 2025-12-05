@@ -18,6 +18,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "image_rfiyGJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/12-days-web-player-banner.png",
+            "alignment": "start",
+            "max_width": 500
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -288,6 +296,7 @@
         }
       },
       "block_order": [
+        "image_rfiyGJ",
         "title",
         "badges",
         "text_thkiB9",
