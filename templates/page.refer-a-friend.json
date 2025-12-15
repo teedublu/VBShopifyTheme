@@ -99,6 +99,7 @@
         "image_9iK9wr": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/referral-lifestyle-image-v1.25.png",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center text-center",
@@ -106,7 +107,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "Why refer Voxblock?",
-            "content": "<p>Voxblock is a screen-free audiobook player designed to make stories easy, calm and accessible for children. By referring a friend, you’re helping more families discover a simpler way to enjoy stories, and getting a little thank you in return.</p>",
+            "content": "<p>Voxblock is a screen-free audiobook player designed to make stories easy, calm and accessible for children. By referring a friend, you’re helping more families discover a simpler way to enjoy stories, while also supporting a small, independent business to grow.</p><p>And as a thank you, you’ll earn Golden Tokens along the way.</p>",
             "link_text": "",
             "link_url": "",
             "background": "#fff7f0",
@@ -140,6 +141,12 @@
             "gradient": ""
           }
         },
+        "richtext_cxDyzm": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>If you love Voxblock and have already told someone about it, the Golden Token is the easiest way to make sure you benefit too. Here's how to get started:</p>"
+          }
+        },
         "richtext_F73m6r": {
           "type": "richtext",
           "settings": {
@@ -149,6 +156,7 @@
       },
       "block_order": [
         "heading_88QXNg",
+        "richtext_cxDyzm",
         "richtext_F73m6r"
       ],
       "name": "Rich text",
@@ -205,6 +213,52 @@
       ],
       "settings": {}
     },
+    "timeline_V9rPWk": {
+      "type": "timeline",
+      "blocks": {
+        "slide_gg6hTC": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/referral-timeline-image-1-v1.25_1.png",
+            "navigation_label": "December",
+            "subheading": "£1 for every referral goes to the",
+            "title": "Scottish Book Trust",
+            "content": "<p>Next year is the National Year of Reading and we are supporting every way we can. Including pledging money for every referral. Raising money for books and Scotland and beyond.</p>"
+          }
+        },
+        "slide_wbfrTM": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/referral-timeline-image-1-v1.25_2.png",
+            "navigation_label": "January",
+            "subheading": "How much we raise in",
+            "title": "January?",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "slide_JddTbf": {
+          "type": "slide",
+          "settings": {
+            "navigation_label": "£1000",
+            "subheading": "Help us reach",
+            "title": "£1000 for books",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_gg6hTC",
+        "slide_wbfrTM",
+        "slide_JddTbf"
+      ],
+      "name": "Timeline",
+      "settings": {
+        "full_width": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "custom_html_hWyWU4": {
       "type": "custom-html",
       "disabled": true,
@@ -251,50 +305,6 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "timeline_V9rPWk": {
-      "type": "timeline",
-      "blocks": {
-        "slide_gg6hTC": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "December",
-            "subheading": "£1 for every referral goes to the",
-            "title": "Scottish Book Trust",
-            "content": "<p>Next year is the National Year of Reading and we are supporting every way we can. Including pledging money for every referral. Raising money for books and Scotland and beyond.</p>"
-          }
-        },
-        "slide_wbfrTM": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "January",
-            "subheading": "How much we raise in",
-            "title": "January?",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-          }
-        },
-        "slide_JddTbf": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "£1000",
-            "subheading": "Help us reach",
-            "title": "£1000 for books",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "slide_gg6hTC",
-        "slide_wbfrTM",
-        "slide_JddTbf"
-      ],
-      "name": "Timeline",
-      "settings": {
-        "full_width": true,
         "background": "",
         "background_gradient": "",
         "text_color": ""
