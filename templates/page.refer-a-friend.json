@@ -152,12 +152,20 @@
           "settings": {
             "content": "<h3>1. Share your code</h3><p>Send your unique referral code to friends and family. </p><p><em>If you don't know your code, fill out the box below and we will resend your code.</em></p><h3>2. They make a purchase</h3><p>Once your friend places their first order on a <strong>starter pack </strong>(they will also get £10 off), your token is on its way.</p><h3>3. Collect your golden token</h3><p>Earn <strong>1 Golden Token per successful referral</strong>.</p><h3>4. Unlock your reward</h3><p>Collect <strong>3 Golden Tokens</strong> to receive your reward. Choose from: Voxblock Travel Case, Voxblock Headphones or a £30 e-gift card.</p><p><em>Once you have collected all 3 tokens send in your postcard, and we will ship out your chosen reward. </em></p>"
           }
+        },
+        "richtext_fFBTwy": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<h5><em>54.2 % of new customers in December discovered Voxblock from friends and family, but no-one received their discount and you didn't get your token! </em></h5>"
+          }
         }
       },
       "block_order": [
         "heading_88QXNg",
         "richtext_cxDyzm",
-        "richtext_F73m6r"
+        "richtext_F73m6r",
+        "richtext_fFBTwy"
       ],
       "name": "Rich text",
       "settings": {
@@ -233,16 +241,17 @@
             "navigation_label": "January",
             "subheading": "How much we raise in",
             "title": "January?",
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "content": "<p>Check back here at the end of January to see how much we can raise.</p>"
           }
         },
         "slide_JddTbf": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/referral-timeline-image-3-v1.25.png",
             "navigation_label": "£1000",
             "subheading": "Help us reach",
             "title": "£1000 for books",
-            "content": ""
+            "content": "<p>Help us raise and pledge £1000 to the Scottish Book Trust so that more children and schools can get access to books.</p>"
           }
         }
       },
