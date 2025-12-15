@@ -36,14 +36,14 @@
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
-        "max_width": 88,
+        "max_width": 71,
         "enable_parallax": false,
-        "image_size": "md",
-        "image": "shopify://shop_images/Website_Banner_2.png",
-        "mobile_image": "shopify://shop_images/Website_Banner_2.png",
+        "image_size": "lg",
+        "image": "shopify://shop_images/referrals-header-web-v1.25.png",
+        "mobile_image": "shopify://shop_images/referrals-header-mob-v1.25.png",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ffffff",
+        "text_color": "#4cb6ac",
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
@@ -53,20 +53,74 @@
     "rich_text_t6b73J": {
       "type": "rich-text",
       "blocks": {
+        "heading_cQHBqY": {
+          "type": "heading",
+          "settings": {
+            "text": "Love Voxblock?",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "heading_BLAjTx": {
+          "type": "heading",
+          "settings": {
+            "text": "Share it with friends and earn Golden Tokens as a thank you.",
+            "heading_tag": "h3",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
         "richtext_NKAiFM": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Stories are even better when they’re shared. With Voxblock’s <strong>Refer a Friend</strong> programme, you can give your friends a discount on their first Voxblock player and earn rewards for yourself.</p><h2><strong>Why it matters</strong></h2><ul><li>For you: Collect golden tokens every time a friend buys their first Voxblock player. With 3 tokens, choose from headphones, a travel case, or a £30 Voxblock gift card.<br/></li><li>For your friends<strong>:</strong> They’ll receive a special discount on their first Voxblock player.<br/></li><li>For others: £1 from every referral goes to the Scottish Book Trust, helping more children discover the joy of reading.<br/><br/>You'll find this code at the bottom of your most recent email from us, if you can't see it just get in touch on <strong>hello@voxblock.co.uk </strong>and we'll send it straight to you.</li></ul>"
+            "content": "<p>For every friend you refer who makes a purchase, you’ll receive <strong>1 Golden Token</strong>.<br/><br/>Collect <strong>3 Golden Tokens</strong> and you’ll unlock a reward.</p>"
           }
         }
       },
       "block_order": [
+        "heading_cQHBqY",
+        "heading_BLAjTx",
         "richtext_NKAiFM"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
         "content_width": "large",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_HgGMgD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_88QXNg": {
+          "type": "heading",
+          "settings": {
+            "text": "How it works",
+            "heading_tag": "h1",
+            "text_color": "#4cb6ac",
+            "gradient": ""
+          }
+        },
+        "richtext_F73m6r": {
+          "type": "richtext",
+          "settings": {
+            "content": "<h3>1. Share your code</h3><p>Send your unique referral code to friends and family. </p><p><em>If you don't know your code, fill out the box below and we will resend your code.</em></p><h3>2. They make a purchase</h3><p>Once your friend places their first order on a <strong>starter pack </strong>(they will also get £10 off), your token is on its way.</p><h3>3. Collect your golden token</h3><p>Earn <strong>1 Golden Token per successful referral</strong>.</p><h3>4. Unlock your reward</h3><p>Collect <strong>3 Golden Tokens</strong> to receive your reward. Choose from: Voxblock Travel Case, Voxblock Headphones or a £30 e-gift card.</p><p><em>Once you have collected all 3 tokens send in your postcard, and we will ship out your chosen reward. </em></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_88QXNg",
+        "richtext_F73m6r"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -86,7 +140,7 @@
             "header_2_value": "",
             "header_3_name": "",
             "header_3_value": "",
-            "heading": "<p>Get Your Unique Code</p>",
+            "heading": "<p>Don't know your referral code?</p>",
             "subtext": "<p>Enter your email address to resend your referral code...</p>",
             "email_placeholder": "Enter your email",
             "button_label": "Send code",
@@ -172,6 +226,7 @@
     "main",
     "image_with_text_overlay_XFPhMC",
     "rich_text_t6b73J",
+    "rich_text_HgGMgD",
     "17617247680bb6b576",
     "custom_html_hWyWU4",
     "rich_text_CAC6Gk"
