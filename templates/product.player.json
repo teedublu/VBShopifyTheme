@@ -18,6 +18,15 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "image_CiJXCy": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Email_Christmas_Banner_2.png",
+            "alignment": "start",
+            "max_width": 430
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -288,6 +297,7 @@
         }
       },
       "block_order": [
+        "image_CiJXCy",
         "title",
         "badges",
         "text_thkiB9",
