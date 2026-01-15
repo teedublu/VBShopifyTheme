@@ -21,6 +21,11 @@
             <h1 class="h3">{{ 'customer.account.orders' | t }}</h1>
             <span class="count-bubble count-bubble--lg">{{ customer.orders.size }}</span>
           </div>
+          {% if customer.metafields.referrals.code %}
+          <div class="text-with-bubble justify-self-center">
+            <h1 class="h5">Your unique referal code is : {{ customer.metafields.referrals.code }}</h1>
+          </div>
+          {% endif %}
         </div>
 
         {%- paginate customer.orders by 16 -%}
