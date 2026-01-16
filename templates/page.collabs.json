@@ -116,6 +116,57 @@
         "spacing": "small"
       }
     },
+    "rich_text_rDwnTU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_m4gCCg": {
+          "type": "heading",
+          "settings": {
+            "text": "What we are looking for",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_p6jEMT": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We’re looking to work with creators who genuinely care about their child’s development and see stories as something to be enjoyed, not something that feels like homework.</p><p>You might:</p><ul><li>Be raising a child who learns differently</li><li>Be finding ways to make reading feel calmer or more accessible</li><li>Want books to feel like an escape to exciting new worlds, rather than a task</li><li>A parent who struggles to get their kids off screens</li></ul><p>Most importantly, we want creators who are happy to share real, lived moments, not polished perfection.</p>"
+          }
+        },
+        "heading_Ccg6qi": {
+          "type": "heading",
+          "settings": {
+            "text": "The Content",
+            "heading_tag": "h4",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_tPqtH3": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We’d love you to show how Voxblock fits naturally into your family life and how you use it to encourage reading at home.</p><p>Some prompts to guide your content:</p><ul><li>Do you use Voxblock as part of your bedtime routine?</li><li>Do you read along to the audiobooks or let your child listen independently?</li><li>Has audio helped remove pressure around reading in your household?</li><li>Does your child choose stories more confidently when they’re in control?</li><li>Does your child multitask while listening?</li><li>How has it helped you, as a parent?</li></ul><p>There’s no script to follow, we’re far more interested in your honest experience and what works for your family. Consider content from both your child’s point of view and from you as a parent (everybody loves a good parenting hack).</p><p>There is no restrictions on the form of content, a mixture of video and static imagery will be fine. But please make sure your content includes the product in action.</p><h5>Key message to weave in</h5><ul><li>All reading doesn’t look the same</li><li>Listening is reading</li><li>Reading can be calm, comforting and fun</li></ul><h5>Tone & style</h5><ul><li>Natural and relaxed</li><li>Warm, honest and relatable</li><li>Family-focused and realistic</li><li>No hard selling</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_m4gCCg",
+        "richtext_p6jEMT",
+        "heading_Ccg6qi",
+        "richtext_tPqtH3"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "rich_text_mDXjW9": {
       "type": "rich-text",
       "blocks": {
@@ -123,7 +174,7 @@
           "type": "heading",
           "settings": {
             "text": "Application criteria",
-            "heading_tag": "h1",
+            "heading_tag": "h3",
             "text_color": "",
             "gradient": ""
           }
@@ -131,13 +182,13 @@
         "richtext_GRGLzC": {
           "type": "richtext",
           "settings": {
-            "content": "<p>We welcome applications from creators who:</p><ul><li><strong>Have an engaged audience</strong><br/>Minimum 10,000 followers (Instagram, TikTok, or YouTube)<br/>OR strong proven community engagement (e.g. parenting groups, SEND networks, educational blogs)</li><li><strong>Can commit to the programme</strong><br/><strong>Minimum of 1 posts a month, and 1 story a week within a 3 month period</strong>. Open to sharing insights and feedback. Can commit to the programme for a 3-month minimum.</li><li><strong>Create original content</strong><br/>Willing to produce thoughtful, authentic content featuring Voxblock (video or photo)</li><li><strong>Have a relevant audience</strong><br/>Parents, grandparents, educators, or caregivers of children aged 2–Teens (see above for more details).</li><li><strong>Are UK/ AUS based</strong><br/>We’re focused on UK and Australia growth </li></ul>"
+            "content": "<p>We welcome applications from creators who:</p><ul><li><strong>Have an engaged audience</strong><br/>Minimum 5000-10,000 followers (Instagram, TikTok, or YouTube)<br/>OR strong proven community engagement (e.g. parenting groups, SEND networks, educational blogs)</li><li><strong>Can commit to the programme</strong><br/><strong>Minimum of 1 posts a month, and 1 story a week within a 3 month period</strong>. Open to sharing insights and feedback. Can commit to the programme for a 3-month minimum.</li><li><strong>Create original content</strong><br/>Willing to produce thoughtful, authentic content featuring Voxblock (video or photo)</li><li><strong>Have a relevant audience</strong><br/>Parents, grandparents, educators, or caregivers of children aged 2–Teens (see above for more details).</li><li><strong>Are UK/ AUS based</strong><br/>We’re focused on UK and Australia growth </li></ul>"
           }
         },
         "richtext_yPpRWC": {
           "type": "richtext",
           "settings": {
-            "content": "<p><strong>PLEASE NOTE: Please can you use a non private email address as part of your application (i.e. a hidden apple id email) as we won't be able to reply to your application.</strong></p>"
+            "content": "<p><strong>PLEASE NOTE: Please can you use a non private email address as part of your application (i.e. a hidden apple id email) as we won't be able to reply to your application.</strong></p><p><strong>Please do not fill out an application if you can not commit to the above.</strong></p>"
           }
         },
         "heading_NgW7cd": {
@@ -248,6 +299,7 @@
     "image_with_text_overlay_APMfz4",
     "rich_text_rr7dDR",
     "media_with_text_nTcmUD",
+    "rich_text_rDwnTU",
     "rich_text_mDXjW9",
     "collabs",
     "rich_text_4eqFgE"
