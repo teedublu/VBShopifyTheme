@@ -9,6 +9,42 @@
  */
 {
   "sections": {
+    "media_with_text_FiYqKj": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_mEnjVn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home-hotspot-mob-v2.25_-low-res.png",
+            "media_width": 55,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "The Screen-free Audiobook Player for Kids",
+            "content": "<p>Loved by kids and welcomed by parents, Voxblock is a <strong>screen-free, easy-to-use</strong> audiobook player, that makes <strong>learning and listening, fun and engaging</strong>. </p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_mEnjVn"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "spacing": "none"
+      }
+    },
     "image_with_text_overlay_mzRBYC": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -926,6 +962,7 @@
     }
   },
   "order": [
+    "media_with_text_FiYqKj",
     "image_with_text_overlay_mzRBYC",
     "rich_text_K9xkcG",
     "video_N3TaA4",
