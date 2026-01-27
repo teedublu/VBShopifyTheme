@@ -227,12 +227,46 @@
         "text_color": ""
       }
     },
+    "rich_text_4eqFgE": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_zMewJt": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Our summer 2025 recruitment is now closed</p><p>We look forward to opening our applications once again in the near future. Please keep an eye out on this page or on our social media platforms for any Voxblock Insider announcements.</p>"
+          }
+        },
+        "heading_8KRixe": {
+          "type": "heading",
+          "settings": {
+            "text": "Applications are now open, until 10th February",
+            "heading_tag": "h4",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "richtext_zMewJt",
+        "heading_8KRixe"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "collabs": {
       "type": "apps",
       "blocks": {
         "7095d135-6299-417f-beed-40eb419d6049": {
           "type": "shopify://apps/collabs/blocks/application-page/54758706-9f25-4fa9-a553-64720a4c998b",
-          "disabled": true,
           "settings": {
             "heading": "Let’s work together!",
             "show_square_logo": false,
@@ -258,41 +292,6 @@
         "background_gradient": "",
         "text_color": ""
       }
-    },
-    "rich_text_4eqFgE": {
-      "type": "rich-text",
-      "blocks": {
-        "richtext_zMewJt": {
-          "type": "richtext",
-          "disabled": true,
-          "settings": {
-            "content": "<p>Our summer 2025 recruitment is now closed</p><p>We look forward to opening our applications once again in the near future. Please keep an eye out on this page or on our social media platforms for any Voxblock Insider announcements.</p>"
-          }
-        },
-        "heading_8KRixe": {
-          "type": "heading",
-          "settings": {
-            "text": "Applications are opening soon, watch this space!",
-            "heading_tag": "h4",
-            "text_color": "",
-            "gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "richtext_zMewJt",
-        "heading_8KRixe"
-      ],
-      "name": "Rich text",
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
     }
   },
   "order": [
@@ -301,7 +300,7 @@
     "media_with_text_nTcmUD",
     "rich_text_rDwnTU",
     "rich_text_mDXjW9",
-    "collabs",
-    "rich_text_4eqFgE"
+    "rich_text_4eqFgE",
+    "collabs"
   ]
 }
