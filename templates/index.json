@@ -9,6 +9,42 @@
  */
 {
   "sections": {
+    "media_with_text_hjyKYh": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_UeYLmc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home-header-v2.26.png",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "A screen-free audiobook player for growing readers",
+            "content": "<p>Voxblock helps children enjoy stories, build confidence, and develop a love of reading.</p>",
+            "link_text": "Discover our player",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_UeYLmc"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "spacing": "none"
+      }
+    },
     "image_with_text_overlay_mzRBYC": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -47,6 +83,7 @@
         "heading_EBfnGt",
         "button_XtBmYV"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -86,13 +123,13 @@
         "liquid_xCHYgW": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h1 class=\"h2\">\nJust Stories. No Screens. No Fuss.</h1>"
+            "liquid": "<h1 class=\"h2\">\nNo screens. No wi-fi. No apps.</h1>"
           }
         },
         "richtext_n7wzRG": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Designed to be a calm alternative to today’s high tech gadgets. Voxblock focuses on stories and giving your child the independence to grow their literacy all on their own.</p>"
+            "content": "<p>Trusted by families across the UK and Australia to support reading for pleasure. <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"https://www.trustpilot.com/review/voxblock.co.uk\">Rated 4.9 stars on Trustpilot.</a></p>"
           }
         },
         "button_qfBpaY": {
@@ -813,11 +850,11 @@
         "collection": "voxblock-starter-pack-collection",
         "hide_empty": false,
         "products": [
-          "bing-intro-pack",
           "gruffalo-and-friends-starter-pack",
           "famous-five-intro-pack",
-          "explorer-bundle-voxblock-player",
-          "roald-dahl-selection-starter-pack"
+          "roald-dahl-selection-starter-pack",
+          "little-listeners-starter-pack",
+          "the-person-jackson-starter-pack"
         ],
         "full_width": true,
         "stack_products": false,
@@ -1044,6 +1081,7 @@
     }
   },
   "order": [
+    "media_with_text_hjyKYh",
     "image_with_text_overlay_mzRBYC",
     "rich_text_K9xkcG",
     "logo_list_LNWaw9",
