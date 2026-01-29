@@ -227,12 +227,6 @@
             "payment_button_text_color": ""
           }
         },
-        "bogos_io_free_gift_volume_discount_view_iJcAJf": {
-          "type": "shopify://apps/bogos-io-free-gift/blocks/volume-discount-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
-          "settings": {
-            "product": ""
-          }
-        },
         "offer_tcaCpM": {
           "type": "offer",
           "settings": {
@@ -265,8 +259,15 @@
             "text": "<p>Pick a bundle here for a quick start or choose from our entire <a href=\"/collections/audiobooks\" title=\"Audiobooks\">catalogue</a>.</p>"
           }
         },
+        "bogos_io_free_gift_cheapest_discount_view_ap6ETA": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/cheapest-discount-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {
+            "product": ""
+          }
+        },
         "associated_products_wELabA": {
           "type": "associated_products",
+          "disabled": true,
           "settings": {
             "title": "Suggested bundles to get you going",
             "stack_products": true,
@@ -318,10 +319,10 @@
         "offer_9",
         "variant_picker",
         "buy_buttons",
-        "bogos_io_free_gift_volume_discount_view_iJcAJf",
         "offer_tcaCpM",
         "offer_wAzmdm",
         "text_KV3rbn",
+        "bogos_io_free_gift_cheapest_discount_view_ap6ETA",
         "associated_products_wELabA",
         "button_6pyUdt",
         "separator_eAyTL4",
