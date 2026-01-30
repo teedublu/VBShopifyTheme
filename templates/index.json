@@ -875,8 +875,8 @@
             "image": "shopify://shop_images/home-images-literacy-v2.25-low-res.png",
             "image_rotation_degrees": -2,
             "subheading": "Supporting development",
-            "title": "Building Literacy",
-            "content": "<p>Audiobooks are great at supporting literacy development and improving a child's vocabulary, pronunciation, and listening skills. But most importantly they unlock a world of imagination transporting young minds to far-off lands, adventures, and experiences without ever leaving the room.</p>",
+            "title": "Reading for Pleasure",
+            "content": "<p>Audiobooks build vocabulary, listening skills, and confidence. But their real magic is helping children enjoy stories, taking them on adventures without a screen in sight.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -1008,6 +1008,42 @@
         "overlay_opacity": 0
       }
     },
+    "media_with_text_cTgCfe": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_3KLyVP": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/press-pack-voxblock-founders-photo.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Meet the people behind Voxblock",
+            "title": "Tom and Rebecca",
+            "content": "<p>We started Voxblock to create a simple, stripped back player that was completely screen and wifi free inspired by our daughters love of our old cassette tapes.</p><p>Read more about Tom and Rebecca’s story here:</p>",
+            "link_text": "Our purpose",
+            "link_url": "shopify://pages/our-purpose-why-support-voxblock",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_3KLyVP"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
     "rich_text_hdcMV6": {
       "type": "rich-text",
       "blocks": {
@@ -1039,6 +1075,7 @@
         "heading_9YqhiX",
         "richtext_LaYC8U"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -1177,6 +1214,7 @@
     "multiple_images_with_text_qi7tAC",
     "featured_collection_RbaTLW",
     "image-with-text-overlay",
+    "media_with_text_cTgCfe",
     "rich_text_hdcMV6",
     "revealed_image_on_scroll_mgNqPf",
     "featured-product",
