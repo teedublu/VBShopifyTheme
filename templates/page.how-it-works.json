@@ -17,6 +17,48 @@
         "show_title": true
       }
     },
+    "image_with_text_overlay_reGN4w": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_eLipNG": {
+          "type": "heading",
+          "settings": {
+            "text": "How it Works",
+            "scale_with": true,
+            "heading_tag": "h0",
+            "heading_tag_html": "h1"
+          }
+        },
+        "richtext_zxhY4C": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eLipNG",
+        "richtext_zxhY4C"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/how-it-works-banner-v1.26.png",
+        "mobile_image": "shopify://shop_images/how-it-works-banner-mob-v1.26.png",
+        "mobile_text_position": "place-self-end text-end",
+        "desktop_text_position": "sm:place-self-end sm:text-end",
+        "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 25
+      }
+    },
     "video_CdTAhx": {
       "type": "video",
       "blocks": {
@@ -50,6 +92,7 @@
         "heading_3aUfTb",
         "button_xMWNPt"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -68,23 +111,50 @@
         "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
+    "rich_text_KtgibH": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_K6QFf9": {
+          "type": "heading",
+          "settings": {
+            "text": "As easy as ABC",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_K6QFf9"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "media_with_text_E4JAKE": {
       "type": "media-with-text",
       "blocks": {
         "image_gJBpge": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/VOX006c-2219.jpg",
+            "image": "shopify://shop_images/how-it-works-image-a-v1.26.png",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "SCREEN FREE AUDIOBOOKS",
-            "title": "Simple to use",
-            "content": "<p>Bring stories to life by easily slotting your audiobook into the screen-free player. You have the freedom to<strong> pause or change</strong> your audiobook at any time, and return to where you left off the next time you listen.</p><p>No need for apps, downloads, or setups. Just <strong>play and go</strong>. Anytime, anywhere.</p>",
-            "link_text": "Buy now",
-            "link_url": "shopify://products/voxblock-player",
+            "subheading": "",
+            "title": "Add a story",
+            "content": "<p>Choose a Voxblock audiobook.</p>",
+            "link_text": "",
+            "link_url": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -109,17 +179,17 @@
         "image_nqayAW": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/VOX005d-0050-square.jpg",
+            "image": "shopify://shop_images/how-it-works-image-b-v1.26.png",
             "media_width": 50,
             "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "TRAVEL COMPANION",
-            "title": "Ideal for adventures",
-            "content": "<p><strong>Designed for kids</strong>, and <strong>made to last </strong>all the rough and tumble kids can throw at it. </p><p>You can carry your favourite companion with you <strong>wherever you go</strong>, whether that be in the car, on a plane, or a train. Plus, the battery lasts for days with just a single charge. </p>",
-            "link_text": "Buy now",
-            "link_url": "shopify://products/voxblock-player",
+            "subheading": "",
+            "title": "Block on the player",
+            "content": "<p>Place it on top. The player reads it instantly.</p>",
+            "link_text": "",
+            "link_url": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -144,17 +214,17 @@
         "image_WXngG6": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/home-images-literacy-v2.25-low-res.png",
+            "image": "shopify://shop_images/how-it-works-image-c-v1.26.png",
             "media_width": 50,
             "media_position": "end",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "KIDS IN CONTROL",
-            "title": "Learn and play",
-            "content": "<p>Just pick an audiobook, place it in your player and play. <strong>No need to rely on grown-ups. </strong>Build your collection of <strong>tactile audiobooks</strong> to display and treasure for life - unlike with digital files. </p>",
-            "link_text": "Buy now",
-            "link_url": "shopify://products/voxblock-player",
+            "subheading": "",
+            "title": "Click play",
+            "content": "<p>Press play and enjoy.</p><p>Only joking, Voxblock is that easy to use our stories start playing as soon as you place them in the player!</p>",
+            "link_text": "",
+            "link_url": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -401,7 +471,9 @@
   },
   "order": [
     "main",
+    "image_with_text_overlay_reGN4w",
     "video_CdTAhx",
+    "rich_text_KtgibH",
     "media_with_text_E4JAKE",
     "media_with_text_AQUhfj",
     "media_with_text_UEnEWB",
