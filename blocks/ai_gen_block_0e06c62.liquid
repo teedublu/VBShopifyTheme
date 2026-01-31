@@ -4,8 +4,10 @@
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
-{% assign img_sizes = '(max-width: 749px) 50vw, 25vw' %}
-{% assign img_widths = '160,200,240,300,360,400,500,600,700,800,900' %}
+
+{% assign img_sizes = '(max-width: 749px) 50vw, 200px' %}
+{% assign img_widths = '120,160,200,240,300,360,400,500,600' %}
+
 
 {% style %}
   .ai-link-block-{{ ai_gen_id }} {
@@ -108,7 +110,7 @@
            {% assign img_class = 'ai-link-block-image-' | append: ai_gen_id %}
 
             {{ link_image
-              | image_url: width: 900, format: 'webp'
+              | image_url: width: 400, format: 'webp'
               | image_tag:
                   loading: 'lazy',
                   class: img_class,
