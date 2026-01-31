@@ -6,7 +6,7 @@
 
 {% assign img_sizes = '(max-width: 749px) 50vw, 25vw' %}
 {% assign img_widths = '160,200,240,300,360,400,500,600,700,800,900' %}
- 
+
 {% style %}
   .ai-link-block-{{ ai_gen_id }} {
     display: block;
@@ -105,11 +105,13 @@
         <a href="{{ link_url }}" class="ai-link-block-item-{{ ai_gen_id }}">
 
           {% if link_image != blank %}
+           {% assign img_class = 'ai-link-block-image-' | append: ai_gen_id %}
+
             {{ link_image
               | image_url: width: 900, format: 'webp'
               | image_tag:
                   loading: 'lazy',
-                  class: 'ai-link-block-image-' | append: ai_gen_id,
+                  class: img_class,
                   sizes: img_sizes,
                   widths: img_widths,
                   alt: link_image.alt
