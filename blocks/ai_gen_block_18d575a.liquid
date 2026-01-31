@@ -120,13 +120,19 @@
           
           {% if logo != blank %}
             <div class="ai-logo-scroll-item-{{ ai_gen_id }}">
-              <img
-                src="{{ logo | image_url: width: 400 }}"
-                alt="{{ logo.alt | escape }}"
-                loading="lazy"
-                width="{{ block.settings.logo_width }}"
-                height="{{ block.settings.logo_height }}"
-              >
+              {% assign w = block.settings.logo_width | default: 200 %}
+              {% assign sizes = w | append: 'px' %}
+              {% assign widths = '80,120,160,200,240,300,360,400,480,600' %}
+
+              {{ logo
+                | image_url: width: 600, format: 'webp'
+                | image_tag:
+                    loading: 'lazy',
+                    widths: widths,
+                    sizes: sizes,
+                    style: 'height: auto;'
+              }}
+
             </div>
           {% else %}
             <div class="ai-logo-scroll-item-{{ ai_gen_id }}">
