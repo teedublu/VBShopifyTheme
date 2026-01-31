@@ -55,7 +55,7 @@ LIQUID
             {%- if block.settings.stretch_image -%}
               {%- capture item_content -%}
                 {%- if block.settings.image != blank -%}
-                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'zoom-image' -}}
+                  {{- block.settings.image | image_url: width: block.settings.image.width, format: 'webp' | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 160px, 285px', widths: '200,300,400,500,600,700,800,900,1000,1200', class: 'zoom-image' -}}
                 {%- else -%}
                   {{- 'image' | placeholder_svg_tag: 'zoom-image placeholder' -}}
                 {%- endif -%}
