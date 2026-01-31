@@ -4,6 +4,9 @@
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
+{% assign img_sizes = '(max-width: 749px) 50vw, 25vw' %}
+{% assign img_widths = '160,200,240,300,360,400,500,600,700,800,900' %}
+ 
 {% style %}
   .ai-link-block-{{ ai_gen_id }} {
     display: block;
@@ -84,117 +87,54 @@
   }
 {% endstyle %}
 
+
+
 <link-block-{{ ai_gen_id }} class="ai-link-block-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <div class="ai-link-block-container-{{ ai_gen_id }}">
-    {% if block.settings.link_1_text != blank %}
-      <a 
-        href="{{ block.settings.link_1_url }}" 
-        class="ai-link-block-item-{{ ai_gen_id }}"
-      >
-        {% if block.settings.link_1_image %}
-          <img
-            src="{{ block.settings.link_1_image | image_url: width: 600 }}"
-            alt="{{ block.settings.link_1_image.alt | escape }}"
-            class="ai-link-block-image-{{ ai_gen_id }}"
-            loading="lazy"
-            width="600"
-            height="600"
-          >
-        {% else %}
-          <div class="ai-link-block-placeholder-{{ ai_gen_id }}">
-            {{ 'image' | placeholder_svg_tag }}
-          </div>
-        {% endif %}
-        {% if block.settings.show_text %}
-          <div class="ai-link-block-overlay-{{ ai_gen_id }}">
-            <span class="ai-link-block-text-{{ ai_gen_id }}">{{ block.settings.link_1_text }}</span>
-          </div>
-        {% endif %}
-      </a>
-    {% endif %}
 
-    {% if block.settings.link_2_text != blank %}
-      <a 
-        href="{{ block.settings.link_2_url }}" 
-        class="ai-link-block-item-{{ ai_gen_id }}"
-      >
-        {% if block.settings.link_2_image %}
-          <img
-            src="{{ block.settings.link_2_image | image_url: width: 600 }}"
-            alt="{{ block.settings.link_2_image.alt | escape }}"
-            class="ai-link-block-image-{{ ai_gen_id }}"
-            loading="lazy"
-            width="600"
-            height="600"
-          >
-        {% else %}
-          <div class="ai-link-block-placeholder-{{ ai_gen_id }}">
-            {{ 'image' | placeholder_svg_tag }}
-          </div>
-        {% endif %}
-        {% if block.settings.show_text %}
-          <div class="ai-link-block-overlay-{{ ai_gen_id }}">
-            <span class="ai-link-block-text-{{ ai_gen_id }}">{{ block.settings.link_2_text }}</span>
-          </div>
-        {% endif %}
-      </a>
-    {% endif %}
+    {% for i in (1..4) %}
+      {% assign text_key  = 'link_' | append: i | append: '_text' %}
+      {% assign url_key   = 'link_' | append: i | append: '_url' %}
+      {% assign image_key = 'link_' | append: i | append: '_image' %}
 
-    {% if block.settings.link_3_text != blank %}
-      <a 
-        href="{{ block.settings.link_3_url }}" 
-        class="ai-link-block-item-{{ ai_gen_id }}"
-      >
-        {% if block.settings.link_3_image %}
-          <img
-            src="{{ block.settings.link_3_image | image_url: width: 600 }}"
-            alt="{{ block.settings.link_3_image.alt | escape }}"
-            class="ai-link-block-image-{{ ai_gen_id }}"
-            loading="lazy"
-            width="600"
-            height="600"
-          >
-        {% else %}
-          <div class="ai-link-block-placeholder-{{ ai_gen_id }}">
-            {{ 'image' | placeholder_svg_tag }}
-          </div>
-        {% endif %}
-        {% if block.settings.show_text %}
-          <div class="ai-link-block-overlay-{{ ai_gen_id }}">
-            <span class="ai-link-block-text-{{ ai_gen_id }}">{{ block.settings.link_3_text }}</span>
-          </div>
-        {% endif %}
-      </a>
-    {% endif %}
+      {% assign link_text  = block.settings[text_key] %}
+      {% assign link_url   = block.settings[url_key] %}
+      {% assign link_image = block.settings[image_key] %}
 
-    {% if block.settings.link_4_text != blank %}
-      <a 
-        href="{{ block.settings.link_4_url }}" 
-        class="ai-link-block-item-{{ ai_gen_id }}"
-      >
-        {% if block.settings.link_4_image %}
-          <img
-            src="{{ block.settings.link_4_image | image_url: width: 600 }}"
-            alt="{{ block.settings.link_4_image.alt | escape }}"
-            class="ai-link-block-image-{{ ai_gen_id }}"
-            loading="lazy"
-            width="600"
-            height="600"
-          >
-        {% else %}
-          <div class="ai-link-block-placeholder-{{ ai_gen_id }}">
-            {{ 'image' | placeholder_svg_tag }}
-          </div>
-        {% endif %}
-        {% if block.settings.show_text %}
-          <div class="ai-link-block-overlay-{{ ai_gen_id }}">
-            <span class="ai-link-block-text-{{ ai_gen_id }}">{{ block.settings.link_4_text }}</span>
-          </div>
-        {% endif %}
-      </a>
-    {% endif %}
+      {% if link_text != blank %}
+        <a href="{{ link_url }}" class="ai-link-block-item-{{ ai_gen_id }}">
+
+          {% if link_image != blank %}
+            {{ link_image
+              | image_url: width: 900, format: 'webp'
+              | image_tag:
+                  loading: 'lazy',
+                  class: 'ai-link-block-image-' | append: ai_gen_id,
+                  sizes: img_sizes,
+                  widths: img_widths,
+                  alt: link_image.alt
+            }}
+          {% else %}
+            <div class="ai-link-block-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.show_text %}
+            <div class="ai-link-block-overlay-{{ ai_gen_id }}">
+              <span class="ai-link-block-text-{{ ai_gen_id }}">
+                {{ link_text }}
+              </span>
+            </div>
+          {% endif %}
+
+        </a>
+      {% endif %}
+    {% endfor %}
+
   </div>
 </link-block-{{ ai_gen_id }}>
+
 
 <script>
   (function() {
