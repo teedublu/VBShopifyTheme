@@ -70,7 +70,7 @@
         "text_MA3Pah": {
           "type": "text",
           "settings": {
-            "text": "<p>Voxblock gives children the freedom to enjoy stories on their own, without screens or complicated setups. Parents can feel confident knowing there are no apps, downloads, or streaming to manage.</p><p>Listening is simple. Children press play and jump straight into a story, whether through the built-in speaker or with headphones. Sleep and travel modes make Voxblock part of bedtime routines and journeys.</p><p>Safe by design, the player has no microphone, no camera, and no tracking. Just stories you can trust.</p><p><strong>No wifi. No setup. Just play.</strong></p>"
+            "text": "<p>Voxblock gives children the freedom to enjoy stories on their own, without screens or complicated setups. Parents can feel confident knowing there are no apps, downloads, or streaming to manage.</p><p><strong>No wifi. No setup. Just play.</strong></p>"
           }
         },
         "variant_picker": {
@@ -354,6 +354,7 @@
       "blocks": {
         "ai_gen_block_f813066_eXwCtR": {
           "type": "ai_gen_block_f813066",
+          "disabled": true,
           "settings": {
             "title": "Compare players",
             "subtitle": "Find the right audio player for your needs",
