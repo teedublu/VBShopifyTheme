@@ -73,6 +73,29 @@
             "text": "<p>Voxblock gives children the freedom to enjoy stories on their own, without screens or complicated setups. Parents can feel confident knowing there are no apps, downloads, or streaming to manage.</p><p>Listening is simple. Children press play and jump straight into a story, whether through the built-in speaker or with headphones. Sleep and travel modes make Voxblock part of bedtime routines and journeys.</p><p>Safe by design, the player has no microphone, no camera, and no tracking. Just stories you can trust.</p><p><strong>No wifi. No setup. Just play.</strong></p>"
           }
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "repeater": "{{ product.metafields.shopify[\"color-pattern\"].value }}",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "{{ block.repeater.label.value }}",
+            "size_chart_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
         "separator": {
           "type": "separator",
           "settings": {}
@@ -204,27 +227,20 @@
             "text_color": "#565656"
           }
         },
-        "variant_picker": {
-          "type": "variant_picker",
-          "repeater": "{{ product.metafields.shopify[\"color-pattern\"].value }}",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "{{ block.repeater.label.value }}",
-            "size_chart_page": ""
-          }
+        "separator_eAyTL4": {
+          "type": "separator",
+          "settings": {}
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "button_6pyUdt": {
+          "type": "button",
           "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
+            "link": "shopify://collections/audiobooks",
+            "text": "Shop audiobooks",
+            "size": "lg",
+            "style": "outline",
+            "stretch": true,
+            "background": "",
+            "text_color": ""
           }
         },
         "offer_tcaCpM": {
@@ -255,6 +271,7 @@
         },
         "text_KV3rbn": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Pick a bundle here for a quick start or choose from our entire <a href=\"/collections/audiobooks\" title=\"Audiobooks\">catalogue</a>.</p>"
           }
@@ -272,26 +289,11 @@
         },
         "bogos_io_free_gift_cheapest_discount_view_YHaqpQ": {
           "type": "shopify://apps/bogos-io-free-gift/blocks/cheapest-discount-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "disabled": true,
           "settings": {
             "bogos_offer_id": 0,
             "product": "a-discovery-disappears"
           }
-        },
-        "button_6pyUdt": {
-          "type": "button",
-          "settings": {
-            "link": "shopify://collections/audiobooks",
-            "text": "Shop audiobooks",
-            "size": "lg",
-            "style": "outline",
-            "stretch": true,
-            "background": "",
-            "text_color": ""
-          }
-        },
-        "separator_eAyTL4": {
-          "type": "separator",
-          "settings": {}
         },
         "separator_JnqTiQ": {
           "type": "separator",
@@ -308,6 +310,8 @@
         "image_dihJHC",
         "separator_eYhQVx",
         "text_MA3Pah",
+        "variant_picker",
+        "buy_buttons",
         "separator",
         "offer_1",
         "offer_2",
@@ -318,15 +322,13 @@
         "offer_7",
         "offer_8",
         "offer_9",
-        "variant_picker",
-        "buy_buttons",
+        "separator_eAyTL4",
+        "button_6pyUdt",
         "offer_tcaCpM",
         "offer_wAzmdm",
         "text_KV3rbn",
         "associated_products_wELabA",
         "bogos_io_free_gift_cheapest_discount_view_YHaqpQ",
-        "button_6pyUdt",
-        "separator_eAyTL4",
         "separator_JnqTiQ"
       ],
       "settings": {
