@@ -529,8 +529,20 @@
           "type": "play",
           "settings": {}
         },
+        "button_wrGeTR": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "lg",
+            "text": "How it works",
+            "url": "shopify://pages/how-does-it-work",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        },
         "heading_kJtRma": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "text": "Easy to use",
             "heading_tag": "h0"
@@ -538,6 +550,7 @@
         },
         "richtext_PYD9tK": {
           "type": "richtext",
+          "disabled": true,
           "settings": {
             "content": "<p>Voxblock is ready to play right out of the box, with no wifi or setup required.</p>"
           }
@@ -545,6 +558,7 @@
       },
       "block_order": [
         "play_fiM6Xf",
+        "button_wrGeTR",
         "heading_kJtRma",
         "richtext_PYD9tK"
       ],
@@ -553,8 +567,8 @@
         "allow_transparent_header": false,
         "autoplay": true,
         "video_size": "md",
-        "video": "shopify://files/videos/how does it work_desktop.mp4",
-        "mobile_video": "shopify://files/videos/how does it work_mobile.mp4",
+        "video": "shopify://files/videos/Homepage Video.mp4",
+        "mobile_video": "shopify://files/videos/Homepage Video.mp4",
         "youtube_id": "",
         "external_video_url": "",
         "mobile_text_position": "place-self-end-start text-start",
