@@ -217,54 +217,6 @@
         "open_first_filter_group": false
       }
     },
-    "image_with_text_overlay_kCDwBE": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_FYGfFN": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "text": "Subheading",
-            "subheading_tag": "h1",
-            "subheading_tag_html": "h2"
-          }
-        },
-        "heading_ftpiYm": {
-          "type": "heading",
-          "settings": {
-            "text": "Hundreds of stories",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "p"
-          }
-        },
-        "richtext_7UgCcQ": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Build a real library your child can hold and grow over time. From bedtime stories to bold adventures, our collections cover every stage of reading</p><p>Choose from favourites like <em>The Gruffalo</em> to modern classics like <em>Alex Rider</em>, with everything from fantasy to facts in between.</p><p><strong>Stories you can touch. Stories for every child.</strong></p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_FYGfFN",
-        "heading_ftpiYm",
-        "richtext_7UgCcQ"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "background": "#ffb74a",
-        "background_gradient": "",
-        "overlay_color": "#ffb74a",
-        "overlay_opacity": 100
-      }
-    },
     "testimonials_n8PqFn": {
       "type": "testimonials",
       "blocks": {
@@ -336,6 +288,54 @@
         "testimonial_card_text_color": ""
       }
     },
+    "image_with_text_overlay_kCDwBE": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_FYGfFN": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading",
+            "subheading_tag": "h1",
+            "subheading_tag_html": "h2"
+          }
+        },
+        "heading_ftpiYm": {
+          "type": "heading",
+          "settings": {
+            "text": "Hundreds of stories",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "p"
+          }
+        },
+        "richtext_7UgCcQ": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Build a real library your child can hold and grow over time. From bedtime stories to bold adventures, our collections cover every stage of reading</p><p>Choose from favourites like <em>The Gruffalo</em> to modern classics like <em>Alex Rider</em>, with everything from fantasy to facts in between.</p><p><strong>Stories you can touch. Stories for every child.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_FYGfFN",
+        "heading_ftpiYm",
+        "richtext_7UgCcQ"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "sm",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#ffb74a",
+        "background_gradient": "",
+        "overlay_color": "#ffb74a",
+        "overlay_opacity": 100
+      }
+    },
     "faq_t9iAtE": {
       "type": "faq",
       "blocks": {
@@ -395,8 +395,8 @@
     "banner",
     "media_with_text_rGkHtT",
     "main",
-    "image_with_text_overlay_kCDwBE",
     "testimonials_n8PqFn",
+    "image_with_text_overlay_kCDwBE",
     "faq_t9iAtE"
   ]
 }
