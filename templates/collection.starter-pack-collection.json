@@ -42,6 +42,7 @@
         "heading_qXzqgD",
         "richtext_VKjrCY"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": true,
@@ -122,6 +123,42 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
+      }
+    },
+    "media_with_text_rGkHtT": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_PadnQa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SP_Page-Hero_Image-mob-1300x1600.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "The easiest way to start",
+            "content": "<p>Our Starter Pack combines the Voxblock player with a curated selection of stories to help children enjoy reading from day one.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#000000",
+            "heading_text_color": "#4cb6ac",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_PadnQa"
+      ],
+      "name": "Media with text",
+      "settings": {
+        "full_width": true,
+        "spacing": "none"
       }
     },
     "main": {
@@ -355,6 +392,7 @@
     "image_with_text_overlay_rapDMw",
     "rich_text_BAVNeG",
     "banner",
+    "media_with_text_rGkHtT",
     "main",
     "image_with_text_overlay_kCDwBE",
     "testimonials_n8PqFn",
