@@ -185,21 +185,35 @@
         "heading_xeHTjG": {
           "type": "heading",
           "settings": {
-            "text": "Now closed",
+            "text": "Our Shortlist",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
           }
         },
+        "richtext_MGpGFL": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We had over 240 nominations and we have managed to whittle it down to 31, who will put forward to the next stage of judging. Five will be picked from the following list to each win a mini school pack.</p>"
+          }
+        },
+        "richtext_zcHxNX": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Good luck to the following schools:</p><ul><li>Alderwood Primary School (South England)</li><li>Alderman Richard Hallam Primary School (Midlands)</li><li>Aviemore Primary School (Scotland)</li><li>Chelford CofE Primary School (North England)</li><li>Chilternway Academy (South England)</li><li>Chirnside Primary School (Scotland)</li><li>Cleveland Road Primary School (South England)</li><li>Eassie Primary School (Scotland)</li><li>Eastern Primary School (Scotland)</li><li>Epinay Business and Enterprise School (North England)</li><li>Fallin Primary School (Scotland)</li><li>Foxwood Academy (Midlands)</li><li>Hearsall Community Academy (Midlands)</li><li>ILM Academy (Wales)</li><li>Netley Abbey Infant School (South England)</li><li>Penygelli Primary School (Wales)</li><li>Priory Primary School (South England)</li><li>Prospect Hill Junior School (Midlands)</li><li>Quarry Bank Primary School (Midlands)</li><li>Queenborough School (South England)</li><li>Reinwood Infants and Juniors (North England)</li><li>Royal School of the Blind (North England)</li><li>Sanday (Scotland)</li><li>Saint Patrick's Primary and Nursery (Scotland)</li><li>Spa Primary (Northern Ireland)</li><li>Springfield Junior School (South England)</li><li>St Lawrence's CofE Primary School (North England)</li><li>St Mary's CofE Junior School (South England)</li><li>Stockbridge Primary School (Scotland)</li><li>The Blue School (South England)</li><li>The Parkgate Academy (Midlands)</li></ul>"
+          }
+        },
         "richtext_XQYefQ": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Thank you to everyone that nominated a school. We will announce winners late April.</p>"
+            "content": "<p>Thank you to everyone that nominated a school. </p><p>Our judges will choose the winners in early April, with the announcement of the  winners in late April.</p>"
           }
         }
       },
       "block_order": [
         "heading_xeHTjG",
+        "richtext_MGpGFL",
+        "richtext_zcHxNX",
         "richtext_XQYefQ"
       ],
       "settings": {
@@ -242,7 +256,6 @@
       "block_order": [
         "image_hiXKyi"
       ],
-      "disabled": true,
       "settings": {
         "full_width": false,
         "spacing": "small"
@@ -264,6 +277,7 @@
       "block_order": [
         "heading_3NLTHp"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -369,6 +383,7 @@
         "item_aiiBa3",
         "item_VKbAqM"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_on_mobile": false,
