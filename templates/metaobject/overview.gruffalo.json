@@ -73,7 +73,7 @@
         "item_ih9JRU": {
           "type": "item",
           "settings": {
-            "title": "Is The Gruffalo a book or an audiobook?",
+            "title": "Is {{ metaobject.name.value }} a book or an audiobook?",
             "check_for_text": "{{ metaobject.name.value }}",
             "check_for_richtext": "",
             "content": "<p>It is originally a <strong>children's picture book</strong>, but it is also available in audiobook form, including here on Voxblock.</p>"
@@ -82,7 +82,7 @@
         "item_mcbcA3": {
           "type": "item",
           "settings": {
-            "title": "What is the message of The Gruffalo?",
+            "title": "What is the message of {{ metaobject.name.value }}?",
             "check_for_text": "{{ metaobject.name.value }}",
             "check_for_richtext": "",
             "content": "<p>A big part of the story is that intelligence, confidence and quick thinking can be more powerful than size or strength.</p>"
@@ -91,10 +91,10 @@
         "item_PxWKpf": {
           "type": "item",
           "settings": {
-            "title": "Is The Gruffalo part of a series?",
+            "title": "Is {{ metaobject.name.value }} part of a series?",
             "check_for_text": "{{ metaobject.name.value }}",
             "check_for_richtext": "",
-            "content": "<p><strong>The Gruffalo</strong> has a well-known follow-up story, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\"><strong>The Gruffalo's Child</strong> </a>also available on Voxblock.</p>"
+            "content": "<p><strong>{{ metaobject.name.value }}</strong> has a well-known follow-up story, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\"><strong>The Gruffalo's Child</strong> </a>also available on Voxblock.</p>"
           }
         }
       },
