@@ -105,6 +105,7 @@ metaobject__audiobook__audiobook
     /pages/publisher/alison-larkin-presents metaobject/publisher          publisher   ""
     /pages/audiobook/get-me-out-of-here     metaobject/audiobook          audiobook   ""
     /products/bedtime-stories-starter-pack
+    /pages/character/mouse                  metaobject/audiobook          character   ""
   endcomment
 
   assign sep = "+,+"
@@ -200,7 +201,7 @@ metaobject__audiobook__audiobook
 
   %}
 
-<div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>     
+<div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>     {{page_type}}
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
       {%- for crumb_pair in crumb_list -%}
