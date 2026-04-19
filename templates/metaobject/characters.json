@@ -14,7 +14,7 @@
       "name": "Item grid",
       "settings": {
         "heading": "{{ metaobject.title.value }}",
-        "intro": "<p>Meet the characters in </p>",
+        "intro": "{{ metaobject.intro | metafield_tag }}",
         "source_mode": "metaobject_list",
         "metaobject_items": "{{ metaobject.list.value }}",
         "product_items": [],
