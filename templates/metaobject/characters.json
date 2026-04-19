@@ -8,6 +8,60 @@
  * ------------------------------------------------------------
  */
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "audiobook_characters_NcbV4k": {
+      "type": "audiobook-characters",
+      "blocks": {
+        "image_nbnYPq": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Heading",
+            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_nbnYPq"
+      ],
+      "name": "Audiobook Characters",
+      "settings": {
+        "full_width": false,
+        "product": "",
+        "spacing": "small"
+      }
+    },
+    "metaobjects_list_f7Dd6B": {
+      "type": "metaobjects-list",
+      "name": "Metaobjects list",
+      "settings": {
+        "page_size": 25,
+        "object_type": "characters",
+        "avatar_display": "image",
+        "max_width": 200,
+        "radius": 30,
+        "initials_font_size": 100,
+        "initials_color": "#ffffff",
+        "avatar_bg_color": "#4cb6ac"
+      }
+    }
+  },
+  "order": [
+    "audiobook_characters_NcbV4k",
+    "metaobjects_list_f7Dd6B"
+  ]
 }
