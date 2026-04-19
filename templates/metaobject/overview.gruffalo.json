@@ -18,6 +18,15 @@
     "rich_text_kf8m8f": {
       "type": "rich-text",
       "blocks": {
+        "heading_UY78Jd": {
+          "type": "heading",
+          "settings": {
+            "text": "Heading",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
         "heading_6gFWL9": {
           "type": "heading",
           "settings": {
@@ -35,6 +44,7 @@
         }
       },
       "block_order": [
+        "heading_UY78Jd",
         "heading_6gFWL9",
         "richtext_K8fy7Q"
       ],
@@ -46,6 +56,76 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "faq_book_xFYafL": {
+      "type": "faq-book",
+      "blocks": {
+        "item_ATVG9z": {
+          "type": "item",
+          "settings": {
+            "title": "What age is {{ metaobject.name.value }} for?",
+            "check_for_text": "{{ metaobject.name.value }}",
+            "check_for_richtext": "",
+            "content": "<p><strong>The Gruffalo</strong> is most often enjoyed by young children, especially in the early picture-book years, though many older children still enjoy the story, especially in audio form.</p>"
+          }
+        },
+        "item_ih9JRU": {
+          "type": "item",
+          "settings": {
+            "title": "Is The Gruffalo a book or an audiobook?",
+            "check_for_text": "{{ metaobject.name.value }}",
+            "check_for_richtext": "",
+            "content": "<p>It is originally a <strong>children's picture book</strong>, but it is also available in audiobook form, including here on Voxblock.</p>"
+          }
+        },
+        "item_mcbcA3": {
+          "type": "item",
+          "settings": {
+            "title": "What is the message of The Gruffalo?",
+            "check_for_text": "{{ metaobject.name.value }}",
+            "check_for_richtext": "",
+            "content": "<p>A big part of the story is that intelligence, confidence and quick thinking can be more powerful than size or strength.</p>"
+          }
+        },
+        "item_PxWKpf": {
+          "type": "item",
+          "settings": {
+            "title": "Is The Gruffalo part of a series?",
+            "check_for_text": "{{ metaobject.name.value }}",
+            "check_for_richtext": "",
+            "content": "<p><strong>The Gruffalo</strong> has a well-known follow-up story, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\"><strong>The Gruffalo's Child</strong> </a>also available on Voxblock.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_ATVG9z",
+        "item_ih9JRU",
+        "item_mcbcA3",
+        "item_PxWKpf"
+      ],
+      "name": "Book FAQ",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "The Gruffalo FAQ",
+        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "book_image": false,
+        "book_image_width": 160,
+        "extra_info": "Ask us more questions via email",
+        "extra_info_2": "More info",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
     "featured_product_79njaq": {
@@ -131,6 +211,7 @@
   "order": [
     "breadcrumbs_Vf3K4D",
     "rich_text_kf8m8f",
+    "faq_book_xFYafL",
     "featured_product_79njaq",
     "microdata_KC6pKQ"
   ]
