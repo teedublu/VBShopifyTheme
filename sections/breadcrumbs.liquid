@@ -185,10 +185,10 @@
 
         if metaobject_type == 'character' and metaobject.main_book.value != blank
           assign main_book = metaobject.main_book.value
-          assign main_book_title = main_book.title | default: main_book.name
+          assign main_book_title = main_book.title
 
-          if main_book.system.url != blank and main_book_title != blank
-            assign crumbs = crumbs | append: crumb_item_sep | append: main_book.system.url | append: crumb_part_sep | append: main_book_title
+          if main_book.url != blank and main_book_title != blank
+            assign crumbs = crumbs | append: crumb_item_sep | append: main_book.url | append: crumb_part_sep | append: main_book_title
           endif
         endif
 
