@@ -65,7 +65,7 @@
         "heading_BAHrW4": {
           "type": "heading",
           "settings": {
-            "text": "Who is {{ metaobject.name.value }}?",
+            "text": "{{ metaobject.page_title.value }}",
             "heading_tag": "h1",
             "text_color": "#ff9e57",
             "gradient": ""
