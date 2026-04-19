@@ -25,7 +25,7 @@
           {% liquid
             assign item_title = item.name.value | default: item.title.value
             assign item_description = item.description.value | default: item.summary.value
-            assign item_image = item.photos.value
+            assign item_image = item.photos.value | first
             assign item_page = item.page.value
             assign item_url = item.url.value
 
