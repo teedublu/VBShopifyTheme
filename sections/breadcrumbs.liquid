@@ -183,6 +183,9 @@ metaobject__audiobook__audiobook
           when 'review'
             assign list_page = 'audiobooks'
             assign title = metaobject.name | prepend : 'Review of ' 
+          when 'character'
+            assign list_page = 'audiobook'
+            assign title = metaobject.name | prepend : 'Characters from ' 
           else
             assign list_page = 'audiobook-'| append: page_subtype | append: 's'
         endcase
@@ -201,7 +204,7 @@ metaobject__audiobook__audiobook
 
   %}
 
-<div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>     {{page_type}}
+<div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>     
   <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
     <ol class="breadcrumbs__list">
       {%- for crumb_pair in crumb_list -%}
