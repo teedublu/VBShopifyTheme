@@ -1,11 +1,13 @@
 {%- render 'section-spacing-collapsing' -%}
+
 <style>
   .breadcrumbs_section {
     padding-top: 1em;
     padding-bottom: 1em;
   }
+
   .breadcrumbs {
-    margin: 0 0 0em;
+    margin: 0;
   }
 
   .breadcrumbs__list {
@@ -35,141 +37,124 @@
     text-decoration: underline;
   }
 
-  .breadcrumbs__link[aria-current="page"] {
+  .breadcrumbs__current {
     color: inherit;
     font-weight: normal;
     text-decoration: none;
   }
 
-  .breadcrumbs__link[aria-current="page"]:hover,
-  .breadcrumbs__link[aria-current="page"]:focus {
-    text-decoration: underline;
-  }
-
-
-
-.breadcrumbs__item:first-child .breadcrumbs__link {
+  .breadcrumbs__item:first-child .breadcrumbs__link {
     position: relative;
-    padding-left: 20px; 
+    padding-left: 20px;
     display: inline-flex;
     align-items: center;
-}
+  }
 
-.breadcrumbs__item:first-child .breadcrumbs__link::before {
-    content: "\2302"; 
-    font-size: 1.7em;  
+  .breadcrumbs__item:first-child .breadcrumbs__link::before {
+    content: "\2302";
+    font-size: 1.7em;
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-65%);
-}
+  }
 
-.breadcrumbs__item:first-child .breadcrumbs__link span {
+  .breadcrumbs__item:first-child .breadcrumbs__link span {
     visibility: hidden;
     display: inline-block;
     width: 0;
     height: 0;
     overflow: hidden;
-}
-
-
+  }
 </style>
+
 {%- assign title = page.metafields.global.title_tag | default: page.title -%}
 
-
-{%- assign metaobject_type = metaobject.system.type -%}
-{%- assign metaobject_type_plural = metaobject_type | append: 's' -%}
-
-{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
-{%- assign page_type = template | split: '.' | first -%}
-{%- assign page_subtype = template | split: '.' | last -%}
-{%- if page_type contains '/' -%}
-  {%- assign page_subtype = page_type | split: '/' | last -%}
-  {%- assign page_type = page_type | split: '/' | first -%}
+{%- assign metaobject_type = blank -%}
+{%- if metaobject != blank -%}
+  {%- assign metaobject_type = metaobject.system.type -%}
 {%- endif -%}
 
-{%- liquid 
-  comment
-{{page_type}}__{{page_subtype}}__{{metaobject_type}}
-page__metaobjects-audiobooks__
-page__metaobjects-authors__
-page__metaobjects-narrators__
+{%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
+  {%- assign page_type = template | split: '.' | first -%}
+  {%- assign page_subtype = template | split: '.' | last -%}
 
-metaobject__audiobook__audiobook
+  {%- if page_type contains '/' -%}
+    {%- assign page_subtype = page_type | split: '/' | last -%}
+    {%- assign page_type = page_type | split: '/' | first -%}
+  {%- endif -%}
 
+  {%- liquid
+    assign crumb_item_sep = '||'
+    assign crumb_part_sep = '^^'
 
-    url                                     template                      name        suffix 
-    /pages/audiobook-publishers             page.metaobjects-publishers   page        metaobjects-publishers
-    /pages/audiobook                        page.metaobjects-audiobooks   page        metaobjects-audiobooks
-    /pages/audiogramme                      page.metaobjects-audiogrammes page        metaobjects-audiogrammes
-    /pages/publisher/alison-larkin-presents metaobject/publisher          publisher   ""
-    /pages/audiobook/get-me-out-of-here     metaobject/audiobook          audiobook   ""
-    /products/bedtime-stories-starter-pack
-    /pages/character/mouse                  metaobject/audiobook          character   ""
-  endcomment
+    assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
+    assign crumbs = crumbs | append: crumb_item_sep | append: pages['audiobook-library'].url | append: crumb_part_sep | append: 'Our content'
 
-  assign sep = "+,+"
-  assign sep1 = "-,-"
-  assign crumbs = shop.secure_url | append:sep | append: "Home"
+    assign list_page = blank
+    assign parent_page = blank
+    assign parent_title = blank
 
-  assign crumbs = crumbs | append: sep1 | append: pages["audiobook-library"].url | append: sep | append: "Our content"
+    case page_type
+      when 'page'
+        unless page_subtype contains 'metaobjects-'
+          case metaobject_type
+            when 'audiobook'
+              assign list_page = 'audiobooks'
+            when 'audiogramme'
+              assign list_page = 'audiogrammes'
+            when 'series'
+              assign list_page = 'audiobook-series'
+            when 'character'
+              assign list_page = 'audiobook-characters'
+            when 'review'
+              assign list_page = 'audiobooks'
+            else
+              if metaobject != blank
+                assign list_page = 'audiobook-' | append: metaobject.system.type | append: 's'
+              endif
+          endcase
 
-  
-  case page_type
-    when 'page' 
-
-      unless page_subtype contains 'metaobjects-'
-        case metaobject_type
-          when 'audiobook'
-            assign list_page = 'audiobooks'
-          when 'audiogramme'
-            assign list_page = 'audiogrammes'
-          when 'series'
-            assign list_page = 'audiobook-series'
-          when 'character'
-            assign list_page = 'audiobook-characters'
-          when 'review'
-            assign list_page = 'audiobooks'
-          else
-            assign list_page = 'audiobook-'| append: metaobject.system.type | append: 's'
-        endcase
-        assign parent_page = pages[list_page] 
-        assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
-      endunless 
-
-      assign crumbs = crumbs | append: sep1 | append: page.url | append: sep | append: title
-    
-    when 'product' 
-      case page_subtype
-        when 'starter-pack-bundle'
-          assign crumbs = shop.secure_url | append:sep | append: "Home"
-          assign crumbs = crumbs | append: sep1 | append: collections['voxblock-starter-pack-collection'].url | append: sep | append: collections['voxblock-starter-pack-collection'].title
-        when 'audiobook'
-          assign crumbs = shop.secure_url | append:sep | append: "Home"
-          assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: collections['audiobooks'].title
-        else
-          if collection.url 
-            assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
+          if list_page != blank
+            assign parent_page = pages[list_page]
+            if parent_page != blank
+              assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+              assign crumbs = crumbs | append: crumb_item_sep | append: parent_page.url | append: crumb_part_sep | append: parent_title
+            endif
           endif
-      endcase
+        endunless
 
-      assign crumbs = crumbs | append: sep1 | append: product.url | append: sep | append: product.title
-    
-    when 'collection'
-      assign crumbs = crumbs | append: sep1 | append: collections['audiobooks'].url | append: sep | append: collections['audiobooks'].title
-      assign crumbs = crumbs | append: sep1 | append: collection.url | append: sep | append: collection.title
+        assign crumbs = crumbs | append: crumb_item_sep | append: page.url | append: crumb_part_sep | append: title
 
-    when 'blog' 
-      assign crumbs = crumbs | append: sep1 | append: blog.url | append: sep | append: blog.title
+      when 'product'
+        case page_subtype
+          when 'starter-pack-bundle'
+            assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
+            assign crumbs = crumbs | append: crumb_item_sep | append: collections['voxblock-starter-pack-collection'].url | append: crumb_part_sep | append: collections['voxblock-starter-pack-collection'].title
+          when 'audiobook'
+            assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
+            assign crumbs = crumbs | append: crumb_item_sep | append: collections['audiobooks'].url | append: crumb_part_sep | append: collections['audiobooks'].title
+          else
+            if collection.url
+              assign crumbs = crumbs | append: crumb_item_sep | append: collection.url | append: crumb_part_sep | append: collection.title
+            endif
+        endcase
 
-    when 'article' 
-      assign crumbs = crumbs | append: sep1 | append: article.url | append: sep | append: article.title
+        assign crumbs = crumbs | append: crumb_item_sep | append: product.url | append: crumb_part_sep | append: product.title
 
-    when 'metaobject' 
-      
-        comment NOTE: requires the parent page handle be of the form "audiobook-[objecttype-pluralised]" 
-        endcomment 
-        assign title = metaobject.title | default : metaobject.name 
+      when 'collection'
+        assign crumbs = crumbs | append: crumb_item_sep | append: collections['audiobooks'].url | append: crumb_part_sep | append: collections['audiobooks'].title
+        assign crumbs = crumbs | append: crumb_item_sep | append: collection.url | append: crumb_part_sep | append: collection.title
+
+      when 'blog'
+        assign crumbs = crumbs | append: crumb_item_sep | append: blog.url | append: crumb_part_sep | append: blog.title
+
+      when 'article'
+        assign crumbs = crumbs | append: crumb_item_sep | append: blog.url | append: crumb_part_sep | append: blog.title
+        assign crumbs = crumbs | append: crumb_item_sep | append: article.url | append: crumb_part_sep | append: article.title
+
+      when 'metaobject'
+        assign title = metaobject.title | default: metaobject.name
 
         case metaobject_type
           when 'audiobook'
@@ -182,69 +167,86 @@ metaobject__audiobook__audiobook
             assign list_page = 'overviews'
           when 'review'
             assign list_page = 'audiobooks'
-            assign title = metaobject.name | prepend : 'Review of ' 
+            assign title = metaobject.name | prepend: 'Review of '
           when 'character'
             assign list_page = 'audiobook-characters'
             assign title = metaobject.name
           else
-            assign list_page = 'audiobook-'| append: page_subtype | append: 's'
+            assign list_page = 'audiobook-' | append: page_subtype | append: 's'
         endcase
 
-        assign parent_page = pages[list_page] 
-        assign crumbs = crumbs | append: sep1 | append: parent_page.url | append: sep | append: parent_page.metafields.global.title_tag
-      
-      
-      assign crumbs = crumbs | append: sep1 | append: metaobject.system.url | append: sep | append: title
+        if list_page != blank
+          assign parent_page = pages[list_page]
+          if parent_page != blank
+            assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+            assign crumbs = crumbs | append: crumb_item_sep | append: parent_page.url | append: crumb_part_sep | append: parent_title
+          endif
+        endif
 
-    else 
-      assign crumbs = crumbs | append: sep1 | append: request.path | append: sep | append: page_title
-  endcase 
+        if metaobject_type == 'character' and metaobject.main_book.value != blank
+          assign main_book = metaobject.main_book.value
+          assign main_book_title = main_book.title | default: main_book.name
 
-  assign crumb_list = crumbs | split:sep1
+          if main_book.system.url != blank and main_book_title != blank
+            assign crumbs = crumbs | append: crumb_item_sep | append: main_book.system.url | append: crumb_part_sep | append: main_book_title
+          endif
+        endif
 
-  %}
+        assign crumbs = crumbs | append: crumb_item_sep | append: metaobject.system.url | append: crumb_part_sep | append: title
 
-<div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>     
-  <nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs">
-    <ol class="breadcrumbs__list">
-      {%- for crumb_pair in crumb_list -%}
-        <li class="breadcrumbs__item">
-        {%- assign crumb = crumb_pair | split:sep -%}
-        {%- assign text =  crumb[1] -%}
-        {%- assign link =  crumb[0] -%}
-        {% if forloop.last %}
-          <span>{{ text }}</span>
-        {% else %}
-          <a href="{{ link }}"{% if forloop.last %} aria-current="page"{% endif %}class="breadcrumbs__link"><span>{{ text }}</span></a>
-        {% endif %}
-        </li>
-      {%- endfor -%}
-    </ol>
-  </nav>
-</div>
+      else
+        assign crumbs = crumbs | append: crumb_item_sep | append: request.path | append: crumb_part_sep | append: page_title
+    endcase
 
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{%- for crumb in crumb_list -%}{%- assign c = crumb | split:sep -%}
+    assign crumb_list = crumbs | split: crumb_item_sep
+  -%}
 
-    {%- assign link = c[0] -%}
-    {%- unless link contains 'voxblock.co.uk' -%}
-      {%- assign link = link | prepend:'https://voxblock.co.uk' -%}
-    {%- endunless -%}
+  <div {% render 'section-properties', tight: true, class: 'breadcrumbs_section' %}>
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumbs">
+      <ol class="breadcrumbs__list">
+        {%- for crumb_pair in crumb_list -%}
+          {%- assign crumb = crumb_pair | split: crumb_part_sep -%}
+          {%- assign link = crumb[0] -%}
+          {%- assign text = crumb[1] -%}
+
+          <li class="breadcrumbs__item">
+            {% if forloop.last %}
+              <span class="breadcrumbs__current">{{ text }}</span>
+            {% else %}
+              <a href="{{ link }}" class="breadcrumbs__link">
+                <span>{{ text }}</span>
+              </a>
+            {% endif %}
+          </li>
+        {%- endfor -%}
+      </ol>
+    </nav>
+  </div>
+
+  <script type="application/ld+json">
     {
-      "@type": "ListItem",
-      "position": {{ forloop.index }},
-      "name": "{{ c[1] }}",
-      "item": "{{ link }}"
-    }{%- unless forloop.last -%},{%- endunless -%}
-  {%- endfor -%}]
-}
-</script>
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {%- for crumb_pair in crumb_list -%}
+          {%- assign c = crumb_pair | split: crumb_part_sep -%}
+          {%- assign link = c[0] -%}
+
+          {%- unless link contains 'voxblock.co.uk' -%}
+            {%- assign link = link | prepend: 'https://voxblock.co.uk' -%}
+          {%- endunless -%}
+
+          {
+            "@type": "ListItem",
+            "position": {{ forloop.index }},
+            "name": {{ c[1] | json }},
+            "item": {{ link | json }}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
 {%- endunless -%}
-
-
 
 {% schema %}
 {
@@ -266,5 +268,4 @@ metaobject__audiobook__audiobook
     }
   ]
 }
-
 {% endschema %}
