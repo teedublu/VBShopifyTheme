@@ -108,8 +108,8 @@
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "The Gruffalo FAQ",
-        "content": "<p>Use this text to share information about your product or shipping policies.</p>",
+        "title": "{{ metaobject.name.value }} FAQ",
+        "content": "<p>Everything you need to know about <em>{{ metaobject.name.value }}</em> in one place, with clear answers for parents, gift buyers and curious listeners.</p>",
         "book_image": false,
         "book_image_width": 160,
         "extra_info": "Ask us more questions via email",
