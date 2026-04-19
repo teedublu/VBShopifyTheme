@@ -27,7 +27,7 @@
             assign item_description = item.description.value | default: item.summary.value
             assign item_image = item.photos.value | first | default: 'collection-apparel-1'
             assign item_page = item.product.url
-            assign item_url = item.url
+            assign item_url = '/pages/character/' | append: item.system.handle
 
             if item_page != blank
               assign item_link = item_page.url
