@@ -146,6 +146,19 @@
         "product_card_text_color": ""
       }
     },
+    "item_grid_xHEapM": {
+      "type": "item-grid",
+      "name": "Item grid",
+      "settings": {
+        "heading": "Meet the others",
+        "intro": "<p>Explore the main characters and learn more about their personalities and roles in {{ metaobject.name.value }}.</p>",
+        "source_mode": "metaobject_list",
+        "metaobject_items": "{{ metaobject.main_book.value.characters.value }}",
+        "product_items": [],
+        "items_limit": 4,
+        "button_label": "Read more"
+      }
+    },
     "microdata_8YzdEG": {
       "type": "microdata",
       "settings": {
@@ -309,6 +322,7 @@
     "rich_text_77Fmmq",
     "rich_text_4ndi6L",
     "featured_collection_KrTR6V",
+    "item_grid_xHEapM",
     "microdata_8YzdEG",
     "media_with_text_ciY3Ct",
     "video_7z6xfc",
