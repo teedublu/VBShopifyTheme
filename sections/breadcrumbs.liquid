@@ -184,8 +184,8 @@ metaobject__audiobook__audiobook
             assign list_page = 'audiobooks'
             assign title = metaobject.name | prepend : 'Review of ' 
           when 'character'
-            assign list_page = 'audiobook'
-            assign title = metaobject.name | prepend : 'Characters from ' 
+            assign list_page = 'audiobook-characters'
+            assign title = metaobject.name
           else
             assign list_page = 'audiobook-'| append: page_subtype | append: 's'
         endcase
