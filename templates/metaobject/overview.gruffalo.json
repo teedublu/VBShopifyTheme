@@ -18,37 +18,20 @@
     "rich_text_kf8m8f": {
       "type": "rich-text",
       "blocks": {
-        "subheading_ME6F8j": {
-          "type": "subheading",
+        "liquid_wnxYdU": {
+          "type": "liquid",
           "settings": {
-            "text": "Synopsis of {{ metaobject.name.value }}"
-          }
-        },
-        "heading_Y9kqDK": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.page_title.value }}",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_3eBjTx": {
-          "type": "richtext",
-          "settings": {
-            "content": "{{ metaobject.about | metafield_tag }}"
+            "liquid": "<h1>The Gruffalo</h1>\n\n<p><strong>The Gruffalo</strong> is a bestselling children's picture book written by <strong>Julia Donaldson</strong> and illustrated by <strong>Axel Scheffler</strong>. First published in <strong>1999</strong>, it tells the story of a clever mouse who invents a terrifying creature called the Gruffalo to scare off predators in the deep dark wood — only to discover that the Gruffalo is real.</p>\n\n<h2>What is The Gruffalo about?</h2>\n\n<p>The story follows a small mouse walking through the deep dark wood. Along the way, he meets a fox, an owl and a snake, all of whom want to eat him. To protect himself, the mouse invents an imaginary monster called the Gruffalo.</p>\n\n<p>The mouse describes the Gruffalo as a fearsome creature with terrible tusks, terrible claws and terrible teeth. But when the mouse comes face to face with the Gruffalo for real, he has to think quickly again to stay safe.</p>\n\n<p>At its heart, <strong>The Gruffalo</strong> is a story about cleverness, confidence and using your wits when faced with danger.</p>\n\n<h2>When was The Gruffalo published?</h2>\n\n<p><strong>The Gruffalo was first published in 1999.</strong> It quickly became one of the most popular modern children's books in the UK and around the world.</p>\n\n<h2>Who created The Gruffalo?</h2>\n\n<ul>\n  <li><strong>Author:</strong> Julia Donaldson</li>\n  <li><strong>Illustrator:</strong> Axel Scheffler</li>\n</ul>\n\n<p>Together, they created one of the most recognisable characters in children's literature.</p>\n\n<h2>Why is The Gruffalo so popular?</h2>\n\n<p>There are a few reasons why <strong>The Gruffalo</strong> has become such a favourite with children and families:</p>\n\n<ul>\n  <li>its strong rhythm and rhyme make it fun to read aloud</li>\n  <li>the repeating phrases are easy for children to remember</li>\n  <li>the story is funny, suspenseful and easy to follow</li>\n  <li>the mouse wins by being clever rather than strong</li>\n  <li>Axel Scheffler's illustrations make the characters instantly memorable</li>\n</ul>\n\n<h2>Main characters in The Gruffalo</h2>\n\n<p>The main characters in <strong>The Gruffalo</strong> are:</p>\n\n<ul>\n  <li>the Mouse</li>\n  <li>the Gruffalo</li>\n  <li>the Fox</li>\n  <li>the Owl</li>\n  <li>the Snake</li>\n</ul>\n\n<p><a href=\"/pages/character/the-gruffalo\">See all Gruffalo characters</a></p>\n\n<h2>Is The Gruffalo a real animal?</h2>\n\n<p>No. <strong>The Gruffalo is a fictional creature</strong> invented for the story. Part of the fun of the book is that the mouse makes him up to frighten other animals — and then discovers that the creature really does appear in the deep dark wood.</p>\n\n<h2>The Gruffalo audiobook on Voxblock</h2>\n\n<p>You can also listen to <strong>The Gruffalo</strong> as a screen-free audiobook on Voxblock. Children can enjoy the story independently without apps, Wi-Fi or downloads.</p>\n\n<p><a href=\"/pages/audiobook/the-gruffalo\">Listen to The Gruffalo audiobook</a></p>\n\n<h2>Buy The Gruffalo</h2>\n\n<p>Looking for the Voxblock edition of <strong>The Gruffalo</strong>?</p>\n\n<p><a href=\"/products/the-gruffalo\">Buy The Gruffalo</a></p>\n\n<h2>Frequently asked questions about The Gruffalo</h2>\n\n<h3>What age is The Gruffalo for?</h3>\n<p><strong>The Gruffalo</strong> is most often enjoyed by young children, especially in the early picture-book years, though many older children still enjoy the story, especially in audio form.</p>\n\n<h3>Is The Gruffalo a book or an audiobook?</h3>\n<p>It is originally a <strong>children's picture book</strong>, but it is also available in audiobook form, including on Voxblock.</p>\n\n<h3>What is the message of The Gruffalo?</h3>\n<p>A big part of the story is that intelligence, confidence and quick thinking can be more powerful than size or strength.</p>\n\n<h3>Is The Gruffalo part of a series?</h3>\n<p><strong>The Gruffalo</strong> has a well-known follow-up story, <strong>The Gruffalo's Child</strong>.</p>\n\n<p><a href=\"/products/the-gruffalos-child\">Read about The Gruffalo's Child</a></p>"
           }
         }
       },
       "block_order": [
-        "subheading_ME6F8j",
-        "heading_Y9kqDK",
-        "richtext_3eBjTx"
+        "liquid_wnxYdU"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "small",
+        "content_width": "large",
         "text_position": "start",
         "background": "",
         "background_gradient": "",
