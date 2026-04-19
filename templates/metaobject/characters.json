@@ -13,8 +13,8 @@
       "type": "item-grid",
       "name": "Item grid",
       "settings": {
-        "heading": "Meet the characters",
-        "intro": "<p>Explore the main characters and learn more about their personalities and roles in the story.</p>",
+        "heading": "{{ metaobject.title.value }}",
+        "intro": "<p>Meet the characters in </p>",
         "source_mode": "metaobject_list",
         "metaobject_items": "{{ metaobject.list.value }}",
         "product_items": [],
