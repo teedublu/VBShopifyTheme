@@ -58,10 +58,24 @@
         "initials_color": "#ffffff",
         "avatar_bg_color": "#4cb6ac"
       }
+    },
+    "item_grid_F9GWek": {
+      "type": "item-grid",
+      "name": "Item grid",
+      "settings": {
+        "heading": "Meet the characters",
+        "intro": "<p>Explore the main characters and learn more about their personalities and roles in the story.</p>",
+        "source_mode": "metaobject_list",
+        "metaobject_items": "{{ metaobject.list.value }}",
+        "product_items": [],
+        "items_limit": 4,
+        "button_label": "Read more"
+      }
     }
   },
   "order": [
     "audiobook_characters_NcbV4k",
-    "metaobjects_list_f7Dd6B"
+    "metaobjects_list_f7Dd6B",
+    "item_grid_F9GWek"
   ]
 }
