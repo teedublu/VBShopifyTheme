@@ -58,19 +58,6 @@
                       alt: item_title
                   }}
                 </div>
-              {% elsif section.settings.fallback_image != blank %}
-                <div class="item-grid-card__image-wrap">
-                  {{
-                    section.settings.fallback_image
-                    | image_url: width: 800
-                    | image_tag:
-                      class: 'item-grid-card__image',
-                      loading: 'lazy',
-                      widths: '240, 360, 480, 720, 800',
-                      sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 100vw',
-                      alt: item_title
-                  }}
-                </div>
               {% endif %}
 
               <div class="item-grid-card__content">
@@ -97,6 +84,42 @@
           </article>
         {% endfor %}
 
+      {% elsif source_mode == 'product_list' and section.settings.product_items != blank %}
+        {% for product in section.settings.product_items limit: items_limit %}
+          <article class="item-grid-card">
+            <a class="item-grid-card__inner item-grid-card__inner--linked" href="{{ product.url }}">
+              {% if product.featured_image != blank %}
+                <div class="item-grid-card__image-wrap">
+                  {{
+                    product.featured_image
+                    | image_url: width: 800
+                    | image_tag:
+                      class: 'item-grid-card__image',
+                      loading: 'lazy',
+                      widths: '240, 360, 480, 720, 800',
+                      sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 100vw',
+                      alt: product.title
+                  }}
+                </div>
+              {% endif %}
+
+              <div class="item-grid-card__content">
+                <h3 class="item-grid-card__title">{{ product.title }}</h3>
+
+                {% if product.description != blank %}
+                  <div class="item-grid-card__description rte">
+                    {{ product.description | strip_html | truncatewords: 24 }}
+                  </div>
+                {% endif %}
+
+                {% if section.settings.button_label != blank %}
+                  <span class="item-grid-card__button">{{ section.settings.button_label }}</span>
+                {% endif %}
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+
       {% else %}
         {% for block in section.blocks limit: items_limit %}
           <article class="item-grid-card" {{ block.shopify_attributes }}>
@@ -112,19 +135,6 @@
                 <div class="item-grid-card__image-wrap">
                   {{
                     block.settings.image
-                    | image_url: width: 800
-                    | image_tag:
-                      class: 'item-grid-card__image',
-                      loading: 'lazy',
-                      widths: '240, 360, 480, 720, 800',
-                      sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 100vw',
-                      alt: block.settings.title
-                  }}
-                </div>
-              {% elsif section.settings.fallback_image != blank %}
-                <div class="item-grid-card__image-wrap">
-                  {{
-                    section.settings.fallback_image
                     | image_url: width: 800
                     | image_tag:
                       class: 'item-grid-card__image',
@@ -164,6 +174,96 @@
   </div>
 </section>
 
+<style>
+  .item-grid-section {
+    padding: 48px 0;
+  }
+
+  .item-grid-section__header {
+    max-width: 760px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .item-grid-section__heading {
+    margin: 0 0 12px;
+  }
+
+  .item-grid-section__grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .item-grid-section__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .item-grid-section__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .item-grid-card__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    background: rgb(var(--color-background));
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .item-grid-card__inner--linked {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .item-grid-card__inner--linked:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .item-grid-card__image-wrap {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  .item-grid-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .item-grid-card__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 20px;
+  }
+
+  .item-grid-card__title {
+    margin: 0 0 10px;
+  }
+
+  .item-grid-card__description {
+    margin-bottom: 16px;
+  }
+
+  .item-grid-card__button {
+    margin-top: auto;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
+
 {% schema %}
 {
   "name": "Item grid",
@@ -189,7 +289,8 @@
       "default": "blocks",
       "options": [
         { "value": "blocks", "label": "Manual blocks" },
-        { "value": "metaobject_list", "label": "Metaobject list" }
+        { "value": "metaobject_list", "label": "Metaobject list" },
+        { "value": "product_list", "label": "Product list" }
       ]
     },
     {
@@ -200,9 +301,10 @@
       "limit": 12
     },
     {
-      "type": "image_picker",
-      "id": "fallback_image",
-      "label": "Fallback image"
+      "type": "product_list",
+      "id": "product_items",
+      "label": "Product items",
+      "limit": 12
     },
     {
       "type": "range",
