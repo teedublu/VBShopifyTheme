@@ -14,13 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "message_WWXMAB": {
-          "type": "message",
-          "settings": {
-            "text": "Easter Break - Limited dispatching 14–16 April",
-            "url": "https://voxblock.co.uk/pages/delivery-information"
-          }
-        },
         "message": {
           "type": "message",
           "settings": {
@@ -46,7 +39,6 @@
         }
       },
       "block_order": [
-        "message_WWXMAB",
         "message",
         "message_N7RbUz",
         "message_nYpB7X"
