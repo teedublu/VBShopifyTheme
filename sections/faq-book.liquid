@@ -20,7 +20,7 @@ boils down to
   }
 </style>
 
-<div {% render 'section-properties' %}>
+<div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %}>
 
   <div class="section-stack {% if text_position != 'center' %}section-stack--horizontal{% else %}section-stack--center{% endif %} {% if text_position == 'end' %}section-stack--reverse{% endif %}">
     {%- capture content -%}
@@ -177,6 +177,11 @@ boils down to
       "id": "full_width",
       "label": "Full width",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID"
     },
     {
       "type": "text",

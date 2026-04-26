@@ -8,7 +8,7 @@
     }
   </style>
 
-  <div {% render 'section-properties' %}>
+  <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %}>
     {%- assign text_position = section.settings.text_position -%}
     {%- assign blocks_before_divider = '' -%}
     {%- assign blocks_after_divider = '' -%}
@@ -192,6 +192,11 @@
         }
       ],
       "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID"
     },
     {
       "type": "header",

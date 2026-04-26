@@ -3,7 +3,7 @@
   assign items_limit = section.settings.items_limit
 %}
 
-<section class="item-grid-section">
+<section class="item-grid-section" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %}>
   <div class="page-width">
     {% if section.settings.heading != blank or section.settings.intro != blank %}
       <div class="item-grid-section__header">
@@ -270,6 +270,11 @@
   "tag": "section",
   "class": "section section-item-grid",
   "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID"
+    },
     {
       "type": "text",
       "id": "heading",
