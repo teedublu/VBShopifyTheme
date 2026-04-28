@@ -1,0 +1,301 @@
+{%- assign quotes = metaobject.quotes.value -%}
+{%- if quotes != blank -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  {%- assign max_quotes = section.settings.max_quotes -%}
+  {%- assign shown_quotes = 0 -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --audiobook-quotes-max-width: {% if section.settings.content_width == 'small' %}760px{% elsif section.settings.content_width == 'medium' %}1040px{% else %}1260px{% endif %};
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes {
+      max-width: var(--audiobook-quotes-max-width);
+      margin-inline: auto;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__header {
+      max-width: 52rem;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__grid {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__card {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      padding: clamp(1.25rem, 2vw, 1.8rem);
+      border-radius: 24px;
+      border: 1px solid rgba(22, 32, 72, 0.08);
+      background:
+        radial-gradient(circle at top right, rgba(255, 175, 83, 0.1), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 246, 240, 0.98));
+      box-shadow: 0 20px 44px rgba(22, 32, 72, 0.08);
+      overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__card::before {
+      content: "“";
+      position: absolute;
+      top: -0.2rem;
+      left: 0.8rem;
+      font-size: clamp(4rem, 7vw, 6rem);
+      line-height: 1;
+      color: rgba(22, 32, 72, 0.08);
+      pointer-events: none;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__quote {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      line-height: 1.35;
+      color: rgb(var(--text-color));
+      text-wrap: balance;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__character {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      object-fit: cover;
+      box-shadow: 0 8px 24px rgba(22, 32, 72, 0.12);
+      flex-shrink: 0;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__name {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgb(var(--text-color));
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-quotes__meta {
+      margin: 0.1rem 0 0;
+      font-size: 0.9rem;
+      color: rgba(var(--text-color), 0.72);
+    }
+
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }} .audiobook-quotes__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media screen and (min-width: 1100px) {
+      #shopify-section-{{ section.id }} .audiobook-quotes__grid--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %}>
+    <div class="section-stack audiobook-quotes">
+      {%- if section.settings.subheading != blank or section.settings.heading != blank or section.settings.content != blank -%}
+        <div class="audiobook-quotes__header section-stack__intro">
+          {%- render 'section-header',
+            subheading: section.settings.subheading,
+            heading: section.settings.heading,
+            content: section.settings.content,
+            heading_color: section.settings.heading_color,
+            heading_gradient: section.settings.heading_gradient
+          -%}
+        </div>
+      {%- endif -%}
+
+      <div class="audiobook-quotes__grid {% if max_quotes >= 3 %}audiobook-quotes__grid--three{% endif %}">
+        {%- for quote in quotes -%}
+          {%- if shown_quotes >= max_quotes -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- assign shown_quotes = shown_quotes | plus: 1 -%}
+
+          {%- assign character = quote.character.value -%}
+          {%- assign photo = blank -%}
+          {%- if character != blank -%}
+            {%- assign photo = character.photos.value | first -%}
+            <script type="application/ld+json">
+              {%- render 'microdata-quotation', audiobook: metaobject, character: character, quote: quote -%}
+            </script>
+          {%- endif -%}
+
+          <article class="audiobook-quotes__card">
+            <blockquote class="audiobook-quotes__quote">
+              {{ quote.content }}
+            </blockquote>
+
+            {%- if section.settings.show_character -%}
+              <div class="audiobook-quotes__character">
+                {%- if photo != blank and section.settings.show_photo -%}
+                  {{
+                    photo
+                    | image_url: width: 120
+                    | image_tag:
+                      class: 'audiobook-quotes__avatar',
+                      loading: 'lazy',
+                      widths: '52, 80, 120',
+                      sizes: '52px',
+                      alt: character.name
+                  }}
+                {%- endif -%}
+
+                <div>
+                  <p class="audiobook-quotes__name">
+                    {%- if character != blank -%}
+                      <a href="{{ character.system.url }}" class="link">{{ character.name | default: quote.said_by }}</a>
+                    {%- else -%}
+                      {{ quote.said_by }}
+                    {%- endif -%}
+                  </p>
+
+                  {%- if character != blank and section.settings.show_character_label -%}
+                    <p class="audiobook-quotes__meta">Character in {{ metaobject.title.value }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Audiobook Quotes",
+  "class": "shopify-section--audiobook-quotes",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Favourite lines"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Memorable quotes from the story"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Highlight the most recognisable lines and the characters who say them.</p>"
+    },
+    {
+      "type": "range",
+      "id": "max_quotes",
+      "label": "Max quotes",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_character",
+      "label": "Show character",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_photo",
+      "label": "Show character photo",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_character_label",
+      "label": "Show character label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Audiobook Quotes"
+    }
+  ]
+}
+{% endschema %}

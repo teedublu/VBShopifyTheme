@@ -370,6 +370,24 @@
     "faq_book_Ji9KrX": {
       "type": "faq-book",
       "blocks": {
+        "item_ThP7JM": {
+          "type": "item",
+          "settings": {
+            "title": "Who wrote \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.authors | metafield_text: field: 'name' }}",
+            "check_for_richtext": "",
+            "content": "{{ metaobject.authors | metafield_tag: field: 'name' }}"
+          }
+        },
+        "item_ageBestFor": {
+          "type": "item",
+          "settings": {
+            "title": "What age is \"{{ metaobject.title.value }}\" best for?",
+            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
+            "check_for_richtext": "",
+            "content": "<p>{{ metaobject.title.value }} is generally suited to the following interest level:</p>{{ metaobject.interest_level | metafield_tag }}"
+          }
+        },
         "item_bmzGFg": {
           "type": "item",
           "settings": {
@@ -379,13 +397,32 @@
             "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
           }
         },
+        "item_nyzJcr": {
+          "type": "item",
+          "settings": {
+            "title": "Who are the main characters in \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.characters | metafield_text: field: 'name' }}",
+            "check_for_richtext": "",
+            "content": "<p>Here are the main characters featured in {{ metaobject.title.value }}.</p>",
+            "use_metaobject_characters": true
+          }
+        },
+        "item_durationFaq": {
+          "type": "item",
+          "settings": {
+            "title": "How long is \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "<p>You can find the full listening time for {{ metaobject.title.value }} in the Story details section on this page.</p>"
+          }
+        },
         "item_xCAt3F": {
           "type": "item",
           "settings": {
-            "title": "What is the best way to listen to \"{{ metaobject.title.value }}\" ?",
+            "title": "Do I need a Voxblock player to listen to \"{{ metaobject.title.value }}\"?",
             "check_for_text": "{{ metaobject.title.value }}",
             "check_for_richtext": "",
-            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to {{ metaobject.title.value }} and many other great stories.</p>"
+            "content": "<p>Yes. {{ metaobject.title.value }} is designed to play on the screen-free Voxblock audiobook player, with no apps, downloads or Wi-Fi needed.</p>"
           }
         },
         "item_kwQGtG": {
@@ -397,10 +434,19 @@
             "content": "{{ metaobject.concise_blurb | metafield_tag }}"
           }
         },
+        "item_independentListening": {
+          "type": "item",
+          "settings": {
+            "title": "Is \"{{ metaobject.title.value }}\" suitable for independent listening?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "<p>Yes. Once children know how to use their Voxblock player, they can usually start {{ metaobject.title.value }} on their own by placing the audiobook on the player.</p>"
+          }
+        },
         "item_xERghq": {
           "type": "item",
           "settings": {
-            "title": "What are the key themes in audiobook  \"{{ metaobject.title.value }}\"?",
+            "title": "What are the key themes in the audiobook \"{{ metaobject.title.value }}\"?",
             "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
             "check_for_richtext": "",
             "content": "<p>The audiobook \"{{ metaobject.title.value }}\" has the following key themes featured throughout the plot:</p>{{ metaobject.content_themes | metafield_tag }}"
@@ -408,9 +454,14 @@
         }
       },
       "block_order": [
+        "item_ThP7JM",
+        "item_ageBestFor",
         "item_bmzGFg",
+        "item_nyzJcr",
+        "item_durationFaq",
         "item_xCAt3F",
         "item_kwQGtG",
+        "item_independentListening",
         "item_xERghq"
       ],
       "settings": {
