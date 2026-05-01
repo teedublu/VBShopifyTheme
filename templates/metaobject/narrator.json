@@ -116,7 +116,17 @@
         "title_cRhph4": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h2",
+            "eyebrow": "Featured audiobook",
+            "contextual_title": "[name] narrates [title]"
+          }
+        },
+        "author_narrator_Vh7WwQ": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": true,
+            "show_publisher": true
           }
         },
         "audiobook_properties_ceD86m": {
@@ -148,6 +158,7 @@
       },
       "block_order": [
         "title_cRhph4",
+        "author_narrator_Vh7WwQ",
         "audiobook_properties_ceD86m",
         "description_R6Enaq",
         "buy_buttons_bzPzGf"

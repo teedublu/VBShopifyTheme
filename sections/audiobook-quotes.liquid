@@ -90,6 +90,13 @@
       color: rgba(var(--text-color), 0.72);
     }
 
+    #shopify-section-{{ section.id }} .audiobook-quotes__work {
+      margin: 0.35rem 0 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(var(--text-color), 0.88);
+    }
+
     @media screen and (min-width: 750px) {
       #shopify-section-{{ section.id }} .audiobook-quotes__grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -125,11 +132,14 @@
           {%- assign shown_quotes = shown_quotes | plus: 1 -%}
 
           {%- assign character = quote.character.value -%}
+          {%- assign audiobook = quote.audiobook.value -%}
           {%- assign photo = blank -%}
           {%- if character != blank -%}
             {%- assign photo = character.photos.value | first -%}
+          {%- endif -%}
+          {%- if character != blank and audiobook != blank -%}
             <script type="application/ld+json">
-              {%- render 'microdata-quotation', audiobook: metaobject, character: character, quote: quote -%}
+              {%- render 'microdata-quotation', audiobook: audiobook, character: character, quote: quote -%}
             </script>
           {%- endif -%}
 
@@ -163,10 +173,16 @@
                   </p>
 
                   {%- if character != blank and section.settings.show_character_label -%}
-                    <p class="audiobook-quotes__meta">Character in {{ metaobject.title.value }}</p>
+                    <p class="audiobook-quotes__meta">Character quote</p>
                   {%- endif -%}
                 </div>
               </div>
+            {%- endif -%}
+
+            {%- if audiobook != blank and section.settings.show_audiobook -%}
+              <p class="audiobook-quotes__work">
+                From <a href="{{ audiobook.system.url }}" class="link">{{ audiobook.title.value | default: audiobook.title }}</a>
+              </p>
             {%- endif -%}
           </article>
         {%- endfor -%}
@@ -259,6 +275,12 @@
       "type": "checkbox",
       "id": "show_character_label",
       "label": "Show character label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_audiobook",
+      "label": "Show audiobook citation",
       "default": true
     },
     {

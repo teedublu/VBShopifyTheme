@@ -28,6 +28,7 @@ There is a similar but different one shown in the audiobook page - section/audio
 {%- assign book = product.metafields.book -%}
 {%- assign narrators = book.narrators.value -%}
 {%- assign authors = book.authors.value -%}
+{%- assign publisher = book.publisher.value -%}
 
 
 <div class="audiobooks-authornarrator-grid">
@@ -48,6 +49,14 @@ There is a similar but different one shown in the audiobook page - section/audio
                 {% for narrator in narrators %}
                    {{ narrator.name | link_to: narrator.system.url, class: 'narrator link'}}{% unless forloop.last %}, {% endunless %}
                 {% endfor %}
+            </div>
+        </div>
+    {%- endif -%}
+    {%- if block.settings.show_publisher and publisher != blank -%}
+        <div class="grid-row">
+            <div class="grid-cell label">Publisher</div>
+            <div class="grid-cell value">
+                {{ publisher.name | link_to: publisher.system.url, class: 'publisher link' }}
             </div>
         </div>
     {%- endif -%}

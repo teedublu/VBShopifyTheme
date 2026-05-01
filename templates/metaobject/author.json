@@ -92,13 +92,41 @@
         "text_color": ""
       }
     },
+    "audiobook_quotes_CpH8Yk": {
+      "type": "audiobook-quotes",
+      "settings": {
+        "full_width": true,
+        "anchor_id": "",
+        "subheading": "From the books",
+        "heading": "A taste of {{ metaobject.name.value }}'s writing",
+        "content": "<p>Memorable lines from audiobooks by {{ metaobject.name.value }}, with each quote linked back to the story it comes from.</p>",
+        "max_quotes": 3,
+        "content_width": "medium",
+        "show_character": true,
+        "show_photo": true,
+        "show_character_label": true,
+        "show_audiobook": true,
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
     "featured_audiobook_light_hqQrgh": {
       "type": "featured-audiobook-light",
       "blocks": {
         "title_xzPUKA": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h2",
+            "eyebrow": "Featured audiobook",
+            "contextual_title": "[name] wrote [title]"
+          }
+        },
+        "author_narrator_kxT6Gc": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": true,
+            "show_publisher": true
           }
         },
         "price_TtcNnL": {
@@ -130,6 +158,7 @@
       },
       "block_order": [
         "title_xzPUKA",
+        "author_narrator_kxT6Gc",
         "price_TtcNnL",
         "audiobook_properties_w93H7C",
         "buy_buttons_Mgij9h"
@@ -333,6 +362,7 @@
     "image_with_text_overlay_Xdkkz8",
     "breadcrumbs_pWhnx7",
     "rich_text_hW6GQq",
+    "audiobook_quotes_CpH8Yk",
     "featured_audiobook_light_hqQrgh",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",

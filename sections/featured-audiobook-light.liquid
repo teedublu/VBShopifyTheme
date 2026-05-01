@@ -142,6 +142,15 @@
     line-height: 1.05;
   }
 
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info__eyebrow {
+    margin: 0 0 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(var(--text-color), 0.72);
+  }
+
   #shopify-section-{{ section.id }} .product.audiobooks .product-info__price {
     padding-block: 0.35rem 0.25rem;
   }
@@ -222,7 +231,7 @@
       {%- render 'media', media: media | first, sizes: sizes, preload: true, width: '300' -%}
     {%- endif -%}
 
-    {%- render 'product-info', product: product, update_url: true -%}
+    {%- render 'product-info', product: product, update_url: true, metaobject: metaobject -%}
   </div>
 </div>
 
@@ -272,6 +281,19 @@
             }
           ],
           "default": "h2"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "info": "Use [name] for the page metaobject and [title] for the audiobook title."
+        },
+        {
+          "type": "text",
+          "id": "contextual_title",
+          "label": "Contextual title",
+          "info": "Use [name] for the page metaobject and [title] for the audiobook title.",
+          "default": "[title]"
         }
       ]
     },
@@ -395,6 +417,12 @@
           "type": "checkbox",
           "id": "show_narrator",
           "label": "Display Narrator",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_publisher",
+          "label": "Display Publisher",
           "default": true
         }
       ]
