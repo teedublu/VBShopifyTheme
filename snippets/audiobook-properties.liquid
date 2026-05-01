@@ -16,14 +16,20 @@ CSS
 .audiobook_product_block .audiobook_properties {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
-  padding: 0.85rem;
+  gap: 1rem 0.9rem;
+  padding: 0.85rem 0;
   margin: 0 auto;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  min-width: 0;
 }
 
 @media only screen and (min-width: 700px) {
   .audiobook_product_block .audiobook_properties {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    justify-content: stretch;
   }
 }
 
@@ -31,14 +37,12 @@ CSS
   text-anchor: middle;
   text-align: center;
   display: grid;
-  gap: 0.6rem;
+  gap: 0.7rem;
   justify-items: center;
   align-content: start;
-  padding: 1rem 0.75rem 0.85rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(22, 32, 72, 0.08);
-  box-shadow: 0 12px 30px rgba(22, 32, 72, 0.08);
+  width: 100%;
+  min-width: 0;
+  padding: 0.25rem 0.2rem 0;
 }
 
 .audiobook_product_block div.audiobook_properties div.audiobook_property .playicon { cursor: pointer; }
@@ -51,15 +55,17 @@ CSS
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
+  line-height: 1.2;
   text-transform: uppercase;
   color: rgba(var(--text-color), 0.68);
+  text-wrap: balance;
 }
 
   {%- comment -%}
     color: {{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}
   {%- endcomment -%}
 
-.audiobook_product_block svg { stroke:{{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}; fill: transparent; border-radius: 50%; width: min(100%, 92px); margin: auto;}
+.audiobook_product_block svg { stroke:{{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}; fill: transparent; border-radius: 50%; width: min(100%, 92px); max-width: 92px; margin: auto;}
 .audiobook_product_block .audiobook_property .playing svg { animation: pulse-animation 2s infinite; }
 
 .audiobook_product_block .audiobook_property .bookpreview svg path.play { fill: {{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}};  }
@@ -88,6 +94,12 @@ The animation is in the voxblock.css.liquid as it applies in other places too
 .audiobook_product_block svg .marks > line:nth-child(10) {transform: rotate(calc(10 * 30deg));}
 .audiobook_product_block svg .marks > line:nth-child(11) {transform: rotate(calc(11 * 30deg));}
 .audiobook_product_block svg .marks > line:nth-child(12) {transform: rotate(calc(12 * 30deg));}
+
+@media only screen and (min-width: 700px) {
+  .audiobook_product_block .audiobook_properties {
+    margin-inline: 0;
+  }
+}
 </style>
 
 {%- comment -%}

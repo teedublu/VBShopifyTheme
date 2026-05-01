@@ -15,16 +15,12 @@
         "heading": "Breadcrumbs"
       }
     },
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "content_width": "80ch",
-        "show_title": true
-      }
-    },
     "metaobjects_authors_Eknwid": {
       "type": "metaobjects-list",
       "settings": {
+        "eyebrow": "Browse Narrators",
+        "heading": "Discover audiobook narrators",
+        "description": "<p>Browse the voices behind our screen-free audiobooks and find narrators featured across the Voxblock collection. Each profile links through to the stories they help bring to life.</p>",
         "page_size": 25,
         "object_type": "narrators",
         "avatar_display": "initials",
@@ -38,7 +34,6 @@
   },
   "order": [
     "breadcrumbs_JDgHEY",
-    "main",
     "metaobjects_authors_Eknwid"
   ]
 }

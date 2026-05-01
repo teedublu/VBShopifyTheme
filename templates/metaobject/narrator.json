@@ -31,6 +31,12 @@
             "subheading_tag_html": "h2"
           }
         },
+        "text_h3sJ2p": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Explore stories narrated by {{ metaobject.name.value }} and listen screen-free on Voxblock.</p>"
+          }
+        },
         "heading_BEKdDd": {
           "type": "heading",
           "settings": {
@@ -44,6 +50,7 @@
       "block_order": [
         "image_6TVgaD",
         "subheading_7LMNib",
+        "text_h3sJ2p",
         "heading_BEKdDd"
       ],
       "settings": {
@@ -58,7 +65,9 @@
         "background": "#ff9e57",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": true,
+        "watermark_opacity": 6
       }
     },
     "breadcrumbs_pWhnx7": {
@@ -88,6 +97,17 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
+      }
+    },
+    "listen_to_voice_7VfQm2": {
+      "type": "listen-to-voice",
+      "settings": {
+        "eyebrow": "Hear The Voice",
+        "heading": "Hear how [name] sounds",
+        "content": "Press play to hear a sample from [title] and get a feel for [name]'s storytelling before you choose a story.",
+        "play_label": "Play sample",
+        "pause_label": "Playing sample",
+        "caption": "Sample from [title]"
       }
     },
     "featured_audiobook_light_eXXMXA": {
@@ -156,7 +176,7 @@
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
         "subheading": "More audiobooks",
-        "title": "Read by {{ metaobject.name.value }}",
+        "title": "More stories narrated by {{ metaobject.name.value }}",
         "content": "",
         "link_url": "",
         "link_text": "See all",
@@ -189,10 +209,10 @@
             "icon": "none",
             "icon_width": 68,
             "subheading": "",
-            "title": "Listen with Voxblock",
-            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p>",
-            "link_text": "Learn more",
-            "link_url": "shopify://products/voxblock-player",
+            "title": "A simple way to keep listening",
+            "content": "<p>If your child enjoys {{ metaobject.name.value }}'s storytelling, Voxblock makes it easy to keep listening without apps, downloads or screens. Just choose a story, pop it in and press play.</p>",
+            "link_text": "See how Voxblock works",
+            "link_url": "shopify://pages/how-does-it-work",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -211,71 +231,35 @@
         "spacing": "small"
       }
     },
-    "video_7z6xfc": {
-      "type": "video",
-      "blocks": {
-        "play_zAwMFi": {
-          "type": "play",
-          "disabled": true,
-          "settings": {}
-        },
-        "heading_nLz6aH": {
-          "type": "heading",
-          "settings": {
-            "text": "",
-            "heading_tag": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "play_zAwMFi",
-        "heading_nLz6aH"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "autoplay": true,
-        "video_size": "md",
-        "youtube_id": "",
-        "external_video_url": "",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "jsonld_title": "Voxblock video",
-        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
-      }
-    },
     "faq_PWkrrR": {
       "type": "faq",
       "blocks": {
         "item_dpCpac": {
           "type": "item",
           "settings": {
-            "title": "What is Voxblock?",
-            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"/pages/how-does-it-work\" title=\"How it works\">here.</a></p>"
+            "title": "What audiobooks are narrated by {{ metaobject.name.value }}?",
+            "content": "<p>On Voxblock {{ metaobject.name.value }} has narrated {% assign narrator_books = metaobject.collection.value.products %}{% if narrator_books != blank and narrator_books.count > 0 %}{% for book in narrator_books limit: 3 %}<a href=\"{{ book.url }}\">{{ book.title }}</a>{% if forloop.rindex0 > 1 %}, {% elsif forloop.rindex0 == 1 %} and {% endif %}{% endfor %}{% if narrator_books.count > 3 and metaobject.collection.value != blank %}, with <a href=\"{{ metaobject.collection.value.url }}\">more titles here</a>{% endif %}{% elsif metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}a selection of Voxblock audiobooks{% endif %}.</p>"
           }
         },
         "item_JwG9hG": {
           "type": "item",
           "settings": {
-            "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
+            "title": "Can children listen to {{ metaobject.name.value }} audiobooks without a screen?",
+            "content": "<p>Yes. Voxblock lets children listen without apps, downloads or screen time, making it a simple way to enjoy audiobooks narrated by {{ metaobject.name.value }}.</p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
-            "title": "What age is Voxblock suitable for?",
-            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.</p>"
+            "title": "How can I hear how {{ metaobject.name.value }} sounds?",
+            "content": "<p>Press play in the sample section above to hear {{ metaobject.name.value }}'s voice reading {% if metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% elsif metaobject.collection.value.products.first != blank %}<a href=\"{{ metaobject.collection.value.products.first.url }}\">{{ metaobject.collection.value.products.first.title }}</a>{% else %}one of the featured audiobooks{% endif %}.</p>"
           }
         },
         "item_M9imEA": {
           "type": "item",
           "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "title": "What age group are these audiobooks suitable for?",
+            "content": "<p>Age suitability depends on the title. Check the featured audiobook details and any related stories on this page for guidance on age range, themes and listening level.</p>"
           }
         }
       },
@@ -287,9 +271,9 @@
       ],
       "settings": {
         "full_width": true,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "",
+        "subheading": "Questions about listening to {{ metaobject.name.value }}",
+        "title": "Helpful answers",
+        "content": "<p>If you are exploring audiobooks narrated by {{ metaobject.name.value }}, here are a few useful things to know before you listen on Voxblock.</p>",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
@@ -328,12 +312,12 @@
     "image_with_text_overlay_Dg7w6q",
     "breadcrumbs_pWhnx7",
     "rich_text_FGW9TQ",
+    "listen_to_voice_7VfQm2",
     "featured_audiobook_light_eXXMXA",
     "featured_collection_dyWK9t",
-    "microdata_kKw6gU",
     "media_with_text_ciY3Ct",
-    "video_7z6xfc",
     "faq_PWkrrR",
-    "newsletter_jK33Dy"
+    "newsletter_jK33Dy",
+    "microdata_kKw6gU"
   ]
 }

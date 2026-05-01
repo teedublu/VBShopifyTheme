@@ -150,7 +150,7 @@
         {%- endfor -%}
       </ul>
 
-      {%- render 'pagination', paginate: paginate, class: 'audiobook-directory__pagination' -%}
+      {%- render 'pagination', paginate: paginate, class: 'audiobook-directory__pagination', mode: 'full', show_first_last: true, show_head_links: true, canonical_url: canonical_url -%}
     </div>
   {% endpaginate %}
 </div>

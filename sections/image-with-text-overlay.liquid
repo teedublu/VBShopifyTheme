@@ -20,12 +20,44 @@
 
   }
 
+  {%- if section.settings.enable_watermark -%}
+    #shopify-section-{{ section.id }} .image-with-text-overlay--watermark {
+      isolation: isolate;
+    }
+
+    #shopify-section-{{ section.id }} .image-with-text-overlay--watermark::after {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      z-index: 1;
+      pointer-events: none;
+      background-image: url("{{ 'voxblock-mark.svg' | asset_url }}");
+      background-repeat: repeat;
+      background-size: 40px 30px;
+      background-position: center;
+      opacity: {{ section.settings.watermark_opacity | divided_by: 100.0 }};
+      transform: rotate(-12deg) scale(1.18);
+      transform-origin: center;
+    }
+
+    #shopify-section-{{ section.id }} .image-with-text-overlay--watermark > :not(img, video, iframe, svg, video-media) {
+      z-index: 2;
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .image-with-text-overlay--watermark::after {
+        background-size: 32px 24px;
+        transform: rotate(-10deg) scale(1.12);
+      }
+    }
+  {%- endif -%}
+
 
 
 </style>
 
 <div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
-  {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+  {%- capture class -%}content-over-media content-over-media--{{ section.settings.image_size }} {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{% if section.settings.enable_watermark %} image-with-text-overlay--watermark{% endif %}{%- endcapture -%}
 
   <image-banner reveal-on-scroll="true" {% if section.settings.enable_parallax %}parallax="0.3"{% endif %} {% render 'surface', class: class, text_color: section.settings.text_color %}>
 
@@ -314,6 +346,22 @@
       "step": 1,
       "unit": "%",
       "default": 30
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_watermark",
+      "label": "Enable watermark pattern",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "watermark_opacity",
+      "label": "Watermark opacity",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "unit": "%",
+      "default": 6
     }
   ],
   "blocks": [

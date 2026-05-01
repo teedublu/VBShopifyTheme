@@ -1,6 +1,15 @@
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
 <safe-sticky class="product-info">
+  {%- if section.settings.context_copy != blank -%}
+    {%- assign context_name = metaobject.name.value | default: product.vendor | default: product.title -%}
+    <div class="product-info__text product-info__text--context">
+      <div class="prose">
+        <p>{{ section.settings.context_copy | replace: '[name]', context_name | replace: '[title]', product.title }}</p>
+      </div>
+    </div>
+  {%- endif -%}
+
   {%- for block in section.blocks -%}
     {%- assign previous_block_index = forloop.index0 | minus: 1 -%}
     {%- assign previous_block = section.blocks[previous_block_index] -%}
@@ -249,7 +258,7 @@
         </div>
 
       {%- when 'text' -%}
-        {%- if block.settings.text != blank -%}
+        {%- if section.settings.context_copy == blank and block.settings.text != blank -%}
           <div class="product-info__text" {{ block.shopify_attributes }}>
             <div class="prose">
               {{- block.settings.text -}}

@@ -1,25 +1,62 @@
 {%- render 'section-spacing-collapsing' -%}
 
 {% assign object_type = section.settings.object_type %}
+{%- assign page_size = section.settings.page_size | plus: 0 -%}
+{%- if page_size < 1 -%}
+  {%- assign page_size = 25 -%}
+{%- endif -%}
 
 <style>
+  #shopify-section-{{ section.id }} .object-directory {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .object-directory__intro {
+    max-width: 72ch;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .object-directory__eyebrow {
+    margin: 0 0 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(var(--text-color), 0.68);
+  }
+
+  #shopify-section-{{ section.id }} .object-directory__heading {
+    margin: 0;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.08;
+  }
+
+  #shopify-section-{{ section.id }} .object-directory__description {
+    margin: 0.6rem 0 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: rgba(var(--text-color), 0.78);
+  }
+
   #shopify-section-{{ section.id }} .object-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: grid;
-    gap: 1rem;
+    gap: 0.65rem;
   }
 
   #shopify-section-{{ section.id }} .object-item {
     display: grid;
-    grid-template-columns: 72px minmax(0, 1fr);
-    gap: 1rem;
-    align-items: start;
-    padding: 1rem;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.7rem 0.85rem;
     border: 1px solid rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.92);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.78);
   }
 
   #shopify-section-{{ section.id }} .object-item[id] {
@@ -27,10 +64,10 @@
   }
 
   #shopify-section-{{ section.id }} .object-image {
-    width: 72px;
-    height: 72px;
+    width: 56px;
+    height: 56px;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,23 +86,23 @@
 
   #shopify-section-{{ section.id }} .object-title {
     margin: 0;
-    font-size: 1.05rem;
-    line-height: 1.3;
+    font-size: 1rem;
+    line-height: 1.25;
   }
 
   #shopify-section-{{ section.id }} .object-meta,
   #shopify-section-{{ section.id }} .object-description {
-    margin-top: 0.35rem;
+    margin-top: 0.2rem;
   }
 
   #shopify-section-{{ section.id }} .object-meta {
-    font-size: 0.92rem;
-    line-height: 1.5;
+    font-size: 0.88rem;
+    line-height: 1.4;
   }
 
   #shopify-section-{{ section.id }} .object-description {
-    font-size: 0.95rem;
-    line-height: 1.55;
+    font-size: 0.9rem;
+    line-height: 1.45;
     color: rgba(var(--text-color), 0.78);
   }
 
@@ -107,9 +144,23 @@
 <div {% render 'section-properties' %}>
   <div class="container">
     <div class="page">
-      <div class="metaobjects index-list collection">
+      <div class="metaobjects index-list collection object-directory">
+        {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.description != blank -%}
+          <div class="object-directory__intro">
+            {%- if section.settings.eyebrow != blank -%}
+              <p class="object-directory__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            {%- endif -%}
+            {%- if section.settings.heading != blank -%}
+              <h1 class="object-directory__heading">{{ section.settings.heading | escape }}</h1>
+            {%- endif -%}
+            {%- if section.settings.description != blank -%}
+              <div class="object-directory__description rte">{{ section.settings.description }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
         {%- if object_type == 'audiobooks' -%}
-          {% paginate collections['audiobooks'].products by section.settings.page_size %}
+          {% paginate collections['audiobooks'].products by page_size %}
             <ul class="object-list">
               {%- for product in collections['audiobooks'].products -%}
                 {%- assign audiobook = product.metafields.book.audiobook.value -%}
@@ -140,12 +191,12 @@
                   </a>
 
                   <div class="object-text">
-                    <p class="object-title">
+                    <h2 class="object-title h5">
                       <a href="{{ audiobook.system.url }}">{{ audiobook.title.value | default: product.title }}</a>
                       {%- if review != blank -%}
                         <span class="review">({{ 'read the review' | link_to: review.system.url, class: 'link review' }})</span>
                       {%- endif -%}
-                    </p>
+                    </h2>
 
                     {%- if authors != blank -%}
                       <div class="object-meta">
@@ -173,184 +224,153 @@
               {%- endfor -%}
             </ul>
 
-            {%- render 'pagination', paginate: paginate, class: 'object-pagination' -%}
+            {%- capture item_list_elements -%}
+              {%- for product in collections['audiobooks'].products -%}
+                {%- assign audiobook = product.metafields.book.audiobook.value -%}
+                {%- if audiobook == blank -%}
+                  {%- continue -%}
+                {%- endif -%}
+                {
+                  "@type": "ListItem",
+                  "position": {{ paginate.current_offset | plus: forloop.index }},
+                  "url": {{ audiobook.system.url | prepend: shop.url | json }},
+                  "name": {{ audiobook.title.value | default: product.title | json }}
+                }[[[item]]]
+              {%- endfor -%}
+            {%- endcapture -%}
+            {%- assign item_list_entries = item_list_elements | split: '[[[item]]]' -%}
+            <script type="application/ld+json">
+              {
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": {{ section.settings.heading | default: page.title | json }},
+                "numberOfItems": {{ paginate.items }},
+                "itemListOrder": "https://schema.org/ItemListOrderAscending",
+                "itemListElement": [
+                  {%- for entry in item_list_entries -%}
+                    {%- if entry == blank -%}
+                      {%- continue -%}
+                    {%- endif -%}
+                    {{ entry }}{% unless forloop.last %},{% endunless %}
+                  {%- endfor -%}
+                ]
+              }
+            </script>
+
+            {%- render 'pagination', paginate: paginate, class: 'object-pagination', mode: 'full', show_first_last: true, show_head_links: true, canonical_url: canonical_url -%}
           {% endpaginate %}
         {%- else -%}
           {%- liquid
-            assign page_size = section.settings.page_size | plus: 0
-            if page_size < 1
-              assign page_size = 25
-            endif
-
             assign metaobject_type = blank
-            assign source_values = blank
-            assign page_param_name = 'directory_page'
+            assign paginated_values = blank
             case object_type
               when 'authors'
                 assign metaobject_type = 'author'
+                assign paginated_values = metaobjects.author.values
               when 'narrators'
                 assign metaobject_type = 'narrator'
+                assign paginated_values = metaobjects.narrator.values
               when 'characters'
                 assign metaobject_type = 'character'
-                assign source_values = shop.metaobjects.character.values
+                assign paginated_values = metaobjects.character.values
               when 'publishers'
                 assign metaobject_type = 'publisher'
-                assign source_values = shop.metaobjects.publisher.values
+                assign paginated_values = metaobjects.publisher.values
               when 'overviews'
                 assign metaobject_type = 'overview'
-                assign source_values = shop.metaobjects.overview.values
+                assign paginated_values = metaobjects.overview.values
               when 'audiogrammes'
                 assign metaobject_type = 'audiogramme'
-                assign source_values = shop.metaobjects.audiogramme.values
+                assign paginated_values = metaobjects.audiogramme.values
               when 'series'
                 assign metaobject_type = 'series'
-                assign source_values = shop.metaobjects.series.values
+                assign paginated_values = metaobjects.series.values
             endcase
           -%}
 
-          {%- if metaobject_type == 'author' or metaobject_type == 'narrator' -%}
-            {% paginate collections['audiobooks'].products by 250 %}
-              {%- assign related_objects = null | sort -%}
-              {%- for product in collections['audiobooks'].products -%}
-                {%- if metaobject_type == 'author' -%}
-                  {%- assign linked_objects = product.metafields.book.authors.value -%}
-                {%- else -%}
-                  {%- assign linked_objects = product.metafields.book.narrators.value -%}
-                {%- endif -%}
+          {%- if paginated_values != blank -%}
+            {% paginate paginated_values by page_size %}
+              <ul class="object-list">
+                {%- for object in paginated_values -%}
+                  {%- assign object_name = object.name | default: object.title.value | strip -%}
+                  {%- if object_name == blank -%}
+                    {%- continue -%}
+                  {%- endif -%}
 
-                {%- if linked_objects != blank -%}
-                  {%- assign related_objects = related_objects | concat: linked_objects -%}
-                {%- endif -%}
-              {%- endfor -%}
-              {%- assign source_values = related_objects | uniq -%}
+                  {%- assign image = blank -%}
+                  {%- assign description = object.description | default: object.bio -%}
+                  {%- if object.logo != blank -%}
+                    {%- assign image = object.logo.value | default: object.logo -%}
+                  {%- elsif object.image != blank -%}
+                    {%- assign image = object.image.value | default: object.image -%}
+                  {%- elsif object.photos != blank -%}
+                    {%- assign image = object.photos.value | first -%}
+                  {%- elsif object.product != blank and object.product.value != blank -%}
+                    {%- assign image = object.product.value.featured_image -%}
+                  {%- endif -%}
+
+                  {%- assign object_link_class = object_type | append: ' link' -%}
+
+                  <li class="object-item">
+                    <a class="object-image" href="{{ object.system.url }}">
+                      {% render 'person-avatar', metaobject: object, radius: section.settings.radius, max_width: 56, image_to_use: image, avatar_bg_color: section.settings.avatar_bg_color, avatar_display: section.settings.avatar_display, initials_color: section.settings.initials_color, initials_font_size: section.settings.initials_font_size %}
+                    </a>
+                    <div class="object-text">
+                      <h2 class="object-title h5">
+                        {{ object_name | link_to: object.system.url, class: object_link_class }}
+                        {%- if metaobject_type == 'publisher' and object.collection.value != blank -%}
+                          <span class="review">({{ 'view collection' | link_to: object.collection.value.url, class: 'link' }})</span>
+                        {%- endif -%}
+                      </h2>
+                      {%- if description != blank -%}
+                        <div class="object-description">{{ description | metafield_tag | strip_html | truncate: 170 }}</div>
+                      {%- endif -%}
+                    </div>
+                  </li>
+                {%- endfor -%}
+              </ul>
+
+              {%- capture item_list_elements -%}
+                {%- for object in paginated_values -%}
+                  {%- assign object_name = object.name | default: object.title.value | strip -%}
+                  {%- if object_name == blank -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                  {
+                    "@type": "ListItem",
+                    "position": {{ paginate.current_offset | plus: forloop.index }},
+                    "url": {{ object.system.url | prepend: shop.url | json }},
+                    "name": {{ object_name | json }}
+                  }[[[item]]]
+                {%- endfor -%}
+              {%- endcapture -%}
+              {%- assign item_list_entries = item_list_elements | split: '[[[item]]]' -%}
+              <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org",
+                  "@type": "ItemList",
+                  "name": {{ section.settings.heading | default: page.title | json }},
+                  "numberOfItems": {{ paginate.items }},
+                  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+                  "itemListElement": [
+                    {%- for entry in item_list_entries -%}
+                      {%- if entry == blank -%}
+                        {%- continue -%}
+                      {%- endif -%}
+                      {{ entry }}{% unless forloop.last %},{% endunless %}
+                    {%- endfor -%}
+                  ]
+                }
+              </script>
+
+              {%- render 'pagination', paginate: paginate, class: 'object-pagination', mode: 'full', show_first_last: true, show_head_links: true, canonical_url: canonical_url -%}
             {% endpaginate %}
           {%- endif -%}
-
-          {%- capture object_records_raw -%}
-            {%- for object in source_values -%}
-              {%- assign object_name = object.name | default: object.title.value | strip -%}
-              {%- if object_name == blank -%}
-                {%- continue -%}
-              {%- endif -%}
-
-              {%- assign alpha_label = object_name | slice: 0, 1 | upcase -%}
-              {%- assign object_name_downcase = object_name | downcase -%}
-
-              {%- if metaobject_type == 'author' or metaobject_type == 'narrator' -%}
-                {%- assign surname_key = object_name | split: ' ' | last | downcase -%}
-                {%- assign sort_key = surname_key | append: ' ' | append: object_name_downcase -%}
-              {%- else -%}
-                {%- assign sort_key = object_name_downcase -%}
-              {%- endif -%}
-
-              {%- assign image = blank -%}
-              {%- assign description = object.description | default: object.bio -%}
-              {%- if object.logo != blank -%}
-                {%- assign image = object.logo.value | default: object.logo -%}
-              {%- elsif object.image != blank -%}
-                {%- assign image = object.image.value | default: object.image -%}
-              {%- elsif object.photos != blank -%}
-                {%- assign image = object.photos.value | first -%}
-              {%- elsif object.product != blank and object.product.value != blank -%}
-                {%- assign image = object.product.value.featured_image -%}
-              {%- endif -%}
-
-              {%- assign object_link_class = object_type | append: ' link' -%}
-              {%- capture object_markup -%}
-                <li class="object-item" data-alpha-label="{{ alpha_label | escape }}" data-page="__PAGE__">
-                  <a class="object-image" href="{{ object.system.url }}">
-                    {% render 'person-avatar', metaobject: object, radius: section.settings.radius, max_width: 72, image_to_use: image, avatar_bg_color: section.settings.avatar_bg_color, avatar_display: section.settings.avatar_display, initials_color: section.settings.initials_color, initials_font_size: section.settings.initials_font_size %}
-                  </a>
-                  <div class="object-text">
-                    <p class="object-title">
-                      {{ object_name | link_to: object.system.url, class: object_link_class }}
-                      {%- if metaobject_type == 'publisher' and object.collection.value != blank -%}
-                        <span class="review">({{ 'view collection' | link_to: object.collection.value.url, class: 'link' }})</span>
-                      {%- endif -%}
-                    </p>
-                    {%- if description != blank -%}
-                      <div class="object-description">{{ description | metafield_tag | strip_html | truncate: 170 }}</div>
-                    {%- endif -%}
-                  </div>
-                </li>
-              {%- endcapture -%}
-
-              {{ sort_key | replace: '[[[field]]]', '' | replace: '[[[row]]]', '' }}[[[field]]]{{ alpha_label | replace: '[[[field]]]', '' | replace: '[[[row]]]', '' }}[[[field]]]{{ object_markup | strip }}{% unless forloop.last %}[[[row]]]{% endunless %}
-            {%- endfor -%}
-          {%- endcapture -%}
-
-          {%- assign object_records = object_records_raw | split: '[[[row]]]' | sort_natural -%}
-          {%- assign object_count = object_records.size -%}
-          {%- assign total_pages = object_count | plus: page_size | minus: 1 | divided_by: page_size -%}
-
-          <div class="metaobjects-list-client" data-page-size="{{ page_size }}" data-total-pages="{{ total_pages }}">
-            <ul class="object-list">
-              {%- for object_record in object_records -%}
-                {%- if object_record == blank -%}
-                  {%- continue -%}
-                {%- endif -%}
-
-                {%- assign item_page = forloop.index0 | divided_by: page_size | plus: 1 -%}
-                {%- assign record_parts = object_record | split: '[[[field]]]' -%}
-                {%- assign object_markup = record_parts[2] | replace: '__PAGE__', item_page -%}
-                {{ object_markup }}
-              {%- endfor -%}
-            </ul>
-
-            <nav class="object-pagination" aria-label="Page navigation"></nav>
-          </div>
         {%- endif -%}
       </div>
     </div>
   </div>
 </div>
-
-{%- unless object_type == 'audiobooks' -%}
-  <script>
-    (() => {
-      const section = document.getElementById('shopify-section-{{ section.id }}');
-      if (!section) return;
-
-      const wrapper = section.querySelector('.metaobjects-list-client');
-      if (!wrapper) return;
-
-      const items = Array.from(section.querySelectorAll('.object-item[data-alpha-label]'));
-      if (!items.length) return;
-      const pageNav = section.querySelector('.object-pagination');
-      if (!pageNav) return;
-
-      const totalPages = Math.max(1, Number(wrapper.dataset.totalPages || 1));
-      const currentUrl = new URL(window.location.href);
-      const pageParamName = 'directory_page';
-      const requestedPage = Number(currentUrl.searchParams.get(pageParamName) || 1);
-      const currentPage = Math.min(Math.max(requestedPage, 1), totalPages);
-
-      for (const item of items) {
-        const itemPage = Number(item.dataset.page || 1);
-        item.hidden = itemPage !== currentPage;
-      }
-
-      pageNav.innerHTML = '';
-      const pageRange = Array.from({ length: totalPages }, (_, index) => index + 1);
-
-      for (const pageNumber of pageRange) {
-        const link = document.createElement('a');
-        link.className = 'object-pagination__link';
-        link.textContent = pageNumber;
-        const linkUrl = new URL(currentUrl);
-        linkUrl.searchParams.set(pageParamName, pageNumber);
-        link.href = `${linkUrl.pathname}${linkUrl.search}`;
-
-        if (pageNumber === currentPage) {
-          link.classList.add('is-active');
-          link.setAttribute('aria-current', 'page');
-        }
-
-        pageNav.appendChild(link);
-      }
-    })();
-  </script>
-{%- endunless -%}
 
 {% schema %}
 {
@@ -366,6 +386,21 @@
       "type": "header",
       "content": "Metaobjects",
       "info": "Paginated list of metaobjects."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
     },
     {
       "type": "range",

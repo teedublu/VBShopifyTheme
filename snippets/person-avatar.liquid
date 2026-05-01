@@ -4,12 +4,13 @@
 {% if image_to_use == blank %}
   {%  assign image_to_use = metaobject_to_use.photos.value | first%}
 {% endif %}
+{% assign image_alt = metaobject_to_use.name | default: metaobject_to_use.title.value | default: metaobject_to_use.system.handle | strip %}
 
 <div class="person-image place-self-center" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
   {% case avatar_display %}
     {% when 'image' %}
       {% if image_to_use != blank %}
-        {{ image_to_use | image_url: width: max_width | image_tag: alt: object.title.value, style: "margin:0px;" | escape}}
+        {{ image_to_use | image_url: width: max_width | image_tag: alt: image_alt, style: "margin:0px;" }}
       {% else %}
         {{ 'image' | placeholder_svg_tag: 'placeholder' }}
       {% endif %}
