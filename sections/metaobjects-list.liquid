@@ -1,272 +1,356 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{% assign object_type = section.settings.object_type %}
+
 <style>
-  .object-list {
-    list-style: none; /* Removes default list styling */
-    padding: 0; /* Removes default padding */
-  }
-  .object-item {
-    display: flex; /* Enables flexbox layout */
-    align-items: center; /* Vertical alignment */
-    margin-bottom: 10px; /* Adds space between items */
-  }
-  .object-image {
-    flex: 0 0 auto; /* Image does not grow or shrink */
-    width: 50px; /* Set width to 50px */
-    height: 50px; /* Set height to 50px */
-    margin-right: 10px; /* Adds space between the image and text */
-    overflow: hidden; /* Ensures the image does not bleed outside the container */
-    display: flex; /* Ensures proper alignment */
-    align-items: center; /* Centers the image vertically */
-    justify-content: center; /* Centers the image horizontally */
-    border-radius: 50%;
+  #shopify-section-{{ section.id }} .object-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
   }
 
-  .object-image img, .object-image svg {
-    width: 100%; /* Ensure the image covers the full width */
-    height: 100%; /* Ensure the image covers the full height */
-    object-fit: cover; /* Crop to cover the area */
+  #shopify-section-{{ section.id }} .object-item {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
   }
 
-  .object-text {
-    flex: 1; /* Takes up the rest of the space */
+  #shopify-section-{{ section.id }} .object-item[id] {
+    scroll-margin-top: 8rem;
+  }
+
+  #shopify-section-{{ section.id }} .object-image {
+    width: 72px;
+    height: 72px;
+    overflow: hidden;
+    border-radius: 18px;
     display: flex;
-    flex-direction: column; /* Stacks the title and author/narrator info vertically */
+    align-items: center;
+    justify-content: center;
   }
-  .object-title, .object-authors-narrators {
-    flex: 1; /* Each text section takes equal vertical space */
+
+  #shopify-section-{{ section.id }} .object-image img,
+  #shopify-section-{{ section.id }} .object-image svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
-  .object-authors-narrators {
-    font-size: 80%;
+
+  #shopify-section-{{ section.id }} .object-text {
+    min-width: 0;
   }
-  .review {
-    font-size: 80%;
+
+  #shopify-section-{{ section.id }} .object-title {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
   }
-  .object-authors-narrators a{
-    font-weight: bold;
+
+  #shopify-section-{{ section.id }} .object-meta,
+  #shopify-section-{{ section.id }} .object-description {
+    margin-top: 0.35rem;
+  }
+
+  #shopify-section-{{ section.id }} .object-meta {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .object-description {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(var(--text-color), 0.78);
+  }
+
+  #shopify-section-{{ section.id }} .object-meta a {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .object-pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .object-pagination__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .object-pagination__link.is-active {
+    background: rgb(var(--text-color));
+    color: rgb(var(--background));
+    border-color: rgb(var(--text-color));
   }
 </style>
 
+<div {% render 'section-properties' %}>
+  <div class="container">
+    <div class="page">
+      <div class="metaobjects index-list collection">
+        {%- if object_type == 'audiobooks' -%}
+          {% paginate collections['audiobooks'].products by section.settings.page_size %}
+            <ul class="object-list">
+              {%- for product in collections['audiobooks'].products -%}
+                {%- assign audiobook = product.metafields.book.audiobook.value -%}
+                {%- if audiobook == blank -%}
+                  {%- continue -%}
+                {%- endif -%}
 
+                {%- assign review = product.metafields.book.review.value -%}
+                {%- assign authors = product.metafields.book.authors.value -%}
+                {%- assign narrators = product.metafields.book.narrators.value -%}
+                {%- assign blurb = audiobook.concise_blurb | default: audiobook.short_blurb | default: audiobook.page_description | metafield_tag | strip_html | strip -%}
 
-<div class="container">
-  <div class="page">
-    <div class="metaobjects index-list collection">
+                <li class="object-item">
+                  <a class="object-image" href="{{ audiobook.system.url }}">
+                    {%- if product.featured_image != blank -%}
+                      {{
+                        product.featured_image
+                        | image_url: width: 240
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '72, 96, 144, 240',
+                          sizes: '72px',
+                          alt: product.title
+                      }}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+                    {%- endif -%}
+                  </a>
 
-      {% assign object_type = section.settings.object_type %}
-      {% assign audiobooks = null | sort %}
-      {% assign narrators = null | sort %}
-      {% assign audiogrammes = null | sort %}
-      {% assign series = null | sort %}
-      {% assign overviews = null | sort %}
-      
-      {% assign objects = null | sort %}
+                  <div class="object-text">
+                    <p class="object-title">
+                      <a href="{{ audiobook.system.url }}">{{ audiobook.title.value | default: product.title }}</a>
+                      {%- if review != blank -%}
+                        <span class="review">({{ 'read the review' | link_to: review.system.url, class: 'link review' }})</span>
+                      {%- endif -%}
+                    </p>
 
-      {% paginate collections['audiobooks'].products by 1000 %}
-        {% comment %}
-          Loop over all products as this is the only thing that can paginate 1000
-          use handle to audiobook MO instead of product (doesnt have all other objects but mo does)
-          use object_type to get MOs in question from there      
+                    {%- if authors != blank -%}
+                      <div class="object-meta">
+                        Written by:
+                        {%- for author in authors -%}
+                          {{ author.name | link_to: author.system.url, class: 'author link' }}{% unless forloop.last %}, {% endunless %}
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
 
-            
-         {% endcomment %}
+                    {%- if narrators != blank -%}
+                      <div class="object-meta">
+                        Narrated by:
+                        {%- for narrator in narrators -%}
+                          {{ narrator.name | link_to: narrator.system.url, class: 'narrator link' }}{% unless forloop.last %}, {% endunless %}
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
 
-        {% for product in collections['audiobooks'].products  %}
-          {% assign audiobook = product.metafields.book['audiobook'].value  %}
-          {% assign audiobook_as_array = audiobook | sort  %}
-          {% assign audiobooks = audiobooks | concat: audiobook_as_array  %}
-          
-          {% assign author = product.metafields.book['authors'].value  %}
-          {% assign author_as_array = author | sort  %}
-          {% assign authors = authors | concat: author_as_array  %}
+                    {%- if blurb != blank -%}
+                      <div class="object-description">{{ blurb | truncate: 190 }}</div>
+                    {%- endif -%}
+                  </div>
+                </li>
+              {%- endfor -%}
+            </ul>
 
-          {% assign narrator = product.metafields.book['narrators'].value  %}
-          {% assign narrator_as_array = narrator | sort  %}
-          {% assign narrators = narrators | concat: narrator_as_array  %}
-          
-          {% assign publisher = product.metafields.book['publisher'].value  %}
-          {% assign publisher_as_array = publisher | sort  %}
-          {% assign publishers = narrators | concat: publisher_as_array  %}
+            {%- render 'pagination', paginate: paginate, class: 'object-pagination' -%}
+          {% endpaginate %}
+        {%- else -%}
+          {%- liquid
+            assign page_size = section.settings.page_size | plus: 0
+            if page_size < 1
+              assign page_size = 25
+            endif
 
-          {% assign review = product.metafields.book['review'].value  %}
-          {% assign review_as_array = review | sort  %}
-          {% assign reviews = reviews | concat: review_as_array  %}
+            assign metaobject_type = blank
+            assign source_values = blank
+            assign page_param_name = 'directory_page'
+            case object_type
+              when 'authors'
+                assign metaobject_type = 'author'
+              when 'narrators'
+                assign metaobject_type = 'narrator'
+              when 'characters'
+                assign metaobject_type = 'character'
+                assign source_values = shop.metaobjects.character.values
+              when 'publishers'
+                assign metaobject_type = 'publisher'
+                assign source_values = shop.metaobjects.publisher.values
+              when 'overviews'
+                assign metaobject_type = 'overview'
+                assign source_values = shop.metaobjects.overview.values
+              when 'audiogrammes'
+                assign metaobject_type = 'audiogramme'
+                assign source_values = shop.metaobjects.audiogramme.values
+              when 'series'
+                assign metaobject_type = 'series'
+                assign source_values = shop.metaobjects.series.values
+            endcase
+          -%}
 
-          {%- if audiobook.audiogramme.value -%}
-            {% assign audiogramme_as_array = audiobook.audiogramme.value | sort  %}
-            {% assign audiogrammes = audiogrammes | concat: audiogramme_as_array  %}
+          {%- if metaobject_type == 'author' or metaobject_type == 'narrator' -%}
+            {% paginate collections['audiobooks'].products by 250 %}
+              {%- assign related_objects = null | sort -%}
+              {%- for product in collections['audiobooks'].products -%}
+                {%- if metaobject_type == 'author' -%}
+                  {%- assign linked_objects = product.metafields.book.authors.value -%}
+                {%- else -%}
+                  {%- assign linked_objects = product.metafields.book.narrators.value -%}
+                {%- endif -%}
+
+                {%- if linked_objects != blank -%}
+                  {%- assign related_objects = related_objects | concat: linked_objects -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- assign source_values = related_objects | uniq -%}
+            {% endpaginate %}
           {%- endif -%}
 
-        {% endfor %}
+          {%- capture object_records_raw -%}
+            {%- for object in source_values -%}
+              {%- assign object_name = object.name | default: object.title.value | strip -%}
+              {%- if object_name == blank -%}
+                {%- continue -%}
+              {%- endif -%}
 
-        {% assign authors = authors | uniq | sort: 'name' %}
-        {% assign publishers = publishers | uniq | sort: 'name' %}
-        {% assign narrators = narrators | uniq | sort: 'name' %}
-        {% assign audiogrammes = audiogrammes | uniq | sort: 'name' %}
-        {% assign reviews = reviews | uniq | sort: 'name' %}
+              {%- assign alpha_label = object_name | slice: 0, 1 | upcase -%}
+              {%- assign object_name_downcase = object_name | downcase -%}
 
-      {% endpaginate %}
+              {%- if metaobject_type == 'author' or metaobject_type == 'narrator' -%}
+                {%- assign surname_key = object_name | split: ' ' | last | downcase -%}
+                {%- assign sort_key = surname_key | append: ' ' | append: object_name_downcase -%}
+              {%- else -%}
+                {%- assign sort_key = object_name_downcase -%}
+              {%- endif -%}
 
-      {% comment %}
-        These ones wont hit the 50 limit in pagination any time soon so can access directly         
-      {% endcomment %}
-      {% assign series = shop.metaobjects.series.values %}
-      {% assign overviews = shop.metaobjects.overview.values %}
-      {% assign characters = shop.metaobjects.character.values %}
-      {% assign publishers = shop.metaobjects.publisher.values %}
+              {%- assign image = blank -%}
+              {%- assign description = object.description | default: object.bio -%}
+              {%- if object.logo != blank -%}
+                {%- assign image = object.logo.value | default: object.logo -%}
+              {%- elsif object.image != blank -%}
+                {%- assign image = object.image.value | default: object.image -%}
+              {%- elsif object.photos != blank -%}
+                {%- assign image = object.photos.value | first -%}
+              {%- elsif object.product != blank and object.product.value != blank -%}
+                {%- assign image = object.product.value.featured_image -%}
+              {%- endif -%}
 
-      {% comment %}
-        Now use the array of audiobook metaobjects
-        either the object itself or a field containing the metaobject in question
-      {% endcomment %}
-
-      {% liquid 
-        case object_type
-          when 'authors'
-            assign objects = authors 
-          when 'narrators'
-            assign objects = narrators 
-          when 'audiobooks'
-            assign objects = audiobooks 
-          when 'audiogrammes' 
-            assign objects = audiogrammes
-          when 'series' 
-            assign objects = series
-          when 'overviews' 
-            assign objects = overviews
-          when 'characters' 
-            assign objects = characters
-          when 'publishers' 
-            assign objects = publishers
-        endcase
-
-      %}
-
-      <ul class="object-list">
-        {% for object in objects %}
-          {% if object.name != blank or object.title != blank %}
-            {% assign product = object.product.value  %}
-            {% assign review = reviews[product.handle] %}
-            {% assign image = nil %}
-            <li class="object-item">
-              <div class="object-image">{{product.value}}
-                {% if product.featured_image %}
-                  {% assign image = product.featured_image %}
-                {% elsif object.image %}
-                  {% assign image = object.image %}
-                {% elsif object.logo %}
-                  {% assign image = object.logo %}
-                {% elsif object.photos %}
-                  {% assign image = object.photos.value | first %}
-                {% elsif object.product %}
-                  {% assign image = object.product.value.featured_image | first %}
-                {% endif %}
-
-                 {% render 'person-avatar',
-                        metaobject: object,
-                        radius: section.settings.radius,
-                        max_width: section.settings.max_width,
-                        image_to_use:image,
-                        avatar_bg_color: section.settings.avatar_bg_color,
-                        avatar_display: section.settings.avatar_display,
-                        initials_color: section.settings.initials_color,
-                        initials_font_size: section.settings.initials_font_size
-                    %}
-                
-                
-              </div>
-              <div class="object-text">
-                {% case object_type %}
-
-                  {% when 'audiobooks' %}
-                    <div class="object-title">
-                      <b>{{ object.title.value | link_to: object.system.url, class: object_type }}</b>
-                      {% if review %}
-                        ({{ 'read the review' | link_to: review.system.url, class: 'link review' }})
-                      {% endif %}
-                    </div>
-                    {% if object.product.value.metafields.book.authors.value %}
-                      <div class="object-authors-narrators">
-                        Written by: 
-                        {% for author in object.product.value.metafields.book.authors.value %} 
-                          {{ author.name | link_to: author.system.url, class: 'author link'}}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                    {% if object.product.value.metafields.book.narrators.value %}
-                      <div class="object-authors-narrators object-description">
-                        Narrated by: 
-                        {% for narrator in object.product.value.metafields.book.narrators.value %} 
-                          {{ narrator.name | link_to: narrator.system.url, class: 'narrator link' }}{% unless forloop.last %}, {% endunless %}
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-
-                  {% else %}
-                    {% assign class = object_type | append: ' link' %}
-                    <div class="object-title">
-                    {{ object.name | link_to: object.system.url, class: class}} 
-                    {%- if object.collection.value -%}
-                      ({{ 'view collection' | link_to: object.collection.value.url, class: 'link' }} )
+              {%- assign object_link_class = object_type | append: ' link' -%}
+              {%- capture object_markup -%}
+                <li class="object-item" data-alpha-label="{{ alpha_label | escape }}" data-page="__PAGE__">
+                  <a class="object-image" href="{{ object.system.url }}">
+                    {% render 'person-avatar', metaobject: object, radius: section.settings.radius, max_width: 72, image_to_use: image, avatar_bg_color: section.settings.avatar_bg_color, avatar_display: section.settings.avatar_display, initials_color: section.settings.initials_color, initials_font_size: section.settings.initials_font_size %}
+                  </a>
+                  <div class="object-text">
+                    <p class="object-title">
+                      {{ object_name | link_to: object.system.url, class: object_link_class }}
+                      {%- if metaobject_type == 'publisher' and object.collection.value != blank -%}
+                        <span class="review">({{ 'view collection' | link_to: object.collection.value.url, class: 'link' }})</span>
+                      {%- endif -%}
+                    </p>
+                    {%- if description != blank -%}
+                      <div class="object-description">{{ description | metafield_tag | strip_html | truncate: 170 }}</div>
                     {%- endif -%}
-                    </div>
-                    {% if object.description %}
-                      <div class="object-description">
-                        {{ object.description | metafield_tag | truncate: 170 }}
-                      </div>
-                    {% endif %}
-                {% endcase %}
-              </div>
-            </li>
-          {% endif %}  
-        {% endfor %}
-      </ul>
+                  </div>
+                </li>
+              {%- endcapture -%}
 
+              {{ sort_key | replace: '[[[field]]]', '' | replace: '[[[row]]]', '' }}[[[field]]]{{ alpha_label | replace: '[[[field]]]', '' | replace: '[[[row]]]', '' }}[[[field]]]{{ object_markup | strip }}{% unless forloop.last %}[[[row]]]{% endunless %}
+            {%- endfor -%}
+          {%- endcapture -%}
+
+          {%- assign object_records = object_records_raw | split: '[[[row]]]' | sort_natural -%}
+          {%- assign object_count = object_records.size -%}
+          {%- assign total_pages = object_count | plus: page_size | minus: 1 | divided_by: page_size -%}
+
+          <div class="metaobjects-list-client" data-page-size="{{ page_size }}" data-total-pages="{{ total_pages }}">
+            <ul class="object-list">
+              {%- for object_record in object_records -%}
+                {%- if object_record == blank -%}
+                  {%- continue -%}
+                {%- endif -%}
+
+                {%- assign item_page = forloop.index0 | divided_by: page_size | plus: 1 -%}
+                {%- assign record_parts = object_record | split: '[[[field]]]' -%}
+                {%- assign object_markup = record_parts[2] | replace: '__PAGE__', item_page -%}
+                {{ object_markup }}
+              {%- endfor -%}
+            </ul>
+
+            <nav class="object-pagination" aria-label="Page navigation"></nav>
+          </div>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </div>
 
+{%- unless object_type == 'audiobooks' -%}
+  <script>
+    (() => {
+      const section = document.getElementById('shopify-section-{{ section.id }}');
+      if (!section) return;
 
+      const wrapper = section.querySelector('.metaobjects-list-client');
+      if (!wrapper) return;
 
-<script type="application/ld+json">
+      const items = Array.from(section.querySelectorAll('.object-item[data-alpha-label]'));
+      if (!items.length) return;
+      const pageNav = section.querySelector('.object-pagination');
+      if (!pageNav) return;
 
-{%- assign title = page.metafields.global.title_tag | default: page.title -%}
+      const totalPages = Math.max(1, Number(wrapper.dataset.totalPages || 1));
+      const currentUrl = new URL(window.location.href);
+      const pageParamName = 'directory_page';
+      const requestedPage = Number(currentUrl.searchParams.get(pageParamName) || 1);
+      const currentPage = Math.min(Math.max(requestedPage, 1), totalPages);
 
-  {
-    "@context": "http://schema.org",
-    "@type": "CollectionPage",
-    {% if collection.description != blank %}
-      "description": {{ collection.description | strip_html | json }},
-    {% endif %}
+      for (const item of items) {
+        const itemPage = Number(item.dataset.page || 1);
+        item.hidden = itemPage !== currentPage;
+      }
 
-    "name": {{ title | json }},
-    "url": "{{ shop.url }}{{ collection.url }}",
+      pageNav.innerHTML = '';
+      const pageRange = Array.from({ length: totalPages }, (_, index) => index + 1);
 
-    "mainEntity" : {
-      "@type": "ItemList",
-      "itemListElement": [
-        {%- for object in objects -%}
-          {%- case object_type -%}
+      for (const pageNumber of pageRange) {
+        const link = document.createElement('a');
+        link.className = 'object-pagination__link';
+        link.textContent = pageNumber;
+        const linkUrl = new URL(currentUrl);
+        linkUrl.searchParams.set(pageParamName, pageNumber);
+        link.href = `${linkUrl.pathname}${linkUrl.search}`;
 
-            {%- when 'audiobook' -%}
-            {%- else -%}
-              {
-                "@type": "ListItem",
-                "position": {{ forloop.index }},
-                "item": {
-                  "@type": "{{object_type}}",
-                  "@id":  "{{ shop.url }}{{ product.url }}",
-                  "url": "{{ shop.url }}{{ product.url }}#audiobook",
-                  "name": {{ object.title | json }},
-                  "description": "{{ product.title }} as a physical audiobook"
-                }
-              }{%- unless forloop.last -%},{%- endunless -%}
-              
-          {%- endcase -%}
-        {%- endfor -%}
-      ]
-    }
-  }
-  
-</script>
+        if (pageNumber === currentPage) {
+          link.classList.add('is-active');
+          link.setAttribute('aria-current', 'page');
+        }
+
+        pageNav.appendChild(link);
+      }
+    })();
+  </script>
+{%- endunless -%}
 
 {% schema %}
 {
@@ -400,4 +484,3 @@
   ]
 }
 {% endschema %}
-

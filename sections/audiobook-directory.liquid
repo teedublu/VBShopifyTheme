@@ -1,0 +1,184 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} .audiobook-directory__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__item {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__media {
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__media img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__content {
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__title {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.25;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__title a {
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__review {
+    margin-left: 0.35rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__meta,
+  #shopify-section-{{ section.id }} .audiobook-directory__blurb {
+    margin-top: 0.35rem;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__meta {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__blurb {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: rgba(var(--text-color), 0.78);
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-directory__pagination {
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .audiobook-directory__item {
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 1.25rem;
+      padding: 1.1rem 1.2rem;
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  {% paginate collections['audiobooks'].products by section.settings.page_size %}
+    <div class="section-stack">
+      <ul class="audiobook-directory__list">
+        {%- for product in collections['audiobooks'].products -%}
+          {%- assign audiobook = product.metafields.book.audiobook.value -%}
+          {%- if audiobook == blank -%}
+            {%- continue -%}
+          {%- endif -%}
+
+          {%- assign review = product.metafields.book.review.value -%}
+          {%- assign authors = product.metafields.book.authors.value -%}
+          {%- assign narrators = product.metafields.book.narrators.value -%}
+          {%- assign image = product.featured_image -%}
+          {%- assign blurb = audiobook.concise_blurb | default: audiobook.short_blurb | default: audiobook.page_description | metafield_tag | strip_html | strip -%}
+
+          <li class="audiobook-directory__item">
+            <a class="audiobook-directory__media" href="{{ audiobook.system.url }}">
+              {%- if image != blank -%}
+                {{
+                  image
+                  | image_url: width: 240
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '84, 96, 120, 168, 240',
+                    sizes: '(min-width: 750px) 96px, 84px',
+                    alt: product.title
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+              {%- endif -%}
+            </a>
+
+            <div class="audiobook-directory__content">
+              <p class="audiobook-directory__title">
+                <a href="{{ audiobook.system.url }}">{{ audiobook.title.value | default: product.title }}</a>
+                {%- if review != blank -%}
+                  <span class="audiobook-directory__review">({{ 'read the review' | link_to: review.system.url, class: 'link review' }})</span>
+                {%- endif -%}
+              </p>
+
+              {%- if authors != blank -%}
+                <div class="audiobook-directory__meta">
+                  Written by:
+                  {%- for author in authors -%}
+                    {{ author.name | link_to: author.system.url, class: 'link author' }}{% unless forloop.last %}, {% endunless %}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+
+              {%- if narrators != blank -%}
+                <div class="audiobook-directory__meta">
+                  Narrated by:
+                  {%- for narrator in narrators -%}
+                    {{ narrator.name | link_to: narrator.system.url, class: 'link narrator' }}{% unless forloop.last %}, {% endunless %}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+
+              {%- if blurb != blank -%}
+                <div class="audiobook-directory__blurb">{{ blurb | truncate: 190 }}</div>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- render 'pagination', paginate: paginate, class: 'audiobook-directory__pagination' -%}
+    </div>
+  {% endpaginate %}
+</div>
+
+{% schema %}
+{
+  "name": "Audiobook Directory",
+  "class": "shopify-section--audiobook-directory",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "page_size",
+      "label": "Page size",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "default": 25
+    }
+  ],
+  "presets": [
+    {
+      "name": "Audiobook Directory"
+    }
+  ]
+}
+{% endschema %}
