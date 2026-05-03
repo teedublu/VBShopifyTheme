@@ -1,0 +1,453 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_qgF8Xk": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_zXAhUW": {
+          "type": "subheading",
+          "settings": {
+            "text": "AUDIOBOOK",
+            "subheading_tag": "h5",
+            "subheading_tag_html": "h2"
+          }
+        },
+        "heading_THzjKE": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.title.value }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_zXAhUW",
+        "heading_THzjKE"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "md",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "breadcrumbs_DL4tEL": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_rDm4QR": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_zQg6yT": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.long_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_zQg6yT"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_audiobook_light_DTXA9d": {
+      "type": "featured-audiobook-light",
+      "blocks": {
+        "text_zKRhDf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A screen-free audiobook</p>"
+          }
+        },
+        "title_6dDQLi": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_YANb9V": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p>{{ metaobject.concise_blurb | metafield_tag }}"
+          }
+        },
+        "price_CwqEwb": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "audiobook_properties_zBPQaJ": {
+          "type": "audiobook-properties",
+          "settings": {
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
+          }
+        },
+        "buy_buttons_4CYw8F": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_zKRhDf",
+        "title_6dDQLi",
+        "text_YANb9V",
+        "price_CwqEwb",
+        "audiobook_properties_zBPQaJ",
+        "buy_buttons_4CYw8F"
+      ],
+      "settings": {
+        "full_width": false,
+        "float_up": 30,
+        "squeeze_in": 90,
+        "desktop_media_width": 45,
+        "mobile_media_size": "contained",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "audiobook_chapters_yCUz7W": {
+      "type": "audiobook-chapters",
+      "settings": {
+        "full_width": true,
+        "subheading": "What's inside",
+        "heading": "Chapters",
+        "content": "<p>Here are the chapters in this audiobook.</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "item_grid_mVMXgC": {
+      "type": "item-grid",
+      "name": "Item grid",
+      "settings": {
+        "heading": "Meet the characters",
+        "intro": "<p>Explore the main characters and learn more about their roles in the story.</p>",
+        "source_mode": "metaobject_list",
+        "metaobject_items": "{{ metaobject.characters.value }}",
+        "product_items": [],
+        "items_limit": 12,
+        "button_label": "Read more"
+      }
+    },
+    "audiobook_productdata_zmqU7J": {
+      "type": "audiobook-productdata",
+      "blocks": {
+        "preview_J6rbiA": {
+          "type": "preview",
+          "settings": {
+            "title": "Preview"
+          }
+        },
+        "narrators_9VDD4E": {
+          "type": "narrators",
+          "settings": {
+            "title": "Narrator"
+          }
+        },
+        "authors_4qT6WC": {
+          "type": "authors",
+          "settings": {
+            "title": "Author"
+          }
+        },
+        "publisher_6RR4Lq": {
+          "type": "publisher",
+          "settings": {
+            "title": "Publisher"
+          }
+        },
+        "characters_6diBjh": {
+          "type": "characters",
+          "settings": {
+            "title": "Featuring"
+          }
+        },
+        "duration_QBHBh7": {
+          "type": "duration",
+          "settings": {
+            "title": "Duration"
+          }
+        },
+        "language_wcTGmf": {
+          "type": "language",
+          "settings": {
+            "title": "Language"
+          }
+        },
+        "word_count_xYDYb3": {
+          "type": "word_count",
+          "settings": {
+            "title": "Word Count"
+          }
+        },
+        "genres_YUBAeq": {
+          "type": "genres",
+          "settings": {
+            "title": "Genres"
+          }
+        },
+        "content_themes_icJ7en": {
+          "type": "content_themes",
+          "settings": {
+            "title": "Content Themes"
+          }
+        },
+        "categories_HTFkEz": {
+          "type": "categories",
+          "settings": {
+            "title": "Categories"
+          }
+        },
+        "isbn_kpdmch": {
+          "type": "isbn",
+          "settings": {
+            "title": "Voxblock ISBN"
+          }
+        },
+        "print_isbn_H4NrKJ": {
+          "type": "print_isbn",
+          "settings": {
+            "title": "Print ISBN"
+          }
+        },
+        "audiogramme_xr8wFH": {
+          "type": "audiogramme",
+          "settings": {
+            "title": "Audiogramme"
+          }
+        },
+        "bisac_codes_xWC7Jj": {
+          "type": "bisac_codes",
+          "settings": {
+            "title": "BISAC Codes"
+          }
+        },
+        "thema_codes_tE9ekt": {
+          "type": "thema_codes",
+          "settings": {
+            "title": "Thema Codes"
+          }
+        },
+        "reading_level_UtqLTp": {
+          "type": "reading_level",
+          "settings": {
+            "title": "Reading Level"
+          }
+        },
+        "interest_level_j8zJbX": {
+          "type": "interest_level",
+          "settings": {
+            "title": "Interest Level"
+          }
+        },
+        "key_stage_8aTCmw": {
+          "type": "key_stage",
+          "settings": {
+            "title": "Key Stage"
+          }
+        },
+        "elt_eBpaGD": {
+          "type": "elt",
+          "settings": {
+            "title": "ELT"
+          }
+        },
+        "ar_points_NiBP6m": {
+          "type": "ar_points",
+          "settings": {
+            "title": "AR Points"
+          }
+        },
+        "atos_book_level_UBbFBe": {
+          "type": "atos_book_level",
+          "settings": {
+            "title": "ATOS Book Level"
+          }
+        },
+        "synopsis_meq7hz": {
+          "type": "synopsis",
+          "settings": {
+            "title": "Synopsis"
+          }
+        },
+        "abridged_pqGcmk": {
+          "type": "abridged",
+          "settings": {
+            "title": "Abridged"
+          }
+        },
+        "fiction_EGHU8Q": {
+          "type": "fiction",
+          "settings": {
+            "title": "Fiction/Nonfiction"
+          }
+        },
+        "review_mj8Qfi": {
+          "type": "review",
+          "settings": {
+            "title": "Review"
+          }
+        }
+      },
+      "block_order": [
+        "preview_J6rbiA",
+        "narrators_9VDD4E",
+        "authors_4qT6WC",
+        "publisher_6RR4Lq",
+        "characters_6diBjh",
+        "duration_QBHBh7",
+        "language_wcTGmf",
+        "word_count_xYDYb3",
+        "genres_YUBAeq",
+        "content_themes_icJ7en",
+        "categories_HTFkEz",
+        "isbn_kpdmch",
+        "print_isbn_H4NrKJ",
+        "audiogramme_xr8wFH",
+        "bisac_codes_xWC7Jj",
+        "thema_codes_tE9ekt",
+        "reading_level_UtqLTp",
+        "interest_level_j8zJbX",
+        "key_stage_8aTCmw",
+        "elt_eBpaGD",
+        "ar_points_NiBP6m",
+        "atos_book_level_UBbFBe",
+        "synopsis_meq7hz",
+        "abridged_pqGcmk",
+        "fiction_EGHU8Q",
+        "review_mj8Qfi"
+      ],
+      "settings": {}
+    },
+    "microdata_kKw6gU": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "audiobook"
+      }
+    },
+    "faq_book_Ji9KrX": {
+      "type": "faq-book",
+      "blocks": {
+        "item_bmzGFg": {
+          "type": "item",
+          "settings": {
+            "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
+          }
+        },
+        "item_xCAt3F": {
+          "type": "item",
+          "settings": {
+            "title": "What is the best way to listen to \"{{ metaobject.title.value }}\" ?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to {{ metaobject.title.value }} and many other great stories.</p>"
+          }
+        },
+        "item_kwQGtG": {
+          "type": "item",
+          "settings": {
+            "title": "What is \"{{ metaobject.title.value }}\" about?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "{{ metaobject.concise_blurb | metafield_tag }}"
+          }
+        },
+        "item_xERghq": {
+          "type": "item",
+          "settings": {
+            "title": "What are the key themes in audiobook  \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
+            "check_for_richtext": "",
+            "content": "<p>The audiobook \"{{ metaobject.title.value }}\" has the following key themes featured throughout the plot:</p>{{ metaobject.content_themes | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "item_bmzGFg",
+        "item_xCAt3F",
+        "item_kwQGtG",
+        "item_xERghq"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Questions about \"{{ metaobject.title.value }}\"",
+        "title": "Voxblock answers",
+        "content": "",
+        "book_image": false,
+        "book_image_width": 80,
+        "extra_info": "",
+        "extra_info_2": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_qgF8Xk",
+    "breadcrumbs_DL4tEL",
+    "rich_text_rDm4QR",
+    "featured_audiobook_light_DTXA9d",
+    "audiobook_chapters_yCUz7W",
+    "item_grid_mVMXgC",
+    "audiobook_productdata_zmqU7J",
+    "microdata_kKw6gU",
+    "faq_book_Ji9KrX"
+  ]
+}
