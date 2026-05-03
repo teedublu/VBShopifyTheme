@@ -15,16 +15,12 @@
         "heading": "Breadcrumbs"
       }
     },
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "content_width": "80ch",
-        "show_title": true
-      }
-    },
     "metaobjects_authors_gKXX3R": {
       "type": "metaobjects-list",
       "settings": {
+        "eyebrow": "Browse Authors",
+        "heading": "Discover audiobook authors",
+        "description": "<p>Explore the writers behind our audiobook catalogue, from beloved classics to modern favourites. Browse author pages to learn more about each creator and the stories available to listen to on Voxblock.</p>",
         "page_size": 25,
         "object_type": "authors",
         "avatar_display": "initials",
@@ -38,7 +34,6 @@
   },
   "order": [
     "breadcrumbs_9AWPaK",
-    "main",
     "metaobjects_authors_gKXX3R"
   ]
 }

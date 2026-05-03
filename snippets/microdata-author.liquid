@@ -1,10 +1,17 @@
+{%- assign author_image = author.photos.value | first -%}
+{%- assign author_description = author.bio | metafield_tag | strip_html | strip_newlines | strip -%}
 {
   "@context": "http://schema.org/",
   "@type": "Person",
   "jobTitle":"Author",
   "name": {{ author.name | json }},
-  "image": {{author.photos.value | first |img_url:'300x' |json }},
-  "url": "{{ author.system.url | prepend: shop.url }}"
+  "url": {{ author.system.url | prepend: shop.url | json }}
+  {%- if author_image != blank -%}
+    ,"image": {{ author_image | image_url: width: 600 | prepend: "https:" | json }}
+  {%- endif -%}
+  {%- if author_description != blank -%}
+    ,"description": {{ author_description | json }}
+  {%- endif -%}
   {%- if author.same_as.value -%}
     ,"sameAs": [
       {%- for same in author.same_as.value -%}

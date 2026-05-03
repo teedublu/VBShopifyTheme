@@ -17,17 +17,83 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
   	
 
+    {%- liquid
+      assign resolved_page_title = page_title
+      assign resolved_page_description = page_description
+      assign resolved_canonical_url = canonical_url
+
+      if request.page_type == 'metaobject' and metaobject != blank
+        capture audiogramme_route_mode
+          render 'audiogramme-route-mode', metaobject: metaobject
+        endcapture
+
+        assign source_metaobject = metaobject
+        if metaobject.system.type == 'read_along' and metaobject.audiogramme != blank and metaobject.audiogramme.value != blank
+          assign source_metaobject = metaobject.audiogramme.value
+        endif
+
+        if metaobject.system.type == 'audiogramme' or metaobject.system.type == 'read_along'
+          assign handle = source_metaobject.system.handle | default: metaobject.system.handle
+          assign audiobook = shop.metaobjects.audiobook[handle]
+          assign product = blank
+
+          if source_metaobject.product != blank and source_metaobject.product.value != blank
+            assign product = source_metaobject.product.value
+          endif
+
+          if product == blank and audiobook != blank and audiobook.product != blank and audiobook.product.value != blank
+            assign product = audiobook.product.value
+          endif
+
+          if product == blank
+            assign product = all_products[handle]
+          endif
+
+          assign book_title = audiobook.title.value | default: product.title | default: source_metaobject.name | default: metaobject.name
+          assign author = product.metafields.book.authors.value | first
+          assign narrator = product.metafields.book.narrators.value | first
+          assign author_name = author.name
+          assign narrator_name = narrator.name
+
+          if audiogramme_route_mode == 'read_along'
+            assign resolved_page_title = book_title | append: ' Read-Along Transcript | Voxblock'
+            assign resolved_page_description = 'Listen to an excerpt from ' | append: book_title | append: ' and follow along with the read-along transcript. A screen-free audiobook sample from Voxblock.'
+            capture resolved_canonical_url
+              echo shop.url
+              render 'audiogramme-url', handle: handle, kind: 'read_along'
+            endcapture
+            assign resolved_canonical_url = resolved_canonical_url | strip
+          else
+            assign resolved_page_title = book_title | append: ' Audiobook Sample | Voxblock'
+            assign resolved_page_description = 'Listen to a sample of ' | append: book_title
+            if author_name != blank
+              assign resolved_page_description = resolved_page_description | append: ' by ' | append: author_name
+            endif
+            if narrator_name != blank
+              assign resolved_page_description = resolved_page_description | append: ', read by ' | append: narrator_name
+            endif
+            assign resolved_page_description = resolved_page_description | append: '. Discover the screen-free audiobook block for children from Voxblock.'
+            capture resolved_canonical_url
+              echo shop.url
+              render 'audiogramme-url', handle: handle, kind: 'sample'
+            endcapture
+            assign resolved_canonical_url = resolved_canonical_url | strip
+          endif
+        endif
+      endif
+    -%}
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="theme-color" content="{{ settings.header_background }}">
 
-    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% endif %}</title>
+    <title>{% if resolved_page_title == blank %}{{ shop.name }}{% else %}{{ resolved_page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% endif %}</title>
 
-    {%- if page_description -%}
-      <meta name="description" content="{{ page_description | escape }}">
+    {%- if resolved_page_description -%}
+      <meta name="description" content="{{ resolved_page_description | escape }}">
     {%- endif -%}
 
-    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="canonical" href="{{ resolved_canonical_url }}">
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
     {{- 'voxblock.css' | asset_url | stylesheet_tag: preload: true -}}
@@ -53,7 +119,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
     {%- endunless -%}
     
-    {%- render 'social-meta-tags' -%}
+    {%- render 'social-meta-tags', resolved_page_title: resolved_page_title, resolved_page_description: resolved_page_description, resolved_canonical_url: resolved_canonical_url -%}
     {%- render 'microdata-schema' -%}
     {%- render 'css-variables' -%}
     {%- render 'js-variables' -%}

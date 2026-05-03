@@ -75,11 +75,24 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/our_content-audiogram-image-1400x1000.jpg",
             "column_size": "4",
-            "title": "Audiogrammes",
+            "title": "Audiobook samples",
             "heading_tag": "h4",
-            "content": "<p>Read along as you listen to the extract from the audiobook.<\/p>",
-            "link_url": "shopify:\/\/pages\/audiogrammes",
-            "link_text": "Audiogrammes",
+            "content": "<p>Listen to featured extracts and jump through to the matching read-along transcript.<\/p>",
+            "link_url": "shopify:\/\/pages\/audiobook-samples",
+            "link_text": "Audiobook samples",
+            "link_style": "button"
+          }
+        },
+        "item_6Q4Sma": {
+          "type": "item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/our_content-overview-image-1400x1000.jpg",
+            "column_size": "4",
+            "title": "Read-alongs",
+            "heading_tag": "h4",
+            "content": "<p>Follow the transcript while you listen to the sample, with clear formatting for literacy and accessibility.<\/p>",
+            "link_url": "shopify:\/\/pages\/read-alongs",
+            "link_text": "Read-alongs",
             "link_style": "button"
           }
         },
@@ -129,6 +142,7 @@
         "item_6PhWpF",
         "item_Gdcabp",
         "item_87nc3r",
+        "item_6Q4Sma",
         "item_G7wtqq",
         "item_rp3DUi",
         "item_KbrLkB"

@@ -1,83 +1,154 @@
+{%- liquid
+  capture route_mode
+    render 'audiogramme-route-mode', metaobject: metaobject
+  endcapture
 
-{%- assign handle = audiogramme.system.handle -%}
-{%- assign product = all_products[handle] -%}
-{%- assign audiobook = shop.metaobjects[handle].value -%}
-{%- assign author = product.metafields.book.authors.value | first -%}    
-{%- assign narrator = product.metafields.book.narrators.value | first -%} 
-{%- assign desktop = audiogramme.desktop.value.sources | where: 'format','mp4' | first -%}
-{%- assign mobile = audiogramme.mobile.value.sources | where: 'format','mp4' | first  -%}
-{%- assign audiogramme = audiobook.audiogramme.value -%}
-{%- assign captions = audiogramme.captions.value -%}
+  assign source_metaobject = audiogramme | default: metaobject
+  if source_metaobject.system.type == 'read_along' and source_metaobject.audiogramme != blank and source_metaobject.audiogramme.value != blank
+    assign source_metaobject = source_metaobject.audiogramme.value
+  endif
 
-{%- if captions -%}
-  {%- capture transcript_text -%}
-      {%- for transcript in captions.results -%}
-        {%- for alt in transcript.alternatives -%}
-          {{alt.transcript}}
-        {%- endfor -%}
-      {%- endfor -%}
-  {%- endcapture -%}
-{%- endif -%}
+  assign handle = source_metaobject.system.handle | default: metaobject.system.handle
+  assign audiobook = shop.metaobjects.audiobook[handle]
+  assign product = blank
 
+  if source_metaobject.product != blank and source_metaobject.product.value != blank
+    assign product = source_metaobject.product.value
+  endif
+
+  if product == blank and audiobook != blank and audiobook.product != blank and audiobook.product.value != blank
+    assign product = audiobook.product.value
+  endif
+
+  if product == blank
+    assign product = all_products[handle]
+  endif
+
+  assign title = audiobook.title.value | default: product.title | default: source_metaobject.name | default: metaobject.name
+  assign description = product.description | strip_html
+  assign author = product.metafields.book.authors.value | first
+  assign narrator = product.metafields.book.narrators.value | first
+  assign preview_audio = product.metafields.book.preview.value
+  assign desktop_video = source_metaobject.desktop.value.sources | where: 'format', 'mp4' | first
+  assign mobile_video = source_metaobject.mobile.value.sources | where: 'format', 'mp4' | first
+  assign has_video = false
+  if desktop_video != blank or mobile_video != blank or source_metaobject.youtube_id.value != blank
+    assign has_video = true
+  endif
+
+  capture sample_url
+    echo shop.url
+    render 'audiogramme-url', handle: handle, kind: 'sample'
+  endcapture
+
+  capture read_along_url
+    echo shop.url
+    render 'audiogramme-url', handle: handle, kind: 'read_along'
+  endcapture
+
+  assign page_url = sample_url
+  if route_mode == 'read_along'
+    assign page_url = read_along_url
+  endif
+
+  assign captions_raw = source_metaobject.captions.value
+  assign transcript_text = blank
+  if captions_raw != blank
+    assign captions = captions_raw | parse_json
+    capture transcript_text
+      for transcript in captions.results
+        for alt in transcript.alternatives limit: 1
+          echo alt.transcript | strip
+          echo ' '
+        endfor
+      endfor
+    endcapture
+    assign transcript_text = transcript_text | strip
+  endif
+
+  assign price_value = product.price | divided_by: 100.0
+-%}
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "mainEntity": {
-    "@type": "Audiobook",
-    "name": "{{ product.title }}",
-    "url": {{ audiobook.system.url | prepend: shop.url | json }},
-    "description": {{ product.description | strip_html | json }},
-    "datePublished": "2022-01-01",
-    "author": {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": {{ author.name | json }},
-      "@id": {{ author.system.url | prepend: shop.url | json }}
-    },
-    "readBy": {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": {{ narrator.name | json }},
-      "@id": {{ narrator.system.url | prepend: shop.url | json }}
-    }
-  },
-  "associatedMedia": {
-    "@type": "MediaObject",
-    "name": "Media for {{ product.title }}",
-    "description": "Media resources related to the audiobook",
-    {% if desktop.url or mobile.url %}
-      "contentUrl": [
-          "{{ desktop.url }}", "{{ mobile.url }}"
-      ],
-    {% endif %}
-
-    {% if audiogramme.thumbnail.value %}
-      "thumbnail": {
-        "@type": "ImageObject",
-        "url": "{{ audiogramme.thumbnail.value | asset_url | prepend:'https:' }}"
-      },
-    {% endif %}
-    "hasPart": {
-      "@type": "AudioObject",
-      "name": "{{ product.title }} Audiobook Sample",
-      "contentUrl": "{{ product.metafields.book.preview.value.url | prepend:'https:' }}",
-      "duration": "PT0H05M",
-      {%- if transcript_text -%}
-        "transcript": {{ transcript_text | json }},
+  "@graph": [
+    {
+      "@type": "Audiobook",
+      "@id": {{ page_url | append: '#audiobook' | json }},
+      "name": {{ title | json }},
+      "url": {{ page_url | json }},
+      {%- if description != blank -%}
+        "description": {{ description | json }},
       {%- endif -%}
-      {%- if audiogramme.gif -%}
-        "video": {
-          "@type": "VideoObject",
-          "name": "Animated GIF",
-          "embedUrl": "{{ audiogramme.gif.value | asset_url | prepend:'https:' }}"
+      {%- if author != blank -%}
+        "author": {
+          "@type": "Person",
+          "name": {{ author.name | json }},
+          "url": {{ author.system.url | prepend: shop.url | json }}
         },
       {%- endif -%}
-      "hasPart": {
-        "@type": "Clip",
-        "name": "Audio sample from {{ product.title }}",
-        "duration": "PT0H05M"
+      {%- if narrator != blank -%}
+        "readBy": {
+          "@type": "Person",
+          "name": {{ narrator.name | json }},
+          "url": {{ narrator.system.url | prepend: shop.url | json }}
+        },
+      {%- endif -%}
+      {%- if product.featured_image != blank -%}
+        "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+      {%- endif -%}
+      {%- if preview_audio != blank -%}
+        "audio": {
+          "@type": "AudioObject",
+          "name": {{ title | append: ' sample' | json }},
+          "contentUrl": {{ preview_audio.url | json }}{%- if transcript_text != blank -%},
+          "transcript": {{ transcript_text | json }}{%- endif -%}
+        }
+      {%- else -%}
+        "audio": null
+      {%- endif -%}
+    }{%- if route_mode != 'read_along' and product != blank -%},
+    {
+      "@type": "Product",
+      "@id": {{ product.url | prepend: shop.url | append: '#product' | json }},
+      "name": {{ product.title | json }},
+      "url": {{ product.url | prepend: shop.url | json }},
+      {%- if description != blank -%}
+        "description": {{ description | json }},
+      {%- endif -%}
+      {%- if product.featured_image != blank -%}
+        "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+      {%- endif -%}
+      "brand": {
+        "@type": "Brand",
+        "name": "Voxblock"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": {{ price_value | json }},
+        "priceCurrency": {{ cart.currency.iso_code | json }},
+        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "url": {{ product.url | prepend: shop.url | json }}
       }
-    }    
-  }
+    }{%- endif -%}{%- if has_video -%},
+    {
+      "@type": "VideoObject",
+      "@id": {{ sample_url | append: '#sample-media' | json }},
+      "name": {{ title | append: ' audiobook sample' | json }},
+      "url": {{ sample_url | json }}{%- if description != blank -%},
+      "description": {{ description | json }}{%- endif -%}{%- if desktop_video != blank -%},
+      "contentUrl": {{ desktop_video.url | json }}{%- elsif mobile_video != blank -%},
+      "contentUrl": {{ mobile_video.url | json }}{%- elsif source_metaobject.youtube_id.value != blank -%},
+      "embedUrl": {{ 'https://www.youtube.com/watch?v=' | append: source_metaobject.youtube_id.value | json }}{%- endif -%}{%- if product.featured_image != blank -%},
+      "thumbnailUrl": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}{%- endif -%}
+    }
+    {%- elsif preview_audio != blank -%},
+    {
+      "@type": "AudioObject",
+      "@id": {{ page_url | append: '#sample-audio' | json }},
+      "name": {{ title | append: ' audiobook sample' | json }},
+      "contentUrl": {{ preview_audio.url | json }}{%- if transcript_text != blank -%},
+      "transcript": {{ transcript_text | json }}{%- endif -%}
+    }
+    {%- endif -%}
+  ]
 }
-

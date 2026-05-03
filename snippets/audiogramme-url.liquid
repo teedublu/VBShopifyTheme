@@ -1,0 +1,12 @@
+{%- liquid
+  assign base_path = '/pages/audiobook-sample/'
+
+  case kind
+    when 'read_along'
+      assign base_path = '/pages/read-along/'
+    when 'legacy'
+      assign base_path = '/pages/audiogramme/'
+  endcase
+
+  echo base_path | append: handle
+-%}

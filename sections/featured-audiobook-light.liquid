@@ -2,6 +2,14 @@
 {%- case metaobject.system.type -%}
   {%- when 'audiobook' -%}
     {%- assign product =  metaobject.product.value | default: product -%}
+  {%- when 'audiogramme' -%}
+    {%- assign product = metaobject.product.value | default: product -%}
+  {%- when 'read_along' -%}
+    {%- if metaobject.product != blank and metaobject.product.value != blank -%}
+      {%- assign product = metaobject.product.value -%}
+    {%- elsif metaobject.audiogramme != blank and metaobject.audiogramme.value != blank -%}
+      {%- assign product = metaobject.audiogramme.value.product.value | default: product -%}
+    {%- endif -%}
   {%- when 'author' -%}
     {%- assign product = metaobject.main_book.value | default: try_here -%}
   {%- when 'narrator' -%}
@@ -12,50 +20,192 @@
     {%- assign product = product -%}
 {%- endcase -%}
 
+{%- if product == blank and metaobject != blank -%}
+  {%- assign handle_to_find = metaobject.system.handle -%}
+  {%- assign metaobject_type = metaobject.system.type -%}
+
+  {%- paginate collections['audiobooks'].products by 250 -%}
+    {%- for product_to_check in collections['audiobooks'].products -%}
+      {%- case metaobject_type -%}
+        {%- when 'author' -%}
+          {%- assign related_objects = product_to_check.metafields.book.authors.value -%}
+        {%- when 'narrator' -%}
+          {%- assign related_objects = product_to_check.metafields.book.narrators.value -%}
+        {%- when 'character' -%}
+          {%- assign related_objects = product_to_check.metafields.book.characters.value -%}
+        {%- else -%}
+          {%- assign related_objects = blank -%}
+      {%- endcase -%}
+
+      {%- if related_objects != blank -%}
+        {%- for related_object in related_objects -%}
+          {%- if related_object.system.handle == handle_to_find -%}
+            {%- assign product = product_to_check -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if product != blank -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}
+
 {%- if product -%}
 
 {%- render 'section-spacing-collapsing' -%}
 <script type="application/ld+json">{%- render 'microdata-audiobook-as-product' product:product -%}</script>
 
-{%- assign pad_down = section.settings.float_up | times: 200 | divided_by: 100-%}
-{%- assign float_up = section.settings.float_up | times: -200 | divided_by: 100-%}
 <style>
   #shopify-section-{{ section.id }} {
     --product-grid: auto / minmax(0, 1fr);
     --product-gallery-media-list-grid: auto / auto-flow {% if section.settings.mobile_carousel_control == 'free_scroll' %}{% if section.settings.mobile_media_size == 'expanded' %}84vw{% else %}73vw{% endif %}{% else %}100%{% endif %};
-      {%- if section.settings.full_width -%}
-        width:100%;
-      {%- else -%}
-        margin: auto;
-        margin-top: {{pad_down}}px;
-        max-width: {{section.settings.squeeze_in}}vw;
-      {%- endif -%}
-
+    {%- if section.settings.full_width -%}
+      width: 100%;
+    {%- else -%}
+      margin: auto;
+      margin-top: 0;
+      max-width: {{ section.settings.squeeze_in }}vw;
+    {%- endif -%}
   }
 
-  #shopify-section-{{ section.id }} .product.audiobooks img{
-    margin: auto;
-    margin-top:{{float_up}}px;
+  #shopify-section-{{ section.id }} .mobile_float {
+    margin-inline: auto;
+    overflow: hidden;
+    border: 1px solid rgba(22, 32, 72, 0.08);
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at top left, rgba(76, 182, 172, 0.12), transparent 32%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 240, 0.96));
+    box-shadow: 0 24px 60px rgba(22, 32, 72, 0.12);
+  }
 
+  #shopify-section-{{ section.id }} .product.audiobooks {
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+    padding: clamp(1.25rem, 2.5vw, 2.5rem);
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks > * {
+    align-self: start;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks img {
+    margin: auto;
+    margin-top: 0;
+    border-radius: 24px;
+    box-shadow: none;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media-list,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media-list-wrapper,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__ar-wrapper,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media img,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media > *,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media .rounded,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery [style*='--aspect-ratio'] {
+    background: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery {
+    justify-items: center;
   }
 
   @media screen and (min-width: 999px) {
-  #shopify-section-{{ section.id }} .product.audiobooks .product-info{
+    #shopify-section-{{ section.id }} .product.audiobooks .product-info {
+      margin-top: 0;
+      padding: clamp(1.25rem, 1.6vw, 2rem);
+      border-radius: 28px;
+    }
+  }
 
-    margin-top:{{float_up| times: -1}}px;
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info > *,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info :is(.product-info__block-list, .product-info__price, .price-list, .badge-list),
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info :is(.accordion, .accordion__content, .accordion__toggle),
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info :is(.variant-picker, .quantity-selector, .buy-buttons, .shopify-payment-button) {
+    background: transparent;
+  }
 
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media {
+    padding: 0;
+    box-shadow: none;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__ar-wrapper,
+  #shopify-section-{{ section.id }} .product.audiobooks .product-gallery__media-list-wrapper {
+    justify-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info > * + * {
+    margin-top: clamp(0.8rem, 1.2vw, 1.2rem);
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info__title {
+    line-height: 1.05;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info__eyebrow {
+    margin: 0 0 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(var(--text-color), 0.72);
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info__price {
+    padding-block: 0.35rem 0.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info__buy-buttons {
+    padding-top: 0.35rem;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .button,
+  #shopify-section-{{ section.id }} .product.audiobooks .shopify-payment-button__button {
+    min-height: 3.25rem;
+    border-radius: 999px;
+    border: none;
+    box-shadow: none;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .product-info__text {
+    max-width: 58ch;
+  }
+
+  #shopify-section-{{ section.id }} .product.audiobooks .audiobook_product_block {
+    margin-top: 0.3rem;
   }
 
   @media screen and (max-width: 999px) {
     #shopify-section-{{ section.id }} {
       --section-spacing-block-start: {% if section.settings.mobile_media_size == 'expanded' %}0px{% else %}var(--container-gutter){% endif %};
     }
+
+    #shopify-section-{{ section.id }} .product.audiobooks {
+      align-items: center;
+      padding: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .product.audiobooks img {
+      margin-top: 0;
+      max-width: min(100%, 24rem);
+    }
+
+    #shopify-section-{{ section.id }} .product.audiobooks .product-info {
+      padding-top: 0.5rem;
+    }
   }
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      {%- assign media_ratio = section.settings.desktop_media_width | divided_by: 50.0 -%}
-      --product-grid: auto / minmax(0, {{ media_ratio }}fr) minmax(0, {{ 2.0 | minus: media_ratio }}fr);
+      --product-grid: auto / minmax(0, 1fr) minmax(0, 2fr);
       --product-gallery-media-list-grid: {% if section.settings.desktop_media_layout contains 'grid' %}auto-flow dense / repeat(2, minmax(0, 1fr)){% else %}auto / auto-flow 100%{% endif %};
       --product-gallery-media-list-gap: calc(var(--grid-gutter) / 2);
     }
@@ -89,7 +239,7 @@
       {%- render 'media', media: media | first, sizes: sizes, preload: true, width: '300' -%}
     {%- endif -%}
 
-    {%- render 'product-info', product: product, update_url: true -%}
+    {%- render 'product-info', product: product, update_url: true, metaobject: metaobject -%}
   </div>
 </div>
 
@@ -139,6 +289,19 @@
             }
           ],
           "default": "h2"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "info": "Use [name] for the page metaobject and [title] for the audiobook title."
+        },
+        {
+          "type": "text",
+          "id": "contextual_title",
+          "label": "Contextual title",
+          "info": "Use [name] for the page metaobject and [title] for the audiobook title.",
+          "default": "[title]"
         }
       ]
     },
@@ -262,6 +425,12 @@
           "type": "checkbox",
           "id": "show_narrator",
           "label": "Display Narrator",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_publisher",
+          "label": "Display Publisher",
           "default": true
         }
       ]
@@ -585,6 +754,12 @@
       "step": 5,
       "unit": "%",
       "default": 100
+    },
+    {
+      "type": "text",
+      "id": "context_copy",
+      "label": "Context copy",
+      "info": "Optional line shown above the title. Use [name] for the metaobject name and [title] for the audiobook title."
     },
     {
       "type": "header",

@@ -1,0 +1,13 @@
+{%- liquid
+  assign route_mode = 'audiobook_sample'
+
+  if metaobject != blank
+    if metaobject.system.type == 'read_along'
+      assign route_mode = 'read_along'
+    elsif request.path contains '/pages/read-along/' or template contains 'read-along'
+      assign route_mode = 'read_along'
+    endif
+  endif
+
+  echo route_mode
+-%}

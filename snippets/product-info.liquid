@@ -1,6 +1,15 @@
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
 <safe-sticky class="product-info">
+  {%- if section.settings.context_copy != blank -%}
+    {%- assign context_name = metaobject.name.value | default: product.vendor | default: product.title -%}
+    <div class="product-info__text product-info__text--context">
+      <div class="prose">
+        <p>{{ section.settings.context_copy | replace: '[name]', context_name | replace: '[title]', product.title }}</p>
+      </div>
+    </div>
+  {%- endif -%}
+
   {%- for block in section.blocks -%}
     {%- assign previous_block_index = forloop.index0 | minus: 1 -%}
     {%- assign previous_block = section.blocks[previous_block_index] -%}
@@ -25,12 +34,29 @@
         
 
       {%- when 'title' -%}
+        {%- assign product_title_text = product.title -%}
+        {%- assign product_eyebrow_text = block.settings.eyebrow -%}
+        {%- if block.settings.contextual_title != blank and metaobject != blank -%}
+          {%- assign context_name = metaobject.name | default: metaobject.title.value | default: product.vendor | default: product.title -%}
+          {%- assign product_title_text = block.settings.contextual_title | replace: '[name]', context_name | replace: '[title]', product.title -%}
+          {%- assign product_eyebrow_text = product_eyebrow_text | replace: '[name]', context_name | replace: '[title]', product.title -%}
+        {%- endif -%}
         {%- if request.page_type == 'product' -%}
-          <h1 class="product-info__title {{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+          <div {{ block.shopify_attributes }}>
+            {%- if product_eyebrow_text != blank -%}
+              <p class="product-info__eyebrow">{{ product_eyebrow_text }}</p>
+            {%- endif -%}
+            <h1 class="product-info__title {{ block.settings.heading_tag }}">{{ product_title_text }}</h1>
+          </div>
         {%- else -%}
-          <h2 class="product-info__title {{ block.settings.heading_tag }}" {{ block.shopify_attributes }}>
-            <a href="{{ product.url }}">{{ product.title }}</a>
-          </h2>
+          <div {{ block.shopify_attributes }}>
+            {%- if product_eyebrow_text != blank -%}
+              <p class="product-info__eyebrow">{{ product_eyebrow_text }}</p>
+            {%- endif -%}
+            <h2 class="product-info__title {{ block.settings.heading_tag }}">
+              <a href="{{ product.url }}">{{ product_title_text }}</a>
+            </h2>
+          </div>
         {%- endif -%}
 
       {%- when 'badges' -%}
@@ -249,7 +275,7 @@
         </div>
 
       {%- when 'text' -%}
-        {%- if block.settings.text != blank -%}
+        {%- if section.settings.context_copy == blank and block.settings.text != blank -%}
           <div class="product-info__text" {{ block.shopify_attributes }}>
             <div class="prose">
               {{- block.settings.text -}}

@@ -1,0 +1,242 @@
+{%- assign try_here = metaobject.collection.value.products | first -%}
+{%- assign product = metaobject.main_book.value | default: try_here -%}
+{%- if product == blank and metaobject != blank -%}
+  {%- assign handle_to_find = metaobject.system.handle -%}
+  {%- assign metaobject_type = metaobject.system.type -%}
+
+  {%- paginate collections['audiobooks'].products by 250 -%}
+    {%- for product_to_check in collections['audiobooks'].products -%}
+      {%- case metaobject_type -%}
+        {%- when 'author' -%}
+          {%- assign related_objects = product_to_check.metafields.book.authors.value -%}
+        {%- when 'narrator' -%}
+          {%- assign related_objects = product_to_check.metafields.book.narrators.value -%}
+        {%- when 'character' -%}
+          {%- assign related_objects = product_to_check.metafields.book.characters.value -%}
+        {%- else -%}
+          {%- assign related_objects = blank -%}
+      {%- endcase -%}
+
+      {%- if related_objects != blank -%}
+        {%- for related_object in related_objects -%}
+          {%- if related_object.system.handle == handle_to_find -%}
+            {%- assign product = product_to_check -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- if product != blank -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}
+{%- assign preview_file = product.metafields.book.preview -%}
+
+{%- if product and preview_file != blank -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    #shopify-section-{{ section.id }} .listen-to-voice {
+      display: grid;
+      gap: 1.25rem;
+      align-items: center;
+      padding: clamp(1.25rem, 2vw, 2rem);
+      border-radius: 28px;
+      border: 1px solid rgba(22, 32, 72, 0.08);
+      background:
+        radial-gradient(circle at top left, rgba(76, 182, 172, 0.14), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 247, 240, 0.96));
+      box-shadow: 0 18px 48px rgba(22, 32, 72, 0.08);
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__content {
+      display: grid;
+      gap: 0.75rem;
+      text-align: center;
+      justify-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__eyebrow {
+      margin: 0;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(var(--text-color), 0.68);
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__title {
+      margin: 0;
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      line-height: 1.08;
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__copy {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(var(--text-color), 0.78);
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      min-height: 4rem;
+      padding: 0.95rem 1.4rem;
+      border: none;
+      border-radius: 999px;
+      background: rgb(var(--button-background-primary));
+      color: rgb(var(--button-text-primary));
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(22, 32, 72, 0.12);
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__button .playpause {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__button .playpause_text {
+      display: grid;
+      text-align: left;
+      line-height: 1.15;
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__button .playpause_text .play,
+    #shopify-section-{{ section.id }} .listen-to-voice__button .playpause_text .pause {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__caption {
+      margin: 0;
+      font-size: 0.92rem;
+      color: rgba(var(--text-color), 0.72);
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__media {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .listen-to-voice__media img {
+      display: block;
+      width: min(100%, 220px);
+      margin-inline: auto;
+      border-radius: 22px;
+      box-shadow: 0 20px 46px rgba(22, 32, 72, 0.16);
+    }
+
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }} .listen-to-voice {
+        grid-template-columns: minmax(0, 1fr) 220px;
+        gap: 2rem;
+      }
+
+      #shopify-section-{{ section.id }} .listen-to-voice__content {
+        text-align: left;
+        justify-items: start;
+      }
+
+      #shopify-section-{{ section.id }} .listen-to-voice__media {
+        display: block;
+      }
+    }
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="listen-to-voice">
+      <div class="listen-to-voice__content">
+        <p class="listen-to-voice__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h2 class="listen-to-voice__title">{{ section.settings.heading | replace: '[name]', metaobject.name.value | escape }}</h2>
+        <p class="listen-to-voice__copy">
+          {{ section.settings.content | replace: '[name]', metaobject.name.value | replace: '[title]', product.title }}
+        </p>
+
+        <button type="button" class="bookpreview listen-to-voice__button" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ preview_file | file_url }}">
+          <span class="playpause"></span>
+          <span class="playpause_text">
+            <span class="play">{{ section.settings.play_label | escape }}</span>
+            <span class="pause">{{ section.settings.pause_label | escape }}</span>
+          </span>
+          <span class="sr-only">Play audio sample</span>
+        </button>
+
+        <p class="listen-to-voice__caption">
+          {{ section.settings.caption | replace: '[title]', product.title | replace: '[name]', metaobject.name.value }}
+        </p>
+      </div>
+
+      <div class="listen-to-voice__media">
+        {%- if product.featured_image != blank -%}
+          {{
+            product.featured_image
+            | image_url: width: 440
+            | image_tag:
+              loading: 'lazy',
+              widths: '220, 320, 440',
+              sizes: '220px',
+              alt: product.title
+          }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Listen To Voice",
+  "class": "shopify-section--listen-to-voice",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Hear The Voice"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Hear how [name] sounds"
+    },
+    {
+      "type": "textarea",
+      "id": "content",
+      "label": "Content",
+      "default": "Press play to hear a sample from [title] and get a feel for [name]'s storytelling before you choose a story."
+    },
+    {
+      "type": "text",
+      "id": "play_label",
+      "label": "Play label",
+      "default": "Play sample"
+    },
+    {
+      "type": "text",
+      "id": "pause_label",
+      "label": "Pause label",
+      "default": "Playing sample"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Sample from [title]"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Listen To Voice"
+    }
+  ]
+}
+{% endschema %}

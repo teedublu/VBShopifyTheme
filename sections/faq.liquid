@@ -107,7 +107,7 @@
           "name": {{ block.settings.title | json }},
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": {{ block.settings.content | json }}
+            "text": {{ block.settings.content | strip_html | strip_newlines | strip | json }}
           }
         }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}

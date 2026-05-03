@@ -58,7 +58,9 @@
         "background": "#4cb6ac",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": true,
+        "watermark_opacity": 6
       }
     },
     "breadcrumbs_pWhnx7": {
@@ -90,19 +92,41 @@
         "text_color": ""
       }
     },
+    "audiobook_quotes_CpH8Yk": {
+      "type": "audiobook-quotes",
+      "settings": {
+        "full_width": true,
+        "anchor_id": "",
+        "subheading": "From the books",
+        "heading": "A taste of {{ metaobject.name.value }}'s writing",
+        "content": "<p>Memorable lines from audiobooks by {{ metaobject.name.value }}, with each quote linked back to the story it comes from.</p>",
+        "max_quotes": 3,
+        "content_width": "medium",
+        "show_character": true,
+        "show_photo": true,
+        "show_character_label": true,
+        "show_audiobook": true,
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
     "featured_audiobook_light_hqQrgh": {
       "type": "featured-audiobook-light",
       "blocks": {
-        "text_VyTfeH": {
-          "type": "text",
-          "settings": {
-            "text": "<p>A screen-free audiobook</p>"
-          }
-        },
         "title_xzPUKA": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h2",
+            "eyebrow": "Featured audiobook",
+            "contextual_title": "[name] wrote [title]"
+          }
+        },
+        "author_narrator_kxT6Gc": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": true,
+            "show_publisher": true
           }
         },
         "price_TtcNnL": {
@@ -133,8 +157,8 @@
         }
       },
       "block_order": [
-        "text_VyTfeH",
         "title_xzPUKA",
+        "author_narrator_kxT6Gc",
         "price_TtcNnL",
         "audiobook_properties_w93H7C",
         "buy_buttons_Mgij9h"
@@ -143,6 +167,7 @@
         "full_width": false,
         "float_up": 35,
         "squeeze_in": 90,
+        "context_copy": "",
         "desktop_media_width": 55,
         "mobile_media_size": "expanded",
         "background": "",
@@ -262,29 +287,43 @@
         "item_dpCpac": {
           "type": "item",
           "settings": {
-            "title": "What is Voxblock?",
-            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"/pages/how-does-it-work\" title=\"How it works\">here.</a></p>"
+            "title": "What audiobooks by {{ metaobject.name.value }} are available on Voxblock?",
+            "content": "<p>On Voxblock you can listen to books by {{ metaobject.name.value }}{% if metaobject.collection.value != blank %}, with <a href=\"{{ metaobject.collection.value.url }}\">more titles here</a>{% elsif metaobject.main_book.value != blank %}, including <a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}, including a curated selection of screen-free audiobooks{% endif %}.</p>"
           }
         },
         "item_JwG9hG": {
           "type": "item",
           "settings": {
-            "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 250 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
+            "title": "How do children listen to {{ metaobject.name.value }} on Voxblock?",
+            "content": "<p>Choose a story by {{ metaobject.name.value }}, pop it into a Voxblock player and press play. Children can listen independently without apps, downloads or screen time.</p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
-            "title": "What age is Voxblock suitable for?",
-            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.</p>"
+            "title": "Do I need an app or Wi-Fi to listen to {{ metaobject.name.value }} on Voxblock?",
+            "content": "<p>No. Voxblock is designed for simple screen-free listening, so you do not need an app, Wi-Fi or downloads to enjoy audiobooks by {{ metaobject.name.value }}.</p>"
           }
         },
         "item_M9imEA": {
           "type": "item",
           "settings": {
-            "title": "Any questions?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br/><a href=\"/pages/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.</a></p>"
+            "title": "What age are {{ metaobject.name.value }} audiobooks suitable for?",
+            "content": "<p>Age suitability depends on the title. Check the featured audiobook and any related stories on this page for guidance on age range, themes and listening level.</p>"
+          }
+        },
+        "item_Q6mYtN": {
+          "type": "item",
+          "settings": {
+            "title": "What is a Voxblock?",
+            "content": "<p>A Voxblock is a physical audiobook format designed to make listening straightforward. Pick a story, pop it into the player and press play. There are no apps to open, no downloads to manage and no Wi-Fi needed to get started.</p>"
+          }
+        },
+        "item_f8RmLp": {
+          "type": "item",
+          "settings": {
+            "title": "Why listen to {% if metaobject.main_book.value != blank %}{{ metaobject.main_book.value.title }}{% else %}this audiobook{% endif %} on Voxblock?",
+            "content": "<p>With a physical audiobook, you or your child can simply pick up the Voxblock and press play. There is no app, no download and no Wi-Fi step in the way, just a simple listening experience that feels immediate and satisfying.</p>"
           }
         }
       },
@@ -292,13 +331,15 @@
         "item_dpCpac",
         "item_JwG9hG",
         "item_c3zFfM",
-        "item_M9imEA"
+        "item_M9imEA",
+        "item_Q6mYtN",
+        "item_f8RmLp"
       ],
       "settings": {
         "full_width": true,
-        "subheading": "",
-        "title": "FAQ",
-        "content": "",
+        "subheading": "Questions about listening to {{ metaobject.name.value }}",
+        "title": "Helpful answers",
+        "content": "<p>If you are exploring books by {{ metaobject.name.value }}, here are a few useful things to know about listening on Voxblock.</p>",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
@@ -337,6 +378,7 @@
     "image_with_text_overlay_Xdkkz8",
     "breadcrumbs_pWhnx7",
     "rich_text_hW6GQq",
+    "audiobook_quotes_CpH8Yk",
     "featured_audiobook_light_hqQrgh",
     "featured_collection_dyWK9t",
     "microdata_kKw6gU",

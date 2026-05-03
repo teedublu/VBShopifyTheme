@@ -10,43 +10,20 @@
 {
   "sections": {
     "image_with_text_overlay_qgF8Xk": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_zXAhUW": {
-          "type": "subheading",
-          "settings": {
-            "text": "AUDIOBOOK",
-            "subheading_tag": "h5",
-            "subheading_tag_html": "h2"
-          }
-        },
-        "heading_THzjKE": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.title.value }}",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_zXAhUW",
-        "heading_THzjKE"
-      ],
+      "type": "audiobook-title-bar",
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "md",
-        "mobile_text_position": "place-self-end-start text-start",
-        "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ffffff",
-        "background": "#4cb6ac",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "full_width": false,
+        "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
+        "eyebrow": "Audiobook",
+        "description": "You are viewing an audiobook page with story information, character links, answers to common questions and listening details.",
+        "summary_label": "Summary",
+        "summary_anchor": "summary",
+        "story_details_label": "Story details",
+        "story_details_anchor": "story-details",
+        "characters_label": "Characters",
+        "characters_anchor": "characters",
+        "questions_label": "Questions",
+        "questions_anchor": "questions"
       }
     },
     "breadcrumbs_DL4tEL": {
@@ -58,6 +35,21 @@
     "rich_text_rDm4QR": {
       "type": "rich-text",
       "blocks": {
+        "subheading_uBwy2m": {
+          "type": "subheading",
+          "settings": {
+            "text": "About the story"
+          }
+        },
+        "heading_jN3yYp": {
+          "type": "heading",
+          "settings": {
+            "text": "Why listeners choose {{ metaobject.title.value }}",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
         "richtext_zQg6yT": {
           "type": "richtext",
           "settings": {
@@ -66,14 +58,17 @@
         }
       },
       "block_order": [
+        "subheading_uBwy2m",
+        "heading_jN3yYp",
         "richtext_zQg6yT"
       ],
       "settings": {
         "full_width": false,
         "use_mo": true,
-        "content_width": "medium",
-        "text_position": "start",
-        "background": "",
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "summary",
+        "background": "#fff7f0",
         "background_gradient": "",
         "text_color": ""
       }
@@ -159,10 +154,32 @@
         "heading_gradient": ""
       }
     },
+    "audiobook_quotes_q8Lm2N": {
+      "type": "audiobook-quotes",
+      "settings": {
+        "full_width": true,
+        "anchor_id": "quotes",
+        "subheading": "Favourite lines",
+        "heading": "Memorable quotes from the story",
+        "content": "<p>A few standout lines from the audiobook, with the characters who say them.</p>",
+        "max_quotes": 3,
+        "content_width": "medium",
+        "show_character": true,
+        "show_photo": true,
+        "show_character_label": true,
+        "show_audiobook": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
     "item_grid_mVMXgC": {
       "type": "item-grid",
       "name": "Item grid",
       "settings": {
+        "anchor_id": "characters",
         "heading": "Meet the characters",
         "intro": "<p>Explore the main characters and learn more about their roles in the story.</p>",
         "source_mode": "metaobject_list",
@@ -256,7 +273,7 @@
         "audiogramme_xr8wFH": {
           "type": "audiogramme",
           "settings": {
-            "title": "Audiogramme"
+            "title": "Read-along transcript"
           }
         },
         "bisac_codes_xWC7Jj": {
@@ -360,7 +377,9 @@
         "fiction_EGHU8Q",
         "review_mj8Qfi"
       ],
-      "settings": {}
+      "settings": {
+        "anchor_id": "story-details"
+      }
     },
     "microdata_kKw6gU": {
       "type": "microdata",
@@ -372,6 +391,24 @@
     "faq_book_Ji9KrX": {
       "type": "faq-book",
       "blocks": {
+        "item_ThP7JM": {
+          "type": "item",
+          "settings": {
+            "title": "Who wrote \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.authors | metafield_text: field: 'name' }}",
+            "check_for_richtext": "",
+            "content": "{{ metaobject.authors | metafield_tag: field: 'name' }}"
+          }
+        },
+        "item_ageBestFor": {
+          "type": "item",
+          "settings": {
+            "title": "What age is \"{{ metaobject.title.value }}\" best for?",
+            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
+            "check_for_richtext": "",
+            "content": "<p>{{ metaobject.title.value }} is generally suited to the following interest level:</p>{{ metaobject.interest_level | metafield_tag }}"
+          }
+        },
         "item_bmzGFg": {
           "type": "item",
           "settings": {
@@ -381,13 +418,32 @@
             "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
           }
         },
+        "item_nyzJcr": {
+          "type": "item",
+          "settings": {
+            "title": "Who are the main characters in \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.characters | metafield_text: field: 'name' }}",
+            "check_for_richtext": "",
+            "content": "<p>Here are the main characters featured in {{ metaobject.title.value }}.</p>",
+            "use_metaobject_characters": true
+          }
+        },
+        "item_durationFaq": {
+          "type": "item",
+          "settings": {
+            "title": "How long is \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "<p>You can find the full listening time for {{ metaobject.title.value }} in the Story details section on this page.</p>"
+          }
+        },
         "item_xCAt3F": {
           "type": "item",
           "settings": {
-            "title": "What is the best way to listen to \"{{ metaobject.title.value }}\" ?",
+            "title": "Do I need a Voxblock player to listen to \"{{ metaobject.title.value }}\"?",
             "check_for_text": "{{ metaobject.title.value }}",
             "check_for_richtext": "",
-            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to {{ metaobject.title.value }} and many other great stories.</p>"
+            "content": "<p>Yes. {{ metaobject.title.value }} is designed to play on the screen-free Voxblock audiobook player, with no apps, downloads or Wi-Fi needed.</p>"
           }
         },
         "item_kwQGtG": {
@@ -399,10 +455,19 @@
             "content": "{{ metaobject.concise_blurb | metafield_tag }}"
           }
         },
+        "item_independentListening": {
+          "type": "item",
+          "settings": {
+            "title": "Is \"{{ metaobject.title.value }}\" suitable for independent listening?",
+            "check_for_text": "{{ metaobject.title.value }}",
+            "check_for_richtext": "",
+            "content": "<p>Yes. Once children know how to use their Voxblock player, they can usually start {{ metaobject.title.value }} on their own by placing the audiobook on the player.</p>"
+          }
+        },
         "item_xERghq": {
           "type": "item",
           "settings": {
-            "title": "What are the key themes in audiobook  \"{{ metaobject.title.value }}\"?",
+            "title": "What are the key themes in the audiobook \"{{ metaobject.title.value }}\"?",
             "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
             "check_for_richtext": "",
             "content": "<p>The audiobook \"{{ metaobject.title.value }}\" has the following key themes featured throughout the plot:</p>{{ metaobject.content_themes | metafield_tag }}"
@@ -410,13 +475,19 @@
         }
       },
       "block_order": [
+        "item_ThP7JM",
+        "item_ageBestFor",
         "item_bmzGFg",
+        "item_nyzJcr",
+        "item_durationFaq",
         "item_xCAt3F",
         "item_kwQGtG",
+        "item_independentListening",
         "item_xERghq"
       ],
       "settings": {
         "full_width": true,
+        "anchor_id": "questions",
         "subheading": "Questions about \"{{ metaobject.title.value }}\"",
         "title": "Voxblock answers",
         "content": "",
@@ -445,6 +516,7 @@
     "rich_text_rDm4QR",
     "featured_audiobook_light_DTXA9d",
     "audiobook_chapters_yCUz7W",
+    "audiobook_quotes_q8Lm2N",
     "item_grid_mVMXgC",
     "audiobook_productdata_zmqU7J",
     "microdata_kKw6gU",

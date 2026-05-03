@@ -6,29 +6,66 @@ CSS
 ------------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 <style>
-.audiobook_product_block { background-color: {{ block.settings.background_color | default: 'transparent' }}; border-radius: 20px; border:{{ block.settings.border_width }}px solid {{ block.settings.border_color }} }
-.audiobook_product_block .audiobook_properties {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 5px; padding: 10px; margin: 0 auto;}
-
-@media only screen and (min-width: 600px) {
-  .audiobook_product_block .audiobook_properties { max-width: 80%; }
+.audiobook_product_block {
+  background-color: {{ block.settings.background_color | default: 'rgba(255,255,255,0.75)' }};
+  border-radius: 24px;
+  border: {{ block.settings.border_width }}px solid {{ block.settings.border_color | default: 'rgba(22, 32, 72, 0.08)' }};
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
-@media only screen and (min-width: 1000px) {
-  .audiobook_product_block .audiobook_properties { max-width: 100%; }
-}
-.audiobook_product_block div.audiobook_properties .line1 {font-size:110%; margin-bottom: 2px;}
-.audiobook_product_block div.audiobook_properties .line2 {font-weight:800; font-size:130%}
 
-.audiobook_product_block div.audiobook_properties div.audiobook_property { text-anchor: middle; text-align: center}
-.audiobook_product_block div.audiobook_properties div.audiobook_property .playicon { cursor: pointer;}
+.audiobook_product_block .audiobook_properties {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 0.9rem;
+  padding: 0.85rem 0;
+  margin: 0 auto;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+@media only screen and (min-width: 700px) {
+  .audiobook_product_block .audiobook_properties {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+    justify-content: stretch;
+  }
+}
+
+.audiobook_product_block div.audiobook_properties div.audiobook_property {
+  text-anchor: middle;
+  text-align: center;
+  display: grid;
+  gap: 0.7rem;
+  justify-items: center;
+  align-content: start;
+  width: 100%;
+  min-width: 0;
+  padding: 0.25rem 0.2rem 0;
+}
+
+.audiobook_product_block div.audiobook_properties div.audiobook_property .playicon { cursor: pointer; }
 .audiobook_product_block div.audiobook_properties div.audiobook_property .minor { font-size: 40%; stroke-width: 0; fill: {{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}};}
 .audiobook_product_block div.audiobook_properties div.audiobook_property .major { font-size: 100%; stroke-width: 0; fill: {{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}; font-weight: bold;}
 .audiobook_product_block div.audiobook_properties div.audiobook_property .major.time { font-size: 90%;}
+
+.audiobook_product_block .audiobook_property_label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(var(--text-color), 0.68);
+  text-wrap: balance;
+}
 
   {%- comment -%}
     color: {{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}
   {%- endcomment -%}
 
-.audiobook_product_block svg { stroke:{{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}; fill: transparent; border-radius: 50%; max-width: 100px; margin: auto;}
+.audiobook_product_block svg { stroke:{{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}}; fill: transparent; border-radius: 50%; width: min(100%, 92px); max-width: 92px; margin: auto;}
 .audiobook_product_block .audiobook_property .playing svg { animation: pulse-animation 2s infinite; }
 
 .audiobook_product_block .audiobook_property .bookpreview svg path.play { fill: {{ block.settings.property_color | default: 'rgb(var(--button-background-secondary))'}};  }
@@ -57,6 +94,12 @@ The animation is in the voxblock.css.liquid as it applies in other places too
 .audiobook_product_block svg .marks > line:nth-child(10) {transform: rotate(calc(10 * 30deg));}
 .audiobook_product_block svg .marks > line:nth-child(11) {transform: rotate(calc(11 * 30deg));}
 .audiobook_product_block svg .marks > line:nth-child(12) {transform: rotate(calc(12 * 30deg));}
+
+@media only screen and (min-width: 700px) {
+  .audiobook_product_block .audiobook_properties {
+    margin-inline: 0;
+  }
+}
 </style>
 
 {%- comment -%}
@@ -111,6 +154,7 @@ LIQUID
           {{ part2 }}
         </text>
       </svg>
+      <p class="audiobook_property_label">Duration</p>
     </div>
     <div class="audiobook_property">
       <svg viewBox="0 0 40 40">
@@ -122,6 +166,7 @@ LIQUID
           Years
         </text>
       </svg>
+      <p class="audiobook_property_label">Age</p>
     </div>
     <div class="audiobook_property">
       <svg viewBox="0 0 40 40">
@@ -133,6 +178,7 @@ LIQUID
           English
         </text>
       </svg>
+      <p class="audiobook_property_label">Language</p>
     </div>
     <div class="audiobook_property">
       <div class="playicon bookpreview" data-mp3="{{product.metafields.book.preview | file_url}}">
@@ -142,10 +188,9 @@ LIQUID
           <path class="play" d="M 16.476 27.476 C 16.221 27.628 15.903 27.634 15.648 27.49 C 15.393 27.345 15.234 27.069 15.234 26.772 L 15.234 13.241 C 15.234 12.945 15.393 12.669 15.648 12.524 C 15.903 12.379 16.221 12.379 16.476 12.538 L 27.752 19.303 C 28 19.448 28.152 19.717 28.152 20.007 C 28.152 20.297 28 20.566 27.752 20.71 L 16.476 27.476 Z"/>
         </svg>
       </div>
-      
+      <p class="audiobook_property_label">Preview</p>
     </div>
   </div>
 
 
 </div>
-

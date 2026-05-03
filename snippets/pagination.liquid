@@ -14,10 +14,69 @@ Supported variables
 * facet: if set to true, it adds a "facet-link" custom elements to allow live reload of faceting search
 * hash: a hash string that is appended to generated URL
 * class: extra class being added to the container
+* mode: "compact" (default) or "full"
+* show_numbers: when truthy, render numbered pagination using paginate.parts
+* show_first_last: when truthy, render first/last page links
+* show_summary: when truthy, render current/total summary
+* show_head_links: when truthy, output rel/canonical link helpers
+* canonical_url: optional canonical URL used when show_head_links is truthy
 {%- endcomment -%}
 
 {%- if paginate.pages > 1 -%}
-  <nav class="{{ class }} pagination" role="navigation" aria-label="{{ 'general.accessibility.pagination' | t }}">
+  {%- assign pagination_mode = mode | default: 'compact' -%}
+  {%- assign render_numbers = show_numbers -%}
+  {%- assign render_summary = show_summary -%}
+  {%- assign last_page_title = paginate.pages | append: '' -%}
+
+  {%- if pagination_mode == 'full' -%}
+    {%- assign render_numbers = true -%}
+    {%- if show_summary == blank -%}
+      {%- assign render_summary = false -%}
+    {%- endif -%}
+  {%- elsif show_summary == blank -%}
+    {%- assign render_summary = true -%}
+  {%- endif -%}
+
+  {%- assign first_page_url = blank -%}
+  {%- assign last_page_url = blank -%}
+
+  {%- if render_numbers or show_first_last -%}
+    {%- for part in paginate.parts -%}
+      {%- assign part_title = part.title | strip -%}
+      {%- if part_title == '1' and first_page_url == blank -%}
+        {%- assign first_page_url = part.url -%}
+      {%- endif -%}
+      {%- if part_title == last_page_title -%}
+        {%- assign last_page_url = part.url -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if show_head_links -%}
+    {%- if canonical_url != blank -%}
+      <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif -%}
+    {%- if paginate.previous.is_link -%}
+      <link rel="prev" href="{{ paginate.previous.url }}{{ hash }}">
+    {%- endif -%}
+    {%- if paginate.next.is_link -%}
+      <link rel="next" href="{{ paginate.next.url }}{{ hash }}">
+    {%- endif -%}
+  {%- endif -%}
+
+  <nav class="{{ class }} pagination pagination--{{ pagination_mode }}" role="navigation" aria-label="{{ 'general.accessibility.pagination' | t }}">
+    {%- if show_first_last -%}
+      {%- if paginate.current_page > 1 and first_page_url != blank -%}
+        <a class="pagination__item pagination__item--edge group" {% if facet %}is="facet-link"{% endif %} aria-label="{{ 'general.accessibility.go_to_page' | t: index: 1 }}" href="{{ first_page_url }}{{ hash }}">
+          <span class="pagination__label">First</span>
+        </a>
+      {%- else -%}
+        <span class="pagination__item pagination__item--edge pagination__item--disabled">
+          <span class="pagination__label">First</span>
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+
     {%- if paginate.previous.is_link -%}
       {%- assign previous_page = paginate.current_page | minus: 1 -%}
 
@@ -30,7 +89,25 @@ Supported variables
       </span>
     {%- endif -%}
 
-    <span class="pagination__current">{{ paginate.current_page }}&nbsp;&nbsp;/&nbsp;&nbsp;{{ paginate.pages }}</span>
+    {%- if render_numbers -%}
+      <div class="pagination__pages" role="list" aria-label="Pages">
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}
+            <a class="pagination__page pagination__page--link" {% if facet %}is="facet-link"{% endif %} aria-label="{{ 'general.accessibility.go_to_page' | t: index: part.title }}" href="{{ part.url }}{{ hash }}">{{ part.title }}</a>
+          {%- else -%}
+            {%- if part.title == '&hellip;' or part.title == '...' -%}
+              <span class="pagination__ellipsis" aria-hidden="true">{{ part.title }}</span>
+            {%- else -%}
+              <span class="pagination__page pagination__page--current" aria-current="page">{{ part.title }}</span>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if render_summary -%}
+      <span class="pagination__current pagination__summary">{{ paginate.current_page }}&nbsp;&nbsp;/&nbsp;&nbsp;{{ paginate.pages }}</span>
+    {%- endif -%}
 
     {%- if paginate.next.is_link -%}
       {%- assign next_page = paginate.current_page | plus: 1 -%}
@@ -42,6 +119,18 @@ Supported variables
       <span class="pagination__item pagination__item--disabled">
         <span class="animated-arrow"></span>
       </span>
+    {%- endif -%}
+
+    {%- if show_first_last -%}
+      {%- if paginate.current_page < paginate.pages and last_page_url != blank -%}
+        <a class="pagination__item pagination__item--edge group" {% if facet %}is="facet-link"{% endif %} aria-label="{{ 'general.accessibility.go_to_page' | t: index: paginate.pages }}" href="{{ last_page_url }}{{ hash }}">
+          <span class="pagination__label">Last</span>
+        </a>
+      {%- else -%}
+        <span class="pagination__item pagination__item--edge pagination__item--disabled">
+          <span class="pagination__label">Last</span>
+        </span>
+      {%- endif -%}
     {%- endif -%}
   </nav>
 {%- endif -%}

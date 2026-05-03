@@ -1,0 +1,310 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- assign image_url = section.settings.image_url -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --audiobook-title-bar-surface:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.22), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(255, 219, 165, 0.24), transparent 30%),
+      linear-gradient(135deg, #14304b 0%, #1d5f62 48%, #f29f5c 100%);
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: center;
+    padding: clamp(1.75rem, 3vw, 3.5rem);
+    border-radius: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: var(--audiobook-title-bar-surface);
+    box-shadow: 0 30px 70px rgba(22, 32, 72, 0.22);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__watermark {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__watermark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("{{ 'voxblock-mark.svg' | asset_url }}");
+    background-repeat: repeat;
+    background-size: 36px 27px;
+    background-position: center;
+    opacity: 0.055;
+    transform: rotate(-12deg) scale(1.2);
+    transform-origin: center;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar::before {
+    content: "";
+    position: absolute;
+    inset: 1rem;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__media {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__media img {
+    width: min(100%, 210px);
+    height: auto;
+    border-radius: 22px;
+    box-shadow:
+      0 24px 50px rgba(10, 24, 42, 0.35),
+      0 0 0 10px rgba(255, 255, 255, 0.08);
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__eyebrow {
+    display: inline-flex;
+    justify-self: center;
+    align-items: center;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(8px);
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__title {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    line-height: 0.9;
+    color: #ffffff;
+    text-wrap: balance;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__copy {
+    margin: 0;
+    max-width: 36rem;
+    justify-self: center;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.9);
+    text-wrap: balance;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    justify-content: center;
+    padding-top: 0.25rem;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.9rem;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .audiobook-title-bar__pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(10, 24, 42, 0.18);
+    background: rgba(255, 255, 255, 0.24);
+    border-color: rgba(255, 255, 255, 0.32);
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .audiobook-title-bar {
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 2.5rem;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-title-bar__content {
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-title-bar__eyebrow,
+    #shopify-section-{{ section.id }} .audiobook-title-bar__copy {
+      justify-self: start;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-title-bar__meta {
+      justify-content: flex-start;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .audiobook-title-bar {
+      padding-inline: 1.25rem;
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-title-bar__media img {
+      width: min(100%, 185px);
+    }
+
+    #shopify-section-{{ section.id }} .audiobook-title-bar__watermark::before {
+      background-size: 30px 22px;
+      opacity: 0.045;
+      transform: rotate(-10deg) scale(1.15);
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="audiobook-title-bar">
+    <span class="audiobook-title-bar__watermark" aria-hidden="true"></span>
+
+    <div class="audiobook-title-bar__media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 600
+          | image_tag:
+            loading: 'eager',
+            widths: '180, 240, 300, 360, 480, 600',
+            sizes: '(min-width: 750px) 180px, 45vw',
+            alt: metaobject.title.value
+        }}
+      {%- elsif image_url != blank -%}
+        <img src="{{ image_url }}" alt="{{ metaobject.title.value | escape }} audiobook cover" loading="eager">
+      {%- endif -%}
+    </div>
+
+    <div class="audiobook-title-bar__content">
+      <span class="audiobook-title-bar__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      <h1 class="audiobook-title-bar__title">{{ metaobject.title.value }}</h1>
+      <p class="audiobook-title-bar__copy">
+        {{ section.settings.description | default: 'Welcome in. Explore the story, meet the characters, and jump straight to the details you need before choosing this audiobook.' }}
+      </p>
+
+      <div class="audiobook-title-bar__meta">
+        <a class="audiobook-title-bar__pill" href="#{{ section.settings.summary_anchor | escape }}">{{ section.settings.summary_label | escape }}</a>
+        <a class="audiobook-title-bar__pill" href="#{{ section.settings.story_details_anchor | escape }}">{{ section.settings.story_details_label | escape }}</a>
+        <a class="audiobook-title-bar__pill" href="#{{ section.settings.characters_anchor | escape }}">{{ section.settings.characters_label | escape }}</a>
+        <a class="audiobook-title-bar__pill" href="#{{ section.settings.questions_anchor | escape }}">{{ section.settings.questions_label | escape }}</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Audiobook Title Bar",
+  "class": "shopify-section--audiobook-title-bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "url",
+      "id": "image_url",
+      "label": "Image URL"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Audiobook"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Welcome in. Explore the story, meet the characters, and jump straight to the details you need before choosing this audiobook."
+    },
+    {
+      "type": "text",
+      "id": "summary_label",
+      "label": "Summary label",
+      "default": "Summary"
+    },
+    {
+      "type": "text",
+      "id": "summary_anchor",
+      "label": "Summary anchor",
+      "default": "summary"
+    },
+    {
+      "type": "text",
+      "id": "story_details_label",
+      "label": "Story details label",
+      "default": "Story details"
+    },
+    {
+      "type": "text",
+      "id": "story_details_anchor",
+      "label": "Story details anchor",
+      "default": "story-details"
+    },
+    {
+      "type": "text",
+      "id": "characters_label",
+      "label": "Characters label",
+      "default": "Characters"
+    },
+    {
+      "type": "text",
+      "id": "characters_anchor",
+      "label": "Characters anchor",
+      "default": "characters"
+    },
+    {
+      "type": "text",
+      "id": "questions_label",
+      "label": "Questions label",
+      "default": "Questions"
+    },
+    {
+      "type": "text",
+      "id": "questions_anchor",
+      "label": "Questions anchor",
+      "default": "questions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Audiobook Title Bar"
+    }
+  ]
+}
+{% endschema %}

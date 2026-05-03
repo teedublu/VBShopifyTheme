@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "read_along_page": {
+      "type": "read-along-page",
+      "settings": {}
+    },
+    "featured_audiobook_light": {
+      "type": "featured-audiobook-light",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2",
+            "eyebrow": "Featured audiobook"
+          }
+        },
+        "author_narrator": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": true,
+            "show_publisher": true
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "audiobook_properties": {
+          "type": "audiobook-properties",
+          "settings": {
+            "property_color": "",
+            "background_color": "",
+            "border_color": "",
+            "border_width": 0
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "author_narrator",
+        "price",
+        "audiobook_properties",
+        "buy_buttons"
+      ],
+      "settings": {
+        "full_width": false,
+        "float_up": 25,
+        "squeeze_in": 90,
+        "context_copy": "",
+        "desktop_media_width": 55,
+        "mobile_media_size": "expanded",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "microdata": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "audiogramme"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "read_along_page",
+    "featured_audiobook_light",
+    "microdata"
+  ]
+}
