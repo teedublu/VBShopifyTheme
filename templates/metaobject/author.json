@@ -288,7 +288,7 @@
           "type": "item",
           "settings": {
             "title": "What audiobooks by {{ metaobject.name.value }} are available on Voxblock?",
-            "content": "<p>On Voxblock you can listen to books by {{ metaobject.name.value }}{% if metaobject.collection.value != blank %}, with <a href=\"{{ metaobject.collection.value.url }}\">more titles here</a>{% elsif metaobject.main_book.value != blank %}, including <a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}, including a curated selection of screen-free audiobooks{% endif %}.</p>"
+            "content": "<p>On Voxblock you can listen to books by {{ metaobject.name.value }}, including a curated selection of screen-free audiobooks.</p>"
           }
         },
         "item_JwG9hG": {
@@ -322,7 +322,7 @@
         "item_f8RmLp": {
           "type": "item",
           "settings": {
-            "title": "Why listen to {% if metaobject.main_book.value != blank %}{{ metaobject.main_book.value.title }}{% else %}this audiobook{% endif %} on Voxblock?",
+            "title": "Why listen to audiobooks by {{ metaobject.name.value }} on Voxblock?",
             "content": "<p>With a physical audiobook, you or your child can simply pick up the Voxblock and press play. There is no app, no download and no Wi-Fi step in the way, just a simple listening experience that feels immediate and satisfying.</p>"
           }
         }

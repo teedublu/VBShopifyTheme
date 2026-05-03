@@ -249,7 +249,7 @@
           "type": "item",
           "settings": {
             "title": "What audiobooks are narrated by {{ metaobject.name.value }}?",
-            "content": "<p>On Voxblock {{ metaobject.name.value }} has narrated {% if metaobject.collection.value != blank %}<a href=\"{{ metaobject.collection.value.url }}\">a selection of audiobooks</a>{% elsif metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}a selection of Voxblock audiobooks{% endif %}.</p>"
+            "content": "<p>On Voxblock {{ metaobject.name.value }} has narrated a selection of screen-free audiobooks.</p>"
           }
         },
         "item_JwG9hG": {
@@ -263,7 +263,7 @@
           "type": "item",
           "settings": {
             "title": "How can I hear how {{ metaobject.name.value }} sounds?",
-            "content": "<p>Press play in the sample section above to hear {{ metaobject.name.value }}'s voice reading {% if metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}one of the featured audiobooks{% endif %}.</p>"
+            "content": "<p>Press play in the sample section above to hear {{ metaobject.name.value }}'s voice reading one of the featured audiobooks.</p>"
           }
         },
         "item_M9imEA": {
@@ -283,7 +283,7 @@
         "item_f8RmLp": {
           "type": "item",
           "settings": {
-            "title": "Why listen to {% if metaobject.main_book.value != blank %}{{ metaobject.main_book.value.title }}{% else %}this audiobook{% endif %} on Voxblock?",
+            "title": "Why listen to audiobooks narrated by {{ metaobject.name.value }} on Voxblock?",
             "content": "<p>With a physical audiobook, you or your child can simply pick up the Voxblock and press play. There is no app, no download and no Wi-Fi step in the way, just a simple listening experience that feels immediate and satisfying.</p>"
           }
         }
