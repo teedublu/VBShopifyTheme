@@ -1,0 +1,332 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_with_text_overlay_DH8cex": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "image_MMNaPz": {
+          "type": "image",
+          "settings": {
+            "max_width": 200,
+            "radius": 50,
+            "avatar_display": "image",
+            "avatar_bg_color": "#4a90e2",
+            "initials_font_size": 72,
+            "initials_color": "#ffffff"
+          }
+        },
+        "heading_X4DUy3": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "image_MMNaPz",
+        "heading_X4DUy3"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "{{ metaobject.header_image.value }}",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "breadcrumbs_XHGrpm": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "rich_text_77Fmmq": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_gX7DT3": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.bio | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_gX7DT3"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_4ndi6L": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_f7YiN3": {
+          "type": "subheading",
+          "settings": {
+            "text": "Listen to {{ metaobject.name.value }} Stories on Voxblock"
+          }
+        },
+        "richtext_gUTnq9": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Bring {{ metaobject.name.value }} to life with Voxblock — the screen-free audiobook player that lets kids explore stories independently. No apps, no setup, just pop in the block and they’re instantly listening. Perfect for growing curiosity without adding more screen time.</p>"
+          }
+        },
+        "liquid_a7ceGe": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<a href=\"{{ metaobject.main_book.value.url }}\" class=\"button\">\n  View Audiobook \n</a>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_f7YiN3",
+        "richtext_gUTnq9",
+        "liquid_a7ceGe"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured_collection_KrTR6V": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "hide_empty": true,
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Featured collection",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "item_grid_xHEapM": {
+      "type": "item-grid",
+      "name": "Item grid",
+      "settings": {
+        "heading": "Meet the others",
+        "intro": "<p>Explore the main characters and learn more about their personalities and roles in {{ metaobject.name.value }}.</p>",
+        "source_mode": "metaobject_list",
+        "metaobject_items": "{{ metaobject.main_book.value.characters.value }}",
+        "product_items": [],
+        "items_limit": 4,
+        "button_label": "Read more"
+      }
+    },
+    "microdata_8YzdEG": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "character"
+      }
+    },
+    "media_with_text_ciY3Ct": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_QCmjPr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-end-start text-start",
+            "icon": "none",
+            "icon_width": 68,
+            "subheading": "",
+            "title": "Listen with Voxblock",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p><p>Children can listen to stories about {{ metaobject.name.value }} without needing a screen, an app or downloads.</p><p>So simple to use.</p>",
+            "link_text": "Learn more",
+            "link_url": "shopify://products/voxblock-player",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_QCmjPr"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "video_7z6xfc": {
+      "type": "video",
+      "blocks": {
+        "play_zAwMFi": {
+          "type": "play",
+          "disabled": true,
+          "settings": {}
+        },
+        "heading_nLz6aH": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "play_zAwMFi",
+        "heading_nLz6aH"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "md",
+        "video": "shopify://files/videos/voxblock intro_desktop.mp4",
+        "mobile_video": "shopify://files/videos/how does it work_mobile.mp4",
+        "youtube_id": "",
+        "external_video_url": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+      }
+    },
+    "faq_PWkrrR": {
+      "type": "faq",
+      "blocks": {
+        "item_dpCpac": {
+          "type": "item",
+          "settings": {
+            "title": "What is Voxblock?",
+            "content": "<p>A screen-free, wifi free, easy-to-use audiobook player, that makes learning and listening fun and engaging. Learn more <a href=\"/pages/how-does-it-work\" title=\"How it works\">here.</a></p>"
+          }
+        },
+        "item_JwG9hG": {
+          "type": "item",
+          "settings": {
+            "title": "What stories are available?",
+            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
+          }
+        },
+        "item_c3zFfM": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock suitable for?",
+            "content": "<p>Our current range of content is aimed at toddlers to teenagers.  The player itself is suitable for all ages, with children from age two able to use Voxblock independently.</p>"
+          }
+        },
+        "item_M9imEA": {
+          "type": "item",
+          "settings": {
+            "title": "Any questions?",
+            "content": "<p>You can contact us through our contact page! We will be happy to assist you.<br/><a href=\"/pages/voxblock-faq\" title=\"FAQ : all about our screen free audiobook player\">More FAQ's here.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_dpCpac",
+        "item_JwG9hG",
+        "item_c3zFfM",
+        "item_M9imEA"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQ",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "newsletter_jK33Dy": {
+      "type": "newsletter",
+      "settings": {
+        "full_width": true,
+        "show_icon": true,
+        "title": "Sign up to our newsletter",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.</p>",
+        "button_text": "Go",
+        "subtext": "",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_DH8cex",
+    "breadcrumbs_XHGrpm",
+    "rich_text_77Fmmq",
+    "rich_text_4ndi6L",
+    "featured_collection_KrTR6V",
+    "item_grid_xHEapM",
+    "microdata_8YzdEG",
+    "media_with_text_ciY3Ct",
+    "video_7z6xfc",
+    "faq_PWkrrR",
+    "newsletter_jK33Dy"
+  ]
+}
