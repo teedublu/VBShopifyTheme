@@ -167,7 +167,7 @@
         "full_width": false,
         "float_up": 35,
         "squeeze_in": 90,
-        "context_copy": "A book from [name]",
+        "context_copy": "",
         "desktop_media_width": 55,
         "mobile_media_size": "expanded",
         "background": "",
@@ -288,7 +288,7 @@
           "type": "item",
           "settings": {
             "title": "What audiobooks by {{ metaobject.name.value }} are available on Voxblock?",
-            "content": "<p>On Voxblock you can listen to books by {{ metaobject.name.value }}, including {% assign author_books = metaobject.collection.value.products %}{% if author_books != blank and author_books.count > 0 %}{% for book in author_books limit: 3 %}<a href=\"{{ book.url }}\">{{ book.title }}</a>{% if forloop.rindex0 > 1 %}, {% elsif forloop.rindex0 == 1 %} and {% endif %}{% endfor %}{% if author_books.count > 3 and metaobject.collection.value != blank %}, with <a href=\"{{ metaobject.collection.value.url }}\">more titles here</a>{% endif %}{% elsif metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}a curated selection of screen-free audiobooks{% endif %}.</p>"
+            "content": "<p>On Voxblock you can listen to books by {{ metaobject.name.value }}{% if metaobject.collection.value != blank %}, with <a href=\"{{ metaobject.collection.value.url }}\">more titles here</a>{% elsif metaobject.main_book.value != blank %}, including <a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}, including a curated selection of screen-free audiobooks{% endif %}.</p>"
           }
         },
         "item_JwG9hG": {
@@ -311,13 +311,29 @@
             "title": "What age are {{ metaobject.name.value }} audiobooks suitable for?",
             "content": "<p>Age suitability depends on the title. Check the featured audiobook and any related stories on this page for guidance on age range, themes and listening level.</p>"
           }
+        },
+        "item_Q6mYtN": {
+          "type": "item",
+          "settings": {
+            "title": "What is a Voxblock?",
+            "content": "<p>A Voxblock is a physical audiobook format designed to make listening straightforward. Pick a story, pop it into the player and press play. There are no apps to open, no downloads to manage and no Wi-Fi needed to get started.</p>"
+          }
+        },
+        "item_f8RmLp": {
+          "type": "item",
+          "settings": {
+            "title": "Why listen to {% if metaobject.main_book.value != blank %}{{ metaobject.main_book.value.title }}{% else %}this audiobook{% endif %} on Voxblock?",
+            "content": "<p>With a physical audiobook, you or your child can simply pick up the Voxblock and press play. There is no app, no download and no Wi-Fi step in the way, just a simple listening experience that feels immediate and satisfying.</p>"
+          }
         }
       },
       "block_order": [
         "item_dpCpac",
         "item_JwG9hG",
         "item_c3zFfM",
-        "item_M9imEA"
+        "item_M9imEA",
+        "item_Q6mYtN",
+        "item_f8RmLp"
       ],
       "settings": {
         "full_width": true,

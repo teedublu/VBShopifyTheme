@@ -74,6 +74,7 @@
 {%- if metaobject != blank -%}
   {%- assign metaobject_type = metaobject.system.type -%}
 {%- endif -%}
+{%- capture audiogramme_route_mode -%}{% render 'audiogramme-route-mode', metaobject: metaobject %}{%- endcapture -%}
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign page_type = template | split: '.' | first -%}
@@ -89,7 +90,7 @@
     assign crumb_part_sep = '^^'
 
     assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
-    assign crumbs = crumbs | append: crumb_item_sep | append: pages['audiobook-library'].url | append: crumb_part_sep | append: 'Our content'
+    assign crumbs = crumbs | append: crumb_item_sep | append: pages['audiobook-library'].url | append: crumb_part_sep | append: 'Our Content'
 
     assign list_page = blank
     assign parent_page = blank
@@ -102,7 +103,11 @@
             when 'audiobook'
               assign list_page = 'audiobooks'
             when 'audiogramme'
-              assign list_page = 'audiogrammes'
+              if audiogramme_route_mode == 'read_along'
+                assign list_page = 'read-alongs'
+              else
+                assign list_page = 'audiobook-samples'
+              endif
             when 'series'
               assign list_page = 'audiobook-series'
             when 'character'
@@ -155,12 +160,77 @@
 
       when 'metaobject'
         assign title = metaobject.title | default: metaobject.name
+        assign read_along_parent_title = blank
+        assign read_along_parent_url = blank
 
         case metaobject_type
           when 'audiobook'
             assign list_page = 'audiobooks'
           when 'audiogramme'
-            assign list_page = 'audiogrammes'
+            if audiogramme_route_mode == 'read_along'
+              assign list_page = 'audiobooks'
+              assign title = 'Read Along'
+              assign read_along_source = metaobject
+              assign read_along_handle = read_along_source.system.handle | default: metaobject.system.handle
+              assign read_along_audiobook = shop.metaobjects.audiobook[read_along_handle]
+              assign read_along_product = blank
+
+              if read_along_source.product != blank and read_along_source.product.value != blank
+                assign read_along_product = read_along_source.product.value
+              endif
+
+              if read_along_product == blank and read_along_audiobook != blank and read_along_audiobook.product != blank
+                assign read_along_product = read_along_audiobook.product.value
+              endif
+
+              if read_along_product == blank
+                assign read_along_product = all_products[read_along_handle]
+              endif
+
+              assign read_along_parent_title = read_along_source.name | default: read_along_audiobook.title.value | default: read_along_product.title
+              assign read_along_parent_url = read_along_audiobook.system.url | default: read_along_product.url
+
+              if read_along_handle contains 'paddington'
+                assign read_along_parent_title = 'Paddington Bear'
+              endif
+            else
+              assign list_page = 'audiobook-samples'
+              assign title = metaobject.name | append: ' audiobook sample'
+            endif
+          when 'read_along'
+            assign list_page = 'audiobooks'
+            assign title = 'Read Along'
+
+            if metaobject.audiogramme != blank and metaobject.audiogramme.value != blank
+              assign read_along_source = metaobject.audiogramme.value
+            else
+              assign read_along_source = metaobject
+            endif
+
+            assign read_along_handle = read_along_source.system.handle | default: metaobject.system.handle
+            assign read_along_audiobook = shop.metaobjects.audiobook[read_along_handle]
+            assign read_along_product = blank
+
+            if read_along_source.product != blank and read_along_source.product.value != blank
+              assign read_along_product = read_along_source.product.value
+            elsif metaobject.product != blank and metaobject.product.value != blank
+              assign read_along_product = metaobject.product.value
+            endif
+
+            if read_along_product == blank and read_along_audiobook != blank and read_along_audiobook.product != blank
+              assign read_along_product = read_along_audiobook.product.value
+            endif
+
+            if read_along_product == blank
+              assign read_along_product = all_products[read_along_handle]
+            endif
+
+            assign read_along_parent_title = read_along_source.name | default: metaobject.name | default: read_along_audiobook.title.value | default: read_along_product.title
+            assign read_along_parent_url = read_along_audiobook.system.url | default: read_along_product.url
+
+            if read_along_handle contains 'paddington'
+              assign read_along_parent_title = 'Paddington Bear'
+            endif
           when 'series'
             assign list_page = 'audiobook-series'
           when 'overview'
@@ -179,8 +249,15 @@
           assign parent_page = pages[list_page]
           if parent_page != blank
             assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+            if list_page == 'audiobooks' and read_along_parent_title != blank
+              assign parent_title = 'Audiobooks'
+            endif
             assign crumbs = crumbs | append: crumb_item_sep | append: parent_page.url | append: crumb_part_sep | append: parent_title
           endif
+        endif
+
+        if read_along_parent_title != blank and read_along_parent_url != blank
+          assign crumbs = crumbs | append: crumb_item_sep | append: read_along_parent_url | append: crumb_part_sep | append: read_along_parent_title
         endif
 
         if metaobject_type == 'character' and metaobject.main_book.value != blank

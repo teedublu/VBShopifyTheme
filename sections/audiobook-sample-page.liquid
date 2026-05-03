@@ -1,0 +1,254 @@
+{%- liquid
+  assign source_metaobject = metaobject
+  if metaobject.system.type == 'read_along' and metaobject.audiogramme != blank and metaobject.audiogramme.value != blank
+    assign source_metaobject = metaobject.audiogramme.value
+  endif
+
+  assign handle = source_metaobject.system.handle | default: metaobject.system.handle
+  assign audiobook = shop.metaobjects.audiobook[handle]
+  assign product = blank
+
+  if source_metaobject.product != blank and source_metaobject.product.value != blank
+    assign product = source_metaobject.product.value
+  endif
+
+  if product == blank and audiobook != blank and audiobook.product != blank and audiobook.product.value != blank
+    assign product = audiobook.product.value
+  endif
+
+  if product == blank
+    assign product = all_products[handle]
+  endif
+
+  assign title = audiobook.title.value | default: product.title | default: source_metaobject.name | default: metaobject.name
+  assign author = product.metafields.book.authors.value | first
+  assign narrator = product.metafields.book.narrators.value | first
+  assign publisher = product.metafields.book.publisher.value
+
+  assign description_field = blank
+  if audiobook != blank
+    if audiobook.short_blurb != blank
+      assign description_field = audiobook.short_blurb
+    elsif audiobook.concise_blurb != blank
+      assign description_field = audiobook.concise_blurb
+    elsif audiobook.long_blurb != blank
+      assign description_field = audiobook.long_blurb
+    endif
+  endif
+
+  assign preview_audio = product.metafields.book.preview.value
+  assign desktop_media = source_metaobject.desktop.value
+  assign mobile_media = source_metaobject.mobile.value
+  assign desktop_is_video = false
+  assign mobile_is_video = false
+
+  if desktop_media != blank and desktop_media.media_type == 'video'
+    assign desktop_is_video = true
+  endif
+
+  if mobile_media != blank and mobile_media.media_type == 'video'
+    assign mobile_is_video = true
+  endif
+
+  capture read_along_url
+    render 'audiogramme-url', handle: handle, kind: 'read_along'
+  endcapture
+
+  assign voxblock_url = pages['how-it-works'].url | default: '/pages/how-it-works'
+-%}
+
+{%- if product != blank or source_metaobject != blank -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --sample-accent: #ff9d57;
+      --sample-ink: #12324f;
+      --sample-panel: #fff8f2;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page {
+      display: grid;
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+      padding: clamp(1.25rem, 3vw, 2.5rem);
+      border: 1px solid rgba(18, 50, 79, 0.08);
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 157, 87, 0.18), transparent 30%),
+        linear-gradient(180deg, #ffffff, #fff9f5 100%);
+      box-shadow: 0 20px 60px rgba(18, 50, 79, 0.08);
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__player,
+    #shopify-section-{{ section.id }} .sample-page__video {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid rgba(18, 50, 79, 0.08);
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__player {
+      padding: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__player audio {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__content {
+      max-width: 68rem;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__media-actions {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.1rem;
+      max-width: 42rem;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__media-actions .button {
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__media-actions-secondary {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__media-actions-primary.buy-buttons .button {
+      min-height: 3.7rem;
+      font-size: 1rem;
+      font-weight: 800;
+      width: 100%;
+      background: #ff9d57;
+      color: #ffffff;
+      border-color: #ff9d57;
+      box-shadow: 0 14px 28px rgba(255, 157, 87, 0.22);
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__media-actions-secondary .button {
+      min-height: 3.2rem;
+      width: 100%;
+      border-width: 2px;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__eyebrow {
+      margin: 0 0 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sample-accent);
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__title {
+      margin: 0;
+      color: var(--sample-ink);
+      line-height: 1.02;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__meta,
+    #shopify-section-{{ section.id }} .sample-page__publisher {
+      margin: 0.45rem 0 0;
+      color: rgba(18, 50, 79, 0.8);
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__summary {
+      margin-top: 1.25rem;
+      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      background: var(--sample-panel);
+      border: 1px solid rgba(255, 157, 87, 0.24);
+    }
+
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} .sample-page__media-actions-secondary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="sample-page">
+      {%- if desktop_is_video or mobile_is_video or source_metaobject.youtube_id.value != blank -%}
+        <div class="sample-page__video">
+          {%- if mobile_is_video -%}
+            <video-media class="sm:hidden" {% if mobile_media.aspect_ratio %}style="--aspect-ratio: {{ mobile_media.aspect_ratio }}"{% endif %}>
+              {{- mobile_media | video_tag: class: 'object-cover sm:hidden', controls: true, playsinline: true, preload: 'metadata', image_size: '400x' -}}
+            </video-media>
+          {%- endif -%}
+
+          {%- if desktop_is_video -%}
+            <video-media {% if mobile_is_video %}class="hidden sm:block"{% endif %} {% if desktop_media.aspect_ratio %}style="--aspect-ratio: {{ desktop_media.aspect_ratio }}"{% endif %}>
+              {{- desktop_media | video_tag: playsinline: true, preload: 'metadata', controls: true, image_size: '800x' -}}
+            </video-media>
+          {%- elsif source_metaobject.youtube_id.value != blank -%}
+            <video-media host="youtube" loaded>
+              <iframe src="https://www.youtube.com/embed/{{ source_metaobject.youtube_id.value }}?playsinline=1&rel=0&modestbranding=1" title="{{ title | escape }} audiobook sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </video-media>
+          {%- endif -%}
+        </div>
+      {%- elsif preview_audio != blank -%}
+        <div class="sample-page__player">
+          <audio controls preload="metadata">
+            <source src="{{ preview_audio.url }}" type="audio/mpeg">
+          </audio>
+        </div>
+      {%- endif -%}
+
+      <div class="sample-page__media-actions">
+        {%- if product != blank -%}
+          <buy-buttons class="sample-page__media-actions-primary buy-buttons">
+            {% render 'button', content: 'Buy this audiobook', href: product.url, style: 'fill', size: 'xl', background: '#ff9d57', text_color: '#ffffff', stretch: true %}
+          </buy-buttons>
+        {%- endif -%}
+        <div class="sample-page__media-actions-secondary">
+          {% render 'button', content: 'Read along', href: read_along_url, style: 'outline', size: 'lg', text_color: '#12324f', stretch: true %}
+          {% render 'button', content: 'What is Voxblock', href: voxblock_url, style: 'outline', size: 'lg', text_color: '#12324f', stretch: true %}
+        </div>
+      </div>
+
+      <div class="sample-page__content">
+        <p class="sample-page__eyebrow">Audiobook sample</p>
+        <h1 class="sample-page__title h1">{{ title }} audiobook sample</h1>
+
+        {%- if author != blank or narrator != blank -%}
+          <p class="sample-page__meta">
+            {%- if author != blank -%}
+              By {{ author.name }}
+            {%- endif -%}
+            {%- if narrator != blank -%}
+              {%- if author != blank -%} | {% endif -%}
+              Read by {{ narrator.name }}
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        {%- if publisher != blank -%}
+          <p class="sample-page__publisher">Published by {{ publisher.name }}</p>
+        {%- endif -%}
+
+        {%- if description_field != blank -%}
+          <div class="sample-page__summary prose">
+            {{ description_field | metafield_tag }}
+          </div>
+        {%- elsif product.description != blank -%}
+          <div class="sample-page__summary prose">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Audiobook Sample Page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

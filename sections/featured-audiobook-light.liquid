@@ -2,6 +2,14 @@
 {%- case metaobject.system.type -%}
   {%- when 'audiobook' -%}
     {%- assign product =  metaobject.product.value | default: product -%}
+  {%- when 'audiogramme' -%}
+    {%- assign product = metaobject.product.value | default: product -%}
+  {%- when 'read_along' -%}
+    {%- if metaobject.product != blank and metaobject.product.value != blank -%}
+      {%- assign product = metaobject.product.value -%}
+    {%- elsif metaobject.audiogramme != blank and metaobject.audiogramme.value != blank -%}
+      {%- assign product = metaobject.audiogramme.value.product.value | default: product -%}
+    {%- endif -%}
   {%- when 'author' -%}
     {%- assign product = metaobject.main_book.value | default: try_here -%}
   {%- when 'narrator' -%}

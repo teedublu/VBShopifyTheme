@@ -1,0 +1,500 @@
+{%- liquid
+  assign source_metaobject = metaobject
+  if metaobject.system.type == 'read_along' and metaobject.audiogramme != blank and metaobject.audiogramme.value != blank
+    assign source_metaobject = metaobject.audiogramme.value
+  endif
+
+  assign handle = source_metaobject.system.handle | default: metaobject.system.handle
+  assign audiobook = shop.metaobjects.audiobook[handle]
+  assign product = blank
+
+  if source_metaobject.product != blank and source_metaobject.product.value != blank
+    assign product = source_metaobject.product.value
+  endif
+
+  if product == blank and audiobook != blank and audiobook.product != blank and audiobook.product.value != blank
+    assign product = audiobook.product.value
+  endif
+
+  if product == blank
+    assign product = all_products[handle]
+  endif
+
+  assign title = audiobook.title.value | default: product.title | default: source_metaobject.name | default: metaobject.name
+  assign preview_audio = product.metafields.book.preview.value
+  assign captions_raw = source_metaobject.captions.value
+  assign transcript_id = 'read-along-transcript-' | append: section.id
+  assign audio_id = 'read-along-audio-' | append: section.id
+  assign prompts_field = metaobject.reading_prompts
+
+  if prompts_field == blank and source_metaobject.reading_prompts != blank
+    assign prompts_field = source_metaobject.reading_prompts
+  endif
+
+  if prompts_field == blank and audiobook != blank and audiobook.reading_prompts != blank
+    assign prompts_field = audiobook.reading_prompts
+  endif
+
+  capture sample_url
+    render 'audiogramme-url', handle: handle, kind: 'sample'
+  endcapture
+
+  capture read_along_url
+    render 'audiogramme-url', handle: handle, kind: 'read_along'
+  endcapture
+-%}
+
+{%- if source_metaobject != blank -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  <style>
+    #shopify-section-{{ section.id }} {
+      --read-along-accent: #167176;
+      --read-along-highlight: #ff9d57;
+      --read-along-panel: #f6fbfb;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page {
+      display: grid;
+      gap: clamp(1.2rem, 2.5vw, 2rem);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__content {
+      min-width: 0;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__transcript,
+    #shopify-section-{{ section.id }} .read-along-page__prompts {
+      border: 1px solid rgba(22, 113, 118, 0.1);
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: 0 18px 50px rgba(18, 50, 79, 0.06);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__actions {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__transcript,
+    #shopify-section-{{ section.id }} .read-along-page__prompts {
+      padding: clamp(1.2rem, 2.5vw, 2rem);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__transcript-header {
+      display: grid;
+      gap: 1rem;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__eyebrow {
+      margin: 0 0 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--read-along-highlight);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__title {
+      margin: 0;
+      color: #12324f;
+      line-height: 1.05;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__audio {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__listen-cta {
+      display: grid;
+      gap: 0.7rem;
+      align-content: start;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__listen-cta .button {
+      width: 100%;
+      justify-content: center;
+      min-height: 3.6rem;
+      background: #ff9d57;
+      color: #ffffff;
+      border-color: #ff9d57;
+      box-shadow: 0 14px 28px rgba(255, 157, 87, 0.18);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__start-button {
+      appearance: none;
+      border: 2px solid #167176;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.1;
+      min-height: 3.6rem;
+      padding: 0.95rem 1.4rem;
+      width: 100%;
+      background: #ffffff;
+      color: #167176;
+      box-shadow: 0 10px 24px rgba(22, 113, 118, 0.12);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__start-button:hover,
+    #shopify-section-{{ section.id }} .read-along-page__start-button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(22, 113, 118, 0.16);
+      outline: none;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__start-button.is-playing {
+      background: #167176;
+      color: #ffffff;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__listen-note {
+      margin: 0;
+      font-size: 0.84rem;
+      line-height: 1.4;
+      color: rgba(18, 50, 79, 0.72);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__hidden-audio {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__hidden-audio audio {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__audio.is-playing + .read-along-page__listen-note::before {
+      content: "Playing now. ";
+      font-weight: 700;
+      color: #167176;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__audio {
+      border-radius: 20px;
+      background: var(--read-along-panel);
+      border: 1px solid rgba(22, 113, 118, 0.08);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__audio audio {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__audio-label {
+      margin: 0 0 0.55rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #167176;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__transcript-body {
+      margin-top: 1rem;
+      font-size: 1.06rem;
+      line-height: 1.8;
+      max-height: 70vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__transcript-body p {
+      margin: 0 0 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(22, 113, 118, 0.1);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__transcript-body p:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__word {
+      display: inline-block;
+      margin: 0 0.14rem 0.22rem 0;
+      padding: 0.06rem 0.16rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__word:hover,
+    #shopify-section-{{ section.id }} .read-along-page__word:focus-visible {
+      background: rgba(255, 157, 87, 0.14);
+      outline: none;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__word.is-active {
+      background: #ff9d57;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__learning {
+      padding: clamp(1.2rem, 2.5vw, 2rem);
+      border: 1px solid rgba(255, 157, 87, 0.22);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 157, 87, 0.14), transparent 32%),
+        linear-gradient(180deg, #fffdf9, #fff7ef 100%);
+      box-shadow: 0 18px 50px rgba(18, 50, 79, 0.05);
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__learning h2 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: #12324f;
+    }
+
+    #shopify-section-{{ section.id }} .read-along-page__learning p:last-child {
+      margin-bottom: 0;
+    }
+
+  </style>
+
+  <div {% render 'section-properties' %}>
+    <div class="read-along-page">
+      <div class="read-along-page__content">
+        <section class="read-along-page__transcript">
+          <div class="read-along-page__transcript-header">
+            <div>
+              <p class="read-along-page__eyebrow">Read-along</p>
+              <h1 class="read-along-page__title h2">Read along to {{ title }}</h1>
+            </div>
+
+            {%- if preview_audio != blank -%}
+              <div class="read-along-page__listen-cta">
+                <button type="button" class="read-along-page__start-button" aria-controls="{{ transcript_id }}" aria-expanded="false">
+                  Start listening and reading
+                </button>
+                <div class="read-along-page__audio" data-audio-state>
+                  <p class="read-along-page__listen-note">Press to start the audiobook sample and follow the highlighted transcript.</p>
+                </div>
+                <div class="read-along-page__hidden-audio" aria-hidden="true">
+                  <audio id="{{ audio_id }}" preload="metadata">
+                    <source src="{{ preview_audio.url }}" type="audio/mpeg">
+                  </audio>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+
+          <div id="{{ transcript_id }}" class="read-along-page__transcript-body prose" role="region" aria-label="Read-along transcript" tabindex="0">
+            {%- if captions_raw != blank -%}
+              {%- assign captions = captions_raw | parse_json -%}
+              {%- for result in captions.results -%}
+                {%- for alternative in result.alternatives limit: 1 -%}
+                  {%- if alternative.words != blank -%}
+                    <p>
+                      {%- for word in alternative.words -%}
+                        {%- assign start_time = word.startOffset | remove: 's' | plus: 0 -%}
+                        {%- assign end_time = word.endOffset | remove: 's' | plus: 0 -%}
+                        <span
+                          class="read-along-page__word"
+                          data-start="{{ start_time }}"
+                          data-end="{{ end_time }}"
+                          tabindex="0"
+                          aria-label="Jump to {{ word.word | escape }} at {{ start_time }} seconds"
+                        >
+                          {{ word.word }}
+                        </span>
+                      {%- endfor -%}
+                    </p>
+                  {%- elsif alternative.transcript != blank -%}
+                    <p>{{ alternative.transcript | strip }}</p>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            {%- else -%}
+              <p>Transcript coming soon.</p>
+            {%- endif -%}
+          </div>
+        </section>
+
+        {%- if prompts_field != blank -%}
+          <section class="read-along-page__prompts prose">
+            <h2 class="h4">Reading prompts</h2>
+            {{ prompts_field | metafield_tag }}
+          </section>
+        {%- endif -%}
+
+        <section class="read-along-page__learning prose">
+          <h2 class="h4">Why Voxblock helps learning to read</h2>
+          <p>Listening to stories helps children hear fluent reading, follow richer language, and build familiarity with the rhythm and structure of books. This can support vocabulary, comprehension, attention, and confidence — especially for children who enjoy stories but are not yet ready to read longer books independently.</p>
+          <p>Voxblock makes audiobooks simple and screen-free, so children can listen by themselves without needing a phone, tablet, app, or adult setup. By making stories easier to access, Voxblock helps children spend more time with books, language, and storytelling — all of which can support their journey towards reading.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      const audioPlayer = document.getElementById('{{ audio_id }}');
+      const transcript = document.getElementById('{{ transcript_id }}');
+      const startButton = document.querySelector('#shopify-section-{{ section.id }} .read-along-page__start-button');
+      const audioState = document.querySelector('#shopify-section-{{ section.id }} [data-audio-state]');
+
+      if (!audioPlayer || !transcript) {
+        return;
+      }
+
+      const words = Array.from(transcript.querySelectorAll('.read-along-page__word')).map((word) => ({
+        element: word,
+        start: Number(word.dataset.start),
+        end: Number(word.dataset.end)
+      }));
+
+      if (!words.length) {
+        return;
+      }
+
+      let activeWord = null;
+
+      function scrollWordIntoView(wordElement) {
+        const containerRect = transcript.getBoundingClientRect();
+        const wordRect = wordElement.getBoundingClientRect();
+        const currentScrollTop = transcript.scrollTop;
+        const topBuffer = transcript.clientHeight * 0.2;
+        const bottomBuffer = transcript.clientHeight * 0.2;
+        const wordTopInContainer = wordRect.top - containerRect.top + currentScrollTop;
+        const wordBottomInContainer = wordRect.bottom - containerRect.top + currentScrollTop;
+        const visibleTop = currentScrollTop + topBuffer;
+        const visibleBottom = currentScrollTop + transcript.clientHeight - bottomBuffer;
+
+        if (wordTopInContainer < visibleTop) {
+          transcript.scrollTop = Math.max(wordTopInContainer - topBuffer, 0);
+        } else if (wordBottomInContainer > visibleBottom) {
+          transcript.scrollTop = wordBottomInContainer - transcript.clientHeight + bottomBuffer;
+        }
+      }
+
+      function setActiveWord(nextWord) {
+        if (activeWord === nextWord) {
+          return;
+        }
+
+        if (activeWord) {
+          activeWord.element.classList.remove('is-active');
+        }
+
+        activeWord = nextWord;
+
+        if (activeWord) {
+          activeWord.element.classList.add('is-active');
+          scrollWordIntoView(activeWord.element);
+        }
+      }
+
+      function updateHighlight() {
+        const currentTime = audioPlayer.currentTime;
+        let nextWord = null;
+
+        for (const word of words) {
+          if (currentTime >= word.start && currentTime <= word.end + 0.05) {
+            nextWord = word;
+            break;
+          }
+
+          if (currentTime < word.start) {
+            break;
+          }
+        }
+
+        setActiveWord(nextWord);
+      }
+
+      function jumpToWord(wordElement) {
+        const startTime = Number(wordElement.dataset.start);
+        if (Number.isNaN(startTime)) {
+          return;
+        }
+
+        audioPlayer.currentTime = startTime;
+        audioPlayer.play();
+        updateHighlight();
+      }
+
+      function updateAudioState() {
+        if (!audioState) {
+          return;
+        }
+
+        audioState.classList.toggle('is-playing', !audioPlayer.paused && !audioPlayer.ended);
+
+        if (startButton) {
+          startButton.classList.toggle('is-playing', !audioPlayer.paused && !audioPlayer.ended);
+          startButton.setAttribute('aria-expanded', String(!audioPlayer.paused && !audioPlayer.ended));
+          startButton.textContent = !audioPlayer.paused && !audioPlayer.ended ? 'Pause listening and reading' : 'Start listening and reading';
+        }
+      }
+
+      audioPlayer.addEventListener('play', updateHighlight);
+      audioPlayer.addEventListener('play', updateAudioState);
+      audioPlayer.addEventListener('timeupdate', updateHighlight);
+      audioPlayer.addEventListener('pause', function() {
+        updateHighlight();
+        updateAudioState();
+      });
+      audioPlayer.addEventListener('ended', function() {
+        setActiveWord(null);
+        updateAudioState();
+      });
+      audioPlayer.addEventListener('seeked', updateHighlight);
+
+      transcript.addEventListener('click', function(event) {
+        const word = event.target.closest('.read-along-page__word');
+        if (word) {
+          jumpToWord(word);
+        }
+      });
+
+      transcript.addEventListener('keydown', function(event) {
+        const word = event.target.closest('.read-along-page__word');
+        if (!word) {
+          return;
+        }
+
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          jumpToWord(word);
+        }
+      });
+
+      if (startButton) {
+        startButton.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          if (audioPlayer.ended) {
+            audioPlayer.currentTime = 0;
+          }
+
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+          } else {
+            audioPlayer.pause();
+          }
+        });
+      }
+
+      updateAudioState();
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Read-Along Page",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

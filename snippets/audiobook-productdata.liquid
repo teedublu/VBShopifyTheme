@@ -275,13 +275,14 @@
 
             {% when 'audiogramme' %}
                 {% if audiogramme_metaobject %}
+                    {%- capture read_along_url -%}{% render 'audiogramme-url', handle: audiogramme_metaobject.system.handle, kind: 'read_along' %}{%- endcapture -%}
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
                             {%- capture link_text -%}
-                                Transcript of {{ audiogramme_metaobject.name }}
+                                Read-along transcript for {{ audiogramme_metaobject.name }}
                             {%- endcapture -%}
-                            {{ link_text | link_to: audiogramme_metaobject.system.url, title: link_text , class: 'audiogramme link'}}
+                            {{ link_text | link_to: read_along_url, title: link_text , class: 'audiogramme link'}}
                         </div>
                     </div>
                 {% endif %}
@@ -383,7 +384,6 @@
         {% endcase %}
     {% endfor %}
 </div>
-
 
 
 

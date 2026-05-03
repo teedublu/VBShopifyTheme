@@ -32,9 +32,9 @@
           }
         },
         "text_h3sJ2p": {
-          "type": "text",
+          "type": "richtext",
           "settings": {
-            "text": "<p>Explore stories narrated by {{ metaobject.name.value }} and listen screen-free on Voxblock.</p>"
+            "content": "<p>Explore stories narrated by {{ metaobject.name.value }} and listen screen-free on Voxblock.</p>"
           }
         },
         "heading_BEKdDd": {
@@ -249,7 +249,7 @@
           "type": "item",
           "settings": {
             "title": "What audiobooks are narrated by {{ metaobject.name.value }}?",
-            "content": "<p>On Voxblock {{ metaobject.name.value }} has narrated {% assign narrator_books = metaobject.collection.value.products %}{% if narrator_books != blank and narrator_books.count > 0 %}{% for book in narrator_books limit: 3 %}<a href=\"{{ book.url }}\">{{ book.title }}</a>{% if forloop.rindex0 > 1 %}, {% elsif forloop.rindex0 == 1 %} and {% endif %}{% endfor %}{% if narrator_books.count > 3 and metaobject.collection.value != blank %}, with <a href=\"{{ metaobject.collection.value.url }}\">more titles here</a>{% endif %}{% elsif metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}a selection of Voxblock audiobooks{% endif %}.</p>"
+            "content": "<p>On Voxblock {{ metaobject.name.value }} has narrated {% if metaobject.collection.value != blank %}<a href=\"{{ metaobject.collection.value.url }}\">a selection of audiobooks</a>{% elsif metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}a selection of Voxblock audiobooks{% endif %}.</p>"
           }
         },
         "item_JwG9hG": {
@@ -263,7 +263,7 @@
           "type": "item",
           "settings": {
             "title": "How can I hear how {{ metaobject.name.value }} sounds?",
-            "content": "<p>Press play in the sample section above to hear {{ metaobject.name.value }}'s voice reading {% if metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% elsif metaobject.collection.value.products.first != blank %}<a href=\"{{ metaobject.collection.value.products.first.url }}\">{{ metaobject.collection.value.products.first.title }}</a>{% else %}one of the featured audiobooks{% endif %}.</p>"
+            "content": "<p>Press play in the sample section above to hear {{ metaobject.name.value }}'s voice reading {% if metaobject.main_book.value != blank %}<a href=\"{{ metaobject.main_book.value.url }}\">{{ metaobject.main_book.value.title }}</a>{% else %}one of the featured audiobooks{% endif %}.</p>"
           }
         },
         "item_M9imEA": {
@@ -272,13 +272,29 @@
             "title": "What age group are these audiobooks suitable for?",
             "content": "<p>Age suitability depends on the title. Check the featured audiobook details and any related stories on this page for guidance on age range, themes and listening level.</p>"
           }
+        },
+        "item_Q6mYtN": {
+          "type": "item",
+          "settings": {
+            "title": "What is a Voxblock?",
+            "content": "<p>A Voxblock is a physical audiobook format designed to make listening straightforward. Pick a story, pop it into the player and press play. There are no apps to open, no downloads to manage and no Wi-Fi needed to get started.</p>"
+          }
+        },
+        "item_f8RmLp": {
+          "type": "item",
+          "settings": {
+            "title": "Why listen to {% if metaobject.main_book.value != blank %}{{ metaobject.main_book.value.title }}{% else %}this audiobook{% endif %} on Voxblock?",
+            "content": "<p>With a physical audiobook, you or your child can simply pick up the Voxblock and press play. There is no app, no download and no Wi-Fi step in the way, just a simple listening experience that feels immediate and satisfying.</p>"
+          }
         }
       },
       "block_order": [
         "item_dpCpac",
         "item_JwG9hG",
         "item_c3zFfM",
-        "item_M9imEA"
+        "item_M9imEA",
+        "item_Q6mYtN",
+        "item_f8RmLp"
       ],
       "settings": {
         "full_width": true,

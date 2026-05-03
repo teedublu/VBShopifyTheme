@@ -13,6 +13,10 @@ Validate your Pinterest rich pins
 - https://developers.pinterest.com/tools/url-debugger/
 {%- endcomment -%}
 
+{%- assign meta_title = resolved_page_title | default: page_title -%}
+{%- assign meta_description = resolved_page_description | default: page_description -%}
+{%- assign meta_canonical_url = resolved_canonical_url | default: canonical_url -%}
+
 {%- if request.page_type == 'product' -%}
   <meta property="og:type" content="product">
   <meta property="og:title" content="{{ product.title | strip_html | escape }}">
@@ -26,7 +30,7 @@ Validate your Pinterest rich pins
   <meta property="og:title" content="{{ collection.title | strip_html | escape }}">
 {%- else -%}
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ page_title | escape }}">
+  <meta property="og:title" content="{{ meta_title | escape }}">
 {%- endif -%}
 
 {%- if page_image -%}
@@ -36,11 +40,11 @@ Validate your Pinterest rich pins
   <meta property="og:image:height" content="{{ page_image.height }}">
 {%- endif -%}
 
-{%- if page_description -%}
-  <meta property="og:description" content="{{ page_description | escape }}">
+{%- if meta_description -%}
+  <meta property="og:description" content="{{ meta_description | escape }}">
 {%- endif -%}
 
-<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:url" content="{{ meta_canonical_url }}">
 <meta property="og:site_name" content="{{ shop.name }}">
 
 {%- comment -%}
@@ -66,8 +70,8 @@ More information:
   <meta name="twitter:title" content="{{ collection.title }}">
   <meta name="twitter:description" content="{{ collection.description | strip_html | truncatewords: 140, '' | escape }}">
 {%- else -%}
-  <meta name="twitter:title" content="{{ page_title | escape }}">
-  <meta name="twitter:description" content="{{ page_description | default: page_title | escape }}">
+  <meta name="twitter:title" content="{{ meta_title | escape }}">
+  <meta name="twitter:description" content="{{ meta_description | default: meta_title | escape }}">
 {%- endif -%}
 
 {%- if page_image -%}
