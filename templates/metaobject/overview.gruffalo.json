@@ -6,8 +6,7 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */
-{
+ */{
   "sections": {
     "breadcrumbs_Vf3K4D": {
       "type": "breadcrumbs",
@@ -18,10 +17,16 @@
     "rich_text_kf8m8f": {
       "type": "rich-text",
       "blocks": {
+        "subheading_story_overview": {
+          "type": "subheading",
+          "settings": {
+            "text": "The Gruffalo book summary"
+          }
+        },
         "heading_6gFWL9": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobject.page_title.value }}",
+            "text": "The Gruffalo summary: what is the book about?",
             "heading_tag": "h1",
             "text_color": "",
             "gradient": ""
@@ -30,31 +35,342 @@
         "richtext_K8fy7Q": {
           "type": "richtext",
           "settings": {
-            "content": "{{ metaobject.about | metafield_tag }}"
+            "content": "<p><strong>The Gruffalo</strong> is a rhyming picture book about a clever mouse who walks through a wood and avoids being eaten by inventing a terrifying creature. Fox, Owl and Snake all back away from the imaginary monster - until Mouse meets the real Gruffalo and has to think even faster.</p><p>This overview explains the plot, characters, message and age suitability of <em>The Gruffalo</em>, with links to the audiobook and character pages if you want to explore further.</p>"
+          }
+        },
+        "button_characters": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "Meet the characters",
+            "url": "/pages/characters/the-gruffalo",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
           }
         }
       },
       "block_order": [
+        "subheading_story_overview",
         "heading_6gFWL9",
-        "richtext_K8fy7Q"
+        "richtext_K8fy7Q",
+        "button_characters"
       ],
       "settings": {
         "full_width": true,
         "use_mo": true,
-        "content_width": "large",
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "story_hub_results": {
+      "type": "story-hub-results",
+      "blocks": {
+        "overview": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Overview",
+            "badge": "Story guide",
+            "title": "The Gruffalo overview",
+            "description": "A parent-friendly summary covering the plot, creators, characters, message and age suitability.",
+            "link": "/pages/overview/the-gruffalo",
+            "link_text": "Read the overview",
+            "image_url": "",
+            "emphasis": "strong"
+          }
+        },
+        "audiobook": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Audiobook",
+            "badge": "Listen",
+            "title": "Audiobook details",
+            "description": "How The Gruffalo works on Voxblock, who it suits, and what children need to listen screen-free.",
+            "link": "/pages/audiobook/the-gruffalo",
+            "link_text": "View audiobook page",
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
+            "emphasis": "normal"
+          }
+        },
+        "characters": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Characters",
+            "badge": "Cast",
+            "title": "Meet the characters",
+            "description": "Mouse, Fox, Owl, Snake and the Gruffalo, with links to individual character explainers.",
+            "link": "/pages/characters/the-gruffalo",
+            "link_text": "Explore the cast",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "character_mouse": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Mouse",
+            "badge": "Character",
+            "title": "Mouse",
+            "description": "Quick-thinking and brave.",
+            "link": "/pages/character/mouse",
+            "link_text": "Meet Mouse",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-mouse-character.png?v=1776581213&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_fox": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Fox",
+            "badge": "Character",
+            "title": "Fox",
+            "description": "Smooth-talking woodland predator.",
+            "link": "/pages/character/fox",
+            "link_text": "Meet Fox",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-fox-character.png?v=1776584971&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_snake": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Snake",
+            "badge": "Character",
+            "title": "Snake",
+            "description": "Patient, sly and persuasive.",
+            "link": "/pages/character/snake",
+            "link_text": "Meet Snake",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-snake-character.png?v=1776584972&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_owl": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Owl",
+            "badge": "Character",
+            "title": "Owl",
+            "description": "A hunter who invites Mouse for tea.",
+            "link": "/pages/character/owl",
+            "link_text": "Meet Owl",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-owl-character.png?v=1776584973&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_gruffalo": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "The Gruffalo",
+            "badge": "Character",
+            "title": "The Gruffalo",
+            "description": "The monster Mouse meets for real.",
+            "link": "/pages/character/the-gruffalo",
+            "link_text": "Meet the Gruffalo",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-audiobook-character.webp?v=1714987686&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "read_along": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Read Along",
+            "badge": "Transcript",
+            "title": "Read along while listening",
+            "description": "Follow the text while the audiobook sample plays, supporting attention, rhythm and word familiarity.",
+            "link": "/pages/read-along/the-gruffalo",
+            "link_text": "Open read along",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "sample": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Sample",
+            "badge": "Preview",
+            "title": "Hear an audiobook sample",
+            "description": "Listen to a short sample before deciding whether the physical Voxblock audiobook is right for your family.",
+            "link": "/pages/audiobook-sample/the-gruffalo",
+            "link_text": "Play sample",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "product": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Buy",
+            "badge": "Shop",
+            "title": "Buy The Gruffalo Voxblock",
+            "description": "Go straight to the product page for price, compatibility, delivery and checkout.",
+            "link": "/products/the-gruffalo",
+            "link_text": "Buy the audiobook",
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
+            "emphasis": "wide"
+          }
+        }
+      },
+      "block_order": [
+        "overview",
+        "audiobook",
+        "characters",
+        "character_mouse",
+        "character_fox",
+        "character_snake",
+        "character_owl",
+        "character_gruffalo",
+        "read_along",
+        "sample",
+        "product"
+      ],
+      "settings": {
+        "full_width": false,
+        "anchor_id": "explore",
+        "eyebrow": "Explore The Gruffalo",
+        "title": "Choose the Gruffalo page you need",
+        "content": "<p>Each page has a specific job: story summary, audiobook details, characters, read-along transcript, sample or buying information.</p>",
+        "primary_image_url": "https://voxblock.co.uk/cdn/shop/files/gruffalo-background.webp?v=1746261346&width=2000",
+        "primary_link": "/pages/audiobook/the-gruffalo",
+        "primary_label": "Voxblock audiobook",
+        "primary_title": "The Gruffalo on Voxblock",
+        "primary_meta": "A screen-free physical audiobook children can play independently.",
+        "background": "#ffffff",
+        "panel_background": "#eef8e8",
+        "accent_color": "#197177",
+        "text_color": "#22302f"
+      }
+    },
+    "rich_text_quick_facts": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_quick_facts": {
+          "type": "subheading",
+          "settings": {
+            "text": "Quick facts"
+          }
+        },
+        "heading_quick_facts": {
+          "type": "heading",
+          "settings": {
+            "text": "The Gruffalo at a glance",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_quick_facts": {
+          "type": "richtext",
+          "settings": {
+            "content": "<ul><li><strong>Author:</strong> Julia Donaldson</li><li><strong>Illustrator:</strong> Axel Scheffler</li><li><strong>First published:</strong> 1999</li><li><strong>Main characters:</strong> Mouse, Fox, Owl, Snake and the Gruffalo</li><li><strong>How many main animals or creatures are in The Gruffalo?</strong> Five, if you count Mouse, Fox, Owl, Snake and the Gruffalo.</li><li><strong>Main message:</strong> quick thinking can matter more than size or strength.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_quick_facts",
+        "heading_quick_facts",
+        "richtext_quick_facts"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "medium",
         "text_position": "start",
         "background": "",
         "background_gradient": "",
         "text_color": ""
       }
     },
-    "audiobook_characters_kgrPdG": {
-      "type": "audiobook-characters",
-      "name": "Audiobook Characters",
+    "rich_text_story_beats": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_story_shape": {
+          "type": "subheading",
+          "settings": {
+            "text": "Story shape"
+          }
+        },
+        "heading_story_beats": {
+          "type": "heading",
+          "settings": {
+            "text": "The plot in three beats",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_story_beats": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>1. Mouse enters the wood.</strong> Fox, Owl and Snake each invite Mouse home for a meal, but Mouse knows he is really on the menu.</p><p><strong>2. Mouse invents the Gruffalo.</strong> He describes a fearsome creature with tusks, claws, orange eyes and purple prickles, frightening the predators away.</p><p><strong>3. The Gruffalo appears.</strong> When the creature turns out to be real, Mouse uses the same trick in reverse and proves he is the scariest creature in the wood.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_story_shape",
+        "heading_story_beats",
+        "richtext_story_beats"
+      ],
       "settings": {
         "full_width": false,
-        "product": "{{ metaobject.product.value }}",
-        "spacing": "small"
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_themes": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_why_it_works": {
+          "type": "subheading",
+          "settings": {
+            "text": "Why children come back to it"
+          }
+        },
+        "heading_why_it_works": {
+          "type": "heading",
+          "settings": {
+            "text": "Why The Gruffalo works so well",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_why_it_works": {
+          "type": "richtext",
+          "settings": {
+            "content": "<ul><li><strong>Repetition:</strong> children can anticipate the pattern of each encounter in the wood.</li><li><strong>Rhyme and rhythm:</strong> the language is memorable, musical and satisfying to hear aloud.</li><li><strong>Clear stakes:</strong> Mouse is small, the other animals are hungry, and every scene has a simple problem to solve.</li><li><strong>A clever twist:</strong> the made-up Gruffalo becomes real, turning the story into a playful test of Mouse's bravery.</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_why_it_works",
+        "heading_why_it_works",
+        "richtext_why_it_works"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "#f6fbfb",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "faq_book_xFYafL": {
@@ -63,37 +379,82 @@
         "item_ATVG9z": {
           "type": "item",
           "settings": {
-            "title": "What age is {{ metaobject.name.value }} for?",
-            "check_for_text": "{{ metaobject.name.value }}",
+            "title": "What is The Gruffalo about?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p><strong>The Gruffalo</strong> is most often enjoyed by young children, especially in the early picture-book years, though many older children still enjoy the story, especially in audio form.</p>"
+            "content": "<p><strong>The Gruffalo</strong> is about a clever mouse who survives a walk through the wood by inventing a monster to scare off hungry animals. The twist is that the monster, the Gruffalo, turns out to be real.</p>"
           }
         },
         "item_ih9JRU": {
           "type": "item",
           "settings": {
-            "title": "Is {{ metaobject.name.value }} a book or an audiobook?",
-            "check_for_text": "{{ metaobject.name.value }}",
+            "title": "What age is The Gruffalo for?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>It is originally a <strong>children's picture book</strong>, but it is also available in audiobook form, including here on Voxblock.</p>"
+            "content": "<p><strong>The Gruffalo</strong> is most often enjoyed by children in the early picture-book years, roughly ages 3 to 7, though older children often still enjoy the rhyme, humour and familiar characters.</p>"
           }
         },
         "item_mcbcA3": {
           "type": "item",
           "settings": {
-            "title": "What is the message of {{ metaobject.name.value }}?",
-            "check_for_text": "{{ metaobject.name.value }}",
+            "title": "What is the main message of The Gruffalo?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>A big part of the story is that intelligence, confidence and quick thinking can be more powerful than size or strength.</p>"
+            "content": "<p>The story shows that intelligence, confidence and quick thinking can be more powerful than size or strength. Mouse survives because he pays attention, thinks fast and understands how to use a story to protect himself.</p>"
+          }
+        },
+        "item_what_is_a_gruffalo": {
+          "type": "item",
+          "settings": {
+            "title": "What is a Gruffalo?",
+            "check_for_text": "Title",
+            "check_for_richtext": "",
+            "content": "<p>A Gruffalo is a fictional monster from Julia Donaldson and Axel Scheffler's story. In the book, Mouse first describes the Gruffalo as a made-up creature, then discovers that the creature is real within the world of the story.</p>"
+          }
+        },
+        "item_how_many_animals": {
+          "type": "item",
+          "settings": {
+            "title": "How many animals are in The Gruffalo?",
+            "check_for_text": "Title",
+            "check_for_richtext": "",
+            "content": "<p>The story has five main animal or creature characters: Mouse, Fox, Owl, Snake and the Gruffalo. If you are counting only the animals Mouse meets before the Gruffalo, there are three: Fox, Owl and Snake.</p>"
           }
         },
         "item_PxWKpf": {
           "type": "item",
           "settings": {
-            "title": "Is {{ metaobject.name.value }} part of a series?",
-            "check_for_text": "{{ metaobject.name.value }}",
+            "title": "Who are the main characters in The Gruffalo?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p><strong>{{ metaobject.name.value }}</strong> has a well-known follow-up story, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\"><strong>The Gruffalo's Child</strong> </a>also available on Voxblock.</p>"
+            "content": "<p>The key characters are <a href=\"/pages/character/mouse\">Mouse</a>, <a href=\"/pages/character/fox\">Fox</a>, Owl, Snake and <a href=\"/pages/character/the-gruffalo\">the Gruffalo</a>. You can also browse the <a href=\"/pages/characters/the-gruffalo\">full Gruffalo character guide</a>.</p>"
+          }
+        },
+        "item_when_written": {
+          "type": "item",
+          "settings": {
+            "title": "When was The Gruffalo written?",
+            "check_for_text": "Title",
+            "check_for_richtext": "",
+            "content": "<p><strong>The Gruffalo</strong> was written by Julia Donaldson, illustrated by Axel Scheffler and first published in 1999.</p>"
+          }
+        },
+        "item_look_like": {
+          "type": "item",
+          "settings": {
+            "title": "What does the Gruffalo look like?",
+            "check_for_text": "Title",
+            "check_for_richtext": "",
+            "content": "<p>The Gruffalo is usually shown as a large, horned monster with tusks, claws, orange eyes and purple prickles. His frightening appearance is part of the joke, because Mouse still manages to outwit him.</p>"
+          }
+        },
+        "item_listen": {
+          "type": "item",
+          "settings": {
+            "title": "Can I listen to The Gruffalo as an audiobook?",
+            "check_for_text": "Title",
+            "check_for_richtext": "",
+            "content": "<p>Yes. You can read the <a href=\"/pages/audiobook/the-gruffalo\">audiobook details</a> or go straight to the <a href=\"/products/the-gruffalo\">The Gruffalo product page</a> to listen on Voxblock.</p>"
           }
         }
       },
@@ -101,20 +462,25 @@
         "item_ATVG9z",
         "item_ih9JRU",
         "item_mcbcA3",
-        "item_PxWKpf"
+        "item_what_is_a_gruffalo",
+        "item_how_many_animals",
+        "item_PxWKpf",
+        "item_when_written",
+        "item_look_like",
+        "item_listen"
       ],
       "name": "Book FAQ",
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "{{ metaobject.name.value }} FAQ",
-        "content": "<p>Everything you need to know about <em>{{ metaobject.name.value }}</em> in one place, with clear answers for parents, gift buyers and curious listeners.</p>",
+        "title": "Questions about The Gruffalo",
+        "content": "<p>Short answers for parents, gift buyers and curious listeners who want to understand the story before choosing the audiobook.</p>",
         "book_image": false,
         "book_image_width": 160,
         "extra_info": "",
         "extra_info_2": "",
-        "button_text": "",
-        "button_url": "",
+        "button_text": "See audiobook details",
+        "button_url": "/pages/audiobook/the-gruffalo",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -127,8 +493,73 @@
         "accordion_text_color": ""
       }
     },
+    "rich_text_next_steps": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_next_steps": {
+          "type": "subheading",
+          "settings": {
+            "text": "Keep exploring"
+          }
+        },
+        "heading_next_steps": {
+          "type": "heading",
+          "settings": {
+            "text": "Choose the right Gruffalo page",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_next_steps": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Use this overview when you want to understand the story. For listening details, visit the audiobook page. To buy the physical Voxblock, head to the product page.</p>"
+          }
+        },
+        "button_audiobook_page": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "Audiobook details",
+            "url": "/pages/audiobook/the-gruffalo",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        },
+        "button_product_page": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "base",
+            "text": "View product",
+            "url": "/products/the-gruffalo",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_next_steps",
+        "heading_next_steps",
+        "richtext_next_steps",
+        "button_audiobook_page",
+        "button_product_page"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#f6fbfb",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "featured_product_79njaq": {
       "type": "featured-product",
+      "disabled": true,
       "blocks": {
         "vendor_xFkrYe": {
           "type": "vendor",
@@ -210,8 +641,12 @@
   "order": [
     "breadcrumbs_Vf3K4D",
     "rich_text_kf8m8f",
-    "audiobook_characters_kgrPdG",
+    "story_hub_results",
+    "rich_text_quick_facts",
+    "rich_text_story_beats",
+    "rich_text_themes",
     "faq_book_xFYafL",
+    "rich_text_next_steps",
     "featured_product_79njaq",
     "microdata_KC6pKQ"
   ]

@@ -1,0 +1,325 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */{
+  "sections": {
+    "image_with_text_overlay_DH8cex": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "image_MMNaPz": {
+          "type": "image",
+          "settings": {
+            "max_width": 200,
+            "radius": 50,
+            "avatar_display": "image",
+            "avatar_bg_color": "#4a90e2",
+            "initials_font_size": 72,
+            "initials_color": "#ffffff"
+          }
+        },
+        "heading_X4DUy3": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobject.name.value }}",
+            "scale_with": false,
+            "heading_tag": "h1",
+            "heading_tag_html": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "image_MMNaPz",
+        "heading_X4DUy3"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "max_width": 80,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "{{ metaobject.header_image.value }}",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "background": "#4cb6ac",
+        "background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "breadcrumbs_XHGrpm": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "character_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "Character guide"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Who is {{ metaobject.name.value }} in The Gruffalo?",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "bio": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.bio | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "bio"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "role_in_story": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "Role in the story"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Why {{ metaobject.name.value }} matters",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "copy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>{{ metaobject.name.value }}</strong> is part of the chain of encounters that makes <em>The Gruffalo</em> easy to follow. Each character helps children understand the pattern of danger, imagination and quick thinking at the heart of the story.</p><p>If you are looking for the whole plot, start with the <a href=\"/pages/overview/the-gruffalo\">Gruffalo story overview</a>. If you want the complete cast, visit the <a href=\"/pages/characters/the-gruffalo\">Gruffalo character guide</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "copy"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "character_faq": {
+      "type": "faq",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "What book is {{ metaobject.name.value }} from?",
+            "content": "<p>{{ metaobject.name.value }} is a character from <em>The Gruffalo</em> by Julia Donaldson and Axel Scheffler.</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "What role does {{ metaobject.name.value }} play in The Gruffalo?",
+            "content": "<p>{{ metaobject.name.value }} is explained as part of the woodland encounter pattern in <em>The Gruffalo</em>, with links back to the wider story and full cast guide.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "Where can I see all The Gruffalo characters?",
+            "content": "<p>You can browse the full cast on the <a href=\"/pages/characters/the-gruffalo\">The Gruffalo characters page</a>.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "Can children listen to the story on Voxblock?",
+            "content": "<p>Yes. The Gruffalo is available as a physical Voxblock audiobook, so children can listen screen-free without an app, tablet or Wi-Fi.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about {{ metaobject.name.value }}",
+        "content": "<p>Short answers for parents and children exploring the characters in <em>The Gruffalo</em>.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "Listen to The Gruffalo",
+        "button_url": "/pages/audiobook/the-gruffalo",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": "",
+        "hide_on_metaobject_handle": "the-gruffalo"
+      }
+    },
+    "voxblock_listening": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_guide": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 68,
+            "subheading": "Listen screen-free",
+            "title": "Hear {{ metaobject.name.value }} in the story",
+            "content": "<p>Voxblock is a screen-free audiobook player for children. Place the physical Gruffalo audiobook on the player and the story starts, making it easy for children to revisit favourite characters independently.</p>",
+            "link_text": "View The Gruffalo audiobook",
+            "link_url": "/pages/audiobook/the-gruffalo",
+            "background": "#f6fbfb",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#167176",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_guide"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    },
+    "microdata_8YzdEG": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "character"
+      }
+    },
+    "gruffalo_specific_faq": {
+      "type": "faq",
+      "blocks": {
+        "what_is": {
+          "type": "item",
+          "settings": {
+            "title": "What is a Gruffalo?",
+            "content": "<p>A Gruffalo is a fictional monster from <em>The Gruffalo</em> by Julia Donaldson and Axel Scheffler. Mouse first invents him to scare away Fox, Owl and Snake, then discovers that the creature is real inside the story.</p>"
+          }
+        },
+        "description": {
+          "type": "item",
+          "settings": {
+            "title": "What does the Gruffalo look like?",
+            "content": "<p>The Gruffalo is described as a large monster with terrible tusks, terrible claws, orange eyes, a poisonous wart, a black tongue and purple prickles all over his back.</p>"
+          }
+        },
+        "meaning": {
+          "type": "item",
+          "settings": {
+            "title": "What does Gruffalo mean?",
+            "content": "<p>In the story, \"Gruffalo\" is the name Mouse gives to his invented monster. The word sounds rough, growly and memorable, which helps make the creature feel funny and frightening at the same time.</p>"
+          }
+        },
+        "role": {
+          "type": "item",
+          "settings": {
+            "title": "What role does the Gruffalo play in the story?",
+            "content": "<p>The Gruffalo is first Mouse's imaginary defence against danger, then becomes the final challenge Mouse must outwit. His role is to turn the story's joke around and prove that Mouse's cleverness matters more than size or strength.</p>"
+          }
+        },
+        "real": {
+          "type": "item",
+          "settings": {
+            "title": "Is the Gruffalo real?",
+            "content": "<p>The Gruffalo is not a real animal; he is a fictional storybook creature. Within the world of the book, though, Mouse meets the real Gruffalo after describing him to the other animals.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "what_is",
+        "description",
+        "meaning",
+        "role",
+        "real"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about the Gruffalo character",
+        "content": "<p>Answers for searches about what a Gruffalo is, what he looks like, what the name means and how the character works in the story.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "the-gruffalo",
+        "hide_on_metaobject_handle": "",
+        "button_text": "Read the story overview",
+        "button_url": "/pages/overview/the-gruffalo",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_overlay_DH8cex",
+    "breadcrumbs_XHGrpm",
+    "character_intro",
+    "role_in_story",
+    "character_faq",
+    "gruffalo_specific_faq",
+    "voxblock_listening",
+    "microdata_8YzdEG"
+  ]
+}

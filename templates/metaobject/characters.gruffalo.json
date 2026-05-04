@@ -1,0 +1,227 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_gruffalo": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "intro_gruffalo_cast": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "The Gruffalo cast guide"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "The Gruffalo characters: who is in the story?",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "copy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>The Gruffalo</strong> has a small, memorable cast: Mouse, Fox, Owl, Snake and the Gruffalo. This page brings the characters together so families can see who appears in the story and how each encounter moves the plot forward.</p>"
+          }
+        },
+        "overview_button": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "base",
+            "text": "Read the story overview",
+            "url": "/pages/overview/the-gruffalo",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "copy",
+        "overview_button"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "item_grid_F9GWek": {
+      "type": "item-grid",
+      "name": "Item grid",
+      "settings": {
+        "heading": "Meet the full cast",
+        "intro": "<p>Each character helps show why Mouse has to be quick, confident and imaginative. Open an individual guide to learn more about their role in the story.</p>",
+        "source_mode": "metaobject_list",
+        "metaobject_items": "{{ metaobject.list.value }}",
+        "product_items": [],
+        "items_limit": 10,
+        "button_label": "Read character guide"
+      }
+    },
+    "cast_shape": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "How the cast works"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "A simple pattern children can follow",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "copy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Mouse meets Fox, Owl and Snake one by one. Each animal thinks Mouse might make a meal, and each one is scared away by Mouse’s invented Gruffalo. When the real Gruffalo appears, the pattern flips: Mouse uses the other animals’ fear to outwit the monster too.</p><p>This repeated structure is one reason the book is so easy for children to remember and retell.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "copy"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "#f6fbfb",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "faq_cast": {
+      "type": "faq",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "Who are the main characters in The Gruffalo?",
+            "content": "<p>The main characters are Mouse, Fox, Owl, Snake and the Gruffalo.</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "How many animals are in The Gruffalo?",
+            "content": "<p>There are five main animal or creature characters if you count Mouse, Fox, Owl, Snake and the Gruffalo. Mouse meets three animals before the Gruffalo appears: Fox, Owl and Snake.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "Who is the cleverest character in The Gruffalo?",
+            "content": "<p>Mouse is usually seen as the cleverest character because he survives by thinking quickly and using the other characters’ assumptions against them.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "Where can I learn about the Gruffalo himself?",
+            "content": "<p>Read the dedicated <a href=\"/pages/character/the-gruffalo\">Gruffalo character guide</a> for his description, meaning and role in the story.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about The Gruffalo characters",
+        "content": "<p>Clear answers for searches about who appears in the story and how the characters fit together.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "Explore the audiobook",
+        "button_url": "/pages/audiobook/the-gruffalo",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "voxblock_listening": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_guide": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/IMG_5604.jpg",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 68,
+            "subheading": "Listen screen-free",
+            "title": "From character guide to listening",
+            "content": "<p>Voxblock turns the story into a simple, screen-free listening experience. Children place the physical audiobook on the player and can hear the characters without needing a phone, tablet, app or Wi-Fi.</p>",
+            "link_text": "View The Gruffalo audiobook",
+            "link_url": "/pages/audiobook/the-gruffalo",
+            "background": "#f6fbfb",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#167176",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "image_guide"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_gruffalo",
+    "intro_gruffalo_cast",
+    "item_grid_F9GWek",
+    "cast_shape",
+    "faq_cast",
+    "voxblock_listening"
+  ]
+}

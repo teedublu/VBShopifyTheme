@@ -79,7 +79,28 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
             endcapture
             assign resolved_canonical_url = resolved_canonical_url | strip
           endif
+        elsif metaobject.system.type == 'overview' and metaobject.system.handle == 'the-gruffalo'
+          assign resolved_page_title = 'The Gruffalo Summary: Plot, Characters & Age Guide | Voxblock'
+          assign resolved_page_description = 'A parent-friendly guide to The Gruffalo: what the book is about, main characters, message, age range, how many animals are in the story and where to listen.'
+        elsif metaobject.system.type == 'characters' and metaobject.system.handle == 'the-gruffalo'
+          assign resolved_page_title = 'The Gruffalo Characters: Full Cast Guide | Voxblock'
+          assign resolved_page_description = 'Meet the main characters in The Gruffalo, including Mouse, Fox, Owl, Snake and the Gruffalo, with a simple guide to how each character fits into the story.'
+        elsif metaobject.system.type == 'character' and template contains 'gruffalo'
+          assign character_name = metaobject.name.value | default: metaobject.name
+          if metaobject.system.handle == 'the-gruffalo'
+            assign resolved_page_title = 'What Is a Gruffalo? Character Description & Meaning | Voxblock'
+            assign resolved_page_description = 'A clear guide to the Gruffalo character: what he looks like, what the name means in the story, and the role he plays in Julia Donaldson and Axel Scheffler’s book.'
+          else
+            assign resolved_page_title = character_name | append: ' in The Gruffalo: Character Guide | Voxblock'
+            assign resolved_page_description = 'Learn about ' | append: character_name | append: ' in The Gruffalo, including the character’s role in the story and how children can listen to the audiobook on Voxblock.'
+          endif
+        elsif metaobject.system.type == 'audiobook' and metaobject.system.handle == 'the-gruffalo'
+          assign resolved_page_title = 'The Gruffalo Audiobook: Voxblock Listening Guide | Voxblock'
+          assign resolved_page_description = 'Listening details for The Gruffalo audiobook on Voxblock, including how it works, who it suits, screen-free listening benefits, and where to buy the physical audiobook block.'
         endif
+      elsif request.page_type == 'product' and product.handle == 'the-gruffalo'
+        assign resolved_page_title = 'The Gruffalo Voxblock Audiobook | Buy Screen-Free Story'
+        assign resolved_page_description = 'Buy The Gruffalo as a physical Voxblock audiobook block for screen-free listening. Check compatibility, setup, age suitability and practical purchase details.'
       endif
     -%}
 
