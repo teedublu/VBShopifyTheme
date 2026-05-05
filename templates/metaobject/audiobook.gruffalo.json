@@ -14,14 +14,14 @@
       "settings": {
         "full_width": false,
         "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
-        "eyebrow": "Audiobook",
-        "description": "You are viewing an audiobook page with story information, character links, answers to common questions and listening details.",
-        "summary_label": "Summary",
-        "summary_anchor": "summary",
-        "story_details_label": "Story details",
+        "eyebrow": "Gruffalo audiobook",
+        "description": "Listening details for The Gruffalo on Voxblock: what the audiobook is, how children listen, who it suits and where to buy the physical audiobook block.",
+        "summary_label": "Listening details",
+        "summary_anchor": "listening-details",
+        "story_details_label": "Runtime & details",
         "story_details_anchor": "story-details",
-        "characters_label": "Characters",
-        "characters_anchor": "characters",
+        "characters_label": "Explore",
+        "characters_anchor": "explore",
         "questions_label": "Questions",
         "questions_anchor": "questions"
       }
@@ -35,42 +35,241 @@
     "rich_text_rDm4QR": {
       "type": "rich-text",
       "blocks": {
-        "subheading_uBwy2m": {
+        "subheading": {
           "type": "subheading",
           "settings": {
-            "text": "About the story"
+            "text": "Audiobook information"
           }
         },
-        "heading_jN3yYp": {
+        "heading": {
           "type": "heading",
           "settings": {
-            "text": "Why listeners choose {{ metaobject.title.value }}",
+            "text": "The Gruffalo audiobook on Voxblock",
             "heading_tag": "h2",
             "text_color": "",
             "gradient": ""
           }
         },
-        "richtext_zQg6yT": {
+        "copy": {
           "type": "richtext",
           "settings": {
-            "content": "{{ metaobject.long_blurb | metafield_tag }}"
+            "content": "<p>Let children hear <em>The Gruffalo</em> as a simple, screen-free audiobook. The physical Voxblock plays on the Voxblock player, so there is no phone, tablet, app or Wi-Fi to set up.</p><p>Hear the rhyme, rhythm and character voices, then add the story to your child's listening shelf when you are ready.</p>"
+          }
+        },
+        "buy": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "Buy The Gruffalo",
+            "url": "/products/the-gruffalo",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "subheading_uBwy2m",
-        "heading_jN3yYp",
-        "richtext_zQg6yT"
+        "subheading",
+        "heading",
+        "copy",
+        "buy"
       ],
       "settings": {
         "full_width": false,
         "use_mo": true,
-        "content_width": "small",
+        "content_width": "medium",
         "text_position": "center",
-        "anchor_id": "summary",
         "background": "#fff7f0",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "anchor_id": "listening-details"
+      }
+    },
+    "story_hub_results": {
+      "type": "story-hub-results",
+      "blocks": {
+        "overview": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Overview",
+            "badge": "Story guide",
+            "title": "The Gruffalo overview",
+            "description": "A parent-friendly summary covering the plot, creators, characters, message and age suitability.",
+            "link": "/pages/overview/the-gruffalo",
+            "link_text": "Read the overview",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "audiobook": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Audiobook",
+            "badge": "Listen",
+            "title": "Audiobook details",
+            "description": "How The Gruffalo works on Voxblock, who it suits, and what children need to listen screen-free.",
+            "link": "/pages/audiobook/the-gruffalo",
+            "link_text": "View audiobook page",
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
+            "emphasis": "strong"
+          }
+        },
+        "characters": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Characters",
+            "badge": "Cast",
+            "title": "Meet the characters",
+            "description": "Mouse, Fox, Owl, Snake and the Gruffalo, with links to individual character explainers.",
+            "link": "/pages/characters/the-gruffalo",
+            "link_text": "Explore the cast",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "character_mouse": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Mouse",
+            "badge": "Character",
+            "title": "Mouse",
+            "description": "Quick-thinking and brave.",
+            "link": "/pages/character/mouse",
+            "link_text": "Meet Mouse",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-mouse-character.png?v=1776581213&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_fox": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Fox",
+            "badge": "Character",
+            "title": "Fox",
+            "description": "Smooth-talking woodland predator.",
+            "link": "/pages/character/fox",
+            "link_text": "Meet Fox",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-fox-character.png?v=1776584971&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_snake": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Snake",
+            "badge": "Character",
+            "title": "Snake",
+            "description": "Patient, sly and persuasive.",
+            "link": "/pages/character/snake",
+            "link_text": "Meet Snake",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-snake-character.png?v=1776584972&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_owl": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Owl",
+            "badge": "Character",
+            "title": "Owl",
+            "description": "A hunter who invites Mouse for tea.",
+            "link": "/pages/character/owl",
+            "link_text": "Meet Owl",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-owl-character.png?v=1776584973&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "character_gruffalo": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "The Gruffalo",
+            "badge": "Character",
+            "title": "The Gruffalo",
+            "description": "The monster Mouse meets for real.",
+            "link": "/pages/character/the-gruffalo",
+            "link_text": "Meet the Gruffalo",
+            "hide_from_tabs": true,
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-audiobook-character.webp?v=1714987686&width=300",
+            "emphasis": "normal",
+            "compact_image": true
+          }
+        },
+        "read_along": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Read Along",
+            "badge": "Transcript",
+            "title": "Read along while listening",
+            "description": "Follow the text while the audiobook sample plays, supporting attention, rhythm and word familiarity.",
+            "link": "/pages/read-along/the-gruffalo",
+            "link_text": "Open read along",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "sample": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Sample",
+            "badge": "Preview",
+            "title": "Hear an audiobook sample",
+            "description": "Listen to a short sample before deciding whether the physical Voxblock audiobook is right for your family.",
+            "link": "/pages/audiobook-sample/the-gruffalo",
+            "link_text": "Play sample",
+            "image_url": "",
+            "emphasis": "normal"
+          }
+        },
+        "product": {
+          "type": "page_card",
+          "settings": {
+            "tab_label": "Buy",
+            "badge": "Shop",
+            "title": "Buy The Gruffalo Voxblock",
+            "description": "Check price, compatibility, delivery and checkout details.",
+            "link": "/products/the-gruffalo",
+            "link_text": "Buy the audiobook",
+            "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
+            "emphasis": "wide"
+          }
+        }
+      },
+      "block_order": [
+        "overview",
+        "audiobook",
+        "characters",
+        "character_mouse",
+        "character_fox",
+        "character_snake",
+        "character_owl",
+        "character_gruffalo",
+        "read_along",
+        "sample",
+        "product"
+      ],
+      "settings": {
+        "full_width": false,
+        "anchor_id": "explore",
+        "eyebrow": "Explore The Gruffalo",
+        "title": "Explore The Gruffalo",
+        "content": "<p>Listen, read along, meet the characters or revisit the story before choosing the physical Voxblock audiobook.</p>",
+        "primary_image_url": "https://voxblock.co.uk/cdn/shop/files/gruffalo-background.webp?v=1746261346&width=2000",
+        "primary_link": "/products/the-gruffalo",
+        "primary_label": "Ready to listen?",
+        "primary_title": "Buy The Gruffalo Voxblock",
+        "primary_meta": "A screen-free physical audiobook for the Voxblock player.",
+        "background": "#ffffff",
+        "panel_background": "#eef8e8",
+        "accent_color": "#197177",
+        "text_color": "#22302f"
       }
     },
     "featured_audiobook_light_DTXA9d": {
@@ -152,41 +351,6 @@
         "text_color": "",
         "heading_color": "",
         "heading_gradient": ""
-      }
-    },
-    "audiobook_quotes_q8Lm2N": {
-      "type": "audiobook-quotes",
-      "settings": {
-        "full_width": true,
-        "anchor_id": "quotes",
-        "subheading": "Favourite lines",
-        "heading": "Memorable quotes from the story",
-        "content": "<p>A few standout lines from the audiobook, with the characters who say them.</p>",
-        "max_quotes": 3,
-        "content_width": "medium",
-        "show_character": true,
-        "show_photo": true,
-        "show_character_label": true,
-        "show_audiobook": true,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "item_grid_mVMXgC": {
-      "type": "item-grid",
-      "name": "Item grid",
-      "settings": {
-        "anchor_id": "characters",
-        "heading": "Meet the characters",
-        "intro": "<p>Explore the main characters and learn more about their roles in the story.</p>",
-        "source_mode": "metaobject_list",
-        "metaobject_items": "{{ metaobject.characters.value }}",
-        "product_items": [],
-        "items_limit": 12,
-        "button_label": "Read more"
       }
     },
     "audiobook_productdata_zmqU7J": {
@@ -391,112 +555,71 @@
     "faq_book_Ji9KrX": {
       "type": "faq-book",
       "blocks": {
-        "item_ThP7JM": {
+        "listen": {
           "type": "item",
           "settings": {
-            "title": "Who wrote \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.authors | metafield_text: field: 'name' }}",
+            "title": "How do children listen to The Gruffalo audiobook?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "{{ metaobject.authors | metafield_tag: field: 'name' }}"
+            "content": "<p>Children place the physical Gruffalo audiobook on the Voxblock player and press play. There is no app, tablet, phone or Wi-Fi setup needed.</p>"
           }
         },
-        "item_ageBestFor": {
+        "need_player": {
           "type": "item",
           "settings": {
-            "title": "What age is \"{{ metaobject.title.value }}\" best for?",
-            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
+            "title": "Do I need a Voxblock player?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>{{ metaobject.title.value }} is generally suited to the following interest level:</p>{{ metaobject.interest_level | metafield_tag }}"
+            "content": "<p>Yes. Voxblock audiobooks are designed to play on the Voxblock player. If you already have a player, you can add The Gruffalo as another physical story block.</p>"
           }
         },
-        "item_bmzGFg": {
+        "age": {
           "type": "item",
           "settings": {
-            "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.title.value }}",
+            "title": "What age is The Gruffalo audiobook for?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
+            "content": "<p>The story is most often enjoyed by children in the early picture-book years, roughly ages 3 to 7, though older children may still enjoy the rhyme and familiar characters.</p>"
           }
         },
-        "item_nyzJcr": {
+        "details": {
           "type": "item",
           "settings": {
-            "title": "Who are the main characters in \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.characters | metafield_text: field: 'name' }}",
+            "title": "Who narrates The Gruffalo audiobook and how long is it?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>Here are the main characters featured in {{ metaobject.title.value }}.</p>",
-            "use_metaobject_characters": true
+            "content": "<p>The Gruffalo audiobook is narrated by Imelda Staunton and runs for about 25 minutes. You can also check the Runtime & details section on this page for the latest product data.</p>"
           }
         },
-        "item_durationFaq": {
+        "buy": {
           "type": "item",
           "settings": {
-            "title": "How long is \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.title.value }}",
+            "title": "Where can I buy The Gruffalo Voxblock?",
+            "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>You can find the full listening time for {{ metaobject.title.value }} in the Story details section on this page.</p>"
-          }
-        },
-        "item_xCAt3F": {
-          "type": "item",
-          "settings": {
-            "title": "Do I need a Voxblock player to listen to \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.title.value }}",
-            "check_for_richtext": "",
-            "content": "<p>Yes. {{ metaobject.title.value }} is designed to play on the screen-free Voxblock audiobook player, with no apps, downloads or Wi-Fi needed.</p>"
-          }
-        },
-        "item_kwQGtG": {
-          "type": "item",
-          "settings": {
-            "title": "What is \"{{ metaobject.title.value }}\" about?",
-            "check_for_text": "{{ metaobject.title.value }}",
-            "check_for_richtext": "",
-            "content": "{{ metaobject.concise_blurb | metafield_tag }}"
-          }
-        },
-        "item_independentListening": {
-          "type": "item",
-          "settings": {
-            "title": "Is \"{{ metaobject.title.value }}\" suitable for independent listening?",
-            "check_for_text": "{{ metaobject.title.value }}",
-            "check_for_richtext": "",
-            "content": "<p>Yes. Once children know how to use their Voxblock player, they can usually start {{ metaobject.title.value }} on their own by placing the audiobook on the player.</p>"
-          }
-        },
-        "item_xERghq": {
-          "type": "item",
-          "settings": {
-            "title": "What are the key themes in the audiobook \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
-            "check_for_richtext": "",
-            "content": "<p>The audiobook \"{{ metaobject.title.value }}\" has the following key themes featured throughout the plot:</p>{{ metaobject.content_themes | metafield_tag }}"
+            "content": "<p>You can buy the physical audiobook block here: <a href=\"/products/the-gruffalo\">The Gruffalo Voxblock</a>.</p>"
           }
         }
       },
       "block_order": [
-        "item_ThP7JM",
-        "item_ageBestFor",
-        "item_bmzGFg",
-        "item_nyzJcr",
-        "item_durationFaq",
-        "item_xCAt3F",
-        "item_kwQGtG",
-        "item_independentListening",
-        "item_xERghq"
+        "listen",
+        "need_player",
+        "age",
+        "details",
+        "buy"
       ],
       "settings": {
         "full_width": true,
         "anchor_id": "questions",
-        "subheading": "Questions about \"{{ metaobject.title.value }}\"",
-        "title": "Voxblock answers",
-        "content": "",
+        "subheading": "The Gruffalo audiobook questions",
+        "title": "Listening answers",
+        "content": "<p>Practical answers for families deciding whether this is the right Voxblock audiobook.</p>",
         "book_image": false,
         "book_image_width": 80,
         "extra_info": "",
         "extra_info_2": "",
-        "button_text": "",
-        "button_url": "",
+        "button_text": "Buy The Gruffalo",
+        "button_url": "/products/the-gruffalo",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -508,16 +631,121 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "audiobook_context": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "Why listen this way?"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "A screen-free way to revisit a familiar story",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "copy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The rhythm and repetition of <em>The Gruffalo</em> make it especially well suited to audio. Children can hear fluent reading, follow the voices and return to favourite moments while still engaging with the language of the book.</p><p>Because Voxblock is physical and simple to use, children can choose the story and listen independently, while parents avoid another app or screen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "copy"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "#f6fbfb",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "gruffalo_audiobook_links": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "Explore the story"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Want the story or character guide?",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "copy": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Revisit the plot, check the main characters, then come back to listen when the story feels familiar.</p>"
+          }
+        },
+        "overview": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "base",
+            "text": "Story overview",
+            "url": "/pages/overview/the-gruffalo",
+            "background": "",
+            "text_color": ""
+          }
+        },
+        "characters": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "base",
+            "text": "Character guide",
+            "url": "/pages/characters/the-gruffalo",
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "copy",
+        "overview",
+        "characters"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
     }
   },
   "order": [
     "image_with_text_overlay_qgF8Xk",
     "breadcrumbs_DL4tEL",
     "rich_text_rDm4QR",
+    "story_hub_results",
     "featured_audiobook_light_DTXA9d",
+    "audiobook_context",
     "audiobook_chapters_yCUz7W",
-    "audiobook_quotes_q8Lm2N",
-    "item_grid_mVMXgC",
+    "gruffalo_audiobook_links",
     "audiobook_productdata_zmqU7J",
     "microdata_kKw6gU",
     "faq_book_Ji9KrX"

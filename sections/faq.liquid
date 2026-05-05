@@ -1,7 +1,22 @@
 {%- render 'section-spacing-collapsing' -%}
 
 {%- assign text_position = section.settings.text_position -%}
+{%- assign current_metaobject_handle = blank -%}
+{%- assign show_section = true -%}
 
+{%- if metaobject != blank -%}
+  {%- assign current_metaobject_handle = metaobject.system.handle -%}
+{%- endif -%}
+
+{%- if section.settings.show_on_metaobject_handle != blank and section.settings.show_on_metaobject_handle != current_metaobject_handle -%}
+  {%- assign show_section = false -%}
+{%- endif -%}
+
+{%- if section.settings.hide_on_metaobject_handle != blank and section.settings.hide_on_metaobject_handle == current_metaobject_handle -%}
+  {%- assign show_section = false -%}
+{%- endif -%}
+
+{%- if show_section -%}
 <style>
   #shopify-section-{{ section.id }} {
     --section-stack-intro: {% if text_position == 'center' %}60%{% else %}50%{% endif %};
@@ -113,7 +128,8 @@
       {%- endfor -%}
     ]
   }
-</script>
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -198,6 +214,16 @@
       "id": "answer_time",
       "label": "Average answer time",
       "default": "Average answer time: 24h"
+    },
+    {
+      "type": "text",
+      "id": "show_on_metaobject_handle",
+      "label": "Only show on metaobject handle"
+    },
+    {
+      "type": "text",
+      "id": "hide_on_metaobject_handle",
+      "label": "Hide on metaobject handle"
     },
     {
       "type": "text",

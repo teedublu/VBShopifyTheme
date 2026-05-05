@@ -18,6 +18,19 @@
 
     .person-image {margin: auto}
 
+    .image-with-text-overlay__source {
+      margin-block-start: 0.35rem;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .image-with-text-overlay__source a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
   }
 
   {%- if section.settings.enable_watermark -%}
@@ -85,6 +98,18 @@
     {%- if section.blocks.size > 0 -%}
       <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}" style="max-width:{{section.settings.max_width}}%;">
         <div class="prose">
+          {%- liquid
+            assign character_book = blank
+            assign character_book_title = blank
+            assign character_book_url = blank
+
+            if metaobject != blank and metaobject.system.type == 'character' and metaobject.main_book != blank and metaobject.main_book.value != blank
+              assign character_book = metaobject.main_book.value
+              assign character_book_title = character_book.title.value | default: character_book.title | default: character_book.name.value | default: character_book.name
+              assign character_book_url = character_book.url | default: character_book.system.url
+            endif
+          -%}
+
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'subheading' -%}
@@ -99,6 +124,16 @@
                   <{{-block.settings.heading_tag_html}} class="{{ block.settings.heading_tag }} {%- if block.settings.scale_with -%} scaled{%- endif -%}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
                     {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
                   </{{-block.settings.heading_tag_html-}}>
+
+                  {%- if block.settings.heading_tag_html == 'h1' and character_book_title != blank -%}
+                    <p class="image-with-text-overlay__source">
+                      From{% if character_book_url != blank %}
+                        <a href="{{ character_book_url }}">{{ character_book_title }}</a>
+                      {%- else %}
+                        {{ character_book_title }}
+                      {%- endif -%}
+                    </p>
+                  {%- endif -%}
                 {%- endif -%}
 
               {%- when 'richtext' -%}

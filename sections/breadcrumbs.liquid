@@ -275,6 +275,65 @@
         assign crumbs = crumbs | append: crumb_item_sep | append: request.path | append: crumb_part_sep | append: page_title
     endcase
 
+    assign gruffalo_overview_url = '/pages/overview/the-gruffalo'
+    assign gruffalo_characters_url = '/pages/characters/the-gruffalo'
+    assign gruffalo_audiobook_url = '/pages/audiobook/the-gruffalo'
+    assign gruffalo_product_url = '/products/the-gruffalo'
+    assign gruffalo_audiobooks_url = pages['audiobooks'].url | default: '/pages/audiobooks'
+
+    assign gruffalo_crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
+    assign gruffalo_crumbs = gruffalo_crumbs | append: crumb_item_sep | append: pages['audiobook-library'].url | append: crumb_part_sep | append: 'Our Content'
+    assign gruffalo_crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobooks_url | append: crumb_part_sep | append: 'Audiobooks'
+
+    if page_type == 'metaobject' and metaobject != blank
+      assign gruffalo_current_title = metaobject.name.value | default: metaobject.name | default: title
+      assign gruffalo_current_handle = metaobject.system.handle
+
+      if read_along_handle != blank
+        assign gruffalo_current_handle = read_along_handle
+      endif
+
+      assign gruffalo_character_page = false
+
+      if metaobject_type == 'character' and template contains 'gruffalo'
+        assign gruffalo_character_page = true
+      elsif metaobject_type == 'character' and metaobject.main_book.value != blank
+        assign gruffalo_character_book = metaobject.main_book.value
+
+        if gruffalo_character_book.system.handle == 'the-gruffalo'
+          assign gruffalo_character_page = true
+        endif
+      endif
+
+      if metaobject_type == 'overview' and metaobject.system.handle == 'the-gruffalo'
+        assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+        assign crumbs = crumbs | append: crumb_item_sep | append: gruffalo_overview_url | append: crumb_part_sep | append: 'Overview'
+      elsif metaobject_type == 'characters' and metaobject.system.handle == 'the-gruffalo'
+        assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+        assign crumbs = crumbs | append: crumb_item_sep | append: gruffalo_characters_url | append: crumb_part_sep | append: 'Characters'
+      elsif gruffalo_character_page
+        assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+        assign crumbs = crumbs | append: crumb_item_sep | append: gruffalo_characters_url | append: crumb_part_sep | append: 'Characters'
+        assign crumbs = crumbs | append: crumb_item_sep | append: metaobject.system.url | append: crumb_part_sep | append: gruffalo_current_title
+      elsif metaobject_type == 'audiobook' and metaobject.system.handle == 'the-gruffalo'
+        assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+      elsif metaobject_type == 'read_along' and gruffalo_current_handle == 'the-gruffalo'
+        assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+        assign crumbs = crumbs | append: crumb_item_sep | append: metaobject.system.url | append: crumb_part_sep | append: 'Read Along'
+      elsif metaobject_type == 'audiogramme' and gruffalo_current_handle == 'the-gruffalo'
+        assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+
+        if audiogramme_route_mode == 'read_along'
+          assign crumbs = crumbs | append: crumb_item_sep | append: metaobject.system.url | append: crumb_part_sep | append: 'Read Along'
+        else
+          assign crumbs = crumbs | append: crumb_item_sep | append: metaobject.system.url | append: crumb_part_sep | append: 'Sample'
+        endif
+      endif
+    elsif page_type == 'product' and product.handle == 'the-gruffalo'
+      assign crumbs = gruffalo_crumbs | append: crumb_item_sep | append: gruffalo_audiobook_url | append: crumb_part_sep | append: 'The Gruffalo'
+      assign crumbs = crumbs | append: crumb_item_sep | append: gruffalo_product_url | append: crumb_part_sep | append: 'Buy The Gruffalo'
+    endif
+
     assign crumb_list = crumbs | split: crumb_item_sep
   -%}
 
