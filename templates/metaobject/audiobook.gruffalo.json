@@ -15,12 +15,12 @@
         "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
         "eyebrow": "Gruffalo audiobook",
         "description": "Listening details for The Gruffalo on Voxblock: what the audiobook is, how children listen, who it suits and where to buy the physical audiobook block.",
-        "summary_label": "Listening guide",
-        "summary_anchor": "summary",
+        "summary_label": "Listening details",
+        "summary_anchor": "listening-details",
         "story_details_label": "Runtime & details",
         "story_details_anchor": "story-details",
-        "characters_label": "Characters",
-        "characters_anchor": "characters",
+        "characters_label": "Explore",
+        "characters_anchor": "explore",
         "questions_label": "Questions",
         "questions_anchor": "questions"
       }
@@ -52,7 +52,7 @@
         "copy": {
           "type": "richtext",
           "settings": {
-            "content": "<p>This page is for listening details: how <em>The Gruffalo</em> works as a Voxblock audiobook, what children need to play it, and where to buy it. For the plot and book summary, start with the <a href=\"/pages/overview/the-gruffalo\">Gruffalo story overview</a>.</p><p>Voxblock audiobooks are physical story blocks that play on the Voxblock player, giving children a simple way to listen without a phone, tablet, app or Wi-Fi.</p>"
+            "content": "<p>Let children hear <em>The Gruffalo</em> as a simple, screen-free audiobook. The physical Voxblock plays on the Voxblock player, so there is no phone, tablet, app or Wi-Fi to set up.</p><p>Hear the rhyme, rhythm and character voices, then add the story to your child's listening shelf when you are ready.</p>"
           }
         },
         "buy": {
@@ -80,7 +80,8 @@
         "text_position": "center",
         "background": "#fff7f0",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "anchor_id": "listening-details"
       }
     },
     "story_hub_results": {
@@ -232,7 +233,7 @@
             "tab_label": "Buy",
             "badge": "Shop",
             "title": "Buy The Gruffalo Voxblock",
-            "description": "Go straight to the product page for price, compatibility, delivery and checkout.",
+            "description": "Check price, compatibility, delivery and checkout details.",
             "link": "/products/the-gruffalo",
             "link_text": "Buy the audiobook",
             "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
@@ -257,8 +258,8 @@
         "full_width": false,
         "anchor_id": "explore",
         "eyebrow": "Explore The Gruffalo",
-        "title": "Choose the Gruffalo page you need",
-        "content": "<p>Jump between the story summary, audiobook details, characters, read-along transcript, sample and product page.</p>",
+        "title": "Explore The Gruffalo",
+        "content": "<p>Listen, read along, meet the characters or revisit the story before choosing the physical Voxblock audiobook.</p>",
         "primary_image_url": "https://voxblock.co.uk/cdn/shop/files/gruffalo-background.webp?v=1746261346&width=2000",
         "primary_link": "/products/the-gruffalo",
         "primary_label": "Ready to listen?",
@@ -595,7 +596,7 @@
             "title": "Where can I buy The Gruffalo Voxblock?",
             "check_for_text": "Title",
             "check_for_richtext": "",
-            "content": "<p>Go to the <a href=\"/products/the-gruffalo\">The Gruffalo product page</a> to buy the physical audiobook block.</p>"
+            "content": "<p>You can buy the physical audiobook block here: <a href=\"/products/the-gruffalo\">The Gruffalo Voxblock</a>.</p>"
           }
         }
       },
@@ -682,7 +683,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "text": "Need the story summary or characters?",
+            "text": "Want the story or character guide?",
             "heading_tag": "h2",
             "text_color": "",
             "gradient": ""
@@ -691,7 +692,7 @@
         "copy": {
           "type": "richtext",
           "settings": {
-            "content": "<p>The audiobook page focuses on listening. These pages cover the wider book and character questions.</p>"
+            "content": "<p>Revisit the plot, check the main characters, then come back to listen when the story feels familiar.</p>"
           }
         },
         "overview": {
