@@ -24,7 +24,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "main": {
@@ -49,7 +51,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "rich_text_YjGbKd": {
@@ -105,6 +109,7 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -194,19 +199,19 @@
         "richtext_MGpGFL": {
           "type": "richtext",
           "settings": {
-            "content": "<p>We had over 240 nominations and we have managed to whittle it down to 31, who will put forward to the next stage of judging. Five will be picked from the following list to each win a mini school pack.</p>"
+            "content": "<p>We had over 240 nominations and a shortlist of 31. Our judges had a very difficult decision, there was so many schools that provided brilliant examples of how Voxblock would benefit their school. While they also a lot of familiar issues currently facing schools. Five schools were chosen to win a mini school pack.</p>"
           }
         },
         "richtext_zcHxNX": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Good luck to the following schools:</p><ul><li>Alderwood Primary School (South England)</li><li>Alderman Richard Hallam Primary School (Midlands)</li><li>Aviemore Primary School (Scotland)</li><li>Chelford CofE Primary School (North England)</li><li>Chilternway Academy (South England)</li><li>Chirnside Primary School (Scotland)</li><li>Cleveland Road Primary School (South England)</li><li>Eassie Primary School (Scotland)</li><li>Eastern Primary School (Scotland)</li><li>Epinay Business and Enterprise School (North England)</li><li>Fallin Primary School (Scotland)</li><li>Foxwood Academy (Midlands)</li><li>Hearsall Community Academy (Midlands)</li><li>ILM Academy (Wales)</li><li>Netley Abbey Infant School (South England)</li><li>Penygelli Primary School (Wales)</li><li>Priory Primary School (South England)</li><li>Prospect Hill Junior School (Midlands)</li><li>Quarry Bank Primary School (Midlands)</li><li>Queenborough School (South England)</li><li>Reinwood Infants and Juniors (North England)</li><li>Royal School of the Blind (North England)</li><li>Sanday (Scotland)</li><li>Saint Patrick's Primary and Nursery (Scotland)</li><li>Spa Primary (Northern Ireland)</li><li>Springfield Junior School (South England)</li><li>St Lawrence's CofE Primary School (North England)</li><li>St Mary's CofE Junior School (South England)</li><li>Stockbridge Primary School (Scotland)</li><li>The Blue School (South England)</li><li>The Parkgate Academy (Midlands)</li></ul>"
+            "content": "<p>Congratulations to the following schools:</p><ul><li>Quarry Bank Primary School (Midlands)</li><li>Royal School of the Blind (North England)</li><li>Sanday (Scotland)</li><li>Spa Primary (Northern Ireland)</li><li>Stockbridge Primary School (Scotland)</li></ul>"
           }
         },
         "richtext_XQYefQ": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Thank you to everyone that nominated a school. </p><p>Our judges will choose the winners in early April, with the announcement of the  winners in late April.</p>"
+            "content": "<p>Thank you to everyone that nominated a school. </p>"
           }
         }
       },
@@ -221,6 +226,7 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -283,6 +289,7 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
         "text_color": ""
