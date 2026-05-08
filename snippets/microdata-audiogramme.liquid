@@ -28,12 +28,16 @@
   assign description = product.description | strip_html
   assign author = product.metafields.book.authors.value | first
   assign narrator = product.metafields.book.narrators.value | first
+  assign youtube_id = source_metaobject.youtube_id.value | strip
+  assign gif_media = source_metaobject.gif.value
   assign preview_audio = product.metafields.book.preview.value
-  assign desktop_video = source_metaobject.desktop.value.sources | where: 'format', 'mp4' | first
-  assign mobile_video = source_metaobject.mobile.value.sources | where: 'format', 'mp4' | first
   assign has_video = false
-  if desktop_video != blank or mobile_video != blank or source_metaobject.youtube_id.value != blank
+  assign has_gif = false
+  if youtube_id != blank
     assign has_video = true
+  endif
+  if gif_media != blank
+    assign has_gif = true
   endif
 
   capture sample_url
@@ -67,6 +71,10 @@
   endif
 
   assign price_value = product.price | divided_by: 100.0
+  assign media_upload_date = blank
+  if product != blank and product.published_at != blank
+    assign media_upload_date = product.published_at | date: '%Y-%m-%d'
+  endif
 -%}
 {
   "@context": "https://schema.org",
@@ -135,11 +143,18 @@
       "@id": {{ sample_url | append: '#sample-media' | json }},
       "name": {{ title | append: ' audiobook sample' | json }},
       "url": {{ sample_url | json }}{%- if description != blank -%},
-      "description": {{ description | json }}{%- endif -%}{%- if desktop_video != blank -%},
-      "contentUrl": {{ desktop_video.url | json }}{%- elsif mobile_video != blank -%},
-      "contentUrl": {{ mobile_video.url | json }}{%- elsif source_metaobject.youtube_id.value != blank -%},
-      "embedUrl": {{ 'https://www.youtube.com/watch?v=' | append: source_metaobject.youtube_id.value | json }}{%- endif -%}{%- if product.featured_image != blank -%},
+      "description": {{ description | json }}{%- endif -%}{%- if media_upload_date != blank -%},
+      "uploadDate": {{ media_upload_date | json }}{%- endif -%},
+      "embedUrl": {{ 'https://www.youtube.com/watch?v=' | append: youtube_id | json }}{%- if product.featured_image != blank -%},
       "thumbnailUrl": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }}{%- endif -%}
+    }
+    {%- elsif has_gif -%},
+    {
+      "@type": "ImageObject",
+      "@id": {{ sample_url | append: '#sample-gif' | json }},
+      "name": {{ title | append: ' audiobook sample artwork' | json }},
+      "url": {{ gif_media | image_url: width: 1600 | prepend: 'https:' | json }},
+      "contentUrl": {{ gif_media | image_url: width: 1600 | prepend: 'https:' | json }}
     }
     {%- elsif preview_audio != blank -%},
     {

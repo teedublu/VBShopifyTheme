@@ -36,18 +36,23 @@
     endif
   endif
 
+  assign youtube_id = source_metaobject.youtube_id.value | strip
+  assign gif_media = source_metaobject.gif.value
   assign preview_audio = product.metafields.book.preview.value
-  assign desktop_media = source_metaobject.desktop.value
-  assign mobile_media = source_metaobject.mobile.value
-  assign desktop_is_video = false
-  assign mobile_is_video = false
+  assign has_youtube_video = false
+  assign has_gif = false
+  assign has_preview_audio = false
 
-  if desktop_media != blank and desktop_media.media_type == 'video'
-    assign desktop_is_video = true
+  if youtube_id != blank
+    assign has_youtube_video = true
   endif
 
-  if mobile_media != blank and mobile_media.media_type == 'video'
-    assign mobile_is_video = true
+  if gif_media != blank
+    assign has_gif = true
+  endif
+
+  if preview_audio != blank
+    assign has_preview_audio = true
   endif
 
   capture read_along_url
@@ -80,7 +85,8 @@
     }
 
     #shopify-section-{{ section.id }} .sample-page__player,
-    #shopify-section-{{ section.id }} .sample-page__video {
+    #shopify-section-{{ section.id }} .sample-page__video,
+    #shopify-section-{{ section.id }} .sample-page__gif {
       border-radius: 24px;
       overflow: hidden;
       background: #fff;
@@ -93,6 +99,12 @@
 
     #shopify-section-{{ section.id }} .sample-page__player audio {
       width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .sample-page__gif img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     #shopify-section-{{ section.id }} .sample-page__content {
@@ -173,25 +185,19 @@
 
   <div {% render 'section-properties' %}>
     <div class="sample-page">
-      {%- if desktop_is_video or mobile_is_video or source_metaobject.youtube_id.value != blank -%}
+      {%- if has_youtube_video -%}
         <div class="sample-page__video">
-          {%- if mobile_is_video -%}
-            <video-media class="sm:hidden" {% if mobile_media.aspect_ratio %}style="--aspect-ratio: {{ mobile_media.aspect_ratio }}"{% endif %}>
-              {{- mobile_media | video_tag: class: 'object-cover sm:hidden', controls: true, playsinline: true, preload: 'metadata', image_size: '400x' -}}
-            </video-media>
-          {%- endif -%}
-
-          {%- if desktop_is_video -%}
-            <video-media {% if mobile_is_video %}class="hidden sm:block"{% endif %} {% if desktop_media.aspect_ratio %}style="--aspect-ratio: {{ desktop_media.aspect_ratio }}"{% endif %}>
-              {{- desktop_media | video_tag: playsinline: true, preload: 'metadata', controls: true, image_size: '800x' -}}
-            </video-media>
-          {%- elsif source_metaobject.youtube_id.value != blank -%}
-            <video-media host="youtube" loaded>
-              <iframe src="https://www.youtube.com/embed/{{ source_metaobject.youtube_id.value }}?playsinline=1&rel=0&modestbranding=1" title="{{ title | escape }} audiobook sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </video-media>
-          {%- endif -%}
+          <video-media host="youtube" loaded>
+            <iframe src="https://www.youtube.com/embed/{{ youtube_id }}?playsinline=1&rel=0&modestbranding=1" title="{{ title | escape }} audiobook sample" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </video-media>
         </div>
-      {%- elsif preview_audio != blank -%}
+      {%- elsif has_gif -%}
+        <div class="sample-page__gif">
+          {{ gif_media | image_url: width: 1600 | image_tag: loading: 'eager', widths: '480, 720, 960, 1200, 1600', sizes: '(min-width: 1000px) 50vw, 100vw', alt: title }}
+        </div>
+      {%- endif -%}
+
+      {%- if has_preview_audio and has_youtube_video == false -%}
         <div class="sample-page__player">
           <audio controls preload="metadata">
             <source src="{{ preview_audio.url }}" type="audio/mpeg">

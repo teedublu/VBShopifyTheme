@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "sample_page": {
+      "type": "audiobook-sample-page",
+      "settings": {}
+    },
+    "sample_carousel": {
+      "type": "audiogramme-carousel",
+      "settings": {
+        "title": "More audiobook samples",
+        "content": "<p>Find another story sample and keep listening.</p>",
+        "max_items": 10
+      }
+    },
+    "microdata": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "audiogramme"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "sample_page",
+    "sample_carousel",
+    "microdata"
+  ]
+}
