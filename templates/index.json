@@ -25,7 +25,7 @@
             "title": "A screen-free audiobook player for growing readers",
             "content": "<p>Helps children enjoy stories without screens or pressure, building confidence and a love of reading.</p>",
             "link_text": "Discover our player",
-            "link_url": "",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -98,7 +98,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "rich_text_K9xkcG": {
@@ -156,6 +158,7 @@
         "use_mo": true,
         "content_width": "medium",
         "text_position": "center",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -926,7 +929,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "media_with_text_cTgCfe": {
@@ -1002,6 +1007,7 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "anchor_id": "",
         "background": "#fff7f0",
         "background_gradient": "",
         "text_color": "#565656"
