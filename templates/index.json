@@ -45,64 +45,6 @@
         "spacing": "none"
       }
     },
-    "image_with_text_overlay_mzRBYC": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_BY3n4M": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "text": "The Screen-Free Audiobook Player",
-            "subheading_tag": "h5",
-            "subheading_tag_html": "h2"
-          }
-        },
-        "heading_EBfnGt": {
-          "type": "heading",
-          "settings": {
-            "text": "Because reading doesn't always look the same",
-            "scale_with": true,
-            "heading_tag": "h3",
-            "heading_tag_html": "p"
-          }
-        },
-        "button_XtBmYV": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "base",
-            "text": "Shop the screen-free player",
-            "url": "shopify://products/voxblock-player",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_BY3n4M",
-        "heading_EBfnGt",
-        "button_XtBmYV"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "max_width": 97,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/home-header-lifestyle-web-v1.25.png",
-        "mobile_image": "shopify://shop_images/home-header-lifestyle-mob-v1.25.png",
-        "mobile_text_position": "place-self-start-end text-end",
-        "desktop_text_position": "sm:place-self-start-end sm:text-end",
-        "text_color": "#ffffff",
-        "background": "#eaeaea",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "enable_watermark": false,
-        "watermark_opacity": 6
-      }
-    },
     "rich_text_K9xkcG": {
       "type": "rich-text",
       "blocks": {
@@ -1125,7 +1067,6 @@
   },
   "order": [
     "media_with_text_hjyKYh",
-    "image_with_text_overlay_mzRBYC",
     "rich_text_K9xkcG",
     "logo_list_LNWaw9",
     "video_N3TaA4",
