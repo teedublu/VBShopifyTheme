@@ -56,7 +56,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "rich_text_9R8JXg": {
@@ -88,6 +90,7 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -207,7 +210,7 @@
             "icon_width": 48,
             "subheading": "",
             "title": "Filling Out Your Card",
-            "content": "<ol><li>Fill out which audiobook you would like</li><li>Fill out your address</li><li>Place a stamp on the card and post</li></ol>",
+            "content": "<ol><li>Fill out which audiobook you would like</li><li>Fill out your name and address</li><li>Place a stamp on the card and post</li></ol><p><strong>PLEASE NOTE:</strong> We have moved office! If you have a full token card with North Castle Street in the address, please can you send in an envelope with the following address:</p><p>Suite 2 Alexander House, Station Road, Musselburgh, EH21 7PB</p>",
             "link_text": "",
             "link_url": "",
             "background": "#ffffff",
@@ -244,7 +247,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "media_with_text_fJdxEA": {
@@ -361,6 +366,7 @@
         "use_mo": true,
         "content_width": "small",
         "text_position": "center",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
         "text_color": ""
