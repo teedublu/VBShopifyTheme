@@ -35,6 +35,7 @@
         },
         "badges": {
           "type": "badges",
+          "disabled": true,
           "settings": {}
         },
         "text_thkiB9": {
@@ -48,6 +49,12 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false
+          }
+        },
+        "text_MA3Pah": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Voxblock gives children the freedom to enjoy stories on their own, without screens or complicated setups. Parents can feel confident knowing there are no apps, downloads, or streaming to manage.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
           }
         },
         "variant_picker": {
@@ -83,13 +90,8 @@
         },
         "bogos_io_free_gift_gift_thumbnail_view_y6hGFC": {
           "type": "shopify://apps/bogos-io-free-gift/blocks/gift-thumbnail-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "disabled": true,
           "settings": {}
-        },
-        "text_MA3Pah": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Voxblock gives children the freedom to enjoy stories on their own, without screens or complicated setups. Parents can feel confident knowing there are no apps, downloads, or streaming to manage.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
-          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -100,6 +102,32 @@
             "atc_button_text_color": "",
             "payment_button_background": "",
             "payment_button_text_color": ""
+          }
+        },
+        "offer_tcaCpM": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-box",
+            "icon_width": 20,
+            "title": "Free Shipping",
+            "content": "<p>Free shipping on all orders over £25</p><p><a href=\"https://voxblock.co.uk/pages/delivery-information\" title=\"https://voxblock.co.uk/pages/delivery-information\">Read more here...</a></p>",
+            "background": "#E2EBEB",
+            "text_color": "#269EA1"
+          }
+        },
+        "offer_wAzmdm": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-happy",
+            "icon_width": 24,
+            "title": "Money back Guarantee",
+            "content": "<p>100 Day Money back Guarantee</p>",
+            "background": "#E2EBEB",
+            "text_color": "#269EA1"
           }
         },
         "separator": {
@@ -239,6 +267,7 @@
         },
         "button_6pyUdt": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "link": "shopify://collections/audiobooks",
             "text": "Shop audiobooks",
@@ -247,32 +276,6 @@
             "stretch": true,
             "background": "",
             "text_color": ""
-          }
-        },
-        "offer_tcaCpM": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-box",
-            "icon_width": 20,
-            "title": "Free Shipping",
-            "content": "<p>Free shipping on all orders over £25</p><p><a href=\"https://voxblock.co.uk/pages/delivery-information\" title=\"https://voxblock.co.uk/pages/delivery-information\">Read more here...</a></p>",
-            "background": "#eaf2ed",
-            "text_color": "#00a341"
-          }
-        },
-        "offer_wAzmdm": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-happy",
-            "icon_width": 24,
-            "title": "Money back Guarantee",
-            "content": "<p>100 Day Money back Guarantee</p>",
-            "background": "#eaf2ed",
-            "text_color": "#00a341"
           }
         },
         "text_KV3rbn": {
@@ -312,13 +315,15 @@
         "badges",
         "text_thkiB9",
         "price",
+        "text_MA3Pah",
         "variant_picker",
         "text_B7QjHH",
         "image_dihJHC",
         "separator_eYhQVx",
         "bogos_io_free_gift_gift_thumbnail_view_y6hGFC",
-        "text_MA3Pah",
         "buy_buttons",
+        "offer_tcaCpM",
+        "offer_wAzmdm",
         "separator",
         "offer_1",
         "offer_2",
@@ -331,8 +336,6 @@
         "offer_9",
         "separator_eAyTL4",
         "button_6pyUdt",
-        "offer_tcaCpM",
-        "offer_wAzmdm",
         "text_KV3rbn",
         "associated_products_wELabA",
         "bogos_io_free_gift_cheapest_discount_view_YHaqpQ",
