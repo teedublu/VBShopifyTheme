@@ -113,8 +113,8 @@
             "icon_width": 20,
             "title": "Free Shipping",
             "content": "<p>Free shipping on all orders over £25</p><p><a href=\"https://voxblock.co.uk/pages/delivery-information\" title=\"https://voxblock.co.uk/pages/delivery-information\">Read more here...</a></p>",
-            "background": "#E2EBEB",
-            "text_color": "#269EA1"
+            "background": "#e2ebeb",
+            "text_color": "#269ea1"
           }
         },
         "offer_wAzmdm": {
@@ -126,8 +126,8 @@
             "icon_width": 24,
             "title": "Money back Guarantee",
             "content": "<p>100 Day Money back Guarantee</p>",
-            "background": "#E2EBEB",
-            "text_color": "#269EA1"
+            "background": "#e2ebeb",
+            "text_color": "#269ea1"
           }
         },
         "separator": {
@@ -531,62 +531,39 @@
         "testimonial_card_text_color": ""
       }
     },
-    "video_tyCAQL": {
-      "type": "video",
+    "media_with_text_UQdDDc": {
+      "type": "media-with-text",
       "blocks": {
-        "play_fiM6Xf": {
-          "type": "play",
-          "settings": {}
-        },
-        "button_wrGeTR": {
-          "type": "button",
+        "image_c8L8XJ": {
+          "type": "image",
           "settings": {
-            "style": "fill",
-            "size": "lg",
-            "text": "How it works",
-            "url": "shopify://pages/how-does-it-work",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
-          }
-        },
-        "heading_kJtRma": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Easy to use",
-            "heading_tag": "h0"
-          }
-        },
-        "richtext_PYD9tK": {
-          "type": "richtext",
-          "disabled": true,
-          "settings": {
-            "content": "<p>Voxblock is ready to play right out of the box, with no wifi or setup required.</p>"
+            "image": "shopify://shop_images/player-web-media-image-v.26.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Building kids' independence through audio stories",
+            "content": "<p>Our simple-to-use player allows kids to do it all themselves, including being in charge of their own literacy journey. Start collecting stories and escaping to new worlds.</p>",
+            "link_text": "",
+            "link_url": "shopify://pages/how-does-it-work",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
       "block_order": [
-        "play_fiM6Xf",
-        "button_wrGeTR",
-        "heading_kJtRma",
-        "richtext_PYD9tK"
+        "image_c8L8XJ"
       ],
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "autoplay": true,
-        "video_size": "md",
-        "video": "shopify://files/videos/Homepage Video.mp4",
-        "mobile_video": "shopify://files/videos/Homepage Video.mp4",
-        "youtube_id": "",
-        "external_video_url": "",
-        "mobile_text_position": "place-self-end-start text-start",
-        "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "jsonld_title": "Voxblock video",
-        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "text_with_icons_H9hBaT": {
@@ -652,39 +629,62 @@
         "text_color": "#565656"
       }
     },
-    "media_with_text_UQdDDc": {
-      "type": "media-with-text",
+    "video_tyCAQL": {
+      "type": "video",
       "blocks": {
-        "image_c8L8XJ": {
-          "type": "image",
+        "play_fiM6Xf": {
+          "type": "play",
+          "settings": {}
+        },
+        "button_wrGeTR": {
+          "type": "button",
           "settings": {
-            "image": "shopify://shop_images/VOX006c-2219.jpg",
-            "media_width": 50,
-            "media_position": "start",
-            "text_position": "place-self-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "DEVELOPMENT",
-            "title": "Creativity and imagination",
-            "content": "<p>Explore new worlds with our growing library of stories to nurture development and develop valuable language and listening skills for lifelong learning.</p>",
-            "link_text": "",
-            "link_url": "shopify://pages/how-does-it-work",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
+            "style": "fill",
+            "size": "lg",
+            "text": "How it works",
+            "url": "shopify://pages/how-does-it-work",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        },
+        "heading_kJtRma": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Easy to use",
+            "heading_tag": "h0"
+          }
+        },
+        "richtext_PYD9tK": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Voxblock is ready to play right out of the box, with no wifi or setup required.</p>"
           }
         }
       },
       "block_order": [
-        "image_c8L8XJ"
+        "play_fiM6Xf",
+        "button_wrGeTR",
+        "heading_kJtRma",
+        "richtext_PYD9tK"
       ],
       "settings": {
-        "full_width": false,
-        "spacing": "small"
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "md",
+        "video": "shopify://files/videos/Homepage Video.mp4",
+        "mobile_video": "shopify://files/videos/Homepage Video.mp4",
+        "youtube_id": "",
+        "external_video_url": "",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "jsonld_title": "Voxblock video",
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
     "media_with_text_8FqE3W": {
@@ -941,9 +941,9 @@
     "main",
     "1765206968f91ec2c2",
     "testimonials_cFMFmx",
-    "video_tyCAQL",
-    "text_with_icons_H9hBaT",
     "media_with_text_UQdDDc",
+    "text_with_icons_H9hBaT",
+    "video_tyCAQL",
     "media_with_text_8FqE3W",
     "collection_list_Leiqmh",
     "related_products_AYjAFd",
