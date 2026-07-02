@@ -724,6 +724,68 @@
         "spacing": "small"
       }
     },
+    "multi_column_tVPeU4": {
+      "type": "multi-column",
+      "blocks": {
+        "item_dcGwCq": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/player-web-multi-05years-v.26_1.png",
+            "column_size": "3",
+            "title": "0-5 Years",
+            "heading_tag": "h4",
+            "content": "<p>Create calming playtimes or soothing bedtimes with our collection of short stories, nursery rhymes that work as a screen replacement or background noise.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_CiNXCL": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/player-web-multi-58years-v.26_1.png",
+            "column_size": "3",
+            "title": "5-8 Years",
+            "heading_tag": "h4",
+            "content": "<p>Keep them entertained and encourage their independence, with classic stories and new favourites. Perfect as a travel companion or to unwind after a long day.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_rfXnRW": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/player-web-multi-812years-v.26_1.png",
+            "column_size": "3",
+            "title": "8-12+ Years",
+            "heading_tag": "h4",
+            "content": "<p>Engage them in reading with audio, a great way to take the pressure off their literary development. Our collection of captivating audiobooks provide something for every interest.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_dcGwCq",
+        "item_CiNXCL",
+        "item_rfXnRW"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "medium",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "A Player that grows with your child",
+        "content": "<p>We have designed our player to grow with your child, a simple design to last a lifetime. Curate your library as they grow and find new ways to experience Voxblock.</p>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#333333"
+      }
+    },
     "collection_list_Leiqmh": {
       "type": "collection-list",
       "blocks": {
@@ -794,6 +856,7 @@
         "collection_8cj9pY",
         "collection_RPYpar"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "stack_collections": false,
@@ -823,15 +886,21 @@
           "famous-five-intro-pack-2",
           "fairy-tales-intro-pack-3",
           "bedtime-stories-starter-pack-ap",
-          "younger-listeners-starter-pack-2"
+          "younger-listeners-starter-pack-2",
+          "explorer-bundle",
+          "voxblock-headphones",
+          "voxblock-travel-case",
+          "audiobook-bundle-under-5s",
+          "audiobook-bundle-5-8-years",
+          "audiobook-bundle-8-10-years"
         ],
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
         "products_per_row_mobile": "1",
         "products_per_row_desktop": 3,
-        "subheading": "Starter Packs",
-        "title": "Ready to go...",
+        "subheading": "",
+        "title": "Frequently bought together",
         "content": "",
         "background": "",
         "background_gradient": "",
@@ -947,10 +1016,11 @@
     "text_with_icons_H9hBaT",
     "video_tyCAQL",
     "media_with_text_8FqE3W",
+    "multi_column_tVPeU4",
     "collection_list_Leiqmh",
-    "related_products_AYjAFd",
     "revealed_image_on_scroll_iKqQdm",
     "faq_KiLD6K",
+    "related_products_AYjAFd",
     "image_with_text_overlay_Hrihhe"
   ]
 }
