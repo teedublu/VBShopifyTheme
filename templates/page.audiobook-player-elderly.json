@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -21,8 +21,7 @@
       "blocks": {
         "vendor_48wK9T": {
           "type": "vendor",
-          "settings": {
-          }
+          "settings": {}
         },
         "title_EkciRc": {
           "type": "title",
@@ -32,8 +31,7 @@
         },
         "badges_MiVmWf": {
           "type": "badges",
-          "settings": {
-          }
+          "settings": {}
         },
         "price_xWJjND": {
           "type": "price",
@@ -49,8 +47,7 @@
         },
         "separator_JmfYBc": {
           "type": "separator",
-          "settings": {
-          }
+          "settings": {}
         },
         "description_HrPt8R": {
           "type": "description",
@@ -82,8 +79,7 @@
         },
         "pickup_availability_9qWqhd": {
           "type": "pickup_availability",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -124,11 +120,11 @@
           "settings": {
             "position": 4,
             "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video": "shopify://files/videos/how does it work_desktop.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "How Voxblock works",
             "content": "",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_url": "shopify://pages/how-does-it-work",
             "link_text": "Read more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
@@ -142,9 +138,9 @@
           "settings": {
             "position": 1,
             "column_span": "1",
-            "image": "shopify:\/\/shop_images\/player-adults-lifestyle.png",
+            "image": "shopify://shop_images/player-adults-lifestyle.png",
             "title": "Audiobooks for Adults",
-            "content": "<p>Simple and easy to use<\/p>",
+            "content": "<p>Simple and easy to use</p>",
             "link_url": "",
             "link_text": "",
             "heading_tag": "h4",
@@ -162,9 +158,7 @@
       "settings": {
         "collection": "audiobooks-for-older-listeners",
         "hide_empty": false,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
@@ -173,8 +167,8 @@
         "products_per_row_desktop": 5,
         "subheading": "",
         "title": "A selection of titles",
-        "content": "<p>Here are some of the titles we have selected for older and adult listeners.<\/p>",
-        "link_url": "shopify:\/\/collections\/audiobooks-for-older-listeners",
+        "content": "<p>A curated collection of adult classics, chosen for nostalgia and immersive listening.</p>",
+        "link_url": "shopify://collections/audiobooks-for-older-listeners",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
