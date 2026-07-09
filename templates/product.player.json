@@ -688,42 +688,6 @@
         "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
       }
     },
-    "media_with_text_8FqE3W": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_DaBpmJ": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/sleeping-child-listening-to-the-secret-garden-audiobook.jpg",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-start text-start",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "DRAMA-FREE",
-            "title": "Best bedtime routine",
-            "content": "<p><strong>A great nights sleep is vital for the </strong>development of our future bookworms. Our <strong>screen-free </strong>audiobook means no <strong>distracting glow</strong> keeping kids awake.</p><p>Plus, you can easily enable <strong>bedtime mode</strong> to play your chosen story for 20 minutes before entering standby mode and drifting off to sleep.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_DaBpmJ"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "spacing": "small"
-      }
-    },
     "multi_column_tVPeU4": {
       "type": "multi-column",
       "blocks": {
@@ -784,6 +748,65 @@
         "background": "",
         "background_gradient": "",
         "text_color": "#333333"
+      }
+    },
+    "media_with_text_8FqE3W": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_DaBpmJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/sleeping-child-listening-to-the-secret-garden-audiobook.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "KEY FEATURE",
+            "title": "Bedtime mode",
+            "content": "<p>You can easily enable <strong>bedtime mode</strong> to play your chosen story for 20 minutes before entering standby mode and drifting off to sleep.</p><p>A great nights sleep is vital for the<strong> </strong>development of our future bookworms. Our <strong>screen-free </strong>audiobook means no <strong>distracting glow</strong> keeping kids awake.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        },
+        "image_yWRrCc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/player-web-travel-v.26.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "KEY FEATURE",
+            "title": "Travel mode",
+            "content": "<p>Travel a lot? Enable <strong>travel mode</strong> to keep your player from switching while in suitcase or backpack. Protecting your <strong>battery life </strong>until you need it most</p><p>Our player makes the perfect travel companion. With our <strong>connectivity-free </strong>tech, it can be listened to <strong>anytime, anywhere</strong> without the fuss.</p>",
+            "link_text": "",
+            "link_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#ff9d57",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_DaBpmJ",
+        "image_yWRrCc"
+      ],
+      "settings": {
+        "full_width": false,
+        "spacing": "small"
       }
     },
     "collection_list_Leiqmh": {
@@ -874,43 +897,6 @@
         "heading_gradient": ""
       }
     },
-    "related_products_AYjAFd": {
-      "type": "related-products",
-      "settings": {
-        "recommendations_count": 6,
-        "products": [
-          "roald-dahl-selection-starter-pack-2",
-          "older-listeners-starter-pack-2",
-          "gruffalo-and-friends-starter-pack-2",
-          "feeling-funny-starter-pack-3",
-          "famous-five-intro-pack-2",
-          "fairy-tales-intro-pack-3",
-          "bedtime-stories-starter-pack-ap",
-          "younger-listeners-starter-pack-2",
-          "explorer-bundle",
-          "voxblock-headphones",
-          "voxblock-travel-case",
-          "audiobook-bundle-under-5s",
-          "audiobook-bundle-5-8-years",
-          "audiobook-bundle-8-10-years"
-        ],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Frequently bought together",
-        "content": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "revealed_image_on_scroll_iKqQdm": {
       "type": "revealed-image-on-scroll",
       "disabled": true,
@@ -986,6 +972,43 @@
         "accordion_text_color": "#565656"
       }
     },
+    "related_products_AYjAFd": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [
+          "roald-dahl-selection-starter-pack-2",
+          "older-listeners-starter-pack-2",
+          "gruffalo-and-friends-starter-pack-2",
+          "feeling-funny-starter-pack-3",
+          "famous-five-intro-pack-2",
+          "fairy-tales-intro-pack-3",
+          "bedtime-stories-starter-pack-ap",
+          "younger-listeners-starter-pack-2",
+          "explorer-bundle",
+          "voxblock-headphones",
+          "voxblock-travel-case",
+          "audiobook-bundle-under-5s",
+          "audiobook-bundle-5-8-years",
+          "audiobook-bundle-8-10-years"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Frequently bought together",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
     "image_with_text_overlay_Hrihhe": {
       "type": "image-with-text-overlay",
       "settings": {
@@ -1015,8 +1038,8 @@
     "media_with_text_UQdDDc",
     "text_with_icons_H9hBaT",
     "video_tyCAQL",
-    "media_with_text_8FqE3W",
     "multi_column_tVPeU4",
+    "media_with_text_8FqE3W",
     "collection_list_Leiqmh",
     "revealed_image_on_scroll_iKqQdm",
     "faq_KiLD6K",
