@@ -913,18 +913,39 @@
     "faq_KiLD6K": {
       "type": "faq",
       "blocks": {
+        "item_3EwL9W": {
+          "type": "item",
+          "settings": {
+            "title": "What's in the box?",
+            "content": "<p>1x Audiobook player</p><p>1x Charging cable</p><p>1x Protective bumper (if you have selected this option)</p><p><em>No audiobooks are included. Sold separately. </em></p>"
+          }
+        },
         "item_ybUnkH": {
           "type": "item",
           "settings": {
             "title": "How do I set up my player?",
-            "content": "<p>Depending on the model you can find the on/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.</p>"
+            "content": "<p>There is no set up involved with our player.</p><p>All you need to do is press down the play button to switch it on, pop in a book and start listening.</p>"
           }
         },
         "item_zBxp3t": {
           "type": "item",
           "settings": {
-            "title": "What stories are available?",
-            "content": "<p>Our library audiobooks is aimed at children 3 and up. We are adding new stories all the time, and will be constantly adding new titles to keep the choice of stories fresh and exciting.</p>"
+            "title": "Does the Voxblock player need wifi?",
+            "content": "<p>No wifi is needed to use a Voxblock player. There are no downloads, streams, subscriptions or apps.</p>"
+          }
+        },
+        "item_tLqdFV": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock suitable for?",
+            "content": "<p>Our device and content is suitable for children aged 3-14+ (we have even heard an adult or two likes it to)</p>"
+          }
+        },
+        "item_d78x9p": {
+          "type": "item",
+          "settings": {
+            "title": "How can my child listen to their stories?",
+            "content": "<p>Our player comes with an inbuilt speaker to listen aloud, and a audio jack for headphone use.</p>"
           }
         },
         "item_J79MfC": {
@@ -937,14 +958,17 @@
         "item_yMd3fQ": {
           "type": "item",
           "settings": {
-            "title": "Does the player come with audiobooks?",
-            "content": "<p>If you want to buy books at the same time as our player, add a bundle or check out our starter packs.</p>"
+            "title": "What are our audiobooks made out of?",
+            "content": "<p>Our audiobooks are blocks, similar to board books, and are made up of layers of recycled cardboard. There is a data connector built into the back that connects to your player.</p><p><em>Our audiobooks do not open.</em></p>"
           }
         }
       },
       "block_order": [
+        "item_3EwL9W",
         "item_ybUnkH",
         "item_zBxp3t",
+        "item_tLqdFV",
+        "item_d78x9p",
         "item_J79MfC",
         "item_yMd3fQ"
       ],
