@@ -209,11 +209,11 @@
             "icon": "none",
             "icon_width": 48,
             "subheading": "",
-            "title": "Filling Out Your Card",
-            "content": "<ol><li>Fill out which audiobook you would like</li><li>Fill out your name and address</li><li>Place a stamp on the card and post</li></ol><p><strong>PLEASE NOTE:</strong> We have moved office! If you have a full token card with North Castle Street in the address, please can you send in an envelope with the following address:</p><p>Suite 2 Alexander House, Station Road, Musselburgh, EH21 7PB</p>",
+            "title": "Did you Enjoy One of You Summer Listens?",
+            "content": "<p>Send us a review of one of your favourite audiobooks this summer and we will feature it on this page!</p>",
             "link_text": "",
             "link_url": "",
-            "background": "#ffffff",
+            "background": "#FFF3ED",
             "background_gradient": "",
             "text_color": "#565656",
             "heading_text_color": "#ff9d57",
@@ -333,6 +333,7 @@
         "item_qynigA",
         "item_4jrAm4"
       ],
+      "disabled": true,
       "name": "Multi-column",
       "settings": {
         "full_width": true,
@@ -350,14 +351,43 @@
     "rich_text_KiA3gh": {
       "type": "rich-text",
       "blocks": {
+        "heading_cJ4NQi": {
+          "type": "heading",
+          "settings": {
+            "text": "Download a Digital Copy",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_NBhBmW": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Don't have a listening map? Don't worry we have created an interactive digital copy you can download here. If you end with a physical copy you can continue using the digial copy or transfer to the physical one.</p>"
+          }
+        },
+        "button_TiG9Hh": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Download here",
+            "url": "",
+            "background": "",
+            "text_color": ""
+          }
+        },
         "richtext_Rb7KzD": {
           "type": "richtext",
           "settings": {
-            "content": "<p>*please note these days are classed as an offer and may be subject to change.</p>"
+            "content": "<p>Once you have completed your map, send a photo to <strong>win@voxblock.co.uk </strong>by the 1st September.</p>"
           }
         }
       },
       "block_order": [
+        "heading_cJ4NQi",
+        "richtext_NBhBmW",
+        "button_TiG9Hh",
         "richtext_Rb7KzD"
       ],
       "name": "Rich text",
@@ -374,6 +404,7 @@
     },
     "contact_CJJrdg": {
       "type": "contact",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "subheading": "",
