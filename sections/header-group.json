@@ -14,6 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "message_6yirY6": {
+          "type": "message",
+          "settings": {
+            "text": "Join our Summer Listening Challenge",
+            "url": "shopify://pages/voxblock-listening-challenge"
+          }
+        },
         "message": {
           "type": "message",
           "settings": {
@@ -39,6 +46,7 @@
         }
       },
       "block_order": [
+        "message_6yirY6",
         "message",
         "message_N7RbUz",
         "message_nYpB7X"
