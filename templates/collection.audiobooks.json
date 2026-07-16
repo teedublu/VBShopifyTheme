@@ -35,6 +35,27 @@
             "background_gradient": ""
           }
         },
+        "image_y9QmGn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/challenge-header-web-v.26_1.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "Join Our",
+            "title": "Listening Challenge",
+            "heading_tag": "h1",
+            "button_text": "Find out more",
+            "button_link": "shopify://pages/voxblock-listening-challenge",
+            "text_color": "#ffffff",
+            "button_background": "#FA9D3A",
+            "button_text_color": "#FFF3ED",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
         "image_pERNrc": {
           "type": "image",
           "settings": {
@@ -104,6 +125,7 @@
       },
       "block_order": [
         "image_yXy8xr",
+        "image_y9QmGn",
         "image_pERNrc",
         "image_rmcgy3",
         "image_rcNxx7"
@@ -344,7 +366,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     }
   },
