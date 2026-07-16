@@ -78,13 +78,27 @@
         "richtext_JJFwCm": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Join us for our Summer Listening Challenge.</p><p>This summer get listening or reading your favourite books and get lost in adventures.</p>"
+            "content": "<p>Join us for our Summer Listening Challenge. This summer get listening or reading your favourite books and get lost in adventures.</p>"
+          }
+        },
+        "subheading_RkwtLe": {
+          "type": "subheading",
+          "settings": {
+            "text": "Challenge runs until the 1st September"
+          }
+        },
+        "richtext_3BipBd": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>How many can you read?</p>"
           }
         }
       },
       "block_order": [
         "heading_dKpBgM",
-        "richtext_JJFwCm"
+        "richtext_JJFwCm",
+        "subheading_RkwtLe",
+        "richtext_3BipBd"
       ],
       "name": "Rich text",
       "settings": {
