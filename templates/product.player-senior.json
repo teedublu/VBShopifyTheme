@@ -562,7 +562,7 @@
           "type": "item",
           "settings": {
             "title": "Is Voxblock for kids or adults?",
-            "content": "<p>Although we started initially making an audiobook player for children, many older people love its simplicity too!<br/><br/>So although most of the site is aimed at parents of young children we do have a growing section for adults too.</p>"
+            "content": "<p>Although the audiobook player has been designed for children, many older listeners love its simplicity too!<br/><br/>So although most of the site is aimed at parents of young children we do have a curated section for adults too.</p>"
           }
         },
         "item_ybUnkH": {
@@ -576,7 +576,7 @@
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>We have started to include some classic titles for adult listeners. See the full range <a href=\"/collections/audiobooks-for-older-listeners\" title=\"Audiobooks for Older Listeners\">available</a> here.</p>"
+            "content": "<p>We have small, curated collection adult listeners. See the full range <a href=\"/collections/audiobooks-for-older-listeners\" title=\"Audiobooks for Older Listeners\">available</a> here.</p>"
           }
         },
         "item_J79MfC": {
@@ -609,6 +609,8 @@
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
@@ -638,7 +640,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "featured_collection_zFiwCJ": {
