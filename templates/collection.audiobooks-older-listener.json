@@ -334,7 +334,14 @@
           "type": "item",
           "settings": {
             "title": "Will I lose my place in the story if I remove a block?",
-            "content": "<p>You can contact us through our contact page! We will be happy to assist you.</p>"
+            "content": "<p>No, you can swap over titles and the block will remember where you last listened.</p>"
+          }
+        },
+        "item_MX6c3h": {
+          "type": "item",
+          "settings": {
+            "title": "When will you release more adult audiobook titles?",
+            "content": "<p>We have no immediate plans to release more titles suitable for adults. You may also find some nostalgic titles within our children's collection which may be suitable, such as, A Bear Called Paddington, Enid Blyton and other children's classics.</p>"
           }
         }
       },
@@ -344,7 +351,8 @@
         "item_3VkjFk",
         "item_3ipDYf",
         "item_cAbGgi",
-        "item_pMWXXx"
+        "item_pMWXXx",
+        "item_MX6c3h"
       ],
       "settings": {
         "full_width": true,
@@ -368,6 +376,31 @@
         "button_text_color": "",
         "accordion_background": "",
         "accordion_text_color": ""
+      }
+    },
+    "rich_text_tJYf67": {
+      "type": "rich-text",
+      "blocks": {
+        "richtext_t99MWW": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Have any further questions? Please don't hesitate and contact us via email at <strong>hello@voxblock.co.uk</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_t99MWW"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "image_with_text_overlay_artdUK": {
@@ -399,6 +432,7 @@
     "rich_text_LJNbWU",
     "featured_product_wrTPmW",
     "faq_KCW3XB",
+    "rich_text_tJYf67",
     "image_with_text_overlay_artdUK"
   ]
 }
