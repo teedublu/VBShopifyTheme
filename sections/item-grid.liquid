@@ -4,7 +4,9 @@
 %}
 
 <section class="item-grid-section" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %}>
+  
   <div class="page-width">
+    {% if source_mode == 'metaobject_list' and section.settings.metaobject_items != blank %}
     {% if section.settings.heading != blank or section.settings.intro != blank %}
       <div class="item-grid-section__header">
         {% if section.settings.heading != blank %}
@@ -17,6 +19,7 @@
         {% endif %}
       </div>
     {% endif %}
+  {% endif %}
 
     <div class="item-grid-section__grid">
 
