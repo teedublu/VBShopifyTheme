@@ -78,12 +78,34 @@
             "background": "",
             "background_gradient": ""
           }
+        },
+        "image_YGxQ7h": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/audiobooks-banner-edu-audio-v1.26.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "DISCOVER",
+            "title": "Educational Audio",
+            "heading_tag": "h1",
+            "button_text": "Discover here",
+            "button_link": "shopify://collections/educational-audio",
+            "text_color": "#269EA1",
+            "button_background": "#EBA248",
+            "button_text_color": "#FFFFFF",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
         }
       },
       "block_order": [
         "image_yXy8xr",
         "image_y9QmGn",
-        "image_yPdRD4"
+        "image_yPdRD4",
+        "image_YGxQ7h"
       ],
       "settings": {
         "full_width": true,
