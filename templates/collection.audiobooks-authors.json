@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "banner": {
@@ -21,8 +21,8 @@
         "show_collection_image": true,
         "collection_title_size": "h1",
         "image_size": "sm",
-        "image": "shopify:\/\/shop_images\/Voxblock_Website_Banner_e87a78d7-b21e-4036-a932-b3c44a87e343.png",
-        "mobile_image": "shopify:\/\/shop_images\/Voxblock-MOBILE-banner.png",
+        "image": "shopify://shop_images/Voxblock_Website_Banner_e87a78d7-b21e-4036-a932-b3c44a87e343.png",
+        "mobile_image": "shopify://shop_images/Voxblock-MOBILE-banner.png",
         "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -35,16 +35,34 @@
     "main": {
       "type": "main-collection",
       "blocks": {
+        "promotion_image_gPTqgX": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "image": "shopify://shop_images/author_footer-image-desktop-3200x1200.jpg",
+            "mobile_image": "shopify://shop_images/author_footer-image-desktop-3200x1200.jpg",
+            "title": "{{ collection.title }}",
+            "content": "<p>Listen on the screen-free audiobook player from Voxblock.</p>",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#52B1AE",
+            "overlay_opacity": 85
+          }
+        },
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
           "settings": {
             "position": 1,
             "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/how does it work_desktop.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video": "shopify://files/videos/how does it work_desktop.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "How our books work",
             "content": "",
-            "link_url": "shopify:\/\/pages\/how-does-it-work",
+            "link_url": "shopify://pages/how-does-it-work",
             "link_text": "Read more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
@@ -55,6 +73,7 @@
         }
       },
       "block_order": [
+        "promotion_image_gPTqgX",
         "promotion_video_CHwxAJ"
       ],
       "settings": {
@@ -88,7 +107,7 @@
             "style": "fill",
             "size": "lg",
             "text": "Click here to learn more",
-            "url": "shopify:\/\/products\/voxblock-player",
+            "url": "shopify://products/voxblock-player",
             "background": "",
             "text_color": ""
           }
@@ -104,12 +123,16 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "image": "shopify://shop_images/author_footer-image-desktop-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
+        "background": "#eaeaea",
+        "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 16
+        "overlay_opacity": 16,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     }
   },
