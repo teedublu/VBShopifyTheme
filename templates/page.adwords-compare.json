@@ -256,6 +256,17 @@
     "proof": {
       "type": "testimonials",
       "blocks": {
+        "testimonial_6prpmp": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 5,
+            "author": "The Evening Standard",
+            "title": "Best for user friendliness",
+            "content": "<p>We love the battery life on the Voxblock, which unlike some other players will last for days not hours.</p>"
+          }
+        },
         "quote_independent": {
           "type": "testimonial",
           "settings": {
@@ -291,6 +302,7 @@
         }
       },
       "block_order": [
+        "testimonial_6prpmp",
         "quote_independent",
         "quote_loretta",
         "quote_laura"
