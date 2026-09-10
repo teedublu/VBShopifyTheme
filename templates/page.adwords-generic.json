@@ -1,0 +1,541 @@
+{
+  "sections": {
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "hero_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/homepage-hero_image_med-desktop.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Screen-free audiobook player for kids",
+            "title": "Stories they can play themselves",
+            "content": "<p>Voxblock is a simple audiobook player for children. Each story is a small physical book that slots into the player. No screen, no downloads, no streaming, no subscription. Just press play.</p><p><em>“Best kids’ audio player for ease of use” – The Independent</em></p>",
+            "link_text": "Start with a Starter Pack",
+            "link_url": "/collections/voxblock-starter-pack-collection",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#197177",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "hero_image"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "how_it_works": {
+      "type": "multi-column",
+      "blocks": {
+        "step_1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/how-it-works-image-a-v1.26.png",
+            "column_size": "3",
+            "title": "1. Pick a book from the shelf",
+            "heading_tag": "h4",
+            "content": "<p>Every audiobook is a small, sturdy book. Children choose by cover, just like a real bookcase.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "step_2": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/how-it-works-image-b-v1.26.png",
+            "column_size": "3",
+            "title": "2. Slot it into the player",
+            "heading_tag": "h4",
+            "content": "<p>The story is ready as soon as the book is in. Nothing to pair, download or set up.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "step_3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/how-it-works-image-c-v1.26.png",
+            "column_size": "3",
+            "title": "3. Press play",
+            "heading_tag": "h4",
+            "content": "<p>Five big buttons: play, skip and volume. Nothing else to learn.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "medium",
+        "text_alignment": "center",
+        "subheading": "How it works",
+        "title": "Three steps, no grown-up required",
+        "content": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
+    },
+    "packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "gruffalo-and-friends-starter-pack",
+          "young-explorers-starter-pack",
+          "roald-dahl-selection-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 3,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 3,
+        "subheading": "Start with a Starter Pack",
+        "title": "Player plus their first books, at a saving",
+        "content": "<p>Every pack includes the Voxblock player and a set of audiobooks chosen for an age group. Pick a colour, and it's ready to gift.</p>",
+        "link_url": "/collections/voxblock-starter-pack-collection",
+        "link_text": "See all starter packs and intro packs from £59.99",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "heading_gradient": "",
+        "product_card_background": "#ffffff",
+        "product_card_text_color": "#2a555a"
+      }
+    },
+    "product": {
+      "type": "featured-product",
+      "blocks": {
+        "product_title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "product_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Already know which stories they'll love? Buy the player on its own and pick from 350+ audiobooks, from The Gruffalo to Percy Jackson.</p>"
+          }
+        },
+        "product_price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "product_rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "product_variants": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "product_buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "offer_delivery": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-truck",
+            "icon_width": 24,
+            "title": "Free UK delivery",
+            "content": "<p>On all orders over £25.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        },
+        "offer_guarantee": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-shield",
+            "icon_width": 24,
+            "title": "Money back guarantee",
+            "content": "<p>If it isn't a hit, send it back.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        }
+      },
+      "block_order": [
+        "product_title",
+        "product_text",
+        "product_price",
+        "product_rating",
+        "product_variants",
+        "product_buy",
+        "offer_delivery",
+        "offer_guarantee"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "voxblock-player",
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid_highlight",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 3,
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "why": {
+      "type": "benefit-cards",
+      "blocks": {
+        "card_screen": {
+          "type": "card",
+          "settings": {
+            "icon": "no-screen",
+            "title": "No screen, no ads",
+            "content": "<p>Nothing to scroll, tap or get distracted by. Just the story.</p>"
+          }
+        },
+        "card_wifi": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "No wifi, no streaming",
+            "content": "<p>Works in the car, on the plane and at Grandma's. Nothing to set up.</p>"
+          }
+        },
+        "card_price": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "One-off price, no fees",
+            "content": "<p>No subscription. You own the books, so they can be shared and passed on.</p>"
+          }
+        },
+        "card_stories": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "350+ stories, ages 3 to 11",
+            "content": "<p>Classics, bedtime stories, facts and learning, grouped by age.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_screen",
+        "card_wifi",
+        "card_price",
+        "card_stories"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Why parents choose Voxblock",
+        "title": "Made for small hands and long car journeys",
+        "content": "",
+        "text_alignment": "start",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "card_background": "#ffffff",
+        "card_text_color": "#565656",
+        "card_heading_color": "#197177",
+        "icon_background": "#e9f6f4",
+        "icon_color": "#197177",
+        "icon_accent": "#ff9e57"
+      }
+    },
+    "stats": {
+      "type": "impact-text",
+      "blocks": {
+        "stat_titles": {
+          "type": "item",
+          "settings": {
+            "title": "350+",
+            "subheading": "audiobooks in the collection",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        },
+        "stat_minutes": {
+          "type": "item",
+          "settings": {
+            "title": "30.5m",
+            "subheading": "minutes listened in 2025",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        },
+        "stat_zero": {
+          "type": "item",
+          "settings": {
+            "title": "£0",
+            "subheading": "in subscriptions, ever",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "stat_titles",
+        "stat_minutes",
+        "stat_zero"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 0.8,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "heading_text_color": "#ff9e57",
+        "heading_gradient": "",
+        "text_color": "#2a555a",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "proof": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_independent": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 5,
+            "author": "The Independent",
+            "title": "Best kids’ audio player for ease of use",
+            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup. The Voxblock is ready and raring to go.</p>"
+          }
+        },
+        "quote_laura": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Laura · Jan 2026",
+            "title": "Great audio books",
+            "content": "<p>My kids have loved using Voxblock and actually explained to me how they work. My daughter listened to ‘I am Rebel’ while she knitted, and finished it in a couple of sittings!</p>"
+          }
+        },
+        "quote_anna": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Anna · Jan 2026",
+            "title": "Helped my daughter in hospital",
+            "content": "<p>Can't tell you how much this has helped our daughter with being in hospital. I've recommended to so many people!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "quote_independent",
+        "quote_laura",
+        "quote_anna"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "Trusted by families across the UK and Australia",
+        "title": "What parents say",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "#197177",
+        "background_gradient": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "heading_gradient": "",
+        "testimonial_card_background": "#2a8188",
+        "testimonial_card_text_color": "#ffffff"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_age": {
+          "type": "item",
+          "settings": {
+            "title": "What ages is Voxblock for?",
+            "content": "<p>Ages 3 to 11. The player is the same for everyone; the books are grouped by age so you can start where they are and grow the shelf.</p>"
+          }
+        },
+        "faq_wifi": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need wifi or downloads?",
+            "content": "<p>No. There is nothing to connect, download or log into. The player works the moment it is charged.</p>"
+          }
+        },
+        "faq_pack": {
+          "type": "item",
+          "settings": {
+            "title": "What's in a Starter Pack?",
+            "content": "<p>[Answer to be added]</p>"
+          }
+        },
+        "faq_battery": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>[Answer to be added]</p>"
+          }
+        },
+        "faq_guarantee": {
+          "type": "item",
+          "settings": {
+            "title": "What if my child doesn't get on with it?",
+            "content": "<p>[Answer to be added]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_age",
+        "faq_wifi",
+        "faq_pack",
+        "faq_battery",
+        "faq_guarantee"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Questions",
+        "title": "Good to know before you buy",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#197177"
+      }
+    },
+    "final_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "cta_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Ready when they are",
+            "heading_tag": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "cta_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Charge it, slot a book in, press play.</p>"
+          }
+        },
+        "cta_button": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Start with a Starter Pack",
+            "url": "/collections/voxblock-starter-pack-collection",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "cta_heading",
+        "cta_text",
+        "cta_button"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "how_it_works",
+    "packs",
+    "product",
+    "why",
+    "stats",
+    "proof",
+    "faq",
+    "final_cta"
+  ]
+}
