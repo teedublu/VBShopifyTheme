@@ -128,13 +128,18 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
                   {%- else -%}
                     {%- assign cell_class = '' -%}
                   {%- endif -%}
+                  {%- if block.settings.good_answer == 'no' -%}
+                    {%- if test_value == 'yes' or test_value == 'true' -%}{%- assign verdict = 'bad' -%}{%- elsif test_value == 'no' or test_value == 'false' -%}{%- assign verdict = 'good' -%}{%- else -%}{%- assign verdict = 'text' -%}{%- endif -%}
+                  {%- else -%}
+                    {%- if test_value == 'yes' or test_value == 'true' -%}{%- assign verdict = 'good' -%}{%- elsif test_value == 'no' or test_value == 'false' -%}{%- assign verdict = 'bad' -%}{%- else -%}{%- assign verdict = 'text' -%}{%- endif -%}
+                  {%- endif -%}
                   <td class="{{ cell_class }}">
-                    {%- if test_value == 'yes' or test_value == 'true' -%}
+                    {%- if verdict == 'good' -%}
                       <span class="ct-value">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="{{ tick_color }}"/><path d="M7.5 12.5l3 3 6-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         <span>{{ raw_value | escape }}</span>
                       </span>
-                    {%- elsif test_value == 'no' or test_value == 'false' -%}
+                    {%- elsif verdict == 'bad' -%}
                       <span class="ct-value">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="{{ cross_color }}" stroke-width="2.2"/><path d="M9 9l6 6M15 9l-6 6" stroke="{{ cross_color }}" stroke-width="2.2" stroke-linecap="round"/></svg>
                         <span>{{ raw_value | escape }}</span>
@@ -208,7 +213,7 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
     {
       "type": "header",
       "content": "Columns",
-      "info": "Leave column 2 or 3 blank to hide it. Row values of \"Yes\" or \"No\" show a tick or a cross."
+      "info": "Leave column 2 or 3 blank to hide it. Row values of \"Yes\" or \"No\" show a tick or a cross; each row chooses which answer earns the tick."
     },
     {
       "type": "text",
@@ -333,6 +338,17 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
           "id": "value_3",
           "label": "Column 3 value",
           "default": "Yes"
+        },
+        {
+          "type": "select",
+          "id": "good_answer",
+          "label": "Which answer gets the tick?",
+          "info": "Use \"No\" for rows like \"Wifi needed\", where No is the better answer.",
+          "options": [
+            {"value": "yes", "label": "Yes"},
+            {"value": "no", "label": "No"}
+          ],
+          "default": "yes"
         }
       ]
     }

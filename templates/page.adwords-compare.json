@@ -57,19 +57,21 @@
         "row_wifi": {
           "type": "row",
           "settings": {
-            "label": "Wifi needed",
-            "value_1": "No",
-            "value_2": "Yes",
-            "value_3": "Yes"
+            "label": "Works without wifi",
+            "value_1": "Yes",
+            "value_2": "No",
+            "value_3": "No",
+            "good_answer": "yes"
           }
         },
         "row_app": {
           "type": "row",
           "settings": {
-            "label": "App required",
-            "value_1": "No",
-            "value_2": "Yes",
-            "value_3": "Yes"
+            "label": "Works without an app",
+            "value_1": "Yes",
+            "value_2": "No",
+            "value_3": "No",
+            "good_answer": "yes"
           }
         },
         "row_format": {
@@ -78,7 +80,8 @@
             "label": "Stories come as",
             "value_1": "Physical books",
             "value_2": "Cards",
-            "value_3": "Toys"
+            "value_3": "Toys",
+            "good_answer": "yes"
           }
         },
         "row_box": {
@@ -87,7 +90,8 @@
             "label": "Works straight out of the box",
             "value_1": "Yes",
             "value_2": "No",
-            "value_3": "No"
+            "value_3": "No",
+            "good_answer": "yes"
           }
         },
         "row_price": {
@@ -96,7 +100,8 @@
             "label": "Player price",
             "value_1": "£49.99",
             "value_2": "£89.99",
-            "value_3": "£104.99"
+            "value_3": "£104.99",
+            "good_answer": "yes"
           }
         },
         "row_age": {
@@ -105,7 +110,8 @@
             "label": "Age range",
             "value_1": "Toddlers to teens",
             "value_2": "Younger",
-            "value_3": "Youngest"
+            "value_3": "Youngest",
+            "good_answer": "yes"
           }
         }
       },
