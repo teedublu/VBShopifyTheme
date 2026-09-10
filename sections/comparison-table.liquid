@@ -90,12 +90,23 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
       margin-block-start: var(--spacing-4);
     }
     @media screen and (max-width: 699px) {
+      /* Fit all columns on a phone instead of scrolling the table sideways */
+      #shopify-section-{{ section.id }} .comparison-table { padding: var(--spacing-1); }
+      #shopify-section-{{ section.id }} .comparison-table table { min-width: 0; table-layout: fixed; }
       #shopify-section-{{ section.id }} .comparison-table th,
       #shopify-section-{{ section.id }} .comparison-table td {
-        padding: var(--spacing-3) var(--spacing-3);
-        font-size: var(--text-sm);
+        padding: var(--spacing-3) var(--spacing-1-5);
+        font-size: var(--text-xs);
+        line-height: 1.3;
+        overflow-wrap: anywhere;
       }
-      #shopify-section-{{ section.id }} .comparison-table th { font-size: var(--text-sm); }
+      #shopify-section-{{ section.id }} .comparison-table th { font-size: var(--text-xs); }
+      #shopify-section-{{ section.id }} .comparison-table th:first-child,
+      #shopify-section-{{ section.id }} .comparison-table td:first-child { width: 34%; }
+      #shopify-section-{{ section.id }} .comparison-table th.ct-highlight,
+      #shopify-section-{{ section.id }} .comparison-table tr:last-child td.ct-highlight { border-radius: var(--rounded-sm); }
+      #shopify-section-{{ section.id }} .ct-value { flex-direction: column; gap: 2px; }
+      #shopify-section-{{ section.id }} .ct-value svg { width: 18px; height: 18px; }
     }
   </style>
 
