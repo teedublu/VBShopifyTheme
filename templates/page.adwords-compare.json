@@ -44,13 +44,6 @@
         "spacing": "small"
       }
     },
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "content_width": "80ch",
-        "show_title": false
-      }
-    },
     "comparison": {
       "type": "comparison-table",
       "blocks": {
@@ -545,7 +538,6 @@
   },
   "order": [
     "hero",
-    "main",
     "comparison",
     "benefits",
     "stats",
