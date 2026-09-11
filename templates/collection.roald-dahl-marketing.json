@@ -15,23 +15,82 @@
         "full_width": true,
         "allow_transparent_header": true,
         "enable_parallax": false,
+        "link_objects": true,
         "show_collection_title": true,
         "show_collection_description": false,
         "show_collection_image": true,
-        "collection_title_size": "h0",
+        "collection_title_size": "h2",
         "image_size": "sm",
-        "image": "shopify://shop_images/audiobooks-library_banner-web-3200x1200.jpg",
+        "image": "shopify://shop_images/collection-roald-dahl-selection-banner.26.1.0.png",
         "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "featured_product": "",
         "featured_product_heading": "Featured product",
-        "text_color": "#ffffff",
+        "text_color": "#269EA1",
         "overlay_color": "#000000",
-        "overlay_opacity": 25
+        "overlay_opacity": 0
+      }
+    },
+    "rich_text_UbbHFh": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_4Rep4D": {
+          "type": "heading",
+          "settings": {
+            "text": "It's Roald Dahl Day",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_czVPrU": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>This weekend (11th -13th September) we are celebrating Roald Dahl's birthday. Discover exclusive discounts over the weekend, including £10 off the Roald Dahl Starter Pack and 10% off Roald Dahl audiobooks. Plus, we are hiding 5 golden tokens in 5 random orders for your chance to win a prize.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_4Rep4D",
+        "richtext_czVPrU"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "promotion_image_twRARp": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 4,
+            "column_span": "1",
+            "image": "shopify://shop_images/collection-promo-image-golden-26.1.0.png",
+            "mobile_image": "shopify://shop_images/collection-promo-image-golden-26.1.0.png",
+            "title": "",
+            "content": "",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "promotion_image_twRARp"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
@@ -84,6 +143,8 @@
         "team_avatar_width": 160,
         "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
         "answer_time": "Average answer time: 24h",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
@@ -101,6 +162,7 @@
   },
   "order": [
     "banner",
+    "rich_text_UbbHFh",
     "main",
     "faq_UUi7Qn"
   ]
