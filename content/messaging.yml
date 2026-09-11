@@ -1,0 +1,143 @@
+# Voxblock messaging bank
+#
+# The single source of truth for claims and FAQ answers on landing pages.
+#
+# RULE: page FAQ blocks cite an `id` from `faq:` below. If a page needs a question this
+# bank cannot answer, write `TODO(messaging): <question>` in the template -- never prose.
+# A gap that looks like a gap gets fixed; a gap that looks like an answer ships.
+#
+# Sources, in order of authority:
+#   1. templates/page.faq.json            20 live Q&As
+#   2. templates/page.returns.json        returns, repair, refund windows
+#   3. templates/page.happiness-guarantee.json
+#   4. templates/page.how-it-works.json   feature descriptions
+#   5. templates/page.schools.json        battery figures
+#   6. Live Shopify product descriptions  pack contents
+# NOTE: Drive's "Customer messaging guide.pdf" is a Mirakl/Tesco marketplace seller guide,
+# not a Voxblock brand document. Not a source.
+
+meta:
+  updated: 2026-09-11
+  owner: tom@voxblock.co.uk
+
+tone:
+  - Plain and short. Sentences a tired parent reads at 8pm.
+  - Second person. "You" and "your child", not "the customer".
+  - British spelling. No exclamation marks in body copy.
+  - Say what the product does, not how it feels about itself.
+  - Never open an answer with "Yes!" or "Absolutely" -- answer, then explain.
+
+facts:
+  product:
+    screen_free: true
+    connectivity: "None. No wifi, no app, no downloads, no streaming, no subscription."
+    media: "Each audiobook is a physical block of recycled card. The audio is stored on the block itself."
+    battery: "About 14 hours of playing time, up to 25 days on standby."
+    battery_source: "templates/page.schools.json -- VERIFY before reusing in new ad copy"
+    out_of_box: "Ships charged and plays straight away. There is NO charge-before-first-use step."
+    charging: "USB-C cable included. Charge from a USB mains adapter in a wall socket."
+    charging_avoid: "Not laptop chargers, car chargers, or multi-USB ports -- they do not charge it properly."
+    auto_off: "Switches itself off after 5 minutes of inactivity."
+    bedtime_mode: "Plays for 20 minutes, then goes to standby."
+    travel_mode: "Stops the player switching on in a bag and draining the battery."
+    bookmarking: "Returns to where you left off, even if the block was swapped in between."
+    chapter_skip: true
+    audio_out: "Built-in speaker and a headphone jack."
+    catalogue: "Over 200 titles, regularly added to."
+    packaging: "Card and paper. No plastic."
+    age_range: "Ages 3 to 11 and beyond. Most children can work it on their own from around age two."
+
+  commerce:
+    starter_pack_contents: "A Voxblock player, three audiobooks, a protective bumper and a USB-C charging cable."
+    ships_to: "UK and Australia."
+    ships_elsewhere: "Ireland and Europe are not orderable on the website; enquiries to hello@voxblock.co.uk."
+    guarantee: "100 days to return for a full refund, no questions asked, with a pre-paid label."
+    guarantee_exclusion: "NOT available in Australia. Any guarantee claim must carry this."
+    repair: "Repairs are free, and return shipping is covered. Within two years of purchase a broken player is repaired or replaced."
+    pricing: "TODO(messaging): do not hard-code prices in evergreen page copy -- starter packs range and change. Link to the product instead."
+    delivery_times: "TODO(messaging): delivery cost and timescales are not stated anywhere in the theme."
+
+claims:
+  approved:
+    - "Screen-free"
+    - "No wifi, no app, no downloads"
+    - "Works straight out of the box"
+    - "Children can use it on their own"
+    - "Nothing to configure, nothing to scroll"
+    - "Best kids' audio player for ease of use -- The Independent"
+  banned:
+    - "Any money-back-guarantee claim without the Australia exclusion."
+    - "Any age range other than the one in faq.age. Settled 11 Sep 2026."
+    - "Specific prices in evergreen copy."
+    - "'Educational' or literacy-outcome claims -- no evidence in the theme to support them."
+    - "Battery figures other than 14 hours / 25 days standby."
+    - "Anything implying the player must be charged before first use. It ships ready to play."
+
+conflicts:
+  age_range:
+    status: "RESOLVED 11 Sep 2026 -- see faq.age. 'and beyond' carries the older-listeners
+      range and the senior player without narrowing the headline claim."
+    residual: "templates/page.faq.json still says 'toddlers to teenagers' and 'from age two'.
+      Not wrong, but not the canonical phrasing. That page is not yet governed by the bank."
+
+faq:
+  - id: no-wifi
+    q: "Does it need wifi or downloads?"
+    aliases: ["Does Voxblock need wifi or downloads?"]
+    a: "No. There is nothing to connect, download or log into. The audio is stored on each block, so the player works the moment it comes out of the box."
+  - id: what-is-a-block
+    q: "What are the audiobooks made of?"
+    a: "Recycled card. Each story is a small, sturdy block that slots into the player."
+  - id: age
+    q: "What ages is Voxblock for?"
+    aliases: ["What age is it for?", "What age is Voxblock suitable for?"]
+    a: "Ages 3 to 11 and beyond. The player is the same for everyone; the books are grouped by age so you can start where they are and grow the shelf."
+  - id: how-blocks-work
+    q: "How do the audiobooks work?"
+    a: "Place it on the player. Done."
+    note: "Deliberately terse -- adopted from page.adwords-compare.json, which read better than the longer draft."
+  - id: pack-contents
+    q: "What's in a Starter Pack?"
+    a: "A Voxblock player, three audiobooks, a protective bumper and a USB-C charging cable. There is no app to install and nothing to set up."
+  - id: battery
+    q: "How long does the battery last?"
+    a: "About 14 hours of playing time, and up to 25 days on standby. It charges over USB-C with the cable in the box."
+  - id: charging-how
+    q: "How do I charge the player?"
+    a: "Use the USB-C cable provided with a USB adapter in a wall socket, and let it charge fully. Avoid laptop chargers, car chargers and multi-USB ports -- they do not charge it properly."
+  - id: guarantee
+    q: "What if my child doesn't get on with it?"
+    a: "You have 100 days to try it. If it is not right, get in touch and we will send a pre-paid shipping label and refund you in full, no questions asked."
+    note: "Not available in Australia. If the page can be seen from Australia, say so."
+  - id: repair
+    q: "What if it breaks?"
+    a: "Send it back and we will repair it free of charge, including return postage. Within two years of purchase we will repair or replace it."
+  - id: lose-place
+    q: "Will my child lose their place in the story?"
+    a: "No. The player returns to the same point next time, even if another story was played in between."
+  - id: bedtime-mode
+    q: "Can it play at bedtime without staying on all night?"
+    a: "Yes. Bedtime mode plays for 20 minutes and then goes to standby. The player also switches itself off after 5 minutes of inactivity."
+  - id: headphones
+    q: "Can they listen with headphones?"
+    a: "Yes. The player has a built-in speaker and a headphone jack."
+  - id: control-content
+    q: "How do I control what my child listens to?"
+    a: "The player has no internet connection, so the only stories available are the ones on the blocks you own. No feed, no recommendations, nothing to stumble into."
+  - id: catalogue
+    q: "What stories can I get?"
+    a: "Over 200 titles, from picture books to longer listens for older children, with more added regularly."
+  - id: how-to-listen
+    q: "How can my child listen to The Gruffalo?"
+    aliases: ["How can my child listen to the story?", "How do we listen to it?"]
+    a: "On a Voxblock player. The story is a small block of recycled card that slots into the player - no screen, no wifi, no app and nothing to download. The Gruffalo and Friends Starter Pack has the player and three Julia Donaldson stories together."
+    note: "Story title is page-specific; the claim half of the sentence is not."
+  - id: shipping
+    q: "Where do you deliver?"
+    a: "The UK and Australia. For Ireland and Europe, email hello@voxblock.co.uk."
+  - id: recycling
+    q: "Is the packaging recyclable?"
+    a: "Yes. It is all card and paper, with no plastic."
+  - id: travel
+    q: "Can we take it out with us?"
+    a: "Yes. Travel mode stops it switching on in a bag, and it needs no signal, so it works in the car or on a plane."
