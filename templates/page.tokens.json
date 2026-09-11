@@ -76,7 +76,7 @@
         "richtext_JJFwCm": {
           "type": "richtext",
           "settings": {
-            "content": "<p>With every audiobook purchased, you will earn Voxblock tokens. Collect them as you go and once you have 10, you will receive a FREE audiobook of your choice.</p><p>Helping you build your child build their collection a little faster.</p>"
+            "content": "<p>With every audiobook purchased*, you will earn Voxblock tokens. Collect them as you go and once you have 10, you will receive a FREE audiobook of your choice.</p><p>Helping you build your child build their collection a little faster.</p>"
           }
         }
       },
@@ -146,7 +146,7 @@
             "icon_background": "",
             "icon_color": "",
             "title": "Collect tokens",
-            "content": "<p>10 tokens = 1 free audiobook</p>"
+            "content": "<p>10 tokens = 1 free audiobook<br/>(You will receive tokens on orders placed through our website).</p>"
           }
         },
         "item_fMrYne": {
@@ -307,9 +307,9 @@
           "type": "item",
           "settings": {
             "column_size": "3",
-            "title": "Double Tokens Days so you can collect faster*",
+            "title": "Double Tokens Days so you can collect faster",
             "heading_tag": "h4",
-            "content": "<p>Every World Book Day (March) and our birthday (August), we host double tokens days to give you an opportunity to fill up your cards even faster</p>",
+            "content": "<p>Every World Book Day (March) and our birthday (August), we host double tokens days to give you an opportunity to fill up your cards even faster. </p>",
             "link_url": "",
             "link_text": "",
             "link_style": "link"
@@ -353,7 +353,7 @@
         "richtext_Rb7KzD": {
           "type": "richtext",
           "settings": {
-            "content": "<p>*please note these days are classed as an offer and may be subject to change.</p>"
+            "content": "<p>*please note we don't extend our tokens on books purchased outside of our website.</p>"
           }
         }
       },
@@ -374,6 +374,7 @@
     },
     "contact_CJJrdg": {
       "type": "contact",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "subheading": "",
