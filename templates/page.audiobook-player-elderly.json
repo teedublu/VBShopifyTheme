@@ -1,61 +1,101 @@
 /*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
+ * PAGE BRIEF -- /pages/audiobook-player-for-the-elderly
  *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
+ * Audience   Adults buying a simple audiobook player, for themselves or for a
+ *            parent or grandparent. Search terms: "audiobook player for the
+ *            elderly", "simple audiobook player for seniors", "talking book
+ *            player". NOT a children's audience -- no child imagery, no child copy.
+ * Ad group   Accessible & Adult Listeners (Google Ads, built paused 11 Sep 2026).
+ * Promise    A player with five buttons and no screen. Nothing to set up.
+ * Offer      The player, /products/audiobook-player-elderly, GBP 39.99-49.99.
+ *            Then the adult classics collection at GBP 15.99 a title.
+ * CTA        "See the player" -> /products/audiobook-player-elderly (senior template).
+ *
+ * WHY THIS SHAPE
+ *   The old page opened with ~900 words of essay and put the offer below it. 201
+ *   people in the last period produced 3 carts and 1 purchase. The essay is kept,
+ *   for the organic traffic it earns, but it now sits below the offer and carries
+ *   the H1 via main-page.
+ *
+ * DELIBERATELY ABSENT
+ *   - Testimonials. Every review in the theme is a parent talking about a child.
+ *     None is usable here. Do not borrow the children's quotes.
+ *   - Any accessibility or medical claim (sight loss, dementia, arthritis). The
+ *     product has not been validated for these and the bank has no source for them.
+ *   - The Older Listeners Starter Pack. Its three books are The Butterfly Lion,
+ *     Kid Normal and The Train to Impossible Places -- guide age 8+. It is a pack
+ *     for older CHILDREN, not for adults, and must not be sold from this page.
+ *
+ * RISK  Adult classics stock is 1-5 units a title, ~58 units across 31 titles.
+ *       Paid traffic will exhaust individual titles. Check before raising budget.
+ *
+ * Copy is governed by content/messaging.yml. Run bin/check-page.py before merge.
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "hero_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/older-listeners-main-header.png",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Audiobooks for older listeners",
+            "title": "An audiobook player with no screen",
+            "content": "<p>Voxblock is a small player with five buttons and no screen. Each book is a block of card. Put it in the player and the story starts.</p><p>No app, no wifi, no account, no subscription. It arrives charged and ready to play.</p>",
+            "link_text": "See the player",
+            "link_url": "/products/audiobook-player-elderly",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#197177",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "hero_image"
+      ],
       "settings": {
-        "content_width": "80ch",
-        "show_title": true
+        "full_width": true,
+        "spacing": "small"
       }
     },
-    "featured_product_wP4963": {
+    "offer": {
       "type": "featured-product",
       "blocks": {
-        "vendor_48wK9T": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title_EkciRc": {
+        "product_title": {
           "type": "title",
           "settings": {
             "heading_tag": "h2"
           }
         },
-        "badges_MiVmWf": {
-          "type": "badges",
-          "settings": {}
+        "product_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The player on its own, with a built-in speaker and a headphone jack. Pick a colour with a protective bumper, or take it without.</p>"
+          }
         },
-        "price_xWJjND": {
+        "product_price": {
           "type": "price",
           "settings": {
             "show_taxes_notice": false
           }
         },
-        "rating_AePCkr": {
+        "product_rating": {
           "type": "rating",
           "settings": {
             "show_empty": false
           }
         },
-        "separator_JmfYBc": {
-          "type": "separator",
-          "settings": {}
-        },
-        "description_HrPt8R": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_WRqDWk": {
+        "product_variants": {
           "type": "variant_picker",
           "settings": {
             "hide_sold_out_variants": false,
@@ -66,123 +106,406 @@
             "size_chart_page": ""
           }
         },
-        "buy_buttons_7hyT74": {
+        "product_buy": {
           "type": "buy_buttons",
           "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff",
             "payment_button_background": "",
             "payment_button_text_color": ""
           }
         },
-        "pickup_availability_9qWqhd": {
-          "type": "pickup_availability",
-          "settings": {}
+        "offer_delivery": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-truck",
+            "icon_width": 24,
+            "title": "Free UK delivery",
+            "content": "<p>On all orders over £25.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        },
+        "offer_guarantee": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-shield",
+            "icon_width": 24,
+            "title": "100 days to change your mind",
+            "content": "<p>Send it back for a full refund with a pre-paid label. Not available in Australia.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        },
+        "offer_repair": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-return",
+            "icon_width": 24,
+            "title": "Free repairs for two years",
+            "content": "<p>Return postage covered. We repair it or replace it.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
         }
       },
       "block_order": [
-        "vendor_48wK9T",
-        "title_EkciRc",
-        "badges_MiVmWf",
-        "price_xWJjND",
-        "rating_AePCkr",
-        "separator_JmfYBc",
-        "description_HrPt8R",
-        "variant_picker_WRqDWk",
-        "buy_buttons_7hyT74",
-        "pickup_availability_9qWqhd"
+        "product_title",
+        "product_text",
+        "product_price",
+        "product_rating",
+        "product_variants",
+        "product_buy",
+        "offer_delivery",
+        "offer_guarantee",
+        "offer_repair"
       ],
       "settings": {
         "full_width": true,
-        "product": "voxblock-player",
+        "product": "audiobook-player-elderly",
         "desktop_media_width": 55,
         "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
+        "mobile_media_size": "contained",
         "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
+        "enable_video_autoplay": false,
         "enable_video_looping": false,
-        "enable_image_zoom": true,
+        "enable_image_zoom": false,
         "max_image_zoom_level": 3,
-        "background": "",
+        "background": "#ffffff",
         "background_gradient": "",
-        "text_color": "",
+        "text_color": "#565656",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
       }
     },
-    "featured_collection_hy8bdk": {
-      "type": "featured-collection",
+    "why": {
+      "type": "benefit-cards",
       "blocks": {
-        "promotion_video_dq9Qdc": {
-          "type": "promotion_video",
+        "card_screen": {
+          "type": "card",
           "settings": {
-            "position": 4,
-            "column_span": "1",
-            "video": "shopify://files/videos/how does it work_desktop.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "How Voxblock works",
-            "content": "",
-            "link_url": "shopify://pages/how-does-it-work",
-            "link_text": "Read more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "icon": "no-screen",
+            "title": "No screen",
+            "content": "<p>Nothing to swipe, tap or read. The player does one thing.</p>"
           }
         },
-        "promotion_image_xREMmQ": {
-          "type": "promotion_image",
+        "card_buttons": {
+          "type": "card",
           "settings": {
-            "position": 1,
-            "column_span": "1",
-            "image": "shopify://shop_images/player-adults-lifestyle.png",
-            "title": "Audiobooks for Adults",
-            "content": "<p>Simple and easy to use</p>",
-            "link_url": "",
-            "link_text": "",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "icon": "hands",
+            "title": "Five buttons",
+            "content": "<p>Play, skip forward, skip back, volume up, volume down. That is all of them.</p>"
+          }
+        },
+        "card_offline": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "No wifi, no app, no account",
+            "content": "<p>It never connects to anything, so there is nothing to set up and nothing to log into.</p>"
+          }
+        },
+        "card_listen": {
+          "type": "card",
+          "settings": {
+            "icon": "ear",
+            "title": "Speaker or headphones",
+            "content": "<p>A built-in speaker, and a headphone jack for listening without disturbing anyone.</p>"
           }
         }
       },
       "block_order": [
-        "promotion_video_dq9Qdc",
-        "promotion_image_xREMmQ"
+        "card_screen",
+        "card_buttons",
+        "card_offline",
+        "card_listen"
       ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Why it suits older listeners",
+        "title": "Simple because there is nothing to it",
+        "content": "",
+        "text_alignment": "start",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "card_background": "#ffffff",
+        "card_text_color": "#565656",
+        "card_heading_color": "#197177",
+        "icon_background": "#e9f6f4",
+        "icon_color": "#197177",
+        "icon_accent": "#ff9e57"
+      }
+    },
+    "classics": {
+      "type": "featured-collection",
       "settings": {
         "collection": "audiobooks-for-older-listeners",
         "hide_empty": false,
-        "products": [],
+        "products": [
+          "pride-and-prejudice",
+          "emma",
+          "little-women",
+          "the-great-gatsby",
+          "sense-and-sensibility",
+          "around-the-world-in-eighty-days",
+          "the-master-and-margarita",
+          "middlemarch"
+        ],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
-        "products_count": 11,
+        "products_count": 8,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "A selection of titles",
-        "content": "<p>A curated collection of adult classics, chosen for nostalgia and immersive listening.</p>",
+        "products_per_row_desktop": 4,
+        "subheading": "Choose the stories",
+        "title": "Classics for grown-up listeners",
+        "content": "<p>Austen, Dickens, Tolstoy and others, each on its own block. Start with one, or build a shelf.</p>",
         "link_url": "shopify://collections/audiobooks-for-older-listeners",
-        "link_text": "View all",
-        "background": "",
+        "link_text": "See all the adult titles",
+        "background": "#ffffff",
         "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
         "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
+        "product_card_background": "#ffffff",
+        "product_card_text_color": "#2a555a"
+      }
+    },
+    "stats": {
+      "type": "impact-text",
+      "blocks": {
+        "stat_titles": {
+          "type": "item",
+          "settings": {
+            "title": "30+",
+            "subheading": "classic titles for adults",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        },
+        "stat_battery": {
+          "type": "item",
+          "settings": {
+            "title": "14 hrs",
+            "subheading": "of playing time per charge",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        },
+        "stat_zero": {
+          "type": "item",
+          "settings": {
+            "title": "£0",
+            "subheading": "in subscriptions, ever",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_impact_text": false,
+            "animate_impact_text_duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "stat_titles",
+        "stat_battery",
+        "stat_zero"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 0.8,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "heading_text_color": "#ff9e57",
+        "heading_gradient": "",
+        "text_color": "#2a555a",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq_adult_titles": {
+          "type": "item",
+          "settings": {
+            "title": "Are there audiobooks for adults?",
+            "content": "<p>Yes. There is a separate collection of classics for adult listeners - Austen, Dickens, Tolstoy, Dostoevsky and others. It is a small collection and we are still adding to it.</p>"
+          }
+        },
+        "faq_blocks": {
+          "type": "item",
+          "settings": {
+            "title": "What are the audiobooks made of?",
+            "content": "<p>Recycled card. Each story is a small, sturdy block that slots into the player.</p>"
+          }
+        },
+        "faq_wifi": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need wifi or downloads?",
+            "content": "<p>No. There is nothing to connect, download or log into. The audio is stored on each block, so the player works the moment it comes out of the box.</p>"
+          }
+        },
+        "faq_headphones": {
+          "type": "item",
+          "settings": {
+            "title": "Can they listen with headphones?",
+            "content": "<p>Yes. The player has a built-in speaker and a headphone jack.</p>"
+          }
+        },
+        "faq_battery": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>About 14 hours of playing time, and up to 25 days on standby. It charges over USB-C with the cable in the box.</p>"
+          }
+        },
+        "faq_charging": {
+          "type": "item",
+          "settings": {
+            "title": "How do I charge the player?",
+            "content": "<p>Use the USB-C cable provided with a USB adapter in a wall socket, and let it charge fully. Avoid laptop chargers, car chargers and multi-USB ports - they do not charge it properly.</p>"
+          }
+        },
+        "faq_repair": {
+          "type": "item",
+          "settings": {
+            "title": "What if it breaks?",
+            "content": "<p>Send it back and we will repair it free of charge, including return postage. Within two years of purchase we will repair or replace it.</p>"
+          }
+        },
+        "faq_guarantee": {
+          "type": "item",
+          "settings": {
+            "title": "What if it isn't right?",
+            "content": "<p>You have 100 days to try it. If it is not right, get in touch and we will send a pre-paid shipping label and refund you in full, no questions asked. The 100-day guarantee is not available in Australia.</p>"
+          }
+        },
+        "faq_shipping": {
+          "type": "item",
+          "settings": {
+            "title": "Where do you deliver?",
+            "content": "<p>The UK and Australia. For Ireland and Europe, email hello@voxblock.co.uk.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_adult_titles",
+        "faq_blocks",
+        "faq_wifi",
+        "faq_headphones",
+        "faq_battery",
+        "faq_charging",
+        "faq_repair",
+        "faq_guarantee",
+        "faq_shipping"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Questions",
+        "title": "Good to know before you buy",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "#ffffff",
+        "accordion_text_color": "#197177"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "content_width": "60ch",
+        "show_title": true
+      }
+    },
+    "final_cta": {
+      "type": "rich-text",
+      "blocks": {
+        "cta_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Ready to listen",
+            "heading_tag": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "cta_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Charge it, put a book in, press play.</p>"
+          }
+        },
+        "cta_button": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "See the player",
+            "url": "/products/audiobook-player-elderly",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "cta_heading",
+        "cta_text",
+        "cta_button"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656"
       }
     }
   },
   "order": [
+    "hero",
+    "offer",
+    "why",
+    "classics",
+    "stats",
     "main",
-    "featured_product_wP4963",
-    "featured_collection_hy8bdk"
+    "faq",
+    "final_cta"
   ]
 }
