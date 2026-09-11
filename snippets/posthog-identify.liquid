@@ -1,4 +1,3 @@
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     // Wait for PostHog to fully load
@@ -14,18 +13,24 @@
 
     // User Identification Logic
     function identifyPostHogUser() {
-      var customerEmail = "{{ customer.email | json }}";
-      var customerId = "{{ customer.id | json }}";
+      // FIX: removed the wrapping quotes — the json filter already supplies them
+      var customerEmail = {{ customer.email | json }};
+      var customerId = {{ customer.id | json }};
+      // FIX: pulled out so the name can be built without nesting Liquid in a string
+      var firstName = {{ customer.first_name | json }};
+      var lastName = {{ customer.last_name | json }};
 
       if (customerEmail) {
         // Identify by Email (Preferred)
         posthog.identify(customerEmail);
         posthog.people.set({
           email: customerEmail,
-          name: "{{ customer.first_name | json }} {{ customer.last_name | json }}"
+          // FIX: built from the variables above, not re-rendered inside a quoted string
+          name: [firstName, lastName].filter(Boolean).join(" ")
         });
         posthog.people.set_once({
-          first_purchase_date: "{{ customer.created_at | date: '%Y-%m-%d' }}"
+          // RENAMED: created_at is account creation date, not first purchase
+          account_created_date: {{ customer.created_at | date: '%Y-%m-%d' | json }}
         });
         console.log("User identified by email:", customerEmail);
       } else if (customerId) {
