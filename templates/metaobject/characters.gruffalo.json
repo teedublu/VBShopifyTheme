@@ -399,11 +399,53 @@
         "background_gradient": "",
         "text_color": "#565656"
       }
+    },
+    "cast_heading": {
+      "type": "rich-text",
+      "blocks": {
+        "ch_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "The cast"
+          }
+        },
+        "ch_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Meet the full cast",
+            "heading_tag": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "ch_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Five characters, one deep dark wood. Tap a name to read that character's own guide.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ch_sub",
+        "ch_heading",
+        "ch_text"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
     "breadcrumbs_gruffalo",
     "hero",
+    "cast_heading",
     "item_grid_F9GWek",
     "cast_shape",
     "listen",
