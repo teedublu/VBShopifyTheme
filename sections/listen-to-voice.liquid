@@ -167,7 +167,7 @@ is itself a metaobject (no book.preview metafield) is ignored so the fallback sc
           {{ section.settings.content | replace: '[name]', metaobject.name.value | replace: '[title]', product.title }}
         </p>
 
-        <button type="button" class="bookpreview listen-to-voice__button" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ preview_file | file_url }}">
+        <button type="button" class="bookpreview listen-to-voice__button" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ preview_file | file_url }}" data-title="{{ product.title | escape }}">
           <span class="playpause"></span>
           <span class="playpause_text">
             <span class="play">{{ section.settings.play_label | escape }}</span>
