@@ -8,50 +8,6 @@
  * ------------------------------------------------------------
  */{
   "sections": {
-    "image_with_text_overlay_DH8cex": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "image_MMNaPz": {
-          "type": "image",
-          "settings": {
-            "max_width": 200,
-            "radius": 50,
-            "avatar_display": "image",
-            "avatar_bg_color": "#4a90e2",
-            "initials_font_size": 72,
-            "initials_color": "#ffffff"
-          }
-        },
-        "heading_X4DUy3": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.name.value }}",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "image_MMNaPz",
-        "heading_X4DUy3"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "{{ metaobject.header_image.value }}",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "background": "#4cb6ac",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
     "breadcrumbs_XHGrpm": {
       "type": "breadcrumbs",
       "settings": {
@@ -70,7 +26,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "text": "Who is {{ metaobject.name.value }} in The Gruffalo?",
+            "text": "A monster of mythical proportions",
             "heading_tag": "h2",
             "text_color": "",
             "gradient": ""
@@ -93,7 +49,7 @@
         "use_mo": true,
         "content_width": "medium",
         "text_position": "center",
-        "background": "#fff7f0",
+        "background": "#ffffff",
         "background_gradient": "",
         "text_color": ""
       }
@@ -166,7 +122,7 @@
           "type": "item",
           "settings": {
             "title": "Can children listen to the story on Voxblock?",
-            "content": "<p>Yes. The Gruffalo is available as a physical Voxblock audiobook, so children can listen screen-free without an app, tablet or Wi-Fi.</p>"
+            "content": "<p>Yes. The Gruffalo is available as a physical Voxblock audiobook, so children can listen screen-free with no downloads, tablet or wifi needed.</p>"
           }
         }
       },
@@ -213,9 +169,9 @@
             "icon_width": 68,
             "subheading": "Listen screen-free",
             "title": "Hear {{ metaobject.name.value }} in the story",
-            "content": "<p>Voxblock is a screen-free audiobook player for children. Place the physical Gruffalo audiobook on the player and the story starts, making it easy for children to revisit favourite characters independently.</p>",
-            "link_text": "View The Gruffalo audiobook",
-            "link_url": "/pages/audiobook/the-gruffalo",
+            "content": "<p>Voxblock is a screen-free audiobook player for children. Place the physical Gruffalo audiobook on the player and the story starts, so children can revisit favourite characters on their own. No wifi, no downloads, no subscription.</p>",
+            "link_text": "Get the Starter Pack · £69.99",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
             "background": "#f6fbfb",
             "background_gradient": "",
             "text_color": "#565656",
@@ -297,8 +253,8 @@
         "answer_time": "",
         "show_on_metaobject_handle": "the-gruffalo",
         "hide_on_metaobject_handle": "",
-        "button_text": "Read the story overview",
-        "button_url": "/pages/overview/the-gruffalo",
+        "button_text": "",
+        "button_url": "",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -310,12 +266,160 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "cover": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+            "media_width": 40,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Character guide",
+            "title": "Who is {{ metaobject.name.value }}?",
+            "title_tag": "h1",
+            "content": "<p>The Gruffalo is the monster Mouse invents to scare off Fox, Owl and Snake in the deep dark wood, and then meets for real. Terrible tusks, terrible claws, orange eyes, a poisonous wart, a black tongue and purple prickles all over his back. Underneath it all, a creature more puzzled than fearsome, outwitted by a very small mouse.</p>",
+            "link_text": "Get the Starter Pack · £69.99",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
+            "link2_text": "Just the audiobook · £9.99",
+            "link2_url": "/products/the-gruffalo",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#197177",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "cover"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "listen": {
+      "type": "listen-to-voice",
+      "settings": {
+        "eyebrow": "Hear the Gruffalo",
+        "heading": "Listen to a sample of the story",
+        "content": "Press play to hear a sample from [title], read by Imelda Staunton. Already have a Voxblock player? The Gruffalo audiobook slots straight in.",
+        "play_label": "Play sample",
+        "pause_label": "Playing sample",
+        "caption": "Sample from [title] · Published by Macmillan"
+      }
+    },
+    "starter_pack": {
+      "type": "featured-product",
+      "blocks": {
+        "sp_title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "sp_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Everything a new listener needs in one box: the Voxblock player, three Julia Donaldson audiobooks, a protective bumper and a charging cable. No wifi, no downloads, no screen. Slot a book in and press play.</p>"
+          }
+        },
+        "sp_price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "sp_variants": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "sp_buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "sp_delivery": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-truck",
+            "icon_width": 24,
+            "title": "Free UK delivery",
+            "content": "<p>On all orders over £25.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        },
+        "sp_guarantee": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-shield",
+            "icon_width": 24,
+            "title": "100-day money back guarantee",
+            "content": "<p>Full refund if it's not for you.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        }
+      },
+      "block_order": [
+        "sp_title",
+        "sp_text",
+        "sp_price",
+        "sp_variants",
+        "sp_buy",
+        "sp_delivery",
+        "sp_guarantee"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "gruffalo-and-friends-starter-pack",
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 3,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
     }
   },
   "order": [
-    "image_with_text_overlay_DH8cex",
+    "hero",
     "breadcrumbs_XHGrpm",
     "character_intro",
+    "listen",
+    "starter_pack",
     "role_in_story",
     "character_faq",
     "gruffalo_specific_faq",
