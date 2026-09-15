@@ -139,7 +139,7 @@ Supported variables
     <div class="product-card__row sample-wishlist">
       <div class="product-card__sample column left">
         {%- if product.metafields.book.preview -%}
-          <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}">
+          <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{product.metafields.book.preview | file_url}}" data-title="{{ product.title | escape }}">
             <span class="playpause"></span>
             <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
             <span class="sr-only">Play audio sample</span>

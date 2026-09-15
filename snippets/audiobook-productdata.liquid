@@ -318,7 +318,7 @@
                     <div class="detail-row">
                         <div class="detail-label">{{ block.settings.title }}</div>
                         <div class="detail-value">
-                            <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{metafields.preview | file_url}}">
+                            <button type="button" class=" h-stack gap-2 tap-area bookpreview" aria-controls="product-sample" aria-expanded="false" data-mp3="{{metafields.preview | file_url}}" data-title="{{ product.title | escape }}">
                                 <span class="playpause"></span>
                                 <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
                                 <span class="sr-only">Play audio sample</span>

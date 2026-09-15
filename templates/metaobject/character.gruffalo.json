@@ -26,7 +26,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "text": "A monster of mythical proportions",
+            "text": "More about the Gruffalo",
             "heading_tag": "h2",
             "text_color": "",
             "gradient": ""
@@ -170,8 +170,8 @@
             "subheading": "Listen screen-free",
             "title": "Hear {{ metaobject.name.value }} in the story",
             "content": "<p>Voxblock is a screen-free audiobook player for children. Place the physical Gruffalo audiobook on the player and the story starts, so children can revisit favourite characters on their own. No wifi, no downloads, no subscription.</p>",
-            "link_text": "Get the Starter Pack · £69.99",
-            "link_url": "/products/gruffalo-and-friends-starter-pack",
+            "link_text": "How Voxblock works",
+            "link_url": "/pages/how-does-it-work",
             "background": "#f6fbfb",
             "background_gradient": "",
             "text_color": "#565656",
@@ -274,19 +274,19 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
-            "media_width": 30,
-            "media_position": "end",
+            "media_width": 35,
+            "media_position": "start",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
             "subheading": "Character guide",
-            "title": "Who is {{ metaobject.name.value }}?",
+            "title": "What is a Gruffalo?",
             "title_tag": "h1",
-            "content": "<p>The Gruffalo is the monster Mouse invents to scare off Fox, Owl and Snake in the deep dark wood, and then meets for real. Terrible tusks, terrible claws, orange eyes, a poisonous wart, a black tongue and purple prickles all over his back. Underneath it all, a creature more puzzled than fearsome, outwitted by a very small mouse.</p>",
-            "link_text": "Get the Starter Pack · £69.99",
-            "link_url": "/products/gruffalo-and-friends-starter-pack",
-            "link2_text": "Just the audiobook · £9.99",
-            "link2_url": "/products/the-gruffalo",
+            "content": "<p>A Gruffalo is the made-up monster in Julia Donaldson and Axel Scheffler's picture book The Gruffalo. Mouse invents him to frighten off Fox, Owl and Snake, then meets him for real: tusks, claws, orange eyes, a poisonous wart and purple prickles.</p><p>Voxblock is a screen-free audiobook player for children, and The Gruffalo is one of the stories that slots into it.</p>",
+            "link_text": "",
+            "link_url": "",
+            "link2_text": "",
+            "link2_url": "",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
@@ -309,110 +309,13 @@
     "listen": {
       "type": "listen-to-voice",
       "settings": {
-        "eyebrow": "Hear the Gruffalo",
-        "heading": "Listen to a sample of the story",
-        "content": "Press play to hear a sample from [title], read by Imelda Staunton. Already have a Voxblock player? The Gruffalo audiobook slots straight in.",
+        "eyebrow": "Listen first",
+        "heading": "Hear the Gruffalo",
+        "content": "One minute of the story, read by Imelda Staunton. Free, no sign-up.",
         "play_label": "Play sample",
         "pause_label": "Playing sample",
         "caption": "Sample from [title] · Published by Macmillan",
         "product": "the-gruffalo"
-      }
-    },
-    "starter_pack": {
-      "type": "featured-product",
-      "blocks": {
-        "sp_title": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "sp_text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Everything a new listener needs in one box: the Voxblock player, three Julia Donaldson audiobooks, a protective bumper and a charging cable. No wifi, no downloads, no screen. Slot a book in and press play.</p>"
-          }
-        },
-        "sp_price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "sp_variants": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "sp_buy": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "#ff9e57",
-            "atc_button_text_color": "#ffffff",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "sp_delivery": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-truck",
-            "icon_width": 24,
-            "title": "Free UK delivery",
-            "content": "<p>On all orders over £25.</p>",
-            "background": "#e9f6f4",
-            "text_color": "#197177"
-          }
-        },
-        "sp_guarantee": {
-          "type": "offer",
-          "settings": {
-            "text_alignment": "start",
-            "icon_position": "aligned",
-            "icon": "picto-shield",
-            "icon_width": 24,
-            "title": "100-day money back guarantee",
-            "content": "<p>Full refund if it's not for you.</p>",
-            "background": "#e9f6f4",
-            "text_color": "#197177"
-          }
-        }
-      },
-      "block_order": [
-        "sp_title",
-        "sp_text",
-        "sp_price",
-        "sp_variants",
-        "sp_buy",
-        "sp_delivery",
-        "sp_guarantee"
-      ],
-      "settings": {
-        "full_width": true,
-        "product": "gruffalo-and-friends-starter-pack",
-        "desktop_media_width": 50,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": false,
-        "enable_video_looping": false,
-        "enable_image_zoom": false,
-        "max_image_zoom_level": 3,
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
       }
     },
     "more_gruffalo": {
@@ -455,15 +358,205 @@
         "background_gradient": "",
         "text_color": "#565656"
       }
+    },
+    "answers": {
+      "type": "rich-text",
+      "blocks": {
+        "q_look": {
+          "type": "heading",
+          "settings": {
+            "text": "What does the Gruffalo look like?",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "q_look_img": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+            "width_mode": "custom",
+            "max_width": 160,
+            "mobile_max_width": 140
+          }
+        },
+        "q_look_a": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>The Gruffalo is described as a large monster with terrible tusks, terrible claws, orange eyes, a poisonous wart, a black tongue and purple prickles all over his back. That's him on the cover, with Mouse looking up from the path.</p>"
+          }
+        },
+        "q_real": {
+          "type": "heading",
+          "settings": {
+            "text": "Is the Gruffalo real?",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "q_real_a": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>No. The Gruffalo is a fictional storybook creature, not a real animal. Inside the world of the book, though, Mouse meets the real Gruffalo after describing him to the other animals, which is the whole joke of the story.</p>"
+          }
+        },
+        "q_mean": {
+          "type": "heading",
+          "settings": {
+            "text": "What does Gruffalo mean?",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "q_mean_a": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>In the story, \"Gruffalo\" is the name Mouse gives to his invented monster. The word sounds rough, growly and memorable, which helps make the creature feel funny and frightening at the same time. It isn't a word from anywhere else.</p>"
+          }
+        },
+        "q_who": {
+          "type": "heading",
+          "settings": {
+            "text": "Who else is in the story?",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "q_who_a": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Mouse, Fox, Owl and Snake. Mouse meets each of the three animals in turn and scares them off with his description of the Gruffalo, before the real thing appears. All five have their own page in the <a href=\"/pages/characters/the-gruffalo\" title=\"The Gruffalo characters\">Gruffalo character guide</a>.</p>"
+          }
+        },
+        "q_what": {
+          "type": "heading",
+          "settings": {
+            "text": "What happens in the story?",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "q_what_a": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Mouse walks through the deep dark wood, talks his way past three hungry animals, then has to think even faster when the monster he invented turns out to be real. The full plot, age guide and creators are in the <a href=\"/pages/overview/the-gruffalo\" title=\"The Gruffalo story overview\">Gruffalo story overview</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q_look",
+        "q_look_img",
+        "q_look_a",
+        "q_real",
+        "q_real_a",
+        "q_mean",
+        "q_mean_a",
+        "q_who",
+        "q_who_a",
+        "q_what",
+        "q_what_a"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "answers",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
+    },
+    "doors": {
+      "type": "multi-column",
+      "blocks": {
+        "door_schools": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/product-book-bookshelf-the-gruffalo.png",
+            "column_size": "2",
+            "title": "Using The Gruffalo in class?",
+            "heading_tag": "h3",
+            "content": "<p>Play the sample to the whole class from the board, then see the Voxblock school packs: players and audiobooks built for reading corners and group listening.</p>",
+            "link_url": "/collections/schools-packs",
+            "link_text": "See school packs",
+            "link_style": "button"
+          }
+        },
+        "door_home": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/New-StarterPack-Gruffalo-GREEN-_Light.png",
+            "column_size": "2",
+            "title": "Listen to the whole story, screen-free",
+            "heading_tag": "h3",
+            "content": "<p>The Gruffalo and Friends Starter Pack: the Voxblock player, The Gruffalo, Room on the Broom and The Smartest Giant in Town, with a bumper and charging cable. £69.99, down from £89.96.</p>",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
+            "link_text": "Get the Starter Pack · £69.99",
+            "link_style": "button"
+          }
+        }
+      },
+      "block_order": [
+        "door_schools",
+        "door_home"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": true,
+        "gap": "large",
+        "text_alignment": "start",
+        "subheading": "Take the story further",
+        "title": "Two ways to hear the whole thing",
+        "content": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
+    },
+    "tertiary": {
+      "type": "rich-text",
+      "blocks": {
+        "t_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Already have a Voxblock player? <a href=\"/products/the-gruffalo\" title=\"The Gruffalo audiobook\">Just the Gruffalo audiobook · £9.99</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "t_text"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
     "breadcrumbs_XHGrpm",
     "hero",
-    "character_intro",
     "listen",
-    "starter_pack",
+    "answers",
+    "character_intro",
     "role_in_story",
+    "doors",
+    "tertiary",
     "character_faq",
     "gruffalo_specific_faq",
     "more_gruffalo",
