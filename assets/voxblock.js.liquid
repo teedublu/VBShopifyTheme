@@ -12,6 +12,13 @@ const VoxBlock = (() => {
     audio.addEventListener('playing', function(){console.log('playing')})
     audio.addEventListener('ended', function(){console.log('ended'); audio.currentButton.classList.remove('playing');})
 
+    // PostHog: one event per play press, with the audiobook title from data-title
+    const trackSamplePlayed = (button) => {
+        if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+        const title = (button.getAttribute('data-title') || '').trim();
+        window.posthog.capture('sample_played', { title: title || null });
+    };
+
     const initAudioDelegate = (selector) => {
         const delegate = new Delegate(document.body);
         delegate.on('click', selector, (event, target) => {
@@ -28,6 +35,7 @@ const VoxBlock = (() => {
                 document.querySelectorAll(selector).forEach(el => el.classList.remove('playing'));
                 target.classList.add('playing');
                 audio.play();
+                trackSamplePlayed(target);
             }
 
             event.preventDefault();

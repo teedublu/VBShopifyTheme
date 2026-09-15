@@ -181,7 +181,7 @@ LIQUID
       <p class="audiobook_property_label">Language</p>
     </div>
     <div class="audiobook_property">
-      <div class="playicon bookpreview" data-mp3="{{product.metafields.book.preview | file_url}}">
+      <div class="playicon bookpreview" data-mp3="{{product.metafields.book.preview | file_url}}" data-title="{{ product.title | escape }}">
         <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
           <circle cx="20" cy="20" r="19"/>
           <path class="pause" d="M 18.641 12.455 L 18.641 27.545 C 18.641 28.138 18.159 28.621 17.566 28.621 L 15.414 28.621 C 14.821 28.621 14.338 28.138 14.338 27.545 L 14.338 12.455 C 14.338 11.862 14.821 11.379 15.414 11.379 L 17.566 11.379 C 18.159 11.379 18.641 11.862 18.641 12.455 Z M 25.834 12.455 L 25.834 27.545 C 25.834 28.138 25.352 28.621 24.759 28.621 L 22.607 28.621 C 22.014 28.621 21.531 28.138 21.531 27.545 L 21.531 12.455 C 21.531 11.862 22.014 11.379 22.607 11.379 L 24.759 11.379 C 25.352 11.379 25.834 11.862 25.834 12.455 Z"/>
