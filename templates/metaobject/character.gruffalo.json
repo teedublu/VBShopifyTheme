@@ -256,15 +256,15 @@
         "button_text": "",
         "button_url": "",
         "text_position": "center",
-        "background": "",
+        "background": "#197177",
         "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
+        "accordion_background": "#2a8188",
+        "accordion_text_color": "#ffffff"
       }
     },
     "hero": {
@@ -414,17 +414,59 @@
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
       }
+    },
+    "more_gruffalo": {
+      "type": "rich-text",
+      "blocks": {
+        "mg_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "More from the deep dark wood"
+          }
+        },
+        "mg_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Explore the rest of The Gruffalo",
+            "heading_tag": "h3",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "mg_links": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Read the <a href=\"/pages/overview/the-gruffalo\" title=\"The Gruffalo story overview\">story overview</a>, meet the <a href=\"/pages/characters/the-gruffalo\" title=\"The Gruffalo characters\">full cast</a>, see <a href=\"/pages/audiobook/the-gruffalo\" title=\"The Gruffalo audiobook\">the audiobook</a>, or carry on with the sequel, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\">The Gruffalo's Child</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "mg_sub",
+        "mg_heading",
+        "mg_links"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
-    "hero",
     "breadcrumbs_XHGrpm",
+    "hero",
     "character_intro",
     "listen",
     "starter_pack",
     "role_in_story",
     "character_faq",
     "gruffalo_specific_faq",
+    "more_gruffalo",
     "voxblock_listening",
     "microdata_8YzdEG"
   ]
