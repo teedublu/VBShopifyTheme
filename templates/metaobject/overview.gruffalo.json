@@ -14,245 +14,6 @@
         "heading": "Breadcrumbs"
       }
     },
-    "rich_text_kf8m8f": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_story_overview": {
-          "type": "subheading",
-          "settings": {
-            "text": "The Gruffalo book summary"
-          }
-        },
-        "heading_6gFWL9": {
-          "type": "heading",
-          "settings": {
-            "text": "The Gruffalo summary: what is the book about?",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_K8fy7Q": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p><strong>The Gruffalo</strong> is a rhyming picture book about a clever mouse who walks through a wood and avoids being eaten by inventing a terrifying creature. Fox, Owl and Snake all back away from the imaginary monster - until Mouse meets the real Gruffalo and has to think even faster.</p><p>This overview explains the plot, characters, message and age suitability of <em>The Gruffalo</em>, with links to the audiobook and character pages if you want to explore further.</p>"
-          }
-        },
-        "button_characters": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "base",
-            "text": "Meet the characters",
-            "url": "/pages/characters/the-gruffalo",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_story_overview",
-        "heading_6gFWL9",
-        "richtext_K8fy7Q",
-        "button_characters"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "medium",
-        "text_position": "center",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "story_hub_results": {
-      "type": "story-hub-results",
-      "blocks": {
-        "overview": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Overview",
-            "badge": "Story guide",
-            "title": "The Gruffalo overview",
-            "description": "A parent-friendly summary covering the plot, creators, characters, message and age suitability.",
-            "link": "/pages/overview/the-gruffalo",
-            "link_text": "Read the overview",
-            "image_url": "",
-            "emphasis": "strong"
-          }
-        },
-        "audiobook": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Audiobook",
-            "badge": "Listen",
-            "title": "Audiobook details",
-            "description": "How The Gruffalo works on Voxblock, who it suits, and what children need to listen screen-free.",
-            "link": "/pages/audiobook/the-gruffalo",
-            "link_text": "View audiobook page",
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
-            "emphasis": "normal"
-          }
-        },
-        "characters": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Characters",
-            "badge": "Cast",
-            "title": "Meet the characters",
-            "description": "Mouse, Fox, Owl, Snake and the Gruffalo, with links to individual character explainers.",
-            "link": "/pages/characters/the-gruffalo",
-            "link_text": "Explore the cast",
-            "image_url": "",
-            "emphasis": "normal"
-          }
-        },
-        "character_mouse": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Mouse",
-            "badge": "Character",
-            "title": "Mouse",
-            "description": "Quick-thinking and brave.",
-            "link": "/pages/character/mouse",
-            "link_text": "Meet Mouse",
-            "hide_from_tabs": true,
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-mouse-character.png?v=1776581213&width=300",
-            "emphasis": "normal",
-            "compact_image": true
-          }
-        },
-        "character_fox": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Fox",
-            "badge": "Character",
-            "title": "Fox",
-            "description": "Smooth-talking woodland predator.",
-            "link": "/pages/character/fox",
-            "link_text": "Meet Fox",
-            "hide_from_tabs": true,
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-fox-character.png?v=1776584971&width=300",
-            "emphasis": "normal",
-            "compact_image": true
-          }
-        },
-        "character_snake": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Snake",
-            "badge": "Character",
-            "title": "Snake",
-            "description": "Patient, sly and persuasive.",
-            "link": "/pages/character/snake",
-            "link_text": "Meet Snake",
-            "hide_from_tabs": true,
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-snake-character.png?v=1776584972&width=300",
-            "emphasis": "normal",
-            "compact_image": true
-          }
-        },
-        "character_owl": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Owl",
-            "badge": "Character",
-            "title": "Owl",
-            "description": "A hunter who invites Mouse for tea.",
-            "link": "/pages/character/owl",
-            "link_text": "Meet Owl",
-            "hide_from_tabs": true,
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-owl-character.png?v=1776584973&width=300",
-            "emphasis": "normal",
-            "compact_image": true
-          }
-        },
-        "character_gruffalo": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "The Gruffalo",
-            "badge": "Character",
-            "title": "The Gruffalo",
-            "description": "The monster Mouse meets for real.",
-            "link": "/pages/character/the-gruffalo",
-            "link_text": "Meet the Gruffalo",
-            "hide_from_tabs": true,
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/the-gruffalo-audiobook-character.webp?v=1714987686&width=300",
-            "emphasis": "normal",
-            "compact_image": true
-          }
-        },
-        "read_along": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Read Along",
-            "badge": "Transcript",
-            "title": "Read along while listening",
-            "description": "Follow the text while the audiobook sample plays, supporting attention, rhythm and word familiarity.",
-            "link": "/pages/read-along/the-gruffalo",
-            "link_text": "Open read along",
-            "image_url": "",
-            "emphasis": "normal"
-          }
-        },
-        "sample": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Sample",
-            "badge": "Preview",
-            "title": "Hear an audiobook sample",
-            "description": "Listen to a short sample before deciding whether the physical Voxblock audiobook is right for your family.",
-            "link": "/pages/audiobook-sample/the-gruffalo",
-            "link_text": "Play sample",
-            "image_url": "",
-            "emphasis": "normal"
-          }
-        },
-        "product": {
-          "type": "page_card",
-          "settings": {
-            "tab_label": "Buy",
-            "badge": "Shop",
-            "title": "Buy The Gruffalo Voxblock",
-            "description": "Check price, compatibility, delivery and checkout details.",
-            "link": "/products/the-gruffalo",
-            "link_text": "Buy the audiobook",
-            "image_url": "https://voxblock.co.uk/cdn/shop/files/Book-The-Gruffalo-long-300x510.png?v=1725959674&width=300",
-            "emphasis": "wide"
-          }
-        }
-      },
-      "block_order": [
-        "overview",
-        "audiobook",
-        "characters",
-        "character_mouse",
-        "character_fox",
-        "character_snake",
-        "character_owl",
-        "character_gruffalo",
-        "read_along",
-        "sample",
-        "product"
-      ],
-      "settings": {
-        "full_width": false,
-        "anchor_id": "explore",
-        "eyebrow": "Explore The Gruffalo",
-        "title": "Explore The Gruffalo",
-        "content": "<p>Listen screen-free, follow the read-along, meet the characters or buy the physical Voxblock audiobook.</p>",
-        "primary_image_url": "https://voxblock.co.uk/cdn/shop/files/gruffalo-background.webp?v=1746261346&width=2000",
-        "primary_link": "/pages/audiobook/the-gruffalo",
-        "primary_label": "Voxblock audiobook",
-        "primary_title": "The Gruffalo on Voxblock",
-        "primary_meta": "A screen-free physical audiobook children can play independently.",
-        "background": "#ffffff",
-        "panel_background": "#eef8e8",
-        "accent_color": "#197177",
-        "text_color": "#22302f"
-      }
-    },
     "rich_text_quick_facts": {
       "type": "rich-text",
       "blocks": {
@@ -479,155 +240,18 @@
         "book_image_width": 160,
         "extra_info": "",
         "extra_info_2": "",
-        "button_text": "See audiobook details",
-        "button_url": "/pages/audiobook/the-gruffalo",
+        "button_text": "",
+        "button_url": "",
         "text_position": "center",
-        "background": "",
+        "background": "#197177",
         "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
-      }
-    },
-    "rich_text_next_steps": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_next_steps": {
-          "type": "subheading",
-          "settings": {
-            "text": "Keep exploring"
-          }
-        },
-        "heading_next_steps": {
-          "type": "heading",
-          "settings": {
-            "text": "Choose the right Gruffalo page",
-            "heading_tag": "h2",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "richtext_next_steps": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Listen to the audiobook, follow the read-along transcript, meet the characters or add the physical Voxblock to your collection.</p>"
-          }
-        },
-        "button_audiobook_page": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "base",
-            "text": "Audiobook details",
-            "url": "/pages/audiobook/the-gruffalo",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
-          }
-        },
-        "button_product_page": {
-          "type": "button",
-          "settings": {
-            "style": "outline",
-            "size": "base",
-            "text": "View product",
-            "url": "/products/the-gruffalo",
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading_next_steps",
-        "heading_next_steps",
-        "richtext_next_steps",
-        "button_audiobook_page",
-        "button_product_page"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "medium",
-        "text_position": "center",
-        "background": "#f6fbfb",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
-    "featured_product_79njaq": {
-      "type": "featured-product",
-      "disabled": true,
-      "blocks": {
-        "vendor_xFkrYe": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title_PMpyrq": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "badges_cUfwcY": {
-          "type": "badges",
-          "settings": {}
-        },
-        "price_FLj3qa": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "separator_GjHqfb": {
-          "type": "separator",
-          "settings": {}
-        },
-        "description_nrBYac": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "buy_buttons_mzykK9": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "vendor_xFkrYe",
-        "title_PMpyrq",
-        "badges_cUfwcY",
-        "price_FLj3qa",
-        "separator_GjHqfb",
-        "description_nrBYac",
-        "buy_buttons_mzykK9"
-      ],
-      "settings": {
-        "full_width": false,
-        "product": "{{ metaobject.product.value }}",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "grid",
-        "mobile_media_size": "contained",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
+        "accordion_background": "#2a8188",
+        "accordion_text_color": "#ffffff"
       }
     },
     "microdata_KC6pKQ": {
@@ -636,18 +260,207 @@
         "debug": false,
         "object_type": "overview"
       }
+    },
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "cover": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+            "media_width": 30,
+            "stacked_media_max_width": 320,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "The Gruffalo",
+            "title": "The Gruffalo summary: what is the book about?",
+            "title_tag": "h1",
+            "content": "<p>The Gruffalo is a rhyming picture book about a clever mouse who walks through a wood and avoids being eaten by inventing a terrifying creature. Fox, Owl and Snake all back away from the imaginary monster, until Mouse meets the real Gruffalo and has to think even faster.</p>",
+            "link_text": "Get the Starter Pack · £69.99",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
+            "link2_text": "Just the audiobook · £9.99",
+            "link2_url": "/products/the-gruffalo",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#197177",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "cover"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "listen": {
+      "type": "listen-to-voice",
+      "settings": {
+        "product": "the-gruffalo",
+        "eyebrow": "Hear the Gruffalo",
+        "heading": "Listen to a sample of the story",
+        "content": "Press play to hear a sample from [title], read by Imelda Staunton. Already have a Voxblock player? The Gruffalo audiobook slots straight in.",
+        "play_label": "Play sample",
+        "pause_label": "Playing sample",
+        "caption": "Sample from [title] · Published by Macmillan"
+      }
+    },
+    "starter_pack": {
+      "type": "featured-product",
+      "blocks": {
+        "sp_title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "sp_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Everything a new listener needs in one box: the Voxblock player, three Julia Donaldson audiobooks, a protective bumper and a charging cable. No wifi, no downloads, no screen. Slot a book in and press play.</p>"
+          }
+        },
+        "sp_price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "sp_variants": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "sp_buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "sp_delivery": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-truck",
+            "icon_width": 24,
+            "title": "Free UK delivery",
+            "content": "<p>On all orders over £25.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        },
+        "sp_guarantee": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-shield",
+            "icon_width": 24,
+            "title": "100-day money back guarantee",
+            "content": "<p>Full refund if it's not for you.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        }
+      },
+      "block_order": [
+        "sp_title",
+        "sp_text",
+        "sp_price",
+        "sp_variants",
+        "sp_buy",
+        "sp_delivery",
+        "sp_guarantee"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "gruffalo-and-friends-starter-pack",
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 3,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "more_gruffalo": {
+      "type": "rich-text",
+      "blocks": {
+        "mg_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "More from the deep dark wood"
+          }
+        },
+        "mg_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Explore the rest of The Gruffalo",
+            "heading_tag": "h3",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "mg_links": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Meet <a href=\"/pages/character/the-gruffalo\" title=\"The Gruffalo character guide\">the Gruffalo himself</a>, browse the <a href=\"/pages/characters/the-gruffalo\" title=\"The Gruffalo characters\">full cast</a>, see <a href=\"/pages/audiobook/the-gruffalo\" title=\"The Gruffalo audiobook\">the audiobook</a>, or carry on with the sequel, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\">The Gruffalo's Child</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "mg_sub",
+        "mg_heading",
+        "mg_links"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
     "breadcrumbs_Vf3K4D",
-    "rich_text_kf8m8f",
-    "story_hub_results",
+    "hero",
     "rich_text_quick_facts",
     "rich_text_story_beats",
+    "listen",
+    "starter_pack",
     "rich_text_themes",
     "faq_book_xFYafL",
-    "rich_text_next_steps",
-    "featured_product_79njaq",
+    "more_gruffalo",
     "microdata_KC6pKQ"
   ]
 }

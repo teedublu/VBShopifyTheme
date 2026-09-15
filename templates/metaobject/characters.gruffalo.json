@@ -14,70 +14,67 @@
         "heading": "Breadcrumbs"
       }
     },
-    "intro_gruffalo_cast": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading": {
-          "type": "subheading",
-          "settings": {
-            "text": "The Gruffalo cast guide"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "text": "The Gruffalo characters: who is in the story?",
-            "heading_tag": "h1",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "copy": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p><strong>The Gruffalo</strong> has a small, memorable cast: Mouse, Fox, Owl, Snake and the Gruffalo. Follow the woodland encounters and see how each character moves Mouse closer to the story's final twist.</p>"
-          }
-        },
-        "overview_button": {
-          "type": "button",
-          "settings": {
-            "style": "outline",
-            "size": "base",
-            "text": "Read the story overview",
-            "url": "/pages/overview/the-gruffalo",
-            "background": "",
-            "text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "subheading",
-        "heading",
-        "copy",
-        "overview_button"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "medium",
-        "text_position": "center",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "item_grid_F9GWek": {
       "type": "item-grid",
       "name": "Item grid",
       "settings": {
         "heading": "Meet the full cast",
         "intro": "<p>Each character helps show why Mouse has to be quick, confident and imaginative. Open an individual guide to learn more about their role in the story.</p>",
-        "source_mode": "metaobject_list",
+        "source_mode": "blocks",
         "metaobject_items": "{{ metaobject.list.value }}",
         "product_items": [],
-        "items_limit": 10,
-        "button_label": "Read character guide"
-      }
+        "items_limit": 5,
+        "button_label": "Read more"
+      },
+      "blocks": {
+        "cast_1": {
+          "type": "item",
+          "settings": {
+            "title": "Mouse",
+            "description": "<p>Quick-thinking and brave. Invents the Gruffalo to talk his way past three hungry animals.</p>",
+            "link": "/pages/character/mouse"
+          }
+        },
+        "cast_2": {
+          "type": "item",
+          "settings": {
+            "title": "Fox",
+            "description": "<p>Smooth-talking woodland predator, the first to invite Mouse home for lunch.</p>",
+            "link": "/pages/character/fox"
+          }
+        },
+        "cast_3": {
+          "type": "item",
+          "settings": {
+            "title": "Owl",
+            "description": "<p>A hunter who invites Mouse up for tea, and flies off at the mention of the Gruffalo.</p>",
+            "link": "/pages/character/owl"
+          }
+        },
+        "cast_4": {
+          "type": "item",
+          "settings": {
+            "title": "Snake",
+            "description": "<p>Patient, sly and persuasive, with a feast waiting in his log-pile house.</p>",
+            "link": "/pages/character/snake"
+          }
+        },
+        "cast_5": {
+          "type": "item",
+          "settings": {
+            "title": "The Gruffalo",
+            "description": "<p>The monster Mouse invents, then meets for real. Terrible tusks, terrible claws, purple prickles.</p>",
+            "link": "/pages/character/the-gruffalo"
+          }
+        }
+      },
+      "block_order": [
+        "cast_1",
+        "cast_2",
+        "cast_3",
+        "cast_4",
+        "cast_5"
+      ]
     },
     "cast_shape": {
       "type": "rich-text",
@@ -165,18 +162,18 @@
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
-        "button_text": "Explore the audiobook",
-        "button_url": "/pages/audiobook/the-gruffalo",
+        "button_text": "",
+        "button_url": "",
         "text_position": "center",
-        "background": "",
+        "background": "#197177",
         "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
+        "text_color": "#ffffff",
+        "heading_color": "#ffffff",
         "heading_gradient": "",
         "button_background": "",
         "button_text_color": "",
-        "accordion_background": "",
-        "accordion_text_color": ""
+        "accordion_background": "#2a8188",
+        "accordion_text_color": "#ffffff"
       }
     },
     "voxblock_listening": {
@@ -193,9 +190,9 @@
             "icon_width": 68,
             "subheading": "Listen screen-free",
             "title": "From character guide to listening",
-            "content": "<p>Voxblock turns the story into a simple, screen-free listening experience. Children place the physical audiobook on the player and can hear the characters without needing a phone, tablet, app or Wi-Fi.</p>",
-            "link_text": "View The Gruffalo audiobook",
-            "link_url": "/pages/audiobook/the-gruffalo",
+            "content": "<p>Voxblock turns the story into a simple, screen-free listening experience. Children place the physical audiobook on the player and can hear the characters without a phone, tablet, downloads or wifi.</p>",
+            "link_text": "Get the Starter Pack · £69.99",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
             "background": "#f6fbfb",
             "background_gradient": "",
             "text_color": "#565656",
@@ -213,14 +210,206 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "cover": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+            "media_width": 30,
+            "stacked_media_max_width": 320,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "The Gruffalo",
+            "title": "The Gruffalo characters: who is in the story?",
+            "title_tag": "h1",
+            "content": "<p>The Gruffalo has a small, memorable cast: Mouse, Fox, Owl, Snake and the Gruffalo. Follow the woodland encounters below and see how each character moves Mouse closer to the story's final twist.</p>",
+            "link_text": "Get the Starter Pack · £69.99",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
+            "link2_text": "Just the audiobook · £9.99",
+            "link2_url": "/products/the-gruffalo",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#197177",
+            "text_gradient": "",
+            "button_background": "#ff9e57",
+            "button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "cover"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "listen": {
+      "type": "listen-to-voice",
+      "settings": {
+        "product": "the-gruffalo",
+        "eyebrow": "Hear the Gruffalo",
+        "heading": "Listen to a sample of the story",
+        "content": "Press play to hear a sample from [title], read by Imelda Staunton. Already have a Voxblock player? The Gruffalo audiobook slots straight in.",
+        "play_label": "Play sample",
+        "pause_label": "Playing sample",
+        "caption": "Sample from [title] · Published by Macmillan"
+      }
+    },
+    "starter_pack": {
+      "type": "featured-product",
+      "blocks": {
+        "sp_title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "sp_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Everything a new listener needs in one box: the Voxblock player, three Julia Donaldson audiobooks, a protective bumper and a charging cable. No wifi, no downloads, no screen. Slot a book in and press play.</p>"
+          }
+        },
+        "sp_price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "sp_variants": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "sp_buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        },
+        "sp_delivery": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-truck",
+            "icon_width": 24,
+            "title": "Free UK delivery",
+            "content": "<p>On all orders over £25.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        },
+        "sp_guarantee": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-shield",
+            "icon_width": 24,
+            "title": "100-day money back guarantee",
+            "content": "<p>Full refund if it's not for you.</p>",
+            "background": "#e9f6f4",
+            "text_color": "#197177"
+          }
+        }
+      },
+      "block_order": [
+        "sp_title",
+        "sp_text",
+        "sp_price",
+        "sp_variants",
+        "sp_buy",
+        "sp_delivery",
+        "sp_guarantee"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "gruffalo-and-friends-starter-pack",
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_image_zoom": false,
+        "max_image_zoom_level": 3,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "more_gruffalo": {
+      "type": "rich-text",
+      "blocks": {
+        "mg_sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "More from the deep dark wood"
+          }
+        },
+        "mg_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Explore the rest of The Gruffalo",
+            "heading_tag": "h3",
+            "text_color": "#197177",
+            "gradient": ""
+          }
+        },
+        "mg_links": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Read the <a href=\"/pages/overview/the-gruffalo\" title=\"The Gruffalo story overview\">story overview</a>, meet <a href=\"/pages/character/the-gruffalo\" title=\"The Gruffalo character guide\">the Gruffalo himself</a>, see <a href=\"/pages/audiobook/the-gruffalo\" title=\"The Gruffalo audiobook\">the audiobook</a>, or carry on with the sequel, <a href=\"/products/the-gruffalos-child\" title=\"The Gruffalo's Child\">The Gruffalo's Child</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "mg_sub",
+        "mg_heading",
+        "mg_links"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
     "breadcrumbs_gruffalo",
-    "intro_gruffalo_cast",
+    "hero",
     "item_grid_F9GWek",
     "cast_shape",
+    "listen",
+    "starter_pack",
     "faq_cast",
+    "more_gruffalo",
     "voxblock_listening"
   ]
 }
