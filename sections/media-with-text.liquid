@@ -41,10 +41,18 @@ LIQUID
 {%- endcomment -%}
 
 <div {% render 'section-properties' %}>
+  <style>
+    @media screen and (max-width: 999px) {
+      #shopify-section-{{ section.id }} .media-with-text__media[style*="--stacked-media-max-width"] {
+        max-width: var(--stacked-media-max-width);
+        margin-inline: auto;
+      }
+    }
+  </style>
   <media-with-text class="media-with-text {% if section.settings.spacing == 'none' %}{% if section.settings.full_width %}full-bleed{% else %}rounded{% endif %}{% endif %}">
     {%- for block in section.blocks -%}
       <div id="block-{{ section.id }}-{{ block.id }}" class="media-with-text__item" {{ block.shopify_attributes }}>
-        <div class="media-with-text__media {% unless section.settings.spacing == 'none' %}rounded{% endunless %}" reveal-on-scroll="true">
+        <div class="media-with-text__media {% unless section.settings.spacing == 'none' %}rounded{% endunless %}" reveal-on-scroll="true" {% if block.settings.stacked_media_max_width > 0 %}style="--stacked-media-max-width: {{ block.settings.stacked_media_max_width }}px"{% endif %}>
           {%- if block.type == 'image' -%}
             {%- if block.settings.image != blank -%}
               {%- assign width_ratio = 100.0 | divided_by: block.settings.media_width -%}
@@ -196,6 +204,17 @@ LIQUID
           "step": 5,
           "unit": "%",
           "default": 50
+        },
+        {
+          "type": "range",
+          "id": "stacked_media_max_width",
+          "label": "Max image width when stacked",
+          "info": "Applies below 1000px, where the image sits above the text. 0 = full width.",
+          "min": 0,
+          "max": 800,
+          "step": 20,
+          "unit": "px",
+          "default": 0
         },
         {
           "type": "select",
