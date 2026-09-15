@@ -23,9 +23,10 @@
 
           {%- when 'heading' -%}
             {%- if block.settings.text != blank -%}
-              <p class="{{ block.settings.heading_tag }} hyphenate" {{ block.shopify_attributes }}>
+              {%- assign heading_html_tag = block.settings.heading_tag_html | default: 'p' -%}
+              <{{ heading_html_tag }} class="{{ block.settings.heading_tag }} hyphenate" {{ block.shopify_attributes }}>
                 {%- render 'styled-text', content: block.settings.text, text_color: block.settings.text_color, gradient: block.settings.gradient -%}
-              </p>
+              </{{ heading_html_tag }}>
             {%- endif -%}
 
           {%- when 'richtext' -%}
@@ -273,6 +274,18 @@
             }
           ],
           "default": "h1"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag_html",
+          "label": "HTML tag",
+          "info": "Use a real heading tag when this is a section heading search engines should read. Styling is unchanged.",
+          "options": [
+            {"value": "p", "label": "Paragraph (default)"},
+            {"value": "h2", "label": "H2"},
+            {"value": "h3", "label": "H3"}
+          ],
+          "default": "p"
         },
         {
           "type": "color",
