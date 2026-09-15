@@ -44,7 +44,7 @@ LIQUID
   <style>
     @media screen and (max-width: 999px) {
       #shopify-section-{{ section.id }} .media-with-text__media[style*="--stacked-media-max-width"] {
-        max-width: var(--stacked-media-max-width);
+        max-width: min(var(--stacked-media-max-width), 70%);
         margin-inline: auto;
       }
     }
