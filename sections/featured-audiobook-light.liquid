@@ -80,7 +80,7 @@
 <div {% render 'section-properties', class: 'mobile_float' %}>
   <div class="product {{ product.type | handleize }}">
     {%- if product.media.size > 0 -%}
-      {%- render 'media', media: media | first, sizes: sizes, preload: true, width: '300' -%}
+      {%- render 'media', media: media, sizes: sizes, preload: true, width: '300' -%}
     {%- endif -%}
 
     {%- render 'product-info', product: product, update_url: true -%}
@@ -642,4 +642,15 @@
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'media', media: media | first, sizes: sizes, preload: true, width:
+    '300' -%}"
+  to: "{%- render 'media', media: media, sizes: sizes, preload: true, width: '300'
+    -%}"
+  position: 3180..3259
+{%- endcomment -%}
