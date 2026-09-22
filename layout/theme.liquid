@@ -160,8 +160,13 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         posthog.init('phc_qdTMDgYcwGoMMmehmBZ2eQVqUYPl2ZGJSJSuAAtKHJf', {
             api_host: 'https://eu.i.posthog.com',
             person_profiles: 'always', // or 'always' to create profiles for anonymous users as well
-            custom_campaign_params: ['gad_campaignid', 'gbraid', 'wbraid'],
+            custom_campaign_params: ['gad_campaignid', 'gbraid', 'wbraid','utm_id'],
+
         })
+        const p = new URLSearchParams(location.search);
+        if (p.get('utm_medium') === 'email' && p.get('utm_id')) {
+          posthog.setPersonProperties({ klaviyo_profile_id: p.get('utm_id') });
+        }
     </script>
     <!-- BEGIN MerchantWidget Code -->
     <script id='merchantWidgetScript'
