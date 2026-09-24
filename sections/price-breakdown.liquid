@@ -78,6 +78,10 @@ An optional note sits underneath the cards for small print such as "in fairness"
     #shopify-section-{{ section.id }} .price-card__media--empty {
       background: rgb(0 0 0 / 0.04);
     }
+    @media screen and (max-width: 999px) {
+      /* Empty tiles only keep the cards lined up side by side; stacked, they are just a grey box */
+      #shopify-section-{{ section.id }} .price-card__media--empty { display: none; }
+    }
     #shopify-section-{{ section.id }} .price-card__media :is(img, svg) {
       width: 100%;
       height: 100%;

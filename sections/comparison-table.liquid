@@ -202,6 +202,8 @@ sit above their values so every column gets a full share of the width.
         grid-template-columns: repeat({{ column_count }}, minmax(0, 1fr));
       }
       #shopify-section-{{ section.id }} .comparison-table thead th:first-child { display: none; }
+      /* The theme gives every cell a top border; here that would draw a line between a name and its values */
+      #shopify-section-{{ section.id }} .comparison-table td { border-top: 0; }
       #shopify-section-{{ section.id }} .comparison-table td:first-child {
         grid-column: 1 / -1;
         width: auto;
