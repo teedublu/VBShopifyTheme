@@ -1,0 +1,430 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRICE BREAKDOWN (Voxblock)
+----------------------------------------------------------------------------------------------------------------------
+Side-by-side cards that add up what each option costs, line by line, to a total. One card can be highlighted.
+Line items go one per line as "Item | Price"; a line without a "|" shows the item with no price.
+An optional note sits underneath the cards for small print such as "in fairness" caveats.
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  {%- assign card_background = section.settings.card_background | default: '#ffffff' -%}
+  {%- assign card_text = section.settings.card_text_color | default: settings.text_color -%}
+  {%- assign card_heading = section.settings.card_heading_color | default: '#197177' -%}
+  {%- assign highlight = section.settings.highlight_color | default: '#197177' -%}
+  {%- assign difference_color = section.settings.difference_color | default: '#c4540f' -%}
+  {%- assign card_count = section.blocks.size | at_most: 4 -%}
+
+  {%- assign show_media = false -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.image != blank -%}
+      {%- assign show_media = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <style>
+    #shopify-section-{{ section.id }} .price-breakdown {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--spacing-5);
+      width: 100%;
+      max-width: 36rem;
+      margin-inline: auto;
+    }
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} .price-breakdown {
+        grid-template-columns: repeat({{ card_count }}, minmax(0, 1fr));
+        gap: var(--spacing-6);
+        max-width: none;
+      }
+    }
+    #shopify-section-{{ section.id }} .price-card {
+      background: {{ card_background }};
+      color: {{ card_text }};
+      border: 2px solid transparent;
+      border-radius: var(--rounded-lg);
+      box-shadow: 0 18px 40px rgb(0 0 0 / 0.10);
+      padding: var(--spacing-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} .price-card { padding: var(--spacing-8); }
+    }
+    #shopify-section-{{ section.id }} .price-card--highlight {
+      border-color: {{ highlight }};
+    }
+    #shopify-section-{{ section.id }} .price-card__tag {
+      align-self: flex-start;
+      margin: 0;
+      padding: var(--spacing-1) var(--spacing-3);
+      border-radius: var(--rounded-full);
+      background: rgb(0 0 0 / 0.06);
+      font-size: var(--text-xs);
+      font-weight: bold;
+    }
+    #shopify-section-{{ section.id }} .price-card--highlight .price-card__tag {
+      background: {{ highlight }};
+      color: #ffffff;
+    }
+    #shopify-section-{{ section.id }} .price-card__media {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--rounded);
+      overflow: hidden;
+    }
+    #shopify-section-{{ section.id }} .price-card__media--empty {
+      background: rgb(0 0 0 / 0.04);
+    }
+    #shopify-section-{{ section.id }} .price-card__media :is(img, svg) {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    #shopify-section-{{ section.id }} .price-card__title {
+      margin: 0;
+      color: {{ card_heading }};
+    }
+    #shopify-section-{{ section.id }} .price-card__items {
+      display: grid;
+      gap: var(--spacing-2);
+      margin: 0;
+    }
+    #shopify-section-{{ section.id }} .price-card__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--spacing-4);
+    }
+    #shopify-section-{{ section.id }} .price-card__item dd {
+      margin: 0;
+      text-align: end;
+      white-space: nowrap;
+    }
+    #shopify-section-{{ section.id }} .price-card__total {
+      margin-block-start: auto;
+      padding-block-start: var(--spacing-4);
+      border-block-start: 1px solid rgb(0 0 0 / 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--spacing-4);
+    }
+    #shopify-section-{{ section.id }} .price-card__total-label {
+      font-weight: bold;
+    }
+    #shopify-section-{{ section.id }} .price-card__total-value {
+      margin: 0;
+      white-space: nowrap;
+    }
+    #shopify-section-{{ section.id }} .price-card--highlight .price-card__total-value {
+      color: {{ highlight }};
+    }
+    #shopify-section-{{ section.id }} .price-card__difference {
+      margin: 0;
+      font-weight: bold;
+      color: {{ difference_color }};
+    }
+    #shopify-section-{{ section.id }} .price-breakdown__note {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-4);
+      width: 100%;
+      max-width: 36rem;
+      margin-inline: auto;
+      padding: var(--spacing-5) var(--spacing-6);
+      border: 1px solid rgb(0 0 0 / 0.08);
+      border-radius: var(--rounded);
+      background: {{ card_background }};
+      color: {{ card_text }};
+    }
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} .price-breakdown__note { max-width: none; }
+    }
+    #shopify-section-{{ section.id }} .price-breakdown__note svg {
+      flex-shrink: 0;
+      margin-block-start: 0.125rem;
+      color: {{ highlight }};
+    }
+  </style>
+
+  <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
+    <div class="section-stack">
+      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, content: section.settings.content, text_alignment: section.settings.text_position -%}
+
+      <div class="price-breakdown">
+        {%- for block in section.blocks -%}
+          <div class="price-card {% if block.settings.highlight %}price-card--highlight{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.tag != blank -%}
+              <p class="price-card__tag">{{ block.settings.tag | escape }}</p>
+            {%- endif -%}
+
+            {%- if show_media -%}
+              <div class="price-card__media {% if block.settings.image == blank %}price-card__media--empty{% endif %}">
+                {%- if block.settings.image != blank -%}
+                  {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 999px) min(36rem, 100vw), 33vw', widths: '200,300,400,500,600,800,1000,1200' -}}
+                {%- elsif request.design_mode -%}
+                  {{- 'product-1' | placeholder_svg_tag -}}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="h4 price-card__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.items != blank -%}
+              {%- assign item_lines = block.settings.items | newline_to_br | split: '<br />' -%}
+
+              <dl class="price-card__items">
+                {%- for item_line in item_lines -%}
+                  {%- assign item_text = item_line | strip -%}
+                  {%- if item_text == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign item_parts = item_text | split: '|' -%}
+
+                  <div class="price-card__item">
+                    <dt>{{ item_parts[0] | strip | escape }}</dt>
+                    <dd>{{ item_parts[1] | strip | escape }}</dd>
+                  </div>
+                {%- endfor -%}
+              </dl>
+            {%- endif -%}
+
+            {%- if block.settings.total != blank -%}
+              <div class="price-card__total">
+                <span class="price-card__total-label">{{ block.settings.total_label | escape }}</span>
+                <span class="h3 price-card__total-value">{{ block.settings.total | escape }}</span>
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.difference != blank -%}
+              <p class="price-card__difference">{{ block.settings.difference | escape }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.link_text != blank -%}
+              {%- render 'button', href: block.settings.link_url, content: block.settings.link_text, size: 'lg', stretch: true -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.note != blank -%}
+        <div class="price-breakdown__note">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <div class="prose">{{ section.settings.note }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Price breakdown",
+  "class": "shopify-section--price-breakdown",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Like for like"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What each set-up costs, all in"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {"value": "start", "label": "Left"},
+        {"value": "center", "label": "Center"}
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Lets a button link straight to this section. An ID of bundles is linked as #bundles."
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "Note below the cards",
+      "info": "Shown in a box with an info icon. Good for caveats and small print."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card heading",
+      "default": "#197177"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlighted card",
+      "default": "#197177"
+    },
+    {
+      "type": "color",
+      "id": "difference_color",
+      "label": "Difference text",
+      "default": "#c4540f"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag",
+          "default": "Voxblock · one box"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight this card",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Starter Pack"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "Line items",
+          "info": "One per line, as Item | Price. For example: The Gruffalo | included",
+          "default": "Voxblock player | included\nThree audiobooks | included"
+        },
+        {
+          "type": "text",
+          "id": "total_label",
+          "label": "Total label",
+          "default": "Total"
+        },
+        {
+          "type": "text",
+          "id": "total",
+          "label": "Total",
+          "default": "£69.99"
+        },
+        {
+          "type": "text",
+          "id": "difference",
+          "label": "Difference",
+          "info": "Optional line under the total, such as \"£43.97 more than Voxblock\"."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Price breakdown",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "tag": "Voxblock · one box",
+            "highlight": true,
+            "title": "Starter Pack",
+            "items": "Voxblock player | included\nThree audiobooks | included",
+            "total": "£69.99"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "tag": "Bought separately",
+            "title": "Another player + 3 stories",
+            "items": "Player | £89.99\nStory 1 | £7.99\nStory 2 | £7.99\nStory 3 | £7.99",
+            "total": "£113.96",
+            "difference": "£43.97 more than Voxblock"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
