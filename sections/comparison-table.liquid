@@ -195,8 +195,15 @@ sit above their values so every column gets a full share of the width.
       #shopify-section-{{ section.id }} .ct-column__note { font-size: var(--text-xs); line-height: 1.4; }
 
       {%- if stacked %}
+      #shopify-section-{{ section.id }} .comparison-table :is(th, td) { font-size: var(--text-sm); }
+      {%- endif %}
+    }
+
+    {%- if stacked %}
+    @media screen and (max-width: 999px) {
       /* Feature name on its own line, values in full-width columns underneath */
       #shopify-section-{{ section.id }} .comparison-table :is(table, thead, tbody) { display: block; }
+      #shopify-section-{{ section.id }} .comparison-table table { min-width: 0; }
       #shopify-section-{{ section.id }} .comparison-table tr {
         display: grid;
         grid-template-columns: repeat({{ column_count }}, minmax(0, 1fr));
@@ -210,9 +217,8 @@ sit above their values so every column gets a full share of the width.
         padding-block-end: 0;
         border-bottom: 0;
       }
-      #shopify-section-{{ section.id }} .comparison-table :is(th, td) { font-size: var(--text-sm); }
-      {%- endif %}
     }
+    {%- endif %}
   </style>
 
   {%- comment -%}Explicit roles keep the table readable to screen readers once phones stop displaying it as a table{%- endcomment -%}
