@@ -31,7 +31,7 @@ An optional note sits underneath the cards for small print such as "in fairness"
       gap: var(--spacing-5);
       width: 100%;
       max-width: 36rem;
-      margin-inline: auto;
+      margin-inline: {% if section.settings.text_position == 'center' %}auto{% else %}0{% endif %};
     }
     @media screen and (min-width: 1000px) {
       #shopify-section-{{ section.id }} .price-breakdown {
@@ -133,7 +133,7 @@ An optional note sits underneath the cards for small print such as "in fairness"
       gap: var(--spacing-4);
       width: 100%;
       max-width: 36rem;
-      margin-inline: auto;
+      margin-inline: {% if section.settings.text_position == 'center' %}auto{% else %}0{% endif %};
       padding: var(--spacing-5) var(--spacing-6);
       border: 1px solid rgb(0 0 0 / 0.08);
       border-radius: var(--rounded);
