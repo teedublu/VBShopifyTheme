@@ -44,6 +44,7 @@
           "settings": {
             "text": "Welcome to our affiliate program",
             "heading_tag": "h1",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -54,6 +55,7 @@
           "settings": {
             "text": "Applications are now open!",
             "heading_tag": "h3",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -91,6 +93,7 @@
           "settings": {
             "image": "shopify://shop_images/Facebook_community.png",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "start",
             "text_position": "place-self-center text-center",
             "icon": "none",
@@ -100,6 +103,9 @@
             "content": "<p>If your application is successful you will receive:</p><ul><li>A selection of Voxblock products to get you started</li><li>Opportunities for future releases</li><li>10% commission</li><li>A personalised discount code to share with your audience</li></ul>",
             "link_text": "",
             "link_url": "",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
@@ -127,6 +133,7 @@
           "settings": {
             "text": "What we are looking for",
             "heading_tag": "h1",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -142,6 +149,7 @@
           "settings": {
             "text": "The Content",
             "heading_tag": "h4",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -179,6 +187,7 @@
           "settings": {
             "text": "Application criteria",
             "heading_tag": "h3",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -201,6 +210,7 @@
           "settings": {
             "text": "To be considered, please apply below",
             "heading_tag": "h3",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -238,8 +248,9 @@
         "heading_8KRixe": {
           "type": "heading",
           "settings": {
-            "text": "Applications are now closed. Thank you to everyone that applied.",
+            "text": "Applications are currently closed.",
             "heading_tag": "h4",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
