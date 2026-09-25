@@ -277,7 +277,7 @@
             "items": "Voxblock player, bumper, cable | included\nThe Gruffalo | included\nRoom on the Broom | included\nThe Smartest Giant in Town | included",
             "total_label": "Total",
             "total": "£69.99",
-            "difference": "",
+            "difference": "Best value",
             "link_text": "",
             "link_url": ""
           }
@@ -484,7 +484,7 @@
           "type": "heading",
           "settings": {
             "text": "Start with the stories they already love.",
-            "heading_tag": "h2",
+            "heading_tag": "h1",
             "heading_tag_html": "h2",
             "text_color": "#ffffff",
             "gradient": ""
@@ -493,7 +493,7 @@
         "cta_text": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Free UK delivery on orders over £25. [CONFIRM GUARANTEE WORDING]</p>"
+            "content": "<p>Free UK delivery on orders over £25.</p>"
           }
         },
         "cta_divider": {
@@ -575,6 +575,49 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "rich_text_PEUAy8": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_HJPtJD": {
+          "type": "subheading",
+          "settings": {
+            "text": "We'll say it plainly"
+          }
+        },
+        "heading_XWQhHz": {
+          "type": "heading",
+          "settings": {
+            "text": "Similar yet different",
+            "heading_tag": "h1",
+            "heading_tag_html": "p",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_bUiMCC": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We think Yoto is a great product. It's done a huge amount to get children listening to stories, and plenty of families we know love theirs. It also does a lot more than play audiobooks. With the Yoto app you can stream podcasts and radio, make your own playlists and manage everything from your phone, which is really useful if that's what your family is after.&nbsp;</p><p>Voxblock is simply built around a different idea. There's no wifi, no downloads and no app to set up. Each story lives on its own tangible block, so your child just adds the story and presses play. If you want lots of connected features, Yoto is well worth a look. If you'd rather keep things simple and screen-free, we think you'll love Voxblock. We've put this comparison together in a fair spirit, to help parents choose what suits their family, and not to knock anyone else's product. If anything here is out of date or not quite right, let us know and we'll happily correct it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_HJPtJD",
+        "heading_XWQhHz",
+        "richtext_bUiMCC"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#249299",
+        "background_gradient": "",
+        "text_color": "#FFFFFF"
+      }
     }
   },
   "order": [
@@ -585,6 +628,7 @@
     "books",
     "differences",
     "buy",
-    "footnotes"
+    "footnotes",
+    "rich_text_PEUAy8"
   ]
 }
