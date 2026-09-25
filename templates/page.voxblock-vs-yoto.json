@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -8,6 +17,7 @@
           "settings": {
             "image": "shopify://shop_images/player-boy-listening-independance.jpg",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "end",
             "text_position": "place-self-center-start text-start",
             "icon": "none",
@@ -15,10 +25,10 @@
             "icon_width": 120,
             "subheading": "Voxblock vs Yoto · compared like for like",
             "title": "Before you buy a Yoto, compare the Voxblock.",
-            "title_tag": "h1",
             "content": "<p>We’ve put the players side by side on their own, then with exactly the same three Julia Donaldson stories. Real UK prices, checked 24 September 2026, so you can decide for yourself.</p><p>Screen-free · No wi-fi, no downloads · British designed</p>",
             "link_text": "See the comparison",
             "link_url": "#players",
+            "title_tag": "h1",
             "link2_text": "Player £49.99",
             "link2_url": "#buy",
             "background": "#fff7f0",
@@ -189,20 +199,22 @@
         "full_width": true,
         "subheading": "1 · The player on its own",
         "title": "Player vs player",
-        "content": "<p>Every model Yoto currently sells new in the UK, against the Voxblock player with its protective bumper.</p>",
+        "content": "<p>Compare how the Voxblock player stacks up against Yoto players. There are pros and cons of each, but only one plays straight out of the box.</p>",
         "text_position": "start",
         "anchor_id": "players",
         "feature_heading": "",
-        "column_1": "Voxblock Audiobook Player",
+        "column_1": "Voxblock Player (latest)",
         "highlight_first": true,
         "column_2": "Yoto Mini (4th Gen)",
         "column_3": "Yoto Player (4th Gen)",
-        "footnote": "",
-        "column_1_image": "shopify://shop_images/player-product_variant-orange-web-2048x2048.jpg",
+        "footnote": "Foot",
+        "column_1_image": "shopify://shop_images/voxblock-player-hero.png",
         "column_1_price": "£49.99",
         "column_1_note": "Player, protective bumper, USB-C cable. Orange, green, red or blue.",
+        "column_2_image": "shopify://shop_images/yoto-mini-player-gen4.png",
         "column_2_price": "£89.99",
         "column_2_note": "Player, USB-C cable, Make Your Own card. Pre-order; dispatch from 30 Sep.",
+        "column_3_image": "shopify://shop_images/yoto-player-gen4.png",
         "column_3_price": "£119.99",
         "column_3_note": "Player, USB-C cable, Make Your Own card. Pre-order; dispatch from 15 Oct.",
         "media_ratio": "square",
