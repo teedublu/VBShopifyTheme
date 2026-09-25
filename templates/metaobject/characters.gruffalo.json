@@ -149,13 +149,21 @@
             "title": "Where can I learn about the Gruffalo himself?",
             "content": "<p>Read the dedicated <a href=\"/pages/character/the-gruffalo\">Gruffalo character guide</a> for his description, meaning and role in the story.</p>"
           }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "title": "How can my child listen to The Gruffalo?",
+            "content": "<p>On a Voxblock player. The story is a small block of recycled card that slots into the player &mdash; no screen, no wifi, no app and nothing to download. <a href=\"/products/gruffalo-and-friends-starter-pack\">The Gruffalo and Friends Starter Pack</a> has the player and three Julia Donaldson stories together.</p>"
+          }
         }
       },
       "block_order": [
         "item_1",
         "item_2",
         "item_3",
-        "item_4"
+        "item_4",
+        "item_5"
       ],
       "settings": {
         "full_width": true,
@@ -165,8 +173,8 @@
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
-        "button_text": "Explore the audiobook",
-        "button_url": "/pages/audiobook/the-gruffalo",
+        "button_text": "See the Gruffalo and Friends pack",
+        "button_url": "/products/gruffalo-and-friends-starter-pack",
         "text_position": "center",
         "background": "",
         "background_gradient": "",
@@ -192,10 +200,10 @@
             "icon": "none",
             "icon_width": 68,
             "subheading": "Listen screen-free",
-            "title": "From character guide to listening",
-            "content": "<p>Voxblock turns the story into a simple, screen-free listening experience. Children place the physical audiobook on the player and can hear the characters without needing a phone, tablet, app or Wi-Fi.</p>",
-            "link_text": "View The Gruffalo audiobook",
-            "link_url": "/pages/audiobook/the-gruffalo",
+            "title": "Three Julia Donaldson stories and the player that reads them",
+            "content": "<p>The Gruffalo, Room on the Broom and The Smartest Giant in Town, with a screen-free player your child works on their own. 100 days to change your mind.</p>",
+            "link_text": "Get the Gruffalo and Friends pack",
+            "link_url": "/products/gruffalo-and-friends-starter-pack",
             "background": "#f6fbfb",
             "background_gradient": "",
             "text_color": "#565656",
@@ -213,12 +221,72 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "listen_gruffalo_sample": {
+      "type": "listen-to-voice",
+      "settings": {
+        "eyebrow": "Hear The Voice",
+        "heading": "Hear how [title] sounds",
+        "content": "Press play for a sample of [title] and hear Mouse talk his way through the deep dark wood.",
+        "play_label": "Play sample",
+        "pause_label": "Playing sample",
+        "caption": "Sample from [title]"
+      }
+    },
+    "starter_pack_offer": {
+      "type": "featured-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "pack_contents": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The Voxblock player with <strong>The Gruffalo</strong>, <strong>Room on the Broom</strong> and <strong>The Smartest Giant in Town</strong>, plus a protective bumper and a USB-C cable.</p><p>No screen, no wifi, no app. It works the moment it comes out of the box, and children press play themselves.</p>"
+          }
+        },
+        "buy": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "#ff9e57",
+            "atc_button_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "pack_contents",
+        "buy"
+      ],
+      "settings": {
+        "full_width": true,
+        "product": "gruffalo-and-friends-starter-pack",
+        "desktop_media_width": 50,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "enable_image_zoom": true,
+        "background": "#fff7f0"
+      }
     }
   },
   "order": [
     "breadcrumbs_gruffalo",
     "intro_gruffalo_cast",
+    "listen_gruffalo_sample",
     "item_grid_F9GWek",
+    "starter_pack_offer",
     "cast_shape",
     "faq_cast",
     "voxblock_listening"
