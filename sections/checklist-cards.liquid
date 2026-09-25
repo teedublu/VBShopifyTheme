@@ -1,0 +1,297 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CHECKLIST CARDS (Voxblock)
+----------------------------------------------------------------------------------------------------------------------
+Two or three cards, each a heading over a short list, e.g. "Choose Voxblock if…" next to "Another option may suit
+you better if…". List items go one per line. A card can be highlighted and can mark its items with ticks or dots.
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- render 'section-spacing-collapsing' -%}
+
+  {%- assign card_background = section.settings.card_background | default: '#fff7f0' -%}
+  {%- assign card_text = section.settings.card_text_color | default: settings.text_color -%}
+  {%- assign card_heading = section.settings.card_heading_color | default: settings.text_color -%}
+  {%- assign highlight_background = section.settings.highlight_background | default: '#e9f6f4' -%}
+  {%- assign highlight = section.settings.highlight_color | default: '#197177' -%}
+  {%- assign tick_color = section.settings.tick_color | default: '#4cb6ac' -%}
+  {%- assign card_count = section.blocks.size | at_most: 3 -%}
+
+  <style>
+    #shopify-section-{{ section.id }} .checklist-cards {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--spacing-5);
+    }
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} .checklist-cards {
+        grid-template-columns: repeat({{ card_count }}, minmax(0, 1fr));
+        gap: var(--spacing-6);
+      }
+    }
+    #shopify-section-{{ section.id }} .checklist-card {
+      background: {{ card_background }};
+      color: {{ card_text }};
+      border-radius: var(--rounded-lg);
+      padding: var(--spacing-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-5);
+    }
+    @media screen and (min-width: 700px) {
+      #shopify-section-{{ section.id }} .checklist-card { padding: var(--spacing-8); }
+    }
+    #shopify-section-{{ section.id }} .checklist-card--highlight {
+      background: {{ highlight_background }};
+    }
+    #shopify-section-{{ section.id }} .checklist-card__title {
+      margin: 0;
+      color: {{ card_heading }};
+    }
+    #shopify-section-{{ section.id }} .checklist-card--highlight .checklist-card__title {
+      color: {{ highlight }};
+    }
+    #shopify-section-{{ section.id }} .checklist-card__list {
+      display: grid;
+      gap: var(--spacing-3);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    #shopify-section-{{ section.id }} .checklist-card__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-3);
+    }
+    #shopify-section-{{ section.id }} .checklist-card__marker {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-block-start: 0.125em;
+    }
+    #shopify-section-{{ section.id }} .checklist-card__dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .checklist-card__dot::before {
+      content: '';
+      width: 0.5rem;
+      height: 0.5rem;
+      border: 2px solid currentColor;
+      border-radius: var(--rounded-full);
+      opacity: 0.6;
+    }
+  </style>
+
+  <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
+    <div class="section-stack">
+      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, content: section.settings.content, text_alignment: section.settings.text_position -%}
+
+      <div class="checklist-cards">
+        {%- for block in section.blocks -%}
+          <div class="checklist-card {% if block.settings.highlight %}checklist-card--highlight{% endif %}" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <h3 class="h4 checklist-card__title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.items != blank -%}
+              {%- assign item_lines = block.settings.items | newline_to_br | split: '<br />' -%}
+
+              <ul class="checklist-card__list" role="list">
+                {%- for item_line in item_lines -%}
+                  {%- assign item_text = item_line | strip -%}
+                  {%- if item_text == blank -%}{%- continue -%}{%- endif -%}
+
+                  <li class="checklist-card__item">
+                    {%- if block.settings.marker == 'tick' -%}
+                      <svg class="checklist-card__marker" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="{{ tick_color }}"/><path d="M7.5 12.5l3 3 6-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    {%- else -%}
+                      <span class="checklist-card__marker checklist-card__dot" aria-hidden="true"></span>
+                    {%- endif -%}
+                    <span>{{ item_text | escape }}</span>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Checklist cards",
+  "class": "shopify-section--checklist-cards",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Not just the price"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Which one suits your family?"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {"value": "start", "label": "Left"},
+        {"value": "center", "label": "Center"}
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Lets a button link straight to this section. An ID of differences is linked as #differences."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#fff7f0"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card heading"
+    },
+    {
+      "type": "color",
+      "id": "highlight_background",
+      "label": "Highlighted card background",
+      "default": "#e9f6f4"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlighted card heading",
+      "default": "#197177"
+    },
+    {
+      "type": "color",
+      "id": "tick_color",
+      "label": "Tick",
+      "default": "#4cb6ac"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Choose Voxblock if…"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "List",
+          "info": "One item per line.",
+          "default": "You want it working the moment it’s out of the box.\nYou’d like stories they can hold and keep on a shelf."
+        },
+        {
+          "type": "select",
+          "id": "marker",
+          "label": "Mark items with",
+          "options": [
+            {"value": "tick", "label": "Ticks"},
+            {"value": "dot", "label": "Dots"}
+          ],
+          "default": "tick"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight this card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Checklist cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Choose Voxblock if…",
+            "marker": "tick",
+            "highlight": true
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Something else may suit you better if…",
+            "items": "You want a bedside clock in the same device.\nYou’re happy to manage it from a phone app.",
+            "marker": "dot"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
