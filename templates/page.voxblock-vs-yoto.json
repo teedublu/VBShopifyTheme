@@ -56,7 +56,7 @@
           "type": "quote",
           "settings": {
             "logo": "shopify://shop_images/INDY-Best-AFI.png",
-            "logo_width": 200,
+            "logo_width": 350,
             "author": "Best budget buy · IndyBest, The Independent · Abby Driver, 2026",
             "content": "Easy setup … Straightforward to use.",
             "show_rating": false,
@@ -86,7 +86,7 @@
           "type": "row",
           "settings": {
             "label": "Price difference",
-            "value_1": "",
+            "value_1": "Best value",
             "value_2": "£40.00 more than Voxblock",
             "value_3": "£70.00 more than Voxblock",
             "good_answer": "yes"
@@ -96,9 +96,9 @@
           "type": "row",
           "settings": {
             "label": "Setting up",
-            "value_1": "None: put a book on and press play",
-            "value_2": "Yoto app and wi-fi",
-            "value_3": "Yoto app and wi-fi",
+            "value_1": "No setup",
+            "value_2": "Install app and configure wifi",
+            "value_3": "Install app and configure wifi",
             "good_answer": "yes"
           }
         },
@@ -117,8 +117,8 @@
           "settings": {
             "label": "Screen",
             "value_1": "None",
-            "value_2": "None",
-            "value_3": "None (digital clock display)",
+            "value_2": "Small simple screen",
+            "value_3": "Large simple screen",
             "good_answer": "yes"
           }
         },
@@ -181,6 +181,26 @@
             "value_3": "11.5 × 11.5 × 11 cm, 763 g",
             "good_answer": "yes"
           }
+        },
+        "row_Xj6V3J": {
+          "type": "row",
+          "settings": {
+            "label": "Wifi needed",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
+        },
+        "row_4e9EwG": {
+          "type": "row",
+          "settings": {
+            "label": "Data collection",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
         }
       },
       "block_order": [
@@ -193,7 +213,9 @@
         "row_bedtime",
         "row_battery",
         "row_charging",
-        "row_size"
+        "row_size",
+        "row_Xj6V3J",
+        "row_4e9EwG"
       ],
       "settings": {
         "full_width": true,
