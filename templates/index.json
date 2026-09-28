@@ -1063,6 +1063,19 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "vb_age_picks": {
+      "type": "vb-age-picks",
+      "settings": {
+        "experiment_only": true,
+        "unknown_content": "packs",
+        "default_band": "5-8",
+        "products_count": 4,
+        "packs_all": "voxblock-starter-pack-collection",
+        "books_all": "audiobooks-global",
+        "books_link": "shopify://collections/audiobooks",
+        "full_width": true
+      }
     }
   },
   "order": [
@@ -1072,6 +1085,7 @@
     "video_N3TaA4",
     "impact_text_XqyFin",
     "image_link_blocks_xnFNpP",
+    "vb_age_picks",
     "hot-spots",
     "featured_collection_fGBEed",
     "image_link_blocks_hdtLUw",

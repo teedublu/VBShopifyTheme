@@ -1,0 +1,157 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP ME CHOOSE: MATCHED PACK
+----------------------------------------------------------------------------------------------------------------------
+The big card on the "Your match" screen: what's included, player colour, add to basket.
+
+* product: the matched pack
+* block: the favourite or mix block that picked it (for the optional books text and a unique form ID)
+* section: the Help me choose section (copy and default colour)
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_form_id = 'vb-hmc-form-' | append: section.id | append: '-' | append: block.id
+  assign vb_variant = product.selected_or_first_available_variant
+
+  assign vb_colour_option = nil
+  for vb_option in product.options_with_values
+    assign vb_option_name = vb_option.name | downcase
+    if vb_option_name == 'color' or vb_option_name == 'colour'
+      assign vb_colour_option = vb_option
+    endif
+  endfor
+
+  if vb_colour_option
+    assign vb_option_key = 'option' | append: vb_colour_option.position
+    assign vb_preferred = section.settings.default_colour | downcase | strip
+
+    for vb_value in vb_colour_option.values
+      assign vb_value_name = vb_value.name | downcase
+      if vb_value_name == vb_preferred
+        assign vb_preferred_variant = product.variants | where: vb_option_key, vb_value.name | first
+        if vb_preferred_variant.available
+          assign vb_variant = vb_preferred_variant
+        endif
+      endif
+    endfor
+
+    comment
+      Swatches in the order of the design (orange, green, red, blue), then any other colour
+    endcomment
+    assign vb_known = 'orange,green,red,blue' | split: ','
+    assign vb_sorted = ''
+    for vb_name in vb_known
+      for vb_value in vb_colour_option.values
+        assign vb_value_name = vb_value.name | downcase
+        if vb_value_name == vb_name
+          assign vb_sorted = vb_sorted | append: vb_value.name | append: '|||'
+        endif
+      endfor
+    endfor
+    for vb_value in vb_colour_option.values
+      assign vb_value_name = vb_value.name | downcase
+      unless vb_known contains vb_value_name
+        assign vb_sorted = vb_sorted | append: vb_value.name | append: '|||'
+      endunless
+    endfor
+    assign vb_colours = vb_sorted | split: '|||'
+  endif
+-%}
+
+{%- capture vb_books -%}{%- render 'vb-bundle-books', product: product, format: 'list' -%}{%- endcapture -%}
+{%- assign vb_books = block.settings.books_text | default: vb_books | strip -%}
+
+<article class="vb-hmc-card" data-hmc-card-product="{{ product.handle | escape }}">
+  <a class="vb-hmc-card__media" href="{{ product.url }}" data-hmc-product="{{ product.handle | escape }}" data-hmc-role="match" tabindex="-1">
+    {%- render 'product-badges', product: product, types: 'custom, discount', class: 'vb-badges' -%}
+
+    {%- if product.featured_media -%}
+      {{- product.featured_media | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400,600,800,1000', sizes: '(max-width: 699px) calc(100vw - 56px), 480px', class: 'vb-hmc-card__image' -}}
+    {%- endif -%}
+  </a>
+
+  <div class="vb-hmc-card__body">
+    <h3 class="vb-hmc-card__title">
+      <a href="{{ product.url }}" data-hmc-product="{{ product.handle | escape }}" data-hmc-role="match">{{ product.title }}</a>
+    </h3>
+
+    <p class="vb-price">
+      <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
+      <span class="vb-price__now">{{ vb_variant.price | money }}</span>
+      {%- if vb_variant.compare_at_price > vb_variant.price -%}
+        <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
+        <s class="vb-price__was">{{ vb_variant.compare_at_price | money }}</s>
+      {%- endif -%}
+    </p>
+
+    <ul class="vb-hmc-card__list">
+      {%- capture vb_tick -%}<svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3.5 10.5l4 4 9-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+      {%- if section.settings.included_player != blank -%}
+        <li>{{ vb_tick }}<span>{{ section.settings.included_player }}</span></li>
+      {%- endif -%}
+      {%- if vb_books != blank -%}
+        <li>{{ vb_tick }}<span>{{ vb_books }}</span></li>
+      {%- endif -%}
+      {%- if section.settings.included_extras != blank -%}
+        <li>{{ vb_tick }}<span>{{ section.settings.included_extras }}</span></li>
+      {%- endif -%}
+    </ul>
+
+    {%- if section.settings.reassurance != blank -%}
+      <p class="vb-hmc-card__reassure">{{ section.settings.reassurance }}</p>
+    {%- endif -%}
+
+    {%- if vb_colour_option and vb_colours.size > 1 -%}
+      <fieldset class="vb-hmc-colours">
+        {%- assign vb_option_index = vb_colour_option.position | minus: 1 -%}
+        <legend>{{ section.settings.colour_label }}: <span data-hmc-colour-name>{{ vb_variant.options[vb_option_index] }}</span></legend>
+
+        <div class="vb-hmc-colours__list">
+          {%- for vb_name in vb_colours -%}
+            {%- liquid
+              assign vb_colour_variant = product.variants | where: vb_option_key, vb_name | first
+              assign vb_swatch = vb_colour_variant.metafields.bumper.colour | default: vb_colour_variant.metafields.custom.color
+              if vb_swatch == blank
+                for vb_value in vb_colour_option.values
+                  if vb_value.name == vb_name and vb_value.swatch.color != blank
+                    assign vb_swatch = vb_value.swatch.color
+                  endif
+                endfor
+              endif
+            -%}
+            <label class="vb-hmc-swatch" data-colour="{{ vb_name | handle }}" title="{{ vb_name | escape }}">
+              <input
+                type="radio"
+                name="{{ vb_form_id }}-colour"
+                value="{{ vb_colour_variant.id }}"
+                data-colour-name="{{ vb_name | escape }}"
+                {% if vb_colour_variant.featured_media %}data-image="{{ vb_colour_variant.featured_media | image_url: width: 1000 }}"{% endif %}
+                {% if vb_colour_variant.id == vb_variant.id %}checked{% endif %}
+                {% unless vb_colour_variant.available %}disabled{% endunless %}
+              >
+              <span {% if vb_swatch != blank %}style="--swatch: {{ vb_swatch }}"{% endif %}></span>
+              <span class="sr-only">{{ vb_name }}</span>
+            </label>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endif -%}
+
+    {%- form 'product', product, id: vb_form_id, class: 'vb-hmc-card__form', is: 'product-form', data-hmc-role: 'match' -%}
+      <input type="hidden" name="id" value="{{ vb_variant.id }}">
+      <button type="submit" class="vb-pill vb-pill--block" {% unless vb_variant.available %}disabled{% endunless %}>
+        {%- if vb_variant.available -%}
+          {{- section.settings.add_label -}}
+        {%- else -%}
+          {{- 'product.general.sold_out_button' | t -}}
+        {%- endif -%}
+      </button>
+    {%- endform -%}
+
+    <p class="vb-hmc-card__error" role="alert" hidden></p>
+
+    {%- if section.settings.klarna_text != blank -%}
+      <p class="vb-hmc-card__klarna">{{ section.settings.klarna_text }}</p>
+    {%- endif -%}
+  </div>
+</article>

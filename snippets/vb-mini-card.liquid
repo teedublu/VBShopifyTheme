@@ -1,0 +1,29 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COMPACT PRODUCT CARD (Age picks)
+----------------------------------------------------------------------------------------------------------------------
+* product: the product
+* track: PostHog event sent when the card is clicked (optional)
+{%- endcomment -%}
+
+{%- assign vb_variant = product.selected_or_first_available_variant -%}
+
+<a class="vb-mini" href="{{ product.url }}" {% if track != blank %}data-vb-track="{{ track }}" data-vb-track-label="{{ product.handle | escape }}"{% endif %}>
+  <div class="vb-mini__media">
+    {%- render 'product-badges', product: product, types: 'custom, discount', class: 'vb-badges' -%}
+
+    {%- if product.featured_media -%}
+      {%- assign vb_alt = product.featured_media.alt | default: product.title -%}
+      {{- product.featured_media | image_url: width: 600 | image_tag: loading: 'lazy', widths: '200,300,400,500,600', sizes: '(max-width: 699px) 62vw, (max-width: 999px) 40vw, 320px', alt: vb_alt -}}
+    {%- endif -%}
+  </div>
+
+  <span class="vb-mini__title">{{ product.title }}</span>
+
+  <span class="vb-price">
+    <span class="vb-price__now">{{ vb_variant.price | money }}</span>
+    {%- if vb_variant.compare_at_price > vb_variant.price -%}
+      <s class="vb-price__was">{{ vb_variant.compare_at_price | money }}</s>
+    {%- endif -%}
+  </span>
+</a>

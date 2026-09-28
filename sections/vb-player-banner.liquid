@@ -1,0 +1,142 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PLAYER BANNER
+----------------------------------------------------------------------------------------------------------------------
+One line for audiobook pages: "Plays on the Voxblock player — starter packs from £69.99".
+Player prospects see the full banner, unknown visitors a softer line, owners nothing (assets/vb-targeting.css reads
+<html data-vb-mode>). [price] is the lowest price of the available products in "Price from" whose title contains the
+"Only products named" text.
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_min = 999999999
+  for vb_product in section.settings.price_collection.products
+    unless vb_product.available
+      continue
+    endunless
+    if section.settings.price_title_filter != blank
+      unless vb_product.title contains section.settings.price_title_filter
+        continue
+      endunless
+    endif
+    if vb_product.price_min < vb_min
+      assign vb_min = vb_product.price_min
+    endif
+  endfor
+
+  assign vb_price = ''
+  if vb_min < 999999999
+    assign vb_price = vb_min | money
+  endif
+
+  assign vb_link = section.settings.link | default: section.settings.price_collection.url
+  assign vb_prospect_text = section.settings.prospect_text | replace: '[price]', vb_price
+  assign vb_unknown_text = section.settings.unknown_text | replace: '[price]', vb_price
+  assign vb_unknown_link = section.settings.unknown_link_text | replace: '[price]', vb_price
+
+  capture vb_style
+    echo '--vb-banner-background: ' | append: section.settings.background | append: '; '
+    echo '--vb-banner-text: ' | append: section.settings.text_color | append: ';'
+  endcapture
+-%}
+
+<div class="vb-banner container" style="{{ vb_style }}" {% if section.settings.experiment_only %}data-vb-experiment{% endif %}>
+  <div class="vb-banner__line vb-banner__line--prospect">
+    <p>{{ vb_prospect_text }}</p>
+    {%- if vb_link != blank and section.settings.button_label != blank -%}
+      <a class="vb-pill vb-pill--white" href="{{ vb_link }}" data-vb-track="player_banner_click" data-vb-track-label="prospect">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+  </div>
+
+  <div class="vb-banner__line vb-banner__line--unknown">
+    <p>
+      {{- vb_unknown_text -}}
+      {%- if vb_link != blank and vb_unknown_link != blank %}
+        <a class="vb-link" href="{{ vb_link }}" data-vb-track="player_banner_click" data-vb-track-label="unknown">{{ vb_unknown_link }}</a>
+      {%- endif -%}
+    </p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Player banner",
+  "class": "shopify-section--vb-player-banner",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Prospects see the banner, unknown visitors the softer line, player owners nothing. Uses Theme settings > Visitor targeting."
+    },
+    {
+      "type": "checkbox",
+      "id": "experiment_only",
+      "label": "Hide for the experiment control group",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "prospect_text",
+      "label": "Prospect banner",
+      "info": "[price] is the lowest starter pack price.",
+      "default": "Plays on the Voxblock player — starter packs from [price]"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Prospect button",
+      "default": "See starter packs"
+    },
+    {
+      "type": "text",
+      "id": "unknown_text",
+      "label": "Line for everyone else",
+      "default": "New to Voxblock? Our audiobooks play on the Voxblock player."
+    },
+    {
+      "type": "text",
+      "id": "unknown_link_text",
+      "label": "Link for everyone else",
+      "default": "Starter packs from [price]"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Defaults to the \"Price from\" collection."
+    },
+    {
+      "type": "collection",
+      "id": "price_collection",
+      "label": "Price from"
+    },
+    {
+      "type": "text",
+      "id": "price_title_filter",
+      "label": "Only products named",
+      "info": "Leave blank to use every product in the collection.",
+      "default": "Starter Pack"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Banner background",
+      "default": "#197177"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Banner text",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Player banner"
+    }
+  ]
+}
+{% endschema %}

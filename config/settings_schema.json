@@ -922,6 +922,150 @@
     ]
   },
   {
+    "name": "Visitor targeting",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Builds a profile of each visitor in their browser (player prospect, owner or unknown, and the child's age band) from signals the site already has. The Help me choose, Age picks and Player banner sections use it, and it opens the Klaviyo forms below. Set-up notes: docs/player-prospect-targeting.md in the theme repository."
+      },
+      {
+        "type": "checkbox",
+        "id": "vb_targeting_enabled",
+        "label": "Enable visitor targeting",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "vb_profile_storage",
+        "label": "Remember visitors between visits",
+        "options": [
+          {
+            "value": "consent",
+            "label": "Only with cookie consent"
+          },
+          {
+            "value": "always",
+            "label": "Always"
+          },
+          {
+            "value": "visit",
+            "label": "Never, one visit at a time"
+          }
+        ],
+        "default": "consent",
+        "info": "Without consent the profile lasts for one visit (session storage)."
+      },
+      {
+        "type": "header",
+        "content": "PostHog"
+      },
+      {
+        "type": "text",
+        "id": "vb_experiment_flag",
+        "label": "Experiment flag key",
+        "default": "player-prospect-targeting",
+        "info": "Prospect and unknown visitors in the control variant see the current site. Everyone gets the new behaviour while the flag doesn't exist or this is blank."
+      },
+      {
+        "type": "text",
+        "id": "vb_experiment_control",
+        "label": "Control variant key",
+        "default": "control"
+      },
+      {
+        "type": "text",
+        "id": "vb_owner_flag",
+        "label": "Player-owner flag key",
+        "default": "has-bought-player",
+        "info": "Boolean flag that is true for people with the person property has_bought_player."
+      },
+      {
+        "type": "header",
+        "content": "Klaviyo"
+      },
+      {
+        "type": "text",
+        "id": "vb_exit_form_id",
+        "label": "Exit form ID",
+        "info": "A popup set to 'Only show on custom trigger'. Leave blank to switch the exit form off."
+      },
+      {
+        "type": "range",
+        "id": "vb_exit_form_cooldown",
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "unit": "d",
+        "label": "Show the exit form again after",
+        "default": 14
+      },
+      {
+        "type": "select",
+        "id": "vb_welcome_mode",
+        "label": "15% welcome pop-ups",
+        "options": [
+          {
+            "value": "klaviyo",
+            "label": "Klaviyo decides (current behaviour)"
+          },
+          {
+            "value": "theme",
+            "label": "Experiment control group only"
+          },
+          {
+            "value": "off",
+            "label": "Off"
+          }
+        ],
+        "default": "klaviyo",
+        "info": "Before choosing 'Experiment control group only' or 'Off', set both forms to 'Only show on custom trigger' in Klaviyo."
+      },
+      {
+        "type": "text",
+        "id": "vb_welcome_form_desktop",
+        "label": "Welcome form ID (desktop)",
+        "default": "UG5z6F"
+      },
+      {
+        "type": "text",
+        "id": "vb_welcome_form_mobile",
+        "label": "Welcome form ID (mobile)",
+        "default": "TZkSsi"
+      },
+      {
+        "type": "header",
+        "content": "Signals"
+      },
+      {
+        "type": "textarea",
+        "id": "vb_player_campaigns",
+        "label": "Player-acquisition campaigns",
+        "default": "24226616157\n24285090863\n24289435119",
+        "info": "Google Ads campaign IDs or utm_campaign values, one per line. Meta paid and ChatGPT (cmpn_) clicks always count."
+      },
+      {
+        "type": "text",
+        "id": "vb_prospect_terms",
+        "label": "Prospect search terms",
+        "default": "player, yoto, tonie, screen free, screen-free, for kids",
+        "info": "Matched against utm_term and on-site searches."
+      },
+      {
+        "type": "text",
+        "id": "vb_how_it_works_paths",
+        "label": "How it works pages",
+        "default": "/pages/how-does-it-work"
+      },
+      {
+        "type": "text",
+        "id": "vb_compare_paths",
+        "label": "Compare pages",
+        "default": "/pages/voxblock-vs-yoto",
+        "info": "Pages whose template or address contains 'compare' or '-vs-' also count."
+      }
+    ]
+  },
+  {
     "name": "Favicon",
     "settings": [
       {

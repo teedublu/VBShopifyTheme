@@ -1,0 +1,44 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP ME CHOOSE: GRID CARD
+----------------------------------------------------------------------------------------------------------------------
+"Not sure which pack?" card that sits in the collection grid (main-collection "Help me choose" block) and opens the
+Help me choose section. Without that section on the page, the button goes to the block's link.
+
+* block: the main-collection block
+* section: the main-collection section
+* collection: the current collection
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_link = block.settings.link | default: collection.url | default: request.path
+  capture vb_style
+    echo '--vb-launch-background: ' | append: block.settings.background | append: '; '
+    echo '--vb-launch-text: ' | append: block.settings.text_color | append: '; '
+    echo '--vb-launch-accent: ' | append: block.settings.accent | append: ';'
+  endcapture
+-%}
+
+<div
+  id="block-{{ section.id }}-{{ block.id }}"
+  class="vb-hmc-launch"
+  style="{{ vb_style }}"
+  {% if block.settings.experiment_only %}data-vb-experiment{% endif %}
+  {{ block.shopify_attributes }}
+>
+  <span class="vb-hmc-launch__icon" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="20" cy="20" r="16.5"/><path d="M15.4 15.6a4.7 4.7 0 1 1 6.4 4.3c-1.1.5-1.8 1.5-1.8 2.7v1.1"/><circle cx="20" cy="28.6" r="0.9" fill="currentColor" stroke="none"/></svg>
+  </span>
+
+  {%- if block.settings.title != blank -%}
+    <p class="vb-hmc-launch__title">{{ block.settings.title }}</p>
+  {%- endif -%}
+
+  {%- if block.settings.text != blank -%}
+    <p class="vb-hmc-launch__text">{{ block.settings.text }}</p>
+  {%- endif -%}
+
+  <a class="vb-pill vb-pill--white" href="{{ vb_link }}#help-me-choose" role="button" data-vb-hmc-open="grid_card">
+    {{- block.settings.button_label -}}
+  </a>
+</div>

@@ -1,0 +1,864 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP ME CHOOSE
+----------------------------------------------------------------------------------------------------------------------
+Three quick questions (age, favourite, gift) that match a starter pack to a child. Opens as a dialog from:
+  - the "Help me choose" card in the collection grid (main-collection block)
+  - an optional strip in this section
+  - any link to #help-me-choose, or #help-me-choose=5-8 to skip straight to that age's favourites
+
+Favourites, the "Not sure – give me a mix" pick and the gift upsell are blocks, one set per age band.
+Behaviour: assets/vb-sections.js. Styles: assets/vb-targeting.css.
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_bands = 'u5,5-8,8-10,10+' | split: ','
+  assign vb_keys = 'u5,58,810,10' | split: ','
+  assign vb_all_url = section.settings.all_packs_url | default: routes.all_products_collection_url
+
+  assign vb_rows = '|'
+  assign vb_has_blocks = false
+  for block in section.blocks
+    if block.type != 'gift' and block.settings.product != blank
+      assign vb_has_blocks = true
+    endif
+  endfor
+-%}
+
+<vb-help-me-choose
+  id="help-me-choose"
+  class="vb-hmc"
+  data-section-id="{{ section.id }}"
+  data-all-url="{{ vb_all_url }}"
+  {% if section.settings.experiment_only %}data-vb-experiment{% endif %}
+>
+  <script type="application/json" data-hmc-config>
+    {
+      "bands": {
+        {%- for vb_band in vb_bands -%}
+          {%- assign vb_key = vb_keys[forloop.index0] -%}
+          {%- capture vb_title_id -%}band_{{ vb_key }}_title{%- endcapture -%}
+          {%- capture vb_audience_id -%}band_{{ vb_key }}_audience{%- endcapture -%}
+          {{ vb_band | json }}: {
+            "title": {{ section.settings[vb_title_id] | json }},
+            "audience": {{ section.settings[vb_audience_id] | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      },
+      "choices": {
+        {%- assign vb_first = true -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'gift' or block.settings.product == blank -%}{%- continue -%}{%- endif -%}
+          {%- unless vb_first %},{% endunless -%}
+          {%- assign vb_first = false -%}
+          {%- capture vb_chip -%}{{ block.settings.chip | default: 'loves [label]' | replace: '[label]', block.settings.label }}{%- endcapture -%}
+          {{ block.id | json }}: {
+            "kind": {{ block.type | json }},
+            "band": {{ block.settings.band | json }},
+            "product": {{ block.settings.product.handle | json }},
+            "chip": {% if block.type == 'mix' %}{{ section.settings.mix_chip | json }}{% else %}{{ vb_chip | json }}{% endif %},
+            "headline": {{ block.settings.headline | json }},
+            "smaller": {% if block.settings.smaller_product != blank %}{{ block.settings.smaller_product.handle | json }}{% else %}null{% endif %},
+            "also": {% if block.settings.also_product != blank %}{{ block.settings.also_product.handle | json }}{% else %}null{% endif %}
+          }
+        {%- endfor -%}
+      },
+      "gifts": {
+        {%- assign vb_first = true -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type != 'gift' or block.settings.product == blank -%}{%- continue -%}{%- endif -%}
+          {%- unless vb_first %},{% endunless -%}
+          {%- assign vb_first = false -%}
+          {{ block.id | json }}: {
+            "band": {{ block.settings.band | json }},
+            "product": {{ block.settings.product.handle | json }}
+          }
+        {%- endfor -%}
+      },
+      "text": {
+        "favourite": {{ section.settings.favourite_text | json }},
+        "count": {{ section.settings.count_text | json }},
+        "continue": {{ section.settings.continue_label | json }},
+        "finish": {{ section.settings.finish_label | json }},
+        "title": {{ section.settings.title | json }},
+        "result_title": {{ section.settings.result_title | json }},
+        "headline_gift": {{ section.settings.headline_gift | json }},
+        "headline_family": {{ section.settings.headline_family | json }},
+        "chip_gift": {{ section.settings.gift_yes_chip | json }},
+        "chip_family": {{ section.settings.gift_no_chip | json }},
+        "chip_mix": {{ section.settings.mix_chip | json }},
+        "smaller_title": {{ section.settings.smaller_title | json }},
+        "also_title": {{ section.settings.also_title | json }}
+      }
+    }
+  </script>
+
+  {%- if section.settings.show_strip -%}
+    <div {% render 'section-properties' %}>
+      <div class="vb-hmc-strip">
+        <div class="vb-hmc-strip__text">
+          <p class="vb-hmc-strip__title">{{ section.settings.strip_title }}</p>
+          {%- if section.settings.strip_text != blank -%}
+            <p>{{ section.settings.strip_text }}</p>
+          {%- endif -%}
+        </div>
+        <a class="vb-pill vb-pill--white" href="#help-me-choose" role="button" data-vb-hmc-open="strip">{{ section.settings.strip_button }}</a>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <dialog class="vb-hmc__dialog" aria-labelledby="vb-hmc-title-{{ section.id }}">
+    <div class="vb-hmc__panel">
+      <header class="vb-hmc__header">
+        <button type="button" class="vb-hmc__icon-button" data-hmc-close aria-label="{{ 'general.accessibility.close' | t | escape }}">
+          <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 4l14 14M18 4L4 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="vb-hmc__icon-button" data-hmc-back aria-label="{{ 'general.accessibility.previous' | t | escape }}" hidden>
+          <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M13.5 4.5L7 11l6.5 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <p class="vb-hmc__title" id="vb-hmc-title-{{ section.id }}" data-hmc-title>{{ section.settings.title }}</p>
+
+        <p class="vb-hmc__count" data-hmc-count></p>
+        <button type="button" class="vb-hmc__icon-button" data-hmc-close-end aria-label="{{ 'general.accessibility.close' | t | escape }}" hidden>
+          <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 4l14 14M18 4L4 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+
+      <div class="vb-hmc__progress" data-hmc-progress aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+
+      <div class="vb-hmc__body" data-hmc-body>
+        {%- comment -%} 1. Age {%- endcomment -%}
+        <section class="vb-hmc__step" data-step="age" tabindex="-1" aria-labelledby="vb-hmc-age-{{ section.id }}">
+          <h2 class="vb-hmc__question" id="vb-hmc-age-{{ section.id }}">{{ section.settings.age_title }}</h2>
+          {%- if section.settings.age_text != blank -%}
+            <p class="vb-hmc__sub">{{ section.settings.age_text }}</p>
+          {%- endif -%}
+
+          <fieldset class="vb-hmc__options">
+            <legend class="sr-only">{{ section.settings.age_title }}</legend>
+
+            {%- for vb_band in vb_bands -%}
+              {%- assign vb_key = vb_keys[forloop.index0] -%}
+              {%- capture vb_badge_id -%}band_{{ vb_key }}_badge{%- endcapture -%}
+              {%- capture vb_title_id -%}band_{{ vb_key }}_title{%- endcapture -%}
+              {%- capture vb_text_id -%}band_{{ vb_key }}_text{%- endcapture -%}
+
+              <label class="vb-hmc-option">
+                <input type="radio" name="vb-hmc-age-{{ section.id }}" value="{{ vb_band }}">
+                <span class="vb-hmc-option__badge" aria-hidden="true">{{ section.settings[vb_badge_id] }}</span>
+                <span class="vb-hmc-option__text">
+                  <span class="vb-hmc-option__title">{{ section.settings[vb_title_id] }}</span>
+                  {%- if section.settings[vb_text_id] != blank -%}
+                    <span class="vb-hmc-option__desc">{{ section.settings[vb_text_id] }}</span>
+                  {%- endif -%}
+                </span>
+                <span class="vb-hmc-option__check" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l4.5 4.5L18 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </label>
+            {%- endfor -%}
+          </fieldset>
+
+          {%- if section.settings.age_hint != blank -%}
+            <p class="vb-hmc__hint">{{ section.settings.age_hint }}</p>
+          {%- endif -%}
+        </section>
+
+        {%- comment -%} 2. Favourite, one set of tiles per age band {%- endcomment -%}
+        <section class="vb-hmc__step" data-step="favourite" tabindex="-1" aria-labelledby="vb-hmc-favourite-{{ section.id }}" hidden>
+          <h2 class="vb-hmc__question" id="vb-hmc-favourite-{{ section.id }}">{{ section.settings.favourite_title }}</h2>
+          <p class="vb-hmc__sub" data-hmc-favourite-text></p>
+
+          {%- for vb_band in vb_bands -%}
+            {%- assign vb_key = vb_keys[forloop.index0] -%}
+            <fieldset class="vb-hmc__tiles" data-band="{{ vb_band }}" hidden>
+              <legend class="sr-only">{{ section.settings.favourite_title }}</legend>
+
+              {%- for block in section.blocks -%}
+                {%- if block.type != 'favourite' or block.settings.band != vb_band or block.settings.product == blank -%}{%- continue -%}{%- endif -%}
+
+                <label class="vb-hmc-tile" {% if block.settings.tile_colour != blank %}style="--vb-tile-background: {{ block.settings.tile_colour }}"{% endif %} {{ block.shopify_attributes }}>
+                  <input type="radio" name="vb-hmc-favourite-{{ section.id }}-{{ vb_key }}" value="{{ block.id }}">
+                  <span class="vb-hmc-tile__art">
+                    {%- if block.settings.image != blank -%}
+                      {{- block.settings.image | image_url: width: 480 | image_tag: loading: 'lazy', widths: '240,360,480', sizes: '(max-width: 699px) 42vw, 240px', alt: '' -}}
+                    {%- elsif block.settings.product.featured_media -%}
+                      {{- block.settings.product.featured_media | image_url: width: 480 | image_tag: loading: 'lazy', widths: '240,360,480', sizes: '(max-width: 699px) 42vw, 240px', alt: '', class: 'vb-hmc-tile__pack' -}}
+                    {%- endif -%}
+                    <span class="vb-hmc-tile__check" aria-hidden="true">
+                      <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l4.5 4.5L18 6.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                  </span>
+                  <span class="vb-hmc-tile__label">{{ block.settings.label }}</span>
+                </label>
+              {%- endfor -%}
+
+              <label class="vb-hmc-mix">
+                <input type="radio" name="vb-hmc-favourite-{{ section.id }}-{{ vb_key }}" value="mix">
+                {{- section.settings.mix_label -}}
+              </label>
+            </fieldset>
+          {%- endfor -%}
+        </section>
+
+        {%- comment -%} 3. Gift {%- endcomment -%}
+        <section class="vb-hmc__step" data-step="gift" tabindex="-1" aria-labelledby="vb-hmc-gift-{{ section.id }}" hidden>
+          <h2 class="vb-hmc__question" id="vb-hmc-gift-{{ section.id }}">{{ section.settings.gift_title }}</h2>
+          {%- if section.settings.gift_text != blank -%}
+            <p class="vb-hmc__sub">{{ section.settings.gift_text }}</p>
+          {%- endif -%}
+
+          <fieldset class="vb-hmc__options">
+            <legend class="sr-only">{{ section.settings.gift_title }}</legend>
+
+            <label class="vb-hmc-option">
+              <input type="radio" name="vb-hmc-gift-{{ section.id }}" value="gift">
+              <span class="vb-hmc-option__badge vb-hmc-option__badge--icon" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="20" height="5" rx="1"/><path d="M7 16v9h16v-9M15 11v14M15 11c-1.5-3-5-5-6.5-3.2C7 9.5 10.5 11 15 11zM15 11c1.5-3 5-5 6.5-3.2C23 9.5 19.5 11 15 11z"/></svg>
+              </span>
+              <span class="vb-hmc-option__text">
+                <span class="vb-hmc-option__title">{{ section.settings.gift_yes_title }}</span>
+                {%- if section.settings.gift_yes_text != blank -%}
+                  <span class="vb-hmc-option__desc">{{ section.settings.gift_yes_text }}</span>
+                {%- endif -%}
+              </span>
+              <span class="vb-hmc-option__check" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l4.5 4.5L18 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </label>
+
+            <label class="vb-hmc-option">
+              <input type="radio" name="vb-hmc-gift-{{ section.id }}" value="family">
+              <span class="vb-hmc-option__badge vb-hmc-option__badge--icon" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14l9-7.5 9 7.5M8.5 12v11.5h13V12M13 23.5V18h4v5.5"/></svg>
+              </span>
+              <span class="vb-hmc-option__text">
+                <span class="vb-hmc-option__title">{{ section.settings.gift_no_title }}</span>
+                {%- if section.settings.gift_no_text != blank -%}
+                  <span class="vb-hmc-option__desc">{{ section.settings.gift_no_text }}</span>
+                {%- endif -%}
+              </span>
+              <span class="vb-hmc-option__check" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l4.5 4.5L18 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </label>
+          </fieldset>
+        </section>
+
+        {%- comment -%} Result, filled from the templates below {%- endcomment -%}
+        <section class="vb-hmc__step vb-hmc__result" data-step="result" tabindex="-1" aria-labelledby="vb-hmc-headline-{{ section.id }}" aria-live="polite" hidden>
+          <p class="vb-hmc__chip" data-hmc-chip></p>
+          <h2 class="vb-hmc__headline" id="vb-hmc-headline-{{ section.id }}" data-hmc-headline></h2>
+          <div data-hmc-slot="match"></div>
+          <div data-hmc-slot="gift"></div>
+          <div data-hmc-slot="smaller"></div>
+          <div data-hmc-slot="also"></div>
+
+          <div class="vb-hmc__fallback" data-hmc-slot="fallback" hidden>
+            <p>{{ section.settings.fallback_text }}</p>
+            <a class="vb-pill" href="{{ vb_all_url }}" data-hmc-all>{{ section.settings.all_packs_label }}</a>
+          </div>
+        </section>
+      </div>
+
+      <footer class="vb-hmc__footer" data-hmc-footer>
+        <button type="button" class="vb-pill vb-pill--block" data-hmc-next disabled>{{ section.settings.continue_label }}</button>
+        <a class="vb-link vb-hmc__all" href="{{ vb_all_url }}" data-hmc-all>{{ section.settings.all_packs_label }}</a>
+      </footer>
+    </div>
+  </dialog>
+
+  {%- comment -%} Result pieces, cloned when the result is shown {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.product == blank -%}{%- continue -%}{%- endif -%}
+
+    {%- if block.type == 'gift' -%}
+      <template data-hmc-gift="{{ block.id }}">
+        <div class="vb-hmc-gift" data-hmc-card-product="{{ block.settings.product.handle | escape }}">
+          <p class="vb-hmc-gift__title">
+            <svg aria-hidden="true" focusable="false" width="26" height="26" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="20" height="5" rx="1"/><path d="M7 16v9h16v-9M15 11v14M15 11c-1.5-3-5-5-6.5-3.2C7 9.5 10.5 11 15 11zM15 11c1.5-3 5-5 6.5-3.2C23 9.5 19.5 11 15 11z"/></svg>
+            {{ block.settings.title }}
+          </p>
+
+          {%- render 'vb-hmc-row', product: block.settings.product, subtitle: block.settings.text, link: false, show_save: true -%}
+
+          {%- assign vb_gift_variant = block.settings.product.selected_or_first_available_variant -%}
+          {%- capture vb_gift_form -%}vb-hmc-gift-{{ section.id }}-{{ block.id }}{%- endcapture -%}
+          {%- form 'product', block.settings.product, id: vb_gift_form, is: 'product-form', data-hmc-role: 'gift' -%}
+            <input type="hidden" name="id" value="{{ vb_gift_variant.id }}">
+            <button type="submit" class="vb-pill vb-pill--outline vb-pill--block" {% unless vb_gift_variant.available %}disabled{% endunless %}>{{ block.settings.button_label }}</button>
+          {%- endform -%}
+
+          <p class="vb-hmc-card__error" role="alert" hidden></p>
+        </div>
+      </template>
+    {%- else -%}
+      <template data-hmc-card="{{ block.id }}">
+        {%- render 'vb-hmc-card', product: block.settings.product, block: block, section: section -%}
+      </template>
+
+      {%- for vb_extra in (1..2) -%}
+        {%- if forloop.first -%}
+          {%- assign vb_extra_product = block.settings.smaller_product -%}
+        {%- else -%}
+          {%- assign vb_extra_product = block.settings.also_product -%}
+        {%- endif -%}
+
+        {%- if vb_extra_product == blank -%}{%- continue -%}{%- endif -%}
+        {%- capture vb_row_key -%}|{{ vb_extra_product.handle }}|{%- endcapture -%}
+        {%- if vb_rows contains vb_row_key -%}{%- continue -%}{%- endif -%}
+        {%- assign vb_rows = vb_rows | append: vb_extra_product.handle | append: '|' -%}
+
+        <template data-hmc-row="{{ vb_extra_product.handle | escape }}">
+          {%- render 'vb-hmc-row', product: vb_extra_product -%}
+        </template>
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if request.design_mode and vb_has_blocks == false -%}
+    <div class="container">
+      <p class="vb-hmc__sub">Help me choose: add a Favourite or "Not sure – mix" block for each age band. The dialog opens when this section is selected.</p>
+    </div>
+  {%- endif -%}
+</vb-help-me-choose>
+
+{% schema %}
+{
+  "name": "Help me choose",
+  "class": "shopify-section--vb-help-me-choose",
+  "tag": "section",
+  "max_blocks": 40,
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "blocks": [
+    {
+      "type": "favourite",
+      "name": "Favourite",
+      "settings": [
+        {
+          "type": "select",
+          "id": "band",
+          "label": "Age band",
+          "options": [
+            { "value": "u5", "label": "Under 5" },
+            { "value": "5-8", "label": "5 to 8" },
+            { "value": "8-10", "label": "8 to 10" },
+            { "value": "10+", "label": "10 and over" }
+          ],
+          "default": "5-8"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Name",
+          "default": "Paddington"
+        },
+        {
+          "type": "text",
+          "id": "chip",
+          "label": "Summary on the result",
+          "info": "[label] is replaced by the name.",
+          "default": "loves [label]"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Cover art",
+          "info": "Defaults to the matched pack's image."
+        },
+        {
+          "type": "color",
+          "id": "tile_colour",
+          "label": "Tile background",
+          "default": "#d9e8ea"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Matched pack"
+        },
+        {
+          "type": "text",
+          "id": "books_text",
+          "label": "Books in the pack",
+          "info": "Leave blank to list the pack's Bundle products metafield."
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Result headline",
+          "info": "Leave blank for the gift or family headline set on the section."
+        },
+        {
+          "type": "product",
+          "id": "smaller_product",
+          "label": "Want to start smaller?"
+        },
+        {
+          "type": "product",
+          "id": "also_product",
+          "label": "Also a good fit"
+        }
+      ]
+    },
+    {
+      "type": "mix",
+      "name": "Not sure – mix",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "The pack shown when someone picks \"Not sure – give me a mix\". One per age band. Without one, the band's first favourite is used."
+        },
+        {
+          "type": "select",
+          "id": "band",
+          "label": "Age band",
+          "options": [
+            { "value": "u5", "label": "Under 5" },
+            { "value": "5-8", "label": "5 to 8" },
+            { "value": "8-10", "label": "8 to 10" },
+            { "value": "10+", "label": "10 and over" }
+          ],
+          "default": "u5"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Matched pack"
+        },
+        {
+          "type": "text",
+          "id": "books_text",
+          "label": "Books in the pack",
+          "info": "Leave blank to list the pack's Bundle products metafield."
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Result headline"
+        },
+        {
+          "type": "product",
+          "id": "smaller_product",
+          "label": "Want to start smaller?"
+        },
+        {
+          "type": "product",
+          "id": "also_product",
+          "label": "Also a good fit"
+        }
+      ]
+    },
+    {
+      "type": "gift",
+      "name": "Gift upsell",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shown under the match when the answer to \"Is it a gift?\" is yes. One per age band."
+        },
+        {
+          "type": "select",
+          "id": "band",
+          "label": "Age band",
+          "options": [
+            { "value": "u5", "label": "Under 5" },
+            { "value": "5-8", "label": "5 to 8" },
+            { "value": "8-10", "label": "8 to 10" },
+            { "value": "10+", "label": "10 and over" }
+          ],
+          "default": "u5"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Gift bundle"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Make it the big present"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "What's inside",
+          "info": "Leave blank for \"Player + three audiobooks\"."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button",
+          "default": "Choose the Gift Bundle instead"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "experiment_only",
+      "label": "Hide for the experiment control group",
+      "info": "Theme settings > Visitor targeting.",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "all_packs_url",
+      "label": "\"All the packs\" link"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Dialog title",
+      "default": "Help me choose"
+    },
+    {
+      "type": "text",
+      "id": "count_text",
+      "label": "Step count",
+      "default": "[step] of [total]"
+    },
+    {
+      "type": "text",
+      "id": "continue_label",
+      "label": "Continue button",
+      "default": "Continue"
+    },
+    {
+      "type": "text",
+      "id": "finish_label",
+      "label": "Last button",
+      "default": "See my match"
+    },
+    {
+      "type": "text",
+      "id": "all_packs_label",
+      "label": "All packs link",
+      "default": "Just show me all the packs"
+    },
+    {
+      "type": "header",
+      "content": "Strip"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_strip",
+      "label": "Show a strip that opens Help me choose",
+      "info": "On collection pages the grid card usually does this instead.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "strip_title",
+      "label": "Heading",
+      "default": "Not sure which pack?"
+    },
+    {
+      "type": "text",
+      "id": "strip_text",
+      "label": "Text",
+      "default": "Three quick questions and we’ll match one to your child."
+    },
+    {
+      "type": "text",
+      "id": "strip_button",
+      "label": "Button",
+      "default": "Help me choose"
+    },
+    {
+      "type": "header",
+      "content": "1. Age"
+    },
+    {
+      "type": "text",
+      "id": "age_title",
+      "label": "Question",
+      "default": "How old is the listener?"
+    },
+    {
+      "type": "text",
+      "id": "age_text",
+      "label": "Text",
+      "default": "We’ll match them to a pack of stories they’ll love."
+    },
+    {
+      "type": "text",
+      "id": "age_hint",
+      "label": "Hint",
+      "default": "Buying for more than one? Pick the youngest."
+    },
+    {
+      "type": "text",
+      "id": "band_u5_badge",
+      "label": "Under 5: badge",
+      "default": "0–4"
+    },
+    {
+      "type": "text",
+      "id": "band_u5_title",
+      "label": "Under 5: name",
+      "default": "Under 5"
+    },
+    {
+      "type": "text",
+      "id": "band_u5_text",
+      "label": "Under 5: description",
+      "default": "Picture-book favourites and bedtime stories"
+    },
+    {
+      "type": "text",
+      "id": "band_u5_audience",
+      "label": "Under 5: audience",
+      "default": "under-5s"
+    },
+    {
+      "type": "text",
+      "id": "band_58_badge",
+      "label": "5 to 8: badge",
+      "default": "5–8"
+    },
+    {
+      "type": "text",
+      "id": "band_58_title",
+      "label": "5 to 8: name",
+      "default": "5 to 8"
+    },
+    {
+      "type": "text",
+      "id": "band_58_text",
+      "label": "5 to 8: description",
+      "default": "First chapter books and classic characters"
+    },
+    {
+      "type": "text",
+      "id": "band_58_audience",
+      "label": "5 to 8: audience",
+      "default": "5 to 8-year-olds"
+    },
+    {
+      "type": "text",
+      "id": "band_810_badge",
+      "label": "8 to 10: badge",
+      "default": "8–10"
+    },
+    {
+      "type": "text",
+      "id": "band_810_title",
+      "label": "8 to 10: name",
+      "default": "8 to 10"
+    },
+    {
+      "type": "text",
+      "id": "band_810_text",
+      "label": "8 to 10: description",
+      "default": "Longer adventures and funny classics"
+    },
+    {
+      "type": "text",
+      "id": "band_810_audience",
+      "label": "8 to 10: audience",
+      "default": "8 to 10-year-olds"
+    },
+    {
+      "type": "text",
+      "id": "band_10_badge",
+      "label": "10 and over: badge",
+      "default": "10+"
+    },
+    {
+      "type": "text",
+      "id": "band_10_title",
+      "label": "10 and over: name",
+      "default": "10 and over"
+    },
+    {
+      "type": "text",
+      "id": "band_10_text",
+      "label": "10 and over: description",
+      "default": "Epic series they can binge"
+    },
+    {
+      "type": "text",
+      "id": "band_10_audience",
+      "label": "10 and over: audience",
+      "default": "over-10s"
+    },
+    {
+      "type": "header",
+      "content": "2. Favourite"
+    },
+    {
+      "type": "text",
+      "id": "favourite_title",
+      "label": "Question",
+      "default": "Which would they love?"
+    },
+    {
+      "type": "text",
+      "id": "favourite_text",
+      "label": "Text",
+      "info": "[audience] is replaced by the age band's audience.",
+      "default": "Favourites with [audience]. Pick the one they’d reach for first."
+    },
+    {
+      "type": "text",
+      "id": "mix_label",
+      "label": "Mix option",
+      "default": "Not sure – give me a mix"
+    },
+    {
+      "type": "text",
+      "id": "mix_chip",
+      "label": "Mix summary on the result",
+      "default": "a mix of favourites"
+    },
+    {
+      "type": "header",
+      "content": "3. Gift"
+    },
+    {
+      "type": "text",
+      "id": "gift_title",
+      "label": "Question",
+      "default": "Is it a gift?"
+    },
+    {
+      "type": "text",
+      "id": "gift_text",
+      "label": "Text",
+      "default": "Last one – if it is, we’ll show you our gift options too."
+    },
+    {
+      "type": "text",
+      "id": "gift_yes_title",
+      "label": "Yes",
+      "default": "Yes, it’s a gift"
+    },
+    {
+      "type": "text",
+      "id": "gift_yes_text",
+      "label": "Yes: description",
+      "default": "Birthday, Christmas, or just because"
+    },
+    {
+      "type": "text",
+      "id": "gift_yes_chip",
+      "label": "Yes: summary on the result",
+      "default": "a gift"
+    },
+    {
+      "type": "text",
+      "id": "gift_no_title",
+      "label": "No",
+      "default": "No, it’s for our family"
+    },
+    {
+      "type": "text",
+      "id": "gift_no_text",
+      "label": "No: description",
+      "default": "For bedtimes, car journeys and quiet time"
+    },
+    {
+      "type": "text",
+      "id": "gift_no_chip",
+      "label": "No: summary on the result",
+      "default": "for the family"
+    },
+    {
+      "type": "header",
+      "content": "Your match"
+    },
+    {
+      "type": "text",
+      "id": "result_title",
+      "label": "Title",
+      "default": "Your match"
+    },
+    {
+      "type": "text",
+      "id": "headline_gift",
+      "label": "Headline for a gift",
+      "default": "A gift they can start listening to straight out of the box"
+    },
+    {
+      "type": "text",
+      "id": "headline_family",
+      "label": "Headline for the family",
+      "default": "Stories they’ll love, ready to play straight out of the box"
+    },
+    {
+      "type": "text",
+      "id": "included_player",
+      "label": "Included: player",
+      "default": "Voxblock player"
+    },
+    {
+      "type": "text",
+      "id": "included_extras",
+      "label": "Included: extras",
+      "default": "Protective bumper and charging cable"
+    },
+    {
+      "type": "text",
+      "id": "reassurance",
+      "label": "Reassurance",
+      "info": "Hidden when the gift upsell is showing.",
+      "default": "No app, no download, no setup."
+    },
+    {
+      "type": "text",
+      "id": "colour_label",
+      "label": "Colour label",
+      "default": "Player colour"
+    },
+    {
+      "type": "text",
+      "id": "default_colour",
+      "label": "Colour selected first",
+      "default": "Orange"
+    },
+    {
+      "type": "text",
+      "id": "add_label",
+      "label": "Add to basket button",
+      "default": "Add to basket"
+    },
+    {
+      "type": "text",
+      "id": "klarna_text",
+      "label": "Payment note",
+      "default": "Pay later with Klarna at checkout"
+    },
+    {
+      "type": "text",
+      "id": "smaller_title",
+      "label": "Smaller pack heading",
+      "default": "Want to start smaller?"
+    },
+    {
+      "type": "text",
+      "id": "also_title",
+      "label": "Alternative heading",
+      "default": "Also a good fit"
+    },
+    {
+      "type": "text",
+      "id": "fallback_text",
+      "label": "No match text",
+      "default": "We haven’t matched a pack to this age yet. Have a look at all our starter packs."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Help me choose"
+    }
+  ]
+}
+{% endschema %}

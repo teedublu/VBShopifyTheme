@@ -1,0 +1,549 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+AGE PICKS
+----------------------------------------------------------------------------------------------------------------------
+Age-led block for the visitor profile (assets/vb-profile.js):
+  - player prospect: starter packs for their child's age band, with tabs for the other bands
+  - player owner: top-selling books for that band
+  - unknown: the age tabs and a "Have a Voxblock player yet? Yes / Not yet" row
+
+Every panel is rendered here; the script after the section shows the right one before the page paints, using the
+profile the <head> script read (window.vbBoot), and follows later changes through the "vb:profile" event.
+
+Products come from the collection set for each band. Without one, products are taken from the "all" collection and
+matched on the book.age_groups metafield (for packs without it, every book in the pack must be in the band).
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+{%- liquid
+  assign vb_bands = 'u5,5-8,8-10,10+' | split: ','
+  assign vb_keys = 'u5,58,810,10' | split: ','
+  assign vb_codes = '35,58,810,12' | split: ','
+  assign vb_filters = "Under 5's|5 to 8 years|8 to 10 years|10 to teens" | split: '|'
+  assign vb_kinds = 'packs,books' | split: ','
+  assign vb_books_link = section.settings.books_link | default: '/collections/audiobooks'
+
+  assign vb_default_band = section.settings.default_band
+  assign vb_default_kind = section.settings.unknown_content
+  assign vb_default_index = 1
+  for vb_band in vb_bands
+    if vb_band == vb_default_band
+      assign vb_default_index = forloop.index0
+    endif
+  endfor
+  assign vb_default_name_id = 'band_' | append: vb_keys[vb_default_index] | append: '_name'
+  assign vb_default_name = section.settings[vb_default_name_id]
+-%}
+
+<vb-age-picks
+  id="vb-age-{{ section.id }}"
+  class="vb-age"
+  data-default-band="{{ vb_default_band }}"
+  data-unknown="{{ vb_default_kind }}"
+  data-kind="{{ vb_default_kind }}"
+  data-band="{{ vb_default_band }}"
+  {% if section.settings.experiment_only %}data-vb-experiment{% endif %}
+>
+  <div {% render 'section-properties' %}>
+    <div class="vb-age__inner">
+      <div class="vb-age__header">
+        <h2
+          class="h2 vb-age__heading"
+          data-heading-packs="{{ section.settings.heading_packs | escape }}"
+          data-heading-books="{{ section.settings.heading_books | escape }}"
+          data-heading-unknown="{{ section.settings.heading_unknown | escape }}"
+          {% if section.settings.heading_color != blank and section.settings.heading_color != 'rgba(0,0,0,0)' %}style="color: {{ section.settings.heading_color }}"{% endif %}
+        >
+          {{- section.settings.heading_unknown | replace: '[band]', vb_default_name -}}
+        </h2>
+
+        <div class="vb-age__tabs" role="tablist" aria-label="{{ section.settings.tabs_label | escape }}">
+          {%- for vb_band in vb_bands -%}
+            {%- assign vb_key = vb_keys[forloop.index0] -%}
+            {%- capture vb_tab_id -%}band_{{ vb_key }}_tab{%- endcapture -%}
+            {%- capture vb_name_id -%}band_{{ vb_key }}_name{%- endcapture -%}
+            <button
+              type="button"
+              class="vb-age__tab"
+              role="tab"
+              id="vb-age-tab-{{ section.id }}-{{ vb_key }}"
+              aria-controls="vb-age-{{ section.id }}-{{ vb_default_kind }}-{{ vb_key }}"
+              aria-selected="{% if vb_band == vb_default_band %}true{% else %}false{% endif %}"
+              tabindex="{% if vb_band == vb_default_band %}0{% else %}-1{% endif %}"
+              data-band="{{ vb_band }}"
+              data-key="{{ vb_key }}"
+              data-name="{{ section.settings[vb_name_id] | escape }}"
+            >
+              {{- section.settings[vb_tab_id] -}}
+            </button>
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.question != blank -%}
+          <div class="vb-age__question" data-age-question>
+            <p>{{ section.settings.question }}</p>
+            <button type="button" class="vb-pill vb-pill--outline" data-answer="yes">{{ section.settings.answer_yes }}</button>
+            <button type="button" class="vb-pill" data-answer="no">{{ section.settings.answer_no }}</button>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- for vb_kind in vb_kinds -%}
+        {%- capture vb_all_id -%}{{ vb_kind }}_all{%- endcapture -%}
+        {%- assign vb_all = section.settings[vb_all_id] -%}
+
+        {%- for vb_band in vb_bands -%}
+          {%- liquid
+            assign vb_index = forloop.index0
+            assign vb_key = vb_keys[vb_index]
+            assign vb_code = vb_codes[vb_index]
+            assign vb_setting = vb_kind | append: '_' | append: vb_key
+            assign vb_collection = section.settings[vb_setting]
+            assign vb_name_id = 'band_' | append: vb_key | append: '_name'
+            assign vb_name = section.settings[vb_name_id]
+            assign vb_count = 0
+
+            if vb_kind == 'packs'
+              assign vb_track = 'age_picks_pack'
+              assign vb_link = vb_collection.url | default: vb_all.url
+              assign vb_link_text = section.settings.packs_link_text
+            else
+              assign vb_track = 'age_picks_book'
+              assign vb_filter = vb_filters[vb_index] | url_encode
+              assign vb_link = vb_collection.url | default: vb_books_link
+              if vb_collection == blank
+                assign vb_link = vb_link | append: '?filter.p.m.book.age_groups=' | append: vb_filter
+              endif
+              assign vb_link_text = section.settings.books_link_text
+            endif
+          -%}
+
+          {%- capture vb_items -%}
+            {%- if vb_collection != blank -%}
+              {%- for vb_product in vb_collection.products -%}
+                {%- if vb_count >= section.settings.products_count -%}{%- break -%}{%- endif -%}
+                {%- unless vb_product.available -%}{%- continue -%}{%- endunless -%}
+                {%- render 'vb-mini-card', product: vb_product, track: vb_track -%}
+                {%- assign vb_count = vb_count | plus: 1 -%}
+              {%- endfor -%}
+            {%- elsif vb_all != blank -%}
+              {%- for vb_product in vb_all.products -%}
+                {%- if vb_count >= section.settings.products_count -%}{%- break -%}{%- endif -%}
+                {%- unless vb_product.available -%}{%- continue -%}{%- endunless -%}
+
+                {%- liquid
+                  assign vb_ages = vb_product.metafields.book.age_groups.value
+                  assign vb_match = false
+
+                  if vb_ages != blank
+                    if vb_ages contains vb_code
+                      assign vb_match = true
+                    endif
+                  elsif vb_kind == 'packs'
+                    assign vb_book_count = 0
+                    assign vb_match = true
+                    for vb_book in vb_product.metafields.bundles.products.value
+                      assign vb_book_type = vb_book.type | downcase
+                      unless vb_book_type contains 'audiobook'
+                        continue
+                      endunless
+                      assign vb_book_count = vb_book_count | plus: 1
+                      assign vb_book_ages = vb_book.metafields.book.age_groups.value
+                      unless vb_book_ages contains vb_code
+                        assign vb_match = false
+                      endunless
+                    endfor
+                    if vb_book_count == 0
+                      assign vb_match = false
+                    endif
+                  endif
+                -%}
+
+                {%- if vb_match -%}
+                  {%- render 'vb-mini-card', product: vb_product, track: vb_track -%}
+                  {%- assign vb_count = vb_count | plus: 1 -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endcapture -%}
+
+          <div
+            class="vb-age__panel"
+            id="vb-age-{{ section.id }}-{{ vb_kind }}-{{ vb_key }}"
+            role="tabpanel"
+            aria-labelledby="vb-age-tab-{{ section.id }}-{{ vb_key }}"
+            data-panel="{{ vb_kind }}:{{ vb_band }}"
+            {% unless vb_kind == vb_default_kind and vb_band == vb_default_band %}hidden{% endunless %}
+          >
+            {%- if vb_count > 0 -%}
+              <div class="vb-age__products">{{ vb_items }}</div>
+            {%- endif -%}
+
+            {%- if vb_link != blank and vb_link_text != blank -%}
+              <p class="vb-age__footer">
+                <a class="vb-link" href="{{ vb_link }}" data-vb-track="age_picks_view_all" data-vb-track-label="{{ vb_kind }}:{{ vb_band }}">
+                  {{- vb_link_text | replace: '[band]', vb_name -}}
+                </a>
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</vb-age-picks>
+
+<script>
+  (function () {
+    if (window.customElements.get('vb-age-picks')) return;
+
+    class AgePicks extends HTMLElement {
+      connectedCallback() {
+        if (this._ready) return;
+        this._ready = true;
+        this.chosenBand = null;
+
+        this.render(window.vbBoot || {});
+        document.addEventListener('vb:profile', (event) => this.render(event.detail));
+        this.addEventListener('click', (event) => this.onClick(event));
+        this.addEventListener('keydown', (event) => this.onKeydown(event));
+      }
+
+      get tabs() {
+        return Array.from(this.querySelectorAll('[role="tab"]'));
+      }
+
+      render(state) {
+        this.state = state || {};
+
+        var mode = this.state.mode || 'unknown';
+        var kind = mode === 'owner' ? 'books' : (mode === 'prospect' ? 'packs' : (this.dataset.unknown || 'packs'));
+        var band = this.chosenBand || (this.state.bands || [])[0] || this.dataset.defaultBand;
+        var tab = this.tabs.filter(function (item) { return item.dataset.band === band; })[0] || this.tabs[0];
+        if (!tab) return;
+        band = tab.dataset.band;
+
+        this.dataset.kind = kind;
+        this.dataset.band = band;
+
+        this.querySelectorAll('[data-panel]').forEach(function (panel) {
+          panel.hidden = panel.getAttribute('data-panel') !== kind + ':' + band;
+        });
+
+        var id = this.id;
+        this.tabs.forEach(function (item) {
+          var selected = item === tab;
+          item.setAttribute('aria-selected', selected ? 'true' : 'false');
+          item.setAttribute('tabindex', selected ? '0' : '-1');
+          item.setAttribute('aria-controls', id + '-' + kind + '-' + item.dataset.key);
+        });
+
+        var heading = this.querySelector('.vb-age__heading');
+        var template = heading.getAttribute('data-heading-' + (mode === 'unknown' ? 'unknown' : kind)) || '';
+        heading.textContent = template.replace('[band]', tab.dataset.name);
+
+        var question = this.querySelector('[data-age-question]');
+        if (question) question.hidden = mode !== 'unknown';
+      }
+
+      select(tab, focus) {
+        this.chosenBand = tab.dataset.band;
+        this.render(this.state);
+        if (focus) tab.focus();
+
+        if (window.VBProfile) {
+          window.VBProfile.ageInterest(this.chosenBand, 3, 'age_tab');
+          window.VBProfile.capture('age_picks_tab', { band: this.chosenBand, content: this.dataset.kind });
+        }
+      }
+
+      onClick(event) {
+        var tab = event.target.closest('[role="tab"]');
+        if (tab) {
+          this.select(tab, false);
+          return;
+        }
+
+        var answer = event.target.closest('[data-answer]');
+        if (!answer) return;
+
+        if (window.VBProfile) {
+          window.VBProfile.declarePlayer(answer.dataset.answer, 'age_picks');
+        } else {
+          this.render(Object.assign({}, this.state, { mode: answer.dataset.answer === 'yes' ? 'owner' : 'prospect' }));
+        }
+      }
+
+      onKeydown(event) {
+        var tab = event.target.closest('[role="tab"]');
+        if (!tab || ['ArrowLeft', 'ArrowRight', 'Home', 'End'].indexOf(event.key) === -1) return;
+
+        var tabs = this.tabs;
+        var index = tabs.indexOf(tab);
+        if (event.key === 'ArrowLeft') index = (index - 1 + tabs.length) % tabs.length;
+        if (event.key === 'ArrowRight') index = (index + 1) % tabs.length;
+        if (event.key === 'Home') index = 0;
+        if (event.key === 'End') index = tabs.length - 1;
+
+        event.preventDefault();
+        this.select(tabs[index], true);
+      }
+    }
+
+    window.customElements.define('vb-age-picks', AgePicks);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Age picks",
+  "class": "shopify-section--vb-age-picks",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Starter packs for player prospects, top-selling books for owners, and an age picker with \"Have a Voxblock player yet?\" for everyone else. Uses Theme settings > Visitor targeting."
+    },
+    {
+      "type": "checkbox",
+      "id": "experiment_only",
+      "label": "Hide for the experiment control group",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "unknown_content",
+      "label": "Show unknown visitors",
+      "options": [
+        { "value": "packs", "label": "Starter packs" },
+        { "value": "books", "label": "Books" }
+      ],
+      "default": "packs"
+    },
+    {
+      "type": "select",
+      "id": "default_band",
+      "label": "Age shown until we know",
+      "options": [
+        { "value": "u5", "label": "Under 5" },
+        { "value": "5-8", "label": "5 to 8" },
+        { "value": "8-10", "label": "8 to 10" },
+        { "value": "10+", "label": "10 and over" }
+      ],
+      "default": "5-8"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "label": "Products per age",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "heading_packs",
+      "label": "Heading for prospects",
+      "info": "[band] is replaced by the age band's name.",
+      "default": "Starter packs for [band]"
+    },
+    {
+      "type": "text",
+      "id": "heading_books",
+      "label": "Heading for owners",
+      "default": "Top-selling books for [band]"
+    },
+    {
+      "type": "text",
+      "id": "heading_unknown",
+      "label": "Heading for everyone else",
+      "default": "Find the right stories for their age"
+    },
+    {
+      "type": "text",
+      "id": "tabs_label",
+      "label": "Tabs label (screen readers)",
+      "default": "Child's age"
+    },
+    {
+      "type": "text",
+      "id": "question",
+      "label": "Question",
+      "info": "Only shown while we don't know if they own a player.",
+      "default": "Have a Voxblock player yet?"
+    },
+    {
+      "type": "text",
+      "id": "answer_yes",
+      "label": "Yes answer",
+      "default": "Yes"
+    },
+    {
+      "type": "text",
+      "id": "answer_no",
+      "label": "No answer",
+      "default": "Not yet"
+    },
+    {
+      "type": "text",
+      "id": "packs_link_text",
+      "label": "Starter packs link",
+      "default": "See all starter packs"
+    },
+    {
+      "type": "text",
+      "id": "books_link_text",
+      "label": "Books link",
+      "default": "See all books for [band]"
+    },
+    {
+      "type": "text",
+      "id": "band_u5_tab",
+      "label": "Under 5: tab",
+      "default": "Under 5"
+    },
+    {
+      "type": "text",
+      "id": "band_u5_name",
+      "label": "Under 5: in headings",
+      "default": "under-5s"
+    },
+    {
+      "type": "text",
+      "id": "band_58_tab",
+      "label": "5 to 8: tab",
+      "default": "5–8"
+    },
+    {
+      "type": "text",
+      "id": "band_58_name",
+      "label": "5 to 8: in headings",
+      "default": "5–8s"
+    },
+    {
+      "type": "text",
+      "id": "band_810_tab",
+      "label": "8 to 10: tab",
+      "default": "8–10"
+    },
+    {
+      "type": "text",
+      "id": "band_810_name",
+      "label": "8 to 10: in headings",
+      "default": "8–10s"
+    },
+    {
+      "type": "text",
+      "id": "band_10_tab",
+      "label": "10 and over: tab",
+      "default": "10+"
+    },
+    {
+      "type": "text",
+      "id": "band_10_name",
+      "label": "10 and over: in headings",
+      "default": "over-10s"
+    },
+    {
+      "type": "header",
+      "content": "Starter packs"
+    },
+    {
+      "type": "collection",
+      "id": "packs_u5",
+      "label": "Under 5"
+    },
+    {
+      "type": "collection",
+      "id": "packs_58",
+      "label": "5 to 8"
+    },
+    {
+      "type": "collection",
+      "id": "packs_810",
+      "label": "8 to 10"
+    },
+    {
+      "type": "collection",
+      "id": "packs_10",
+      "label": "10 and over"
+    },
+    {
+      "type": "collection",
+      "id": "packs_all",
+      "label": "All starter packs",
+      "info": "Used for any age without its own collection."
+    },
+    {
+      "type": "header",
+      "content": "Books"
+    },
+    {
+      "type": "collection",
+      "id": "books_u5",
+      "label": "Under 5"
+    },
+    {
+      "type": "collection",
+      "id": "books_58",
+      "label": "5 to 8"
+    },
+    {
+      "type": "collection",
+      "id": "books_810",
+      "label": "8 to 10"
+    },
+    {
+      "type": "collection",
+      "id": "books_10",
+      "label": "10 and over"
+    },
+    {
+      "type": "collection",
+      "id": "books_all",
+      "label": "All books, best-selling first",
+      "info": "Used for any age without its own collection. Only its first 50 products are checked."
+    },
+    {
+      "type": "url",
+      "id": "books_link",
+      "label": "Books link",
+      "info": "Without a collection for the age, the age filter is added. Defaults to /collections/audiobooks."
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Age picks"
+    }
+  ]
+}
+{% endschema %}

@@ -39,9 +39,23 @@
         "show_shipping_estimator": false,
         "show_payment_icons": true
       }
+    },
+    "vb_age_picks": {
+      "type": "vb-age-picks",
+      "settings": {
+        "experiment_only": true,
+        "unknown_content": "packs",
+        "default_band": "5-8",
+        "products_count": 4,
+        "packs_all": "voxblock-starter-pack-collection",
+        "books_all": "audiobooks-global",
+        "books_link": "shopify://collections/audiobooks",
+        "full_width": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "vb_age_picks"
   ]
 }

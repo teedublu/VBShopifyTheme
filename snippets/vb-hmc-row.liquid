@@ -1,0 +1,63 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP ME CHOOSE: ONE-LINE PACK
+----------------------------------------------------------------------------------------------------------------------
+Used for "Want to start smaller?", "Also a good fit" and the gift upsell.
+
+* product: the pack
+* subtitle: optional text under the title (defaults to "Player + ..." from the pack's books)
+* link: false to render without a link and chevron (the gift upsell has its own button)
+* show_save: true to add the "Save x%" badge after the price
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_variant = product.selected_or_first_available_variant
+  assign vb_tag = 'a'
+  if link == false
+    assign vb_tag = 'div'
+  endif
+-%}
+
+{%- capture vb_subtitle -%}
+  {%- if subtitle != blank -%}
+    {{- subtitle -}}
+  {%- else -%}
+    {%- render 'vb-bundle-books', product: product, format: 'summary' -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+<{{ vb_tag }} class="vb-hmc-row" {% if vb_tag == 'a' %}href="{{ product.url }}" data-hmc-product="{{ product.handle | escape }}"{% endif %}>
+  <span class="vb-hmc-row__media">
+    {%- if product.featured_media -%}
+      {%- assign vb_alt = product.featured_media.alt | default: product.title -%}
+      {{- product.featured_media | image_url: width: 280 | image_tag: loading: 'lazy', widths: '140,280', sizes: '112px', alt: vb_alt -}}
+    {%- endif -%}
+  </span>
+
+  <span class="vb-hmc-row__text">
+    <span class="vb-hmc-row__title">{{ product.title }}</span>
+
+    {%- assign vb_subtitle = vb_subtitle | strip -%}
+    {%- if vb_subtitle != blank -%}
+      <span class="vb-hmc-row__sub">{{ vb_subtitle }}</span>
+    {%- endif -%}
+
+    <span class="vb-price">
+      <span class="vb-price__now">{{ vb_variant.price | money }}</span>
+      {%- if vb_variant.compare_at_price > vb_variant.price -%}
+        <s class="vb-price__was">{{ vb_variant.compare_at_price | money }}</s>
+
+        {%- if show_save -%}
+          {%- assign vb_saving = vb_variant.compare_at_price | minus: vb_variant.price | times: 100.0 | divided_by: vb_variant.compare_at_price | round | append: '%' -%}
+          <span class="vb-hmc-gift__save">{{ 'product.general.discount_badge_html' | t: savings: vb_saving }}</span>
+        {%- endif -%}
+      {%- endif -%}
+    </span>
+  </span>
+
+  {%- if vb_tag == 'a' -%}
+    <span class="vb-hmc-row__chevron" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 4.5L13 10l-5.5 5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </span>
+  {%- endif -%}
+</{{ vb_tag }}>

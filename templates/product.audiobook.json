@@ -342,12 +342,42 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "vb_player_banner": {
+      "type": "vb-player-banner",
+      "settings": {
+        "experiment_only": true,
+        "prospect_text": "Plays on the Voxblock player — starter packs from [price]",
+        "button_label": "See starter packs",
+        "unknown_text": "New to Voxblock? Our audiobooks play on the Voxblock player.",
+        "unknown_link_text": "Starter packs from [price]",
+        "link": "shopify://collections/voxblock-starter-pack-collection",
+        "price_collection": "voxblock-starter-pack-collection",
+        "price_title_filter": "Starter Pack",
+        "background": "#197177",
+        "text_color": "#ffffff"
+      }
+    },
+    "vb_age_picks": {
+      "type": "vb-age-picks",
+      "settings": {
+        "experiment_only": true,
+        "unknown_content": "packs",
+        "default_band": "5-8",
+        "products_count": 4,
+        "packs_all": "voxblock-starter-pack-collection",
+        "books_all": "audiobooks-global",
+        "books_link": "shopify://collections/audiobooks",
+        "full_width": true
+      }
     }
   },
   "order": [
     "breadcrumbs_UCTtKj",
+    "vb_player_banner",
     "main",
     "tabs_qeFVd8",
+    "vb_age_picks",
     "video_QYECT4",
     "related_products_NbRnrP",
     "recently_viewed_products_FXQk8b",

@@ -1,0 +1,118 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VISITOR TARGETING (rendered in <head>)
+----------------------------------------------------------------------------------------------------------------------
+Page context for assets/vb-profile.js, plus a tiny blocking script that reads the stored visitor profile and sets
+<html data-vb-mode="prospect|owner|unknown" data-vb-arm="test|control|pending|owner" data-vb-age="5-8"> before the
+page paints, so personalised sections don't flicker on cached pages.
+
+The styles and assets/vb-sections.js (Help me choose) load even when targeting is off, so the sections keep working.
+
+Settings: Theme settings > Visitor targeting. Notes: docs/player-prospect-targeting.md
+{%- endcomment -%}
+
+{{- 'vb-targeting.css' | asset_url | stylesheet_tag -}}
+
+{%- if settings.vb_targeting_enabled -%}
+  {%- liquid
+    assign vb_player_order = false
+    if customer
+      for order in customer.orders
+        for line_item in order.line_items
+          assign vb_type = line_item.product.type | default: '' | downcase
+          assign vb_title = line_item.title | downcase
+          if vb_type == 'player' or vb_type == 'starter pack' or vb_title contains 'player' or vb_title contains 'starter pack' or vb_title contains 'intro pack'
+            assign vb_player_order = true
+            break
+          endif
+        endfor
+        if vb_player_order
+          break
+        endif
+      endfor
+    endif
+
+    assign vb_cart_players = 0
+    assign vb_cart_books = 0
+    for item in cart.items
+      assign vb_type = item.product.type | default: '' | downcase
+      if vb_type == 'player' or vb_type == 'starter pack'
+        assign vb_cart_players = vb_cart_players | plus: item.quantity
+      elsif vb_type contains 'audiobook'
+        assign vb_cart_books = vb_cart_books | plus: item.quantity
+      endif
+    endfor
+
+    assign vb_template = template.name
+    if template.suffix != blank
+      assign vb_template = vb_template | append: '.' | append: template.suffix
+    endif
+  -%}
+
+  <script type="application/json" id="vb-context">
+    {
+      "page_type": {{ request.page_type | json }},
+      "template": {{ vb_template | json }},
+      "design_mode": {{ request.design_mode | json }},
+      "country": {{ localization.country.iso_code | json }},
+      {%- if request.page_type == 'product' and product != blank %}
+      "product": {
+        "handle": {{ product.handle | json }},
+        "type": {{ product.type | json }},
+        "age_groups": {% if product.metafields.book.age_groups.value != blank %}{{ product.metafields.book.age_groups.value | json }}{% else %}[]{% endif %}
+      },
+      {%- endif %}
+      {%- if request.page_type == 'collection' and collection != blank %}
+      "collection": {{ collection.handle | json }},
+      {%- endif %}
+      "customer": {
+        "logged_in": {% if customer %}true{% else %}false{% endif %},
+        "player_order": {{ vb_player_order | json }}
+      },
+      "cart": {
+        "players": {{ vb_cart_players | json }},
+        "books": {{ vb_cart_books | json }}
+      },
+      "settings": {
+        "storage": {{ settings.vb_profile_storage | json }},
+        "experiment_flag": {{ settings.vb_experiment_flag | strip | json }},
+        "experiment_control": {{ settings.vb_experiment_control | strip | default: 'control' | json }},
+        "owner_flag": {{ settings.vb_owner_flag | strip | json }},
+        "exit_form_id": {{ settings.vb_exit_form_id | strip | json }},
+        "exit_form_cooldown": {{ settings.vb_exit_form_cooldown | json }},
+        "welcome_mode": {{ settings.vb_welcome_mode | json }},
+        "welcome_form_desktop": {{ settings.vb_welcome_form_desktop | strip | json }},
+        "welcome_form_mobile": {{ settings.vb_welcome_form_mobile | strip | json }},
+        "player_campaigns": {{ settings.vb_player_campaigns | json }},
+        "prospect_terms": {{ settings.vb_prospect_terms | json }},
+        "how_it_works_paths": {{ settings.vb_how_it_works_paths | json }},
+        "compare_paths": {{ settings.vb_compare_paths | json }}
+      }
+    }
+  </script>
+
+  <script>
+    (function () {
+      var root = document.documentElement, profile = null, ctx = {};
+      try { ctx = JSON.parse(document.getElementById('vb-context').textContent); } catch (e) {}
+      try { profile = JSON.parse(localStorage.getItem('vb_profile') || sessionStorage.getItem('vb_profile') || 'null'); } catch (e) {}
+
+      var flag = (ctx.settings && ctx.settings.experiment_flag) || '';
+      var mode = (profile && profile.mode) || 'unknown';
+      if (ctx.customer && ctx.customer.player_order) mode = 'owner';
+      var bands = (profile && profile.age_bands) || [];
+      var arm = 'test';
+      if (mode === 'owner') arm = 'owner';
+      else if (flag) arm = (profile && profile.exp && profile.exp.key === flag && profile.exp.arm) || 'pending';
+
+      window.vbBoot = { mode: mode, bands: bands, arm: arm };
+      root.setAttribute('data-vb-mode', mode);
+      root.setAttribute('data-vb-arm', arm);
+      if (bands[0]) root.setAttribute('data-vb-age', bands[0]);
+    })();
+  </script>
+
+  <script src="{{ 'vb-profile.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+<script src="{{ 'vb-sections.js' | asset_url }}" defer></script>

@@ -1,0 +1,44 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+BOOKS IN A STARTER PACK
+----------------------------------------------------------------------------------------------------------------------
+Reads the pack's "bundles.products" metafield (the same one the product page uses for "What's included").
+
+* product: the starter pack
+* format: "list" gives "A Bear Called Paddington, Funny Paddington Stories and More Funny Paddington Stories"
+          "summary" gives "Player + A Bear Called Paddington" or "Player + three audiobooks". Without the metafield it
+          falls back on the product title ("Intro Pack" = one audiobook, "Starter Pack" = three).
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_titles = ''
+  assign vb_count = 0
+
+  for vb_item in product.metafields.bundles.products.value
+    assign vb_item_type = vb_item.type | downcase
+    if vb_item_type contains 'audiobook'
+      assign vb_titles = vb_titles | append: vb_item.title | append: '|||'
+      assign vb_count = vb_count | plus: 1
+    endif
+  endfor
+
+  assign vb_title_list = vb_titles | split: '|||'
+  assign vb_product_title = product.title | downcase
+-%}
+
+{%- if format == 'summary' -%}
+  {%- if vb_count == 1 -%}
+    Player + {{ vb_title_list.first }}
+  {%- elsif vb_count > 1 -%}
+    Player + {% case vb_count %}{% when 2 %}two{% when 3 %}three{% when 4 %}four{% when 5 %}five{% else %}{{ vb_count }}{% endcase %} audiobooks
+  {%- elsif vb_product_title contains 'intro pack' -%}
+    Player + one audiobook
+  {%- elsif vb_product_title contains 'starter pack' -%}
+    Player + three audiobooks
+  {%- endif -%}
+{%- else -%}
+  {%- for vb_title in vb_title_list -%}
+    {%- if forloop.last and forloop.length > 1 %} and {% elsif forloop.index > 1 %}, {% endif -%}
+    {{- vb_title -}}
+  {%- endfor -%}
+{%- endif -%}

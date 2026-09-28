@@ -198,9 +198,24 @@
             "overlay_color": "#ffb74a",
             "overlay_opacity": 100
           }
+        },
+        "help_me_choose_vb": {
+          "type": "help_me_choose",
+          "settings": {
+            "position": 2,
+            "title": "Not sure which pack?",
+            "text": "Three quick questions and we’ll match one to your child.",
+            "button_label": "Help me choose",
+            "link": "",
+            "experiment_only": false,
+            "background": "#197177",
+            "text_color": "#ffffff",
+            "accent": "#ff9e57"
+          }
         }
       },
       "block_order": [
+        "help_me_choose_vb",
         "promotion_video_FFXEJa",
         "promotion_image_gkWQ36"
       ],
@@ -387,6 +402,300 @@
         "accordion_background": "rgba(0,0,0,0)",
         "accordion_text_color": "#ffffff"
       }
+    },
+    "vb_help_me_choose": {
+      "type": "vb-help-me-choose",
+      "blocks": {
+        "fav_u5_gruffalo": {
+          "type": "favourite",
+          "settings": {
+            "band": "u5",
+            "label": "The Gruffalo",
+            "chip": "loves [label]",
+            "tile_colour": "#e1ebd6",
+            "product": "gruffalo-and-friends-starter-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "the-gruffalo-intro-pack",
+            "also_product": "little-listeners-starter-pack"
+          }
+        },
+        "fav_u5_peppa": {
+          "type": "favourite",
+          "settings": {
+            "band": "u5",
+            "label": "Peppa Pig",
+            "chip": "loves [label]",
+            "tile_colour": "#f8dde3",
+            "product": "peppa-pig-starter-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "peppa-pig-intro-pack",
+            "also_product": "little-listeners-starter-pack"
+          }
+        },
+        "fav_u5_paddington": {
+          "type": "favourite",
+          "settings": {
+            "band": "u5",
+            "label": "Paddington",
+            "chip": "loves [label]",
+            "tile_colour": "#d6e6ea",
+            "product": "paddington-starter-pack",
+            "books_text": "A Bear Called Paddington, Funny Paddington Stories and More Funny Paddington Stories",
+            "headline": "",
+            "smaller_product": "paddington-bear-intro-pack",
+            "also_product": "little-listeners-starter-pack"
+          }
+        },
+        "fav_u5_bing": {
+          "type": "favourite",
+          "settings": {
+            "band": "u5",
+            "label": "Bing",
+            "chip": "loves [label]",
+            "tile_colour": "#fde3d0",
+            "product": "bing-intro-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "",
+            "also_product": "little-listeners-starter-pack"
+          }
+        },
+        "mix_u5": {
+          "type": "mix",
+          "settings": {
+            "band": "u5",
+            "product": "little-listeners-starter-pack",
+            "books_text": "Where’s Spot? and Other Stories, A Bear Called Paddington and The Elmer Collection",
+            "headline": "Three much-loved first stories, ready to play",
+            "smaller_product": "",
+            "also_product": "gruffalo-and-friends-starter-pack"
+          }
+        },
+        "gift_u5": {
+          "type": "gift",
+          "settings": {
+            "band": "u5",
+            "product": "the-ultimate-gift-bundle",
+            "title": "Make it the big present",
+            "text": "Player, headphones, protective travel case and Where’s Spot, The Elmer Collection and The Gruffalo",
+            "button_label": "Choose the Gift Bundle instead"
+          }
+        },
+        "fav_58_paddington": {
+          "type": "favourite",
+          "settings": {
+            "band": "5-8",
+            "label": "Paddington",
+            "chip": "loves [label]",
+            "tile_colour": "#d6e6ea",
+            "product": "paddington-starter-pack",
+            "books_text": "A Bear Called Paddington, Funny Paddington Stories and More Funny Paddington Stories",
+            "headline": "",
+            "smaller_product": "paddington-bear-intro-pack",
+            "also_product": "worst-witch-starter-pack"
+          }
+        },
+        "fav_58_worst_witch": {
+          "type": "favourite",
+          "settings": {
+            "band": "5-8",
+            "label": "The Worst Witch",
+            "chip": "loves [label]",
+            "tile_colour": "#e5dfee",
+            "product": "worst-witch-starter-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "worst-witch-intro-pack",
+            "also_product": "famous-five-starter-pack"
+          }
+        },
+        "fav_58_famous_five": {
+          "type": "favourite",
+          "settings": {
+            "band": "5-8",
+            "label": "The Famous Five",
+            "chip": "loves [label]",
+            "tile_colour": "#dde8d6",
+            "product": "famous-five-starter-pack",
+            "books_text": "Five On A Treasure Island, Five Go Adventuring Again and Five Run Away Together",
+            "headline": "",
+            "smaller_product": "famous-five-intro-pack",
+            "also_product": "roald-dahl-selection-starter-pack"
+          }
+        },
+        "fav_58_fairy_tales": {
+          "type": "favourite",
+          "settings": {
+            "band": "5-8",
+            "label": "Fairy tales",
+            "chip": "loves [label]",
+            "tile_colour": "#fbe0cf",
+            "product": "fairy-tales-intro-pack",
+            "books_text": "Fairy Tales For You",
+            "headline": "",
+            "smaller_product": "",
+            "also_product": "bedtime-stories-starter-pack"
+          }
+        },
+        "mix_58": {
+          "type": "mix",
+          "settings": {
+            "band": "5-8",
+            "product": "young-explorers-starter-pack",
+            "books_text": "Wigglesbottom Primary, Five-Minute Stories and Dave Pigeon",
+            "headline": "",
+            "smaller_product": "",
+            "also_product": "roald-dahl-selection-starter-pack"
+          }
+        },
+        "fav_810_roald_dahl": {
+          "type": "favourite",
+          "settings": {
+            "band": "8-10",
+            "label": "Roald Dahl",
+            "chip": "loves [label]",
+            "tile_colour": "#fbe3c8",
+            "product": "roald-dahl-selection-starter-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "charlie-and-the-chocolate-factory-intro-pack",
+            "also_product": "the-person-jackson-starter-pack"
+          }
+        },
+        "fav_810_percy_jackson": {
+          "type": "favourite",
+          "settings": {
+            "band": "8-10",
+            "label": "Percy Jackson",
+            "chip": "loves [label]",
+            "tile_colour": "#d6e3f0",
+            "product": "the-person-jackson-starter-pack",
+            "books_text": "The Lightning Thief, The Sea of Monsters and The Titan’s Curse",
+            "headline": "",
+            "smaller_product": "",
+            "also_product": "famous-five-starter-pack"
+          }
+        },
+        "fav_810_famous_five": {
+          "type": "favourite",
+          "settings": {
+            "band": "8-10",
+            "label": "The Famous Five",
+            "chip": "loves [label]",
+            "tile_colour": "#dde8d6",
+            "product": "famous-five-starter-pack",
+            "books_text": "Five On A Treasure Island, Five Go Adventuring Again and Five Run Away Together",
+            "headline": "",
+            "smaller_product": "famous-five-intro-pack",
+            "also_product": "roald-dahl-selection-starter-pack"
+          }
+        },
+        "fav_810_worst_witch": {
+          "type": "favourite",
+          "settings": {
+            "band": "8-10",
+            "label": "The Worst Witch",
+            "chip": "loves [label]",
+            "tile_colour": "#e5dfee",
+            "product": "worst-witch-starter-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "worst-witch-intro-pack",
+            "also_product": "roald-dahl-selection-starter-pack"
+          }
+        },
+        "mix_810": {
+          "type": "mix",
+          "settings": {
+            "band": "8-10",
+            "product": "roald-dahl-selection-starter-pack",
+            "books_text": "",
+            "headline": "",
+            "smaller_product": "charlie-and-the-chocolate-factory-intro-pack",
+            "also_product": "the-person-jackson-starter-pack"
+          }
+        },
+        "fav_10_percy_jackson": {
+          "type": "favourite",
+          "settings": {
+            "band": "10+",
+            "label": "Percy Jackson",
+            "chip": "loves [label]",
+            "tile_colour": "#d6e3f0",
+            "product": "the-person-jackson-starter-pack",
+            "books_text": "The Lightning Thief, The Sea of Monsters and The Titan’s Curse",
+            "headline": "",
+            "smaller_product": "",
+            "also_product": "famous-five-starter-pack"
+          }
+        },
+        "fav_10_famous_five": {
+          "type": "favourite",
+          "settings": {
+            "band": "10+",
+            "label": "The Famous Five",
+            "chip": "loves [label]",
+            "tile_colour": "#dde8d6",
+            "product": "famous-five-starter-pack",
+            "books_text": "Five On A Treasure Island, Five Go Adventuring Again and Five Run Away Together",
+            "headline": "",
+            "smaller_product": "famous-five-intro-pack",
+            "also_product": "the-person-jackson-starter-pack"
+          }
+        },
+        "mix_10": {
+          "type": "mix",
+          "settings": {
+            "band": "10+",
+            "product": "the-person-jackson-starter-pack",
+            "books_text": "The Lightning Thief, The Sea of Monsters and The Titan’s Curse",
+            "headline": "",
+            "smaller_product": "",
+            "also_product": "famous-five-starter-pack"
+          }
+        }
+      },
+      "block_order": [
+        "fav_u5_gruffalo",
+        "fav_u5_peppa",
+        "fav_u5_paddington",
+        "fav_u5_bing",
+        "mix_u5",
+        "gift_u5",
+        "fav_58_paddington",
+        "fav_58_worst_witch",
+        "fav_58_famous_five",
+        "fav_58_fairy_tales",
+        "mix_58",
+        "fav_810_roald_dahl",
+        "fav_810_percy_jackson",
+        "fav_810_famous_five",
+        "fav_810_worst_witch",
+        "mix_810",
+        "fav_10_percy_jackson",
+        "fav_10_famous_five",
+        "mix_10"
+      ],
+      "settings": {
+        "experiment_only": false,
+        "all_packs_url": "shopify://collections/voxblock-starter-pack-collection",
+        "show_strip": false
+      }
+    },
+    "vb_age_picks": {
+      "type": "vb-age-picks",
+      "settings": {
+        "experiment_only": true,
+        "unknown_content": "packs",
+        "default_band": "5-8",
+        "products_count": 4,
+        "packs_all": "voxblock-starter-pack-collection",
+        "books_all": "audiobooks-global",
+        "books_link": "shopify://collections/audiobooks",
+        "full_width": true
+      }
     }
   },
   "order": [
@@ -394,7 +703,9 @@
     "rich_text_BAVNeG",
     "banner",
     "media_with_text_rGkHtT",
+    "vb_age_picks",
     "main",
+    "vb_help_me_choose",
     "testimonials_n8PqFn",
     "image_with_text_overlay_kCDwBE",
     "faq_t9iAtE"
