@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "saved_books": {
+      "type": "saved-books",
+      "settings": {
+        "full_width": true,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Saved books",
+        "content": "<p>Books you've saved while browsing. Your list is kept on this device.</p>",
+        "empty_text": "<p>You haven't saved any books yet. Tap the heart on any audiobook to keep it here.</p>",
+        "empty_button_label": "Browse audiobooks",
+        "empty_button_link": "shopify://collections/audiobooks",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "saved_books"
+  ]
+}

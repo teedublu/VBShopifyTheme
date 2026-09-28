@@ -42,22 +42,34 @@
           {%- assign product_eyebrow_text = product_eyebrow_text | replace: '[name]', context_name | replace: '[title]', product.title -%}
         {%- endif -%}
         {%- if request.page_type == 'product' -%}
-          <div {{ block.shopify_attributes }}>
-            {%- if product_eyebrow_text != blank -%}
-              <p class="product-info__eyebrow">{{ product_eyebrow_text }}</p>
-            {%- endif -%}
+          {%- capture product_title_heading -%}
             <h1 class="product-info__title {{ block.settings.heading_tag }}">{{ product_title_text }}</h1>
-          </div>
+          {%- endcapture -%}
         {%- else -%}
-          <div {{ block.shopify_attributes }}>
-            {%- if product_eyebrow_text != blank -%}
-              <p class="product-info__eyebrow">{{ product_eyebrow_text }}</p>
-            {%- endif -%}
+          {%- capture product_title_heading -%}
             <h2 class="product-info__title {{ block.settings.heading_tag }}">
               <a href="{{ product.url }}">{{ product_title_text }}</a>
             </h2>
-          </div>
+          {%- endcapture -%}
         {%- endif -%}
+
+        {%- comment -%}Audiobooks get a save heart beside the title (the snippet renders nothing for other products){%- endcomment -%}
+        {%- capture save_book_button -%}{%- render 'save-book-button', product: product, size: 28 -%}{%- endcapture -%}
+
+        <div {{ block.shopify_attributes }}>
+          {%- if product_eyebrow_text != blank -%}
+            <p class="product-info__eyebrow">{{ product_eyebrow_text }}</p>
+          {%- endif -%}
+
+          {%- if save_book_button != blank -%}
+            <div class="product-info__title-row">
+              {{- product_title_heading -}}
+              {{- save_book_button -}}
+            </div>
+          {%- else -%}
+            {{- product_title_heading -}}
+          {%- endif -%}
+        </div>
 
       {%- when 'badges' -%}
         {%- render 'product-badges', product: product, types: 'custom', form_id: product_form_id, class: 'product-info__badge-list', block: block -%}

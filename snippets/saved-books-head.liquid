@@ -1,0 +1,26 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SAVED BOOKS (HEAD)
+----------------------------------------------------------------------------------------------------------------------
+Rendered in the <head> after js-variables. Adds "has-saved-books" to <html> before the page paints, so the header heart
+appears without a layout shift, tells the script where the Saved books page is, and loads assets/saved-books.js.
+The Saved books page is a personal list, so it is kept out of search engines.
+{%- endcomment -%}
+
+{%- if template.name == 'page' and template.suffix == 'saved-books' -%}
+  <meta name="robots" content="noindex">
+{%- endif -%}
+
+<script>
+  window.themeVariables.settings.savedBooksUrl = {{ pages['saved-books'].url | default: '/pages/saved-books' | json }};
+
+  try {
+    if (JSON.parse(localStorage.getItem('voxblock:saved-books') || '[]').length > 0) {
+      document.documentElement.classList.add('has-saved-books');
+    }
+  } catch (e) {
+    // Storage unavailable: the header heart stays hidden until something is saved
+  }
+</script>
+
+<script type="module" src="{{ 'saved-books.js' | asset_url }}"></script>
