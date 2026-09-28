@@ -14,7 +14,7 @@ one, are ignored by Shopify's GitHub sync.
 | `assets/vb-targeting.css` | Styles for everything below, plus the "who sees what" rules |
 | `sections/vb-help-me-choose.liquid` + `snippets/vb-hmc-*.liquid`, `snippets/vb-bundle-books.liquid` | Help me choose: age, favourite, gift, then "Your match" |
 | `main-collection` block "Help me choose" (`snippets/vb-hmc-launch.liquid`) | The "Not sure which pack?" card in the collection grid |
-| `sections/vb-age-picks.liquid` + `snippets/vb-mini-card.liquid` | Age picks: starter packs by age for prospects, top books by age for owners, tabs and "Have a Voxblock player yet?" for everyone else |
+| `sections/vb-age-picks.liquid` + `snippets/vb-mini-card.liquid`, `snippets/vb-age-codes.liquid` | Age picks: starter packs by age for prospects, top books by age for owners, tabs and "Have a Voxblock player yet?" for everyone else. In each row, products whose oldest age is that one come first, so neighbouring ages show different packs |
 | `sections/vb-player-banner.liquid` | "Plays on the Voxblock player — starter packs from £69.99" on audiobook pages |
 | `config/settings_schema.json` | Theme settings > Visitor targeting |
 
@@ -85,7 +85,8 @@ the welcome pop-ups carry on as now.
 
 1. Import `book.age_groups` onto the starter and intro packs (`claude/starter-pack-age-bands-2026-09-28.csv`). Until
    then Age picks works out a pack's ages from the books in its `bundles.products` metafield (every book must be in the
-   band), which only 10 of the 21 packs have, so the 10+ row shows one pack.
+   band), which only 10 of the 21 packs have: the 5–8 and 8–10 rows share three packs and 10+ shows one. With the
+   bands imported, every row is different (10+ has three packs).
 2. Fill `bundles.products` on the packs that lack it: Paddington Starter Pack, Paddington Bear Intro Pack, Famous Five
    Starter Pack, Little Listeners, Young Explorers, The Percy Jackson Starter Pack, Fairy Tales Intro Pack, Zeepy Sleep
    Intro Pack, The Gruffalo Intro Pack, Mina Mistry Intro Pack, Charlie and the Chocolate Factory Intro Pack. It drives

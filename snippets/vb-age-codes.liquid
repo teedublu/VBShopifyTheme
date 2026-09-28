@@ -1,0 +1,41 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+AGE CODES
+----------------------------------------------------------------------------------------------------------------------
+Outputs a product's age codes (35, 58, 810, 12), comma separated: its book.age_groups metafield, or for a starter
+pack without one, the codes every book in its bundles.products metafield has. Nothing when neither is set.
+
+* product: the book or pack
+{%- endcomment -%}
+
+{%- liquid
+  assign vb_own = product.metafields.book.age_groups.value
+
+  if vb_own != blank
+    echo vb_own | join: ','
+  else
+    assign vb_common = '35,58,810,12' | split: ','
+    assign vb_books = 0
+
+    for vb_book in product.metafields.bundles.products.value
+      assign vb_book_type = vb_book.type | downcase
+      unless vb_book_type contains 'audiobook'
+        continue
+      endunless
+
+      assign vb_books = vb_books | plus: 1
+      assign vb_book_codes = vb_book.metafields.book.age_groups.value
+      assign vb_kept = ''
+      for vb_code in vb_common
+        if vb_book_codes contains vb_code
+          assign vb_kept = vb_kept | append: vb_code | append: ','
+        endif
+      endfor
+      assign vb_common = vb_kept | split: ','
+    endfor
+
+    if vb_books > 0
+      echo vb_common | join: ','
+    endif
+  endif
+-%}

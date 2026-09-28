@@ -11,7 +11,8 @@ Every panel is rendered here; the script after the section shows the right one b
 profile the <head> script read (window.vbBoot), and follows later changes through the "vb:profile" event.
 
 Products come from the collection set for each band. Without one, products are taken from the "all" collection and
-matched on the book.age_groups metafield (for packs without it, every book in the pack must be in the band).
+matched on the book.age_groups metafield (for packs without it, every book in the pack must be in the band). In each
+row, products whose oldest age is that band come first, so neighbouring ages don't show the same packs.
 {%- endcomment -%}
 
 {%- render 'section-spacing-collapsing' -%}
@@ -119,51 +120,57 @@ matched on the book.age_groups metafield (for packs without it, every book in th
             endif
           -%}
 
+          {%- comment -%}
+            Products that fit this age, in two passes: first those whose oldest age is this one, then the rest.
+            Packs made for 5 to 8 lead the 5 to 8 row, and packs that also suit 8 to 10 lead that row instead.
+            A collection chosen for the age decides which products fit; otherwise the "all" collection is filtered.
+          {%- endcomment -%}
           {%- capture vb_items -%}
-            {%- if vb_collection != blank -%}
-              {%- for vb_product in vb_collection.products -%}
-                {%- if vb_count >= section.settings.products_count -%}{%- break -%}{%- endif -%}
-                {%- unless vb_product.available -%}{%- continue -%}{%- endunless -%}
-                {%- render 'vb-mini-card', product: vb_product, track: vb_track -%}
-                {%- assign vb_count = vb_count | plus: 1 -%}
-              {%- endfor -%}
-            {%- elsif vb_all != blank -%}
-              {%- for vb_product in vb_all.products -%}
-                {%- if vb_count >= section.settings.products_count -%}{%- break -%}{%- endif -%}
-                {%- unless vb_product.available -%}{%- continue -%}{%- endunless -%}
+            {%- assign vb_source = vb_collection | default: vb_all -%}
 
-                {%- liquid
-                  assign vb_ages = vb_product.metafields.book.age_groups.value
-                  assign vb_match = false
+            {%- if vb_source != blank -%}
+              {%- for vb_pass in (1..2) -%}
+                {%- for vb_product in vb_source.products -%}
+                  {%- if vb_count >= section.settings.products_count -%}{%- break -%}{%- endif -%}
+                  {%- unless vb_product.available -%}{%- continue -%}{%- endunless -%}
 
-                  if vb_ages != blank
-                    if vb_ages contains vb_code
-                      assign vb_match = true
-                    endif
-                  elsif vb_kind == 'packs'
-                    assign vb_book_count = 0
-                    assign vb_match = true
-                    for vb_book in vb_product.metafields.bundles.products.value
-                      assign vb_book_type = vb_book.type | downcase
-                      unless vb_book_type contains 'audiobook'
+                  {%- liquid
+                    capture vb_product_codes
+                      render 'vb-age-codes', product: vb_product
+                    endcapture
+                    assign vb_product_codes = vb_product_codes | strip | split: ','
+
+                    if vb_collection == blank
+                      unless vb_product_codes contains vb_code
                         continue
                       endunless
-                      assign vb_book_count = vb_book_count | plus: 1
-                      assign vb_book_ages = vb_book.metafields.book.age_groups.value
-                      unless vb_book_ages contains vb_code
-                        assign vb_match = false
-                      endunless
-                    endfor
-                    if vb_book_count == 0
-                      assign vb_match = false
                     endif
-                  endif
-                -%}
 
-                {%- if vb_match -%}
+                    assign vb_oldest = -1
+                    for vb_product_code in vb_product_codes
+                      for vb_known_code in vb_codes
+                        if vb_known_code == vb_product_code and forloop.index0 > vb_oldest
+                          assign vb_oldest = forloop.index0
+                        endif
+                      endfor
+                    endfor
+
+                    assign vb_leads = false
+                    if vb_oldest == vb_index or vb_product_codes.size == 0
+                      assign vb_leads = true
+                    endif
+
+                    if vb_pass == 1 and vb_leads == false
+                      continue
+                    endif
+                    if vb_pass == 2 and vb_leads
+                      continue
+                    endif
+                  -%}
+
                   {%- render 'vb-mini-card', product: vb_product, track: vb_track -%}
                   {%- assign vb_count = vb_count | plus: 1 -%}
-                {%- endif -%}
+                {%- endfor -%}
               {%- endfor -%}
             {%- endif -%}
           {%- endcapture -%}
