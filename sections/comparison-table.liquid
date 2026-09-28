@@ -4,6 +4,8 @@ COMPARISON TABLE (Voxblock)
 ----------------------------------------------------------------------------------------------------------------------
 A simple, editable "us vs them" table for landing pages. Column 1 is Voxblock and can be highlighted.
 Row values of "yes" / "no" (any case) render as tick / cross icons; anything else renders as text.
+Each column can also show an image, a price and a short note above the rows. On phones, feature names can
+sit above their values so every column gets a full share of the width.
 {%- endcomment -%}
 
 {%- if section.blocks.size > 0 -%}
@@ -15,6 +17,44 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
   {%- assign cross_color = section.settings.cross_color | default: '#c9c9c9' -%}
   {%- assign chart_background = section.settings.chart_background | default: '#ffffff' -%}
   {%- assign chart_text = section.settings.chart_text_color | default: settings.text_color -%}
+
+  {%- liquid
+    assign column_count = 0
+    assign show_column_details = false
+    assign show_column_media = false
+
+    for i in (1..3)
+      assign column_key = 'column_' | append: i
+      if i > 1 and section.settings[column_key] == blank
+        continue
+      endif
+
+      assign column_count = column_count | plus: 1
+      assign image_key = column_key | append: '_image'
+      assign price_key = column_key | append: '_price'
+      assign note_key = column_key | append: '_note'
+
+      if section.settings[image_key] != blank
+        assign show_column_details = true
+        assign show_column_media = true
+      endif
+
+      if section.settings[price_key] != blank or section.settings[note_key] != blank
+        assign show_column_details = true
+      endif
+    endfor
+
+    case section.settings.media_ratio
+      when 'portrait'
+        assign media_ratio = '3 / 4'
+      when 'landscape'
+        assign media_ratio = '4 / 3'
+      else
+        assign media_ratio = '1 / 1'
+    endcase
+
+    assign stacked = section.settings.stack_on_mobile
+  -%}
 
   <style>
     #shopify-section-{{ section.id }} .comparison-table {
@@ -89,6 +129,50 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
       text-align: center;
       margin-block-start: var(--spacing-4);
     }
+    #shopify-section-{{ section.id }} .comparison-table th.ct-column {
+      vertical-align: top;
+      padding-block: var(--spacing-5);
+    }
+    #shopify-section-{{ section.id }} .ct-column__media {
+      display: block;
+      aspect-ratio: {{ media_ratio }};
+      max-width: 240px;
+      margin: 0 auto var(--spacing-4);
+      border-radius: var(--rounded);
+      overflow: hidden;
+    }
+    #shopify-section-{{ section.id }} .ct-column__media--empty {
+      background: rgb(var(--text-color, var(--text-primary)) / 0.05);
+    }
+    #shopify-section-{{ section.id }} th.ct-highlight .ct-column__media {
+      background: #ffffff;
+    }
+    #shopify-section-{{ section.id }} .ct-column__media :is(img, svg) {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    #shopify-section-{{ section.id }} :is(.ct-column__name, .ct-column__price, .ct-column__note) {
+      display: block;
+    }
+    #shopify-section-{{ section.id }} .ct-column__price {
+      margin-block-start: var(--spacing-2);
+      font-size: var(--text-h3);
+      line-height: 1.1;
+      color: var(--ct-text);
+    }
+    #shopify-section-{{ section.id }} .ct-column__note {
+      margin-block-start: var(--spacing-2);
+      font-family: var(--text-font-family);
+      font-style: var(--text-font-style);
+      font-weight: var(--text-font-weight);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      color: var(--ct-text);
+    }
+    #shopify-section-{{ section.id }} th.ct-highlight :is(.ct-column__price, .ct-column__note) {
+      color: #ffffff;
+    }
     @media screen and (max-width: 699px) {
       /* Fit all columns on a phone instead of scrolling the table sideways */
       #shopify-section-{{ section.id }} .comparison-table { padding: var(--spacing-1); }
@@ -107,27 +191,99 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
       #shopify-section-{{ section.id }} .comparison-table tr:last-child td.ct-highlight { border-radius: var(--rounded-sm); }
       #shopify-section-{{ section.id }} .ct-value { flex-direction: column; gap: 2px; }
       #shopify-section-{{ section.id }} .ct-value svg { width: 18px; height: 18px; }
+      #shopify-section-{{ section.id }} .ct-column__price { font-size: var(--text-lg); }
+      #shopify-section-{{ section.id }} .ct-column__note { font-size: var(--text-xs); line-height: 1.4; }
+
+      {%- if stacked %}
+      #shopify-section-{{ section.id }} .comparison-table :is(th, td) { font-size: var(--text-sm); }
+      {%- endif %}
     }
+
+    {%- if stacked %}
+    @media screen and (max-width: 999px) {
+      /* Feature name on its own line, values in full-width columns underneath */
+      #shopify-section-{{ section.id }} .comparison-table :is(table, thead, tbody) { display: block; }
+      #shopify-section-{{ section.id }} .comparison-table table { min-width: 0; }
+      #shopify-section-{{ section.id }} .comparison-table tr {
+        display: grid;
+        grid-template-columns: repeat({{ column_count }}, minmax(0, 1fr));
+      }
+      #shopify-section-{{ section.id }} .comparison-table thead th:first-child { display: none; }
+      /* The theme gives every cell a top border; here that would draw a line between a name and its values */
+      #shopify-section-{{ section.id }} .comparison-table td { border-top: 0; }
+      #shopify-section-{{ section.id }} .comparison-table td:first-child {
+        grid-column: 1 / -1;
+        width: auto;
+        padding-block-end: 0;
+        border-bottom: 0;
+      }
+    }
+    {%- endif %}
   </style>
 
-  <div {% render 'section-properties' %}>
+  {%- comment -%}Explicit roles keep the table readable to screen readers once phones stop displaying it as a table{%- endcomment -%}
+  {%- if stacked -%}
+    {%- assign role_table = 'role="table"' -%}
+    {%- assign role_rowgroup = 'role="rowgroup"' -%}
+    {%- assign role_row = 'role="row"' -%}
+    {%- assign role_columnheader = 'role="columnheader"' -%}
+    {%- assign role_rowheader = 'role="rowheader"' -%}
+    {%- assign role_cell = 'role="cell"' -%}
+  {%- endif -%}
+
+  <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
     <div class="section-stack">
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, content: section.settings.content, text_alignment: section.settings.text_position -%}
 
       <div class="comparison-table">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">{{ section.settings.feature_heading | escape }}</th>
-              <th scope="col" {% if section.settings.highlight_first %}class="ct-highlight"{% endif %}>{{ section.settings.column_1 | escape }}</th>
-              {%- if section.settings.column_2 != blank -%}<th scope="col">{{ section.settings.column_2 | escape }}</th>{%- endif -%}
-              {%- if section.settings.column_3 != blank -%}<th scope="col">{{ section.settings.column_3 | escape }}</th>{%- endif -%}
+        <table {{ role_table }}>
+          <thead {{ role_rowgroup }}>
+            <tr {{ role_row }}>
+              <th scope="col" {{ role_columnheader }}>{{ section.settings.feature_heading | escape }}</th>
+              {%- for i in (1..3) -%}
+                {%- assign column_key = 'column_' | append: i -%}
+                {%- if i > 1 and section.settings[column_key] == blank -%}{%- continue -%}{%- endif -%}
+
+                {%- capture column_class -%}{% if i == 1 and section.settings.highlight_first %}ct-highlight{% endif %}{% if show_column_details %} ct-column{% endif %}{%- endcapture -%}
+                {%- assign column_class = column_class | strip -%}
+
+                <th scope="col" {{ role_columnheader }} {% if column_class != blank %}class="{{ column_class }}"{% endif %}>
+                  {%- if show_column_details -%}
+                    {%- assign image_key = column_key | append: '_image' -%}
+                    {%- assign price_key = column_key | append: '_price' -%}
+                    {%- assign note_key = column_key | append: '_note' -%}
+                    {%- assign column_image = section.settings[image_key] -%}
+
+                    {%- if show_column_media -%}
+                      <span class="ct-column__media {% if column_image == blank %}ct-column__media--empty{% endif %}">
+                        {%- if column_image != blank -%}
+                          {{- column_image | image_url: width: column_image.width | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 30vw, 240px', widths: '120,180,240,320,480,640' -}}
+                        {%- elsif request.design_mode -%}
+                          {{- 'product-1' | placeholder_svg_tag -}}
+                        {%- endif -%}
+                      </span>
+                    {%- endif -%}
+
+                    <span class="ct-column__name">{{ section.settings[column_key] | escape }}</span>
+
+                    {%- if section.settings[price_key] != blank -%}
+                      <span class="ct-column__price">{{ section.settings[price_key] | escape }}</span>
+                    {%- endif -%}
+
+                    {%- if section.settings[note_key] != blank -%}
+                      <span class="ct-column__note">{{ section.settings[note_key] | escape }}</span>
+                    {%- endif -%}
+                  {%- else -%}
+                    {{ section.settings[column_key] | escape }}
+                  {%- endif -%}
+                </th>
+              {%- endfor -%}
             </tr>
           </thead>
-          <tbody>
+          <tbody {{ role_rowgroup }}>
             {%- for block in section.blocks -%}
-              <tr {{ block.shopify_attributes }}>
-                <td>{{ block.settings.label | escape }}</td>
+              <tr {{ role_row }} {{ block.shopify_attributes }}>
+                <td {{ role_rowheader }}>{{ block.settings.label | escape }}</td>
                 {%- for i in (1..3) -%}
                   {%- assign column_key = 'column_' | append: i -%}
                   {%- if i > 1 and section.settings[column_key] == blank -%}{%- continue -%}{%- endif -%}
@@ -144,7 +300,7 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
                   {%- else -%}
                     {%- if test_value == 'yes' or test_value == 'true' -%}{%- assign verdict = 'good' -%}{%- elsif test_value == 'no' or test_value == 'false' -%}{%- assign verdict = 'bad' -%}{%- else -%}{%- assign verdict = 'text' -%}{%- endif -%}
                   {%- endif -%}
-                  <td class="{{ cell_class }}">
+                  <td {{ role_cell }} class="{{ cell_class }}">
                     {%- if verdict == 'good' -%}
                       <span class="ct-value">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="{{ tick_color }}"/><path d="M7.5 12.5l3 3 6-6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -222,6 +378,12 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
       "default": "center"
     },
     {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Lets a button link straight to this table. An ID of players is linked as #players."
+    },
+    {
       "type": "header",
       "content": "Columns",
       "info": "Leave column 2 or 3 blank to hide it. Row values of \"Yes\" or \"No\" show a tick or a cross; each row chooses which answer earns the tick."
@@ -260,6 +422,74 @@ Row values of "yes" / "no" (any case) render as tick / cross icons; anything els
       "type": "text",
       "id": "footnote",
       "label": "Footnote"
+    },
+    {
+      "type": "header",
+      "content": "Column details",
+      "info": "Optional image, price and short note shown under each column name. Leave them all empty for a plain header."
+    },
+    {
+      "type": "image_picker",
+      "id": "column_1_image",
+      "label": "Column 1 image"
+    },
+    {
+      "type": "text",
+      "id": "column_1_price",
+      "label": "Column 1 price"
+    },
+    {
+      "type": "textarea",
+      "id": "column_1_note",
+      "label": "Column 1 note"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_2_image",
+      "label": "Column 2 image"
+    },
+    {
+      "type": "text",
+      "id": "column_2_price",
+      "label": "Column 2 price"
+    },
+    {
+      "type": "textarea",
+      "id": "column_2_note",
+      "label": "Column 2 note"
+    },
+    {
+      "type": "image_picker",
+      "id": "column_3_image",
+      "label": "Column 3 image"
+    },
+    {
+      "type": "text",
+      "id": "column_3_price",
+      "label": "Column 3 price"
+    },
+    {
+      "type": "textarea",
+      "id": "column_3_note",
+      "label": "Column 3 note"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "Image shape",
+      "options": [
+        {"value": "square", "label": "Square"},
+        {"value": "portrait", "label": "Portrait"},
+        {"value": "landscape", "label": "Landscape"}
+      ],
+      "default": "square"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_on_mobile",
+      "label": "Put feature names above values on mobile",
+      "info": "Gives each column more room on phones.",
+      "default": false
     },
     {
       "type": "header",
