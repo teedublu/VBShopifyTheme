@@ -57,7 +57,7 @@
           "settings": {
             "logo": "shopify://shop_images/INDY-Best-AFI.png",
             "logo_width": 350,
-            "author": "Best budget buy · IndyBest, The Independent · Abby Driver, 2026",
+            "author": "Best budget buy · IndyBest, The Independent · Abby Driver, 2025",
             "content": "Easy setup … Straightforward to use.",
             "show_rating": false,
             "rating": 5
@@ -542,41 +542,6 @@
         "text_color": "#ffffff"
       }
     },
-    "footnotes": {
-      "type": "rich-text",
-      "blocks": {
-        "notes_heading": {
-          "type": "heading",
-          "settings": {
-            "text": "How we compared",
-            "heading_tag": "h6",
-            "heading_tag_html": "h2",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "notes_text": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Yoto prices from uk.yotoplay.com, checked 24 September 2026: Yoto Mini (4th Gen) £89.99 and Yoto Player (4th Gen) £119.99, both on pre-order; individual cards £7.99 each; Gruffalo and Friends Collection £24.99. Voxblock prices from voxblock.co.uk on the same day. Yoto specifications are Yoto’s own published figures. Prices can change; check the retailer before you buy.</p><p>Review quoted from “Best kids’ audio players”, IndyBest, The Independent (Abby Driver, 2026). Yoto is a trademark of its owner. Voxblock is not affiliated with or endorsed by Yoto.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "notes_heading",
-        "notes_text"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": false,
-        "content_width": "medium",
-        "text_position": "start",
-        "anchor_id": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "rich_text_PEUAy8": {
       "type": "rich-text",
       "blocks": {
@@ -618,6 +583,41 @@
         "background": "#249299",
         "background_gradient": "",
         "text_color": "#ffffff"
+      }
+    },
+    "footnotes": {
+      "type": "rich-text",
+      "blocks": {
+        "notes_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "How we compared",
+            "heading_tag": "h6",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "notes_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Yoto prices from uk.yotoplay.com, checked 24 September 2026: Yoto Mini (4th Gen) £89.99 and Yoto Player (4th Gen) £119.99, both on pre-order; individual cards £7.99 each; Gruffalo and Friends Collection £24.99. Voxblock prices from voxblock.co.uk on the same day. Yoto specifications are Yoto’s own published figures. Prices can change; check the retailer before you buy.</p><p>Review quoted from “Best kids’ audio players”, IndyBest, The Independent (Abby Driver, 2026). Yoto is a trademark of its owner. Voxblock is not affiliated with or endorsed by Yoto.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "notes_heading",
+        "notes_text"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
       }
     }
   },
