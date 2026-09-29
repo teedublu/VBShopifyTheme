@@ -396,17 +396,6 @@ class SavedBooksList extends HTMLElement {
     }
 }
 
-// "Copy" button beside the referral code on the Saved books page
-document.addEventListener('click', (event) => {
-    const button = event.target.closest('[data-copy-text]');
-    if (!button || !navigator.clipboard) return;
-
-    navigator.clipboard.writeText(button.getAttribute('data-copy-text')).then(
-        () => Toast.show('Referral code copied'),
-        () => Toast.show('Couldn’t copy — select the code instead')
-    );
-});
-
 if (!window.customElements.get('save-book-button')) {
     window.customElements.define('save-book-button', SaveBookButton);
 }
