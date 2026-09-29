@@ -65,8 +65,9 @@ one product card per saved ID, in saved order.
           <div class="saved-books__panel">
             <p class="bold">{{ section.settings.referral_heading }}</p>
 
-            {%- assign referral_code = customer.metafields.referrals.code.value -%}
-            {%- if referral_code != blank -%}
+            {%- comment -%}Some older records hold "#N/A" (a spreadsheet import), which isn't a code{%- endcomment -%}
+            {%- assign referral_code = customer.metafields.referrals.code.value | strip -%}
+            {%- if referral_code != blank and referral_code != '#N/A' -%}
               <div class="saved-books__code">
                 <span class="saved-books__code-value">{{ referral_code | escape }}</span>
                 <button type="button" class="link" data-copy-text="{{ referral_code | escape }}">Copy</button>
