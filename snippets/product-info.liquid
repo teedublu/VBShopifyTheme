@@ -304,7 +304,26 @@
             </div>
           {%- endcapture -%}
           {%- if block.settings.bundle_products -%}
-            {%- assign accordion_content = accordion_content | replace: '[[bp]]', bundle_products_content | replace: '[[bpx]]', bundle_products_content_x -%}
+            {%- liquid
+              # [[bpn]]: how many audiobooks the pack has, e.g. "3 Audiobooks"
+              assign bundle_products_count = 0
+              for bundle_product in product.metafields.bundles.products.value
+                assign bundle_product_type = bundle_product.type | downcase
+                if bundle_product_type contains 'audiobook'
+                  assign bundle_products_count = bundle_products_count | plus: 1
+                endif
+              endfor
+
+              case bundle_products_count
+                when 0
+                  assign bundle_products_number = 'Audiobooks'
+                when 1
+                  assign bundle_products_number = '1 Audiobook'
+                else
+                  assign bundle_products_number = bundle_products_count | append: ' Audiobooks'
+              endcase
+            -%}
+            {%- assign accordion_content = accordion_content | replace: '[[bp]]', bundle_products_content | replace: '[[bpx]]', bundle_products_content_x | replace: '[[bpn]]', bundle_products_number -%}
           {%- endif -%}
           {%- render 'accordion', title: block.settings.title, content: accordion_content, class: 'product-info__accordion', block: block -%}
         {%- endif -%}
