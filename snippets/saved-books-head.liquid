@@ -12,6 +12,13 @@ written by the Voxblock Account app through the /apps/voxblock app proxy).
 
 {%- if template.name == 'page' and template.suffix == 'saved-books' -%}
   <meta name="robots" content="noindex">
+
+  {%- comment -%}Opened from a shared link: hide the visitor's own heading before it paints (saved-books.js takes over){%- endcomment -%}
+  <script>
+    if (new URLSearchParams(window.location.search).has('shared')) {
+      document.documentElement.classList.add('is-shared-saved-books');
+    }
+  </script>
 {%- endif -%}
 
 {%- if customer -%}
@@ -27,6 +34,7 @@ written by the Voxblock Account app through the /apps/voxblock app proxy).
   {%- if customer %}
   window.themeVariables.settings.savedBooksAccount = {
     customerId: {{ customer.id | json }},
+    firstName: {{ customer.first_name | json }},
     ids: {{ saved_books_account_ids | json }},
     url: '/apps/voxblock/saved-books'
   };
