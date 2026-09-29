@@ -1,8 +1,11 @@
 // saved-books.js
 // "Save a book": heart buttons on audiobooks, the header count and the Saved books page.
-// Saved books are product IDs kept in localStorage, so the list lasts between visits on the same device.
+// Saved books are product IDs kept in localStorage, so the list lasts between visits on the same device. For a
+// signed-in customer the list also lives on their Shopify account (customer metafield custom.saved_books), which the
+// Voxblock Account app updates through the /apps/voxblock app proxy.
 
 const STORAGE_KEY = 'voxblock:saved-books';
+const OWNER_KEY = 'voxblock:saved-books-owner'; // customer ID whose account list this browser mirrors
 const CHANGE_EVENT = 'saved-books:change';
 const SEARCH_BATCH_SIZE = 10; // storefront search returns at most 10 products per request, so larger batches drop books
 
@@ -27,6 +30,75 @@ const writeIds = () => {
     }
 };
 
+// Signed-in customer: { customerId, ids, url }, from snippets/saved-books-head.liquid
+const account = window.themeVariables?.settings?.savedBooksAccount || null;
+
+const readOwner = () => {
+    try {
+        return localStorage.getItem(OWNER_KEY);
+    } catch (e) {
+        return null;
+    }
+};
+
+const writeOwner = (customerId) => {
+    try {
+        if (customerId) {
+            localStorage.setItem(OWNER_KEY, customerId);
+        } else {
+            localStorage.removeItem(OWNER_KEY);
+        }
+    } catch (e) {
+        // Storage unavailable: the account list still loads from the page on every visit
+    }
+};
+
+// Changes go to the account one at a time, in order, so a quick save-then-unsave can't arrive reversed
+let accountQueue = Promise.resolve();
+
+const syncToAccount = (change) => {
+    if (!account) return;
+
+    accountQueue = accountQueue
+        .then(() => fetch(account.url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(change),
+        }))
+        .then((response) => {
+            if (!response.ok) throw new Error(`Saved books sync failed: ${response.status}`);
+        })
+        .catch((error) => console.warn(error));
+};
+
+if (account) {
+    const customerId = String(account.customerId);
+    const accountIds = account.ids.map(Number);
+
+    if (readOwner() === customerId) {
+        // This browser already mirrors the account, which is the source of truth (it may have changed on another device)
+        savedIds = accountIds;
+    } else {
+        // First visit signed in on this browser: books saved here before signing in join the account list
+        const savedHereOnly = savedIds.filter((id) => !accountIds.includes(id));
+        savedIds = [...savedHereOnly, ...accountIds];
+        writeOwner(customerId);
+
+        if (savedHereOnly.length > 0) {
+            syncToAccount({ add: savedHereOnly });
+        }
+    }
+
+    writeIds();
+} else if (readOwner()) {
+    // Signed out on a browser that showed someone's account list: don't leave it for the next person
+    savedIds = [];
+    writeIds();
+    writeOwner(null);
+}
+
+document.documentElement.classList.toggle('has-saved-books', savedIds.length > 0);
+
 const emitChange = (detail = {}) => {
     document.documentElement.classList.toggle('has-saved-books', savedIds.length > 0);
     document.dispatchEvent(new CustomEvent(CHANGE_EVENT, { detail: { ...detail, ids: [...savedIds] } }));
@@ -43,6 +115,7 @@ export const SavedBooks = {
         savedIds = savedIds.filter((savedId) => savedId !== id);
         savedIds.splice(index, 0, id);
         writeIds();
+        syncToAccount({ add: [id] });
         emitChange({ id, saved: true });
     },
 
@@ -52,6 +125,7 @@ export const SavedBooks = {
         const index = savedIds.indexOf(id);
         savedIds = savedIds.filter((savedId) => savedId !== id);
         writeIds();
+        syncToAccount({ remove: [id] });
         emitChange({ id, saved: false });
         return index;
     },
@@ -321,6 +395,17 @@ class SavedBooksList extends HTMLElement {
         }
     }
 }
+
+// "Copy" button beside the referral code on the Saved books page
+document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-copy-text]');
+    if (!button || !navigator.clipboard) return;
+
+    navigator.clipboard.writeText(button.getAttribute('data-copy-text')).then(
+        () => Toast.show('Referral code copied'),
+        () => Toast.show('Couldn’t copy — select the code instead')
+    );
+});
 
 if (!window.customElements.get('save-book-button')) {
     window.customElements.define('save-book-button', SaveBookButton);
