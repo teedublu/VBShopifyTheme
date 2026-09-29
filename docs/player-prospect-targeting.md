@@ -83,15 +83,17 @@ the welcome pop-ups carry on as now.
 
 ### Shopify data
 
-1. Import `book.age_groups` onto the starter and intro packs (`claude/starter-pack-age-bands-2026-09-28.csv`). Until
-   then Age picks works out a pack's ages from the books in its `bundles.products` metafield (every book must be in the
-   band), which only 10 of the 21 packs have: the 5–8 and 8–10 rows share three packs and 10+ shows one. With the
-   bands imported, every row is different (10+ has three packs).
-2. Fill `bundles.products` on the packs that lack it: Paddington Starter Pack, Paddington Bear Intro Pack, Famous Five
-   Starter Pack, Little Listeners, Young Explorers, The Percy Jackson Starter Pack, Fairy Tales Intro Pack, Zeepy Sleep
-   Intro Pack, The Gruffalo Intro Pack, Mina Mistry Intro Pack, Charlie and the Chocolate Factory Intro Pack. It drives
-   "What's included" on product pages and the "Player + …" lines in Help me choose. The Help me choose blocks for those
-   packs carry the book list as text in the meantime.
+1. Done 29 Sep 2026: `book.age_groups` is set on all 21 starter and intro packs. A pack has an age only if every book in
+   it has it, as in `claude/starter-pack-age-bands-2026-09-28.csv` (11 / 13 / 7 / 3 packs for under 5 / 5–8 / 8–10 /
+   10+), so every Age picks row is different. A pack without it gets its ages worked out from the books in its
+   `bundles.products` metafield.
+2. Done 29 Sep 2026: `bundles.products` is filled on the 11 packs that lacked it (Paddington Starter Pack, Paddington
+   Bear Intro Pack, Famous Five Starter Pack, Little Listeners, Young Explorers, The Percy Jackson Starter Pack, Fairy
+   Tales Intro Pack, Zeepy Sleep Intro Pack, The Gruffalo Intro Pack, Mina Mistry Intro Pack, Charlie and the Chocolate
+   Factory Intro Pack), from each pack's bundle components minus the player. It drives "What's included" on product
+   pages and the "Player + …" lines in Help me choose.
+
+   New packs need both metafields.
 3. Optional: automated collections per age (packs and books, sorted best selling) and pick them in Age picks. Without
    them it uses Voxblock Starter Pack Bundles and Audiobooks Global filtered by age.
 
