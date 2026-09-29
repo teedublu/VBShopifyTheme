@@ -5,17 +5,35 @@ SAVED BOOKS (HEAD)
 Rendered in the <head> after js-variables. Adds "has-saved-books" to <html> before the page paints, so the header heart
 appears without a layout shift, tells the script where the Saved books page is, and loads assets/saved-books.js.
 The Saved books page is a personal list, so it is kept out of search engines.
+
+For a signed-in customer it also passes the list saved on their account (customer metafield custom.saved_books,
+written by the Voxblock Account app through the /apps/voxblock app proxy).
 {%- endcomment -%}
 
 {%- if template.name == 'page' and template.suffix == 'saved-books' -%}
   <meta name="robots" content="noindex">
 {%- endif -%}
 
+{%- if customer -%}
+  {%- assign saved_books_account_ids = '' | split: '' -%}
+  {%- if customer.metafields.custom.saved_books.value != blank -%}
+    {%- assign saved_books_account_ids = customer.metafields.custom.saved_books.value | map: 'id' -%}
+  {%- endif -%}
+{%- endif -%}
+
 <script>
   window.themeVariables.settings.savedBooksUrl = {{ pages['saved-books'].url | default: '/pages/saved-books' | json }};
 
+  {%- if customer %}
+  window.themeVariables.settings.savedBooksAccount = {
+    customerId: {{ customer.id | json }},
+    ids: {{ saved_books_account_ids | json }},
+    url: '/apps/voxblock/saved-books'
+  };
+  {%- endif %}
+
   try {
-    if (JSON.parse(localStorage.getItem('voxblock:saved-books') || '[]').length > 0) {
+    if (JSON.parse(localStorage.getItem('voxblock:saved-books') || '[]').length > 0 || window.themeVariables.settings.savedBooksAccount?.ids.length > 0) {
       document.documentElement.classList.add('has-saved-books');
     }
   } catch (e) {

@@ -55,6 +55,40 @@ one product card per saved ID, in saved order.
     <div class="section-stack">
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, tag: 'h1' -%}
 
+      <div class="saved-books__panels">
+        {%- if customer -%}
+          <div class="saved-books__panel">
+            <p class="bold">{{ section.settings.account_signed_in_heading }}</p>
+            <p class="text-subdued">{{ section.settings.account_signed_in_text | replace: '[email]', customer.email }}</p>
+          </div>
+
+          <div class="saved-books__panel">
+            <p class="bold">{{ section.settings.referral_heading }}</p>
+
+            {%- comment -%}Some older records hold "#N/A" (a spreadsheet import), which isn't a code{%- endcomment -%}
+            {%- assign referral_code = customer.metafields.referrals.code.value | strip -%}
+            {%- if referral_code != blank and referral_code != '#N/A' -%}
+              <div class="saved-books__code">
+                <span class="saved-books__code-value">{{ referral_code | escape }}</span>
+                <button type="button" class="link" data-copy-text="{{ referral_code | escape }}">Copy</button>
+              </div>
+              {%- if section.settings.referral_text != blank -%}
+                <div class="prose text-subdued">{{ section.settings.referral_text }}</div>
+              {%- endif -%}
+            {%- else -%}
+              <p class="text-subdued">{{ section.settings.referral_pending_text }}</p>
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          <div class="saved-books__panel">
+            <p class="bold">{{ section.settings.account_heading }}</p>
+            <p class="text-subdued">{{ section.settings.account_text }}</p>
+            {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
+            {%- render 'button', href: sign_in_url, content: section.settings.account_button_label -%}
+          </div>
+        {%- endif -%}
+      </div>
+
       <p class="text-subdued" data-saved-books-loading>Loading your saved books…</p>
 
       <div class="v-stack gap-6 justify-items-start" data-saved-books-empty hidden>
@@ -143,7 +177,61 @@ one product card per saved ID, in saved order.
       "type": "richtext",
       "id": "content",
       "label": "Content",
-      "default": "<p>Books you've saved while browsing. Your list is kept on this device.</p>"
+      "default": "<p>Books you've saved while browsing.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Account",
+      "info": "Signed-out visitors see a sign-in button; signed-in customers see where their list is kept and their referral code."
+    },
+    {
+      "type": "text",
+      "id": "account_heading",
+      "label": "Heading (signed out)",
+      "default": "Keep your list on any device"
+    },
+    {
+      "type": "text",
+      "id": "account_text",
+      "label": "Text (signed out)",
+      "default": "Sign in with your email and we'll save your books to your Voxblock account. There's no password: we email you a code."
+    },
+    {
+      "type": "text",
+      "id": "account_button_label",
+      "label": "Button label",
+      "default": "Save to your account"
+    },
+    {
+      "type": "text",
+      "id": "account_signed_in_heading",
+      "label": "Heading (signed in)",
+      "default": "Saved to your account"
+    },
+    {
+      "type": "text",
+      "id": "account_signed_in_text",
+      "label": "Text (signed in)",
+      "info": "[email] is replaced with the customer's email address.",
+      "default": "Your list is saved to [email], so it's on any device where you sign in."
+    },
+    {
+      "type": "text",
+      "id": "referral_heading",
+      "label": "Referral heading",
+      "default": "Your referral code"
+    },
+    {
+      "type": "richtext",
+      "id": "referral_text",
+      "label": "Referral text",
+      "default": "<p>Share it with friends and family. <a href=\"/pages/refer-a-friend\" title=\"Refer a friend\">How referrals work</a></p>"
+    },
+    {
+      "type": "text",
+      "id": "referral_pending_text",
+      "label": "Referral text before a first order",
+      "default": "Your referral code arrives after your first order."
     },
     {
       "type": "text",
