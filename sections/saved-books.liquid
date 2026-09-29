@@ -35,6 +35,9 @@ LIQUID
 The saved list lives in the visitor's browser, so the page is filled in by assets/saved-books.js. It asks for this
 section through the search page (?q=id:1 OR id:2&section_id=...), which renders the "search.performed" branch below:
 one product card per saved ID, in saved order.
+
+Opened from a shared link (?shared=...&from=...), the script hides the visitor's own heading and account panel, shows
+the "shared" heading instead and renders the shared books.
 {%- endcomment -%}
 
 {%- if search.performed -%}
@@ -53,26 +56,46 @@ one product card per saved ID, in saved order.
 {%- else -%}
   <saved-books-list section-id="{{ section.id }}" {% render 'section-properties' %}>
     <div class="section-stack">
-      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, tag: 'h1' -%}
+      <div class="section-stack" data-saved-books-own>
+        {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, tag: 'h1' -%}
 
-      <div class="saved-books__panels">
-        {%- if customer -%}
-          <div class="saved-books__panel">
-            <p class="bold">{{ section.settings.account_signed_in_heading }}</p>
-            <p class="text-subdued">{{ section.settings.account_signed_in_text | replace: '[email]', customer.email }}</p>
-          </div>
+        <div class="saved-books__panels">
+          {%- if customer -%}
+            <div class="saved-books__panel">
+              <p class="bold">{{ section.settings.account_signed_in_heading }}</p>
+              <p class="text-subdued">{{ section.settings.account_signed_in_text | replace: '[email]', customer.email }}</p>
+            </div>
 
-        {%- else -%}
-          <div class="saved-books__panel">
-            <p class="bold">{{ section.settings.account_heading }}</p>
-            <p class="text-subdued">{{ section.settings.account_text }}</p>
-            {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
-            {%- render 'button', href: sign_in_url, content: section.settings.account_button_label -%}
-          </div>
-        {%- endif -%}
+          {%- else -%}
+            <div class="saved-books__panel">
+              <p class="bold">{{ section.settings.account_heading }}</p>
+              <p class="text-subdued">{{ section.settings.account_text }}</p>
+              {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
+              {%- render 'button', href: sign_in_url, content: section.settings.account_button_label -%}
+            </div>
+          {%- endif -%}
+        </div>
       </div>
 
-      <p class="text-subdued" data-saved-books-loading>Loading your saved books…</p>
+      <div class="v-stack gap-6 justify-items-start" data-saved-books-shared hidden>
+        <div class="prose">
+          <h1 class="h2" data-saved-books-shared-heading data-heading-named="{{ section.settings.shared_heading | escape }}" data-heading-anonymous="{{ section.settings.shared_heading_anonymous | escape }}"></h1>
+
+          {%- if section.settings.shared_text != blank -%}
+            <p>{{ section.settings.shared_text | escape }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="saved-books__shared-actions">
+          <div data-saved-books-save-all data-label="{{ section.settings.save_all_button_label | escape }}" data-label-done="{{ section.settings.save_all_done_label | escape }}">
+            {%- render 'button', content: section.settings.save_all_button_label -%}
+          </div>
+
+          <a href="{{ request.path }}" class="link">{{ section.settings.own_list_link_label | escape }}</a>
+        </div>
+      </div>
+
+      <p class="text-subdued" data-saved-books-loading>Loading books…</p>
 
       <div class="v-stack gap-6 justify-items-start" data-saved-books-empty hidden>
         {%- if section.settings.empty_text != blank -%}
@@ -84,15 +107,23 @@ one product card per saved ID, in saved order.
         {%- endif -%}
       </div>
 
-      <p data-saved-books-error hidden>Sorry, we couldn't load your saved books. Please refresh the page to try again.</p>
+      <p data-saved-books-shared-empty hidden>Sorry, the books in this list aren't available any more.</p>
+
+      <p data-saved-books-error hidden>Sorry, we couldn't load these books. Please refresh the page to try again.</p>
 
       <product-list class="product-list" data-saved-books-grid hidden></product-list>
 
-      {%- if section.settings.continue_button_label != blank -%}
-        <div class="text-center" data-saved-books-actions hidden>
+      <div class="saved-books__actions" data-saved-books-actions hidden>
+        {%- if section.settings.share_button_label != blank -%}
+          <div data-saved-books-share data-share-text="{{ section.settings.share_text | escape }}">
+            {%- render 'button', content: section.settings.share_button_label, icon: 'share', style: 'outline' -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.continue_button_label != blank -%}
           {%- render 'button', href: section.settings.continue_button_link, content: section.settings.continue_button_label -%}
-        </div>
-      {%- endif -%}
+        {%- endif -%}
+      </div>
 
       <noscript>
         <p>Please turn on JavaScript to see your saved books.</p>
@@ -197,6 +228,64 @@ one product card per saved ID, in saved order.
       "label": "Text (signed in)",
       "info": "[email] is replaced with the customer's email address.",
       "default": "Your list is saved to [email], so it's on any device where you sign in."
+    },
+    {
+      "type": "header",
+      "content": "Sharing",
+      "info": "The share button makes a link to the list, for sending to someone else. Leave the label empty to hide it."
+    },
+    {
+      "type": "text",
+      "id": "share_button_label",
+      "label": "Share button label",
+      "default": "Share this list"
+    },
+    {
+      "type": "text",
+      "id": "share_text",
+      "label": "Message sent with the link",
+      "default": "I've saved some audiobooks on Voxblock. Have a look:"
+    },
+    {
+      "type": "text",
+      "id": "shared_heading",
+      "label": "Heading when someone opens the link",
+      "info": "[name] is the sharer's first name (when they're signed in); [books] is the number of books, e.g. \"6 books\".",
+      "default": "[name] shared [books] with you"
+    },
+    {
+      "type": "text",
+      "id": "shared_heading_anonymous",
+      "label": "Heading when the sharer isn't signed in",
+      "default": "Someone shared [books] with you"
+    },
+    {
+      "type": "text",
+      "id": "shared_text",
+      "label": "Text under the heading",
+      "default": "Tap the heart on the ones you like, or save them all to your own list."
+    },
+    {
+      "type": "text",
+      "id": "save_all_button_label",
+      "label": "Save all button label",
+      "default": "Save all to my list"
+    },
+    {
+      "type": "text",
+      "id": "save_all_done_label",
+      "label": "Save all button label once saved",
+      "default": "All saved to your list"
+    },
+    {
+      "type": "text",
+      "id": "own_list_link_label",
+      "label": "Link to the visitor's own list",
+      "default": "See my saved books"
+    },
+    {
+      "type": "header",
+      "content": "Under the list"
     },
     {
       "type": "text",

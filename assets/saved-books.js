@@ -3,6 +3,7 @@
 // Saved books are product IDs kept in localStorage, so the list lasts between visits on the same device. For a
 // signed-in customer the list also lives on their Shopify account (customer metafield custom.saved_books), which the
 // Voxblock Account app updates through the /apps/voxblock app proxy.
+// A list can be shared as a link to the Saved books page: ?shared=<IDs>&from=<first name> (see SharedLink below).
 
 const STORAGE_KEY = 'voxblock:saved-books';
 const OWNER_KEY = 'voxblock:saved-books-owner'; // customer ID whose account list this browser mirrors
@@ -10,6 +11,41 @@ const CHANGE_EVENT = 'saved-books:change';
 const SEARCH_BATCH_SIZE = 10; // storefront search returns at most 10 products per request, so larger batches drop books
 
 const savedBooksUrl = window.themeVariables?.settings?.savedBooksUrl || '/pages/saved-books';
+
+// Shared lists: each product ID is written in base36, padded to a fixed 9 characters so the IDs need no separator.
+// 9 base36 characters hold IDs up to about 1e14; audiobook IDs are around 1.6e13 today.
+const SharedLink = {
+    ID_WIDTH: 9,
+    MAX_BOOKS: 50,
+
+    url(ids, from) {
+        const url = new URL(savedBooksUrl, window.location.origin);
+        if (from) url.searchParams.set('from', from);
+        url.searchParams.set('shared', ids.slice(0, this.MAX_BOOKS).map((id) => id.toString(36).padStart(this.ID_WIDTH, '0')).join(''));
+        return url.toString();
+    },
+
+    // The shared IDs when this page is a shared list, otherwise null
+    read() {
+        if (window.location.pathname !== savedBooksUrl) return null;
+
+        const params = new URLSearchParams(window.location.search);
+        if (!params.has('shared')) return null;
+
+        const encoded = params.get('shared').toLowerCase().replace(/[^0-9a-z]/g, '');
+        const ids = [];
+
+        for (let i = 0; i + this.ID_WIDTH <= encoded.length && ids.length < this.MAX_BOOKS; i += this.ID_WIDTH) {
+            const id = parseInt(encoded.slice(i, i + this.ID_WIDTH), 36);
+            if (id > 0 && !ids.includes(id)) ids.push(id);
+        }
+
+        // "from" is typed into a link anyone can edit, so it is only ever shown as text, and kept short
+        return { ids, from: (params.get('from') || '').trim().slice(0, 30) };
+    },
+};
+
+const sharedList = SharedLink.read();
 
 const readIds = () => {
     try {
@@ -30,7 +66,7 @@ const writeIds = () => {
     }
 };
 
-// Signed-in customer: { customerId, ids, url }, from snippets/saved-books-head.liquid
+// Signed-in customer: { customerId, firstName, ids, url }, from snippets/saved-books-head.liquid
 const account = window.themeVariables?.settings?.savedBooksAccount || null;
 
 const readOwner = () => {
@@ -119,6 +155,18 @@ export const SavedBooks = {
         emitChange({ id, saved: true });
     },
 
+    // Saves several books at once (a shared list) in the given order, above the ones already saved. Returns the number added.
+    addAll(ids) {
+        const newIds = ids.map(Number).filter((id) => id && !savedIds.includes(id));
+        if (newIds.length === 0) return 0;
+
+        savedIds = [...newIds, ...savedIds];
+        writeIds();
+        syncToAccount({ add: newIds });
+        emitChange({ saved: true, added: newIds });
+        return newIds.length;
+    },
+
     // Returns the book's position so it can be restored
     remove(id) {
         id = Number(id);
@@ -149,16 +197,21 @@ window.addEventListener('storage', (event) => {
     emitChange();
 });
 
-// PostHog: one event per save / unsave, like sample_played in voxblock.js
-const track = (eventName, button, extraProperties = {}) => {
+// PostHog: one event per save / unsave, like sample_played in voxblock.js, plus events for sharing a list
+const capture = (eventName, properties = {}) => {
     if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
     window.posthog.capture(eventName, {
-        title: button.productTitle || null,
-        product_id: button.productId,
         page_type: window.themeVariables?.settings?.pageType || null,
-        ...extraProperties,
+        ...properties,
     });
 };
+
+const track = (eventName, button, extraProperties = {}) => capture(eventName, {
+    title: button.productTitle || null,
+    product_id: button.productId,
+    ...(sharedList ? { via: 'shared_list' } : {}),
+    ...extraProperties,
+});
 
 // Short confirmation just below the header (the bottom of the screen is taken by the cookie banner and, on phones, the
 // sticky add-to-cart bar). The live region exists from page load so screen readers announce it.
@@ -205,7 +258,7 @@ const Toast = (() => {
 })();
 
 const viewSavedBooksLink = () => {
-    if (window.location.pathname === savedBooksUrl) return null;
+    if (window.location.pathname === savedBooksUrl && !sharedList) return null;
     const link = document.createElement('a');
     link.href = savedBooksUrl;
     link.textContent = 'View saved books';
@@ -295,20 +348,36 @@ class SavedBooksCount extends HTMLElement {
 }
 
 // Saved books page: renders the saved IDs with the theme's product cards through the Section Rendering API,
-// the same way the theme's "Recently viewed products" section works.
+// the same way the theme's "Recently viewed products" section works. Opened from a shared link, it shows the shared
+// books instead, with a button to save them all; the hearts still show the visitor's own saved books.
 class SavedBooksList extends HTMLElement {
     constructor() {
         super();
         this.onChange = this.onChange.bind(this);
+        this.onShare = this.onShare.bind(this);
+        this.onSaveAll = this.onSaveAll.bind(this);
         this.renderCount = 0;
     }
 
     connectedCallback() {
         this.grid = this.querySelector('[data-saved-books-grid]');
         this.loadingState = this.querySelector('[data-saved-books-loading]');
-        this.emptyState = this.querySelector('[data-saved-books-empty]');
+        this.emptyState = this.querySelector(sharedList ? '[data-saved-books-shared-empty]' : '[data-saved-books-empty]');
         this.errorState = this.querySelector('[data-saved-books-error]');
         this.actions = this.querySelector('[data-saved-books-actions]');
+        this.shareButton = this.querySelector('[data-saved-books-share] button');
+        this.saveAllButton = this.querySelector('[data-saved-books-save-all] button');
+        this.sharedHeading = this.querySelector('[data-saved-books-shared-heading]');
+
+        if (sharedList) {
+            this.querySelector('[data-saved-books-own]').hidden = true;
+            this.querySelector('[data-saved-books-shared]').hidden = false;
+            this.querySelector('[data-saved-books-share]')?.remove(); // share your own list from your own page
+            this.updateSharedHeading(sharedList.ids.length);
+            this.saveAllButton?.addEventListener('click', this.onSaveAll);
+        } else {
+            this.shareButton?.addEventListener('click', this.onShare);
+        }
 
         document.addEventListener(CHANGE_EVENT, this.onChange);
         this.render();
@@ -316,10 +385,21 @@ class SavedBooksList extends HTMLElement {
 
     disconnectedCallback() {
         document.removeEventListener(CHANGE_EVENT, this.onChange);
+        this.shareButton?.removeEventListener('click', this.onShare);
+        this.saveAllButton?.removeEventListener('click', this.onSaveAll);
+    }
+
+    ids() {
+        return sharedList ? sharedList.ids : SavedBooks.ids();
+    }
+
+    // The books on the page, in order (a shared book that has since been unpublished has no card)
+    renderedIds() {
+        return [...this.grid.querySelectorAll('save-book-button[product-id]')].map((button) => Number(button.getAttribute('product-id')));
     }
 
     async render() {
-        const ids = SavedBooks.ids();
+        const ids = this.ids();
         const renderId = ++this.renderCount;
 
         if (ids.length === 0) {
@@ -351,6 +431,12 @@ class SavedBooksList extends HTMLElement {
 
             this.grid.replaceChildren(...cards.map((card) => document.importNode(card, true)));
             this.showState(cards.length > 0 ? 'grid' : 'empty');
+
+            if (sharedList) {
+                this.updateSharedHeading(cards.length);
+                this.updateSaveAll();
+                capture('shared_list_viewed', { count: cards.length, has_sender_name: Boolean(sharedList.from) });
+            }
         } catch (error) {
             if (renderId !== this.renderCount) return;
             console.error(error);
@@ -369,6 +455,12 @@ class SavedBooksList extends HTMLElement {
     }
 
     onChange(event) {
+        if (sharedList) {
+            // The shared books stay put; their hearts update themselves
+            this.updateSaveAll();
+            return;
+        }
+
         const { id, saved } = event.detail;
 
         if (saved === false) {
@@ -382,6 +474,64 @@ class SavedBooksList extends HTMLElement {
             // A book was added (Undo, or another tab): reload so it appears in the right place
             this.render();
         }
+    }
+
+    // "Sarah shared 6 books with you", from the section's text settings
+    updateSharedHeading(count) {
+        if (!this.sharedHeading) return;
+
+        const template = sharedList.from ? this.sharedHeading.dataset.headingNamed : this.sharedHeading.dataset.headingAnonymous;
+        const books = count === 1 ? '1 book' : `${count} books`;
+        this.sharedHeading.textContent = template.replace('[name]', sharedList.from).replace('[books]', books);
+    }
+
+    updateSaveAll() {
+        if (!this.saveAllButton) return;
+
+        const ids = this.renderedIds();
+        const allSaved = ids.every((id) => SavedBooks.has(id));
+        const wrapper = this.saveAllButton.closest('[data-saved-books-save-all]');
+        wrapper.hidden = ids.length === 0;
+        this.saveAllButton.disabled = allSaved;
+        // The theme's custom-button keeps its label in a wrapper div, next to the loading dots
+        const label = this.saveAllButton.getAttribute('is') === 'custom-button' ? this.saveAllButton.firstElementChild : this.saveAllButton;
+        label.textContent = allSaved ? wrapper.dataset.labelDone : wrapper.dataset.label;
+    }
+
+    onSaveAll() {
+        const added = SavedBooks.addAll(this.renderedIds());
+        if (added === 0) return;
+
+        capture('shared_list_saved_all', { count: added });
+        Toast.show(added === 1 ? 'Saved 1 book' : `Saved ${added} books`, viewSavedBooksLink());
+    }
+
+    async onShare() {
+        const ids = this.renderedIds();
+        if (ids.length === 0) return;
+
+        const url = SharedLink.url(ids, account?.firstName);
+        const text = this.shareButton.closest('[data-saved-books-share]').dataset.shareText || '';
+
+        if (navigator.share) {
+            try {
+                await navigator.share({ text, url });
+                capture('saved_books_shared', { count: ids.length, method: 'share_sheet' });
+            } catch (error) {
+                // AbortError: they closed the share sheet without choosing anything
+                if (error.name !== 'AbortError') console.warn(error);
+            }
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(url);
+            Toast.show('Link copied. Paste it into a message to share your list');
+        } catch (error) {
+            window.prompt('Copy this link to share your list', url);
+        }
+
+        capture('saved_books_shared', { count: ids.length, method: 'copy_link' });
     }
 
     showState(state) {

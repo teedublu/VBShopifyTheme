@@ -260,3 +260,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 }
 .saved-books__panel { display: grid; gap: var(--spacing-2); justify-items: start; align-content: start; padding: var(--spacing-5); border-radius: var(--rounded-sm); background: rgb(var(--text-color) / .05); }
 .saved-books__panel .button { margin-block-start: var(--spacing-2); }
+
+/* Saved books page: share / continue buttons under the list, and the view of a list someone shared */
+.saved-books__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--spacing-4); }
+.saved-books__shared-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-4) var(--spacing-6); }
+.is-shared-saved-books [data-saved-books-own] { display: none; }
