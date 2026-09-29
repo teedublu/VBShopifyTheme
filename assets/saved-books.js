@@ -65,16 +65,18 @@ window.addEventListener('storage', (event) => {
 });
 
 // PostHog: one event per save / unsave, like sample_played in voxblock.js
-const track = (eventName, button) => {
+const track = (eventName, button, extraProperties = {}) => {
     if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
     window.posthog.capture(eventName, {
         title: button.productTitle || null,
         product_id: button.productId,
         page_type: window.themeVariables?.settings?.pageType || null,
+        ...extraProperties,
     });
 };
 
-// Short confirmation at the bottom of the screen. The live region exists from page load so screen readers announce it.
+// Short confirmation just below the header (the bottom of the screen is taken by the cookie banner and, on phones, the
+// sticky add-to-cart bar). The live region exists from page load so screen readers announce it.
 const Toast = (() => {
     const element = document.createElement('div');
     element.className = 'saved-books-toast';
@@ -102,6 +104,11 @@ const Toast = (() => {
 
     const show = (message, action) => {
         clearTimeout(clearTimer);
+
+        // Sit under the header wherever it is right now (the announcement bar pushes it down at the top of the page)
+        const headerBottom = document.querySelector('.shopify-section--header')?.getBoundingClientRect().bottom || 0;
+        element.style.top = `${Math.max(headerBottom, 0) + 16}px`;
+
         const text = document.createElement('span');
         text.textContent = message;
         element.replaceChildren(text, ...(action ? [action] : []));
@@ -120,12 +127,14 @@ const viewSavedBooksLink = () => {
     return link;
 };
 
-const undoButton = (id, index) => {
+// Undo re-saves the book, and counts as a save so PostHog's saved/unsaved totals stay in step
+const undoButton = (saveBookButton, index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = 'Undo';
     button.addEventListener('click', () => {
-        SavedBooks.add(id, Math.max(index, 0));
+        SavedBooks.add(saveBookButton.productId, Math.max(index, 0));
+        track('book_saved', saveBookButton, { via: 'undo' });
         Toast.hide();
     });
     return button;
@@ -170,7 +179,7 @@ class SaveBookButton extends HTMLElement {
         if (SavedBooks.has(this.productId)) {
             const index = SavedBooks.remove(this.productId);
             track('book_unsaved', this);
-            Toast.show('Removed from saved books', undoButton(this.productId, index));
+            Toast.show('Removed from saved books', undoButton(this, index));
         } else {
             SavedBooks.add(this.productId);
             track('book_saved', this);

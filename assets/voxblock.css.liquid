@@ -72,17 +72,19 @@ save-book-button:not(:defined) { visibility: hidden; } /* keeps its space until 
 .product-info__title-row > .product-info__title { flex: 1 1 auto; min-width: 0; }
 .product-info__title-row > save-book-button { flex-shrink: 0; margin-block-start: .25em; }
 
+saved-books-list { display: block; } /* custom elements are inline by default, which drops the section's gutters */
+
 /* Header heart: shown once something is saved ("has-saved-books" is set in snippets/saved-books-head.liquid) */
 .header__saved-books { display: none; }
 .has-saved-books .header__saved-books { display: block; }
 saved-books-count:empty { opacity: 0; }
 
-/* "Saved" / "Removed" message */
+/* "Saved" / "Removed" message: saved-books.js sets "top" to just below the header */
 .saved-books-toast {
   position: fixed;
   z-index: 10;
   inset-inline: 0;
-  bottom: var(--spacing-6);
+  top: var(--spacing-4);
   width: max-content;
   max-width: calc(100vw - 2 * var(--container-gutter));
   margin-inline: auto;
@@ -95,7 +97,7 @@ saved-books-count:empty { opacity: 0; }
   color: rgb(var(--background-primary));
   box-shadow: 0 6px 20px rgb(0 0 0 / .18);
   opacity: 0;
-  transform: translateY(.5rem);
+  transform: translateY(-.5rem);
   pointer-events: none;
   transition: opacity .2s ease, transform .2s ease;
 }
