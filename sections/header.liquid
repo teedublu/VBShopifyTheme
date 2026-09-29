@@ -265,6 +265,16 @@ the underlying logic of the menu.
             </a>
           {%- endif -%}
 
+          {%- comment -%}Saved books: only shown once something is saved (see snippets/saved-books-head.liquid){%- endcomment -%}
+          <a href="{{ pages['saved-books'].url | default: '/pages/saved-books' }}" class="header__saved-books relative tap-area">
+            <span class="sr-only">Saved books</span>
+            {%- render 'icon' with 'picto-love', width: 22, height: 22 -%}
+
+            <div class="header__cart-count">
+              <saved-books-count class="count-bubble" aria-hidden="true"></saved-books-count>
+            </div>
+          </a>
+
           <a href="{{ routes.cart_url }}" data-no-instant class="relative tap-area" {% if settings.cart_type != 'page' and request.page_type != 'cart' %}aria-controls="cart-drawer"{% endif %}>
             <span class="sr-only">{{ 'header.general.open_cart' | t }}</span>
             {%- render 'icon' with 'cart' -%}

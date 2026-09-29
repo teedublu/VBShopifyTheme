@@ -1,0 +1,229 @@
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+CSS
+------------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+
+<style>
+  #shopify-section-{{ section.id }} .product-list {
+    --product-list-gap: {% if section.settings.products_per_row_mobile == '1' %}var(--grid-gutter){% else %}var(--product-list-row-gap){% endif %} var(--spacing-2);
+    --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+    --product-list-grid: auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+      --product-list-items-per-row: 2;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+    }
+  }
+</style>
+
+{%- comment -%}
+------------------------------------------------------------------------------------------------------------------------
+LIQUID
+------------------------------------------------------------------------------------------------------------------------
+
+The saved list lives in the visitor's browser, so the page is filled in by assets/saved-books.js. It asks for this
+section through the search page (?q=id:1 OR id:2&section_id=...), which renders the "search.performed" branch below:
+one product card per saved ID, in saved order.
+{%- endcomment -%}
+
+{%- if search.performed -%}
+  <div data-saved-books-results>
+    {%- assign parsed_terms = search.terms | split: ' OR ' -%}
+
+    {%- for parsed_term in parsed_terms -%}
+      {%- assign id = parsed_term | split: 'id:' | last | times: 1 -%}
+      {%- assign product_to_render = search.results | where: 'id', id | first -%}
+
+      {%- if product_to_render != blank -%}
+        {%- render 'product-card', product: product_to_render, stacked: true, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- else -%}
+  <saved-books-list section-id="{{ section.id }}" {% render 'section-properties' %}>
+    <div class="section-stack">
+      {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, tag: 'h1' -%}
+
+      <p class="text-subdued" data-saved-books-loading>Loading your saved books…</p>
+
+      <div class="v-stack gap-6 justify-items-start" data-saved-books-empty hidden>
+        {%- if section.settings.empty_text != blank -%}
+          <div class="prose">{{ section.settings.empty_text }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.empty_button_label != blank -%}
+          {%- render 'button', href: section.settings.empty_button_link, content: section.settings.empty_button_label -%}
+        {%- endif -%}
+      </div>
+
+      <p data-saved-books-error hidden>Sorry, we couldn't load your saved books. Please refresh the page to try again.</p>
+
+      <product-list class="product-list" data-saved-books-grid hidden></product-list>
+
+      {%- if section.settings.continue_button_label != blank -%}
+        <div class="text-center" data-saved-books-actions hidden>
+          {%- render 'button', href: section.settings.continue_button_link, content: section.settings.continue_button_label -%}
+        </div>
+      {%- endif -%}
+
+      <noscript>
+        <p>Please turn on JavaScript to see your saved books.</p>
+      </noscript>
+    </div>
+  </saved-books-list>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Saved books",
+  "class": "shopify-section--saved-books",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows the audiobooks a visitor has saved with the heart button. The list is kept in their browser."
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "products_per_row_mobile",
+      "label": "Products per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 5,
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Saved books"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+      "default": "<p>Books you've saved while browsing. Your list is kept on this device.</p>"
+    },
+    {
+      "type": "text",
+      "id": "continue_button_label",
+      "label": "Button under the list",
+      "default": "Continue browsing"
+    },
+    {
+      "type": "url",
+      "id": "continue_button_link",
+      "label": "Button link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "When nothing is saved"
+    },
+    {
+      "type": "richtext",
+      "id": "empty_text",
+      "label": "Text",
+      "default": "<p>You haven't saved any books yet. Tap the heart on any audiobook to keep it here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "empty_button_label",
+      "label": "Button label",
+      "default": "Browse audiobooks"
+    },
+    {
+      "type": "url",
+      "id": "empty_button_link",
+      "label": "Button link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "header",
+      "content": "Colors",
+      "info": "Gradient replaces solid colors when set."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "color",
+      "id": "product_card_background",
+      "label": "Product card background"
+    },
+    {
+      "type": "color",
+      "id": "product_card_text_color",
+      "label": "Product card text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saved books"
+    }
+  ]
+}
+{% endschema %}

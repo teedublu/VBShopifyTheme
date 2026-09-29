@@ -1,0 +1,25 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SAVE BOOK BUTTON
+----------------------------------------------------------------------------------------------------------------------
+Heart that adds an audiobook to the visitor's saved books (behaviour in assets/saved-books.js). Renders nothing for
+products that aren't audiobooks, so it can be dropped into shared snippets.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product to save
+* size: the icon size in pixels (default 24)
+* class: optional extra classes
+{%- endcomment -%}
+
+{%- if product.type == 'Audiobooks' or product.type == 'Audiobooks Bundle' -%}
+  {%- assign icon_size = size | default: 24 -%}
+
+  <save-book-button class="save-book {{ class }}" product-id="{{ product.id }}" product-title="{{ product.title | escape }}">
+    <button type="button" class="save-book__button tap-area" aria-pressed="false" aria-label="Save {{ product.title | escape }}">
+      {%- render 'icon' with 'picto-love', width: icon_size, height: icon_size -%}
+    </button>
+  </save-book-button>
+{%- endif -%}
