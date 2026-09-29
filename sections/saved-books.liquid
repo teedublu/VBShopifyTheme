@@ -36,7 +36,7 @@ The saved list lives in the visitor's browser, so the page is filled in by asset
 section through the search page (?q=id:1 OR id:2&section_id=...), which renders the "search.performed" branch below:
 one product card per saved ID, in saved order.
 
-Opened from a shared link (?shared=...&from=...), the script hides the visitor's own heading and account panel, shows
+Opened from a shared link (?shared=...&from=...), the script hides the visitor's own heading and account bar, shows
 the "shared" heading instead and renders the shared books.
 {%- endcomment -%}
 
@@ -59,21 +59,27 @@ the "shared" heading instead and renders the shared books.
       <div class="section-stack" data-saved-books-own>
         {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, tag: 'h1' -%}
 
-        <div class="saved-books__panels">
+        {%- comment -%}One line: where the list is kept, with Save (sign in) and Share beside it{%- endcomment -%}
+        <div class="saved-books__bar">
           {%- if customer -%}
-            <div class="saved-books__panel">
-              <p class="bold">{{ section.settings.account_signed_in_heading }}</p>
-              <p class="text-subdued">{{ section.settings.account_signed_in_text | replace: '[email]', customer.email }}</p>
-            </div>
-
+            {%- assign customer_email = customer.email | escape -%}
+            <p>{{ section.settings.account_signed_in_text | escape | replace: '[email]', customer_email }}</p>
           {%- else -%}
-            <div class="saved-books__panel">
-              <p class="bold">{{ section.settings.account_heading }}</p>
-              <p class="text-subdued">{{ section.settings.account_text }}</p>
-              {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
-              {%- render 'button', href: sign_in_url, content: section.settings.account_button_label -%}
-            </div>
+            <p>{{ section.settings.account_text | escape }}</p>
           {%- endif -%}
+
+          <div class="saved-books__bar-buttons">
+            {%- if customer == blank and section.settings.account_button_label != blank -%}
+              {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
+              {%- render 'button', href: sign_in_url, content: section.settings.account_button_label, size: 'sm' -%}
+            {%- endif -%}
+
+            {%- if section.settings.share_button_label != blank -%}
+              <div data-saved-books-share data-share-text="{{ section.settings.share_text | escape }}" hidden>
+                {%- render 'button', content: section.settings.share_button_label, icon: 'share', style: 'outline', size: 'sm' -%}
+              </div>
+            {%- endif -%}
+          </div>
         </div>
       </div>
 
@@ -113,17 +119,11 @@ the "shared" heading instead and renders the shared books.
 
       <product-list class="product-list" data-saved-books-grid hidden></product-list>
 
-      <div class="saved-books__actions" data-saved-books-actions hidden>
-        {%- if section.settings.share_button_label != blank -%}
-          <div data-saved-books-share data-share-text="{{ section.settings.share_text | escape }}">
-            {%- render 'button', content: section.settings.share_button_label, icon: 'share', style: 'outline' -%}
-          </div>
-        {%- endif -%}
-
-        {%- if section.settings.continue_button_label != blank -%}
+      {%- if section.settings.continue_button_label != blank -%}
+        <div class="text-center" data-saved-books-actions hidden>
           {%- render 'button', href: section.settings.continue_button_link, content: section.settings.continue_button_label -%}
-        {%- endif -%}
-      </div>
+        </div>
+      {%- endif -%}
 
       <noscript>
         <p>Please turn on JavaScript to see your saved books.</p>
@@ -196,49 +196,37 @@ the "shared" heading instead and renders the shared books.
     {
       "type": "header",
       "content": "Account",
-      "info": "Signed-out visitors see a sign-in button; signed-in customers see where their list is kept."
-    },
-    {
-      "type": "text",
-      "id": "account_heading",
-      "label": "Heading (signed out)",
-      "default": "Keep your list on any device"
+      "info": "One line above the list. Signed-out visitors see a Save button that signs them in; signed-in customers see where their list is kept."
     },
     {
       "type": "text",
       "id": "account_text",
       "label": "Text (signed out)",
-      "default": "Sign in with your email and we'll save your books to your Voxblock account. There's no password: we email you a code."
+      "default": "Enter your email to save this list"
     },
     {
       "type": "text",
       "id": "account_button_label",
-      "label": "Button label",
-      "default": "Save to your account"
-    },
-    {
-      "type": "text",
-      "id": "account_signed_in_heading",
-      "label": "Heading (signed in)",
-      "default": "Saved to your account"
+      "label": "Save button label",
+      "default": "Save"
     },
     {
       "type": "text",
       "id": "account_signed_in_text",
       "label": "Text (signed in)",
       "info": "[email] is replaced with the customer's email address.",
-      "default": "Your list is saved to [email], so it's on any device where you sign in."
+      "default": "Saved to [email]"
     },
     {
       "type": "header",
       "content": "Sharing",
-      "info": "The share button makes a link to the list, for sending to someone else. Leave the label empty to hide it."
+      "info": "The Share button, next to Save, makes a link to the list for sending to someone else. Leave the label empty to hide it."
     },
     {
       "type": "text",
       "id": "share_button_label",
       "label": "Share button label",
-      "default": "Share this list"
+      "default": "Share"
     },
     {
       "type": "text",

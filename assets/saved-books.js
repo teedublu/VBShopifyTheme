@@ -365,14 +365,14 @@ class SavedBooksList extends HTMLElement {
         this.emptyState = this.querySelector(sharedList ? '[data-saved-books-shared-empty]' : '[data-saved-books-empty]');
         this.errorState = this.querySelector('[data-saved-books-error]');
         this.actions = this.querySelector('[data-saved-books-actions]');
-        this.shareButton = this.querySelector('[data-saved-books-share] button');
+        this.share = this.querySelector('[data-saved-books-share]');
+        this.shareButton = this.share?.querySelector('button');
         this.saveAllButton = this.querySelector('[data-saved-books-save-all] button');
         this.sharedHeading = this.querySelector('[data-saved-books-shared-heading]');
 
         if (sharedList) {
             this.querySelector('[data-saved-books-own]').hidden = true;
             this.querySelector('[data-saved-books-shared]').hidden = false;
-            this.querySelector('[data-saved-books-share]')?.remove(); // share your own list from your own page
             this.updateSharedHeading(sharedList.ids.length);
             this.saveAllButton?.addEventListener('click', this.onSaveAll);
         } else {
@@ -511,7 +511,7 @@ class SavedBooksList extends HTMLElement {
         if (ids.length === 0) return;
 
         const url = SharedLink.url(ids, account?.firstName);
-        const text = this.shareButton.closest('[data-saved-books-share]').dataset.shareText || '';
+        const text = this.share.dataset.shareText || '';
 
         if (navigator.share) {
             try {
@@ -542,6 +542,10 @@ class SavedBooksList extends HTMLElement {
 
         if (this.actions) {
             this.actions.hidden = state !== 'grid';
+        }
+
+        if (this.share) {
+            this.share.hidden = state !== 'grid'; // nothing to share until the list has books
         }
     }
 }
