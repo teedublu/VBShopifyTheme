@@ -57,6 +57,17 @@ export const SavedBooks = {
     },
 };
 
+// Bump the header heart each time a book is saved, so people see where their list went
+document.addEventListener(CHANGE_EVENT, (event) => {
+    if (event.detail.saved !== true) return;
+
+    document.querySelectorAll('.header__saved-books').forEach((link) => {
+        link.classList.remove('is-bumping');
+        void link.offsetWidth; // restarts the animation when saves come in quick succession
+        link.classList.add('is-bumping');
+    });
+});
+
 // Keep other open tabs in step
 window.addEventListener('storage', (event) => {
     if (event.key !== STORAGE_KEY) return;
@@ -223,6 +234,7 @@ class SavedBooksList extends HTMLElement {
         this.loadingState = this.querySelector('[data-saved-books-loading]');
         this.emptyState = this.querySelector('[data-saved-books-empty]');
         this.errorState = this.querySelector('[data-saved-books-error]');
+        this.actions = this.querySelector('[data-saved-books-actions]');
 
         document.addEventListener(CHANGE_EVENT, this.onChange);
         this.render();
@@ -303,6 +315,10 @@ class SavedBooksList extends HTMLElement {
         this.emptyState.hidden = state !== 'empty';
         this.errorState.hidden = state !== 'error';
         this.grid.hidden = state !== 'grid';
+
+        if (this.actions) {
+            this.actions.hidden = state !== 'grid';
+        }
     }
 }
 

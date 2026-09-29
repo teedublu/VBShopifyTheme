@@ -79,10 +79,31 @@ saved-books-list { display: block; } /* custom elements are inline by default, w
 .has-saved-books .header__saved-books { display: block; }
 saved-books-count:empty { opacity: 0; }
 
-/* "Saved" / "Removed" message: saved-books.js sets "top" to just below the header */
+/* ...and a quick bump each time a book is saved, so people see where their list went (saved-books.js adds "is-bumping") */
+@keyframes saved-books-heart-bump {
+  0%   { transform: scale(1); }
+  20%  { transform: scale(1.35); color: rgb(var(--accent)); }
+  40%  { transform: scale(.9); }
+  60%  { transform: scale(1.12); color: rgb(var(--accent)); }
+  100% { transform: scale(1); }
+}
+@keyframes saved-books-heart-fill {
+  15%, 65% { fill-opacity: 1; }
+}
+@keyframes saved-books-count-pop {
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.5); }
+  55% { transform: scale(.9); }
+}
+.header__saved-books.is-bumping svg { animation: saved-books-heart-bump .8s ease-out; }
+.header__saved-books.is-bumping svg path { animation: saved-books-heart-fill .8s ease-out; }
+.header__saved-books.is-bumping saved-books-count { animation: saved-books-count-pop .6s ease-out .15s; }
+
+/* "Saved" / "Removed" message: saved-books.js sets "top" to just below the header. The z-index clears sticky bars such
+   as the collection "Sort by" bar (500) but stays under drawers (999) */
 .saved-books-toast {
   position: fixed;
-  z-index: 10;
+  z-index: 998;
   inset-inline: 0;
   top: var(--spacing-4);
   width: max-content;
@@ -106,6 +127,7 @@ saved-books-count:empty { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .save-book__button, .save-book__button svg path, .saved-books-toast { transition: none; }
+  .header__saved-books.is-bumping :is(svg, svg path, saved-books-count) { animation: none; }
 }
 
 

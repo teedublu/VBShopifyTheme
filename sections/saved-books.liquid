@@ -71,6 +71,12 @@ one product card per saved ID, in saved order.
 
       <product-list class="product-list" data-saved-books-grid hidden></product-list>
 
+      {%- if section.settings.continue_button_label != blank -%}
+        <div class="text-center" data-saved-books-actions hidden>
+          {%- render 'button', href: section.settings.continue_button_link, content: section.settings.continue_button_label -%}
+        </div>
+      {%- endif -%}
+
       <noscript>
         <p>Please turn on JavaScript to see your saved books.</p>
       </noscript>
@@ -138,6 +144,18 @@ one product card per saved ID, in saved order.
       "id": "content",
       "label": "Content",
       "default": "<p>Books you've saved while browsing. Your list is kept on this device.</p>"
+    },
+    {
+      "type": "text",
+      "id": "continue_button_label",
+      "label": "Button under the list",
+      "default": "Continue browsing"
+    },
+    {
+      "type": "url",
+      "id": "continue_button_link",
+      "label": "Button link",
+      "default": "/collections/all"
     },
     {
       "type": "header",
