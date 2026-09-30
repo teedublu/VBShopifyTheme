@@ -168,8 +168,22 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         if (p.get('utm_medium') === 'email' && p.get('utm_id')) {
           posthog.setPersonProperties({ klaviyo_profile_id: p.get('utm_id') });
         }
+
+        // Klaviyo sign-ups only reach Klaviyo, so identify the visitor here by the email they entered; otherwise
+        // this session can't be joined to a later purchase from the welcome email in another browser.
+        // Multi-step forms send the email with 'stepSubmit' (and on every later step), so act once per form.
+        const klaviyoFormsIdentified = new Set();
+        window.addEventListener('klaviyoForms', (event) => {
+          const { type, formId, metaData } = event.detail || {};
+          const email = metaData?.$email?.trim().toLowerCase();
+          if ((type !== 'submit' && type !== 'stepSubmit') || !email || klaviyoFormsIdentified.has(formId)) return;
+          klaviyoFormsIdentified.add(formId);
+
+          posthog.capture('klaviyo_form_submitted', { form_id: formId, step: type });
+          // Already identified (e.g. a signed-in customer): don't switch this browser to someone else's person
+          if (posthog.get_property('$user_state') !== 'identified') posthog.identify(email, { email });
+        });
     </script>
-    {%- render 'posthog-klaviyo-identify' -%}
     <!-- BEGIN MerchantWidget Code -->
     <script id='merchantWidgetScript'
             src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
