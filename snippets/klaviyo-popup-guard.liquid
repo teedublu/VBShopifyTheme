@@ -19,6 +19,8 @@
   html.vb-kl-guard [role="dialog"][aria-label="POPUP Form"],
   html.vb-kl-guard .klaviyo-form-UG5z6F,
   html.vb-kl-guard .klaviyo-form-TZkSsi { display: none !important; }
+  /* Klaviyo still opens the pop-up behind the hidden dialog and locks page scrolling while it is open */
+  html.vb-kl-guard body.klaviyo-prevent-body-scrolling { overflow: visible !important; }
 </style>
 <script id="vb-kl-guard">
   (function () {
