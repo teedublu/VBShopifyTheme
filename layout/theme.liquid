@@ -169,6 +169,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
           posthog.setPersonProperties({ klaviyo_profile_id: p.get('utm_id') });
         }
     </script>
+    {%- render 'posthog-klaviyo-identify' -%}
     <!-- BEGIN MerchantWidget Code -->
     <script id='merchantWidgetScript'
             src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
