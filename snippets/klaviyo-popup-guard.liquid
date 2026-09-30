@@ -1,0 +1,61 @@
+{%- comment -%}
+  Klaviyo pop-up guard (HANDOFF → For code 10, decided 28 Sep 2026).
+
+  1. Paid visits: if the landing URL carries a paid-click marker, the whole visit
+     (this tab's session) is flagged and the 15% welcome pop-ups never show —
+     on any page, not just the landing page.
+  2. "No thanks" sticks: once a visitor closes a welcome pop-up we remember it for
+     7 days ourselves, because Klaviyo's own "don't show again" timeout was seen
+     failing in replays (pop-up re-shown within one visit, 28–30 Sep).
+
+  Only the two welcome pop-ups are touched; every other Klaviyo form (back in stock,
+  embeds, account) is left alone. Nothing runs if storage is blocked.
+
+  VERIFY ON A DRAFT THEME BEFORE MERGING: the CSS selector below is Klaviyo's own
+  markup and can change. Open a page with ?utm_medium=cpc, wait 40 s / scroll 60%,
+  and confirm no pop-up; then without the parameter confirm it still appears.
+{%- endcomment -%}
+<style id="vb-kl-guard-css">
+  html.vb-kl-guard [role="dialog"][aria-label="POPUP Form"],
+  html.vb-kl-guard .klaviyo-form-UG5z6F,
+  html.vb-kl-guard .klaviyo-form-TZkSsi { display: none !important; }
+</style>
+<script id="vb-kl-guard">
+  (function () {
+    var WELCOME_FORMS = ['UG5z6F', 'TZkSsi'];          // desktop, mobile 15% welcome pop-ups
+    var PAID_MEDIUMS = ['cpc', 'ppc', 'paid', 'paid_social', 'paidsocial'];
+    var CLICK_IDS = ['gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'oai_click_id'];
+    var CLOSED_KEY = 'vb_kl_welcome_closed_until';
+    var PAID_KEY = 'vb_paid_visit';
+    var CLOSE_DAYS = 7;
+
+    function get(store, k) { try { return window[store].getItem(k); } catch (e) { return null; } }
+    function set(store, k, v) { try { window[store].setItem(k, v); } catch (e) {} }
+
+    // 1. Paid visit? Check the landing URL once, remember for the rest of the session.
+    var q = new URLSearchParams(location.search);
+    var medium = (q.get('utm_medium') || '').toLowerCase();
+    var paidNow = PAID_MEDIUMS.indexOf(medium) > -1 ||
+      CLICK_IDS.some(function (k) { return q.has(k); });
+    if (paidNow) set('sessionStorage', PAID_KEY, '1');
+
+    // 2. Closed recently?
+    var closedUntil = parseInt(get('localStorage', CLOSED_KEY) || '0', 10);
+    var suppress = paidNow || get('sessionStorage', PAID_KEY) === '1' || Date.now() < closedUntil;
+
+    if (suppress) document.documentElement.classList.add('vb-kl-guard');
+
+    window.addEventListener('klaviyoForms', function (e) {
+      var d = e.detail || {};
+      if (WELCOME_FORMS.indexOf(d.formId) === -1) return;
+      if (d.type === 'close') {
+        set('localStorage', CLOSED_KEY, String(Date.now() + CLOSE_DAYS * 864e5));
+        document.documentElement.classList.add('vb-kl-guard');
+      }
+      if (d.type === 'open' && suppress && window.posthog) {
+        // Should not happen once the CSS selector is verified; logs if it does.
+        posthog.capture('klaviyo_popup_suppressed', { form_id: d.formId, reason: paidNow || get('sessionStorage', PAID_KEY) === '1' ? 'paid_visit' : 'closed_recently' });
+      }
+    });
+  })();
+</script>
