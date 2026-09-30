@@ -55,7 +55,7 @@
         document.documentElement.classList.add('vb-kl-guard');
       }
       if (d.type === 'open' && suppress && window.posthog) {
-        // Should not happen once the CSS selector is verified; logs if it does.
+        // Klaviyo still opens the form (hidden by the CSS above), so this counts each pop-up the guard hid.
         posthog.capture('klaviyo_popup_suppressed', { form_id: d.formId, reason: paidNow || get('sessionStorage', PAID_KEY) === '1' ? 'paid_visit' : 'closed_recently' });
       }
     });
