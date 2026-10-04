@@ -631,6 +631,41 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "features": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "What makes Voxblock different",
+            "heading_tag": "h1",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Beyond price, these are the reasons families choose Voxblock as a Yoto alternative.</p><h3>Simple to use</h3><p>There are no screens, no menus and no app. A child can pick a story, put it on the player and press play, which suits <a href=\"/collections/audiobooks?filter.p.m.book.age_groups=Under+5%27s\">younger children</a> and parents who want something straightforward.</p><h3>Physical books they can choose for themselves</h3><p>Each <a href=\"/collections/audiobooks\">audiobook</a> is a solid cardboard block with the story stored inside. Children choose by the artwork on the front and keep them on the shelf with their other books, rather than handling slim cards.</p><h3>No connectivity needed</h3><p>No wi-fi, no Bluetooth requirement, no updates and no account. The player works straight out of the box, in the car or at the grandparents.</p><h3>Built for everyday use</h3><p>The blocks are sturdy and the player is portable, with up to 16 hours of battery life, charged by USB-C.</p><h3>Calm, independent listening</h3><p>With nothing to navigate, children make their own choices and listen without screens or adult set-up, which helps them start exploring stories on their own.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656"
+      }
     }
   },
   "order": [
@@ -640,6 +675,7 @@
     "players",
     "bundles",
     "differences",
+    "features",
     "packs",
     "buy",
     "faq",
