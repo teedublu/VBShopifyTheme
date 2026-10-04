@@ -391,90 +391,66 @@
         "tick_color": "#4cb6ac"
       }
     },
-    "packs": {
-      "type": "price-breakdown",
+    "features": {
+      "type": "rich-text",
       "blocks": {
-        "card_gruffalo_and_friends_starter_pack": {
-          "type": "card",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "tag": "The pack costed above",
-            "highlight": true,
-            "title": "Gruffalo and Friends Starter Pack",
-            "items": "Regular price | £89.96\nYou save | 22%",
-            "total_label": "Sale price",
-            "total": "£69.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/gruffalo-and-friends-starter-pack",
-            "image": "shopify://shop_images/New-StarterPack-Gruffalo-GREEN-_Light.png"
+            "text": "What makes Voxblock different",
+            "heading_tag": "h1",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
           }
         },
-        "card_little_listeners_starter_pack": {
-          "type": "card",
+        "text": {
+          "type": "richtext",
           "settings": {
-            "tag": "Bestseller",
-            "highlight": false,
-            "title": "Little Listeners Starter Pack",
-            "items": "Regular price | £98.96\nYou save | 19%",
-            "total_label": "Sale price",
-            "total": "£79.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/little-listeners-starter-pack"
-          }
-        },
-        "card_young_explorers_starter_pack": {
-          "type": "card",
-          "settings": {
-            "tag": "Bestseller",
-            "highlight": false,
-            "title": "Young Explorers Starter Pack",
-            "items": "Regular price | £94.96\nYou save | 16%",
-            "total_label": "Sale price",
-            "total": "£79.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/young-explorers-starter-pack"
-          }
-        },
-        "card_roald_dahl_selection_starter_pack": {
-          "type": "card",
-          "settings": {
-            "tag": "Starter pack",
-            "highlight": false,
-            "title": "Roald Dahl Selection Starter Pack",
-            "items": "Regular price | £100.96\nYou save | 21%",
-            "total_label": "Sale price",
-            "total": "£79.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/roald-dahl-selection-starter-pack"
+            "content": "<p>Beyond price, these are the reasons families choose Voxblock as a Yoto alternative.</p><h3>Simple to use</h3><p>There are no screens, no menus and no app. A child can pick a story, put it on the player and press play, which suits <a href=\"/collections/audiobooks?filter.p.m.book.age_groups=Under+5%27s\">younger children</a> and parents who want something straightforward.</p><h3>Physical books they can choose for themselves</h3><p>Each <a href=\"/collections/audiobooks\">audiobook</a> is a solid cardboard block with the story stored inside. Children choose by the artwork on the front and keep them on the shelf with their other books, rather than handling slim cards.</p><h3>No connectivity needed</h3><p>No wi-fi, no Bluetooth requirement, no updates and no account. The player works straight out of the box, in the car or at the grandparents.</p><h3>Built for everyday use</h3><p>The blocks are sturdy and the player is portable, with up to 16 hours of battery life, charged by USB-C.</p><h3>Calm, independent listening</h3><p>With nothing to navigate, children make their own choices and listen without screens or adult set-up, which helps them start exploring stories on their own.</p>"
           }
         }
       },
       "block_order": [
-        "card_gruffalo_and_friends_starter_pack",
-        "card_little_listeners_starter_pack",
-        "card_young_explorers_starter_pack",
-        "card_roald_dahl_selection_starter_pack"
+        "heading",
+        "text"
       ],
       "settings": {
-        "full_width": true,
-        "subheading": "Starter packs",
-        "title": "Start with the stories they already love",
-        "content": "<p>Free UK delivery on orders over £25. Four starter packs, so there is one clear first choice.</p>",
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
         "text_position": "start",
-        "anchor_id": "packs",
-        "note": "<p><a href=\"/collections/voxblock-starter-pack-collection\">View all starter packs</a> · <a href=\"/products/voxblock-player?variant=42019613245595\">Player on its own · £49.99</a></p>",
+        "anchor_id": "",
         "background": "#fff7f0",
         "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "#197177",
-        "card_background": "#ffffff",
-        "card_text_color": "#565656",
-        "card_heading_color": "#197177",
-        "highlight_color": "#197177",
-        "difference_color": "#c4540f"
+        "text_color": "#565656"
+      }
+    },
+    "featured_collection_hqKGKf": {
+      "type": "featured-collection",
+      "name": "Featured bundles",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "Save when bundle player with audiobook",
+        "title": "Popular bundles",
+        "content": "",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
+        "link_text": "All bundles",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     },
     "buy": {
@@ -592,9 +568,23 @@
         "subheading": "",
         "title": "Questions about switching from Yoto",
         "content": "",
-        "text_position": "start",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
         "button_text": "",
-        "button_url": ""
+        "button_url": "",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
     "footnotes": {
@@ -631,41 +621,6 @@
         "background_gradient": "",
         "text_color": ""
       }
-    },
-    "features": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "text": "What makes Voxblock different",
-            "heading_tag": "h1",
-            "heading_tag_html": "h2",
-            "text_color": "",
-            "gradient": ""
-          }
-        },
-        "text": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Beyond price, these are the reasons families choose Voxblock as a Yoto alternative.</p><h3>Simple to use</h3><p>There are no screens, no menus and no app. A child can pick a story, put it on the player and press play, which suits <a href=\"/collections/audiobooks?filter.p.m.book.age_groups=Under+5%27s\">younger children</a> and parents who want something straightforward.</p><h3>Physical books they can choose for themselves</h3><p>Each <a href=\"/collections/audiobooks\">audiobook</a> is a solid cardboard block with the story stored inside. Children choose by the artwork on the front and keep them on the shelf with their other books, rather than handling slim cards.</p><h3>No connectivity needed</h3><p>No wi-fi, no Bluetooth requirement, no updates and no account. The player works straight out of the box, in the car or at the grandparents.</p><h3>Built for everyday use</h3><p>The blocks are sturdy and the player is portable, with up to 16 hours of battery life, charged by USB-C.</p><h3>Calm, independent listening</h3><p>With nothing to navigate, children make their own choices and listen without screens or adult set-up, which helps them start exploring stories on their own.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text"
-      ],
-      "settings": {
-        "full_width": false,
-        "use_mo": false,
-        "content_width": "large",
-        "text_position": "start",
-        "anchor_id": "",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": "#565656"
-      }
     }
   },
   "order": [
@@ -676,7 +631,7 @@
     "bundles",
     "differences",
     "features",
-    "packs",
+    "featured_collection_hqKGKf",
     "buy",
     "faq",
     "footnotes"
