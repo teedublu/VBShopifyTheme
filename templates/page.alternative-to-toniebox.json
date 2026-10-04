@@ -205,14 +205,13 @@
         "highlight_first": true,
         "column_2": "Toniebox 2",
         "column_3": "",
-        "footnote": "Tonies price checked August 2026 [re-check before publishing].",
+        "footnote": "Tonies price checked August 2026",
         "column_1_image": "shopify://shop_images/voxblock-player-hero.png",
         "column_1_price": "£49.99",
         "column_1_note": "Player, USB-C cable.",
-        "column_2_image": "",
+        "column_2_image": "shopify://shop_images/tonies-box.avif",
         "column_2_price": "£104.99",
         "column_2_note": "",
-        "column_3_image": "",
         "column_3_price": "",
         "column_3_note": "",
         "media_ratio": "square",
@@ -309,90 +308,31 @@
         "text_color": "#565656"
       }
     },
-    "packs": {
-      "type": "price-breakdown",
-      "blocks": {
-        "card_gruffalo_and_friends_starter_pack": {
-          "type": "card",
-          "settings": {
-            "tag": "The pack costed above",
-            "highlight": true,
-            "title": "Gruffalo and Friends Starter Pack",
-            "items": "Regular price | £89.96\nYou save | 22%",
-            "total_label": "Sale price",
-            "total": "£69.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/gruffalo-and-friends-starter-pack",
-            "image": "shopify://shop_images/New-StarterPack-Gruffalo-GREEN-_Light.png"
-          }
-        },
-        "card_little_listeners_starter_pack": {
-          "type": "card",
-          "settings": {
-            "tag": "Bestseller",
-            "highlight": false,
-            "title": "Little Listeners Starter Pack",
-            "items": "Regular price | £98.96\nYou save | 19%",
-            "total_label": "Sale price",
-            "total": "£79.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/little-listeners-starter-pack"
-          }
-        },
-        "card_young_explorers_starter_pack": {
-          "type": "card",
-          "settings": {
-            "tag": "Bestseller",
-            "highlight": false,
-            "title": "Young Explorers Starter Pack",
-            "items": "Regular price | £94.96\nYou save | 16%",
-            "total_label": "Sale price",
-            "total": "£79.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/young-explorers-starter-pack"
-          }
-        },
-        "card_roald_dahl_selection_starter_pack": {
-          "type": "card",
-          "settings": {
-            "tag": "Starter pack",
-            "highlight": false,
-            "title": "Roald Dahl Selection Starter Pack",
-            "items": "Regular price | £100.96\nYou save | 21%",
-            "total_label": "Sale price",
-            "total": "£79.99",
-            "difference": "Player and stories included in one box",
-            "link_text": "View pack",
-            "link_url": "shopify://products/roald-dahl-selection-starter-pack"
-          }
-        }
-      },
-      "block_order": [
-        "card_gruffalo_and_friends_starter_pack",
-        "card_little_listeners_starter_pack",
-        "card_young_explorers_starter_pack",
-        "card_roald_dahl_selection_starter_pack"
-      ],
+    "featured_collection_zacjGb": {
+      "type": "featured-collection",
+      "name": "Featured collection",
       "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [],
         "full_width": true,
-        "subheading": "Starter packs",
-        "title": "Start with the stories they already love",
-        "content": "<p>Free UK delivery on orders over £25. Four starter packs, so there is one clear first choice.</p>",
-        "text_position": "start",
-        "anchor_id": "packs",
-        "note": "<p><a href=\"/collections/voxblock-starter-pack-collection\">View all starter packs</a> · <a href=\"/products/voxblock-player?variant=42019613245595\">Player on its own · £49.99</a></p>",
-        "background": "#fff7f0",
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "Save with bundles",
+        "title": "Best selling bundles",
+        "content": "",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
+        "link_text": "View all",
+        "background": "",
         "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "#197177",
-        "card_background": "#ffffff",
-        "card_text_color": "#565656",
-        "card_heading_color": "#197177",
-        "highlight_color": "#197177",
-        "difference_color": "#c4540f"
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
       }
     },
     "buy": {
@@ -510,9 +450,23 @@
         "subheading": "",
         "title": "Questions about switching from Tonies",
         "content": "",
-        "text_position": "start",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
         "button_text": "",
-        "button_url": ""
+        "button_url": "",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
       }
     },
     "footnotes": {
@@ -558,7 +512,7 @@
     "players",
     "differences",
     "features",
-    "packs",
+    "featured_collection_zacjGb",
     "buy",
     "faq",
     "footnotes"
