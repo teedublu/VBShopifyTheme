@@ -6,6 +6,18 @@
   </div>
 </div>
 
+<script>
+  (function () {
+    if (!window.posthog || typeof window.posthog.capture !== 'function') return;
+    window.posthog.capture('page_not_found', {
+      path: location.pathname,
+      full_url: location.href,
+      referrer: document.referrer,
+      referrer_internal: document.referrer.indexOf(location.hostname) > -1
+    });
+  })();
+</script>
+
 {% schema %}
 {
   "name": "404",
