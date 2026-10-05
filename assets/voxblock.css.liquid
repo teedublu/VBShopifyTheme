@@ -302,3 +302,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* widths measured with Poppins: price + chip need ~230px of row; the long caption needs ~225px */
 @container (max-width: 15.5rem) { .bundle-price__chip { display: none; } }
 @container (max-width: 14.5rem) { .bundle-price__was-long { display: none; } .bundle-price__was-short { display: inline; } }
+
+/* Product page: normal flow, the "bought separately" line sits under the price (no card height to protect) */
+.bundle-price--page { display: inline-flex; flex-wrap: wrap; align-items: center; transform: none; }
+.bundle-price--page .bundle-price__was { position: static; flex-basis: 100%; margin-top: 0; }
+.bundle-price--page [hidden] { display: none !important; }

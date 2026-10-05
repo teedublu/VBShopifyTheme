@@ -121,3 +121,40 @@ class OfferBadges extends OfferVariantElement {
 
 if (!window.customElements.get('offer-price')) window.customElements.define('offer-price', OfferPrice);
 if (!window.customElements.get('offer-badges')) window.customElements.define('offer-badges', OfferBadges);
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// BUNDLE PRICE (snippets/bundle-price.liquid, product page)
+// Keeps the price, "saves N%" chip and "Bought separately" line right when a pack's variant changes.
+// ----------------------------------------------------------------------------------------------------------------
+class BundlePrice extends HTMLElement {
+    connectedCallback() {
+        this._onVariantChanged = (event) => this.update(event.detail.variant);
+        this._form = document.forms[this.getAttribute('form')];
+        this._form?.addEventListener('variant:change', this._onVariantChanged);
+    }
+    disconnectedCallback() {
+        this._form?.removeEventListener('variant:change', this._onVariantChanged);
+    }
+    update(variant) {
+        if (!variant) return;
+        const price = variant['price'];
+        const compareAt = variant['compare_at_price'] || 0;
+        const format = offerMoneyFormat();
+
+        const now = this.querySelector('[data-bundle-now]');
+        const label = now.querySelector('.sr-only');
+        now.replaceChildren(...(label ? [label] : []), document.createRange().createContextualFragment(formatMoney(price, format)));
+
+        const hasSaving = compareAt > price;
+        const chip = this.querySelector('[data-bundle-chip]');
+        const was = this.querySelector('[data-bundle-was]');
+        chip.hidden = was.hidden = !hasSaving;
+        if (hasSaving) {
+            chip.textContent = this.getAttribute('chip-template').replace('__PERCENT__', Math.round((compareAt - price) * 100 / compareAt));
+            was.textContent = this.getAttribute('was-template').replace('__PRICE__', formatMoney(compareAt, format).replace(/<[^>]*>/g, ''));
+        }
+    }
+}
+
+if (!window.customElements.get('bundle-price')) window.customElements.define('bundle-price', BundlePrice);

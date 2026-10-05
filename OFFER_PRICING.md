@@ -61,4 +61,6 @@ Notes:
 - Logic: `snippets/bundle-price.liquid`, called from `price-list` (cards only, via `bundle_layout: true`) and
   `product-badges`. Card snippets: `product-card-starterpack` and `product-card-audiobooks`.
 - An active offer (offer tag) takes priority over the bundle layout.
-- Product page price block is NOT changed yet (still the standard compare-at strikethrough).
+- Product page: the price block shows the same price + `saves N%` chip with `Bought separately £x` underneath (in normal
+  flow), updated by `assets/voxblock.js.liquid` when the variant changes. The plain "Save x%" badge is suppressed for
+  bundle types. If no variant of a pack has a saving, the standard price rendering is used.
