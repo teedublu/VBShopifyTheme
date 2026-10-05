@@ -56,7 +56,7 @@ instead of a strikethrough:
 Notes:
 - Only applies when compare-at is above price. Packs with compare-at equal to (or below) price render as before.
 - The "Bought separately" line is absolutely positioned, so cards stay exactly the same height as other cards.
-- The "saves" chip hides when the card is narrow, and below that the wording shortens to `Worth £100.96`
+- The "saves" chip hides when the price row is under ~248px wide (card under ~270px), and under ~232px the wording shortens to `Worth £100.96`
   (CSS container queries on the price row, see `assets/voxblock.css.liquid`).
 - Logic: `snippets/bundle-price.liquid`, called from `price-list` (cards only, via `bundle_layout: true`) and
   `product-badges`. Card snippets: `product-card-starterpack` and `product-card-audiobooks`.

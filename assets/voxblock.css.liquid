@@ -299,5 +299,6 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 
 /* Responsive to the width of the price row (the card), not the viewport */
 .buy-price:has(.bundle-price) { container-type: inline-size; }
-@container (max-width: 17.5rem) { .bundle-price__chip { display: none; } }
-@container (max-width: 12rem) { .bundle-price__was-long { display: none; } .bundle-price__was-short { display: inline; } }
+/* widths measured with Poppins: price + chip need ~230px of row; the long caption needs ~225px */
+@container (max-width: 15.5rem) { .bundle-price__chip { display: none; } }
+@container (max-width: 14.5rem) { .bundle-price__was-long { display: none; } .bundle-price__was-short { display: inline; } }
