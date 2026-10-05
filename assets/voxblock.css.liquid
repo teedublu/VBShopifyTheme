@@ -265,9 +265,10 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* ---------------------------- */
 /* OFFER PRICE (snippets/offer-price.liquid) */
 /* ---------------------------- */
-/* Offer price colour: #D9670F is 3.56:1 on white; the theme orange (#ff9e57) is only 2.04:1 */
+/* Offer price keeps the theme's normal price colour (same as sale-price.text-lg above) */
 .offer-price { display: inline-flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
-.offer-price__now { color: #D9670F; font-weight: 700; }
+.offer-price__now { font-weight: 700; }
+.offer-price__now.text-lg { color: rgb(var(--button-background-primary)); }
 .offer-price__now--regular { color: inherit; }
 .offer-price__was[hidden], offer-badges[hidden] { display: none !important; }
 .offer-price__from { font-size: 0.7em; margin-inline-end: -0.25rem; }
