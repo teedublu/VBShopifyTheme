@@ -12,6 +12,9 @@ recommendations. Cart and checkout lines use Shopify's real discount data, never
 | £7.99 | `offer-799` | Offer – £7.99 (`offer-799`) | "Online offer – £2 off": £2.00 off each item | `offer_tag_2`, `offer_amount_off_2` = 200 |
 
 - The tag in the theme settings, the tag in the collection rule and the amount in the discount MUST all match.
+- Both automatic discounts must have "Combines with product discounts" ticked (Shopify applies only the single best
+  automatic product discount per cart unless every discount involved allows combining). Without it, a cart with a
+  £5.99-offer book and a £7.99-offer book discounts only one of them.
 - A product with both tags gets the larger amount in the theme (Shopify applies the better discount).
 - Theme settings: Customize > Theme settings > "Offer pricing". `offer_enabled` only controls the storefront
   display. Turning it off does NOT stop the discount; disable the automatic discounts in Shopify admin too.
