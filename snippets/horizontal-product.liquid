@@ -34,13 +34,18 @@ Supported variables
         </a>
       {%- endif -%}
 
-      <p class="text-sm text-subdued">
-        {%- if settings.currency_code_enabled -%}
-          {{- product.price | money_with_currency -}}
-        {%- else -%}
-          {{- product.price | money -}}
-        {%- endif -%}
-      </p>
+      {%- capture offer_html -%}{%- render 'offer-price', product: product -%}{%- endcapture -%}
+      {%- if offer_html != blank -%}
+        <p class="text-sm">{{- offer_html -}}</p>
+      {%- else -%}
+        <p class="text-sm text-subdued">
+          {%- if settings.currency_code_enabled -%}
+            {{- product.price | money_with_currency -}}
+          {%- else -%}
+            {{- product.price | money -}}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
     </div>
 
     {%- if show_add_to_cart -%}

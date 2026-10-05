@@ -10,14 +10,14 @@ Supported variables
 ********************************************
 
 * product: the product to render the badges
-* types: the types of badge to output. Can be "custom", "sold_out" or "discount" (or a combination separated by comma). If nothing is set, all badges are outputted.
+* types: the types of badge to output. Can be "offer", "custom", "sold_out" or "discount" (or a combination separated by comma). If nothing is set, all badges are outputted.
 * form_id: an optional form ID to use to update the badges when a given variant changes
 * block: an optional block to output theme editor attributes
 * class: an extra class added on the container
 {%- endcomment -%}
 {%liquid
   if block.settings.display_metafields
-    assign types = types | default: 'custom, sold_out, discount'
+    assign types = types | default: 'offer, custom, sold_out, discount'
   endif
   if block.settings.display_categories
     assign types = types | append: ', categories'
@@ -27,14 +27,25 @@ Supported variables
   endif
 %}
 
-{%- assign badge_types = types | default: 'custom, sold_out, discount' | split: ',' -%}
+{%- assign badge_types = types | default: 'offer, custom, sold_out, discount' | split: ',' -%}
 {%- assign variant = product.selected_or_first_available_variant -%}
+
+{%- comment -%}Offer (automatic discount) products show the offer badges instead of the compare-at discount badge, to avoid two competing "sale" messages{%- endcomment -%}
+{%- assign offer_tag_active = false -%}
+{%- if settings.offer_enabled and settings.offer_tag != blank -%}
+  {%- assign offer_tag_key = '||' | append: settings.offer_tag | strip | downcase | append: '||' -%}
+  {%- assign offer_tags_joined = product.tags | join: '||' | downcase | prepend: '||' | append: '||' -%}
+  {%- if offer_tags_joined contains offer_tag_key -%}{%- assign offer_tag_active = true -%}{%- endif -%}
+{%- endif -%}
 
 {%- capture badges -%}
   {%- for badge_type in badge_types -%}
     {%- assign stripped_badge_type = badge_type | strip -%}
 
     {%- case stripped_badge_type -%}
+
+      {%- when 'offer' -%}
+        {%- render 'offer-price', product: product, variant: variant, part: 'badges', form_id: form_id -%}
 
       {%- when 'categories' -%}{%-comment -%}WATCH OUT FOR bookS {%-endcomment -%}
         {%- for cat in product.metafields.book.categories.value -%}
@@ -85,7 +96,7 @@ Supported variables
         {%- endif -%}
 
       {%- when 'discount' -%}
-        {%- if settings.show_discount -%}
+        {%- if settings.show_discount and offer_tag_active == false -%}
           {%- assign is_variant_on_sale = false -%}
 
           {%- if variant.available and variant.compare_at_price > variant.price -%}

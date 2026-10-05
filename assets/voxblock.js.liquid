@@ -2,6 +2,7 @@
 
 // voxblock.js
 import { Delegate } from "{{ 'vendor.min.js' | asset_url }}";
+import { formatMoney } from "{{ 'theme.js' | asset_url }}";
 
 // Encapsulating the module in an IIFE is not strictly necessary with ES6+ modules,
 // but for the sake of direct integration into a script tag or existing build process, we'll keep functions scoped.
@@ -54,3 +55,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// OFFER PRICE (snippets/offer-price.liquid)
+// Keeps the tag-driven automatic-discount "offer price" correct when a shopper switches variant. The tag decision is
+// made server side (the element only exists for products carrying the offer tag); the amount off comes from the
+// element's amount-off attribute, which is the theme setting offer_amount_off.
+// ----------------------------------------------------------------------------------------------------------------
+const offerMoneyFormat = () => window.themeVariables.settings.currencyCodeEnabled
+    ? window.themeVariables.settings.moneyWithCurrencyFormat
+    : window.themeVariables.settings.moneyFormat;
+
+const offerState = (variant, amountOff) => {
+    const price = variant['price'];
+    const compareAt = variant['compare_at_price'] || 0;
+    const onOffer = price > amountOff;
+    return {
+        onOffer,
+        now: onOffer ? price - amountOff : price,
+        // higher of price / compare-at, so only one strikethrough is ever shown
+        was: onOffer ? Math.max(price, compareAt) : compareAt,
+        showWas: onOffer || compareAt > price,
+    };
+};
+
+class OfferVariantElement extends HTMLElement {
+    connectedCallback() {
+        this._onVariantChanged = (event) => this.update(event.detail.variant, Number(this.getAttribute('amount-off')) || 0);
+        this._form = document.forms[this.getAttribute('form')];
+        this._form?.addEventListener('variant:change', this._onVariantChanged);
+    }
+    disconnectedCallback() {
+        this._form?.removeEventListener('variant:change', this._onVariantChanged);
+    }
+}
+
+class OfferPrice extends OfferVariantElement {
+    update(variant, amountOff) {
+        if (!variant) return;
+        const state = offerState(variant, amountOff);
+        const set = (selector, html) => {
+            const el = this.querySelector(selector);
+            const label = el.querySelector('.sr-only');
+            el.replaceChildren(...(label ? [label] : []), document.createRange().createContextualFragment(html));
+        };
+        set('[data-offer-now]', formatMoney(state.now, offerMoneyFormat()));
+        set('[data-offer-was]', formatMoney(state.was, offerMoneyFormat()));
+        this.querySelector('[data-offer-was]').hidden = !state.showWas;
+        this.querySelector('[data-offer-now]').classList.toggle('offer-price__now--regular', !state.onOffer);
+    }
+}
+
+class OfferBadges extends OfferVariantElement {
+    update(variant, amountOff) {
+        if (!variant) return;
+        const state = offerState(variant, amountOff);
+        this.hidden = !state.onOffer;
+        if (state.onOffer && state.was > 0) {
+            const pct = Math.round((state.was - state.now) * 100 / state.was);
+            this.querySelector('[data-offer-sale]').textContent = this.getAttribute('sale-template').replace('__PERCENT__', pct);
+        }
+    }
+}
+
+if (!window.customElements.get('offer-price')) window.customElements.define('offer-price', OfferPrice);
+if (!window.customElements.get('offer-badges')) window.customElements.define('offer-badges', OfferBadges);

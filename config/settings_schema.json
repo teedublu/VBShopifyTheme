@@ -823,6 +823,43 @@
     ]
   },
   {
+    "name": "Offer pricing",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shows an automatic-discount offer price (e.g. £5.99 instead of £9.99) on product cards, search results and product pages for products carrying the offer tag. Cart and checkout always use Shopify's real discount data."
+      },
+      {
+        "type": "checkbox",
+        "id": "offer_enabled",
+        "label": "Show offer price on storefront",
+        "default": false,
+        "info": "Display only. Turning this off does NOT stop the discount: also disable the automatic discount in Shopify admin."
+      },
+      {
+        "type": "text",
+        "id": "offer_tag",
+        "label": "Offer product tag",
+        "default": "offer-599",
+        "info": "Must match the product tag used by the \"Offer – £5.99\" smart collection that the automatic discount targets."
+      },
+      {
+        "type": "number",
+        "id": "offer_amount_off",
+        "label": "Amount off per item (pence)",
+        "default": 400,
+        "info": "MUST match the amount of the automatic discount in Shopify admin (400 = £4.00 off). Value is in minor currency units."
+      },
+      {
+        "type": "text",
+        "id": "offer_badge_label",
+        "label": "Offer badge label",
+        "default": "Online offer",
+        "info": "Use the same wording as the automatic discount title so the cart matches."
+      }
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {

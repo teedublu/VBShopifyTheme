@@ -33,9 +33,16 @@ Supported variables
     {%- assign unit_price_classes = 'text-subdued text-sm' -%}
 {%- endcase -%}
 
+{%- comment -%}Automatic-discount "offer price" (tag driven, see snippets/offer-price.liquid). Never applied to line items: the cart uses Shopify's real discount data.{%- endcomment -%}
+{%- if line_item == blank -%}
+  {%- capture offer_html -%}{%- render 'offer-price', product: product, variant: variant, size: size, form_id: form_id -%}{%- endcapture -%}
+{%- endif -%}
+
 <price-list {% if form_id %}role="region" aria-live="polite"{% endif %} class="price-list {% if size == 'lg' %}price-list--lg{% endif %} {% if text_alignment == 'center' %}justify-center{% endif %}" {{ block.shopify_attributes }}>
 
-  {%- if variant != blank -%}
+  {%- if offer_html != blank -%}
+    {{- offer_html -}}
+  {%- elsif variant != blank -%}
     {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------
     VARIANT CASE (used on product page, quick view...)
@@ -196,7 +203,7 @@ Supported variables
     {%- endif -%}
   {%- endif -%}
 
-  {%- unless hide_unit_price -%}
+  {%- unless hide_unit_price or offer_html != blank -%}
     {%- assign unit_price_item = variant | default: line_item | default: product.selected_or_first_available_variant -%}
 
     {%- if unit_price_item.unit_price or form_id != blank -%}
