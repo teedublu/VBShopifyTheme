@@ -83,10 +83,6 @@ Supported variables
         {%- assign custom_badges = product.metafields.custom.badges.value | sort -%}
 
         {%- for custom_badge in custom_badges -%}
-          {%- comment -%}The offer badge is rendered by the 'offer' type, so drop a legacy metafield badge with the same label{%- endcomment -%}
-          {%- assign custom_badge_key = custom_badge | strip | downcase -%}
-          {%- assign offer_label_key = settings.offer_badge_label | strip | downcase -%}
-          {%- if offer_tag_active and custom_badge_key == offer_label_key -%}{%- continue -%}{%- endif -%}
           <span class="badge badge--primary {{ custom_badge | replace: "'", ""  | split: " " | first | downcase | handelize }}">{{ custom_badge }}</span>
         {%- endfor -%}
 
