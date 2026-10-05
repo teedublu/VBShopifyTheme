@@ -281,3 +281,23 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .badge--offer { --badge-background: 30 74 76; --badge-color: 255 255 255; } /* #1E4A4C dark teal, 9.8:1 with white */
 .badge--offer-sale { --badge-background: 200 35 44; /* #C8232C red */ --badge-color: 255 255 255; font-weight: 700; }
 .product-card__badge-list { justify-items: start; }
+
+
+/* ---------------------------- */
+/* BUNDLE PRICE (snippets/bundle-price.liquid) */
+/* ---------------------------- */
+/* Packs / audiobook bundles: price + "saves" chip, with a "Bought separately" line underneath.
+   The line is absolutely positioned so the card is exactly as tall as one showing a plain price. */
+.badge--bundle { display: inline-flex; align-items: center; gap: 0.4rem; --badge-background: 15 123 99; --badge-color: 255 255 255; font-weight: 700; } /* #0F7B63 */
+.badge--bundle svg { flex: none; }
+
+.bundle-price { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; min-width: 0; transform: translateY(-0.5rem); } /* lift so price + caption are centred on the basket button */
+.bundle-price__now { font-weight: 700; color: rgb(var(--button-background-primary)); white-space: nowrap; }
+.bundle-price__chip { background: rgb(15 123 99); color: #fff; font-size: 0.75rem; font-weight: 600; line-height: 1.2; padding: 0.15rem 0.5rem; border-radius: 3px; white-space: nowrap; }
+.bundle-price__was { position: absolute; top: 100%; left: 0; margin-top: 0.1rem; font-size: 0.75rem; line-height: 1.2; font-weight: 500; white-space: nowrap; color: rgb(var(--text-color)); }
+.bundle-price__was-short { display: none; }
+
+/* Responsive to the width of the price row (the card), not the viewport */
+.buy-price:has(.bundle-price) { container-type: inline-size; }
+@container (max-width: 17.5rem) { .bundle-price__chip { display: none; } }
+@container (max-width: 12rem) { .bundle-price__was-long { display: none; } .bundle-price__was-short { display: inline; } }

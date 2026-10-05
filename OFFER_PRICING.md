@@ -41,3 +41,24 @@ recommendations. Cart and checkout lines use Shopify's real discount data, never
   there is no "Online offer" value to filter by on collections.
 - Variant dropdown labels in the no-JavaScript fallback (`snippets/variant-picker.liquid`) show the list price.
 - If a tagged product's first variant costs no more than the amount off, the offer is not shown for it.
+
+---
+
+# Bundle pricing (packs and audiobook bundles)
+
+Product cards for the product types in the theme setting "Bundle pricing > Product types treated as bundles"
+(default `Starter Pack, Audiobooks Bundle`) use the compare-at price (the "sum of the parts") to emphasise the saving
+instead of a strikethrough:
+
+- top-left badge: `Bundle saves £20.97` (replaces the plain "Save x%" badge)
+- price row: `£79.99 [saves £20.97]` with `Bought separately £100.96` underneath
+
+Notes:
+- Only applies when compare-at is above price. Packs with compare-at equal to (or below) price render as before.
+- The "Bought separately" line is absolutely positioned, so cards stay exactly the same height as other cards.
+- The "saves" chip hides when the card is narrow, and below that the wording shortens to `Worth £100.96`
+  (CSS container queries on the price row, see `assets/voxblock.css.liquid`).
+- Logic: `snippets/bundle-price.liquid`, called from `price-list` (cards only, via `bundle_layout: true`) and
+  `product-badges`. Card snippets: `product-card-starterpack` and `product-card-audiobooks`.
+- An active offer (offer tag) takes priority over the bundle layout.
+- Product page price block is NOT changed yet (still the standard compare-at strikethrough).

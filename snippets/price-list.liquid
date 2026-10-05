@@ -17,6 +17,7 @@ Supported variables
 * size: can be either empty (assumed to be normal size) or "lg"
 * form_id: if specified, the prices are updated dynamically based on the form update
 * alignment: can be "center" to align the prices
+* bundle_layout: if true (product cards only), packs/bundles with a compare-at price show the savings layout from snippets/bundle-price.liquid
 {%- endcomment -%}
 
 {%- case size -%}
@@ -36,12 +37,18 @@ Supported variables
 {%- comment -%}Automatic-discount "offer price" (tag driven, see snippets/offer-price.liquid). Never applied to line items: the cart uses Shopify's real discount data.{%- endcomment -%}
 {%- if line_item == blank -%}
   {%- capture offer_html -%}{%- render 'offer-price', product: product, variant: variant, size: size, form_id: form_id -%}{%- endcapture -%}
+  {%- comment -%}Bundle savings layout (cards only). An active offer takes priority.{%- endcomment -%}
+  {%- if bundle_layout and offer_html == blank -%}
+    {%- capture bundle_html -%}{%- render 'bundle-price', product: product -%}{%- endcapture -%}
+  {%- endif -%}
 {%- endif -%}
 
 <price-list {% if form_id %}role="region" aria-live="polite"{% endif %} class="price-list {% if size == 'lg' %}price-list--lg{% endif %} {% if text_alignment == 'center' %}justify-center{% endif %}" {{ block.shopify_attributes }}>
 
   {%- if offer_html != blank -%}
     {{- offer_html -}}
+  {%- elsif bundle_html != blank -%}
+    {{- bundle_html -}}
   {%- elsif variant != blank -%}
     {%- comment -%}
     --------------------------------------------------------------------------------------------------------------------
@@ -203,7 +210,7 @@ Supported variables
     {%- endif -%}
   {%- endif -%}
 
-  {%- unless hide_unit_price or offer_html != blank -%}
+  {%- unless hide_unit_price or offer_html != blank or bundle_html != blank -%}
     {%- assign unit_price_item = variant | default: line_item | default: product.selected_or_first_available_variant -%}
 
     {%- if unit_price_item.unit_price or form_id != blank -%}

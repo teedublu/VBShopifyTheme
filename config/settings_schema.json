@@ -882,6 +882,28 @@
     ]
   },
   {
+    "name": "Bundle pricing",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "For packs and bundles whose compare-at price is the total of the parts, show what the shopper saves (badge, \"saves\" chip and \"Bought separately\" line) instead of a plain strikethrough."
+      },
+      {
+        "type": "checkbox",
+        "id": "bundle_pricing_enabled",
+        "label": "Show bundle savings on product cards",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bundle_product_types",
+        "label": "Product types treated as bundles",
+        "default": "Starter Pack, Audiobooks Bundle",
+        "info": "Comma separated. Only products with a compare-at price above their price are affected."
+      }
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {
