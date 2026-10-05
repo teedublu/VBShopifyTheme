@@ -6,7 +6,7 @@ BUNDLE PRICE
 For starter / player packs and audiobook bundles, the compare-at price is the "sum of the components". Instead of a plain
 strikethrough, this snippet uses it to emphasise what the shopper saves by buying the bundle:
 
-  price card:   £79.99  [saves £20.97]
+  price card:   £79.99  [saves 21%]
                 Bought separately £100.96
   badge:        [box icon] Bundle saves £20.97
 
@@ -64,14 +64,14 @@ Supported variables
   {%- else -%}
     {%- capture bundle_price_html -%}{%- if settings.currency_code_enabled -%}{{- bundle_variant.price | money_with_currency -}}{%- else -%}{{- bundle_variant.price | money -}}{%- endif -%}{%- endcapture -%}
     {%- capture bundle_compare_html -%}{%- if settings.currency_code_enabled -%}{{- bundle_variant.compare_at_price | money_with_currency -}}{%- else -%}{{- bundle_variant.compare_at_price | money -}}{%- endif -%}{%- endcapture -%}
-    {%- assign bundle_saving_html = bundle_saving | money -%}
+    {%- assign bundle_saving_pct = bundle_saving | times: 100.0 | divided_by: bundle_variant.compare_at_price | round -%}
 
     <span class="bundle-price">
       <span class="bundle-price__now text-lg {% if bundle_product.price_varies and variant == blank %}from-price{% endif %}">
         <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
         {{- bundle_price_html -}}
       </span>
-      <span class="bundle-price__chip">{{ 'product.bundle.saves_chip' | t: amount: bundle_saving_html }}</span>
+      <span class="bundle-price__chip">{{ 'product.bundle.saves_chip' | t: percent: bundle_saving_pct }}</span>
       <span class="bundle-price__was">
         <span class="bundle-price__was-long">{{ 'product.bundle.bought_separately' | t: price: bundle_compare_html }}</span>
         <span class="bundle-price__was-short">{{ 'product.bundle.worth' | t: price: bundle_compare_html }}</span>

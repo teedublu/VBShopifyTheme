@@ -51,7 +51,7 @@ Product cards for the product types in the theme setting "Bundle pricing > Produ
 instead of a strikethrough:
 
 - top-left badge: `Bundle saves £20.97` (replaces the plain "Save x%" badge)
-- price row: `£79.99 [saves £20.97]` with `Bought separately £100.96` underneath
+- price row: `£79.99 [saves 21%]` (percentage) with `Bought separately £100.96` underneath
 
 Notes:
 - Only applies when compare-at is above price. Packs with compare-at equal to (or below) price render as before.
