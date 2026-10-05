@@ -6,8 +6,9 @@ OFFER PRICE
 Storefront display of the automatic "Online offer" discount. Product and collection pages cannot see automatic discounts
 (only cart and checkout can), so this snippet mirrors the discount from a product tag + a fixed amount off.
 
-Single source of truth: the product tag in settings.offer_tag. The Shopify "Offer" smart collection (rule: tag equals
-the same tag) is what the automatic discount targets. settings.offer_amount_off MUST equal the discount amount.
+Single source of truth: the product tags in settings.offer_tag / offer_tag_2. The Shopify "Offer" smart collections (rule:
+tag equals the same tag) are what the automatic discounts target. settings.offer_amount_off / offer_amount_off_2 MUST equal
+the matching discount amounts.
 
 Outputs NOTHING when the product is not on offer, so callers can fall back to their existing price rendering:
   {%- capture offer_html -%}{%- render 'offer-price', product: product -%}{%- endcapture -%}
@@ -21,7 +22,7 @@ Supported variables
 
 * product: the product (or pass a variant and the product is read from it)
 * variant: optional. If omitted the cheapest variant is used (product cards)
-* part: "price" (default) | "badges" | "amount" (plain text of the price the shopper will actually pay)
+* part: "price" (default) | "badges" | "amount" (plain text of the price the shopper will actually pay) | "tagged" (outputs "true" if the product carries an enabled offer tag)
 * size: "lg" for the large price style
 * form_id: if set, the output is updated when the variant changes in that form (badges are then rendered hidden
   when the selected variant is not on offer, so the script can reveal them after a variant switch)
@@ -29,15 +30,34 @@ Supported variables
 
 {%- liquid
   assign offer_product = product | default: variant.product
-  assign offer_amount_off = settings.offer_amount_off | default: 0 | plus: 0
-  assign offer_tag = settings.offer_tag | strip | downcase
+  assign offer_amount_off = 0
   assign offer_tagged = false
 
-  if settings.offer_enabled and offer_tag != blank and offer_amount_off > 0 and offer_product.tags.size > 0
-    assign offer_tag_key = '||' | append: offer_tag | append: '||'
+  if settings.offer_enabled and offer_product.tags.size > 0
     assign offer_product_tags = offer_product.tags | join: '||' | downcase | prepend: '||' | append: '||'
-    if offer_product_tags contains offer_tag_key
-      assign offer_tagged = true
+
+    comment
+      Two offer tiers (tag + amount off). Each must match an automatic discount targeting a smart collection with
+      the same tag. If a product carries both tags, the larger amount wins (as Shopify applies the better discount).
+    endcomment
+    assign offer_tag_1 = settings.offer_tag | strip | downcase
+    assign offer_amount_1 = settings.offer_amount_off | default: 0 | plus: 0
+    if offer_tag_1 != blank and offer_amount_1 > 0
+      assign offer_tag_key = '||' | append: offer_tag_1 | append: '||'
+      if offer_product_tags contains offer_tag_key
+        assign offer_tagged = true
+        assign offer_amount_off = offer_amount_1
+      endif
+    endif
+
+    assign offer_tag_2 = settings.offer_tag_2 | strip | downcase
+    assign offer_amount_2 = settings.offer_amount_off_2 | default: 0 | plus: 0
+    if offer_tag_2 != blank and offer_amount_2 > 0
+      assign offer_tag_key = '||' | append: offer_tag_2 | append: '||'
+      if offer_product_tags contains offer_tag_key and offer_amount_2 > offer_amount_off
+        assign offer_tagged = true
+        assign offer_amount_off = offer_amount_2
+      endif
     endif
   endif
 
@@ -52,7 +72,9 @@ Supported variables
   endif
 -%}
 
-{%- if part == 'amount' -%}
+{%- if part == 'tagged' -%}
+  {%- if offer_tagged -%}true{%- endif -%}
+{%- elsif part == 'amount' -%}
   {%- if on_offer -%}
     {%- assign offer_amount_value = offer_variant.price | minus: offer_amount_off -%}
   {%- else -%}

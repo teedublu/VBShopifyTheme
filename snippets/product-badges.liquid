@@ -31,12 +31,7 @@ Supported variables
 {%- assign variant = product.selected_or_first_available_variant -%}
 
 {%- comment -%}Offer (automatic discount) products show the offer badges instead of the compare-at discount badge, to avoid two competing "sale" messages{%- endcomment -%}
-{%- assign offer_tag_active = false -%}
-{%- if settings.offer_enabled and settings.offer_tag != blank -%}
-  {%- assign offer_tag_key = '||' | append: settings.offer_tag | strip | downcase | append: '||' -%}
-  {%- assign offer_tags_joined = product.tags | join: '||' | downcase | prepend: '||' | append: '||' -%}
-  {%- if offer_tags_joined contains offer_tag_key -%}{%- assign offer_tag_active = true -%}{%- endif -%}
-{%- endif -%}
+{%- capture offer_tag_active -%}{%- render 'offer-price', product: product, part: 'tagged' -%}{%- endcapture -%}
 
 {%- capture badges -%}
   {%- for badge_type in badge_types -%}
@@ -96,7 +91,7 @@ Supported variables
         {%- endif -%}
 
       {%- when 'discount' -%}
-        {%- if settings.show_discount and offer_tag_active == false -%}
+        {%- if settings.show_discount and offer_tag_active != 'true' -%}
           {%- assign is_variant_on_sale = false -%}
 
           {%- if variant.available and variant.compare_at_price > variant.price -%}

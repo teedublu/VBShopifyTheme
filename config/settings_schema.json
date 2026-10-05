@@ -851,6 +851,28 @@
         "info": "MUST match the amount of the automatic discount in Shopify admin (400 = £4.00 off). Value is in minor currency units."
       },
       {
+        "type": "header",
+        "content": "Second offer (optional)"
+      },
+      {
+        "type": "text",
+        "id": "offer_tag_2",
+        "label": "Second offer product tag",
+        "default": "offer-799",
+        "info": "For a second price point (e.g. 7.99 products listed at 9.99). Leave empty to disable."
+      },
+      {
+        "type": "number",
+        "id": "offer_amount_off_2",
+        "label": "Second offer: amount off per item (pence)",
+        "default": 200,
+        "info": "MUST match the second automatic discount (200 = 2.00 off). If a product has both tags the larger amount is used."
+      },
+      {
+        "type": "header",
+        "content": "Badge"
+      },
+      {
         "type": "text",
         "id": "offer_badge_label",
         "label": "Offer badge label",
