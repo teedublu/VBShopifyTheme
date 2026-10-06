@@ -330,7 +330,10 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* mobile: the explainer sits on white under the band (full-bleed white via a clipped shadow) */
 .pack-intro__explainer { grid-area: explainer; display: flex; flex-direction: column; gap: 8px; padding: 12px 0 4px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
 .pack-intro__tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-.pack-intro__tile { border: 1px solid #d6e6e7; border-radius: 12px; padding: 8px 10px; background: #fff; }
+.pack-intro__tile { display: flex; align-items: center; gap: 8px; border: 1px solid #d6e6e7; border-radius: 12px; padding: 6px 10px 6px 6px; background: #fff; }
+.pack-intro__tile-media { flex: none; width: 56px; height: 56px; border-radius: 8px; background: #F2F7F7; overflow: hidden; }
+.pack-intro__tile-media img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pack-intro__tile-text { min-width: 0; }
 .pack-intro__tile p { margin: 0; }
 .pack-intro__tile-title { font-size: 12px; font-weight: 600; color: #197177; }
 .pack-intro__tile-contents { font-size: 11px; line-height: 15px; }
@@ -348,7 +351,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
   .pack-intro__image img { width: 220px; height: 180px; border-radius: 14px; object-position: 50% 55%; }
   .pack-intro__explainer { padding: 0; background: transparent; box-shadow: none; clip-path: none; gap: 10px; }
   .pack-intro__tiles { gap: 10px; }
-  .pack-intro__tile { border-color: #ecdccd; border-radius: 14px; padding: 14px 16px; }
+  .pack-intro__tile { border-color: #ecdccd; border-radius: 14px; padding: 10px 14px 10px 10px; gap: 12px; }
+  .pack-intro__tile-media { width: 84px; height: 84px; border-radius: 10px; }
   .pack-intro__tile-title { font-size: 14px; }
   .pack-intro__tile-contents { font-size: 13px; line-height: normal; }
   .pack-intro__tile-price { font-size: 16px; }

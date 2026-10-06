@@ -21,11 +21,18 @@ If a figure cannot be read (no matching product), that price is simply left out.
   assign intro_min = 0
   assign intro_max = 0
   assign starter_min = 0
+  assign intro_pick = all_products[section.settings.intro_product]
+  assign starter_pick = all_products[section.settings.starter_product]
+  assign intro_first = nil
+  assign starter_first = nil
 
   for pack in collection.products
     assign pack_tags = pack.tags | join: '||' | downcase | prepend: '||' | append: '||'
     assign pack_story_count = pack.metafields.bundles.products.value.size
     if pack_tags contains intro_tag_key or pack_story_count == 1
+      if intro_first == nil
+        assign intro_first = pack
+      endif
       if intro_min == 0 or pack.price_min < intro_min
         assign intro_min = pack.price_min
       endif
@@ -35,12 +42,23 @@ If a figure cannot be read (no matching product), that price is simply left out.
     elsif pack_tags contains gift_tag_key
       continue
     elsif starter_min == 0 or pack.price_min < starter_min
+      if starter_first == nil
+        assign starter_first = pack
+      endif
       assign starter_min = pack.price_min
     endif
   endfor
 
   assign player = all_products[section.settings.player_handle]
 
+  assign intro_img_product = intro_first
+  if intro_pick != blank
+    assign intro_img_product = intro_pick
+  endif
+  assign starter_img_product = starter_first
+  if starter_pick != blank
+    assign starter_img_product = starter_pick
+  endif
   assign intro_price = intro_min | money
   assign starter_price = starter_min | money
   assign player_price = player.price_min | money
@@ -65,6 +83,10 @@ If a figure cannot be read (no matching product), that price is simply left out.
     <div class="pack-intro__explainer">
       <div class="pack-intro__tiles">
         <div class="pack-intro__tile">
+          {%- if intro_img_product.featured_media -%}
+            <div class="pack-intro__tile-media">{{- intro_img_product.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
+          {%- endif -%}
+          <div class="pack-intro__tile-text">
           <p class="pack-intro__tile-title">{{ section.settings.intro_title | escape }}</p>
           <p class="pack-intro__tile-contents">{{ section.settings.intro_contents | escape }}</p>
           {%- if intro_min > 0 -%}
@@ -72,22 +94,26 @@ If a figure cannot be read (no matching product), that price is simply left out.
               {%- if intro_min != intro_max -%}{{ 'collection.pack_intro.from_price' | t: price: intro_price }}{%- else -%}{{ intro_price }}{%- endif -%}
             </p>
           {%- endif -%}
+          </div>
         </div>
         <div class="pack-intro__tile">
+          {%- if starter_img_product.featured_media -%}
+            <div class="pack-intro__tile-media">{{- starter_img_product.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
+          {%- endif -%}
+          <div class="pack-intro__tile-text">
           <p class="pack-intro__tile-title">{{ section.settings.starter_title | escape }}</p>
           <p class="pack-intro__tile-contents">{{ section.settings.starter_contents | escape }}</p>
           {%- if starter_min > 0 -%}
             <p class="pack-intro__tile-price">{{ 'collection.pack_intro.from_price' | t: price: starter_price }}</p>
           {%- endif -%}
+          </div>
         </div>
       </div>
 
-      <p class="pack-intro__note">
-        {{- section.settings.note | escape }}
-        {%- if player != blank and player.price_min > 0 %}
-          <a href="{{ player.url }}" class="pack-intro__player-link">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a>
-        {%- endif -%}
-      </p>
+      <p class="pack-intro__note">{{- section.settings.note | escape -}}</p>
+      {%- if player != blank and player.price_min > 0 -%}
+        <p class="pack-intro__note"><a href="{{ player.url }}" class="pack-intro__player-link">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a></p>
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -111,6 +137,8 @@ If a figure cannot be read (no matching product), that price is simply left out.
     { "type": "text", "id": "intro_contents", "label": "Intro pack tile: contents", "default": "Player + 1 story" },
     { "type": "text", "id": "starter_title", "label": "Starter pack tile: title", "default": "Starter pack" },
     { "type": "text", "id": "starter_contents", "label": "Starter pack tile: contents", "default": "Player + 3 stories" },
+    { "type": "product", "id": "intro_product", "label": "Intro pack tile: example product (image)", "info": "Leave empty to use the first intro pack in the collection." },
+    { "type": "product", "id": "starter_product", "label": "Starter pack tile: example product (image)", "info": "Leave empty to use the first starter pack in the collection." },
     { "type": "text", "id": "note", "label": "Line under the tiles", "default": "Each pack includes a bumper and charging cable." },
     { "type": "header", "content": "Live prices (read from Shopify)" },
     { "type": "text", "id": "intro_tag", "label": "Intro pack tag", "default": "Intro Pack", "info": "The intro pack price is the cheapest product in this collection with this tag, or that contains exactly one story." },
