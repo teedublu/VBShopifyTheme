@@ -132,13 +132,13 @@ saved-books-count:empty { opacity: 0; }
 
 
 .badge { border-radius: 3px;}
-.badge.new { background: linear-gradient(180deg, #f8eb1f, #f2ca06); color: black}
-/* .badge.bestseller { background: linear-gradient(180deg, #e90e10, #bc0000); color: white} */
-.badge.teachers { background: linear-gradient(180deg,#164c99,#032c77); color: white}
-.badge.coming { background: linear-gradient(180deg,#0bdcc6,#037772); color: white}
-.badge.just { background: linear-gradient(180deg,#3ad30a,#1c8a09); color: white}
-.badge.book { background: linear-gradient(181deg,#ffffff,#9e9999); color: black}
-.badge.black { background: linear-gradient(180deg, #000000, #000000); color: white;}
+.badge.new { background: linear-gradient(180deg, var(--badge-new), color-mix(in srgb, var(--badge-new) 85%, black)); color: rgb(var(--badge-new-text)); }
+.badge.teachers { background: linear-gradient(180deg, var(--badge-teachers), color-mix(in srgb, var(--badge-teachers) 85%, black)); color: rgb(var(--badge-teachers-text)); }
+.badge.coming { background: linear-gradient(180deg, var(--badge-coming), color-mix(in srgb, var(--badge-coming) 85%, black)); color: rgb(var(--badge-coming-text)); }
+.badge.just { background: linear-gradient(180deg, var(--badge-just), color-mix(in srgb, var(--badge-just) 85%, black)); color: rgb(var(--badge-just-text)); }
+.badge.book { background: linear-gradient(180deg, var(--badge-book), color-mix(in srgb, var(--badge-book) 85%, black)); color: rgb(var(--badge-book-text)); }
+.badge.black { background: linear-gradient(180deg, var(--badge-black), color-mix(in srgb, var(--badge-black) 85%, black)); color: rgb(var(--badge-black-text)); }
+/* .badge.bestseller uses the theme's primary badge colours (Theme settings > Badges) */
 
  .badge { border-radius: 3px;}
 /* AUDIOBOOKS                   */
@@ -278,8 +278,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .product-card .offer-price__was { position: absolute; top: -14px; left: 0; font-size: 0.8em; white-space: nowrap; }
 
 /* badges: "Online offer" (teal, brand primary badge) stacked over the red sale badge */
-.badge--offer { --badge-background: 30 74 76; --badge-color: 255 255 255; } /* #1E4A4C dark teal, 9.8:1 with white */
-.badge--offer-sale { --badge-background: 200 35 44; /* #C8232C red */ --badge-color: 255 255 255; font-weight: 700; }
+.badge--offer { --badge-background: var(--badge-offer-rgb); --badge-color: var(--badge-offer-text); }
+.badge--offer-sale { --badge-background: var(--badge-offer-sale-rgb); --badge-color: var(--badge-offer-sale-text); font-weight: 700; }
 .product-card__badge-list { justify-items: start; }
 
 
@@ -288,12 +288,12 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* ---------------------------- */
 /* Packs / audiobook bundles: price + "saves" chip, with a "Bought separately" line underneath.
    The line is absolutely positioned so the card is exactly as tall as one showing a plain price. */
-.badge--bundle { display: inline-flex; align-items: center; gap: 0.4rem; --badge-background: 15 123 99; --badge-color: 255 255 255; font-weight: 700; } /* #0F7B63 */
+.badge--bundle { display: inline-flex; align-items: center; gap: 0.4rem; --badge-background: var(--badge-bundle-rgb); --badge-color: var(--badge-bundle-text); font-weight: 700; }
 .badge--bundle svg { flex: none; }
 
 .bundle-price { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; min-width: 0; transform: translateY(-0.5rem); } /* lift so price + caption are centred on the basket button */
 .bundle-price__now { font-weight: 700; color: rgb(var(--button-background-primary)); white-space: nowrap; }
-.bundle-price__chip { background: rgb(15 123 99); color: #fff; font-size: 0.75rem; font-weight: 600; line-height: 1.2; padding: 0.15rem 0.5rem; border-radius: 3px; white-space: nowrap; }
+.bundle-price__chip { background: rgb(var(--badge-bundle-rgb)); color: rgb(var(--badge-bundle-text)); font-size: 0.75rem; font-weight: 600; line-height: 1.2; padding: 0.15rem 0.5rem; border-radius: 3px; white-space: nowrap; }
 .bundle-price__was { position: absolute; top: 100%; left: 0; margin-top: 0.1rem; font-size: 0.75rem; line-height: 1.2; font-weight: 500; white-space: nowrap; color: rgb(var(--text-color)); }
 .bundle-price__was-short { display: none; }
 
@@ -389,7 +389,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .pack-card__media { position: relative; aspect-ratio: 1 / 1; border-radius: 0; background: var(--card-media-bg); overflow: hidden; }
 .pack-card .pack-card__image { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 0; } /* also carries the theme's product-card__image classes so the swatch script can swap the image */
 .pack-card__badge { position: absolute; top: 8px; padding: 2px 7px; border-radius: 999px; color: #fff; font-size: 10px; font-weight: 600; line-height: 1.4; }
-.pack-card__badge--save { left: 8px; background: var(--accent-strong); display: inline-flex; align-items: center; gap: 4px; }
+.pack-card__badge--save { left: 8px; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); display: inline-flex; align-items: center; gap: 4px; }
 .pack-card__badge--save svg { flex: none; width: 12px; height: 12px; }
 .pack-card__badge--best { right: 8px; background: var(--brand-heading); }
 .pack-card__title { margin: 6px 0 0; font-size: 13px; line-height: 17px; font-weight: 600; color: var(--brand-heading); letter-spacing: normal; }
@@ -493,7 +493,7 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 /* Pack card quick add: round button beside the price (same add-to-cart as the other cards), above the whole-card link */
 .pack-card__buy-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .pack-card__add { position: relative; z-index: 2; margin: 0; flex: none; }
-.pack-card__add-button { display: grid; place-items: center; width: 36px; height: 36px; min-width: 36px; border-radius: 999px; border: 0; background: var(--accent-strong); color: #fff; cursor: pointer; }
+.pack-card__add-button { display: grid; place-items: center; width: 36px; height: 36px; min-width: 36px; border-radius: 999px; border: 0; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); cursor: pointer; }
 .pack-card__add-button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
 @media screen and (min-width: 700px) { .pack-card__add-button { width: 40px; height: 40px; } }
 

@@ -345,6 +345,65 @@
       },
       {
         "type": "header",
+        "content": "Badge colours (custom badges)"
+      },
+      {
+        "type": "color",
+        "id": "badge_new",
+        "label": "New badge",
+        "info": "Text colour (white or black) and the slight top-to-bottom gradient are worked out from this colour.",
+        "default": "#f8eb1f"
+      },
+      {
+        "type": "color",
+        "id": "badge_teachers",
+        "label": "Teachers badge",
+        "default": "#164c99"
+      },
+      {
+        "type": "color",
+        "id": "badge_coming",
+        "label": "Coming soon badge",
+        "default": "#0bdcc6"
+      },
+      {
+        "type": "color",
+        "id": "badge_just",
+        "label": "Just in badge",
+        "default": "#3ad30a"
+      },
+      {
+        "type": "color",
+        "id": "badge_book",
+        "label": "Book badge",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "badge_black",
+        "label": "Black badge",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "badge_offer",
+        "label": "Online offer badge",
+        "default": "#1E4A4C"
+      },
+      {
+        "type": "color",
+        "id": "badge_offer_sale",
+        "label": "Offer sale badge",
+        "default": "#C8232C"
+      },
+      {
+        "type": "color",
+        "id": "badge_bundle",
+        "label": "Bundle saves badge",
+        "default": "#0F7B63"
+      },
+      {
+        "type": "header",
         "content": "Primary button"
       },
       {

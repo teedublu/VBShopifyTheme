@@ -155,9 +155,48 @@ note that this may have impact on different places.
     {%- assign product_sold_out_badge_brightness = settings.product_sold_out_badge_background | color_brightness -%}
     {%- assign product_primary_badge_brightness = settings.product_primary_badge_background | color_brightness -%}
 
+    {%- assign accent_strong_brightness = settings.accent_strong | color_brightness -%}
+    {%- assign badge_new_brightness = settings.badge_new | color_brightness -%}
+    {%- assign badge_teachers_brightness = settings.badge_teachers | color_brightness -%}
+    {%- assign badge_coming_brightness = settings.badge_coming | color_brightness -%}
+    {%- assign badge_just_brightness = settings.badge_just | color_brightness -%}
+    {%- assign badge_book_brightness = settings.badge_book | color_brightness -%}
+    {%- assign badge_black_brightness = settings.badge_black | color_brightness -%}
+    {%- assign badge_offer_brightness = settings.badge_offer | color_brightness -%}
+    {%- assign badge_offer_sale_brightness = settings.badge_offer_sale | color_brightness -%}
+    {%- assign badge_bundle_brightness = settings.badge_bundle | color_brightness -%}
+
     --accent: {{ settings.primary_button_background.rgb }};
+    --badge-new: {{ settings.badge_new }};
+    --badge-new-rgb: {{ settings.badge_new.rgb }};
+    --badge-new-text: {% if badge_new_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-teachers: {{ settings.badge_teachers }};
+    --badge-teachers-rgb: {{ settings.badge_teachers.rgb }};
+    --badge-teachers-text: {% if badge_teachers_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-coming: {{ settings.badge_coming }};
+    --badge-coming-rgb: {{ settings.badge_coming.rgb }};
+    --badge-coming-text: {% if badge_coming_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-just: {{ settings.badge_just }};
+    --badge-just-rgb: {{ settings.badge_just.rgb }};
+    --badge-just-text: {% if badge_just_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-book: {{ settings.badge_book }};
+    --badge-book-rgb: {{ settings.badge_book.rgb }};
+    --badge-book-text: {% if badge_book_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-black: {{ settings.badge_black }};
+    --badge-black-rgb: {{ settings.badge_black.rgb }};
+    --badge-black-text: {% if badge_black_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-offer: {{ settings.badge_offer }};
+    --badge-offer-rgb: {{ settings.badge_offer.rgb }};
+    --badge-offer-text: {% if badge_offer_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-offer-sale: {{ settings.badge_offer_sale }};
+    --badge-offer-sale-rgb: {{ settings.badge_offer_sale.rgb }};
+    --badge-offer-sale-text: {% if badge_offer_sale_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
+    --badge-bundle: {{ settings.badge_bundle }};
+    --badge-bundle-rgb: {{ settings.badge_bundle.rgb }};
+    --badge-bundle-text: {% if badge_bundle_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
     --accent-strong: {{ settings.accent_strong }};
     --accent-strong-rgb: {{ settings.accent_strong.rgb }};
+    --accent-strong-text: {% if accent_strong_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
     --accent-strong-dark: {{ settings.accent_strong | color_mix: '#000000', 70 }};
     --brand-heading: {{ settings.brand_heading }};
     --brand-heading-rgb: {{ settings.brand_heading.rgb }};
