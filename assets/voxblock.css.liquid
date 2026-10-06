@@ -307,3 +307,6 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .bundle-price--page { display: inline-flex; flex-wrap: wrap; align-items: center; transform: none; }
 .bundle-price--page .bundle-price__was { position: static; flex-basis: 100%; margin-top: 0; }
 .bundle-price--page [hidden] { display: none !important; }
+
+/* Anchor target for the "Choose your pack" hero button (collection.starter-pack-collection): clear the sticky header */
+#product-grid { scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }

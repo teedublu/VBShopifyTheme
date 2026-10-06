@@ -132,7 +132,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/SP_Page-Hero_Image-mob-1300x1600.jpg",
-            "media_width": 50,
+            "media_width": 35,
             "media_position": "end",
             "text_position": "place-self-center text-center",
             "icon": "none",
@@ -140,8 +140,8 @@
             "subheading": "",
             "title": "The easiest way to start",
             "content": "<p>Our Starter Pack combines the Voxblock player with a curated selection of stories to help children enjoy reading from day one.</p>",
-            "link_text": "",
-            "link_url": "",
+            "link_text": "Choose your pack",
+            "link_url": "/collections/voxblock-starter-pack-collection#product-grid",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#000000",
@@ -207,7 +207,7 @@
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
+        "products_per_row_desktop": 4,
         "filter_layout": "horizontal",
         "show_sort_by": true,
         "sticky_filters": true,
@@ -390,11 +390,11 @@
     }
   },
   "order": [
+    "media_with_text_rGkHtT",
+    "main",
     "image_with_text_overlay_rapDMw",
     "rich_text_BAVNeG",
     "banner",
-    "media_with_text_rGkHtT",
-    "main",
     "testimonials_n8PqFn",
     "image_with_text_overlay_kCDwBE",
     "faq_t9iAtE"

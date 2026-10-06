@@ -64,3 +64,13 @@ Notes:
 - Product page: the price block shows the same price + `saves N%` chip with `Bought separately £x` underneath (in normal
   flow), updated by `assets/voxblock.js.liquid` when the variant changes. The plain "Save x%" badge is suppressed for
   bundle types. If no variant of a pack has a saving, the standard price rendering is used.
+
+---
+
+# Starter pack collection layout (templates/collection.starter-pack-collection.json)
+
+- Hero ("Media with text" block): image column reduced from 50% to 35% so the hero is about 30% shorter (the portrait
+  1300x1600 image was ~1,200px tall at 2000px wide). 30% is the minimum the setting allows.
+- Hero button "Choose your pack" links to `#product-grid` (id added to the grid in `sections/main-collection.liquid`).
+- Product grid moved directly under the hero; the empty rich text, disabled banner/overlay now sit below it.
+- Desktop products per row 5 -> 4 (pack cards were ~290px wide, the bundle price chip needs more room).

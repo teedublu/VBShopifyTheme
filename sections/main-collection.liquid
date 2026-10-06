@@ -77,7 +77,7 @@
     </div>
   {%- else -%}
     {%- paginate collection.products by section.settings.products_per_page -%}
-      <div class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}">
+      <div id="product-grid" class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}">
         {%- if show_filters or section.settings.show_sort_by -%}
           {%- comment -%}
           IMPLEMENTATION NOTE: we have to output the drawer no matter what, as it is used on mobile (all the time) or desktop (when in drawer mode)
