@@ -477,3 +477,10 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 /* Same two corrections for headings built with the styled-text snippet (the colour arrives as an inner --text-color variable) */
 :is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) [style*="--text-color: 255 158 87"] { --text-color: 194 86 15 !important; }
 :is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) [style*="--text-color: 76 182 172"] { --text-color: 25 113 119 !important; }
+
+/* Pack card quick add: round button beside the price (same add-to-cart as the other cards), above the whole-card link */
+.pack-card__buy-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pack-card__add { position: relative; z-index: 2; margin: 0; flex: none; }
+.pack-card__add-button { display: grid; place-items: center; width: 36px; height: 36px; min-width: 36px; border-radius: 999px; border: 0; background: #C2560F; color: #fff; cursor: pointer; }
+.pack-card__add-button:focus-visible { outline: 2px solid #197177; outline-offset: 2px; }
+@media screen and (min-width: 700px) { .pack-card__add-button { width: 40px; height: 40px; } }

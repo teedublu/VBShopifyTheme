@@ -201,3 +201,15 @@ document.addEventListener('click', (event) => {
     chip.dispatchEvent(new CustomEvent('facet:update', { bubbles: true, detail: { url } }));
     trackCollectionFilterUsed(selectAll ? 'all' : chip.dataset.filter, bar.dataset.collection);
 });
+
+
+// Pack card: the colour swatch chooses which variant the round add-to-cart button adds
+document.addEventListener('change', (event) => {
+    const radio = event.target.closest?.('.pack-card__swatches input[type="radio"]');
+    const card = radio?.closest('.pack-card');
+    const idInput = card?.querySelector('[data-pack-variant-id]');
+    const mapInput = card?.querySelector('[data-pack-variant-map]');
+    if (!idInput || !mapInput) return;
+    const match = mapInput.value.split(';').map((pair) => pair.split(/=(?=[^=]*$)/)).find(([title]) => title === radio.value);
+    if (match) idInput.value = match[1];
+});
