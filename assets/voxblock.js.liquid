@@ -168,7 +168,9 @@ if (!window.customElements.get('bundle-price')) window.customElements.define('bu
 // ----------------------------------------------------------------------------------------------------------------
 const trackCollectionFilterUsed = (filter, collection) => {
     if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
-    window.posthog.capture('collection_filter_used', { filter, collection });
+    try {
+        window.posthog.capture('collection_filter_used', { filter, collection });
+    } catch (e) { /* analytics must never block filtering */ }
 };
 
 document.addEventListener('click', (event) => {
@@ -195,8 +197,7 @@ document.addEventListener('click', (event) => {
         button.setAttribute('aria-pressed', pressed ? 'true' : 'false');
     });
 
-    trackCollectionFilterUsed(selectAll ? 'all' : chip.dataset.filter, bar.dataset.collection);
-
     url.searchParams.set('section_id', section.id.replace('shopify-section-', ''));
     chip.dispatchEvent(new CustomEvent('facet:update', { bubbles: true, detail: { url } }));
+    trackCollectionFilterUsed(selectAll ? 'all' : chip.dataset.filter, bar.dataset.collection);
 });
