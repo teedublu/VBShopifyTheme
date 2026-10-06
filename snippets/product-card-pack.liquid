@@ -104,7 +104,10 @@ Data used (all optional, the line is simply left out if missing):
     {%- endif -%}
 
     {%- if save_pct > 0 -%}
-      <span class="pack-card__badge pack-card__badge--save">{{ 'product.general.discount_badge_html' | t: savings: save_pct | append: '%' }}</span>
+      <span class="pack-card__badge pack-card__badge--save">
+        {%- render 'icon' with 'picto-box', width: 12, height: 12, stroke_width: 2 -%}
+        <span>{{ 'product.general.discount_badge_html' | t: savings: save_pct | append: '%' }}</span>
+      </span>
     {%- endif -%}
     {%- if is_bestseller -%}
       <span class="pack-card__badge pack-card__badge--best">{{ 'collection.pack_card.bestseller' | t }}</span>

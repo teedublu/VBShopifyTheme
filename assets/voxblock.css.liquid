@@ -385,7 +385,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .pack-card__media { position: relative; aspect-ratio: 1 / 1; border-radius: 0; background: #F2F7F7; overflow: hidden; }
 .pack-card__image { display: block; width: 100%; height: 100%; object-fit: contain; }
 .pack-card__badge { position: absolute; top: 8px; padding: 2px 7px; border-radius: 999px; color: #fff; font-size: 10px; font-weight: 600; line-height: 1.4; }
-.pack-card__badge--save { left: 8px; background: #C2560F; }
+.pack-card__badge--save { left: 8px; background: #C2560F; display: inline-flex; align-items: center; gap: 4px; }
+.pack-card__badge--save svg { flex: none; width: 12px; height: 12px; }
 .pack-card__badge--best { right: 8px; background: #197177; }
 .pack-card__title { margin: 6px 0 0; font-size: 13px; line-height: 17px; font-weight: 600; color: #197177; letter-spacing: normal; }
 .pack-card__link { color: inherit; text-decoration: none; }
@@ -406,7 +407,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
   .pack-card > :not(.pack-card__media) { padding-inline: 12px; }
   .pack-card__buy { padding-bottom: 12px; }
   .pack-card__badge { top: 10px; font-size: 11px; padding: 3px 9px; }
-  .pack-card__badge--save { left: 10px; }
+  .pack-card__badge--save { left: 10px; gap: 5px; }
+  .pack-card__badge--save svg { width: 14px; height: 14px; }
   .pack-card__badge--best { right: 10px; }
   .pack-card__title { font-size: 15px; line-height: 20px; }
   .pack-card__contents { font-size: 13px; line-height: 18px; }
