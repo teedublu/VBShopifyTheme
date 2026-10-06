@@ -468,7 +468,7 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .product-card { display: flex; flex-direction: column; padding: 0; border: 1px solid #d6e6e7; border-radius: 12px; overflow: hidden; background: #fff; row-gap: 0; }
 .product-card__figure { flex: none; background: #F2F7F7; }
 .product-card .product-card__image { border-radius: 0; }
-.product-card:has(.sample-wishlist) .product-card__figure { padding: 14px 22px 8px; } /* book covers sit inset, not hard against the card edge */
+.product-card:has(.sample-wishlist) .product-card__figure > a { padding: 14px 22px; } /* book covers sit inset, not hard against the card edge */
 .product-card__details { display: flex; flex-direction: column; flex: 1; gap: 6px; padding: 8px 10px 10px; }
 .product-card__details > :nth-child(2) { white-space: normal; overflow: visible; text-overflow: clip; width: auto; }
 .product-card__info { padding: 0; order: 2; }
@@ -499,10 +499,9 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 
 /* Card polish: equal image panels so every row lines up, tighter preview/heart row, add-to-cart always at the far right */
 .product-card__figure { aspect-ratio: 1 / 1; position: relative; }
-.product-card__figure > a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.product-card__figure > a { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .product-card__figure img.product-card__image--primary { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
 .product-card__row.sample-wishlist { gap: 6px; font-size: 13px; }
 .product-card__row.buy-price > form { flex: none; margin: 0; }
 .product-card__row.buy-price > :not(form) { flex: 1 1 auto; min-width: 0; }
 .product-card__figure { min-height: 0; overflow: hidden; }
-.product-card:has(.sample-wishlist) .product-card__figure { padding-bottom: 14px; }
