@@ -208,7 +208,8 @@
                 <div class="pack-help">
                   <p class="pack-help__title">{{ 'collection.pack_bar.help_title' | t }}</p>
                   <p class="pack-help__text">{{ 'collection.pack_bar.help_text' | t }}</p>
-                  {%- render 'button', href: section.settings.help_url, content: 'collection.pack_bar.help_button' | t, size: 'lg' -%}
+                  {%- assign help_button_label = 'collection.pack_bar.help_button' | t -%}
+                  {%- render 'button', href: section.settings.help_url, content: help_button_label, size: 'lg' -%}
                 </div>
               {%- endif -%}
             </div>
