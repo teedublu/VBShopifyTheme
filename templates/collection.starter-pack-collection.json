@@ -27,7 +27,71 @@
         "starter_product": "young-explorers-starter-pack",
         "note": "Each pack includes a bumper and charging cable.",
         "intro_tag": "Intro Pack",
+        "gift_tag": "Gift Set",
         "player_handle": "voxblock-player"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "promotion_video_FFXEJa": {
+          "type": "promotion_video",
+          "settings": {
+            "position": 8,
+            "column_span": "1",
+            "video": "shopify://files/videos/how does it work_desktop.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "title": "How it works",
+            "content": "",
+            "link_url": "shopify://pages/how-does-it-work",
+            "link_text": "Learn more",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 20
+          }
+        },
+        "promotion_image_gkWQ36": {
+          "type": "promotion_image",
+          "disabled": true,
+          "settings": {
+            "position": 3,
+            "column_span": "1",
+            "title": "Our Starter Packs",
+            "content": "<p>The easiest way to start your child’s screen-free listening journey.</p><p>Ready to play straight from the box with stories they’ll love.</p><p>Includes a Voxblock player, one to three audiobooks, a bumper, and a charging cable.</p><p>No Wi-Fi. No Apps. Just Stories.</p>",
+            "link_url": "",
+            "link_text": "",
+            "heading_tag": "h5",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#ffb74a",
+            "overlay_opacity": 100
+          }
+        }
+      },
+      "block_order": [
+        "promotion_video_FFXEJa",
+        "promotion_image_gkWQ36"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "filter_layout": "horizontal",
+        "show_sort_by": true,
+        "sticky_filters": true,
+        "card_style": "pack",
+        "age_bar_enabled": true,
+        "age_filter_param": "filter.p.m.book.age_groups",
+        "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
+        "gift_button_label": "Gift sets",
+        "gift_filter_param": "filter.p.m.pack.gift_set",
+        "help_url": "",
+        "show_filters": false,
+        "show_filter_group_name": false,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
       }
     },
     "image_with_text_overlay_rapDMw": {
@@ -78,7 +142,9 @@
         "background": "#eaeaea",
         "background_gradient": "",
         "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "overlay_opacity": 0,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "banner": {
@@ -101,69 +167,6 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 30
-      }
-    },
-    "main": {
-      "type": "main-collection",
-      "blocks": {
-        "promotion_video_FFXEJa": {
-          "type": "promotion_video",
-          "settings": {
-            "position": 5,
-            "column_span": "1",
-            "video": "shopify://files/videos/how does it work_desktop.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "How it works",
-            "content": "",
-            "link_url": "shopify://pages/how-does-it-work",
-            "link_text": "Learn more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 20
-          },
-          "disabled": true
-        },
-        "promotion_image_gkWQ36": {
-          "type": "promotion_image",
-          "disabled": true,
-          "settings": {
-            "position": 3,
-            "column_span": "1",
-            "title": "Our Starter Packs",
-            "content": "<p>The easiest way to start your child’s screen-free listening journey.</p><p>Ready to play straight from the box with stories they’ll love.</p><p>Includes a Voxblock player, one to three audiobooks, a bumper, and a charging cable.</p><p>No Wi-Fi. No Apps. Just Stories.</p>",
-            "link_url": "",
-            "link_text": "",
-            "heading_tag": "h5",
-            "text_position": "place-self-center text-center",
-            "text_color": "#ffffff",
-            "overlay_color": "#ffb74a",
-            "overlay_opacity": 100
-          }
-        }
-      },
-      "block_order": [
-        "promotion_video_FFXEJa",
-        "promotion_image_gkWQ36"
-      ],
-      "settings": {
-        "products_per_page": 24,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "filter_layout": "horizontal",
-        "show_sort_by": true,
-        "sticky_filters": true,
-        "show_filters": false,
-        "show_filter_group_name": false,
-        "show_filter_values_count": true,
-        "open_first_filter_group": false,
-        "card_style": "pack",
-        "age_bar_enabled": true,
-        "age_filter_param": "filter.p.m.book.age_groups",
-        "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
-        "gift_button_label": "Gift sets",
-        "gift_filter_param": "filter.p.m.pack.gift_set"
       }
     },
     "testimonials_n8PqFn": {
@@ -282,7 +285,9 @@
         "background": "#ffb74a",
         "background_gradient": "",
         "overlay_color": "#ffb74a",
-        "overlay_opacity": 100
+        "overlay_opacity": 100,
+        "enable_watermark": false,
+        "watermark_opacity": 6
       }
     },
     "faq_t9iAtE": {
@@ -323,6 +328,8 @@
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
         "button_text": "",
         "button_url": "",
         "text_position": "center",
