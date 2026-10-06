@@ -319,8 +319,8 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 
 /* INTRO BAND */
 .pack-intro { background: var(--pack-intro-bg, #fff7f0); color: #2a555a; }
-.pack-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "text image" "explainer explainer"; column-gap: 12px; align-items: start; padding-block: 16px 0; }
-.pack-intro__text { grid-area: text; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 14px; }
+.pack-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "text image" "explainer explainer"; column-gap: 12px; align-items: start; padding-block: 12px 0; }
+.pack-intro__text { grid-area: text; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 8px; }
 .pack-intro__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #8a3d0a; }
 .pack-intro__title { margin: 0; font-size: 22px; line-height: 28px; font-weight: 700; color: #197177; letter-spacing: normal; }
 .pack-intro__lede { margin: 0; font-size: 13px; line-height: 19px; }
@@ -359,7 +359,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .collection.collection--pack { gap: 0; margin-block-start: 0; }
 
 /* STICKY AGE / SORT BAR. top follows the real sticky header (+ announcement bar when it is sticky) through --sticky-area-height, which the header and announcement bar sections measure at runtime */
-.pack-bar { position: sticky; top: var(--sticky-area-height, 0px); z-index: 5; background: #fff; border-bottom: 1px solid #e3eeee; margin-bottom: 12px; color: #2a555a; }
+.pack-bar { position: sticky; top: var(--sticky-area-height, 0px); z-index: 5; background: #fff; border-bottom: 1px solid #e3eeee; margin-bottom: 4px; color: #2a555a; }
 .pack-bar__chips { display: flex; gap: 6px; margin: 0; padding: 6px 0 2px; overflow-x: auto; scrollbar-width: none; }
 .pack-bar__chips::-webkit-scrollbar { display: none; }
 .pack-chip { flex: 0 0 auto; min-height: 44px; min-width: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #c9dcdd; background: #fff; color: #2a555a; font: inherit; font-size: 13px; font-weight: 500; line-height: 1; cursor: pointer; }
