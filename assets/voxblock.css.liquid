@@ -454,3 +454,6 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; letter-spacing: normal; color: #197177; }
 .content-over-media h1, .content-over-media h1 * { color: inherit; }
 @media screen and (min-width: 1000px) { h1:not(.header__logo) { font-size: 34px; line-height: 42px; } }
+
+/* Headings use one teal (#197177, 5.7:1 on white). Sections that set the lighter teal #4cb6ac (2.4:1) on a heading inline are corrected here. */
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4)[style*="4cb6ac" i] { color: #197177 !important; }
