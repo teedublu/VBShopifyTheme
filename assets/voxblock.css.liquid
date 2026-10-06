@@ -387,7 +387,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .pack-card > :not(.pack-card__media) { padding-inline: 10px; }
 .pack-card__buy { padding-bottom: 10px; }
 .pack-card__media { position: relative; aspect-ratio: 1 / 1; border-radius: 0; background: #F2F7F7; overflow: hidden; }
-.pack-card__image { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pack-card .pack-card__image { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 0; } /* also carries the theme's product-card__image classes so the swatch script can swap the image */
 .pack-card__badge { position: absolute; top: 8px; padding: 2px 7px; border-radius: 999px; color: #fff; font-size: 10px; font-weight: 600; line-height: 1.4; }
 .pack-card__badge--save { left: 8px; background: #C2560F; display: inline-flex; align-items: center; gap: 4px; }
 .pack-card__badge--save svg { flex: none; width: 12px; height: 12px; }
@@ -440,3 +440,9 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
   .product-card__badge-list .badge { font-size: 11px; padding: 3px 9px; gap: 5px; }
   .product-card__badge-list .badge svg { width: 14px; height: 14px; }
 }
+
+/* ----------------------------------------------------------------------------------------------------------------
+   CARD TITLES: same type as the pack cards, on every product card
+   ---------------------------------------------------------------------------------------------------------------- */
+.product-card__title a { font-size: 13px; line-height: 17px; font-weight: 600; color: #197177; }
+@media screen and (min-width: 700px) { .product-card__title a { font-size: 15px; line-height: 20px; } }

@@ -100,7 +100,7 @@ Data used (all optional, the line is simply left out if missing):
 <product-card handle="{{ product.handle | escape }}" class="pack-card">
   <div class="pack-card__media">
     {%- if product.featured_media -%}
-      {{- product.featured_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image' -}}
+      {{- product.featured_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
     {%- endif -%}
 
     {%- if save_pct > 0 -%}
