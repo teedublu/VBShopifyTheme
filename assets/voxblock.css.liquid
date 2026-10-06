@@ -504,3 +504,5 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .product-card__row.sample-wishlist { gap: 6px; font-size: 13px; }
 .product-card__row.buy-price > form { flex: none; margin: 0; }
 .product-card__row.buy-price > :not(form) { flex: 1 1 auto; min-width: 0; }
+.product-card__figure { min-height: 0; overflow: hidden; }
+.product-card:has(.sample-wishlist) .product-card__figure { padding-bottom: 14px; }
