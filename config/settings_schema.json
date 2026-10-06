@@ -309,6 +309,42 @@
       },
       {
         "type": "header",
+        "content": "Brand colours (headings, cards, prices)"
+      },
+      {
+        "type": "color",
+        "id": "accent_strong",
+        "label": "Emphasis orange",
+        "info": "Prices, badges and headings on white. Darker than the button orange so text passes contrast (4.5:1).",
+        "default": "#C2560F"
+      },
+      {
+        "type": "color",
+        "id": "brand_heading",
+        "label": "Heading teal",
+        "info": "H1 and card titles, age buttons, links in the starter pack intro.",
+        "default": "#197177"
+      },
+      {
+        "type": "color",
+        "id": "brand_text",
+        "label": "Card text",
+        "default": "#2a555a"
+      },
+      {
+        "type": "color",
+        "id": "card_border",
+        "label": "Card and button border",
+        "default": "#d6e6e7"
+      },
+      {
+        "type": "color",
+        "id": "card_media_background",
+        "label": "Card image background",
+        "default": "#F2F7F7"
+      },
+      {
+        "type": "header",
         "content": "Primary button"
       },
       {

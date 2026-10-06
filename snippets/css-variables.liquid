@@ -156,6 +156,15 @@ note that this may have impact on different places.
     {%- assign product_primary_badge_brightness = settings.product_primary_badge_background | color_brightness -%}
 
     --accent: {{ settings.primary_button_background.rgb }};
+    --accent-strong: {{ settings.accent_strong }};
+    --accent-strong-rgb: {{ settings.accent_strong.rgb }};
+    --accent-strong-dark: {{ settings.accent_strong | color_mix: '#000000', 70 }};
+    --brand-heading: {{ settings.brand_heading }};
+    --brand-heading-rgb: {{ settings.brand_heading.rgb }};
+    --brand-text: {{ settings.brand_text }};
+    --brand-text-rgb: {{ settings.brand_text.rgb }};
+    --card-border: {{ settings.card_border }};
+    --card-media-bg: {{ settings.card_media_background }};
     --text-primary: {{ settings.text_color.rgb }};
     --background-primary: {{ settings.background.rgb }};
     --dialog-background: {{ settings.dialog_background.rgb }};
