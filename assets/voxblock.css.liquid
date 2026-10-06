@@ -457,3 +457,19 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 
 /* Headings use one teal (#197177, 5.7:1 on white). Sections that set the lighter teal #4cb6ac (2.4:1) on a heading inline are corrected here. */
 :is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4)[style*="4cb6ac" i] { color: #197177 !important; }
+
+/* Headings that set the old light orange #ff9e57 inline use the darker brand orange (#C2560F, 4.5:1 on white) */
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4)[style*="ff9e57" i] { color: #C2560F !important; }
+
+/* ----------------------------------------------------------------------------------------------------------------
+   ALL PRODUCT CARDS take the pack card look: pale teal border, image full width with rounded top corners only,
+   padded text underneath (audiobook, starter pack and default cards: featured collections, related products, search...)
+   ---------------------------------------------------------------------------------------------------------------- */
+.product-card { padding: 0; border: 1px solid #d6e6e7; border-radius: 12px; overflow: hidden; background: #fff; align-items: stretch; row-gap: 0; }
+.product-card__figure { background: #F2F7F7; }
+.product-card .product-card__image { border-radius: 0; }
+.product-card__info { padding: 8px 10px 10px; }
+@media screen and (min-width: 700px) {
+  .product-card { border-radius: 14px; }
+  .product-card__info { padding: 10px 12px 12px; }
+}
