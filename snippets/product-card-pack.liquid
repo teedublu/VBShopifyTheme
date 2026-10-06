@@ -1,0 +1,192 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT CARD: PACK (starter / intro packs and gift sets)
+----------------------------------------------------------------------------------------------------------------------
+
+Used by main-collection when its "Product card style" setting is "Pack" (the starter pack collection redesign).
+Layout: image with Save % / Bestseller badges, title, contents line, age line, then price + colour swatches pinned to the
+bottom of the card (margin-top: auto), so every card in a row is the same height and prices line up.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the pack to render
+* card_index: 1-based position in the grid (the first few images load eagerly)
+
+Data used (all optional, the line is simply left out if missing):
+* contents line: metafield pack.contents (text, overrides everything), else the books in bundles.products
+* age line: metafield book.age_groups (35 / 58 / 810 / 12)
+* Bestseller badge: custom.badges contains "Bestseller"
+{%- endcomment -%}
+
+{%- liquid
+  assign pack_variant = product.variants | sort: 'price' | first
+
+  # SAVE BADGE (from the cheapest variant's compare-at price)
+  assign save_pct = 0
+  if pack_variant.compare_at_price > pack_variant.price
+    assign save_pct = pack_variant.compare_at_price | minus: pack_variant.price | times: 100.0 | divided_by: pack_variant.compare_at_price | round
+  endif
+
+  # PACK KIND (intro / starter / gift): used by the intro band tiles to scroll to the first pack of that kind
+  assign pack_tag_string = product.tags | join: '||' | downcase | prepend: '||' | append: '||'
+  assign pack_kind = 'starter'
+  if pack_tag_string contains '||gift set||'
+    assign pack_kind = 'gift'
+  elsif pack_tag_string contains '||intro pack||' or product.metafields.bundles.products.value.size == 1
+    assign pack_kind = 'intro'
+  endif
+
+  # BESTSELLER BADGE
+  assign is_bestseller = false
+  for badge in product.metafields.custom.badges.value
+    assign badge_key = badge | strip | downcase
+    if badge_key == 'bestseller'
+      assign is_bestseller = true
+    endif
+  endfor
+
+  # CONTENTS LINE
+  assign contents_line = product.metafields.pack.contents.value | strip
+  if contents_line == blank
+    assign pack_books = product.metafields.bundles.products.value
+    if pack_books.size > 0
+      assign book_titles = pack_books | map: 'title' | join: ', '
+      if book_titles.size <= 40
+        assign contents_line = 'collection.pack_card.contents_named' | t: titles: book_titles
+      else
+        assign contents_line = 'collection.pack_card.contents_count' | t: count: pack_books.size
+      endif
+    endif
+  endif
+
+  # AGE LINE (bands -> from/to ages)
+  assign age_from = 99
+  assign age_to = 0
+  for age_code in product.metafields.book.age_groups.value
+    case age_code
+      when '35'
+        assign band_from = 3
+        assign band_to = 5
+      when '58'
+        assign band_from = 5
+        assign band_to = 8
+      when '810'
+        assign band_from = 8
+        assign band_to = 10
+      when '12'
+        assign band_from = 10
+        assign band_to = 99
+      else
+        continue
+    endcase
+    if band_from < age_from
+      assign age_from = band_from
+    endif
+    if band_to > age_to
+      assign age_to = band_to
+    endif
+  endfor
+
+  assign age_line = ''
+  if age_to > 0
+    if age_to == 5
+      assign age_line = 'collection.pack_card.age_under_5' | t
+    elsif age_to == 99
+      assign age_line = 'collection.pack_card.age_plus' | t: from: age_from
+    else
+      assign age_line = 'collection.pack_card.age_range' | t: from: age_from, to: age_to
+    endif
+  endif
+
+  assign image_loading = 'lazy'
+  if card_index > 0 and card_index <= 4
+    assign image_loading = 'eager'
+  endif
+-%}
+
+<product-card handle="{{ product.handle | escape }}" class="pack-card" data-pack-kind="{{ pack_kind }}">
+  <div class="pack-card__media">
+    {%- if product.featured_media -%}
+      {{- product.featured_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
+    {%- endif -%}
+
+    {%- if save_pct > 0 -%}
+      <span class="pack-card__badge pack-card__badge--save">
+        {%- render 'icon' with 'picto-box', width: 12, height: 12, stroke_width: 2 -%}
+        <span>{{ 'product.general.discount_badge_html' | t: savings: save_pct | append: '%' }}</span>
+      </span>
+    {%- endif -%}
+    {%- if is_bestseller -%}
+      <span class="pack-card__badge pack-card__badge--best">{{ 'collection.pack_card.bestseller' | t }}</span>
+    {%- endif -%}
+  </div>
+
+  <h3 class="pack-card__title"><a href="{{ product.url }}" class="pack-card__link" data-instant>{{ product.title }}</a></h3>
+
+  {%- if contents_line != blank -%}
+    <p class="pack-card__contents">{{ contents_line }}</p>
+  {%- endif -%}
+  {%- if age_line != blank -%}
+    <p class="pack-card__age">{{ age_line }}</p>
+  {%- endif -%}
+
+  <div class="pack-card__buy">
+    {%- comment -%}Colour swatches: same markup the starter pack card uses (bumper colour comes from the variant metafield){%- endcomment -%}
+    {%- if settings.product_color_display == 'swatch' -%}
+      {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+      {%- for color_label in color_label_list -%}
+        {%- if product.options_by_name[color_label] != blank -%}
+          {%- assign product_option = product.options_by_name[color_label] -%}
+          {%- capture name -%}swatch-{{ section.id }}-{{ product.id }}-{{ product_option.position }}{%- endcapture -%}
+
+          <fieldset class="product-card__swatch-list pack-card__swatches h-stack gap-0.5" data-option-position="{{ product_option.position }}">
+            <legend class="sr-only">{{ product_option.name }}</legend>
+            {%- liquid
+              for option_value in product_option.values limit: 4
+                if forloop.first or product.selected_or_first_available_variant.matched and option_value == product_option.selected_value
+                  assign selected = true
+                else
+                  assign selected = false
+                endif
+
+                assign swatch_variant = product.variants | where: 'title', option_value | first
+
+                if swatch_variant.metafields.bumper.colour
+                  render 'option-value', type: 'swatch', value: option_value, color: swatch_variant.metafields.bumper.colour, name: name, selected: selected, size: 'sm'
+                elsif option_value.swatch.image
+                  render 'option-value', type: 'swatch', value: option_value, image: option_value.swatch.image, name: name, selected: selected, size: 'sm'
+                elsif option_value.swatch.color
+                  render 'option-value', type: 'swatch', value: option_value, color: option_value.swatch.color, name: name, selected: selected, size: 'sm'
+                else
+                  render 'option-value', type: 'swatch', value: option_value, name: name, selected: selected, size: 'sm'
+                endif
+              endfor
+            -%}
+          </fieldset>
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    <div class="pack-card__buy-row">
+      <p class="pack-card__prices">
+        {%- if product.price_varies -%}<span class="pack-card__from">{{ 'collection.pack_card.from' | t }}</span>{%- endif -%}
+        <span class="pack-card__price"><span class="sr-only">{{ 'product.price.sale_price' | t }}</span>{{ pack_variant.price | money }}</span>
+        {%- if pack_variant.compare_at_price > pack_variant.price -%}
+          <s class="pack-card__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
+        {%- endif -%}
+      </p>
+      {%- if product.available -%}
+        {%- form 'product', product, is: 'product-form', class: 'pack-card__add' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-pack-variant-id>
+          {%- capture variant_map -%}{%- for v in product.variants -%}{{ v.title | escape }}={{ v.id }}{% unless forloop.last %};{% endunless %}{%- endfor -%}{%- endcapture -%}
+          <input type="hidden" data-pack-variant-map value="{{ variant_map }}">
+          {%- assign quick_add_label = 'product.general.quick_add' | t -%}
+          <button type="submit" class="pack-card__add-button" aria-label="{{ quick_add_label | escape }} {{ product.title | escape }}">{%- render 'icon' with 'cart' -%}</button>
+        {%- endform -%}
+      {%- endif -%}
+    </div>
+  </div>
+</product-card>

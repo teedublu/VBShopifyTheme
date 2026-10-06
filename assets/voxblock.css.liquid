@@ -132,13 +132,13 @@ saved-books-count:empty { opacity: 0; }
 
 
 .badge { border-radius: 3px;}
-.badge.new { background: linear-gradient(180deg, #f8eb1f, #f2ca06); color: black}
-/* .badge.bestseller { background: linear-gradient(180deg, #e90e10, #bc0000); color: white} */
-.badge.teachers { background: linear-gradient(180deg,#164c99,#032c77); color: white}
-.badge.coming { background: linear-gradient(180deg,#0bdcc6,#037772); color: white}
-.badge.just { background: linear-gradient(180deg,#3ad30a,#1c8a09); color: white}
-.badge.book { background: linear-gradient(181deg,#ffffff,#9e9999); color: black}
-.badge.black { background: linear-gradient(180deg, #000000, #000000); color: white;}
+.badge.new { background: linear-gradient(180deg, var(--badge-new), color-mix(in srgb, var(--badge-new) 85%, black)); color: rgb(var(--badge-new-text)); }
+.badge.teachers { background: linear-gradient(180deg, var(--badge-teachers), color-mix(in srgb, var(--badge-teachers) 85%, black)); color: rgb(var(--badge-teachers-text)); }
+.badge.coming { background: linear-gradient(180deg, var(--badge-coming), color-mix(in srgb, var(--badge-coming) 85%, black)); color: rgb(var(--badge-coming-text)); }
+.badge.just { background: linear-gradient(180deg, var(--badge-just), color-mix(in srgb, var(--badge-just) 85%, black)); color: rgb(var(--badge-just-text)); }
+.badge.book { background: linear-gradient(180deg, var(--badge-book), color-mix(in srgb, var(--badge-book) 85%, black)); color: rgb(var(--badge-book-text)); }
+.badge.black { background: linear-gradient(180deg, var(--badge-black), color-mix(in srgb, var(--badge-black) 85%, black)); color: rgb(var(--badge-black-text)); }
+/* .badge.bestseller uses the theme's primary badge colours (Theme settings > Badges) */
 
  .badge { border-radius: 3px;}
 /* AUDIOBOOKS                   */
@@ -260,3 +260,260 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* Saved books page: the view of a list someone shared */
 .saved-books__shared-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-4) var(--spacing-6); }
 .is-shared-saved-books [data-saved-books-own] { display: none; }
+
+
+/* ---------------------------- */
+/* OFFER PRICE (snippets/offer-price.liquid) */
+/* ---------------------------- */
+/* Offer price keeps the theme's normal price colour (same as sale-price.text-lg above) */
+.offer-price { display: inline-flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.offer-price__now { font-weight: 700; }
+.offer-price__now.text-lg { color: rgb(var(--button-background-primary)); }
+.offer-price__now--regular { color: inherit; }
+.offer-price__was[hidden], offer-badges[hidden] { display: none !important; }
+.offer-price__from { font-size: 0.7em; margin-inline-end: -0.25rem; }
+
+/* cards: same placement as the existing compare-at price (struck-through, small, above the price) */
+.product-card .offer-price { flex-wrap: nowrap; position: relative; }
+.product-card .offer-price__was { position: absolute; top: -14px; left: 0; font-size: 0.8em; white-space: nowrap; }
+
+/* badges: "Online offer" (teal, brand primary badge) stacked over the red sale badge */
+.badge--offer { --badge-background: var(--badge-offer-rgb); --badge-color: var(--badge-offer-text); }
+.badge--offer-sale { --badge-background: var(--badge-offer-sale-rgb); --badge-color: var(--badge-offer-sale-text); font-weight: 700; }
+.product-card__badge-list { justify-items: start; }
+
+
+/* ---------------------------- */
+/* BUNDLE PRICE (snippets/bundle-price.liquid) */
+/* ---------------------------- */
+/* Packs / audiobook bundles: price + "saves" chip, with a "Bought separately" line underneath.
+   The line is absolutely positioned so the card is exactly as tall as one showing a plain price. */
+.badge--bundle { display: inline-flex; align-items: center; gap: 0.4rem; --badge-background: var(--badge-bundle-rgb); --badge-color: var(--badge-bundle-text); font-weight: 700; }
+.badge--bundle svg { flex: none; }
+
+.bundle-price { position: relative; display: inline-flex; align-items: center; gap: 0.5rem; min-width: 0; transform: translateY(-0.5rem); } /* lift so price + caption are centred on the basket button */
+.bundle-price__now { font-weight: 700; color: rgb(var(--button-background-primary)); white-space: nowrap; }
+.bundle-price__chip { background: rgb(var(--badge-bundle-rgb)); color: rgb(var(--badge-bundle-text)); font-size: 0.75rem; font-weight: 600; line-height: 1.2; padding: 0.15rem 0.5rem; border-radius: 3px; white-space: nowrap; }
+.bundle-price__was { position: absolute; top: 100%; left: 0; margin-top: 0.1rem; font-size: 0.75rem; line-height: 1.2; font-weight: 500; white-space: nowrap; color: rgb(var(--text-color)); }
+.bundle-price__was-short { display: none; }
+
+/* Responsive to the width of the price row (the card), not the viewport */
+.buy-price:has(.bundle-price) { container-type: inline-size; }
+/* widths measured with Poppins: price + chip need ~230px of row; the long caption needs ~225px */
+@container (max-width: 15.5rem) { .bundle-price__chip { display: none; } }
+@container (max-width: 14.5rem) { .bundle-price__was-long { display: none; } .bundle-price__was-short { display: inline; } }
+
+/* Product page: normal flow, the "bought separately" line sits under the price (no card height to protect) */
+.bundle-price--page { display: inline-flex; flex-wrap: wrap; align-items: center; transform: none; }
+.bundle-price--page .bundle-price__was { position: static; flex-basis: 100%; margin-top: 0; }
+.bundle-price--page [hidden] { display: none !important; }
+
+/* Anchor target for the "Choose your pack" hero button (collection.starter-pack-collection): clear the sticky header */
+#product-grid { scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }
+
+/* ---------------------------- */
+/* STARTER PACK COLLECTION REDESIGN */
+/* Intro band + explainer, sticky age bar, pack cards. Layout and copy: design canvas "Starter Pack collection redesign". */
+/* Colours: var(--brand-heading) teal (headings, buttons), var(--brand-text) text, var(--accent-strong-dark) eyebrow/age, var(--accent-strong) prices (readable on white, the orange button colour is not) */
+/* ---------------------------- */
+
+/* INTRO BAND */
+.pack-intro { background: var(--pack-intro-bg, #fff7f0); color: var(--brand-text); }
+.pack-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "text image" "explainer explainer"; column-gap: 12px; align-items: start; padding-block: 12px 0; }
+.pack-intro__text { grid-area: text; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 8px; }
+.pack-intro__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent-strong-dark); }
+.pack-intro__title { margin: 0; font-size: 22px; line-height: 28px; font-weight: 700; color: var(--brand-heading); letter-spacing: normal; }
+.pack-intro__lede { margin: 0; font-size: 13px; line-height: 19px; }
+.pack-intro__desktop-only { display: none; }
+.pack-intro__image { grid-area: image; }
+.pack-intro__image img { display: block; width: 96px; height: 120px; object-fit: cover; object-position: 30% 50%; border-radius: 12px; }
+/* mobile: the explainer sits on white under the band (full-bleed white via a clipped shadow) */
+.pack-intro__explainer { grid-area: explainer; display: flex; flex-direction: column; gap: 8px; padding: 12px 0 4px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+.pack-intro__tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pack-intro__tile { display: flex; align-items: center; gap: 6px; border: 1px solid var(--card-border); border-radius: 12px; padding: 5px 6px 5px 5px; background: #fff; }
+.pack-intro__tile-media { flex: none; width: 48px; height: 48px; border-radius: 8px; background: var(--card-media-bg); overflow: hidden; }
+.pack-intro__tile-media img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pack-intro__tile-text { min-width: 0; }
+.pack-intro__tile p { margin: 0; }
+.pack-intro__tile-title { font-size: 12px; font-weight: 600; color: var(--brand-heading); }
+.pack-intro__tile-contents { font-size: 11px; line-height: 15px; }
+.pack-intro__tile-price { font-size: 13px; font-weight: 700; color: var(--accent-strong); }
+.pack-intro__note { margin: 0; font-size: 11px; line-height: 16px; }
+.pack-intro__player-link { color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+@media screen and (min-width: 1000px) {
+  .pack-intro__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 380px) 220px; grid-template-areas: "text explainer image"; column-gap: 32px; align-items: center; padding-block: 28px; }
+  .pack-intro__text { gap: 10px; padding-bottom: 0; }
+  .pack-intro__eyebrow { font-size: 12px; }
+  .pack-intro__title { font-size: 34px; line-height: 42px; }
+  .pack-intro__lede { font-size: 15px; line-height: 23px; max-width: 560px; }
+  .pack-intro__desktop-only { display: inline; }
+  .pack-intro__image img { width: 220px; height: 180px; border-radius: 14px; object-position: 50% 55%; }
+  .pack-intro__explainer { padding: 0; background: transparent; box-shadow: none; clip-path: none; gap: 10px; }
+  .pack-intro__tiles { gap: 10px; }
+  .pack-intro__tile { border-color: var(--card-border); border-radius: 14px; padding: 10px; gap: 10px; flex-direction: column; align-items: stretch; }
+  .pack-intro__tile-media { width: 100%; height: 96px; border-radius: 10px; }
+  .pack-intro__tile-title { font-size: 14px; }
+  .pack-intro__tile-contents { font-size: 13px; line-height: normal; }
+  .pack-intro__tile-price { font-size: 16px; }
+  .pack-intro__note { font-size: 12px; line-height: 17px; }
+}
+
+/* The theme's collection grid adds a 32px top margin and a 32px row gap (48px top margin on desktop): too much air above the first row of prices on a phone */
+.collection.collection--pack { gap: 0; margin-block-start: 0; }
+
+/* STICKY AGE / SORT BAR. top follows the real sticky header (+ announcement bar when it is sticky) through --sticky-area-height, which the header and announcement bar sections measure at runtime */
+.pack-bar { position: sticky; top: var(--sticky-area-height, 0px); z-index: 5; background: #fff; border-bottom: 1px solid var(--card-border); margin-bottom: 4px; color: var(--brand-text); }
+.pack-bar__chips { display: flex; gap: 6px; margin: 0; padding: 6px 0 2px; overflow-x: auto; scrollbar-width: none; }
+.pack-bar__chips::-webkit-scrollbar { display: none; }
+.pack-chip { flex: 0 0 auto; min-height: 44px; min-width: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--card-border); background: #fff; color: var(--brand-text); font: inherit; font-size: 13px; font-weight: 500; line-height: 1; cursor: pointer; }
+.pack-chip[aria-pressed="true"] { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; font-weight: 600; }
+.pack-chip:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.pack-bar__meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; }
+.pack-bar__count { margin: 0; }
+.pack-bar__help { display: none; font-weight: 600; color: var(--brand-heading); }
+.pack-bar__sort { margin-inline-start: auto; display: inline-flex; align-items: center; gap: 4px; }
+.pack-bar__sort-button { min-height: 44px; }
+
+@media screen and (min-width: 1000px) {
+  .pack-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 10px 0; margin-bottom: 20px; }
+  .pack-bar__chips { flex-wrap: wrap; overflow: visible; padding: 0; gap: 8px; }
+  .pack-bar__meta { gap: 16px; font-size: 13px; margin-inline-start: auto; }
+  .pack-bar__help { display: inline; }
+}
+
+/* PACK CARD: flex column, price + swatches pinned to the bottom so prices line up in every row */
+.pack-card { display: flex; flex-direction: column; gap: 5px; height: 100%; position: relative; color: var(--brand-text); border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; background: #fff; }
+.pack-card > :not(.pack-card__media) { padding-inline: 10px; }
+.pack-card__buy { padding-bottom: 10px; }
+.pack-card__media { position: relative; aspect-ratio: 1 / 1; border-radius: 0; background: var(--card-media-bg); overflow: hidden; }
+.pack-card .pack-card__image { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 0; } /* also carries the theme's product-card__image classes so the swatch script can swap the image */
+.pack-card__badge { position: absolute; top: 8px; padding: 2px 7px; border-radius: 999px; color: #fff; font-size: 10px; font-weight: 600; line-height: 1.4; }
+.pack-card__badge--save { left: 8px; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); display: inline-flex; align-items: center; gap: 4px; }
+.pack-card__badge--save svg { flex: none; width: 12px; height: 12px; }
+.pack-card__badge--best { right: 8px; background: var(--brand-heading); }
+.pack-card__title { margin: 6px 0 0; font-size: 13px; line-height: 17px; font-weight: 600; color: var(--brand-heading); letter-spacing: normal; }
+.pack-card__link { color: inherit; text-decoration: none; }
+.pack-card__link::after { content: ""; position: absolute; inset: 0; z-index: 1; } /* whole card is one link */
+.pack-card__link:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.pack-card__contents, .pack-card__age { margin: 0; font-size: 11px; line-height: 15px; }
+.pack-card__age { font-weight: 600; color: var(--accent-strong-dark); }
+.pack-card__buy { margin-top: auto; padding-top: 4px; display: flex; flex-direction: column; gap: 5px; }
+.pack-card__prices { margin: 0; display: flex; flex-wrap: wrap; gap: 0 6px; align-items: baseline; }
+.pack-card__price { font-size: 18px; font-weight: 700; color: var(--accent-strong); }
+.pack-card__from { font-size: 11px; color: var(--brand-text); }
+.pack-card__was { font-size: 11px; color: rgb(var(--brand-text-rgb) / .75); }
+.pack-card__swatches { position: relative; z-index: 2; margin: 0; padding: 0; border: 0; min-width: 0; } /* above the stretched link so swatches stay clickable */
+
+@media screen and (min-width: 700px) {
+  .pack-card { gap: 6px; }
+  .pack-card { border-radius: 14px; }
+  .pack-card > :not(.pack-card__media) { padding-inline: 12px; }
+  .pack-card__buy { padding-bottom: 12px; }
+  .pack-card__badge { top: 10px; font-size: 11px; padding: 3px 9px; }
+  .pack-card__badge--save { left: 10px; gap: 5px; }
+  .pack-card__badge--save svg { width: 14px; height: 14px; }
+  .pack-card__badge--best { right: 10px; }
+  .pack-card__title { font-size: 15px; line-height: 20px; }
+  .pack-card__contents { font-size: 13px; line-height: 18px; }
+  .pack-card__age { font-size: 12px; }
+  .pack-card__prices { gap: 0 8px; }
+  .pack-card__price { font-size: 22px; }
+  .pack-card__was { font-size: 13px; }
+}
+
+/* "Help me choose" card after the grid, mobile only (desktop has the link in the bar) */
+.pack-help { margin-top: 24px; padding: 14px; border-radius: 12px; background: #fff7f0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; color: var(--brand-text); }
+.pack-help__title { margin: 0; font-size: 14px; font-weight: 600; color: var(--brand-heading); }
+.pack-help__text { margin: 0 0 4px; font-size: 12px; line-height: 17px; }
+@media screen and (min-width: 1000px) { .pack-help { display: none; } }
+
+
+/* ----------------------------------------------------------------------------------------------------------------
+   CARD BADGES: one pill style for every product card (matches the pack card Save % / Bestseller badges)
+   ---------------------------------------------------------------------------------------------------------------- */
+.product-card { --product-card-badge-spacing: 9px; }
+.product-card__badge-list .badge { border-radius: 999px; font-weight: 600; font-size: 10px; line-height: 1.4; padding: 2px 7px; gap: 4px; }
+.product-card__badge-list .badge svg { width: 12px; height: 12px; flex: none; }
+@media screen and (min-width: 700px) {
+  .product-card { --product-card-badge-spacing: 11px; }
+  .product-card__badge-list .badge { font-size: 11px; padding: 3px 9px; gap: 5px; }
+  .product-card__badge-list .badge svg { width: 14px; height: 14px; }
+}
+
+/* ----------------------------------------------------------------------------------------------------------------
+   CARD TITLES: same type as the pack cards, on every product card
+   ---------------------------------------------------------------------------------------------------------------- */
+.product-card__title a { font-size: 13px; line-height: 17px; font-weight: 600; color: var(--brand-heading); }
+@media screen and (min-width: 700px) { .product-card__title a { font-size: 15px; line-height: 20px; } }
+
+/* ----------------------------------------------------------------------------------------------------------------
+   H1: one style across the site (the style of the starter pack intro band)
+   Poppins bold, tight line height, teal. Headings laid over images keep the colour their section sets.
+   ---------------------------------------------------------------------------------------------------------------- */
+h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; letter-spacing: normal; color: var(--brand-heading); }
+.content-over-media h1, .content-over-media h1 * { color: inherit; }
+@media screen and (min-width: 1000px) { h1:not(.header__logo) { font-size: 34px; line-height: 42px; } }
+
+/* Headings use one teal (#197177 by default, 5.7:1 on white). Sections that set the lighter teal #4cb6ac (2.4:1) on a heading inline are corrected here. */
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4)[style*="4cb6ac" i] { color: var(--brand-heading) !important; }
+
+/* Headings that set the old light orange #ff9e57 inline use the darker brand orange (#C2560F by default, 4.5:1 on white) */
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4)[style*="ff9e57" i] { color: var(--accent-strong) !important; }
+
+/* ----------------------------------------------------------------------------------------------------------------
+   ONE CARD LAYOUT for every product card (audiobook, starter pack, default, pack card)
+   image panel / [books: preview + heart] / title (max 2 lines) / [swatches] / price left + add-to-cart right, pinned bottom
+   ---------------------------------------------------------------------------------------------------------------- */
+.product-card { display: flex; flex-direction: column; padding: 0; border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; background: #fff; row-gap: 0; }
+.product-card__figure { flex: none; background: var(--card-media-bg); }
+.product-card .product-card__image { border-radius: 0; }
+.product-card:has(.sample-wishlist) .product-card__figure > a { padding: 10px 14px; } /* book covers sit inset, not hard against the card edge */
+.product-card__details { display: flex; flex-direction: column; flex: 1; gap: 6px; padding: 8px 10px 10px; }
+.product-card__details > :nth-child(2) { white-space: normal; overflow: visible; text-overflow: clip; width: auto; }
+.product-card__info { padding: 0; order: 2; }
+.product-card__row.sample-wishlist { order: 1; width: 100%; justify-content: space-between; }
+.product-card__details > .product-card__sample, .product-card__details > .product-card__row:not(.buy-price):not(.sample-wishlist) { order: 3; }
+.product-card__row.buy-price { order: 9; margin-top: auto; width: 100%; flex-direction: row-reverse; justify-content: space-between; gap: 8px; }
+.product-card__row.buy-price .icon-circle { margin-right: 0; }
+/* titles: two lines at most, always two lines tall so the rows beneath line up */
+.product-card__title { display: block; min-height: 34px; }
+.product-card__title a, .pack-card__title a { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.pack-card__title { min-height: 34px; }
+@media screen and (min-width: 700px) {
+  .product-card { border-radius: 14px; }
+  .product-card__details { padding: 10px 12px 12px; }
+  .product-card__title, .pack-card__title { min-height: 40px; }
+}
+
+/* Same two corrections for headings built with the styled-text snippet (the colour arrives as an inner --text-color variable) */
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) [style*="--text-color: 255 158 87"] { --text-color: var(--accent-strong-rgb) !important; }
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) [style*="--text-color: 76 182 172"] { --text-color: var(--brand-heading-rgb) !important; }
+
+/* Pack card quick add: round button beside the price (same add-to-cart as the other cards), above the whole-card link */
+.pack-card__buy-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pack-card__add { position: relative; z-index: 2; margin: 0; flex: none; }
+.pack-card__add-button { display: grid; place-items: center; width: 38px; height: 38px; min-width: 38px; padding: 0; border-radius: 50%; border: 0; background: rgb(var(--button-background-primary)); color: rgb(var(--button-text-primary)); cursor: pointer; } /* identical to .icon-circle on the other cards */
+.pack-card__add-button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+
+/* Card polish: equal image panels so every row lines up, tighter preview/heart row, add-to-cart always at the far right */
+.product-card { align-items: stretch; }
+.product-card__figure { aspect-ratio: 1 / 1; position: relative; width: 100%; }
+.product-card__figure > a { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.product-card .product-card__figure img.product-card__image { width: auto !important; height: auto !important; max-width: 100% !important; max-height: 100% !important; aspect-ratio: auto !important; object-fit: contain !important; position: static !important; }
+.product-card__row.sample-wishlist { gap: 6px; font-size: 13px; }
+.product-card__row.buy-price > form { flex: none; margin: 0; }
+.product-card__row.buy-price > :not(form) { flex: 1 1 auto; min-width: 0; }
+.product-card__figure { min-height: 0; overflow: hidden; }
+
+/* Pack intro: tiles are links that scroll to the first pack of that kind; hero image stretches to the explainer height on desktop */
+a.pack-intro__tile { color: inherit; text-decoration: none; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+a.pack-intro__tile:hover { border-color: var(--brand-heading); box-shadow: 0 2px 8px rgba(25, 113, 119, .15); }
+a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+@media screen and (min-width: 1000px) {
+  .pack-intro__explainer { padding: 0; align-self: stretch; }
+  .pack-intro__text { align-self: center; }
+  .pack-intro__tiles { flex: 1 1 auto; }
+  .pack-intro__image { align-self: stretch; }
+  .pack-intro__image img { width: 220px; height: 100%; min-height: 220px; }
+}

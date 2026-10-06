@@ -2,6 +2,7 @@
 
 // voxblock.js
 import { Delegate } from "{{ 'vendor.min.js' | asset_url }}";
+import { formatMoney } from "{{ 'theme.js' | asset_url }}";
 
 // Encapsulating the module in an IIFE is not strictly necessary with ES6+ modules,
 // but for the sake of direct integration into a script tag or existing build process, we'll keep functions scoped.
@@ -54,3 +55,177 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// OFFER PRICE (snippets/offer-price.liquid)
+// Keeps the tag-driven automatic-discount "offer price" correct when a shopper switches variant. The tag decision is
+// made server side (the element only exists for products carrying the offer tag); the amount off comes from the
+// element's amount-off attribute, which is the theme setting offer_amount_off.
+// ----------------------------------------------------------------------------------------------------------------
+const offerMoneyFormat = () => window.themeVariables.settings.currencyCodeEnabled
+    ? window.themeVariables.settings.moneyWithCurrencyFormat
+    : window.themeVariables.settings.moneyFormat;
+
+const offerState = (variant, amountOff) => {
+    const price = variant['price'];
+    const compareAt = variant['compare_at_price'] || 0;
+    const onOffer = price > amountOff;
+    return {
+        onOffer,
+        now: onOffer ? price - amountOff : price,
+        // higher of price / compare-at, so only one strikethrough is ever shown
+        was: onOffer ? Math.max(price, compareAt) : compareAt,
+        showWas: onOffer || compareAt > price,
+    };
+};
+
+class OfferVariantElement extends HTMLElement {
+    connectedCallback() {
+        this._onVariantChanged = (event) => this.update(event.detail.variant, Number(this.getAttribute('amount-off')) || 0);
+        this._form = document.forms[this.getAttribute('form')];
+        this._form?.addEventListener('variant:change', this._onVariantChanged);
+    }
+    disconnectedCallback() {
+        this._form?.removeEventListener('variant:change', this._onVariantChanged);
+    }
+}
+
+class OfferPrice extends OfferVariantElement {
+    update(variant, amountOff) {
+        if (!variant) return;
+        const state = offerState(variant, amountOff);
+        const set = (selector, html) => {
+            const el = this.querySelector(selector);
+            const label = el.querySelector('.sr-only');
+            el.replaceChildren(...(label ? [label] : []), document.createRange().createContextualFragment(html));
+        };
+        set('[data-offer-now]', formatMoney(state.now, offerMoneyFormat()));
+        set('[data-offer-was]', formatMoney(state.was, offerMoneyFormat()));
+        this.querySelector('[data-offer-was]').hidden = !state.showWas;
+        this.querySelector('[data-offer-now]').classList.toggle('offer-price__now--regular', !state.onOffer);
+    }
+}
+
+class OfferBadges extends OfferVariantElement {
+    update(variant, amountOff) {
+        if (!variant) return;
+        const state = offerState(variant, amountOff);
+        this.hidden = !state.onOffer;
+        if (state.onOffer && state.was > 0) {
+            const pct = Math.round((state.was - state.now) * 100 / state.was);
+            this.querySelector('[data-offer-sale]').textContent = this.getAttribute('sale-template').replace('__PERCENT__', pct);
+        }
+    }
+}
+
+if (!window.customElements.get('offer-price')) window.customElements.define('offer-price', OfferPrice);
+if (!window.customElements.get('offer-badges')) window.customElements.define('offer-badges', OfferBadges);
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// BUNDLE PRICE (snippets/bundle-price.liquid, product page)
+// Keeps the price, "saves N%" chip and "Bought separately" line right when a pack's variant changes.
+// ----------------------------------------------------------------------------------------------------------------
+class BundlePrice extends HTMLElement {
+    connectedCallback() {
+        this._onVariantChanged = (event) => this.update(event.detail.variant);
+        this._form = document.forms[this.getAttribute('form')];
+        this._form?.addEventListener('variant:change', this._onVariantChanged);
+    }
+    disconnectedCallback() {
+        this._form?.removeEventListener('variant:change', this._onVariantChanged);
+    }
+    update(variant) {
+        if (!variant) return;
+        const price = variant['price'];
+        const compareAt = variant['compare_at_price'] || 0;
+        const format = offerMoneyFormat();
+
+        const now = this.querySelector('[data-bundle-now]');
+        const label = now.querySelector('.sr-only');
+        now.replaceChildren(...(label ? [label] : []), document.createRange().createContextualFragment(formatMoney(price, format)));
+
+        const hasSaving = compareAt > price;
+        const chip = this.querySelector('[data-bundle-chip]');
+        const was = this.querySelector('[data-bundle-was]');
+        chip.hidden = was.hidden = !hasSaving;
+        if (hasSaving) {
+            chip.textContent = this.getAttribute('chip-template').replace('__PERCENT__', Math.round((compareAt - price) * 100 / compareAt));
+            was.textContent = this.getAttribute('was-template').replace('__PRICE__', formatMoney(compareAt, format).replace(/<[^>]*>/g, ''));
+        }
+    }
+}
+
+if (!window.customElements.get('bundle-price')) window.customElements.define('bundle-price', BundlePrice);
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// PACK AGE BAR (snippets/collection-age-bar.liquid)
+// The age / gift buttons are Search & Discovery filters. Clicking one re-uses the theme's own AJAX ("facet:update",
+// handled in theme.js) so the page does not reload, and sends a PostHog event. aria-pressed is updated straight away and
+// then re-rendered by the server with the real state when the section comes back.
+// ----------------------------------------------------------------------------------------------------------------
+const trackCollectionFilterUsed = (filter, collection) => {
+    if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    try {
+        window.posthog.capture('collection_filter_used', { filter, collection });
+    } catch (e) { /* analytics must never block filtering */ }
+};
+
+document.addEventListener('click', (event) => {
+    const chip = event.target.closest('[data-pack-chip]');
+    const form = chip?.closest('[data-pack-bar-form]');
+    const bar = chip?.closest('[data-pack-bar]');
+    const section = chip?.closest('.shopify-section');
+    if (!chip || !form || !bar || !section) return;
+
+    // The buttons are real submit buttons (they work without JavaScript); with JavaScript we filter in place instead
+    event.preventDefault();
+
+    const param = chip.dataset.param || '';
+    const wasPressed = chip.getAttribute('aria-pressed') === 'true';
+    const selectAll = !param || wasPressed; // "All packs", or pressing the active button again
+
+    const url = new URL(window.location.href);
+    url.hash = '';
+    ['page', 'section_id', form.dataset.ageParam, form.dataset.giftParam].forEach((key) => key && url.searchParams.delete(key));
+    if (!selectAll) url.searchParams.set(param, chip.dataset.value);
+
+    form.querySelectorAll('[data-pack-chip]').forEach((button) => {
+        const pressed = selectAll ? !button.dataset.param : button === chip;
+        button.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    });
+
+    url.searchParams.set('section_id', section.id.replace('shopify-section-', ''));
+    chip.dispatchEvent(new CustomEvent('facet:update', { bubbles: true, detail: { url } }));
+    trackCollectionFilterUsed(selectAll ? 'all' : chip.dataset.filter, bar.dataset.collection);
+});
+
+
+// Pack card: the colour swatch chooses which variant the round add-to-cart button adds
+document.addEventListener('change', (event) => {
+    const radio = event.target.closest?.('.pack-card__swatches input[type="radio"]');
+    const card = radio?.closest('.pack-card');
+    const idInput = card?.querySelector('[data-pack-variant-id]');
+    const mapInput = card?.querySelector('[data-pack-variant-map]');
+    if (!idInput || !mapInput) return;
+    const match = mapInput.value.split(';').map((pair) => pair.split(/=(?=[^=]*$)/)).find(([title]) => title === radio.value);
+    if (match) idInput.value = match[1];
+});
+
+
+// Pack intro tiles: scroll to the first intro / starter pack, stopping below the sticky header and filter bar
+document.addEventListener('click', (event) => {
+    const tile = event.target.closest('[data-pack-scroll]');
+    if (!tile) return;
+    const card = document.querySelector(`.pack-card[data-pack-kind="${tile.dataset.packScroll}"]`);
+    if (!card) return; // no such pack: let the link jump to the grid
+    event.preventDefault();
+    const bar = document.querySelector('[data-pack-bar]');
+    const stickyArea = bar ? parseFloat(getComputedStyle(bar).top) || 0 : 0; // resolved px offset of the sticky bar = header (+ announcement) height
+    const top = card.getBoundingClientRect().top + window.scrollY - stickyArea - (bar ? bar.offsetHeight : 0) - 12;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    card.querySelector('.pack-card__link')?.focus({ preventScroll: true });
+});

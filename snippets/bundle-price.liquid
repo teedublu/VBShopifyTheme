@@ -1,0 +1,114 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+BUNDLE PRICE
+----------------------------------------------------------------------------------------------------------------------
+
+For starter / player packs and audiobook bundles, the compare-at price is the "sum of the components". Instead of a plain
+strikethrough, this snippet uses it to emphasise what the shopper saves by buying the bundle:
+
+  price card:   £79.99  [saves 21%]
+                Bought separately £100.96
+  badge:        [box icon] Bundle saves £20.97
+
+Outputs NOTHING unless the product type is listed in settings.bundle_product_types and the (cheapest / given) variant
+has a compare-at price above its price, so callers can fall back to their existing price rendering.
+
+Layout note: the "bought separately" line is absolutely positioned (see voxblock.css) so it never changes card height.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product (or pass a variant and the product is read from it)
+* variant: optional. If omitted the cheapest variant is used (product cards)
+* part: "price" (default) | "badge" | "saving" (just the formatted amount saved) | "is_bundle" (outputs "true" if the
+  product type is a bundle type, whatever its prices)
+* form_id: product page only. If set (together with variant), the output is a <bundle-price> element that updates when
+  the variant changes. It renders when any variant has a saving, hiding the chip/caption while the selected one has none
+{%- endcomment -%}
+
+{%- liquid
+  assign bundle_product = product | default: variant.product
+  assign bundle_ok = false
+  assign bundle_type_ok = false
+
+  if settings.bundle_pricing_enabled and bundle_product.type != blank
+    assign bundle_type_key = bundle_product.type | strip | downcase
+    assign bundle_types = settings.bundle_product_types | downcase | split: ','
+    for bundle_type in bundle_types
+      assign bundle_type_check = bundle_type | strip
+      if bundle_type_check == bundle_type_key
+        assign bundle_type_ok = true
+      endif
+    endfor
+  endif
+
+  if bundle_type_ok
+    assign bundle_variant = variant
+    if bundle_variant == blank
+      assign bundle_variant = bundle_product.variants | sort: 'price' | first
+    endif
+    if bundle_variant.compare_at_price > bundle_variant.price
+      assign bundle_ok = true
+      assign bundle_saving = bundle_variant.compare_at_price | minus: bundle_variant.price
+    elsif form_id != blank
+      comment
+        Product page: the selected variant has no saving, but another variant may, so keep the element (hidden parts)
+      endcomment
+      for other_variant in bundle_product.variants
+        if other_variant.compare_at_price > other_variant.price
+          assign bundle_ok = true
+        endif
+      endfor
+      assign bundle_saving = 0
+    endif
+  endif
+-%}
+
+{%- if part == 'is_bundle' -%}
+  {%- if bundle_type_ok -%}true{%- endif -%}
+{%- elsif bundle_ok -%}
+  {%- if part == 'saving' -%}
+    {%- if bundle_saving > 0 -%}{{- bundle_saving | money -}}{%- endif -%}
+  {%- elsif part == 'badge' -%}
+    <span class="badge badge--bundle">
+      {%- render 'icon' with 'picto-box', width: 16, height: 16 -%}
+      {%- assign bundle_saving_badge = bundle_saving | money -%}
+      <span>{{ 'product.bundle.saves_badge' | t: amount: bundle_saving_badge }}</span>
+    </span>
+  {%- else -%}
+    {%- assign bundle_has_saving = false -%}
+    {%- assign bundle_saving_pct = 0 -%}
+    {%- if bundle_saving > 0 -%}
+      {%- assign bundle_has_saving = true -%}
+      {%- assign bundle_saving_pct = bundle_saving | times: 100.0 | divided_by: bundle_variant.compare_at_price | round -%}
+    {%- endif -%}
+    {%- capture bundle_price_html -%}{%- if settings.currency_code_enabled -%}{{- bundle_variant.price | money_with_currency -}}{%- else -%}{{- bundle_variant.price | money -}}{%- endif -%}{%- endcapture -%}
+    {%- capture bundle_compare_html -%}{%- if settings.currency_code_enabled -%}{{- bundle_variant.compare_at_price | money_with_currency -}}{%- else -%}{{- bundle_variant.compare_at_price | money -}}{%- endif -%}{%- endcapture -%}
+
+    {%- if form_id != blank -%}
+      {%- comment -%}PRODUCT PAGE: normal flow (no height constraint), updated on variant change by assets/voxblock.js{%- endcomment -%}
+      <bundle-price form="{{ form_id }}" chip-template="{{ 'product.bundle.saves_chip' | t: percent: '__PERCENT__' | escape }}" was-template="{{ 'product.bundle.bought_separately' | t: price: '__PRICE__' | escape }}" class="bundle-price bundle-price--page">
+        <span class="bundle-price__now text-lg" data-bundle-now>
+          <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
+          {{- bundle_price_html -}}
+        </span>
+        <span class="bundle-price__chip" data-bundle-chip {% unless bundle_has_saving %}hidden{% endunless %}>{{ 'product.bundle.saves_chip' | t: percent: bundle_saving_pct }}</span>
+        <span class="bundle-price__was" data-bundle-was {% unless bundle_has_saving %}hidden{% endunless %}>{{ 'product.bundle.bought_separately' | t: price: bundle_compare_html }}</span>
+      </bundle-price>
+    {%- else -%}
+      {%- comment -%}PRODUCT CARD: the "bought separately" line is absolutely positioned so card height never changes{%- endcomment -%}
+      <span class="bundle-price">
+        <span class="bundle-price__now text-lg {% if bundle_product.price_varies and variant == blank %}from-price{% endif %}">
+          <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
+          {{- bundle_price_html -}}
+        </span>
+        <span class="bundle-price__chip">{{ 'product.bundle.saves_chip' | t: percent: bundle_saving_pct }}</span>
+        <span class="bundle-price__was">
+          <span class="bundle-price__was-long">{{ 'product.bundle.bought_separately' | t: price: bundle_compare_html }}</span>
+          <span class="bundle-price__was-short">{{ 'product.bundle.worth' | t: price: bundle_compare_html }}</span>
+        </span>
+      </span>
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

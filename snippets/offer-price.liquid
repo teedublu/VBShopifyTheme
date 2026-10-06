@@ -1,0 +1,122 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+OFFER PRICE
+----------------------------------------------------------------------------------------------------------------------
+
+Storefront display of the automatic "Online offer" discount. Product and collection pages cannot see automatic discounts
+(only cart and checkout can), so this snippet mirrors the discount from a product tag + a fixed amount off.
+
+Single source of truth: the product tags in settings.offer_tag / offer_tag_2. The Shopify "Offer" smart collections (rule:
+tag equals the same tag) are what the automatic discounts target. settings.offer_amount_off / offer_amount_off_2 MUST equal
+the matching discount amounts.
+
+Outputs NOTHING when the product is not on offer, so callers can fall back to their existing price rendering:
+  {%- capture offer_html -%}{%- render 'offer-price', product: product -%}{%- endcapture -%}
+  {%- if offer_html != blank -%}{{ offer_html }}{%- else -%}...existing...{%- endif -%}
+
+Never use this for cart or checkout lines: use line_item.original_price / final_price / discount allocations there.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product (or pass a variant and the product is read from it)
+* variant: optional. If omitted the cheapest variant is used (product cards)
+* part: "price" (default) | "badges" | "amount" (plain text of the price the shopper will actually pay) | "tagged" (outputs "true" if the product carries an enabled offer tag)
+* size: "lg" for the large price style
+* form_id: if set, the output is updated when the variant changes in that form (badges are then rendered hidden
+  when the selected variant is not on offer, so the script can reveal them after a variant switch)
+{%- endcomment -%}
+
+{%- liquid
+  assign offer_product = product | default: variant.product
+  assign offer_amount_off = 0
+  assign offer_tagged = false
+
+  if settings.offer_enabled and offer_product.tags.size > 0
+    assign offer_product_tags = offer_product.tags | join: '||' | downcase | prepend: '||' | append: '||'
+
+    comment
+      Two offer tiers (tag + amount off). Each must match an automatic discount targeting a smart collection with
+      the same tag. If a product carries both tags, the larger amount wins (as Shopify applies the better discount).
+    endcomment
+    assign offer_tag_1 = settings.offer_tag | strip | downcase
+    assign offer_amount_1 = settings.offer_amount_off | default: 0 | plus: 0
+    if offer_tag_1 != blank and offer_amount_1 > 0
+      assign offer_tag_key = '||' | append: offer_tag_1 | append: '||'
+      if offer_product_tags contains offer_tag_key
+        assign offer_tagged = true
+        assign offer_amount_off = offer_amount_1
+      endif
+    endif
+
+    assign offer_tag_2 = settings.offer_tag_2 | strip | downcase
+    assign offer_amount_2 = settings.offer_amount_off_2 | default: 0 | plus: 0
+    if offer_tag_2 != blank and offer_amount_2 > 0
+      assign offer_tag_key = '||' | append: offer_tag_2 | append: '||'
+      if offer_product_tags contains offer_tag_key and offer_amount_2 > offer_amount_off
+        assign offer_tagged = true
+        assign offer_amount_off = offer_amount_2
+      endif
+    endif
+  endif
+
+  assign offer_variant = variant
+  if offer_variant == blank and offer_tagged
+    assign offer_variant = offer_product.variants | sort: 'price' | first
+  endif
+
+  assign on_offer = false
+  if offer_tagged and offer_variant.price > offer_amount_off
+    assign on_offer = true
+  endif
+-%}
+
+{%- if part == 'tagged' -%}
+  {%- if offer_tagged -%}true{%- endif -%}
+{%- elsif part == 'amount' -%}
+  {%- if on_offer -%}
+    {%- assign offer_amount_value = offer_variant.price | minus: offer_amount_off -%}
+  {%- else -%}
+    {%- assign offer_amount_value = offer_variant.price | default: offer_product.price -%}
+  {%- endif -%}
+  {%- if settings.currency_code_enabled -%}{{- offer_amount_value | money_with_currency -}}{%- else -%}{{- offer_amount_value | money -}}{%- endif -%}
+{%- elsif on_offer or offer_tagged and part == 'badges' and form_id != blank -%}
+
+  {%- liquid
+    assign offer_price = offer_variant.price | minus: offer_amount_off
+    assign offer_reference_price = offer_variant.price
+    if offer_variant.compare_at_price > offer_reference_price
+      assign offer_reference_price = offer_variant.compare_at_price
+    endif
+    assign offer_saving_pct = 0
+    if offer_reference_price > 0
+      assign offer_saving_pct = offer_reference_price | minus: offer_price | times: 100.0 | divided_by: offer_reference_price | round
+    endif
+    assign offer_label = settings.offer_badge_label | default: 'Online offer'
+    assign offer_sale_label = 'product.offer.sale_badge' | t: percent: offer_saving_pct
+  -%}
+
+  {%- if part == 'badges' -%}
+    {%- comment -%}Rendered inside a badge list: two sibling badges, stacked by the card's grid{%- endcomment -%}
+    <offer-badges {% if form_id != blank %}form="{{ form_id }}"{% endif %} amount-off="{{ offer_amount_off }}" sale-template="{{ 'product.offer.sale_badge' | t: percent: '__PERCENT__' | escape }}" class="offer-badges contents" {% unless on_offer %}hidden{% endunless %}>
+      <span class="badge badge--offer" data-offer-label>{{ offer_label | escape }}</span>
+      <span class="badge badge--offer-sale" data-offer-sale>{{ offer_sale_label }}</span>
+    </offer-badges>
+  {%- else -%}
+    {%- capture offer_price_html -%}{%- if settings.currency_code_enabled -%}{{- offer_price | money_with_currency -}}{%- else -%}{{- offer_price | money -}}{%- endif -%}{%- endcapture -%}
+    {%- capture offer_reference_html -%}{%- if settings.currency_code_enabled -%}{{- offer_reference_price | money_with_currency -}}{%- else -%}{{- offer_reference_price | money -}}{%- endif -%}{%- endcapture -%}
+
+    <offer-price {% if form_id != blank %}form="{{ form_id }}"{% endif %} amount-off="{{ offer_amount_off }}" class="offer-price {% if size == 'lg' %}offer-price--lg{% endif %}">
+      {%- if offer_product.price_varies and variant == blank -%}<span class="offer-price__from">{{ 'product.offer.from' | t }}</span>{%- endif -%}
+      <span class="offer-price__now {% if size == 'lg' %}text-lg{% endif %}" data-offer-now>
+        <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
+        {{- offer_price_html -}}
+      </span>
+      <span class="offer-price__was text-subdued line-through" data-offer-was>
+        <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
+        {{- offer_reference_html -}}
+      </span>
+    </offer-price>
+  {%- endif -%}
+{%- endif -%}

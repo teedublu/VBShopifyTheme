@@ -9,6 +9,27 @@
  */
 {
   "sections": {
+    "pack_intro": {
+      "type": "collection-pack-intro",
+      "settings": {
+        "background": "#fff7f0",
+        "eyebrow": "Starter packs",
+        "heading": "Stories they can hold. Everything to start, in one box.",
+        "text": "Voxblock is a screen-free audiobook player. Your child puts a story block on the player and presses play. No downloads, no subscription.",
+        "desktop_suffix": "British designed.",
+        "image": "shopify://shop_images/SP_Page-Hero_Image-mob-1300x1600.jpg",
+        "image_alt": "Voxblock player playing Charlie and the Chocolate Factory, with Matilda and George's Marvellous Medicine",
+        "intro_title": "Intro packs",
+        "intro_contents": "Player + 1 story",
+        "starter_title": "Starter packs",
+        "starter_contents": "Player + 3 stories",
+        "intro_product": "paddington-bear-intro-pack",
+        "starter_product": "young-explorers-starter-pack",
+        "note": "Each pack includes a bumper and charging cable.",
+        "intro_tag": "Intro Pack",
+        "player_handle": "voxblock-player"
+      }
+    },
     "image_with_text_overlay_rapDMw": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -60,49 +81,6 @@
         "overlay_opacity": 0
       }
     },
-    "rich_text_BAVNeG": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_n8jhbw": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "text": "Subheading"
-          }
-        },
-        "heading_xL7A7w": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "The quickest way to get started with screen-free audiobooks is to choose one of our curated starter packs, including a Voxblock player, between one to three audiobooks, a protective bumper and a charging cable.",
-            "heading_tag": "h6",
-            "text_color": "#ff9e57",
-            "gradient": ""
-          }
-        },
-        "richtext_7d3b9F": {
-          "type": "richtext",
-          "disabled": true,
-          "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_n8jhbw",
-        "heading_xL7A7w",
-        "richtext_7d3b9F"
-      ],
-      "settings": {
-        "full_width": true,
-        "use_mo": true,
-        "content_width": "large",
-        "text_position": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
-    },
     "banner": {
       "type": "collection-banner",
       "disabled": true,
@@ -125,42 +103,6 @@
         "overlay_opacity": 30
       }
     },
-    "media_with_text_rGkHtT": {
-      "type": "media-with-text",
-      "blocks": {
-        "image_PadnQa": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/SP_Page-Hero_Image-mob-1300x1600.jpg",
-            "media_width": 50,
-            "media_position": "end",
-            "text_position": "place-self-center text-center",
-            "icon": "none",
-            "icon_width": 48,
-            "subheading": "",
-            "title": "The easiest way to start",
-            "content": "<p>Our Starter Pack combines the Voxblock player with a curated selection of stories to help children enjoy reading from day one.</p>",
-            "link_text": "",
-            "link_url": "",
-            "background": "#ffffff",
-            "background_gradient": "",
-            "text_color": "#000000",
-            "heading_text_color": "#4cb6ac",
-            "text_gradient": "",
-            "button_background": "",
-            "button_text_color": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_PadnQa"
-      ],
-      "name": "Media with text",
-      "settings": {
-        "full_width": true,
-        "spacing": "none"
-      }
-    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -180,7 +122,8 @@
             "text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 20
-          }
+          },
+          "disabled": true
         },
         "promotion_image_gkWQ36": {
           "type": "promotion_image",
@@ -214,7 +157,13 @@
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
-        "open_first_filter_group": false
+        "open_first_filter_group": false,
+        "card_style": "pack",
+        "age_bar_enabled": true,
+        "age_filter_param": "filter.p.m.book.age_groups",
+        "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
+        "gift_button_label": "Gift sets",
+        "gift_filter_param": "filter.p.m.pack.gift_set"
       }
     },
     "testimonials_n8PqFn": {
@@ -390,11 +339,10 @@
     }
   },
   "order": [
-    "image_with_text_overlay_rapDMw",
-    "rich_text_BAVNeG",
-    "banner",
-    "media_with_text_rGkHtT",
+    "pack_intro",
     "main",
+    "image_with_text_overlay_rapDMw",
+    "banner",
     "testimonials_n8PqFn",
     "image_with_text_overlay_kCDwBE",
     "faq_t9iAtE"

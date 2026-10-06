@@ -1,0 +1,117 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COLLECTION AGE BAR (starter pack collection redesign)
+----------------------------------------------------------------------------------------------------------------------
+
+Sticky bar under the header: age buttons (All packs / Under 5 / 5 to 8 / 10+ / Gift sets), the product count, the sort
+control and, on desktop, the "Help me choose" link.
+
+The buttons are driven by Shopify Search & Discovery filters, never by hard-coded product lists:
+* age buttons: values of the filter in section.settings.age_filter_param (default filter.p.m.book.age_groups), matched
+  by their label (section.settings.age_buttons: one "Button label|Filter value label" per line)
+* gift button: the "true" value of the filter in section.settings.gift_filter_param (a yes/no product metafield that is
+  enabled as a Search & Discovery filter)
+A button whose filter value does not exist for this collection is left out, so nothing is shown until the data exists.
+
+Filtering reuses the theme's own AJAX (the "facet:update" event handled in theme.js), so the page does not reload.
+Without JavaScript the buttons are submit buttons of a GET form and simply reload the page with the filter applied.
+
+********************************************
+Supported variables
+********************************************
+
+* results: the collection
+{%- endcomment -%}
+
+{%- liquid
+  assign age_param = section.settings.age_filter_param | strip
+  assign age_filter = results.filters | where: 'param_name', age_param | first
+  assign gift_param = section.settings.gift_filter_param | strip
+  assign gift_filter = results.filters | where: 'param_name', gift_param | first
+
+  assign selected_sort_by_value = results.sort_by | default: results.default_sort_by
+  assign selected_sort_by = results.sort_options | where: 'value', selected_sort_by_value | first
+
+  assign any_pressed = false
+  assign chip_count = 0
+-%}
+
+{%- capture chips_html -%}
+  {%- if age_filter != blank -%}
+    {%- assign button_lines = section.settings.age_buttons | newline_to_br | split: '<br />' -%}
+    {%- for button_line in button_lines -%}
+      {%- assign line_parts = button_line | strip | split: '|' -%}
+      {%- assign button_label = line_parts[0] | strip -%}
+      {%- assign match_label = line_parts[1] | default: line_parts[0] | strip | downcase -%}
+      {%- if button_label == blank -%}{%- continue -%}{%- endif -%}
+
+      {%- for filter_value in age_filter.values -%}
+        {%- assign value_label = filter_value.label | strip | downcase -%}
+        {%- if value_label == match_label and filter_value.count > 0 or value_label == match_label and filter_value.active -%}
+          {%- if filter_value.active -%}{%- assign any_pressed = true -%}{%- endif -%}
+          {%- assign chip_count = chip_count | plus: 1 -%}
+          <button type="submit" name="{{ age_param }}" value="{{ filter_value.value | escape }}" class="pack-chip" aria-pressed="{{ filter_value.active }}" data-pack-chip data-param="{{ age_param }}" data-value="{{ filter_value.value | escape }}" data-filter="{{ button_label | escape }}">{{ button_label | escape }}</button>
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if gift_filter != blank -%}
+    {%- for filter_value in gift_filter.values -%}
+      {%- assign gift_value_key = filter_value.value | downcase -%}
+      {%- assign gift_label_key = filter_value.label | downcase -%}
+      {%- if gift_value_key == 'true' or gift_value_key == '1' or gift_label_key == 'true' or gift_label_key == 'yes' -%}
+        {%- if filter_value.count > 0 or filter_value.active -%}
+          {%- if filter_value.active -%}{%- assign any_pressed = true -%}{%- endif -%}
+          {%- assign chip_count = chip_count | plus: 1 -%}
+          <button type="submit" name="{{ gift_param }}" value="{{ filter_value.value | escape }}" class="pack-chip" aria-pressed="{{ filter_value.active }}" data-pack-chip data-param="{{ gift_param }}" data-value="{{ filter_value.value | escape }}" data-filter="{{ section.settings.gift_button_label | escape }}">{{ section.settings.gift_button_label | escape }}</button>
+        {%- endif -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- capture sort_by_popover_id -%}popover-sort-by-{{ section.id }}{%- endcapture -%}
+
+<div class="pack-bar" data-pack-bar data-collection="{{ results.handle | escape }}">
+  {%- if chip_count > 0 -%}
+    <form method="get" action="{{ results.url }}" class="pack-bar__chips" aria-label="{{ 'collection.pack_bar.label' | t }}" role="group" data-pack-bar-form data-age-param="{{ age_param | escape }}" data-gift-param="{{ gift_param | escape }}">
+      {%- if results.sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ results.sort_by | escape }}">{%- endif -%}
+      <button type="submit" formaction="{{ results.url }}" class="pack-chip" aria-pressed="{% unless any_pressed %}true{% else %}false{% endunless %}" data-pack-chip data-param="" data-value="" data-filter="all">{{ 'collection.pack_bar.all_packs' | t }}</button>
+      {{- chips_html -}}
+    </form>
+  {%- endif -%}
+
+  <div class="pack-bar__meta">
+    <p class="pack-bar__count" aria-live="polite">{{ 'collection.pack_bar.count' | t: count: results.products_count }}</p>
+
+    {%- if section.settings.help_url != blank -%}
+      <a href="{{ section.settings.help_url }}" class="pack-bar__help">{{ 'collection.pack_bar.help_link' | t }}</a>
+    {%- endif -%}
+
+    {%- if section.settings.show_sort_by and results.sort_options.size > 0 -%}
+      <facet-sort-by class="sort-by-facet pack-bar__sort">
+        <span class="bold">{{ 'collection.faceting.sort_by' | t }}:</span>
+
+        <button type="button" class="text-with-icon group pack-bar__sort-button" aria-controls="{{ sort_by_popover_id }}" aria-expanded="false">
+          <span id="{{ sort_by_popover_id }}-value" class="reversed-link">{{- selected_sort_by.name -}}</span>
+          <span class="circle-chevron group-hover:colors group-expanded:rotate">{%- render 'icon' with 'chevron-bottom-small', direction_aware: true -%}</span>
+        </button>
+
+        <x-popover id="{{ sort_by_popover_id }}" class="popover" close-on-listbox-select anchor-horizontal="end" anchor-vertical="end">
+          <x-listbox class="popover-listbox" aria-owns="{{ sort_by_popover_id }}-value">
+            {%- for sort_option in results.sort_options -%}
+              {%- if sort_option.name != blank -%}
+                <button type="button" class="popover-listbox__option group" role="option" value="{{ sort_option.value }}" {% if sort_option.value == selected_sort_by_value %}aria-selected="true"{% endif %}>
+                  <span class="reversed-link">{{ sort_option.name }}</span>
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </x-listbox>
+        </x-popover>
+      </facet-sort-by>
+    {%- endif -%}
+  </div>
+</div>

@@ -309,6 +309,101 @@
       },
       {
         "type": "header",
+        "content": "Brand colours (headings, cards, prices)"
+      },
+      {
+        "type": "color",
+        "id": "accent_strong",
+        "label": "Emphasis orange",
+        "info": "Prices, badges and headings on white. Darker than the button orange so text passes contrast (4.5:1).",
+        "default": "#C2560F"
+      },
+      {
+        "type": "color",
+        "id": "brand_heading",
+        "label": "Heading teal",
+        "info": "H1 and card titles, age buttons, links in the starter pack intro.",
+        "default": "#197177"
+      },
+      {
+        "type": "color",
+        "id": "brand_text",
+        "label": "Card text",
+        "default": "#2a555a"
+      },
+      {
+        "type": "color",
+        "id": "card_border",
+        "label": "Card and button border",
+        "default": "#d6e6e7"
+      },
+      {
+        "type": "color",
+        "id": "card_media_background",
+        "label": "Card image background",
+        "default": "#F2F7F7"
+      },
+      {
+        "type": "header",
+        "content": "Badge colours (custom badges)"
+      },
+      {
+        "type": "color",
+        "id": "badge_new",
+        "label": "New badge",
+        "info": "Text colour (white or black) and the slight top-to-bottom gradient are worked out from this colour.",
+        "default": "#f8eb1f"
+      },
+      {
+        "type": "color",
+        "id": "badge_teachers",
+        "label": "Teachers badge",
+        "default": "#164c99"
+      },
+      {
+        "type": "color",
+        "id": "badge_coming",
+        "label": "Coming soon badge",
+        "default": "#0bdcc6"
+      },
+      {
+        "type": "color",
+        "id": "badge_just",
+        "label": "Just in badge",
+        "default": "#3ad30a"
+      },
+      {
+        "type": "color",
+        "id": "badge_book",
+        "label": "Book badge",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "badge_black",
+        "label": "Black badge",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "badge_offer",
+        "label": "Online offer badge",
+        "default": "#1E4A4C"
+      },
+      {
+        "type": "color",
+        "id": "badge_offer_sale",
+        "label": "Offer sale badge",
+        "default": "#C8232C"
+      },
+      {
+        "type": "color",
+        "id": "badge_bundle",
+        "label": "Bundle saves badge",
+        "default": "#0F7B63"
+      },
+      {
+        "type": "header",
         "content": "Primary button"
       },
       {
@@ -819,6 +914,87 @@
         "label": "Free shipping minimum amount",
         "info": "Indicate the value in your store main currency.",
         "default": "50"
+      }
+    ]
+  },
+  {
+    "name": "Offer pricing",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Shows an automatic-discount offer price (e.g. £5.99 instead of £9.99) on product cards, search results and product pages for products carrying the offer tag. Cart and checkout always use Shopify's real discount data."
+      },
+      {
+        "type": "checkbox",
+        "id": "offer_enabled",
+        "label": "Show offer price on storefront",
+        "default": false,
+        "info": "Display only. Turning this off does NOT stop the discount: also disable the automatic discount in Shopify admin."
+      },
+      {
+        "type": "text",
+        "id": "offer_tag",
+        "label": "Offer product tag",
+        "default": "offer-599",
+        "info": "Must match the product tag used by the \"Offer – £5.99\" smart collection that the automatic discount targets."
+      },
+      {
+        "type": "number",
+        "id": "offer_amount_off",
+        "label": "Amount off per item (pence)",
+        "default": 400,
+        "info": "MUST match the amount of the automatic discount in Shopify admin (400 = £4.00 off). Value is in minor currency units."
+      },
+      {
+        "type": "header",
+        "content": "Second offer (optional)"
+      },
+      {
+        "type": "text",
+        "id": "offer_tag_2",
+        "label": "Second offer product tag",
+        "default": "offer-799",
+        "info": "For a second price point (e.g. 7.99 products listed at 9.99). Leave empty to disable."
+      },
+      {
+        "type": "number",
+        "id": "offer_amount_off_2",
+        "label": "Second offer: amount off per item (pence)",
+        "default": 200,
+        "info": "MUST match the second automatic discount (200 = 2.00 off). If a product has both tags the larger amount is used."
+      },
+      {
+        "type": "header",
+        "content": "Badge"
+      },
+      {
+        "type": "text",
+        "id": "offer_badge_label",
+        "label": "Offer badge label",
+        "default": "Online offer",
+        "info": "Use the same wording as the automatic discount title so the cart matches."
+      }
+    ]
+  },
+  {
+    "name": "Bundle pricing",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "For packs and bundles whose compare-at price is the total of the parts, show what the shopper saves (badge, \"saves\" chip and \"Bought separately\" line) instead of a plain strikethrough."
+      },
+      {
+        "type": "checkbox",
+        "id": "bundle_pricing_enabled",
+        "label": "Show bundle savings on product cards",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bundle_product_types",
+        "label": "Product types treated as bundles",
+        "default": "Starter Pack, Audiobooks Bundle",
+        "info": "Comma separated. Only products with a compare-at price above their price are affected."
       }
     ]
   },
