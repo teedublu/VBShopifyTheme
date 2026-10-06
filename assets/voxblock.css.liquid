@@ -498,7 +498,8 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 @media screen and (min-width: 700px) { .pack-card__add-button { width: 40px; height: 40px; } }
 
 /* Card polish: equal image panels so every row lines up, tighter preview/heart row, add-to-cart always at the far right */
-.product-card__figure { aspect-ratio: 1 / 1; position: relative; }
+.product-card { align-items: stretch; }
+.product-card__figure { aspect-ratio: 1 / 1; position: relative; width: 100%; }
 .product-card__figure > a { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .product-card__figure img.product-card__image--primary { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
 .product-card__row.sample-wishlist { gap: 6px; font-size: 13px; }
