@@ -164,6 +164,14 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
             person_profiles: 'always',
             custom_campaign_params: ['gad_campaignid', 'gbraid', 'wbraid','utm_id'],
             session_idle_timeout_seconds: 5400, // 90 min: keep "left the tab, came back" as one session
+            loaded: function (ph) {
+              window.Zigpoll = window.Zigpoll || {};
+              window.Zigpoll.metadata = Object.assign({}, window.Zigpoll.metadata, {
+                posthog_distinct_id: ph.get_distinct_id(),
+                posthog_session_id: ph.get_session_id(),
+              });
+              window.Zigpoll.user = Object.assign({}, window.Zigpoll.user, { id: ph.get_distinct_id() });
+            },
         })
         const p = new URLSearchParams(location.search);
         if (p.get('utm_medium') === 'email' && p.get('utm_id')) {
