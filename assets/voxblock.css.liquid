@@ -472,8 +472,8 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .product-card__details { display: flex; flex-direction: column; flex: 1; gap: 6px; padding: 8px 10px 10px; }
 .product-card__details > :nth-child(2) { white-space: normal; overflow: visible; text-overflow: clip; width: auto; }
 .product-card__info { padding: 0; order: 2; }
-.product-card__row.sample-wishlist { order: 1; width: 100%; }
-.product-card__sample, .product-card__row:not(.buy-price):not(.sample-wishlist) { order: 3; }
+.product-card__row.sample-wishlist { order: 1; width: 100%; justify-content: space-between; }
+.product-card__details > .product-card__sample, .product-card__details > .product-card__row:not(.buy-price):not(.sample-wishlist) { order: 3; }
 .product-card__row.buy-price { order: 9; margin-top: auto; width: 100%; flex-direction: row-reverse; justify-content: space-between; gap: 8px; }
 .product-card__row.buy-price .icon-circle { margin-right: 0; }
 /* titles: two lines at most, always two lines tall so the rows beneath line up */
