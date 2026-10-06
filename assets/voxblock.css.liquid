@@ -424,3 +424,15 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .pack-help__text { margin: 0 0 4px; font-size: 12px; line-height: 17px; }
 @media screen and (min-width: 1000px) { .pack-help { display: none; } }
 
+
+/* ----------------------------------------------------------------------------------------------------------------
+   CARD BADGES: one pill style for every product card (matches the pack card Save % / Bestseller badges)
+   ---------------------------------------------------------------------------------------------------------------- */
+.product-card { --product-card-badge-spacing: 9px; }
+.product-card__badge-list .badge { border-radius: 999px; font-weight: 600; font-size: 10px; line-height: 1.4; padding: 2px 7px; gap: 4px; }
+.product-card__badge-list .badge svg { width: 12px; height: 12px; flex: none; }
+@media screen and (min-width: 700px) {
+  .product-card { --product-card-badge-spacing: 11px; }
+  .product-card__badge-list .badge { font-size: 11px; padding: 3px 9px; gap: 5px; }
+  .product-card__badge-list .badge svg { width: 14px; height: 14px; }
+}
