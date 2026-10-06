@@ -213,3 +213,19 @@ document.addEventListener('change', (event) => {
     const match = mapInput.value.split(';').map((pair) => pair.split(/=(?=[^=]*$)/)).find(([title]) => title === radio.value);
     if (match) idInput.value = match[1];
 });
+
+
+// Pack intro tiles: scroll to the first intro / starter pack, stopping below the sticky header and filter bar
+document.addEventListener('click', (event) => {
+    const tile = event.target.closest('[data-pack-scroll]');
+    if (!tile) return;
+    const card = document.querySelector(`.pack-card[data-pack-kind="${tile.dataset.packScroll}"]`);
+    if (!card) return; // no such pack: let the link jump to the grid
+    event.preventDefault();
+    const bar = document.querySelector('[data-pack-bar]');
+    const stickyArea = bar ? parseFloat(getComputedStyle(bar).top) || 0 : 0; // resolved px offset of the sticky bar = header (+ announcement) height
+    const top = card.getBoundingClientRect().top + window.scrollY - stickyArea - (bar ? bar.offsetHeight : 0) - 12;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+    card.querySelector('.pack-card__link')?.focus({ preventScroll: true });
+});

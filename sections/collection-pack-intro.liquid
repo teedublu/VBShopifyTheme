@@ -82,7 +82,7 @@ If a figure cannot be read (no matching product), that price is simply left out.
 
     <div class="pack-intro__explainer">
       <div class="pack-intro__tiles">
-        <div class="pack-intro__tile">
+        <a href="#product-grid" class="pack-intro__tile" data-pack-scroll="intro" aria-label="{{ 'collection.pack_intro.scroll_to' | t: title: section.settings.intro_title | escape }}">
           {%- if intro_img_product.featured_media -%}
             <div class="pack-intro__tile-media">{{- intro_img_product.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
           {%- endif -%}
@@ -95,8 +95,8 @@ If a figure cannot be read (no matching product), that price is simply left out.
             </p>
           {%- endif -%}
           </div>
-        </div>
-        <div class="pack-intro__tile">
+        </a>
+        <a href="#product-grid" class="pack-intro__tile" data-pack-scroll="starter" aria-label="{{ 'collection.pack_intro.scroll_to' | t: title: section.settings.starter_title | escape }}">
           {%- if starter_img_product.featured_media -%}
             <div class="pack-intro__tile-media">{{- starter_img_product.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
           {%- endif -%}
@@ -107,7 +107,7 @@ If a figure cannot be read (no matching product), that price is simply left out.
             <p class="pack-intro__tile-price">{{ 'collection.pack_intro.from_price' | t: price: starter_price }}</p>
           {%- endif -%}
           </div>
-        </div>
+        </a>
       </div>
 
       <p class="pack-intro__note">{{- section.settings.note | escape -}}</p>
@@ -133,9 +133,9 @@ If a figure cannot be read (no matching product), that price is simply left out.
     { "type": "image_picker", "id": "image", "label": "Image (small crop beside the text)" },
     { "type": "text", "id": "image_alt", "label": "Image description", "default": "Voxblock player playing Charlie and the Chocolate Factory, with Matilda and George's Marvellous Medicine" },
     { "type": "header", "content": "Pack explainer" },
-    { "type": "text", "id": "intro_title", "label": "Intro pack tile: title", "default": "Intro pack" },
+    { "type": "text", "id": "intro_title", "label": "Intro pack tile: title", "default": "Intro packs" },
     { "type": "text", "id": "intro_contents", "label": "Intro pack tile: contents", "default": "Player + 1 story" },
-    { "type": "text", "id": "starter_title", "label": "Starter pack tile: title", "default": "Starter pack" },
+    { "type": "text", "id": "starter_title", "label": "Starter pack tile: title", "default": "Starter packs" },
     { "type": "text", "id": "starter_contents", "label": "Starter pack tile: contents", "default": "Player + 3 stories" },
     { "type": "product", "id": "intro_product", "label": "Intro pack tile: example product (image)", "info": "Leave empty to use the first intro pack in the collection." },
     { "type": "product", "id": "starter_product", "label": "Starter pack tile: example product (image)", "info": "Leave empty to use the first starter pack in the collection." },

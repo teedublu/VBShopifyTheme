@@ -29,6 +29,15 @@ Data used (all optional, the line is simply left out if missing):
     assign save_pct = pack_variant.compare_at_price | minus: pack_variant.price | times: 100.0 | divided_by: pack_variant.compare_at_price | round
   endif
 
+  # PACK KIND (intro / starter / gift): used by the intro band tiles to scroll to the first pack of that kind
+  assign pack_tag_string = product.tags | join: '||' | downcase | prepend: '||' | append: '||'
+  assign pack_kind = 'starter'
+  if pack_tag_string contains '||gift set||'
+    assign pack_kind = 'gift'
+  elsif pack_tag_string contains '||intro pack||' or product.metafields.bundles.products.value.size == 1
+    assign pack_kind = 'intro'
+  endif
+
   # BESTSELLER BADGE
   assign is_bestseller = false
   for badge in product.metafields.custom.badges.value
@@ -97,7 +106,7 @@ Data used (all optional, the line is simply left out if missing):
   endif
 -%}
 
-<product-card handle="{{ product.handle | escape }}" class="pack-card">
+<product-card handle="{{ product.handle | escape }}" class="pack-card" data-pack-kind="{{ pack_kind }}">
   <div class="pack-card__media">
     {%- if product.featured_media -%}
       {{- product.featured_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
