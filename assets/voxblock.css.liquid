@@ -400,7 +400,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .pack-card__age { font-weight: 600; color: #8a3d0a; }
 .pack-card__buy { margin-top: auto; padding-top: 4px; display: flex; flex-direction: column; gap: 5px; }
 .pack-card__prices { margin: 0; display: flex; flex-wrap: wrap; gap: 0 6px; align-items: baseline; }
-.pack-card__price { font-size: 15px; font-weight: 700; color: #C2560F; }
+.pack-card__price { font-size: 18px; font-weight: 700; color: #C2560F; }
 .pack-card__from { font-size: 11px; color: #2a555a; }
 .pack-card__was { font-size: 11px; color: #5d7a7d; }
 .pack-card__swatches { position: relative; z-index: 2; margin: 0; padding: 0; border: 0; min-width: 0; } /* above the stretched link so swatches stay clickable */
@@ -418,7 +418,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
   .pack-card__contents { font-size: 13px; line-height: 18px; }
   .pack-card__age { font-size: 12px; }
   .pack-card__prices { gap: 0 8px; }
-  .pack-card__price { font-size: 17px; }
+  .pack-card__price { font-size: 22px; }
   .pack-card__was { font-size: 13px; }
 }
 
@@ -462,16 +462,28 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 :is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4)[style*="ff9e57" i] { color: #C2560F !important; }
 
 /* ----------------------------------------------------------------------------------------------------------------
-   ALL PRODUCT CARDS take the pack card look: pale teal border, image full width with rounded top corners only,
-   padded text underneath (audiobook, starter pack and default cards: featured collections, related products, search...)
+   ONE CARD LAYOUT for every product card (audiobook, starter pack, default, pack card)
+   image panel / [books: preview + heart] / title (max 2 lines) / [swatches] / price left + add-to-cart right, pinned bottom
    ---------------------------------------------------------------------------------------------------------------- */
-.product-card { padding: 0; border: 1px solid #d6e6e7; border-radius: 12px; overflow: hidden; background: #fff; align-items: stretch; row-gap: 0; }
-.product-card__figure { background: #F2F7F7; }
+.product-card { display: flex; flex-direction: column; padding: 0; border: 1px solid #d6e6e7; border-radius: 12px; overflow: hidden; background: #fff; row-gap: 0; }
+.product-card__figure { flex: none; background: #F2F7F7; }
 .product-card .product-card__image { border-radius: 0; }
-.product-card__info { padding: 8px 10px 10px; }
+.product-card:has(.sample-wishlist) .product-card__figure { padding: 14px 22px 8px; } /* book covers sit inset, not hard against the card edge */
+.product-card__details { display: flex; flex-direction: column; flex: 1; gap: 6px; padding: 8px 10px 10px; }
+.product-card__details > :nth-child(2) { white-space: normal; overflow: visible; text-overflow: clip; width: auto; }
+.product-card__info { padding: 0; order: 2; }
+.product-card__row.sample-wishlist { order: 1; width: 100%; }
+.product-card__sample, .product-card__row:not(.buy-price):not(.sample-wishlist) { order: 3; }
+.product-card__row.buy-price { order: 9; margin-top: auto; width: 100%; flex-direction: row-reverse; justify-content: space-between; gap: 8px; }
+.product-card__row.buy-price .icon-circle { margin-right: 0; }
+/* titles: two lines at most, always two lines tall so the rows beneath line up */
+.product-card__title { display: block; min-height: 34px; }
+.product-card__title a, .pack-card__title a { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; overflow-wrap: anywhere; }
+.pack-card__title { min-height: 34px; }
 @media screen and (min-width: 700px) {
   .product-card { border-radius: 14px; }
-  .product-card__info { padding: 10px 12px 12px; }
+  .product-card__details { padding: 10px 12px 12px; }
+  .product-card__title, .pack-card__title { min-height: 40px; }
 }
 
 /* Same two corrections for headings built with the styled-text snippet (the colour arrives as an inner --text-color variable) */
