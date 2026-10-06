@@ -473,3 +473,7 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
   .product-card { border-radius: 14px; }
   .product-card__info { padding: 10px 12px 12px; }
 }
+
+/* Same two corrections for headings built with the styled-text snippet (the colour arrives as an inner --text-color variable) */
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) [style*="--text-color: 255 158 87"] { --text-color: 194 86 15 !important; }
+:is(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) [style*="--text-color: 76 182 172"] { --text-color: 25 113 119 !important; }
