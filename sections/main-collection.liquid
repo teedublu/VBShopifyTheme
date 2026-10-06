@@ -77,7 +77,11 @@
     </div>
   {%- else -%}
     {%- paginate collection.products by section.settings.products_per_page -%}
-      <div id="product-grid" class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}">
+      <div id="product-grid" class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}{% if section.settings.age_bar_enabled %} collection--pack{% endif %}">
+        {%- if section.settings.age_bar_enabled -%}
+          {%- comment -%}Starter pack collection redesign: sticky age filter + count + sort bar (replaces the facet drawer and top bar){%- endcomment -%}
+          {%- render 'collection-age-bar', results: collection -%}
+        {%- else -%}
         {%- if show_filters or section.settings.show_sort_by -%}
           {%- comment -%}
           IMPLEMENTATION NOTE: we have to output the drawer no matter what, as it is used on mobile (all the time) or desktop (when in drawer mode)
@@ -101,6 +105,7 @@
               {%- render 'button', size: 'xl', content: filter_label, icon: 'filter', style: 'fill', background: settings.text_color, text_color: settings.background, aria_controls: 'facets-drawer' -%}
             </facet-floating-filter>
           {%- endif -%}
+        {%- endif -%}
         {%- endif -%}
 
         {%- if show_filters and section.settings.filter_layout == 'sidebar' -%}
@@ -146,7 +151,7 @@
                       
                     {%- endfor -%}
 
-                    {%- render 'product-card', product: product, stacked: true, show_badges: true -%}
+                    {%- render 'product-card', product: product, stacked: true, show_badges: true, card_index: forloop.index -%}
                     
 
 
@@ -197,6 +202,15 @@
 
                 </product-list>
               </reveal-items>
+
+              {%- if section.settings.help_url != blank -%}
+                {%- comment -%}"Help me choose" card after the grid on mobile (on desktop the link sits in the filter bar){%- endcomment -%}
+                <div class="pack-help">
+                  <p class="pack-help__title">{{ 'collection.pack_bar.help_title' | t }}</p>
+                  <p class="pack-help__text">{{ 'collection.pack_bar.help_text' | t }}</p>
+                  {%- render 'button', href: section.settings.help_url, content: 'collection.pack_bar.help_button' | t, size: 'lg' -%}
+                </div>
+              {%- endif -%}
             </div>
           {%- endif -%}
         </div>
@@ -427,7 +441,10 @@
         {
           "type": "video_url",
           "id": "external_video_url",
-          "accept": ["vimeo", "youtube"],
+          "accept": [
+            "vimeo",
+            "youtube"
+          ],
           "label": "External video URL",
           "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
         },
@@ -628,6 +645,65 @@
       "id": "sticky_filters",
       "label": "Make sticky",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Pack collection redesign"
+    },
+    {
+      "type": "select",
+      "id": "card_style",
+      "label": "Product card style",
+      "options": [
+        {
+          "value": "default",
+          "label": "Theme default (by product type)"
+        },
+        {
+          "value": "pack",
+          "label": "Pack card (contents, age, price pinned to bottom)"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "age_bar_enabled",
+      "label": "Show sticky age filter bar",
+      "default": false,
+      "info": "Replaces the filter drawer and top bar with age buttons, count and sort. Buttons only appear for filter values that exist in Search & Discovery."
+    },
+    {
+      "type": "text",
+      "id": "age_filter_param",
+      "label": "Age filter parameter",
+      "default": "filter.p.m.book.age_groups"
+    },
+    {
+      "type": "textarea",
+      "id": "age_buttons",
+      "label": "Age buttons",
+      "default": "Under 5|Under 5's\n5 to 8|5 to 8 years\n10+|10 to teens",
+      "info": "One per line: Button label|Label of the Search & Discovery filter value."
+    },
+    {
+      "type": "text",
+      "id": "gift_button_label",
+      "label": "Gift button label",
+      "default": "Gift sets"
+    },
+    {
+      "type": "text",
+      "id": "gift_filter_param",
+      "label": "Gift filter parameter",
+      "default": "filter.p.m.pack.gift_set",
+      "info": "A yes/no product metafield enabled as a Search & Discovery filter. The button stays hidden until that filter exists."
+    },
+    {
+      "type": "url",
+      "id": "help_url",
+      "label": "\"Help me choose\" link",
+      "info": "Leave empty until the chooser exists: the link (desktop filter bar) and card (mobile, after the grid) are then left out."
     },
     {
       "type": "checkbox",

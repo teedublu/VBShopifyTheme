@@ -310,3 +310,111 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 
 /* Anchor target for the "Choose your pack" hero button (collection.starter-pack-collection): clear the sticky header */
 #product-grid { scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }
+
+/* ---------------------------- */
+/* STARTER PACK COLLECTION REDESIGN */
+/* Intro band + explainer, sticky age bar, pack cards. Layout and copy: design canvas "Starter Pack collection redesign". */
+/* Colours: #197177 teal (headings, buttons), #2a555a text, #8a3d0a eyebrow/age, #C2560F prices (readable on white, the orange button colour is not) */
+/* ---------------------------- */
+
+/* INTRO BAND */
+.pack-intro { background: var(--pack-intro-bg, #fff7f0); color: #2a555a; }
+.pack-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "text image" "explainer explainer"; column-gap: 12px; align-items: start; padding-block: 16px 0; }
+.pack-intro__text { grid-area: text; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 14px; }
+.pack-intro__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #8a3d0a; }
+.pack-intro__title { margin: 0; font-size: 22px; line-height: 28px; font-weight: 700; color: #197177; letter-spacing: normal; }
+.pack-intro__lede { margin: 0; font-size: 13px; line-height: 19px; }
+.pack-intro__desktop-only { display: none; }
+.pack-intro__image { grid-area: image; }
+.pack-intro__image img { display: block; width: 96px; height: 120px; object-fit: cover; object-position: 30% 50%; border-radius: 12px; }
+/* mobile: the explainer sits on white under the band (full-bleed white via a clipped shadow) */
+.pack-intro__explainer { grid-area: explainer; display: flex; flex-direction: column; gap: 8px; padding: 12px 0 4px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+.pack-intro__tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.pack-intro__tile { border: 1px solid #d6e6e7; border-radius: 12px; padding: 8px 10px; background: #fff; }
+.pack-intro__tile p { margin: 0; }
+.pack-intro__tile-title { font-size: 12px; font-weight: 600; color: #197177; }
+.pack-intro__tile-contents { font-size: 11px; line-height: 15px; }
+.pack-intro__tile-price { font-size: 13px; font-weight: 700; color: #C2560F; }
+.pack-intro__note { margin: 0; font-size: 11px; line-height: 16px; }
+.pack-intro__player-link { color: #197177; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+@media screen and (min-width: 1000px) {
+  .pack-intro__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 380px) 220px; grid-template-areas: "text explainer image"; column-gap: 32px; align-items: center; padding-block: 28px; }
+  .pack-intro__text { gap: 10px; padding-bottom: 0; }
+  .pack-intro__eyebrow { font-size: 12px; }
+  .pack-intro__title { font-size: 34px; line-height: 42px; }
+  .pack-intro__lede { font-size: 15px; line-height: 23px; max-width: 560px; }
+  .pack-intro__desktop-only { display: inline; }
+  .pack-intro__image img { width: 220px; height: 180px; border-radius: 14px; object-position: 50% 55%; }
+  .pack-intro__explainer { padding: 0; background: transparent; box-shadow: none; clip-path: none; gap: 10px; }
+  .pack-intro__tiles { gap: 10px; }
+  .pack-intro__tile { border-color: #ecdccd; border-radius: 14px; padding: 14px 16px; }
+  .pack-intro__tile-title { font-size: 14px; }
+  .pack-intro__tile-contents { font-size: 13px; line-height: normal; }
+  .pack-intro__tile-price { font-size: 16px; }
+  .pack-intro__note { font-size: 12px; line-height: 17px; }
+}
+
+/* The theme's collection grid adds a 32px top margin and a 32px row gap (48px top margin on desktop): too much air above the first row of prices on a phone */
+.collection.collection--pack { gap: 0; margin-block-start: 0; }
+
+/* STICKY AGE / SORT BAR. top follows the real sticky header (+ announcement bar when it is sticky) through --sticky-area-height, which the header and announcement bar sections measure at runtime */
+.pack-bar { position: sticky; top: var(--sticky-area-height, 0px); z-index: 5; background: #fff; border-bottom: 1px solid #e3eeee; margin-bottom: 12px; color: #2a555a; }
+.pack-bar__chips { display: flex; gap: 6px; margin: 0; padding: 6px 0 2px; overflow-x: auto; scrollbar-width: none; }
+.pack-bar__chips::-webkit-scrollbar { display: none; }
+.pack-chip { flex: 0 0 auto; min-height: 44px; min-width: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #c9dcdd; background: #fff; color: #2a555a; font: inherit; font-size: 13px; font-weight: 500; line-height: 1; cursor: pointer; }
+.pack-chip[aria-pressed="true"] { background: #197177; border-color: #197177; color: #fff; font-weight: 600; }
+.pack-chip:focus-visible { outline: 2px solid #197177; outline-offset: 2px; }
+.pack-bar__meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; }
+.pack-bar__count { margin: 0; }
+.pack-bar__help { display: none; font-weight: 600; color: #197177; }
+.pack-bar__sort { margin-inline-start: auto; display: inline-flex; align-items: center; gap: 4px; }
+.pack-bar__sort-button { min-height: 44px; }
+
+@media screen and (min-width: 1000px) {
+  .pack-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 10px 0; margin-bottom: 20px; }
+  .pack-bar__chips { flex-wrap: wrap; overflow: visible; padding: 0; gap: 8px; }
+  .pack-bar__meta { gap: 16px; font-size: 13px; margin-inline-start: auto; }
+  .pack-bar__help { display: inline; }
+}
+
+/* PACK CARD: flex column, price + swatches pinned to the bottom so prices line up in every row */
+.pack-card { display: flex; flex-direction: column; gap: 5px; height: 100%; position: relative; color: #2a555a; }
+.pack-card__media { position: relative; aspect-ratio: 1 / 1; border-radius: 12px; background: #F2F7F7; overflow: hidden; }
+.pack-card__image { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pack-card__badge { position: absolute; top: 8px; padding: 2px 7px; border-radius: 999px; color: #fff; font-size: 10px; font-weight: 600; line-height: 1.4; }
+.pack-card__badge--save { left: 8px; background: #C2560F; }
+.pack-card__badge--best { right: 8px; background: #197177; }
+.pack-card__title { margin: 0; font-size: 13px; line-height: 17px; font-weight: 600; color: #197177; letter-spacing: normal; }
+.pack-card__link { color: inherit; text-decoration: none; }
+.pack-card__link::after { content: ""; position: absolute; inset: 0; z-index: 1; } /* whole card is one link */
+.pack-card__link:focus-visible { outline: 2px solid #197177; outline-offset: 2px; }
+.pack-card__contents, .pack-card__age { margin: 0; font-size: 11px; line-height: 15px; }
+.pack-card__age { font-weight: 600; color: #8a3d0a; }
+.pack-card__buy { margin-top: auto; padding-top: 4px; display: flex; flex-direction: column; gap: 5px; }
+.pack-card__prices { margin: 0; display: flex; flex-wrap: wrap; gap: 0 6px; align-items: baseline; }
+.pack-card__price { font-size: 15px; font-weight: 700; color: #C2560F; }
+.pack-card__from { font-size: 11px; color: #2a555a; }
+.pack-card__was { font-size: 11px; color: #5d7a7d; }
+.pack-card__swatches { position: relative; z-index: 2; margin: 0; padding: 0; border: 0; min-width: 0; } /* above the stretched link so swatches stay clickable */
+
+@media screen and (min-width: 700px) {
+  .pack-card { gap: 6px; }
+  .pack-card__media { border-radius: 14px; }
+  .pack-card__badge { top: 10px; font-size: 11px; padding: 3px 9px; }
+  .pack-card__badge--save { left: 10px; }
+  .pack-card__badge--best { right: 10px; }
+  .pack-card__title { font-size: 15px; line-height: 20px; }
+  .pack-card__contents { font-size: 13px; line-height: 18px; }
+  .pack-card__age { font-size: 12px; }
+  .pack-card__prices { gap: 0 8px; }
+  .pack-card__price { font-size: 17px; }
+  .pack-card__was { font-size: 13px; }
+}
+
+/* "Help me choose" card after the grid, mobile only (desktop has the link in the bar) */
+.pack-help { margin-top: 24px; padding: 14px; border-radius: 12px; background: #fff7f0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; color: #2a555a; }
+.pack-help__title { margin: 0; font-size: 14px; font-weight: 600; color: #197177; }
+.pack-help__text { margin: 0 0 4px; font-size: 12px; line-height: 17px; }
+@media screen and (min-width: 1000px) { .pack-help { display: none; } }
+

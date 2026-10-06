@@ -9,6 +9,10 @@ Each product type has own product card if needed or product-card-default
 
 {%- endcomment -%}
 
+{%- comment -%}The starter pack collection redesign opts in to the pack card through the main-collection "Product card style" setting{%- endcomment -%}
+{%- if section.settings.card_style == 'pack' -%}
+  {%- render 'product-card-pack', product: product, card_index: card_index -%}
+{%- else -%}
 {%- case product.type -%}
   {%- when 'Audiobooks' -%}
     {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
@@ -19,3 +23,4 @@ Each product type has own product card if needed or product-card-default
   {%- else -%}
     {%- render 'product-card-default', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
 {%- endcase -%}
+{%- endif -%}

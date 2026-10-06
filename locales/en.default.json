@@ -149,6 +149,34 @@
     }
   },
   "collection": {
+    "pack_bar": {
+      "label": "Filter by age",
+      "all_packs": "All packs",
+      "count": {
+        "one": "{{ count }} pack",
+        "other": "{{ count }} packs"
+      },
+      "help_link": "Not sure? Help me choose",
+      "help_title": "Not sure which pack?",
+      "help_text": "Three quick questions about your child and we'll suggest one.",
+      "help_button": "Help me choose"
+    },
+    "pack_card": {
+      "bestseller": "Bestseller",
+      "from": "from",
+      "contents_named": "Player + {{ titles }}",
+      "contents_count": {
+        "one": "Player + {{ count }} story",
+        "other": "Player + {{ count }} stories"
+      },
+      "age_under_5": "Under 5",
+      "age_range": "Ages {{ from }}–{{ to }}",
+      "age_plus": "Ages {{ from }}+"
+    },
+    "pack_intro": {
+      "from_price": "from {{ price }}",
+      "player_link": "Just the player, {{ price }}"
+    },
     "general": {
       "empty_collection": "This collection is empty",
       "all_collections": "All collections",

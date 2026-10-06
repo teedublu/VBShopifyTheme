@@ -1,0 +1,122 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COLLECTION PACK INTRO (starter pack collection redesign)
+----------------------------------------------------------------------------------------------------------------------
+
+A short intro band (eyebrow, H1, one line, small image) with the pack explainer (intro pack vs starter pack tiles and
+a "just the player" link). Mobile: peach band, then the explainer underneath on white. Desktop: one peach band holding
+the text, the explainer tiles and the image side by side (a single CSS grid, see voxblock.css).
+
+Every price is read live from Shopify, nothing is hard-coded:
+* intro pack price: cheapest product in this collection that is tagged "Intro pack tag" or contains exactly one story
+  (some intro packs, e.g. Famous Five and Zeepy, are not tagged, so the story count is used as well)
+* starter pack "from" price: cheapest product in this collection that is neither an intro pack nor a gift set
+* player price: cheapest variant of the "Player product handle" product (the no-bumper variant)
+If a figure cannot be read (no matching product), that price is simply left out.
+{%- endcomment -%}
+
+{%- liquid
+  assign intro_tag_key = '||' | append: section.settings.intro_tag | strip | downcase | append: '||'
+  assign gift_tag_key = '||' | append: section.settings.gift_tag | strip | downcase | append: '||'
+  assign intro_min = 0
+  assign intro_max = 0
+  assign starter_min = 0
+
+  for pack in collection.products
+    assign pack_tags = pack.tags | join: '||' | downcase | prepend: '||' | append: '||'
+    assign pack_story_count = pack.metafields.bundles.products.value.size
+    if pack_tags contains intro_tag_key or pack_story_count == 1
+      if intro_min == 0 or pack.price_min < intro_min
+        assign intro_min = pack.price_min
+      endif
+      if pack.price_max > intro_max
+        assign intro_max = pack.price_max
+      endif
+    elsif pack_tags contains gift_tag_key
+      continue
+    elsif starter_min == 0 or pack.price_min < starter_min
+      assign starter_min = pack.price_min
+    endif
+  endfor
+
+  assign player = all_products[section.settings.player_handle]
+
+  assign intro_price = intro_min | money
+  assign starter_price = starter_min | money
+  assign player_price = player.price_min | money
+-%}
+
+<section class="pack-intro" style="--pack-intro-bg: {{ section.settings.background }};" {{ section.shopify_attributes }}>
+  <div class="container pack-intro__inner">
+    <div class="pack-intro__text">
+      {%- if section.settings.eyebrow != blank -%}<p class="pack-intro__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="pack-intro__title">{{ section.settings.heading | escape }}</h1>
+      {%- if section.settings.text != blank -%}
+        <p class="pack-intro__lede">{{ section.settings.text | escape }}{% if section.settings.desktop_suffix != blank %}<span class="pack-intro__desktop-only"> {{ section.settings.desktop_suffix | escape }}</span>{% endif %}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.image != blank -%}
+      <div class="pack-intro__image">
+        {{- section.settings.image | image_url: width: 480 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(max-width: 699px) 96px, 220px', widths: '96,192,220,440', alt: section.settings.image_alt -}}
+      </div>
+    {%- endif -%}
+
+    <div class="pack-intro__explainer">
+      <div class="pack-intro__tiles">
+        <div class="pack-intro__tile">
+          <p class="pack-intro__tile-title">{{ section.settings.intro_title | escape }}</p>
+          <p class="pack-intro__tile-contents">{{ section.settings.intro_contents | escape }}</p>
+          {%- if intro_min > 0 -%}
+            <p class="pack-intro__tile-price">
+              {%- if intro_min != intro_max -%}{{ 'collection.pack_intro.from_price' | t: price: intro_price }}{%- else -%}{{ intro_price }}{%- endif -%}
+            </p>
+          {%- endif -%}
+        </div>
+        <div class="pack-intro__tile">
+          <p class="pack-intro__tile-title">{{ section.settings.starter_title | escape }}</p>
+          <p class="pack-intro__tile-contents">{{ section.settings.starter_contents | escape }}</p>
+          {%- if starter_min > 0 -%}
+            <p class="pack-intro__tile-price">{{ 'collection.pack_intro.from_price' | t: price: starter_price }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <p class="pack-intro__note">
+        {{- section.settings.note | escape }}
+        {%- if player != blank and player.price_min > 0 %}
+          <a href="{{ player.url }}" class="pack-intro__player-link">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a>
+        {%- endif -%}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pack intro",
+  "tag": "div",
+  "class": "shopify-section--pack-intro",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Band background", "default": "#fff7f0" },
+    { "type": "header", "content": "Intro" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Starter packs" },
+    { "type": "text", "id": "heading", "label": "Heading (H1)", "default": "Stories they can hold. Everything to start, in one box." },
+    { "type": "textarea", "id": "text", "label": "Intro line", "default": "Voxblock is a screen-free audiobook player. Your child puts a story block on the player and presses play. No downloads, no subscription." },
+    { "type": "text", "id": "desktop_suffix", "label": "Extra words on desktop only", "default": "British designed." },
+    { "type": "image_picker", "id": "image", "label": "Image (small crop beside the text)" },
+    { "type": "text", "id": "image_alt", "label": "Image description", "default": "Voxblock player playing Charlie and the Chocolate Factory, with Matilda and George's Marvellous Medicine" },
+    { "type": "header", "content": "Pack explainer" },
+    { "type": "text", "id": "intro_title", "label": "Intro pack tile: title", "default": "Intro pack" },
+    { "type": "text", "id": "intro_contents", "label": "Intro pack tile: contents", "default": "Player + 1 story" },
+    { "type": "text", "id": "starter_title", "label": "Starter pack tile: title", "default": "Starter pack" },
+    { "type": "text", "id": "starter_contents", "label": "Starter pack tile: contents", "default": "Player + 3 stories" },
+    { "type": "text", "id": "note", "label": "Line under the tiles", "default": "Each pack includes a bumper and charging cable." },
+    { "type": "header", "content": "Live prices (read from Shopify)" },
+    { "type": "text", "id": "intro_tag", "label": "Intro pack tag", "default": "Intro Pack", "info": "The intro pack price is the cheapest product in this collection with this tag, or that contains exactly one story." },
+    { "type": "text", "id": "gift_tag", "label": "Gift set tag (excluded from the starter pack price)", "default": "Gift Set" },
+    { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Used for the \"Just the player\" price and link." }
+  ],
+  "presets": [{ "name": "Pack intro" }]
+}
+{% endschema %}

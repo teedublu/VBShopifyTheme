@@ -158,3 +158,45 @@ class BundlePrice extends HTMLElement {
 }
 
 if (!window.customElements.get('bundle-price')) window.customElements.define('bundle-price', BundlePrice);
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// PACK AGE BAR (snippets/collection-age-bar.liquid)
+// The age / gift buttons are Search & Discovery filters. Clicking one re-uses the theme's own AJAX ("facet:update",
+// handled in theme.js) so the page does not reload, and sends a PostHog event. aria-pressed is updated straight away and
+// then re-rendered by the server with the real state when the section comes back.
+// ----------------------------------------------------------------------------------------------------------------
+const trackCollectionFilterUsed = (filter, collection) => {
+    if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    window.posthog.capture('collection_filter_used', { filter, collection });
+};
+
+document.addEventListener('click', (event) => {
+    const chip = event.target.closest('[data-pack-chip]');
+    const form = chip?.closest('[data-pack-bar-form]');
+    const bar = chip?.closest('[data-pack-bar]');
+    const section = chip?.closest('.shopify-section');
+    if (!chip || !form || !bar || !section) return;
+
+    // The buttons are real submit buttons (they work without JavaScript); with JavaScript we filter in place instead
+    event.preventDefault();
+
+    const param = chip.dataset.param || '';
+    const wasPressed = chip.getAttribute('aria-pressed') === 'true';
+    const selectAll = !param || wasPressed; // "All packs", or pressing the active button again
+
+    const url = new URL(window.location.href);
+    url.hash = '';
+    ['page', 'section_id', form.dataset.ageParam, form.dataset.giftParam].forEach((key) => key && url.searchParams.delete(key));
+    if (!selectAll) url.searchParams.set(param, chip.dataset.value);
+
+    form.querySelectorAll('[data-pack-chip]').forEach((button) => {
+        const pressed = selectAll ? !button.dataset.param : button === chip;
+        button.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+    });
+
+    trackCollectionFilterUsed(selectAll ? 'all' : chip.dataset.filter, bar.dataset.collection);
+
+    url.searchParams.set('section_id', section.id.replace('shopify-section-', ''));
+    chip.dispatchEvent(new CustomEvent('facet:update', { bubbles: true, detail: { url } }));
+});
