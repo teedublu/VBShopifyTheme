@@ -31,3 +31,10 @@ Still open:
 - Correction to the earlier proposal message: 16 products needed the copy change (13 standard + 3 custom), not 17.
 - Note: STATUS.md / HANDOFF.md for the GRO project were not found in VBShopifyTheme or any repo I could list, so this
   entry is in a new STATUS.md here. Move it to the GRO repo if that is where STATUS.md lives.
+
+
+## Starter pack collection redesign (build)
+Built on `claude/trusting-shannon-lvl85h`, draft theme 199560855936, **awaiting owner check on phone + desktop; no PR/merge yet**.
+Full record, baseline table and flags: `briefs/starter-pack-collection-redesign.md`.
+Open: enable `pack.gift_set` as a Search & Discovery filter (Gift sets chip); set `help_url` when the chooser ships;
+decide 4 vs 5 per row on desktop; 30-day PostHog re-read after launch.
