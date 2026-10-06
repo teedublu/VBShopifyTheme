@@ -446,3 +446,11 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
    ---------------------------------------------------------------------------------------------------------------- */
 .product-card__title a { font-size: 13px; line-height: 17px; font-weight: 600; color: #197177; }
 @media screen and (min-width: 700px) { .product-card__title a { font-size: 15px; line-height: 20px; } }
+
+/* ----------------------------------------------------------------------------------------------------------------
+   H1: one style across the site (the style of the starter pack intro band)
+   Poppins bold, tight line height, teal. Headings laid over images keep the colour their section sets.
+   ---------------------------------------------------------------------------------------------------------------- */
+h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; letter-spacing: normal; color: #197177; }
+.content-over-media h1, .content-over-media h1 * { color: inherit; }
+@media screen and (min-width: 1000px) { h1:not(.header__logo) { font-size: 34px; line-height: 42px; } }
