@@ -179,6 +179,12 @@ export const SavedBooks = {
     },
 };
 
+// "Email me when it's back" (back-in-stock.js) also saves the book, so it waits on the Saved books page
+document.addEventListener('voxblock:save-book', (event) => {
+    const id = Number(event.detail?.id);
+    if (id && !SavedBooks.has(id)) SavedBooks.add(id);
+});
+
 // Bump the header heart each time a book is saved, so people see where their list went
 document.addEventListener(CHANGE_EVENT, (event) => {
     if (event.detail.saved !== true) return;

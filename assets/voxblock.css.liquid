@@ -496,6 +496,51 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .pack-card__add-button { display: grid; place-items: center; width: 38px; height: 38px; min-width: 38px; padding: 0; border-radius: 50%; border: 0; background: rgb(var(--button-background-primary)); color: rgb(var(--button-text-primary)); cursor: pointer; } /* identical to .icon-circle on the other cards */
 .pack-card__add-button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
 
+/* Sold-out cards: greyed-out add to cart (same size as the live button) plus a "More coming soon" pill just above the price row */
+.icon-circle--disabled, .pack-card__add-button--disabled { background: rgb(var(--text-color) / .12); color: rgb(var(--text-color) / .38); cursor: not-allowed; }
+.icon-circle--disabled { display: block; border: 0; font: inherit; }
+.product-card__row.buy-price > .icon-circle--disabled { flex: none; }
+.coming-soon-row { order: 8; margin-top: auto; }
+.coming-soon-row + .product-card__row.buy-price { margin-top: 0; }
+.pack-card__buy > .coming-soon-row { order: 0; margin-top: 0; } /* pack card orders by DOM position: pill sits right above the price row, price row stays pinned to the bottom */
+
+/* Back in stock alert: the pill becomes a button (above the whole-card link on pack cards), and a sheet takes the email: bottom sheet on phones, centred card on desktop */
+.coming-soon-pill.coming-soon-pill--action { gap: 5px; margin: 0; padding: 2px 9px; border: 1.5px solid var(--brand-heading); background: transparent; color: var(--brand-heading); font-family: inherit; text-align: start; cursor: pointer; position: relative; z-index: 2; -webkit-appearance: none; appearance: none; transition: background-color .15s, color .15s, border-color .15s, opacity .15s; } /* outlined brand teal: clearly tappable, not the grey of a disabled control */
+.coming-soon-pill--action svg { width: 12px; height: 12px; flex: none; }
+.coming-soon-pill--action:hover { background: rgb(var(--brand-heading-rgb) / .1); }
+.coming-soon-pill--action:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.coming-soon-pill--action.is-set { border-color: transparent; background: rgb(var(--brand-heading-rgb) / .14); cursor: default; }
+.coming-soon-pill--action.is-busy { opacity: .6; cursor: progress; }
+.coming-soon-pill__tick { display: none; }
+.coming-soon-pill.is-set .coming-soon-pill__bell { display: none; }
+.coming-soon-pill.is-set .coming-soon-pill__tick { display: block; }
+.coming-soon-pill.coming-soon-pill--pdp { width: 100%; max-width: none; justify-content: center; padding: 11px 16px; font-size: 14px; font-weight: 700; border: 2px solid var(--brand-heading); border-radius: var(--rounded-button, 999px); background: transparent; color: var(--brand-heading); } /* outlined so it reads as tappable under the greyed sold-out button */
+.coming-soon-pill.coming-soon-pill--pdp:hover { background: rgb(var(--brand-heading-rgb) / .08); }
+.coming-soon-pill.coming-soon-pill--pdp.is-set { border-color: var(--brand-heading); background: rgb(var(--brand-heading-rgb) / .12); color: var(--brand-heading); }
+.coming-soon-pill.coming-soon-pill--pdp svg { width: 16px; height: 16px; }
+
+.stock-alert { --alert-text: var(--text-primary, 42 85 90); position: fixed; border: 0; padding: 20px; width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; border-radius: 18px; background: #fff; color: rgb(var(--alert-text)); box-shadow: 0 24px 64px rgb(0 0 0 / .28); }
+.stock-alert::backdrop { background: rgb(0 0 0 / .5); }
+.stock-alert [hidden] { display: none !important; }
+.stock-alert__close-form { position: absolute; top: 10px; inset-inline-end: 10px; margin: 0; }
+.stock-alert__close { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: rgb(var(--alert-text) / .08); color: inherit; cursor: pointer; }
+.stock-alert__product { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-inline-end: 36px; }
+.stock-alert__image-slot { flex: none; line-height: 0; }
+.stock-alert__image-slot:empty { display: none; }
+.stock-alert__image { flex: none; width: 56px; height: 56px; border-radius: 10px; background: rgb(var(--alert-text) / .05); object-fit: contain; }
+.stock-alert__lead { margin: 0; font-size: 1.0625rem; line-height: 1.3; }
+.stock-alert__product-title, .stock-alert__status { display: block; }
+.stock-alert__product-title { color: var(--brand-heading); font-weight: 600; }
+.stock-alert__status { font-weight: 500; }
+.stock-alert__form { display: grid; gap: 14px; }
+.stock-alert__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.stock-alert__error { margin: 0; color: #b42318; font-size: 13px; }
+.stock-alert__privacy { margin: 0; }
+@media screen and (max-width: 699px) {
+  .stock-alert { inset: auto 0 0 0; width: 100%; max-width: 100%; margin: 0; border-radius: 18px 18px 0 0; padding: 20px 20px calc(24px + env(safe-area-inset-bottom)); }
+}
+.coming-soon-pill { display: inline-flex; align-items: center; width: max-content; max-width: 100%; padding: 3px 10px; border-radius: 999px; background: rgb(var(--text-color) / .08); color: rgb(var(--text-color) / .75); font-size: 11px; font-weight: 600; line-height: 1.4; }
+
 /* Card polish: equal image panels so every row lines up, tighter preview/heart row, add-to-cart always at the far right */
 .product-card { align-items: stretch; }
 .product-card__figure { aspect-ratio: 1 / 1; position: relative; width: 100%; }

@@ -96,5 +96,9 @@ Supported variables
         </style>
       {%- endif -%}
     </buy-buttons>
+
+    {%- unless product.available -%}
+      {%- render 'coming-soon-pill', product: product, layout: 'pdp' -%}
+    {%- endunless -%}
   </div>
 {%- endform -%}

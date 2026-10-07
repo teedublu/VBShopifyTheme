@@ -170,6 +170,10 @@ Data used (all optional, the line is simply left out if missing):
       {%- endfor -%}
     {%- endif -%}
 
+    {%- unless product.available -%}
+      <div class="coming-soon-row">{%- render 'coming-soon-pill', product: product -%}</div>
+    {%- endunless -%}
+
     <div class="pack-card__buy-row">
       <p class="pack-card__prices">
         {%- if product.price_varies -%}<span class="pack-card__from">{{ 'collection.pack_card.from' | t }}</span>{%- endif -%}
@@ -186,6 +190,10 @@ Data used (all optional, the line is simply left out if missing):
           {%- assign quick_add_label = 'product.general.quick_add' | t -%}
           <button type="submit" class="pack-card__add-button" aria-label="{{ quick_add_label | escape }} {{ product.title | escape }}">{%- render 'icon' with 'cart' -%}</button>
         {%- endform -%}
+      {%- else -%}
+        <div class="pack-card__add">
+          <button type="button" class="pack-card__add-button pack-card__add-button--disabled" disabled aria-label="{{ 'product.general.sold_out_badge' | t | escape }}">{%- render 'icon' with 'cart' -%}</button>
+        </div>
       {%- endif -%}
     </div>
   </div>

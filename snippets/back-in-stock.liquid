@@ -1,0 +1,70 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+BACK IN STOCK ALERT SHEET
+----------------------------------------------------------------------------------------------------------------------
+
+One shared dialog for the whole page (rendered once, from layout/theme.liquid). Any button with data-bis-trigger
+(see snippets/coming-soon-pill.liquid) opens it, unless we already have the visitor's email, in which case
+assets/back-in-stock.js signs them up straight away. The script fills in the product, asks Klaviyo to email the visitor
+when the product is available again, remembers the request on this device and closes the sheet (no confirmation screen;
+the pill changes to "We'll email you").
+
+The Klaviyo public API key below is the same one used by the onsite script (it is public by design).
+
+Marketing opt-in: a checkbox under the email field. When it is ticked the visitor is also subscribed to the Klaviyo
+"Subscribers" list (single opt-in, which starts the Welcome Series). It starts ticked, as briefed.
+NOTE: under UK GDPR / PECR a pre-ticked box is not valid consent (ICO guidance), so marketing emails sent on that basis
+could breach PECR. Set bis_marketing_checked to false to start it unticked.
+{%- endcomment -%}
+
+{%- assign bis_marketing_checked = true -%}
+{%- assign bis_marketing_list_id = 'WXZqis' -%}
+
+{%- assign bis_email_label = 'back_in_stock.email_label' | t -%}
+{%- assign bis_marketing_label = 'back_in_stock.marketing_label' | t -%}
+{%- assign bis_submit_label = 'back_in_stock.submit' | t -%}
+
+<dialog id="stock-alert-dialog" class="stock-alert" aria-labelledby="stock-alert-title"
+  data-company-id="TKFEPz"
+  data-marketing-list-id="{{ bis_marketing_list_id }}"
+  data-marketing-default="{{ bis_marketing_checked }}"
+  data-customer-email="{{ customer.email | escape }}"
+  data-text-invalid="{{ 'back_in_stock.invalid_email' | t }}"
+  data-text-error="{{ 'back_in_stock.error' | t }}"
+  data-text-success-body="{{ 'back_in_stock.success_body' | t }}">
+  <form method="dialog" class="stock-alert__close-form">
+    <button type="submit" class="stock-alert__close" aria-label="{{ 'back_in_stock.close' | t }}">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
+    </button>
+  </form>
+
+  <div class="stock-alert__product">
+    <span class="stock-alert__image-slot" data-bis-image-slot></span>
+    <p id="stock-alert-title" class="stock-alert__lead">
+      <span class="stock-alert__product-title" data-bis-title></span>
+      <span class="stock-alert__status">{{ 'back_in_stock.out_of_stock' | t }}</span>
+    </p>
+  </div>
+
+  <form class="stock-alert__form" data-bis-form novalidate>
+    {%- render 'input', type: 'email', name: 'stock-alert-email', label: bis_email_label, value: customer.email, required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
+
+    <div class="stock-alert__hp" aria-hidden="true">
+      <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" data-bis-hp></label>
+    </div>
+
+    {%- render 'checkbox', name: 'stock-alert-marketing', label: bis_marketing_label, checked: bis_marketing_checked -%}
+
+    <p class="stock-alert__error" role="alert" data-bis-error hidden></p>
+
+    {%- render 'button', type: 'submit', content: bis_submit_label, stretch: true, size: 'lg' -%}
+
+    {%- if shop.privacy_policy.url != blank -%}
+      <p class="stock-alert__privacy text-xs text-subdued"><a href="{{ shop.privacy_policy.url }}" class="link">{{ 'back_in_stock.privacy_link' | t }}</a></p>
+    {%- endif -%}
+  </form>
+</dialog>
+
+<p class="sr-only" role="status" aria-live="polite" data-bis-status></p>
+
+<script type="module" src="{{ 'back-in-stock.js' | asset_url }}"></script>

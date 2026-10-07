@@ -92,8 +92,16 @@ Supported variables
         {%- assign custom_badges = product.metafields.custom.badges.value | sort -%}
 
         {%- for custom_badge in custom_badges -%}
-          <span class="badge badge--primary {{ custom_badge | replace: "'", ""  | split: " " | first | downcase | handelize }}">{{ custom_badge }}</span>
+          {%- comment -%}"Back in stock soon" follows the stock level (below), so a hand-added one is ignored{%- endcomment -%}
+          {%- assign custom_badge_key = custom_badge | strip | downcase -%}
+          {%- unless custom_badge_key == 'back in stock soon' -%}
+            <span class="badge badge--primary {{ custom_badge | replace: "'", ""  | split: " " | first | downcase | handelize }}">{{ custom_badge }}</span>
+          {%- endunless -%}
         {%- endfor -%}
+
+        {%- unless product.available -%}
+          <span class="badge badge--primary back">{{ 'product.general.back_in_stock_badge' | t }}</span>
+        {%- endunless -%}
 
       {%- when 'sold_out' -%}
         {%- if settings.show_sold_out_badge -%}
