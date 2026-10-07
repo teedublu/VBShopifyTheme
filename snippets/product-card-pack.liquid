@@ -121,6 +121,8 @@ Data used (all optional, the line is simply left out if missing):
     {%- if is_bestseller -%}
       <span class="pack-card__badge pack-card__badge--best">{{ 'collection.pack_card.bestseller' | t }}</span>
     {%- endif -%}
+
+    {%- render 'save-book-button', product: product, size: 20, overlay: true -%}
   </div>
 
   <h3 class="pack-card__title"><a href="{{ product.url }}" class="pack-card__link" data-instant>{{ product.title }}</a></h3>

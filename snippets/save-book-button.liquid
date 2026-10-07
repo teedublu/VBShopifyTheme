@@ -1,9 +1,11 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-SAVE BOOK BUTTON
+SAVE BUTTON (HEART)
 ----------------------------------------------------------------------------------------------------------------------
-Heart that adds an audiobook to the visitor's saved books (behaviour in assets/saved-books.js). Renders nothing for
-products that aren't audiobooks, so it can be dropped into shared snippets.
+Heart that adds a product to the visitor's saved items (behaviour in assets/saved-books.js). Works for every product
+except gift cards (the eGift card, and the physical ones, which are a normal product of type "Physical Gift Cards").
+The names (save-book-button, saved-books) are kept from when only audiobooks could be saved, so existing lists, links
+and the account metafield keep working.
 
 ********************************************
 Supported variables
@@ -11,15 +13,17 @@ Supported variables
 
 * product: the product to save
 * size: the icon size in pixels (default 24)
+* overlay: if true, the heart sits in a round white button over the corner of the card image (the parent must be
+  positioned)
 * class: optional extra classes
 {%- endcomment -%}
 
-{%- if product.type == 'Audiobooks' or product.type == 'Audiobooks Bundle' -%}
+{%- unless product.gift_card? or product.type contains 'Gift Card' -%}
   {%- assign icon_size = size | default: 24 -%}
 
-  <save-book-button class="save-book {{ class }}" product-id="{{ product.id }}" product-title="{{ product.title | escape }}">
+  <save-book-button class="save-book {% if overlay %}save-book--overlay{% endif %} {{ class }}" product-id="{{ product.id }}" product-title="{{ product.title | escape }}" product-type="{{ product.type | escape }}">
     <button type="button" class="save-book__button tap-area" aria-pressed="false" aria-label="Save {{ product.title | escape }}">
       {%- render 'icon' with 'picto-love', width: icon_size, height: icon_size -%}
     </button>
   </save-book-button>
-{%- endif -%}
+{%- endunless -%}

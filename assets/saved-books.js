@@ -1,27 +1,28 @@
 // saved-books.js
-// "Save a book": heart buttons on audiobooks, the header count and the Saved books page.
-// Saved books are product IDs kept in localStorage, so the list lasts between visits on the same device. For a
+// "Save a product": heart buttons on every product, the header count and the Saved items page. (The file, element and
+// storage names still say "book" from when only audiobooks could be saved; they stay so existing lists and links keep working.)
+// Saved items are product IDs kept in localStorage, so the list lasts between visits on the same device. For a
 // signed-in customer the list also lives on their Shopify account (customer metafield custom.saved_books), which the
 // Voxblock Account app updates through the /apps/voxblock app proxy.
-// A list can be shared as a link to the Saved books page: ?shared=<IDs>&from=<first name> (see SharedLink below).
+// A list can be shared as a link to the Saved items page: ?shared=<IDs>&from=<first name> (see SharedLink below).
 
 const STORAGE_KEY = 'voxblock:saved-books';
 const OWNER_KEY = 'voxblock:saved-books-owner'; // customer ID whose account list this browser mirrors
 const CHANGE_EVENT = 'saved-books:change';
-const SEARCH_BATCH_SIZE = 10; // storefront search returns at most 10 products per request, so larger batches drop books
+const SEARCH_BATCH_SIZE = 10; // storefront search returns at most 10 products per request, so larger batches drop products
 
 const savedBooksUrl = window.themeVariables?.settings?.savedBooksUrl || '/pages/saved-books';
 
 // Shared lists: each product ID is written in base36, padded to a fixed 9 characters so the IDs need no separator.
-// 9 base36 characters hold IDs up to about 1e14; audiobook IDs are around 1.6e13 today.
+// 9 base36 characters hold IDs up to about 1e14; product IDs are around 1.6e13 today.
 const SharedLink = {
     ID_WIDTH: 9,
-    MAX_BOOKS: 50,
+    MAX_ITEMS: 50,
 
     url(ids, from) {
         const url = new URL(savedBooksUrl, window.location.origin);
         if (from) url.searchParams.set('from', from);
-        url.searchParams.set('shared', ids.slice(0, this.MAX_BOOKS).map((id) => id.toString(36).padStart(this.ID_WIDTH, '0')).join(''));
+        url.searchParams.set('shared', ids.slice(0, this.MAX_ITEMS).map((id) => id.toString(36).padStart(this.ID_WIDTH, '0')).join(''));
         return url.toString();
     },
 
@@ -35,7 +36,7 @@ const SharedLink = {
         const encoded = params.get('shared').toLowerCase().replace(/[^0-9a-z]/g, '');
         const ids = [];
 
-        for (let i = 0; i + this.ID_WIDTH <= encoded.length && ids.length < this.MAX_BOOKS; i += this.ID_WIDTH) {
+        for (let i = 0; i + this.ID_WIDTH <= encoded.length && ids.length < this.MAX_ITEMS; i += this.ID_WIDTH) {
             const id = parseInt(encoded.slice(i, i + this.ID_WIDTH), 36);
             if (id > 0 && !ids.includes(id)) ids.push(id);
         }
@@ -215,6 +216,7 @@ const capture = (eventName, properties = {}) => {
 const track = (eventName, button, extraProperties = {}) => capture(eventName, {
     title: button.productTitle || null,
     product_id: button.productId,
+    product_type: button.productType || null,
     ...(sharedList ? { via: 'shared_list' } : {}),
     ...extraProperties,
 });
@@ -267,7 +269,7 @@ const viewSavedBooksLink = () => {
     if (window.location.pathname === savedBooksUrl && !sharedList) return null;
     const link = document.createElement('a');
     link.href = savedBooksUrl;
-    link.textContent = 'View saved books';
+    link.textContent = 'View saved items';
     return link;
 };
 
@@ -313,6 +315,10 @@ class SaveBookButton extends HTMLElement {
         return this.getAttribute('product-title') || '';
     }
 
+    get productType() {
+        return this.getAttribute('product-type') || '';
+    }
+
     update() {
         this.button.setAttribute('aria-pressed', String(SavedBooks.has(this.productId)));
     }
@@ -323,7 +329,7 @@ class SaveBookButton extends HTMLElement {
         if (SavedBooks.has(this.productId)) {
             const index = SavedBooks.remove(this.productId);
             track('book_unsaved', this);
-            Toast.show('Removed from saved books', undoButton(this, index));
+            Toast.show('Removed from saved items', undoButton(this, index));
         } else {
             SavedBooks.add(this.productId);
             track('book_saved', this);
@@ -353,7 +359,7 @@ class SavedBooksCount extends HTMLElement {
     }
 }
 
-// Saved books page: renders the saved IDs with the theme's product cards through the Section Rendering API,
+// Saved items page: renders the saved IDs with the theme's product cards through the Section Rendering API,
 // the same way the theme's "Recently viewed products" section works. Opened from a shared link, it shows the shared
 // books instead, with a button to save them all; the hearts still show the visitor's own saved books.
 class SavedBooksList extends HTMLElement {
@@ -489,13 +495,14 @@ class SavedBooksList extends HTMLElement {
         }
     }
 
-    // "Sarah shared 6 books with you", from the section's text settings
+    // "Sarah's wish list: 6 items", from the section's text settings
     updateSharedHeading(count) {
         if (!this.sharedHeading) return;
 
         const template = sharedList.from ? this.sharedHeading.dataset.headingNamed : this.sharedHeading.dataset.headingAnonymous;
-        const books = count === 1 ? '1 book' : `${count} books`;
-        this.sharedHeading.textContent = template.replace('[name]', sharedList.from).replace('[books]', books);
+        const items = count === 1 ? '1 item' : `${count} items`;
+        // [books] is the old name for [items]
+        this.sharedHeading.textContent = template.replace('[name]', sharedList.from).replace('[items]', items).replace('[books]', items);
     }
 
     updateSaveAll() {
@@ -516,7 +523,7 @@ class SavedBooksList extends HTMLElement {
         if (added === 0) return;
 
         capture('shared_list_saved_all', { count: added });
-        Toast.show(added === 1 ? 'Saved 1 book' : `Saved ${added} books`, viewSavedBooksLink());
+        Toast.show(added === 1 ? 'Saved 1 item' : `Saved ${added} items`, viewSavedBooksLink());
     }
 
     // "Send my wish list": the phone's share sheet where there is one (it lists WhatsApp, Messages, Mail...), otherwise a

@@ -68,6 +68,10 @@ save-book-button:not(:defined) { visibility: hidden; } /* keeps its space until 
 .save-book__button[aria-pressed="true"] svg path { fill-opacity: 1; }
 .save-book__button:active { transform: scale(.85); }
 
+/* On product cards without the audiobook row (everything but audiobooks) the heart floats over the image corner */
+.save-book--overlay { position: absolute; z-index: 6; inset-block-start: 8px; inset-inline-end: 8px; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: rgb(255 255 255 / .88); box-shadow: 0 1px 4px rgb(0 0 0 / .14); }
+.pack-card__media > .save-book--overlay { inset-block-start: auto; inset-block-end: 8px; } /* the top corners hold the pack badges */
+
 .product-info__title-row { display: flex; align-items: flex-start; gap: var(--spacing-4); }
 .product-info__title-row > .product-info__title { flex: 1 1 auto; min-width: 0; }
 .product-info__title-row > save-book-button { flex-shrink: 0; margin-block-start: .25em; }

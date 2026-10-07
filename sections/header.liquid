@@ -265,9 +265,9 @@ the underlying logic of the menu.
             </a>
           {%- endif -%}
 
-          {%- comment -%}Saved books: only shown once something is saved (see snippets/saved-books-head.liquid){%- endcomment -%}
+          {%- comment -%}Saved items: only shown once something is saved (see snippets/saved-books-head.liquid){%- endcomment -%}
           <a href="{{ pages['saved-books'].url | default: '/pages/saved-books' }}" class="header__saved-books relative tap-area">
-            <span class="sr-only">Saved books</span>
+            <span class="sr-only">Saved items</span>
             {%- render 'icon' with 'picto-love', width: 22, height: 22 -%}
 
             <div class="header__cart-count">
