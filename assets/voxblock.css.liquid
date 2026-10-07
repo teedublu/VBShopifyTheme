@@ -68,9 +68,8 @@ save-book-button:not(:defined) { visibility: hidden; } /* keeps its space until 
 .save-book__button[aria-pressed="true"] svg path { fill-opacity: 1; }
 .save-book__button:active { transform: scale(.85); }
 
-/* On product cards without the audiobook row (everything but audiobooks) the heart floats over the image corner */
-.save-book--overlay { position: absolute; z-index: 6; inset-block-start: 8px; inset-inline-end: 8px; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: rgb(255 255 255 / .88); box-shadow: 0 1px 4px rgb(0 0 0 / .14); }
-.pack-card__media > .save-book--overlay { inset-block-start: auto; inset-block-end: 8px; } /* the top corners hold the pack badges */
+/* On every product card the heart floats over the bottom-right corner of the image (the top corners hold the badges) */
+.save-book--overlay { position: absolute; z-index: 6; inset-block-end: 8px; inset-inline-end: 8px; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: rgb(255 255 255 / .88); box-shadow: 0 1px 4px rgb(0 0 0 / .14); }
 
 .product-info__title-row { display: flex; align-items: flex-start; gap: var(--spacing-4); }
 .product-info__title-row > .product-info__title { flex: 1 1 auto; min-width: 0; }
@@ -566,7 +565,7 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .product-card__figure { aspect-ratio: 1 / 1; position: relative; width: 100%; }
 .product-card__figure > a { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .product-card .product-card__figure img.product-card__image { width: auto !important; height: auto !important; max-width: 100% !important; max-height: 100% !important; aspect-ratio: auto !important; object-fit: contain !important; position: static !important; }
-.product-card__row.sample-wishlist { gap: 6px; font-size: 13px; }
+.product-card__row.sample-wishlist { gap: 6px; font-size: 13px; min-height: 24px; } /* keeps the row (and the card heights) the same for books with no preview, as the heart used to */
 .product-card__row.buy-price > form { flex: none; margin: 0; }
 .product-card__row.buy-price > :not(form) { flex: 1 1 auto; min-width: 0; }
 .product-card__figure { min-height: 0; overflow: hidden; }

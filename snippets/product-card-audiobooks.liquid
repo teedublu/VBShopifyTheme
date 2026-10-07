@@ -85,6 +85,8 @@ Supported variables
         {%- endif -%}
       </a>
 
+      {%- render 'save-book-button', product: product, size: 20, overlay: true -%}
+
       {%- if show_quick_buy and product.available -%}
         <div class="product-card__quick-buy">
           {%- assign quick_add_label = 'product.general.quick_add' | t -%}
@@ -145,9 +147,6 @@ Supported variables
             <span class="sr-only">Play audio sample</span>
           </button>
         {%- endif -%}
-      </div>
-      <div class="product-card__wishlist column right">
-        {%- render 'save-book-button', product: product -%}
       </div>
     </div>
     {%- comment -%}
