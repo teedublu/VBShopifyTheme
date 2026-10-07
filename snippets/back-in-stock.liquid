@@ -8,14 +8,25 @@ One shared dialog for the whole page (rendered once, from layout/theme.liquid). 
 visitor when the product is available again, and remembers the request on this device.
 
 The Klaviyo public API key below is the same one used by the onsite script (it is public by design).
+
+Marketing opt-in: a checkbox under the email field. When it is ticked the visitor is also subscribed to the Klaviyo
+"Subscribers" list (single opt-in, which starts the Welcome Series). It starts ticked, as briefed.
+NOTE: under UK GDPR / PECR a pre-ticked box is not valid consent (ICO guidance), so marketing emails sent on that basis
+could breach PECR. Set bis_marketing_checked to false to start it unticked.
 {%- endcomment -%}
 
+{%- assign bis_marketing_checked = true -%}
+{%- assign bis_marketing_list_id = 'WXZqis' -%}
+
 {%- assign bis_email_label = 'back_in_stock.email_label' | t -%}
+{%- assign bis_marketing_label = 'back_in_stock.marketing_label' | t -%}
 {%- assign bis_submit_label = 'back_in_stock.submit' | t -%}
-{%- assign bis_keep_label = 'back_in_stock.keep_browsing' | t -%}
+{%- assign bis_done_label = 'back_in_stock.done' | t -%}
 
 <dialog id="stock-alert-dialog" class="stock-alert" aria-labelledby="stock-alert-title"
   data-company-id="TKFEPz"
+  data-marketing-list-id="{{ bis_marketing_list_id }}"
+  data-marketing-default="{{ bis_marketing_checked }}"
   data-customer-email="{{ customer.email | escape }}"
   data-text-invalid="{{ 'back_in_stock.invalid_email' | t }}"
   data-text-error="{{ 'back_in_stock.error' | t }}"
@@ -26,14 +37,14 @@ The Klaviyo public API key below is the same one used by the onsite script (it i
     </button>
   </form>
 
-  <div class="stock-alert__product">
-    <span class="stock-alert__image-slot" data-bis-image-slot></span>
-    <p class="stock-alert__product-title h6" data-bis-title></p>
-  </div>
-
   <div data-bis-state="form">
-    <h2 id="stock-alert-title" class="stock-alert__title h5">{{ 'back_in_stock.title' | t }}</h2>
-    <p class="stock-alert__body text-subdued">{{ 'back_in_stock.body' | t }}</p>
+    <div class="stock-alert__product">
+      <span class="stock-alert__image-slot" data-bis-image-slot></span>
+      <p id="stock-alert-title" class="stock-alert__lead">
+        <span class="stock-alert__product-title" data-bis-title></span>
+        <span class="stock-alert__status">{{ 'back_in_stock.out_of_stock' | t }}</span>
+      </p>
+    </div>
 
     <form class="stock-alert__form" data-bis-form novalidate>
       {%- render 'input', type: 'email', name: 'stock-alert-email', label: bis_email_label, value: customer.email, required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
@@ -42,14 +53,15 @@ The Klaviyo public API key below is the same one used by the onsite script (it i
         <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" data-bis-hp></label>
       </div>
 
+      {%- render 'checkbox', name: 'stock-alert-marketing', label: bis_marketing_label, checked: bis_marketing_checked -%}
+
       <p class="stock-alert__error" role="alert" data-bis-error hidden></p>
 
       {%- render 'button', type: 'submit', content: bis_submit_label, stretch: true, size: 'lg' -%}
 
-      <p class="stock-alert__privacy text-xs text-subdued">
-        {{- 'back_in_stock.privacy' | t }}
-        {%- if shop.privacy_policy.url != blank %} <a href="{{ shop.privacy_policy.url }}" class="link">{{ 'back_in_stock.privacy_link' | t }}</a>{% endif -%}
-      </p>
+      {%- if shop.privacy_policy.url != blank -%}
+        <p class="stock-alert__privacy text-xs text-subdued"><a href="{{ shop.privacy_policy.url }}" class="link">{{ 'back_in_stock.privacy_link' | t }}</a></p>
+      {%- endif -%}
     </form>
   </div>
 
@@ -57,8 +69,7 @@ The Klaviyo public API key below is the same one used by the onsite script (it i
     <svg aria-hidden="true" focusable="false" class="stock-alert__tick" width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="currentColor" opacity=".14"/><path d="m12 20.5 5.5 5.5L28 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <h2 class="stock-alert__title h5" tabindex="-1" data-bis-done-title>{{ 'back_in_stock.success_title' | t }}</h2>
     <p class="stock-alert__body text-subdued" data-bis-done-body></p>
-    <p class="stock-alert__body text-subdued" data-bis-saved-note hidden>{{ 'back_in_stock.saved_note' | t }}</p>
-    {%- render 'button', type: 'button', content: bis_keep_label, stretch: true, size: 'lg', style: 'outline' -%}
+    {%- render 'button', type: 'button', content: bis_done_label, stretch: true, size: 'lg', style: 'outline' -%}
   </div>
 </dialog>
 

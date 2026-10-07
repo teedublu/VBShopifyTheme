@@ -2,7 +2,8 @@
 // "Email me when it's back": the sheet that opens from the "More coming soon" pill on sold-out product cards and from
 // the sold-out product page. It asks Klaviyo's Back in Stock API to email the visitor when the product is available
 // again (one request per variant, so any colour of a starter pack will do), remembers the request on this device so the
-// pill can say "We'll email you", and saves audiobooks to the visitor's Saved books (see saved-books.js).
+// pill can say "We'll email you", and saves audiobooks to the visitor's Saved books (see saved-books.js). A checkbox
+// (ticked by default, see snippets/back-in-stock.liquid) also signs the visitor up to the Klaviyo marketing list.
 // Markup: snippets/back-in-stock.liquid (the sheet) and snippets/coming-soon-pill.liquid (the trigger).
 
 const dialog = document.getElementById('stock-alert-dialog');
@@ -10,6 +11,7 @@ const dialog = document.getElementById('stock-alert-dialog');
 const STORAGE_KEY = 'voxblock:stock-alerts'; // { [productId]: ISO date of the request } for this device
 const EMAIL_KEY = 'voxblock:stock-alert-email'; // so a returning visitor doesn't retype their email
 const API_URL = 'https://a.klaviyo.com/client/back-in-stock-subscriptions/';
+const SUBSCRIBE_URL = 'https://a.klaviyo.com/client/subscriptions/';
 const API_REVISION = '2025-07-15';
 
 const storage = {
@@ -36,6 +38,8 @@ if (dialog) {
     const emailInput = form.querySelector('input[type="email"]');
     const honeypot = form.querySelector('[data-bis-hp]');
     const errorMessage = dialog.querySelector('[data-bis-error]');
+    const marketingInput = form.querySelector('input[type="checkbox"]');
+    const marketingDefault = dialog.dataset.marketingDefault === 'true';
     const submitButton = form.querySelector('button[type="submit"]');
     const formState = dialog.querySelector('[data-bis-state="form"]');
     const doneState = dialog.querySelector('[data-bis-state="done"]');
@@ -43,7 +47,6 @@ if (dialog) {
     const titleElement = dialog.querySelector('[data-bis-title]');
     const doneTitle = dialog.querySelector('[data-bis-done-title]');
     const doneBody = dialog.querySelector('[data-bis-done-body]');
-    const savedNote = dialog.querySelector('[data-bis-saved-note]');
 
     let current = null; // the product the sheet is open for
 
@@ -95,11 +98,10 @@ if (dialog) {
         submitButton.disabled = busy;
     };
 
-    const showDone = ({ email, saved }) => {
+    const showDone = (email) => {
         formState.hidden = true;
         doneState.hidden = false;
         doneBody.textContent = dialog.dataset.textSuccessBody.replace('[email]', email || 'you');
-        savedNote.hidden = !saved;
         doneTitle.focus();
     };
 
@@ -130,11 +132,12 @@ if (dialog) {
         formState.hidden = false;
         doneState.hidden = true;
         emailInput.value = rememberedEmail;
+        marketingInput.checked = marketingDefault;
 
         dialog.showModal();
 
         if (readAlerts()[current.productId]) {
-            showDone({ email: rememberedEmail || 'you', saved: false });
+            showDone(rememberedEmail);
         } else if (rememberedEmail) {
             submitButton.focus();
         } else {
@@ -183,6 +186,33 @@ if (dialog) {
         if (response.status !== 202) throw new Error(`Klaviyo answered ${response.status}`);
     };
 
+    // The marketing opt-in: subscribes the email to the Klaviyo list. Best effort, so the back in stock alert never
+    // fails because of it.
+    const subscribeToMarketing = async (email) => {
+        const listId = dialog.dataset.marketingListId;
+        if (!listId) return false;
+
+        try {
+            const response = await fetch(`${SUBSCRIBE_URL}?company_id=${encodeURIComponent(dialog.dataset.companyId)}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json', revision: API_REVISION },
+                body: JSON.stringify({
+                    data: {
+                        type: 'subscription',
+                        attributes: {
+                            custom_source: 'Back in stock alert',
+                            profile: { data: { type: 'profile', attributes: { email } } },
+                        },
+                        relationships: { list: { data: { type: 'list', id: listId } } },
+                    },
+                }),
+            });
+            return response.status === 202;
+        } catch (error) {
+            return false;
+        }
+    };
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!current) return;
@@ -190,7 +220,7 @@ if (dialog) {
         // Bots fill in the hidden field; pretend it worked and send nothing
         if (honeypot.value) {
             setBusy(false);
-            showDone({ email: emailInput.value, saved: false });
+            showDone(emailInput.value);
             return;
         }
 
@@ -205,6 +235,7 @@ if (dialog) {
         clearError();
         setBusy(true);
 
+        const wantsMarketing = marketingInput.checked;
         const results = await Promise.allSettled(current.variantIds.map((variantId) => subscribe(email, variantId)));
         const succeeded = results.filter((result) => result.status === 'fulfilled').length;
 
@@ -222,6 +253,9 @@ if (dialog) {
         storage.write(EMAIL_KEY, email);
         markPills();
 
+        // Only once the alert has gone through, so a failed alert doesn't leave a half-finished sign-up behind
+        if (wantsMarketing) subscribeToMarketing(email);
+
         // Waiting for a book is a kind of saving it: it joins the Saved books list too (saved-books.js listens for this)
         if (current.saveable) {
             document.dispatchEvent(new CustomEvent('voxblock:save-book', { detail: { id: current.productId } }));
@@ -233,8 +267,9 @@ if (dialog) {
             variants: current.variantIds.length,
             signed_in: Boolean(dialog.dataset.customerEmail),
             saved_book: current.saveable,
+            marketing_opt_in: wantsMarketing,
         });
 
-        showDone({ email, saved: current.saveable });
+        showDone(email);
     });
 }
