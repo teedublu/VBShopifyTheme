@@ -355,6 +355,9 @@ class SavedBooksList extends HTMLElement {
         super();
         this.onChange = this.onChange.bind(this);
         this.onShare = this.onShare.bind(this);
+        this.onShareChannel = this.onShareChannel.bind(this);
+        this.onDocumentClick = this.onDocumentClick.bind(this);
+        this.onDocumentKeydown = this.onDocumentKeydown.bind(this);
         this.onSaveAll = this.onSaveAll.bind(this);
         this.renderCount = 0;
     }
@@ -366,7 +369,8 @@ class SavedBooksList extends HTMLElement {
         this.errorState = this.querySelector('[data-saved-books-error]');
         this.actions = this.querySelector('[data-saved-books-actions]');
         this.share = this.querySelector('[data-saved-books-share]');
-        this.shareButton = this.share?.querySelector('button');
+        this.shareButton = this.share?.querySelector('[data-saved-books-share-trigger] button');
+        this.shareMenu = this.share?.querySelector('[data-saved-books-share-menu]');
         this.saveAllButton = this.querySelector('[data-saved-books-save-all] button');
         this.sharedHeading = this.querySelector('[data-saved-books-shared-heading]');
 
@@ -377,6 +381,7 @@ class SavedBooksList extends HTMLElement {
             this.saveAllButton?.addEventListener('click', this.onSaveAll);
         } else {
             this.shareButton?.addEventListener('click', this.onShare);
+            this.shareMenu?.addEventListener('click', this.onShareChannel);
         }
 
         document.addEventListener(CHANGE_EVENT, this.onChange);
@@ -386,6 +391,8 @@ class SavedBooksList extends HTMLElement {
     disconnectedCallback() {
         document.removeEventListener(CHANGE_EVENT, this.onChange);
         this.shareButton?.removeEventListener('click', this.onShare);
+        this.shareMenu?.removeEventListener('click', this.onShareChannel);
+        this.closeShareMenu();
         this.saveAllButton?.removeEventListener('click', this.onSaveAll);
     }
 
@@ -506,16 +513,15 @@ class SavedBooksList extends HTMLElement {
         Toast.show(added === 1 ? 'Saved 1 book' : `Saved ${added} books`, viewSavedBooksLink());
     }
 
+    // "Send my wish list": the phone's share sheet where there is one (it lists WhatsApp, Messages, Mail...), otherwise a
+    // short menu of ways to send the link
     async onShare() {
         const ids = this.renderedIds();
         if (ids.length === 0) return;
 
-        const url = SharedLink.url(ids, account?.firstName);
-        const text = this.share.dataset.shareText || '';
-
         if (navigator.share) {
             try {
-                await navigator.share({ text, url });
+                await navigator.share({ text: this.share.dataset.shareText || '', url: SharedLink.url(ids, account?.firstName) });
                 capture('saved_books_shared', { count: ids.length, method: 'share_sheet' });
             } catch (error) {
                 // AbortError: they closed the share sheet without choosing anything
@@ -524,14 +530,68 @@ class SavedBooksList extends HTMLElement {
             return;
         }
 
-        try {
-            await navigator.clipboard.writeText(url);
-            Toast.show('Link copied. Paste it into a message to share your list');
-        } catch (error) {
-            window.prompt('Copy this link to share your list', url);
+        if (this.shareMenu.hidden) {
+            this.openShareMenu(ids);
+        } else {
+            this.closeShareMenu();
         }
+    }
 
-        capture('saved_books_shared', { count: ids.length, method: 'copy_link' });
+    openShareMenu(ids) {
+        const url = SharedLink.url(ids, account?.firstName);
+        const text = this.share.dataset.shareText || '';
+        const subject = this.share.dataset.shareSubject || '';
+
+        this.shareMenu.querySelector('[data-share-channel="whatsapp"]').href = `https://wa.me/?text=${encodeURIComponent(`${text} ${url}`.trim())}`;
+        this.shareMenu.querySelector('[data-share-channel="email"]').href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${text}\n\n${url}`.trim())}`;
+        this.shareMenu.dataset.shareUrl = url;
+        this.shareMenu.dataset.shareCount = ids.length;
+
+        this.shareMenu.hidden = false;
+        this.shareButton.setAttribute('aria-expanded', 'true');
+        document.addEventListener('click', this.onDocumentClick);
+        document.addEventListener('keydown', this.onDocumentKeydown);
+    }
+
+    closeShareMenu() {
+        if (!this.shareMenu || this.shareMenu.hidden) return;
+
+        this.shareMenu.hidden = true;
+        this.shareButton?.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', this.onDocumentClick);
+        document.removeEventListener('keydown', this.onDocumentKeydown);
+    }
+
+    onDocumentClick(event) {
+        if (!this.share.contains(event.target)) this.closeShareMenu();
+    }
+
+    onDocumentKeydown(event) {
+        if (event.key !== 'Escape') return;
+
+        this.closeShareMenu();
+        this.shareButton.focus();
+    }
+
+    async onShareChannel(event) {
+        const channel = event.target.closest('[data-share-channel]');
+        if (!channel) return;
+
+        const method = channel.dataset.shareChannel;
+        const { shareUrl, shareCount } = this.shareMenu.dataset;
+
+        capture('saved_books_shared', { count: Number(shareCount), method });
+        this.closeShareMenu();
+
+        // WhatsApp and Email are links that open on their own
+        if (method !== 'copy_link') return;
+
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            Toast.show('Link copied. Paste it into a message to send your wish list');
+        } catch (error) {
+            window.prompt('Copy this link to send your wish list', shareUrl);
+        }
     }
 
     showState(state) {
@@ -546,6 +606,7 @@ class SavedBooksList extends HTMLElement {
 
         if (this.share) {
             this.share.hidden = state !== 'grid'; // nothing to share until the list has books
+            if (state !== 'grid') this.closeShareMenu();
         }
     }
 }
