@@ -153,8 +153,10 @@ if (dialog) {
         open(button);
     });
 
-    // Tap outside the sheet to close it
+    // Tap outside the sheet to close it. Only clicks on the dialog itself count: pressing Enter in a field makes the browser
+    // fire a click on the submit button with coordinates 0,0, which would otherwise look like a click outside.
     dialog.addEventListener('click', (event) => {
+        if (event.target !== dialog) return;
         const rect = dialog.getBoundingClientRect();
         const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
         if (!inside) dialog.close();
