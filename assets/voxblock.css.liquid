@@ -510,7 +510,9 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .coming-soon-pill--action:hover { background: rgb(var(--text-color) / .14); }
 .coming-soon-pill--action:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
 .coming-soon-pill--action.is-set { background: rgb(var(--brand-heading-rgb) / .16); color: rgb(var(--text-color) / .9); }
-.coming-soon-pill.coming-soon-pill--pdp { width: 100%; max-width: none; justify-content: center; padding: 12px 16px; font-size: 14px; border-radius: var(--rounded-button, 999px); }
+.coming-soon-pill.coming-soon-pill--pdp { width: 100%; max-width: none; justify-content: center; padding: 11px 16px; font-size: 14px; font-weight: 700; border: 2px solid var(--brand-heading); border-radius: var(--rounded-button, 999px); background: transparent; color: var(--brand-heading); } /* outlined so it reads as tappable under the greyed sold-out button */
+.coming-soon-pill.coming-soon-pill--pdp:hover { background: rgb(var(--brand-heading-rgb) / .08); }
+.coming-soon-pill.coming-soon-pill--pdp.is-set { background: rgb(var(--brand-heading-rgb) / .12); color: var(--brand-heading); }
 .coming-soon-pill.coming-soon-pill--pdp svg { width: 16px; height: 16px; }
 
 .stock-alert { --alert-text: var(--text-primary, 42 85 90); position: fixed; border: 0; padding: 20px; width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; border-radius: 18px; background: #fff; color: rgb(var(--alert-text)); box-shadow: 0 24px 64px rgb(0 0 0 / .28); }
