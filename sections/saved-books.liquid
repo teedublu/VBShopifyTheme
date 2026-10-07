@@ -36,7 +36,7 @@ The saved list lives in the visitor's browser, so the page is filled in by asset
 section through the search page (?q=id:1 OR id:2&section_id=...), which renders the "search.performed" branch below:
 one product card per saved ID, in saved order.
 
-Opened from a shared link (?shared=...&from=...), the script hides the visitor's own heading and account bar, shows
+Opened from a shared link (?shared=...&from=...), the script hides the visitor's own heading and list bar, shows
 the "shared" heading instead and renders the shared books.
 {%- endcomment -%}
 
@@ -59,27 +59,73 @@ the "shared" heading instead and renders the shared books.
       <div class="section-stack" data-saved-books-own>
         {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, tag: 'h1' -%}
 
-        {%- comment -%}One line: where the list is kept, with Save (sign in) and Share beside it{%- endcomment -%}
-        <div class="saved-books__bar">
-          {%- if customer -%}
-            {%- assign customer_email = customer.email | escape -%}
-            <p>{{ section.settings.account_signed_in_text | escape | replace: '[email]', customer_email }}</p>
-          {%- else -%}
-            <p>{{ section.settings.account_text | escape }}</p>
-          {%- endif -%}
+        {%- comment -%}
+          Two rows: where the list is kept (with the Save with my email button when signed out) and the wish list prompt.
+          Signed out, the account row comes first; signed in, it is just a quiet line under the wish list prompt.
+        {%- endcomment -%}
+        {%- capture account_row -%}
+          <div class="saved-books__row saved-books__row--account{% if customer %} saved-books__row--quiet{% endif %}">
+            {%- if customer -%}
+              {%- assign customer_email = customer.email | escape -%}
+              <p class="saved-books__row-text">{{ section.settings.account_signed_in_text | escape | replace: '[email]', customer_email }}</p>
+            {%- else -%}
+              <p class="saved-books__row-text">{{ section.settings.account_text | escape }}</p>
 
-          <div class="saved-books__bar-buttons">
-            {%- if customer == blank and section.settings.account_button_label != blank -%}
-              {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
-              {%- render 'button', href: sign_in_url, content: section.settings.account_button_label, size: 'sm' -%}
-            {%- endif -%}
-
-            {%- if section.settings.share_button_label != blank -%}
-              <div data-saved-books-share data-share-text="{{ section.settings.share_text | escape }}" hidden>
-                {%- render 'button', content: section.settings.share_button_label, icon: 'share', style: 'outline', size: 'sm' -%}
-              </div>
+              {%- if section.settings.account_button_label != blank -%}
+                {%- capture sign_in_url -%}/customer_authentication/login?return_to={{ request.path | url_encode }}{%- endcapture -%}
+                {%- render 'button', href: sign_in_url, content: section.settings.account_button_label -%}
+              {%- endif -%}
             {%- endif -%}
           </div>
+        {%- endcapture -%}
+
+        {%- capture wish_list_row -%}
+          {%- if section.settings.share_button_label != blank -%}
+            {%- assign share_menu_id = 'saved-books-share-menu-' | append: section.id -%}
+            <div class="saved-books__row saved-books__row--wish-list" data-saved-books-share data-share-text="{{ section.settings.share_text | escape }}" data-share-subject="{{ section.settings.share_email_subject | escape }}" hidden>
+              <div class="saved-books__row-text">
+                {%- if section.settings.share_title != blank -%}
+                  <strong class="block">{{ section.settings.share_title | escape }}</strong>
+                {%- endif -%}
+
+                {%- if section.settings.share_description != blank -%}
+                  <span class="text-subdued">{{ section.settings.share_description | escape }}</span>
+                {%- endif -%}
+              </div>
+
+              <div class="saved-books__send">
+                <div data-saved-books-share-trigger>
+                  {%- render 'button', content: section.settings.share_button_label, icon: 'picto-gift', aria_controls: share_menu_id -%}
+                </div>
+
+                {%- comment -%}Desktop browsers without a share sheet: a short list of ways to send the link (filled in by saved-books.js){%- endcomment -%}
+                <div class="saved-books__menu" id="{{ share_menu_id }}" data-saved-books-share-menu hidden>
+                  <a href="#" target="_blank" rel="noopener" data-share-channel="whatsapp">
+                    {%- render 'icon' with 'whatsapp', width: 18, height: 18 -%}
+                    <span>WhatsApp</span>
+                  </a>
+                  <a href="#" data-share-channel="email">
+                    {%- render 'icon' with 'email', width: 18, height: 14 -%}
+                    <span>Email</span>
+                  </a>
+                  <button type="button" data-share-channel="copy_link">
+                    <svg role="presentation" fill="none" focusable="false" stroke-width="1.5" width="18" height="18" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Copy link</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endcapture -%}
+
+        <div class="saved-books__bar">
+          {%- if customer -%}
+            {{- wish_list_row -}}
+            {{- account_row -}}
+          {%- else -%}
+            {{- account_row -}}
+            {{- wish_list_row -}}
+          {%- endif -%}
         </div>
       </div>
 
@@ -191,24 +237,24 @@ the "shared" heading instead and renders the shared books.
       "type": "richtext",
       "id": "content",
       "label": "Content",
-      "default": "<p>Books you've saved while browsing.</p>"
+      "info": "Optional text under the heading. Left empty on the live page."
     },
     {
       "type": "header",
       "content": "Account",
-      "info": "One line above the list. Signed-out visitors see a Save button that signs them in; signed-in customers see where their list is kept."
+      "info": "A line above the list. Signed-out visitors get a button that signs them in to keep the list; signed-in customers see where their list is kept."
     },
     {
       "type": "text",
       "id": "account_text",
       "label": "Text (signed out)",
-      "default": "Enter your email to save this list"
+      "default": "Keep your list on any device"
     },
     {
       "type": "text",
       "id": "account_button_label",
-      "label": "Save button label",
-      "default": "Save"
+      "label": "Button label (signed out)",
+      "default": "Save with my email"
     },
     {
       "type": "text",
@@ -219,39 +265,61 @@ the "shared" heading instead and renders the shared books.
     },
     {
       "type": "header",
-      "content": "Sharing",
-      "info": "The Share button, next to Save, makes a link to the list for sending to someone else. Leave the label empty to hide it."
+      "content": "Wish list",
+      "info": "Lets someone send their list to family or friends as a link. Leave the button label empty to hide it."
+    },
+    {
+      "type": "text",
+      "id": "share_title",
+      "label": "Heading",
+      "default": "Birthday or Christmas coming up?"
+    },
+    {
+      "type": "text",
+      "id": "share_description",
+      "label": "Text",
+      "default": "Send this list to family so they know what to get."
     },
     {
       "type": "text",
       "id": "share_button_label",
-      "label": "Share button label",
-      "default": "Share"
+      "label": "Button label",
+      "default": "Send my wish list"
     },
     {
       "type": "text",
       "id": "share_text",
       "label": "Message sent with the link",
-      "default": "I've saved some audiobooks on Voxblock. Have a look:"
+      "default": "Here's my Voxblock wish list, in case you're stuck for ideas:"
+    },
+    {
+      "type": "text",
+      "id": "share_email_subject",
+      "label": "Email subject",
+      "default": "My Voxblock wish list"
+    },
+    {
+      "type": "header",
+      "content": "When someone opens the link"
     },
     {
       "type": "text",
       "id": "shared_heading",
-      "label": "Heading when someone opens the link",
-      "info": "[name] is the sharer's first name (when they're signed in); [books] is the number of books, e.g. \"6 books\".",
-      "default": "[name] shared [books] with you"
+      "label": "Heading",
+      "info": "[name] is the sender's first name (when they're signed in); [books] is the number of books, e.g. \"6 books\".",
+      "default": "[name]'s wish list: [books]"
     },
     {
       "type": "text",
       "id": "shared_heading_anonymous",
-      "label": "Heading when the sharer isn't signed in",
-      "default": "Someone shared [books] with you"
+      "label": "Heading when the sender isn't signed in",
+      "default": "A Voxblock wish list: [books]"
     },
     {
       "type": "text",
       "id": "shared_text",
       "label": "Text under the heading",
-      "default": "Tap the heart on the ones you like, or save them all to your own list."
+      "default": "Looking for a gift idea? Tap the heart on the ones you like, or save them all to your own list."
     },
     {
       "type": "text",

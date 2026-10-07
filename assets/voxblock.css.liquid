@@ -253,9 +253,25 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 	  object-fit: cover;*/
 	}
 }
-/* Saved books page: one-line account bar with the Save and Share buttons (sections/saved-books.liquid) */
-.saved-books__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--spacing-3) var(--spacing-6); padding: var(--spacing-3) var(--spacing-5); border-radius: var(--rounded-sm); background: rgb(var(--text-color) / .05); }
-.saved-books__bar-buttons { display: flex; flex-wrap: wrap; gap: var(--spacing-3); }
+/* Saved books page: the list bar (sections/saved-books.liquid). One row for where the list is kept, one for the wish
+   list prompt with the "Send my wish list" button */
+.saved-books__bar { border-radius: var(--rounded-sm); background: rgb(var(--text-color) / .05); }
+.saved-books__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--spacing-3) var(--spacing-6); padding: var(--spacing-4) var(--spacing-5); }
+.saved-books__row[hidden] { display: none; }
+.saved-books__row + .saved-books__row { border-top: 1px solid rgb(var(--text-color) / .1); }
+.saved-books__row--quiet { padding-block: var(--spacing-3); font-size: var(--text-sm); }
+.saved-books__row-text { flex: 1 1 16rem; margin: 0; }
+.saved-books__send { position: relative; flex: none; }
+
+/* Ways to send the link, on browsers without a share sheet */
+.saved-books__menu { position: absolute; z-index: 10; inset-inline: 0; top: calc(100% + var(--spacing-2)); min-width: 11rem; display: grid; padding: var(--spacing-1); border-radius: var(--rounded-sm); background: rgb(var(--background)); box-shadow: 0 6px 20px rgb(0 0 0 / .18), 0 0 0 1px rgb(var(--text-color) / .1); }
+.saved-books__menu[hidden] { display: none; }
+.saved-books__menu > * { display: flex; align-items: center; gap: var(--spacing-3); width: 100%; padding: var(--spacing-3) var(--spacing-4); border-radius: var(--rounded-sm); text-align: start; }
+.saved-books__menu > :is(:hover, :focus-visible) { background: rgb(var(--text-color) / .06); }
+
+@media screen and (max-width: 699px) {
+  .saved-books__send, .saved-books__send .button, .saved-books__row > .button { width: 100%; }
+}
 
 /* Saved books page: the view of a list someone shared */
 .saved-books__shared-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-4) var(--spacing-6); }
