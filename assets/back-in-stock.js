@@ -88,15 +88,11 @@ if (dialog) {
         errorMessage.hidden = true;
     };
 
+    // The theme's button (custom-button) shows its loader while aria-busy is "true" and sets it itself on click, so every
+    // way out of the submit handler has to put it back
     const setBusy = (busy) => {
+        submitButton.setAttribute('aria-busy', String(busy));
         submitButton.disabled = busy;
-        if (busy) {
-            submitButton.dataset.html = submitButton.innerHTML;
-            submitButton.textContent = dialog.dataset.textSubmitting;
-        } else if (submitButton.dataset.html) {
-            submitButton.innerHTML = submitButton.dataset.html;
-            delete submitButton.dataset.html;
-        }
     };
 
     const showDone = ({ email, saved }) => {
@@ -193,12 +189,14 @@ if (dialog) {
 
         // Bots fill in the hidden field; pretend it worked and send nothing
         if (honeypot.value) {
+            setBusy(false);
             showDone({ email: emailInput.value, saved: false });
             return;
         }
 
         const email = emailInput.value.trim();
         if (!email || !emailInput.checkValidity()) {
+            setBusy(false);
             showError(dialog.dataset.textInvalid);
             emailInput.focus();
             return;
