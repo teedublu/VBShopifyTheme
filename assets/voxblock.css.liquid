@@ -529,6 +529,7 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .stock-alert__product-title, .stock-alert__title { color: var(--brand-heading); font-weight: 600; }
 .stock-alert__status { font-weight: 500; }
 .stock-alert__title { margin: 0 0 6px; }
+.stock-alert__title:focus { outline: none; } /* focus is moved here for screen readers when the confirmation appears */
 .stock-alert__body { margin: 0 0 14px; }
 .stock-alert__form { display: grid; gap: 14px; }
 .stock-alert__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
