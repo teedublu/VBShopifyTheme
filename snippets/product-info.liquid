@@ -53,7 +53,7 @@
           {%- endcapture -%}
         {%- endif -%}
 
-        {%- comment -%}Audiobooks get a save heart beside the title (the snippet renders nothing for other products){%- endcomment -%}
+        {%- comment -%}Every product gets a save heart beside the title (the snippet renders nothing for gift cards){%- endcomment -%}
         {%- capture save_book_button -%}{%- render 'save-book-button', product: product, size: 28 -%}{%- endcapture -%}
 
         <div {{ block.shopify_attributes }}>
