@@ -4,8 +4,10 @@ BACK IN STOCK ALERT SHEET
 ----------------------------------------------------------------------------------------------------------------------
 
 One shared dialog for the whole page (rendered once, from layout/theme.liquid). Any button with data-bis-trigger
-(see snippets/coming-soon-pill.liquid) opens it; assets/back-in-stock.js fills in the product, asks Klaviyo to email the
-visitor when the product is available again, and remembers the request on this device.
+(see snippets/coming-soon-pill.liquid) opens it, unless we already have the visitor's email, in which case
+assets/back-in-stock.js signs them up straight away. The script fills in the product, asks Klaviyo to email the visitor
+when the product is available again, remembers the request on this device and closes the sheet (no confirmation screen;
+the pill changes to "We'll email you").
 
 The Klaviyo public API key below is the same one used by the onsite script (it is public by design).
 
@@ -21,7 +23,6 @@ could breach PECR. Set bis_marketing_checked to false to start it unticked.
 {%- assign bis_email_label = 'back_in_stock.email_label' | t -%}
 {%- assign bis_marketing_label = 'back_in_stock.marketing_label' | t -%}
 {%- assign bis_submit_label = 'back_in_stock.submit' | t -%}
-{%- assign bis_done_label = 'back_in_stock.done' | t -%}
 
 <dialog id="stock-alert-dialog" class="stock-alert" aria-labelledby="stock-alert-title"
   data-company-id="TKFEPz"
@@ -37,40 +38,33 @@ could breach PECR. Set bis_marketing_checked to false to start it unticked.
     </button>
   </form>
 
-  <div data-bis-state="form">
-    <div class="stock-alert__product">
-      <span class="stock-alert__image-slot" data-bis-image-slot></span>
-      <p id="stock-alert-title" class="stock-alert__lead">
-        <span class="stock-alert__product-title" data-bis-title></span>
-        <span class="stock-alert__status">{{ 'back_in_stock.out_of_stock' | t }}</span>
-      </p>
+  <div class="stock-alert__product">
+    <span class="stock-alert__image-slot" data-bis-image-slot></span>
+    <p id="stock-alert-title" class="stock-alert__lead">
+      <span class="stock-alert__product-title" data-bis-title></span>
+      <span class="stock-alert__status">{{ 'back_in_stock.out_of_stock' | t }}</span>
+    </p>
+  </div>
+
+  <form class="stock-alert__form" data-bis-form novalidate>
+    {%- render 'input', type: 'email', name: 'stock-alert-email', label: bis_email_label, value: customer.email, required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
+
+    <div class="stock-alert__hp" aria-hidden="true">
+      <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" data-bis-hp></label>
     </div>
 
-    <form class="stock-alert__form" data-bis-form novalidate>
-      {%- render 'input', type: 'email', name: 'stock-alert-email', label: bis_email_label, value: customer.email, required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
+    {%- render 'checkbox', name: 'stock-alert-marketing', label: bis_marketing_label, checked: bis_marketing_checked -%}
 
-      <div class="stock-alert__hp" aria-hidden="true">
-        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" data-bis-hp></label>
-      </div>
+    <p class="stock-alert__error" role="alert" data-bis-error hidden></p>
 
-      {%- render 'checkbox', name: 'stock-alert-marketing', label: bis_marketing_label, checked: bis_marketing_checked -%}
+    {%- render 'button', type: 'submit', content: bis_submit_label, stretch: true, size: 'lg' -%}
 
-      <p class="stock-alert__error" role="alert" data-bis-error hidden></p>
-
-      {%- render 'button', type: 'submit', content: bis_submit_label, stretch: true, size: 'lg' -%}
-
-      {%- if shop.privacy_policy.url != blank -%}
-        <p class="stock-alert__privacy text-xs text-subdued"><a href="{{ shop.privacy_policy.url }}" class="link">{{ 'back_in_stock.privacy_link' | t }}</a></p>
-      {%- endif -%}
-    </form>
-  </div>
-
-  <div data-bis-state="done" class="stock-alert__done" hidden>
-    <svg aria-hidden="true" focusable="false" class="stock-alert__tick" width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="currentColor" opacity=".14"/><path d="m12 20.5 5.5 5.5L28 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <h2 class="stock-alert__title h5" tabindex="-1" data-bis-done-title>{{ 'back_in_stock.success_title' | t }}</h2>
-    <p class="stock-alert__body text-subdued" data-bis-done-body></p>
-    {%- render 'button', type: 'button', content: bis_done_label, stretch: true, size: 'lg', style: 'outline' -%}
-  </div>
+    {%- if shop.privacy_policy.url != blank -%}
+      <p class="stock-alert__privacy text-xs text-subdued"><a href="{{ shop.privacy_policy.url }}" class="link">{{ 'back_in_stock.privacy_link' | t }}</a></p>
+    {%- endif -%}
+  </form>
 </dialog>
+
+<p class="sr-only" role="status" aria-live="polite" data-bis-status></p>
 
 <script type="module" src="{{ 'back-in-stock.js' | asset_url }}"></script>

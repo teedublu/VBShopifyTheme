@@ -3,8 +3,9 @@
 COMING SOON PILL / BACK IN STOCK ALERT TRIGGER
 ----------------------------------------------------------------------------------------------------------------------
 
-Shown when every variant of a product is sold out. With a product it is a button that opens the "email me when it's
-back" sheet (snippets/back-in-stock.liquid, behaviour in assets/back-in-stock.js); without one it is a plain pill.
+Shown when every variant of a product is sold out. With a product it is a "Tell me when back" button: it opens the
+sheet that asks for an email (snippets/back-in-stock.liquid, behaviour in assets/back-in-stock.js), or signs the visitor
+up straight away if we already have their email, and then reads "We'll email you". Without a product it is a plain pill.
 
 Wrap the call in its own row on cards so the card layout can order it above the price row:
 
@@ -19,7 +20,7 @@ Supported variables
 {%- endcomment -%}
 
 {%- if product != blank -%}
-  {%- assign alert_default_label = 'product.general.more_coming_soon' | t -%}
+  {%- assign alert_default_label = 'back_in_stock.pill' | t -%}
   {%- if layout == 'pdp' -%}
     {%- assign alert_default_label = 'back_in_stock.pdp_button' | t -%}
   {%- endif -%}
@@ -29,8 +30,9 @@ Supported variables
     {%- assign alert_saveable = true -%}
   {%- endif -%}
 
-  <button type="button" class="coming-soon-pill coming-soon-pill--action{% if layout == 'pdp' %} coming-soon-pill--pdp{% endif %}" data-bis-trigger aria-haspopup="dialog" aria-pressed="false" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-variants="{{ product.variants | map: 'id' | join: ',' }}" data-saveable="{{ alert_saveable }}"{% if product.featured_media %} data-image="{{ product.featured_media | image_url: width: 160 }}"{% endif %} data-label="{{ alert_default_label }}" data-label-set="{{ 'back_in_stock.pill_set' | t }}">
-    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+  <button type="button" class="coming-soon-pill coming-soon-pill--action{% if layout == 'pdp' %} coming-soon-pill--pdp{% endif %}" data-bis-trigger aria-pressed="false" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape }}" data-variants="{{ product.variants | map: 'id' | join: ',' }}" data-saveable="{{ alert_saveable }}"{% if product.featured_media %} data-image="{{ product.featured_media | image_url: width: 160 }}"{% endif %} data-label="{{ alert_default_label }}" data-label-set="{{ 'back_in_stock.pill_set' | t }}">
+    <svg class="coming-soon-pill__bell" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    <svg class="coming-soon-pill__tick" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>
     <span data-bis-label>{{ alert_default_label }}</span>
   </button>
 {%- else -%}

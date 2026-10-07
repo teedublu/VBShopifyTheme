@@ -1,15 +1,17 @@
 // back-in-stock.js
-// "Email me when it's back": the sheet that opens from the "More coming soon" pill on sold-out product cards and from
-// the sold-out product page. It asks Klaviyo's Back in Stock API to email the visitor when the product is available
-// again (one request per variant, so any colour of a starter pack will do), remembers the request on this device so the
-// pill can say "We'll email you", and saves audiobooks to the visitor's Saved books (see saved-books.js). A checkbox
-// (ticked by default, see snippets/back-in-stock.liquid) also signs the visitor up to the Klaviyo marketing list.
+// "Tell me when back": the pill on sold-out product cards and the sold-out product page. It asks Klaviyo's Back in Stock
+// API to email the visitor when the product is available again (one request per variant, so any colour of a starter pack
+// will do), remembers the request on this device so the pill can say "We'll email you", and saves audiobooks to the
+// visitor's Saved books (see saved-books.js).
+// A visitor we already have an email for (signed in, or they used the sheet before) is signed up with one tap and never
+// sees the sheet. Anyone else gets the sheet, which closes as soon as the alert is sent; a checkbox in it (ticked by
+// default, see snippets/back-in-stock.liquid) also signs them up to the Klaviyo marketing list.
 // Markup: snippets/back-in-stock.liquid (the sheet) and snippets/coming-soon-pill.liquid (the trigger).
 
 const dialog = document.getElementById('stock-alert-dialog');
 
 const STORAGE_KEY = 'voxblock:stock-alerts'; // { [productId]: ISO date of the request } for this device
-const EMAIL_KEY = 'voxblock:stock-alert-email'; // so a returning visitor doesn't retype their email
+const EMAIL_KEY = 'voxblock:stock-alert-email'; // so a returning visitor isn't asked for their email again
 const API_URL = 'https://a.klaviyo.com/client/back-in-stock-subscriptions/';
 const SUBSCRIBE_URL = 'https://a.klaviyo.com/client/subscriptions/';
 const API_REVISION = '2025-07-15';
@@ -41,12 +43,9 @@ if (dialog) {
     const marketingInput = form.querySelector('input[type="checkbox"]');
     const marketingDefault = dialog.dataset.marketingDefault === 'true';
     const submitButton = form.querySelector('button[type="submit"]');
-    const formState = dialog.querySelector('[data-bis-state="form"]');
-    const doneState = dialog.querySelector('[data-bis-state="done"]');
     const imageSlot = dialog.querySelector('[data-bis-image-slot]');
     const titleElement = dialog.querySelector('[data-bis-title]');
-    const doneTitle = dialog.querySelector('[data-bis-done-title]');
-    const doneBody = dialog.querySelector('[data-bis-done-body]');
+    const liveRegion = document.querySelector('[data-bis-status]'); // no confirmation is shown, so this tells screen readers
 
     let current = null; // the product the sheet is open for
 
@@ -78,91 +77,6 @@ if (dialog) {
     // Cards arrive later too (filters, "load more", the Saved books page), so look again whenever the page changes
     new MutationObserver(scheduleMark).observe(document.body, { childList: true, subtree: true });
     window.addEventListener('storage', (event) => { if (event.key === STORAGE_KEY) markPills(); });
-
-    // --- the sheet -----------------------------------------------------------------------------------------------
-
-    const showError = (message) => {
-        errorMessage.textContent = message;
-        errorMessage.hidden = false;
-    };
-
-    const clearError = () => {
-        errorMessage.textContent = '';
-        errorMessage.hidden = true;
-    };
-
-    // The theme's button (custom-button) shows its loader while aria-busy is "true" and sets it itself on click, so every
-    // way out of the submit handler has to put it back
-    const setBusy = (busy) => {
-        submitButton.setAttribute('aria-busy', String(busy));
-        submitButton.disabled = busy;
-    };
-
-    const showDone = (email) => {
-        formState.hidden = true;
-        doneState.hidden = false;
-        doneBody.textContent = dialog.dataset.textSuccessBody.replace('[email]', email || 'you');
-        doneTitle.focus();
-    };
-
-    const open = (button) => {
-        current = {
-            productId: button.dataset.productId,
-            title: button.dataset.productTitle || '',
-            variantIds: (button.dataset.variants || '').split(',').filter(Boolean),
-            saveable: button.dataset.saveable === 'true',
-        };
-
-        titleElement.textContent = current.title;
-        imageSlot.replaceChildren();
-        if (button.dataset.image) {
-            const picture = document.createElement('img');
-            picture.className = 'stock-alert__image';
-            picture.src = button.dataset.image;
-            picture.alt = '';
-            picture.width = 56;
-            picture.height = 56;
-            imageSlot.append(picture);
-        }
-
-        const rememberedEmail = dialog.dataset.customerEmail || storage.read(EMAIL_KEY) || '';
-
-        clearError();
-        setBusy(false);
-        formState.hidden = false;
-        doneState.hidden = true;
-        emailInput.value = rememberedEmail;
-        marketingInput.checked = marketingDefault;
-
-        dialog.showModal();
-
-        if (readAlerts()[current.productId]) {
-            showDone(rememberedEmail);
-        } else if (rememberedEmail) {
-            submitButton.focus();
-        } else {
-            emailInput.focus();
-        }
-    };
-
-    document.addEventListener('click', (event) => {
-        const button = event.target.closest('[data-bis-trigger]');
-        if (!button) return;
-
-        event.preventDefault();
-        open(button);
-    });
-
-    // Tap outside the sheet to close it. Only clicks on the dialog itself count: pressing Enter in a field makes the browser
-    // fire a click on the submit button with coordinates 0,0, which would otherwise look like a click outside.
-    dialog.addEventListener('click', (event) => {
-        if (event.target !== dialog) return;
-        const rect = dialog.getBoundingClientRect();
-        const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
-        if (!inside) dialog.close();
-    });
-
-    doneState.querySelector('button').addEventListener('click', () => dialog.close());
 
     // --- sending the request -------------------------------------------------------------------------------------
 
@@ -215,6 +129,130 @@ if (dialog) {
         }
     };
 
+    // Asks Klaviyo for every variant and, if at least one colour was accepted, remembers it and updates the pills.
+    // Returns whether the alert is set. Only a total failure counts as an error.
+    const requestAlert = async (product, email, { marketing = false, viaSheet = false } = {}) => {
+        const results = await Promise.allSettled(product.variantIds.map((variantId) => subscribe(email, variantId)));
+        if (!results.some((result) => result.status === 'fulfilled')) return false;
+
+        const alerts = readAlerts();
+        alerts[product.productId] = new Date().toISOString();
+        storage.write(STORAGE_KEY, JSON.stringify(alerts));
+        storage.write(EMAIL_KEY, email);
+        markPills();
+
+        // Only once the alert has gone through, so a failed alert doesn't leave a half-finished sign-up behind
+        if (marketing) subscribeToMarketing(email);
+
+        // Waiting for a book is a kind of saving it: it joins the Saved books list too (saved-books.js listens for this)
+        if (product.saveable) {
+            document.dispatchEvent(new CustomEvent('voxblock:save-book', { detail: { id: product.productId } }));
+        }
+
+        if (liveRegion) liveRegion.textContent = dialog.dataset.textSuccessBody.replace('[email]', email);
+
+        capture('stock_alert_requested', {
+            product_id: product.productId,
+            title: product.title,
+            variants: product.variantIds.length,
+            signed_in: Boolean(dialog.dataset.customerEmail),
+            saved_book: product.saveable,
+            marketing_opt_in: marketing,
+            via_sheet: viaSheet,
+        });
+
+        return true;
+    };
+
+    // --- the sheet -----------------------------------------------------------------------------------------------
+
+    const showError = (message) => {
+        errorMessage.textContent = message;
+        errorMessage.hidden = false;
+    };
+
+    const clearError = () => {
+        errorMessage.textContent = '';
+        errorMessage.hidden = true;
+    };
+
+    // The theme's button (custom-button) shows its loader while aria-busy is "true" and sets it itself on click, so every
+    // way out of the submit handler has to put it back
+    const setBusy = (busy) => {
+        submitButton.setAttribute('aria-busy', String(busy));
+        submitButton.disabled = busy;
+    };
+
+    const describe = (button) => ({
+        productId: button.dataset.productId,
+        title: button.dataset.productTitle || '',
+        image: button.dataset.image || '',
+        variantIds: (button.dataset.variants || '').split(',').filter(Boolean),
+        saveable: button.dataset.saveable === 'true',
+    });
+
+    const open = (product, { email = '', error = '' } = {}) => {
+        current = product;
+
+        titleElement.textContent = product.title;
+        imageSlot.replaceChildren();
+        if (product.image) {
+            const picture = document.createElement('img');
+            picture.className = 'stock-alert__image';
+            picture.src = product.image;
+            picture.alt = '';
+            picture.width = 56;
+            picture.height = 56;
+            imageSlot.append(picture);
+        }
+
+        clearError();
+        if (error) showError(error);
+        setBusy(false);
+        emailInput.value = email;
+        marketingInput.checked = marketingDefault;
+
+        dialog.showModal();
+        (email ? submitButton : emailInput).focus();
+    };
+
+    document.addEventListener('click', async (event) => {
+        const button = event.target.closest('[data-bis-trigger]');
+        if (!button) return;
+
+        event.preventDefault();
+
+        // Already set up on this device: nothing to ask or confirm, the pill already says so
+        if (button.classList.contains('is-set') || button.disabled) return;
+
+        const product = describe(button);
+        const knownEmail = (dialog.dataset.customerEmail || storage.read(EMAIL_KEY) || '').trim();
+
+        if (!knownEmail) {
+            open(product);
+            return;
+        }
+
+        // We already have their email: sign them up straight away. (The marketing box is only for the sheet, so
+        // someone who never saw it isn't subscribed to anything beyond this one alert.)
+        button.disabled = true;
+        button.classList.add('is-busy');
+        const done = await requestAlert(product, knownEmail);
+        button.disabled = false;
+        button.classList.remove('is-busy');
+
+        if (!done) open(product, { email: knownEmail, error: dialog.dataset.textError });
+    });
+
+    // Tap outside the sheet to close it. Only clicks on the dialog itself count: pressing Enter in a field makes the browser
+    // fire a click on the submit button with coordinates 0,0, which would otherwise look like a click outside.
+    dialog.addEventListener('click', (event) => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        const inside = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+        if (!inside) dialog.close();
+    });
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!current) return;
@@ -222,7 +260,7 @@ if (dialog) {
         // Bots fill in the hidden field; pretend it worked and send nothing
         if (honeypot.value) {
             setBusy(false);
-            showDone(emailInput.value);
+            dialog.close();
             return;
         }
 
@@ -237,41 +275,15 @@ if (dialog) {
         clearError();
         setBusy(true);
 
-        const wantsMarketing = marketingInput.checked;
-        const results = await Promise.allSettled(current.variantIds.map((variantId) => subscribe(email, variantId)));
-        const succeeded = results.filter((result) => result.status === 'fulfilled').length;
+        const done = await requestAlert(current, email, { marketing: marketingInput.checked, viaSheet: true });
 
         setBusy(false);
 
-        // If at least one colour was accepted the visitor is on the list; only a total failure is an error
-        if (succeeded === 0) {
+        if (!done) {
             showError(dialog.dataset.textError);
             return;
         }
 
-        const alerts = readAlerts();
-        alerts[current.productId] = new Date().toISOString();
-        storage.write(STORAGE_KEY, JSON.stringify(alerts));
-        storage.write(EMAIL_KEY, email);
-        markPills();
-
-        // Only once the alert has gone through, so a failed alert doesn't leave a half-finished sign-up behind
-        if (wantsMarketing) subscribeToMarketing(email);
-
-        // Waiting for a book is a kind of saving it: it joins the Saved books list too (saved-books.js listens for this)
-        if (current.saveable) {
-            document.dispatchEvent(new CustomEvent('voxblock:save-book', { detail: { id: current.productId } }));
-        }
-
-        capture('stock_alert_requested', {
-            product_id: current.productId,
-            title: current.title,
-            variants: current.variantIds.length,
-            signed_in: Boolean(dialog.dataset.customerEmail),
-            saved_book: current.saveable,
-            marketing_opt_in: wantsMarketing,
-        });
-
-        showDone(email);
+        dialog.close();
     });
 }
