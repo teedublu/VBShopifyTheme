@@ -1,0 +1,67 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+BACK IN STOCK ALERT SHEET
+----------------------------------------------------------------------------------------------------------------------
+
+One shared dialog for the whole page (rendered once, from layout/theme.liquid). Any button with data-bis-trigger
+(see snippets/coming-soon-pill.liquid) opens it; assets/back-in-stock.js fills in the product, asks Klaviyo to email the
+visitor when the product is available again, and remembers the request on this device.
+
+The Klaviyo public API key below is the same one used by the onsite script (it is public by design).
+{%- endcomment -%}
+
+{%- assign bis_email_label = 'back_in_stock.email_label' | t -%}
+{%- assign bis_submit_label = 'back_in_stock.submit' | t -%}
+{%- assign bis_keep_label = 'back_in_stock.keep_browsing' | t -%}
+
+<dialog id="stock-alert-dialog" class="stock-alert" aria-labelledby="stock-alert-title"
+  data-company-id="TKFEPz"
+  data-customer-email="{{ customer.email | escape }}"
+  data-text-invalid="{{ 'back_in_stock.invalid_email' | t | escape }}"
+  data-text-error="{{ 'back_in_stock.error' | t | escape }}"
+  data-text-submit="{{ 'back_in_stock.submit' | t | escape }}"
+  data-text-submitting="{{ 'back_in_stock.submitting' | t | escape }}"
+  data-text-success-body="{{ 'back_in_stock.success_body' | t | escape }}">
+  <form method="dialog" class="stock-alert__close-form">
+    <button type="submit" class="stock-alert__close" aria-label="{{ 'back_in_stock.close' | t | escape }}">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
+    </button>
+  </form>
+
+  <div class="stock-alert__product">
+    <span class="stock-alert__image-slot" data-bis-image-slot></span>
+    <p class="stock-alert__product-title h6" data-bis-title></p>
+  </div>
+
+  <div data-bis-state="form">
+    <h2 id="stock-alert-title" class="stock-alert__title h5">{{ 'back_in_stock.title' | t }}</h2>
+    <p class="stock-alert__body text-subdued">{{ 'back_in_stock.body' | t }}</p>
+
+    <form class="stock-alert__form" data-bis-form novalidate>
+      {%- render 'input', type: 'email', name: 'stock-alert-email', label: bis_email_label, value: customer.email, required: true, autocomplete: 'email', enterkeyhint: 'send' -%}
+
+      <div class="stock-alert__hp" aria-hidden="true">
+        <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" data-bis-hp></label>
+      </div>
+
+      <p class="stock-alert__error" role="alert" data-bis-error hidden></p>
+
+      {%- render 'button', type: 'submit', content: bis_submit_label, stretch: true, size: 'lg' -%}
+
+      <p class="stock-alert__privacy text-xs text-subdued">
+        {{- 'back_in_stock.privacy' | t }}
+        {%- if shop.privacy_policy.url != blank %} <a href="{{ shop.privacy_policy.url }}" class="link">{{ 'back_in_stock.privacy_link' | t }}</a>{% endif -%}
+      </p>
+    </form>
+  </div>
+
+  <div data-bis-state="done" class="stock-alert__done" hidden>
+    <svg aria-hidden="true" focusable="false" class="stock-alert__tick" width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="20" fill="currentColor" opacity=".14"/><path d="m12 20.5 5.5 5.5L28 15" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h2 class="stock-alert__title h5" tabindex="-1" data-bis-done-title>{{ 'back_in_stock.success_title' | t }}</h2>
+    <p class="stock-alert__body text-subdued" data-bis-done-body></p>
+    <p class="stock-alert__body text-subdued" data-bis-saved-note hidden>{{ 'back_in_stock.saved_note' | t }}</p>
+    {%- render 'button', type: 'button', content: bis_keep_label, stretch: true, size: 'lg', style: 'outline' -%}
+  </div>
+</dialog>
+
+<script type="module" src="{{ 'back-in-stock.js' | asset_url }}"></script>

@@ -503,6 +503,38 @@ h1:not(.header__logo) { font-size: 22px; line-height: 28px; font-weight: 700; le
 .coming-soon-row { order: 8; margin-top: auto; }
 .coming-soon-row + .product-card__row.buy-price { margin-top: 0; }
 .pack-card__buy > .coming-soon-row { order: 0; margin-top: 0; } /* pack card orders by DOM position: pill sits right above the price row, price row stays pinned to the bottom */
+
+/* Back in stock alert: the pill becomes a button (above the whole-card link on pack cards), and a sheet takes the email: bottom sheet on phones, centred card on desktop */
+.coming-soon-pill--action { gap: 5px; margin: 0; border: 0; font-family: inherit; text-align: start; cursor: pointer; position: relative; z-index: 2; -webkit-appearance: none; appearance: none; transition: background-color .15s, color .15s; }
+.coming-soon-pill--action svg { width: 12px; height: 12px; flex: none; }
+.coming-soon-pill--action:hover { background: rgb(var(--text-color) / .14); }
+.coming-soon-pill--action:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.coming-soon-pill--action.is-set { background: rgb(var(--brand-heading-rgb) / .16); color: rgb(var(--text-color) / .9); }
+.coming-soon-pill--pdp { width: 100%; max-width: none; justify-content: center; padding: 12px 16px; font-size: 14px; border-radius: var(--rounded-button, 999px); }
+.coming-soon-pill--pdp svg { width: 16px; height: 16px; }
+
+.stock-alert { --alert-text: var(--text-primary, 42 85 90); position: fixed; border: 0; padding: 20px; width: min(440px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: auto; border-radius: 18px; background: #fff; color: rgb(var(--alert-text)); box-shadow: 0 24px 64px rgb(0 0 0 / .28); }
+.stock-alert::backdrop { background: rgb(0 0 0 / .5); }
+.stock-alert [hidden] { display: none !important; }
+.stock-alert__close-form { position: absolute; top: 10px; inset-inline-end: 10px; margin: 0; }
+.stock-alert__close { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: rgb(var(--alert-text) / .08); color: inherit; cursor: pointer; }
+.stock-alert__product { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-inline-end: 36px; }
+.stock-alert__image-slot { flex: none; line-height: 0; }
+.stock-alert__image-slot:empty { display: none; }
+.stock-alert__image { flex: none; width: 56px; height: 56px; border-radius: 10px; background: rgb(var(--alert-text) / .05); object-fit: contain; }
+.stock-alert__product-title { margin: 0; }
+.stock-alert__title { margin: 0 0 6px; }
+.stock-alert__body { margin: 0 0 14px; }
+.stock-alert__form { display: grid; gap: 12px; }
+.stock-alert__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.stock-alert__error { margin: 0; color: #b42318; font-size: 13px; }
+.stock-alert__privacy { margin: 0; }
+.stock-alert__done { display: grid; justify-items: start; gap: 4px; }
+.stock-alert__done .button { margin-top: 10px; }
+.stock-alert__tick { margin-bottom: 6px; color: var(--brand-heading); }
+@media screen and (max-width: 699px) {
+  .stock-alert { inset: auto 0 0 0; width: 100%; max-width: 100%; margin: 0; border-radius: 18px 18px 0 0; padding: 20px 20px calc(24px + env(safe-area-inset-bottom)); }
+}
 .coming-soon-pill { display: inline-flex; align-items: center; width: max-content; max-width: 100%; padding: 3px 10px; border-radius: 999px; background: rgb(var(--text-color) / .08); color: rgb(var(--text-color) / .75); font-size: 11px; font-weight: 600; line-height: 1.4; }
 
 /* Card polish: equal image panels so every row lines up, tighter preview/heart row, add-to-cart always at the far right */

@@ -247,7 +247,7 @@ Supported variables
     --------------------------------------------------------------------------------------------------------------------
     {%- endcomment -%}
     {%- unless product.available -%}
-      <div class="coming-soon-row">{%- render 'coming-soon-pill' -%}</div>
+      <div class="coming-soon-row">{%- render 'coming-soon-pill', product: product -%}</div>
     {%- endunless -%}
 
     <div class="product-card__row buy-price">
