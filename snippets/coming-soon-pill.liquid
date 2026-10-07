@@ -1,0 +1,12 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COMING SOON PILL
+----------------------------------------------------------------------------------------------------------------------
+
+Small "More coming soon" pill shown on a product card when every variant is sold out. The card also swaps its add to cart
+button for a greyed-out one. Wrap the call in its own row so the card layout can order it above the price row:
+
+{% unless product.available %}<div class="coming-soon-row">{% render 'coming-soon-pill' %}</div>{% endunless %}
+{%- endcomment -%}
+
+<span class="coming-soon-pill">{{- 'product.general.more_coming_soon' | t -}}</span>
