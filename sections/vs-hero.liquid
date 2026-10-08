@@ -171,14 +171,13 @@ initialised in layout/theme.liquid). No storefront pixel events.
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} .vs-hero__inner {
       grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
-      grid-template-areas: "copy compare" "actions compare" "trust compare";
-      grid-template-rows: auto auto auto;
-      align-content: center;
+      grid-template-areas: ". compare" "copy compare" "actions compare" "trust compare" ". compare";
+      grid-template-rows: 1fr auto auto auto 1fr;
       column-gap: 56px;
       row-gap: 20px;
       padding-block: 36px;
     }
-    #shopify-section-{{ section.id }} .vs-hero__compare { align-self: center; grid-row: 1 / span 3; }
+    #shopify-section-{{ section.id }} .vs-hero__compare { align-self: center; }
     #shopify-section-{{ section.id }} .vs-hero__eyebrow { font-size: 13px; line-height: 18px; }
     #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title { font-size: 38px; line-height: 46px; }
     #shopify-section-{{ section.id }} .vs-hero__cards { gap: 16px; }
@@ -251,7 +250,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
     {%- if section.settings.trust_image != blank or section.settings.trust_text != blank -%}
       <div class="vs-hero__trust">
         {%- if section.settings.trust_image != blank -%}
-          {{- section.settings.trust_image | image_url: width: 148 | image_tag: loading: 'lazy', width: 74, sizes: '74px', widths: '74,148', alt: section.settings.trust_image_alt -}}
+          {{- section.settings.trust_image | image_url: width: 148 | image_tag: loading: 'lazy', width: 74, height: 41, sizes: '74px', widths: '74,148', alt: section.settings.trust_image_alt -}}
         {%- endif -%}
         {%- if section.settings.trust_text != blank -%}<p>{{ section.settings.trust_text | escape }}</p>{%- endif -%}
       </div>
