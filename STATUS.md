@@ -1,5 +1,28 @@
 # STATUS
 
+## 2026-10-08: /pages/voxblock-vs-yoto mobile-first hero, "Option B" (merged)
+Built on `claude/practical-wright-7z6szw`, previewed on draft theme `VBShopifyTheme/claude/practical-wright-7z6szw`
+(id 199704314240, a duplicate of the live theme with the changed files pushed by API). Owner approved on 8 Oct and the
+branch was merged to main by pull request; the GitHub integration then updates the live theme from main.
+- New section `sections/vs-hero.liquid` replaces the media-with-text hero and the `press` quote at the top of
+  `templates/page.voxblock-vs-yoto.json`. Everything from "1 · The player on its own" down is unchanged, with two
+  deliberate exceptions (below). Rendered HTML was diffed against live before merge.
+- Live, nothing hard-coded: Voxblock price = cheapest variant of `voxblock-player` (No bumper, £49.99; Orange/Green/Red/Blue
+  are £59.99); button "from" = cheapest available product in `voxblock-starter-pack-collection` (£59.99).
+  Yoto prices are section settings. The H1 "£40 less" = Yoto Mini setting minus live player price; if that cannot be worked
+  out (equal/negative, unreadable, other currency) the H1 falls back to wording without a number.
+- Tracking: PostHog `vs_yoto_hero_click` { target: starter_packs | full_comparison, page }. No pixel events.
+- Yoto prices last checked 8 Oct against Google-indexed uk.yotoplay.com pages only (the site is blocked from the sandbox):
+  Mini (4th Gen) £89.99, Player (4th Gen) £119.99, unchanged. The page still says "checked 24 September 2026": re-check in
+  a browser, then bump `prices_checked` in the VS hero section settings and the footnote text.
+- Two changes outside the hero, both agreed with the owner: (1) "Similar yet different" now says "nothing to set up"
+  instead of "no app to set up" (copy rule); (2) the repo's "Gruffalo Starter Pack" button link
+  (`gruffalo-and-friends-starter-pack`, published) replaces the live theme's `...-pack-set` link, an unpublished duplicate
+  product that 404s. The live theme had been edited in the theme editor without that edit reaching the repo.
+- Still open, not changed: the "Player on its own · £49.99" button links to the Orange variant (£59.99); hero says IndyBest
+  2025 but the footnote says 2026; the footnote says both Yoto players are on pre-order, but the Mini's listed dispatch
+  date was 30 Sep.
+
 ## 2026-10-06: Starter pack collection, age bands and copy (GRO)
 
 Scope: the 18 products in /collections/voxblock-starter-pack-collection that are active and published to the
