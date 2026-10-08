@@ -1,0 +1,324 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VS HERO (Voxblock vs Yoto landing page, "Option B – player vs player")
+----------------------------------------------------------------------------------------------------------------------
+
+Mobile-first hero for /pages/voxblock-vs-yoto (Google Ads campaign Search-Yoto-Conquest-05). Eyebrow, H1, two player
+cards side by side (also on phones), a small price note, one primary button and a text link, then a press trust row.
+On desktop the copy, button and trust row sit on the left and the cards on the right.
+
+Prices:
+* Voxblock player price: read live from the "Voxblock player" product (its cheapest variant, the no-bumper player).
+* "from" price on the button: cheapest product on the starter pack collection (available products first; if none is
+  in stock, the cheapest of all).
+* Yoto prices are plain text in the section settings (they are not on our store). The "£40 less" figure in the H1 is
+  worked out from the Yoto Mini setting minus the live Voxblock price. If it cannot be worked out, or Voxblock is not
+  cheaper, or the visitor sees a currency other than the shop's, the H1 falls back to the "without a price" wording.
+
+Tracking: a click on the button or the link sends the PostHog event vs_yoto_hero_click { target, page } (posthog-js is
+initialised in layout/theme.liquid). No storefront pixel events.
+{%- endcomment -%}
+
+{%- liquid
+  assign player = section.settings.player_product
+  assign vox_cents = 0
+  if player != blank
+    assign vox_cents = player.price_min
+  endif
+  assign vox_price = vox_cents | money
+
+  assign packs = section.settings.collection
+  assign from_cents = 0
+  assign from_cents_any = 0
+  if packs != blank
+    for pack in packs.products
+      if pack.price_min > 0
+        if from_cents_any == 0 or pack.price_min < from_cents_any
+          assign from_cents_any = pack.price_min
+        endif
+        if pack.available
+          if from_cents == 0 or pack.price_min < from_cents
+            assign from_cents = pack.price_min
+          endif
+        endif
+      endif
+    endfor
+  endif
+  if from_cents == 0
+    assign from_cents = from_cents_any
+  endif
+
+  assign yoto_mini_cents = section.settings.yoto_mini_price | remove: '£' | remove: ',' | strip | times: 100 | round
+  assign saving_cents = yoto_mini_cents | minus: vox_cents
+  assign heading = section.settings.heading_fallback
+  if vox_cents > 0 and yoto_mini_cents > 0 and saving_cents > 0 and cart.currency.iso_code == shop.currency
+    assign saving_text = saving_cents | money_without_trailing_zeros
+    assign heading = section.settings.heading | replace: '{saving}', saving_text
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .vs-hero {
+    --vs-bg: {{ section.settings.background }};
+    --vs-heading: {{ section.settings.heading_color }};
+    --vs-text: {{ section.settings.text_color }};
+    --vs-accent: {{ section.settings.accent_color }};
+    --vs-eyebrow: {{ section.settings.eyebrow_color }};
+    --vs-button-bg: {{ section.settings.button_background }};
+    --vs-button-text: {{ section.settings.button_text_color }};
+    background: var(--vs-bg);
+    color: var(--vs-text);
+    font-family: var(--text-font-family);
+  }
+  #shopify-section-{{ section.id }} .vs-hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "compare" "actions" "trust";
+    row-gap: 12px;
+    padding-block: 14px 18px;
+  }
+  #shopify-section-{{ section.id }} .vs-hero__copy { grid-area: copy; }
+  #shopify-section-{{ section.id }} .vs-hero__compare { grid-area: compare; }
+  #shopify-section-{{ section.id }} .vs-hero__actions { grid-area: actions; display: flex; flex-direction: column; gap: 4px; }
+  #shopify-section-{{ section.id }} .vs-hero__trust { grid-area: trust; }
+
+  #shopify-section-{{ section.id }} .vs-hero__eyebrow {
+    margin: 0 0 4px;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--vs-eyebrow);
+  }
+  #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title {
+    margin: 0;
+    font-size: 25px;
+    line-height: 31px;
+    font-weight: 700;
+    letter-spacing: normal;
+    color: var(--vs-heading);
+  }
+
+  #shopify-section-{{ section.id }} .vs-hero__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  #shopify-section-{{ section.id }} .vs-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    padding: 9px 9px 11px;
+    border: 1px solid var(--card-border, #d6e6e7);
+    border-radius: 14px;
+    background: #fff;
+  }
+  #shopify-section-{{ section.id }} .vs-card--voxblock { border: 2px solid var(--vs-heading); padding: 8px 8px 10px; }
+  #shopify-section-{{ section.id }} .vs-card__top { display: flex; align-items: center; min-height: 22px; }
+  #shopify-section-{{ section.id }} .vs-card__pill {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--vs-heading);
+    color: #fff;
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 600;
+  }
+  #shopify-section-{{ section.id }} .vs-card__label { margin: 0; font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.2px; }
+  #shopify-section-{{ section.id }} .vs-card__media { height: 100px; }
+  #shopify-section-{{ section.id }} .vs-card__media img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  #shopify-section-{{ section.id }} .vs-card__name { margin: 0; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--vs-heading); }
+  #shopify-section-{{ section.id }} .vs-card__price { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; color: var(--vs-accent); }
+  #shopify-section-{{ section.id }} .vs-card__line { margin: 0; font-size: 12px; line-height: 17px; }
+
+  #shopify-section-{{ section.id }} .vs-hero__note { margin: 8px 0 0; font-size: 12px; line-height: 16px; color: #5a6264; }
+
+  #shopify-section-{{ section.id }} .vs-hero__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    border-radius: 12px;
+    background: var(--vs-button-bg);
+    color: var(--vs-button-text);
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .vs-hero__cta:hover { filter: brightness(0.95); }
+  #shopify-section-{{ section.id }} .vs-hero__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    color: var(--vs-heading);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  #shopify-section-{{ section.id }} .vs-hero__cta:focus-visible,
+  #shopify-section-{{ section.id }} .vs-hero__link:focus-visible { outline: 3px solid var(--vs-heading); outline-offset: 2px; }
+
+  #shopify-section-{{ section.id }} .vs-hero__trust { display: flex; align-items: center; gap: 10px; }
+  #shopify-section-{{ section.id }} .vs-hero__trust img { flex: none; display: block; width: 74px; height: auto; }
+  #shopify-section-{{ section.id }} .vs-hero__trust p { margin: 0; font-size: 12px; line-height: 17px; }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .vs-hero__inner {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+      grid-template-areas: "copy compare" "actions compare" "trust compare";
+      grid-template-rows: auto auto auto;
+      align-content: center;
+      column-gap: 56px;
+      row-gap: 20px;
+      padding-block: 36px;
+    }
+    #shopify-section-{{ section.id }} .vs-hero__compare { align-self: center; grid-row: 1 / span 3; }
+    #shopify-section-{{ section.id }} .vs-hero__eyebrow { font-size: 13px; line-height: 18px; }
+    #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title { font-size: 38px; line-height: 46px; }
+    #shopify-section-{{ section.id }} .vs-hero__cards { gap: 16px; }
+    #shopify-section-{{ section.id }} .vs-card { gap: 8px; padding: 14px 14px 16px; border-radius: 16px; }
+    #shopify-section-{{ section.id }} .vs-card--voxblock { padding: 13px 13px 15px; }
+    #shopify-section-{{ section.id }} .vs-card__media { height: 170px; }
+    #shopify-section-{{ section.id }} .vs-card__name { font-size: 16px; }
+    #shopify-section-{{ section.id }} .vs-card__price { font-size: 24px; line-height: 30px; }
+    #shopify-section-{{ section.id }} .vs-card__line { font-size: 14px; line-height: 20px; }
+    #shopify-section-{{ section.id }} .vs-hero__note { font-size: 13px; line-height: 18px; }
+    #shopify-section-{{ section.id }} .vs-hero__actions { max-width: 380px; }
+    #shopify-section-{{ section.id }} .vs-hero__link { justify-content: flex-start; }
+    #shopify-section-{{ section.id }} .vs-hero__trust p { font-size: 13px; line-height: 18px; }
+  }
+</style>
+
+<section class="vs-hero" aria-labelledby="vs-hero-title-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="container vs-hero__inner">
+    <div class="vs-hero__copy">
+      {%- if section.settings.eyebrow != blank -%}<p class="vs-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="vs-hero__title" id="vs-hero-title-{{ section.id }}">{{ heading | escape }}</h1>
+    </div>
+
+    <div class="vs-hero__compare">
+      <div class="vs-hero__cards">
+        <div class="vs-card vs-card--voxblock">
+          <div class="vs-card__top">
+            {%- if section.settings.voxblock_pill != blank -%}<span class="vs-card__pill">{{ section.settings.voxblock_pill | escape }}</span>{%- endif -%}
+          </div>
+          {%- if section.settings.voxblock_image != blank -%}
+            <div class="vs-card__media">
+              {{- section.settings.voxblock_image | image_url: width: 400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(min-width: 1000px) 250px, 40vw', widths: '160,240,320,400', alt: section.settings.voxblock_name -}}
+            </div>
+          {%- endif -%}
+          <p class="vs-card__name">{{ section.settings.voxblock_name | escape }}</p>
+          {%- if vox_cents > 0 -%}<p class="vs-card__price">{{ vox_price }}</p>{%- endif -%}
+          <p class="vs-card__line">{{ section.settings.voxblock_line | escape }}</p>
+        </div>
+
+        <div class="vs-card vs-card--yoto">
+          <div class="vs-card__top">
+            <p class="vs-card__label">{{ section.settings.yoto_label | escape }}</p>
+          </div>
+          {%- if section.settings.yoto_image != blank -%}
+            <div class="vs-card__media">
+              {{- section.settings.yoto_image | image_url: width: 400 | image_tag: loading: 'eager', sizes: '(min-width: 1000px) 250px, 40vw', widths: '160,240,320,400', alt: section.settings.yoto_name -}}
+            </div>
+          {%- endif -%}
+          <p class="vs-card__name">{{ section.settings.yoto_name | escape }}</p>
+          <p class="vs-card__price">{{ section.settings.yoto_mini_price | escape }}</p>
+          <p class="vs-card__line">{{ section.settings.yoto_line | escape }}</p>
+        </div>
+      </div>
+
+      <p class="vs-hero__note">{{ section.settings.yoto_player_label | escape }} {{ section.settings.yoto_player_price | escape }}. UK prices, checked {{ section.settings.prices_checked | escape }}.</p>
+    </div>
+
+    <div class="vs-hero__actions">
+      {%- if packs != blank -%}
+        <a class="vs-hero__cta" href="{{ packs.url }}" data-vs-hero-target="starter_packs">
+          {{- section.settings.button_text | escape -}}
+          {%- if from_cents > 0 %} · from {{ from_cents | money }}{% endif -%}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.link_text != blank -%}
+        <a class="vs-hero__link" href="{{ section.settings.link_url | default: '#players' }}" data-vs-hero-target="full_comparison">{{ section.settings.link_text | escape }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.trust_image != blank or section.settings.trust_text != blank -%}
+      <div class="vs-hero__trust">
+        {%- if section.settings.trust_image != blank -%}
+          {{- section.settings.trust_image | image_url: width: 148 | image_tag: loading: 'lazy', width: 74, sizes: '74px', widths: '74,148', alt: section.settings.trust_image_alt -}}
+        {%- endif -%}
+        {%- if section.settings.trust_text != blank -%}<p>{{ section.settings.trust_text | escape }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    if (window.__vsHeroClickBound) return;
+    window.__vsHeroClickBound = true;
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest && event.target.closest('[data-vs-hero-target]');
+      if (!link) return;
+      try {
+        if (window.posthog && typeof window.posthog.capture === 'function') {
+          window.posthog.capture('vs_yoto_hero_click', { target: link.getAttribute('data-vs-hero-target'), page: {{ page.url | json }} });
+        }
+      } catch (e) { /* analytics must never get in the way of the link */ }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "VS hero",
+  "tag": "div",
+  "class": "shopify-section--vs-hero",
+  "settings": [
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Looking at Yoto?" },
+    { "type": "text", "id": "heading", "label": "Heading (H1)", "default": "No wi-fi, nothing to set up, and {saving} less than a Yoto Mini.", "info": "{saving} is replaced by the live Voxblock player price subtracted from the Yoto Mini price below." },
+    { "type": "text", "id": "heading_fallback", "label": "Heading when the saving cannot be worked out", "default": "No wi-fi, nothing to set up, and ready straight out of the box.", "info": "Used if the saving is zero or negative, a price cannot be read, or the visitor sees a different currency." },
+    { "type": "header", "content": "Voxblock card" },
+    { "type": "product", "id": "player_product", "label": "Player product", "info": "The price shown is this product's cheapest variant, read live." },
+    { "type": "image_picker", "id": "voxblock_image", "label": "Image" },
+    { "type": "text", "id": "voxblock_pill", "label": "Pill", "default": "Best value" },
+    { "type": "text", "id": "voxblock_name", "label": "Name (also the image description)", "default": "Voxblock player" },
+    { "type": "text", "id": "voxblock_line", "label": "One line", "default": "Story on the book. Plays straight out of the box." },
+    { "type": "header", "content": "Yoto Mini card (prices typed by hand, not from our store)" },
+    { "type": "text", "id": "yoto_label", "label": "Small label", "default": "Yoto Mini (4th Gen)" },
+    { "type": "image_picker", "id": "yoto_image", "label": "Image" },
+    { "type": "text", "id": "yoto_name", "label": "Name (also the image description)", "default": "Yoto Mini" },
+    { "type": "text", "id": "yoto_mini_price", "label": "Yoto Mini price", "default": "£89.99", "info": "Also used to work out the saving in the heading. Write it like £89.99." },
+    { "type": "text", "id": "yoto_line", "label": "One line", "default": "Cards load audio over wi-fi. Set up on a phone first." },
+    { "type": "header", "content": "Price note under the cards" },
+    { "type": "text", "id": "yoto_player_label", "label": "Yoto Player name", "default": "Yoto Player (4th Gen)" },
+    { "type": "text", "id": "yoto_player_price", "label": "Yoto Player price", "default": "£119.99" },
+    { "type": "text", "id": "prices_checked", "label": "Date the Yoto prices were checked", "default": "24 September 2026", "info": "Update this whenever you re-check the Yoto prices." },
+    { "type": "header", "content": "Buttons" },
+    { "type": "collection", "id": "collection", "label": "Starter pack collection", "info": "The button links here and shows \"from\" the cheapest product in it, read live." },
+    { "type": "text", "id": "button_text", "label": "Primary button text", "default": "Shop starter packs", "info": "\" · from £x\" is added automatically." },
+    { "type": "text", "id": "link_text", "label": "Text link", "default": "See the full comparison" },
+    { "type": "text", "id": "link_url", "label": "Text link target", "default": "#players" },
+    { "type": "header", "content": "Press trust row" },
+    { "type": "image_picker", "id": "trust_image", "label": "Logo" },
+    { "type": "text", "id": "trust_image_alt", "label": "Logo description", "default": "As featured in IndyBest, The Independent, 2025" },
+    { "type": "text", "id": "trust_text", "label": "Text", "default": "Best budget buy, IndyBest 2025 · Screen-free · British designed" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#fff7f0" },
+    { "type": "color", "id": "heading_color", "label": "Headings, card border and pill", "default": "#197177" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2a555a" },
+    { "type": "color", "id": "accent_color", "label": "Prices", "default": "#c2560f" },
+    { "type": "color", "id": "eyebrow_color", "label": "Eyebrow", "default": "#b8520e", "info": "A touch darker than the price orange: #c2560f is 4.3:1 on the peach background, #b8520e is 4.7:1." },
+    { "type": "color", "id": "button_background", "label": "Primary button", "default": "#ff9e57" },
+    { "type": "color", "id": "button_text_color", "label": "Primary button text", "default": "#1f2d2f", "info": "Dark text: white on this orange is 2.1:1." }
+  ],
+  "presets": [{ "name": "VS hero" }]
+}
+{% endschema %}

@@ -10,73 +10,38 @@
 {
   "sections": {
     "hero": {
-      "type": "media-with-text",
-      "blocks": {
-        "hero_image": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/player-boy-listening-independance.jpg",
-            "media_width": 50,
-            "stacked_media_max_width": 0,
-            "media_position": "end",
-            "text_position": "place-self-center-start text-start",
-            "icon": "none",
-            "custom_icon": "shopify://shop_images/INDY-Best-AFI.png",
-            "icon_width": 120,
-            "subheading": "Voxblock vs Yoto · compared like for like",
-            "title": "Before you buy Yoto, compare with Voxblock.",
-            "content": "<p>We’ve put the players side by side on their own, then with exactly the same three Julia Donaldson stories. Real UK prices, checked 24 September 2026, so you can decide for yourself.</p><p>Screen-free · No wi-fi, no downloads · British designed</p>",
-            "link_text": "See the comparison",
-            "link_url": "#players",
-            "title_tag": "h1",
-            "link2_text": "Player £49.99",
-            "link2_url": "#buy",
-            "background": "#fff7f0",
-            "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#197177",
-            "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "hero_image"
-      ],
+      "type": "vs-hero",
       "settings": {
-        "full_width": true,
-        "spacing": "small"
-      }
-    },
-    "press": {
-      "type": "press",
-      "blocks": {
-        "quote_independent": {
-          "type": "quote",
-          "settings": {
-            "logo": "shopify://shop_images/INDY-Best-AFI.png",
-            "logo_width": 350,
-            "author": "Best budget buy · IndyBest, The Independent · Abby Driver, 2025",
-            "content": "Easy setup … Straightforward to use.",
-            "show_rating": false,
-            "rating": 5
-          }
-        }
-      },
-      "block_order": [
-        "quote_independent"
-      ],
-      "settings": {
-        "full_width": true,
-        "content_size": "medium",
+        "eyebrow": "Looking at Yoto?",
+        "heading": "No wi-fi, nothing to set up, and {saving} less than a Yoto Mini.",
+        "heading_fallback": "No wi-fi, nothing to set up, and ready straight out of the box.",
+        "player_product": "voxblock-player",
+        "voxblock_image": "shopify://shop_images/voxblock-player-hero.png",
+        "voxblock_pill": "Best value",
+        "voxblock_name": "Voxblock player",
+        "voxblock_line": "Story on the book. Plays straight out of the box.",
+        "yoto_label": "Yoto Mini (4th Gen)",
+        "yoto_image": "shopify://shop_images/yoto-mini-player-gen4.png",
+        "yoto_name": "Yoto Mini",
+        "yoto_mini_price": "£89.99",
+        "yoto_line": "Cards load audio over wi-fi. Set up on a phone first.",
+        "yoto_player_label": "Yoto Player (4th Gen)",
+        "yoto_player_price": "£119.99",
+        "prices_checked": "24 September 2026",
+        "collection": "voxblock-starter-pack-collection",
+        "button_text": "Shop starter packs",
+        "link_text": "See the full comparison",
+        "link_url": "#players",
+        "trust_image": "shopify://shop_images/INDY-Best-AFI.png",
+        "trust_image_alt": "As featured in IndyBest, The Independent, 2025",
+        "trust_text": "Best budget buy, IndyBest 2025 · Screen-free · British designed",
         "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": "#565656",
         "heading_color": "#197177",
-        "heading_gradient": "",
-        "logo_item_background": "#ffffff",
-        "logo_item_border": ""
+        "text_color": "#2a555a",
+        "accent_color": "#c2560f",
+        "eyebrow_color": "#b8520e",
+        "button_background": "#ff9e57",
+        "button_text_color": "#1f2d2f"
       }
     },
     "players": {
@@ -623,7 +588,6 @@
   },
   "order": [
     "hero",
-    "press",
     "players",
     "bundles",
     "books",
