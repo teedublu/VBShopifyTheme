@@ -51,6 +51,14 @@ positive. Unicorn Academy has several bundles; the fallback picks none of them u
   Julian (`julian-kirrin`), Dick (`dick-kirrin`), Anne (`anne-kirrin`), George (`george-kirrin`), Timmy
   (`timmy-the-dog`). Linked through all three Famous Five audiobooks' `characters` field, in that order.
   Photo filenames to use: `famous-five-<name>-character.png`.
+- 9 Oct: Horrid Henry series: `books` = Horrid Henry and Friends, Super School Stories, Perfect Pet Tales (story
+  collections, so `reading_order` off); `colour` = #CDE7F6 (blue of Henry's jumper; teal H1 4.46:1, text 6.4:1).
+- 9 Oct: new Character entries for Horrid Henry, published, no photos yet: Perfect Peter (`perfect-peter`), Moody
+  Margaret (`moody-margaret`), Rude Ralph (`rude-ralph`), Sour Susan (`sour-susan`). Linked with the existing Horrid
+  Henry entry through all three audiobooks' `characters` field. Photos to come from the owner's line-up picture
+  (Peter is not in it); filenames `horrid-henry-<name>-character.png`.
+- Famous Five photos cut from the owner's line-up picture: `working/famous-five-characters/` (git-ignored), not yet
+  uploaded or attached.
 - Pippi's own character photo is still the wide 1000x407 banner (also the series image), so it crops to a slice
   in the series page's circle; a square portrait would fix that. The new images have no alt text.
 
