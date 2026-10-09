@@ -362,9 +362,16 @@ book links and related series. Sample plays are already tracked globally as samp
                 </div>
 
                 {%- if bundle != blank -%}
+                  {%- liquid
+                    # A bundle holding only some of the books is not "the whole series"
+                    assign whole_label = block.settings.bundle_label
+                    if bundle_book_count > 0 and bundle_book_count < book_count
+                      assign whole_label = block.settings.bundle_part_label
+                    endif
+                  -%}
                   <div class="series-whole">
                     <div class="series-whole__text">
-                      <p class="series-whole__title">{{ block.settings.bundle_label | escape }}</p>
+                      <p class="series-whole__title">{{ whole_label | escape }}</p>
                       <p class="series-whole__meta">
                         {%- if bundle_book_count > 0 -%}{{ block.settings.bundle_count_label | replace: '[count]', bundle_book_count | escape }} · {% endif -%}
                         <span class="series-whole__price">{{ bundle.price | money }}</span>
@@ -662,6 +669,7 @@ book links and related series. Sample plays are already tracked globally as samp
         { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Play sample" },
         { "type": "header", "content": "The whole series" },
         { "type": "text", "id": "bundle_label", "label": "Title", "default": "The whole series" },
+        { "type": "text", "id": "bundle_part_label", "label": "Title when the bundle holds only some of the books", "default": "Audiobook bundle" },
         { "type": "text", "id": "bundle_count_label", "label": "Book count", "default": "[count] audiobooks" },
         { "type": "text", "id": "saving_label", "label": "Saving prefix", "default": "Save " },
         { "type": "text", "id": "bundle_button", "label": "Bundle button", "default": "See the bundle" },
