@@ -1,0 +1,55 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CHARACTER CAST ("Meet the others", templates/metaobject/character.json)
+----------------------------------------------------------------------------------------------------------------------
+
+The other characters from this character's main book (character field `main_book`, an audiobook entry), as the same
+cards the series page uses (snippets/character-card.liquid). The character whose page this is is left out. Hidden
+when the character has no main book or the book has no other characters.
+{%- endcomment -%}
+
+{%- liquid
+  assign current_handle = metaobject.system.handle
+  assign main_book = metaobject.main_book.value
+  assign cast = main_book.characters.value
+  assign others = 0
+  for character in cast
+    if character.system.handle != current_handle
+      assign others = others | plus: 1
+    endif
+  endfor
+  assign book_title = main_book.title.value | default: main_book.product.value.title
+  assign intro = section.settings.intro | replace: '[book]', book_title | replace: '[name]', metaobject.name.value
+-%}
+
+{%- if others > 0 -%}
+  <section class="character-cast" {{ section.shopify_attributes }}>
+    <div class="container">
+      <h2 class="series-heading">{{ section.settings.heading | escape }}</h2>
+      {%- if intro != blank -%}<p class="character-cast__intro">{{ intro | escape }}</p>{%- endif -%}
+      <ul class="character-cards" role="list">
+        {%- assign shown = 0 -%}
+        {%- for character in cast -%}
+          {%- if character.system.handle == current_handle -%}{%- continue -%}{%- endif -%}
+          {%- render 'character-card', character: character -%}
+          {%- assign shown = shown | plus: 1 -%}
+          {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Character: meet the others",
+  "tag": "div",
+  "class": "shopify-section--character-cast",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Meet the others" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "The other characters in [book].", "info": "[book] is the character's main book, [name] the character." },
+    { "type": "range", "id": "limit", "label": "Most characters to show", "min": 2, "max": 12, "step": 1, "default": 8 }
+  ],
+  "presets": [{ "name": "Character: meet the others" }]
+}
+{% endschema %}

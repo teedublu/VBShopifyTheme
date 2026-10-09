@@ -6,7 +6,7 @@
 {% endif %}
 {% assign image_alt = metaobject_to_use.name | default: metaobject_to_use.title.value | default: metaobject_to_use.system.handle | strip %}
 
-<div class="person-image place-self-center" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
+<div class="person-image person-image--{{ metaobject_to_use.system.type }} place-self-center" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">
   {% case avatar_display %}
     {% when 'image' %}
       {% if image_to_use != blank %}

@@ -16,7 +16,8 @@ Where everything comes from:
 * Authors, narrators, characters, reading age, key stage, ATOS level and genres: gathered from each book's audiobook
   entry, duplicates removed.
 * Hero line: the series' `tagline` field, else its `page_description`.
-* Character boxes: each character's first photo, or its initials (snippets/person-avatar.liquid) when it has none.
+* Character boxes: snippets/character-card.liquid (photo cropped from the top, or initials when there is none),
+  shared with the character page.
 * Hero pills and Good to know: authors and narrators link to their page (else their collection); reading age links to
   the age collection holding the youngest reading age; genres link through the section's "Genre links" list
   (genre | pill label | collection), and a genre pill shows only for genres the series' books carry. The age handles
@@ -469,7 +470,7 @@ book links and related series. Sample plays are already tracked globally as samp
           <section class="series-characters" {{ block.shopify_attributes }}>
             <div class="container">
               <h2 class="series-heading">{{ block.settings.heading | escape }}</h2>
-              <ul class="series-characters__grid" role="list">
+              <ul class="character-cards" role="list">
                 {%- assign shown_keys = '|' -%}
                 {%- assign shown = 0 -%}
                 {%- for book in source_books -%}
@@ -480,29 +481,7 @@ book links and related series. Sample plays are already tracked globally as samp
                     {%- if shown_keys contains key or shown >= block.settings.limit -%}{%- continue -%}{%- endif -%}
                     {%- assign shown_keys = shown_keys | append: character.system.handle | append: '|' -%}
                     {%- assign shown = shown | plus: 1 -%}
-                    {%- liquid
-                      # Both branches end HTML-safe: the plain field is escaped here, rich text is rendered then stripped
-                      assign character_text = character.description.value | strip | escape
-                      if character_text == blank
-                        assign character_text = character.bio | metafield_tag | strip_html | strip | truncatewords: 28
-                      endif
-                      assign character_photo = character.photos.value | first
-                      assign character_url = character.system.url
-                    -%}
-                    <li class="series-character">
-                      <div class="series-character__photo">
-                        {%- if character_photo != blank -%}
-                          {{- character_photo | image_url: width: 160 | image_tag: loading: 'lazy', sizes: '72px', widths: '72,144,160', alt: '' -}}
-                        {%- else -%}
-                          {%- comment -%} No photo yet: initials, as in the author and narrator lists {%- endcomment -%}
-                          {%- render 'person-avatar', metaobject: character, radius: '50', max_width: 72, avatar_display: 'initials', avatar_bg_color: settings.brand_heading, initials_color: '#ffffff' -%}
-                        {%- endif -%}
-                      </div>
-                      <h3 class="series-character__name">
-                        {%- if character_url != blank -%}<a href="{{ character_url }}">{{ character.name.value | escape }}</a>{%- else -%}{{ character.name.value | escape }}{%- endif -%}
-                      </h3>
-                      {%- if character_text != blank -%}<p class="series-character__text">{{ character_text }}</p>{%- endif -%}
-                    </li>
+                    {%- render 'character-card', character: character -%}
                   {%- endfor -%}
                 {%- endfor -%}
               </ul>

@@ -1,0 +1,45 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CHARACTER CARD (series page "Meet the characters", character page "Meet the others")
+----------------------------------------------------------------------------------------------------------------------
+
+One character as a list item: round photo, name (linked to the character's page when it has one) and a short line.
+
+* character: the character metaobject (required)
+* heading_tag: the name's tag, default h3
+* image_width: the photo's display width in px, default 72
+
+The photo is the character's first photo, cropped from the top so full-figure art shows the head (a focal point set
+on the image in Shopify overrides that, since image_tag writes it inline). With no photo, the character's initials
+are shown, as in the author and narrator lists (snippets/person-avatar.liquid). The line is the description field,
+else the start of the bio.
+{%- endcomment -%}
+
+{%- liquid
+  assign heading_tag = heading_tag | default: 'h3'
+  assign image_width = image_width | default: 72
+  assign image_width_2x = image_width | times: 2
+  # Both branches end HTML-safe: the plain field is escaped here, rich text is rendered then stripped
+  assign character_text = character.description.value | strip | escape
+  if character_text == blank
+    assign character_text = character.bio | metafield_tag | strip_html | strip | truncatewords: 28
+  endif
+  assign character_photo = character.photos.value | first
+  assign character_url = character.system.url
+-%}
+
+<li class="character-card" style="--character-photo-size: {{ image_width }}px;">
+  <div class="character-card__photo">
+    {%- if character_photo != blank -%}
+      {%- capture photo_sizes -%}{{ image_width }}px{%- endcapture -%}
+      {%- capture photo_widths -%}{{ image_width }},{{ image_width_2x }}{%- endcapture -%}
+      {{- character_photo | image_url: width: image_width_2x | image_tag: loading: 'lazy', sizes: photo_sizes, widths: photo_widths, alt: '' -}}
+    {%- else -%}
+      {%- render 'person-avatar', metaobject: character, radius: '50', max_width: image_width, avatar_display: 'initials', avatar_bg_color: settings.brand_heading, initials_color: '#ffffff' -%}
+    {%- endif -%}
+  </div>
+  <{{ heading_tag }} class="character-card__name">
+    {%- if character_url != blank -%}<a href="{{ character_url }}">{{ character.name.value | escape }}</a>{%- else -%}{{ character.name.value | escape }}{%- endif -%}
+  </{{ heading_tag }}>
+  {%- if character_text != blank -%}<p class="character-card__text">{{ character_text }}</p>{%- endif -%}
+</li>

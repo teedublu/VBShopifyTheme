@@ -584,6 +584,7 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 
 /* ---------------------------- */
 /* SERIES PAGE (sections/series-page.liquid, sections/series-related.liquid; template metaobject/series.json) */
+/* Character cards (snippets/character-card.liquid) are shared with the character page (sections/character-cast.liquid). */
 /* One layout for every series. Design canvas "Series Page Mockup". Mobile first; 700px and 1000px as elsewhere. */
 /* Colours: var(--brand-heading) teal (headings, buttons), var(--brand-text) text, hero band from the series colour. */
 /* ---------------------------- */
@@ -653,13 +654,17 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 
 /* CHARACTERS */
 .series-characters { padding-block: 32px; }
-.series-characters__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
-.series-character { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #fff7f0; }
-.series-character__photo { width: 72px; height: 72px; border-radius: 50%; overflow: hidden; background: #fff; }
-.series-character__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; } /* tall full-figure art: show the head */
-.series-character__name { margin: 4px 0 0; font-size: 16px; line-height: 22px; font-weight: 600; letter-spacing: normal; color: var(--brand-heading); }
-.series-character__name a { color: inherit; }
-.series-character__text { margin: 0; font-size: 14px; line-height: 21px; }
+.character-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
+.character-card { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #fff7f0; color: var(--brand-text); }
+.character-card__photo { width: var(--character-photo-size, 72px); height: var(--character-photo-size, 72px); border-radius: 50%; overflow: hidden; background: #fff; }
+.character-card__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; } /* tall full-figure art: show the head */
+.character-card__name { margin: 4px 0 0; font-size: 16px; line-height: 22px; font-weight: 600; letter-spacing: normal; color: var(--brand-heading); }
+.character-card__name a { color: inherit; }
+.character-card__text { margin: 0; font-size: 14px; line-height: 21px; }
+/* Character page: "Meet the others" (sections/character-cast.liquid) and the round photo in the hero (snippets/person-avatar.liquid) */
+.character-cast { padding-block: 40px; color: var(--brand-text); }
+.character-cast__intro { margin: 8px 0 0; max-width: 60ch; }
+.person-image--character img { width: 100%; height: 100%; object-fit: cover; object-position: center top; } /* tall full-figure art: show the head */
 
 /* ABOUT AND FACTS */
 .series-about { background: #f6f8f8; }
