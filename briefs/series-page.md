@@ -35,6 +35,15 @@ Works today with no data changes. Each optional Series field below improves it w
 The bundle saving is the bundle's own books (`bundles.products`) bought singly minus the bundle price, shown only when
 positive. Unicorn Academy has several bundles; the fallback picks none of them unless one is set in `bundle`.
 
+## Data changes in Shopify
+- 9 Oct: Series definition gained `books`, `reading_order`, `tagline`, `colour`, `bundle`.
+- 9 Oct: Pippi Longstocking series: `books` = Pippi Longstocking, Goes Aboard, In the South Seas; `reading_order` on.
+- 9 Oct: new Character entries, published, no photos yet: Tommy (`tommy-settergren`), Annika (`annika-settergren`),
+  Mr Nelson (`mr-nelson`), Captain Longstocking (`captain-longstocking`), Pippi's horse (`pippis-horse`). Father and
+  horse names are placeholders: the names this translation uses were not known. Linked through each Pippi audiobook's
+  `characters` field (Pippi first; Captain Longstocking on Goes Aboard and South Seas only), so they also appear on
+  the audiobook pages and have their own /pages/character/<handle> pages.
+
 ## Measurement
 PostHog `series_page_click` { target: hero_books | bundle | add_all | add_book | book_title | book_image | related,
 series, product }. Sample plays already send `sample_played` (assets/voxblock.js).
