@@ -45,6 +45,12 @@ positive. Unicorn Academy has several bundles; the fallback picks none of them u
   horse names are placeholders: the names this translation uses were not known. Linked through each Pippi audiobook's
   `characters` field (Pippi first; Captain Longstocking on Goes Aboard and South Seas only), so they also appear on
   the audiobook pages and have their own /pages/character/<handle> pages.
+- 9 Oct: Famous Five series: `books` = Five On A Treasure Island, Five Go Adventuring Again, Five Run Away Together;
+  `reading_order` on; `colour` = #BFE6DD (sea green from the covers; teal H1 4.24:1, body text 6.1:1).
+- 9 Oct: new Character entries for the Famous Five, published, no photos (the series page shows their initials):
+  Julian (`julian-kirrin`), Dick (`dick-kirrin`), Anne (`anne-kirrin`), George (`george-kirrin`), Timmy
+  (`timmy-the-dog`). Linked through all three Famous Five audiobooks' `characters` field, in that order.
+  Photo filenames to use: `famous-five-<name>-character.png`.
 - Pippi's own character photo is still the wide 1000x407 banner (also the series image), so it crops to a slice
   in the series page's circle; a square portrait would fix that. The new images have no alt text.
 

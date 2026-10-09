@@ -16,6 +16,7 @@ Where everything comes from:
 * Authors, narrators, characters, reading age, key stage, ATOS level and genres: gathered from each book's audiobook
   entry, duplicates removed.
 * Hero line: the series' `tagline` field, else its `page_description`.
+* Character boxes: each character's first photo, or its initials (snippets/person-avatar.liquid) when it has none.
 * Hero pills: one per author and narrator (linked to their page, else their collection), the reading age (linked to
   the age collection holding the youngest reading age, handles in the block settings) and genre pills from the
   block's "Genre pills" list (genre | label | collection), shown only for genres the series' books carry.
@@ -476,9 +477,14 @@ book links and related series. Sample plays are already tracked globally as samp
                       assign character_url = character.system.url
                     -%}
                     <li class="series-character">
-                      {%- if character_photo != blank -%}
-                        <div class="series-character__photo">{{- character_photo | image_url: width: 160 | image_tag: loading: 'lazy', sizes: '72px', widths: '72,144,160', alt: '' -}}</div>
-                      {%- endif -%}
+                      <div class="series-character__photo">
+                        {%- if character_photo != blank -%}
+                          {{- character_photo | image_url: width: 160 | image_tag: loading: 'lazy', sizes: '72px', widths: '72,144,160', alt: '' -}}
+                        {%- else -%}
+                          {%- comment -%} No photo yet: initials, as in the author and narrator lists {%- endcomment -%}
+                          {%- render 'person-avatar', metaobject: character, radius: '50', max_width: 72, avatar_display: 'initials', avatar_bg_color: settings.brand_heading, initials_color: '#ffffff' -%}
+                        {%- endif -%}
+                      </div>
                       <h3 class="series-character__name">
                         {%- if character_url != blank -%}<a href="{{ character_url }}">{{ character.name.value | escape }}</a>{%- else -%}{{ character.name.value | escape }}{%- endif -%}
                       </h3>
