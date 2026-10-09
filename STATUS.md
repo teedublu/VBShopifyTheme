@@ -11,6 +11,16 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
 
+## 2026-10-09: Age audiobook collections, new template (build)
+Branch `claude/age-collection-template`, draft PR into `main`, **awaiting owner check on draft theme 199795245440**.
+Full record, baseline and flags: `briefs/age-collection-template.md`.
+- `collection.audiobooks-landing-cat` (under 5s, 5–8, 8–10, 10-to-teens, mystery): new `collection-age-intro` section
+  (short band, trust row, age tabs, featured starter pack), "How Voxblock works" grid row (`promotion_howto` block in
+  main-collection), description moved to `collection-about` under the grid. Old sections kept, disabled.
+- Cart drawer (site-wide): "Stories play on a Voxblock player" prompt when the basket has stories but no player.
+- Tracking: PostHog `age_collection_click`, `cart_player_prompt`.
+- Performance review: add /collections/audiobooks-5-8-years (sample) to the next check.
+
 ## 2026-10-09: Series pages, one template for every series (build)
 Branch `claude/series-page`, PR teedublu/VBShopifyTheme#65 into `main`, **awaiting owner review on the branch's
 draft theme (199773421952)**. Full record, data model and open items: `briefs/series-page.md`.
