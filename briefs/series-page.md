@@ -68,9 +68,13 @@ PostHog `series_page_click` { target: hero_books | pill_author | pill_narrator |
 add_all | add_book | book_title | book_image | related,
 series, product }. Sample plays already send `sample_played` (assets/voxblock.js).
 
-## Not checked yet
-Nothing has been rendered: Liquid needs a Shopify theme to run. `shopify theme check` is clean for the new files
-(one OrphanedSnippet warning on `series-jsonld`, a false positive: the section renders it).
+## Checked on the branch's draft theme (id 199773421952), 9 Oct
+- /pages/series/famous-five: photos crop to the face, book ages, pills and Good to know links all render; blurbs
+  show apostrophes correctly (metafield_text double-encodes them, so blurbs come from metafield_tag | strip_html).
+- /pages/character/dick-kirrin: hero circle shows the face; "Meet the others" (sections/character-cast.liquid, the
+  shared snippets/character-card.liquid) lists the other four.
+- The GitHub sync silently rejects a section whose schema name is over 25 characters, and then any template using
+  it; a rejected template only resyncs when the file itself changes again.
 
 ## Open
 - Review on the branch's draft theme, phone and desktop, all 8 series.
