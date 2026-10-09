@@ -40,11 +40,13 @@ positive. Unicorn Academy has several bundles; the fallback picks none of them u
 - 9 Oct: Pippi Longstocking series: `books` = Pippi Longstocking, Goes Aboard, In the South Seas; `reading_order` on.
 - 9 Oct: Pippi Longstocking series `colour` = #FFD23F (the mockup yellow; teal H1 on it is 3.96:1, passes as large
   bold text; body text 5.7:1).
-- 9 Oct: new Character entries, published, no photos yet: Tommy (`tommy-settergren`), Annika (`annika-settergren`),
+- 9 Oct: new Character entries, published (photos attached the same day, `pippi-longstocking-<name>-character.png`): Tommy (`tommy-settergren`), Annika (`annika-settergren`),
   Mr Nelson (`mr-nelson`), Captain Longstocking (`captain-longstocking`), Pippi's horse (`pippis-horse`). Father and
   horse names are placeholders: the names this translation uses were not known. Linked through each Pippi audiobook's
   `characters` field (Pippi first; Captain Longstocking on Goes Aboard and South Seas only), so they also appear on
   the audiobook pages and have their own /pages/character/<handle> pages.
+- Pippi's own character photo is still the wide 1000x407 banner (also the series image), so it crops to a slice
+  in the series page's circle; a square portrait would fix that. The new images have no alt text.
 
 ## Measurement
 PostHog `series_page_click` { target: hero_books | pill_author | pill_narrator | pill_age | pill_genre | bundle |
