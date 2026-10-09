@@ -150,6 +150,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <script type="module" src="{{ 'sections.js' | asset_url }}"></script>
     <script type="module" src="{{ 'voxblock.js' | asset_url }}"></script>
     {%- render 'saved-books-head' -%}
+    {%- render 'first-touch' -%}
     {%- render 'klaviyo-popup-guard' -%}
 
     <!--/ START content_for_header /-->
@@ -188,9 +189,23 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
           if ((type !== 'submit' && type !== 'stepSubmit') || !email || klaviyoFormsIdentified.has(formId)) return;
           klaviyoFormsIdentified.add(formId);
 
-          posthog.capture('klaviyo_form_submitted', { form_id: formId, step: type });
+          // Where this browser first/last came from (snippets/first-touch.liquid). Only tagged landings are
+          // stored, so a plain sign-up sends no source properties and can't blank values already on the profile.
+          const touch = (window.vbTouch && window.vbTouch.props()) || {};
+
+          posthog.capture('klaviyo_form_submitted', { form_id: formId, step: type, ...touch });
           // Already identified (e.g. a signed-in customer): don't switch this browser to someone else's person
           if (posthog.get_property('$user_state') !== 'identified') posthog.identify(email, { email });
+
+          // Put the source on the Klaviyo profile too (HANDOFF 13a), so a welcome-email buyer shows which ad brought them
+          if (Object.keys(touch).length) {
+            const profile = { ...touch, signup_form_id: formId };
+            if (window.klaviyo && typeof window.klaviyo.identify === 'function') {
+              window.klaviyo.identify({ email, ...profile });
+            } else {
+              (window._learnq = window._learnq || []).push(['identify', { $email: email, ...profile }]);
+            }
+          }
         });
     </script>
     <!-- BEGIN MerchantWidget Code -->

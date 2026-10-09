@@ -1,0 +1,58 @@
+{%- comment -%}
+  First-touch / last-touch storage (HANDOFF → For code 13a, requested 30 Sep 2026).
+
+  On any landing URL that carries campaign tags or an ad click ID, remember where the visitor came from
+  in localStorage (not sessionStorage), so an ad click is still known when the same browser comes back
+  days later through Google search and signs up:
+    vb_last_touch  – overwritten on every tagged landing
+    vb_first_touch – written only if missing or older than 90 days
+
+  Nothing leaves the browser here. The values are only sent (to Klaviyo and PostHog) when the visitor
+  submits a Klaviyo sign-up form – see the klaviyoForms listener in layout/theme.liquid.
+  window.vbTouch.props() returns the flattened first_* / last_* properties for that listener.
+  Nothing runs if storage is blocked.
+{%- endcomment -%}
+<script id="vb-first-touch">
+  (function () {
+    var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+                'gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'oai_click_id'];
+    var FIRST = 'vb_first_touch', LAST = 'vb_last_touch';
+    var FIRST_MAX_AGE = 90 * 864e5;
+    var MAX_LEN = 200;
+
+    function read(k) { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } }
+    function write(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+    var q = new URLSearchParams(location.search);
+    var touch = {};
+    KEYS.forEach(function (k) {
+      var v = (q.get(k) || '').trim();
+      if (v) touch[k] = v.slice(0, MAX_LEN);
+    });
+
+    if (Object.keys(touch).length) {
+      touch.landing_path = location.pathname.slice(0, MAX_LEN);
+      touch.at = new Date().toISOString();
+      write(LAST, touch);
+      var first = read(FIRST);
+      var firstAge = first && first.at ? Date.now() - Date.parse(first.at) : Infinity;
+      if (!(firstAge < FIRST_MAX_AGE)) write(FIRST, touch);
+    }
+
+    window.vbTouch = {
+      // { first_utm_source, first_gclid, …, first_landing_path, first_touch_at, last_… } – empty values left out
+      props: function () {
+        var out = {};
+        [['first', read(FIRST)], ['last', read(LAST)]].forEach(function (pair) {
+          var t = pair[1];
+          if (!t) return;
+          KEYS.concat('landing_path').forEach(function (k) {
+            if (t[k]) out[pair[0] + '_' + k] = String(t[k]).slice(0, MAX_LEN);
+          });
+          if (t.at) out[pair[0] + '_touch_at'] = t.at;
+        });
+        return out;
+      }
+    };
+  })();
+</script>
