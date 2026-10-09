@@ -1,0 +1,64 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY HOME BAND ("Listen to The Gruffalo audiobook, screen-free", end of the Gruffalo character + cast pages)
+----------------------------------------------------------------------------------------------------------------------
+The last word for parents: the audiobook cover (the 3D cover image, which ranks in Google Images, so keep it), one
+line on how it works, the starter pack button with its live price and "already have a Voxblock?" with the
+audiobook's live price. Nothing is hard-coded.
+Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
+{%- endcomment -%}
+
+{%- liquid
+  assign pack = section.settings.pack
+  assign book = section.settings.audiobook
+  if pack != blank
+    assign pack_variant = pack.variants | sort: 'price' | first
+    assign pack_price = pack_variant.price | money
+  endif
+  assign book_price = book.price | money
+  assign image_alt = section.settings.image_alt | default: section.settings.image.alt
+-%}
+
+<section class="story-home-band" style="--story-home-bg: {{ section.settings.background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
+  <div class="container story-home-band__inner">
+    {%- if section.settings.image != blank -%}
+      <div class="story-home-band__media">
+        {{- section.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 50vw, 280px', widths: '240,400,600', alt: image_alt -}}
+      </div>
+    {%- endif -%}
+    <div class="story-home-band__text">
+      {%- if section.settings.eyebrow != blank -%}<p class="story-home-band__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="story-home-band__title">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}<div class="story-home-band__intro">{{ section.settings.text }}</div>{%- endif -%}
+      <div class="story-home-band__actions">
+        {%- if pack != blank and pack.available -%}
+          <a href="{{ pack.url }}" class="series-button" data-story-track="band_pack">{{ section.settings.pack_label | escape }} {{ pack_price }}</a>
+        {%- endif -%}
+        {%- if book != blank and book.available -%}
+          <a href="{{ book.url }}" class="story-home-band__link" data-story-track="band_audiobook">{{ 'collection.story_hero.have_player' | t }} {{ section.settings.audiobook_label | escape }} {{ book_price }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story home band",
+  "tag": "div",
+  "class": "shopify-section--story-home-band",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#fff7f0" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_alt", "label": "Image description" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "At home" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Listen to The Gruffalo audiobook, screen-free" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "product", "id": "pack", "label": "Starter pack" },
+    { "type": "text", "id": "pack_label", "label": "Starter pack button (price follows)", "default": "Starter pack" },
+    { "type": "product", "id": "audiobook", "label": "Audiobook" },
+    { "type": "text", "id": "audiobook_label", "label": "Audiobook link (price follows)", "default": "The audiobook," }
+  ],
+  "presets": [{ "name": "Story home band" }]
+}
+{% endschema %}

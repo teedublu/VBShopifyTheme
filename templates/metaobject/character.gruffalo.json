@@ -188,7 +188,8 @@
       "settings": {
         "full_width": false,
         "spacing": "small"
-      }
+      },
+      "disabled": true
     },
     "microdata_8YzdEG": {
       "type": "microdata",
@@ -234,6 +235,13 @@
             "title": "Is the Gruffalo real?",
             "content": "<p>The Gruffalo is not a real animal; he is a fictional storybook creature. Within the world of the book, though, Mouse meets the real Gruffalo after describing him to the other animals.</p>"
           }
+        },
+        "screen_free": {
+          "type": "item",
+          "settings": {
+            "title": "Can children listen to The Gruffalo without a screen?",
+            "content": "<p>Yes. The Gruffalo is a physical Voxblock audiobook, so children can listen screen-free with no downloads, tablet or Wi-Fi.</p>"
+          }
         }
       },
       "block_order": [
@@ -241,7 +249,8 @@
         "description",
         "meaning",
         "role",
-        "real"
+        "real",
+        "screen_free"
       ],
       "settings": {
         "full_width": true,
@@ -476,7 +485,8 @@
         "background": "#ffffff",
         "background_gradient": "",
         "text_color": "#565656"
-      }
+      },
+      "disabled": true
     },
     "doors": {
       "type": "multi-column",
@@ -523,7 +533,8 @@
         "background": "#fff7f0",
         "background_gradient": "",
         "text_color": "#565656"
-      }
+      },
+      "disabled": true
     },
     "tertiary": {
       "type": "rich-text",
@@ -547,7 +558,8 @@
         "background": "#fff7f0",
         "background_gradient": "",
         "text_color": "#565656"
-      }
+      },
+      "disabled": true
     },
     "story_hero": {
       "type": "story-hero",
@@ -560,7 +572,6 @@
         "pause_label": "Playing sample",
         "sample_note": "One minute of the story, read by Imelda Staunton. Free, no sign-up.",
         "pack": "gruffalo-and-friends-starter-pack",
-        "pack_label": "Listen to the whole story, screen-free",
         "pack_contents": "Voxblock player + The Gruffalo and 2 more Julia Donaldson stories",
         "schools_url": "shopify://collections/schools-packs",
         "secondary_label": "",
@@ -569,23 +580,189 @@
         "eyebrow": "Character guide",
         "heading": "What is a Gruffalo?",
         "intro": "<p>A Gruffalo is the made-up monster in Julia Donaldson and Axel Scheffler's picture book The Gruffalo. Mouse invents him to frighten off Fox, Owl and Snake, then meets him for real: tusks, claws, orange eyes, a poisonous wart and purple prickles.</p>",
-        "main_handle": "the-gruffalo"
+        "main_handle": "the-gruffalo",
+        "home_label": "At home",
+        "show_classroom": true,
+        "classroom_label": "In the classroom",
+        "classroom_title": "Bring audiobooks into your classroom",
+        "classroom_text": "Whole-class listening and screen-free reading corners. Get ideas and school offers by email.",
+        "signup_list_id": "XRcgpd",
+        "classroom_link_label": "School packages, with 10% off for schools",
+        "signup_source": "Story page: classroom card"
+      }
+    },
+    "features": {
+      "type": "character-features",
+      "settings": {
+        "only_handle": "the-gruffalo",
+        "heading": "What does the Gruffalo look like?",
+        "intro": "The Gruffalo's description, feature by feature, as Mouse describes him in the story: a large monster with tusks, claws, orange eyes, a poisonous wart, a black tongue and purple prickles down his back.",
+        "link_label": "Read the story overview",
+        "link_url": "/pages/overview/the-gruffalo"
+      },
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "Tusks and claws",
+            "text": "Big, sharp and scary"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Huge teeth",
+            "text": "In a wide, growly mouth"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Orange eyes",
+            "text": "And a black tongue"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "A poisonous wart",
+            "text": "Right on the end of his nose"
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "title": "Purple prickles",
+            "text": "All the way down his back"
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "title": "Knobbly knees",
+            "text": "And toes that point outwards"
+          }
+        },
+        "a_real": {
+          "type": "answer",
+          "settings": {
+            "question": "Is the Gruffalo real?",
+            "answer": "<p>No. The Gruffalo is a fictional storybook creature, not a real animal. Inside the world of the book, though, Mouse meets the real Gruffalo after describing him to the other animals, which is the whole joke of the story.</p>"
+          }
+        },
+        "a_mean": {
+          "type": "answer",
+          "settings": {
+            "question": "What does Gruffalo mean?",
+            "answer": "<p>In the story, \"Gruffalo\" is the name Mouse gives to his invented monster. The word sounds rough, growly and memorable, which helps make the creature feel funny and frightening at the same time. It isn't a word from anywhere else.</p>"
+          }
+        },
+        "a_what": {
+          "type": "answer",
+          "settings": {
+            "question": "What happens in the story?",
+            "answer": "<p>Mouse walks through the deep dark wood, talks his way past three hungry animals, then has to think even faster when the monster he invented turns out to be real. The full plot, age guide and creators are in the <a href=\"/pages/overview/the-gruffalo\" title=\"The Gruffalo story overview\">Gruffalo story overview</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "a_real",
+        "a_mean",
+        "a_what"
+      ]
+    },
+    "cast": {
+      "type": "character-cast",
+      "settings": {
+        "heading": "Who else is in the story?",
+        "intro": "The other animals in [book]. Mouse meets each one in turn before the Gruffalo appears.",
+        "link_label": "See the full cast guide",
+        "link_url": "/pages/characters/the-gruffalo",
+        "limit": 8
+      }
+    },
+    "classroom": {
+      "type": "classroom-band",
+      "settings": {
+        "eyebrow": "For teachers",
+        "heading": "Audiobooks work in the classroom",
+        "intro": "<p>Listening to a story read well builds vocabulary and comprehension, and lets every child follow the whole book, including those still learning to read.</p>",
+        "image": "shopify://shop_images/product-book-bookshelf-the-gruffalo.png",
+        "button_label": "See school packages",
+        "button_url": "/pages/audiobook-players-for-schools",
+        "link_label": "Free teaching resources for our audiobooks",
+        "link_url": "/pages/school-resources",
+        "show_signup": true,
+        "signup_title": "Ideas for using audiobooks in class",
+        "signup_note": "Classroom ideas and occasional school offers. Unsubscribe any time.",
+        "signup_list_id": "XRcgpd",
+        "signup_source": "Story page: classroom band"
+      },
+      "blocks": {
+        "p_class": {
+          "type": "point",
+          "settings": {
+            "text": "<p><strong>Whole-class listening.</strong> Connect a Voxblock to your classroom speaker and the whole class hears The Gruffalo together.</p>"
+          }
+        },
+        "p_corner": {
+          "type": "point",
+          "settings": {
+            "text": "<p><strong>A reading corner children run themselves.</strong> They pick a story block and press play: no screens, no logins, no adult needed.</p>"
+          }
+        },
+        "p_packs": {
+          "type": "point",
+          "settings": {
+            "text": "<p><strong>School packages</strong> include players, bumpers, a charging hub and your choice of audiobooks, plus 10% off our range for schools.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "p_class",
+        "p_corner",
+        "p_packs"
+      ]
+    },
+    "home_band": {
+      "type": "story-home-band",
+      "settings": {
+        "background": "#fff7f0",
+        "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+        "image_alt": "The Gruffalo audiobook by Julia Donaldson and Axel Scheffler",
+        "eyebrow": "At home",
+        "heading": "Listen to The Gruffalo audiobook, screen-free",
+        "text": "<p>Your child puts the Gruffalo story block on the Voxblock player and presses play. No screen, no downloads, no subscription.</p>",
+        "pack": "gruffalo-and-friends-starter-pack",
+        "pack_label": "Starter pack",
+        "audiobook": "the-gruffalo",
+        "audiobook_label": "The audiobook,"
       }
     }
   },
   "order": [
     "breadcrumbs_XHGrpm",
     "story_hero",
+    "features",
+    "cast",
+    "character_intro",
+    "role_in_story",
+    "classroom",
+    "gruffalo_specific_faq",
+    "character_faq",
+    "more_gruffalo",
+    "home_band",
     "hero",
     "listen",
     "answers",
     "doors",
     "tertiary",
-    "character_intro",
-    "role_in_story",
-    "character_faq",
-    "gruffalo_specific_faq",
-    "more_gruffalo",
     "voxblock_listening",
     "microdata_8YzdEG"
   ]

@@ -1,0 +1,30 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SCHOOL SIGN-UP (story hero classroom card, classroom band)
+----------------------------------------------------------------------------------------------------------------------
+One email field that subscribes a teacher to a Klaviyo list (default: Schools Monthly Email Newsletter, XRcgpd) with
+Klaviyo's client subscriptions API, the same call assets/back-in-stock.js uses. Handled in voxblock.js
+(`[data-school-signup]`), which also sends PostHog `school_signup` { page, form }.
+
+Params:
+- form_id: short id, unique on the page (used for the input id and the `form` property)
+- list_id: Klaviyo list id
+- source: custom_source shown on the Klaviyo profile
+{%- endcomment -%}
+
+{%- liquid
+  assign list_id = list_id | default: 'XRcgpd'
+  assign input_id = 'school-signup-' | append: form_id | append: '-' | append: section.id
+-%}
+
+<form class="school-signup" novalidate data-school-signup data-form="{{ form_id | escape }}" data-list-id="{{ list_id | escape }}" data-company-id="TKFEPz" data-source="{{ source | default: 'Story page' | escape }}">
+  <div class="school-signup__row">
+    <label for="{{ input_id }}" class="sr-only">{{ 'collection.school_signup.label' | t }}</label>
+    <input id="{{ input_id }}" class="school-signup__input" type="email" name="email" autocomplete="email" inputmode="email" required placeholder="{{ 'collection.school_signup.placeholder' | t }}">
+    <button type="submit" class="series-button series-button--small school-signup__button">{{ 'collection.school_signup.button' | t }}</button>
+  </div>
+  <p class="school-signup__status" role="status" aria-live="polite" hidden
+    data-thanks="{{ 'collection.school_signup.thanks' | t | escape }}"
+    data-error="{{ 'collection.school_signup.error' | t | escape }}"
+    data-invalid="{{ 'collection.school_signup.invalid' | t | escape }}"></p>
+</form>

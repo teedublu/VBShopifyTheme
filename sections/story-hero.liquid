@@ -5,16 +5,18 @@ STORY HERO (Gruffalo character and cast pages: templates/metaobject/character.gr
 
 Most visitors to these pages come from Google (often Images), look for ~10 seconds and scroll about a quarter of the
 page, so the ways to hear and buy the story sit in the first screen, next to the picture they came for:
-* left: eyebrow, H1, intro, then an action card: one-minute sample (same player as everywhere else: .bookpreview),
-  the starter pack (live price and saving), "just the audiobook" and a schools link
+* left: eyebrow, H1, intro, the one-minute sample (same player as everywhere else: .bookpreview), then two routes
+  side by side: "At home" (starter pack card, live price and saving) and "In the classroom" (email sign-up for
+  classroom ideas, snippets/school-signup.liquid, and the school packages link), then "just the audiobook"
 * right: the character artwork (setting, else the metaobject's first photo, else the first photo of the first item in
   the metaobject's "list" field, which is how the cast page gets the Gruffalo)
 
 On the character template the H1 and intro above are for the main character (setting "Main character handle");
 Owl, Fox and Snake, which share the template, get "[name] in The Gruffalo" and their own description instead.
 Prices and the saving are read live from the products; nothing is hard-coded.
-Tracking: PostHog `story_hero_click` { target: pack | audiobook | schools | secondary, page } (voxblock.js); the sample
-already sends `sample_played`.
+Tracking: PostHog `story_hero_click` { target: pack | audiobook | schools | secondary, page } and `school_signup`
+{ form: hero, page } (voxblock.js); the sample already sends `sample_played`.
+Why two routes: Gruffalo pages get far more weekday-daytime and desktop visits than the rest of the site (teachers).
 {%- endcomment -%}
 
 {%- liquid
@@ -69,44 +71,59 @@ already sends `sample_played`.
 
       <div class="story-hero__actions">
         {%- if preview_file != blank -%}
-          <button type="button" class="series-button series-button--secondary bookpreview story-hero__sample" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ preview_file | file_url }}" data-title="{{ book.title | escape }}">
-            <span class="playpause"></span>
-            <span class="playpause_text">
-              <span class="play">{{ section.settings.play_label | escape }}</span>
-              <span class="pause">{{ section.settings.pause_label | escape }}</span>
-            </span>
-            <span class="sr-only">{{ 'collection.story_hero.play_sample' | t }}</span>
-          </button>
-          {%- if section.settings.sample_note != blank -%}<p class="story-hero__sample-note">{{ section.settings.sample_note | escape }}</p>{%- endif -%}
+          <div class="story-hero__sample-row">
+            <button type="button" class="series-button series-button--secondary bookpreview story-hero__sample" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ preview_file | file_url }}" data-title="{{ book.title | escape }}">
+              <span class="playpause"></span>
+              <span class="playpause_text">
+                <span class="play">{{ section.settings.play_label | escape }}</span>
+                <span class="pause">{{ section.settings.pause_label | escape }}</span>
+              </span>
+              <span class="sr-only">{{ 'collection.story_hero.play_sample' | t }}</span>
+            </button>
+            {%- if section.settings.sample_note != blank -%}<p class="story-hero__sample-note">{{ section.settings.sample_note | escape }}</p>{%- endif -%}
+          </div>
         {%- endif -%}
 
-        {%- if pack != blank and pack.available -%}
-          <a href="{{ pack.url }}" class="story-hero__pack" data-story-track="pack">
-            {%- if pack.featured_media -%}
-              <span class="story-hero__pack-media">{{- pack.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '72px', widths: '72,144,240', alt: '' -}}</span>
-            {%- endif -%}
-            <span class="story-hero__pack-text">
-              <span class="story-hero__pack-label">{{ section.settings.pack_label | escape }}</span>
-              <span class="story-hero__pack-title">{{ pack.title | escape }}</span>
-              {%- if section.settings.pack_contents != blank -%}<span class="story-hero__pack-contents">{{ section.settings.pack_contents | escape }}</span>{%- endif -%}
-              <span class="story-hero__pack-prices">
-                <span class="story-hero__pack-price">{{ pack_variant.price | money }}</span>
-                {%- if pack_variant.compare_at_price > pack_variant.price -%}
-                  <s class="story-hero__pack-was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
-                  <span class="story-hero__pack-save">{{ 'product.general.discount_badge_html' | t: savings: pack_save | append: '%' }}</span>
+        <div class="story-routes">
+          {%- if pack != blank and pack.available -%}
+            <a href="{{ pack.url }}" class="story-route story-route--home" data-story-track="pack">
+              <span class="story-route__label">{{ section.settings.home_label | escape }}</span>
+              <span class="story-route__row">
+                {%- if pack.featured_media -%}
+                  <span class="story-route__media">{{- pack.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '64px', widths: '64,128,240', alt: '' -}}</span>
                 {%- endif -%}
+                <span class="story-route__body">
+                  <span class="story-route__title">{{ pack.title | escape }}</span>
+                  {%- if section.settings.pack_contents != blank -%}<span class="story-route__text">{{ section.settings.pack_contents | escape }}</span>{%- endif -%}
+                  <span class="story-route__prices">
+                    <span class="story-route__price">{{ pack_variant.price | money }}</span>
+                    {%- if pack_variant.compare_at_price > pack_variant.price -%}
+                      <s class="story-route__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
+                      <span class="story-route__save">{{ 'product.general.discount_badge_html' | t: savings: pack_save | append: '%' }}</span>
+                    {%- endif -%}
+                  </span>
+                </span>
               </span>
-            </span>
-            <span class="story-hero__pack-arrow" aria-hidden="true">{%- render 'icon' with 'chevron-right-small' -%}</span>
-          </a>
-        {%- endif -%}
+              <span class="story-route__more">{{ 'collection.story_hero.see_pack' | t }}</span>
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.show_classroom -%}
+            <div class="story-route story-route--class">
+              <span class="story-route__label">{{ section.settings.classroom_label | escape }}</span>
+              <span class="story-route__title">{{ section.settings.classroom_title | escape }}</span>
+              {%- if section.settings.classroom_text != blank -%}<span class="story-route__text">{{ section.settings.classroom_text | escape }}</span>{%- endif -%}
+              {%- render 'school-signup', form_id: 'hero', list_id: section.settings.signup_list_id, source: section.settings.signup_source -%}
+              {%- if section.settings.schools_url != blank -%}
+                <a href="{{ section.settings.schools_url }}" class="story-route__link" data-story-track="schools">{{ section.settings.classroom_link_label | escape }}</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
 
         <p class="story-hero__links">
           {%- if book != blank and book.available -%}
             <span>{{ 'collection.story_hero.have_player' | t }} <a href="{{ book.url }}" data-story-track="audiobook">{{ 'collection.story_hero.just_audiobook' | t: price: book_price }}</a></span>
-          {%- endif -%}
-          {%- if section.settings.schools_url != blank -%}
-            <span>{{ 'collection.story_hero.teaching' | t }} <a href="{{ section.settings.schools_url }}" data-story-track="schools">{{ 'collection.story_hero.school_packs' | t }}</a></span>
           {%- endif -%}
           {%- if section.settings.secondary_url != blank and section.settings.secondary_label != blank -%}
             <span><a href="{{ section.settings.secondary_url }}" data-story-track="secondary">{{ section.settings.secondary_label | escape }}</a></span>
@@ -143,9 +160,17 @@ already sends `sample_played`.
     { "type": "text", "id": "pause_label", "label": "Sample button while playing", "default": "Playing sample" },
     { "type": "text", "id": "sample_note", "label": "Line under the sample button", "default": "One minute, read by Imelda Staunton. Free, no sign-up." },
     { "type": "product", "id": "pack", "label": "Starter pack" },
-    { "type": "text", "id": "pack_label", "label": "Starter pack label", "default": "Listen to the whole story, screen-free" },
+    { "type": "text", "id": "home_label", "label": "Home card label", "default": "At home" },
     { "type": "text", "id": "pack_contents", "label": "Starter pack contents line", "default": "Voxblock player + 3 Julia Donaldson stories" },
-    { "type": "url", "id": "schools_url", "label": "School packs link" },
+    { "type": "header", "content": "Classroom card" },
+    { "type": "checkbox", "id": "show_classroom", "label": "Show the classroom card", "default": true },
+    { "type": "text", "id": "classroom_label", "label": "Label", "default": "In the classroom" },
+    { "type": "text", "id": "classroom_title", "label": "Title", "default": "Bring audiobooks into your classroom" },
+    { "type": "textarea", "id": "classroom_text", "label": "Text", "default": "Whole-class listening and screen-free reading corners. Get ideas and school offers by email." },
+    { "type": "text", "id": "signup_list_id", "label": "Klaviyo list ID for sign-ups", "default": "XRcgpd", "info": "Schools Monthly Email Newsletter." },
+    { "type": "text", "id": "signup_source", "label": "Sign-up source (shown in Klaviyo)", "default": "Story page: classroom card" },
+    { "type": "url", "id": "schools_url", "label": "School packages link" },
+    { "type": "text", "id": "classroom_link_label", "label": "School packages link text", "default": "School packages, with 10% off for schools" },
     { "type": "text", "id": "secondary_label", "label": "Extra link text" },
     { "type": "url", "id": "secondary_url", "label": "Extra link" }
   ],
