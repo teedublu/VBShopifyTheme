@@ -92,6 +92,21 @@ series, product }. Sample plays already send `sample_played` (assets/voxblock.js
     Flicker, Grandad; Aura from book 4); Dave Pigeon (Dave, Skipper). Horrible Histories has none.
   - "More series to try" now shows every other published series (limit 50, was 8).
 
+## SEO (review and fixes, 9 Oct)
+- Title (layout/theme.liquid): "<Series> Audiobooks in Order | Voxblock" with a reading order, else "... for Kids |
+  Voxblock". H2s name the series ("<Series> books in order", "<Series> characters", "About the <Series> series").
+- Meta descriptions: the 8 original series rewritten to 139-154 characters (were up to ~300); the 10 new ones were
+  already 110-125.
+- Share image: the series' image, else its first cover (was the site default); og:image over https.
+- Structured data: the empty `microdata` block removed from the series template (Search Console "unparsable");
+  snippets/microdata-videoobject.liquid treats only audiobook entries as audiobooks (it called the how-it-works film
+  "Video of Pippi Longstocking"); BookSeries has author page links and, per book, authors, AudiobookFormat, en-GB.
+- Internal links in: audiobook product pages (product.audiobook / product.gruffalo) carry a "Series link" block,
+  "Part of the <Series> series · Book n of m" (snippets/series-membership.liquid).
+- Not changed: the two images without alt are Shopify video_tag fallback images inside <video>.
+- Checked: `sample_played` { title } fires once per play from the series page's sample buttons (shared bookpreview
+  handler); PostHog adds the page URL. The 10 new series were not yet in sitemap_metaobject_pages at 17:00; recheck.
+
 ## Checked on the branch's draft theme (id 199773421952), 9 Oct
 - /pages/series/famous-five: photos crop to the face, book ages, pills and Good to know links all render; blurbs
   show apostrophes correctly (metafield_text double-encodes them, so blurbs come from metafield_tag | strip_html).
