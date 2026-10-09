@@ -68,6 +68,23 @@ PostHog `series_page_click` { target: hero_books | pill_author | pill_narrator |
 add_all | add_book | book_title | book_image | related,
 series, product }. Sample plays already send `sample_played` (assets/voxblock.js).
 
+- 9 Oct: character handles renamed to `<name>-<series handle>` with redirects from the old ones (13 entries:
+  tommy/annika/mr-nelson/horse-pippi-longstocking, julian/dick/anne/george/timmy-famous-five,
+  perfect-peter/moody-margaret/rude-ralph/sour-susan-horrid-henry). `captain-longstocking` kept: it already names
+  the series. Title characters keep plain handles (pippi-longstocking, horrid-henry).
+- 9 Oct, next ten series (ranked by 12-month units), in progress:
+  - New manual collections, published to the Online Store, books in reading order (every existing series has one,
+    and the live series template shows placeholder products without one): percy-jackson-audiobooks,
+    the-faraway-tree-audiobooks, the-gruffalo-audiobooks, ember-spark-audiobooks, the-worst-witch-audiobooks,
+    baby-aliens-audiobooks, dave-pigeon-audiobooks.
+  - Series created and published (books, reading order, colour, tagline, description, collection, image, bundle
+    where one exists): paddington, percy-jackson, the-faraway-tree, the-gruffalo, ember-spark.
+  - NOT yet created (a write was refused by the session's permission check): the-worst-witch, baby-aliens,
+    horrible-histories, the-boy-who-grew-dragons, dave-pigeon; and no characters for any of the ten yet.
+    Colours chosen from the covers: Worst Witch #E6DCF5, Baby Aliens #EAF5B5, Horrible Histories #FFF0B3,
+    Dragons #D2E9F8, Dave Pigeon #DCEFFB (all pass contrast). Bundles to set: Worst Witch 8273438277787,
+    Horrible Histories 8103072465051, Dragons 8238651015323, Dave Pigeon 8235868684443 (Baby Aliens has none).
+
 ## Checked on the branch's draft theme (id 199773421952), 9 Oct
 - /pages/series/famous-five: photos crop to the face, book ages, pills and Good to know links all render; blurbs
   show apostrophes correctly (metafield_text double-encodes them, so blurbs come from metafield_tag | strip_html).
