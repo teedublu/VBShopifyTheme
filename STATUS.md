@@ -1,8 +1,19 @@
 # STATUS
 
+## Performance: pages to check in the next site performance review
+Owner's standing request (9 Oct): every page we improve gets its performance checked in the next site performance
+review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add each improved page type here.
+- Series pages `/pages/series/<handle>` (PR #65): per-book data pass (authors, narrators, characters, facts), three
+  eager hero covers, BookSeries JSON-LD. Sample: pippi-longstocking, the-boy-who-grew-dragons (6 books), paddington.
+- Character pages `/pages/character/<handle>` (PR #65): character-cast section. Sample: dick-famous-five.
+- Audiobook product pages (PR #65): "Series link" block scans every series' book list on each render. Sample:
+  pippi-longstocking-goes-aboard, akimbo-and-the-lions (collection fallback, the slower path).
+- /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
+  earlier.
+
 ## 2026-10-09: Series pages, one template for every series (build)
-Branch `claude/series-page`, pushed to GitHub, **awaiting owner review on a draft theme connected to the branch; no PR
-yet**. Full record, data model and open items: `briefs/series-page.md`.
+Branch `claude/series-page`, PR teedublu/VBShopifyTheme#65 into `main`, **awaiting owner review on the branch's
+draft theme (199773421952)**. Full record, data model and open items: `briefs/series-page.md`.
 - New `sections/series-page.liquid` (hero, books, characters, about), `sections/series-related.liquid`,
   `snippets/series-jsonld.liquid`; `templates/metaobject/series.json` rebuilt; CSS block at the end of voxblock.css.
 - Works with today's data: books = series collection products linked to an audiobook entry (bundles, packs and
