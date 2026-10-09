@@ -47,6 +47,7 @@ Nothing has been rendered: Liquid needs a Shopify theme to run. `shopify theme c
 - Review on the branch's draft theme, phone and desktop, all 8 series.
 - Delete the API-made duplicate `VBShopifyTheme/claude/series-page` (id 199773192576): made by mistake, nothing was
   uploaded to it, identical to live. The connector cannot delete themes.
-- Add the optional fields to the Series definition; fill `books` + `reading_order` for ordered series.
+- Fields `books`, `reading_order`, `tagline`, `colour`, `bundle` were added to the Series definition on 9 Oct (empty on
+  all 8 entries). Fill `books` + `reading_order` for ordered series, `bundle` for Unicorn Academy.
 - 37 series with 2+ stocked titles have no Series entry yet (list in the bookdata2 session of 1 Oct).
 - No listening time anywhere in Shopify; the mockup's "[Listening time]" is not built.
