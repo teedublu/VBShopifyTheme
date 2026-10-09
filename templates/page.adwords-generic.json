@@ -25,7 +25,7 @@
             "title": "Stories they can play themselves",
             "content": "<p>Voxblock is a simple audiobook player for children. Each story is a small physical book that slots into the player. No screen, no downloads, no streaming, no subscription. Just press play.</p><p><em>“Best kids’ audio player for ease of use” – The Independent</em></p>",
             "link_text": "Start with a Starter Pack",
-            "link_url": "/collections/voxblock-starter-pack-collection",
+            "link_url": "#packs",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
@@ -111,19 +111,22 @@
         "collection": "voxblock-starter-pack-collection",
         "hide_empty": false,
         "products": [
-          "gruffalo-and-friends-starter-pack-set",
-          "bedtime-stories-starter-pack-set",
-          "roald-dahl-selection-starter-pack-set"
+          "gruffalo-and-friends-starter-pack",
+          "little-listeners-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "the-percy-jackson-starter-pack"
         ],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
-        "products_count": 3,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 3,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "card_style": "pack",
+        "anchor_id": "packs",
+        "products_per_row_desktop": 4,
         "subheading": "Start with a Starter Pack",
         "title": "Player plus their first books, at a saving",
-        "content": "<p>Every pack includes the Voxblock player and a set of audiobooks chosen for an age group. Pick a colour, and it's ready to gift.</p>",
+        "content": "<p>The Voxblock player plus three audiobooks chosen for their age. Pick a colour, and it's ready to gift.</p>",
         "link_url": "/collections/voxblock-starter-pack-collection",
         "link_text": "See all starter packs and intro packs from £59.99",
         "background": "#fff7f0",
@@ -270,7 +273,7 @@
           "type": "card",
           "settings": {
             "icon": "book",
-            "title": "350+ stories, ages 3 to 11",
+            "title": "350+ stories, toddlers to teens",
             "content": "<p>Classics, bedtime stories, facts and learning, grouped by age.</p>"
           }
         }
@@ -426,7 +429,7 @@
           "type": "item",
           "settings": {
             "title": "What ages is Voxblock for?",
-            "content": "<p>Ages 3 to 11 and beyond. The player is the same for everyone; the books are grouped by age so you can start where they are and grow the shelf.</p>"
+            "content": "<p>From toddlers to teens. The player is the same for everyone; the books are grouped by age so you can start where they are and grow the shelf.</p>"
           }
         },
         "faq_wifi": {
@@ -440,7 +443,7 @@
           "type": "item",
           "settings": {
             "title": "What's in a Starter Pack?",
-            "content": "<p>Each pack contains the award winning Voxblock audiobook player and a number of audiobooks depending on which one of our many packs you choose.</p>"
+            "content": "<p>A Starter Pack is the Voxblock player plus three audiobooks picked for one age group, for less than buying them separately. Intro Packs are the player plus one audiobook. Choose the bumper colour, and add more books whenever you like.</p>"
           }
         },
         "faq_battery": {
@@ -513,7 +516,7 @@
             "style": "fill",
             "size": "xl",
             "text": "Start with a Starter Pack",
-            "url": "/collections/voxblock-starter-pack-collection",
+            "url": "#packs",
             "background": "#ff9e57",
             "text_color": "#ffffff"
           }
@@ -538,8 +541,8 @@
   },
   "order": [
     "hero",
-    "how_it_works",
     "packs",
+    "how_it_works",
     "product",
     "why",
     "stats",
