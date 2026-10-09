@@ -412,7 +412,7 @@ book links and related series. Sample plays are already tracked globally as samp
                       endunless
                       assign book_narrators = book_narrators | append: narrator.name.value
                     endfor
-                    assign book_age = audiobook.reading_level.value.first | downcase | remove: 'years' | remove: 'year' | strip | replace: '-', '–'
+                    assign book_age = audiobook.reading_level.value | first | downcase | remove: 'years' | remove: 'year' | strip | replace: '-', '–'
                   -%}
                   <li class="series-book">
                     <div class="series-book__media">
@@ -484,7 +484,7 @@ book links and related series. Sample plays are already tracked globally as samp
                       if character_text == blank
                         assign character_text = character.bio | metafield_text | strip | truncatewords: 28
                       endif
-                      assign character_photo = character.photos.value.first
+                      assign character_photo = character.photos.value | first
                       assign character_url = character.system.url
                     -%}
                     <li class="series-character">
