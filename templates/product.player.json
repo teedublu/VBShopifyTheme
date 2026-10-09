@@ -54,7 +54,7 @@
         "text_MA3Pah": {
           "type": "text",
           "settings": {
-            "text": "<p>Give your child the freedom to enjoy stories on their own, without screens or complicated setups. You can feel confident knowing there are no apps, downloads or streaming to manage.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
+            "text": "<p>A screen-free audiobook player children use on their own. Slot in a book and press play: no wifi, no downloads, no subscription. For toddlers to teens.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
           }
         },
         "variant_picker": {
@@ -72,7 +72,7 @@
         "text_B7QjHH": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"https://www.trustpilot.com/review/voxblock.co.uk\">Read what families have to say...</a></p>"
+            "text": "<p>★★★★★ <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\">4.9 on Trustpilot</a> · 100-day money back guarantee</p>"
           }
         },
         "image_dihJHC": {
@@ -307,6 +307,12 @@
         "separator_JnqTiQ": {
           "type": "separator",
           "settings": {}
+        },
+        "packs_nudge": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<a href=\"#packs\" class=\"player-packs-nudge\"><strong>Want books included?</strong> A Starter Pack is the player plus three audiobooks picked for their age, for less than buying them separately. <span class=\"player-packs-nudge__cta\">See Starter Packs ↓</span></a><style>.player-packs-nudge{display:block;padding:12px 14px;border-radius:12px;background:#fff3ed;border:1px solid #ffd9bd;color:#565656;text-decoration:none;font-size:14px;line-height:1.45}.player-packs-nudge strong{color:#197177}.player-packs-nudge__cta{display:inline-block;margin-top:4px;font-weight:600;color:#e5752a;text-decoration:underline}</style>"
+          }
         }
       },
       "block_order": [
@@ -315,13 +321,14 @@
         "badges",
         "text_thkiB9",
         "price",
+        "text_B7QjHH",
         "text_MA3Pah",
         "variant_picker",
-        "text_B7QjHH",
         "image_dihJHC",
         "separator_eYhQVx",
         "bogos_io_free_gift_gift_thumbnail_view_y6hGFC",
         "buy_buttons",
+        "packs_nudge",
         "offer_tcaCpM",
         "offer_wAzmdm",
         "separator",
@@ -389,7 +396,7 @@
             "product_1_feature_3": "yes",
             "product_2_feature_3": "no",
             "product_3_feature_3": "no",
-            "feature_4": "No downloads or apps",
+            "feature_4": "No downloads or streaming",
             "product_1_feature_4": "yes",
             "product_2_feature_4": "no",
             "product_3_feature_4": "no",
@@ -944,7 +951,7 @@
           "type": "item",
           "settings": {
             "title": "What's in the box?",
-            "content": "<p>1x Audiobook player</p><p>1x Charging cable</p><p>1x Protective bumper (if you have selected this option)</p><p><em>No audiobooks are included. Sold separately. </em></p>"
+            "content": "<p>1x Audiobook player</p><p>1x Charging cable</p><p>1x Protective bumper (if you have selected this option)</p><p><em>No audiobooks are included. Want books in the box? Choose a <a href=\"#packs\">Starter Pack</a>.</em></p>"
           }
         },
         "item_ybUnkH": {
@@ -958,14 +965,14 @@
           "type": "item",
           "settings": {
             "title": "Does the Voxblock player need wifi?",
-            "content": "<p>No wifi is needed to use a Voxblock player. There are no downloads, streams, subscriptions or apps.</p>"
+            "content": "<p>No wifi is needed to use a Voxblock player. There is nothing to download, stream or subscribe to.</p>"
           }
         },
         "item_tLqdFV": {
           "type": "item",
           "settings": {
             "title": "What age is Voxblock suitable for?",
-            "content": "<p>Our device and content is suitable for children aged 3-14+ (we have even heard an adult or two likes it to)</p>"
+            "content": "<p>From toddlers to teens. The player is the same for everyone and the books are grouped by age, so you can start where they are (we've even heard an adult or two likes it too).</p>"
           }
         },
         "item_d78x9p": {
@@ -1076,11 +1083,45 @@
         "enable_watermark": false,
         "watermark_opacity": 6
       }
+    },
+    "packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "gruffalo-and-friends-starter-pack",
+          "little-listeners-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "the-percy-jackson-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "card_style": "pack",
+        "anchor_id": "packs",
+        "products_per_row_desktop": 4,
+        "subheading": "Want books included?",
+        "title": "Starter Packs: the player plus their first books",
+        "content": "<p>Three audiobooks chosen for their age, for less than buying them separately. Pick a bumper colour on each pack.</p>",
+        "link_url": "/collections/voxblock-starter-pack-collection",
+        "link_text": "See all starter packs and intro packs",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "heading_gradient": "",
+        "product_card_background": "#ffffff",
+        "product_card_text_color": "#2a555a"
+      }
     }
   },
   "order": [
     "breadcrumbs_TMg6RL",
     "main",
+    "packs",
     "1765206968f91ec2c2",
     "testimonials_cFMFmx",
     "media_with_text_UQdDDc",
