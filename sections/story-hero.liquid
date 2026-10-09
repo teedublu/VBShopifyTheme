@@ -1,0 +1,154 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY HERO (Gruffalo character and cast pages: templates/metaobject/character.gruffalo.json, characters.gruffalo.json)
+----------------------------------------------------------------------------------------------------------------------
+
+Most visitors to these pages come from Google (often Images), look for ~10 seconds and scroll about a quarter of the
+page, so the ways to hear and buy the story sit in the first screen, next to the picture they came for:
+* left: eyebrow, H1, intro, then an action card: one-minute sample (same player as everywhere else: .bookpreview),
+  the starter pack (live price and saving), "just the audiobook" and a schools link
+* right: the character artwork (setting, else the metaobject's first photo, else the first photo of the first item in
+  the metaobject's "list" field, which is how the cast page gets the Gruffalo)
+
+On the character template the H1 and intro above are for the main character (setting "Main character handle");
+Owl, Fox and Snake, which share the template, get "[name] in The Gruffalo" and their own description instead.
+Prices and the saving are read live from the products; nothing is hard-coded.
+Tracking: PostHog `story_hero_click` { target: pack | audiobook | schools | secondary, page } (voxblock.js); the sample
+already sends `sample_played`.
+{%- endcomment -%}
+
+{%- liquid
+  assign art = section.settings.image
+  if art == blank and metaobject.photos.value != blank
+    assign art = metaobject.photos.value | first
+  endif
+  if art == blank and metaobject.list.value != blank
+    assign first_item = metaobject.list.value | first
+    assign art = first_item.photos.value | first
+  endif
+
+  assign book = section.settings.audiobook
+  assign pack = section.settings.pack
+  assign preview_file = book.metafields.book.preview
+
+  if pack != blank
+    assign pack_variant = pack.variants | sort: 'price' | first
+    assign pack_save = 0
+    if pack_variant.compare_at_price > pack_variant.price
+      assign pack_save = pack_variant.compare_at_price | minus: pack_variant.price | times: 100.0 | divided_by: pack_variant.compare_at_price | round
+    endif
+  endif
+
+  assign book_price = book.price | money
+
+  # Pages other than the main character (e.g. Owl, Fox, Snake on the Gruffalo template) get their own H1 and intro
+  assign heading = section.settings.heading
+  assign intro = section.settings.intro
+  if section.settings.main_handle != blank and metaobject != blank and metaobject.system.handle != section.settings.main_handle
+    assign heading = section.settings.heading_others | replace: '[name]', metaobject.name.value
+    assign intro = ''
+    if metaobject.description.value != blank
+      assign intro = metaobject.description.value | escape | prepend: '<p>' | append: '</p>'
+    endif
+  endif
+  assign art_alt = section.settings.image_alt
+  if art_alt == blank
+    assign art_alt = art.alt
+  endif
+  if art_alt == blank and metaobject.name.value != blank
+    assign art_alt = metaobject.name.value | append: ' from The Gruffalo'
+  endif
+-%}
+
+<section class="story-hero" style="--story-hero-bg: {{ section.settings.background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
+  <div class="container story-hero__inner">
+    <div class="story-hero__text">
+      {%- if section.settings.eyebrow != blank -%}<p class="story-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="story-hero__title">{{ heading | escape }}</h1>
+      {%- if intro != blank -%}<div class="story-hero__intro">{{ intro }}</div>{%- endif -%}
+
+      <div class="story-hero__actions">
+        {%- if preview_file != blank -%}
+          <button type="button" class="series-button series-button--secondary bookpreview story-hero__sample" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ preview_file | file_url }}" data-title="{{ book.title | escape }}">
+            <span class="playpause"></span>
+            <span class="playpause_text">
+              <span class="play">{{ section.settings.play_label | escape }}</span>
+              <span class="pause">{{ section.settings.pause_label | escape }}</span>
+            </span>
+            <span class="sr-only">{{ 'collection.story_hero.play_sample' | t }}</span>
+          </button>
+          {%- if section.settings.sample_note != blank -%}<p class="story-hero__sample-note">{{ section.settings.sample_note | escape }}</p>{%- endif -%}
+        {%- endif -%}
+
+        {%- if pack != blank and pack.available -%}
+          <a href="{{ pack.url }}" class="story-hero__pack" data-story-track="pack">
+            {%- if pack.featured_media -%}
+              <span class="story-hero__pack-media">{{- pack.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '72px', widths: '72,144,240', alt: '' -}}</span>
+            {%- endif -%}
+            <span class="story-hero__pack-text">
+              <span class="story-hero__pack-label">{{ section.settings.pack_label | escape }}</span>
+              <span class="story-hero__pack-title">{{ pack.title | escape }}</span>
+              {%- if section.settings.pack_contents != blank -%}<span class="story-hero__pack-contents">{{ section.settings.pack_contents | escape }}</span>{%- endif -%}
+              <span class="story-hero__pack-prices">
+                <span class="story-hero__pack-price">{{ pack_variant.price | money }}</span>
+                {%- if pack_variant.compare_at_price > pack_variant.price -%}
+                  <s class="story-hero__pack-was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
+                  <span class="story-hero__pack-save">{{ 'product.general.discount_badge_html' | t: savings: pack_save | append: '%' }}</span>
+                {%- endif -%}
+              </span>
+            </span>
+            <span class="story-hero__pack-arrow" aria-hidden="true">{%- render 'icon' with 'chevron-right-small' -%}</span>
+          </a>
+        {%- endif -%}
+
+        <p class="story-hero__links">
+          {%- if book != blank and book.available -%}
+            <span>{{ 'collection.story_hero.have_player' | t }} <a href="{{ book.url }}" data-story-track="audiobook">{{ 'collection.story_hero.just_audiobook' | t: price: book_price }}</a></span>
+          {%- endif -%}
+          {%- if section.settings.schools_url != blank -%}
+            <span>{{ 'collection.story_hero.teaching' | t }} <a href="{{ section.settings.schools_url }}" data-story-track="schools">{{ 'collection.story_hero.school_packs' | t }}</a></span>
+          {%- endif -%}
+          {%- if section.settings.secondary_url != blank and section.settings.secondary_label != blank -%}
+            <span><a href="{{ section.settings.secondary_url }}" data-story-track="secondary">{{ section.settings.secondary_label | escape }}</a></span>
+          {%- endif -%}
+        </p>
+      </div>
+    </div>
+
+    {%- if art != blank -%}
+      <div class="story-hero__art">
+        {{- art | image_url: width: 900 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(max-width: 699px) 60vw, 40vw', widths: '300,450,600,900', alt: art_alt -}}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story hero",
+  "tag": "div",
+  "class": "shopify-section--story-hero",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#fff7f0" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading (H1)", "default": "What is a Gruffalo?" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "main_handle", "label": "Main character handle", "info": "On other pages using this template the H1 below is used, with the page's own description as intro." },
+    { "type": "text", "id": "heading_others", "label": "H1 on other character pages", "default": "[name] in The Gruffalo", "info": "[name] = the character's name." },
+    { "type": "image_picker", "id": "image", "label": "Artwork", "info": "Leave empty to use the page's character photo." },
+    { "type": "text", "id": "image_alt", "label": "Artwork description" },
+    { "type": "header", "content": "Listen and buy" },
+    { "type": "product", "id": "audiobook", "label": "Audiobook (sample + \"just the audiobook\")" },
+    { "type": "text", "id": "play_label", "label": "Sample button", "default": "Hear the Gruffalo" },
+    { "type": "text", "id": "pause_label", "label": "Sample button while playing", "default": "Playing sample" },
+    { "type": "text", "id": "sample_note", "label": "Line under the sample button", "default": "One minute, read by Imelda Staunton. Free, no sign-up." },
+    { "type": "product", "id": "pack", "label": "Starter pack" },
+    { "type": "text", "id": "pack_label", "label": "Starter pack label", "default": "Listen to the whole story, screen-free" },
+    { "type": "text", "id": "pack_contents", "label": "Starter pack contents line", "default": "Voxblock player + 3 Julia Donaldson stories" },
+    { "type": "url", "id": "schools_url", "label": "School packs link" },
+    { "type": "text", "id": "secondary_label", "label": "Extra link text" },
+    { "type": "url", "id": "secondary_url", "label": "Extra link" }
+  ],
+  "presets": [{ "name": "Story hero" }]
+}
+{% endschema %}

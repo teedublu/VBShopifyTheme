@@ -304,7 +304,8 @@
       "settings": {
         "full_width": true,
         "spacing": "small"
-      }
+      },
+      "disabled": true
     },
     "listen": {
       "type": "listen-to-voice",
@@ -316,7 +317,8 @@
         "pause_label": "Playing sample",
         "caption": "Sample from [title] · Published by Macmillan",
         "product": "the-gruffalo"
-      }
+      },
+      "disabled": true
     },
     "more_gruffalo": {
       "type": "rich-text",
@@ -546,17 +548,41 @@
         "background_gradient": "",
         "text_color": "#565656"
       }
+    },
+    "story_hero": {
+      "type": "story-hero",
+      "settings": {
+        "background": "#fff7f0",
+        "image": "",
+        "image_alt": "",
+        "audiobook": "the-gruffalo",
+        "play_label": "Hear the Gruffalo",
+        "pause_label": "Playing sample",
+        "sample_note": "One minute of the story, read by Imelda Staunton. Free, no sign-up.",
+        "pack": "gruffalo-and-friends-starter-pack",
+        "pack_label": "Listen to the whole story, screen-free",
+        "pack_contents": "Voxblock player + The Gruffalo and 2 more Julia Donaldson stories",
+        "schools_url": "shopify://collections/schools-packs",
+        "secondary_label": "",
+        "secondary_url": "",
+        "heading_others": "[name] in The Gruffalo",
+        "eyebrow": "Character guide",
+        "heading": "What is a Gruffalo?",
+        "intro": "<p>A Gruffalo is the made-up monster in Julia Donaldson and Axel Scheffler's picture book The Gruffalo. Mouse invents him to frighten off Fox, Owl and Snake, then meets him for real: tusks, claws, orange eyes, a poisonous wart and purple prickles.</p>",
+        "main_handle": "the-gruffalo"
+      }
     }
   },
   "order": [
     "breadcrumbs_XHGrpm",
+    "story_hero",
     "hero",
     "listen",
     "answers",
-    "character_intro",
-    "role_in_story",
     "doors",
     "tertiary",
+    "character_intro",
+    "role_in_story",
     "character_faq",
     "gruffalo_specific_faq",
     "more_gruffalo",

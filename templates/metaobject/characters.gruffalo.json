@@ -64,7 +64,8 @@
         "background": "#fff7f0",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
     "item_grid_F9GWek": {
       "type": "item-grid",
@@ -193,9 +194,9 @@
             "icon_width": 68,
             "subheading": "Listen screen-free",
             "title": "From character guide to listening",
-            "content": "<p>Voxblock turns the story into a simple, screen-free listening experience. Children place the physical audiobook on the player and can hear the characters without needing a phone, tablet, app or Wi-Fi.</p>",
+            "content": "<p>Voxblock turns the story into a simple, screen-free listening experience. Children place the physical audiobook on the player and can hear the characters without needing a phone, tablet, downloads or Wi-Fi.</p>",
             "link_text": "View The Gruffalo audiobook",
-            "link_url": "/pages/audiobook/the-gruffalo",
+            "link_url": "shopify://products/the-gruffalo",
             "background": "#f6fbfb",
             "background_gradient": "",
             "text_color": "#565656",
@@ -213,10 +214,34 @@
         "full_width": false,
         "spacing": "small"
       }
+    },
+    "story_hero": {
+      "type": "story-hero",
+      "settings": {
+        "background": "#fff7f0",
+        "image": "",
+        "image_alt": "The Gruffalo, illustrated by Axel Scheffler",
+        "audiobook": "the-gruffalo",
+        "play_label": "Hear the Gruffalo",
+        "pause_label": "Playing sample",
+        "sample_note": "One minute of the story, read by Imelda Staunton. Free, no sign-up.",
+        "pack": "gruffalo-and-friends-starter-pack",
+        "pack_label": "Listen to the whole story, screen-free",
+        "pack_contents": "Voxblock player + The Gruffalo and 2 more Julia Donaldson stories",
+        "schools_url": "shopify://collections/schools-packs",
+        "secondary_label": "Read the story overview",
+        "secondary_url": "/pages/overview/the-gruffalo",
+        "heading_others": "[name] in The Gruffalo",
+        "eyebrow": "The Gruffalo cast guide",
+        "heading": "The Gruffalo characters: who is in the story?",
+        "intro": "<p><strong>The Gruffalo</strong> has a small, memorable cast: Mouse, Fox, Owl, Snake and the Gruffalo. Follow the woodland encounters and see how each character moves Mouse closer to the story's final twist.</p>",
+        "main_handle": ""
+      }
     }
   },
   "order": [
     "breadcrumbs_gruffalo",
+    "story_hero",
     "intro_gruffalo_cast",
     "item_grid_F9GWek",
     "cast_shape",

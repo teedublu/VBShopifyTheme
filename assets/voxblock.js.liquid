@@ -296,3 +296,17 @@ if (cartDrawerEl && playerPromptObserver) {
     });
     drawerWatcher.observe(cartDrawerEl, { childList: true, subtree: true });
 }
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// STORY HERO (sections/story-hero.liquid): PostHog `story_hero_click` { target, page } for data-story-track links.
+// The sample button is a normal .bookpreview button and already sends `sample_played`.
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('click', (event) => {
+    const el = event.target.closest('[data-story-track]');
+    if (!el || typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    const page = el.closest('[data-story-page]')?.dataset.storyPage || window.location.pathname;
+    try {
+        window.posthog.capture('story_hero_click', { target: el.dataset.storyTrack, page });
+    } catch (e) { /* analytics must never block the click */ }
+});
