@@ -1,0 +1,87 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CART PLAYER PROMPT (cart drawer)
+----------------------------------------------------------------------------------------------------------------------
+
+"Stories play on a Voxblock player": shown in the basket when it holds audiobooks but nothing with a player in it, and
+the shopper is not a signed-in customer who already bought a player. Offers the chosen starter pack (best value) or the
+player on its own (cheapest variant), plus "I already have a player", which hides the prompt in this browser from then
+on (localStorage, see voxblock.js).
+
+Supported variables:
+* pack: the starter pack product to offer
+* player: the player product
+
+Tracking: PostHog `cart_player_prompt` { action: shown | add_pack | add_player | dismiss } (voxblock.js).
+{%- endcomment -%}
+
+{%- liquid
+  assign has_story = false
+  assign has_player = false
+  for item in cart.items
+    assign item_type = item.product.type | downcase
+    if item_type == 'player' or item_type == 'starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
+      assign has_player = true
+    elsif item_type == 'audiobooks' or item_type == 'audiobooks bundle' or item_type == 'older audiobooks'
+      assign has_story = true
+    endif
+  endfor
+
+  capture owns_player
+    render 'customer-owns-player'
+  endcapture
+-%}
+
+{%- if has_story and has_player == false and owns_player == blank -%}
+  {%- liquid
+    assign pack_variant = pack.selected_or_first_available_variant
+    assign player_variant = player.variants | sort: 'price' | first
+  -%}
+  <div class="cart-player-prompt" data-cart-player-prompt>
+    <div class="cart-player-prompt__intro">
+      {%- render 'icon' with 'picto-mobile-phone', width: 22, height: 22, stroke_width: 2 -%}
+      <div>
+        <p class="cart-player-prompt__title">{{ 'cart.player_prompt.title' | t }}</p>
+        <p class="cart-player-prompt__text">{{ 'cart.player_prompt.text' | t }}</p>
+      </div>
+    </div>
+
+    {%- if pack != blank and pack.available -%}
+      <div class="cart-player-prompt__option cart-player-prompt__option--best">
+        {%- if pack.featured_media -%}
+          <div class="cart-player-prompt__media">{{- pack.featured_media | image_url: width: 160 | image_tag: loading: 'lazy', sizes: '64px', widths: '64,128,160', alt: '' -}}</div>
+        {%- endif -%}
+        <div class="cart-player-prompt__info">
+          <span class="cart-player-prompt__badge">{{ 'cart.player_prompt.best_value' | t }}</span>
+          <p class="cart-player-prompt__name">{{ pack.title | escape }}</p>
+          <p class="cart-player-prompt__price">
+            {{- pack_variant.price | money -}}
+            {%- if pack_variant.compare_at_price > pack_variant.price %} <s>{{ pack_variant.compare_at_price | money }}</s>{% endif -%}
+          </p>
+        </div>
+        {%- form 'product', pack, is: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ pack_variant.id }}">
+          <button type="submit" class="cart-player-prompt__add" data-prompt-track="add_pack" aria-label="{{ 'cart.player_prompt.add_item' | t: title: pack.title | escape }}">{%- render 'icon' with 'plus' -%}</button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+
+    {%- if player != blank and player_variant.available -%}
+      <div class="cart-player-prompt__option">
+        {%- if player.featured_media -%}
+          <div class="cart-player-prompt__media">{{- player.featured_media | image_url: width: 160 | image_tag: loading: 'lazy', sizes: '64px', widths: '64,128,160', alt: '' -}}</div>
+        {%- endif -%}
+        <div class="cart-player-prompt__info">
+          <p class="cart-player-prompt__name">{{ 'cart.player_prompt.player_only' | t }}</p>
+          <p class="cart-player-prompt__price">{{ player_variant.price | money }}</p>
+        </div>
+        {%- form 'product', player, is: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ player_variant.id }}">
+          <button type="submit" class="cart-player-prompt__add cart-player-prompt__add--secondary" data-prompt-track="add_player" aria-label="{{ 'cart.player_prompt.add_item' | t: title: player.title | escape }}">{%- render 'icon' with 'plus' -%}</button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+
+    <button type="button" class="cart-player-prompt__dismiss" data-cart-player-dismiss>{{ 'cart.player_prompt.dismiss' | t }}</button>
+  </div>
+{%- endif -%}

@@ -194,6 +194,21 @@
       "player_link": "Player only, {{ price }}",
       "scroll_to": "Show {{ title }}"
     },
+    "age_intro": {
+      "tabs_label": "Audiobooks by age",
+      "add_pack": "Add starter pack to basket",
+      "all_packs": "See all packs",
+      "have_player": "Already have a player?",
+      "stories_heading": "Stories",
+      "count": {
+        "one": "{{ count }} story",
+        "other": "{{ count }} stories"
+      },
+      "count_for": {
+        "one": "{{ count }} story for {{ age }}",
+        "other": "{{ count }} stories for {{ age }}"
+      }
+    },
     "general": {
       "empty_collection": "This collection is empty",
       "all_collections": "All collections",
@@ -358,6 +373,14 @@
     }
   },
   "cart": {
+    "player_prompt": {
+      "title": "Stories play on a Voxblock player",
+      "text": "Don't have one yet? Add one now so your story is ready to play.",
+      "best_value": "Best value",
+      "player_only": "Voxblock player",
+      "add_item": "Add {{ title }} to basket",
+      "dismiss": "I already have a player"
+    },
     "general": {
       "title": "Cart",
       "empty": "Your cart is empty",

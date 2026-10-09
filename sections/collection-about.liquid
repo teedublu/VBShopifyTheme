@@ -1,0 +1,33 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COLLECTION ABOUT (age collection template)
+----------------------------------------------------------------------------------------------------------------------
+
+The collection description, moved out of the banner and shown under the grid in a closed <details> so it stays in the
+page (and for search engines) without pushing the products down. Nothing is shown if the description is empty.
+{%- endcomment -%}
+
+{%- if collection.description != blank -%}
+  <div class="container collection-about" {{ section.shopify_attributes }}>
+    <details class="collection-about__details" {% if section.settings.open %}open{% endif %}>
+      <summary class="collection-about__summary">
+        <span>{{ section.settings.title | default: collection.title | escape }}</span>
+        {%- render 'icon' with 'chevron-bottom-small' -%}
+      </summary>
+      <div class="prose collection-about__body">{{ collection.description }}</div>
+    </details>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection about",
+  "tag": "section",
+  "class": "shopify-section--collection-about",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "About these audiobooks", "info": "Leave empty to use the collection title." },
+    { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+  ],
+  "presets": [{ "name": "Collection about" }]
+}
+{% endschema %}

@@ -708,3 +708,125 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
   .series-books { padding-block: 64px 24px; }
   .series-about__inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; padding-block: 64px; }
 }
+
+/* ---------------------------- */
+/* AGE COLLECTION TEMPLATE (collection.audiobooks-landing-cat) */
+/* Intro band + age tabs + starter pack card (sections/collection-age-intro.liquid), "How Voxblock works" grid row
+   (snippets/collection-howto-promo.liquid), About (sections/collection-about.liquid). Design canvas "Age Collection Template". */
+/* ---------------------------- */
+.age-intro { color: var(--brand-text); }
+.age-intro__band { background: var(--age-intro-bg, #fff7f0); }
+.age-intro__band-inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 18px 16px; }
+.age-intro__text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.age-intro__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.age-intro__title { margin: 0; font-size: 26px; line-height: 32px; font-weight: 700; color: var(--brand-heading); letter-spacing: normal; }
+.age-intro__lede { margin: 0; font-size: 15px; line-height: 22px; max-width: 34rem; }
+.age-intro__trust { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 2px 0 0; padding: 0; list-style: none; font-size: 13px; }
+.age-intro__trust li { display: inline-flex; align-items: center; gap: 6px; }
+.age-intro__trust svg { flex: none; color: var(--brand-heading); }
+.age-intro__trust li:first-child svg { color: #e8862f; }
+.age-intro__trust a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.age-intro__tabs { display: flex; gap: 8px; margin-top: 6px; overflow-x: auto; scrollbar-width: none; }
+.age-intro__tabs::-webkit-scrollbar { display: none; }
+.age-intro__tab { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--card-border); background: #fff; color: var(--brand-heading); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.age-intro__tab:hover { border-color: var(--brand-heading); color: var(--brand-heading); }
+.age-intro__tab[aria-current="page"] { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; }
+.age-intro__tab:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+
+/* Starter pack card */
+.age-pack { border: 2px solid var(--brand-heading); border-radius: 18px; background: #fff; overflow: hidden; align-self: start; }
+.age-pack__head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 14px; background: var(--brand-heading); color: #fff; font-size: 13px; font-weight: 600; }
+.age-pack__save { padding: 2px 9px; border-radius: 999px; background: #fff; color: var(--brand-heading); font-size: 12px; white-space: nowrap; }
+.age-pack__body { display: flex; gap: 12px; align-items: center; padding: 12px 14px 4px; }
+.age-pack__media { flex: none; width: 112px; height: 112px; }
+.age-pack__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.age-pack__info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.age-pack__title { margin: 0; font-size: 16px; line-height: 21px; font-weight: 700; letter-spacing: normal; }
+.age-pack__title a { color: var(--brand-heading); text-decoration: none; }
+.age-pack__title a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.age-pack__contents { margin: 0; font-size: 13px; line-height: 18px; }
+.age-pack__prices { margin: 2px 0 0; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.age-pack__from { font-size: 13px; }
+.age-pack__price { font-size: 20px; font-weight: 700; color: var(--accent-strong); }
+.age-pack__was { font-size: 13px; color: #6b6b6b; }
+.age-pack__buy { display: flex; flex-direction: column; gap: 10px; padding: 6px 14px 14px; }
+.age-pack__swatches { border: 0; margin: 0; padding: 0; }
+.age-pack__form { margin: 0; }
+.age-pack__links { margin: 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
+.age-pack__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Line above the grid */
+.age-intro__grid-head { padding-block: 18px 6px; }
+.age-intro__grid-title { margin: 0; font-size: 17px; font-weight: 700; color: var(--brand-heading); }
+.age-intro__count { margin: 0; font-size: 13px; }
+
+/* "How Voxblock works" row inside the product grid */
+.howto-promo { grid-column: 1 / -1; display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #fff7f0; color: var(--brand-text); margin-block: 8px; }
+.howto-promo__media img { display: block; width: 100%; height: 210px; object-fit: cover; }
+.howto-promo__text { display: flex; flex-direction: column; gap: 12px; padding: 18px 18px 20px; }
+.howto-promo__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.howto-promo__title { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; color: var(--brand-heading); }
+.howto-promo__steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.howto-promo__steps li { display: flex; align-items: center; gap: 10px; }
+.howto-promo__steps span { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.howto-promo__note { margin: 0; font-size: 14px; }
+.howto-promo__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 4px; }
+.howto-promo__actions .series-button { padding: 0 12px; font-size: 14px; }
+
+/* About (collection description, collapsed) */
+.collection-about { margin-block: 24px 8px; }
+.collection-about__details { border-block: 1px solid var(--card-border); }
+.collection-about__summary { display: flex; justify-content: space-between; align-items: center; min-height: 56px; cursor: pointer; list-style: none; font-weight: 600; color: var(--brand-heading); }
+.collection-about__summary::-webkit-details-marker { display: none; }
+.collection-about__details[open] .collection-about__summary svg { transform: rotate(180deg); }
+.collection-about__body { padding-bottom: 16px; max-width: 70ch; }
+
+@media screen and (min-width: 700px) {
+  .age-intro__title { font-size: 32px; line-height: 40px; }
+  .howto-promo { flex-direction: row; }
+  .howto-promo__media { flex: 1 1 50%; min-width: 0; }
+  .howto-promo__media img { height: 100%; min-height: 320px; }
+  .howto-promo__text { flex: 1 1 50%; justify-content: center; padding: 32px 36px; }
+  .howto-promo__title { font-size: 26px; line-height: 33px; }
+  .howto-promo__steps { flex-direction: row; flex-wrap: wrap; gap: 10px 22px; font-size: 15px; }
+  .howto-promo__actions { display: flex; flex-wrap: wrap; }
+  .howto-promo__actions .series-button { padding: 0 24px; font-size: 15px; }
+}
+
+@media screen and (min-width: 1000px) {
+  .age-intro__band-inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 48px; padding-block: 36px; }
+  .age-intro__title { font-size: 40px; line-height: 48px; }
+  .age-intro__lede { font-size: 17px; line-height: 26px; }
+  .age-intro__trust { font-size: 14px; }
+  .age-pack { max-width: 520px; justify-self: end; }
+  .age-pack__media { width: 160px; height: 160px; }
+  .age-pack__title { font-size: 19px; line-height: 25px; }
+  .age-pack__price { font-size: 24px; }
+  .age-intro__grid-head { padding-block: 28px 8px; }
+  .age-intro__grid-title { font-size: 20px; }
+}
+
+/* ---------------------------- */
+/* CART: "Stories play on a Voxblock player" prompt (snippets/cart-player-prompt.liquid) */
+/* ---------------------------- */
+.cart-player-prompt { display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 16px; background: #fff7f0; border: 1.5px solid #f4c9a4; color: var(--brand-text); }
+html.vb-has-player .cart-player-prompt { display: none; }
+.cart-player-prompt p { margin: 0; }
+.cart-player-prompt__intro { display: flex; gap: 10px; align-items: flex-start; }
+.cart-player-prompt__intro svg { flex: none; margin-top: 2px; color: var(--accent-strong-dark); }
+.cart-player-prompt__title { font-size: 15px; font-weight: 700; line-height: 20px; color: var(--brand-heading); }
+.cart-player-prompt__text { font-size: 13px; line-height: 19px; }
+.cart-player-prompt__option { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 12px; border: 1px solid var(--card-border); background: #fff; }
+.cart-player-prompt__option--best { border: 2px solid var(--brand-heading); }
+.cart-player-prompt__option form { margin: 0; }
+.cart-player-prompt__media { flex: none; width: 56px; height: 56px; border-radius: 8px; background: var(--card-media-bg); overflow: hidden; }
+.cart-player-prompt__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.cart-player-prompt__info { flex: 1 1 auto; min-width: 0; }
+.cart-player-prompt__badge { display: inline-block; padding: 1px 8px; border-radius: 999px; background: var(--brand-heading); color: #fff; font-size: 11px; font-weight: 600; }
+.cart-player-prompt__name { font-size: 13.5px; font-weight: 600; line-height: 18px; color: var(--brand-heading); }
+.cart-player-prompt__price { font-size: 13px; font-weight: 700; color: var(--accent-strong); }
+.cart-player-prompt__price s { font-weight: 400; color: #6b6b6b; }
+.cart-player-prompt__add { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--brand-heading); background: var(--brand-heading); color: #fff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.cart-player-prompt__add--secondary { background: #fff; color: var(--brand-heading); }
+.cart-player-prompt__add:focus-visible, .cart-player-prompt__dismiss:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.cart-player-prompt__dismiss { align-self: center; min-height: 44px; padding: 0 8px; border: 0; background: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--brand-heading); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
