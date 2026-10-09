@@ -41,7 +41,7 @@
     }
   </style>
 
-  <div {% render 'section-properties' %}>
+  <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %}>
     <div class="section-stack">
       {%- assign link_url = section.settings.link_url | default: section.settings.collection.url -%}
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: link_url -%}
@@ -63,7 +63,7 @@
                   {%- render 'collection-promo-item', product: product, block: block, section: section -%}
                   
                 {%- endfor -%}
-                {%- render 'product-card', product: product, section: section, stacked: section.settings.stack_products, show_badges: true -%}
+                {%- render 'product-card', product: product, section: section, stacked: section.settings.stack_products, show_badges: true, card_index: forloop.index -%}
               {%- else -%}
                 {%- for i in (1..section.settings.products_count) -%}
                   {%- capture placeholder_image -%}product-{% cycle '1', '2', '3', '4', '5', '6' %}{%- endcapture -%}
@@ -509,6 +509,29 @@
         }
       ],
       "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "card_style",
+      "label": "Product card style",
+      "info": "Pack card shows contents and age, with one-tap add to cart. Same card as the starter pack collection.",
+      "options": [
+        {
+          "value": "default",
+          "label": "Theme default (by product type)"
+        },
+        {
+          "value": "pack",
+          "label": "Pack card (contents, age, price pinned to bottom)"
+        }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Anchor ID",
+      "info": "Lets a button on the page jump here, e.g. packs → link to #packs. Letters, numbers and hyphens only."
     },
     {
       "type": "range",
