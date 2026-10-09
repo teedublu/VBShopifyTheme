@@ -836,10 +836,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 /* Sample, starter pack and audiobook in the first screen, next to the character artwork. */
 /* ---------------------------- */
 .story-hero { background: var(--story-hero-bg, #fff7f0); color: var(--brand-text); }
-.story-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 18px 22px; }
+.story-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding-block: 12px 22px; }
 .story-hero__text { display: flex; flex-direction: column; gap: 10px; min-width: 0; order: 2; }
 .story-hero__art { order: 1; display: flex; justify-content: center; }
-.story-hero__art img { display: block; width: auto; max-width: 62vw; max-height: 220px; height: auto; object-fit: contain; }
+.story-hero__art img { display: block; width: auto; max-width: 50vw; max-height: 150px; height: auto; object-fit: contain; mix-blend-mode: multiply; } /* multiply: the white artwork backgrounds sit into the cream band */
 .story-hero__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
 .story-hero__title { margin: 0; font-size: 28px; line-height: 34px; font-weight: 700; color: var(--brand-heading); letter-spacing: normal; }
 .story-hero__intro { font-size: 15px; line-height: 23px; max-width: 38rem; }
