@@ -30,7 +30,31 @@ the cast page had no product or pack link at all.
 5. Tracking: PostHog `story_hero_click` { target: pack | audiobook | schools | secondary, page }; samples already send
    `sample_played`.
 
-## Checked (draft theme)
+## Round 2 (owner: "top bar good, rest needs work"; teacher CTA; audiobooks in the classroom)
+Visitors look like teachers: Gruffalo/character visits are 44% weekday 8am–4pm vs 30% site-wide, 62% desktop vs 33%.
+Design: "Gruffalo Pages" canvas. Built:
+- Story hero: under the sample, two routes side by side: **At home** (starter pack card) and **In the classroom**
+  (email sign-up to Klaviyo "Schools Monthly Email Newsletter" XRcgpd, source "Story page: classroom card", plus
+  "School packages, with 10% off for schools" → schools-packs collection). "See school packs" link removed.
+- `snippets/school-signup.liquid` + voxblock.js handler (Klaviyo client subscriptions API, same as back-in-stock),
+  PostHog `school_signup` { form: hero | band, page }.
+- New sections: `character-features` ("What does the Gruffalo look like?": 6 feature cards + 3 short answers with
+  the live answer text, Gruffalo page only), `classroom-band` ("Audiobooks work in the classroom": 3 points, sign-up,
+  "See school packages" → /pages/audiobook-players-for-schools, "Free teaching resources" → /pages/school-resources),
+  `story-steps` (cast page: "In what order do the characters appear?", keeps the "How the cast works" paragraph),
+  `story-home-band` (3D cover image kept for Google Images, live starter pack and audiobook prices).
+- `character-cast` gets an optional link ("See the full cast guide").
+- Character page order: hero, features, "Who else is in the story?" (cast cards), More about / Why it matters (bio),
+  classroom band, Gruffalo FAQ (+ "Can children listen to The Gruffalo without a screen?"), character FAQ, more links,
+  home band. Old answers / doors / tertiary / listening sections kept, disabled. This also fixes Owl/Fox/Snake
+  showing the Gruffalo answers.
+- Cast page: hero, full cast grid, story steps, classroom band, cast FAQ, home band.
+- SEO guardrails kept: same H1s, titles, metas, FAQ questions, image files, 3D cover. Rendered main text: Gruffalo
+  1,199 words (live 1,217), cast 780 (live 591).
+- Checked 1366x768 and 375x812 on the-gruffalo, owl, cast: no horizontal scroll, no Liquid errors, two sign-up forms
+  per page render. The sign-up was not submitted (would add a real profile); test it with your own email.
+
+## Checked (draft theme, round 1)
 1366x768: on /pages/character/the-gruffalo the whole hero (sample at 413px, pack at 498px) ends at 723px. Cast, Owl,
 Fox, Snake render with their own art, H1 and intro; no Liquid errors; no horizontal overflow. 375x812: art, H1, intro,
 sample, and the top of the pack card in the first screen. Sample button toggles the shared player.
@@ -40,7 +64,7 @@ Structured data: BreadcrumbList, FAQPage, Person; no Product markup on these pag
 - The empty "character_faq" on the Gruffalo page is intentional (hidden on the-gruffalo; shown on Owl/Fox/Snake).
 - Owl's bio in Shopify starts with a level-1 heading, so the Owl page has two H1s. Change it to a level-2 heading in
   the metaobject.
-- Owl, Fox and Snake still show the Gruffalo-specific "answers" and Gruffalo FAQ sections from the shared template.
+- Set up a Klaviyo welcome flow on the Schools list so classroom sign-ups get a first email of ideas.
 - Mouse uses the default character template and is unchanged.
 - No per-character sample buttons on the cast grid: there is one sample (The Gruffalo), so one button in the hero.
-- Re-read 30 days after launch: same table, plus `story_hero_click` by target.
+- Re-read 30 days after launch: same table, plus `story_hero_click` by target and `school_signup` count.
