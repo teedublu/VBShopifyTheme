@@ -1,0 +1,70 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SERIES MEMBERSHIP ("Series link" block on audiobook product pages, snippets/product-info.liquid)
+----------------------------------------------------------------------------------------------------------------------
+
+"Part of the Pippi Longstocking series · Book 2 of 3", linking the product page to its series page. Gives every series
+page links from its books, and listeners a way to the next one.
+
+* product: the product being viewed (required)
+
+The series is the first published Series entry whose `books` list holds the product; for a series without a books
+list, its collection's products that are linked to an audiobook entry (the same rule the series page uses). "Book n of
+m" only when the series has a books list and its reading order is on. Nothing is output when the product is in no
+series.
+{%- endcomment -%}
+
+{%- liquid
+  assign found_series = nil
+  assign found_position = 0
+  assign found_count = 0
+  assign found_numbered = false
+
+  for series in shop.metaobjects.series.values
+    if series.system.url == blank
+      continue
+    endif
+    assign count = 0
+    assign match = 0
+    assign list = series.books.value
+    assign from_list = true
+    if list == blank
+      assign list = series.collection.value.products
+      assign from_list = false
+    endif
+    for book in list
+      if from_list == false and book.metafields.book.audiobook.value == blank
+        continue
+      endif
+      assign count = count | plus: 1
+      if book.id == product.id
+        assign match = count
+      endif
+    endfor
+    if match > 0
+      assign found_series = series
+      assign found_position = match
+      assign found_count = count
+      if from_list and series.reading_order.value == true
+        assign found_numbered = true
+      endif
+      break
+    endif
+  endfor
+-%}
+
+{%- if found_series != blank -%}
+  {%- liquid
+    # "Part of The Gruffalo series", not "Part of the The Gruffalo series"
+    assign series_name = found_series.name.value
+    assign name_start = series_name | slice: 0, 4
+    assign part_of = 'Part of the'
+    if name_start == 'The '
+      assign part_of = 'Part of'
+    endif
+  -%}
+  <p class="series-membership">
+    {{ part_of }} <a href="{{ found_series.system.url }}" class="series-membership__link">{{ series_name | escape }}</a> series
+    {%- if found_numbered and found_count > 1 %} · Book {{ found_position }} of {{ found_count }}{% endif -%}
+  </p>
+{%- endif -%}
