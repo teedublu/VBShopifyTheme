@@ -149,7 +149,11 @@
                         {%- continue -%}
                       {%- endif -%}
                       
-                      {%- render 'collection-promo-item', product: product, block: block, section: section -%}
+                      {%- if block.type == 'promotion_howto' -%}
+                        {%- render 'collection-howto-promo', block: block, section: section -%}
+                      {%- else -%}
+                        {%- render 'collection-promo-item', product: product, block: block, section: section -%}
+                      {%- endif -%}
                       
                     {%- endfor -%}
 
@@ -575,6 +579,25 @@
           "unit": "%",
           "default": 30
         }
+      ]
+    },
+    {
+      "type": "promotion_howto",
+      "name": "How Voxblock works",
+      "settings": [
+        { "type": "paragraph", "content": "A full-width row in the grid: photo, three steps and buttons to the starter packs and the player. Hidden for signed-in customers who already bought a player." },
+        { "type": "range", "id": "position", "min": 1, "max": 50, "label": "Position in grid (shown before this product)", "default": 7 },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_alt", "label": "Image description", "default": "Voxblock player with a story block on it, surrounded by more story blocks" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How Voxblock works" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Every story here is a block your child can hold" },
+        { "type": "text", "id": "step_1", "label": "Step 1", "default": "Pick a story block" },
+        { "type": "text", "id": "step_2", "label": "Step 2", "default": "Put it on the player" },
+        { "type": "text", "id": "step_3", "label": "Step 3", "default": "Press play" },
+        { "type": "text", "id": "note", "label": "Line under the steps", "default": "No screen, no downloads, no subscription." },
+        { "type": "text", "id": "packs_label", "label": "Main button text", "default": "Shop starter packs" },
+        { "type": "url", "id": "packs_url", "label": "Main button link" },
+        { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Second button: \"Player only\" with the cheapest variant's price." }
       ]
     }
   ],

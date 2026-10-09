@@ -45,6 +45,10 @@
           {%- endfor -%}
         </div>
 
+        {%- if section.settings.player_prompt_enabled -%}
+          {%- render 'cart-player-prompt', pack: all_products[section.settings.player_prompt_pack_handle], player: all_products[section.settings.player_prompt_player_handle] -%}
+        {%- endif -%}
+
         {%- if section.settings.products.count > 0 -%}
           <div class="cart-drawer__recommendations">
             <div class="v-stack gap-2.5 sm:gap-4">
@@ -213,6 +217,30 @@
       "id": "show_checkout_button",
       "label": "Show checkout button",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "\"Stories play on a Voxblock player\" prompt"
+    },
+    {
+      "type": "checkbox",
+      "id": "player_prompt_enabled",
+      "label": "Show the prompt",
+      "info": "Shown when the basket has audiobooks but no player or pack, unless the signed-in customer already bought a player.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "player_prompt_pack_handle",
+      "label": "Starter pack to offer (product handle)",
+      "default": "young-explorers-starter-pack"
+    },
+    {
+      "type": "text",
+      "id": "player_prompt_player_handle",
+      "label": "Player (product handle)",
+      "info": "The cheapest variant is offered.",
+      "default": "voxblock-player"
     },
     {
       "type": "header",

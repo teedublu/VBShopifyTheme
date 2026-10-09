@@ -205,8 +205,8 @@ document.addEventListener('click', (event) => {
 
 // Pack card: the colour swatch chooses which variant the round add-to-cart button adds
 document.addEventListener('change', (event) => {
-    const radio = event.target.closest?.('.pack-card__swatches input[type="radio"]');
-    const card = radio?.closest('.pack-card');
+    const radio = event.target.closest?.('.pack-card__swatches input[type="radio"], [data-variant-swatches] input[type="radio"]');
+    const card = radio?.closest('.pack-card, [data-variant-card]');
     const idInput = card?.querySelector('[data-pack-variant-id]');
     const mapInput = card?.querySelector('[data-pack-variant-map]');
     if (!idInput || !mapInput) return;
@@ -229,3 +229,70 @@ document.addEventListener('click', (event) => {
     window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
     card.querySelector('.pack-card__link')?.focus({ preventScroll: true });
 });
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// AGE COLLECTION TEMPLATE (sections/collection-age-intro.liquid, snippets/collection-howto-promo.liquid)
+// PostHog `age_collection_click` { target, collection } for every element with data-age-track
+// (tab:<handle>, starter_add, pack_title, all_packs, player, howto_packs, howto_player).
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('click', (event) => {
+    const el = event.target.closest('[data-age-track]');
+    if (!el || typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    const collection = document.querySelector('[data-age-collection]')?.dataset.ageCollection || null;
+    try {
+        window.posthog.capture('age_collection_click', { target: el.dataset.ageTrack, collection });
+    } catch (e) { /* analytics must never block the click */ }
+});
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// CART "STORIES PLAY ON A VOXBLOCK PLAYER" PROMPT (snippets/cart-player-prompt.liquid)
+// "I already have a player" hides it in this browser for good (localStorage + a class on <html>, so the prompt stays
+// hidden when the cart drawer re-renders). PostHog `cart_player_prompt` { action: shown | add_pack | add_player | dismiss };
+// "shown" is sent once per page, the first time the prompt is actually visible.
+// ----------------------------------------------------------------------------------------------------------------
+const PLAYER_PROMPT_KEY = 'vb_has_player';
+const trackPlayerPrompt = (action) => {
+    if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    try { window.posthog.capture('cart_player_prompt', { action }); } catch (e) { /* never block the basket */ }
+};
+
+try {
+    if (window.localStorage.getItem(PLAYER_PROMPT_KEY) === '1') document.documentElement.classList.add('vb-has-player');
+} catch (e) { /* storage blocked: the prompt simply keeps showing */ }
+
+document.addEventListener('click', (event) => {
+    if (event.target.closest('[data-cart-player-dismiss]')) {
+        try { window.localStorage.setItem(PLAYER_PROMPT_KEY, '1'); } catch (e) { /* storage blocked */ }
+        document.documentElement.classList.add('vb-has-player');
+        trackPlayerPrompt('dismiss');
+        return;
+    }
+    const add = event.target.closest('[data-prompt-track]');
+    if (add) trackPlayerPrompt(add.dataset.promptTrack);
+});
+
+let playerPromptShown = false;
+const playerPromptObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    if (playerPromptShown || document.documentElement.classList.contains('vb-has-player')) return;
+    if (entries.some((entry) => entry.isIntersecting)) {
+        playerPromptShown = true;
+        trackPlayerPrompt('shown');
+        playerPromptObserver.disconnect();
+    }
+}) : null;
+const watchPlayerPrompt = () => {
+    if (!playerPromptObserver || playerPromptShown) return;
+    document.querySelectorAll('[data-cart-player-prompt]').forEach((el) => playerPromptObserver.observe(el));
+};
+watchPlayerPrompt();
+// The cart drawer is re-rendered after every basket change: watch it (only it) for a new prompt, until one is seen
+const cartDrawerEl = document.getElementById('cart-drawer');
+if (cartDrawerEl && playerPromptObserver) {
+    const drawerWatcher = new MutationObserver(() => {
+        if (playerPromptShown) { drawerWatcher.disconnect(); return; }
+        watchPlayerPrompt();
+    });
+    drawerWatcher.observe(cartDrawerEl, { childList: true, subtree: true });
+}

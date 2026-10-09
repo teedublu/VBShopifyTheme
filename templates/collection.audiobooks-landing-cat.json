@@ -21,7 +21,7 @@
         "show_collection_image": true,
         "collection_title_size": "h0",
         "image_size": "md",
-        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "image": "shopify://shop_images/author_footer-image-desktop-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "featured_product": "",
@@ -29,7 +29,8 @@
         "text_color": "#ffffff",
         "overlay_color": "#ffb74a",
         "overlay_opacity": 100
-      }
+      },
+      "disabled": true
     },
     "collection_link_blocks_t7tQjD": {
       "type": "collection-link-blocks",
@@ -37,7 +38,7 @@
         "item_YBPfxp": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/audiobooks-image-link-category-200x150.jpg",
+            "image": "shopify://shop_images/audiobooks-image-link-category-200x150.jpg",
             "link_text": "All audiobooks",
             "url_params": ""
           }
@@ -45,7 +46,7 @@
         "item_rRYnxH": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/under5s-image-link-category-200x150.jpg",
+            "image": "shopify://shop_images/under5s-image-link-category-200x150.jpg",
             "link_text": "Under 5's",
             "url_params": "filter.p.m.book.age_groups=Under+5%27s"
           }
@@ -53,7 +54,7 @@
         "item_7rh8X6": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/5-8years-image-link-category-200x150.jpg",
+            "image": "shopify://shop_images/5-8years-image-link-category-200x150.jpg",
             "link_text": "5-8 years",
             "url_params": "filter.p.m.book.age_groups=5+to+8+years"
           }
@@ -61,7 +62,7 @@
         "item_GtzyNk": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/8-10years-image-link-category-200x150.jpg",
+            "image": "shopify://shop_images/8-10years-image-link-category-200x150.jpg",
             "link_text": "8-10 years",
             "url_params": "filter.p.m.book.age_groups=8+to+10+years"
           }
@@ -69,7 +70,7 @@
         "item_r7wCbW": {
           "type": "item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/10-teens-image-link-category-200x150.jpg",
+            "image": "shopify://shop_images/10-teens-image-link-category-200x150.jpg",
             "link_text": "10 to teens",
             "url_params": "filter.p.m.book.age_groups=10+to+teens"
           }
@@ -85,7 +86,8 @@
       "settings": {
         "full_width": false,
         "nav_collection": "audiobooks"
-      }
+      },
+      "disabled": true
     },
     "main": {
       "type": "main-collection",
@@ -95,47 +97,67 @@
           "settings": {
             "position": 1,
             "column_span": "1",
-            "video": "shopify:\/\/files\/videos\/how does it work_mobile.mp4",
-            "external_video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "video": "shopify://files/videos/how does it work_mobile.mp4",
+            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "content": "",
-            "link_url": "shopify:\/\/collections\/audiobooks",
+            "link_url": "shopify://collections/audiobooks",
             "link_text": "",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 0
-          }
+          },
+          "disabled": true
         },
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
           "settings": {
             "position": 10,
             "column_span": "1",
-            "image": "shopify:\/\/shop_images\/IMG_5604.jpg",
+            "image": "shopify://shop_images/IMG_5604.jpg",
             "title": "Voxblock audiobook player",
-            "content": "<p>All these audiobooks are designed to play on the screen-free audiobook player from Voxblock.<\/p>",
-            "link_url": "shopify:\/\/products\/voxblock-player",
+            "content": "<p>All these audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p>",
+            "link_url": "shopify://products/voxblock-player",
             "link_text": "Learn more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 30
+          },
+          "disabled": true
+        },
+        "howto_promo": {
+          "type": "promotion_howto",
+          "settings": {
+            "position": 7,
+            "image": "shopify://shop_images/IMG_5604.jpg",
+            "image_alt": "Voxblock player playing The Gruffalo, surrounded by story blocks and drawing pens",
+            "eyebrow": "How Voxblock works",
+            "heading": "Every story here is a block your child can hold",
+            "step_1": "Pick a story block",
+            "step_2": "Put it on the player",
+            "step_3": "Press play",
+            "note": "No screen, no downloads, no subscription.",
+            "packs_label": "Shop starter packs",
+            "packs_url": "shopify://collections/voxblock-starter-pack-collection",
+            "player_handle": "voxblock-player"
           }
         }
       },
       "block_order": [
         "promotion_video_CHwxAJ",
-        "promotion_image_4VEyzT"
+        "promotion_image_4VEyzT",
+        "howto_promo"
       ],
       "settings": {
         "products_per_page": 15,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
         "filter_layout": "drawer",
-        "show_sort_by": false,
+        "show_sort_by": true,
         "sticky_filters": true,
         "show_filters": true,
         "show_filter_group_name": false,
@@ -161,7 +183,7 @@
             "style": "fill",
             "size": "lg",
             "text": "Click here for more details",
-            "url": "shopify:\/\/pages\/how-does-it-work",
+            "url": "shopify://pages/how-does-it-work",
             "background": "",
             "text_color": ""
           }
@@ -177,19 +199,103 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/author_footer-image-desktop-3200x1200.jpg",
+        "image": "shopify://shop_images/author_footer-image-desktop-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 20
+      },
+      "disabled": true
+    },
+    "age_intro": {
+      "type": "collection-age-intro",
+      "blocks": {
+        "under5": {
+          "type": "age_collection",
+          "settings": {
+            "collection": "voxblock-audiobooks-under-5s",
+            "tab_label": "Under 5",
+            "heading": "Audiobooks for under 5s",
+            "eyebrow": "Audiobooks · Under 5",
+            "intro_line": "Bedtime stories and songs that play on Voxblock, the screen-free audiobook player.",
+            "age_text": "under 5s",
+            "starter_pack": "little-listeners-starter-pack"
+          }
+        },
+        "age58": {
+          "type": "age_collection",
+          "settings": {
+            "collection": "audiobooks-5-8-years",
+            "tab_label": "5–8",
+            "heading": "Audiobooks for 5–8 year olds",
+            "eyebrow": "Audiobooks · Ages 5–8",
+            "intro_line": "Stories that play on Voxblock, the screen-free audiobook player your child runs on their own.",
+            "age_text": "ages 5–8",
+            "starter_pack": "young-explorers-starter-pack"
+          }
+        },
+        "age810": {
+          "type": "age_collection",
+          "settings": {
+            "collection": "audiobooks-8-10-years",
+            "tab_label": "8–10",
+            "heading": "Audiobooks for 8–10 year olds",
+            "eyebrow": "Audiobooks · Ages 8–10",
+            "intro_line": "Longer adventures that play on Voxblock, the screen-free audiobook player.",
+            "age_text": "ages 8–10",
+            "starter_pack": "roald-dahl-selection-starter-pack"
+          }
+        },
+        "age10": {
+          "type": "age_collection",
+          "settings": {
+            "collection": "audiobooks-10-to-teens",
+            "tab_label": "10+",
+            "heading": "Audiobooks for tweens and teens",
+            "eyebrow": "Audiobooks · Ages 10+",
+            "intro_line": "Gripping series that play on Voxblock, the screen-free audiobook player.",
+            "age_text": "ages 10+",
+            "starter_pack": "the-percy-jackson-starter-pack"
+          }
+        }
+      },
+      "block_order": [
+        "under5",
+        "age58",
+        "age810",
+        "age10"
+      ],
+      "settings": {
+        "background": "#fff7f0",
+        "eyebrow": "Audiobooks",
+        "intro_line": "Stories that play on Voxblock, the screen-free audiobook player.",
+        "default_pack": "young-explorers-starter-pack",
+        "trust_rating": "4.9 on Trustpilot",
+        "trust_delivery": "Free delivery over £25",
+        "trust_guarantee": "Money-back guarantee",
+        "trust_guarantee_url": "shopify://pages/voxblock-happiness-guarantee",
+        "show_pack": true,
+        "pack_heading": "New to Voxblock? Start here",
+        "pack_note": "Bumper and charging cable included.",
+        "packs_url": "shopify://collections/voxblock-starter-pack-collection",
+        "player_handle": "voxblock-player"
+      }
+    },
+    "about": {
+      "type": "collection-about",
+      "settings": {
+        "title": "About these audiobooks",
+        "open": false
       }
     }
   },
   "order": [
     "banner",
     "collection_link_blocks_t7tQjD",
+    "age_intro",
     "main",
+    "about",
     "image_with_text_overlay_qB9epV"
   ]
 }

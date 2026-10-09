@@ -1,0 +1,261 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COLLECTION AGE INTRO (age collection template: collection.audiobooks-landing-cat)
+----------------------------------------------------------------------------------------------------------------------
+
+Replaces the tall orange collection banner and the image link blocks on the age audiobook collections. Design canvas:
+"Age Collection Template". From top to bottom:
+1. Short cream band: eyebrow, H1, one line, trust row (rating, delivery, guarantee). The collection description is NOT
+   shown here; it moves to the "About" section under the grid (sections/collection-about.liquid).
+2. Age tabs: one per "Age collection" block, linking to that collection; the current one is marked aria-current.
+3. "New to Voxblock? Start here": the starter pack chosen for this collection, with colour swatches, live price,
+   Save % and an add-to-basket button, plus "See all packs" and "Player only" links. Hidden for signed-in customers who
+   already bought a player (snippets/customer-owns-player.liquid).
+4. "Already have a player?" line with the story count, introducing the grid.
+
+Each "Age collection" block ties a collection to its tab label, starter pack and wording. A collection using this
+template without a block (e.g. Children's Mystery Audiobooks) gets the section defaults and the default starter pack.
+Prices are read live; nothing is hard-coded.
+
+Tracking: PostHog `age_collection_click` { target, collection } via data-age-track (voxblock.js).
+{%- endcomment -%}
+
+{%- liquid
+  assign current = nil
+  for block in section.blocks
+    if block.settings.collection != blank and block.settings.collection.id == collection.id
+      assign current = block
+      break
+    endif
+  endfor
+
+  assign heading = collection.title
+  assign eyebrow = section.settings.eyebrow
+  assign intro_line = section.settings.intro_line
+  assign age_text = ''
+  assign pack = section.settings.default_pack
+  if current
+    if current.settings.heading != blank
+      assign heading = current.settings.heading
+    endif
+    if current.settings.eyebrow != blank
+      assign eyebrow = current.settings.eyebrow
+    endif
+    if current.settings.intro_line != blank
+      assign intro_line = current.settings.intro_line
+    endif
+    assign age_text = current.settings.age_text
+    if current.settings.starter_pack != blank
+      assign pack = current.settings.starter_pack
+    endif
+  endif
+
+  capture owns_player
+    render 'customer-owns-player'
+  endcapture
+  assign show_pack = false
+  if section.settings.show_pack and pack != blank and pack.available and owns_player == blank
+    assign show_pack = true
+  endif
+
+  if show_pack
+    assign pack_variant = pack.variants | sort: 'price' | first
+    assign save_pct = 0
+    if pack_variant.compare_at_price > pack_variant.price
+      assign save_pct = pack_variant.compare_at_price | minus: pack_variant.price | times: 100.0 | divided_by: pack_variant.compare_at_price | round
+    endif
+
+    assign contents_line = pack.metafields.pack.contents.value | strip
+    if contents_line == blank
+      assign pack_books = pack.metafields.bundles.products.value
+      if pack_books.size > 0
+        assign contents_line = 'collection.pack_card.contents_count' | t: count: pack_books.size
+      endif
+    endif
+  endif
+
+  assign player = all_products[section.settings.player_handle]
+  assign player_variant = player.variants | sort: 'price' | first
+  assign player_price = player_variant.price | money
+  assign collection_key = collection.handle | escape
+-%}
+
+<section class="age-intro" style="--age-intro-bg: {{ section.settings.background }};" data-age-collection="{{ collection_key }}" {{ section.shopify_attributes }}>
+  <div class="age-intro__band">
+    <div class="container age-intro__band-inner">
+      <div class="age-intro__text">
+        {%- if eyebrow != blank -%}<p class="age-intro__eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
+        <h1 class="age-intro__title">{{ heading | escape }}</h1>
+        {%- if intro_line != blank -%}<p class="age-intro__lede">{{ intro_line | escape }}</p>{%- endif -%}
+
+        <ul class="age-intro__trust" role="list">
+          {%- if section.settings.trust_rating != blank -%}
+            <li>{%- render 'icon' with 'rating-star', width: 14, height: 14 -%}<span>{{ section.settings.trust_rating }}</span></li>
+          {%- endif -%}
+          {%- if section.settings.trust_delivery != blank -%}
+            <li>{%- render 'icon' with 'picto-truck', width: 16, height: 16, stroke_width: 2 -%}<span>{{ section.settings.trust_delivery | escape }}</span></li>
+          {%- endif -%}
+          {%- if section.settings.trust_guarantee != blank -%}
+            <li>{%- render 'icon' with 'picto-shield', width: 16, height: 16, stroke_width: 2 -%}
+              {%- if section.settings.trust_guarantee_url != blank -%}
+                <a href="{{ section.settings.trust_guarantee_url }}">{{ section.settings.trust_guarantee | escape }}</a>
+              {%- else -%}
+                <span>{{ section.settings.trust_guarantee | escape }}</span>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        </ul>
+
+        {%- if section.blocks.size > 0 -%}
+          <nav class="age-intro__tabs" aria-label="{{ 'collection.age_intro.tabs_label' | t | escape }}">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.collection != blank -%}
+                {%- assign is_current = false -%}
+                {%- if block.settings.collection.id == collection.id -%}{%- assign is_current = true -%}{%- endif -%}
+                <a href="{{ block.settings.collection.url }}" class="age-intro__tab" {% if is_current %}aria-current="page"{% endif %} data-age-track="tab:{{ block.settings.collection.handle | escape }}" {{ block.shopify_attributes }}>
+                  {{- block.settings.tab_label | default: block.settings.collection.title | escape -}}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+      </div>
+
+      {%- if show_pack -%}
+        <div class="age-pack" data-variant-card>
+          <div class="age-pack__head">
+            <span>{{ section.settings.pack_heading | escape }}</span>
+            {%- if save_pct > 0 -%}<span class="age-pack__save">{{ 'product.general.discount_badge_html' | t: savings: save_pct | append: '%' }}</span>{%- endif -%}
+          </div>
+
+          <div class="age-pack__body">
+            <a href="{{ pack.url }}" class="age-pack__media" tabindex="-1" aria-hidden="true">
+              {%- if pack.featured_media -%}
+                {{- pack.featured_media | image_url: width: 400 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 120px, 170px', widths: '120,170,240,340,400', alt: '' -}}
+              {%- endif -%}
+            </a>
+            <div class="age-pack__info">
+              <h2 class="age-pack__title"><a href="{{ pack.url }}" data-age-track="pack_title">{{ pack.title | escape }}</a></h2>
+              <p class="age-pack__contents">
+                {%- if contents_line != blank -%}{{ contents_line }}{%- if age_text != blank -%}, {{ age_text | escape }}{%- endif -%}. {% endif -%}
+                {{- section.settings.pack_note | escape -}}
+              </p>
+              <p class="age-pack__prices">
+                {%- if pack.price_varies -%}<span class="age-pack__from">{{ 'collection.pack_card.from' | t }}</span> {% endif -%}
+                <span class="age-pack__price"><span class="sr-only">{{ 'product.price.sale_price' | t }}</span>{{ pack_variant.price | money }}</span>
+                {%- if pack_variant.compare_at_price > pack_variant.price -%}
+                  <s class="age-pack__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
+                {%- endif -%}
+              </p>
+            </div>
+          </div>
+
+          <div class="age-pack__buy">
+            {%- comment -%}Colour swatches: same markup as the pack card (snippets/product-card-pack.liquid){%- endcomment -%}
+            {%- if settings.product_color_display == 'swatch' -%}
+              {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+              {%- for color_label in color_label_list -%}
+                {%- if pack.options_by_name[color_label] != blank -%}
+                  {%- assign product_option = pack.options_by_name[color_label] -%}
+                  {%- capture name -%}swatch-{{ section.id }}-{{ pack.id }}-{{ product_option.position }}{%- endcapture -%}
+                  <fieldset class="age-pack__swatches h-stack gap-0.5" data-variant-swatches>
+                    <legend class="sr-only">{{ product_option.name }}</legend>
+                    {%- liquid
+                      for option_value in product_option.values limit: 4
+                        if forloop.first or pack.selected_or_first_available_variant.matched and option_value == product_option.selected_value
+                          assign selected = true
+                        else
+                          assign selected = false
+                        endif
+                        assign swatch_variant = pack.variants | where: 'title', option_value | first
+                        if swatch_variant.metafields.bumper.colour
+                          render 'option-value', type: 'swatch', value: option_value, color: swatch_variant.metafields.bumper.colour, name: name, selected: selected, size: 'sm'
+                        elsif option_value.swatch.color
+                          render 'option-value', type: 'swatch', value: option_value, color: option_value.swatch.color, name: name, selected: selected, size: 'sm'
+                        else
+                          render 'option-value', type: 'swatch', value: option_value, name: name, selected: selected, size: 'sm'
+                        endif
+                      endfor
+                    -%}
+                  </fieldset>
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+
+            {%- form 'product', pack, is: 'product-form', class: 'age-pack__form' -%}
+              <input type="hidden" name="id" value="{{ pack.selected_or_first_available_variant.id }}" data-pack-variant-id>
+              {%- capture variant_map -%}{%- for v in pack.variants -%}{{ v.title | escape }}={{ v.id }}{% unless forloop.last %};{% endunless %}{%- endfor -%}{%- endcapture -%}
+              <input type="hidden" data-pack-variant-map value="{{ variant_map }}">
+              <button type="submit" class="series-button series-button--block" data-age-track="starter_add">{{ 'collection.age_intro.add_pack' | t }}</button>
+            {%- endform -%}
+
+            <p class="age-pack__links">
+              {%- if section.settings.packs_url != blank -%}
+                <a href="{{ section.settings.packs_url }}" data-age-track="all_packs">{{ 'collection.age_intro.all_packs' | t }}</a>
+              {%- endif -%}
+              {%- if player != blank and player_variant.price > 0 -%}
+                <a href="{{ player_variant.url }}" data-age-track="player">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a>
+              {%- endif -%}
+            </p>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="container age-intro__grid-head">
+    <p class="age-intro__grid-title">
+      {%- if show_pack -%}{{ 'collection.age_intro.have_player' | t }}{%- else -%}{{ 'collection.age_intro.stories_heading' | t }}{%- endif -%}
+    </p>
+    <p class="age-intro__count">
+      {%- if age_text != blank -%}
+        {{- 'collection.age_intro.count_for' | t: count: collection.products_count, age: age_text -}}
+      {%- else -%}
+        {{- 'collection.age_intro.count' | t: count: collection.products_count -}}
+      {%- endif -%}
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Age collection intro",
+  "tag": "div",
+  "class": "shopify-section--age-intro",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Band background", "default": "#fff7f0" },
+    { "type": "header", "content": "Defaults (collections without a block)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Audiobooks" },
+    { "type": "textarea", "id": "intro_line", "label": "Intro line", "default": "Stories that play on Voxblock, the screen-free audiobook player." },
+    { "type": "product", "id": "default_pack", "label": "Starter pack" },
+    { "type": "header", "content": "Trust row" },
+    { "type": "text", "id": "trust_rating", "label": "Rating", "default": "4.9 on Trustpilot" },
+    { "type": "text", "id": "trust_delivery", "label": "Delivery", "default": "Free delivery over £25" },
+    { "type": "text", "id": "trust_guarantee", "label": "Guarantee", "default": "Money-back guarantee" },
+    { "type": "url", "id": "trust_guarantee_url", "label": "Guarantee link" },
+    { "type": "header", "content": "Starter pack card" },
+    { "type": "checkbox", "id": "show_pack", "label": "Show the starter pack card", "default": true, "info": "Never shown to signed-in customers who have already bought a player." },
+    { "type": "text", "id": "pack_heading", "label": "Card heading", "default": "New to Voxblock? Start here" },
+    { "type": "text", "id": "pack_note", "label": "Line after the contents", "default": "Bumper and charging cable included." },
+    { "type": "url", "id": "packs_url", "label": "\"See all packs\" link" },
+    { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Used for the \"Player only\" price and link (cheapest variant)." }
+  ],
+  "blocks": [
+    {
+      "type": "age_collection",
+      "name": "Age collection",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "text", "id": "tab_label", "label": "Tab label", "default": "5–8" },
+        { "type": "text", "id": "heading", "label": "Heading (H1)", "info": "Leave empty to use the collection title." },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "textarea", "id": "intro_line", "label": "Intro line" },
+        { "type": "text", "id": "age_text", "label": "Age wording", "default": "ages 5–8", "info": "Used in \"90 stories for ages 5–8\" and on the pack card." },
+        { "type": "product", "id": "starter_pack", "label": "Starter pack to feature" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Age collection intro" }]
+}
+{% endschema %}
