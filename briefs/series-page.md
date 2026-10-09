@@ -57,8 +57,9 @@ positive. Unicorn Academy has several bundles; the fallback picks none of them u
   Margaret (`moody-margaret`), Rude Ralph (`rude-ralph`), Sour Susan (`sour-susan`). Linked with the existing Horrid
   Henry entry through all three audiobooks' `characters` field. Photos to come from the owner's line-up picture
   (Peter is not in it); filenames `horrid-henry-<name>-character.png`.
-- Famous Five photos cut from the owner's line-up picture: `working/famous-five-characters/` (git-ignored), not yet
-  uploaded or attached.
+- 9 Oct: photos attached to Julian, Dick, Anne, George, Timmy (`famous-five-<name>-character.png`) and Moody
+  Margaret, Rude Ralph, Sour Susan (`horrid-henry-<name>-character.png`), cut from the owner's line-up pictures.
+  Perfect Peter has none (not in the picture), so the page shows his initials.
 - Pippi's own character photo is still the wide 1000x407 banner (also the series image), so it crops to a slice
   in the series page's circle; a square portrait would fix that. The new images have no alt text.
 

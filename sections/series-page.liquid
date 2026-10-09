@@ -17,9 +17,10 @@ Where everything comes from:
   entry, duplicates removed.
 * Hero line: the series' `tagline` field, else its `page_description`.
 * Character boxes: each character's first photo, or its initials (snippets/person-avatar.liquid) when it has none.
-* Hero pills: one per author and narrator (linked to their page, else their collection), the reading age (linked to
-  the age collection holding the youngest reading age, handles in the block settings) and genre pills from the
-  block's "Genre pills" list (genre | label | collection), shown only for genres the series' books carry.
+* Hero pills and Good to know: authors and narrators link to their page (else their collection); reading age links to
+  the age collection holding the youngest reading age; genres link through the section's "Genre links" list
+  (genre | pill label | collection), and a genre pill shows only for genres the series' books carry. The age handles
+  and genre list are section settings, shared by both blocks. The book count links to the books list.
 * Hero colour: the series' `colour` field, else the block setting. Text turns white on a dark colour.
 * "The whole series": the series' `bundle` field (a product), else a product in the collection whose title holds the
   series name and "Audiobook Bundle" (static "-set" copies are skipped). The saving shown is the bundle's books bought
@@ -176,6 +177,31 @@ book links and related series. Sample plays are already tracked globally as samp
     assign age_label = reading_level_list.first | downcase | remove: 'years' | remove: 'year' | strip | replace: '-', '–'
   endif
 
+  # Links shared by the hero pills and the facts panel (section settings)
+  # Age: the age collection holding the youngest reading age (6-9 -> the 5 to 8 collection)
+  assign age_handle = ''
+  if age_label != blank
+    assign age_from = age_label | split: '–' | first | strip | plus: 0
+    if age_from < 5
+      assign age_handle = section.settings.age_under_5
+    elsif age_from < 8
+      assign age_handle = section.settings.age_5_8
+    elsif age_from < 10
+      assign age_handle = section.settings.age_8_10
+    else
+      assign age_handle = section.settings.age_10_up
+    endif
+    assign age_handle = age_handle | strip
+  endif
+  # Genres: "genre | pill label | collection handle", one per line
+  assign genre_lines = section.settings.genre_links | newline_to_br | split: '<br />'
+  assign books_anchor = ''
+  for b in section.blocks
+    if b.type == 'books' and book_count > 0
+      assign books_anchor = '#series-books-' | append: section.id
+    endif
+  endfor
+
   # The whole-series bundle
   assign bundle = series.bundle.value
   if bundle == blank and series_collection != blank
@@ -223,21 +249,6 @@ book links and related series. Sample plays are already tracked globally as samp
           endif
           assign eyebrow = block.settings.eyebrow | replace: '[count]', book_count
 
-          # Age pill links to the age collection holding the youngest reading age (6-9 -> the 5 to 8 collection)
-          assign age_handle = ''
-          if age_label != blank
-            assign age_from = age_label | split: '–' | first | strip | plus: 0
-            if age_from < 5
-              assign age_handle = block.settings.age_under_5
-            elsif age_from < 8
-              assign age_handle = block.settings.age_5_8
-            elsif age_from < 10
-              assign age_handle = block.settings.age_8_10
-            else
-              assign age_handle = block.settings.age_10_up
-            endif
-          endif
-          assign genre_lines = block.settings.genre_links | newline_to_br | split: '<br />'
           if book_count == 1
             assign eyebrow = block.settings.eyebrow_one
           endif
@@ -536,13 +547,57 @@ book links and related series. Sample plays are already tracked globally as samp
             <div class="series-facts">
               <h3 class="series-facts__title">{{ block.settings.facts_heading | escape }}</h3>
               <dl class="series-facts__list">
-                {%- if author_list.size > 0 -%}<dt>{{ block.settings.author_label | escape }}</dt><dd>{{ author_list | join: ', ' | escape }}</dd>{%- endif -%}
-                {%- if narrator_list.size > 0 -%}<dt>{{ block.settings.narrator_label | escape }}</dt><dd>{{ narrator_list | join: ', ' | escape }}</dd>{%- endif -%}
-                <dt>{{ block.settings.count_label | escape }}</dt><dd>{{ book_count }}</dd>
-                {%- if reading_level_list.size > 0 -%}<dt>{{ block.settings.age_label | escape }}</dt><dd>{{ reading_level_list | join: ', ' | replace: '-', '–' | escape }}</dd>{%- endif -%}
+                {%- if author_list.size > 0 -%}
+                  <dt>{{ block.settings.author_label | escape }}</dt>
+                  <dd>
+                    {%- for name in author_list -%}
+                      {%- assign link = author_url_list[forloop.index0] -%}
+                      {%- if link != blank and link != '-' -%}<a href="{{ link }}" data-series-target="fact_author">{{ name | escape }}</a>{%- else -%}{{ name | escape }}{%- endif -%}
+                      {%- unless forloop.last -%}, {% endunless -%}
+                    {%- endfor -%}
+                  </dd>
+                {%- endif -%}
+                {%- if narrator_list.size > 0 -%}
+                  <dt>{{ block.settings.narrator_label | escape }}</dt>
+                  <dd>
+                    {%- for name in narrator_list -%}
+                      {%- assign link = narrator_url_list[forloop.index0] -%}
+                      {%- if link != blank and link != '-' -%}<a href="{{ link }}" data-series-target="fact_narrator">{{ name | escape }}</a>{%- else -%}{{ name | escape }}{%- endif -%}
+                      {%- unless forloop.last -%}, {% endunless -%}
+                    {%- endfor -%}
+                  </dd>
+                {%- endif -%}
+                <dt>{{ block.settings.count_label | escape }}</dt>
+                <dd>
+                  {%- assign count_text = block.settings.count_value | replace: '[count]', book_count -%}
+                  {%- if books_anchor != blank -%}<a href="{{ books_anchor }}" data-series-target="fact_books">{{ count_text | escape }}</a>{%- else -%}{{ count_text | escape }}{%- endif -%}
+                </dd>
+                {%- if reading_level_list.size > 0 -%}
+                  <dt>{{ block.settings.age_label | escape }}</dt>
+                  <dd>
+                    {%- assign ages_text = reading_level_list | join: ', ' | replace: '-', '–' -%}
+                    {%- if age_handle != blank -%}<a href="{{ routes.collections_url }}/{{ age_handle }}" data-series-target="fact_age">{{ ages_text | escape }}</a>{%- else -%}{{ ages_text | escape }}{%- endif -%}
+                  </dd>
+                {%- endif -%}
                 {%- if key_stage_list.size > 0 -%}<dt>{{ block.settings.stage_label | escape }}</dt><dd>{{ key_stage_list | join: ', ' | replace: '/', ' and ' | escape }}</dd>{%- endif -%}
                 {%- if atos_label != blank -%}<dt>{{ block.settings.atos_label | escape }}</dt><dd>{{ atos_label | escape }}</dd>{%- endif -%}
-                {%- if genre_list.size > 0 -%}<dt>{{ block.settings.genre_label | escape }}</dt><dd>{{ genre_list | slice: 0, 4 | join: ', ' | escape }}</dd>{%- endif -%}
+                {%- if genre_list.size > 0 -%}
+                  <dt>{{ block.settings.genre_label | escape }}</dt>
+                  <dd>
+                    {%- for genre in genre_list limit: 4 -%}
+                      {%- assign genre_handle = '' -%}
+                      {%- for line in genre_lines -%}
+                        {%- assign parts = line | strip | split: '|' -%}
+                        {%- if parts.size > 2 -%}
+                          {%- assign mapped = parts[0] | strip -%}
+                          {%- if mapped == genre -%}{%- assign genre_handle = parts[2] | strip -%}{%- break -%}{%- endif -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                      {%- if genre_handle != blank -%}<a href="{{ routes.collections_url }}/{{ genre_handle }}" data-series-target="fact_genre">{{ genre | escape }}</a>{%- else -%}{{ genre | escape }}{%- endif -%}
+                      {%- unless forloop.last -%}, {% endunless -%}
+                    {%- endfor -%}
+                  </dd>
+                {%- endif -%}
               </dl>
             </div>
           </div>
@@ -582,6 +637,15 @@ book links and related series. Sample plays are already tracked globally as samp
   "name": "Series page",
   "tag": "div",
   "class": "shopify-section--series-page",
+  "settings": [
+    { "type": "header", "content": "Links (hero pills and Good to know)" },
+    { "type": "paragraph", "content": "Authors and narrators link to their pages (or their collection). Reading age links to the age collection holding the series' youngest reading age." },
+    { "type": "text", "id": "age_under_5", "label": "Under 5 collection handle", "default": "voxblock-audiobooks-under-5s" },
+    { "type": "text", "id": "age_5_8", "label": "5 to 8 collection handle", "default": "audiobooks-5-8-years" },
+    { "type": "text", "id": "age_8_10", "label": "8 to 10 collection handle", "default": "audiobooks-8-10-years" },
+    { "type": "text", "id": "age_10_up", "label": "10 and over collection handle", "default": "audiobooks-10-to-teens" },
+    { "type": "textarea", "id": "genre_links", "label": "Genre links", "default": "Comedy | Comedy | childrens-funny-audiobooks\nAction and Adventure | Adventure | childrens-adventure-audiobooks", "info": "One per line: genre as written in the audiobook data | pill label | collection handle. A hero pill shows only when one of the series' books has that genre; in Good to know the genre links to the collection." }
+  ],
   "blocks": [
     {
       "type": "hero",
@@ -596,14 +660,7 @@ book links and related series. Sample plays are already tracked globally as samp
         { "type": "text", "id": "ages_label", "label": "Age prefix", "default": "Ages" },
         { "type": "text", "id": "start_label", "label": "Button", "default": "See the books" },
         { "type": "text", "id": "start_numbered_label", "label": "Button when the series has a reading order", "default": "Start with book 1" },
-        { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Hear a sample" },
-        { "type": "header", "content": "Pill links" },
-        { "type": "paragraph", "content": "Author and narrator pills link to their pages (or their collection). The age pill links to the age collection holding the series' youngest reading age." },
-        { "type": "text", "id": "age_under_5", "label": "Under 5 collection handle", "default": "voxblock-audiobooks-under-5s" },
-        { "type": "text", "id": "age_5_8", "label": "5 to 8 collection handle", "default": "audiobooks-5-8-years" },
-        { "type": "text", "id": "age_8_10", "label": "8 to 10 collection handle", "default": "audiobooks-8-10-years" },
-        { "type": "text", "id": "age_10_up", "label": "10 and over collection handle", "default": "audiobooks-10-to-teens" },
-        { "type": "textarea", "id": "genre_links", "label": "Genre pills", "default": "Comedy | Comedy | childrens-funny-audiobooks\nAction and Adventure | Adventure | childrens-adventure-audiobooks", "info": "One per line: genre as written in the audiobook data | pill label | collection handle. A pill shows only when one of the series' books has that genre." }
+        { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Hear a sample" }
       ]
     },
     {
@@ -652,6 +709,7 @@ book links and related series. Sample plays are already tracked globally as samp
         { "type": "text", "id": "author_label", "label": "Author", "default": "Author" },
         { "type": "text", "id": "narrator_label", "label": "Narrator", "default": "Narrator" },
         { "type": "text", "id": "count_label", "label": "Books", "default": "Audiobooks" },
+        { "type": "text", "id": "count_value", "label": "Book count", "default": "[count] available on Voxblock", "info": "[count] is the number of books on the page. Links to the books list." },
         { "type": "text", "id": "age_label", "label": "Reading age", "default": "Reading age" },
         { "type": "text", "id": "stage_label", "label": "School stage", "default": "School stage" },
         { "type": "text", "id": "atos_label", "label": "Book level", "default": "Book level (ATOS)" },
