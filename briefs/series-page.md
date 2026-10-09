@@ -38,6 +38,8 @@ positive. Unicorn Academy has several bundles; the fallback picks none of them u
 ## Data changes in Shopify
 - 9 Oct: Series definition gained `books`, `reading_order`, `tagline`, `colour`, `bundle`.
 - 9 Oct: Pippi Longstocking series: `books` = Pippi Longstocking, Goes Aboard, In the South Seas; `reading_order` on.
+- 9 Oct: Pippi Longstocking series `colour` = #FFD23F (the mockup yellow; teal H1 on it is 3.96:1, passes as large
+  bold text; body text 5.7:1).
 - 9 Oct: new Character entries, published, no photos yet: Tommy (`tommy-settergren`), Annika (`annika-settergren`),
   Mr Nelson (`mr-nelson`), Captain Longstocking (`captain-longstocking`), Pippi's horse (`pippis-horse`). Father and
   horse names are placeholders: the names this translation uses were not known. Linked through each Pippi audiobook's
@@ -45,7 +47,8 @@ positive. Unicorn Academy has several bundles; the fallback picks none of them u
   the audiobook pages and have their own /pages/character/<handle> pages.
 
 ## Measurement
-PostHog `series_page_click` { target: hero_books | bundle | add_all | add_book | book_title | book_image | related,
+PostHog `series_page_click` { target: hero_books | pill_author | pill_narrator | pill_age | pill_genre | bundle |
+add_all | add_book | book_title | book_image | related,
 series, product }. Sample plays already send `sample_played` (assets/voxblock.js).
 
 ## Not checked yet

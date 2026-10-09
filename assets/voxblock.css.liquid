@@ -609,6 +609,9 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .series-hero__lede { margin: 0; font-size: 16px; line-height: 24px; max-width: 40ch; }
 .series-hero__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .series-chip { padding: 5px 12px; border-radius: 999px; background: var(--series-chip-bg, rgba(255, 255, 255, 0.72)); font-size: 13px; font-weight: 500; line-height: 1.4; }
+.series-chip--link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; color: inherit; text-decoration: none; border: 1px solid transparent; }
+.series-chip--link:hover { color: inherit; border-color: currentColor; }
+.series-chip--link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 .series-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
 .series-hero--dark .series-button--primary { background: #fff; border-color: #fff; color: var(--brand-heading); }
 .series-hero--dark .series-button--secondary { background: transparent; border-color: #fff; color: #fff; }
