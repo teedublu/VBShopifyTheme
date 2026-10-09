@@ -1,0 +1,72 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SERIES JSON-LD (rendered by sections/series-page.liquid)
+----------------------------------------------------------------------------------------------------------------------
+
+BookSeries structured data: the series and its books, with positions when the series has a reading order. Each book
+is described as the audiobook it is (bookFormat AudiobookFormat), with its authors from its audiobook entry.
+
+* series: the series metaobject
+* series_name: its name
+* books: the list the page shows (the series' books field, or its collection's products)
+* has_book_list: true when books came from the books field (every item is a book); otherwise items with no
+  book.audiobook link are skipped, as on the page
+* numbered: true when the series has a reading order
+* author_list: the authors' names
+* author_url_list: their page URLs, same order ('-' where there is none)
+{%- endcomment -%}
+{%- assign series_image = series.image.value -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BookSeries",
+    "name": {{ series_name | json }},
+    "url": {{ canonical_url | json }},
+    "inLanguage": "en-GB"
+    {%- if series.page_description.value != blank -%},
+    "description": {{ series.page_description.value | json }}
+    {%- endif -%}
+    {%- if series_image != blank -%},
+    "image": {{ series_image | image_url: width: 1200 | prepend: 'https:' | json }}
+    {%- endif -%}
+    {%- if author_list.size > 0 -%},
+    "author": [
+      {%- for name in author_list -%}
+        {%- assign link = author_url_list[forloop.index0] -%}
+        { "@type": "Person", "name": {{ name | json }}{% if link != blank and link != '-' %}, "url": {{ shop.url | append: link | json }}{% endif %} }
+        {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+    {%- endif -%},
+    "hasPart": [
+      {%- assign position = 0 -%}
+      {%- for book in books -%}
+        {%- assign audiobook = book.metafields.book.audiobook.value -%}
+        {%- if has_book_list == false and audiobook == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign position = position | plus: 1 -%}
+        {%- if position > 1 -%},{%- endif -%}
+        {
+          "@type": "Book",
+          "name": {{ book.title | json }},
+          "url": {{ shop.url | append: book.url | json }},
+          "bookFormat": "https://schema.org/AudiobookFormat",
+          "inLanguage": "en-GB"
+          {%- if book.featured_media -%},
+          "image": {{ book.featured_media | image_url: width: 600 | prepend: 'https:' | json }}
+          {%- endif -%}
+          {%- assign book_authors = audiobook.authors.value -%}
+          {%- if book_authors != blank -%},
+          "author": [
+            {%- for author in book_authors -%}
+              { "@type": "Person", "name": {{ author.name.value | json }} }{%- unless forloop.last -%},{%- endunless -%}
+            {%- endfor -%}
+          ]
+          {%- endif -%}
+          {%- if numbered -%},
+          "position": {{ position }}
+          {%- endif -%}
+        }
+      {%- endfor -%}
+    ]
+  }
+</script>

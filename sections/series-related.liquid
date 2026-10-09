@@ -1,0 +1,50 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SERIES RELATED ("More series to try", templates/metaobject/series.json)
+----------------------------------------------------------------------------------------------------------------------
+
+Cards for the other series, read from the Series metaobjects, so a new series appears here as soon as its entry is
+published. The current series is left out. Each card shows the series' image and name and links to its page; a series
+with no web page (no URL) is skipped. Clicks send series_page_click { target: "related", series, product: null }
+through the listener in sections/series-page.liquid.
+{%- endcomment -%}
+
+{%- liquid
+  assign current_handle = metaobject.system.handle
+  assign shown = 0
+-%}
+
+<section class="series-related" data-series="{{ current_handle | escape }}" {{ section.shopify_attributes }}>
+  <div class="container">
+    <h2 class="series-heading">{{ section.settings.heading | escape }}</h2>
+    <ul class="series-related__grid" role="list">
+      {%- for other in shop.metaobjects.series.values -%}
+        {%- if other.system.handle == current_handle or other.system.url == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign shown = shown | plus: 1 -%}
+        <li>
+          <a href="{{ other.system.url }}" class="series-related__card" data-series-target="related">
+            {%- assign other_image = other.image.value -%}
+            {%- if other_image != blank -%}
+              <span class="series-related__image">{{- other_image | image_url: width: 240 | image_tag: loading: 'lazy', sizes: '56px', widths: '56,112,240', alt: '' -}}</span>
+            {%- endif -%}
+            <span class="series-related__name">{{ other.name.value | escape }}</span>
+          </a>
+        </li>
+        {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Series: more series",
+  "tag": "div",
+  "class": "shopify-section--series-related",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "More series to try" },
+    { "type": "range", "id": "limit", "label": "Most series to show", "min": 2, "max": 50, "step": 1, "default": 50, "info": "Every other published series is shown up to this number, so new series are cross-linked automatically." }
+  ],
+  "presets": [{ "name": "Series: more series" }]
+}
+{% endschema %}

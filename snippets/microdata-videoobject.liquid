@@ -11,11 +11,17 @@
     {%- assign encodes = product.title  -%}
 
   {%- when 'metaobject' -%}
-    {%- assign audiobook = metaobject -%}
-    {%- assign product = all_products[metaobject.system.handle] -%}
-    {%- assign title = metaobject.name | prepend: 'Video of ' -%}
-    {%- assign description = product.description | strip_html | escape | strip_newlines -%}
-    {%- assign encodes = product.title  -%}
+    {%- comment -%} Only an audiobook entry describes a book; on series, character and other entry pages the video is the section's own (title and description from its settings) {%- endcomment -%}
+    {%- if metaobject.system.type == 'audiobook' -%}
+      {%- assign audiobook = metaobject -%}
+      {%- assign product = all_products[metaobject.system.handle] -%}
+      {%- assign title = metaobject.name | prepend: 'Video of ' -%}
+      {%- assign description = product.description | strip_html | escape | strip_newlines -%}
+      {%- assign encodes = product.title  -%}
+    {%- else -%}
+      {%- assign title = section.settings.jsonld_title -%}
+      {%- assign description = section.settings.jsonld_description -%}
+    {%- endif -%}
 
   {%- else -%}
     {%- assign title = section.settings.jsonld_title -%}

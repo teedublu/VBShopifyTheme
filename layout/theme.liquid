@@ -102,6 +102,15 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         assign resolved_page_title = 'The Gruffalo Voxblock Audiobook | Buy Screen-Free Story'
         assign resolved_page_description = 'Buy The Gruffalo as a physical Voxblock audiobook block for screen-free listening. Check compatibility, setup, age suitability and practical purchase details.'
       endif
+
+      # Series pages: "<Series> Audiobooks in Order | Voxblock" when the series has a reading order, else "for Kids"
+      if request.page_type == 'metaobject' and metaobject.system.type == 'series'
+        assign series_title_suffix = ' Audiobooks for Kids | Voxblock'
+        if metaobject.reading_order.value == true and metaobject.books.value != blank
+          assign series_title_suffix = ' Audiobooks in Order | Voxblock'
+        endif
+        assign resolved_page_title = metaobject.name.value | append: series_title_suffix
+      endif
     -%}
 
     <meta charset="utf-8">

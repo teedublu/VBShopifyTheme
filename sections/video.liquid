@@ -32,7 +32,7 @@
 
         {%- if section.settings.autoplay == false and poster_image != blank -%}
           {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
-          {{- poster_image | image_url: width: poster_image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
+          {{- poster_image | image_url: width: poster_image.width | image_tag: alt: poster_image.alt, loading: 'lazy', sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
         {%- endif -%}
       {%- endcapture -%}
 
@@ -48,7 +48,7 @@
     
           <video-media {% if section.settings.autoplay %}autoplay{% endif %} class="sm:hidden" {% if section.settings.video_size == 'auto' %}style="--aspect-ratio: {{ section.settings.mobile_video.aspect_ratio }}"{% endif %}>
             {{- section.settings.mobile_video | video_tag: class: 'object-cover sm:hidden', controls: section.settings.show_controls, playsinline: true, muted: section.settings.autoplay, loop: section.settings.autoplay, preload: 'metadata', image_size: '400x' -}}
-            {{- poster_image | image_url: width: poster_image.width | image_tag: loading: 'lazy', sizes: '100vw', widths: '200,300,400,500,600,700,800,900,1000,1200' -}}
+            {{- poster_image | image_url: width: poster_image.width | image_tag: alt: poster_image.alt, loading: 'lazy', sizes: '100vw', widths: '200,300,400,500,600,700,800,900,1000,1200' -}}
           </video-media>
         {%- endif -%}
 

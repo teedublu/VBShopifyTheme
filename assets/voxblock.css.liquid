@@ -581,3 +581,130 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
   .pack-intro__image { align-self: stretch; }
   .pack-intro__image img { width: 220px; height: 100%; min-height: 220px; }
 }
+
+/* ---------------------------- */
+/* SERIES PAGE (sections/series-page.liquid, sections/series-related.liquid; template metaobject/series.json) */
+/* Character cards (snippets/character-card.liquid) are shared with the character page (sections/character-cast.liquid). */
+/* One layout for every series. Design canvas "Series Page Mockup". Mobile first; 700px and 1000px as elsewhere. */
+/* Colours: var(--brand-heading) teal (headings, buttons), var(--brand-text) text, hero band from the series colour. */
+/* ---------------------------- */
+.series-page, .series-related { color: var(--brand-text); }
+.series-heading { margin: 0; font-size: 24px; line-height: 30px; font-weight: 600; color: var(--brand-heading); letter-spacing: normal; }
+.series-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border-radius: 999px; border: 2px solid var(--brand-heading); background: var(--brand-heading); color: #fff; font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; text-align: center; text-decoration: none; cursor: pointer; }
+.series-button:hover { color: #fff; filter: brightness(1.08); }
+.series-button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
+.series-button--secondary { background: #fff; color: var(--brand-heading); }
+.series-button--secondary:hover { color: var(--brand-heading); background: #f3f7f7; filter: none; }
+.series-button--small { min-height: 44px; padding: 0 18px; font-size: 14px; }
+.series-button--block { width: 100%; }
+.series-button[disabled] { background: #e8e8e8; border-color: #e8e8e8; color: #6b6b6b; cursor: not-allowed; }
+.series-button.bookpreview .playpause { width: 22px; height: 22px; flex: 0 0 22px; }
+
+/* HERO */
+.series-hero { background: var(--series-hero-bg, #ffead7); color: var(--series-hero-ink, #1e2b2c); }
+.series-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding-block: 16px 28px; }
+.series-hero__text { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.series-hero__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.series-hero__title { margin: 0; } /* size and teal come from the site-wide H1 rule above */
+.series-hero--dark h1.series-hero__title { color: inherit; }
+.series-hero__lede { margin: 0; font-size: 16px; line-height: 24px; max-width: 40ch; }
+.series-hero__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.series-chip { padding: 5px 12px; border-radius: 999px; background: var(--series-chip-bg, rgba(255, 255, 255, 0.72)); font-size: 13px; font-weight: 500; line-height: 1.4; }
+.series-chip--link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; color: inherit; text-decoration: none; border: 1px solid transparent; }
+.series-chip--link:hover { color: inherit; border-color: currentColor; }
+.series-chip--link:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.series-hero__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.series-hero--dark .series-button--primary { background: #fff; border-color: #fff; color: var(--brand-heading); }
+.series-hero--dark .series-button--secondary { background: transparent; border-color: #fff; color: #fff; }
+.series-hero--dark .series-button.bookpreview .playpause { filter: invert(1); }
+.series-hero__covers { display: flex; justify-content: center; align-items: flex-end; padding-top: 8px; }
+.series-hero__cover { width: 28%; max-width: 190px; position: relative; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.2)); }
+.series-hero__cover img { width: 100%; height: auto; display: block; }
+.series-hero__cover--1 { transform: rotate(-7deg) translateY(8px); margin-right: -5%; z-index: 3; }
+.series-hero__cover--2 { transform: translateY(-10px); z-index: 2; }
+.series-hero__cover--3 { transform: rotate(7deg) translateY(8px); margin-left: -5%; z-index: 1; }
+.series-hero__cover--1:only-child { transform: none; margin: 0; }
+
+/* BOOKS */
+.series-books { padding-block: 40px 16px; scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }
+.series-books__head { display: flex; flex-direction: column; gap: 16px; }
+.series-books__intro { margin: 6px 0 0; max-width: 60ch; }
+.series-whole { display: flex; align-items: center; justify-content: space-between; gap: 12px 16px; flex-wrap: wrap; padding: 14px 16px; border-radius: 16px; background: #fff7f0; }
+.series-whole__text p { margin: 0; line-height: 1.35; }
+.series-whole__title { font-weight: 600; color: var(--brand-heading); }
+.series-whole__meta { font-size: 13px; }
+.series-whole__price { font-weight: 600; color: var(--brand-text); }
+.series-whole__saving { font-weight: 600; color: var(--accent-strong); }
+.series-books__list { display: flex; flex-direction: column; gap: 16px; margin: 24px 0 0; padding: 0; list-style: none; }
+.series-book { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-areas: "media body" "buy buy"; gap: 14px 16px; padding: 16px; border: 1px solid var(--card-border); border-radius: 16px; background: #fff; }
+.series-book__media { grid-area: media; position: relative; }
+.series-book__media img { width: 100%; height: auto; display: block; }
+.series-book__number { position: absolute; top: -8px; left: -8px; width: 32px; height: 32px; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.series-book__body { grid-area: body; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.series-book__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.series-book__title { margin: 0; font-size: 17px; line-height: 23px; font-weight: 600; letter-spacing: normal; }
+.series-book__title a { color: var(--brand-heading); text-decoration: none; }
+.series-book__title a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.series-book__blurb { margin: 0; font-size: 14px; line-height: 21px; }
+.series-book__meta { margin: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: #6b6b6b; }
+.series-book__buy { grid-area: buy; display: grid; grid-template-columns: auto 1fr 1fr; align-items: center; gap: 8px; }
+.series-book__buy form { margin: 0; }
+.series-book__price { margin: 0; font-size: 17px; font-weight: 700; color: var(--brand-text); white-space: nowrap; padding-right: 4px; }
+.series-book__was { font-weight: 400; font-size: 13px; color: #6b6b6b; }
+
+/* CHARACTERS */
+.series-characters { padding-block: 32px; }
+.character-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
+.character-card { display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 16px; background: #fff7f0; color: var(--brand-text); }
+.character-card__photo { width: var(--character-photo-size, 72px); height: var(--character-photo-size, 72px); border-radius: 50%; overflow: hidden; background: #fff; }
+.character-card__photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; } /* tall full-figure art: show the head */
+.character-card__name { margin: 4px 0 0; font-size: 16px; line-height: 22px; font-weight: 600; letter-spacing: normal; color: var(--brand-heading); }
+.character-card__name a { color: inherit; }
+.character-card__text { margin: 0; font-size: 14px; line-height: 21px; }
+/* Audiobook product page: "Part of the … series · Book n of m" (snippets/series-membership.liquid) */
+.series-membership { margin: 0; font-size: 14px; color: var(--brand-text); }
+.series-membership__link { color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+/* Character page: "Meet the others" (sections/character-cast.liquid) and the round photo in the hero (snippets/person-avatar.liquid) */
+.character-cast { padding-block: 40px; color: var(--brand-text); }
+.character-cast__intro { margin: 8px 0 0; max-width: 60ch; }
+.person-image--character img { width: 100%; height: 100%; object-fit: cover; object-position: center top; } /* tall full-figure art: show the head */
+
+/* ABOUT AND FACTS */
+.series-about { background: #f6f8f8; }
+.series-about__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding-block: 40px; }
+.series-about__text { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.series-about__prose p { margin: 0 0 12px; }
+.series-about__more { border-top: 1px solid #dfe5e5; padding-top: 12px; }
+.series-about__more summary { cursor: pointer; font-weight: 600; color: var(--brand-heading); min-height: 44px; display: flex; align-items: center; }
+.series-about__more .prose { margin-top: 8px; }
+.series-facts { align-self: start; padding: 20px; border-radius: 16px; background: #fff; }
+.series-facts__title { margin: 0 0 12px; font-size: 16px; font-weight: 600; letter-spacing: normal; color: var(--brand-heading); }
+.series-facts__list { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; margin: 0; font-size: 14px; line-height: 20px; }
+.series-facts__list dt { font-weight: 600; color: var(--brand-heading); }
+.series-facts__list dd { margin: 0; }
+.series-facts__list a { color: var(--brand-heading); text-decoration: underline; text-underline-offset: 2px; }
+.series-facts__list a:hover { text-decoration-thickness: 2px; }
+
+/* MORE SERIES */
+.series-related { padding-block: 40px 56px; }
+.series-related__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 12px; margin: 20px 0 0; padding: 0; list-style: none; }
+.series-related__card { display: flex; align-items: center; gap: 12px; min-height: 72px; height: 100%; padding: 8px 16px 8px 8px; border: 1px solid var(--card-border); border-radius: 16px; color: var(--brand-heading); font-weight: 600; text-decoration: none; }
+.series-related__card:hover { border-color: var(--brand-heading); }
+.series-related__image { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 10px; overflow: hidden; background: #f6f8f8; }
+.series-related__image img { width: 100%; height: 100%; object-fit: cover; }
+
+@media screen and (min-width: 700px) {
+  .series-heading { font-size: 28px; line-height: 36px; }
+  .series-book { grid-template-columns: 120px minmax(0, 1fr) 190px; grid-template-areas: "media body buy"; align-items: center; gap: 24px; padding: 20px 24px; }
+  .series-book__buy { grid-template-columns: 1fr; align-self: center; }
+  .series-book__price { font-size: 19px; }
+  .series-book__title { font-size: 20px; line-height: 26px; }
+  .series-books__head { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+}
+
+@media screen and (min-width: 1000px) {
+  .series-hero__inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 40px; padding-block: 24px 56px; }
+  .series-hero__lede { font-size: 19px; line-height: 29px; }
+  .series-books { padding-block: 64px 24px; }
+  .series-about__inner { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; padding-block: 64px; }
+}

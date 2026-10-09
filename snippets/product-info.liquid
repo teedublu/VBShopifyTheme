@@ -85,6 +85,9 @@
       {%- when 'author_narrator' -%}
         {%- render 'audiobook-authornarrator', product: product, block: block -%}
 
+      {%- when 'series' -%}
+        <div {{ block.shopify_attributes }}>{%- render 'series-membership', product: product -%}</div>
+
       {%- when 'price' -%}
         <div class="product-info__price">
           <div class="rating-with-text">
