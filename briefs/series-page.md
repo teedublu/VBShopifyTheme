@@ -72,18 +72,25 @@ series, product }. Sample plays already send `sample_played` (assets/voxblock.js
   tommy/annika/mr-nelson/horse-pippi-longstocking, julian/dick/anne/george/timmy-famous-five,
   perfect-peter/moody-margaret/rude-ralph/sour-susan-horrid-henry). `captain-longstocking` kept: it already names
   the series. Title characters keep plain handles (pippi-longstocking, horrid-henry).
-- 9 Oct, next ten series (ranked by 12-month units), in progress:
+- 9 Oct, next ten series (ranked by 12-month units), done:
   - New manual collections, published to the Online Store, books in reading order (every existing series has one,
     and the live series template shows placeholder products without one): percy-jackson-audiobooks,
     the-faraway-tree-audiobooks, the-gruffalo-audiobooks, ember-spark-audiobooks, the-worst-witch-audiobooks,
     baby-aliens-audiobooks, dave-pigeon-audiobooks.
-  - Series created and published (books, reading order, colour, tagline, description, collection, image, bundle
-    where one exists): paddington, percy-jackson, the-faraway-tree, the-gruffalo, ember-spark.
-  - NOT yet created (a write was refused by the session's permission check): the-worst-witch, baby-aliens,
-    horrible-histories, the-boy-who-grew-dragons, dave-pigeon; and no characters for any of the ten yet.
-    Colours chosen from the covers: Worst Witch #E6DCF5, Baby Aliens #EAF5B5, Horrible Histories #FFF0B3,
-    Dragons #D2E9F8, Dave Pigeon #DCEFFB (all pass contrast). Bundles to set: Worst Witch 8273438277787,
-    Horrible Histories 8103072465051, Dragons 8238651015323, Dave Pigeon 8235868684443 (Baby Aliens has none).
+  - Series created and published, each with books, reading order, colour (from the covers, all pass contrast),
+    tagline, description, collection, image (first cover) and bundle where one exists: paddington, percy-jackson,
+    the-faraway-tree, the-gruffalo, ember-spark, the-worst-witch, baby-aliens (reading order off: standalone
+    stories), horrible-histories (off: non-fiction, chronological), the-boy-who-grew-dragons (the Ultimate Guide is
+    last and shows as Book 6), dave-pigeon. Reading order off for Paddington too (story collections).
+  - 37 characters, published, no photos (initials), linked through each audiobook's `characters` field:
+    Paddington household (Mr/Mrs Brown, Judy, Jonathan, Mrs Bird, Mr Curry; Paddington and Mr Gruber already
+    existed); Percy Jackson (Percy, Annabeth Chase, Grover Underwood, Luke Castellan); The Gruffalo's Child (linked
+    with the Gruffalo, Mouse, Snake, Owl, Fox on that book; The Gruffalo audiobook unchanged); The Faraway Tree (Joe,
+    Beth, Frannie, Moonface, Silky, Saucepan Man; this edition's names); Ember Spark (Ember, Rusty Fizzbang, Arno,
+    Jasper Hornswoggle, Jasper on books 1-2 only); The Worst Witch (Mildred Hubble, Maud Spellbody, Ethel Hallow,
+    Miss Hardbroom, Miss Cackle, Tabby); Baby Aliens (Izzy, Jodie, Zach, Maisie); The Boy Who Grew Dragons (Tomas,
+    Flicker, Grandad; Aura from book 4); Dave Pigeon (Dave, Skipper). Horrible Histories has none.
+  - "More series to try" now shows every other published series (limit 50, was 8).
 
 ## Checked on the branch's draft theme (id 199773421952), 9 Oct
 - /pages/series/famous-five: photos crop to the face, book ages, pills and Good to know links all render; blurbs
