@@ -1,0 +1,590 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SERIES PAGE (templates/metaobject/series.json, every /pages/series/<handle> page)
+----------------------------------------------------------------------------------------------------------------------
+
+One section, driven entirely by the series metaobject, so the same template serves every series. Its blocks (hero,
+books, characters, about) can be reordered or removed in the theme editor. Layout and copy: design canvas
+"Series Page Mockup" (Pippi Longstocking).
+
+Where everything comes from:
+* The books: the series' optional `books` field (a list of products, in reading order). Without it, the products in
+  the series' `collection` that are linked to an audiobook entry (book.audiobook), in the collection's own order.
+  Bundles, starter packs and anything else in the collection are left out.
+* Numbers ("Book 1", "Start with book 1") only when the series has a `books` list AND its `reading_order` field is on:
+  a best-selling collection order is not a reading order.
+* Authors, narrators, characters, reading age, key stage, ATOS level and genres: gathered from each book's audiobook
+  entry, duplicates removed.
+* Hero line: the series' `tagline` field, else its `page_description`.
+* Hero colour: the series' `colour` field, else the block setting. Text turns white on a dark colour.
+* "The whole series": the series' `bundle` field (a product), else a product in the collection whose title holds the
+  series name and "Audiobook Bundle" (static "-set" copies are skipped). The saving shown is the bundle's books bought
+  singly minus the bundle price, and only when there is a saving. With no bundle, an "Add all to basket" form adds
+  every available book.
+* Optional fields (`books`, `reading_order`, `tagline`, `colour`, `bundle`) can be added to the Series definition at
+  any time; until then every part falls back as above.
+
+Tracking: PostHog event series_page_click { target, series, product } on the hero buttons, bundle, add all, book links
+and related series. Sample plays are already tracked globally as sample_played (assets/voxblock.js).
+{%- endcomment -%}
+
+{%- liquid
+  assign series = metaobject
+  assign series_name = series.name.value | default: series.system.handle
+  assign series_handle = series.system.handle
+  assign series_collection = series.collection.value
+
+  assign source_books = series.books.value
+  assign has_book_list = false
+  if source_books != blank
+    assign has_book_list = true
+  elsif series_collection != blank
+    assign source_books = series_collection.products
+  endif
+
+  assign numbered = false
+  if has_book_list and series.reading_order.value == true
+    assign numbered = true
+  endif
+
+  assign book_count = 0
+  assign first_book = nil
+  assign hero_sample_book = nil
+  assign books_total_cents = 0
+  assign available_count = 0
+  assign author_keys = '|'
+  assign author_names = ''
+  assign narrator_keys = '|'
+  assign narrator_names = ''
+  assign narrator_count = 0
+  assign reading_levels = ''
+  assign key_stages = ''
+  assign genres = ''
+  assign character_count = 0
+  assign character_keys = '|'
+  assign atos_min = 99.0
+  assign atos_max = 0.0
+  assign atos_min_text = ''
+  assign atos_max_text = ''
+
+  for book in source_books
+    assign audiobook = book.metafields.book.audiobook.value
+    if has_book_list == false and audiobook == blank
+      continue
+    endif
+    assign book_count = book_count | plus: 1
+    if first_book == nil
+      assign first_book = book
+    endif
+    if hero_sample_book == nil and book.metafields.book.preview != blank
+      assign hero_sample_book = book
+    endif
+    if book.available
+      assign available_count = available_count | plus: 1
+      assign books_total_cents = books_total_cents | plus: book.selected_or_first_available_variant.price
+    endif
+
+    for author in audiobook.authors.value
+      assign key = '|' | append: author.system.handle | append: '|'
+      unless author_keys contains key
+        assign author_keys = author_keys | append: author.system.handle | append: '|'
+        assign author_names = author_names | append: author.name.value | append: '##'
+      endunless
+    endfor
+    for narrator in audiobook.narrators.value
+      assign key = '|' | append: narrator.system.handle | append: '|'
+      unless narrator_keys contains key
+        assign narrator_keys = narrator_keys | append: narrator.system.handle | append: '|'
+        assign narrator_names = narrator_names | append: narrator.name.value | append: '##'
+        assign narrator_count = narrator_count | plus: 1
+      endunless
+    endfor
+    for character in audiobook.characters.value
+      assign key = '|' | append: character.system.handle | append: '|'
+      unless character_keys contains key
+        assign character_keys = character_keys | append: character.system.handle | append: '|'
+        assign character_count = character_count | plus: 1
+      endunless
+    endfor
+    for level in audiobook.reading_level.value
+      assign reading_levels = reading_levels | append: level | append: '##'
+    endfor
+    assign stage = audiobook.key_stage.value | remove: '"' | strip
+    if stage != blank
+      assign key_stages = key_stages | append: stage | append: '##'
+    endif
+    for genre in audiobook.genres.value
+      assign genres = genres | append: genre | append: '##'
+    endfor
+    assign atos_text = audiobook.atos_book_level.value | strip
+    if atos_text != blank
+      assign atos = atos_text | plus: 0.0
+      if atos > 0
+        if atos < atos_min
+          assign atos_min = atos
+          assign atos_min_text = atos_text
+        endif
+        if atos > atos_max
+          assign atos_max = atos
+          assign atos_max_text = atos_text
+        endif
+      endif
+    endif
+  endfor
+
+  assign author_list = author_names | split: '##'
+  assign narrator_list = narrator_names | split: '##'
+  assign reading_level_list = reading_levels | split: '##' | uniq
+  assign key_stage_list = key_stages | split: '##' | uniq
+  assign genre_list = genres | split: '##' | uniq
+
+  assign atos_label = ''
+  if atos_min_text != blank
+    assign atos_label = atos_min_text
+    if atos_max_text != atos_min_text
+      assign atos_label = atos_min_text | append: '–' | append: atos_max_text
+    endif
+  endif
+
+  # "Ages 6-9 Years" style label from the first reading level ("6-9 Years" -> "6–9")
+  assign age_label = ''
+  if reading_level_list.size > 0
+    assign age_label = reading_level_list.first | downcase | remove: 'years' | remove: 'year' | strip | replace: '-', '–'
+  endif
+
+  # The whole-series bundle
+  assign bundle = series.bundle.value
+  if bundle == blank and series_collection != blank
+    assign name_key = series_name | downcase
+    for candidate in series_collection.products
+      assign candidate_title = candidate.title | downcase
+      assign tail = candidate.handle | slice: -4, 4
+      if candidate.available and tail != '-set' and candidate_title contains name_key and candidate_title contains 'audiobook bundle'
+        assign bundle = candidate
+        break
+      endif
+    endfor
+  endif
+  assign bundle_singles_cents = 0
+  assign bundle_book_count = 0
+  if bundle != blank
+    for part in bundle.metafields.bundles.products.value
+      assign bundle_singles_cents = bundle_singles_cents | plus: part.price
+      assign bundle_book_count = bundle_book_count | plus: 1
+    endfor
+  endif
+  assign bundle_saving_cents = 0
+  if bundle != blank and bundle_singles_cents > bundle.price
+    assign bundle_saving_cents = bundle_singles_cents | minus: bundle.price
+  endif
+
+  assign hero_line = series.tagline.value | default: series.page_description.value
+-%}
+
+<div class="series-page" data-series="{{ series_handle | escape }}" {{ section.shopify_attributes }}>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+
+      {%- when 'hero' -%}
+        {%- liquid
+          assign hero_bg = series.colour.value | default: block.settings.background
+          assign hero_ink = '#1e2b2c'
+          assign hero_ink_soft = 'rgba(255, 255, 255, 0.72)'
+          assign hero_is_dark = false
+          assign hero_brightness = hero_bg | color_brightness
+          if hero_brightness < 140
+            assign hero_ink = '#ffffff'
+            assign hero_ink_soft = 'rgba(255, 255, 255, 0.16)'
+            assign hero_is_dark = true
+          endif
+          assign eyebrow = block.settings.eyebrow | replace: '[count]', book_count
+          if book_count == 1
+            assign eyebrow = block.settings.eyebrow_one
+          endif
+        -%}
+        <section class="series-hero{% if hero_is_dark %} series-hero--dark{% endif %}" style="--series-hero-bg: {{ hero_bg }}; --series-hero-ink: {{ hero_ink }}; --series-chip-bg: {{ hero_ink_soft }};" {{ block.shopify_attributes }}>
+          <div class="container series-hero__inner">
+            <div class="series-hero__text">
+              {%- if eyebrow != blank -%}<p class="series-hero__eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
+              <h1 class="series-hero__title">{{ series_name | escape }}</h1>
+              {%- if hero_line != blank -%}<p class="series-hero__lede">{{ hero_line | escape }}</p>{%- endif -%}
+
+              <ul class="series-hero__chips" role="list">
+                {%- if author_list.size > 0 -%}
+                  <li class="series-chip">{{ block.settings.by_label | escape }} {{ author_list | join: ' & ' | escape }}</li>
+                {%- endif -%}
+                {%- if narrator_count == 1 -%}
+                  <li class="series-chip">{{ block.settings.read_by_label | escape }} {{ narrator_list.first | escape }}</li>
+                {%- elsif narrator_count == 2 -%}
+                  <li class="series-chip">{{ block.settings.read_by_label | escape }} {{ narrator_list | join: ' & ' | escape }}</li>
+                {%- endif -%}
+                {%- if age_label != blank -%}
+                  <li class="series-chip">{{ block.settings.ages_label | escape }} {{ age_label | escape }}</li>
+                {%- endif -%}
+              </ul>
+
+              <div class="series-hero__actions">
+                {%- if book_count > 0 -%}
+                  {%- if numbered -%}
+                    {%- assign start_label = block.settings.start_numbered_label -%}
+                  {%- else -%}
+                    {%- assign start_label = block.settings.start_label -%}
+                  {%- endif -%}
+                  <a href="#series-books-{{ section.id }}" class="series-button series-button--primary" data-series-target="hero_books">{{ start_label | escape }}</a>
+                {%- endif -%}
+                {%- if hero_sample_book != blank -%}
+                  <button type="button" class="bookpreview series-button series-button--secondary" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ hero_sample_book.metafields.book.preview | file_url }}" data-title="{{ hero_sample_book.title | escape }}">
+                    <span class="playpause" aria-hidden="true"></span>
+                    <span class="series-button__label">{{ block.settings.sample_label | escape }}</span>
+                  </button>
+                {%- endif -%}
+              </div>
+            </div>
+
+            {%- if book_count > 0 -%}
+              <div class="series-hero__covers" aria-hidden="true">
+                {%- assign shown = 0 -%}
+                {%- for book in source_books -%}
+                  {%- if has_book_list == false and book.metafields.book.audiobook.value == blank -%}{%- continue -%}{%- endif -%}
+                  {%- if book.featured_media == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign shown = shown | plus: 1 -%}
+                  <div class="series-hero__cover series-hero__cover--{{ shown }}">
+                    {{- book.featured_media | image_url: width: 420 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 28vw, 190px', widths: '120,190,240,380,420', alt: '' -}}
+                  </div>
+                  {%- if shown == 3 -%}{%- break -%}{%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </section>
+
+      {%- when 'books' -%}
+        {%- if book_count > 0 -%}
+          {%- liquid
+            if numbered
+              assign books_heading = block.settings.heading_numbered
+              assign books_intro = block.settings.intro_numbered
+            else
+              assign books_heading = block.settings.heading
+              assign books_intro = block.settings.intro
+            endif
+            assign books_intro = books_intro | replace: '[count]', book_count
+            if narrator_count == 1 and block.settings.narrator_line != blank
+              assign narrator_line = block.settings.narrator_line | replace: '[narrator]', narrator_list.first
+              assign books_intro = books_intro | append: ' ' | append: narrator_line | strip
+            endif
+          -%}
+          <section id="series-books-{{ section.id }}" class="series-books" {{ block.shopify_attributes }}>
+            <div class="container">
+              <div class="series-books__head">
+                <div class="series-books__head-text">
+                  <h2 class="series-heading">{{ books_heading | escape }}</h2>
+                  {%- if books_intro != blank -%}<p class="series-books__intro">{{ books_intro | escape }}</p>{%- endif -%}
+                </div>
+
+                {%- if bundle != blank -%}
+                  <div class="series-whole">
+                    <div class="series-whole__text">
+                      <p class="series-whole__title">{{ block.settings.bundle_label | escape }}</p>
+                      <p class="series-whole__meta">
+                        {%- if bundle_book_count > 0 -%}{{ block.settings.bundle_count_label | replace: '[count]', bundle_book_count | escape }} · {% endif -%}
+                        <span class="series-whole__price">{{ bundle.price | money }}</span>
+                        {%- if bundle_saving_cents > 0 %} · <span class="series-whole__saving">{{ block.settings.saving_label | escape }}{{ bundle_saving_cents | money }}</span>{%- endif -%}
+                      </p>
+                    </div>
+                    <a href="{{ bundle.url }}" class="series-button series-button--primary series-button--small" data-series-target="bundle" data-series-product="{{ bundle.handle | escape }}">{{ block.settings.bundle_button | escape }}</a>
+                  </div>
+                {%- elsif available_count > 1 -%}
+                  <form action="{{ routes.cart_add_url }}" method="post" class="series-whole">
+                    {%- assign item_index = 0 -%}
+                    {%- for book in source_books -%}
+                      {%- if has_book_list == false and book.metafields.book.audiobook.value == blank -%}{%- continue -%}{%- endif -%}
+                      {%- unless book.available -%}{%- continue -%}{%- endunless -%}
+                      <input type="hidden" name="items[{{ item_index }}][id]" value="{{ book.selected_or_first_available_variant.id }}">
+                      <input type="hidden" name="items[{{ item_index }}][quantity]" value="1">
+                      {%- assign item_index = item_index | plus: 1 -%}
+                    {%- endfor -%}
+                    <div class="series-whole__text">
+                      <p class="series-whole__title">{{ block.settings.bundle_label | escape }}</p>
+                      <p class="series-whole__meta">{{ block.settings.bundle_count_label | replace: '[count]', available_count | escape }} · <span class="series-whole__price">{{ books_total_cents | money }}</span></p>
+                    </div>
+                    <button type="submit" class="series-button series-button--primary series-button--small" data-series-target="add_all">{{ block.settings.add_all_button | replace: '[count]', available_count | escape }}</button>
+                  </form>
+                {%- endif -%}
+              </div>
+
+              <ol class="series-books__list" role="list">
+                {%- assign position = 0 -%}
+                {%- for book in source_books -%}
+                  {%- assign audiobook = book.metafields.book.audiobook.value -%}
+                  {%- if has_book_list == false and audiobook == blank -%}{%- continue -%}{%- endif -%}
+                  {%- assign position = position | plus: 1 -%}
+                  {%- liquid
+                    assign blurb = audiobook.concise_blurb | metafield_text | strip
+                    if blurb == blank
+                      assign blurb = audiobook.short_blurb | metafield_text | strip
+                    endif
+                    if blurb == blank
+                      assign blurb = book.description | strip_html | strip
+                    endif
+                    assign book_narrators = ''
+                    for narrator in audiobook.narrators.value
+                      unless forloop.first
+                        assign book_narrators = book_narrators | append: ' & '
+                      endunless
+                      assign book_narrators = book_narrators | append: narrator.name.value
+                    endfor
+                    assign book_age = audiobook.reading_level.value.first | downcase | remove: 'years' | remove: 'year' | strip | replace: '-', '–'
+                  -%}
+                  <li class="series-book">
+                    <div class="series-book__media">
+                      <a href="{{ book.url }}" tabindex="-1" aria-hidden="true" data-series-target="book_image" data-series-product="{{ book.handle | escape }}">
+                        {%- if book.featured_media -%}
+                          {{- book.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 88px, 120px', widths: '88,120,176,240,300', alt: '' -}}
+                        {%- endif -%}
+                      </a>
+                      {%- if numbered -%}<span class="series-book__number" aria-hidden="true">{{ position }}</span>{%- endif -%}
+                    </div>
+
+                    <div class="series-book__body">
+                      {%- if numbered -%}
+                        <p class="series-book__eyebrow">{{ block.settings.book_label | replace: '[n]', position | escape }}{% if position == 1 %} · {{ block.settings.start_here_label | escape }}{% endif %}</p>
+                      {%- endif -%}
+                      <h3 class="series-book__title"><a href="{{ book.url }}" data-series-target="book_title" data-series-product="{{ book.handle | escape }}">{{ book.title | escape }}</a></h3>
+                      {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: block.settings.blurb_words | escape }}</p>{%- endif -%}
+                      <p class="series-book__meta">
+                        {%- if book_narrators != blank -%}<span>{{ block.settings.read_by_label | escape }} {{ book_narrators | escape }}</span>{%- endif -%}
+                        {%- if book_age != blank -%}<span>{{ block.settings.ages_label | escape }} {{ book_age | escape }}</span>{%- endif -%}
+                      </p>
+                    </div>
+
+                    <div class="series-book__buy">
+                      <p class="series-book__price">
+                        {%- if book.compare_at_price > book.price -%}<s class="series-book__was">{{ book.compare_at_price | money }}</s> {% endif -%}
+                        {{ book.price | money }}
+                      </p>
+                      {%- if book.available -%}
+                        {%- form 'product', book, is: 'product-form' -%}
+                          <input type="hidden" name="id" value="{{ book.selected_or_first_available_variant.id }}">
+                          <button type="submit" is="custom-button" class="series-button series-button--primary series-button--small series-button--block" data-series-target="add_book" data-series-product="{{ book.handle | escape }}">{{ 'product.general.add_to_cart_button' | t }}</button>
+                        {%- endform -%}
+                      {%- else -%}
+                        <button type="button" class="series-button series-button--small series-button--block" disabled>{{ 'product.general.sold_out_button' | t }}</button>
+                      {%- endif -%}
+                      {%- if book.metafields.book.preview != blank -%}
+                        <button type="button" class="bookpreview series-button series-button--secondary series-button--small series-button--block" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ book.metafields.book.preview | file_url }}" data-title="{{ book.title | escape }}">
+                          <span class="playpause" aria-hidden="true"></span>
+                          <span class="series-button__label">{{ block.settings.sample_label | escape }}<span class="sr-only">: {{ book.title | escape }}</span></span>
+                        </button>
+                      {%- endif -%}
+                    </div>
+                  </li>
+                {%- endfor -%}
+              </ol>
+            </div>
+          </section>
+        {%- endif -%}
+
+      {%- when 'characters' -%}
+        {%- if character_count > 0 -%}
+          <section class="series-characters" {{ block.shopify_attributes }}>
+            <div class="container">
+              <h2 class="series-heading">{{ block.settings.heading | escape }}</h2>
+              <ul class="series-characters__grid" role="list">
+                {%- assign shown_keys = '|' -%}
+                {%- assign shown = 0 -%}
+                {%- for book in source_books -%}
+                  {%- assign audiobook = book.metafields.book.audiobook.value -%}
+                  {%- if audiobook == blank -%}{%- continue -%}{%- endif -%}
+                  {%- for character in audiobook.characters.value -%}
+                    {%- assign key = '|' | append: character.system.handle | append: '|' -%}
+                    {%- if shown_keys contains key or shown >= block.settings.limit -%}{%- continue -%}{%- endif -%}
+                    {%- assign shown_keys = shown_keys | append: character.system.handle | append: '|' -%}
+                    {%- assign shown = shown | plus: 1 -%}
+                    {%- liquid
+                      assign character_text = character.description.value | strip
+                      if character_text == blank
+                        assign character_text = character.bio | metafield_text | strip | truncatewords: 28
+                      endif
+                      assign character_photo = character.photos.value.first
+                      assign character_url = character.system.url
+                    -%}
+                    <li class="series-character">
+                      {%- if character_photo != blank -%}
+                        <div class="series-character__photo">{{- character_photo | image_url: width: 160 | image_tag: loading: 'lazy', sizes: '72px', widths: '72,144,160', alt: '' -}}</div>
+                      {%- endif -%}
+                      <h3 class="series-character__name">
+                        {%- if character_url != blank -%}<a href="{{ character_url }}">{{ character.name.value | escape }}</a>{%- else -%}{{ character.name.value | escape }}{%- endif -%}
+                      </h3>
+                      {%- if character_text != blank -%}<p class="series-character__text">{{ character_text | escape }}</p>{%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          </section>
+        {%- endif -%}
+
+      {%- when 'about' -%}
+        {%- liquid
+          assign description_html = series.description | metafield_tag | remove: '<div class="metafield-rich_text_field">' | remove: '</div>'
+          assign description_text = description_html | strip_html | strip
+          assign paragraphs = description_html | split: '</p>'
+          assign lead_count = block.settings.lead_paragraphs
+        -%}
+        <section class="series-about" {{ block.shopify_attributes }}>
+          <div class="container series-about__inner">
+            <div class="series-about__text">
+              <h2 class="series-heading">{{ block.settings.heading | escape }}</h2>
+              {%- if description_text != blank -%}
+                <div class="series-about__prose prose">
+                  {%- for paragraph in paragraphs -%}
+                    {%- if forloop.index > lead_count -%}{%- break -%}{%- endif -%}
+                    {%- if paragraph contains '<p' -%}{{ paragraph | append: '</p>' }}{%- endif -%}
+                  {%- endfor -%}
+                </div>
+                {%- if paragraphs.size > lead_count -%}
+                  {%- capture more_html -%}
+                    {%- for paragraph in paragraphs offset: lead_count -%}
+                      {%- if paragraph contains '<p' -%}{{ paragraph | append: '</p>' }}{%- endif -%}
+                    {%- endfor -%}
+                  {%- endcapture -%}
+                  {%- if more_html != blank -%}
+                    <details class="series-about__more">
+                      <summary>{{ block.settings.more_label | replace: '[name]', series_name | escape }}</summary>
+                      <div class="prose">{{ more_html }}</div>
+                    </details>
+                  {%- endif -%}
+                {%- endif -%}
+              {%- elsif series.page_description.value != blank -%}
+                <div class="series-about__prose prose"><p>{{ series.page_description.value | escape }}</p></div>
+              {%- endif -%}
+            </div>
+
+            <div class="series-facts">
+              <h3 class="series-facts__title">{{ block.settings.facts_heading | escape }}</h3>
+              <dl class="series-facts__list">
+                {%- if author_list.size > 0 -%}<dt>{{ block.settings.author_label | escape }}</dt><dd>{{ author_list | join: ', ' | escape }}</dd>{%- endif -%}
+                {%- if narrator_list.size > 0 -%}<dt>{{ block.settings.narrator_label | escape }}</dt><dd>{{ narrator_list | join: ', ' | escape }}</dd>{%- endif -%}
+                <dt>{{ block.settings.count_label | escape }}</dt><dd>{{ book_count }}</dd>
+                {%- if reading_level_list.size > 0 -%}<dt>{{ block.settings.age_label | escape }}</dt><dd>{{ reading_level_list | join: ', ' | replace: '-', '–' | escape }}</dd>{%- endif -%}
+                {%- if key_stage_list.size > 0 -%}<dt>{{ block.settings.stage_label | escape }}</dt><dd>{{ key_stage_list | join: ', ' | replace: '/', ' and ' | escape }}</dd>{%- endif -%}
+                {%- if atos_label != blank -%}<dt>{{ block.settings.atos_label | escape }}</dt><dd>{{ atos_label | escape }}</dd>{%- endif -%}
+                {%- if genre_list.size > 0 -%}<dt>{{ block.settings.genre_label | escape }}</dt><dd>{{ genre_list | slice: 0, 4 | join: ', ' | escape }}</dd>{%- endif -%}
+              </dl>
+            </div>
+          </div>
+        </section>
+
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{%- if book_count > 0 -%}
+  {%- render 'series-jsonld', series: series, series_name: series_name, books: source_books, has_book_list: has_book_list, numbered: numbered, author_list: author_list -%}
+{%- endif -%}
+
+<script>
+  (function () {
+    if (window.__seriesPageClickBound) return;
+    window.__seriesPageClickBound = true;
+    document.addEventListener('click', function (event) {
+      var el = event.target.closest && event.target.closest('[data-series-target]');
+      if (!el) return;
+      try {
+        var page = el.closest('[data-series]');
+        if (window.posthog && typeof window.posthog.capture === 'function') {
+          window.posthog.capture('series_page_click', {
+            target: el.getAttribute('data-series-target'),
+            series: page ? page.getAttribute('data-series') : null,
+            product: el.getAttribute('data-series-product') || null
+          });
+        }
+      } catch (e) { /* analytics must never get in the way of the click */ }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Series page",
+  "tag": "div",
+  "class": "shopify-section--series-page",
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Hero",
+      "limit": 1,
+      "settings": [
+        { "type": "color", "id": "background", "label": "Background", "default": "#ffead7", "info": "Used when the series has no colour of its own (Series field \"colour\"). Text turns white on dark colours." },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Audiobook series · [count] books", "info": "[count] is the number of books." },
+        { "type": "text", "id": "eyebrow_one", "label": "Eyebrow with one book", "default": "Audiobook series" },
+        { "type": "text", "id": "by_label", "label": "Author prefix", "default": "By" },
+        { "type": "text", "id": "read_by_label", "label": "Narrator prefix", "default": "Read by" },
+        { "type": "text", "id": "ages_label", "label": "Age prefix", "default": "Ages" },
+        { "type": "text", "id": "start_label", "label": "Button", "default": "See the books" },
+        { "type": "text", "id": "start_numbered_label", "label": "Button when the series has a reading order", "default": "Start with book 1" },
+        { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Hear a sample" }
+      ]
+    },
+    {
+      "type": "books",
+      "name": "Books",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "The books" },
+        { "type": "text", "id": "intro", "label": "Intro", "default": "[count] audiobooks, each on its own block.", "info": "[count] is the number of books." },
+        { "type": "text", "id": "heading_numbered", "label": "Heading with a reading order", "default": "Listen in order" },
+        { "type": "text", "id": "intro_numbered", "label": "Intro with a reading order", "default": "Each story follows on from the last, so book 1 is the place to start." },
+        { "type": "text", "id": "narrator_line", "label": "Narrator sentence", "default": "All read by [narrator].", "info": "Added to the intro only when every book has the same narrator." },
+        { "type": "text", "id": "book_label", "label": "Book number label", "default": "Book [n]" },
+        { "type": "text", "id": "start_here_label", "label": "First book label", "default": "Start here" },
+        { "type": "range", "id": "blurb_words", "label": "Blurb length (words)", "min": 20, "max": 80, "step": 5, "default": 45 },
+        { "type": "text", "id": "read_by_label", "label": "Narrator prefix", "default": "Read by" },
+        { "type": "text", "id": "ages_label", "label": "Age prefix", "default": "Ages" },
+        { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Play sample" },
+        { "type": "header", "content": "The whole series" },
+        { "type": "text", "id": "bundle_label", "label": "Title", "default": "The whole series" },
+        { "type": "text", "id": "bundle_count_label", "label": "Book count", "default": "[count] audiobooks" },
+        { "type": "text", "id": "saving_label", "label": "Saving prefix", "default": "Save " },
+        { "type": "text", "id": "bundle_button", "label": "Bundle button", "default": "See the bundle" },
+        { "type": "text", "id": "add_all_button", "label": "Add all button (no bundle)", "default": "Add all [count]" }
+      ]
+    },
+    {
+      "type": "characters",
+      "name": "Characters",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Characters linked to the series' audiobooks. Hidden when there are none." },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Meet the characters" },
+        { "type": "range", "id": "limit", "label": "Most characters to show", "min": 2, "max": 12, "step": 1, "default": 8 }
+      ]
+    },
+    {
+      "type": "about",
+      "name": "About and facts",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "About the series" },
+        { "type": "range", "id": "lead_paragraphs", "label": "Paragraphs shown before \"Read more\"", "min": 1, "max": 6, "step": 1, "default": 2 },
+        { "type": "text", "id": "more_label", "label": "Read more label", "default": "Read more about [name]" },
+        { "type": "text", "id": "facts_heading", "label": "Facts heading", "default": "Good to know" },
+        { "type": "text", "id": "author_label", "label": "Author", "default": "Author" },
+        { "type": "text", "id": "narrator_label", "label": "Narrator", "default": "Narrator" },
+        { "type": "text", "id": "count_label", "label": "Books", "default": "Audiobooks" },
+        { "type": "text", "id": "age_label", "label": "Reading age", "default": "Reading age" },
+        { "type": "text", "id": "stage_label", "label": "School stage", "default": "School stage" },
+        { "type": "text", "id": "atos_label", "label": "Book level", "default": "Book level (ATOS)" },
+        { "type": "text", "id": "genre_label", "label": "Genres", "default": "Genres" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Series page",
+      "blocks": [{ "type": "hero" }, { "type": "books" }, { "type": "characters" }, { "type": "about" }]
+    }
+  ]
+}
+{% endschema %}

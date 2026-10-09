@@ -1,5 +1,14 @@
 # STATUS
 
+## 2026-10-09: Series pages, one template for every series (build)
+Branch `claude/series-page`, pushed to GitHub, **awaiting owner review on a draft theme connected to the branch; no PR
+yet**. Full record, data model and open items: `briefs/series-page.md`.
+- New `sections/series-page.liquid` (hero, books, characters, about), `sections/series-related.liquid`,
+  `snippets/series-jsonld.liquid`; `templates/metaobject/series.json` rebuilt; CSS block at the end of voxblock.css.
+- Works with today's data: books = series collection products linked to an audiobook entry (bundles, packs and
+  strays left out). Optional Series fields `books`, `reading_order`, `tagline`, `colour`, `bundle` improve it.
+- Tracking: PostHog `series_page_click` { target, series, product }.
+
 ## 2026-10-08: /pages/voxblock-vs-yoto mobile-first hero, "Option B" (merged)
 Built on `claude/practical-wright-7z6szw`, previewed on draft theme `VBShopifyTheme/claude/practical-wright-7z6szw`
 (id 199704314240, a duplicate of the live theme with the changed files pushed by API). Owner approved on 8 Oct and the

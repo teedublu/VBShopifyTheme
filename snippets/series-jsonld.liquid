@@ -1,0 +1,48 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SERIES JSON-LD (rendered by sections/series-page.liquid)
+----------------------------------------------------------------------------------------------------------------------
+
+BookSeries structured data: the series and its books, with positions when the series has a reading order.
+
+* series: the series metaobject
+* series_name: its name
+* books: the list the page shows (the series' books field, or its collection's products)
+* has_book_list: true when books came from the books field (every item is a book); otherwise items with no
+  book.audiobook link are skipped, as on the page
+* numbered: true when the series has a reading order
+* author_list: the authors' names
+{%- endcomment -%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BookSeries",
+    "name": {{ series_name | json }},
+    "url": {{ canonical_url | json }}
+    {%- if series.page_description.value != blank -%},
+    "description": {{ series.page_description.value | json }}
+    {%- endif -%}
+    {%- if author_list.size > 0 -%},
+    "author": [{%- for name in author_list -%}{ "@type": "Person", "name": {{ name | json }} }{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+    {%- endif -%},
+    "hasPart": [
+      {%- assign position = 0 -%}
+      {%- for book in books -%}
+        {%- if has_book_list == false and book.metafields.book.audiobook.value == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign position = position | plus: 1 -%}
+        {%- if position > 1 -%},{%- endif -%}
+        {
+          "@type": "Book",
+          "name": {{ book.title | json }},
+          "url": {{ shop.url | append: book.url | json }}
+          {%- if book.featured_media -%},
+          "image": {{ book.featured_media | image_url: width: 600 | prepend: 'https:' | json }}
+          {%- endif -%}
+          {%- if numbered -%},
+          "position": {{ position }}
+          {%- endif -%}
+        }
+      {%- endfor -%}
+    ]
+  }
+</script>
