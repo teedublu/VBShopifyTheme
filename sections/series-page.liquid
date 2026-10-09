@@ -398,9 +398,10 @@ book links and related series. Sample plays are already tracked globally as samp
                   {%- if has_book_list == false and audiobook == blank -%}{%- continue -%}{%- endif -%}
                   {%- assign position = position | plus: 1 -%}
                   {%- liquid
-                    assign blurb = audiobook.concise_blurb | metafield_text | strip
+                    # Rich text rendered then stripped: HTML-safe as it stands (metafield_text double-encodes apostrophes)
+                    assign blurb = audiobook.concise_blurb | metafield_tag | strip_html | strip
                     if blurb == blank
-                      assign blurb = audiobook.short_blurb | metafield_text | strip
+                      assign blurb = audiobook.short_blurb | metafield_tag | strip_html | strip
                     endif
                     if blurb == blank
                       assign blurb = book.description | strip_html | strip
@@ -429,7 +430,7 @@ book links and related series. Sample plays are already tracked globally as samp
                         <p class="series-book__eyebrow">{{ block.settings.book_label | replace: '[n]', position | escape }}{% if position == 1 %} · {{ block.settings.start_here_label | escape }}{% endif %}</p>
                       {%- endif -%}
                       <h3 class="series-book__title"><a href="{{ book.url }}" data-series-target="book_title" data-series-product="{{ book.handle | escape }}">{{ book.title | escape }}</a></h3>
-                      {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: block.settings.blurb_words | escape_once }}</p>{%- endif -%}
+                      {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: block.settings.blurb_words }}</p>{%- endif -%}
                       <p class="series-book__meta">
                         {%- if book_narrators != blank -%}<span>{{ block.settings.read_by_label | escape }} {{ book_narrators | escape }}</span>{%- endif -%}
                         {%- if book_age != blank -%}<span>{{ block.settings.ages_label | escape }} {{ book_age | escape }}</span>{%- endif -%}
@@ -480,9 +481,10 @@ book links and related series. Sample plays are already tracked globally as samp
                     {%- assign shown_keys = shown_keys | append: character.system.handle | append: '|' -%}
                     {%- assign shown = shown | plus: 1 -%}
                     {%- liquid
-                      assign character_text = character.description.value | strip
+                      # Both branches end HTML-safe: the plain field is escaped here, rich text is rendered then stripped
+                      assign character_text = character.description.value | strip | escape
                       if character_text == blank
-                        assign character_text = character.bio | metafield_text | strip | truncatewords: 28
+                        assign character_text = character.bio | metafield_tag | strip_html | strip | truncatewords: 28
                       endif
                       assign character_photo = character.photos.value | first
                       assign character_url = character.system.url
@@ -499,7 +501,7 @@ book links and related series. Sample plays are already tracked globally as samp
                       <h3 class="series-character__name">
                         {%- if character_url != blank -%}<a href="{{ character_url }}">{{ character.name.value | escape }}</a>{%- else -%}{{ character.name.value | escape }}{%- endif -%}
                       </h3>
-                      {%- if character_text != blank -%}<p class="series-character__text">{{ character_text | escape_once }}</p>{%- endif -%}
+                      {%- if character_text != blank -%}<p class="series-character__text">{{ character_text }}</p>{%- endif -%}
                     </li>
                   {%- endfor -%}
                 {%- endfor -%}
