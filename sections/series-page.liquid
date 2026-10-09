@@ -429,7 +429,7 @@ book links and related series. Sample plays are already tracked globally as samp
                         <p class="series-book__eyebrow">{{ block.settings.book_label | replace: '[n]', position | escape }}{% if position == 1 %} · {{ block.settings.start_here_label | escape }}{% endif %}</p>
                       {%- endif -%}
                       <h3 class="series-book__title"><a href="{{ book.url }}" data-series-target="book_title" data-series-product="{{ book.handle | escape }}">{{ book.title | escape }}</a></h3>
-                      {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: block.settings.blurb_words | escape }}</p>{%- endif -%}
+                      {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: block.settings.blurb_words | escape_once }}</p>{%- endif -%}
                       <p class="series-book__meta">
                         {%- if book_narrators != blank -%}<span>{{ block.settings.read_by_label | escape }} {{ book_narrators | escape }}</span>{%- endif -%}
                         {%- if book_age != blank -%}<span>{{ block.settings.ages_label | escape }} {{ book_age | escape }}</span>{%- endif -%}
@@ -499,7 +499,7 @@ book links and related series. Sample plays are already tracked globally as samp
                       <h3 class="series-character__name">
                         {%- if character_url != blank -%}<a href="{{ character_url }}">{{ character.name.value | escape }}</a>{%- else -%}{{ character.name.value | escape }}{%- endif -%}
                       </h3>
-                      {%- if character_text != blank -%}<p class="series-character__text">{{ character_text | escape }}</p>{%- endif -%}
+                      {%- if character_text != blank -%}<p class="series-character__text">{{ character_text | escape_once }}</p>{%- endif -%}
                     </li>
                   {%- endfor -%}
                 {%- endfor -%}
