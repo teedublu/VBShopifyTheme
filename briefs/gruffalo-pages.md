@@ -54,6 +54,18 @@ Design: "Gruffalo Pages" canvas. Built:
 - Checked 1366x768 and 375x812 on the-gruffalo, owl, cast: no horizontal scroll, no Liquid errors, two sign-up forms
   per page render. The sign-up was not submitted (would add a real profile); test it with your own email.
 
+## Round 3 (review against live, 10 Oct)
+Search Console, 90 days: character page 846 Google Images clicks vs 196 web (81% images); cast page 602 vs 477.
+PostHog, 90 days: 2,811 sessions started on the six character/cast pages; 0 purchases in-session, 2 add-to-carts,
+13 sample plays. Goal set: keep the traffic, capture teachers (school sign-up, school packages), get the sample
+played; sales are a bonus.
+- The 3D cover (the page's only Gruffalo image on live, so the likely Images ranker) now sits beside "What does the
+  Gruffalo look like?" at up to 836px, alt "The Gruffalo audiobook cover, showing the Gruffalo and Mouse in the deep
+  dark wood". Also kept in the home band (now up to 836px).
+- Short answers "Is the Gruffalo real?" / "What does Gruffalo mean?" removed (still in the FAQ); added "Who created
+  the Gruffalo?".
+- Watch after launch: Images and web clicks for both URLs against the numbers above, weekly for 8 weeks.
+
 ## Checked (draft theme, round 1)
 1366x768: on /pages/character/the-gruffalo the whole hero (sample at 413px, pack at 498px) ends at 723px. Cast, Owl,
 Fox, Snake render with their own art, H1 and intro; no Liquid errors; no horizontal overflow. 375x812: art, H1, intro,
