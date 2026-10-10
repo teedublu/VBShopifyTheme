@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "saved_books": {
@@ -5,10 +14,24 @@
       "settings": {
         "full_width": true,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
+        "products_per_row_desktop": 5,
         "subheading": "",
         "title": "Saved items",
         "content": "",
+        "account_text": "Keep your list on any device",
+        "account_button_label": "Save with my email",
+        "account_signed_in_text": "Saved to [email]",
+        "share_title": "Birthday or Christmas coming up?",
+        "share_description": "Send this list to others so they know what to get.",
+        "share_button_label": "Send my wish list",
+        "share_text": "Here's my Voxblock wish list, in case you're stuck for ideas:",
+        "share_email_subject": "My Voxblock wish list",
+        "shared_heading": "[name]'s wish list: [items]",
+        "shared_heading_anonymous": "A Voxblock wish list: [items]",
+        "shared_text": "Looking for a gift idea? Tap the heart on the ones you like, or save them all to your own list.",
+        "save_all_button_label": "Save all to my list",
+        "save_all_done_label": "All saved to your list",
+        "own_list_link_label": "See my saved items",
         "continue_button_label": "Continue browsing",
         "continue_button_link": "shopify://collections/audiobooks",
         "empty_text": "<p>You haven't saved anything yet. Tap the heart on any product to keep it here.</p>",
@@ -20,21 +43,7 @@
         "heading_color": "",
         "heading_gradient": "",
         "product_card_background": "",
-        "product_card_text_color": "",
-        "account_text": "Keep your list on any device",
-        "account_button_label": "Save with my email",
-        "account_signed_in_text": "Saved to [email]",
-        "share_title": "Birthday or Christmas coming up?",
-        "share_description": "Send this list to family so they know what to get.",
-        "share_button_label": "Send my wish list",
-        "share_text": "Here's my Voxblock wish list, in case you're stuck for ideas:",
-        "share_email_subject": "My Voxblock wish list",
-        "shared_heading": "[name]'s wish list: [items]",
-        "shared_heading_anonymous": "A Voxblock wish list: [items]",
-        "shared_text": "Looking for a gift idea? Tap the heart on the ones you like, or save them all to your own list.",
-        "save_all_button_label": "Save all to my list",
-        "save_all_done_label": "All saved to your list",
-        "own_list_link_label": "See my saved items"
+        "product_card_text_color": ""
       }
     }
   },
@@ -42,4 +51,3 @@
     "saved_books"
   ]
 }
-
