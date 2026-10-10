@@ -299,6 +299,35 @@ if (cartDrawerEl && playerPromptObserver) {
 
 
 // ----------------------------------------------------------------------------------------------------------------
+// CART DRAWER VIEWS: Shopify's standard `cart_viewed` only fires on the /cart page, and almost nobody goes there,
+// so the drawer was invisible in PostHog. Each time the drawer finishes opening, publish the custom Shopify
+// customer event `vb_cart_drawer_viewed` { source: 'drawer', trigger, item_count, total_price, page }; the custom
+// pixel subscribes to it and sends PostHog `cart_viewed` with these properties. trigger = 'after_add' when the
+// theme opened it straight after an add-to-cart, otherwise 'manual' (basket icon).
+// ----------------------------------------------------------------------------------------------------------------
+let lastVariantAddAt = 0;
+let lastCart = null;
+document.addEventListener('variant:add', () => { lastVariantAddAt = Date.now(); });
+document.addEventListener('cart:change', (event) => { lastCart = (event.detail && event.detail.cart) || lastCart; });
+document.addEventListener('dialog:after-show', async (event) => {
+    if (!event.target || event.target.tagName !== 'CART-DRAWER') return;
+    if (!window.Shopify || !window.Shopify.analytics || typeof window.Shopify.analytics.publish !== 'function') return;
+    const props = {
+        source: 'drawer',
+        trigger: Date.now() - lastVariantAddAt < 5000 ? 'after_add' : 'manual',
+        page: window.location.pathname,
+    };
+    try {
+        // Opened from the basket icon before any change on this page: read the basket once
+        if (!lastCart) lastCart = await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`).then((r) => r.json());
+        props.item_count = lastCart.item_count;
+        props.total_price = lastCart.total_price / 100;
+    } catch (e) { /* send without basket details */ }
+    try { window.Shopify.analytics.publish('vb_cart_drawer_viewed', props); } catch (e) { /* never block the basket */ }
+});
+
+
+// ----------------------------------------------------------------------------------------------------------------
 // STORY HERO (sections/story-hero.liquid): PostHog `story_hero_click` { target, page } for data-story-track links.
 // The sample button is a normal .bookpreview button and already sends `sample_played`.
 // ----------------------------------------------------------------------------------------------------------------
