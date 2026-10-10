@@ -11,6 +11,26 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
 
+## 2026-10-10: /pages/voxblock-vs-yoto add-to-basket + sticky table header (build)
+Branch `claude/vs-yoto-buy-buttons`, draft PR into `main`, **awaiting owner check on draft theme 199807009152**.
+- Hero: primary button is now the theme's own `.button` (pill, site orange, white text) instead of custom dark-text
+  styling; the "Primary button" colour settings were removed from VS hero. Voxblock card: image/name link to the
+  player, plus "Add to basket" (cheapest available variant = No bumper, £49.99, the price shown).
+- New `snippets/vs-buy.liquid` (product-form add, optional bumper swatches via the existing pack-card JS).
+- `comparison-table`: optional Column 1 product (link, live price, Add to basket), optional compact sticky header
+  (thumb, name, price per column + "Add"), new "Image fit" setting. All default off, so other templates using the
+  section are unchanged. On for the "Player vs player" table only.
+- `price-breakdown`: optional per-card product (Add to basket, swatches, "See what's in the pack" link). Set on the
+  Gruffalo and Friends Starter Pack card only.
+- Book comparison: Voxblock column uses `product-book-bookshelf-the-gruffalo.png` (hand taking the book from the
+  shelf), Image fit = Fill. Yoto column photo NOT changed yet: the owner's "Yoto card on a table" photo is from a
+  third-party blog (watermarked); waiting on the owner to clear rights and upload it to Files.
+- Tracking: PostHog `vs_yoto_click` { target: hero_add_player | table_add_player | table_sticky_add_player |
+  table_player_page | pack_add | pack_page, page } (voxblock.js); hero keeps `vs_yoto_hero_click`, now also
+  `player_page`.
+- Checked on the draft theme at 375px and 1366px; pack Add with Green swatch added the Green variant and opened the
+  cart drawer (test item removed).
+
 ## 2026-10-09: Gruffalo character + cast pages (build)
 Branch `claude/gruffalo-pages`, draft PR into `main`, **awaiting owner check on draft theme 199796130176**.
 Full record and flags: `briefs/gruffalo-pages.md`.
