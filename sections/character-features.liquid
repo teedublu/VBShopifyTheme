@@ -5,6 +5,8 @@ CHARACTER FEATURES ("What does the Gruffalo look like?", templates/metaobject/ch
 The search answer people come for, straight under the hero: an H2 with the question, the character's features as
 small cards (block "feature"), then short answers as H3 + text (block "answer"), with an optional link.
 Plain descriptors only: the book's own wording is not reproduced.
+Optional image (setting "image"): the 3D Gruffalo audiobook cover, which earns most of the page's Google Images clicks,
+so it sits next to the description text it ranks with, at full size (up to 836px).
 "Only show on" limits the section to one metaobject handle, because Owl, Fox and Snake share the template.
 {%- endcomment -%}
 
@@ -18,8 +20,15 @@ Plain descriptors only: the book's own wording is not reproduced.
 -%}
 
 {%- if show -%}
-  <section class="character-features" {{ section.shopify_attributes }}>
-    <div class="container">
+  {%- assign image_alt = section.settings.image_alt | default: section.settings.image.alt -%}
+  <section class="character-features{% if section.settings.image != blank %} character-features--image{% endif %}" {{ section.shopify_attributes }}>
+    <div class="container character-features__inner">
+      {%- if section.settings.image != blank -%}
+        <div class="character-features__media">
+          {{- section.settings.image | image_url: width: 836 | image_tag: loading: 'lazy', sizes: '(max-width: 999px) 50vw, 280px', widths: '300,440,600,836', alt: image_alt -}}
+        </div>
+      {%- endif -%}
+      <div class="character-features__main">
       <div class="character-features__head">
         <h2 class="series-heading">{{ section.settings.heading | escape }}</h2>
         {%- if section.settings.intro != blank -%}<p class="character-features__intro">{{ section.settings.intro | escape }}</p>{%- endif -%}
@@ -50,6 +59,7 @@ Plain descriptors only: the book's own wording is not reproduced.
       {%- if section.settings.link_url != blank and section.settings.link_label != blank -%}
         <p class="character-features__more"><a href="{{ section.settings.link_url }}">{{ section.settings.link_label | escape }}</a></p>
       {%- endif -%}
+      </div>
     </div>
   </section>
 {%- endif -%}
@@ -63,6 +73,8 @@ Plain descriptors only: the book's own wording is not reproduced.
     { "type": "text", "id": "only_handle", "label": "Only show on (page handle)", "info": "e.g. the-gruffalo. Leave empty to show on every page using this template." },
     { "type": "text", "id": "heading", "label": "Heading (H2)", "default": "What does the Gruffalo look like?" },
     { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown beside the features on desktop." },
+    { "type": "text", "id": "image_alt", "label": "Image description" },
     { "type": "text", "id": "link_label", "label": "Link text" },
     { "type": "url", "id": "link_url", "label": "Link" }
   ],

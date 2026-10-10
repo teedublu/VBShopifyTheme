@@ -598,7 +598,9 @@
         "heading": "What does the Gruffalo look like?",
         "intro": "The Gruffalo's description, feature by feature, as Mouse describes him in the story: a large monster with tusks, claws, orange eyes, a poisonous wart, a black tongue and purple prickles down his back.",
         "link_label": "Read the story overview",
-        "link_url": "/pages/overview/the-gruffalo"
+        "link_url": "/pages/overview/the-gruffalo",
+        "image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+        "image_alt": "The Gruffalo audiobook cover, showing the Gruffalo and Mouse in the deep dark wood"
       },
       "blocks": {
         "f1": {
@@ -643,25 +645,18 @@
             "text": "And toes that point outwards"
           }
         },
-        "a_real": {
-          "type": "answer",
-          "settings": {
-            "question": "Is the Gruffalo real?",
-            "answer": "<p>No. The Gruffalo is a fictional storybook creature, not a real animal. Inside the world of the book, though, Mouse meets the real Gruffalo after describing him to the other animals, which is the whole joke of the story.</p>"
-          }
-        },
-        "a_mean": {
-          "type": "answer",
-          "settings": {
-            "question": "What does Gruffalo mean?",
-            "answer": "<p>In the story, \"Gruffalo\" is the name Mouse gives to his invented monster. The word sounds rough, growly and memorable, which helps make the creature feel funny and frightening at the same time. It isn't a word from anywhere else.</p>"
-          }
-        },
         "a_what": {
           "type": "answer",
           "settings": {
             "question": "What happens in the story?",
             "answer": "<p>Mouse walks through the deep dark wood, talks his way past three hungry animals, then has to think even faster when the monster he invented turns out to be real. The full plot, age guide and creators are in the <a href=\"/pages/overview/the-gruffalo\" title=\"The Gruffalo story overview\">Gruffalo story overview</a>.</p>"
+          }
+        },
+        "a_who": {
+          "type": "answer",
+          "settings": {
+            "question": "Who created the Gruffalo?",
+            "answer": "<p>Julia Donaldson wrote <em>The Gruffalo</em> and Axel Scheffler drew him. The picture book was first published by Macmillan in 1999.</p>"
           }
         }
       },
@@ -672,9 +667,8 @@
         "f4",
         "f5",
         "f6",
-        "a_real",
-        "a_mean",
-        "a_what"
+        "a_what",
+        "a_who"
       ]
     },
     "cast": {

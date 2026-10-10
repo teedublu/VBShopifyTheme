@@ -901,6 +901,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .character-features__card-title { font-size: 15px; font-weight: 700; line-height: 20px; color: var(--brand-heading); }
 .character-features__card-text { font-size: 13px; line-height: 18px; }
 .character-features__answers { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 28px; }
+.character-features__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.character-features__main { min-width: 0; }
+.character-features__media { display: flex; justify-content: center; order: 2; }
+.character-features__media img { display: block; width: auto; max-width: 55vw; max-height: 280px; height: auto; object-fit: contain; }
 .character-features__question { margin: 0 0 4px; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: normal; color: var(--brand-heading); }
 .character-features__text p { margin: 0; font-size: 15px; line-height: 23px; }
 .character-features__more { margin: 12px 0 0; }
@@ -953,7 +957,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 
 @media screen and (min-width: 700px) {
   .character-features__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .character-features__answers { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .character-features__answers { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
   .story-home-band__inner { grid-template-columns: 240px minmax(0, 1fr); gap: 40px; }
   .story-home-band__media img { max-width: 100%; max-height: 300px; }
   .story-home-band__title { font-size: 28px; line-height: 36px; }
@@ -961,6 +965,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 @media screen and (min-width: 1000px) {
   .character-features { padding-block: 48px; }
   .character-features__grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .character-features--image .character-features__inner { grid-template-columns: 240px minmax(0, 1fr); gap: 40px; align-items: start; }
+  .character-features--image .character-features__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .character-features__media { order: 0; }
+  .character-features__media img { max-width: 100%; max-height: 420px; }
   .classroom-band__inner { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 48px; padding-block: 48px; align-items: center; }
   .classroom-band__media img { height: 420px; border-radius: 20px; }
   .classroom-band__title { font-size: 30px; line-height: 38px; }
