@@ -76,36 +76,12 @@
             "background": "",
             "background_gradient": ""
           }
-        },
-        "image_y9QmGn": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/challenge-header-web-v.26_1.png",
-            "mobile_image": "shopify://shop_images/challenge-header-mob-v.26_1.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "Join Our",
-            "title": "Listening Challenge",
-            "heading_tag": "h1",
-            "button_text": "Find out more",
-            "button_link": "shopify://pages/voxblock-listening-challenge",
-            "text_color": "#ffffff",
-            "button_background": "#fa9d3a",
-            "button_text_color": "#fff3ed",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30,
-            "background": "",
-            "background_gradient": ""
-          }
         }
       },
       "block_order": [
         "image_yXy8xr",
         "image_YGxQ7h",
-        "image_yPdRD4",
-        "image_y9QmGn"
+        "image_yPdRD4"
       ],
       "settings": {
         "full_width": true,
@@ -322,6 +298,13 @@
         "filter_layout": "sidebar",
         "show_sort_by": true,
         "sticky_filters": true,
+        "card_style": "default",
+        "age_bar_enabled": false,
+        "age_filter_param": "filter.p.m.book.age_groups",
+        "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
+        "gift_button_label": "Gift sets",
+        "gift_filter_param": "filter.p.m.pack.gift_set",
+        "help_url": "",
         "show_filters": true,
         "show_filter_group_name": false,
         "show_filter_values_count": true,
