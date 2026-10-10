@@ -10,6 +10,12 @@ Tracking: PostHog `story_hero_click` { target: schools | resources } and `school
 
 <section class="classroom-band" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
   <div class="container classroom-band__inner">
+    {%- if section.settings.image != blank -%}
+      <div class="classroom-band__media">
+        {{- section.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(max-width: 999px) 92vw, 440px', widths: '400,600,900', alt: section.settings.image.alt -}}
+      </div>
+    {%- endif -%}
+
     <div class="classroom-band__text">
       {%- if section.settings.eyebrow != blank -%}<p class="classroom-band__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h2 class="classroom-band__title">{{ section.settings.heading | escape }}</h2>
@@ -18,27 +24,14 @@ Tracking: PostHog `story_hero_click` { target: schools | resources } and `school
       {%- if section.blocks.size > 0 -%}
         <ul class="classroom-band__points" role="list">
           {%- for block in section.blocks -%}
-            <li class="classroom-band__point" {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            <li class="classroom-band__point" {{ block.shopify_attributes }}>
+              <svg class="classroom-band__tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12l5 5 9-10"/></svg>
+              <div class="classroom-band__point-text">{{ block.settings.text }}</div>
+            </li>
           {%- endfor -%}
         </ul>
       {%- endif -%}
 
-      <div class="classroom-band__actions">
-        {%- if section.settings.button_url != blank -%}
-          <a href="{{ section.settings.button_url }}" class="series-button" data-story-track="schools">{{ section.settings.button_label | escape }}</a>
-        {%- endif -%}
-        {%- if section.settings.link_url != blank -%}
-          <a href="{{ section.settings.link_url }}" class="classroom-band__link" data-story-track="resources">{{ section.settings.link_label | escape }}</a>
-        {%- endif -%}
-      </div>
-    </div>
-
-    <div class="classroom-band__side">
-      {%- if section.settings.image != blank -%}
-        <div class="classroom-band__media">
-          {{- section.settings.image | image_url: width: 700 | image_tag: loading: 'lazy', sizes: '(max-width: 999px) 80vw, 380px', widths: '300,450,700', alt: section.settings.image.alt -}}
-        </div>
-      {%- endif -%}
       {%- if section.settings.show_signup -%}
         <div class="classroom-band__signup">
           <p class="classroom-band__signup-title">{{ section.settings.signup_title | escape }}</p>
@@ -46,6 +39,15 @@ Tracking: PostHog `story_hero_click` { target: schools | resources } and `school
           {%- if section.settings.signup_note != blank -%}<p class="classroom-band__signup-note">{{ section.settings.signup_note | escape }}</p>{%- endif -%}
         </div>
       {%- endif -%}
+
+      <div class="classroom-band__actions">
+        {%- if section.settings.button_url != blank -%}
+          <a href="{{ section.settings.button_url }}" class="series-button series-button--secondary" data-story-track="schools">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.link_url != blank -%}
+          <a href="{{ section.settings.link_url }}" class="classroom-band__link" data-story-track="resources">{{ section.settings.link_label | escape }}</a>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 </section>
