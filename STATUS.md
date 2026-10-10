@@ -24,8 +24,8 @@ Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner 
   sticky header, "Image fit" setting. All default off; other templates unchanged.
 - `price-breakdown`: optional per-card button collection; every card gets the same footer so totals line up
   (checked: all three totals at the same height on desktop). Default off.
-- Book comparison: Voxblock column photo = `product-book-bookshelf-the-gruffalo.png`, Fill. Yoto column photo NOT
-  changed: the owner's photo is from a third-party blog (watermarked); waiting on rights + upload to Files.
+- Book comparison: Voxblock column photo = `product-book-bookshelf-the-gruffalo.png`, Fill. Yoto column photo =
+  `Yoto_card_on_table.jpg` (uploaded by the owner 10 Oct, cropped from a third-party blog photo; owner cleared use).
 - Tracking: PostHog `vs_yoto_click` { target: table_cta | table_sticky_cta | pack_card_cta | table_player_page, page }
   (voxblock.js); hero keeps `vs_yoto_hero_click` (+ target `player_page`).
 
