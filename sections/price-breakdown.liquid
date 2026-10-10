@@ -18,7 +18,9 @@ An optional note sits underneath the cards for small print such as "in fairness"
   {%- assign card_count = section.blocks.size | at_most: 4 -%}
 
   {%- assign show_media = false -%}
+  {%- assign any_cta = false -%}
   {%- for block in section.blocks -%}
+    {%- if block.settings.cta_collection != blank -%}{%- assign any_cta = true -%}{%- endif -%}
     {%- if block.settings.image != blank -%}
       {%- assign show_media = true -%}
     {%- endif -%}
@@ -152,6 +154,13 @@ An optional note sits underneath the cards for small print such as "in fairness"
       margin-block-start: 0.125rem;
       color: {{ highlight }};
     }
+    /* Same structure in every card: total at the bottom, then "difference", then a fixed-height footer for the button */
+    #shopify-section-{{ section.id }} .price-card__footer { margin-top: var(--spacing-2); }
+    #shopify-section-{{ section.id }} .price-card__footer:empty { display: none; }
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} .price-card__footer { min-height: 40px; }
+      #shopify-section-{{ section.id }} .price-card__footer:empty { display: block; }
+    }
   </style>
 
   <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
@@ -205,6 +214,15 @@ An optional note sits underneath the cards for small print such as "in fairness"
 
             {%- if block.settings.difference != blank -%}
               <p class="price-card__difference">{{ block.settings.difference | escape }}</p>
+            {%- endif -%}
+
+            {%- comment -%}Every card gets the same footer, so totals line up; cards without a button keep the space (desktop){%- endcomment -%}
+            {%- if any_cta -%}
+              <div class="price-card__footer">
+                {%- if block.settings.cta_collection != blank -%}
+                  {%- render 'vs-cta', collection: block.settings.cta_collection, text: block.settings.cta_text, track: 'pack_card_cta' -%}
+                {%- endif -%}
+              </div>
             {%- endif -%}
 
             {%- if block.settings.link_text != blank -%}
@@ -389,6 +407,18 @@ An optional note sits underneath the cards for small print such as "in fairness"
           "id": "difference",
           "label": "Difference",
           "info": "Optional line under the total, such as \"£43.97 more than Voxblock\"."
+        },
+        {
+          "type": "collection",
+          "id": "cta_collection",
+          "label": "Button collection (optional)",
+          "info": "Shows the page's button: links to this collection, \"from\" its cheapest product. Cards without one keep the same space so totals line up."
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "Button text",
+          "default": "Shop now"
         },
         {
           "type": "text",

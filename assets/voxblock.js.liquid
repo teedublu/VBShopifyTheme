@@ -371,3 +371,16 @@ document.addEventListener('submit', async (event) => {
         if (button) button.disabled = false;
     }
 });
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// VOXBLOCK VS YOTO (snippets/vs-buy.liquid, comparison-table, price-breakdown)
+// PostHog `vs_yoto_click` { target, page } for every element with data-vs-track (add buttons, product links)
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('click', (event) => {
+    const el = event.target.closest?.('[data-vs-track]');
+    if (!el || typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    try {
+        window.posthog.capture('vs_yoto_click', { target: el.dataset.vsTrack, page: window.location.pathname });
+    } catch (e) { /* analytics must never get in the way of the basket */ }
+});

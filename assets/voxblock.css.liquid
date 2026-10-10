@@ -975,3 +975,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .story-steps { padding-block: 48px; }
   .story-steps__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 }
+
+/* ----------------------------------------------------------------------------------------------------------------
+   VS CTA: the one button on /pages/voxblock-vs-yoto (snippets/vs-cta.liquid). Uses the theme's .button, so it
+   matches every other primary button; these lines only centre the label when it wraps.
+---------------------------------------------------------------------------------------------------------------- */
+.vs-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; }
+.vs-cta__from { white-space: nowrap; margin-inline-start: .3em; } /* the leading space is dropped inside a flex button */

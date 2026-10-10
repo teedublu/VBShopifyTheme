@@ -29,7 +29,8 @@
         "yoto_player_price": "£119.99",
         "prices_checked": "24 September 2026",
         "collection": "voxblock-starter-pack-collection",
-        "button_text": "Shop starter packs",
+        "button_text": "Shop now",
+        "show_from_price": false,
         "link_text": "See the full comparison",
         "link_url": "#players",
         "trust_image": "shopify://shop_images/INDY-Best-AFI.png",
@@ -40,8 +41,7 @@
         "text_color": "#2a555a",
         "accent_color": "#c2560f",
         "eyebrow_color": "#b8520e",
-        "button_background": "#ff9e57",
-        "button_text_color": "#1f2d2f"
+        "show_card_button": false
       }
     },
     "players": {
@@ -101,7 +101,7 @@
           "type": "row",
           "settings": {
             "label": "Speaker",
-            "value_1": "Built-in speakers",
+            "value_1": "Built-in speaker",
             "value_2": "Built-in speaker",
             "value_3": "5W stereo speaker",
             "good_answer": "yes"
@@ -141,9 +141,9 @@
           "type": "row",
           "settings": {
             "label": "Size and weight",
-            "value_1": "11 x 19 x 2cm, 165g",
-            "value_2": "7.5 × 7 × 5 cm, 185 g",
-            "value_3": "11.5 × 11.5 × 11 cm, 763 g",
+            "value_1": "11 × 19 × 2 cm, 165 g",
+            "value_2": "8 × 7 × 5 cm, 185 g",
+            "value_3": "12 × 12 × 11 cm, 763 g",
             "good_answer": "yes"
           }
         },
@@ -209,6 +209,14 @@
         "column_1_image": "shopify://shop_images/voxblock-player-compare.jpg",
         "column_1_price": "£49.99",
         "column_1_note": "Player, USB-C cable.",
+        "column_1_product": "voxblock-player",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "Shop now",
+        "sticky_header": true,
+        "column_1_short": "Voxblock",
+        "column_2_short": "Yoto Mini",
+        "column_3_short": "Yoto Player",
+        "sticky_button_text": "Shop now",
         "column_2_image": "shopify://shop_images/yoto-mini-player-gen4.png",
         "column_2_price": "£89.99",
         "column_2_note": "Player, USB-C cable, Make Your Own card.",
@@ -243,6 +251,8 @@
             "total_label": "Total",
             "total": "£69.99",
             "difference": "Best value",
+            "cta_collection": "voxblock-starter-pack-collection",
+            "cta_text": "Shop now",
             "link_text": "",
             "link_url": ""
           }
@@ -309,7 +319,7 @@
           "type": "row",
           "settings": {
             "label": "What it is",
-            "value_1": "A solid cardboard book with the Gruffalo cover and a spine",
+            "value_1": "A tangible physical audiobook block made of card",
             "value_2": "A thin plastic card",
             "value_3": "",
             "good_answer": "yes"
@@ -319,8 +329,8 @@
           "type": "row",
           "settings": {
             "label": "Where the story is",
-            "value_1": "Inside the book itself",
-            "value_2": "Online; a chip in the card tells the player which audio to download",
+            "value_1": "Inside the audiobook itself",
+            "value_2": "Online; needs downloading",
             "value_3": "",
             "good_answer": "yes"
           }
@@ -329,8 +339,8 @@
           "type": "row",
           "settings": {
             "label": "To play it",
-            "value_1": "Put the book on the player and press play. Ready straight away",
-            "value_2": "Insert the card; the audio downloads over wi-fi",
+            "value_1": "Put the audiobook on the player and press play. Ready straight away",
+            "value_2": "Insert card, configure wi-fi, download",
             "value_3": "",
             "good_answer": "yes"
           }
@@ -339,7 +349,7 @@
           "type": "row",
           "settings": {
             "label": "Where it lives",
-            "value_1": "On the bookshelf, spine out, with their other books",
+            "value_1": "Pride of place on a bookshelf alongside other books",
             "value_2": "In a card case, a pocket, or down the back of the sofa",
             "value_3": "",
             "good_answer": "yes"
@@ -365,7 +375,7 @@
       ],
       "settings": {
         "full_width": true,
-        "subheading": "3 · A book or a card",
+        "subheading": "3 · An audiobook or a card",
         "title": "The Gruffalo, two ways",
         "content": "<p>Both play the same story. What your child holds, and where it lives afterwards, is very different.</p>",
         "text_position": "start",
@@ -376,15 +386,16 @@
         "column_2": "Yoto card",
         "column_3": "",
         "footnote": "",
-        "column_1_image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+        "column_1_image": "shopify://shop_images/product-book-bookshelf-the-gruffalo.png",
         "column_1_price": "",
-        "column_1_note": "A solid book they can hold",
-        "column_2_image": "shopify://shop_images/yoto-gruffalo-card.png",
+        "column_1_note": "A solid audiobook they can hold",
+        "column_2_image": "shopify://shop_images/Yoto_card_on_table.jpg",
         "column_2_price": "",
         "column_2_note": "A slim card, like a hotel key card",
         "column_3_price": "",
         "column_3_note": "",
         "media_ratio": "portrait",
+        "media_fit": "cover",
         "stack_on_mobile": true,
         "background": "",
         "background_gradient": "",
@@ -449,7 +460,7 @@
         "cta_heading": {
           "type": "heading",
           "settings": {
-            "text": "Start with the stories they already love.",
+            "text": "Just add a story and press play.",
             "heading_tag": "h1",
             "heading_tag_html": "h2",
             "text_color": "#ffffff",
@@ -471,8 +482,8 @@
           "settings": {
             "style": "fill",
             "size": "xl",
-            "text": "Gruffalo Starter Pack · £69.99",
-            "url": "shopify://products/gruffalo-and-friends-starter-pack",
+            "text": "Shop now",
+            "url": "shopify://collections/voxblock-starter-pack-collection",
             "background": "#ff9e57",
             "text_color": "#ffffff"
           }
