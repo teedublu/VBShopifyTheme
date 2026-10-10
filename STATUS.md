@@ -13,6 +13,8 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.
+- Round 3 (owner): every button reads just "Shop now" (no "from £x"; hero setting `show_from_price` off). Full size
+  for page-level buttons (hero, closing band); slim (`button--sm`) on cards, the table column and the sticky header.
 - Round 2 (owner: "Keep same CTA for all buttons"): Add to basket dropped. Every button on the page is the theme's
   primary button "Shop starter packs · from £x" → starter pack collection (`snippets/vs-cta.liquid`, live "from").
   Used in: hero (unchanged), Player vs player column 1, its sticky header ("Shop packs"), the Gruffalo pack card,
