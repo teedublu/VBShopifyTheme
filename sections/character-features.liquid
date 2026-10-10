@@ -1,0 +1,101 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CHARACTER FEATURES ("What does the Gruffalo look like?", templates/metaobject/character.gruffalo.json)
+----------------------------------------------------------------------------------------------------------------------
+The search answer people come for, straight under the hero: an H2 with the question, the character's features as
+small cards (block "feature"), then short answers as H3 + text (block "answer"), with an optional link.
+Plain descriptors only: the book's own wording is not reproduced.
+Optional image (setting "image"): the 3D Gruffalo audiobook cover, which earns most of the page's Google Images clicks,
+so it sits next to the description text it ranks with, at full size (up to 836px).
+"Only show on" limits the section to one metaobject handle, because Owl, Fox and Snake share the template.
+{%- endcomment -%}
+
+{%- liquid
+  assign show = true
+  if section.settings.only_handle != blank and metaobject != blank and metaobject.system.handle != section.settings.only_handle
+    assign show = false
+  endif
+  assign features = section.blocks | where: 'type', 'feature'
+  assign answers = section.blocks | where: 'type', 'answer'
+-%}
+
+{%- if show -%}
+  {%- assign image_alt = section.settings.image_alt | default: section.settings.image.alt -%}
+  <section class="character-features{% if section.settings.image != blank %} character-features--image{% endif %}" {{ section.shopify_attributes }}>
+    <div class="container character-features__inner">
+      {%- if section.settings.image != blank -%}
+        <div class="character-features__media">
+          {{- section.settings.image | image_url: width: 836 | image_tag: loading: 'lazy', sizes: '(max-width: 999px) 50vw, 280px', widths: '300,440,600,836', alt: image_alt -}}
+        </div>
+      {%- endif -%}
+      <div class="character-features__main">
+      <div class="character-features__head">
+        <h2 class="series-heading">{{ section.settings.heading | escape }}</h2>
+        {%- if section.settings.intro != blank -%}<p class="character-features__intro">{{ section.settings.intro | escape }}</p>{%- endif -%}
+      </div>
+
+      {%- if features.size > 0 -%}
+        <ul class="character-features__grid" role="list">
+          {%- for block in features -%}
+            <li class="character-features__card" {{ block.shopify_attributes }}>
+              <span class="character-features__card-title">{{ block.settings.title | escape }}</span>
+              {%- if block.settings.text != blank -%}<span class="character-features__card-text">{{ block.settings.text | escape }}</span>{%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if answers.size > 0 -%}
+        <div class="character-features__answers">
+          {%- for block in answers -%}
+            <div class="character-features__answer" {{ block.shopify_attributes }}>
+              <h3 class="character-features__question">{{ block.settings.question | escape }}</h3>
+              <div class="character-features__text">{{ block.settings.answer }}</div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.link_url != blank and section.settings.link_label != blank -%}
+        <p class="character-features__more"><a href="{{ section.settings.link_url }}">{{ section.settings.link_label | escape }}</a></p>
+      {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Character features",
+  "tag": "div",
+  "class": "shopify-section--character-features",
+  "settings": [
+    { "type": "text", "id": "only_handle", "label": "Only show on (page handle)", "info": "e.g. the-gruffalo. Leave empty to show on every page using this template." },
+    { "type": "text", "id": "heading", "label": "Heading (H2)", "default": "What does the Gruffalo look like?" },
+    { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown beside the features on desktop." },
+    { "type": "text", "id": "image_alt", "label": "Image description" },
+    { "type": "text", "id": "link_label", "label": "Link text" },
+    { "type": "url", "id": "link_url", "label": "Link" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Feature", "default": "Feature" },
+        { "type": "text", "id": "text", "label": "Detail" }
+      ]
+    },
+    {
+      "type": "answer",
+      "name": "Short answer",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question (H3)", "default": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Character features" }]
+}
+{% endschema %}

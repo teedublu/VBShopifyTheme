@@ -296,3 +296,78 @@ if (cartDrawerEl && playerPromptObserver) {
     });
     drawerWatcher.observe(cartDrawerEl, { childList: true, subtree: true });
 }
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// STORY HERO (sections/story-hero.liquid): PostHog `story_hero_click` { target, page } for data-story-track links.
+// The sample button is a normal .bookpreview button and already sends `sample_played`.
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('click', (event) => {
+    const el = event.target.closest('[data-story-track]');
+    if (!el || typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    const page = el.closest('[data-story-page]')?.dataset.storyPage || window.location.pathname;
+    try {
+        window.posthog.capture('story_hero_click', { target: el.dataset.storyTrack, page });
+    } catch (e) { /* analytics must never block the click */ }
+});
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// SCHOOL SIGN-UP (snippets/school-signup.liquid): subscribes the email to a Klaviyo list with the client
+// subscriptions API (same call as assets/back-in-stock.js) and sends PostHog `school_signup` { page, form }.
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('submit', async (event) => {
+    const form = event.target.closest('[data-school-signup]');
+    if (!form) return;
+    event.preventDefault();
+
+    const input = form.querySelector('input[type="email"]');
+    const button = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('.school-signup__status');
+    const email = (input?.value || '').trim();
+    const show = (key, state) => {
+        if (!status) return;
+        status.textContent = status.dataset[key] || '';
+        status.dataset.state = state;
+        status.hidden = false;
+    };
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        show('invalid', 'error');
+        input?.setAttribute('aria-invalid', 'true');
+        input?.focus();
+        return;
+    }
+    input?.removeAttribute('aria-invalid');
+    if (button) button.disabled = true;
+
+    try {
+        const response = await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${encodeURIComponent(form.dataset.companyId)}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json', revision: '2025-07-15' },
+            body: JSON.stringify({
+                data: {
+                    type: 'subscription',
+                    attributes: {
+                        custom_source: form.dataset.source || 'Story page',
+                        profile: { data: { type: 'profile', attributes: { email } } },
+                    },
+                    relationships: { list: { data: { type: 'list', id: form.dataset.listId } } },
+                },
+            }),
+        });
+        if (response.status !== 202) throw new Error(`Klaviyo answered ${response.status}`);
+
+        form.querySelector('.school-signup__row')?.setAttribute('hidden', '');
+        show('thanks', 'done');
+        try {
+            if (window.posthog && typeof window.posthog.capture === 'function') {
+                const page = form.closest('[data-story-page]')?.dataset.storyPage || window.location.pathname;
+                window.posthog.capture('school_signup', { page, form: form.dataset.form });
+            }
+        } catch (e) { /* analytics must never block the sign-up */ }
+    } catch (error) {
+        show('error', 'error');
+        if (button) button.disabled = false;
+    }
+});

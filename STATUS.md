@@ -11,6 +11,17 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
 
+## 2026-10-09: Gruffalo character + cast pages (build)
+Branch `claude/gruffalo-pages`, draft PR into `main`, **awaiting owner check on draft theme 199796130176**.
+Full record and flags: `briefs/gruffalo-pages.md`.
+- New `story-hero` section: artwork + H1 + sample + starter pack + audiobook in the first screen, on
+  `metaobject/character.gruffalo` (Gruffalo, Owl, Fox, Snake) and `metaobject/characters.gruffalo` (cast page).
+- Owl/Fox/Snake no longer have the H1 "What is a Gruffalo?". Redirect /authors/julia-donaldson added in Shopify.
+- Round 2 (9 Oct): hero now has "At home" (pack) and "In the classroom" (Klaviyo school sign-up + school packages)
+  routes; new sections character-features, classroom-band, story-steps, story-home-band; ranking content kept.
+- Tracking: PostHog `story_hero_click`, `school_signup`. Performance review: add /pages/character/the-gruffalo and
+  the cast page.
+
 ## 2026-10-09: Age audiobook collections, new template (build)
 Branch `claude/age-collection-template`, draft PR into `main`, **awaiting owner check on draft theme 199795245440**.
 Full record, baseline and flags: `briefs/age-collection-template.md`.
