@@ -18,7 +18,9 @@ An optional note sits underneath the cards for small print such as "in fairness"
   {%- assign card_count = section.blocks.size | at_most: 4 -%}
 
   {%- assign show_media = false -%}
+  {%- assign any_cta = false -%}
   {%- for block in section.blocks -%}
+    {%- if block.settings.cta_collection != blank -%}{%- assign any_cta = true -%}{%- endif -%}
     {%- if block.settings.image != blank -%}
       {%- assign show_media = true -%}
     {%- endif -%}
@@ -152,8 +154,13 @@ An optional note sits underneath the cards for small print such as "in fairness"
       margin-block-start: 0.125rem;
       color: {{ highlight }};
     }
-    #shopify-section-{{ section.id }} .price-card .vs-buy { margin-top: var(--spacing-2); }
-    #shopify-section-{{ section.id }} .price-card__product-link { align-self: center; color: {{ highlight }}; font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    /* Same structure in every card: total at the bottom, then "difference", then a fixed-height footer for the button */
+    #shopify-section-{{ section.id }} .price-card__footer { margin-top: var(--spacing-2); }
+    #shopify-section-{{ section.id }} .price-card__footer:empty { display: none; }
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} .price-card__footer { min-height: 52px; }
+      #shopify-section-{{ section.id }} .price-card__footer:empty { display: block; }
+    }
   </style>
 
   <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
@@ -209,9 +216,13 @@ An optional note sits underneath the cards for small print such as "in fairness"
               <p class="price-card__difference">{{ block.settings.difference | escape }}</p>
             {%- endif -%}
 
-            {%- if block.settings.product != blank -%}
-              {%- render 'vs-buy', product: block.settings.product, button_text: block.settings.button_text, swatches: block.settings.show_swatches, track: 'pack_add', id_suffix: block.id -%}
-              <a class="price-card__product-link" href="{{ block.settings.product.url }}" data-vs-track="pack_page">{{ block.settings.product_link_text | default: 'See what’s in the pack' | escape }}</a>
+            {%- comment -%}Every card gets the same footer, so totals line up; cards without a button keep the space (desktop){%- endcomment -%}
+            {%- if any_cta -%}
+              <div class="price-card__footer">
+                {%- if block.settings.cta_collection != blank -%}
+                  {%- render 'vs-cta', collection: block.settings.cta_collection, text: block.settings.cta_text, track: 'pack_card_cta' -%}
+                {%- endif -%}
+              </div>
             {%- endif -%}
 
             {%- if block.settings.link_text != blank -%}
@@ -398,28 +409,17 @@ An optional note sits underneath the cards for small print such as "in fairness"
           "info": "Optional line under the total, such as \"£43.97 more than Voxblock\"."
         },
         {
-          "type": "product",
-          "id": "product",
-          "label": "Product to add (optional)",
-          "info": "Shows an Add to basket button for this product and a link to its page."
+          "type": "collection",
+          "id": "cta_collection",
+          "label": "Button collection (optional)",
+          "info": "Shows the page's button: links to this collection, \"from\" its cheapest product. Cards without one keep the same space so totals line up."
         },
         {
           "type": "text",
-          "id": "button_text",
-          "label": "Add to basket button text",
-          "default": "Add to basket"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_swatches",
-          "label": "Show bumper colour swatches",
-          "default": true
-        },
-        {
-          "type": "text",
-          "id": "product_link_text",
-          "label": "Product page link text",
-          "default": "See what’s in the pack"
+          "id": "cta_text",
+          "label": "Button text",
+          "default": "Shop starter packs",
+          "info": "\" · from £x\" is added automatically."
         },
         {
           "type": "text",

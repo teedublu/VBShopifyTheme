@@ -977,18 +977,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
 }
 
 /* ----------------------------------------------------------------------------------------------------------------
-   VS BUY: Add to basket on /pages/voxblock-vs-yoto (snippets/vs-buy.liquid). Teal pill like the site's other add
-   buttons (.series-button); white on teal is 5.6:1. Inside the teal table header it turns white (section CSS).
+   VS CTA: the one button on /pages/voxblock-vs-yoto (snippets/vs-cta.liquid). Uses the theme's .button, so it
+   matches every other primary button; these lines only centre the label when it wraps.
 ---------------------------------------------------------------------------------------------------------------- */
-.vs-buy { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-.vs-buy__form { margin: 0; }
-.vs-buy__legend { margin: 0 0 4px; font-size: 12px; font-weight: 600; color: var(--brand-heading); }
-.vs-buy__swatches { margin: 0; padding: 0; border: 0; }
-.vs-buy__button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; min-height: 44px; padding: 0 14px; border-radius: 999px; border: 2px solid var(--brand-heading); background: var(--brand-heading); color: #fff; font: inherit; font-size: 14px; font-weight: 700; line-height: 1.2; text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer; }
-.vs-buy__button:hover { color: #fff; filter: brightness(1.08); }
-.vs-buy__button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
-.vs-buy__button[aria-busy="true"] { opacity: .7; cursor: progress; }
-.vs-buy__button svg { flex: none; }
-.vs-buy__button--secondary { background: #fff; color: var(--brand-heading); }
-.vs-buy--compact .vs-buy__button { min-height: 36px; padding: 0 12px; font-size: 13px; }
-@media screen and (min-width: 1000px) { .vs-buy__button { font-size: 15px; min-height: 48px; } }
+.vs-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; }
+.vs-cta__from { white-space: nowrap; }

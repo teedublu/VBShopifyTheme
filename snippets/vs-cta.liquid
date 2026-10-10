@@ -1,0 +1,41 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VS CTA (Voxblock vs Yoto page)
+----------------------------------------------------------------------------------------------------------------------
+The page's one call to action, used everywhere a button appears (hero, comparison table + its sticky header, price
+breakdown cards): the theme's own primary button (pill, site orange, white text) linking to the starter pack
+collection, reading "Shop starter packs · from £x" with the cheapest starter pack price worked out live.
+
+Variables:
+* collection: the collection to link to [REQUIRED]
+* text: button text. Defaults to "Shop starter packs". " · from £x" is added unless show_from is false.
+* show_from: false to leave the "from" price off (default true).
+* compact: true for the small button in the sticky header.
+* track: PostHog target name, sent as vs_yoto_click { target, page } (voxblock.js).
+{%- endcomment -%}
+
+{%- liquid
+  assign from_cents = 0
+  assign from_cents_any = 0
+  for item in collection.products
+    if item.price_min > 0
+      if from_cents_any == 0 or item.price_min < from_cents_any
+        assign from_cents_any = item.price_min
+      endif
+      if item.available
+        if from_cents == 0 or item.price_min < from_cents
+          assign from_cents = item.price_min
+        endif
+      endif
+    endif
+  endfor
+  if from_cents == 0
+    assign from_cents = from_cents_any
+  endif
+  assign label = text | default: 'Shop starter packs'
+-%}
+
+<a class="button {% if compact %}button--sm{% else %}button--lg{% endif %} w-full vs-cta{% if compact %} vs-cta--compact{% endif %}" href="{{ collection.url }}" data-vs-track="{{ track | default: 'cta' }}">
+  {{- label | escape -}}
+  {%- if show_from != false and from_cents > 0 -%}<span class="vs-cta__from"> · from {{ from_cents | money }}</span>{%- endif -%}
+</a>

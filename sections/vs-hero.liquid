@@ -135,7 +135,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
   #shopify-section-{{ section.id }} .vs-card__link { display: flex; flex-direction: column; gap: inherit; color: inherit; text-decoration: none; }
   #shopify-section-{{ section.id }} .vs-card__link:hover .vs-card__name { text-decoration: underline; text-underline-offset: 3px; }
   #shopify-section-{{ section.id }} .vs-card__link:focus-visible { outline: 3px solid var(--vs-heading); outline-offset: 2px; border-radius: 8px; }
-  #shopify-section-{{ section.id }} .vs-card .vs-buy { margin-top: auto; padding-top: 4px; }
+  #shopify-section-{{ section.id }} .vs-card .vs-cta { margin-top: auto; }
   #shopify-section-{{ section.id }} .vs-hero__link {
     display: flex;
     align-items: center;
@@ -202,8 +202,8 @@ initialised in layout/theme.liquid). No storefront pixel events.
             {%- if vox_cents > 0 -%}<p class="vs-card__price">{{ vox_price }}</p>{%- endif -%}
             <p class="vs-card__line">{{ section.settings.voxblock_line | escape }}</p>
           {%- if player != blank -%}</a>{%- else -%}</div>{%- endif -%}
-          {%- if player != blank and section.settings.show_add_button -%}
-            {%- render 'vs-buy', product: player, button_text: section.settings.add_button_text, track: 'hero_add_player' -%}
+          {%- if packs != blank and section.settings.show_card_button -%}
+            {%- render 'vs-cta', collection: packs, text: section.settings.button_text, track: 'hero_card_cta' -%}
           {%- endif -%}
         </div>
 
@@ -280,8 +280,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
     { "type": "text", "id": "voxblock_pill", "label": "Pill", "default": "Best value" },
     { "type": "text", "id": "voxblock_name", "label": "Name (also the image description)", "default": "Voxblock player" },
     { "type": "text", "id": "voxblock_line", "label": "One line", "default": "Story on the book. Plays straight out of the box." },
-    { "type": "checkbox", "id": "show_add_button", "label": "Show an Add to basket button on the card", "default": true, "info": "Adds the cheapest available variant of the player (the no-bumper player, the price shown). The image and name link to the player page." },
-    { "type": "text", "id": "add_button_text", "label": "Add to basket button text", "default": "Add to basket" },
+    { "type": "checkbox", "id": "show_card_button", "label": "Repeat the primary button inside the card", "default": false, "info": "The image and name always link to the player page. Off by default: the primary button sits right under the cards." },
     { "type": "header", "content": "Yoto Mini card", "info": "Yoto prices are typed by hand: they are not on our store." },
     { "type": "text", "id": "yoto_label", "label": "Small label", "default": "Yoto Mini (4th Gen)" },
     { "type": "image_picker", "id": "yoto_image", "label": "Image" },

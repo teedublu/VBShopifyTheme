@@ -40,8 +40,7 @@
         "text_color": "#2a555a",
         "accent_color": "#c2560f",
         "eyebrow_color": "#b8520e",
-        "show_add_button": true,
-        "add_button_text": "Add to basket"
+        "show_card_button": false
       }
     },
     "players": {
@@ -210,9 +209,10 @@
         "column_1_price": "£49.99",
         "column_1_note": "Player, USB-C cable.",
         "column_1_product": "voxblock-player",
-        "column_1_button_text": "Add to basket",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "Shop starter packs",
         "sticky_header": true,
-        "sticky_button_text": "Add",
+        "sticky_button_text": "Shop packs",
         "column_2_image": "shopify://shop_images/yoto-mini-player-gen4.png",
         "column_2_price": "£89.99",
         "column_2_note": "Player, USB-C cable, Make Your Own card.",
@@ -247,10 +247,8 @@
             "total_label": "Total",
             "total": "£69.99",
             "difference": "Best value",
-            "product": "gruffalo-and-friends-starter-pack",
-            "button_text": "Add to basket",
-            "show_swatches": true,
-            "product_link_text": "See what’s in the pack",
+            "cta_collection": "voxblock-starter-pack-collection",
+            "cta_text": "Shop starter packs",
             "link_text": "",
             "link_url": ""
           }
@@ -480,8 +478,8 @@
           "settings": {
             "style": "fill",
             "size": "xl",
-            "text": "Gruffalo Starter Pack · £69.99",
-            "url": "shopify://products/gruffalo-and-friends-starter-pack",
+            "text": "Shop starter packs · from £59.99",
+            "url": "shopify://collections/voxblock-starter-pack-collection",
             "background": "#ff9e57",
             "text_color": "#ffffff"
           }

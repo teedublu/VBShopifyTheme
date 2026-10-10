@@ -8,10 +8,11 @@ Each column can also show an image, a price and a short note above the rows. On 
 sit above their values so every column gets a full share of the width.
 
 Optional (all off unless set, so other pages using this section are unchanged):
-* Column 1 product: the column 1 image and name link to it, its live price replaces the typed price, and an
-  "Add to basket" button sits under the note (snippets/vs-buy.liquid, cheapest available variant).
+* Column 1 product: the column 1 image and name link to it and its live price replaces the typed price.
+* Column 1 button collection: the page's call to action (snippets/vs-cta.liquid, "Shop starter packs · from £x")
+  under column 1's note.
 * Compact sticky header: once the column headers scroll off the top, a slim bar with each column's thumbnail, name
-  and price (plus column 1's Add button) sticks under the site header until the table ends.
+  and price (plus the same button, small) sticks under the site header until the table ends.
 {%- endcomment -%}
 
 {%- if section.blocks.size > 0 -%}
@@ -62,6 +63,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
     assign stacked = section.settings.stack_on_mobile
 
     assign column_1_product = section.settings.column_1_product
+    assign cta_collection = section.settings.cta_collection
     assign sticky = section.settings.sticky_header
   -%}
 
@@ -232,13 +234,11 @@ Optional (all off unless set, so other pages using this section are unchanged):
     /* Column 1 product link and Add to basket (white button on the teal header) */
     #shopify-section-{{ section.id }} .ct-column__link { display: block; color: inherit; text-decoration: none; }
     #shopify-section-{{ section.id }} .ct-column__link:hover .ct-column__name { text-decoration: underline; text-underline-offset: 3px; }
-    #shopify-section-{{ section.id }} .ct-column .vs-buy { margin: var(--spacing-4) auto 0; max-width: 240px; }
-    #shopify-section-{{ section.id }} .ct-highlight .vs-buy__button { background: #ffffff; border-color: #ffffff; color: var(--ct-highlight); }
-    #shopify-section-{{ section.id }} .ct-highlight .vs-buy__button:hover { background: #f1f8f7; color: var(--ct-highlight); }
+    #shopify-section-{{ section.id }} .ct-column__cta { display: block; margin: var(--spacing-4) auto 0; max-width: 260px; font-family: var(--text-font-family); }
     @media screen and (max-width: 699px) {
-      /* A third of a phone is ~110px: let the label wrap and drop the icon */
-      #shopify-section-{{ section.id }} .ct-column .vs-buy__button { white-space: normal; min-height: 40px; padding: 6px 8px; font-size: 12px; line-height: 1.2; }
-      #shopify-section-{{ section.id }} .ct-column .vs-buy__button svg { display: none; }
+      /* A third of a phone is ~110px: smaller button, label may wrap, the "from" price drops onto its own line */
+      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta { padding: 8px 6px; font-size: 12px; line-height: 1.25; white-space: normal; }
+      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta__from { display: block; font-weight: 600; }
     }
 
     {%- if sticky %}
@@ -273,14 +273,14 @@ Optional (all off unless set, so other pages using this section are unchanged):
     #shopify-section-{{ section.id }} .ct-sticky__text { display: flex; flex-direction: column; min-width: 0; flex: 1 1 90px; }
     #shopify-section-{{ section.id }} .ct-sticky__name { font-size: var(--text-xs); line-height: 1.3; font-weight: 600; color: var(--ct-highlight); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     #shopify-section-{{ section.id }} .ct-sticky__price { font-size: var(--text-sm); line-height: 1.3; font-weight: 700; }
-    #shopify-section-{{ section.id }} .ct-sticky__col .vs-buy { flex: 0 0 auto; }
+    #shopify-section-{{ section.id }} .ct-sticky__col .vs-cta { flex: 0 0 auto; width: auto; white-space: nowrap; }
     @media screen and (max-width: 999px) {
       #shopify-section-{{ section.id }} .ct-sticky__bar { grid-template-columns: repeat({{ column_count }}, minmax(0, 1fr)); padding: 0 var(--spacing-1); }
       #shopify-section-{{ section.id }} .ct-sticky__label { display: none; }
       #shopify-section-{{ section.id }} .ct-sticky__col { flex-direction: column; flex-wrap: nowrap; align-items: center; gap: 2px; padding: 6px 4px 8px; text-align: center; }
       #shopify-section-{{ section.id }} .ct-sticky__thumb { width: 36px; height: 36px; }
       #shopify-section-{{ section.id }} .ct-sticky__text { flex: none; align-items: center; }
-      #shopify-section-{{ section.id }} .ct-sticky__col .vs-buy { margin-top: 4px; width: 100%; }
+      #shopify-section-{{ section.id }} .ct-sticky__col .vs-cta { margin-top: 4px; width: 100%; padding-inline: 6px; }
     }
     {%- endif %}
   </style>
@@ -319,8 +319,8 @@ Optional (all off unless set, so other pages using this section are unchanged):
                   <span class="ct-sticky__name">{{ section.settings[column_key] | escape }}</span>
                   {%- if sticky_price != blank -%}<span class="ct-sticky__price">{{ sticky_price }}</span>{%- endif -%}
                 </span>
-                {%- if i == 1 and column_1_product != blank -%}
-                  {%- render 'vs-buy', product: column_1_product, button_text: section.settings.sticky_button_text, compact: true, track: 'table_sticky_add_player' -%}
+                {%- if i == 1 and cta_collection != blank -%}
+                  {%- render 'vs-cta', collection: cta_collection, text: section.settings.sticky_button_text, show_from: false, compact: true, track: 'table_sticky_cta' -%}
                 {%- endif -%}
               </div>
             {%- endfor -%}
@@ -372,8 +372,8 @@ Optional (all off unless set, so other pages using this section are unchanged):
                     {%- endif -%}
                     {%- if column_link -%}</a>{%- endif -%}
 
-                    {%- if i == 1 and column_1_product != blank -%}
-                      {%- render 'vs-buy', product: column_1_product, button_text: section.settings.column_1_button_text, track: 'table_add_player' -%}
+                    {%- if i == 1 and cta_collection != blank -%}
+                      <span class="ct-column__cta">{%- render 'vs-cta', collection: cta_collection, text: section.settings.column_1_button_text, track: 'table_cta' -%}</span>
                     {%- endif -%}
                   {%- else -%}
                     {{ section.settings[column_key] | escape }}
@@ -609,13 +609,20 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "type": "product",
       "id": "column_1_product",
       "label": "Column 1 product (optional)",
-      "info": "Links the column 1 image and name to this product, shows its live price and adds an Add to basket button."
+      "info": "Links the column 1 image and name to this product and shows its live price."
+    },
+    {
+      "type": "collection",
+      "id": "cta_collection",
+      "label": "Button collection (optional)",
+      "info": "Adds the page's button under column 1 (and in the sticky header): links here, showing \"from\" its cheapest product."
     },
     {
       "type": "text",
       "id": "column_1_button_text",
       "label": "Column 1 button text",
-      "default": "Add to basket"
+      "default": "Shop starter packs",
+      "info": "\" · from £x\" is added automatically."
     },
     {
       "type": "checkbox",
@@ -628,7 +635,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "type": "text",
       "id": "sticky_button_text",
       "label": "Sticky header button text",
-      "default": "Add"
+      "default": "Shop packs"
     },
     {
       "type": "select",
