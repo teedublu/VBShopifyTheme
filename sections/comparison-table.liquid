@@ -238,7 +238,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
     @media screen and (max-width: 699px) {
       /* A third of a phone is ~110px: smaller button, label may wrap, the "from" price drops onto its own line */
       #shopify-section-{{ section.id }} .ct-column__cta .vs-cta { padding: 8px 6px; font-size: 12px; line-height: 1.25; white-space: normal; }
-      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta__from { display: block; font-weight: 600; }
+      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta__from { display: block; margin-inline-start: 0; font-weight: 600; }
     }
 
     {%- if sticky %}
