@@ -6,6 +6,12 @@ A simple, editable "us vs them" table for landing pages. Column 1 is Voxblock an
 Row values of "yes" / "no" (any case) render as tick / cross icons; anything else renders as text.
 Each column can also show an image, a price and a short note above the rows. On phones, feature names can
 sit above their values so every column gets a full share of the width.
+
+Optional (all off unless set, so other pages using this section are unchanged):
+* Column 1 product: the column 1 image and name link to it, its live price replaces the typed price, and an
+  "Add to basket" button sits under the note (snippets/vs-buy.liquid, cheapest available variant).
+* Compact sticky header: once the column headers scroll off the top, a slim bar with each column's thumbnail, name
+  and price (plus column 1's Add button) sticks under the site header until the table ends.
 {%- endcomment -%}
 
 {%- if section.blocks.size > 0 -%}
@@ -54,6 +60,9 @@ sit above their values so every column gets a full share of the width.
     endcase
 
     assign stacked = section.settings.stack_on_mobile
+
+    assign column_1_product = section.settings.column_1_product
+    assign sticky = section.settings.sticky_header
   -%}
 
   <style>
@@ -150,7 +159,7 @@ sit above their values so every column gets a full share of the width.
     #shopify-section-{{ section.id }} .ct-column__media :is(img, svg) {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: {% if section.settings.media_fit == 'cover' %}cover{% else %}contain{% endif %};
     }
     #shopify-section-{{ section.id }} :is(.ct-column__name, .ct-column__price, .ct-column__note) {
       display: block;
@@ -219,6 +228,50 @@ sit above their values so every column gets a full share of the width.
       }
     }
     {%- endif %}
+
+    /* Column 1 product link and Add to basket (white button on the teal header) */
+    #shopify-section-{{ section.id }} .ct-column__link { display: block; color: inherit; text-decoration: none; }
+    #shopify-section-{{ section.id }} .ct-column__link:hover .ct-column__name { text-decoration: underline; text-underline-offset: 3px; }
+    #shopify-section-{{ section.id }} .ct-column .vs-buy { margin: var(--spacing-4) auto 0; max-width: 240px; }
+    #shopify-section-{{ section.id }} .ct-highlight .vs-buy__button { background: #ffffff; border-color: #ffffff; color: var(--ct-highlight); }
+    #shopify-section-{{ section.id }} .ct-highlight .vs-buy__button:hover { background: #f1f8f7; color: var(--ct-highlight); }
+
+    {%- if sticky %}
+    /* Compact sticky header: a zero-height sticky holder, so nothing on the page moves when the bar appears */
+    #shopify-section-{{ section.id }} .ct-wrap { position: relative; }
+    #shopify-section-{{ section.id }} .ct-sticky { position: sticky; top: var(--sticky-area-height, 0px); height: 0; z-index: 5; }
+    #shopify-section-{{ section.id }} .ct-sticky__bar {
+      display: grid;
+      grid-template-columns: 34% repeat({{ column_count }}, minmax(0, 1fr));
+      padding: 0 var(--spacing-2);
+      background: var(--ct-background);
+      color: var(--ct-text);
+      border-radius: 0 0 var(--rounded-lg) var(--rounded-lg);
+      box-shadow: 0 10px 24px rgb(0 0 0 / 0.14);
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    #shopify-section-{{ section.id }} .ct-sticky.is-visible .ct-sticky__bar { opacity: 1; transform: none; pointer-events: auto; }
+    #shopify-section-{{ section.id }} .ct-sticky__label { align-self: center; padding: var(--spacing-2) var(--spacing-5); font-family: var(--heading-font-family); font-weight: var(--heading-font-weight); color: var(--ct-highlight); font-size: var(--text-sm); }
+    #shopify-section-{{ section.id }} .ct-sticky__col { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-width: 0; padding: var(--spacing-2) var(--spacing-3); }
+    #shopify-section-{{ section.id }} .ct-sticky__col.is-highlight { background: var(--ct-highlight-tint); }
+    #shopify-section-{{ section.id }} .ct-sticky__thumb { flex: none; width: 44px; height: 44px; border-radius: 8px; background: #fff; overflow: hidden; }
+    #shopify-section-{{ section.id }} .ct-sticky__thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    #shopify-section-{{ section.id }} .ct-sticky__text { display: flex; flex-direction: column; min-width: 0; flex: 1 1 90px; }
+    #shopify-section-{{ section.id }} .ct-sticky__name { font-size: var(--text-xs); line-height: 1.3; font-weight: 600; color: var(--ct-highlight); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    #shopify-section-{{ section.id }} .ct-sticky__price { font-size: var(--text-sm); line-height: 1.3; font-weight: 700; }
+    #shopify-section-{{ section.id }} .ct-sticky__col .vs-buy { flex: 0 0 auto; }
+    @media screen and (max-width: 999px) {
+      #shopify-section-{{ section.id }} .ct-sticky__bar { grid-template-columns: repeat({{ column_count }}, minmax(0, 1fr)); padding: 0 var(--spacing-1); }
+      #shopify-section-{{ section.id }} .ct-sticky__label { display: none; }
+      #shopify-section-{{ section.id }} .ct-sticky__col { flex-direction: column; flex-wrap: nowrap; align-items: center; gap: 2px; padding: 6px 4px 8px; text-align: center; }
+      #shopify-section-{{ section.id }} .ct-sticky__thumb { width: 36px; height: 36px; }
+      #shopify-section-{{ section.id }} .ct-sticky__text { flex: none; align-items: center; }
+      #shopify-section-{{ section.id }} .ct-sticky__col .vs-buy { margin-top: 4px; width: 100%; }
+    }
+    {%- endif %}
   </style>
 
   {%- comment -%}Explicit roles keep the table readable to screen readers once phones stop displaying it as a table{%- endcomment -%}
@@ -234,6 +287,35 @@ sit above their values so every column gets a full share of the width.
   <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
     <div class="section-stack">
       {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, content: section.settings.content, text_alignment: section.settings.text_position -%}
+
+      {%- if sticky -%}
+      <div class="ct-wrap" data-ct-wrap>
+        <div class="ct-sticky" data-ct-sticky inert>
+          <div class="ct-sticky__bar">
+            <div class="ct-sticky__label">{{ section.settings.title | escape }}</div>
+            {%- for i in (1..3) -%}
+              {%- assign column_key = 'column_' | append: i -%}
+              {%- if i > 1 and section.settings[column_key] == blank -%}{%- continue -%}{%- endif -%}
+              {%- assign image_key = column_key | append: '_image' -%}
+              {%- assign price_key = column_key | append: '_price' -%}
+              {%- assign sticky_price = section.settings[price_key] -%}
+              {%- if i == 1 and column_1_product != blank -%}{%- assign sticky_price = column_1_product.price_min | money -%}{%- endif -%}
+              <div class="ct-sticky__col{% if i == 1 and section.settings.highlight_first %} is-highlight{% endif %}">
+                {%- if section.settings[image_key] != blank -%}
+                  <span class="ct-sticky__thumb">{{- section.settings[image_key] | image_url: width: 96 | image_tag: loading: 'lazy', width: 44, height: 44, alt: '' -}}</span>
+                {%- endif -%}
+                <span class="ct-sticky__text">
+                  <span class="ct-sticky__name">{{ section.settings[column_key] | escape }}</span>
+                  {%- if sticky_price != blank -%}<span class="ct-sticky__price">{{ sticky_price }}</span>{%- endif -%}
+                </span>
+                {%- if i == 1 and column_1_product != blank -%}
+                  {%- render 'vs-buy', product: column_1_product, button_text: section.settings.sticky_button_text, compact: true, track: 'table_sticky_add_player' -%}
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
 
       <div class="comparison-table">
         <table {{ role_table }}>
@@ -254,6 +336,8 @@ sit above their values so every column gets a full share of the width.
                     {%- assign note_key = column_key | append: '_note' -%}
                     {%- assign column_image = section.settings[image_key] -%}
 
+                    {%- assign column_link = false -%}
+                    {%- if i == 1 and column_1_product != blank -%}{%- assign column_link = true -%}<a class="ct-column__link" href="{{ column_1_product.url }}" data-vs-track="table_player_page">{%- endif -%}
                     {%- if show_column_media -%}
                       <span class="ct-column__media {% if column_image == blank %}ct-column__media--empty{% endif %}">
                         {%- if column_image != blank -%}
@@ -266,12 +350,19 @@ sit above their values so every column gets a full share of the width.
 
                     <span class="ct-column__name">{{ section.settings[column_key] | escape }}</span>
 
-                    {%- if section.settings[price_key] != blank -%}
+                    {%- if i == 1 and column_1_product != blank -%}
+                      <span class="ct-column__price">{{ column_1_product.price_min | money }}</span>
+                    {%- elsif section.settings[price_key] != blank -%}
                       <span class="ct-column__price">{{ section.settings[price_key] | escape }}</span>
                     {%- endif -%}
 
                     {%- if section.settings[note_key] != blank -%}
                       <span class="ct-column__note">{{ section.settings[note_key] | escape }}</span>
+                    {%- endif -%}
+                    {%- if column_link -%}</a>{%- endif -%}
+
+                    {%- if i == 1 and column_1_product != blank -%}
+                      {%- render 'vs-buy', product: column_1_product, button_text: section.settings.column_1_button_text, track: 'table_add_player' -%}
                     {%- endif -%}
                   {%- else -%}
                     {{ section.settings[column_key] | escape }}
@@ -323,6 +414,36 @@ sit above their values so every column gets a full share of the width.
           </tbody>
         </table>
       </div>
+      {%- if sticky -%}
+      </div>
+      <script>
+        (function () {
+          if (window.__ctStickyBound) return;
+          window.__ctStickyBound = true;
+          var ticking = false;
+          function update() {
+            ticking = false;
+            document.querySelectorAll('[data-ct-wrap]').forEach(function (wrap) {
+              var holder = wrap.querySelector('[data-ct-sticky]');
+              var head = wrap.querySelector('thead');
+              var table = wrap.querySelector('table');
+              if (!holder || !head || !table) return;
+              var bar = holder.firstElementChild;
+              var top = parseFloat(getComputedStyle(holder).top) || 0;
+              var show = head.getBoundingClientRect().bottom < top && table.getBoundingClientRect().bottom > top + bar.offsetHeight + 24;
+              if (show === holder.classList.contains('is-visible')) return;
+              holder.classList.toggle('is-visible', show);
+              if (show) { holder.removeAttribute('inert'); } else { holder.setAttribute('inert', ''); }
+            });
+          }
+          function onScroll() { if (!ticking) { ticking = true; window.requestAnimationFrame(update); } }
+          window.addEventListener('scroll', onScroll, { passive: true });
+          window.addEventListener('resize', onScroll);
+          document.addEventListener('shopify:section:load', onScroll);
+          update();
+        })();
+      </script>
+      {%- endif -%}
 
       {%- if section.settings.footnote != blank -%}
         <p class="ct-footnote">{{ section.settings.footnote | escape }}</p>
@@ -474,6 +595,31 @@ sit above their values so every column gets a full share of the width.
       "label": "Column 3 note"
     },
     {
+      "type": "product",
+      "id": "column_1_product",
+      "label": "Column 1 product (optional)",
+      "info": "Links the column 1 image and name to this product, shows its live price and adds an Add to basket button."
+    },
+    {
+      "type": "text",
+      "id": "column_1_button_text",
+      "label": "Column 1 button text",
+      "default": "Add to basket"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Compact sticky header",
+      "info": "While the table is on screen, keeps a slim bar with each column's picture, name and price at the top.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "sticky_button_text",
+      "label": "Sticky header button text",
+      "default": "Add"
+    },
+    {
       "type": "select",
       "id": "media_ratio",
       "label": "Image shape",
@@ -483,6 +629,17 @@ sit above their values so every column gets a full share of the width.
         {"value": "landscape", "label": "Landscape"}
       ],
       "default": "square"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "label": "Image fit",
+      "options": [
+        {"value": "contain", "label": "Show the whole image"},
+        {"value": "cover", "label": "Fill the shape (crops the edges)"}
+      ],
+      "default": "contain",
+      "info": "Use Fill for photos; Show the whole image for cut-out product shots."
     },
     {
       "type": "checkbox",

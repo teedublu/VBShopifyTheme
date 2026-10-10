@@ -40,8 +40,8 @@
         "text_color": "#2a555a",
         "accent_color": "#c2560f",
         "eyebrow_color": "#b8520e",
-        "button_background": "#ff9e57",
-        "button_text_color": "#1f2d2f"
+        "show_add_button": true,
+        "add_button_text": "Add to basket"
       }
     },
     "players": {
@@ -209,6 +209,10 @@
         "column_1_image": "shopify://shop_images/voxblock-player-compare.jpg",
         "column_1_price": "£49.99",
         "column_1_note": "Player, USB-C cable.",
+        "column_1_product": "voxblock-player",
+        "column_1_button_text": "Add to basket",
+        "sticky_header": true,
+        "sticky_button_text": "Add",
         "column_2_image": "shopify://shop_images/yoto-mini-player-gen4.png",
         "column_2_price": "£89.99",
         "column_2_note": "Player, USB-C cable, Make Your Own card.",
@@ -243,6 +247,10 @@
             "total_label": "Total",
             "total": "£69.99",
             "difference": "Best value",
+            "product": "gruffalo-and-friends-starter-pack",
+            "button_text": "Add to basket",
+            "show_swatches": true,
+            "product_link_text": "See what’s in the pack",
             "link_text": "",
             "link_url": ""
           }
@@ -376,7 +384,7 @@
         "column_2": "Yoto card",
         "column_3": "",
         "footnote": "",
-        "column_1_image": "shopify://shop_images/3D-FRONT-TheGruffalo.png",
+        "column_1_image": "shopify://shop_images/product-book-bookshelf-the-gruffalo.png",
         "column_1_price": "",
         "column_1_note": "A solid book they can hold",
         "column_2_image": "shopify://shop_images/yoto-gruffalo-card.png",
@@ -385,6 +393,7 @@
         "column_3_price": "",
         "column_3_note": "",
         "media_ratio": "portrait",
+        "media_fit": "cover",
         "stack_on_mobile": true,
         "background": "",
         "background_gradient": "",

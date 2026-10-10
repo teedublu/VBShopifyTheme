@@ -152,6 +152,8 @@ An optional note sits underneath the cards for small print such as "in fairness"
       margin-block-start: 0.125rem;
       color: {{ highlight }};
     }
+    #shopify-section-{{ section.id }} .price-card .vs-buy { margin-top: var(--spacing-2); }
+    #shopify-section-{{ section.id }} .price-card__product-link { align-self: center; color: {{ highlight }}; font-size: var(--text-sm); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
   </style>
 
   <div {% render 'section-properties' %} {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
@@ -205,6 +207,11 @@ An optional note sits underneath the cards for small print such as "in fairness"
 
             {%- if block.settings.difference != blank -%}
               <p class="price-card__difference">{{ block.settings.difference | escape }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.product != blank -%}
+              {%- render 'vs-buy', product: block.settings.product, button_text: block.settings.button_text, swatches: block.settings.show_swatches, track: 'pack_add', id_suffix: block.id -%}
+              <a class="price-card__product-link" href="{{ block.settings.product.url }}" data-vs-track="pack_page">{{ block.settings.product_link_text | default: 'See what’s in the pack' | escape }}</a>
             {%- endif -%}
 
             {%- if block.settings.link_text != blank -%}
@@ -389,6 +396,30 @@ An optional note sits underneath the cards for small print such as "in fairness"
           "id": "difference",
           "label": "Difference",
           "info": "Optional line under the total, such as \"£43.97 more than Voxblock\"."
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product to add (optional)",
+          "info": "Shows an Add to basket button for this product and a link to its page."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Add to basket button text",
+          "default": "Add to basket"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_swatches",
+          "label": "Show bumper colour swatches",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "product_link_text",
+          "label": "Product page link text",
+          "default": "See what’s in the pack"
         },
         {
           "type": "text",
