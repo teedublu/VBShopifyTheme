@@ -235,11 +235,22 @@ Optional (all off unless set, so other pages using this section are unchanged):
     #shopify-section-{{ section.id }} .ct-column .vs-buy { margin: var(--spacing-4) auto 0; max-width: 240px; }
     #shopify-section-{{ section.id }} .ct-highlight .vs-buy__button { background: #ffffff; border-color: #ffffff; color: var(--ct-highlight); }
     #shopify-section-{{ section.id }} .ct-highlight .vs-buy__button:hover { background: #f1f8f7; color: var(--ct-highlight); }
+    @media screen and (max-width: 699px) {
+      /* A third of a phone is ~110px: let the label wrap and drop the icon */
+      #shopify-section-{{ section.id }} .ct-column .vs-buy__button { white-space: normal; min-height: 40px; padding: 6px 8px; font-size: 12px; line-height: 1.2; }
+      #shopify-section-{{ section.id }} .ct-column .vs-buy__button svg { display: none; }
+    }
 
     {%- if sticky %}
     /* Compact sticky header: a zero-height sticky holder, so nothing on the page moves when the bar appears */
     #shopify-section-{{ section.id }} .ct-wrap { position: relative; }
-    #shopify-section-{{ section.id }} .ct-sticky { position: sticky; top: var(--sticky-area-height, 0px); height: 0; z-index: 5; }
+    #shopify-section-{{ section.id }} .ct-sticky {
+      --ct-highlight: {{ highlight }};
+      --ct-highlight-tint: {{ highlight_tint }};
+      --ct-background: {{ chart_background }};
+      --ct-text: {{ chart_text }};
+      position: sticky; top: var(--sticky-area-height, 0px); height: 0; z-index: 5;
+    }
     #shopify-section-{{ section.id }} .ct-sticky__bar {
       display: grid;
       grid-template-columns: 34% repeat({{ column_count }}, minmax(0, 1fr));
