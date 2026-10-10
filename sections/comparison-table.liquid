@@ -314,7 +314,8 @@ Optional (all off unless set, so other pages using this section are unchanged):
                   <span class="ct-sticky__thumb">{{- section.settings[image_key] | image_url: width: 96 | image_tag: loading: 'lazy', width: 44, height: 44, alt: '' -}}</span>
                 {%- endif -%}
                 <span class="ct-sticky__text">
-                  <span class="ct-sticky__name">{{ section.settings[column_key] | escape }}</span>
+                  {%- assign short_key = column_key | append: '_short' -%}
+                  <span class="ct-sticky__name">{{ section.settings[short_key] | default: section.settings[column_key] | escape }}</span>
                   {%- if sticky_price != blank -%}<span class="ct-sticky__price">{{ sticky_price }}</span>{%- endif -%}
                 </span>
                 {%- if i == 1 and cta_collection != blank -%}
@@ -627,6 +628,22 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "label": "Compact sticky header",
       "info": "While the table is on screen, keeps a slim bar with each column's picture, name and price at the top.",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "column_1_short",
+      "label": "Column 1 short name (sticky header)"
+    },
+    {
+      "type": "text",
+      "id": "column_2_short",
+      "label": "Column 2 short name (sticky header)"
+    },
+    {
+      "type": "text",
+      "id": "column_3_short",
+      "label": "Column 3 short name (sticky header)",
+      "info": "Leave blank to use the column name."
     },
     {
       "type": "text",
