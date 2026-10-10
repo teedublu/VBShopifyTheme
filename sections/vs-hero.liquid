@@ -229,7 +229,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
       {%- if packs != blank -%}
         <a class="button button--lg w-full vs-hero__cta" href="{{ packs.url }}" data-vs-hero-target="starter_packs">
           {{- section.settings.button_text | escape -}}
-          {%- if from_cents > 0 %} · from {{ from_cents | money }}{% endif -%}
+          {%- if section.settings.show_from_price and from_cents > 0 %} · from {{ from_cents | money }}{% endif -%}
         </a>
       {%- endif -%}
       {%- if section.settings.link_text != blank -%}
@@ -293,7 +293,8 @@ initialised in layout/theme.liquid). No storefront pixel events.
     { "type": "text", "id": "prices_checked", "label": "Date the Yoto prices were checked", "default": "24 September 2026", "info": "Update this whenever you re-check the Yoto prices." },
     { "type": "header", "content": "Buttons" },
     { "type": "collection", "id": "collection", "label": "Starter pack collection", "info": "The button links here and shows \"from\" the cheapest product in it, read live." },
-    { "type": "text", "id": "button_text", "label": "Primary button text", "default": "Shop starter packs", "info": "\" · from £x\" is added automatically." },
+    { "type": "text", "id": "button_text", "label": "Primary button text", "default": "Shop now" },
+    { "type": "checkbox", "id": "show_from_price", "label": "Add \" · from £x\" to the button", "default": false, "info": "The cheapest starter pack price, read live." },
     { "type": "text", "id": "link_text", "label": "Text link", "default": "See the full comparison" },
     { "type": "text", "id": "link_url", "label": "Text link target", "default": "#players" },
     { "type": "header", "content": "Press trust row" },

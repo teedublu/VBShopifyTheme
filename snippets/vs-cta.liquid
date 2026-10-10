@@ -3,14 +3,14 @@
 VS CTA (Voxblock vs Yoto page)
 ----------------------------------------------------------------------------------------------------------------------
 The page's one call to action, used everywhere a button appears (hero, comparison table + its sticky header, price
-breakdown cards): the theme's own primary button (pill, site orange, white text) linking to the starter pack
-collection, reading "Shop starter packs · from £x" with the cheapest starter pack price worked out live.
+breakdown cards): the theme's own primary button (pill, site orange, white text) reading "Shop now" and linking to
+the starter pack collection. Slim on cards; the page-level buttons (hero, closing band) are full size.
 
 Variables:
 * collection: the collection to link to [REQUIRED]
-* text: button text. Defaults to "Shop starter packs". " · from £x" is added unless show_from is false.
-* show_from: false to leave the "from" price off (default true).
-* compact: true for the small button in the sticky header.
+* text: button text. Defaults to "Shop now".
+* show_from: true to add " · from £x" (the cheapest product in the collection, live). Default false.
+* full: true for the full-size button. Default is the slim one used on cards and in the sticky header.
 * track: PostHog target name, sent as vs_yoto_click { target, page } (voxblock.js).
 {%- endcomment -%}
 
@@ -32,10 +32,10 @@ Variables:
   if from_cents == 0
     assign from_cents = from_cents_any
   endif
-  assign label = text | default: 'Shop starter packs'
+  assign label = text | default: 'Shop now'
 -%}
 
-<a class="button {% if compact %}button--sm{% else %}button--lg{% endif %} w-full vs-cta{% if compact %} vs-cta--compact{% endif %}" href="{{ collection.url }}" data-vs-track="{{ track | default: 'cta' }}">
+<a class="button {% if full %}button--lg{% else %}button--sm{% endif %} w-full vs-cta{% unless full %} vs-cta--slim{% endunless %}" href="{{ collection.url }}" data-vs-track="{{ track | default: 'cta' }}">
   {{- label | escape -}}
-  {%- if show_from != false and from_cents > 0 -%}<span class="vs-cta__from"> · from {{ from_cents | money }}</span>{%- endif -%}
+  {%- if show_from and from_cents > 0 -%}<span class="vs-cta__from"> · from {{ from_cents | money }}</span>{%- endif -%}
 </a>

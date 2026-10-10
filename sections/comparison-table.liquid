@@ -234,11 +234,9 @@ Optional (all off unless set, so other pages using this section are unchanged):
     /* Column 1 product link and Add to basket (white button on the teal header) */
     #shopify-section-{{ section.id }} .ct-column__link { display: block; color: inherit; text-decoration: none; }
     #shopify-section-{{ section.id }} .ct-column__link:hover .ct-column__name { text-decoration: underline; text-underline-offset: 3px; }
-    #shopify-section-{{ section.id }} .ct-column__cta { display: block; margin: var(--spacing-4) auto 0; max-width: 260px; font-family: var(--text-font-family); }
+    #shopify-section-{{ section.id }} .ct-column__cta { display: block; margin: var(--spacing-4) auto 0; max-width: 200px; font-family: var(--text-font-family); }
     @media screen and (max-width: 699px) {
-      /* A third of a phone is ~110px: smaller button, label may wrap, the "from" price drops onto its own line */
-      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta { padding: 8px 6px; font-size: 12px; line-height: 1.25; white-space: normal; }
-      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta__from { display: block; margin-inline-start: 0; font-weight: 600; }
+      #shopify-section-{{ section.id }} .ct-column__cta .vs-cta { padding-inline: 6px; }
     }
 
     {%- if sticky %}
@@ -320,7 +318,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                   {%- if sticky_price != blank -%}<span class="ct-sticky__price">{{ sticky_price }}</span>{%- endif -%}
                 </span>
                 {%- if i == 1 and cta_collection != blank -%}
-                  {%- render 'vs-cta', collection: cta_collection, text: section.settings.sticky_button_text, show_from: false, compact: true, track: 'table_sticky_cta' -%}
+                  {%- render 'vs-cta', collection: cta_collection, text: section.settings.sticky_button_text, track: 'table_sticky_cta' -%}
                 {%- endif -%}
               </div>
             {%- endfor -%}
@@ -621,8 +619,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "type": "text",
       "id": "column_1_button_text",
       "label": "Column 1 button text",
-      "default": "Shop starter packs",
-      "info": "\" · from £x\" is added automatically."
+      "default": "Shop now"
     },
     {
       "type": "checkbox",
@@ -635,7 +632,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "type": "text",
       "id": "sticky_button_text",
       "label": "Sticky header button text",
-      "default": "Shop packs"
+      "default": "Shop now"
     },
     {
       "type": "select",
