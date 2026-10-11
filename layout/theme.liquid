@@ -101,6 +101,10 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       elsif request.page_type == 'product' and product.handle == 'the-gruffalo'
         assign resolved_page_title = 'The Gruffalo Voxblock Audiobook | Buy Screen-Free Story'
         assign resolved_page_description = 'Buy The Gruffalo as a physical Voxblock audiobook block for screen-free listening. Check compatibility, setup, age suitability and practical purchase details.'
+      elsif request.page_type == 'index'
+        # Homepage targets the "kids audiobook player" search group (see briefs/homepage-kids-player.md)
+        assign resolved_page_title = 'Kids Audiobook Player | Screen-Free Audio Player | Voxblock'
+        assign resolved_page_description = 'Voxblock is the screen-free audiobook player for kids aged 3–14+. No wifi, apps or subscriptions: pop in an audiobook and press play. Free UK delivery over £25.'
       endif
 
       # Series pages: "<Series> Audiobooks in Order | Voxblock" when the series has a reading order, else "for Kids"

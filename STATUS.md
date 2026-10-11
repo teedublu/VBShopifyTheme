@@ -10,6 +10,15 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
   pippi-longstocking-goes-aboard, akimbo-and-the-lions (collection fallback, the slower path).
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
+- Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
+
+## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
+Branch `claude/homepage-kids-player`, draft PR into `main`, **awaiting owner check on a draft theme**.
+Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.
+- Title/meta override for the homepage in `layout/theme.liquid`: "Kids Audiobook Player | Screen-Free Audio Player | Voxblock".
+- `templates/index.json`: hero H1 "The screen-free audiobook player for children" + new hero line + second button; Meet Voxblock
+  H1 → H2 with new copy; Features heading → "Finally. Audiobooks without the fussy tech."; new 9-question FAQ before starter packs.
+- Contrast fixes in the hero only (heading #197177, button text #1d3f43 on orange). Site-wide button colours not changed.
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.

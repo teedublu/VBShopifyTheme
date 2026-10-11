@@ -21,18 +21,21 @@
             "text_position": "place-self-center text-center",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "",
-            "title": "Finally. Audiobooks without the fussy tech.",
-            "content": "<p>Simple tech. Like you remember.</p>",
+            "subheading": "No screens. No wi-fi. No apps.",
+            "title": "The screen-free audiobook player for children",
+            "content": "<p>Pop in an audiobook and press play. A simple story player for children aged 3 to 14+, with no wifi, apps or subscriptions.</p><p>Free UK delivery over £25 · 100-day money-back guarantee</p>",
             "link_text": "Discover our player",
             "link_url": "https://voxblock.co.uk/products/voxblock-player",
             "background": "#ffffff",
             "background_gradient": "",
-            "text_color": "#565656",
-            "heading_text_color": "#4cb6ac",
+            "text_color": "#4a4a4a",
+            "heading_text_color": "#197177",
             "text_gradient": "",
             "button_background": "",
-            "button_text_color": ""
+            "button_text_color": "#1d3f43",
+            "title_tag": "h1",
+            "link2_text": "See how it works",
+            "link2_url": "shopify://pages/how-does-it-work"
           }
         }
       },
@@ -67,13 +70,13 @@
         "liquid_xCHYgW": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h1 class=\"h2\">\nNo screens. No wi-fi. No apps.</h1>"
+            "liquid": "<h2 class=\"h2\">An audio player for children that just works</h2>"
           }
         },
         "richtext_n7wzRG": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Trusted by families across the UK and Australia to support reading for pleasure.</p>"
+            "content": "<p>Voxblock is an audiobook player made for children. Each audiobook is a sturdy block, like a board book, that slots into the player. Press play and the story starts. There's nothing to set up, download or stream, and no screen to argue over.</p><p>Children can listen out loud through the built-in speaker or plug in headphones. The battery lasts up to 16 hours, and bedtime mode plays the chosen story for 20 minutes before going to standby. With more than 350 audiobooks, from first picture books to teen fiction, it's a story player that grows with your child.</p><p>Trusted by families across the UK and Australia to support reading for pleasure.</p>"
           }
         },
         "button_qfBpaY": {
@@ -440,7 +443,7 @@
         "full_width": false,
         "image": "shopify://shop_images/home-hotspot-web-v2.25-low-res_1.webp",
         "mobile_image": "shopify://shop_images/home-hotspot-mob-v2.25_-low-res_63df2b13-00a1-4cff-b598-7be4ffda9bdb.png",
-        "title": "Features",
+        "title": "Finally. Audiobooks without the fussy tech.",
         "content": "<p>Simple to use, screen-free audiobook player</p>",
         "button_text": "",
         "button_url": "",
@@ -1063,6 +1066,109 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "faq_home_prepurchase": {
+      "type": "faq",
+      "blocks": {
+        "item_home01": {
+          "type": "item",
+          "settings": {
+            "title": "How does a kids audiobook player work?",
+            "content": "<p>Each Voxblock audiobook is a block with a built-in connector. Slot it into the player, press play and the story starts. No screen, app or internet needed.</p>"
+          }
+        },
+        "item_home02": {
+          "type": "item",
+          "settings": {
+            "title": "Does Voxblock need wifi, an app or a smartphone?",
+            "content": "<p>No. There are no downloads, streams, subscriptions or apps, and nothing to set up.</p>"
+          }
+        },
+        "item_home03": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock for?",
+            "content": "<p>Children aged 3 to 14+, from picture books to teen fiction.</p>"
+          }
+        },
+        "item_home04": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>Up to 16 hours of listening on a full charge. It charges with the USB-C cable in the box.</p>"
+          }
+        },
+        "item_home05": {
+          "type": "item",
+          "settings": {
+            "title": "Can my child use headphones?",
+            "content": "<p>Yes. The player has a built-in speaker and a headphone jack.</p>"
+          }
+        },
+        "item_home06": {
+          "type": "item",
+          "settings": {
+            "title": "Is it good for bedtime?",
+            "content": "<p>Yes. Bedtime mode plays the chosen story for 20 minutes, then the player goes to standby.</p>"
+          }
+        },
+        "item_home07": {
+          "type": "item",
+          "settings": {
+            "title": "How is Voxblock different from Yoto or Tonies?",
+            "content": "<p>Voxblock needs no wifi, app or account to set up. <a href=\"/pages/voxblock-vs-yoto\" title=\"Voxblock vs Yoto\">See how they compare</a>.</p>"
+          }
+        },
+        "item_home08": {
+          "type": "item",
+          "settings": {
+            "title": "What's in the box?",
+            "content": "<p>The player, a USB-C charging cable and a protective bumper if you choose one. Audiobooks are sold separately.</p>"
+          }
+        },
+        "item_home09": {
+          "type": "item",
+          "settings": {
+            "title": "What if it's not right for us?",
+            "content": "<p>There's a 100-day money-back guarantee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_home01",
+        "item_home02",
+        "item_home03",
+        "item_home04",
+        "item_home05",
+        "item_home06",
+        "item_home07",
+        "item_home08",
+        "item_home09"
+      ],
+      "name": "Questions parents ask",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions parents ask",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
     }
   },
   "order": [
@@ -1078,6 +1184,7 @@
     "image_link_blocks_9Yz7Pf",
     "testimonials_UiMYnt",
     "multiple_images_with_text_qi7tAC",
+    "faq_home_prepurchase",
     "featured_collection_RbaTLW",
     "image-with-text-overlay",
     "media_with_text_cTgCfe",
