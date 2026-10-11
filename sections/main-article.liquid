@@ -91,10 +91,19 @@
       }
     }
   {%- endif -%}
+  #shopify-section-{{ section.id }} .article-banner__intro { max-width: 46rem; margin-inline: auto; margin-block-start: var(--spacing-6); }
 </style>
 
 <div class="article" {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
-  {%- render 'article-banner', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: section.settings.show_comments_count, layout: section.settings.layout, article_image: article_image -%}
+  {%- render 'article-banner', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: section.settings.show_comments_count, layout: section.settings.layout, article_image: article_image, show_tag: section.settings.show_tag, intro: section.settings.banner_intro -%}
+
+  {%- liquid
+    assign show_body_area = true
+    if section.settings.show_content == false and section.settings.show_share_buttons == false and section.blocks.size == 0
+      assign show_body_area = false
+    endif
+  -%}
+  {%- if show_body_area -%}
 
   <div class="container">
     <div class="article-content v-stack gap-8 sm:gap-10">
@@ -136,6 +145,7 @@
       {%- endcase -%}
     {%- endfor -%}
   </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -267,6 +277,18 @@
       "label": "Show article body",
       "info": "Turn off on templates whose sections carry the content (the comparison guide).",
       "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tag",
+      "label": "Show tag badge",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "banner_intro",
+      "label": "Intro under the title (optional)",
+      "info": "For templates whose sections carry the content, such as the comparison guide."
     }
   ],
   "blocks": [

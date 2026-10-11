@@ -17,38 +17,9 @@
         "overlay_opacity": 0,
         "content_width": "750px",
         "show_image": false,
-        "show_content": false
-      }
-    },
-    "intro": {
-      "type": "rich-text",
-      "blocks": {
-        "lead": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Yoto or Tonies? The Yoto Player and the Toniebox are the two best-known screen-free audio players in the UK. Here is how they compare on price, age, setup and what each story costs.</p>"
-          }
-        },
-        "byline": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>By the Voxblock team · Updated 11 October 2026 · 7-minute read</p><p><em>We make Voxblock, a third screen-free player, so we have included it. This guide is about Yoto and Tonies first, and we have tried to be fair to both.</em></p>"
-          }
-        }
-      },
-      "block_order": [
-        "lead",
-        "byline"
-      ],
-      "settings": {
-        "full_width": false,
-        "use_mo": false,
-        "content_width": "large",
-        "text_position": "start",
-        "anchor_id": "",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": ""
+        "show_content": false,
+        "show_tag": false,
+        "banner_intro": "<p>Yoto or Tonies? The Yoto Player and the Toniebox are the two best-known screen-free audio players in the UK. Here is how they compare on price, age, setup and what each story costs.</p><p>By the Voxblock team · Updated 11 October 2026 · 7-minute read</p><p><em>We make Voxblock, a third screen-free player, so we have included it. This guide is about Yoto and Tonies first, and we have tried to be fair to both.</em></p>"
       }
     },
     "quick_answer": {
@@ -613,7 +584,6 @@
   },
   "order": [
     "main",
-    "intro",
     "quick_answer",
     "glance",
     "ages",
