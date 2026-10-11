@@ -12,6 +12,14 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
   earlier.
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
 
+## Open: site-wide colour contrast (owner: must be resolved)
+Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for large headings and buttons):
+- Eyebrows in theme orange #ff9e57 on white/cream: 2.0:1 (fails). Owner chose the theme orange for now; fix by a deeper orange (e.g. #c2560f, ~4.6:1) as its own setting, keeping the button orange.
+- Buttons: white text on orange #ff9e57 (2.0:1) and on light teal #4cb6ac (2.4:1); orange outline-button text (2.0:1).
+- White headings on light-teal FAQ and newsletter bands (2.4:1): homepage, product pages, schools, landing pages.
+- Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
+One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
+
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, draft PR #74 into `main`, **awaiting owner check on draft theme 199842660736**.
 Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.
