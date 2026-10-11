@@ -74,6 +74,10 @@ Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**
   headed with snippets/section-header.liquid (`.subheading` eyebrow, `.h2` heading); group and book titles are `.h6`,
   small text uses `.text-sm` / `.text-xs` / `.text-subdued`, the jump link is `.link`. The product title eyebrow is
   `.subheading` (the orange uppercase rule is gone). CSS in voxblock.css.liquid is layout only.
+- Round 5 (owner: headings and eyebrow still didn't match): rebased onto main, which now has one heading hierarchy
+  and one `.subheading` eyebrow style site-wide (PR #79 era). The preview was built on the older main, whose bold H1
+  rule made the product title heavier. Section titles are now bare h3 (groups) and h4 (books) so they take their
+  level's site-wide size; main's own title `eyebrow` setting is used (duplicate removed), `[count]` still supported.
 - Check on preview: all four colours (Blue bumper picture is a different render style), phone and desktop width,
   sample play/pause, the jump link clears the sticky header, Zeepy Sleep Intro Pack.
 

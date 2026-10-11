@@ -992,7 +992,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 /* ----------------------------------------------------------------------------------------------------------------
    PACK CONTENTS: "What's in the box" section below the main product area on starter-pack bundle pages
    (sections/pack-contents.liquid, snippets/pack-contents.liquid). Layout only: headings, eyebrow, links and text take
-   the theme's own styles (section-header, .h6, .subheading, .text-sm, .link). Phone: kit tiles in a row of three,
+   the site-wide styles (section-header's .subheading + .h2, bare h3/h4 for the groups and books, .text-sm, .link). Phone: kit tiles in a row of three,
    then one card per book. Desktop: kit in a 300px column, books as three cards beside it. Sample buttons are the
    site's standard .bookpreview button. #whats-in-the-box is linked from the buy column (.pack-contents-jump).
 ---------------------------------------------------------------------------------------------------------------- */
@@ -1015,7 +1015,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .pack-contents__cover { flex: 0 0 64px; }
 .pack-contents__cover img { display: block; width: 64px; height: auto; }
 .pack-contents__book-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-.pack-contents__book-body > .h6 { margin: 0; }
+.pack-contents__book-body > h4 { margin: 0; }
 .pack-contents__play { margin-top: 8px; align-self: flex-start; }
 .pack-contents__value { display: flex; align-items: center; gap: 12px; }
 .pack-contents__value svg { flex: 0 0 26px; }

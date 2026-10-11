@@ -77,7 +77,7 @@ Accepts: product (the pack), opts (the section's settings)
   {%- if kit != blank -%}
     <div class="pack-contents__group">
       <div class="pack-contents__group-head">
-        <h3 class="h6">{{ opts.kit_heading }}</h3>
+        <h3>{{ opts.kit_heading }}</h3>
       </div>
       <ul class="pack-contents__kit" role="list">{{ kit }}</ul>
     </div>
@@ -87,9 +87,9 @@ Accepts: product (the pack), opts (the section's settings)
     <div class="pack-contents__group">
       <div class="pack-contents__group-head">
         {%- if books.size == 1 -%}
-          <h3 class="h6">{{ opts.books_heading_one | default: opts.books_heading | replace: '[count]', books.size }}</h3>
+          <h3>{{ opts.books_heading_one | default: opts.books_heading | replace: '[count]', books.size }}</h3>
         {%- else -%}
-          <h3 class="h6">{{ opts.books_heading | replace: '[count]', books.size }}</h3>
+          <h3>{{ opts.books_heading | replace: '[count]', books.size }}</h3>
         {%- endif -%}
         {%- if total_minutes > 0 -%}
           {%- assign th = total_minutes | divided_by: 60 -%}
@@ -108,7 +108,7 @@ Accepts: product (the pack), opts (the section's settings)
               {{- book.featured_media | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', sizes: '(min-width: 1000px) 120px, 72px', widths: '120,240' -}}
             </a>
             <div class="pack-contents__book-body">
-              <a href="{{ book.url }}" class="h6">{{ book.title }}</a>
+              <h4><a href="{{ book.url }}">{{ book.title }}</a></h4>
               {%- if narrator != blank -%}
                 <p class="text-sm">Read by <span class="bold">{{ narrator.name }}</span></p>
               {%- endif -%}
