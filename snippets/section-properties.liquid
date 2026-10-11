@@ -69,7 +69,7 @@ but you can override them by manually passing a different value (although this s
   {%- if text_brightness > 200 -%}
     {%- capture style_attributes -%}{{ style_attributes }} --heading-color: {{ text_color.rgb }}; --eyebrow-color: {{ text_color }};{%- endcapture -%}
   {%- else -%}
-    {%- capture style_attributes -%}{{ style_attributes }} --heading-color: {{ settings.brand_heading.rgb }}; --eyebrow-color: {{ settings.accent_strong | color_mix: '#000000', 55 }};{%- endcapture -%}
+    {%- capture style_attributes -%}{{ style_attributes }} --heading-color: {{ settings.brand_heading.rgb }}; --eyebrow-color: {{ settings.accent_strong }};{%- endcapture -%}
   {%- endif -%}
 {%- endunless -%}
 

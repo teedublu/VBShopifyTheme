@@ -486,8 +486,10 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* EYEBROWS (subheadings): the small line above a heading, one style everywhere. Every eyebrow carries the theme's
    .subheading class (section subheading settings, and each section's own __eyebrow element). Colour: --eyebrow-color,
    dark brand orange on light sections, the text colour on dark sections, inherited over images. */
-.subheading { font-family: var(--text-font-family); font-size: 0.75rem; line-height: 1.4; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--eyebrow-color); }
-@media screen and (min-width: 700px) { .subheading { font-size: 0.8125rem; } }
+.subheading { font-family: var(--text-font-family); font-size: 0.75rem; line-height: 1.25rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--eyebrow-color); }
+/* the eyebrow sits the same 8px above whatever follows it, in rich text and in the bespoke sections alike */
+.prose .subheading + *, .subheading + :is(h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6) { margin-block-start: var(--spacing-2); }
+@media screen and (min-width: 700px) { .subheading { font-size: 0.8125rem; line-height: 1.25rem; } }
 :where(.content-over-media, .collection-card__content-wrapper) .subheading { color: inherit; }
 
 /* ----------------------------------------------------------------------------------------------------------------
