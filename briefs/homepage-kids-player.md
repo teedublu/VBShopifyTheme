@@ -21,6 +21,15 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - Fixed: hero image (the largest image above the fold) was lazy-loaded; `media-with-text` now loads its image eagerly with high priority when it is the first section on any page. Hero image had no alt text; alt set on the Shopify file (also improves live).
 - Left as is: the stats band renders "350+" and "30.5m" as H2s (theme impact-text section); the "Under 5's" age tile links to the player, not an age collection; hero PNG is 1.2 MB (Shopify serves ~390 KB WebP).
 
+## SEO review (11 Oct, draft vs live, Google UK)
+- On-page basics pass: Lighthouse SEO 100 (draft and live), one server-rendered H1, title/meta in length, canonical, WebSite + Organization + FAQPage + VideoObject schema, OG image set.
+- Rank today: the live homepage is not in the top 12 organic results for "kids audiobook player" or "audio player for kids"; it is cited in Google's AI overview (quoting the old "Connectivity free" text). Page 1 is reviews and listicles (Wired, Rhubarb and Wren, Whinge Whinge Wine, Parents), Yoto's product page, retailers, Reddit/Mumsnet threads.
+- Content: ~450 words of descriptive copy (830 incl. product cards). Yoto Mini's ranking page has ~1,300: age stages, specs, box contents, 15 FAQs.
+- Gaps against what searchers ask (People also ask): best player for toddlers / 3-year-olds; what can my child listen to audiobooks on; alternatives to Tonies / Yoto.
+- Generic H2s waste heading weight: "Testimonials", "Newsletter", "#wearevoxblock".
+- Performance (Lighthouse mobile, lab): live 45, draft 40; LCP 8–9 s, TBT 1.3–1.8 s. Mostly script work in the page itself (apps and inline scripts, ~390 KB HTML) and theme.js; site-wide, not homepage copy. Check field data in PageSpeed Insights.
+- Accessibility 86–89: contrast (open item), small tap targets, focusable items inside hidden carousels.
+
 ## Copy rules applied
 Sentence case for every heading, eyebrow and button ("Best-selling audiobooks", not "Best-selling Audiobooks"); only names keep capitals (Voxblock, Roald Dahl, Yoto, UK). No "no apps" claims (owner, 11 Oct: a Voxblock-branded app is coming for MYO). Use no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes left as written.
 "Children" in body copy and headings; "kids" in the title tag, meta description and one FAQ question, where people search with it. Facts: ages 3 to 14+ (owner confirmed min age 3), battery up to 16 hours (owner confirmed), 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded.
