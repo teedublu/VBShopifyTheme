@@ -155,3 +155,9 @@ Built on `claude/trusting-shannon-lvl85h`, draft theme 199560855936, **awaiting 
 Full record, baseline table and flags: `briefs/starter-pack-collection-redesign.md`.
 Open: enable `pack.gift_set` as a Search & Discovery filter (Gift sets chip); set `help_url` when the chooser ships;
 decide 4 vs 5 per row on desktop; 30-day PostHog re-read after launch.
+
+## Duplicate player pages (2026-10-11)
+- GSC (90 days): the homepage already ranks 2–8 for screen-free and "kids audio player" searches, so the two extra player pages only competed with it.
+- Live now: /pages/kids-audio-player and /pages/audiobook-player-for-kids are unpublished, with 301 redirects to /.
+- /pages/reasons-to-buy-voxblock becomes the Voxblock reviews page (template page.reasons-to-buy, PR #79). After merge, set its template in admin.
+- A screen-free page draft is parked (not committed); only revisit it if the homepage loses screen-free rankings.
