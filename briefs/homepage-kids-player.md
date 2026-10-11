@@ -36,6 +36,11 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - Headings: "Testimonials" → "What parents say about Voxblock"; "#wearevoxblock" → eyebrow, H2 "Follow Voxblock"; "Newsletter" → "Hear about new audiobooks first".
 - Owner to confirm two claims: most 3 year olds can choose and play a story on their own; under 5s can choose and play by themselves.
 
+## Performance (11 Oct, Lighthouse mobile lab)
+- Cause of the slow hero (LCP 8–9 s): the hero image and text were faded in by theme JS (`reveal-on-scroll`), so they stayed invisible until scripts finished. `media-with-text` now skips the fade-in and loads its image eagerly when it is the first section on a page. Draft LCP 9.3 s → 3.8–4.4 s.
+- Page frozen (TBT 1.3–2.6 s) is script and layout work, mostly not theme: 44 inline scripts (109 KB) and 62 script tags from apps and Shopify (BOGOS free gifts, Pandectes cookie banner, Klaviyo, PostHog, GTM, Facebook, OpenAI pixel, Trustpilot, Zigpoll, back-in-stock), Shopify pixels (287 KB), Shop Pay wallet preloads (674 KB, 69 low-priority requests after load). Style and layout 3.7 s from a 2,286-element page (two product carousels with 11 + 6 products, both hot-spot layouts, testimonials, logos).
+- Owner decisions for TBT: which apps must run on the homepage (Zigpoll, BOGOS, back-in-stock are candidates to limit to cart/product pages); fewer products in "Best-selling audiobooks" (11 → 5); autoplay video below the fold set to play on click.
+
 ## Copy rules applied
 Sentence case for every heading, eyebrow and button ("Best-selling audiobooks", not "Best-selling Audiobooks"); only names keep capitals (Voxblock, Roald Dahl, Yoto, UK). No "no apps" claims (owner, 11 Oct: a Voxblock-branded app is coming for MYO). Use no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes left as written.
 "Children" in body copy and headings; "kids" in the title tag, meta description and one FAQ question, where people search with it. Facts: ages 3 to 14+ (owner confirmed min age 3), battery up to 16 hours (owner confirmed), 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded.
