@@ -37,7 +37,7 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
-Branch `claude/homepage-kids-player`, draft PR #74 into `main`, **awaiting owner check on draft theme 199842660736**.
+Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
 Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.
 Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed): heading sizes from Theme settings > Heading size (Small), colour from Heading teal, size classes still allowed for styled marketing lines, one eyebrow style (theme orange, 12/13px, 20px line height, 8px above its heading). Affects every page; the draft theme has all changed templates.
 - Title/meta override for the homepage in `layout/theme.liquid`: "Kids Audiobook Player | Screen-Free Audio Player | Voxblock".
