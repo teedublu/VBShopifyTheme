@@ -69,6 +69,11 @@ Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**
   (Custom Liquid block → `#whats-in-the-box`). Title eyebrow "Audiobook player + stories" (new `eyebrow` setting on
   the main-product title block, `[count]` = books in the pack). One-book packs (Zeepy Sleep Intro Pack uses this
   template) get "Your audiobook" as the heading.
+- Round 4 (owner: "keep the site wide styling on heading and eyebrows"): no custom type styles. The section is
+  wrapped like the theme's own (section-properties, colour settings, background #fff7f0 set in the template) and
+  headed with snippets/section-header.liquid (`.subheading` eyebrow, `.h2` heading); group and book titles are `.h6`,
+  small text uses `.text-sm` / `.text-xs` / `.text-subdued`, the jump link is `.link`. The product title eyebrow is
+  `.subheading` (the orange uppercase rule is gone). CSS in voxblock.css.liquid is layout only.
 - Check on preview: all four colours (Blue bumper picture is a different render style), phone and desktop width,
   sample play/pause, the jump link clears the sticky header, Zeepy Sleep Intro Pack.
 

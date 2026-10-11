@@ -4,17 +4,17 @@ PACK CONTENTS ("What's in the box", starter-pack bundle pages)
 ----------------------------------------------------------------------------------------------------------------------
 A full-width band below the main product area: the player kit as pictures, then each book in the pack with cover,
 narrator, length and a sample button. Kept out of the buy column on purpose so it adds content without pushing
-Add to basket down; a link in the buy column (.pack-contents-jump) jumps to it (#whats-in-the-box).
+Add to basket down. Wrapped like the theme's own sections (section-properties: background, text colour, full
+width) and headed with snippets/section-header.liquid, so headings and the eyebrow take the site-wide styles. A link in the buy column (.pack-contents-jump) jumps to it (#whats-in-the-box).
 Markup: snippets/pack-contents.liquid. Styles: assets/voxblock.css.liquid (PACK CONTENTS).
 Shows nothing on a product without a `bundles.products` list.
 {%- endcomment -%}
 
 {%- if product != blank and product.metafields.bundles.products.value.size > 0 -%}
-  <section class="pack-contents-band" {{ section.shopify_attributes }}>
-    <div class="container">
-      {%- render 'pack-contents', product: product, opts: section.settings -%}
-    </div>
-  </section>
+  {%- render 'section-spacing-collapsing' -%}
+  <div {% render 'section-properties' %}>
+    {%- render 'pack-contents', product: product, opts: section.settings -%}
+  </div>
 {%- endif -%}
 
 {% schema %}
@@ -23,6 +23,10 @@ Shows nothing on a product without a `bundles.products` list.
   "class": "shopify-section--pack-contents",
   "enabled_on": { "templates": ["product"] },
   "settings": [
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    { "type": "color", "id": "background", "label": "Background" },
+    { "type": "color_background", "id": "background_gradient", "label": "Background gradient" },
+    { "type": "color", "id": "text_color", "label": "Text" },
     { "type": "paragraph", "content": "Starter packs: player kit as picture tiles, then each book in the bundles.products metafield with cover, narrator, length and a sample button." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What's in the box" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Everything to start listening, the day it arrives" },

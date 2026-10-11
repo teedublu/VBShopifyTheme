@@ -27,11 +27,8 @@ Accepts: product (the pack), opts (the section's settings)
 {%- endfor -%}
 
 <div class="pack-contents" id="whats-in-the-box" data-pack-contents>
-  <div class="pack-contents__head">
-    {%- if opts.eyebrow != blank -%}<p class="pack-contents__eyebrow">{{ opts.eyebrow }}</p>{%- endif -%}
-    {%- if opts.heading != blank -%}<h2 class="pack-contents__title">{{ opts.heading }}</h2>{%- endif -%}
-    {%- if opts.intro != blank -%}<p class="pack-contents__intro">{{ opts.intro }}</p>{%- endif -%}
-  </div>
+  {%- capture intro -%}{%- if opts.intro != blank -%}<p>{{ opts.intro | escape }}</p>{%- endif -%}{%- endcapture -%}
+  {%- render 'section-header', subheading: opts.eyebrow, heading: opts.heading, content: intro -%}
 
   <div class="pack-contents__body">
   {%- capture kit -%}
@@ -70,8 +67,8 @@ Accepts: product (the pack), opts (the section's settings)
               {{- item.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: item.title -}}
             {%- endif -%}
           </div>
-          <p class="pack-contents__kit-name">{{ opts[lkey] | default: item.title }}</p>
-          {%- if opts[ckey] != blank -%}<p class="pack-contents__kit-caption">{{ opts[ckey] }}</p>{%- endif -%}
+          <p class="pack-contents__kit-name bold">{{ opts[lkey] | default: item.title }}</p>
+          {%- if opts[ckey] != blank -%}<p class="pack-contents__kit-caption text-xs text-subdued">{{ opts[ckey] }}</p>{%- endif -%}
         </li>
       {%- endif -%}
     {%- endfor -%}
@@ -80,7 +77,7 @@ Accepts: product (the pack), opts (the section's settings)
   {%- if kit != blank -%}
     <div class="pack-contents__group">
       <div class="pack-contents__group-head">
-        <h3 class="pack-contents__group-title">{{ opts.kit_heading }}</h3>
+        <h3 class="h6">{{ opts.kit_heading }}</h3>
       </div>
       <ul class="pack-contents__kit" role="list">{{ kit }}</ul>
     </div>
@@ -90,14 +87,14 @@ Accepts: product (the pack), opts (the section's settings)
     <div class="pack-contents__group">
       <div class="pack-contents__group-head">
         {%- if books.size == 1 -%}
-          <h3 class="pack-contents__group-title">{{ opts.books_heading_one | default: opts.books_heading | replace: '[count]', books.size }}</h3>
+          <h3 class="h6">{{ opts.books_heading_one | default: opts.books_heading | replace: '[count]', books.size }}</h3>
         {%- else -%}
-          <h3 class="pack-contents__group-title">{{ opts.books_heading | replace: '[count]', books.size }}</h3>
+          <h3 class="h6">{{ opts.books_heading | replace: '[count]', books.size }}</h3>
         {%- endif -%}
         {%- if total_minutes > 0 -%}
           {%- assign th = total_minutes | divided_by: 60 -%}
           {%- assign tm = total_minutes | modulo: 60 -%}
-          <span class="pack-contents__group-meta">{{ th }} h {{ tm }} m of stories</span>
+          <span class="text-sm text-subdued">{{ th }} h {{ tm }} m of stories</span>
         {%- endif -%}
       </div>
       <ul class="pack-contents__books" role="list">
@@ -111,11 +108,11 @@ Accepts: product (the pack), opts (the section's settings)
               {{- book.featured_media | image_url: width: 240 | image_tag: loading: 'lazy', alt: '', sizes: '(min-width: 1000px) 120px, 72px', widths: '120,240' -}}
             </a>
             <div class="pack-contents__book-body">
-              <a href="{{ book.url }}" class="pack-contents__book-title">{{ book.title }}</a>
+              <a href="{{ book.url }}" class="h6">{{ book.title }}</a>
               {%- if narrator != blank -%}
-                <p class="pack-contents__book-narrator">Read by <span>{{ narrator.name }}</span></p>
+                <p class="text-sm">Read by <span class="bold">{{ narrator.name }}</span></p>
               {%- endif -%}
-              <p class="pack-contents__book-meta">
+              <p class="pack-contents__book-meta text-xs text-subdued">
                 {%- if d[0] != blank -%}{{ d[0] | plus: 0 }} h{% if d[1] != blank %} {{ d[1] | plus: 0 }} m{% endif %}{%- endif -%}
                 {%- if book.metafields.book.abridged.value == false %} · Unabridged{% endif -%}
                 {%- if age_lower != blank and age_upper != blank %} · Ages {{ age_lower }}–{{ age_upper }}{% endif -%}
@@ -139,7 +136,7 @@ Accepts: product (the pack), opts (the section's settings)
   {%- if opts.show_value -%}
     {%- assign v = pack.selected_or_first_available_variant -%}
     {%- if v.compare_at_price > v.price -%}
-      <p class="pack-contents__value">
+      <p class="pack-contents__value text-sm">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="m3 7.5 9 4.5 9-4.5M12 12v9"/></svg>
         <span><strong>{{ v.price | money }} together</strong> · {{ v.compare_at_price | money }} bought separately.{% if opts.value_note != blank %} {{ opts.value_note }}{% endif %}</span>
       </p>

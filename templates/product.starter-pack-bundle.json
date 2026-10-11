@@ -57,7 +57,7 @@
         "liquid_pack_jump": {
           "type": "liquid",
           "settings": {
-            "liquid": "{%- if product.metafields.bundles.products.value.size > 0 -%}<a class=\"pack-contents-jump\" href=\"#whats-in-the-box\">See what's in the box and hear the stories<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12l7 7 7-7\"/></svg></a>{%- endif -%}"
+            "liquid": "{%- if product.metafields.bundles.products.value.size > 0 -%}<a class=\"pack-contents-jump link\" href=\"#whats-in-the-box\">See what's in the box and hear the stories<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12l7 7 7-7\"/></svg></a>{%- endif -%}"
           }
         },
         "collapsible_text_cVRMDH": {
@@ -329,6 +329,8 @@
     "pack_contents_wib": {
       "type": "pack-contents",
       "settings": {
+        "full_width": true,
+        "background": "#fff7f0",
         "eyebrow": "What's in the box",
         "heading": "Everything to start listening, the day it arrives",
         "intro": "No downloads, no wi-fi, no app. It arrives charged, so just drop in a book and press play.",

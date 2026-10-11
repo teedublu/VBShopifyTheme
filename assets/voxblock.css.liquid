@@ -990,74 +990,48 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .vs-cta__from { white-space: nowrap; margin-inline-start: .3em; } /* the leading space is dropped inside a flex button */
 
 /* ----------------------------------------------------------------------------------------------------------------
-   PACK CONTENTS: "What's in the box" band below the main product area on starter-pack bundle pages
-   (sections/pack-contents.liquid, snippets/pack-contents.liquid). Phone: kit tiles in a row of three, then one card per
-   book. Desktop: kit in a 300px column, books as three cards beside it. Sample buttons are the site's standard
-   .bookpreview button, styled by the "Book preview buttons" rules above. #whats-in-the-box is linked from the buy
-   column (.pack-contents-jump).
+   PACK CONTENTS: "What's in the box" section below the main product area on starter-pack bundle pages
+   (sections/pack-contents.liquid, snippets/pack-contents.liquid). Layout only: headings, eyebrow, links and text take
+   the theme's own styles (section-header, .h6, .subheading, .text-sm, .link). Phone: kit tiles in a row of three,
+   then one card per book. Desktop: kit in a 300px column, books as three cards beside it. Sample buttons are the
+   site's standard .bookpreview button. #whats-in-the-box is linked from the buy column (.pack-contents-jump).
 ---------------------------------------------------------------------------------------------------------------- */
-.pack-contents-band { background: #fff7f0; padding-block: 36px; }
-.pack-contents { scroll-margin-top: 90px; } /* clears the sticky header when jumped to */
-.product-info__eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent-strong-dark); } /* title eyebrow (main-product title block) */
-.pack-contents-jump { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 14px; font-weight: 500; color: var(--brand-heading); text-decoration: underline; text-underline-offset: 3px; }
-.pack-contents-jump:hover { color: var(--brand-text); }
-.pack-contents__body { display: flex; flex-direction: column; gap: 24px; }
-.pack-contents { display: flex; flex-direction: column; gap: 24px; color: var(--brand-text); }
+.pack-contents { display: flex; flex-direction: column; gap: 24px; scroll-margin-top: calc(var(--header-height, 80px) + 24px); }
 .pack-contents p { margin: 0; }
-.pack-contents__head { display: flex; flex-direction: column; gap: 6px; }
-.pack-contents__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent-strong-dark); }
-.pack-contents__title { margin: 0; font-size: 22px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; color: var(--brand-heading); }
-.pack-contents__intro { font-size: 14px; line-height: 1.6; }
+.pack-contents__body { display: flex; flex-direction: column; gap: 24px; }
 .pack-contents__group { display: flex; flex-direction: column; gap: 12px; }
 .pack-contents__group-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; }
-.pack-contents__group-title { margin: 0; font-size: 16px; line-height: 1.3; font-weight: 500; color: var(--brand-heading); }
-.pack-contents__group-meta { font-size: 12px; }
+.pack-contents__group-head > * { margin: 0; }
+.pack-contents-jump { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
 
 .pack-contents__kit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .pack-contents__kit-item { display: flex; flex-direction: column; gap: 6px; }
-.pack-contents__kit-media { aspect-ratio: 1; border-radius: 16px; background: #f6f8f8; border: 1px solid #d6e6e7; overflow: hidden; }
+.pack-contents__kit-media { aspect-ratio: 1; border-radius: var(--rounded-sm, 12px); background: rgb(var(--background)); overflow: hidden; }
 .pack-contents__kit-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .pack-contents__kit-media img[hidden] { display: none; }
-.pack-contents__kit-name { font-size: 13px; line-height: 1.3; font-weight: 500; color: var(--brand-heading); }
-.pack-contents__kit-caption { font-size: 11px; line-height: 1.4; }
 
 .pack-contents__books { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.pack-contents__book { display: flex; gap: 14px; align-items: center; padding: 12px 14px 12px 10px; border-radius: 16px; border: 1px solid #d6e6e7; background: #fff; transition: border-color .2s, background-color .2s; }
-.pack-contents__book:has(.bookpreview.playing) { border-color: rgb(var(--button-background-primary)); background: #fff7f0; }
+.pack-contents__book { display: flex; gap: 14px; align-items: center; padding: 12px 14px 12px 10px; border-radius: var(--rounded, 16px); background: rgb(var(--background-primary, 255 255 255)); }
 .pack-contents__cover { flex: 0 0 64px; }
 .pack-contents__cover img { display: block; width: 64px; height: auto; }
 .pack-contents__book-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-.pack-contents__book-title { font-size: 14px; line-height: 1.3; font-weight: 500; color: var(--brand-heading); text-decoration: none; }
-.pack-contents__book-title:hover { text-decoration: underline; }
-.pack-contents__book-narrator { font-size: 12px; line-height: 1.4; }
-.pack-contents__book-narrator span { font-weight: 500; }
-.pack-contents__book-meta { font-size: 11px; line-height: 1.4; }
-
-.pack-contents__play { margin-top: 6px; align-self: flex-start; } /* the site's standard sample button (.bookpreview .playpause) */
-.pack-contents__book-meta + .pack-contents__play { margin-top: 8px; }
-
-.pack-contents__value { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #eaf4f4; color: var(--brand-heading); font-size: 13px; line-height: 1.5; }
+.pack-contents__book-body > .h6 { margin: 0; }
+.pack-contents__play { margin-top: 8px; align-self: flex-start; }
+.pack-contents__value { display: flex; align-items: center; gap: 12px; }
 .pack-contents__value svg { flex: 0 0 26px; }
-.pack-contents__value strong { font-weight: 600; }
 
 @media screen and (min-width: 1000px) {
-  .pack-contents-band { padding-block: 56px; }
   .pack-contents { gap: 32px; }
-  .pack-contents__head { max-width: 640px; }
-  .pack-contents__title { font-size: 32px; line-height: 40px; }
-  .pack-contents__intro { font-size: 15px; }
   .pack-contents__body { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: start; }
   .pack-contents__kit { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .pack-contents__kit-item { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; row-gap: 2px; align-content: center; padding: 10px; border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgb(86 86 86 / 0.1); }
-  .pack-contents__kit-media { grid-row: 1 / span 2; width: 88px; border-radius: 12px; border: 0; }
-  .pack-contents__kit-name { align-self: end; font-size: 14px; }
-  .pack-contents__kit-caption { align-self: start; font-size: 12px; }
+  .pack-contents__kit-item { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; row-gap: 2px; align-content: center; padding: 10px; border-radius: var(--rounded, 16px); background: rgb(var(--background-primary, 255 255 255)); }
+  .pack-contents__kit-media { grid-row: 1 / span 2; width: 88px; }
+  .pack-contents__kit-name { align-self: end; }
+  .pack-contents__kit-caption { align-self: start; }
   .pack-contents__books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .pack-contents__book { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; border-color: #fff; box-shadow: 0 5px 30px rgb(86 86 86 / 0.1); }
+  .pack-contents__book { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
   .pack-contents__cover { flex: none; display: flex; justify-content: center; padding-top: 4px; }
   .pack-contents__cover img { width: auto; height: 190px; }
   .pack-contents__book-body { flex-grow: 1; }
   .pack-contents__play { margin-top: auto; padding-top: 10px; }
-  .pack-contents__book-title { font-size: 15px; }
-  .pack-contents__value { align-self: flex-start; }
 }
