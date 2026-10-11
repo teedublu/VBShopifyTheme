@@ -30,6 +30,12 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - Performance (Lighthouse mobile, lab): live 45, draft 40; LCP 8–9 s, TBT 1.3–1.8 s. Mostly script work in the page itself (apps and inline scripts, ~390 KB HTML) and theme.js; site-wide, not homepage copy. Check field data in PageSpeed Insights.
 - Accessibility 86–89: contrast (open item), small tap targets, focusable items inside hidden carousels.
 
+## Content added after the SEO review (11 Oct)
+- Age tiles section: eyebrow "For every age", H2 "Audiobooks for children aged 3 to 14+", intro on how listening changes by age. Tiles now link to the age collections (`voxblock-audiobooks-under-5s`, `audiobooks-5-8-years`, `audiobooks-8-10-years`, `audiobooks-10-to-teens`) instead of the player page and filtered URLs; labels "Under 5s", "5 to 8 years", "8 to 10 years", "10 to teens".
+- FAQ: 11 questions (was 9). Added "What can my child listen to audiobooks on?" and "Is Voxblock suitable for toddlers?" (both from Google's People also ask). Every answer expanded to 2–3 sentences, with links to the age collections, starter packs and the Yoto comparison.
+- Headings: "Testimonials" → "What parents say about Voxblock"; "#wearevoxblock" → eyebrow, H2 "Follow Voxblock"; "Newsletter" → "Hear about new audiobooks first".
+- Owner to confirm two claims: most 3 year olds can choose and play a story on their own; under 5s can choose and play by themselves.
+
 ## Copy rules applied
 Sentence case for every heading, eyebrow and button ("Best-selling audiobooks", not "Best-selling Audiobooks"); only names keep capitals (Voxblock, Roald Dahl, Yoto, UK). No "no apps" claims (owner, 11 Oct: a Voxblock-branded app is coming for MYO). Use no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes left as written.
 "Children" in body copy and headings; "kids" in the title tag, meta description and one FAQ question, where people search with it. Facts: ages 3 to 14+ (owner confirmed min age 3), battery up to 16 hours (owner confirmed), 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded.
