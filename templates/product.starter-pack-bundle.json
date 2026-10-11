@@ -53,8 +53,30 @@
             "collapse_content": false
           }
         },
+        "pack_contents_wib": {
+          "type": "pack_contents",
+          "settings": {
+            "eyebrow": "What's in the box",
+            "heading": "Everything to start listening, the day it arrives",
+            "intro": "No downloads, no wi-fi, no app. Charge it, slot in a book and press play.",
+            "kit_heading": "The player kit",
+            "item_1": "voxblock-player",
+            "item_1_label": "Voxblock player",
+            "item_1_caption": "Up to 16 hours per charge",
+            "item_2": "bumper",
+            "item_2_label": "Protective bumper",
+            "item_2_caption": "Takes the knocks from little hands",
+            "item_3": "voxblock-usb-charging-cable",
+            "item_3_label": "USB charging cable",
+            "item_3_caption": "Charges from any USB plug",
+            "books_heading": "[count] audiobooks",
+            "show_value": true,
+            "value_note": "Add more audiobooks any time from 350+."
+          }
+        },
         "collapsible_text_cVRMDH": {
           "type": "collapsible_text",
+          "disabled": true,
           "settings": {
             "title": "What's included",
             "content": "<ul><li>1 Voxblock Audiobook Player</li><li>1 Voxblock Protective Bumper</li><li>1 Voxblock USB Charging Cable</li><li>Your Audiobook(s)</li></ul><p>[[bp]]</p>",
@@ -279,6 +301,7 @@
         "image_EY7Gz3",
         "bogos_io_free_gift_gift_thumbnail_view_i8qLxW",
         "description_bTNpDV",
+        "pack_contents_wib",
         "collapsible_text_cVRMDH",
         "separator_PiCLpj",
         "variant_picker",

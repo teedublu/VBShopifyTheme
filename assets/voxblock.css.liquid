@@ -988,3 +988,56 @@ html.vb-has-player .cart-player-prompt { display: none; }
 ---------------------------------------------------------------------------------------------------------------- */
 .vs-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; }
 .vs-cta__from { white-space: nowrap; margin-inline-start: .3em; } /* the leading space is dropped inside a flex button */
+
+/* ----------------------------------------------------------------------------------------------------------------
+   PACK CONTENTS: "What's in the box" on starter-pack bundle pages (snippets/pack-contents.liquid, product block
+   pack_contents). Kit tiles in a row of three, then one card per book with a full-width sample button whose bar fills
+   from --sample-progress (set by voxblock.js). Text on the orange button is dark (#1d3f43), never white.
+---------------------------------------------------------------------------------------------------------------- */
+.pack-contents { display: flex; flex-direction: column; gap: 24px; color: var(--brand-text); }
+.pack-contents p { margin: 0; }
+.pack-contents__head { display: flex; flex-direction: column; gap: 6px; }
+.pack-contents__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent-strong-dark); }
+.pack-contents__title { margin: 0; font-size: 22px; line-height: 28px; font-weight: 500; letter-spacing: -0.01em; color: var(--brand-heading); }
+.pack-contents__intro { font-size: 14px; line-height: 1.6; }
+.pack-contents__group { display: flex; flex-direction: column; gap: 12px; }
+.pack-contents__group-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; }
+.pack-contents__group-title { margin: 0; font-size: 16px; line-height: 1.3; font-weight: 500; color: var(--brand-heading); }
+.pack-contents__group-meta { font-size: 12px; }
+
+.pack-contents__kit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pack-contents__kit-item { display: flex; flex-direction: column; gap: 6px; }
+.pack-contents__kit-media { aspect-ratio: 1; border-radius: 16px; background: #f6f8f8; border: 1px solid #d6e6e7; overflow: hidden; }
+.pack-contents__kit-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pack-contents__kit-media img[hidden] { display: none; }
+.pack-contents__kit-name { font-size: 13px; line-height: 1.3; font-weight: 500; color: var(--brand-heading); }
+.pack-contents__kit-caption { font-size: 11px; line-height: 1.4; }
+
+.pack-contents__books { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pack-contents__book { display: flex; gap: 14px; align-items: center; padding: 12px 14px 12px 10px; border-radius: 16px; border: 1px solid #d6e6e7; background: #fff; transition: border-color .2s, background-color .2s; }
+.pack-contents__book:has(.bookpreview.playing) { border-color: rgb(var(--button-background-primary)); background: #fff7f0; }
+.pack-contents__cover { flex: 0 0 64px; }
+.pack-contents__cover img { display: block; width: 64px; height: auto; }
+.pack-contents__book-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.pack-contents__book-title { font-size: 14px; line-height: 1.3; font-weight: 500; color: var(--brand-heading); text-decoration: none; }
+.pack-contents__book-title:hover { text-decoration: underline; }
+.pack-contents__book-narrator { font-size: 12px; line-height: 1.4; }
+.pack-contents__book-narrator span { font-weight: 500; }
+.pack-contents__book-meta { font-size: 11px; line-height: 1.4; }
+
+.pack-contents__play { display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 6px; padding: 0; border: 0; background: none; color: inherit; text-align: start; cursor: pointer; }
+.pack-contents__play-icon { flex: 0 0 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgb(var(--button-background-primary)); color: #1d3f43; box-shadow: 0 2px 8px rgb(86 86 86 / 0.1); }
+.pack-contents__play:hover .pack-contents__play-icon { filter: brightness(0.95); }
+.pack-contents__play:focus-visible .pack-contents__play-icon { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.pack-contents__play-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.pack-contents__play-label { font-size: 12px; font-weight: 500; color: #1d3f43; }
+.pack-contents__play-bar { display: block; height: 4px; border-radius: 4px; background: #d6e6e7; overflow: hidden; }
+.pack-contents__play-bar span { display: block; height: 100%; width: 0; border-radius: 4px; background: rgb(var(--button-background-primary)); transition: width .25s linear; }
+.pack-contents__play.playing .pack-contents__play-bar span { width: var(--sample-progress, 0%); }
+.pack-contents__icon-pause, .pack-contents__play-on { display: none; }
+.pack-contents__play.playing .pack-contents__icon-pause, .pack-contents__play.playing .pack-contents__play-on { display: inline; }
+.pack-contents__play.playing .pack-contents__icon-play, .pack-contents__play.playing .pack-contents__play-idle { display: none; }
+
+.pack-contents__value { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #eaf4f4; color: var(--brand-heading); font-size: 13px; line-height: 1.5; }
+.pack-contents__value svg { flex: 0 0 26px; }
+.pack-contents__value strong { font-weight: 600; }

@@ -46,6 +46,22 @@ Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed
 - `sections/header.liquid`: homepage logo wrapper h1 → div, so the hero H1 is the only H1.
 - Hero colour overrides removed (owner, 11 Oct): heading, text and button colours come from the theme. Contrast to be fixed theme-wide (see Open item).
 
+## 2026-10-11: Starter pack "What's in the box" (build)
+Branch `claude/starter-pack-whats-included`, **not previewed yet**: needs a draft theme on the branch for an owner check.
+- New product block `pack_contents` (snippets/pack-contents.liquid) replaces the "What's included" accordion on
+  `product.starter-pack-bundle` (the accordion is disabled, not deleted). Mock-up agreed first on a design canvas.
+- Player kit: three product pickers with name + caption (player, bumper, USB cable). Player and bumper pictures follow
+  the colour swatch (variant image whose title = pack colour; voxblock.js swaps on variant:change). The bumper has no
+  Blue variant, so on Blue it keeps the picture it had.
+- Books: every product in `bundles.products` with cover, narrator (`book.narrators`), length (`book.duration` read as
+  hours.minutes, e.g. 3.15 = 3 h 15 m: unconfirmed), Unabridged, ages, and a sample button. The button is a normal
+  `.bookpreview`, so it plays through the shared player and sends `sample_played`; voxblock.js now also sets
+  `--sample-progress` on the playing button for the bar.
+- Value line "£79.99 together · £100.96 bought separately" from the variant's compare-at. Note: the items' current
+  prices add to £107.96 (player 49.99, bumper 15, cable 2, books 13.99 + 13.99 + 12.99), so compare-at undersells.
+- Check on preview: all four colours, a pack whose books lack a preview file, phone width, and that the old
+  [[bp]] link line is not needed elsewhere on the page.
+
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.
 - Round 3 (owner): every button reads just "Shop now" (no "from £x"; hero setting `show_from_price` off). Full size

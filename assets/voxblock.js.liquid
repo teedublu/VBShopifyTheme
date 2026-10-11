@@ -12,6 +12,11 @@ const VoxBlock = (() => {
     audio.addEventListener('loadstart', function(){console.log('loadstart')})
     audio.addEventListener('playing', function(){console.log('playing')})
     audio.addEventListener('ended', function(){console.log('ended'); audio.currentButton.classList.remove('playing');})
+    // Progress for buttons that show it (snippets/pack-contents.liquid): --sample-progress on the playing button
+    audio.addEventListener('timeupdate', function(){
+        const button = audio.currentButton;
+        if (button && audio.duration) button.style.setProperty('--sample-progress', (audio.currentTime / audio.duration * 100).toFixed(1) + '%');
+    })
 
     // PostHog: one event per play press, with the audiobook title from data-title
     const trackSamplePlayed = (button) => {
@@ -412,4 +417,22 @@ document.addEventListener('click', (event) => {
     try {
         window.posthog.capture('vs_yoto_click', { target: el.dataset.vsTrack, page: window.location.pathname });
     } catch (e) { /* analytics must never get in the way of the basket */ }
+});
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// PACK CONTENTS (snippets/pack-contents.liquid)
+// Player-kit pictures follow the colour swatch: show the image whose data-pack-colour matches the new variant's
+// colour; a product with no image for that colour keeps the one it shows.
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('variant:change', (event) => {
+    const variant = event.detail && event.detail.variant;
+    if (!variant) return;
+    const colour = variant.option1;
+    document.querySelectorAll('[data-pack-contents] .pack-contents__kit-media').forEach((media) => {
+        const images = media.querySelectorAll('img[data-pack-colour]');
+        const match = Array.from(images).find((img) => img.dataset.packColour === colour);
+        if (!match) return;
+        images.forEach((img) => { img.hidden = img !== match; });
+    });
 });

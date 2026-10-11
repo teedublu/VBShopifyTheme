@@ -26,6 +26,11 @@
           </div>
         {%- endif -%}
 
+      {%- when 'pack_contents' -%}
+        <div class="product-info__pack-contents" {{ block.shopify_attributes }}>
+          {%- render 'pack-contents', product: product, block: block -%}
+        </div>
+
       {%- when 'bundle' -%}
         
           <div class="product-info__bundle" {{ block.shopify_attributes }}>
