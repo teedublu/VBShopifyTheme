@@ -5,10 +5,9 @@ Style changes are theme-wide: theme settings, `css-variables`, or a shared rule 
 button styling set on one section or template unless the owner explicitly agrees it, otherwise sections drift.
 Contrast problems are fixed in the theme colour settings, never patched per section.
 
-## Open: app scripts slowing every page (owner, Shopify admin)
-- BOGOS free gift loads three times: app embed plus two legacy script tags (cdn.bogos.io and d33a6lvgbd0fej.cloudfront.net secomapp.scripttag.js). Remove the legacy ones in BOGOS.
-- Zigpoll and Trustpilot script tags load on every page; restrict to pages that use them.
-- PostHog loads three ways: theme script (layout/theme.liquid), "PostHog Custom Pixel" and "VoxHog" customer-event pixels. Decide which one stays.
+## App scripts (owner, 11 Oct)
+- Done in `layout/theme.liquid` (homepage branch): Trustpilot script tags removed site-wide (no widgets used; invitations unaffected), the two legacy BOGOS "secomapp" script tags removed (BOGOS app embed stays), Zigpoll removed on the homepage only. Exact-match removals from content_for_header: if Shopify changes the format nothing is removed. Check free gifts still apply in the cart before merging.
+- Open, own branch: PostHog loads three ways (theme script in layout/theme.liquid, "PostHog Custom Pixel", "VoxHog" pixel). Owner: needs care, separate branch.
 
 ## Copy rules (owner, site-wide, apply to every page)
 - Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
