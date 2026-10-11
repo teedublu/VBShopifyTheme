@@ -167,7 +167,25 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     {%- render 'klaviyo-popup-guard' -%}
 
     <!--/ START content_for_header /-->
-    {{ content_for_header }}
+    {%- comment -%}
+      VB (owner, 11 Oct 2026): app script tags we don't want, taken out of Shopify's script-tag list here because the
+      apps can't remove them themselves. Each string is the exact entry with its comma, so if Shopify ever changes the
+      format nothing matches and the page is unchanged.
+      - Trustpilot: we don't use its widgets (review invitations are sent by Trustpilot's servers and are unaffected).
+      - BOGOS: two old "secomapp" script tags duplicate the BOGOS app embed, which stays on.
+      - Zigpoll: not needed on the homepage; stays on every other page.
+    {%- endcomment -%}
+    {%- capture vb_content_for_header -%}{{ content_for_header }}{%- endcapture -%}
+    {%- assign vb_content_for_header = vb_content_for_header
+      | remove: '"https:\/\/ecommplugins-scripts.trustpilot.com\/v2.1\/js\/header.min.js?settings=eyJrZXkiOiJFVHI3RjBFMG03SWI4a1RmIiwicyI6Im5vbmUifQ==&v=2.5&shop=voxblock.myshopify.com",'
+      | remove: '"https:\/\/ecommplugins-trustboxsettings.trustpilot.com\/voxblock.myshopify.com.js?settings=1666000226578&shop=voxblock.myshopify.com",'
+      | remove: '"https:\/\/d33a6lvgbd0fej.cloudfront.net\/script_tag\/secomapp.scripttag.js?shop=voxblock.myshopify.com",'
+      | remove: '"\/\/cdn.shopify.com\/proxy\/0413d04cb606777a9888170d50d2e5d10447bb6ab425bd8ae89f7dadb9c14f9e\/cdn.bogos.io\/script_tag\/secomapp.scripttag.js?shop=voxblock.myshopify.com&sp-cache-control=cHVibGljLCBtYXgtYWdlPTkwMA",'
+    -%}
+    {%- if request.page_type == 'index' -%}
+      {%- assign vb_content_for_header = vb_content_for_header | remove: ',"https:\/\/cdn.zigpoll.com\/zigpoll-shopify-embed.js?accountId=6936daa2924a7d2b5084f481&shop=voxblock.myshopify.com"' | remove: '"https:\/\/cdn.zigpoll.com\/zigpoll-shopify-embed.js?accountId=6936daa2924a7d2b5084f481&shop=voxblock.myshopify.com"' -%}
+    {%- endif -%}
+    {{ vb_content_for_header }}
     <!--/ END content_for_header /-->
     
      
