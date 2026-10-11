@@ -999,6 +999,27 @@
     ]
   },
   {
+    "name": "Comparison tables",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Used by every comparison table section, so all comparison pages highlight Voxblock the same way."
+      },
+      {
+        "type": "color",
+        "id": "comparison_highlight",
+        "label": "Highlight column",
+        "default": "#197177"
+      },
+      {
+        "type": "color",
+        "id": "comparison_highlight_tint",
+        "label": "Highlight column tint",
+        "default": "#e9f6f4"
+      }
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {

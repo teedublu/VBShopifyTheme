@@ -2,15 +2,17 @@
 ----------------------------------------------------------------------------------------------------------------------
 COMPARISON TABLE (Voxblock)
 ----------------------------------------------------------------------------------------------------------------------
-A simple, editable "us vs them" table for landing pages. Column 1 is Voxblock and can be highlighted.
+A simple, editable "us vs them" table for landing pages. One column (1, 2 or 3) is Voxblock and can be highlighted;
+the highlight colours are theme-wide (Theme settings › Comparison tables), so every comparison table matches.
 Row values of "yes" / "no" (any case) render as tick / cross icons; anything else renders as text.
 Each column can also show an image, a price and a short note above the rows. On phones, feature names can
 sit above their values so every column gets a full share of the width.
 
 Optional (all off unless set, so other pages using this section are unchanged):
-* Column 1 product: the column 1 image and name link to it and its live price replaces the typed price.
-* Column 1 button collection: the page's call to action (snippets/vs-cta.liquid, "Shop starter packs · from £x")
-  under column 1's note.
+* Voxblock product: the highlighted column's image and name link to it and its live price replaces the typed price.
+* Button collection: the page's call to action (snippets/vs-cta.liquid, "Shop starter packs · from £x")
+  under the highlighted column's note.
+  ("Highlighted column" means the one picked in "Highlight column"; with no highlight these features sit on column 1.)
 * Compact sticky header: once the column headers scroll off the top, a slim bar with each column's thumbnail, name
   and price (plus the same button, small) sticks under the site header until the table ends.
 {%- endcomment -%}
@@ -18,8 +20,14 @@ Optional (all off unless set, so other pages using this section are unchanged):
 {%- if section.blocks.size > 0 -%}
   {%- render 'section-spacing-collapsing' -%}
 
-  {%- assign highlight = section.settings.highlight_color | default: '#197177' -%}
-  {%- assign highlight_tint = section.settings.highlight_tint | default: '#e9f6f4' -%}
+  {%- assign highlight = settings.comparison_highlight | default: '#197177' -%}
+  {%- assign highlight_tint = settings.comparison_highlight_tint | default: '#e9f6f4' -%}
+  {%- assign highlight_column = section.settings.highlight_column | default: '1' -%}
+  {%- if highlight_column == 'none' -%}
+    {%- assign feature_col = 1 -%}
+  {%- else -%}
+    {%- assign feature_col = highlight_column | plus: 0 -%}
+  {%- endif -%}
   {%- assign tick_color = section.settings.tick_color | default: '#4cb6ac' -%}
   {%- assign cross_color = section.settings.cross_color | default: '#c9c9c9' -%}
   {%- assign chart_background = section.settings.chart_background | default: '#ffffff' -%}
@@ -118,6 +126,10 @@ Optional (all off unless set, so other pages using this section are unchanged):
       background: var(--ct-highlight-tint);
       font-weight: var(--heading-font-weight);
       color: var(--ct-highlight);
+      box-shadow: inset 2px 0 0 var(--ct-highlight), inset -2px 0 0 var(--ct-highlight);
+    }
+    #shopify-section-{{ section.id }} .comparison-table tr:last-child td.ct-highlight {
+      box-shadow: inset 2px 0 0 var(--ct-highlight), inset -2px 0 0 var(--ct-highlight), inset 0 -2px 0 var(--ct-highlight);
     }
     #shopify-section-{{ section.id }} .comparison-table th.ct-highlight {
       background: var(--ct-highlight);
@@ -308,8 +320,8 @@ Optional (all off unless set, so other pages using this section are unchanged):
               {%- assign image_key = column_key | append: '_image' -%}
               {%- assign price_key = column_key | append: '_price' -%}
               {%- assign sticky_price = section.settings[price_key] -%}
-              {%- if i == 1 and column_1_product != blank -%}{%- assign sticky_price = column_1_product.price_min | money -%}{%- endif -%}
-              <div class="ct-sticky__col{% if i == 1 and section.settings.highlight_first %} is-highlight{% endif %}">
+              {%- if i == feature_col and column_1_product != blank -%}{%- assign sticky_price = column_1_product.price_min | money -%}{%- endif -%}
+              <div class="ct-sticky__col{% if i == feature_col and highlight_column != 'none' %} is-highlight{% endif %}">
                 {%- if section.settings[image_key] != blank -%}
                   <span class="ct-sticky__thumb">{{- section.settings[image_key] | image_url: width: 96 | image_tag: loading: 'lazy', width: 44, height: 44, alt: '' -}}</span>
                 {%- endif -%}
@@ -318,7 +330,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                   <span class="ct-sticky__name">{{ section.settings[short_key] | default: section.settings[column_key] | escape }}</span>
                   {%- if sticky_price != blank -%}<span class="ct-sticky__price">{{ sticky_price }}</span>{%- endif -%}
                 </span>
-                {%- if i == 1 and cta_collection != blank -%}
+                {%- if i == feature_col and cta_collection != blank -%}
                   {%- render 'vs-cta', collection: cta_collection, text: section.settings.sticky_button_text, track: 'table_sticky_cta' -%}
                 {%- endif -%}
               </div>
@@ -336,7 +348,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                 {%- assign column_key = 'column_' | append: i -%}
                 {%- if i > 1 and section.settings[column_key] == blank -%}{%- continue -%}{%- endif -%}
 
-                {%- capture column_class -%}{% if i == 1 and section.settings.highlight_first %}ct-highlight{% endif %}{% if show_column_details %} ct-column{% endif %}{%- endcapture -%}
+                {%- capture column_class -%}{% if i == feature_col and highlight_column != 'none' %}ct-highlight{% endif %}{% if show_column_details %} ct-column{% endif %}{%- endcapture -%}
                 {%- assign column_class = column_class | strip -%}
 
                 <th scope="col" {{ role_columnheader }} {% if column_class != blank %}class="{{ column_class }}"{% endif %}>
@@ -347,7 +359,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                     {%- assign column_image = section.settings[image_key] -%}
 
                     {%- assign column_link = false -%}
-                    {%- if i == 1 and column_1_product != blank -%}{%- assign column_link = true -%}<a class="ct-column__link" href="{{ column_1_product.url }}" data-vs-track="table_player_page">{%- endif -%}
+                    {%- if i == feature_col and column_1_product != blank -%}{%- assign column_link = true -%}<a class="ct-column__link" href="{{ column_1_product.url }}" data-vs-track="table_player_page">{%- endif -%}
                     {%- if show_column_media -%}
                       <span class="ct-column__media {% if column_image == blank %}ct-column__media--empty{% endif %}">
                         {%- if column_image != blank -%}
@@ -360,7 +372,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
 
                     <span class="ct-column__name">{{ section.settings[column_key] | escape }}</span>
 
-                    {%- if i == 1 and column_1_product != blank -%}
+                    {%- if i == feature_col and column_1_product != blank -%}
                       <span class="ct-column__price">{{ column_1_product.price_min | money }}</span>
                     {%- elsif section.settings[price_key] != blank -%}
                       <span class="ct-column__price">{{ section.settings[price_key] | escape }}</span>
@@ -371,7 +383,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                     {%- endif -%}
                     {%- if column_link -%}</a>{%- endif -%}
 
-                    {%- if i == 1 and cta_collection != blank -%}
+                    {%- if i == feature_col and cta_collection != blank -%}
                       <span class="ct-column__cta">{%- render 'vs-cta', collection: cta_collection, text: section.settings.column_1_button_text, track: 'table_cta' -%}</span>
                     {%- endif -%}
                   {%- else -%}
@@ -391,7 +403,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                   {%- assign value_key = 'value_' | append: i -%}
                   {%- assign raw_value = block.settings[value_key] | strip -%}
                   {%- assign test_value = raw_value | downcase -%}
-                  {%- if i == 1 and section.settings.highlight_first -%}
+                  {%- if i == feature_col and highlight_column != 'none' -%}
                     {%- assign cell_class = 'ct-highlight' -%}
                   {%- else -%}
                     {%- assign cell_class = '' -%}
@@ -468,7 +480,10 @@ Optional (all off unless set, so other pages using this section are unchanged):
   "class": "shopify-section--comparison-table",
   "tag": "section",
   "disabled_on": {
-    "groups": ["header", "custom.overlay"]
+    "groups": [
+      "header",
+      "custom.overlay"
+    ]
   },
   "settings": [
     {
@@ -503,8 +518,14 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "id": "text_position",
       "label": "Text position",
       "options": [
-        {"value": "start", "label": "Left"},
-        {"value": "center", "label": "Center"}
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
       ],
       "default": "center"
     },
@@ -532,10 +553,29 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "default": "Voxblock"
     },
     {
-      "type": "checkbox",
-      "id": "highlight_first",
-      "label": "Highlight column 1",
-      "default": true
+      "type": "select",
+      "id": "highlight_column",
+      "label": "Highlight column",
+      "info": "The Voxblock column. It gets the highlight, the Voxblock product link and the button. Colours are set in Theme settings › Comparison tables.",
+      "options": [
+        {
+          "value": "1",
+          "label": "Column 1"
+        },
+        {
+          "value": "2",
+          "label": "Column 2"
+        },
+        {
+          "value": "3",
+          "label": "Column 3"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "1"
     },
     {
       "type": "text",
@@ -607,19 +647,19 @@ Optional (all off unless set, so other pages using this section are unchanged):
     {
       "type": "product",
       "id": "column_1_product",
-      "label": "Column 1 product (optional)",
-      "info": "Links the column 1 image and name to this product and shows its live price."
+      "label": "Voxblock product (optional)",
+      "info": "Links the highlighted column's image and name to this product and shows its live price."
     },
     {
       "type": "collection",
       "id": "cta_collection",
       "label": "Button collection (optional)",
-      "info": "Adds the page's button under column 1 (and in the sticky header): links here, showing \"from\" its cheapest product."
+      "info": "Adds the page's button under the highlighted column (and in the sticky header): links here, showing \"from\" its cheapest product."
     },
     {
       "type": "text",
       "id": "column_1_button_text",
-      "label": "Column 1 button text",
+      "label": "Highlighted column button text",
       "default": "Shop now"
     },
     {
@@ -656,9 +696,18 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "id": "media_ratio",
       "label": "Image shape",
       "options": [
-        {"value": "square", "label": "Square"},
-        {"value": "portrait", "label": "Portrait"},
-        {"value": "landscape", "label": "Landscape"}
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
       ],
       "default": "square"
     },
@@ -667,8 +716,14 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "id": "media_fit",
       "label": "Image fit",
       "options": [
-        {"value": "contain", "label": "Show the whole image"},
-        {"value": "cover", "label": "Fill the shape (crops the edges)"}
+        {
+          "value": "contain",
+          "label": "Show the whole image"
+        },
+        {
+          "value": "cover",
+          "label": "Fill the shape (crops the edges)"
+        }
       ],
       "default": "contain",
       "info": "Use Fill for photos; Show the whole image for cut-out product shots."
@@ -714,18 +769,6 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "type": "color",
       "id": "chart_text_color",
       "label": "Table text"
-    },
-    {
-      "type": "color",
-      "id": "highlight_color",
-      "label": "Highlight column",
-      "default": "#197177"
-    },
-    {
-      "type": "color",
-      "id": "highlight_tint",
-      "label": "Highlight column tint",
-      "default": "#e9f6f4"
     },
     {
       "type": "color",
@@ -775,8 +818,14 @@ Optional (all off unless set, so other pages using this section are unchanged):
           "label": "Which answer gets the tick?",
           "info": "Use \"No\" for rows like \"Wifi needed\", where No is the better answer.",
           "options": [
-            {"value": "yes", "label": "Yes"},
-            {"value": "no", "label": "No"}
+            {
+              "value": "yes",
+              "label": "Yes"
+            },
+            {
+              "value": "no",
+              "label": "No"
+            }
           ],
           "default": "yes"
         }
@@ -787,9 +836,33 @@ Optional (all off unless set, so other pages using this section are unchanged):
     {
       "name": "Comparison table",
       "blocks": [
-        {"type": "row", "settings": {"label": "Wifi needed", "value_1": "No", "value_2": "Yes", "value_3": "Yes"}},
-        {"type": "row", "settings": {"label": "App required", "value_1": "No", "value_2": "Yes", "value_3": "Yes"}},
-        {"type": "row", "settings": {"label": "Stories come as", "value_1": "Physical books", "value_2": "Cards", "value_3": "Figures"}}
+        {
+          "type": "row",
+          "settings": {
+            "label": "Wifi needed",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "App required",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes"
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "label": "Stories come as",
+            "value_1": "Physical books",
+            "value_2": "Cards",
+            "value_3": "Figures"
+          }
+        }
       ]
     }
   ]
