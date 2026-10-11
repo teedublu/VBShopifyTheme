@@ -47,9 +47,12 @@ Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed
 - Hero colour overrides removed (owner, 11 Oct): heading, text and button colours come from the theme. Contrast to be fixed theme-wide (see Open item).
 
 ## 2026-10-11: Starter pack "What's in the box" (build)
-Branch `claude/starter-pack-whats-included`, **not previewed yet**: needs a draft theme on the branch for an owner check.
-- New product block `pack_contents` (snippets/pack-contents.liquid) replaces the "What's included" accordion on
-  `product.starter-pack-bundle` (the accordion is disabled, not deleted). Mock-up agreed first on a design canvas.
+Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**: needs a draft theme on the branch.
+- Round 2 (owner): a separate full-width section **below** the main product area, not a block in the buy column, so
+  it adds content without getting in the way of Add to basket. New section `pack-contents`
+  (sections/pack-contents.liquid → snippets/pack-contents.liquid), placed after `main` on `product.starter-pack-bundle`.
+  The "What's included" accordion in the buy column is back as it was. Phone: kit tiles in a row, then book cards;
+  desktop: kit in a column, books as three cards. Cream band. Renders nothing on a product with no `bundles.products`.
 - Player kit: three product pickers with name + caption (player, bumper, USB cable). Player and bumper pictures follow
   the colour swatch (variant image whose title = pack colour; voxblock.js swaps on variant:change). The bumper has no
   Blue variant, so on Blue it keeps the picture it had.
@@ -59,8 +62,7 @@ Branch `claude/starter-pack-whats-included`, **not previewed yet**: needs a draf
   `--sample-progress` on the playing button for the bar.
 - Value line "£79.99 together · £100.96 bought separately" from the variant's compare-at. Note: the items' current
   prices add to £107.96 (player 49.99, bumper 15, cable 2, books 13.99 + 13.99 + 12.99), so compare-at undersells.
-- Check on preview: all four colours, a pack whose books lack a preview file, phone width, and that the old
-  [[bp]] link line is not needed elsewhere on the page.
+- Check on preview: all four colours, phone and desktop width, sample play/pause and the bar.
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.
