@@ -10,6 +10,7 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - **Title and meta description** (theme.liquid override, `request.page_type == 'index'`): "Kids Audiobook Player | Screen-Free Audio Player | Voxblock". Overrides the admin homepage title.
 - **Hero** (`media_with_text_hjyKYh`): H1 "The screen-free audiobook player for children" (`title_tag` h1), subheading "No screens. No wi-fi. No apps.", new hero line (ages 3 to 14+, no wifi/apps/subscriptions), trust line (free UK delivery over £25, 100-day guarantee), second button "See how it works". Heading colour `#4cb6ac` → `#197177` (2.4:1 → 5.7:1), text `#4a4a4a`, button text `#1d3f43` on orange (5.6:1; was white, 2.0:1).
 - **Meet Voxblock** (`rich_text_K9xkcG`): its `<h1>` becomes `<h2>` "An audio player for children that just works" (one H1 per page), with new copy: speaker/headphones, 16-hour battery, bedtime mode, 350+ audiobooks. "Trusted by families…" sentence kept.
+- **Header** (`sections/header.liquid`): on the homepage the logo was wrapped in an `<h1>`; now a `<div>` with the same class, so the hero H1 is the only one.
 - **Features hotspots**: heading "Features" → "Finally. Audiobooks without the fussy tech." (marketing line moved from the hero; subheading kept).
 - **New FAQ** (`faq_home_prepurchase`, existing `faq` section, so FAQPage JSON-LD is emitted): 9 pre-purchase questions, placed before "Begin with our Starter Packs".
 - Everything else unchanged and in the same order.

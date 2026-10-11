@@ -18,6 +18,7 @@ Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.
 - Title/meta override for the homepage in `layout/theme.liquid`: "Kids Audiobook Player | Screen-Free Audio Player | Voxblock".
 - `templates/index.json`: hero H1 "The screen-free audiobook player for children" + new hero line + second button; Meet Voxblock
   H1 → H2 with new copy; Features heading → "Finally. Audiobooks without the fussy tech."; new 9-question FAQ before starter packs.
+- `sections/header.liquid`: homepage logo wrapper h1 → div, so the hero H1 is the only H1.
 - Contrast fixes in the hero only (heading #197177, button text #1d3f43 on orange). Site-wide button colours not changed.
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
