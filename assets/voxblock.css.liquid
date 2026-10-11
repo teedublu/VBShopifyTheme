@@ -1003,6 +1003,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .pack-contents__group-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; }
 .pack-contents__group-head > * { margin: 0; }
 .pack-contents-jump { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+/* .link draws its underline 1.35em from the top; this box is 44px tall with centred text, so anchor the line to the text instead */
+.pack-contents-jump.link { background-position: 0 calc(50% + 0.6em); }
 
 .pack-contents__kit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .pack-contents__kit-item { display: flex; flex-direction: column; gap: 6px; }
