@@ -60,7 +60,12 @@ LIQUID
 
               {%- capture sizes -%}(max-width: 999px) 100vw, min({{ maximum_image_width | ceil }}px, {{ block.settings.media_width }}vw){% endcapture %}
 
-              {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600' -}}
+              {%- comment -%}VB: when this is the first section on the page its image is the largest thing above the fold, so load it straight away{%- endcomment -%}
+              {%- if section.index0 == 0 -%}
+                {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'eager', fetchpriority: 'high', sizes: sizes, widths: '300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600' -}}
+              {%- else -%}
+                {{- block.settings.image | image_url: width: block.settings.image.width | image_tag: loading: 'lazy', sizes: sizes, widths: '300,400,500,600,700,800,1000,1200,1400,1600,1800,2000,2200,2400,2600' -}}
+              {%- endif -%}
             {%- else -%}
               {{- 'image' | placeholder_svg_tag: 'aspect-short placeholder' -}}
             {%- endif -%}
