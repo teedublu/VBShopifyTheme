@@ -1,5 +1,10 @@
 # STATUS
 
+## Working rule (owner, 11 Oct 2026)
+Style changes are theme-wide: theme settings, `css-variables`, or a shared rule in `voxblock.css`. No colour, size or
+button styling set on one section or template unless the owner explicitly agrees it, otherwise sections drift.
+Contrast problems are fixed in the theme colour settings, never patched per section.
+
 ## Performance: pages to check in the next site performance review
 Owner's standing request (9 Oct): every page we improve gets its performance checked in the next site performance
 review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add each improved page type here.
@@ -28,7 +33,7 @@ Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed
 - `templates/index.json`: hero H1 "The screen-free audiobook player for children" + new hero line + second button; Meet Voxblock
   H1 → H2 with new copy; Features heading → "Finally. Audiobooks without the fussy tech."; new 9-question FAQ before starter packs.
 - `sections/header.liquid`: homepage logo wrapper h1 → div, so the hero H1 is the only H1.
-- Contrast fixes in the hero only (heading #197177, button text #1d3f43 on orange). Site-wide button colours not changed.
+- Hero colour overrides removed (owner, 11 Oct): heading, text and button colours come from the theme. Contrast to be fixed theme-wide (see Open item).
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.
