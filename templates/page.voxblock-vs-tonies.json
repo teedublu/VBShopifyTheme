@@ -13,13 +13,14 @@
       "type": "vs-hero",
       "settings": {
         "eyebrow": "Looking at a Toniebox?",
-        "heading": "No wi-fi, nothing to set up, and {saving} less than a Toniebox 2.",
+        "heading": "No wi-fi, nothing to set up, and {saving} less than a Toniebox.",
         "heading_fallback": "No wi-fi, nothing to set up, and ready straight out of the box.",
         "player_product": "voxblock-player",
         "voxblock_image": "shopify://shop_images/voxblock-player-compare.jpg",
         "voxblock_pill": "Best value",
         "voxblock_name": "Voxblock player",
         "voxblock_line": "Story on the book. Plays straight out of the box.",
+        "show_card_button": false,
         "yoto_label": "Toniebox 2",
         "yoto_image": "shopify://shop_images/tonies-box.avif",
         "yoto_name": "Toniebox 2",
@@ -40,8 +41,7 @@
         "heading_color": "#197177",
         "text_color": "#2a555a",
         "accent_color": "#c2560f",
-        "eyebrow_color": "#b8520e",
-        "show_card_button": false
+        "eyebrow_color": "#b8520e"
       }
     },
     "players": {
@@ -191,12 +191,19 @@
         "anchor_id": "players",
         "feature_heading": "",
         "column_1": "Voxblock Player (latest)",
+        "highlight_column": "1",
         "column_2": "Toniebox 2",
         "column_3": "Toniebox Lite Starter Set",
         "footnote": "",
         "column_1_image": "shopify://shop_images/voxblock-player-compare.jpg",
         "column_1_price": "£49.99",
         "column_1_note": "Player, USB-C cable.",
+        "column_2_image": "shopify://shop_images/tonies-box.avif",
+        "column_2_price": "£104.99",
+        "column_2_note": "Toniebox 2, USB-C cable. Tonies sold separately.",
+        "column_3_image": "shopify://shop_images/toniebox-lite.webp",
+        "column_3_price": "£59.99",
+        "column_3_note": "Toniebox Lite, Creative-Tonie.",
         "column_1_product": "voxblock-player",
         "cta_collection": "voxblock-starter-pack-collection",
         "column_1_button_text": "Shop now",
@@ -205,12 +212,8 @@
         "column_2_short": "Toniebox 2",
         "column_3_short": "Toniebox Lite",
         "sticky_button_text": "Shop now",
-        "column_2_image": "shopify://shop_images/tonies-box.avif",
-        "column_2_price": "£104.99",
-        "column_2_note": "Toniebox 2, USB-C cable. Tonies sold separately.",
-        "column_3_price": "£59.99",
-        "column_3_note": "Toniebox Lite, Creative-Tonie.",
         "media_ratio": "square",
+        "media_fit": "contain",
         "stack_on_mobile": true,
         "background": "",
         "background_gradient": "",
@@ -219,8 +222,7 @@
         "chart_background": "#ffffff",
         "chart_text_color": "",
         "tick_color": "#4cb6ac",
-        "cross_color": "#c9c9c9",
-        "column_3_image": "shopify://shop_images/toniebox-lite.webp"
+        "cross_color": "#c9c9c9"
       }
     },
     "bundles": {
@@ -254,6 +256,8 @@
             "total_label": "Total",
             "total": "£149.96",
             "difference": "£79.97 more than Voxblock",
+            "cta_collection": "",
+            "cta_text": "Shop now",
             "link_text": "",
             "link_url": ""
           }
@@ -263,14 +267,16 @@
           "settings": {
             "tag": "Toniebox Lite · bought separately",
             "highlight": false,
+            "image": "shopify://shop_images/toniebox-lite.webp",
             "title": "Toniebox Lite Starter Set + 3 Tonies",
             "items": "Toniebox Lite Starter Set | £59.99\nThe Gruffalo Tonie | £14.99\nRoom on the Broom Tonie | £14.99\nThe Snail and the Whale & The Smartest Giant in Town Tonie | £14.99",
             "total_label": "Total",
             "total": "£104.96",
             "difference": "£34.97 more than Voxblock",
+            "cta_collection": "",
+            "cta_text": "Shop now",
             "link_text": "",
-            "link_url": "",
-            "image": "shopify://shop_images/toniebox-lite.webp"
+            "link_url": ""
           }
         }
       },
@@ -368,16 +374,26 @@
         "anchor_id": "books",
         "feature_heading": "",
         "column_1": "Voxblock audiobook",
+        "highlight_column": "1",
         "column_2": "Gruffalo Tonie",
         "column_3": "",
         "footnote": "",
         "column_1_image": "shopify://shop_images/product-book-bookshelf-the-gruffalo.png",
         "column_1_price": "",
         "column_1_note": "A solid audiobook they can hold",
+        "column_2_image": "shopify://shop_images/gruffalo-tonies.webp",
         "column_2_price": "",
         "column_2_note": "A collectable figure, about 7 cm tall",
         "column_3_price": "",
         "column_3_note": "",
+        "column_1_product": "",
+        "cta_collection": "",
+        "column_1_button_text": "Shop now",
+        "sticky_header": false,
+        "column_1_short": "",
+        "column_2_short": "",
+        "column_3_short": "",
+        "sticky_button_text": "Shop now",
         "media_ratio": "portrait",
         "media_fit": "cover",
         "stack_on_mobile": true,
@@ -388,8 +404,7 @@
         "chart_background": "#ffffff",
         "chart_text_color": "",
         "tick_color": "#4cb6ac",
-        "cross_color": "#c9c9c9",
-        "column_2_image": "shopify://shop_images/gruffalo-tonies.webp"
+        "cross_color": "#c9c9c9"
       }
     },
     "differences": {
