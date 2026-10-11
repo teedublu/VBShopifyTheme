@@ -13,6 +13,7 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - **Header** (`sections/header.liquid`): on the homepage the logo was wrapped in an `<h1>`; now a `<div>` with the same class, so the hero H1 is the only one.
 - **Features hotspots**: heading "Features" → "Finally. Audiobooks without the fussy tech." (marketing line moved from the hero; subheading kept).
 - **New FAQ** (`faq_home_prepurchase`, existing `faq` section, so FAQPage JSON-LD is emitted): 9 pre-purchase questions, placed before "Begin with our Starter Packs".
+- Layout (owner chose the mockup, 11 Oct): hero text left-aligned in a cream rounded block beside a rounded image (media-with-text spacing "medium"); Meet Voxblock is now a media-with-text section (`media_with_text_meet`): image left (the Features hotspot photo, so it appears twice on the page), eyebrow, H2, two paragraphs, no button. The old rich-text version is disabled, not deleted, and still holds the "Trusted by families…" line. Only theme section options used; buttons are theme style.
 - Everything else unchanged and in the same order.
 
 ## Copy rules applied

@@ -24,6 +24,7 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - White headings on light-teal FAQ and newsletter bands (2.4:1): homepage, product pages, schools, landing pages.
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
+- Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, draft PR #74 into `main`, **awaiting owner check on draft theme 199842660736**.
