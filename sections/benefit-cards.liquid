@@ -68,6 +68,21 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
       color: {{ icon_color }};
     }
     #shopify-section-{{ section.id }} .benefit-card__icon svg { width: 1.625rem; height: 1.625rem; }
+    /* Phones: icon beside the text so a stack of cards stays short */
+    @media screen and (max-width: 699px) {
+      #shopify-section-{{ section.id }} .benefit-cards { --benefit-gap: var(--spacing-3); }
+      #shopify-section-{{ section.id }} .benefit-card {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: var(--spacing-4);
+        row-gap: var(--spacing-1);
+        align-items: start;
+        text-align: start;
+        padding: var(--spacing-5);
+      }
+      #shopify-section-{{ section.id }} .benefit-card__icon { grid-row: span 2; width: 2.75rem; height: 2.75rem; }
+      #shopify-section-{{ section.id }} .benefit-card__icon svg { width: 1.375rem; height: 1.375rem; }
+    }
     #shopify-section-{{ section.id }} .benefit-card__icon .accent { stroke: {{ icon_accent }}; }
     #shopify-section-{{ section.id }} .benefit-card__icon .accent-fill { fill: {{ icon_accent }}; stroke: none; }
     #shopify-section-{{ section.id }} .benefit-card__title {
