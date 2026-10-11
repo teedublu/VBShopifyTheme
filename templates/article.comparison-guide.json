@@ -1,0 +1,850 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "allow_transparent_header": false,
+        "layout": "content_first",
+        "show_author": false,
+        "show_date": false,
+        "show_comments_count": false,
+        "show_share_buttons": false,
+        "banner_background": "#fff7f0",
+        "banner_text_color": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "content_width": "750px",
+        "show_image": false,
+        "show_content": false,
+        "show_tag": false,
+        "show_banner": false
+      }
+    },
+    "quick_answer": {
+      "type": "checklist-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Choose a Toniebox if…",
+            "items": "Your child is a toddler (ages 1 to 5)\nThey love collecting the figures\nYou want a night light and sunrise alarm",
+            "marker": "dot",
+            "highlight": false
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Choose a Yoto if…",
+            "items": "Your child is 3 to 12 and wants lots of stories\nYou'd like radio and podcasts too\nYou want a bedside clock (Yoto Player)",
+            "marker": "dot",
+            "highlight": false
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Or consider Voxblock if…",
+            "items": "You want no wi-fi and nothing to set up\nYou want them listening on their own, with real audiobooks they can hold\nPrice matters: player £49.99",
+            "marker": "tick",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "The quick answer",
+        "content": "",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "#fff7f0",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "highlight_background": "#e9f6f4",
+        "highlight_color": "#197177",
+        "tick_color": "#4cb6ac"
+      }
+    },
+    "glance": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Each story",
+            "value_1": "£7.99 card",
+            "value_2": "£14.99 Tonie",
+            "value_3": "£9.99 audiobook",
+            "good_answer": "yes"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "Setting up",
+            "value_1": "App, account and wi-fi",
+            "value_2": "App, account and wi-fi",
+            "value_3": "No setup",
+            "good_answer": "yes"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "How stories arrive",
+            "value_1": "Cards; audio loads over wi-fi",
+            "value_2": "Figures; each new Tonie downloads over wi-fi",
+            "value_3": "Ready to play",
+            "good_answer": "yes"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "Screen",
+            "value_1": "Pixel screen",
+            "value_2": "None",
+            "value_3": "None",
+            "good_answer": "yes"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "Headphones",
+            "value_1": "3.5mm jack and Bluetooth",
+            "value_2": "Bluetooth only",
+            "value_3": "3.5mm headphone jack",
+            "good_answer": "yes"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "Bedtime",
+            "value_1": "Night light, clock, okay-to-wake",
+            "value_2": "Sleep timer, night light, sunrise alarm",
+            "value_3": "20-minute bedtime mode",
+            "good_answer": "yes"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "label": "Battery",
+            "value_1": "Up to 14 hours",
+            "value_2": "Up to 10 hours",
+            "value_3": "Up to 16 hours",
+            "good_answer": "yes"
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "label": "Charging",
+            "value_1": "USB-C and wireless",
+            "value_2": "USB-C",
+            "value_3": "USB-C",
+            "good_answer": "yes"
+          }
+        },
+        "row_9": {
+          "type": "row",
+          "settings": {
+            "label": "Size and weight",
+            "value_1": "12 × 12 × 11 cm, 763 g",
+            "value_2": "13 × 13 × 13 cm, 815 g",
+            "value_3": "11 × 19 × 2 cm, 165 g",
+            "good_answer": "yes"
+          }
+        },
+        "row_10": {
+          "type": "row",
+          "settings": {
+            "label": "Wi-fi needed",
+            "value_1": "Yes",
+            "value_2": "Yes",
+            "value_3": "No",
+            "good_answer": "no"
+          }
+        },
+        "row_11": {
+          "type": "row",
+          "settings": {
+            "label": "Online account needed",
+            "value_1": "Yes",
+            "value_2": "Yes",
+            "value_3": "No",
+            "good_answer": "no"
+          }
+        },
+        "row_12": {
+          "type": "row",
+          "settings": {
+            "label": "Add your own audio",
+            "value_1": "Yes, Make Your Own cards",
+            "value_2": "With a Creative-Tonie",
+            "value_3": "Coming soon",
+            "good_answer": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8",
+        "row_9",
+        "row_10",
+        "row_11",
+        "row_12"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Yoto Player vs Toniebox at a glance",
+        "content": "<p>Latest models, UK prices checked 11 October 2026. Voxblock is highlighted so you can compare all three at once.</p>",
+        "text_position": "start",
+        "anchor_id": "glance",
+        "feature_heading": "",
+        "column_1": "Yoto Player (4th Gen)",
+        "highlight_column": "3",
+        "column_2": "Toniebox 2",
+        "column_3": "Voxblock player",
+        "footnote": "Yoto Mini £89.99 · Toniebox Lite Starter Set £59.99. Specifications are each maker's published figures.",
+        "column_1_image": "shopify://shop_images/yoto-player-gen4.png",
+        "column_1_price": "£119.99",
+        "column_1_note": "",
+        "column_2_image": "shopify://shop_images/tonies-box.avif",
+        "column_2_price": "£104.99",
+        "column_2_note": "",
+        "column_3_image": "shopify://shop_images/voxblock-player-compare.jpg",
+        "column_3_price": "£49.99",
+        "column_3_note": "",
+        "column_1_product": "voxblock-player",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "See starter packs",
+        "sticky_header": true,
+        "column_1_short": "Yoto Player",
+        "column_2_short": "Toniebox 2",
+        "column_3_short": "Voxblock",
+        "sticky_button_text": "Starter packs",
+        "media_ratio": "square",
+        "media_fit": "contain",
+        "stack_on_mobile": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "chart_background": "#ffffff",
+        "chart_text_color": "",
+        "tick_color": "#4cb6ac",
+        "cross_color": "#c9c9c9"
+      }
+    },
+    "ages": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Which is better for your child's age?",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "body": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>1 to 3 years.</strong> The Toniebox is the easier fit. The soft box takes knocks, you squeeze an ear to change the volume, and the figures are part of the fun. Yoto and Voxblock are made for children from 3.</p><p><strong>3 to 7 years.</strong> All three work. Tonies suit children who still play with the figures; Yoto suits families who want lots of content and a bedside clock; Voxblock suits families who want no wi-fi and stories children keep on a shelf.</p><p><strong>7 and older.</strong> Yoto or Voxblock. Both carry longer chapter books; Voxblock has unabridged novels for older children. Most Tonies content is aimed at younger listeners.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "body"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "stories": {
+      "type": "price-breakdown",
+      "blocks": {
+        "card_yoto": {
+          "type": "card",
+          "settings": {
+            "tag": "Yoto Mini · bought separately",
+            "highlight": false,
+            "image": "shopify://shop_images/yoto-mini-player-bundle.png",
+            "title": "Yoto Mini (4th Gen) + 3 cards",
+            "items": "Yoto Mini (4th Gen) | £89.99\nThe Gruffalo card | £7.99\nRoom on the Broom card | £7.99\nThe Smartest Giant in Town card | £7.99",
+            "total_label": "Total",
+            "total": "£113.96",
+            "difference": "",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_tonies": {
+          "type": "card",
+          "settings": {
+            "tag": "Toniebox 2 · bought separately",
+            "highlight": false,
+            "image": "shopify://shop_images/tonies-box.avif",
+            "title": "Toniebox 2 + 3 Tonies",
+            "items": "Toniebox 2 | £104.99\nThe Gruffalo Tonie | £14.99\nRoom on the Broom Tonie | £14.99\nThe Snail and the Whale & The Smartest Giant in Town Tonie | £14.99",
+            "total_label": "Total",
+            "total": "£149.96",
+            "difference": "",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_voxblock": {
+          "type": "card",
+          "settings": {
+            "tag": "Voxblock · one box",
+            "highlight": true,
+            "image": "shopify://shop_images/New-StarterPack-Gruffalo-GREEN-_Light.png",
+            "title": "Gruffalo and Friends Starter Pack",
+            "items": "Voxblock player, bumper, cable | included\nThe Gruffalo | included\nRoom on the Broom | included\nThe Smartest Giant in Town | included",
+            "total_label": "Total",
+            "total": "£69.99",
+            "difference": "Best value",
+            "cta_collection": "voxblock-starter-pack-collection",
+            "cta_text": "Shop now",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_yoto",
+        "card_tonies",
+        "card_voxblock"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "What the same three stories cost",
+        "content": "<p>The Gruffalo, Room on the Broom and The Smartest Giant in Town are on all three. Here is the cheapest player of each plus those three stories, bought new.</p>",
+        "text_position": "start",
+        "anchor_id": "stories",
+        "note": "<p>Tonies sells The Smartest Giant in Town on a figure shared with The Snail and the Whale, so that Tonie plays one extra story.</p>",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "#ffffff",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "highlight_color": "#197177",
+        "difference_color": "#a8612e"
+      }
+    },
+    "downsides": {
+      "type": "checklist-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Yoto",
+            "items": "Set up through the app, an account and wi-fi before first use\nBoth models have a small screen\nThe Yoto Player costs more than twice the Voxblock player",
+            "marker": "dot",
+            "highlight": false
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Toniebox",
+            "items": "Tonies are the most expensive stories at £14.99\nNo headphone jack: Bluetooth only\nEach new Tonie downloads over wi-fi",
+            "marker": "dot",
+            "highlight": false
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "title": "Voxblock",
+            "items": "No Bluetooth headphones\nAdding your own recordings is coming soon, not here yet\nMade for children from 3, not toddlers",
+            "marker": "dot",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Downsides worth knowing",
+        "content": "",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "#fff7f0",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "highlight_background": "#e9f6f4",
+        "highlight_color": "#197177",
+        "tick_color": "#4cb6ac"
+      }
+    },
+    "fit": {
+      "type": "media-with-text",
+      "blocks": {
+        "fit_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/player-boy-listening-independance.jpg",
+            "media_width": 40,
+            "stacked_media_max_width": 0,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 120,
+            "subheading": "Where Voxblock fits",
+            "title": "Want neither wi-fi nor setup?",
+            "title_tag": "h2",
+            "content": "<p>Voxblock stories live inside solid cardboard audiobooks. Put one on the player and press play: no wi-fi, no account, no downloads. Up to 16 hours of battery, free UK delivery over £25 and a 100-day money-back guarantee.</p><p>Compare in detail: <a href=\"/pages/alternative-to-yoto\">Voxblock vs Yoto</a> · <a href=\"/pages/alternative-to-toniebox\">Voxblock vs Toniebox</a></p>",
+            "link_text": "Shop starter packs · from £69.99",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "track": "guide_fit"
+          }
+        }
+      },
+      "block_order": [
+        "fit_image"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "Yoto or Tonies: which is better?",
+            "content": "<p>Neither is better for every child. A Toniebox suits toddlers who love figures; a Yoto suits children from 3 who want more stories and lasts further into the school years.</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "What age is a Toniebox for?",
+            "content": "<p>Tonies is aimed at the youngest listeners, from around 1 to 5. Most families move on as children start chapter books.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "Do Yoto and Tonies need wi-fi?",
+            "content": "<p>Both need wi-fi and an app to set up. Each new Tonie downloads when it is first played; Yoto cards load their audio over wi-fi. Voxblock needs neither.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "Which is cheaper, Yoto or Tonies?",
+            "content": "<p>The Yoto Mini (£89.99) costs less than the Toniebox 2 (£104.99), and Yoto cards (£7.99) cost about half a Tonie (£14.99).</p>"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "title": "Can you use wired headphones with a Toniebox?",
+            "content": "<p>No. The Toniebox 2 has Bluetooth only. Yoto players have a 3.5mm jack and Bluetooth; Voxblock has a 3.5mm jack.</p>"
+          }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": {
+            "title": "What is the difference between Yoto and Tonies?",
+            "content": "<p>Tonies plays stories from figures placed on top of a soft box and suits children from age 1. Yoto plays stories from cards slotted into the player, suits children from 3 and has more long audiobooks. Yoto cards cost about half as much as Tonies.</p>"
+          }
+        },
+        "item_7": {
+          "type": "item",
+          "settings": {
+            "title": "Are Tonies and Yoto the same company?",
+            "content": "<p>No. Tonies is made by tonies SE, a German company. Yoto is a separate British company founded in London. Their figures and cards don't work on each other's players.</p>"
+          }
+        },
+        "item_8": {
+          "type": "item",
+          "settings": {
+            "title": "Can you listen to music on Tonies?",
+            "content": "<p>Yes. Many Tonies carry songs, and a Creative-Tonie holds 90 minutes of your own music files. There is no streaming, radio or podcasts.</p>"
+          }
+        },
+        "item_9": {
+          "type": "item",
+          "settings": {
+            "title": "Which Toniebox is best for toddlers?",
+            "content": "<p>Both the Toniebox 2 and the Toniebox Lite are certified from age 1. The Toniebox 2 has a soft body that takes knocks and adds a night light and sunrise alarm; the Lite is smaller and cheaper.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6",
+        "item_7",
+        "item_8",
+        "item_9"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Yoto and Tonies questions",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "crosslinks": {
+      "type": "rich-text",
+      "blocks": {
+        "links": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<p>Already leaning one way? See how Voxblock compares: <a href=\"/pages/alternative-to-yoto\" data-vs-track=\"guide_crosslink_yoto\">Voxblock vs Yoto</a> · <a href=\"/pages/alternative-to-toniebox\" data-vs-track=\"guide_crosslink_toniebox\">Voxblock vs Toniebox</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "links"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#e9f6f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "footnotes": {
+      "type": "rich-text",
+      "blocks": {
+        "notes": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Prices from uk.yotoplay.com, tonies.com/en-gb and smythstoys.com, checked 11 October 2026. Yoto 4th Gen specifications from Yoto's launch announcement, September 2026; Tonies specifications from tonies.com/en-gb. Tonies, Toniebox and Creative-Tonie are trademarks of tonies SE. Yoto is a trademark of its owner. Voxblock is not affiliated with either. Prices change; check the retailer before you buy.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "notes"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "hero_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-listening-1200x1400.jpg",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 120,
+            "subheading": "Parent guide · UK prices checked 11 October 2026",
+            "title": "Yoto vs Tonies: which audio player suits your child?",
+            "content": "<p>Yoto or Tonies? The Yoto Player and the Toniebox are the two best-known screen-free audio players in the UK. Here is how they compare on price, age, setup and what each story costs.</p><p>By the Voxblock team · Updated 11 October 2026 · 10-minute read</p><p><em>We make Voxblock, a third screen-free player, so we have included it. This guide is about Yoto and Tonies first, and we have tried to be fair to both.</em></p>",
+            "link_text": "See the comparison",
+            "link_url": "#glance",
+            "title_tag": "h1",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "track": "guide_hero"
+          }
+        }
+      },
+      "block_order": [
+        "hero_image"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "differences": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Tonies vs Yoto: the main differences",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "body": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Whether you choose Tonies or Yoto, your child gets a screen-free player that plays stories, songs and audiobooks. The biggest difference is how a child picks what to play. On a Toniebox, each story lives on a hand-painted figure, called a Tonie, that sits on top of the box. On a Yoto, each story is on a card that slots into the player. Both download the audio over wi-fi the first time it plays and keep it for offline listening.</p><p><strong>Figures or cards.</strong> Tonies are toys in their own right: young children collect them and play with them away from the box. Yoto cards are flat, cheaper and easy to carry, and a card wallet holds dozens.</p><p><strong>Controls.</strong> On a Toniebox you squeeze the ears to change the volume and tap the sides to skip. Yoto uses two knobs and a small pixel screen. The Toniebox is easier for toddlers; Yoto is more precise for older children.</p><p><strong>Stories.</strong> Tonies is strongest on Disney and character favourites, often with the original film songs. Yoto has more long audiobooks, chapter books and non-fiction, plus its own radio station and podcasts.</p><p><strong>Cost.</strong> Yoto cards cost from £7.99 and most Tonies cost £14.99, so a Tonies library costs roughly twice as much to build.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "body"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "models": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Which Yoto or Toniebox should you buy?",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "body": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>If you are weighing up the Yoto Player vs Tonies, the model matters as much as the brand. Each now sells two players. The 4th Gen Yoto players are new this autumn; older 3rd Gen Yoto players are still on sale at lower prices.</p><p><strong>Toniebox 2 (£104.99).</strong> The full-size Toniebox, certified from age 1. It has a soft body that takes knocks, a sleep timer with a light, a sunrise alarm and Tonieplay games (the controller and games are sold separately). Headphones connect by Bluetooth.</p><p><strong>Toniebox Lite (from £59.99).</strong> A smaller hard-shell box, about 10 cm each way and 290 g. It plays every Tonie and has a sleep timer, but no Tonieplay, night light or sunrise alarm. Headphones are Bluetooth only, and the charging cable is not included.</p><p><strong>Yoto Player, 4th Gen (£119.99).</strong> The bedside model, with a seven-colour night light and an okay-to-wake clock. The new Green Button plays up to 20 titles you choose without a card. Up to 14 hours of battery and 64GB of storage for offline listening.</p><p><strong>Yoto Mini, 4th Gen (£89.99).</strong> The portable model, rated IP67 for water and dust. It also has the Green Button and 64GB of storage, with up to 12 hours of battery, but no night light.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "body"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "bedtime": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Bedtime: night lights, timers and alarms",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "body": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Many families buy an audio player for bedtime, and this is where the full-size models earn their price.</p><p><strong>Toniebox 2</strong> has a sleep timer with a light and a bedtime mode, plus a sunrise alarm that glows and plays wake-up tunes. The Toniebox Lite has a sleep timer only.</p><p><strong>Yoto Player (4th Gen)</strong> has a full-panel night light in seven colours and an okay-to-wake clock. You can set the Green Button with separate day and night choices, which helps limit choice at lights out. The Yoto Mini has no night light.</p><p><strong>Voxblock</strong> has a 20-minute bedtime mode but no night light or clock, so it suits children who already have a lamp they like.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "body"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "travel": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Travel and durability",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "body": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Yoto Mini (4th Gen)</strong> is the best traveller of the four Yoto and Tonies players: small enough for a backpack and rated IP67 against water and dust. Downloaded stories play offline, and with the Green Button you don't need to pack cards.</p><p><strong>Toniebox 2</strong> is soft and copes well with falls, but it is the bulkiest, and the figures have to come too. The Toniebox Lite is much smaller and still plays every Tonie.</p><p><strong>Voxblock</strong> is 2 cm thick and weighs 165 g, with a wired headphone jack for car journeys. Nothing needs downloading before you leave; just pack the audiobooks you want.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "body"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "own_audio": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Your own recordings, music and podcasts",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "body": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p><strong>Making your own.</strong> A Creative-Tonie (£11.99) holds 90 minutes of your own recordings or music. A Yoto Make Your Own card holds up to 5 hours across 100 tracks. If grandparents will record stories, or you want to load a long album, Yoto gives you more room.</p><p><strong>Radio and podcasts.</strong> Yoto has its own radio station and can turn podcasts into cards. Tonies has neither: music comes on music Tonies or your own files on a Creative-Tonie.</p><p><strong>Voxblock.</strong> Adding your own audio is coming soon. For now, every story comes on a Voxblock audiobook.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "body"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "main",
+    "quick_answer",
+    "differences",
+    "glance",
+    "models",
+    "ages",
+    "stories",
+    "bedtime",
+    "travel",
+    "own_audio",
+    "downsides",
+    "fit",
+    "faq",
+    "crosslinks",
+    "footnotes"
+  ]
+}

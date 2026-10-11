@@ -135,9 +135,10 @@ LIQUID
             {{- block.settings.content -}}
 
             {%- if block.settings.link_text != blank -%}
-              {%- render 'button', href: block.settings.link_url, content: block.settings.link_text, size: 'xl', background: block.settings.button_background, text_color: block.settings.button_text_color -%}
+              {%- render 'button', href: block.settings.link_url, content: block.settings.link_text, size: 'xl', background: block.settings.button_background, text_color: block.settings.button_text_color, track: block.settings.track -%}
               {%- if block.settings.link2_text != blank -%}
-                {%- render 'button', href: block.settings.link2_url, content: block.settings.link2_text, size: 'xl', style: 'outline' -%}
+                {%- if block.settings.track != blank -%}{%- assign track_2 = block.settings.track | append: '_secondary' -%}{%- else -%}{%- assign track_2 = blank -%}{%- endif -%}
+                {%- render 'button', href: block.settings.link2_url, content: block.settings.link2_text, size: 'xl', style: 'outline', track: track_2 -%}
               {%- endif -%}
             {%- endif -%}
           </div>
@@ -153,8 +154,13 @@ LIQUID
   "class": "shopify-section--media-with-text",
   "tag": "section",
   "disabled_on": {
-    "templates": ["password"],
-    "groups": ["header", "custom.overlay"]
+    "templates": [
+      "password"
+    ],
+    "groups": [
+      "header",
+      "custom.overlay"
+    ]
   },
   "settings": [
     {
@@ -597,9 +603,18 @@ LIQUID
           "label": "Heading HTML tag",
           "info": "Use h1 when this block is the page's main heading. Styling is unchanged.",
           "options": [
-            {"value": "p", "label": "Paragraph (default)"},
-            {"value": "h1", "label": "H1"},
-            {"value": "h2", "label": "H2"}
+            {
+              "value": "p",
+              "label": "Paragraph (default)"
+            },
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            }
           ],
           "default": "p"
         },
@@ -613,6 +628,12 @@ LIQUID
           "type": "url",
           "id": "link2_url",
           "label": "Secondary button URL"
+        },
+        {
+          "type": "text",
+          "id": "track",
+          "label": "Tracking name (optional)",
+          "info": "Sends a PostHog vs_yoto_click with this name when a button is clicked; the second button adds _secondary."
         },
         {
           "type": "header",
@@ -672,7 +693,10 @@ LIQUID
         {
           "type": "video_url",
           "id": "external_video_url",
-          "accept": ["vimeo", "youtube"],
+          "accept": [
+            "vimeo",
+            "youtube"
+          ],
           "label": "Video URL",
           "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
         },

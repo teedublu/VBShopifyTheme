@@ -3,6 +3,7 @@
 {%- assign background_color = article.metafields.banner.background_color.value | default: section.settings.banner_background -%}
 {%- assign text_color = article.metafields.banner.text_color.value | default: section.settings.banner_text_color -%}
 {%- assign article_image = section.settings.image | default: article.image -%}
+{%- if section.settings.show_image == false -%}{%- assign article_image = blank -%}{%- endif -%}
 
 <style>
   #shopify-section-{{ section.id }} .article-banner {
@@ -90,16 +91,29 @@
       }
     }
   {%- endif -%}
+  #shopify-section-{{ section.id }} .article-banner__intro { max-width: 46rem; margin-inline: auto; margin-block-start: var(--spacing-6); }
 </style>
 
 <div class="article" {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
-  {%- render 'article-banner', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: section.settings.show_comments_count, layout: section.settings.layout, article_image: article_image -%}
+  {%- unless section.settings.show_banner == false -%}
+  {%- render 'article-banner', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: section.settings.show_comments_count, layout: section.settings.layout, article_image: article_image, show_tag: section.settings.show_tag, intro: section.settings.banner_intro -%}
+  {%- endunless -%}
+
+  {%- liquid
+    assign show_body_area = true
+    if section.settings.show_content == false and section.settings.show_share_buttons == false and section.blocks.size == 0
+      assign show_body_area = false
+    endif
+  -%}
+  {%- if show_body_area -%}
 
   <div class="container">
     <div class="article-content v-stack gap-8 sm:gap-10">
+      {%- unless section.settings.show_content == false -%}
       <div class="prose">
         {{ article.content }}
       </div>
+      {%- endunless -%}
 
       {%- if section.settings.show_share_buttons -%}
         <div class="share-buttons gap-3">
@@ -133,6 +147,7 @@
       {%- endcase -%}
     {%- endfor -%}
   </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -251,6 +266,38 @@
         }
       ],
       "default": "750px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show article image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show article body",
+      "info": "Turn off on templates whose sections carry the content (the comparison guide).",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner",
+      "label": "Show banner",
+      "info": "Turn off when another section at the top of the template carries the page heading.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tag",
+      "label": "Show tag badge",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "banner_intro",
+      "label": "Intro under the title (optional)",
+      "info": "For templates whose sections carry the content, such as the comparison guide."
     }
   ],
   "blocks": [

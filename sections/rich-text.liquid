@@ -68,7 +68,7 @@
 
           {%- when 'button' -%}
             {%- if block.settings.text != blank -%}
-              {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
+              {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, track: block.settings.track, block: block %}
             {%- endif -%}
 
           {%- when 'icon' -%}
@@ -139,7 +139,10 @@
   "class": "shopify-section--rich-text",
   "tag": "section",
   "disabled_on": {
-    "groups": ["header", "custom.overlay"]
+    "groups": [
+      "header",
+      "custom.overlay"
+    ]
   },
   "settings": [
     {
@@ -281,9 +284,18 @@
           "label": "HTML tag",
           "info": "Use a real heading tag when this is a section heading search engines should read. Styling is unchanged.",
           "options": [
-            {"value": "p", "label": "Paragraph (default)"},
-            {"value": "h2", "label": "H2"},
-            {"value": "h3", "label": "H3"}
+            {
+              "value": "p",
+              "label": "Paragraph (default)"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            }
           ],
           "default": "p"
         },
@@ -446,6 +458,12 @@
           "type": "color",
           "id": "text_color",
           "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "track",
+          "label": "Tracking name (optional)",
+          "info": "Sends a PostHog vs_yoto_click with this name when clicked."
         }
       ]
     },

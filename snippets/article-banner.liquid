@@ -12,11 +12,13 @@ Supported parameters
 * show_author
 * show_comments_count
 * layout
+* show_tag: false hides the tag badge (default shown)
+* intro: optional rich text shown under the title
 {%- endcomment -%}
 
 <div class="article-banner {% if layout == 'image_text_overlay' %}sm:justify-items-center sm:align-items-center{% endif %}">
   <div class="article-banner__content text-custom">
-    {%- if article.tags.size > 0 -%}
+    {%- if article.tags.size > 0 and show_tag != false -%}
       <a href="{{ blog.url }}/tagged/{{ article.tags.first | handle }}" class="badge bold text-sm">{{- article.tags.first -}}</a>
     {%- endif -%}
 
@@ -42,6 +44,10 @@ Supported parameters
         </a>
       {%- endif -%}
     </div>
+
+    {%- if intro != blank -%}
+      <div class="article-banner__intro prose">{{ intro }}</div>
+    {%- endif -%}
   </div>
 
   {%- if article_image != blank -%}
