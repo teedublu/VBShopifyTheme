@@ -27,7 +27,7 @@ Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
       </div>
     {%- endif -%}
     <div class="story-home-band__text">
-      {%- if section.settings.eyebrow != blank -%}<p class="story-home-band__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="story-home-band__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h2 class="story-home-band__title">{{ section.settings.heading | escape }}</h2>
       {%- if section.settings.text != blank -%}<div class="story-home-band__intro">{{ section.settings.text }}</div>{%- endif -%}
       <div class="story-home-band__actions">

@@ -24,7 +24,7 @@ Supported variables: block, section
       </div>
     {%- endif -%}
     <div class="howto-promo__text">
-      {%- if block.settings.eyebrow != blank -%}<p class="howto-promo__eyebrow">{{ block.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if block.settings.eyebrow != blank -%}<p class="howto-promo__eyebrow subheading">{{ block.settings.eyebrow | escape }}</p>{%- endif -%}
       <p class="howto-promo__title">{{ block.settings.heading | escape }}</p>
       <ol class="howto-promo__steps">
         {%- if block.settings.step_1 != blank -%}<li><span aria-hidden="true">1</span>{{ block.settings.step_1 | escape }}</li>{%- endif -%}

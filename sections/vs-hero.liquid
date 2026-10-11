@@ -60,7 +60,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
 <style>
   #shopify-section-{{ section.id }} .vs-hero {
     --vs-bg: {{ section.settings.background }};
-    --vs-heading: {{ section.settings.heading_color }};
+    --vs-heading: {% if section.settings.heading_color != blank and section.settings.heading_color != 'rgba(0,0,0,0)' %}{{ section.settings.heading_color }}{% else %}{{ settings.brand_heading }}{% endif %};
     --vs-text: {{ section.settings.text_color }};
     --vs-accent: {{ section.settings.accent_color }};
     --vs-eyebrow: {{ section.settings.eyebrow_color }};
@@ -81,20 +81,10 @@ initialised in layout/theme.liquid). No storefront pixel events.
   #shopify-section-{{ section.id }} .vs-hero__trust { grid-area: trust; }
 
   #shopify-section-{{ section.id }} .vs-hero__eyebrow {
-    margin: 0 0 4px;
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--vs-eyebrow);
+    margin: 0 0 8px;
   }
   #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title {
     margin: 0;
-    font-size: 25px;
-    line-height: 31px;
-    font-weight: 700;
-    letter-spacing: normal;
     color: var(--vs-heading);
   }
 
@@ -163,8 +153,6 @@ initialised in layout/theme.liquid). No storefront pixel events.
       padding-block: 36px;
     }
     #shopify-section-{{ section.id }} .vs-hero__compare { align-self: center; }
-    #shopify-section-{{ section.id }} .vs-hero__eyebrow { font-size: 13px; line-height: 18px; }
-    #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title { font-size: 38px; line-height: 46px; }
     #shopify-section-{{ section.id }} .vs-hero__cards { gap: 16px; }
     #shopify-section-{{ section.id }} .vs-card { gap: 8px; padding: 14px 14px 16px; border-radius: 16px; }
     #shopify-section-{{ section.id }} .vs-card--voxblock { padding: 13px 13px 15px; }
@@ -182,7 +170,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
 <section class="vs-hero" aria-labelledby="vs-hero-title-{{ section.id }}" {{ section.shopify_attributes }}>
   <div class="container vs-hero__inner">
     <div class="vs-hero__copy">
-      {%- if section.settings.eyebrow != blank -%}<p class="vs-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="vs-hero__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h1 class="vs-hero__title" id="vs-hero-title-{{ section.id }}">{{ heading | escape }}</h1>
     </div>
 

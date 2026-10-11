@@ -47,13 +47,17 @@
           {%- assign poster_image = section.settings.poster | default: section.settings.mobile_video.preview_image -%}
     
           <video-media {% if section.settings.autoplay %}autoplay{% endif %} class="sm:hidden" {% if section.settings.video_size == 'auto' %}style="--aspect-ratio: {{ section.settings.mobile_video.aspect_ratio }}"{% endif %}>
-            {{- section.settings.mobile_video | video_tag: class: 'object-cover sm:hidden', controls: section.settings.show_controls, playsinline: true, muted: section.settings.autoplay, loop: section.settings.autoplay, preload: 'metadata', image_size: '400x' -}}
+            {%- comment -%}VB: always muted; autoplay videos start when scrolled into view (theme.js) and download nothing until then{%- endcomment -%}
+            {%- if section.settings.autoplay -%}{%- assign vb_video_preload = 'none' -%}{%- else -%}{%- assign vb_video_preload = 'metadata' -%}{%- endif -%}
+            {{- section.settings.mobile_video | video_tag: class: 'object-cover sm:hidden', controls: section.settings.show_controls, playsinline: true, muted: true, loop: section.settings.autoplay, preload: vb_video_preload, image_size: '400x' -}}
             {{- poster_image | image_url: width: poster_image.width | image_tag: alt: poster_image.alt, loading: 'lazy', sizes: '100vw', widths: '200,300,400,500,600,700,800,900,1000,1200' -}}
           </video-media>
         {%- endif -%}
 
         <video-media {% if section.settings.autoplay %}autoplay{% endif %} {% if section.settings.mobile_video != blank %}class="hidden sm:block"{% endif %} {% if section.settings.video_size == 'auto' %}style="--aspect-ratio: {{ section.settings.video.aspect_ratio }}"{% endif %}>
-          {{- section.settings.video | video_tag: playsinline: true, preload: 'metadata', muted: section.settings.autoplay, loop: section.settings.autoplay, controls: show_controls, image_size: '800x' -}}
+          {%- comment -%}VB: always muted; autoplay videos start when scrolled into view (theme.js) and download nothing until then{%- endcomment -%}
+          {%- if section.settings.autoplay -%}{%- assign vb_video_preload = 'none' -%}{%- else -%}{%- assign vb_video_preload = 'metadata' -%}{%- endif -%}
+          {{- section.settings.video | video_tag: playsinline: true, preload: vb_video_preload, muted: true, loop: section.settings.autoplay, controls: show_controls, image_size: '800x' -}}
           {{- poster -}}
         </video-media>
       {%- elsif section.settings.youtube_id -%}
@@ -89,7 +93,7 @@
 
                 {%- when 'subheading' -%}
                   {%- if block.settings.text != blank -%}
-                    <p class="bold" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+                    <p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
                   {%- endif -%}
 
                 {%- when 'heading' -%}

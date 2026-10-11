@@ -18,21 +18,24 @@
             "image": "shopify://shop_images/home-header-fussy-tech-26.1.0_1.png",
             "media_width": 50,
             "media_position": "end",
-            "text_position": "place-self-center text-center",
+            "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
-            "subheading": "",
-            "title": "Finally. Audiobooks without the fussy tech.",
-            "content": "<p>Simple tech. Like you remember.</p>",
+            "subheading": "No screens. No wi-fi. No downloads.",
+            "title": "The screen-free audiobook player for children",
+            "content": "<p>Pop in an audiobook and press play. A simple story player for children aged 3 to 14+, with no wifi, downloads or subscriptions.</p><p>Free UK delivery over £25 · 100-day money-back guarantee</p>",
             "link_text": "Discover our player",
             "link_url": "https://voxblock.co.uk/products/voxblock-player",
-            "background": "#ffffff",
+            "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
-            "heading_text_color": "#4cb6ac",
+            "heading_text_color": "",
             "text_gradient": "",
             "button_background": "",
-            "button_text_color": ""
+            "button_text_color": "",
+            "title_tag": "h1",
+            "link2_text": "See how it works",
+            "link2_url": "shopify://pages/how-does-it-work"
           }
         }
       },
@@ -42,7 +45,7 @@
       "name": "Media with text",
       "settings": {
         "full_width": true,
-        "spacing": "none"
+        "spacing": "medium"
       }
     },
     "rich_text_K9xkcG": {
@@ -67,13 +70,13 @@
         "liquid_xCHYgW": {
           "type": "liquid",
           "settings": {
-            "liquid": "<h1 class=\"h2\">\nNo screens. No wi-fi. No apps.</h1>"
+            "liquid": "<h2>An audio player for children that just works</h2>"
           }
         },
         "richtext_n7wzRG": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Trusted by families across the UK and Australia to support reading for pleasure.</p>"
+            "content": "<p>Voxblock is an audiobook player made for children. Each audiobook is a sturdy block, like a board book, that slots into the player. Press play and the story starts. There's nothing to set up, download or stream, and no screen to argue over.</p><p>Children can listen out loud through the built-in speaker or plug in headphones. The battery lasts up to 16 hours, and bedtime mode plays the chosen story for 20 minutes before going to standby. With more than 350 audiobooks, from first picture books to teen fiction, it's a story player that grows with your child.</p><p>Trusted by families across the UK and Australia to support reading for pleasure.</p>"
           }
         },
         "button_qfBpaY": {
@@ -104,7 +107,8 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
     "logo_list_LNWaw9": {
       "type": "logo-list",
@@ -198,14 +202,14 @@
       "settings": {
         "full_width": true,
         "stack_mobile": false,
-        "title": "Featured In",
+        "title": "Featured in",
         "content": "",
         "text_alignment": "center",
         "items_per_row": 7,
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": "",
         "logo_item_background": "",
         "logo_item_border": ""
@@ -280,7 +284,7 @@
         "impact_text_size_ratio": 1,
         "background": "#ff9e57",
         "background_gradient": "",
-        "heading_text_color": "#fff7f0",
+        "heading_text_color": "",
         "heading_gradient": "",
         "text_color": "#fff7f0",
         "button_background": "",
@@ -295,8 +299,8 @@
           "settings": {
             "image": "shopify://shop_images/homepage-link-under5-v1.26.jpg",
             "stretch_image": true,
-            "link_text": "Under 5's",
-            "link_url": "shopify://products/voxblock-player",
+            "link_text": "Under 5s",
+            "link_url": "shopify://collections/voxblock-audiobooks-under-5s",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -308,8 +312,8 @@
           "settings": {
             "image": "shopify://shop_images/homepage-link-5-8-v1.26.jpg",
             "stretch_image": true,
-            "link_text": "5-8 Years",
-            "link_url": "https://voxblock.co.uk/collections/audiobooks?filter.p.m.book.age_groups=5+to+8+years",
+            "link_text": "5 to 8 years",
+            "link_url": "shopify://collections/audiobooks-5-8-years",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -321,8 +325,8 @@
           "settings": {
             "image": "shopify://shop_images/homepage-link-8-10-v1.26.jpg",
             "stretch_image": true,
-            "link_text": "8-10 Years",
-            "link_url": "https://voxblock.co.uk/collections/audiobooks?filter.p.m.book.age_groups=8+to+10+years",
+            "link_text": "8 to 10 years",
+            "link_url": "shopify://collections/audiobooks-8-10-years",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -334,8 +338,8 @@
           "settings": {
             "image": "shopify://shop_images/homepage-link-teens-v1.26.jpg",
             "stretch_image": true,
-            "link_text": "10-Teens",
-            "link_url": "https://voxblock.co.uk/collections/audiobooks?filter.p.m.book.age_groups=10+to+teens",
+            "link_text": "10 to teens",
+            "link_url": "shopify://collections/audiobooks-10-to-teens",
             "background": "",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
@@ -353,9 +357,9 @@
       "settings": {
         "full_width": true,
         "block_size": "large",
-        "subheading": "",
-        "title": "",
-        "content": "",
+        "subheading": "For every age",
+        "title": "Audiobooks for children aged 3 to 14+",
+        "content": "<p>Voxblock grows with your child. Under 5s start with picture-book favourites they can choose and play by themselves. From 5 to 8, stories get longer and first chapter books come in. From 8 into the teens, children listen to whole novels and series, out loud or through headphones. Choose an age to see the stories that suit it.</p>",
         "link_url": "",
         "link_text": "",
         "background": "",
@@ -425,7 +429,7 @@
             "vertical_position_mobile": 30,
             "icon_width": 32,
             "title": "Simple-to-use",
-            "content": "<p>No wifi, no apps, no set-up and no parents needed.</p>"
+            "content": "<p>No wifi, no downloads, no set-up and no parents needed.</p>"
           }
         }
       },
@@ -440,7 +444,7 @@
         "full_width": false,
         "image": "shopify://shop_images/home-hotspot-web-v2.25-low-res_1.webp",
         "mobile_image": "shopify://shop_images/home-hotspot-mob-v2.25_-low-res_63df2b13-00a1-4cff-b598-7be4ffda9bdb.png",
-        "title": "Features",
+        "title": "Finally. Audiobooks without the fussy tech.",
         "content": "<p>Simple to use, screen-free audiobook player</p>",
         "button_text": "",
         "button_url": "",
@@ -457,7 +461,8 @@
         "hot_spot_content_background": "#ffffff",
         "hot_spot_content_text_color": "#000000",
         "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
+        "hot_spot_content_blur_radius": 3,
+        "title_size": "h1"
       }
     },
     "featured_collection_fGBEed": {
@@ -475,18 +480,18 @@
         "full_width": true,
         "stack_products": false,
         "show_progress_bar": true,
-        "products_count": 11,
+        "products_count": 5,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
         "subheading": "Our library",
-        "title": "Best-selling Audiobooks",
+        "title": "Best-selling audiobooks",
         "content": "<p>There are hundreds of audiobooks in our collection: ranging from well-known classics, to meditation, to facts and learning, our titles are suitable for toddlers up to teens.</p>",
         "link_url": "shopify://collections/audiobooks",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
@@ -571,8 +576,8 @@
       "settings": {
         "full_width": true,
         "block_size": "medium",
-        "subheading": "",
-        "title": "#wearevoxblock",
+        "subheading": "#wearevoxblock",
+        "title": "Follow Voxblock",
         "content": "",
         "link_url": "",
         "link_text": "",
@@ -657,7 +662,7 @@
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": ""
       }
     },
@@ -719,14 +724,14 @@
         "full_width": true,
         "stack_testimonials": true,
         "subheading": "",
-        "title": "Testimonials",
+        "title": "What parents say about Voxblock",
         "content": "",
         "link_url": "",
         "link_text": "",
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": "",
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
@@ -741,7 +746,7 @@
             "image": "shopify://shop_images/home-images-literacy-v2.25-low-res.png",
             "image_rotation_degrees": -2,
             "subheading": "Supporting development",
-            "title": "Reading for Pleasure",
+            "title": "Reading for pleasure",
             "content": "<p>Audiobooks build vocabulary, listening skills, and confidence. But their real magic is helping children enjoy stories, taking them on adventures without a screen in sight.</p>",
             "button_url": "",
             "button_text": ""
@@ -752,9 +757,9 @@
           "settings": {
             "image": "shopify://shop_images/home-image-connectivity-v2.25-low-res.png",
             "image_rotation_degrees": 1.5,
-            "subheading": "No apps, no wifi, no set-up",
-            "title": "Connectivity Free",
-            "content": "<p>Designed with kids in mind, the Voxblock player is completely connectivity free.  All Voxblock audio is stored on our audiobook blocks, that automatically play as soon as they are placed in the player. This means no wifi, no apps, no downloads or set-up.</p>",
+            "subheading": "No downloads, no wifi, no set-up",
+            "title": "Connectivity free",
+            "content": "<p>Designed with kids in mind, the Voxblock player is completely connectivity free.  All Voxblock audio is stored on our audiobook blocks, that automatically play as soon as they are placed in the player. This means no wifi, no streaming, no downloads or set-up.</p>",
             "button_url": "",
             "button_text": ""
           }
@@ -765,7 +770,7 @@
             "image": "shopify://shop_images/home-image-travel-v2.25-low-res.png",
             "image_rotation_degrees": 0,
             "subheading": "On the go",
-            "title": "Travel Companion",
+            "title": "Travel companion",
             "content": "<p>Your child can carry their favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to handle all the rough and tumble kids can throw at it.</p>",
             "button_url": "",
             "button_text": ""
@@ -784,7 +789,7 @@
         "background": "",
         "background_gradient": "",
         "text_color": "#565656",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "button_background": "",
         "button_text_color": ""
       }
@@ -807,15 +812,15 @@
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "Begin with our Starter Packs",
+        "subheading": "Where to start",
+        "title": "Begin with our starter packs",
         "content": "",
         "link_url": "shopify://collections/voxblock-starter-pack-collection",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
         "text_color": "",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": "",
         "product_card_background": "",
         "product_card_text_color": ""
@@ -830,7 +835,7 @@
           "settings": {
             "text": "Subheading",
             "subheading_tag": "h1",
-            "subheading_tag_html": "h2"
+            "subheading_tag_html": "p"
           }
         },
         "1664424230c4756b0e-1": {
@@ -896,7 +901,7 @@
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
-            "heading_text_color": "#4cb6ac",
+            "heading_text_color": "",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -927,7 +932,7 @@
           "settings": {
             "text": "The Benefits of Audiobooks",
             "heading_tag": "h2",
-            "text_color": "#ff9e57",
+            "text_color": "",
             "gradient": ""
           }
         },
@@ -1053,7 +1058,7 @@
       "settings": {
         "full_width": true,
         "show_icon": true,
-        "title": "Newsletter",
+        "title": "Hear about new audiobooks first",
         "content": "<p>Find out about new releases, offers and promotions and all things audiobooks.</p>",
         "button_text": "Subscribe",
         "subtext": "",
@@ -1063,10 +1068,170 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "faq_home_prepurchase": {
+      "type": "faq",
+      "blocks": {
+        "item_home01": {
+          "type": "item",
+          "settings": {
+            "title": "How does a kids audiobook player work?",
+            "content": "<p>Each Voxblock audiobook is a sturdy block, like a board book, with the story stored inside. Your child slots it into the player and presses play, and the story starts. There is no screen, nothing to download and no internet connection needed.</p>"
+          }
+        },
+        "item_home02": {
+          "type": "item",
+          "settings": {
+            "title": "Does Voxblock need wifi, a phone or a subscription?",
+            "content": "<p>No. There is nothing to download or stream, no subscription and nothing to set up. Take it out of the box, charge it and press play, at home, in the car or on holiday.</p>"
+          }
+        },
+        "item_home03": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock for?",
+            "content": "<p>Children aged 3 to 14+. Our library of 350+ audiobooks runs from picture books for <a href=\"/collections/voxblock-audiobooks-under-5s\">under 5s</a> to stories for <a href=\"/collections/audiobooks-5-8-years\">5 to 8s</a>, <a href=\"/collections/audiobooks-8-10-years\">8 to 10s</a> and <a href=\"/collections/audiobooks-10-to-teens\">10s to teens</a>, so the same player lasts for years.</p>"
+          }
+        },
+        "item_home04": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>Up to 16 hours of listening on a full charge, enough for a long car journey or a week of bedtime stories. It charges with the USB-C cable in the box.</p>"
+          }
+        },
+        "item_home05": {
+          "type": "item",
+          "settings": {
+            "title": "Can my child use headphones?",
+            "content": "<p>Yes. The player has a built-in speaker for listening out loud and a headphone jack for quiet listening in the car, on a plane or when a sibling is asleep.</p>"
+          }
+        },
+        "item_home06": {
+          "type": "item",
+          "settings": {
+            "title": "Is it good for bedtime?",
+            "content": "<p>Yes. Bedtime mode plays the chosen story for 20 minutes, then the player goes to standby, so your child can drift off without a screen in the room.</p>"
+          }
+        },
+        "item_home07": {
+          "type": "item",
+          "settings": {
+            "title": "How is Voxblock different from Yoto or Tonies?",
+            "content": "<p>Voxblock is a simpler alternative to Yoto and Tonies. Stories come on physical audiobook blocks rather than cards or figures that download audio, so there is no wifi, no downloads and no account to set up. <a href=\"/pages/voxblock-vs-yoto\" title=\"Voxblock vs Yoto\">See how they compare</a>.</p>"
+          }
+        },
+        "item_home08": {
+          "type": "item",
+          "settings": {
+            "title": "What's in the box?",
+            "content": "<p>The player, a USB-C charging cable and a protective bumper if you choose one. Audiobooks are sold separately, or together in a <a href=\"/collections/voxblock-starter-pack-collection\">starter pack</a>.</p>"
+          }
+        },
+        "item_home09": {
+          "type": "item",
+          "settings": {
+            "title": "What if it's not right for us?",
+            "content": "<p>Every player comes with a 100-day money-back guarantee, and UK delivery is free on orders over £25.</p>"
+          }
+        },
+        "item_home10": {
+          "type": "item",
+          "settings": {
+            "title": "What can my child listen to audiobooks on?",
+            "content": "<p>On a phone, tablet or smart speaker, or on an audiobook player made for children. A player like Voxblock keeps listening screen-free: your child picks a story, slots it in and presses play, with nothing to download or stream and no screen to get drawn into.</p>"
+          }
+        },
+        "item_home11": {
+          "type": "item",
+          "settings": {
+            "title": "Is Voxblock suitable for toddlers?",
+            "content": "<p>Voxblock is made for children aged 3 and over. The chunky blocks and simple buttons are easy for small hands, so most 3 year olds can choose and play a story on their own. For younger children, pick the story for them and listen together.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_home01",
+        "item_home10",
+        "item_home02",
+        "item_home03",
+        "item_home11",
+        "item_home04",
+        "item_home05",
+        "item_home06",
+        "item_home07",
+        "item_home08",
+        "item_home09"
+      ],
+      "name": "Questions parents ask",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions parents ask",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "media_with_text_meet": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_meet": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home-hotspot-web-v2.25-low-res_1.webp",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Meet Voxblock",
+            "title": "An audio player for children that just works",
+            "title_tag": "h2",
+            "content": "<p>Voxblock is an audiobook player made for children. Each audiobook is a sturdy block, like a board book, that slots into the player. Press play and the story starts. There's nothing to set up, download or stream, and no screen to argue over.</p><p>Children can listen out loud through the built-in speaker or plug in headphones. The battery lasts up to 16 hours, and bedtime mode plays the chosen story for 20 minutes before going to standby. With more than 350 audiobooks, from first picture books to teen fiction, it's a story player that grows with your child.</p>",
+            "link_text": "",
+            "link_url": "",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_meet"
+      ],
+      "name": "Meet Voxblock",
+      "settings": {
+        "full_width": true,
+        "spacing": "medium"
+      }
     }
   },
   "order": [
     "media_with_text_hjyKYh",
+    "media_with_text_meet",
     "rich_text_K9xkcG",
     "logo_list_LNWaw9",
     "video_N3TaA4",
@@ -1078,6 +1243,7 @@
     "image_link_blocks_9Yz7Pf",
     "testimonials_UiMYnt",
     "multiple_images_with_text_qi7tAC",
+    "faq_home_prepurchase",
     "featured_collection_RbaTLW",
     "image-with-text-overlay",
     "media_with_text_cTgCfe",

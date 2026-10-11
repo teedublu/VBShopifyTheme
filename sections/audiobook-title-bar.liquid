@@ -85,19 +85,13 @@
     padding: 0.45rem 0.8rem;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.14);
-    color: #ffffff;
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
     border: 1px solid rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(8px);
+    color: #ffffff; /* pill on the dark title bar */
   }
 
   #shopify-section-{{ section.id }} .audiobook-title-bar__title {
     margin: 0;
-    font-size: clamp(2.5rem, 5vw, 4.75rem);
-    line-height: 0.9;
     color: #ffffff;
     text-wrap: balance;
   }
@@ -202,7 +196,7 @@
     </div>
 
     <div class="audiobook-title-bar__content">
-      <span class="audiobook-title-bar__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      <span class="audiobook-title-bar__eyebrow subheading">{{ section.settings.eyebrow | escape }}</span>
       <h1 class="audiobook-title-bar__title">{{ metaobject.title.value }}</h1>
       <p class="audiobook-title-bar__copy">
         {{ section.settings.description | default: 'Welcome in. Explore the story, meet the characters, and jump straight to the details you need before choosing this audiobook.' }}

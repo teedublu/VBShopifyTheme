@@ -67,7 +67,7 @@ If a figure cannot be read (no matching product), that price is simply left out.
 <section class="pack-intro" style="--pack-intro-bg: {{ section.settings.background }};" {{ section.shopify_attributes }}>
   <div class="container pack-intro__inner">
     <div class="pack-intro__text">
-      {%- if section.settings.eyebrow != blank -%}<p class="pack-intro__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="pack-intro__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h1 class="pack-intro__title">{{ section.settings.heading | escape }}</h1>
       {%- if section.settings.text != blank -%}
         <p class="pack-intro__lede">{{ section.settings.text | escape }}{% if section.settings.desktop_suffix != blank %}<span class="pack-intro__desktop-only"> {{ section.settings.desktop_suffix | escape }}</span>{% endif %}</p>
