@@ -15,7 +15,8 @@
         "subheading_QhbKca": {
           "type": "subheading",
           "settings": {
-            "text": ""
+            "text": "",
+            "subheading_tag_html": "p"
           }
         },
         "heading_DenFnj": {
@@ -30,7 +31,7 @@
         "richtext_AL8YMf": {
           "type": "richtext",
           "settings": {
-            "content": "<p><\/p>"
+            "content": "<p></p>"
           }
         },
         "button_p4UxyD": {
@@ -39,7 +40,7 @@
             "style": "fill",
             "size": "lg",
             "text": "Meet Voxblock",
-            "url": "shopify:\/\/pages\/how-does-it-work",
+            "url": "shopify://pages/how-does-it-work",
             "background": "",
             "text_color": ""
           }
@@ -57,8 +58,8 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/voxblock_website_banner_1.png",
-        "mobile_image": "shopify:\/\/shop_images\/Mobile_Website_Banners_8.png",
+        "image": "shopify://shop_images/voxblock_website_banner_1.png",
+        "mobile_image": "shopify://shop_images/Mobile_Website_Banners_8.png",
         "mobile_text_position": "place-self-end-center text-center",
         "desktop_text_position": "sm:place-self-center-end sm:text-end",
         "text_color": "#ffffff",
@@ -78,9 +79,7 @@
       "settings": {
         "collection": "voxblock-starter-pack-collection",
         "hide_empty": false,
-        "products": [
-
-        ],
+        "products": [],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
@@ -90,7 +89,7 @@
         "subheading": "QUICK START",
         "title": "Voxblock Starter Packs",
         "content": "",
-        "link_url": "shopify:\/\/collections\/voxblock-starter-pack-collection",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
         "link_text": "View all",
         "background": "",
         "background_gradient": "",
@@ -107,7 +106,7 @@
         "full_width": true,
         "show_icon": true,
         "title": "Sign up to our newsletter",
-        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.<\/p>",
+        "content": "<p>Get access to special offers, free giveaways, and keep up to date with everything we're up to.</p>",
         "button_text": "Go",
         "subtext": "",
         "background": "",

@@ -18,7 +18,7 @@ Tracking: PostHog `story_hero_click` { target: schools | resources } and `school
     {%- endif -%}
 
     <div class="classroom-band__text">
-      {%- if section.settings.eyebrow != blank -%}<p class="classroom-band__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="classroom-band__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h2 class="classroom-band__title">{{ section.settings.heading | escape }}</h2>
       {%- if section.settings.intro != blank -%}<div class="classroom-band__intro">{{ section.settings.intro }}</div>{%- endif -%}
 

@@ -30,7 +30,7 @@
 
     <div class="story-hub-results__heading">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="story-hub-results__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <p class="story-hub-results__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
 
       {%- if section.settings.title != blank -%}
@@ -197,7 +197,6 @@
   #shopify-section-{{ section.id }} .story-hub-results__eyebrow {
     margin: 0 0 8px;
     color: var(--story-hub-accent);
-    font-weight: 800;
   }
 
   #shopify-section-{{ section.id }} .story-hub-results__heading h2 {

@@ -9,7 +9,7 @@ rich text on the cast page and keeps its paragraph as the intro, so the page's t
 <section class="story-steps" {{ section.shopify_attributes }}>
   <div class="container story-steps__inner">
     <div class="story-steps__head">
-      {%- if section.settings.eyebrow != blank -%}<p class="story-steps__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="story-steps__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h2 class="series-heading">{{ section.settings.heading | escape }}</h2>
       {%- if section.settings.intro != blank -%}<div class="story-steps__intro">{{ section.settings.intro }}</div>{%- endif -%}
     </div>

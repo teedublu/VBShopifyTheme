@@ -18,16 +18,11 @@
     "main": {
       "type": "audiobook-product",
       "blocks": {
-        "text_RffQCL": {
-          "type": "text",
-          "settings": {
-            "text": "<h5>A screen-free audiobook</h5>"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h2",
+            "eyebrow": "A screen-free audiobook"
           }
         },
         "text_t6JGDa": {
@@ -83,7 +78,6 @@
         }
       },
       "block_order": [
-        "text_RffQCL",
         "title",
         "text_t6JGDa",
         "price",

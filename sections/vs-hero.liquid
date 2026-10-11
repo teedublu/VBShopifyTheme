@@ -82,12 +82,6 @@ initialised in layout/theme.liquid). No storefront pixel events.
 
   #shopify-section-{{ section.id }} .vs-hero__eyebrow {
     margin: 0 0 4px;
-    font-size: 12px;
-    line-height: 16px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--vs-eyebrow);
   }
   #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title {
     margin: 0;
@@ -159,7 +153,6 @@ initialised in layout/theme.liquid). No storefront pixel events.
       padding-block: 36px;
     }
     #shopify-section-{{ section.id }} .vs-hero__compare { align-self: center; }
-    #shopify-section-{{ section.id }} .vs-hero__eyebrow { font-size: 13px; line-height: 18px; }
     #shopify-section-{{ section.id }} .vs-hero__cards { gap: 16px; }
     #shopify-section-{{ section.id }} .vs-card { gap: 8px; padding: 14px 14px 16px; border-radius: 16px; }
     #shopify-section-{{ section.id }} .vs-card--voxblock { padding: 13px 13px 15px; }
@@ -177,7 +170,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
 <section class="vs-hero" aria-labelledby="vs-hero-title-{{ section.id }}" {{ section.shopify_attributes }}>
   <div class="container vs-hero__inner">
     <div class="vs-hero__copy">
-      {%- if section.settings.eyebrow != blank -%}<p class="vs-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="vs-hero__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h1 class="vs-hero__title" id="vs-hero-title-{{ section.id }}">{{ heading | escape }}</h1>
     </div>
 

@@ -337,10 +337,10 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* ---------------------------- */
 
 /* INTRO BAND */
-.pack-intro { background: var(--pack-intro-bg, #fff7f0); color: var(--brand-text); }
+.pack-intro { background: var(--pack-intro-bg, #fff7f0); }
 .pack-intro__inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "text image" "explainer explainer"; column-gap: 12px; align-items: start; padding-block: 12px 0; }
 .pack-intro__text { grid-area: text; display: flex; flex-direction: column; gap: 6px; min-width: 0; padding-bottom: 8px; }
-.pack-intro__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent-strong-dark); }
+.pack-intro__eyebrow { margin: 0; }
 .pack-intro__title { margin: 0; }
 .pack-intro__lede { margin: 0; font-size: 13px; line-height: 19px; }
 .pack-intro__desktop-only { display: none; }
@@ -363,7 +363,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 @media screen and (min-width: 1000px) {
   .pack-intro__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 380px) 220px; grid-template-areas: "text explainer image"; column-gap: 32px; align-items: center; padding-block: 28px; }
   .pack-intro__text { gap: 10px; padding-bottom: 0; }
-  .pack-intro__eyebrow { font-size: 12px; }
+
   .pack-intro__lede { font-size: 15px; line-height: 23px; max-width: 560px; }
   .pack-intro__desktop-only { display: inline; }
   .pack-intro__image img { width: 220px; height: 180px; border-radius: 14px; object-position: 50% 55%; }
@@ -482,6 +482,13 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 :where(#main) :is(h5, h6) { font-size: var(--text-h5); line-height: 1.4; }
 :where(#main) :where(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) { color: rgb(var(--heading-color)); }
 :where(.content-over-media, .collection-card__content-wrapper) :where(h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4) { color: inherit; }
+
+/* EYEBROWS (subheadings): the small line above a heading, one style everywhere. Every eyebrow carries the theme's
+   .subheading class (section subheading settings, and each section's own __eyebrow element). Colour: --eyebrow-color,
+   dark brand orange on light sections, the text colour on dark sections, inherited over images. */
+.subheading { font-family: var(--text-font-family); font-size: 0.75rem; line-height: 1.4; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--eyebrow-color); }
+@media screen and (min-width: 700px) { .subheading { font-size: 0.8125rem; } }
+:where(.content-over-media, .collection-card__content-wrapper) .subheading { color: inherit; }
 
 /* ----------------------------------------------------------------------------------------------------------------
    ONE CARD LAYOUT for every product card (audiobook, starter pack, default, pack card)
@@ -604,7 +611,7 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .series-hero { background: var(--series-hero-bg, #ffead7); color: var(--series-hero-ink, #1e2b2c); }
 .series-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding-block: 16px 28px; }
 .series-hero__text { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.series-hero__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.series-hero__eyebrow { margin: 0; }
 .series-hero__title { margin: 0; }
 .series-hero--dark h1.series-hero__title { color: inherit; }
 .series-hero__lede { margin: 0; font-size: 16px; line-height: 24px; max-width: 40ch; }
@@ -641,7 +648,7 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .series-book__media img { width: 100%; height: auto; display: block; }
 .series-book__number { position: absolute; top: -8px; left: -8px; width: 32px; height: 32px; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: 14px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 .series-book__body { grid-area: body; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.series-book__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.series-book__eyebrow { margin: 0; }
 .series-book__title { margin: 0; font-size: 17px; line-height: 23px; font-weight: 600; letter-spacing: normal; }
 .series-book__title a { color: var(--brand-heading); text-decoration: none; }
 .series-book__title a:hover { text-decoration: underline; text-underline-offset: 2px; }
@@ -717,7 +724,7 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .age-intro__band { background: var(--age-intro-bg, #fff7f0); }
 .age-intro__band-inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 18px 16px; }
 .age-intro__text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
-.age-intro__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.age-intro__eyebrow { margin: 0; }
 .age-intro__title { margin: 0; }
 .age-intro__lede { margin: 0; font-size: 15px; line-height: 22px; max-width: 34rem; }
 .age-intro__trust { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 2px 0 0; padding: 0; list-style: none; font-size: 13px; }
@@ -763,7 +770,7 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .howto-promo { grid-column: 1 / -1; display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #fff7f0; color: var(--brand-text); margin-block: 8px; }
 .howto-promo__media img { display: block; width: 100%; height: 210px; object-fit: cover; }
 .howto-promo__text { display: flex; flex-direction: column; gap: 12px; padding: 18px 18px 20px; }
-.howto-promo__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.howto-promo__eyebrow { margin: 0; }
 .howto-promo__title { margin: 0; font-size: 20px; line-height: 26px; font-weight: 700; color: var(--brand-heading); }
 .howto-promo__steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
 .howto-promo__steps li { display: flex; align-items: center; gap: 10px; }
@@ -837,7 +844,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .story-hero__text { display: flex; flex-direction: column; gap: 10px; min-width: 0; order: 2; }
 .story-hero__art { order: 1; display: flex; justify-content: center; }
 .story-hero__art img { display: block; width: auto; max-width: 50vw; max-height: 150px; height: auto; object-fit: contain; mix-blend-mode: multiply; } /* multiply: the white artwork backgrounds sit into the cream band */
-.story-hero__eyebrow { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.story-hero__eyebrow { margin: 0; }
 .story-hero__title { margin: 0; }
 .story-hero__intro { font-size: 15px; line-height: 23px; max-width: 38rem; }
 .story-hero__intro p { margin: 0 0 8px; }
@@ -912,7 +919,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .classroom-band__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; padding-block: 32px; }
 .classroom-band__media img { display: block; width: 100%; height: 260px; object-fit: cover; object-position: center 40%; border-radius: 16px; }
 .classroom-band__text { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.classroom-band__eyebrow { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #145b60; }
+.classroom-band__eyebrow { margin: 0; }
 .classroom-band__title { margin: 0; }
 .classroom-band__intro p { margin: 0; font-size: 15px; line-height: 24px; }
 .classroom-band__points { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
@@ -929,7 +936,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 /* STORY STEPS (sections/story-steps.liquid): cast order on the cast page */
 .story-steps { padding-block: 36px; background: #f6fbfb; color: var(--brand-text); }
 .story-steps__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
-.story-steps__eyebrow { margin: 0 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.story-steps__eyebrow { margin: 0 0 4px; }
 .story-steps__intro { margin-top: 8px; }
 .story-steps__intro p { margin: 0 0 10px; font-size: 15px; line-height: 23px; }
 .story-steps__list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
@@ -945,7 +952,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .story-home-band__media { display: flex; justify-content: center; }
 .story-home-band__media img { display: block; width: auto; max-width: 60vw; max-height: 220px; height: auto; object-fit: contain; }
 .story-home-band__text { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.story-home-band__eyebrow { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-strong-dark); }
+.story-home-band__eyebrow { margin: 0; }
 .story-home-band__title { margin: 0; }
 .story-home-band__intro p { margin: 0; font-size: 15px; line-height: 23px; }
 .story-home-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; margin-top: 4px; }
