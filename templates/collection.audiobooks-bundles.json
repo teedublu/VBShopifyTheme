@@ -6,7 +6,8 @@
         "subheading_chweia": {
           "type": "subheading",
           "settings": {
-            "text": "GROW YOUR COLLECTION"
+            "text": "GROW YOUR COLLECTION",
+            "subheading_tag_html": "p"
           }
         },
         "heading_F9Aqw9": {
@@ -21,7 +22,7 @@
         "richtext_Xgf6qe": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Get more of your favourite audiobook characters with a bundle from Voxblock.<\/p>"
+            "content": "<p>Get more of your favourite audiobook characters with a bundle from Voxblock.</p>"
           }
         }
       },
@@ -36,7 +37,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "md",
-        "image": "shopify:\/\/shop_images\/book_collection_render.png",
+        "image": "shopify://shop_images/book_collection_render.png",
         "mobile_text_position": "place-self-end-start text-start",
         "desktop_text_position": "sm:place-self-end-start sm:text-start",
         "text_color": "#ffffff",
@@ -73,10 +74,10 @@
           "settings": {
             "position": 6,
             "column_span": "1",
-            "image": "shopify:\/\/shop_images\/audiobooks-ad-tokens-desktop-1600x1000.jpg",
+            "image": "shopify://shop_images/audiobooks-ad-tokens-desktop-1600x1000.jpg",
             "title": "",
             "content": "",
-            "link_url": "shopify:\/\/pages\/voxblock-tokens-collect-for-free-audiobooks",
+            "link_url": "shopify://pages/voxblock-tokens-collect-for-free-audiobooks",
             "link_text": "",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
@@ -90,10 +91,10 @@
           "settings": {
             "position": 20,
             "column_span": "1",
-            "image": "shopify:\/\/shop_images\/Two-girls-on-beanbags-listening-to-audiobook.png",
+            "image": "shopify://shop_images/Two-girls-on-beanbags-listening-to-audiobook.png",
             "title": "Refer a friend and get a free book",
             "content": "",
-            "link_url": "shopify:\/\/pages\/refer-a-friend",
+            "link_url": "shopify://pages/refer-a-friend",
             "link_text": "Read more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
@@ -128,7 +129,7 @@
         "max_width": 80,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify:\/\/shop_images\/audiobooks-library_banner-web-3200x1200.jpg",
+        "image": "shopify://shop_images/audiobooks-library_banner-web-3200x1200.jpg",
         "mobile_text_position": "place-self-center text-center",
         "desktop_text_position": "sm:place-self-center sm:text-center",
         "text_color": "#ffffff",

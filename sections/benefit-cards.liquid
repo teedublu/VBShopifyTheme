@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------------------------------------------------------
 BENEFIT CARDS (Voxblock)
 ----------------------------------------------------------------------------------------------------------------------
-Up to four cards with a hand-drawn stroke icon, heading and short copy. Built for landing pages.
+Up to eight cards with a hand-drawn stroke icon, heading and short copy. Built for landing pages.
 Icons are inline SVG so they take the section's icon colours and need no uploaded files.
 {%- endcomment -%}
 
@@ -11,27 +11,38 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
 
   {%- assign card_background = section.settings.card_background | default: '#ffffff' -%}
   {%- assign card_text = section.settings.card_text_color | default: settings.text_color -%}
-  {%- assign card_heading = section.settings.card_heading_color | default: '#197177' -%}
+  {%- assign card_heading = section.settings.card_heading_color | default: 'rgb(var(--heading-color))' -%}
   {%- assign icon_background = section.settings.icon_background | default: '#e9f6f4' -%}
   {%- assign icon_color = section.settings.icon_color | default: '#197177' -%}
-  {%- assign icon_accent = section.settings.icon_accent | default: '#ff9e57' -%}
+  {%- assign icon_accent = section.settings.icon_accent | default: 'var(--eyebrow-color)' -%}
+  {%- assign cards_md = section.blocks.size | at_most: 2 -%}
+  {%- assign cards_lg = section.blocks.size | at_most: 4 -%}
+  {%- if section.blocks.size == 6 -%}{%- assign cards_lg = 3 -%}{%- endif -%}
 
   <style>
+    /* Flex rather than grid so a short last row (e.g. 7 cards = 4 + 3) sits centred */
     #shopify-section-{{ section.id }} .benefit-cards {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: var(--spacing-5);
+      --benefit-gap: var(--spacing-5);
+      --benefit-cols: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--benefit-gap);
+    }
+    #shopify-section-{{ section.id }} .benefit-cards > .benefit-card {
+      flex: 0 0 calc((100% - (var(--benefit-cols) - 1) * var(--benefit-gap)) / var(--benefit-cols));
+      min-width: 0;
     }
     @media screen and (min-width: 700px) {
       #shopify-section-{{ section.id }} .benefit-cards {
-        grid-template-columns: repeat({{ section.blocks.size | at_most: 2 }}, minmax(0, 1fr));
-        gap: var(--spacing-6);
+        --benefit-gap: var(--spacing-6);
+        --benefit-cols: {{ cards_md }};
       }
     }
     @media screen and (min-width: 1000px) {
       #shopify-section-{{ section.id }} .benefit-cards {
-        grid-template-columns: repeat({{ section.blocks.size | at_most: 4 }}, minmax(0, 1fr));
-        gap: var(--spacing-8);
+        --benefit-gap: var(--spacing-8);
+        --benefit-cols: {{ cards_lg }};
       }
     }
     #shopify-section-{{ section.id }} .benefit-card {
@@ -57,6 +68,21 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
       color: {{ icon_color }};
     }
     #shopify-section-{{ section.id }} .benefit-card__icon svg { width: 1.625rem; height: 1.625rem; }
+    /* Phones: icon beside the text so a stack of cards stays short */
+    @media screen and (max-width: 699px) {
+      #shopify-section-{{ section.id }} .benefit-cards { --benefit-gap: var(--spacing-3); }
+      #shopify-section-{{ section.id }} .benefit-card {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: var(--spacing-4);
+        row-gap: var(--spacing-1);
+        align-items: start;
+        text-align: start;
+        padding: var(--spacing-5);
+      }
+      #shopify-section-{{ section.id }} .benefit-card__icon { grid-row: span 2; width: 2.75rem; height: 2.75rem; }
+      #shopify-section-{{ section.id }} .benefit-card__icon svg { width: 1.375rem; height: 1.375rem; }
+    }
     #shopify-section-{{ section.id }} .benefit-card__icon .accent { stroke: {{ icon_accent }}; }
     #shopify-section-{{ section.id }} .benefit-card__icon .accent-fill { fill: {{ icon_accent }}; stroke: none; }
     #shopify-section-{{ section.id }} .benefit-card__title {
@@ -92,6 +118,10 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/><path class="accent" d="M9.5 11h5"/></svg>
                 {%- when 'check' -%}
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path class="accent" d="M7.5 12.5l3 3 6-6" stroke-width="2.4"/></svg>
+                {%- when 'moon' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><path class="accent" d="M16 3.5v3M14.5 5h3"/></svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/><path class="accent" d="M8.5 12l2.5 2.5 4.5-4.5" stroke-width="2.4"/></svg>
                 {%- when 'ear' -%}
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10a6 6 0 0 1 12 0c0 3-2 4-2.5 6a3 3 0 0 1-5.5 1"/><path class="accent" d="M10 10a2 2 0 0 1 4 0c0 1.5-1.5 2-1.5 3.5"/></svg>
               {%- endcase -%}
@@ -119,7 +149,7 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
   "disabled_on": {
     "groups": ["header", "custom.overlay"]
   },
-  "max_blocks": 4,
+  "max_blocks": 8,
   "settings": [
     {
       "type": "checkbox",
@@ -237,7 +267,9 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
             {"value": "battery", "label": "Battery"},
             {"value": "hands", "label": "Heart"},
             {"value": "check", "label": "Tick"},
-            {"value": "ear", "label": "Listening"}
+            {"value": "ear", "label": "Listening"},
+            {"value": "moon", "label": "Bedtime"},
+            {"value": "shield", "label": "Guarantee"}
           ],
           "default": "check"
         },

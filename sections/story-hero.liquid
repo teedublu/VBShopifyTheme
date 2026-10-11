@@ -65,7 +65,7 @@ Why two routes: Gruffalo pages get far more weekday-daytime and desktop visits t
 <section class="story-hero" style="--story-hero-bg: {{ section.settings.background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
   <div class="container story-hero__inner">
     <div class="story-hero__text">
-      {%- if section.settings.eyebrow != blank -%}<p class="story-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}<p class="story-hero__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
       <h1 class="story-hero__title">{{ heading | escape }}</h1>
       {%- if intro != blank -%}<div class="story-hero__intro">{{ intro }}</div>{%- endif -%}
 

@@ -3770,7 +3770,7 @@ var VideoMedia = class extends BaseMedia {
         if (templateElement) {
           templateElement.replaceWith(templateElement.content.firstElementChild.cloneNode(true));
         }
-        const muteVideo = this.hasAttribute("autoplay") || window.matchMedia("screen and (max-width: 999px)").matches;
+        const muteVideo = true; // VB: site videos always start muted (owner, 11 Oct 2026)
         const script = document.createElement("script");
         script.type = "text/javascript";
         if (this.getAttribute("host") === "youtube") {

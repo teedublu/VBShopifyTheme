@@ -1,5 +1,20 @@
 # STATUS
 
+## Working rule (owner, 11 Oct 2026)
+Style changes are theme-wide: theme settings, `css-variables`, or a shared rule in `voxblock.css`. No colour, size or
+button styling set on one section or template unless the owner explicitly agrees it, otherwise sections drift.
+Contrast problems are fixed in the theme colour settings, never patched per section.
+
+## App scripts (owner, 11 Oct)
+- Done in `layout/theme.liquid` (homepage branch): Trustpilot script tags removed site-wide (no widgets used; invitations unaffected), the two legacy BOGOS "secomapp" script tags removed (BOGOS app embed stays), Zigpoll removed on the homepage only. Exact-match removals from content_for_header: if Shopify changes the format nothing is removed. Check free gifts still apply in the cart before merging.
+- Open, own branch: PostHog loads three ways (theme script in layout/theme.liquid, "PostHog Custom Pixel", "VoxHog" pixel). Owner: needs care, separate branch.
+
+## Copy rules (owner, site-wide, apply to every page)
+- Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
+- "Children" in body copy; "kids" only where people search with it (title tag, meta description, an FAQ question).
+- No "no apps" claims (a Voxblock app is coming for MYO): say no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes stay as written.
+- Facts: ages 3 to 14+, battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
+
 ## Performance: pages to check in the next site performance review
 Owner's standing request (9 Oct): every page we improve gets its performance checked in the next site performance
 review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add each improved page type here.
@@ -10,6 +25,61 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
   pippi-longstocking-goes-aboard, akimbo-and-the-lions (collection fallback, the slower path).
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
+- Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
+
+## Open: site-wide colour contrast (owner: must be resolved)
+Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for large headings and buttons):
+- Eyebrows in theme orange #ff9e57 on white/cream: 2.0:1 (fails). Owner chose the theme orange for now; fix by a deeper orange (e.g. #c2560f, ~4.6:1) as its own setting, keeping the button orange.
+- Buttons: white text on orange #ff9e57 (2.0:1) and on light teal #4cb6ac (2.4:1); orange outline-button text (2.0:1).
+- White headings on light-teal FAQ and newsletter bands (2.4:1): homepage, product pages, schools, landing pages.
+- Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
+One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
+- Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
+Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
+Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.
+Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed): heading sizes from Theme settings > Heading size (Small), colour from Heading teal, size classes still allowed for styled marketing lines, one eyebrow style (theme orange, 12/13px, 20px line height, 8px above its heading). Affects every page; the draft theme has all changed templates.
+- Title/meta override for the homepage in `layout/theme.liquid`: "Kids Audiobook Player | Screen-Free Audio Player | Voxblock".
+- `templates/index.json`: hero H1 "The screen-free audiobook player for children" + new hero line + second button; Meet Voxblock
+  H1 → H2 with new copy; Features heading → "Finally. Audiobooks without the fussy tech."; new 9-question FAQ before starter packs.
+- `sections/header.liquid`: homepage logo wrapper h1 → div, so the hero H1 is the only H1.
+- Hero colour overrides removed (owner, 11 Oct): heading, text and button colours come from the theme. Contrast to be fixed theme-wide (see Open item).
+
+## 2026-10-11: Starter pack "What's in the box" (build)
+Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**: needs a draft theme on the branch.
+- Round 2 (owner): a separate full-width section **below** the main product area, not a block in the buy column, so
+  it adds content without getting in the way of Add to basket. New section `pack-contents`
+  (sections/pack-contents.liquid → snippets/pack-contents.liquid), placed after `main` on `product.starter-pack-bundle`.
+  The "What's included" accordion in the buy column is back as it was. Phone: kit tiles in a row, then book cards;
+  desktop: kit in a column, books as three cards. Cream band. Renders nothing on a product with no `bundles.products`.
+- Player kit: three product pickers with name + caption (player, bumper, USB cable). Player and bumper pictures follow
+  the colour swatch (variant image whose title = pack colour; voxblock.js swaps on variant:change). The bumper has no
+  Blue variant, so on Blue it keeps the picture it had.
+- Books: every product in `bundles.products` with cover, narrator (`book.narrators`), length (`book.duration` read as
+  hours.minutes, e.g. 3.15 = 3 h 15 m: unconfirmed), Unabridged, ages, and a sample button. The button is a normal
+  `.bookpreview`, so it plays through the shared player and sends `sample_played`; voxblock.js now also sets
+  `--sample-progress` on the playing button for the bar.
+- Value line "£79.99 together · £100.96 bought separately" from the variant's compare-at. Note: the items' current
+  prices add to £107.96 (player 49.99, bumper 15, cable 2, books 13.99 + 13.99 + 12.99), so compare-at undersells.
+- Round 3 (owner): sample buttons are now the site's standard `.bookpreview` button (same markup as product cards,
+  no custom bar). Intro copy: "It arrives charged, so just drop in a book and press play." Player and bumper pictures
+  match the pack colour; the bumper has no Blue variant, so the section takes an extra picture per item
+  (`Bumper_Blue_Only.png` for Blue). Jump link "See what's in the box and hear the stories" under the description
+  (Custom Liquid block → `#whats-in-the-box`). Title eyebrow "Audiobook player + stories" (new `eyebrow` setting on
+  the main-product title block, `[count]` = books in the pack). One-book packs (Zeepy Sleep Intro Pack uses this
+  template) get "Your audiobook" as the heading.
+- Round 4 (owner: "keep the site wide styling on heading and eyebrows"): no custom type styles. The section is
+  wrapped like the theme's own (section-properties, colour settings, background #fff7f0 set in the template) and
+  headed with snippets/section-header.liquid (`.subheading` eyebrow, `.h2` heading); group and book titles are `.h6`,
+  small text uses `.text-sm` / `.text-xs` / `.text-subdued`, the jump link is `.link`. The product title eyebrow is
+  `.subheading` (the orange uppercase rule is gone). CSS in voxblock.css.liquid is layout only.
+- Round 5 (owner: headings and eyebrow still didn't match): rebased onto main, which now has one heading hierarchy
+  and one `.subheading` eyebrow style site-wide (PR #79 era). The preview was built on the older main, whose bold H1
+  rule made the product title heavier. Section titles are now bare h3 (groups) and h4 (books) so they take their
+  level's site-wide size; main's own title `eyebrow` setting is used (duplicate removed), `[count]` still supported.
+- Check on preview: all four colours (Blue bumper picture is a different render style), phone and desktop width,
+  sample play/pause, the jump link clears the sticky header, Zeepy Sleep Intro Pack.
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.
@@ -120,3 +190,9 @@ Built on `claude/trusting-shannon-lvl85h`, draft theme 199560855936, **awaiting 
 Full record, baseline table and flags: `briefs/starter-pack-collection-redesign.md`.
 Open: enable `pack.gift_set` as a Search & Discovery filter (Gift sets chip); set `help_url` when the chooser ships;
 decide 4 vs 5 per row on desktop; 30-day PostHog re-read after launch.
+
+## Duplicate player pages (2026-10-11)
+- GSC (90 days): the homepage already ranks 2–8 for screen-free and "kids audio player" searches, so the two extra player pages only competed with it.
+- Live now: /pages/kids-audio-player and /pages/audiobook-player-for-kids are unpublished, with 301 redirects to /.
+- /pages/reasons-to-buy-voxblock becomes the Voxblock reviews page (template page.reasons-to-buy, PR #79). After merge, set its template in admin.
+- A screen-free page draft is parked (not committed); only revisit it if the homepage loses screen-free rankings.

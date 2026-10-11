@@ -264,7 +264,7 @@ book links and related series. Sample plays are already tracked globally as samp
         <section class="series-hero{% if hero_is_dark %} series-hero--dark{% endif %}" style="--series-hero-bg: {{ hero_bg }}; --series-hero-ink: {{ hero_ink }}; --series-chip-bg: {{ hero_ink_soft }};" {{ block.shopify_attributes }}>
           <div class="container series-hero__inner">
             <div class="series-hero__text">
-              {%- if eyebrow != blank -%}<p class="series-hero__eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
+              {%- if eyebrow != blank -%}<p class="series-hero__eyebrow subheading">{{ eyebrow | escape }}</p>{%- endif -%}
               <h1 class="series-hero__title">{{ series_name | escape }}</h1>
               {%- if hero_line != blank -%}<p class="series-hero__lede">{{ hero_line | escape }}</p>{%- endif -%}
 
@@ -445,7 +445,7 @@ book links and related series. Sample plays are already tracked globally as samp
 
                     <div class="series-book__body">
                       {%- if numbered -%}
-                        <p class="series-book__eyebrow">{{ block.settings.book_label | replace: '[n]', position | escape }}{% if position == 1 %} · {{ block.settings.start_here_label | escape }}{% endif %}</p>
+                        <p class="series-book__eyebrow subheading">{{ block.settings.book_label | replace: '[n]', position | escape }}{% if position == 1 %} · {{ block.settings.start_here_label | escape }}{% endif %}</p>
                       {%- endif -%}
                       <h3 class="series-book__title"><a href="{{ book.url }}" data-series-target="book_title" data-series-product="{{ book.handle | escape }}">{{ book.title | escape }}</a></h3>
                       {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: block.settings.blurb_words }}</p>{%- endif -%}

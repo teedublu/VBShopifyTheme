@@ -21,7 +21,8 @@
         "title": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2"
+            "heading_tag": "h2",
+            "eyebrow": "Audiobook player + stories"
           }
         },
         "badges": {
@@ -51,6 +52,12 @@
           "type": "description",
           "settings": {
             "collapse_content": false
+          }
+        },
+        "liquid_pack_jump": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- if product.metafields.bundles.products.value.size > 0 -%}<a class=\"pack-contents-jump link\" href=\"#whats-in-the-box\">See what's in the box and hear the stories<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12l7 7 7-7\"/></svg></a>{%- endif -%}"
           }
         },
         "collapsible_text_cVRMDH": {
@@ -279,6 +286,7 @@
         "image_EY7Gz3",
         "bogos_io_free_gift_gift_thumbnail_view_i8qLxW",
         "description_bTNpDV",
+        "liquid_pack_jump",
         "collapsible_text_cVRMDH",
         "separator_PiCLpj",
         "variant_picker",
@@ -316,6 +324,32 @@
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
+      }
+    },
+    "pack_contents_wib": {
+      "type": "pack-contents",
+      "settings": {
+        "full_width": true,
+        "background": "#fff7f0",
+        "eyebrow": "What's in the box",
+        "heading": "Everything to start listening, the day it arrives",
+        "intro": "No downloads, no wi-fi, no app. It arrives charged, so just drop in a book and press play.",
+        "kit_heading": "The player kit",
+        "item_1": "voxblock-player",
+        "item_1_label": "Voxblock player",
+        "item_1_caption": "Up to 16 hours per charge",
+        "item_2": "bumper",
+        "item_2_label": "Protective bumper",
+        "item_2_caption": "Takes the knocks from little hands",
+        "item_2_extra_image": "shopify://shop_images/Bumper_Blue_Only.png",
+        "item_2_extra_colour": "Blue",
+        "item_3": "voxblock-usb-charging-cable",
+        "item_3_label": "USB charging cable",
+        "item_3_caption": "Charges from any USB plug",
+        "books_heading": "[count] audiobooks",
+        "books_heading_one": "Your audiobook",
+        "show_value": true,
+        "value_note": "Add more audiobooks any time from 350+."
       }
     },
     "video_bgbrXD": {
@@ -444,7 +478,7 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
+            "heading_text_color": "",
             "text_gradient": "",
             "button_background": "",
             "button_text_color": ""
@@ -484,10 +518,10 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
+            "heading_text_color": "",
             "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
@@ -523,10 +557,10 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
+            "heading_text_color": "",
             "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
@@ -562,10 +596,10 @@
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
-            "heading_text_color": "#ff9d57",
+            "heading_text_color": "",
             "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
+            "button_background": "",
+            "button_text_color": ""
           }
         }
       },
@@ -673,7 +707,7 @@
         "background": "#ffffff",
         "background_gradient": "",
         "text_color": "#565656",
-        "heading_color": "#ff9e57",
+        "heading_color": "",
         "heading_gradient": "",
         "testimonial_card_background": "",
         "testimonial_card_text_color": ""
@@ -766,6 +800,7 @@
   "order": [
     "breadcrumbs_dVcJUe",
     "main",
+    "pack_contents_wib",
     "video_bgbrXD",
     "text_with_icons_hRqMzj",
     "media_with_text_Eph8J6",

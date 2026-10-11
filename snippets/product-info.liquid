@@ -35,7 +35,7 @@
 
       {%- when 'title' -%}
         {%- assign product_title_text = product.title -%}
-        {%- assign product_eyebrow_text = block.settings.eyebrow -%}
+        {%- assign product_eyebrow_text = block.settings.eyebrow | replace: '[count]', product.metafields.bundles.products.value.size -%}
         {%- if block.settings.contextual_title != blank and metaobject != blank -%}
           {%- assign context_name = metaobject.name | default: metaobject.title.value | default: product.vendor | default: product.title -%}
           {%- assign product_title_text = block.settings.contextual_title | replace: '[name]', context_name | replace: '[title]', product.title -%}
@@ -58,7 +58,7 @@
 
         <div {{ block.shopify_attributes }}>
           {%- if product_eyebrow_text != blank -%}
-            <p class="product-info__eyebrow">{{ product_eyebrow_text }}</p>
+            <p class="product-info__eyebrow subheading">{{ product_eyebrow_text }}</p>
           {%- endif -%}
 
           {%- if save_book_button != blank -%}

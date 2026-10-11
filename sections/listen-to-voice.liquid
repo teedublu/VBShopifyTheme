@@ -68,17 +68,10 @@ is itself a metaobject (no book.preview metafield) is ignored so the fallback sc
 
     #shopify-section-{{ section.id }} .listen-to-voice__eyebrow {
       margin: 0;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(var(--text-color), 0.68);
     }
 
     #shopify-section-{{ section.id }} .listen-to-voice__title {
       margin: 0;
-      font-size: clamp(1.75rem, 3vw, 2.6rem);
-      line-height: 1.08;
     }
 
     #shopify-section-{{ section.id }} .listen-to-voice__copy {
@@ -161,7 +154,7 @@ is itself a metaobject (no book.preview metafield) is ignored so the fallback sc
   <div {% render 'section-properties' %}>
     <div class="listen-to-voice">
       <div class="listen-to-voice__content">
-        <p class="listen-to-voice__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <p class="listen-to-voice__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>
         <h2 class="listen-to-voice__title">{{ section.settings.heading | replace: '[name]', metaobject.name.value | escape }}</h2>
         <p class="listen-to-voice__copy">
           {{ section.settings.content | replace: '[name]', metaobject.name.value | replace: '[title]', product.title }}
