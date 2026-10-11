@@ -23,21 +23,22 @@
             "icon": "none",
             "custom_icon": "shopify://shop_images/INDY-Best-AFI.png",
             "icon_width": 120,
-            "subheading": "Voxblock vs Yoto · real UK prices",
-            "title": "Alternative to Yoto",
-            "content": "<p>Voxblock is a screen-free audiobook player for children. No wi-fi, no app, no downloads: it plays straight out of the box, and the player is £49.99, £40 less than the cheapest Yoto.</p><p>Screen-free · No wi-fi, no downloads · British designed</p>",
-            "link_text": "See the price comparison",
-            "link_url": "#players",
+            "subheading": "Voxblock vs Yoto · UK prices checked 11 October 2026",
+            "title": "A Yoto alternative with no wi-fi and no setup",
+            "content": "<p>Looking for a Yoto Player alternative? Voxblock is a screen-free audiobook player for children aged 3 and up. Each story lives inside a solid cardboard audiobook, so there is nothing to download and no account to make. The player is £49.99, £40 less than the cheapest Yoto.</p><p>No wi-fi · 16-hour battery · 100-day money-back guarantee · British designed</p>",
+            "link_text": "Shop starter packs · from £69.99",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
             "title_tag": "h1",
-            "link2_text": "Player £49.99",
-            "link2_url": "#buy",
+            "link2_text": "See the full comparison",
+            "link2_url": "#players",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
             "heading_text_color": "#197177",
             "text_gradient": "",
-            "button_background": "#ff9e57",
-            "button_text_color": "#ffffff"
+            "button_background": "",
+            "button_text_color": "",
+            "track": "alt_yoto_hero"
           }
         }
       },
@@ -80,91 +81,109 @@
       }
     },
     "why": {
-      "type": "rich-text",
+      "type": "benefit-cards",
       "blocks": {
-        "subheading": {
-          "type": "subheading",
+        "why_1": {
+          "type": "card",
           "settings": {
-            "text": "Why families look"
+            "icon": "check",
+            "title": "Price",
+            "content": "<p>A Yoto Mini is £89.99 and a Yoto Player £119.99. Voxblock is £49.99. Yoto cards (£7.99) do cost less than our audiobooks (£9.99).</p>"
           }
         },
-        "heading": {
-          "type": "heading",
+        "why_2": {
+          "type": "card",
           "settings": {
-            "text": "Why families look for a Yoto alternative",
-            "heading_tag": "h1",
-            "heading_tag_html": "h2",
-            "text_color": "",
-            "gradient": ""
+            "icon": "no-wifi",
+            "title": "Setup",
+            "content": "<p>Yoto needs the app and wi-fi before first use. Voxblock needs nothing: put a book on and press play.</p>"
           }
         },
-        "text": {
-          "type": "richtext",
+        "why_3": {
+          "type": "card",
           "settings": {
-            "content": "<p>Yoto is a popular choice. These are the four differences that matter most when you compare it with Voxblock.</p><ul><li><strong>Price.</strong> The Yoto Mini (4th Gen) is £89.99 and the Yoto Player (4th Gen) is £119.99. The Voxblock player is £49.99.</li><li><strong>Setup.</strong> Yoto needs an app installed and wi-fi configured. Voxblock has no setup: put a book on the player and press play.</li><li><strong>Screens and data.</strong> Yoto players have a screen and log data. Voxblock has neither.</li><li><strong>The stories themselves.</strong> A Voxblock audiobook is a solid cardboard book with the story stored inside, made to sit on a shelf. A Yoto story is a slim card that downloads its audio over wi-fi.</li></ul>"
+            "icon": "no-screen",
+            "title": "Screen",
+            "content": "<p>Both Yoto players have a small pixel screen. Voxblock has no screen at all.</p>"
+          }
+        },
+        "why_4": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "Growing up",
+            "content": "<p>Voxblock goes from picture books to unabridged novels for older children.</p>"
           }
         }
       },
       "block_order": [
-        "subheading",
-        "heading",
-        "text"
+        "why_1",
+        "why_2",
+        "why_3",
+        "why_4"
       ],
       "settings": {
-        "full_width": false,
-        "use_mo": false,
-        "content_width": "large",
-        "text_position": "start",
-        "anchor_id": "",
+        "full_width": true,
+        "subheading": "",
+        "title": "Why families look for a Yoto alternative",
+        "content": "",
+        "text_alignment": "start",
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "heading_color": "#197177",
+        "card_background": "#f6f8f8",
+        "card_text_color": "",
+        "card_heading_color": "#197177",
+        "icon_background": "#e9f6f4",
+        "icon_color": "#197177",
+        "icon_accent": "#ff9e57"
       }
     },
     "players": {
       "type": "comparison-table",
       "blocks": {
-        "row_price": {
+        "row_1": {
           "type": "row",
           "settings": {
             "label": "Price difference",
             "value_1": "Best value",
-            "value_2": "£40.00 more than Voxblock",
-            "value_3": "£70.00 more than Voxblock",
+            "value_2": "£40.00 more",
+            "value_3": "£70.00 more",
             "good_answer": "yes"
           }
         },
-        "row_setup": {
+        "row_2": {
           "type": "row",
           "settings": {
             "label": "Setting up",
             "value_1": "No setup",
-            "value_2": "Install app and configure wifi",
-            "value_3": "Install app and configure wifi",
+            "value_2": "App and wi-fi",
+            "value_3": "App and wi-fi",
             "good_answer": "yes"
           }
         },
-        "row_stories": {
+        "row_3": {
           "type": "row",
           "settings": {
             "label": "How stories arrive",
-            "value_1": "On the audiobook itself; nothing to download",
+            "value_1": "Ready to play",
             "value_2": "Cards; audio loads over wi-fi",
             "value_3": "Cards; audio loads over wi-fi",
             "good_answer": "yes"
           }
         },
-        "row_screen": {
+        "row_4": {
           "type": "row",
           "settings": {
             "label": "Screen",
             "value_1": "None",
-            "value_2": "Small simple screen",
-            "value_3": "Large simple screen",
+            "value_2": "Small pixel screen",
+            "value_3": "Larger pixel screen",
             "good_answer": "yes"
           }
         },
-        "row_headphones": {
+        "row_5": {
           "type": "row",
           "settings": {
             "label": "Headphones",
@@ -174,7 +193,7 @@
             "good_answer": "yes"
           }
         },
-        "row_bedtime": {
+        "row_6": {
           "type": "row",
           "settings": {
             "label": "Bedtime",
@@ -184,7 +203,7 @@
             "good_answer": "yes"
           }
         },
-        "row_battery": {
+        "row_7": {
           "type": "row",
           "settings": {
             "label": "Battery",
@@ -194,61 +213,84 @@
             "good_answer": "yes"
           }
         },
-        "row_Xj6V3J": {
+        "row_8": {
           "type": "row",
           "settings": {
-            "label": "Wifi needed",
+            "label": "Charging",
+            "value_1": "USB-C",
+            "value_2": "USB-C",
+            "value_3": "USB-C and wireless",
+            "good_answer": "yes"
+          }
+        },
+        "row_9": {
+          "type": "row",
+          "settings": {
+            "label": "Size and weight",
+            "value_1": "11 × 19 × 2 cm, 165 g",
+            "value_2": "8 × 7 × 5 cm, 185 g",
+            "value_3": "12 × 12 × 11 cm, 763 g",
+            "good_answer": "yes"
+          }
+        },
+        "row_10": {
+          "type": "row",
+          "settings": {
+            "label": "Wi-fi needed",
             "value_1": "No",
             "value_2": "Yes",
             "value_3": "Yes",
             "good_answer": "no"
           }
         },
-        "row_4e9EwG": {
+        "row_11": {
           "type": "row",
           "settings": {
-            "label": "Data logging",
+            "label": "Set up on a phone",
             "value_1": "No",
             "value_2": "Yes",
             "value_3": "Yes",
             "good_answer": "no"
           }
         },
-        "row_3Cn8gK": {
+        "row_12": {
           "type": "row",
           "settings": {
-            "label": "Add your own content",
-            "value_1": "Launching Jan 2027",
-            "value_2": "Yes",
-            "value_3": "Yes",
+            "label": "Add your own audio",
+            "value_1": "Coming soon",
+            "value_2": "Yes, Make Your Own cards",
+            "value_3": "Yes, Make Your Own cards",
             "good_answer": "yes"
           }
         }
       },
       "block_order": [
-        "row_price",
-        "row_setup",
-        "row_stories",
-        "row_screen",
-        "row_headphones",
-        "row_bedtime",
-        "row_battery",
-        "row_Xj6V3J",
-        "row_4e9EwG",
-        "row_3Cn8gK"
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8",
+        "row_9",
+        "row_10",
+        "row_11",
+        "row_12"
       ],
       "settings": {
         "full_width": true,
         "subheading": "The player on its own",
-        "title": "Player vs player",
+        "title": "Voxblock vs Yoto Mini and Yoto Player",
         "content": "<p>The players side by side. There are pros and cons of each, but only one plays straight out of the box.</p>",
         "text_position": "start",
         "anchor_id": "players",
         "feature_heading": "",
-        "column_1": "Voxblock Player (latest)",
+        "column_1": "Voxblock player",
+        "highlight_column": "1",
         "column_2": "Yoto Mini (4th Gen)",
         "column_3": "Yoto Player (4th Gen)",
-        "footnote": "Yoto prices from uk.yotoplay.com, checked 11 October 2026.",
+        "footnote": "",
         "column_1_image": "shopify://shop_images/voxblock-player-compare.jpg",
         "column_1_price": "£49.99",
         "column_1_note": "Player, USB-C cable.",
@@ -258,7 +300,16 @@
         "column_3_image": "shopify://shop_images/yoto-player-gen4.png",
         "column_3_price": "£119.99",
         "column_3_note": "Player, USB-C cable, Make Your Own card.",
+        "column_1_product": "voxblock-player",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "Shop now",
+        "sticky_header": true,
+        "column_1_short": "Voxblock",
+        "column_2_short": "Yoto Mini",
+        "column_3_short": "Yoto Player",
+        "sticky_button_text": "Shop now",
         "media_ratio": "square",
+        "media_fit": "contain",
         "stack_on_mobile": true,
         "background": "",
         "background_gradient": "",
@@ -284,11 +335,13 @@
             "total_label": "Total",
             "total": "£69.99",
             "difference": "Best value",
-            "link_text": "Gruffalo Starter Pack · £69.99",
-            "link_url": "shopify://products/gruffalo-and-friends-starter-pack-set"
+            "cta_collection": "voxblock-starter-pack-collection",
+            "cta_text": "Shop now",
+            "link_text": "",
+            "link_url": ""
           }
         },
-        "card_yoto_mini": {
+        "card_2": {
           "type": "card",
           "settings": {
             "tag": "Yoto Mini · bought separately",
@@ -303,7 +356,7 @@
             "link_url": ""
           }
         },
-        "card_yoto_player": {
+        "card_3": {
           "type": "card",
           "settings": {
             "tag": "Yoto Player · bought separately",
@@ -321,8 +374,8 @@
       },
       "block_order": [
         "card_voxblock",
-        "card_yoto_mini",
-        "card_yoto_player"
+        "card_2",
+        "card_3"
       ],
       "settings": {
         "full_width": true,
@@ -331,16 +384,16 @@
         "content": "<p>Three Julia Donaldson favourites, and what each set-up costs all in.</p>",
         "text_position": "start",
         "anchor_id": "bundles",
-        "note": "<p>Yoto also sells a six-card Gruffalo and Friends Collection at £24.99, which includes these three stories plus three more. With a Yoto Mini that comes to £114.98 for six stories; with a Yoto Player, £144.98.</p><p>To be fair about the stories on their own: a Voxblock audiobook is £9.99 and a Yoto card is £7.99.</p>",
+        "note": "<p>Yoto also sells a six-card Gruffalo and Friends Collection at £24.99, which includes these three stories plus three more. With a Yoto Mini that comes to £114.98 for six stories; with a Yoto Player, £144.98.</p>",
         "background": "#fff7f0",
         "background_gradient": "",
-        "text_color": "#565656",
+        "text_color": "",
         "heading_color": "#197177",
         "card_background": "#ffffff",
-        "card_text_color": "#565656",
+        "card_text_color": "",
         "card_heading_color": "#197177",
         "highlight_color": "#197177",
-        "difference_color": "#c4540f"
+        "difference_color": "#a8612e"
       }
     },
     "differences": {
@@ -350,24 +403,24 @@
           "type": "card",
           "settings": {
             "title": "Choose Voxblock if…",
-            "items": "You want it working the moment it’s out of the box: no wi-fi, no accounts, no downloads.\nYou’d like stories they can hold, keep on a shelf and choose for themselves.\nYou want it to last beyond picture books, with unabridged novels for older children.\nPrice matters: the player is £40 less than the cheapest Yoto.",
             "marker": "tick",
-            "highlight": true
+            "highlight": true,
+            "items": "You want it working straight out of the box: no wi-fi, no account, no downloads\nYou want them listening on their own: they pick a real audiobook they can hold, put it on and press play\nYou want it to last beyond picture books, with unabridged novels for older children\nPrice matters: the player is £40 less than the cheapest Yoto"
           }
         },
-        "card_yoto": {
+        "card_other": {
           "type": "card",
           "settings": {
-            "title": "Yoto may suit you better if…",
-            "items": "You want a bedside clock, night light and okay-to-wake in the same device (Yoto Player).\nYou’re happy to manage it from a phone app and use wi-fi.\nYou want Bluetooth headphones.",
+            "title": "A Yoto may suit you better if…",
             "marker": "dot",
-            "highlight": false
+            "highlight": false,
+            "items": "You want a clock, night light and okay-to-wake in the same device (Yoto Player)\nYou'd like radio and podcasts as well as stories\nYou want cheaper individual stories: cards are £7.99\nYou want Bluetooth headphones"
           }
         }
       },
       "block_order": [
         "card_voxblock",
-        "card_yoto"
+        "card_other"
       ],
       "settings": {
         "full_width": true,
@@ -381,49 +434,74 @@
         "text_color": "",
         "heading_color": "#197177",
         "card_background": "#fff7f0",
-        "card_text_color": "#565656",
-        "card_heading_color": "#565656",
+        "card_text_color": "",
+        "card_heading_color": "#2a555a",
         "highlight_background": "#e9f6f4",
         "highlight_color": "#197177",
         "tick_color": "#4cb6ac"
       }
     },
     "features": {
-      "type": "rich-text",
+      "type": "benefit-cards",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "feature_1": {
+          "type": "card",
           "settings": {
-            "text": "What makes Voxblock different",
-            "heading_tag": "h1",
-            "heading_tag_html": "h2",
-            "text_color": "",
-            "gradient": ""
+            "icon": "hands",
+            "title": "Stories they can hold",
+            "content": "<p>Each audiobook is a solid block with the cover on the front, chosen by sight and kept on the shelf.</p>"
           }
         },
-        "text": {
-          "type": "richtext",
+        "feature_2": {
+          "type": "card",
           "settings": {
-            "content": "<p>Beyond price, these are the reasons families choose Voxblock as a Yoto alternative.</p><h3>Simple to use</h3><p>There are no screens, no menus and no app. A child can pick a story, put it on the player and press play, which suits <a href=\"/collections/audiobooks?filter.p.m.book.age_groups=Under+5%27s\">younger children</a> and parents who want something straightforward.</p><h3>Physical books they can choose for themselves</h3><p>Each <a href=\"/collections/audiobooks\">audiobook</a> is a solid cardboard block with the story stored inside. Children choose by the artwork on the front and keep them on the shelf with their other books, rather than handling slim cards.</p><h3>No connectivity needed</h3><p>No wi-fi, no Bluetooth requirement, no updates and no account. The player works straight out of the box, in the car or at the grandparents.</p><h3>Built for everyday use</h3><p>The blocks are sturdy and the player is portable, with up to 16 hours of battery life, charged by USB-C.</p><h3>Calm, independent listening</h3><p>With nothing to navigate, children make their own choices and listen without screens or adult set-up, which helps them start exploring stories on their own.</p>"
+            "icon": "play",
+            "title": "Simple enough at 3",
+            "content": "<p>No screens or menus. Put the book on and press play, so children use it on their own.</p>"
+          }
+        },
+        "feature_3": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "Grows with them",
+            "content": "<p>From picture books to unabridged novels, with stories for ages 3 to 14+.</p>"
+          }
+        },
+        "feature_4": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "Nothing to log into",
+            "content": "<p>No wi-fi, no account and nothing collected about your child.</p>"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "feature_1",
+        "feature_2",
+        "feature_3",
+        "feature_4"
       ],
       "settings": {
-        "full_width": false,
-        "use_mo": false,
-        "content_width": "large",
-        "text_position": "start",
-        "anchor_id": "",
-        "background": "#fff7f0",
+        "full_width": true,
+        "subheading": "",
+        "title": "What makes Voxblock different",
+        "content": "",
+        "text_alignment": "start",
+        "background": "",
         "background_gradient": "",
-        "text_color": "#565656"
+        "text_color": "",
+        "heading_color": "#197177",
+        "card_background": "#f6f8f8",
+        "card_text_color": "",
+        "card_heading_color": "#197177",
+        "icon_background": "#e9f6f4",
+        "icon_color": "#197177",
+        "icon_accent": "#ff9e57"
       }
     },
-    "featured_collection_hqKGKf": {
+    "starter_packs": {
       "type": "featured-collection",
       "name": "Featured bundles",
       "settings": {
@@ -436,11 +514,11 @@
         "products_count": 6,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 3,
-        "subheading": "Save when bundle player with audiobook",
-        "title": "Popular bundles",
+        "subheading": "Save when you bundle the player with audiobooks",
+        "title": "Choose a starter pack",
         "content": "",
         "link_url": "shopify://collections/voxblock-starter-pack-collection",
-        "link_text": "All bundles",
+        "link_text": "All starter packs",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -456,7 +534,7 @@
         "cta_heading": {
           "type": "heading",
           "settings": {
-            "text": "Ready when you are.",
+            "text": "Just add a story and press play.",
             "heading_tag": "h1",
             "heading_tag_html": "h2",
             "text_color": "#ffffff",
@@ -466,7 +544,7 @@
         "cta_text": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Free UK delivery on orders over £25.</p>"
+            "content": "<p>Free UK delivery on orders over £25 · 100-day money-back guarantee</p>"
           }
         },
         "cta_divider": {
@@ -478,10 +556,11 @@
           "settings": {
             "style": "fill",
             "size": "xl",
-            "text": "Gruffalo Starter Pack · £69.99",
-            "url": "shopify://products/gruffalo-and-friends-starter-pack-set",
-            "background": "#ff9e57",
-            "text_color": "#ffffff"
+            "text": "Shop starter packs · from £69.99",
+            "url": "shopify://collections/voxblock-starter-pack-collection",
+            "background": "",
+            "text_color": "",
+            "track": "alt_yoto_buy_block"
           }
         },
         "cta_player": {
@@ -492,7 +571,8 @@
             "text": "Player on its own · £49.99",
             "url": "/products/voxblock-player?variant=42019613245595",
             "background": "",
-            "text_color": "#ffffff"
+            "text_color": "#ffffff",
+            "track": "alt_yoto_buy_block_player"
           }
         }
       },
@@ -520,36 +600,50 @@
         "item_1": {
           "type": "item",
           "settings": {
-            "title": "Does Voxblock need wi-fi or an app?",
-            "content": "<p>No. There is no wi-fi, no account and no downloads. Each story is stored inside its audiobook, so you put the book on the player and press play.</p>"
+            "title": "Is there a cheaper alternative to the Yoto Mini?",
+            "content": "<p>Yes. The Voxblock player is £49.99 against £89.99 for the Yoto Mini and £119.99 for the Yoto Player. Yoto cards cost less than our audiobooks: £7.99 against £9.99.</p>"
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
-            "title": "Can I add my own content?",
-            "content": "<p>Not yet. Adding your own content launches in January 2027. Yoto already offers it.</p>"
+            "title": "Is Voxblock a Yoto imitation?",
+            "content": "<p>No. Voxblock shares some of the same stories, such as The Gruffalo, but takes a simpler approach. There is no wi-fi, no account and nothing to download: a child picks an audiobook, puts it on the player and presses play. With fewer steps and no settings to manage, children can use it on their own from the start.</p>"
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
-            "title": "Can my child use headphones?",
-            "content": "<p>Yes, through the 3.5mm headphone jack. Yoto players also offer Bluetooth.</p>"
+            "title": "Does Voxblock need wi-fi?",
+            "content": "<p>No. There is no wi-fi, no account and no downloads. Each story is stored inside its audiobook: put it on the player and press play.</p>"
           }
         },
         "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "Can my child use wired headphones?",
+            "content": "<p>Yes, through the 3.5mm jack. Yoto players have a jack and Bluetooth.</p>"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock for?",
+            "content": "<p>From 3 years old, with stories through to unabridged novels for older children.</p>"
+          }
+        },
+        "item_6": {
           "type": "item",
           "settings": {
             "title": "How long does the battery last?",
             "content": "<p>Up to 16 hours, charged by USB-C.</p>"
           }
         },
-        "item_5": {
+        "item_7": {
           "type": "item",
           "settings": {
-            "title": "Is Voxblock cheaper than Yoto?",
-            "content": "<p>The player is £49.99 against £89.99 for the Yoto Mini and £119.99 for the Yoto Player. Extra stories cost £9.99 each, against £7.99 for a Yoto card.</p>"
+            "title": "Can I add my own recordings?",
+            "content": "<p>Not yet, but it's coming soon. Yoto offers this with Make Your Own cards.</p>"
           }
         }
       },
@@ -558,7 +652,9 @@
         "item_2",
         "item_3",
         "item_4",
-        "item_5"
+        "item_5",
+        "item_6",
+        "item_7"
       ],
       "settings": {
         "full_width": true,
@@ -584,6 +680,30 @@
         "accordion_text_color": ""
       }
     },
+    "crosslinks": {
+      "type": "rich-text",
+      "blocks": {
+        "links": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<p>Comparing a Toniebox as well? <a href=\"/pages/alternative-to-toniebox\" data-vs-track=\"alt_yoto_crosslink\">Voxblock vs Toniebox</a> · <a href=\"/blogs/news/voxblock-vs-yoto-vs-tonies-which-audio-player-is-best-for-your-child\" data-vs-track=\"alt_yoto_crosslink_guide\">Yoto vs Tonies: the full guide</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "links"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#e9f6f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "footnotes": {
       "type": "rich-text",
       "blocks": {
@@ -600,7 +720,7 @@
         "notes_text": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Yoto prices from uk.yotoplay.com, checked 11 October 2026: Yoto Mini (4th Gen) £89.99 and Yoto Player (4th Gen) £119.99, both on pre-order; individual cards £7.99 each; Gruffalo and Friends Collection £24.99. Voxblock prices from voxblock.co.uk on the same day. Yoto specifications are Yoto’s own published figures. Prices can change; check the retailer before you buy.</p><p>Review quoted from “Best kids’ audio players”, IndyBest, The Independent (Abby Driver, 2025). Yoto is a trademark of its owner. Voxblock is not affiliated with or endorsed by Yoto.</p><p>Also comparing Tonies? See <a href=\"/pages/alternative-to-toniebox\">Voxblock as an alternative to Tonies</a>.</p>"
+            "content": "<p>Yoto prices from uk.yotoplay.com, checked 11 October 2026: Yoto Mini (4th Gen) £89.99 and Yoto Player (4th Gen) £119.99; individual cards £7.99 each; Gruffalo and Friends Collection £24.99. Voxblock prices from voxblock.co.uk on the same day. Yoto specifications are Yoto's own published figures. Prices can change; check the retailer before you buy.</p><p>Review quoted from “Best kids’ audio players”, IndyBest, The Independent (Abby Driver, 2025). Yoto is a trademark of its owner. Voxblock is not affiliated with or endorsed by Yoto.</p>"
           }
         }
       },
@@ -628,9 +748,10 @@
     "bundles",
     "differences",
     "features",
-    "featured_collection_hqKGKf",
+    "starter_packs",
     "buy",
     "faq",
+    "crosslinks",
     "footnotes"
   ]
 }

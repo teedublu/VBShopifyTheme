@@ -27,6 +27,7 @@ Supported variables
 * form: the form ID that this button is linked to
 * external: if set to true and that a href is passed, it opens into a new window
 * aria_controls: the ID of the element controlled
+* track: optional PostHog target name; adds data-vs-track so voxblock.js sends vs_yoto_click { target, page }
 {%- endcomment -%}
 
 {% liquid
@@ -83,6 +84,7 @@ Supported variables
   {% if name %}name="{{ name }}"{% endif %}
   {% if form %}form="{{ form }}"{% endif %}
   {% if href %}href="{{ href }}"{% endif %}
+  {% if track != blank %}data-vs-track="{{ track | escape }}"{% endif %}
   {% if external and href != blank %}target="_blank"{% endif %}
   {% if href == blank %}is="{{ is | default: 'custom-button' }}"{% endif %}
 {%- endcapture -%}

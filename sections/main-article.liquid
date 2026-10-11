@@ -3,6 +3,7 @@
 {%- assign background_color = article.metafields.banner.background_color.value | default: section.settings.banner_background -%}
 {%- assign text_color = article.metafields.banner.text_color.value | default: section.settings.banner_text_color -%}
 {%- assign article_image = section.settings.image | default: article.image -%}
+{%- if section.settings.show_image == false -%}{%- assign article_image = blank -%}{%- endif -%}
 
 <style>
   #shopify-section-{{ section.id }} .article-banner {
@@ -97,9 +98,11 @@
 
   <div class="container">
     <div class="article-content v-stack gap-8 sm:gap-10">
+      {%- unless section.settings.show_content == false -%}
       <div class="prose">
         {{ article.content }}
       </div>
+      {%- endunless -%}
 
       {%- if section.settings.show_share_buttons -%}
         <div class="share-buttons gap-3">
@@ -251,6 +254,19 @@
         }
       ],
       "default": "750px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show article image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_content",
+      "label": "Show article body",
+      "info": "Turn off on templates whose sections carry the content (the comparison guide).",
+      "default": true
     }
   ],
   "blocks": [
