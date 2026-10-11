@@ -46,6 +46,41 @@ Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed
 - `sections/header.liquid`: homepage logo wrapper h1 → div, so the hero H1 is the only H1.
 - Hero colour overrides removed (owner, 11 Oct): heading, text and button colours come from the theme. Contrast to be fixed theme-wide (see Open item).
 
+## 2026-10-11: Starter pack "What's in the box" (build)
+Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**: needs a draft theme on the branch.
+- Round 2 (owner): a separate full-width section **below** the main product area, not a block in the buy column, so
+  it adds content without getting in the way of Add to basket. New section `pack-contents`
+  (sections/pack-contents.liquid → snippets/pack-contents.liquid), placed after `main` on `product.starter-pack-bundle`.
+  The "What's included" accordion in the buy column is back as it was. Phone: kit tiles in a row, then book cards;
+  desktop: kit in a column, books as three cards. Cream band. Renders nothing on a product with no `bundles.products`.
+- Player kit: three product pickers with name + caption (player, bumper, USB cable). Player and bumper pictures follow
+  the colour swatch (variant image whose title = pack colour; voxblock.js swaps on variant:change). The bumper has no
+  Blue variant, so on Blue it keeps the picture it had.
+- Books: every product in `bundles.products` with cover, narrator (`book.narrators`), length (`book.duration` read as
+  hours.minutes, e.g. 3.15 = 3 h 15 m: unconfirmed), Unabridged, ages, and a sample button. The button is a normal
+  `.bookpreview`, so it plays through the shared player and sends `sample_played`; voxblock.js now also sets
+  `--sample-progress` on the playing button for the bar.
+- Value line "£79.99 together · £100.96 bought separately" from the variant's compare-at. Note: the items' current
+  prices add to £107.96 (player 49.99, bumper 15, cable 2, books 13.99 + 13.99 + 12.99), so compare-at undersells.
+- Round 3 (owner): sample buttons are now the site's standard `.bookpreview` button (same markup as product cards,
+  no custom bar). Intro copy: "It arrives charged, so just drop in a book and press play." Player and bumper pictures
+  match the pack colour; the bumper has no Blue variant, so the section takes an extra picture per item
+  (`Bumper_Blue_Only.png` for Blue). Jump link "See what's in the box and hear the stories" under the description
+  (Custom Liquid block → `#whats-in-the-box`). Title eyebrow "Audiobook player + stories" (new `eyebrow` setting on
+  the main-product title block, `[count]` = books in the pack). One-book packs (Zeepy Sleep Intro Pack uses this
+  template) get "Your audiobook" as the heading.
+- Round 4 (owner: "keep the site wide styling on heading and eyebrows"): no custom type styles. The section is
+  wrapped like the theme's own (section-properties, colour settings, background #fff7f0 set in the template) and
+  headed with snippets/section-header.liquid (`.subheading` eyebrow, `.h2` heading); group and book titles are `.h6`,
+  small text uses `.text-sm` / `.text-xs` / `.text-subdued`, the jump link is `.link`. The product title eyebrow is
+  `.subheading` (the orange uppercase rule is gone). CSS in voxblock.css.liquid is layout only.
+- Round 5 (owner: headings and eyebrow still didn't match): rebased onto main, which now has one heading hierarchy
+  and one `.subheading` eyebrow style site-wide (PR #79 era). The preview was built on the older main, whose bold H1
+  rule made the product title heavier. Section titles are now bare h3 (groups) and h4 (books) so they take their
+  level's site-wide size; main's own title `eyebrow` setting is used (duplicate removed), `[count]` still supported.
+- Check on preview: all four colours (Blue bumper picture is a different render style), phone and desktop width,
+  sample play/pause, the jump link clears the sticky header, Zeepy Sleep Intro Pack.
+
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.
 - Round 3 (owner): every button reads just "Shop now" (no "from £x"; hero setting `show_from_price` off). Full size

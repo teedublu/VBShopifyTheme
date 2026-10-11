@@ -988,3 +988,50 @@ html.vb-has-player .cart-player-prompt { display: none; }
 ---------------------------------------------------------------------------------------------------------------- */
 .vs-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; text-align: center; }
 .vs-cta__from { white-space: nowrap; margin-inline-start: .3em; } /* the leading space is dropped inside a flex button */
+
+/* ----------------------------------------------------------------------------------------------------------------
+   PACK CONTENTS: "What's in the box" section below the main product area on starter-pack bundle pages
+   (sections/pack-contents.liquid, snippets/pack-contents.liquid). Layout only: headings, eyebrow, links and text take
+   the site-wide styles (section-header's .subheading + .h2, bare h3/h4 for the groups and books, .text-sm, .link). Phone: kit tiles in a row of three,
+   then one card per book. Desktop: kit in a 300px column, books as three cards beside it. Sample buttons are the
+   site's standard .bookpreview button. #whats-in-the-box is linked from the buy column (.pack-contents-jump).
+---------------------------------------------------------------------------------------------------------------- */
+.pack-contents { display: flex; flex-direction: column; gap: 24px; scroll-margin-top: calc(var(--header-height, 80px) + 24px); }
+.pack-contents p { margin: 0; }
+.pack-contents__body { display: flex; flex-direction: column; gap: 24px; }
+.pack-contents__group { display: flex; flex-direction: column; gap: 12px; }
+.pack-contents__group-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 12px; }
+.pack-contents__group-head > * { margin: 0; }
+.pack-contents-jump { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+
+.pack-contents__kit { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.pack-contents__kit-item { display: flex; flex-direction: column; gap: 6px; }
+.pack-contents__kit-media { aspect-ratio: 1; border-radius: var(--rounded-sm, 12px); background: rgb(var(--background)); overflow: hidden; }
+.pack-contents__kit-media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pack-contents__kit-media img[hidden] { display: none; }
+
+.pack-contents__books { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pack-contents__book { display: flex; gap: 14px; align-items: center; padding: 12px 14px 12px 10px; border-radius: var(--rounded, 16px); background: rgb(var(--background-primary, 255 255 255)); }
+.pack-contents__cover { flex: 0 0 64px; }
+.pack-contents__cover img { display: block; width: 64px; height: auto; }
+.pack-contents__book-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.pack-contents__book-body > h4 { margin: 0; }
+.pack-contents__play { margin-top: 8px; align-self: flex-start; }
+.pack-contents__value { display: flex; align-items: center; gap: 12px; }
+.pack-contents__value svg { flex: 0 0 26px; }
+
+@media screen and (min-width: 1000px) {
+  .pack-contents { gap: 32px; }
+  .pack-contents__body { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: start; }
+  .pack-contents__kit { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .pack-contents__kit-item { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; row-gap: 2px; align-content: center; padding: 10px; border-radius: var(--rounded, 16px); background: rgb(var(--background-primary, 255 255 255)); }
+  .pack-contents__kit-media { grid-row: 1 / span 2; width: 88px; }
+  .pack-contents__kit-name { align-self: end; }
+  .pack-contents__kit-caption { align-self: start; }
+  .pack-contents__books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .pack-contents__book { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
+  .pack-contents__cover { flex: none; display: flex; justify-content: center; padding-top: 4px; }
+  .pack-contents__cover img { width: auto; height: 190px; }
+  .pack-contents__book-body { flex-grow: 1; }
+  .pack-contents__play { margin-top: auto; padding-top: 10px; }
+}
