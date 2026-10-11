@@ -19,7 +19,7 @@
         "show_image": false,
         "show_content": false,
         "show_tag": false,
-        "banner_intro": "<p>Yoto or Tonies? The Yoto Player and the Toniebox are the two best-known screen-free audio players in the UK. Here is how they compare on price, age, setup and what each story costs.</p><p>By the Voxblock team · Updated 11 October 2026 · 7-minute read</p><p><em>We make Voxblock, a third screen-free player, so we have included it. This guide is about Yoto and Tonies first, and we have tried to be fair to both.</em></p>"
+        "show_banner": false
       }
     },
     "quick_answer": {
@@ -580,9 +580,51 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "hero_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Homepage-UGC-listening-1200x1400.jpg",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/INDY-Best-AFI.png",
+            "icon_width": 120,
+            "subheading": "Parent guide · UK prices checked 11 October 2026",
+            "title": "Yoto vs Tonies: which audio player suits your child?",
+            "content": "<p>Yoto or Tonies? The Yoto Player and the Toniebox are the two best-known screen-free audio players in the UK. Here is how they compare on price, age, setup and what each story costs.</p><p>By the Voxblock team · Updated 11 October 2026 · 7-minute read</p><p><em>We make Voxblock, a third screen-free player, so we have included it. This guide is about Yoto and Tonies first, and we have tried to be fair to both.</em></p>",
+            "link_text": "See the comparison",
+            "link_url": "#glance",
+            "title_tag": "h1",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "#197177",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "track": "guide_hero"
+          }
+        }
+      },
+      "block_order": [
+        "hero_image"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
     }
   },
   "order": [
+    "hero",
     "main",
     "quick_answer",
     "glance",

@@ -95,7 +95,9 @@
 </style>
 
 <div class="article" {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
+  {%- unless section.settings.show_banner == false -%}
   {%- render 'article-banner', show_date: section.settings.show_date, show_author: section.settings.show_author, show_comments_count: section.settings.show_comments_count, layout: section.settings.layout, article_image: article_image, show_tag: section.settings.show_tag, intro: section.settings.banner_intro -%}
+  {%- endunless -%}
 
   {%- liquid
     assign show_body_area = true
@@ -276,6 +278,13 @@
       "id": "show_content",
       "label": "Show article body",
       "info": "Turn off on templates whose sections carry the content (the comparison guide).",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner",
+      "label": "Show banner",
+      "info": "Turn off when another section at the top of the template carries the page heading.",
       "default": true
     },
     {
