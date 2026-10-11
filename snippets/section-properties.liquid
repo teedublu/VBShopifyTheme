@@ -64,6 +64,13 @@ but you can override them by manually passing a different value (although this s
 {%- unless text_color == 'rgba(0,0,0,0)' or text_color == blank -%}
   {%- capture class -%}{{ class }} text-custom{%- endcapture -%}
   {%- capture style_attributes -%}{{ style_attributes }} --text-color: {{ text_color.rgb }};{%- endcapture -%}
+  {%- comment -%}VB: headings are Heading teal on light text sections; on dark sections (light text) they take the text colour{%- endcomment -%}
+  {%- assign text_brightness = text_color | color_brightness -%}
+  {%- if text_brightness > 200 -%}
+    {%- capture style_attributes -%}{{ style_attributes }} --heading-color: {{ text_color.rgb }};{%- endcapture -%}
+  {%- else -%}
+    {%- capture style_attributes -%}{{ style_attributes }} --heading-color: {{ settings.brand_heading.rgb }};{%- endcapture -%}
+  {%- endif -%}
 {%- endunless -%}
 
 {%- unless input_background == 'rgba(0,0,0,0)' or input_background == blank -%}

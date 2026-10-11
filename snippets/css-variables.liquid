@@ -200,6 +200,7 @@ note that this may have impact on different places.
     --accent-strong-dark: {{ settings.accent_strong | color_mix: '#000000', 70 }};
     --brand-heading: {{ settings.brand_heading }};
     --brand-heading-rgb: {{ settings.brand_heading.rgb }};
+    --heading-color: {{ settings.brand_heading.rgb }}; /* every heading in the page content (voxblock.css); dark sections swap it for their text colour */
     --brand-text: {{ settings.brand_text }};
     --brand-text-rgb: {{ settings.brand_text.rgb }};
     --card-border: {{ settings.card_border }};
