@@ -40,7 +40,7 @@ Supported variables
   {%- if text_brightness > 200 -%}
     {%- capture style -%}{{ style }} --heading-color: {{ text_color.rgb }}; --eyebrow-color: {{ text_color }};{%- endcapture -%}
   {%- else -%}
-    {%- capture style -%}{{ style }} --heading-color: {{ settings.brand_heading.rgb }}; --eyebrow-color: {{ settings.accent_strong | color_mix: '#000000', 55 }};{%- endcapture -%}
+    {%- capture style -%}{{ style }} --heading-color: {{ settings.brand_heading.rgb }}; --eyebrow-color: {{ settings.accent_strong }};{%- endcapture -%}
   {%- endif -%}
 {%- endunless -%}
 
