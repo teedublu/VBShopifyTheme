@@ -1,0 +1,596 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "vs-hero",
+      "settings": {
+        "eyebrow": "Looking at a Toniebox?",
+        "heading": "No wi-fi, nothing to set up, and {saving} less than a Toniebox 2.",
+        "heading_fallback": "No wi-fi, nothing to set up, and ready straight out of the box.",
+        "player_product": "voxblock-player",
+        "voxblock_image": "shopify://shop_images/voxblock-player-compare.jpg",
+        "voxblock_pill": "Best value",
+        "voxblock_name": "Voxblock player",
+        "voxblock_line": "Story on the book. Plays straight out of the box.",
+        "yoto_label": "Toniebox 2",
+        "yoto_image": "shopify://shop_images/tonies-box.avif",
+        "yoto_name": "Toniebox 2",
+        "yoto_mini_price": "£104.99",
+        "yoto_line": "Figures download audio over wi-fi. Set up on a phone first.",
+        "yoto_player_label": "Toniebox Lite Starter Set",
+        "yoto_player_price": "£59.99",
+        "prices_checked": "11 October 2026",
+        "collection": "voxblock-starter-pack-collection",
+        "button_text": "Shop now",
+        "show_from_price": false,
+        "link_text": "See the full comparison",
+        "link_url": "#players",
+        "trust_image": "shopify://shop_images/INDY-Best-AFI.png",
+        "trust_image_alt": "As featured in IndyBest, The Independent, 2025",
+        "trust_text": "Best budget buy, IndyBest 2025 · Screen-free · British designed",
+        "background": "#fff7f0",
+        "heading_color": "#197177",
+        "text_color": "#2a555a",
+        "accent_color": "#c2560f",
+        "eyebrow_color": "#b8520e",
+        "show_card_button": false
+      }
+    },
+    "players": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_price": {
+          "type": "row",
+          "settings": {
+            "label": "Price difference",
+            "value_1": "Best value",
+            "value_2": "£55.00 more than Voxblock",
+            "value_3": "£10.00 more than Voxblock",
+            "good_answer": "yes"
+          }
+        },
+        "row_setup": {
+          "type": "row",
+          "settings": {
+            "label": "Setting up",
+            "value_1": "No setup",
+            "value_2": "Install the app, create an account and connect to wi-fi",
+            "value_3": "Install the app, create an account and connect to wi-fi",
+            "good_answer": "yes"
+          }
+        },
+        "row_stories": {
+          "type": "row",
+          "settings": {
+            "label": "How stories arrive",
+            "value_1": "On the audiobook itself; nothing to download",
+            "value_2": "Figures; each new Tonie downloads over wi-fi the first time it’s played",
+            "value_3": "Figures; each new Tonie downloads over wi-fi the first time it’s played",
+            "good_answer": "yes"
+          }
+        },
+        "row_headphones": {
+          "type": "row",
+          "settings": {
+            "label": "Headphones",
+            "value_1": "3.5mm headphone jack",
+            "value_2": "Bluetooth only; no headphone jack",
+            "value_3": "Bluetooth only; no headphone jack",
+            "good_answer": "yes"
+          }
+        },
+        "row_speaker": {
+          "type": "row",
+          "settings": {
+            "label": "Speaker",
+            "value_1": "Built-in speaker",
+            "value_2": "Built-in speaker",
+            "value_3": "Built-in speaker",
+            "good_answer": "yes"
+          }
+        },
+        "row_bedtime": {
+          "type": "row",
+          "settings": {
+            "label": "Bedtime",
+            "value_1": "20-minute bedtime mode",
+            "value_2": "Sleep timer with night light, sunrise alarm",
+            "value_3": "Sleep timer",
+            "good_answer": "yes"
+          }
+        },
+        "row_battery": {
+          "type": "row",
+          "settings": {
+            "label": "Battery",
+            "value_1": "Up to 16 hours",
+            "value_2": "Up to 10 hours",
+            "value_3": "Up to 7 hours",
+            "good_answer": "yes"
+          }
+        },
+        "row_charging": {
+          "type": "row",
+          "settings": {
+            "label": "Charging",
+            "value_1": "USB-C",
+            "value_2": "USB-C",
+            "value_3": "USB-C",
+            "good_answer": "yes"
+          }
+        },
+        "row_size": {
+          "type": "row",
+          "settings": {
+            "label": "Size and weight",
+            "value_1": "11 × 19 × 2 cm, 165 g",
+            "value_2": "13 × 13 × 12.6 cm, 815 g",
+            "value_3": "10 × 10 × 10.4 cm, 305 g",
+            "good_answer": "yes"
+          }
+        },
+        "row_wifi": {
+          "type": "row",
+          "settings": {
+            "label": "Wifi needed",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
+        },
+        "row_account": {
+          "type": "row",
+          "settings": {
+            "label": "Online account needed",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
+        },
+        "row_own": {
+          "type": "row",
+          "settings": {
+            "label": "Add your own content",
+            "value_1": "Launching Jan 2027",
+            "value_2": "Yes, with a Creative-Tonie (sold separately)",
+            "value_3": "Yes, Creative-Tonie included (up to 90 minutes)",
+            "good_answer": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_price",
+        "row_setup",
+        "row_stories",
+        "row_headphones",
+        "row_speaker",
+        "row_bedtime",
+        "row_battery",
+        "row_charging",
+        "row_size",
+        "row_wifi",
+        "row_account",
+        "row_own"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "1 · The player on its own",
+        "title": "Player vs player",
+        "content": "<p>Compare how the Voxblock player stacks up against the latest Tonieboxes. There are pros and cons of each, but only one plays straight out of the box.</p>",
+        "text_position": "start",
+        "anchor_id": "players",
+        "feature_heading": "",
+        "column_1": "Voxblock Player (latest)",
+        "highlight_first": true,
+        "column_2": "Toniebox 2",
+        "column_3": "Toniebox Lite Starter Set",
+        "footnote": "",
+        "column_1_image": "shopify://shop_images/voxblock-player-compare.jpg",
+        "column_1_price": "£49.99",
+        "column_1_note": "Player, USB-C cable.",
+        "column_1_product": "voxblock-player",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "Shop now",
+        "sticky_header": true,
+        "column_1_short": "Voxblock",
+        "column_2_short": "Toniebox 2",
+        "column_3_short": "Toniebox Lite",
+        "sticky_button_text": "Shop now",
+        "column_2_image": "shopify://shop_images/tonies-box.avif",
+        "column_2_price": "£104.99",
+        "column_2_note": "Toniebox 2, USB-C cable. Tonies sold separately.",
+        "column_3_price": "£59.99",
+        "column_3_note": "Toniebox Lite, Creative-Tonie.",
+        "media_ratio": "square",
+        "stack_on_mobile": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#197177",
+        "chart_background": "#ffffff",
+        "chart_text_color": "",
+        "highlight_color": "#197177",
+        "highlight_tint": "#e9f6f4",
+        "tick_color": "#4cb6ac",
+        "cross_color": "#c9c9c9"
+      }
+    },
+    "bundles": {
+      "type": "price-breakdown",
+      "blocks": {
+        "card_voxblock": {
+          "type": "card",
+          "settings": {
+            "tag": "Voxblock · one box",
+            "highlight": true,
+            "image": "shopify://shop_images/New-StarterPack-Gruffalo-GREEN-_Light.png",
+            "title": "Gruffalo and Friends Starter Pack",
+            "items": "Voxblock player, bumper, cable | included\nThe Gruffalo | included\nRoom on the Broom | included\nThe Smartest Giant in Town | included",
+            "total_label": "Total",
+            "total": "£69.99",
+            "difference": "Best value",
+            "cta_collection": "voxblock-starter-pack-collection",
+            "cta_text": "Shop now",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_toniebox_2": {
+          "type": "card",
+          "settings": {
+            "tag": "Toniebox 2 · bought separately",
+            "highlight": false,
+            "image": "shopify://shop_images/tonies-box.avif",
+            "title": "Toniebox 2 + 3 Tonies",
+            "items": "Toniebox 2 | £104.99\nThe Gruffalo Tonie | £14.99\nRoom on the Broom Tonie | £14.99\nThe Snail and the Whale & The Smartest Giant in Town Tonie | £14.99",
+            "total_label": "Total",
+            "total": "£149.96",
+            "difference": "£79.97 more than Voxblock",
+            "link_text": "",
+            "link_url": ""
+          }
+        },
+        "card_toniebox_lite": {
+          "type": "card",
+          "settings": {
+            "tag": "Toniebox Lite · bought separately",
+            "highlight": false,
+            "title": "Toniebox Lite Starter Set + 3 Tonies",
+            "items": "Toniebox Lite Starter Set | £59.99\nThe Gruffalo Tonie | £14.99\nRoom on the Broom Tonie | £14.99\nThe Snail and the Whale & The Smartest Giant in Town Tonie | £14.99",
+            "total_label": "Total",
+            "total": "£104.96",
+            "difference": "£34.97 more than Voxblock",
+            "link_text": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_voxblock",
+        "card_toniebox_2",
+        "card_toniebox_lite"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "2 · With exactly the same stories",
+        "title": "The Gruffalo, Room on the Broom and The Smartest Giant in Town",
+        "content": "<p>Three Julia Donaldson favourites. Here’s what each set-up costs, all in.</p>",
+        "text_position": "start",
+        "anchor_id": "bundles",
+        "note": "<p><strong>Same stories, different forms:</strong> a Voxblock audiobook is a solid cardboard book with the story stored inside, made to be held, chosen and kept on the shelf (£9.99 on its own). A Tonie is a hand-painted figure that tells the Toniebox which story to download (£14.99 on its own).</p><p>Tonies sells The Smartest Giant in Town on a figure shared with The Snail and the Whale, so that Tonie plays one extra story. Smyths also sells a Toniebox Lite Starter Set with three Tonies of your choice for £99.99.</p>",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "#197177",
+        "card_background": "#ffffff",
+        "card_text_color": "#565656",
+        "card_heading_color": "#197177",
+        "highlight_color": "#197177",
+        "difference_color": "#c4540f"
+      }
+    },
+    "books": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_what": {
+          "type": "row",
+          "settings": {
+            "label": "What it is",
+            "value_1": "A tangible physical audiobook block made of card",
+            "value_2": "A hand-painted figure of the Gruffalo",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_where_story": {
+          "type": "row",
+          "settings": {
+            "label": "Where the story is",
+            "value_1": "Inside the audiobook itself",
+            "value_2": "Online; a chip in the figure tells the Toniebox which audio to download",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_play": {
+          "type": "row",
+          "settings": {
+            "label": "To play it",
+            "value_1": "Put the audiobook on the player and press play. Ready straight away",
+            "value_2": "Stand the figure on the Toniebox; the first time, the audio downloads over wi-fi",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_lives": {
+          "type": "row",
+          "settings": {
+            "label": "Where it lives",
+            "value_1": "Pride of place on a bookshelf alongside other books",
+            "value_2": "On a shelf, in a carry case, or on top of the Toniebox",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_price": {
+          "type": "row",
+          "settings": {
+            "label": "Price on its own",
+            "value_1": "£9.99",
+            "value_2": "£14.99",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_what",
+        "row_where_story",
+        "row_play",
+        "row_lives",
+        "row_price"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "3 · An audiobook or a figure",
+        "title": "The Gruffalo, two ways",
+        "content": "<p>Both play the same story. What your child holds, and where it lives afterwards, is very different.</p>",
+        "text_position": "start",
+        "anchor_id": "books",
+        "feature_heading": "",
+        "column_1": "Voxblock audiobook",
+        "highlight_first": true,
+        "column_2": "Gruffalo Tonie",
+        "column_3": "",
+        "footnote": "",
+        "column_1_image": "shopify://shop_images/product-book-bookshelf-the-gruffalo.png",
+        "column_1_price": "",
+        "column_1_note": "A solid audiobook they can hold",
+        "column_2_price": "",
+        "column_2_note": "A collectable figure, about 7 cm tall",
+        "column_3_price": "",
+        "column_3_note": "",
+        "media_ratio": "portrait",
+        "media_fit": "cover",
+        "stack_on_mobile": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#197177",
+        "chart_background": "#ffffff",
+        "chart_text_color": "",
+        "highlight_color": "#197177",
+        "highlight_tint": "#e9f6f4",
+        "tick_color": "#4cb6ac",
+        "cross_color": "#c9c9c9"
+      }
+    },
+    "differences": {
+      "type": "checklist-cards",
+      "blocks": {
+        "card_voxblock": {
+          "type": "card",
+          "settings": {
+            "title": "Choose Voxblock if…",
+            "items": "You want it working the moment it’s out of the box: no wi-fi, no app, no account, no downloads.\nYou’d like stories they can hold, keep on a shelf and choose for themselves.\nYou want it to last beyond picture books, with unabridged novels for older children.\nYou want to use the wired headphones you already have.\nPrice matters: the player is £55 less than a Toniebox 2, and each story is £5 less.",
+            "marker": "tick",
+            "highlight": true
+          }
+        },
+        "card_toniebox": {
+          "type": "card",
+          "settings": {
+            "title": "A Toniebox may suit you better if…",
+            "items": "Your child loves collecting and playing with the figures as toys.\nYou want a night light and sunrise alarm in the same device (Toniebox 2).\nYou’d like Tonieplay games (Toniebox 2, controller sold separately).\nYou’re happy to manage it from a phone app and use wi-fi.\nYou want Bluetooth headphones.",
+            "marker": "dot",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "card_voxblock",
+        "card_toniebox"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "4 · Not just the price",
+        "title": "Which one suits your family?",
+        "content": "",
+        "text_position": "start",
+        "anchor_id": "differences",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "#197177",
+        "card_background": "#fff7f0",
+        "card_text_color": "#565656",
+        "card_heading_color": "#565656",
+        "highlight_background": "#e9f6f4",
+        "highlight_color": "#197177",
+        "tick_color": "#4cb6ac"
+      }
+    },
+    "buy": {
+      "type": "rich-text",
+      "blocks": {
+        "cta_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Just add a story and press play.",
+            "heading_tag": "h1",
+            "heading_tag_html": "h2",
+            "text_color": "#ffffff",
+            "gradient": ""
+          }
+        },
+        "cta_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Free UK delivery on orders over £25.</p>"
+          }
+        },
+        "cta_divider": {
+          "type": "divider",
+          "settings": {}
+        },
+        "cta_starter_pack": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Shop now",
+            "url": "shopify://collections/voxblock-starter-pack-collection",
+            "background": "#ff9e57",
+            "text_color": "#ffffff"
+          }
+        },
+        "cta_player": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "xl",
+            "text": "Player on its own · £49.99",
+            "url": "/products/voxblock-player?variant=42019613245595",
+            "background": "",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "cta_heading",
+        "cta_text",
+        "cta_divider",
+        "cta_starter_pack",
+        "cta_player"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "buy",
+        "background": "#197177",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "rich_text_PEUAy8": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_HJPtJD": {
+          "type": "subheading",
+          "settings": {
+            "text": "We'll say it plainly"
+          }
+        },
+        "heading_XWQhHz": {
+          "type": "heading",
+          "settings": {
+            "text": "Similar yet different",
+            "heading_tag": "h1",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_bUiMCC": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We think the Toniebox is a great product. It’s got millions of children listening to stories, the figures are lovely to collect, and plenty of families we know love theirs. The Toniebox 2 also does more than play stories: with the Tonies app you can set a sleep timer and sunrise alarm, record your own stories onto a Creative-Tonie and play Tonieplay games.&nbsp;</p><p>Voxblock is simply built around a different idea. There’s no wi-fi, no downloads and no app to set up. Each story lives on its own tangible block, so your child just adds the story and presses play. If you want connected features and collectable figures, the Toniebox is well worth a look. If you’d rather keep things simple and screen-free, we think you’ll love Voxblock. We’ve put this comparison together in a fair spirit, to help parents choose what suits their family, and not to knock anyone else’s product. If anything here is out of date or not quite right, let us know and we’ll happily correct it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_HJPtJD",
+        "heading_XWQhHz",
+        "richtext_bUiMCC"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#249299",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "footnotes": {
+      "type": "rich-text",
+      "blocks": {
+        "notes_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "How we compared",
+            "heading_tag": "h6",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "notes_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Tonies prices from tonies.com/en-gb, checked 11 October 2026: Toniebox 2 £104.99; The Gruffalo, Room on the Broom and The Snail and the Whale &amp; The Smartest Giant in Town Tonies £14.99 each. Toniebox Lite Starter Set £59.99 from smythstoys.com, checked the same day. Voxblock prices from voxblock.co.uk on the same day. Toniebox 2 and Toniebox Lite specifications are Tonies’ own published figures. Prices can change; check the retailer before you buy.</p><p>Review quoted from “Best kids’ audio players”, IndyBest, The Independent (Abby Driver, 2026). Tonies, Toniebox and Creative-Tonie are trademarks of tonies SE. Voxblock is not affiliated with or endorsed by tonies.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "notes_heading",
+        "notes_text"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "players",
+    "bundles",
+    "books",
+    "differences",
+    "buy",
+    "rich_text_PEUAy8",
+    "footnotes"
+  ]
+}
