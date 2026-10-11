@@ -46,6 +46,17 @@ Also carries the site-wide heading and eyebrow clean-up (formerly PR #75, closed
 - `sections/header.liquid`: homepage logo wrapper h1 → div, so the hero H1 is the only H1.
 - Hero colour overrides removed (owner, 11 Oct): heading, text and button colours come from the theme. Contrast to be fixed theme-wide (see Open item).
 
+## 2026-10-11: Pack contents, extra kit items (build)
+Branch `claude/pack-contents-extra-kit`. Found on /products/the-ultimate-gift-bundle: the kit showed only the standard
+player, bumper and cable, but the bundle also has headphones and a travel case.
+- New product metafield `pack.kit_extras` ("Extra kit items", list of products, definition created in Shopify). The
+  section shows the three standard items, then each product listed there (picture + title without "Voxblock ").
+  Set on The Ultimate Gift Bundle: Voxblock Headphones, Voxblock Travel Case. Empty on every other pack.
+- Theme code can't read native bundle components (Liquid has no field for them; only the Admin/Storefront APIs do),
+  so the kit and book lists stay hand-kept metafields. Owner chose to keep it that way rather than sync.
+- Book and total lengths under an hour read "25 m", not "0 h 25 m".
+- Still open: the gift bundle has no colour option, so the player tile can't match its Green player.
+
 ## 2026-10-11: Starter pack "What's in the box" (build)
 Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**: needs a draft theme on the branch.
 - Round 2 (owner): a separate full-width section **below** the main product area, not a block in the buy column, so

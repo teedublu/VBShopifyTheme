@@ -1,7 +1,8 @@
 {%- comment -%}
 "What's in the box" for starter-pack bundle pages (section `pack-contents`, below the main product area so it adds
 content without getting between the shopper and Add to basket).
-Shows the player kit (three product pickers on the section, each with a caption) as picture tiles, then every book in
+Shows the player kit (three product pickers on the section, each with a caption, then any products in the pack's
+`pack.kit_extras` metafield, e.g. headphones and a travel case in a gift bundle) as picture tiles, then every book in
 the pack's `bundles.products` metafield with its cover, narrator, length, ages and a sample button.
 
 - Player and bumper tiles follow the colour swatch: one image per variant of the picked product, the one whose title
@@ -72,6 +73,15 @@ Accepts: product (the pack), opts (the section's settings)
         </li>
       {%- endif -%}
     {%- endfor -%}
+    {%- comment -%}Anything else in this pack (pack.kit_extras on the product, e.g. headphones, travel case){%- endcomment -%}
+    {%- for extra in pack.metafields.pack.kit_extras.value -%}
+      <li class="pack-contents__kit-item">
+        <div class="pack-contents__kit-media">
+          {{- extra.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: extra.title, width: 400, height: 400 -}}
+        </div>
+        <p class="pack-contents__kit-name bold">{{ extra.title | remove_first: 'Voxblock ' }}</p>
+      </li>
+    {%- endfor -%}
   {%- endcapture -%}
 
   {%- if kit != blank -%}
@@ -94,7 +104,7 @@ Accepts: product (the pack), opts (the section's settings)
         {%- if total_minutes > 0 -%}
           {%- assign th = total_minutes | divided_by: 60 -%}
           {%- assign tm = total_minutes | modulo: 60 -%}
-          <span class="text-sm text-subdued">{{ th }} h {{ tm }} m of stories</span>
+          <span class="text-sm text-subdued">{% if th > 0 %}{{ th }} h{% if tm > 0 %} {{ tm }} m{% endif %}{% else %}{{ tm }} m{% endif %} of stories</span>
         {%- endif -%}
       </div>
       <ul class="pack-contents__books" role="list">
@@ -113,7 +123,8 @@ Accepts: product (the pack), opts (the section's settings)
                 <p class="text-sm">Read by <span class="bold">{{ narrator.name }}</span></p>
               {%- endif -%}
               <p class="pack-contents__book-meta text-xs text-subdued">
-                {%- if d[0] != blank -%}{{ d[0] | plus: 0 }} h{% if d[1] != blank %} {{ d[1] | plus: 0 }} m{% endif %}{%- endif -%}
+                {%- assign bh = d[0] | plus: 0 -%}{%- assign bm = d[1] | plus: 0 -%}
+                {%- if bh > 0 %}{{ bh }} h{% if bm > 0 %} {{ bm }} m{% endif %}{% elsif bm > 0 %}{{ bm }} m{% endif -%}
                 {%- if book.metafields.book.abridged.value == false %} · Unabridged{% endif -%}
                 {%- if age_lower != blank and age_upper != blank %} · Ages {{ age_lower }}–{{ age_upper }}{% endif -%}
               </p>
