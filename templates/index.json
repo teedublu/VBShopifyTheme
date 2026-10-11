@@ -18,7 +18,7 @@
             "image": "shopify://shop_images/home-header-fussy-tech-26.1.0_1.png",
             "media_width": 50,
             "media_position": "end",
-            "text_position": "place-self-center text-center",
+            "text_position": "place-self-center-start text-start",
             "icon": "none",
             "icon_width": 48,
             "subheading": "No screens. No wi-fi. No apps.",
@@ -26,7 +26,7 @@
             "content": "<p>Pop in an audiobook and press play. A simple story player for children aged 3 to 14+, with no wifi, apps or subscriptions.</p><p>Free UK delivery over £25 · 100-day money-back guarantee</p>",
             "link_text": "Discover our player",
             "link_url": "https://voxblock.co.uk/products/voxblock-player",
-            "background": "#ffffff",
+            "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
             "heading_text_color": "",
@@ -45,7 +45,7 @@
       "name": "Media with text",
       "settings": {
         "full_width": true,
-        "spacing": "none"
+        "spacing": "medium"
       }
     },
     "rich_text_K9xkcG": {
@@ -107,7 +107,8 @@
         "background": "",
         "background_gradient": "",
         "text_color": ""
-      }
+      },
+      "disabled": true
     },
     "logo_list_LNWaw9": {
       "type": "logo-list",
@@ -1170,10 +1171,51 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "media_with_text_meet": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_meet": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home-hotspot-web-v2.25-low-res_1.webp",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Meet Voxblock",
+            "title": "An audio player for children that just works",
+            "title_tag": "h2",
+            "content": "<p>Voxblock is an audiobook player made for children. Each audiobook is a sturdy block, like a board book, that slots into the player. Press play and the story starts. There's nothing to set up, download or stream, and no screen to argue over.</p><p>Children can listen out loud through the built-in speaker or plug in headphones. The battery lasts up to 16 hours, and bedtime mode plays the chosen story for 20 minutes before going to standby. With more than 350 audiobooks, from first picture books to teen fiction, it's a story player that grows with your child.</p>",
+            "link_text": "",
+            "link_url": "",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_meet"
+      ],
+      "name": "Meet Voxblock",
+      "settings": {
+        "full_width": true,
+        "spacing": "medium"
+      }
     }
   },
   "order": [
     "media_with_text_hjyKYh",
+    "media_with_text_meet",
     "rich_text_K9xkcG",
     "logo_list_LNWaw9",
     "video_N3TaA4",
