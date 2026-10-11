@@ -5,6 +5,12 @@ Style changes are theme-wide: theme settings, `css-variables`, or a shared rule 
 button styling set on one section or template unless the owner explicitly agrees it, otherwise sections drift.
 Contrast problems are fixed in the theme colour settings, never patched per section.
 
+## Copy rules (owner, site-wide, apply to every page)
+- Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
+- "Children" in body copy; "kids" only where people search with it (title tag, meta description, an FAQ question).
+- No "no apps" claims (a Voxblock app is coming for MYO): say no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes stay as written.
+- Facts: ages 3 to 14+, battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
+
 ## Performance: pages to check in the next site performance review
 Owner's standing request (9 Oct): every page we improve gets its performance checked in the next site performance
 review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add each improved page type here.
