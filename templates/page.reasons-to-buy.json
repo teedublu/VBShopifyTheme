@@ -49,44 +49,90 @@
       }
     },
     "reasons": {
-      "type": "rich-text",
+      "type": "benefit-cards",
       "blocks": {
-        "subheading_1": {
-          "type": "subheading",
+        "card_1": {
+          "type": "card",
           "settings": {
-            "text": "Reasons to buy"
+            "icon": "play",
+            "title": "Simple enough for a 3 year old",
+            "content": "<p>Slot in a block, press play. Children choose and play stories by themselves.</p>"
           }
         },
-        "heading_1": {
-          "type": "heading",
+        "card_2": {
+          "type": "card",
           "settings": {
-            "text": "Seven reasons to buy Voxblock",
-            "heading_tag": "h2",
-            "text_color": "",
-            "gradient": ""
+            "icon": "no-screen",
+            "title": "Truly screen-free",
+            "content": "<p>No display, no videos, no notifications: just the story.</p>"
           }
         },
-        "richtext_1": {
-          "type": "richtext",
+        "card_3": {
+          "type": "card",
           "settings": {
-            "content": "<ol><li><strong>Simple enough for a 3 year old.</strong> Slot in a block, press play. Children choose and play stories by themselves.</li><li><strong>Truly <a href=\"/\">screen-free</a>.</strong> No display, no videos, no notifications: just the story.</li><li><strong>Nothing to set up.</strong> No wifi, no downloads, no account and no subscription.</li><li><strong>A library that grows with them.</strong> 350+ audiobooks for children aged 3 to 14+, from picture books to teen fiction.</li><li><strong>Made for journeys.</strong> Up to 16 hours of battery, with a speaker and a headphone jack.</li><li><strong>Bedtime mode.</strong> The story plays for 20 minutes, then the player goes to standby.</li><li><strong>No risk.</strong> A 100-day money-back guarantee, and free UK delivery over £25.</li></ol><p>Weighing it up against other players? <a href=\"/pages/voxblock-vs-yoto\">See how Voxblock compares with Yoto</a>.</p>"
+            "icon": "no-wifi",
+            "title": "Nothing to set up",
+            "content": "<p>No wifi, no downloads, no account and no subscription.</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "A library that grows with them",
+            "content": "<p>350+ audiobooks for children aged 3 to 14+, from picture books to teen fiction.</p>"
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Made for journeys",
+            "content": "<p>Up to 16 hours of battery, with a speaker and a headphone jack.</p>"
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "icon": "moon",
+            "title": "Bedtime mode",
+            "content": "<p>The story plays for 20 minutes, then the player goes to standby.</p>"
+          }
+        },
+        "card_7": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "No risk",
+            "content": "<p>A 100-day money-back guarantee, and free UK delivery over £25.</p>"
           }
         }
       },
       "block_order": [
-        "subheading_1",
-        "heading_1",
-        "richtext_1"
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6",
+        "card_7"
       ],
-      "name": "Rich text",
       "settings": {
         "full_width": true,
-        "use_mo": true,
-        "content_width": "small",
-        "text_position": "start",
-        "background": "",
+        "subheading": "Reasons to buy",
+        "title": "Seven reasons to buy Voxblock",
+        "content": "<p>Weighing it up against other players? <a href=\"/pages/voxblock-vs-yoto\">See how Voxblock compares with Yoto</a>.</p>",
+        "text_alignment": "start",
+        "background": "#fff7f0",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "icon_background": "",
+        "icon_color": "",
+        "icon_accent": ""
       }
     },
     "reviews": {
