@@ -101,7 +101,7 @@ LIQUID
               {%- endif -%}
 
               {%- if block.settings.title != blank -%}
-                <p class="h2" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %}>
+                <p class="h1" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %}>
                   {%- render 'styled-text', content: block.settings.title, apparition_effect: true, text_color: section.settings.heading_color -%}
                 </p>
               {%- endif -%}
