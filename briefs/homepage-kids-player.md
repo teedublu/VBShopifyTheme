@@ -16,6 +16,11 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - Layout (owner chose the mockup, 11 Oct): hero text left-aligned in a cream rounded block beside a rounded image (media-with-text spacing "medium"); Meet Voxblock is now a media-with-text section (`media_with_text_meet`): image left (the Features hotspot photo, so it appears twice on the page), eyebrow, H2, two paragraphs, no button. The old rich-text version is disabled, not deleted, and still holds the "Trusted by families…" line. Only theme section options used; buttons are theme style.
 - Everything else unchanged and in the same order.
 
+## SEO check on the draft (11 Oct)
+- Title 59 chars, meta description 160 chars, canonical `/`, indexable. One H1 (the hero), server-rendered. FAQPage JSON-LD with 9 questions, incl. "How does a kids audiobook player work?".
+- Fixed: hero image (the largest image above the fold) was lazy-loaded; `media-with-text` now loads its image eagerly with high priority when it is the first section on any page. Hero image had no alt text; alt set on the Shopify file (also improves live).
+- Left as is: the stats band renders "350+" and "30.5m" as H2s (theme impact-text section); the "Under 5's" age tile links to the player, not an age collection; hero PNG is 1.2 MB (Shopify serves ~390 KB WebP).
+
 ## Copy rules applied
 "Children" in body copy and headings; "kids" in the title tag, meta description and one FAQ question, where people search with it. Facts: ages 3 to 14+ (owner confirmed min age 3), battery up to 16 hours (owner confirmed), 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded.
 
