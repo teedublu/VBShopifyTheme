@@ -53,13 +53,13 @@
 
   .ai-raf-form__input-{{ ai_gen_id }}:focus {
     outline: none;
-    border-color: {{ block.settings.primary_button_background }};
+    border-color: {{ block.settings.primary_button_background | default: settings.primary_button_background }};
   }
 
   .ai-raf-form__button-{{ ai_gen_id }} {
     padding: 14px 32px;
-    background-color: {{ block.settings.primary_button_background }};
-    color: {{ block.settings.primary_button_text_color }};
+    background-color: {{ block.settings.primary_button_background | default: settings.primary_button_background }};
+    color: {{ block.settings.primary_button_text_color | default: settings.primary_button_text_color }};
     border: none;
     border-radius: {{ block.settings.button_border_radius }}px;
     cursor: pointer;
