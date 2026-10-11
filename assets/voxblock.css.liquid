@@ -992,10 +992,15 @@ html.vb-has-player .cart-player-prompt { display: none; }
 /* ----------------------------------------------------------------------------------------------------------------
    PACK CONTENTS: "What's in the box" band below the main product area on starter-pack bundle pages
    (sections/pack-contents.liquid, snippets/pack-contents.liquid). Phone: kit tiles in a row of three, then one card per
-   book. Desktop: kit in a 300px column, books as three cards beside it. The sample button's bar fills from
-   --sample-progress (set by voxblock.js). Text on the orange button is dark (#1d3f43), never white.
+   book. Desktop: kit in a 300px column, books as three cards beside it. Sample buttons are the site's standard
+   .bookpreview button, styled by the "Book preview buttons" rules above. #whats-in-the-box is linked from the buy
+   column (.pack-contents-jump).
 ---------------------------------------------------------------------------------------------------------------- */
 .pack-contents-band { background: #fff7f0; padding-block: 36px; }
+.pack-contents { scroll-margin-top: 90px; } /* clears the sticky header when jumped to */
+.product-info__eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--accent-strong-dark); } /* title eyebrow (main-product title block) */
+.pack-contents-jump { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 14px; font-weight: 500; color: var(--brand-heading); text-decoration: underline; text-underline-offset: 3px; }
+.pack-contents-jump:hover { color: var(--brand-text); }
 .pack-contents__body { display: flex; flex-direction: column; gap: 24px; }
 .pack-contents { display: flex; flex-direction: column; gap: 24px; color: var(--brand-text); }
 .pack-contents p { margin: 0; }
@@ -1028,18 +1033,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .pack-contents__book-narrator span { font-weight: 500; }
 .pack-contents__book-meta { font-size: 11px; line-height: 1.4; }
 
-.pack-contents__play { display: flex; align-items: center; gap: 10px; width: 100%; margin-top: 6px; padding: 0; border: 0; background: none; color: inherit; text-align: start; cursor: pointer; }
-.pack-contents__play-icon { flex: 0 0 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: rgb(var(--button-background-primary)); color: #1d3f43; box-shadow: 0 2px 8px rgb(86 86 86 / 0.1); }
-.pack-contents__play:hover .pack-contents__play-icon { filter: brightness(0.95); }
-.pack-contents__play:focus-visible .pack-contents__play-icon { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
-.pack-contents__play-body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
-.pack-contents__play-label { font-size: 12px; font-weight: 500; color: #1d3f43; }
-.pack-contents__play-bar { display: block; height: 4px; border-radius: 4px; background: #d6e6e7; overflow: hidden; }
-.pack-contents__play-bar span { display: block; height: 100%; width: 0; border-radius: 4px; background: rgb(var(--button-background-primary)); transition: width .25s linear; }
-.pack-contents__play.playing .pack-contents__play-bar span { width: var(--sample-progress, 0%); }
-.pack-contents__icon-pause, .pack-contents__play-on { display: none; }
-.pack-contents__play.playing .pack-contents__icon-pause, .pack-contents__play.playing .pack-contents__play-on { display: inline; }
-.pack-contents__play.playing .pack-contents__icon-play, .pack-contents__play.playing .pack-contents__play-idle { display: none; }
+.pack-contents__play { margin-top: 6px; align-self: flex-start; } /* the site's standard sample button (.bookpreview .playpause) */
+.pack-contents__book-meta + .pack-contents__play { margin-top: 8px; }
 
 .pack-contents__value { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 16px; background: #eaf4f4; color: var(--brand-heading); font-size: 13px; line-height: 1.5; }
 .pack-contents__value svg { flex: 0 0 26px; }

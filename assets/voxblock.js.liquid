@@ -12,11 +12,6 @@ const VoxBlock = (() => {
     audio.addEventListener('loadstart', function(){console.log('loadstart')})
     audio.addEventListener('playing', function(){console.log('playing')})
     audio.addEventListener('ended', function(){console.log('ended'); audio.currentButton.classList.remove('playing');})
-    // Progress for buttons that show it (snippets/pack-contents.liquid): --sample-progress on the playing button
-    audio.addEventListener('timeupdate', function(){
-        const button = audio.currentButton;
-        if (button && audio.duration) button.style.setProperty('--sample-progress', (audio.currentTime / audio.duration * 100).toFixed(1) + '%');
-    })
 
     // PostHog: one event per play press, with the audiobook title from data-title
     const trackSamplePlayed = (button) => {

@@ -62,7 +62,15 @@ Branch `claude/starter-pack-whats-included`, draft PR #78, **not previewed yet**
   `--sample-progress` on the playing button for the bar.
 - Value line "£79.99 together · £100.96 bought separately" from the variant's compare-at. Note: the items' current
   prices add to £107.96 (player 49.99, bumper 15, cable 2, books 13.99 + 13.99 + 12.99), so compare-at undersells.
-- Check on preview: all four colours, phone and desktop width, sample play/pause and the bar.
+- Round 3 (owner): sample buttons are now the site's standard `.bookpreview` button (same markup as product cards,
+  no custom bar). Intro copy: "It arrives charged, so just drop in a book and press play." Player and bumper pictures
+  match the pack colour; the bumper has no Blue variant, so the section takes an extra picture per item
+  (`Bumper_Blue_Only.png` for Blue). Jump link "See what's in the box and hear the stories" under the description
+  (Custom Liquid block → `#whats-in-the-box`). Title eyebrow "Audiobook player + stories" (new `eyebrow` setting on
+  the main-product title block, `[count]` = books in the pack). One-book packs (Zeepy Sleep Intro Pack uses this
+  template) get "Your audiobook" as the heading.
+- Check on preview: all four colours (Blue bumper picture is a different render style), phone and desktop width,
+  sample play/pause, the jump link clears the sticky header, Zeepy Sleep Intro Pack.
 
 ## 2026-10-10: /pages/voxblock-vs-yoto one CTA everywhere + sticky table header (build)
 Branch `claude/vs-yoto-buy-buttons`, draft PR #71 into `main`, **awaiting owner check on draft theme 199807009152**.

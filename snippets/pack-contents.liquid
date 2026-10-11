@@ -5,11 +5,10 @@ Shows the player kit (three product pickers on the section, each with a caption)
 the pack's `bundles.products` metafield with its cover, narrator, length, ages and a sample button.
 
 - Player and bumper tiles follow the colour swatch: one image per variant of the picked product, the one whose title
-  matches the pack's selected colour is shown; voxblock.js swaps them on variant:change. A product with no variant of
-  that colour keeps its first image.
-- Sample buttons are ordinary .bookpreview buttons, so the shared player in voxblock.js plays them and sends
-  `sample_played` { title } like every other sample button. voxblock.js also sets --sample-progress on the playing
-  button, which fills the bar inside it.
+  matches the pack's selected colour is shown; voxblock.js swaps them on variant:change. For a colour the product has
+  no variant of (the bumper has no Blue), each item takes an optional extra picture + colour name.
+- Sample buttons use the same markup as the product cards' (.bookpreview + .playpause), so they look the same,
+  play through the shared player in voxblock.js and send `sample_played` { title } like every other sample button.
 - Book length reads book.duration as hours.minutes ("3.15" = 3 h 15 m).
 
 Accepts: product (the pack), opts (the section's settings)
@@ -27,7 +26,7 @@ Accepts: product (the pack), opts (the section's settings)
   {%- assign total_minutes = h | times: 60 | plus: m | plus: total_minutes -%}
 {%- endfor -%}
 
-<div class="pack-contents" data-pack-contents>
+<div class="pack-contents" id="whats-in-the-box" data-pack-contents>
   <div class="pack-contents__head">
     {%- if opts.eyebrow != blank -%}<p class="pack-contents__eyebrow">{{ opts.eyebrow }}</p>{%- endif -%}
     {%- if opts.heading != blank -%}<h2 class="pack-contents__title">{{ opts.heading }}</h2>{%- endif -%}
@@ -44,20 +43,32 @@ Accepts: product (the pack), opts (the section's settings)
       {%- if item != blank -%}
         <li class="pack-contents__kit-item">
           <div class="pack-contents__kit-media">
-            {%- assign shown = false -%}
+            {%- comment -%}One picture per colour (the item's variant images, plus the optional extra colour picture
+            for a colour the product has no variant of); the one matching the pack's colour shows.{%- endcomment -%}
+            {%- capture xkey -%}item_{{ i }}_extra_image{%- endcapture -%}
+            {%- capture xckey -%}item_{{ i }}_extra_colour{%- endcapture -%}
+            {%- assign extra_image = opts[xkey] -%}
+            {%- assign extra_colour = opts[xckey] | strip -%}
+            {%- assign has_match = false -%}
             {%- for v in item.variants -%}
-              {%- if v.featured_image != blank and v.title == pack_colour -%}{%- assign shown = v.id -%}{%- endif -%}
+              {%- if v.featured_image != blank and v.title == pack_colour -%}{%- assign has_match = true -%}{%- endif -%}
             {%- endfor -%}
-            {%- assign drew_variant = false -%}
+            {%- if extra_image != blank and extra_colour == pack_colour -%}{%- assign has_match = true -%}{%- endif -%}
+            {%- assign drew = 0 -%}
             {%- for v in item.variants -%}
               {%- if v.featured_image != blank and item.variants.size > 1 -%}
-                {%- assign drew_variant = true -%}
-                <img src="{{ v.featured_image | image_url: width: 400 }}" alt="{{ item.title | escape }}, {{ v.title | escape }}" width="400" height="400" loading="lazy" data-pack-colour="{{ v.title | escape }}" {% if shown == false %}{% unless forloop.first %}hidden{% endunless %}{% elsif v.id != shown %}hidden{% endif %}>
+                {%- if has_match -%}{%- if v.title == pack_colour -%}{%- assign hide = false -%}{%- else -%}{%- assign hide = true -%}{%- endif -%}{%- elsif drew == 0 -%}{%- assign hide = false -%}{%- else -%}{%- assign hide = true -%}{%- endif -%}
+                {%- assign drew = drew | plus: 1 -%}
+                <img src="{{ v.featured_image | image_url: width: 400 }}" alt="{{ opts[lkey] | default: item.title | escape }}, {{ v.title | escape }}" width="400" height="400" loading="lazy" data-pack-colour="{{ v.title | escape }}"{% if hide %} hidden{% endif %}>
               {%- endif -%}
             {%- endfor -%}
-            {%- unless drew_variant -%}
+            {%- if extra_image != blank and extra_colour != blank -%}
+              {%- assign drew = drew | plus: 1 -%}
+              <img src="{{ extra_image | image_url: width: 400 }}" alt="{{ opts[lkey] | default: item.title | escape }}, {{ extra_colour | escape }}" width="400" height="400" loading="lazy" data-pack-colour="{{ extra_colour | escape }}"{% unless extra_colour == pack_colour %} hidden{% endunless %}>
+            {%- endif -%}
+            {%- if drew == 0 -%}
               {{- item.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: item.title -}}
-            {%- endunless -%}
+            {%- endif -%}
           </div>
           <p class="pack-contents__kit-name">{{ opts[lkey] | default: item.title }}</p>
           {%- if opts[ckey] != blank -%}<p class="pack-contents__kit-caption">{{ opts[ckey] }}</p>{%- endif -%}
@@ -78,7 +89,11 @@ Accepts: product (the pack), opts (the section's settings)
   {%- if books.size > 0 -%}
     <div class="pack-contents__group">
       <div class="pack-contents__group-head">
-        <h3 class="pack-contents__group-title">{{ opts.books_heading | replace: '[count]', books.size }}</h3>
+        {%- if books.size == 1 -%}
+          <h3 class="pack-contents__group-title">{{ opts.books_heading_one | default: opts.books_heading | replace: '[count]', books.size }}</h3>
+        {%- else -%}
+          <h3 class="pack-contents__group-title">{{ opts.books_heading | replace: '[count]', books.size }}</h3>
+        {%- endif -%}
         {%- if total_minutes > 0 -%}
           {%- assign th = total_minutes | divided_by: 60 -%}
           {%- assign tm = total_minutes | modulo: 60 -%}
@@ -106,18 +121,10 @@ Accepts: product (the pack), opts (the section's settings)
                 {%- if age_lower != blank and age_upper != blank %} · Ages {{ age_lower }}–{{ age_upper }}{% endif -%}
               </p>
               {%- if book.metafields.book.preview != blank -%}
-                <button type="button" class="bookpreview pack-contents__play" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ book.metafields.book.preview | file_url }}" data-title="{{ book.title | escape }}">
-                  <span class="pack-contents__play-icon" aria-hidden="true">
-                    <svg class="pack-contents__icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10.2-6.5a1 1 0 0 0 0-1.7L9.5 4.6A1 1 0 0 0 8 5.5z"/></svg>
-                    <svg class="pack-contents__icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-                  </span>
-                  <span class="pack-contents__play-body">
-                    <span class="pack-contents__play-label">
-                      <span class="pack-contents__play-idle">Listen to a sample<span class="sr-only"> of {{ book.title }}</span></span>
-                      <span class="pack-contents__play-on">Playing sample<span class="sr-only"> of {{ book.title }}, press to pause</span></span>
-                    </span>
-                    <span class="pack-contents__play-bar" aria-hidden="true"><span></span></span>
-                  </span>
+                <button type="button" class="h-stack gap-2 tap-area bookpreview pack-contents__play" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ book.metafields.book.preview | file_url }}" data-title="{{ book.title | escape }}">
+                  <span class="playpause"></span>
+                  <span class="playpause_text"><span class="play">Preview</span><span class="pause">Playing...</span></span>
+                  <span class="sr-only">Play audio sample of {{ book.title }}</span>
                 </button>
               {%- endif -%}
             </div>
