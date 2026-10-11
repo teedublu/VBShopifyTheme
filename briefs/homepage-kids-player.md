@@ -22,7 +22,7 @@ The homepage is the lead page for the kids player search group (~60 phrasings, r
 - Left as is: the stats band renders "350+" and "30.5m" as H2s (theme impact-text section); the "Under 5's" age tile links to the player, not an age collection; hero PNG is 1.2 MB (Shopify serves ~390 KB WebP).
 
 ## Copy rules applied
-No "no apps" claims (owner, 11 Oct: a Voxblock-branded app is coming for MYO). Use no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes left as written.
+Sentence case for every heading, eyebrow and button ("Best-selling audiobooks", not "Best-selling Audiobooks"); only names keep capitals (Voxblock, Roald Dahl, Yoto, UK). No "no apps" claims (owner, 11 Oct: a Voxblock-branded app is coming for MYO). Use no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes left as written.
 "Children" in body copy and headings; "kids" in the title tag, meta description and one FAQ question, where people search with it. Facts: ages 3 to 14+ (owner confirmed min age 3), battery up to 16 hours (owner confirmed), 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded.
 
 ## Not in the theme (owner actions in Shopify admin, after approval)
