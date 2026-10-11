@@ -35,6 +35,13 @@ Supported variables
 {%- unless text_color == 'rgba(0,0,0,0)' or text_color == blank -%}
   {%- capture class -%}{{ class }} text-custom {%- endcapture -%}
   {%- capture style -%}{{ style }} --text-color: {{ text_color.rgb }};{%- endcapture -%}
+  {%- comment -%}VB: headings are Heading teal on light text surfaces; on dark surfaces (light text) they take the text colour{%- endcomment -%}
+  {%- assign text_brightness = text_color | color_brightness -%}
+  {%- if text_brightness > 160 -%}
+    {%- capture style -%}{{ style }} --heading-color: {{ text_color.rgb }};{%- endcapture -%}
+  {%- else -%}
+    {%- capture style -%}{{ style }} --heading-color: {{ settings.brand_heading.rgb }};{%- endcapture -%}
+  {%- endif -%}
 {%- endunless -%}
 
 {%- if class != blank -%}

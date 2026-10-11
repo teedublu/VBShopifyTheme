@@ -60,7 +60,7 @@ initialised in layout/theme.liquid). No storefront pixel events.
 <style>
   #shopify-section-{{ section.id }} .vs-hero {
     --vs-bg: {{ section.settings.background }};
-    --vs-heading: {{ section.settings.heading_color }};
+    --vs-heading: {% if section.settings.heading_color != blank and section.settings.heading_color != 'rgba(0,0,0,0)' %}{{ section.settings.heading_color }}{% else %}{{ settings.brand_heading }}{% endif %};
     --vs-text: {{ section.settings.text_color }};
     --vs-accent: {{ section.settings.accent_color }};
     --vs-eyebrow: {{ section.settings.eyebrow_color }};
@@ -91,10 +91,6 @@ initialised in layout/theme.liquid). No storefront pixel events.
   }
   #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title {
     margin: 0;
-    font-size: 25px;
-    line-height: 31px;
-    font-weight: 700;
-    letter-spacing: normal;
     color: var(--vs-heading);
   }
 
@@ -164,7 +160,6 @@ initialised in layout/theme.liquid). No storefront pixel events.
     }
     #shopify-section-{{ section.id }} .vs-hero__compare { align-self: center; }
     #shopify-section-{{ section.id }} .vs-hero__eyebrow { font-size: 13px; line-height: 18px; }
-    #shopify-section-{{ section.id }} .vs-hero h1.vs-hero__title { font-size: 38px; line-height: 46px; }
     #shopify-section-{{ section.id }} .vs-hero__cards { gap: 16px; }
     #shopify-section-{{ section.id }} .vs-card { gap: 8px; padding: 14px 14px 16px; border-radius: 16px; }
     #shopify-section-{{ section.id }} .vs-card--voxblock { padding: 13px 13px 15px; }
