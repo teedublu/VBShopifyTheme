@@ -1,6 +1,6 @@
 # Brief: Homepage targets the "kids audiobook player" search group
 
-Status: branch `claude/homepage-kids-player` (from `main`), draft PR into `main`. **Owner to check on a draft theme, phone + desktop, before merge.**
+Status: branch `claude/homepage-kids-player` (from `main`), draft PR #74, draft theme `VBShopifyTheme/claude/homepage-kids-player` (id 199842660736, a duplicate of live with the changed files pushed by API). **Owner to check phone + desktop before merge.** Checked in the preview HTML: one H1, new title and description, FAQPage JSON-LD present, hero button text #1d3f43.
 Design: canvas "Voxblock Homepage SEO Mockup" (https://claude.ai/artifact/6iwDoA6GxW5VwMZDDgnbWW). Design system "Voxblock" (https://claude.ai/artifact/RvJWci3xEpbVTSCay6m9ph).
 
 ## Why

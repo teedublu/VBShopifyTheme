@@ -13,7 +13,7 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
-Branch `claude/homepage-kids-player`, draft PR into `main`, **awaiting owner check on a draft theme**.
+Branch `claude/homepage-kids-player`, draft PR #74 into `main`, **awaiting owner check on draft theme 199842660736**.
 Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.
 - Title/meta override for the homepage in `layout/theme.liquid`: "Kids Audiobook Player | Screen-Free Audio Player | Voxblock".
 - `templates/index.json`: hero H1 "The screen-free audiobook player for children" + new hero line + second button; Meet Voxblock
