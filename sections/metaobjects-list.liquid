@@ -20,11 +20,6 @@
 
   #shopify-section-{{ section.id }} .object-directory__eyebrow {
     margin: 0 0 0.35rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(var(--text-color), 0.68);
   }
 
   #shopify-section-{{ section.id }} .object-directory__heading {
@@ -146,7 +141,7 @@
         {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.description != blank -%}
           <div class="object-directory__intro">
             {%- if section.settings.eyebrow != blank -%}
-              <p class="object-directory__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+              <p class="object-directory__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>
             {%- endif -%}
             {%- if section.settings.heading != blank -%}
               <h1 class="object-directory__heading">{{ section.settings.heading | escape }}</h1>

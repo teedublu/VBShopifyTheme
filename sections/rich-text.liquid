@@ -18,7 +18,7 @@
         {%- case block.type -%}
           {%- when 'subheading' -%}
             {%- if block.settings.text != blank -%}
-              <p class="bold" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+              <p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
             {%- endif -%}
 
           {%- when 'heading' -%}
