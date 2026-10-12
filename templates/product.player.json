@@ -18,26 +18,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "image_CiJXCy": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Email_Christmas_Banner_2.png",
-            "alignment": "start",
-            "max_width": 430
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
-            "heading_tag": "h3",
-            "eyebrow": "Screen and wifi free audiobook player"
+            "eyebrow": "Screen and wifi free audiobook player",
+            "heading_tag": "h3"
           }
-        },
-        "badges": {
-          "type": "badges",
-          "disabled": true,
-          "settings": {}
         },
         "price": {
           "type": "price",
@@ -45,10 +31,15 @@
             "show_taxes_notice": false
           }
         },
-        "text_MA3Pah": {
-          "type": "text",
+        "buy_buttons": {
+          "type": "buy_buttons",
           "settings": {
-            "text": "<p>A screen-free audiobook player children use on their own. Slot in a book and press play: no wifi, no downloads, no subscription. For toddlers to teens.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
+            "show_payment_button": true,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
           }
         },
         "variant_picker": {
@@ -69,6 +60,12 @@
             "text": "<p>★★★★★ <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\">4.9 on Trustpilot</a> · 100-day money back guarantee</p>"
           }
         },
+        "text_MA3Pah": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A screen-free audiobook player children use on their own. Slot in a book and press play: no wifi, no downloads, no subscription. For toddlers to teens.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
+          }
+        },
         "image_dihJHC": {
           "type": "image",
           "disabled": true,
@@ -82,20 +79,10 @@
           "type": "separator",
           "settings": {}
         },
-        "bogos_io_free_gift_gift_thumbnail_view_y6hGFC": {
-          "type": "shopify://apps/bogos-io-free-gift/blocks/gift-thumbnail-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
-          "disabled": true,
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
+        "packs_nudge": {
+          "type": "liquid",
           "settings": {
-            "show_payment_button": false,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
+            "liquid": "<a href=\"#packs\" class=\"player-packs-nudge\"><strong>Want books included?</strong> A Starter Pack is the player plus three audiobooks picked for their age, for less than buying them separately. <span class=\"player-packs-nudge__cta\">See Starter Packs ↓</span></a><style>.player-packs-nudge{display:block;padding:12px 14px;border-radius:12px;background:#fff3ed;border:1px solid #ffd9bd;color:#565656;text-decoration:none;font-size:14px;line-height:1.45}.player-packs-nudge strong{color:#197177}.player-packs-nudge__cta{display:inline-block;margin-top:4px;font-weight:600;color:#e5752a;text-decoration:underline}</style>"
           }
         },
         "offer_tcaCpM": {
@@ -301,26 +288,17 @@
         "separator_JnqTiQ": {
           "type": "separator",
           "settings": {}
-        },
-        "packs_nudge": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "<a href=\"#packs\" class=\"player-packs-nudge\"><strong>Want books included?</strong> A Starter Pack is the player plus three audiobooks picked for their age, for less than buying them separately. <span class=\"player-packs-nudge__cta\">See Starter Packs ↓</span></a><style>.player-packs-nudge{display:block;padding:12px 14px;border-radius:12px;background:#fff3ed;border:1px solid #ffd9bd;color:#565656;text-decoration:none;font-size:14px;line-height:1.45}.player-packs-nudge strong{color:#197177}.player-packs-nudge__cta{display:inline-block;margin-top:4px;font-weight:600;color:#e5752a;text-decoration:underline}</style>"
-          }
         }
       },
       "block_order": [
-        "image_CiJXCy",
         "title",
-        "badges",
         "price",
+        "buy_buttons",
+        "variant_picker",
         "text_B7QjHH",
         "text_MA3Pah",
-        "variant_picker",
         "image_dihJHC",
         "separator_eYhQVx",
-        "bogos_io_free_gift_gift_thumbnail_view_y6hGFC",
-        "buy_buttons",
         "packs_nudge",
         "offer_tcaCpM",
         "offer_wAzmdm",
@@ -357,6 +335,39 @@
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
+      }
+    },
+    "packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "gruffalo-and-friends-starter-pack",
+          "little-listeners-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "the-percy-jackson-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "card_style": "pack",
+        "anchor_id": "packs",
+        "products_per_row_desktop": 4,
+        "subheading": "Want books included?",
+        "title": "Starter Packs: the player plus their first books",
+        "content": "<p>Three audiobooks chosen for their age, for less than buying them separately. Pick a bumper colour on each pack.</p>",
+        "link_url": "/collections/voxblock-starter-pack-collection",
+        "link_text": "See all starter packs and intro packs",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "#ffffff",
+        "product_card_text_color": "#2a555a"
       }
     },
     "1765206968f91ec2c2": {
@@ -539,6 +550,7 @@
           "settings": {
             "image": "shopify://shop_images/player-web-media-image-v.26.png",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "start",
             "text_position": "place-self-start text-start",
             "icon": "none",
@@ -548,6 +560,10 @@
             "content": "<p>Our simple-to-use player allows kids to do it all themselves, including being in charge of their own literacy journey. Start collecting stories and escaping to new worlds.</p>",
             "link_text": "Discover how it works",
             "link_url": "shopify://pages/how-does-it-work",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -758,6 +774,7 @@
           "settings": {
             "image": "shopify://shop_images/sleeping-child-listening-to-the-secret-garden-audiobook.jpg",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "end",
             "text_position": "place-self-start text-start",
             "icon": "none",
@@ -767,6 +784,10 @@
             "content": "<p>You can easily enable <strong>bedtime mode</strong> to play your chosen story for 20 minutes before entering standby mode and drifting off to sleep.</p><p>A great nights sleep is vital for the<strong> </strong>development of our future bookworms. Our <strong>screen-free </strong>audiobook means no <strong>distracting glow</strong> keeping kids awake.</p>",
             "link_text": "",
             "link_url": "",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -781,6 +802,7 @@
           "settings": {
             "image": "shopify://shop_images/player-web-travel-v.26.png",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "start",
             "text_position": "place-self-start text-start",
             "icon": "none",
@@ -790,6 +812,10 @@
             "content": "<p>Travel a lot? Enable <strong>travel mode</strong> to keep your player from switching while in suitcase or backpack. Protecting your <strong>battery life </strong>until you need it most</p><p>Our player makes the perfect travel companion. With our <strong>connectivity-free </strong>tech, it can be listened to <strong>anytime, anywhere</strong> without the fuss.</p>",
             "link_text": "",
             "link_url": "",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -922,13 +948,15 @@
         "show_progress_bar": true,
         "products_count": 10,
         "products_per_row_mobile": "1",
+        "card_style": "default",
+        "anchor_id": "",
         "products_per_row_desktop": 3,
         "subheading": "",
         "title": "Our bestselling audiobooks",
         "content": "<p>Our collection of audiobooks spans all age groups and genres, filled with much-loved classics and favourites designed to inspire a love of reading.</p>",
         "link_url": "https://voxblock.co.uk/collections/audiobooks",
         "link_text": "See our full audiobook range",
-        "background": "#FFF3ED",
+        "background": "#fff3ed",
         "background_gradient": "",
         "text_color": "",
         "heading_color": "",
@@ -1070,39 +1098,6 @@
         "overlay_opacity": 0,
         "enable_watermark": false,
         "watermark_opacity": 6
-      }
-    },
-    "packs": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "voxblock-starter-pack-collection",
-        "hide_empty": false,
-        "products": [
-          "gruffalo-and-friends-starter-pack",
-          "little-listeners-starter-pack",
-          "roald-dahl-selection-starter-pack",
-          "the-percy-jackson-starter-pack"
-        ],
-        "full_width": true,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "products_count": 4,
-        "products_per_row_mobile": "2",
-        "card_style": "pack",
-        "anchor_id": "packs",
-        "products_per_row_desktop": 4,
-        "subheading": "Want books included?",
-        "title": "Starter Packs: the player plus their first books",
-        "content": "<p>Three audiobooks chosen for their age, for less than buying them separately. Pick a bumper colour on each pack.</p>",
-        "link_url": "/collections/voxblock-starter-pack-collection",
-        "link_text": "See all starter packs and intro packs",
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "#ffffff",
-        "product_card_text_color": "#2a555a"
       }
     }
   },
