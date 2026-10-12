@@ -44,6 +44,17 @@ Branch `claude/reviews-section-toddlers-teens`, PR into `main`, **awaiting owner
 - Age range "3 to 14+" → "toddlers to teens" (owner, 12 Oct): homepage hero line, age heading and FAQ answer;
   reviews page; both alternative pages; homepage, starter pack and reviews meta descriptions in `layout/theme.liquid`.
   Factual "made for children aged 3 and over" answers unchanged.
+- `/pages/reduce-screen-time` rebuilt as a parent's guide, new template `page.reduce-screen-time` (hero, quick answer
+  citing the DfE under-5s guidance of March 2026, seven ways as benefit cards, why audiobooks, reviews, four best-seller
+  packs, 6-question FAQ, links to the screen-time blog posts). Title/meta override in `layout/theme.liquid`:
+  "How to Reduce Screen Time for Kids: 7 Ways | Voxblock". Targets how to reduce screen time (480/mo UK), reduce /
+  reducing screen time (210 each), less screen time (70, Jan peak 320); "how much screen time is too much" (720) and
+  "screen time recommendations by age" (590) stay with the blog post, linked from the FAQ. **After merge (admin):** set
+  the page's template to `reduce-screen-time` (it is on `landing-page-problem` today). Preview before then with
+  `?view=reduce-screen-time`.
+- Starter pack blocks on the homepage and reviews page pointed at unpublished `-pack-set` products, so they fell back to
+  the collection order (no Gruffalo). Now the four best-sellers: Gruffalo, Little Listeners, Roald Dahl, Percy Jackson.
+  `product.player.json` recommendations still list `-set` handles: not changed.
 - Admin, done 12 Oct (not theme): Mouse character metaobject moved to the `gruffalo` template (story hero, classroom
   band, FAQ); checked live: one H1 "Mouse in The Gruffalo", title/meta unchanged.
 
