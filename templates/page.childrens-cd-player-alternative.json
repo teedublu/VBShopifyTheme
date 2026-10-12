@@ -1,0 +1,616 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "hero_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/player-boy-listening-independance.jpg",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/INDY-Best-AFI.png",
+            "icon_width": 120,
+            "subheading": "No screens. No discs. No wifi.",
+            "title": "The children's CD player, reinvented",
+            "content": "<p>Everything children loved about a CD player: they choose a story and press play. Without the scratched discs.</p><p>No wifi · up to 16 hours of play · 100-day money-back guarantee · free UK delivery over £25</p>",
+            "link_text": "Shop starter packs",
+            "link_url": "#packs",
+            "title_tag": "h1",
+            "link2_text": "How it works",
+            "link2_url": "#how-it-works",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "track": "cd_page_hero"
+          }
+        }
+      },
+      "block_order": [
+        "hero_image"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      }
+    },
+    "press": {
+      "type": "press",
+      "blocks": {
+        "quote_independent": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify://shop_images/INDY-Best-AFI.png",
+            "logo_width": 350,
+            "author": "Best budget buy · IndyBest, The Independent · Abby Driver, 2025 · Rated 4.9 on Trustpilot",
+            "content": "Easy setup … Straightforward to use.",
+            "show_rating": false,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "quote_independent"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "#ffffff",
+        "logo_item_border": ""
+      }
+    },
+    "why": {
+      "type": "rich-text",
+      "blocks": {
+        "why_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Why parents still look for a CD player",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "why_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>A children's CD player is simple. The child is in control: they choose a story, press play and listen. There is no screen and no phone, you own the story, and it all works offline. That is why parents still look for one.</p><p>The trouble is everything else: discs that scratch and skip, cases that end up everywhere, fewer new children's titles on CD, and a player that needs mains power or bulky batteries.</p><p>Voxblock keeps all four. It doesn't play CDs. Each story is a solid cardboard audiobook that sits on the player, so there is nothing to scratch and nothing that skips. Put a book on, press play and it works, with no wifi and nothing to set up.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "why_heading",
+        "why_text"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "players": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Child chooses and plays alone",
+            "value_1": "Yes: pick a book, put it on, press play",
+            "value_2": "Yes, with discs and cases to handle",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "Screen",
+            "value_1": "None",
+            "value_2": "None on most models",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "Wifi or downloads needed",
+            "value_1": "No",
+            "value_2": "No",
+            "value_3": "",
+            "good_answer": "no"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "Discs that scratch or skip",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "",
+            "good_answer": "no"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "Where the stories come from",
+            "value_1": "350+ audiobooks, from picture books to unabridged novels",
+            "value_2": "Charity shops, and fewer new children's CDs",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "Portability and battery",
+            "value_1": "Up to 16 hours, charged by USB-C",
+            "value_2": "Mains power or bulky batteries on many models",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "label": "Headphones",
+            "value_1": "3.5mm headphone jack",
+            "value_2": "Varies by model",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_8": {
+          "type": "row",
+          "settings": {
+            "label": "Bedtime timer",
+            "value_1": "20-minute bedtime mode",
+            "value_2": "Varies by model",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_9": {
+          "type": "row",
+          "settings": {
+            "label": "Durability",
+            "value_1": "Solid cardboard audiobooks, no discs to break",
+            "value_2": "Discs, lids and trays can break",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        },
+        "row_10": {
+          "type": "row",
+          "settings": {
+            "label": "Plays your old CDs",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "",
+            "good_answer": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7",
+        "row_8",
+        "row_9",
+        "row_10"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Side by side",
+        "title": "Best children's CD player vs Voxblock",
+        "content": "<p>How they compare on the things parents ask about. A CD player wins on playing the CDs you already own.</p>",
+        "text_position": "start",
+        "anchor_id": "compare",
+        "feature_heading": "",
+        "column_1": "Voxblock player",
+        "highlight_column": "1",
+        "column_2": "Children's CD player",
+        "column_3": "",
+        "footnote": "",
+        "column_1_note": "Player and USB-C cable.",
+        "column_2_price": "About £25 to £60",
+        "column_2_note": "Typical price at UK retailers, checked 12 October 2026.",
+        "column_1_product": "voxblock-player",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "Shop now",
+        "sticky_header": true,
+        "column_1_short": "Voxblock",
+        "column_2_short": "CD player",
+        "sticky_button_text": "Shop now",
+        "media_ratio": "square",
+        "media_fit": "contain",
+        "stack_on_mobile": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "chart_background": "#ffffff",
+        "chart_text_color": "",
+        "tick_color": "#4cb6ac",
+        "cross_color": "#c9c9c9",
+        "cta_track": "cd_page_table"
+      }
+    },
+    "how": {
+      "type": "story-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose a book",
+            "text": "Each story is a solid cardboard audiobook with the cover on the front, picked by sight."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Put it on the player and press play",
+            "text": "No screen, no menus and no wifi."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Stop and start where they left off",
+            "text": "Lift the book off whenever you like. The player remembers where the story stopped."
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Three steps, and a child can do all of them",
+        "intro": "",
+        "anchor_id": "how-it-works"
+      }
+    },
+    "starter_packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "little-listeners-starter-pack",
+          "gruffalo-and-friends-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "the-percy-jackson-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "Save when you bundle the player with audiobooks",
+        "title": "Choose a starter pack",
+        "content": "<p>One for each age, with the player and first stories in the box.</p>",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
+        "link_text": "All starter packs",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": "",
+        "anchor_id": "packs"
+      }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_md4XwU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ian (Feb, 2025)",
+            "title": "So easy to use, no downloads required, charge up and ready to go!",
+            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books, bought for 5 year old grandson, thinking of purchasing another for 10 year old granddaughter, tokens to collect to obtain free books, very easy order process, delivered 3 days after purchase, like the idea of matching headphones too, excellent information and taster audios on website. Would highly recommend.</p>"
+          }
+        },
+        "testimonial_FDmkry": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "E Joyce (Nov, 2024)",
+            "title": "Great, great, great",
+            "content": "<p>They've always promptly responded to any queries and are very helpful. The blocks are robust and the audio books look like the actual books which I think is great. We love that it isn't connected to the wi-fi and is very portable. The books are quite expensive but in line with similar products and they sometimes offer discounted books or you can save tokens for a free book.</p>"
+          }
+        },
+        "testimonial_JcCpbT": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Laura (Jan 2026)",
+            "title": "Great audio books",
+            "content": "<p>My kids have loved using Voxblock and actually explained to me how they work. My daughter listened to 'I am Rebel' while she knitted, and finished it in a couple of sittings!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_md4XwU",
+        "testimonial_FDmkry",
+        "testimonial_JcCpbT"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "What parents say about Voxblock",
+        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "buy": {
+      "type": "rich-text",
+      "blocks": {
+        "cta_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Just add a story and press play.",
+            "heading_tag": "h1",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "cta_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Free UK delivery on orders over £25 · 100-day money-back guarantee</p>"
+          }
+        },
+        "cta_divider": {
+          "type": "divider",
+          "settings": {}
+        },
+        "cta_starter_pack": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Shop starter packs",
+            "url": "shopify://collections/voxblock-starter-pack-collection",
+            "background": "",
+            "text_color": "",
+            "track": "cd_page_pack"
+          }
+        },
+        "cta_player": {
+          "type": "button",
+          "settings": {
+            "style": "outline",
+            "size": "xl",
+            "text": "Player on its own",
+            "url": "/products/voxblock-player",
+            "background": "",
+            "text_color": "#ffffff",
+            "track": "cd_page_pack_player"
+          }
+        }
+      },
+      "block_order": [
+        "cta_heading",
+        "cta_text",
+        "cta_divider",
+        "cta_starter_pack",
+        "cta_player"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "buy",
+        "background": "#197177",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "Is it still worth buying a children's CD player?",
+            "content": "<p>It can be, if you already own a shelf of CDs, because a CD player will play them and Voxblock won't. If you are starting from scratch, a CD player means scratched and skipping discs, cases to keep track of, fewer new children's titles on CD, and mains power or batteries. Voxblock keeps what parents like about a CD player (the child chooses, presses play, there is no screen and you own the story) and replaces the discs with solid cardboard audiobooks.</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "Can Voxblock play CDs?",
+            "content": "<p>No. Voxblock plays its own audiobooks, not CDs. Each story is stored inside a solid cardboard audiobook that you put on the player, so there are no discs to scratch or skip.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "What age is it for?",
+            "content": "<p>Toddlers to teens. Young children can pick a story by its cover and press play on their own, and the stories run from picture books to unabridged novels for older children.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "Can my child use it on their own?",
+            "content": "<p>Yes. There is no screen or menu. They choose an audiobook by its cover, put it on the player and press play, and the player remembers where the story stopped.</p>"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need wifi or an app?",
+            "content": "<p>No wifi is needed. There are no downloads, no streaming and nothing to set up: each story is stored inside its audiobook, so you put it on the player and press play.</p>"
+          }
+        },
+        "item_6": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>Up to 16 hours, charged by USB-C.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about children's CD players",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "Our customer support is available Monday to Friday: 8am-8:30pm.",
+        "answer_time": "Average answer time: 24h",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "crosslinks": {
+      "type": "rich-text",
+      "blocks": {
+        "links": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<p>Comparing other players? <a href=\"/pages/alternative-to-yoto\" data-vs-track=\"cd_page_crosslink_yoto\">Voxblock vs Yoto</a> · <a href=\"/pages/alternative-to-toniebox\" data-vs-track=\"cd_page_crosslink_toniebox\">Voxblock vs Toniebox</a> · <a href=\"/blogs/news/voxblock-vs-yoto-vs-tonies-which-audio-player-is-best-for-your-child\" data-vs-track=\"cd_page_crosslink_guide\">Yoto vs Tonies: the full guide</a></p><p>Stories by age: <a href=\"/collections/voxblock-audiobooks-under-5s\" data-vs-track=\"cd_page_crosslink_age\">Under 5s</a> · <a href=\"/collections/audiobooks-5-8-years\" data-vs-track=\"cd_page_crosslink_age\">5 to 8</a> · <a href=\"/collections/audiobooks-8-10-years\" data-vs-track=\"cd_page_crosslink_age\">8 to 10</a> · <a href=\"/collections/audiobooks-10-to-teens\" data-vs-track=\"cd_page_crosslink_age\">10 to teens</a> · <a href=\"/\" data-vs-track=\"cd_page_crosslink_home\">The Voxblock audiobook player</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "links"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "#e9f6f4",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "footnotes": {
+      "type": "rich-text",
+      "blocks": {
+        "notes_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "How we compared",
+            "heading_tag": "h6",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "notes_text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Children's CD player prices are the range of children's CD players shown in Google UK Shopping results on 12 October 2026 (£24 to £56), given as about £25 to £60. Features differ by model: the table describes typical children's CD players, and not every model has every feature or limitation. Voxblock prices and specifications come from voxblock.co.uk. Voxblock is not a CD player and does not play CDs.</p><p>Review quoted from “Best kids’ audio players”, IndyBest, The Independent (Abby Driver, 2025). Parent reviews are quoted as written.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "notes_heading",
+        "notes_text"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "press",
+    "why",
+    "players",
+    "how",
+    "starter_packs",
+    "reviews",
+    "buy",
+    "faq",
+    "crosslinks",
+    "footnotes"
+  ]
+}

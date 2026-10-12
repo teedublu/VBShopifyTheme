@@ -113,6 +113,10 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         # Brand reviews / consideration page: targets "voxblock reviews" so it supports the homepage rather than competing for player searches
         assign resolved_page_title = 'Voxblock Reviews: Why Parents Choose Voxblock'
         assign resolved_page_description = 'Read Voxblock reviews from UK parents and the seven reasons families choose our screen-free audiobook player for children aged 3 to 14+. 100-day guarantee.'
+      elsif request.page_type == 'page' and page.handle == 'childrens-cd-player-alternative'
+        # Children's CD player alternative page (briefs/childrens-cd-player-page.md): "kids" allowed in the meta description only
+        assign resolved_page_title = "Children's CD Player Alternative: Audiobooks | Voxblock"
+        assign resolved_page_description = 'Looking for a kids CD player? Voxblock is the screen-free audiobook player children work themselves. No discs to scratch, no wifi, 16-hour battery.'
       endif
 
       # Series pages: "<Series> Audiobooks in Order | Voxblock" when the series has a reading order, else "for Kids"
