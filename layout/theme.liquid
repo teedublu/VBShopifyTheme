@@ -117,6 +117,11 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         # Children's CD player alternative page (briefs/childrens-cd-player-page.md): "kids" allowed in the meta description only
         assign resolved_page_title = "Children's CD Player Alternative: Audiobooks | Voxblock"
         assign resolved_page_description = 'Looking for a kids CD player? Voxblock is the screen-free audiobook player children work themselves. No discs to scratch, no wifi, 16-hour battery.'
+      elsif request.page_type == 'page' and template.suffix == 'childrens-cassette-player-alternative'
+        # Children's cassette player alternative (briefs/childrens-cassette-player-page.md). Keyed on the template, not the
+        # handle, so the existing /pages/modern-cassette-player keeps its title until its template is switched in admin.
+        assign resolved_page_title = "Children's Cassette Player Alternative | Voxblock"
+        assign resolved_page_description = 'Looking for a kids cassette player? Voxblock is the screen-free audiobook player children work themselves. No tapes to tangle, no wifi, 16-hour battery.'
       endif
 
       # Series pages: "<Series> Audiobooks in Order | Voxblock" when the series has a reading order, else "for Kids"
