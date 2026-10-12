@@ -40,7 +40,7 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 Branch `claude/reviews-section-toddlers-teens`, PR into `main`, **awaiting owner check on its draft theme**.
 - `page.reasons-to-buy` (Voxblock reviews page): homepage "Reading for pleasure / Connectivity free / Travel companion"
   image carousel (`multiple-images-with-text`) added after the reasons cards. Copy fix in both copies: "Designed with
-  kids in mind" → "children" (body-copy rule).
+  kids in mind" and "rough and tumble kids" → "children" (body-copy rule).
 - Age range "3 to 14+" → "toddlers to teens" (owner, 12 Oct): homepage hero line, age heading and FAQ answer;
   reviews page; both alternative pages; homepage, starter pack and reviews meta descriptions in `layout/theme.liquid`.
   Factual "made for children aged 3 and over" answers unchanged.
