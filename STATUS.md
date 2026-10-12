@@ -36,6 +36,23 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-12: Product title, price and breadcrumbs consistent (build)
+Branch `claude/product-title-price-crumbs`. Starts from main after the owner's admin reorder of the player and
+starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy buttons now straight under the price).
+- Title: every product page H1 uses the theme's Large heading size (24px phone). The title block's "Style" setting
+  now only applies in quick view (the player was Medium, 22px).
+- Price: plain, pack (bundle-price) and offer prices on the product page all use `--text-h2`, the same size as the
+  title. Before: plain prices 36px (240%), pack prices ~20px. Cards unchanged. One rule in voxblock.css.
+- Order: price block moved straight under the title in 9 templates (badge or short text sat between them):
+  accessories, audiobook, gruffalo, intro-pack-bundle, product (default), myo-product, player-senior, school-product,
+  starter-pack. pre-order (theme default, unused) left alone.
+- Breadcrumbs: phone shows one back link to the parent page ("‹ Voxblock Starter Pack Bundles"), desktop the full
+  trail on one line; smaller, quieter text; section spacing via the theme variable. 73px → 33px on phones.
+  BreadcrumbList JSON-LD unchanged in shape. Non-audiobook products (player, accessories, schools) now start at Home
+  instead of "Our Content".
+- Checked on live pages at 375px with the CSS injected: pack Add to cart bottom 849 → 803px (inside the first
+  screen), player 696px. Needs a draft-theme preview before merge.
+
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
 Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.

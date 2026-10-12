@@ -327,6 +327,16 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .bundle-price--page .bundle-price__was { position: static; flex-basis: 100%; margin-top: 0; }
 .bundle-price--page [hidden] { display: none !important; }
 
+/* ---------------------------- */
+/* PRODUCT PAGE PRICE: one size on every product page */
+/* ---------------------------- */
+/* Plain prices (sale-price), pack prices (bundle-price) and offer prices (offer-price) used to render at different sizes
+   (36px vs 20px on phones). All three now use the theme's Large heading size, the same size as the product title.
+   Product cards are unaffected (they are not inside .product-info__price). */
+.product-info__price :is(sale-price.text-lg, .bundle-price__now, .offer-price__now) { font-size: var(--text-h2); line-height: 1.1; font-weight: 700; }
+.product-info__price compare-at-price, .product-info__price .offer-price__was { font-size: var(--text-base); }
+.product-info__price .bundle-price--page { row-gap: 0.25rem; }
+
 /* Anchor target for the "Choose your pack" hero button (collection.starter-pack-collection): clear the sticky header */
 #product-grid { scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }
 
