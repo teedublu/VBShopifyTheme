@@ -21,18 +21,25 @@
         "title": {
           "type": "title",
           "settings": {
-            "heading_tag": "h2",
-            "eyebrow": "Audiobook player + stories"
+            "eyebrow": "Audiobook player + stories",
+            "heading_tag": "h2"
           }
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {}
         },
         "price": {
           "type": "price",
           "settings": {
             "show_taxes_notice": false
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
           }
         },
         "image_EY7Gz3": {
@@ -43,10 +50,6 @@
             "alignment": "start",
             "max_width": 200
           }
-        },
-        "bogos_io_free_gift_gift_thumbnail_view_i8qLxW": {
-          "type": "shopify://apps/bogos-io-free-gift/blocks/gift-thumbnail-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
-          "settings": {}
         },
         "description_bTNpDV": {
           "type": "description",
@@ -88,17 +91,6 @@
         "bundle_M4k64R": {
           "type": "bundle",
           "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
         },
         "collapsible_text_kBDw7a": {
           "type": "collapsible_text",
@@ -281,17 +273,15 @@
       },
       "block_order": [
         "title",
-        "badges",
         "price",
+        "buy_buttons",
         "image_EY7Gz3",
-        "bogos_io_free_gift_gift_thumbnail_view_i8qLxW",
         "description_bTNpDV",
         "liquid_pack_jump",
         "collapsible_text_cVRMDH",
         "separator_PiCLpj",
         "variant_picker",
         "bundle_M4k64R",
-        "buy_buttons",
         "collapsible_text_kBDw7a",
         "product_variations_JarL4E",
         "separator_6JxJFe",
@@ -331,6 +321,8 @@
       "settings": {
         "full_width": true,
         "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
         "eyebrow": "What's in the box",
         "heading": "Everything to start listening, the day it arrives",
         "intro": "No downloads, no wi-fi, no app. It arrives charged, so just drop in a book and press play.",
@@ -338,6 +330,7 @@
         "item_1": "voxblock-player",
         "item_1_label": "Voxblock player",
         "item_1_caption": "Up to 16 hours per charge",
+        "item_1_extra_colour": "",
         "item_2": "bumper",
         "item_2_label": "Protective bumper",
         "item_2_caption": "Takes the knocks from little hands",
@@ -346,6 +339,7 @@
         "item_3": "voxblock-usb-charging-cable",
         "item_3_label": "USB charging cable",
         "item_3_caption": "Charges from any USB plug",
+        "item_3_extra_colour": "",
         "books_heading": "[count] audiobooks",
         "books_heading_one": "Your audiobook",
         "show_value": true,
@@ -475,6 +469,7 @@
             "title_tag": "p",
             "link2_text": "",
             "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -515,6 +510,7 @@
             "title_tag": "p",
             "link2_text": "",
             "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -554,6 +550,7 @@
             "title_tag": "p",
             "link2_text": "",
             "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
@@ -593,6 +590,7 @@
             "title_tag": "p",
             "link2_text": "",
             "link2_url": "",
+            "track": "",
             "background": "#ffffff",
             "background_gradient": "",
             "text_color": "#565656",
