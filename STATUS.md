@@ -54,7 +54,8 @@ Branch `claude/reviews-section-toddlers-teens`, PR into `main`, **awaiting owner
   `?view=reduce-screen-time`.
 - Starter pack blocks on the homepage and reviews page pointed at unpublished `-pack-set` products, so they fell back to
   the collection order (no Gruffalo). Now the four best-sellers: Gruffalo, Little Listeners, Roald Dahl, Percy Jackson.
-  `product.player.json` recommendations still list `-set` handles: not changed.
+  `product.player.json` "Frequently bought together": the five unpublished `-set` packs removed from its list (no visible
+  change; it already showed the six published items).
 - Admin, done 12 Oct (not theme): Mouse character metaobject moved to the `gruffalo` template (story hero, classroom
   band, FAQ); checked live: one H1 "Mouse in The Gruffalo", title/meta unchanged.
 
