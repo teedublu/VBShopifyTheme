@@ -27,6 +27,7 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
   earlier.
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
 - Children's CD player page `/pages/childrens-cd-player-alternative` (new template, once the page exists in admin).
+- Children's cassette player page `/pages/modern-cassette-player` (new template, once switched in admin).
 
 ## Open: site-wide colour contrast (owner: must be resolved)
 Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for large headings and buttons):
@@ -36,6 +37,15 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-12: Children's cassette player page (build)
+Branch `claude/childrens-cassette-player-page` (stacked on the CD page branch, PR #83), draft theme
+`VBShopifyTheme/claude/childrens-cassette-player-page`, draft PR, **awaiting owner check**. Record: `briefs/childrens-cassette-player-page.md`.
+- Rebuilds the existing `/pages/modern-cassette-player` (live since Feb 2024, a text essay, 1,429 impressions, 0 clicks) on a new
+  template `page.childrens-cassette-player-alternative`, targeting "children's cassette player" (260 a month, 480 in Nov) with
+  "modern cassette player" (140) secondary. Same structure and copy rules as the CD page.
+- Title/meta are keyed on the template suffix, so nothing changes on the live page until its template is switched in admin.
+- Admin after merge: switch that page's template, add to the Compare menu.
 
 ## 2026-10-12: Children's CD player page (build)
 Branch `claude/childrens-cd-player-page`, draft theme `VBShopifyTheme/claude/childrens-cd-player-page`, draft PR into `main`,
