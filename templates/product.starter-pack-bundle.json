@@ -31,6 +31,17 @@
             "show_taxes_notice": false
           }
         },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "swatch",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -63,30 +74,10 @@
             "liquid": "{%- if product.metafields.bundles.products.value.size > 0 -%}<a class=\"pack-contents-jump link\" href=\"#whats-in-the-box\">See what's in the box and hear the stories<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12l7 7 7-7\"/></svg></a>{%- endif -%}"
           }
         },
-        "collapsible_text_cVRMDH": {
-          "type": "collapsible_text",
-          "settings": {
-            "title": "What's included",
-            "content": "<ul><li>1 Voxblock Audiobook Player</li><li>1 Voxblock Protective Bumper</li><li>1 Voxblock USB Charging Cable</li><li>Your Audiobook(s)</li></ul><p>[[bp]]</p>",
-            "page": "",
-            "bundle_products": true
-          }
-        },
         "separator_PiCLpj": {
           "type": "separator",
           "disabled": true,
           "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "swatch",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
         },
         "bundle_M4k64R": {
           "type": "bundle",
@@ -274,13 +265,12 @@
       "block_order": [
         "title",
         "price",
+        "variant_picker",
         "buy_buttons",
         "image_EY7Gz3",
         "description_bTNpDV",
         "liquid_pack_jump",
-        "collapsible_text_cVRMDH",
         "separator_PiCLpj",
-        "variant_picker",
         "bundle_M4k64R",
         "collapsible_text_kBDw7a",
         "product_variations_JarL4E",
