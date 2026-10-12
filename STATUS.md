@@ -46,8 +46,8 @@ differences from the brief and open questions: `briefs/childrens-cd-player-page.
   band, 6-question FAQ, cross-links, small print. Title/meta set in `layout/theme.liquid`. One FAQ line added on the homepage.
 - Shared sections: `story-steps` gets an optional `anchor_id`; `comparison-table` an optional `cta_track`. Both off by default.
 - Tracking: PostHog `vs_yoto_click` targets `cd_page_hero`, `cd_page_table`, `cd_page_pack`.
-- Admin after merge: create the page (handle `childrens-cd-player-alternative`, this template), add to the Compare menu,
-  link from the 90s childhood blog post. Open: URL choice, hero photo, CD/tape reviews (see the brief file).
+- Admin: page created unpublished 12 Oct (handle `childrens-cd-player-alternative`, this template); publish after merge.
+  Then add to the Compare menu and link from the 90s childhood blog post. Open: URL choice, hero photo, CD/tape reviews (see the brief file).
 - Copy note: the brief says "toddlers to teens" (12 Oct) while the copy rules above say "ages 3 to 14+"; the page follows the brief.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)

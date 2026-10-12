@@ -57,8 +57,10 @@ does not rank for it today.
    reviews shown are general. Replace with CD or tape mentions if there are any.
 
 ## Admin steps after merge (not in the theme)
-- Create the page: title "Children's CD player alternative", handle `childrens-cd-player-alternative`, template
-  `page.childrens-cd-player-alternative`, published.
+- Page created in admin on 12 Oct, **unpublished** (id 763270693248, title "Children's CD player alternative", handle
+  `childrens-cd-player-alternative`, template suffix `childrens-cd-player-alternative`). Publish it only after this
+  branch is merged: until then the live theme has no such template and would render the default page layout. Title and
+  meta come from `layout/theme.liquid`, so the admin SEO fields can stay empty.
 - Add the page to the Compare menu next to the Yoto and Toniebox alternative pages (Navigation).
 - Add one link from the blog post `/blogs/news/what-90s-childhood-got-right-about-entertainment` (it already mentions CD
   players and ranks 4th for "screen free childhood").
