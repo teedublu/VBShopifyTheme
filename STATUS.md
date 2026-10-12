@@ -50,6 +50,9 @@ starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy butt
   trail on one line; smaller, quieter text; section spacing via the theme variable. 73px → 33px on phones.
   BreadcrumbList JSON-LD unchanged in shape. Non-audiobook products (player, accessories, schools) now start at Home
   instead of "Our Content".
+- Phone gallery on audiobook and gruffalo templates: dots like every other product (was free scroll, which shows
+  side peeks and a thumbnail strip). Desktop layouts still differ per template (grid_highlight, thumbnails left,
+  thumbnails bottom): owner to choose one.
 - Checked on live pages at 375px with the CSS injected: pack Add to cart bottom 849 → 803px (inside the first
   screen), player 696px. Confirmed on the draft theme: same measurements, no Liquid errors; owner to check.
 
