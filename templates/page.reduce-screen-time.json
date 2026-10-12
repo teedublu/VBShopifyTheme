@@ -1,0 +1,425 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_main": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/player-boy-listening-independance.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "A parent's guide",
+            "title": "How to reduce screen time for children",
+            "content": "<p>Seven practical ways to cut your child's screen time without the battles, based on UK guidance for families, and how a screen-free audiobook player helps children fill the gap on their own.</p><p>Free UK delivery over £25 · 100-day money-back guarantee</p>",
+            "link_text": "Shop screen-free starter packs",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "title_tag": "h1",
+            "link2_text": "See how Voxblock works",
+            "link2_url": "shopify://pages/how-does-it-work"
+          }
+        }
+      },
+      "block_order": [
+        "image_main"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "medium"
+      }
+    },
+    "quick_answer": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "text": "The quick answer",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "t": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Swap screens for things your child can do on their own, at the times screens creep in most: bedtime, mealtimes, car journeys and the hour after school. Keep screens out of bedrooms and the hour before bed, agree a few simple family rules, and put your own phone away too.</p><p>The Department for Education's guidance for families (March 2026) suggests no more than one hour of screen time a day for 2 to 5 year olds, avoiding screens for under-2s except for shared activities, and swapping a programme before sleep for a bedtime story.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "quick-answer",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "ways": {
+      "type": "benefit-cards",
+      "blocks": {
+        "way_1": {
+          "type": "card",
+          "settings": {
+            "icon": "moon",
+            "title": "Make bedtime screen-free",
+            "content": "<p>Keep screens out of the hour before bed. A bedtime story, read aloud or on an audiobook, gives the same wind-down without the glow.</p>"
+          }
+        },
+        "way_2": {
+          "type": "card",
+          "settings": {
+            "icon": "no-screen",
+            "title": "Keep screens out of bedrooms",
+            "content": "<p>Charge phones and tablets downstairs overnight, so the bedroom stays for sleep and stories.</p>"
+          }
+        },
+        "way_3": {
+          "type": "card",
+          "settings": {
+            "icon": "hands",
+            "title": "Make mealtimes device-free",
+            "content": "<p>A chat or a simple game at the table, instead of a tablet propped against the fruit bowl.</p>"
+          }
+        },
+        "way_4": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Plan the car journey",
+            "content": "<p>Long drives are where screens take over. Pack an audiobook player and headphones, and let them choose the stories before you set off.</p>"
+          }
+        },
+        "way_5": {
+          "type": "card",
+          "settings": {
+            "icon": "play",
+            "title": "Give them something they control",
+            "content": "<p>Children reach for screens because they can work them alone. Offer things they can start themselves: books, building toys, an audiobook player.</p>"
+          }
+        },
+        "way_6": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Agree a few clear rules",
+            "content": "<p>Decide when screens are allowed, not only for how long. A few simple rules, made together, mean fewer arguments.</p>"
+          }
+        },
+        "way_7": {
+          "type": "card",
+          "settings": {
+            "icon": "ear",
+            "title": "Put your own phone away too",
+            "content": "<p>Children copy what they see. Screen-free time works best when it is family time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "way_1",
+        "way_2",
+        "way_3",
+        "way_4",
+        "way_5",
+        "way_6",
+        "way_7"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Seven ways",
+        "title": "How to reduce screen time without the battles",
+        "content": "",
+        "text_alignment": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "icon_background": "",
+        "icon_color": "",
+        "icon_accent": ""
+      }
+    },
+    "why_audiobooks": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_main": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/home-images-literacy-v2.25-low-res.png",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Screen-free listening",
+            "title": "Why audiobooks make an easy swap",
+            "content": "<p>Listening gives children the stories and characters they love, without the screen. They build vocabulary and attention as they follow a story, and they can do it on their own: at bedtime, in the car or in a quiet corner.</p><p>Voxblock is a screen-free audiobook player for toddlers to teens. Put an audiobook on the player and press play: no wifi, no downloads and nothing to set up. Bedtime mode stops the story after 20 minutes.</p>",
+            "link_text": "Shop starter packs",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "background": "",
+            "background_gradient": "",
+            "text_color": "",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "title_tag": "h2",
+            "link2_text": "See how it works",
+            "link2_url": "shopify://pages/how-does-it-work"
+          }
+        }
+      },
+      "block_order": [
+        "image_main"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "medium"
+      }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_DDNy9M": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Harriet (Feb, 2025)",
+            "title": "I absolutely love our Voxblock",
+            "content": "<p>I absolutely love our Voxblock - my 5yr old loves to listen to it on long car journeys or on airplanes. I find it much more portable than a Toni's box. There is an endless selection of books to choose from and I really do think this is the best quality and value audio player on the market! I keep recommending to anyone who'll listen!</p>"
+          }
+        },
+        "testimonial_md4XwU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ian (Feb, 2025)",
+            "title": "So easy to use, no downloads required, charge up and ready to go!",
+            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books, bought for 5 year old grandson, thinking of purchasing another for 10 year old granddaughter, tokens to collect to obtain free books, very easy order process, delivered 3 days after purchase, like the idea of matching headphones too, excellent information and taster audios on website. Would highly recommend.</p>"
+          }
+        },
+        "testimonial_FDmkry": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "E Joyce (Nov, 2024)",
+            "title": "Great, great, great",
+            "content": "<p>They've always promptly responded to any queries and are very helpful. The blocks are robust and the audio books look like the actual books which I think is great. We love that it isn't connected to the wi-fi and is very portable. The books are quite expensive but in line with similar products and they sometimes offer discounted books or you can save tokens for a free book.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_DDNy9M",
+        "testimonial_md4XwU",
+        "testimonial_FDmkry"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "Reviews",
+        "title": "What parents say",
+        "content": "<p>Thousands of families choose Voxblock for its simplicity and reliability. Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "gruffalo-and-friends-starter-pack",
+          "little-listeners-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "the-percy-jackson-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "Where to start",
+        "title": "Screen-free starter packs",
+        "content": "",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "item_01": {
+          "type": "item",
+          "settings": {
+            "title": "How can I reduce my kids' screen time?",
+            "content": "<p>Start with the times screens creep in most: bedtime, mealtimes, car journeys and the hour after school. Keep screens out of bedrooms and the hour before bed, agree a few simple family rules, and give children things they can start on their own, such as books, building toys or an audiobook player. Putting your own phone away helps too.</p>"
+          }
+        },
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "title": "How much screen time is too much for a child?",
+            "content": "<p>For under-5s, the Department for Education's guidance (March 2026) suggests no more than an hour a day for 2 to 5 year olds, and avoiding screens for under-2s except for shared activities that encourage bonding and conversation. For older children it is less about a fixed number and more about screens not replacing sleep, play and time together. There is more in our guide <a href=\"/blogs/news/how-much-screen-time-is-too-much-a-simple-guide-for-parents\">How much screen time is too much?</a></p>"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "title": "What can children do instead of screens?",
+            "content": "<p>Anything they can start by themselves works best: reading, drawing, building, outdoor play, board games and listening to stories. See our ideas in <a href=\"/blogs/news/the-benefits-of-encouraging-screen-free-time\">The benefits of encouraging screen-free time</a>.</p>"
+          }
+        },
+        "item_04": {
+          "type": "item",
+          "settings": {
+            "title": "Does listening to an audiobook count as screen time?",
+            "content": "<p>Not on a screen-free player. Voxblock has no display at all: your child puts an audiobook on the player and presses play, so there is nothing to watch or scroll.</p>"
+          }
+        },
+        "item_05": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock for?",
+            "content": "<p>Toddlers to teens. The player is made for children aged 3 and over, and most 3 year olds can choose and play a story on their own. Audiobooks run from picture books to unabridged novels.</p>"
+          }
+        },
+        "item_06": {
+          "type": "item",
+          "settings": {
+            "title": "Does Voxblock need wifi?",
+            "content": "<p>No. There is no wifi, no downloads and no subscription. Each story is stored inside its audiobook, so it works anywhere, including in the car or on holiday.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04",
+        "item_05",
+        "item_06"
+      ],
+      "name": "Screen time questions",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about screen time",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "more": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "text": "More on screen time",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "t": {
+          "type": "richtext",
+          "settings": {
+            "content": "<ul><li><a href=\"/blogs/news/how-much-screen-time-is-too-much-a-simple-guide-for-parents\">How much screen time is too much? A simple guide for parents</a></li><li><a href=\"/blogs/news/should-you-be-reducing-your-children-s-screen-time\">Should you be reducing your children's screen time?</a></li><li><a href=\"/blogs/news/the-benefits-of-encouraging-screen-free-time\">The benefits of encouraging screen-free time</a></li><li><a href=\"/blogs/news/a-screen-free-christmas-simple-ways-to-help-children-switch-off\">A screen-free Christmas: simple ways to help children switch off</a></li><li><a href=\"/\">The screen-free audiobook player for children</a></li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ],
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "more",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "quick_answer",
+    "ways",
+    "why_audiobooks",
+    "reviews",
+    "packs",
+    "faq",
+    "more"
+  ]
+}

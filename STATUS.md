@@ -13,7 +13,7 @@ Contrast problems are fixed in the theme colour settings, never patched per sect
 - Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
 - "Children" in body copy; "kids" only where people search with it (title tag, meta description, an FAQ question).
 - No "no apps" claims (a Voxblock app is coming for MYO): say no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes stay as written.
-- Facts: ages 3 to 14+, battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
+- Facts: age range in copy is "toddlers to teens" (owner, 12 Oct; minimum age 3 stays in factual age answers), battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
 
 ## Performance: pages to check in the next site performance review
 Owner's standing request (9 Oct): every page we improve gets its performance checked in the next site performance
@@ -59,6 +59,29 @@ differences from the brief and open questions: `briefs/childrens-cd-player-page.
 - Admin: page created unpublished 12 Oct (handle `childrens-cd-player-alternative`, this template); publish after merge.
   Then add to the Compare menu and link from the 90s childhood blog post. Open: URL choice, hero photo, CD/tape reviews (see the brief file).
 - Copy note: the brief says "toddlers to teens" (12 Oct) while the copy rules above say "ages 3 to 14+"; the page follows the brief.
+
+## 2026-10-12: Reviews page section, "toddlers to teens" copy (build)
+Branch `claude/reviews-section-toddlers-teens`, PR into `main`, **awaiting owner check on its draft theme**.
+- `page.reasons-to-buy` (Voxblock reviews page): homepage "Reading for pleasure / Connectivity free / Travel companion"
+  image carousel (`multiple-images-with-text`) added after the reasons cards. Copy fix in both copies: "Designed with
+  kids in mind" and "rough and tumble kids" → "children" (body-copy rule).
+- Age range "3 to 14+" → "toddlers to teens" (owner, 12 Oct): homepage hero line, age heading and FAQ answer;
+  reviews page; both alternative pages; homepage, starter pack and reviews meta descriptions in `layout/theme.liquid`.
+  Factual "made for children aged 3 and over" answers unchanged.
+- `/pages/reduce-screen-time` rebuilt as a parent's guide, new template `page.reduce-screen-time` (hero, quick answer
+  citing the DfE under-5s guidance of March 2026, seven ways as benefit cards, why audiobooks, reviews, four best-seller
+  packs, 6-question FAQ, links to the screen-time blog posts). Title/meta override in `layout/theme.liquid`, keyed on the
+  template suffix so it only applies once the page's template is switched: "How to Reduce Screen Time for Kids: 7 Ways | Voxblock". Targets how to reduce screen time (480/mo UK), reduce /
+  reducing screen time (210 each), less screen time (70, Jan peak 320); "how much screen time is too much" (720) and
+  "screen time recommendations by age" (590) stay with the blog post, linked from the FAQ. **After merge (admin):** set
+  the page's template to `reduce-screen-time` (it is on `landing-page-problem` today). Preview before then with
+  `?view=reduce-screen-time`.
+- Starter pack blocks on the homepage and reviews page pointed at unpublished `-pack-set` products, so they fell back to
+  the collection order (no Gruffalo). Now the four best-sellers: Gruffalo, Little Listeners, Roald Dahl, Percy Jackson.
+  `product.player.json` "Frequently bought together": the five unpublished `-set` packs removed from its list (no visible
+  change; it already showed the six published items).
+- Admin, done 12 Oct (not theme): Mouse character metaobject moved to the `gruffalo` template (story hero, classroom
+  band, FAQ); checked live: one H1 "Mouse in The Gruffalo", title/meta unchanged.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
