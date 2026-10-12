@@ -26,6 +26,13 @@
           </div>
         {%- endif -%}
 
+      {%- when 'pack_contents' -%}
+        {%- if product.metafields.bundles.products.value.size > 0 -%}
+          <div class="product-info__pack-contents" {{ block.shopify_attributes }}>
+            {%- render 'pack-contents', product: product, opts: block.settings, in_buy_column: true -%}
+          </div>
+        {%- endif -%}
+
       {%- when 'bundle' -%}
         
           <div class="product-info__bundle" {{ block.shopify_attributes }}>

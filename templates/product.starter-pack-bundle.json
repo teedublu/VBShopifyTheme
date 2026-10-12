@@ -68,19 +68,40 @@
             "collapse_content": false
           }
         },
-        "liquid_pack_jump": {
-          "type": "liquid",
-          "settings": {
-            "liquid": "{%- if product.metafields.bundles.products.value.size > 0 -%}<a class=\"pack-contents-jump link\" href=\"#whats-in-the-box\">See what's in the box and hear the stories<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12l7 7 7-7\"/></svg></a>{%- endif -%}"
-          }
-        },
         "separator_PiCLpj": {
           "type": "separator",
           "disabled": true,
           "settings": {}
         },
+        "pack_contents": {
+          "type": "pack_contents",
+          "settings": {
+            "eyebrow": "What's in the box",
+            "heading": "Everything to start listening, the day it arrives",
+            "intro": "No downloads, no wifi, nothing to set up. It arrives charged, so just drop in a book and press play.",
+            "kit_heading": "The player kit",
+            "item_1": "voxblock-player",
+            "item_1_label": "Voxblock player",
+            "item_1_caption": "Up to 16 hours per charge",
+            "item_1_extra_colour": "",
+            "item_2": "bumper",
+            "item_2_label": "Protective bumper",
+            "item_2_caption": "Takes the knocks from little hands",
+            "item_2_extra_image": "shopify://shop_images/Bumper_Blue_Only.png",
+            "item_2_extra_colour": "Blue",
+            "item_3": "voxblock-usb-charging-cable",
+            "item_3_label": "USB charging cable",
+            "item_3_caption": "Charges from any USB plug",
+            "item_3_extra_colour": "",
+            "books_heading": "[count] audiobooks",
+            "books_heading_one": "Your audiobook",
+            "show_value": false,
+            "value_note": "Add more audiobooks any time from 350+."
+          }
+        },
         "bundle_M4k64R": {
           "type": "bundle",
+          "disabled": true,
           "settings": {}
         },
         "collapsible_text_kBDw7a": {
@@ -269,7 +290,7 @@
         "buy_buttons",
         "image_EY7Gz3",
         "description_bTNpDV",
-        "liquid_pack_jump",
+        "pack_contents",
         "separator_PiCLpj",
         "bundle_M4k64R",
         "collapsible_text_kBDw7a",
@@ -304,36 +325,6 @@
         "text_color": "",
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
-      }
-    },
-    "pack_contents_wib": {
-      "type": "pack-contents",
-      "settings": {
-        "full_width": true,
-        "background": "#fff7f0",
-        "background_gradient": "",
-        "text_color": "",
-        "eyebrow": "What's in the box",
-        "heading": "Everything to start listening, the day it arrives",
-        "intro": "No downloads, no wifi, nothing to set up. It arrives charged, so just drop in a book and press play.",
-        "kit_heading": "The player kit",
-        "item_1": "voxblock-player",
-        "item_1_label": "Voxblock player",
-        "item_1_caption": "Up to 16 hours per charge",
-        "item_1_extra_colour": "",
-        "item_2": "bumper",
-        "item_2_label": "Protective bumper",
-        "item_2_caption": "Takes the knocks from little hands",
-        "item_2_extra_image": "shopify://shop_images/Bumper_Blue_Only.png",
-        "item_2_extra_colour": "Blue",
-        "item_3": "voxblock-usb-charging-cable",
-        "item_3_label": "USB charging cable",
-        "item_3_caption": "Charges from any USB plug",
-        "item_3_extra_colour": "",
-        "books_heading": "[count] audiobooks",
-        "books_heading_one": "Your audiobook",
-        "show_value": true,
-        "value_note": "Add more audiobooks any time from 350+."
       }
     },
     "video_bgbrXD": {
@@ -788,7 +779,6 @@
   "order": [
     "breadcrumbs_dVcJUe",
     "main",
-    "pack_contents_wib",
     "video_bgbrXD",
     "text_with_icons_hRqMzj",
     "media_with_text_Eph8J6",
