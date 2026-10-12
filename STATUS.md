@@ -53,6 +53,11 @@ starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy butt
 - Phone gallery on audiobook and gruffalo templates: dots like every other product (was free scroll, which shows
   side peeks and a thumbnail strip). Desktop layouts still differ per template (grid_highlight, thumbnails left,
   thumbnails bottom): owner to choose one.
+- Gallery opens on the selected variant's picture (snippets/product-gallery.liquid used product.selected_variant,
+  which is only set with ?variant= in the URL, so packs opened on the first image: green Gruffalo while Orange was
+  selected). Fixes every product; variant images in Shopify were already right. Checked on the draft theme.
+- Pack contents intro: "No downloads, no wifi, nothing to set up." (was "no app"). Player description was already
+  clean after the owner's admin edit.
 - Checked on live pages at 375px with the CSS injected: pack Add to cart bottom 849 → 803px (inside the first
   screen), player 696px. Confirmed on the draft theme: same measurements, no Liquid errors; owner to check.
 
