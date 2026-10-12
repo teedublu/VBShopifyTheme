@@ -58,6 +58,10 @@ starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy butt
   selected). Fixes every product; variant images in Shopify were already right. Checked on the draft theme.
 - Pack contents intro: "No downloads, no wifi, nothing to set up." (was "no app"). Player description was already
   clean after the owner's admin edit.
+- Starter packs: "What's in the box" moved into the buy column (new main-product block `pack_contents`, same snippet,
+  phone layout at every width on a light panel, value line off) after the description, above the icons. Full-width
+  section removed from the template; jump link block removed; titles block (`bundle`) disabled. Owner happy (12 Oct).
+  Book titles typed into some pack descriptions in Shopify still show (Gruffalo, Roald Dahl, Bedtime, Adventure).
 - Checked on live pages at 375px with the CSS injected: pack Add to cart bottom 849 → 803px (inside the first
   screen), player 696px. Confirmed on the draft theme: same measurements, no Liquid errors; owner to check.
 
