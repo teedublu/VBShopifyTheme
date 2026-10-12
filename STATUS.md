@@ -26,6 +26,8 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
+- Children's CD player page `/pages/childrens-cd-player-alternative` (new template, once the page exists in admin).
+- Children's cassette player page `/pages/modern-cassette-player` (new template, once switched in admin).
 
 ## Open: site-wide colour contrast (owner: must be resolved)
 Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for large headings and buttons):
@@ -35,6 +37,28 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-12: Children's cassette player page (build)
+Branch `claude/childrens-cassette-player-page` (stacked on the CD page branch, PR #83), draft theme
+`VBShopifyTheme/claude/childrens-cassette-player-page`, draft PR, **awaiting owner check**. Record: `briefs/childrens-cassette-player-page.md`.
+- Rebuilds the existing `/pages/modern-cassette-player` (live since Feb 2024, a text essay, 1,429 impressions, 0 clicks) on a new
+  template `page.childrens-cassette-player-alternative`, targeting "children's cassette player" (260 a month, 480 in Nov) with
+  "modern cassette player" (140) secondary. Same structure and copy rules as the CD page.
+- Title/meta are keyed on the template suffix, so nothing changes on the live page until its template is switched in admin.
+- Admin after merge: switch that page's template, add to the Compare menu.
+
+## 2026-10-12: Children's CD player page (build)
+Branch `claude/childrens-cd-player-page`, draft theme `VBShopifyTheme/claude/childrens-cd-player-page`, draft PR into `main`,
+**awaiting owner check on the draft theme**. Brief: LPS `briefs/brief-childrens-cd-player-page.md`. Full record,
+differences from the brief and open questions: `briefs/childrens-cd-player-page.md`.
+- New template `page.childrens-cd-player-alternative` (alternative-page structure): hero, trust row, "why parents still
+  look for a CD player", comparison table vs a children's CD player, how it works, four age packs, three reviews, closing
+  band, 6-question FAQ, cross-links, small print. Title/meta set in `layout/theme.liquid`. One FAQ line added on the homepage.
+- Shared sections: `story-steps` gets an optional `anchor_id`; `comparison-table` an optional `cta_track`. Both off by default.
+- Tracking: PostHog `vs_yoto_click` targets `cd_page_hero`, `cd_page_table`, `cd_page_pack`.
+- Admin: page created unpublished 12 Oct (handle `childrens-cd-player-alternative`, this template); publish after merge.
+  Then add to the Compare menu and link from the 90s childhood blog post. Open: URL choice, hero photo, CD/tape reviews (see the brief file).
+- Copy note: the brief says "toddlers to teens" (12 Oct) while the copy rules above say "ages 3 to 14+"; the page follows the brief.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
