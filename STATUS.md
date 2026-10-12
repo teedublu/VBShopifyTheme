@@ -37,7 +37,7 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
 ## 2026-10-12: Product title, price and breadcrumbs consistent (build)
-Branch `claude/product-title-price-crumbs`. Starts from main after the owner's admin reorder of the player and
+Branch `claude/product-title-price-crumbs`, draft PR #85, draft theme 199895646592 (duplicate of live + changed files by API). Starts from main after the owner's admin reorder of the player and
 starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy buttons now straight under the price).
 - Title: every product page H1 uses the theme's Large heading size (24px phone). The title block's "Style" setting
   now only applies in quick view (the player was Medium, 22px).
@@ -51,7 +51,7 @@ starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy butt
   BreadcrumbList JSON-LD unchanged in shape. Non-audiobook products (player, accessories, schools) now start at Home
   instead of "Our Content".
 - Checked on live pages at 375px with the CSS injected: pack Add to cart bottom 849 → 803px (inside the first
-  screen), player 696px. Needs a draft-theme preview before merge.
+  screen), player 696px. Confirmed on the draft theme: same measurements, no Liquid errors; owner to check.
 
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
