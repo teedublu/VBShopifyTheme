@@ -4,9 +4,10 @@ STORY STEPS ("In what order do the characters appear?", templates/metaobject/cha
 ----------------------------------------------------------------------------------------------------------------------
 A heading, an intro and a numbered list (block "step": title + short text). Replaces the "How the cast works"
 rich text on the cast page and keeps its paragraph as the intro, so the page's text is kept.
+Optional anchor id (empty by default, so other pages are unchanged) lets a button jump to the section.
 {%- endcomment -%}
 
-<section class="story-steps" {{ section.shopify_attributes }}>
+<section class="story-steps" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}" style="scroll-margin-top: calc(var(--header-height) + 24px)"{% endif %} {{ section.shopify_attributes }}>
   <div class="container story-steps__inner">
     <div class="story-steps__head">
       {%- if section.settings.eyebrow != blank -%}<p class="story-steps__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
@@ -37,7 +38,8 @@ rich text on the cast page and keeps its paragraph as the intro, so the page's t
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "text", "id": "heading", "label": "Heading (H2)", "default": "In what order do the characters appear?" },
-    { "type": "richtext", "id": "intro", "label": "Intro" }
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID", "info": "Optional. Lets a button link to this section, e.g. how-it-works for #how-it-works." }
   ],
   "blocks": [
     {
