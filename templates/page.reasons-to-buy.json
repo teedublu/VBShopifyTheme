@@ -80,7 +80,7 @@
           "settings": {
             "icon": "book",
             "title": "A library that grows with them",
-            "content": "<p>350+ audiobooks for children aged 3 to 14+, from picture books to teen fiction.</p>"
+            "content": "<p>350+ audiobooks for toddlers to teens, from picture books to teen fiction.</p>"
           }
         },
         "card_5": {
@@ -361,11 +361,69 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
+    },
+    "multiple_images_with_text_qi7tAC": {
+      "type": "multiple-images-with-text",
+      "blocks": {
+        "item_Db3xTP": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/home-images-literacy-v2.25-low-res.png",
+            "image_rotation_degrees": -2,
+            "subheading": "Supporting development",
+            "title": "Reading for pleasure",
+            "content": "<p>Audiobooks build vocabulary, listening skills, and confidence. But their real magic is helping children enjoy stories, taking them on adventures without a screen in sight.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_maJpGC": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/home-image-connectivity-v2.25-low-res.png",
+            "image_rotation_degrees": 1.5,
+            "subheading": "No downloads, no wifi, no set-up",
+            "title": "Connectivity free",
+            "content": "<p>Designed with children in mind, the Voxblock player is completely connectivity free.  All Voxblock audio is stored on our audiobook blocks, that automatically play as soon as they are placed in the player. This means no wifi, no streaming, no downloads or set-up.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        },
+        "item_GyF79b": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/home-image-travel-v2.25-low-res.png",
+            "image_rotation_degrees": 0,
+            "subheading": "On the go",
+            "title": "Travel companion",
+            "content": "<p>Your child can carry their favourite companion with you wherever you go, whether that be in the car, on a plane, or a train. Our super lightweight design makes it easy to carry, plus the battery lasts for days with a single charge. Designed and made to handle all the rough and tumble kids can throw at it.</p>",
+            "button_url": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_Db3xTP",
+        "item_maJpGC",
+        "item_GyF79b"
+      ],
+      "settings": {
+        "full_width": true,
+        "images_layout": "stacked",
+        "collage_images_alignment": "middle",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
     }
   },
   "order": [
     "hero",
     "reasons",
+    "multiple_images_with_text_qi7tAC",
     "reviews",
     "press",
     "faq",
