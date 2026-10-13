@@ -1059,3 +1059,11 @@ html.vb-has-player .cart-player-prompt { display: none; }
   aspect-ratio: 1;
   object-fit: contain;
 }
+
+/* Empty cart drawer: the recommendations carousel spans the drawer and its cards keep their normal left-aligned
+   layout (the empty state centres everything else). */
+.empty-state > .cart-drawer__recommendations {
+  justify-self: stretch;
+  width: 100%;
+  text-align: start;
+}
