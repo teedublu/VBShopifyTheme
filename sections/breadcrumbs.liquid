@@ -368,8 +368,8 @@
           {%- assign c = crumb_pair | split: crumb_part_sep -%}
           {%- assign link = c[0] -%}
 
-          {%- unless link contains 'voxblock.co.uk' -%}
-            {%- assign link = link | prepend: 'https://voxblock.co.uk' -%}
+          {%- unless link contains '://' -%}
+            {%- assign link = link | prepend: shop.url -%}
           {%- endunless -%}
 
           {

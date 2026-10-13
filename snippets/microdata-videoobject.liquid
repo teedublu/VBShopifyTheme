@@ -10,7 +10,7 @@ Name and description:
 
 Thumbnail: the Shopify video's own preview image (the MP4 source has none, which gave the "no image" placeholder),
 or YouTube's thumbnail for a YouTube video (embedUrl only: a watch page is not a media file). Duration from the
-Shopify video. uploadDate stays fixed until the section has a date setting (PR B).
+Shopify video. uploadDate from the section's "Upload date" setting (blank: 2022-08-31, the old fixed value).
 ----------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 {%- liquid
@@ -71,7 +71,7 @@ Shopify video. uploadDate stays fixed until the section has a date setting (PR B
     "@type": "VideoObject",
     "name": {{ title | json }},
     "description": {{ description | json }},
-    "uploadDate": "2022-08-31T08:00:00+01:00",
+    "uploadDate": {{ section.settings.jsonld_upload_date | default: '2022-08-31' | strip | json }},
     {%- if content_url != blank -%}
       "contentUrl": {{ content_url | json }},
     {%- endif -%}
@@ -88,6 +88,6 @@ Shopify video. uploadDate stays fixed until the section has a date setting (PR B
         "name": {{ encodes | json }}
       },
     {%- endif -%}
-    "publisher": {%- render 'microdata-snippet-publisher' -%}
+    "publisher": {%- render 'jsonld-org-ref' -%}
   }
 {%- endif -%}
