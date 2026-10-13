@@ -47,6 +47,7 @@ Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a d
 - Homepage meta trimmed to 153 characters (`layout/theme.liquid`).
 - Done in admin 13 Oct (not in this PR): SEO titles/metas on 18 published packs, player, starter pack and accessories collections, how it works page; player image alts.
 - Not done: option name "Color" to "Colour" (product images use `#Color_<value>` alt tags for the variant-image mapping; renaming the option would break it). Basket Suggestions collection still holds unpublished packs (cart drawer links 404); remove them in admin.
+- Cart drawer recommendations: one list for empty and filled carts (theme editor › Cart drawer › Product recommendations), new snippet `cart-recommendations`; `empty-basket-recommended` and its "Basket Suggestions" collection are no longer used (collection can be deleted in admin after merge). Players and packs are left out when the cart already has a player or pack. List: player, Gruffalo pack, headphones, travel case, Charlie and the Chocolate Factory, A Bear Called Paddington.
 - Performance review: starter pack collection, how it works, player, pack products.
 
 ## 2026-10-12: Children's cassette player page (build)

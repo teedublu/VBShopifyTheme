@@ -1,0 +1,83 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CART RECOMMENDATIONS (cart drawer)
+----------------------------------------------------------------------------------------------------------------------
+
+One list for every state of the cart drawer, empty or not: theme editor › Cart drawer › Product recommendations
+(heading + products). Replaces the old "Basket Suggestions" collection that only fed the empty cart.
+
+Rules:
+* A product already in the cart is not shown.
+* When the cart already holds a player, a starter/intro pack, a schools pack or a player bundle, players and packs
+  are not shown (no second player for someone buying a pack). Same type rules as cart-player-prompt.
+
+Supported variables:
+* drawer_section: the cart-drawer section (for its settings)
+{%- endcomment -%}
+
+{%- liquid
+  assign player_types = 'player|starter pack|schools pack' | split: '|'
+
+  assign cart_has_player = false
+  for item in cart.items
+    assign item_type = item.product.type | downcase
+    if player_types contains item_type or item.product.tags contains 'Player Bundle'
+      assign cart_has_player = true
+    endif
+  endfor
+
+  assign horizontal_products_blends = true
+  assign product_card_background = drawer_section.settings.product_card_background
+
+  if product_card_background != 'rgba(0,0,0,0)' and product_card_background != blank and product_card_background != settings.dialog_background
+    assign horizontal_products_blends = false
+  endif
+
+  assign rendered_recommendations = 0
+
+  capture recommendations
+    for recommended_product in drawer_section.settings.products
+      assign item_count_in_cart = cart | line_items_for: recommended_product
+      if item_count_in_cart.size > 0
+        continue
+      endif
+
+      if cart_has_player
+        assign recommended_type = recommended_product.type | downcase
+        if player_types contains recommended_type or recommended_product.tags contains 'Player Bundle'
+          continue
+        endif
+      endif
+
+      render 'horizontal-product', product: recommended_product, show_add_to_cart: true, background: drawer_section.settings.product_card_background, text_color: drawer_section.settings.product_card_text_color
+      assign rendered_recommendations = rendered_recommendations | plus: 1
+    endfor
+  endcapture
+
+  assign carousel_id = 'cart-drawer-recommendations'
+-%}
+
+{%- if rendered_recommendations > 0 -%}
+  <div class="cart-drawer__recommendations">
+    <div class="v-stack gap-2.5 sm:gap-4">
+      <div class="h-stack justify-between gap-4">
+        {%- if drawer_section.settings.recommendations_title != blank -%}
+          <p>{{ drawer_section.settings.recommendations_title | escape }}</p>
+        {%- endif -%}
+
+        {%- if rendered_recommendations > 1 -%}
+          <div class="h-stack gap-2 hidden sm:flex">
+            <button is="prev-button" class="circle-chevron hover:colors" aria-controls="{{ carousel_id }}" aria-label="{{ 'general.accessibility.previous' | t | escape }}" disabled>{%- render 'icon' with 'chevron-left-small', direction_aware: true -%}</button>
+            <button is="next-button" class="circle-chevron hover:colors" aria-controls="{{ carousel_id }}" aria-label="{{ 'general.accessibility.next' | t | escape }}">{%- render 'icon' with 'chevron-right-small', direction_aware: true -%}</button>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <scroll-carousel selector=".horizontal-product" id="{{ carousel_id }}" class="horizontal-product-list-carousel {% unless horizontal_products_blends %}separate{% endunless %} scroll-area bleed">
+        <div class="horizontal-product-list {% if horizontal_products_blends %}divide-x{% else %}separate{% endif %}">
+          {{- recommendations -}}
+        </div>
+      </scroll-carousel>
+    </div>
+  </div>
+{%- endif -%}
