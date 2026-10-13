@@ -45,11 +45,8 @@
         </div>
 
         {%- if section.settings.player_prompt_enabled -%}
-          {%- liquid
-            assign prompt_pack = section.settings.player_prompt_pack | default: all_products['young-explorers-starter-pack']
-            assign prompt_player = section.settings.player_prompt_player | default: all_products['voxblock-player']
-          -%}
-          {%- render 'cart-player-prompt', pack: prompt_pack, player: prompt_player -%}
+          {%- assign prompt_player = section.settings.player_prompt_player | default: all_products['voxblock-player'] -%}
+          {%- render 'cart-player-prompt', player: prompt_player -%}
         {%- endif -%}
 
         {%- render 'cart-recommendations', drawer_section: section -%}
@@ -180,12 +177,6 @@
       "label": "Show the prompt",
       "info": "Shown when the basket has audiobooks but no player or pack, unless the signed-in customer already bought a player.",
       "default": true
-    },
-    {
-      "type": "product",
-      "id": "player_prompt_pack",
-      "label": "Starter pack to offer",
-      "info": "Blank uses Young Explorers Starter Pack."
     },
     {
       "type": "product",
