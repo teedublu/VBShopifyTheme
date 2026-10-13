@@ -1,46 +1,49 @@
-{%- case product.type -%}
-    
-    {%- when 'Something' -%}
-        
-    {%- else -%}
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "GBP"
-          },
-          "shippingDestination": [
-            {
-              "@type": "DefinedRegion",
-              "addressCountry": "UK"
-            }
-          ],
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "businessDays": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "https://schema.org/Monday",
-                    "https://schema.org/Tuesday",
-                    "https://schema.org/Wednesday",
-                    "https://schema.org/Thursday",
-                    "https://schema.org/Friday"
-                ]
-            },
-            "cutoffTime": "12:00:15Z",
-            "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "d"
-            },
-            "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 2,
-                "unitCode": "d"
-            }
-          }
-        }
-{%- endcase -%}
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+JSON-LD shippingDetails for one Offer (no surrounding braces: render inside an Offer object)
+
+* product: the product
+* price: the offer's price in pence (variant.price); defaults to product.price
+
+UK delivery: £3.50, free from £24.00. These match the Shopify "Domestic" rates (Settings > Shipping): Free Shipping
+from £24.00, Standard £3.50 up to £24.99. Owner chose to follow Shopify's £24 (13 Oct 2026); if that rate changes,
+change free_delivery_from too. Country code is ISO 3166-1 ("GB", not "UK").
+Transit 1-2 days: Royal Mail averaged 36 hours over 942 UK parcels, Jul-Oct 2026 (Sendcloud).
+Gift cards get no shippingDetails: callers check product.gift_card? and the product type before rendering.
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+{%- liquid
+  assign offer_price = price | default: product.price
+  assign free_delivery_from = 2400
+  assign shipping_rate = 3.5
+  if offer_price >= free_delivery_from
+    assign shipping_rate = 0
+  endif
+-%}
+"shippingDetails": {
+  "@type": "OfferShippingDetails",
+  "shippingRate": {
+    "@type": "MonetaryAmount",
+    "value": {{ shipping_rate | json }},
+    "currency": "GBP"
+  },
+  "shippingDestination": {
+    "@type": "DefinedRegion",
+    "addressCountry": "GB"
+  },
+  "deliveryTime": {
+    "@type": "ShippingDeliveryTime",
+    "handlingTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 0,
+      "maxValue": 1,
+      "unitCode": "DAY"
+    },
+    "transitTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 2,
+      "unitCode": "DAY"
+    }
+  }
+}

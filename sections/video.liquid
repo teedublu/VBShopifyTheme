@@ -119,9 +119,11 @@
       {%- endif -%}
     </div>
   </div>
-  <script type="application/ld+json">  
-    {%- render 'microdata-videoobject' product: product -%}
-  </script>
+  {%- capture video_jsonld -%}{%- render 'microdata-videoobject', product: product -%}{%- endcapture -%}
+  {%- assign video_jsonld = video_jsonld | strip -%}
+  {%- if video_jsonld != blank -%}
+    <script type="application/ld+json">{{ video_jsonld }}</script>
+  {%- endif -%}
 {%- endif -%}
 
 {% schema %}
@@ -346,6 +348,12 @@
       "id": "jsonld_description",
       "label": "Description",
       "default": "Voxblock is a simple to use screen-free audiobook player for children."
+    },
+    {
+      "type": "text",
+      "id": "jsonld_upload_date",
+      "label": "Upload date",
+      "info": "When the video was first published, as YYYY-MM-DD. Google requires a date; blank uses 2022-08-31."
     }
   ],
   "blocks": [

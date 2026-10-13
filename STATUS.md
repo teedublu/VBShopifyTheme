@@ -51,6 +51,37 @@ Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a d
 - Basket images: line items and small product cards use one square image box (`voxblock.css`), so tall audiobook covers no longer dwarf the player and accessories.
 - Performance review: starter pack collection, how it works, player, pack products.
 
+## 2026-10-13: Hotfix, Organization JSON-LD snippet rejected by Shopify
+After #89 merged, Shopify's GitHub sync rejected `snippets/jsonld-organization.liquid`, so every page printed "Liquid error (snippets/microdata-schema line 16): Could not find asset snippets/jsonld-organization.liquid" in its head. Cause: a quoted string containing a closing brace inside an output tag (the search target); Shopify ends an output tag at the first closing brace. Fix: build the string with assign. Rule for this theme: no braces inside quoted strings in output tags; check with a Shopify-style tokenizer scan, not only a local Liquid renderer.
+
+## 2026-10-13: Structured data, PR B (JSON-LD consistency)
+Branch `claude/jsonld-fixes-b`, stacked on PR A (`claude/jsonld-fixes-a`, #87), draft PR, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md` items 7–14.
+- One Organization node on every page (`snippets/jsonld-organization`, @id `{shop}/#organization`, from Settings > Brand); WebSite on the homepage only. Other blocks point to it (`snippets/jsonld-org-ref`) for publisher, seller and author.
+- One Product generator: `snippets/jsonld-product`, rendered in the layout for every product page (audiobooks included). Removed: `microdata-audiobook-as-product`, `microdata-product-variants`, `microdata-organisation`, `microdata-snippet-bisac_codes`, `microdata-snippet-publisher`. Brand "Voxblock" for every product: Voxblock is the publisher; the Shopify vendor is internal only and never used in structured data (owner, 13 Oct).
+- @id scheme: product `{url}#product`, audiobook `{page}#audiobook`, author/narrator `{page}#person`, character `{page}#character`, series `{page}#series`, collection `{url}#collection`, FAQ `{canonical}#faq`, article `{url}#article`.
+- Audiobook pages: all authors and narrators; offer points at the Product; ISBN only when a 978/979 13-digit barcode; duration from the book metafield; print edition as `exampleOfWork`; BISAC/Thema list fixed; removed `potentialAction`, Shopify publish date, block height/width, fixed 5-minute sample duration.
+- Characters are `Thing` (fictional character) with `subjectOf` their main audiobook; quotes point at them.
+- Collections: list of product pages (was every item typed Audiobook with a `#audiobook` URL). No `nextPage`/`previousPage`.
+- FAQ sections: new "Include in structured data" setting (default on); every FAQPage on a page shares @id `{canonical}#faq`, so the FAQ page's seven sections form one entity.
+- Video section: new "Upload date" setting (blank keeps 2022-08-31).
+- Every value through `| json`; https everywhere; no `priceValidUntil`; blog dates with time zone.
+- Owner to do: set "Upload date" on each video section; change the Organization description in Settings > Brand (it says "no need for any apps").
+
+## 2026-10-13: Structured data fixes, PR A (JSON-LD correctness)
+Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md`.
+- Shipping: `GB` (was `UK`, invalid); £3.50 under £24, free from £24 (matches Shopify rates). Unconfirmed order cut-off time removed.
+- Returns: `GB`; player and starter packs/bundles 100 days, free, by post; everything else 30 days, customer pays (owner, 13 Oct).
+- Player, pack and other non-audiobook product pages now carry shippingDetails and hasMerchantReturnPolicy (they had none). Gift cards excluded. Weight uses UN/CEFACT codes, omitted when 0.
+- Product JSON-LD only on /products/ pages: removed from `featured-audiobook-light` (audiobook, author, narrator, read-along pages) and from the audiogramme graph (owner agreed, 13 Oct).
+- Video: real thumbnail (was the "no image" placeholder), https contentUrl, no empty embedUrl, section JSON-LD title on non-audiobook pages (player video was "Transcript of Voxblock Audiobook Player Audiobook"). No script when there is nothing to describe.
+- Audiobook pages: image URL fixed (was a 404). Narrator pages: no placeholder image.
+- Check after merge: Rich Results Test on player, a pack, an audiobook product, an audiobook page, homepage; Search Console Merchant listings and Videos reports in 2–4 weeks.
+- Review 13 Oct (follow-up commit): YouTube videos get embedUrl only; video duration added; empty video script check hardened; gift cards (digital and physical) get no shipping/returns; fixed 1024 × 1024 image size claims removed.
+- Free delivery in JSON-LD follows Shopify's Domestic rates: free from £24.00, £3.50 below (owner, 13 Oct). Accessories and schools packs: 30 days, customer pays (owner confirmed).
+- Explorer Bundle + Voxblock Player retyped to Starter Pack by the owner (13 Oct), so it gets the 100-day policy.
+- Identifiers: sku, productID and GTIN left out when blank (native bundles have none); barcode only as a GTIN of valid length. Audiobook bundle pages now have one Product (the audiobook section outputs Product only for type Audiobooks). Charging Plug barcode (failed GTIN-8 check) removed in Shopify by the owner.
+- PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
+
 ## 2026-10-12: Children's cassette player page (build)
 Branch `claude/childrens-cassette-player-page` (stacked on the CD page branch, PR #83), draft theme
 `VBShopifyTheme/claude/childrens-cassette-player-page`, draft PR, **awaiting owner check**. Record: `briefs/childrens-cassette-player-page.md`.
