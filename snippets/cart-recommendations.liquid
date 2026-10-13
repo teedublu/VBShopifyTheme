@@ -3,8 +3,8 @@
 CART RECOMMENDATIONS (cart drawer)
 ----------------------------------------------------------------------------------------------------------------------
 
-One list for every state of the cart drawer, empty or not: theme editor › Cart drawer › Product recommendations
-(heading + products). Replaces the old "Basket Suggestions" collection that only fed the empty cart.
+One list for every state of the cart drawer, empty or not: the collection chosen in theme editor › Cart drawer ›
+Product recommendations (default: Basket Suggestions), in the collection's own order, up to 10 products.
 
 Rules:
 * A product already in the cart is not shown.
@@ -36,7 +36,8 @@ Supported variables:
   assign rendered_recommendations = 0
 
   capture recommendations
-    for recommended_product in drawer_section.settings.products
+    assign recommendations_collection = drawer_section.settings.recommendations_collection | default: collections['basket-suggestions']
+    for recommended_product in recommendations_collection.products limit: 10
       assign item_count_in_cart = cart | line_items_for: recommended_product
       if item_count_in_cart.size > 0
         continue
