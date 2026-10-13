@@ -1,139 +1,174 @@
-{%- assign product = all_products[audiobook.system.handle] -%}
-{%- assign author = product.metafields.book.authors.value | first -%}    
-{%- assign narrator = product.metafields.book.narrators.value | first -%} 
-{%- assign audiogramme = audiobook.audiogramme.value -%}
-{%- assign captions = audiogramme.captions.value -%}
-{%- assign chapters = audiobook.chapters.value -%}
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+JSON-LD Audiobook for an audiobook entry page (/pages/audiobook/<handle>), rendered by sections/microdata.
 
-{% assign start = "now" | date: '%s' %}
-{% assign seconds = 25 | times: 24 | times: 60 | times: 60 %}
+* audiobook: the audiobook metaobject
 
-{%- if captions -%}
-  {%- capture transcript_text -%}
-      {%- for transcript in captions.results -%}
-        {%- for alt in transcript.alternatives -%}
-          {{alt.transcript}}
-        {%- endfor -%}
-      {%- endfor -%}
-  {%- endcapture -%}
-{%- endif -%}
+The work, not the thing for sale: @id is this page + "#audiobook". The offer points at the product page's Product
+({product URL}#product), which carries shipping and returns. Authors and narrators point at their pages' "#person"
+nodes. No dates, sizes or durations unless they come from data (13 Oct 2026).
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+{%- liquid
+  assign product = all_products[audiobook.system.handle]
+  assign authors = product.metafields.book.authors.value
+  assign narrators = product.metafields.book.narrators.value
+  assign audiogramme = audiobook.audiogramme.value
+  assign captions = audiogramme.captions.value
+  assign chapters = audiobook.chapters.value
+  assign page_url = audiobook.system.url | prepend: shop.url
+  assign product_url = product.url | prepend: shop.url
+  assign title = audiobook.title.value | default: product.title
+
+  assign isbn = product.first_available_variant.barcode | strip
+  assign isbn_prefix = isbn | slice: 0, 3
+  assign isbn_length = isbn | size
+  assign isbn_ok = false
+  if isbn_length == 13
+    if isbn_prefix == '978' or isbn_prefix == '979'
+      assign isbn_ok = true
+    endif
+  endif
+  unless isbn_ok
+    assign isbn = ''
+  endunless
+
+  assign duration = ''
+  assign duration_raw = product.metafields.book.duration.value | default: product.metafields.book.duration | append: ''
+  if duration_raw != blank
+    assign duration_parts = duration_raw | split: '.'
+    assign duration = 'PT' | append: duration_parts[0] | append: 'H'
+    if duration_parts[1] != blank
+      assign duration = duration | append: duration_parts[1] | append: 'M'
+    endif
+  endif
+
+  assign sample_url = product.metafields.book.preview.value.url
+  if sample_url != blank
+    unless sample_url contains 'https:'
+      assign sample_url = sample_url | prepend: 'https:'
+    endunless
+  endif
+
+  assign transcript_text = ''
+  if captions
+    capture transcript_text
+      for transcript in captions.results
+        for alt in transcript.alternatives limit: 1
+          echo alt.transcript | strip
+          echo ' '
+        endfor
+      endfor
+    endcapture
+    assign transcript_text = transcript_text | strip
+  endif
+-%}
 {
-  "@context": "https://schema.org/",
-  "@id":  {{ product.url | prepend: shop.url | json }},
+  "@context": "https://schema.org",
   "@type": "Audiobook",
-  "bookFormat": "AudiobookFormat",
-  "isbn": "{{ product.first_available_variant.barcode }}",
-  "inLanguage": "en",
-  "potentialAction": "ReadAction",
-  "author": {
-    "@context": "https://schema.org/",
-    "@type": "Person",
-    "name": {{ author.name | json }},
-    "@id": {{ author.system.url | prepend: shop.url | json }}
-  },
-  "readBy": {
-    "@context": "https://schema.org/",
-    "@type": "Person",
-    "name": {{ narrator.name | json }},
-    "@id": {{ narrator.system.url | prepend: shop.url | json }}
-  },
-  "name": "{{ product.title }}",
-  "url": {{ audiobook.system.url | prepend: shop.url | json }},
-  "abridged": {{ product.metafields.book.abridged.value }},
-  "description": {{ product.description | strip_html | json }},
-  "datePublished": {{ product.published_at | strip_html | json }},
-  "duration": {{ product.metafields.book.duration | prepend: 'PT'  | append: 'M' | replace:'.', 'H' | json }},
-  "encodingFormat": "audio/mp3",
-  {% if product.metafields.book.same_as %}
-    "encodesCreativeWork": {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "@id": "{{ product.metafields.book.same_as }}"
-    },
-  {% endif %}
-  {%- if product.featured_image != blank -%}
-    "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+  "@id": {{ page_url | append: '#audiobook' | json }},
+  "url": {{ page_url | json }},
+  "name": {{ title | json }},
+  "bookFormat": "https://schema.org/AudiobookFormat",
+  "inLanguage": "en-GB",
+  {%- if isbn != blank -%}
+    "isbn": {{ isbn | json }},
   {%- endif -%}
-  "playerType": "Voxblock",
-  "provider":  {
-    "@context": "https://schema.org/",
-    "@type": "Organization",
-    "name": "Voxblock",
-    "@id": "https://voxblock.co.uk/#organisation",
-    "url" : "https://voxblock.co.uk"
-  },
-  "publisher" : {
-    "@type": "Organization",
-    "@id": "https://voxblock.co.uk/#organisation",
-    "name": "Voxblock"
-  },
-   {%- if audiobook.genres.value -%}
-    "genre": [
-      {%- for genre in audiobook.genres.value -%}
-          {{ genre | json }}{%- unless forloop.last -%},{%- endunless -%}
+  {%- if product.description != blank -%}
+    "description": {{ product.description | strip_html | strip_newlines | strip | json }},
+  {%- endif -%}
+  {%- if authors != blank -%}
+    "author": [
+      {%- for author in authors -%}
+        {
+          "@type": "Person",
+          "@id": {{ author.system.url | prepend: shop.url | append: '#person' | json }},
+          "name": {{ author.name.value | default: author.name | json }},
+          "url": {{ author.system.url | prepend: shop.url | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
     ],
   {%- endif -%}
-  {%- if chapters -%}
+  {%- if narrators != blank -%}
+    "readBy": [
+      {%- for narrator in narrators -%}
+        {
+          "@type": "Person",
+          "@id": {{ narrator.system.url | prepend: shop.url | append: '#person' | json }},
+          "name": {{ narrator.name.value | default: narrator.name | json }},
+          "url": {{ narrator.system.url | prepend: shop.url | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+  {%- endif -%}
+  {%- if product.metafields.book.abridged != blank -%}
+    "abridged": {{ product.metafields.book.abridged.value | json }},
+  {%- endif -%}
+  {%- if duration != blank -%}
+    "duration": {{ duration | json }},
+  {%- endif -%}
+  {%- if product.metafields.book.same_as != blank or audiobook.print_isbn.value != blank -%}
+    "exampleOfWork": {
+      "@type": "Book",
+      {%- if product.metafields.book.same_as != blank -%}
+        "sameAs": {{ product.metafields.book.same_as.value | default: product.metafields.book.same_as | append: '' | json }},
+      {%- endif -%}
+      {%- if audiobook.print_isbn.value != blank -%}
+        "isbn": {{ audiobook.print_isbn.value | json }},
+      {%- endif -%}
+      "name": {{ title | json }}
+    },
+  {%- endif -%}
+  {%- if product.featured_image != blank -%}
+    "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+  {%- endif -%}
+  "publisher": {%- render 'jsonld-org-ref' -%},
+  {%- if audiobook.genres.value != blank -%}
+    "genre": {{ audiobook.genres.value | json }},
+  {%- endif -%}
+  {%- if chapters != blank -%}
     "hasPart": [
       {%- for chapter in chapters -%}
         {
           "@type": "Chapter",
-          "name": "{{chapter.title}}",
-          "position": {{forloop.index}},
-          "description": "{{chapter.summary|metafield_tag|strip_html}}"
-        }
-        {%- unless forloop.last -%},{%- endunless -%}
+          "position": {{ forloop.index }},
+          "name": {{ chapter.title.value | default: chapter.title | append: '' | json }}
+          {%- assign chapter_summary = chapter.summary | metafield_tag | strip_html | strip_newlines | strip -%}
+          {%- if chapter_summary != blank -%},
+          "description": {{ chapter_summary | json }}
+          {%- endif -%}
+        }{%- unless forloop.last -%},{%- endunless -%}
       {%- endfor -%}
     ],
   {%- endif -%}
-  {%- if audiobook.thema_codes.value -%}
+  {%- if audiobook.bisac_codes.value != blank or audiobook.thema_codes.value != blank -%}
     "identifier": [
-      {% for bisac_code in audiobook.bisac_codes.value %}
-      {
-        "@type": "PropertyValue",
-        "propertyID": "BISAC",
-        "value": "{{ bisac_code }}"
-      }{% if forloop.last == false %},{% endif %}
-      {% endfor %},
-      {% for thema_code in audiobook.thema_codes.value %}
-      {
-        "@type": "PropertyValue",
-        "propertyID": "Thema",
-        "value": "{{ thema_code }}"
-      }{% if forloop.last == false %},{% endif %}
-      {% endfor %}
+      {%- for bisac_code in audiobook.bisac_codes.value -%}
+        {"@type": "PropertyValue", "propertyID": "BISAC", "value": {{ bisac_code | json }}}{%- unless forloop.last and audiobook.thema_codes.value == blank -%},{%- endunless -%}
+      {%- endfor -%}
+      {%- for thema_code in audiobook.thema_codes.value -%}
+        {"@type": "PropertyValue", "propertyID": "Thema", "value": {{ thema_code | json }}}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
     ],
   {%- endif -%}
-
+  {%- if sample_url != blank -%}
+    "audio": {
+      "@type": "AudioObject",
+      "name": {{ title | append: ' sample' | json }},
+      "contentUrl": {{ sample_url | json }},
+      "encodingFormat": "audio/mpeg"
+      {%- if transcript_text != blank -%},
+      "transcript": {{ transcript_text | json }}
+      {%- endif -%}
+    },
+  {%- endif -%}
   "offers": {
     "@type": "Offer",
-    "availability": "http://schema.org/InStock",
-    "itemCondition": "http://schema.org/NewCondition",
-    "price": {{ product.price | times: 1.0 | divided_by: 100 }},
-    "priceCurrency": "GBP",
-
-    "priceValidUntil": "{{ start | plus: seconds | date: "%Y-%m-%d" }}",
-    "sku": "{{ product.first_available_variant.sku }}",
-    "url": "{{ shop.url }}{{ product.url }}",
-    {%- render 'microdata-shippingdetails', product: product, price: product.price -%},
-    {%- render 'microdata-returnpolicy', product: product -%}
-  },
-  "height": "110mm",
-  "width": "70mm",
-  "audio": {
-    "@context": "https://schema.org/",
-    "@type": "AudioObject",
-    "name": "{{ product.title }} sample",
-    "contentUrl": "https:{{ product.metafields.book.preview.value.url | file_reference }}",
-    "duration": "PT0H05M",
-    {%- if transcript_text -%}
-      "transcript": {{ transcript_text | json }},
-    {%- endif -%}
-    "hasPart": {
-      "@type": "Clip",
-      "name": "Audio sample from {{ product.title }}"
-    }
-
+    "url": {{ product_url | json }},
+    "price": {{ product.price | divided_by: 100.0 | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+    "itemOffered": {"@id": {{ product_url | append: '#product' | json }}},
+    "seller": {%- render 'jsonld-org-ref' -%}
   }
 }

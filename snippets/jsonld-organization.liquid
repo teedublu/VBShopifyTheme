@@ -1,0 +1,59 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+JSON-LD: the Voxblock Organization, on every page (rendered by microdata-schema in the layout), plus WebSite on the
+homepage. Every other block points here with {"@id": "https://voxblock.co.uk/#organization"} (snippet
+jsonld-org-ref) instead of repeating the organisation. Name, logo, description, slogan and social links come from
+Shopify Settings > Brand.
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+{%- liquid
+  assign org_id = shop.url | append: '/#organization'
+  assign social_links = shop.brand.metafields.social_links
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": {{ org_id | json }},
+        "name": {{ shop.name | json }},
+        "url": {{ shop.url | json }}
+        {%- if shop.brand.logo != blank -%},
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ shop.brand.logo | image_url: width: 600 | prepend: 'https:' | json }}
+        }
+        {%- endif -%}
+        {%- if shop.brand.short_description != blank -%},
+        "description": {{ shop.brand.short_description | json }}
+        {%- endif -%}
+        {%- if shop.brand.slogan != blank -%},
+        "slogan": {{ shop.brand.slogan | json }}
+        {%- endif -%}
+        {%- if social_links.size > 0 -%},
+        "sameAs": [
+          {%- for social_link in social_links -%}
+            {{- social_link.last.value | json -}}{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+        {%- endif -%}
+      }
+      {%- if request.page_type == 'index' -%},
+      {
+        "@type": "WebSite",
+        "@id": {{ shop.url | append: '/#website' | json }},
+        "name": {{ shop.name | json }},
+        "url": {{ shop.url | json }},
+        "inLanguage": "en-GB",
+        "publisher": {"@id": {{ org_id | json }}},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }},
+          "query-input": "required name=search_term_string"
+        }
+      }
+      {%- endif -%}
+    ]
+  }
+</script>

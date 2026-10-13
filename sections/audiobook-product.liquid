@@ -1,9 +1,5 @@
 {%- render 'section-spacing-collapsing' -%}
-{%- comment -%}Product JSON-LD here only for single audiobooks. Other products using this section (audiobook bundles)
-already get their Product from microdata-schema in the layout, so a second block would duplicate it (13 Oct 2026).{%- endcomment -%}
-{%- if product.type == 'Audiobooks' -%}
-  <script type="application/ld+json">{%- render 'microdata-audiobook-as-product', product: product -%}</script>
-{%- endif -%}
+{%- comment -%}Product JSON-LD for this page comes from snippets/jsonld-product (layout), for every product type.{%- endcomment -%}
 
 <style>
   #shopify-section-{{ section.id }} {

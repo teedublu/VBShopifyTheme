@@ -38,6 +38,19 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-13: Structured data, PR B (JSON-LD consistency)
+Branch `claude/jsonld-fixes-b`, stacked on PR A (`claude/jsonld-fixes-a`, #87), draft PR, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md` items 7–14.
+- One Organization node on every page (`snippets/jsonld-organization`, @id `{shop}/#organization`, from Settings > Brand); WebSite on the homepage only. Other blocks point to it (`snippets/jsonld-org-ref`) for publisher, seller and author.
+- One Product generator: `snippets/jsonld-product`, rendered in the layout for every product page (audiobooks included). Removed: `microdata-audiobook-as-product`, `microdata-product-variants`, `microdata-organisation`, `microdata-snippet-bisac_codes`, `microdata-snippet-publisher`. Brand "Voxblock" for every product: Voxblock is the publisher; the Shopify vendor is internal only and never used in structured data (owner, 13 Oct).
+- @id scheme: product `{url}#product`, audiobook `{page}#audiobook`, author/narrator `{page}#person`, character `{page}#character`, series `{page}#series`, collection `{url}#collection`, FAQ `{canonical}#faq`, article `{url}#article`.
+- Audiobook pages: all authors and narrators; offer points at the Product; ISBN only when a 978/979 13-digit barcode; duration from the book metafield; print edition as `exampleOfWork`; BISAC/Thema list fixed; removed `potentialAction`, Shopify publish date, block height/width, fixed 5-minute sample duration.
+- Characters are `Thing` (fictional character) with `subjectOf` their main audiobook; quotes point at them.
+- Collections: list of product pages (was every item typed Audiobook with a `#audiobook` URL). No `nextPage`/`previousPage`.
+- FAQ sections: new "Include in structured data" setting (default on); every FAQPage on a page shares @id `{canonical}#faq`, so the FAQ page's seven sections form one entity.
+- Video section: new "Upload date" setting (blank keeps 2022-08-31).
+- Every value through `| json`; https everywhere; no `priceValidUntil`; blog dates with time zone.
+- Owner to do: set "Upload date" on each video section; change the Organization description in Settings > Brand (it says "no need for any apps").
+
 ## 2026-10-13: Structured data fixes, PR A (JSON-LD correctness)
 Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md`.
 - Shipping: `GB` (was `UK`, invalid); £3.50 under £24, free from £24 (matches Shopify rates). Unconfirmed order cut-off time removed.
