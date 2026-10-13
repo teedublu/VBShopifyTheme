@@ -8,8 +8,9 @@ Product recommendations (default: Basket Suggestions), in the collection's own o
 
 Rules:
 * A product already in the cart is not shown.
-* When the cart already holds a player, a starter/intro pack, a schools pack or a player bundle, players and packs
-  are not shown (no second player for someone buying a pack). Same type rules as cart-player-prompt.
+* Players and packs are not shown when the cart already holds a player, a starter/intro pack, a schools pack or a
+  player bundle (no second player), or when the "Stories play on a Voxblock player" prompt is showing (it already
+  offers the player; the carousel then offers accessories and stories). Same rules as cart-player-prompt.
 
 Supported variables:
 * drawer_section: the cart-drawer section (for its settings)
@@ -18,13 +19,28 @@ Supported variables:
 {%- liquid
   assign player_types = 'player|starter pack|schools pack' | split: '|'
 
+  assign story_types = 'audiobooks|audiobooks bundle|older audiobooks' | split: '|'
+
   assign cart_has_player = false
+  assign cart_has_story = false
   for item in cart.items
     assign item_type = item.product.type | downcase
     if player_types contains item_type or item.product.tags contains 'Player Bundle'
       assign cart_has_player = true
+    elsif story_types contains item_type
+      assign cart_has_story = true
     endif
   endfor
+
+  assign hide_players = cart_has_player
+  if cart_has_player == false and cart_has_story and drawer_section.settings.player_prompt_enabled
+    capture owns_player
+      render 'customer-owns-player'
+    endcapture
+    if owns_player == blank
+      assign hide_players = true
+    endif
+  endif
 
   assign horizontal_products_blends = true
   assign product_card_background = drawer_section.settings.product_card_background
@@ -43,7 +59,7 @@ Supported variables:
         continue
       endif
 
-      if cart_has_player
+      if hide_players
         assign recommended_type = recommended_product.type | downcase
         if player_types contains recommended_type or recommended_product.tags contains 'Player Bundle'
           continue
