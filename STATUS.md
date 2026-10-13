@@ -49,7 +49,7 @@ Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on 
 - Check after merge: Rich Results Test on player, a pack, an audiobook product, an audiobook page, homepage; Search Console Merchant listings and Videos reports in 2–4 weeks.
 - Review 13 Oct (follow-up commit): YouTube videos get embedUrl only; video duration added; empty video script check hardened; gift cards (digital and physical) get no shipping/returns; fixed 1024 × 1024 image size claims removed.
 - Free delivery in JSON-LD follows Shopify's Domestic rates: free from £24.00, £3.50 below (owner, 13 Oct). Accessories and schools packs: 30 days, customer pays (owner confirmed).
-- Open: Explorer Bundle + Voxblock Player (£99.99, type Accessories) gets the 30-day policy.
+- Explorer Bundle + Voxblock Player retyped to Starter Pack by the owner (13 Oct), so it gets the 100-day policy.
 - PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
 
 ## 2026-10-12: Children's cassette player page (build)
