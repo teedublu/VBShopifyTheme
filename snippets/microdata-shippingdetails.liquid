@@ -5,16 +5,16 @@ JSON-LD shippingDetails for one Offer (no surrounding braces: render inside an O
 * product: the product
 * price: the offer's price in pence (variant.price); defaults to product.price
 
-UK delivery (owner, 13 Oct 2026): free over £25, otherwise £3.50. Country code is ISO 3166-1 ("GB", not "UK").
-free_delivery_from must equal the Shopify "Domestic" free-shipping rate (Settings > Shipping): on 13 Oct 2026 Shopify
-gave free delivery from £24.00, not £25 (open with the owner).
+UK delivery: £3.50, free from £24.00. These match the Shopify "Domestic" rates (Settings > Shipping): Free Shipping
+from £24.00, Standard £3.50 up to £24.99. Owner chose to follow Shopify's £24 (13 Oct 2026); if that rate changes,
+change free_delivery_from too. Country code is ISO 3166-1 ("GB", not "UK").
 Transit 1-2 days: Royal Mail averaged 36 hours over 942 UK parcels, Jul-Oct 2026 (Sendcloud).
 Gift cards get no shippingDetails: callers check product.gift_card? and the product type before rendering.
 ----------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 {%- liquid
   assign offer_price = price | default: product.price
-  assign free_delivery_from = 2500
+  assign free_delivery_from = 2400
   assign shipping_rate = 3.5
   if offer_price >= free_delivery_from
     assign shipping_rate = 0

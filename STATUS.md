@@ -40,7 +40,7 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 
 ## 2026-10-13: Structured data fixes, PR A (JSON-LD correctness)
 Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md`.
-- Shipping: `GB` (was `UK`, invalid); £3.50 under £25, free from £25 (owner, 13 Oct). Unconfirmed order cut-off time removed.
+- Shipping: `GB` (was `UK`, invalid); £3.50 under £24, free from £24 (matches Shopify rates). Unconfirmed order cut-off time removed.
 - Returns: `GB`; player and starter packs/bundles 100 days, free, by post; everything else 30 days, customer pays (owner, 13 Oct).
 - Player, pack and other non-audiobook product pages now carry shippingDetails and hasMerchantReturnPolicy (they had none). Gift cards excluded. Weight uses UN/CEFACT codes, omitted when 0.
 - Product JSON-LD only on /products/ pages: removed from `featured-audiobook-light` (audiobook, author, narrator, read-along pages) and from the audiogramme graph (owner agreed, 13 Oct).
@@ -48,8 +48,8 @@ Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on 
 - Audiobook pages: image URL fixed (was a 404). Narrator pages: no placeholder image.
 - Check after merge: Rich Results Test on player, a pack, an audiobook product, an audiobook page, homepage; Search Console Merchant listings and Videos reports in 2–4 weeks.
 - Review 13 Oct (follow-up commit): YouTube videos get embedUrl only; video duration added; empty video script check hardened; gift cards (digital and physical) get no shipping/returns; fixed 1024 × 1024 image size claims removed.
-- **Open before merge:** Shopify gives free UK delivery from £24.00 (Free Shipping ≥ £24.00, Standard £3.50 up to £24.99), but the site says over £25 and this PR uses £25. Travel Case and Headphones (£24.99) would show £3.50 here but ship free. Align Shopify to £25 or set `free_delivery_from` to 2400.
-- **Open before merge:** Explorer Bundle + Voxblock Player (£99.99, type Accessories) gets the 30-day policy; schools packs and accessories assumed 30 days, customer pays.
+- Free delivery in JSON-LD follows Shopify's Domestic rates: free from £24.00, £3.50 below (owner, 13 Oct). Accessories and schools packs: 30 days, customer pays (owner confirmed).
+- Open: Explorer Bundle + Voxblock Player (£99.99, type Accessories) gets the 30-day policy.
 - PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
 
 ## 2026-10-12: Children's cassette player page (build)
