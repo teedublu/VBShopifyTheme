@@ -133,9 +133,11 @@
 
       when 'product'
         case page_subtype
-          when 'starter-pack-bundle'
+          when 'starter-pack-bundle', 'intro-pack-bundle'
             assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
-            assign crumbs = crumbs | append: crumb_item_sep | append: collections['voxblock-starter-pack-collection'].url | append: crumb_part_sep | append: collections['voxblock-starter-pack-collection'].title
+            assign crumbs = crumbs | append: crumb_item_sep | append: collections['voxblock-starter-pack-collection'].url | append: crumb_part_sep | append: 'Starter packs'
+          when 'player', 'accessories'
+            assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
           when 'audiobook'
             assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
             assign crumbs = crumbs | append: crumb_item_sep | append: collections['audiobooks'].url | append: crumb_part_sep | append: collections['audiobooks'].title
@@ -148,7 +150,11 @@
         assign crumbs = crumbs | append: crumb_item_sep | append: product.url | append: crumb_part_sep | append: product.title
 
       when 'collection'
-        assign crumbs = crumbs | append: crumb_item_sep | append: collections['audiobooks'].url | append: crumb_part_sep | append: collections['audiobooks'].title
+        if page_subtype == 'starter-pack-collection' or page_subtype == 'accessories'
+          assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
+        else
+          assign crumbs = crumbs | append: crumb_item_sep | append: collections['audiobooks'].url | append: crumb_part_sep | append: collections['audiobooks'].title
+        endif
         assign crumbs = crumbs | append: crumb_item_sep | append: collection.url | append: crumb_part_sep | append: collection.title
 
       when 'blog'

@@ -38,6 +38,17 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-13: Product-group SEO fixes
+Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a draft theme**. Audit and full list: LPS `claude/seo-fixes-product-group.md`.
+- H1s: kids starter pack page (`page.adwords-generic` hero now H1 "Audiobook starter packs: stories they can play themselves"), accessories collection (H1 "Headphones and accessories for Voxblock"), how it works ("How the Voxblock audiobook player works"; step titles H3). Starter pack collection H1 now leads with "Audiobook starter packs"; product grid gets a screen-reader H2 (new `grid_heading` setting on `main-collection`, empty by default).
+- Starter pack collection FAQ: owner-support questions replaced with six pre-purchase questions ("Questions before you buy").
+- Copy rules: "no app(s)" removed (pack template, how it works), "£15" delivery line fixed, sentence case on eyebrows/buttons/labels, "kids" to "children" in body copy, player ages "3 to 5 / 5 to 8 / 8 years to teens", typos.
+- Breadcrumbs: player and accessories products now Home > product; packs Home > Starter packs > pack; starter pack and accessories collections Home > collection (was Home > Our Content > Audiobooks > ...). BreadcrumbList JSON-LD follows.
+- Homepage meta trimmed to 153 characters (`layout/theme.liquid`).
+- Done in admin 13 Oct (not in this PR): SEO titles/metas on 18 published packs, player, starter pack and accessories collections, how it works page; player image alts.
+- Not done: option name "Color" to "Colour" (product images use `#Color_<value>` alt tags for the variant-image mapping; renaming the option would break it). Basket Suggestions collection still holds unpublished packs (cart drawer links 404); remove them in admin.
+- Performance review: starter pack collection, how it works, player, pack products.
+
 ## 2026-10-12: Children's cassette player page (build)
 Branch `claude/childrens-cassette-player-page` (stacked on the CD page branch, PR #83), draft theme
 `VBShopifyTheme/claude/childrens-cassette-player-page`, draft PR, **awaiting owner check**. Record: `briefs/childrens-cassette-player-page.md`.
