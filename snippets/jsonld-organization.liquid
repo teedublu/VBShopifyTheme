@@ -4,11 +4,15 @@ JSON-LD: the Voxblock Organization, on every page (rendered by microdata-schema 
 homepage. Every other block points here with {"@id": "https://voxblock.co.uk/#organization"} (snippet
 jsonld-org-ref) instead of repeating the organisation. Name, logo, description, slogan and social links come from
 Shopify Settings > Brand.
+The search target is built with assign, not inside an output tag: Shopify ends an output tag at the first closing
+brace, even inside a quoted string, and the search template contains braces. (Shopify rejected this file on 13 Oct
+2026 for that reason.)
 ----------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 {%- liquid
   assign org_id = shop.url | append: '/#organization'
   assign social_links = shop.brand.metafields.social_links
+  assign search_target = request.origin | append: routes.search_url | append: '?q={search_term_string}'
 -%}
 <script type="application/ld+json">
   {
@@ -49,7 +53,7 @@ Shopify Settings > Brand.
         "publisher": {"@id": {{ org_id | json }}},
         "potentialAction": {
           "@type": "SearchAction",
-          "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }},
+          "target": {{ search_target | json }},
           "query-input": "required name=search_term_string"
         }
       }
