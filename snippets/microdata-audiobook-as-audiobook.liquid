@@ -51,7 +51,9 @@
       "@id": "{{ product.metafields.book.same_as }}"
     },
   {% endif %}
-  "image": "{{ shop.url }}/{{ product.featured_image }}",
+  {%- if product.featured_image != blank -%}
+    "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+  {%- endif -%}
   "playerType": "Voxblock",
   "provider":  {
     "@context": "https://schema.org/",
@@ -114,7 +116,7 @@
     "priceValidUntil": "{{ start | plus: seconds | date: "%Y-%m-%d" }}",
     "sku": "{{ product.first_available_variant.sku }}",
     "url": "{{ shop.url }}{{ product.url }}",
-    {%- render 'microdata-shippingdetails', product: product -%},
+    {%- render 'microdata-shippingdetails', product: product, price: product.price -%},
     {%- render 'microdata-returnpolicy', product: product -%}
   },
   "height": "110mm",

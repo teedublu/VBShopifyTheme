@@ -1,76 +1,93 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VideoObject JSON-LD for the video section (rendered inside a <script type="application/ld+json"> by sections/video)
 
-{%- assign page_type = request.page_type -%}
-{%- assign youtube_id = section.settings.youtube_id -%}
+Name and description:
+- Audiobook product page (product type "Audiobooks") or audiobook entry page: built from the book, as before.
+- Everywhere else (homepage, player, packs, series, characters…): the section's "JSON-LD title/description" settings.
+  Before 13 Oct 2026 every product page used the audiobook wording, so the player video was called
+  "Transcript of Voxblock Audiobook Player Audiobook".
 
-{%- case page_type -%}
-  {%- when 'product' -%}
-    {%- assign audiobook = product.metafields.book.audiobook -%}
+Thumbnail: the Shopify video's own preview image (the MP4 source has none, which gave the "no image" placeholder),
+or YouTube's thumbnail for a YouTube video (embedUrl only: a watch page is not a media file). Duration from the
+Shopify video. uploadDate stays fixed until the section has a date setting (PR B).
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+{%- liquid
+  assign title = section.settings.jsonld_title
+  assign description = section.settings.jsonld_description
+  assign encodes = ''
 
-    {%- assign title = product.title | prepend: 'Transcript of ' | append: ' Audiobook' -%}
-    {%- assign description = "Video displays the scrolling transcript of [t] audiobook, showing text as it's narrated." | replace: '[t]', product.title -%}
-    {%- assign encodes = product.title  -%}
+  if request.page_type == 'product' and product.type == 'Audiobooks'
+    assign title = product.title | prepend: 'Transcript of ' | append: ' audiobook'
+    assign description = "Video of the scrolling transcript of the [t] audiobook, showing the text as it's narrated." | replace: '[t]', product.title
+    assign encodes = product.title
+  elsif request.page_type == 'metaobject' and metaobject.system.type == 'audiobook'
+    assign book_product = all_products[metaobject.system.handle]
+    assign title = metaobject.name | prepend: 'Video of '
+    assign description = book_product.description | strip_html | strip_newlines | strip | truncatewords: 50
+    assign encodes = book_product.title
+  endif
 
-  {%- when 'metaobject' -%}
-    {%- comment -%} Only an audiobook entry describes a book; on series, character and other entry pages the video is the section's own (title and description from its settings) {%- endcomment -%}
-    {%- if metaobject.system.type == 'audiobook' -%}
-      {%- assign audiobook = metaobject -%}
-      {%- assign product = all_products[metaobject.system.handle] -%}
-      {%- assign title = metaobject.name | prepend: 'Video of ' -%}
-      {%- assign description = product.description | strip_html | escape | strip_newlines -%}
-      {%- assign encodes = product.title  -%}
-    {%- else -%}
-      {%- assign title = section.settings.jsonld_title -%}
-      {%- assign description = section.settings.jsonld_description -%}
-    {%- endif -%}
+  assign title = title | default: shop.name
+  assign description = description | default: title
 
-  {%- else -%}
-    {%- assign title = section.settings.jsonld_title -%}
-    {%- assign description = section.settings.jsonld_description -%}
+  assign content_url = ''
+  assign embed_url = ''
+  assign thumbnail_url = ''
+  assign duration = ''
+  assign youtube_id = section.settings.youtube_id
 
-{%- endcase -%}
+  if section.settings.video != blank
+    assign video_source = section.settings.video.sources | where: 'format', 'mp4' | first
+    assign content_url = video_source.url
+    if content_url != blank
+      unless content_url contains 'https:'
+        assign content_url = content_url | prepend: 'https:'
+      endunless
+    endif
+    if section.settings.video.preview_image != blank
+      assign thumbnail_url = section.settings.video.preview_image | image_url: width: 1280 | prepend: 'https:'
+    endif
+    if section.settings.video.duration > 0
+      assign duration_seconds = section.settings.video.duration | divided_by: 1000
+      assign duration = 'PT' | append: duration_seconds | append: 'S'
+    endif
+  elsif youtube_id != blank
+    assign embed_url = 'https://www.youtube.com/embed/' | append: youtube_id
+    assign thumbnail_url = 'https://img.youtube.com/vi/' | append: youtube_id | append: '/hqdefault.jpg'
+  endif
 
-
-{%- assign encodes = product.title  -%}
-
-
-{%- if section.settings.video -%}
-  {%- assign video_object = section.settings.video.sources | where: 'format', 'mp4' | first -%}
-  {%- assign content_url = video_object.url -%}
-  {%- assign thumbnail =  video_object.preview_image | img_url: '300x' | prepend: 'https:' | json -%}
-
-{%- elsif youtube_id -%}
-  {%- assign content_url = "https://www.youtube.com/watch?v=" | append: youtube_id -%}
-  {%- capture thumbnail -%}
-    [
-      "https://img.youtube.com/vi/{{ youtube_id }}/default.jpg",
-      "https://img.youtube.com/vi/{{ youtube_id }}/sddefault.jpg",
-      "https://img.youtube.com/vi/{{ youtube_id }}/mqdefault.jpg",
-      "https://img.youtube.com/vi/{{ youtube_id }}/maxresdefault.jpg"
-    ]
-  {%- endcapture -%}
-  {%- capture embedUrl -%}https://www.youtube.com/embed/{{ youtube_id }}{%- endcapture -%}
-
-{%- endif -%}
-
-
-{%- if content_url -%}
+  assign has_media = false
+  if content_url != blank or embed_url != blank
+    if thumbnail_url != blank
+      assign has_media = true
+    endif
+  endif
+-%}
+{%- if has_media -%}
   {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "name": "{{ title }}",
-    "description": "{{ description }}",
-    "uploadDate": "2022-08-31T08:00:00+08:00",
-    "contentUrl": "{{ content_url }}",
-
-    "thumbnailUrl": {{ thumbnail }},
-    "embedUrl": "{{- embedUrl -}}",
-    {%- if encodes -%}
-    "encodesCreativeWork": {
-      "@type": "Audiobook",
-      "name": {{ product.title | json }}
-    },
+    "name": {{ title | json }},
+    "description": {{ description | json }},
+    "uploadDate": "2022-08-31T08:00:00+01:00",
+    {%- if content_url != blank -%}
+      "contentUrl": {{ content_url | json }},
+    {%- endif -%}
+    {%- if duration != blank -%}
+      "duration": {{ duration | json }},
+    {%- endif -%}
+    {%- if embed_url != blank -%}
+      "embedUrl": {{ embed_url | json }},
+    {%- endif -%}
+    "thumbnailUrl": {{ thumbnail_url | json }},
+    {%- if encodes != blank -%}
+      "encodesCreativeWork": {
+        "@type": "Audiobook",
+        "name": {{ encodes | json }}
+      },
     {%- endif -%}
     "publisher": {%- render 'microdata-snippet-publisher' -%}
-
   }
 {%- endif -%}

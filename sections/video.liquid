@@ -119,9 +119,11 @@
       {%- endif -%}
     </div>
   </div>
-  <script type="application/ld+json">  
-    {%- render 'microdata-videoobject' product: product -%}
-  </script>
+  {%- capture video_jsonld -%}{%- render 'microdata-videoobject', product: product -%}{%- endcapture -%}
+  {%- assign video_jsonld = video_jsonld | strip -%}
+  {%- if video_jsonld != blank -%}
+    <script type="application/ld+json">{{ video_jsonld }}</script>
+  {%- endif -%}
 {%- endif -%}
 
 {% schema %}
