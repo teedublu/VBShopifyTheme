@@ -38,6 +38,9 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-13: Hotfix, Organization JSON-LD snippet rejected by Shopify
+After #89 merged, Shopify's GitHub sync rejected `snippets/jsonld-organization.liquid`, so every page printed "Liquid error (snippets/microdata-schema line 16): Could not find asset snippets/jsonld-organization.liquid" in its head. Cause: a quoted string containing a closing brace inside an output tag (the search target); Shopify ends an output tag at the first closing brace. Fix: build the string with assign. Rule for this theme: no braces inside quoted strings in output tags; check with a Shopify-style tokenizer scan, not only a local Liquid renderer.
+
 ## 2026-10-13: Structured data, PR B (JSON-LD consistency)
 Branch `claude/jsonld-fixes-b`, stacked on PR A (`claude/jsonld-fixes-a`, #87), draft PR, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md` items 7–14.
 - One Organization node on every page (`snippets/jsonld-organization`, @id `{shop}/#organization`, from Settings > Brand); WebSite on the homepage only. Other blocks point to it (`snippets/jsonld-org-ref`) for publisher, seller and author.
