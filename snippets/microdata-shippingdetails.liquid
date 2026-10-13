@@ -1,46 +1,45 @@
-{%- case product.type -%}
-    
-    {%- when 'Something' -%}
-        
-    {%- else -%}
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "GBP"
-          },
-          "shippingDestination": [
-            {
-              "@type": "DefinedRegion",
-              "addressCountry": "UK"
-            }
-          ],
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "businessDays": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                    "https://schema.org/Monday",
-                    "https://schema.org/Tuesday",
-                    "https://schema.org/Wednesday",
-                    "https://schema.org/Thursday",
-                    "https://schema.org/Friday"
-                ]
-            },
-            "cutoffTime": "12:00:15Z",
-            "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "d"
-            },
-            "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 2,
-                "unitCode": "d"
-            }
-          }
-        }
-{%- endcase -%}
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+JSON-LD shippingDetails for one Offer (no surrounding braces: render inside an Offer object)
+
+* product: the product
+* price: the offer's price in pence (variant.price); defaults to product.price
+
+UK delivery (owner, 13 Oct 2026): free over £25, otherwise £3.50. Country code is ISO 3166-1 ("GB", not "UK").
+Gift cards ship nothing, so they get no shippingDetails: callers check product.gift_card? before rendering.
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
+{%- liquid
+  assign offer_price = price | default: product.price
+  assign shipping_rate = 3.5
+  if offer_price >= 2500
+    assign shipping_rate = 0
+  endif
+-%}
+"shippingDetails": {
+  "@type": "OfferShippingDetails",
+  "shippingRate": {
+    "@type": "MonetaryAmount",
+    "value": {{ shipping_rate | json }},
+    "currency": "GBP"
+  },
+  "shippingDestination": {
+    "@type": "DefinedRegion",
+    "addressCountry": "GB"
+  },
+  "deliveryTime": {
+    "@type": "ShippingDeliveryTime",
+    "handlingTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 0,
+      "maxValue": 1,
+      "unitCode": "DAY"
+    },
+    "transitTime": {
+      "@type": "QuantitativeValue",
+      "minValue": 1,
+      "maxValue": 2,
+      "unitCode": "DAY"
+    }
+  }
+}

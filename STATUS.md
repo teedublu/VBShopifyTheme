@@ -38,6 +38,17 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-13: Structured data fixes, PR A (JSON-LD correctness)
+Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md`.
+- Shipping: `GB` (was `UK`, invalid); £3.50 under £25, free from £25 (owner, 13 Oct). Unconfirmed order cut-off time removed.
+- Returns: `GB`; player and starter packs/bundles 100 days, free, by post; everything else 30 days, customer pays (owner, 13 Oct).
+- Player, pack and other non-audiobook product pages now carry shippingDetails and hasMerchantReturnPolicy (they had none). Gift cards excluded. Weight uses UN/CEFACT codes, omitted when 0.
+- Product JSON-LD only on /products/ pages: removed from `featured-audiobook-light` (audiobook, author, narrator, read-along pages) and from the audiogramme graph (owner agreed, 13 Oct).
+- Video: real thumbnail (was the "no image" placeholder), https contentUrl, no empty embedUrl, section JSON-LD title on non-audiobook pages (player video was "Transcript of Voxblock Audiobook Player Audiobook"). No script when there is nothing to describe.
+- Audiobook pages: image URL fixed (was a 404). Narrator pages: no placeholder image.
+- Check after merge: Rich Results Test on player, a pack, an audiobook product, an audiobook page, homepage; Search Console Merchant listings and Videos reports in 2–4 weeks.
+- PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
+
 ## 2026-10-12: Children's cassette player page (build)
 Branch `claude/childrens-cassette-player-page` (stacked on the CD page branch, PR #83), draft theme
 `VBShopifyTheme/claude/childrens-cassette-player-page`, draft PR, **awaiting owner check**. Record: `briefs/childrens-cassette-player-page.md`.

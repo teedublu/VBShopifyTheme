@@ -56,6 +56,10 @@ This file should just render snippet for anything else
                 "mpn": {{ variant.barcode | json }},
               {%- endif -%}
             {%- endif -%}
+            {%- unless product.gift_card? -%}
+              {%- render 'microdata-shippingdetails', product: product, price: variant.price -%},
+              {%- render 'microdata-returnpolicy', product: product -%},
+            {%- endunless -%}
             "url": "{{ shop.url }}{{ product.url }}?variant={{ variant.id }}"
           }{% unless forloop.last %},{% endunless %}
         {%- endfor -%}
@@ -85,10 +89,17 @@ This file should just render snippet for anything else
           "mpn": {{ product.selected_or_first_available_variant.barcode | json }},
         {%- endif -%}
       {%- endif -%}
-      {%- if product.selected_or_first_available_variant.weight -%}
+      {%- if product.selected_or_first_available_variant.weight > 0 -%}
+        {%- comment -%}UN/CEFACT unit codes, as schema.org expects{%- endcomment -%}
+        {%- case product.selected_or_first_available_variant.weight_unit -%}
+          {%- when 'kg' -%}{%- assign weight_code = 'KGM' -%}
+          {%- when 'lb' -%}{%- assign weight_code = 'LBR' -%}
+          {%- when 'oz' -%}{%- assign weight_code = 'ONZ' -%}
+          {%- else -%}{%- assign weight_code = 'GRM' -%}
+        {%- endcase -%}
         "weight": {
           "@type": "QuantitativeValue",
-          "unitCode": {{ product.selected_or_first_available_variant.weight_unit | json }},
+          "unitCode": {{ weight_code | json }},
           "value": {{ product.selected_or_first_available_variant.weight_in_unit | json }}
         },
       {%- endif -%}

@@ -34,7 +34,7 @@
         "priceCurrency" : {{ cart.currency.iso_code | json }},
         "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_price_valid_until | date: '%Y-%m-%d' }}",
         "url" : {{ shop.url | append: variant.url | json }},
-        {%- render 'microdata-shippingdetails', product: product -%},
+        {%- render 'microdata-shippingdetails', product: product, price: variant.price -%},
         {%- render 'microdata-returnpolicy', product: product -%}
 
       }{% unless forloop.last %},{% endunless %}

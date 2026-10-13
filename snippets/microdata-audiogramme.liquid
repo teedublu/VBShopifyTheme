@@ -66,7 +66,6 @@
     assign transcript_text = transcript_text | strip
   endif
 
-  assign price_value = product.price | divided_by: 100.0
 -%}
 {
   "@context": "https://schema.org",
@@ -106,30 +105,7 @@
       {%- else -%}
         "audio": null
       {%- endif -%}
-    }{%- if route_mode != 'read_along' and product != blank -%},
-    {
-      "@type": "Product",
-      "@id": {{ product.url | prepend: shop.url | append: '#product' | json }},
-      "name": {{ product.title | json }},
-      "url": {{ product.url | prepend: shop.url | json }},
-      {%- if description != blank -%}
-        "description": {{ description | json }},
-      {%- endif -%}
-      {%- if product.featured_image != blank -%}
-        "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
-      {%- endif -%}
-      "brand": {
-        "@type": "Brand",
-        "name": "Voxblock"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": {{ price_value | json }},
-        "priceCurrency": {{ cart.currency.iso_code | json }},
-        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
-        "url": {{ product.url | prepend: shop.url | json }}
-      }
-    }{%- endif -%}{%- if has_video -%},
+    }{%- comment -%}No Product node: product data lives only on the /products/ page (13 Oct 2026){%- endcomment -%}{%- if has_video -%},
     {
       "@type": "VideoObject",
       "@id": {{ sample_url | append: '#sample-media' | json }},
