@@ -9,13 +9,14 @@ Name and description:
   "Transcript of Voxblock Audiobook Player Audiobook".
 
 Thumbnail: the Shopify video's own preview image (the MP4 source has none, which gave the "no image" placeholder),
-or YouTube's thumbnails for a YouTube video. uploadDate stays fixed until the section has a date setting (PR B).
+or YouTube's thumbnail for a YouTube video (embedUrl only: a watch page is not a media file). Duration from the
+Shopify video. uploadDate stays fixed until the section has a date setting (PR B).
 ----------------------------------------------------------------------------------------------------------------------
 {%- endcomment -%}
 {%- liquid
   assign title = section.settings.jsonld_title
   assign description = section.settings.jsonld_description
-  assign encodes = blank
+  assign encodes = ''
 
   if request.page_type == 'product' and product.type == 'Audiobooks'
     assign title = product.title | prepend: 'Transcript of ' | append: ' audiobook'
@@ -31,34 +32,52 @@ or YouTube's thumbnails for a YouTube video. uploadDate stays fixed until the se
   assign title = title | default: shop.name
   assign description = description | default: title
 
-  assign content_url = blank
-  assign embed_url = blank
-  assign thumbnail_url = blank
+  assign content_url = ''
+  assign embed_url = ''
+  assign thumbnail_url = ''
+  assign duration = ''
   assign youtube_id = section.settings.youtube_id
 
   if section.settings.video != blank
     assign video_source = section.settings.video.sources | where: 'format', 'mp4' | first
     assign content_url = video_source.url
-    unless content_url contains 'https:'
-      assign content_url = content_url | prepend: 'https:'
-    endunless
+    if content_url != blank
+      unless content_url contains 'https:'
+        assign content_url = content_url | prepend: 'https:'
+      endunless
+    endif
     if section.settings.video.preview_image != blank
       assign thumbnail_url = section.settings.video.preview_image | image_url: width: 1280 | prepend: 'https:'
     endif
+    if section.settings.video.duration > 0
+      assign duration_seconds = section.settings.video.duration | divided_by: 1000
+      assign duration = 'PT' | append: duration_seconds | append: 'S'
+    endif
   elsif youtube_id != blank
-    assign content_url = 'https://www.youtube.com/watch?v=' | append: youtube_id
     assign embed_url = 'https://www.youtube.com/embed/' | append: youtube_id
     assign thumbnail_url = 'https://img.youtube.com/vi/' | append: youtube_id | append: '/hqdefault.jpg'
   endif
+
+  assign has_media = false
+  if content_url != blank or embed_url != blank
+    if thumbnail_url != blank
+      assign has_media = true
+    endif
+  endif
 -%}
-{%- if content_url != blank and thumbnail_url != blank -%}
+{%- if has_media -%}
   {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": {{ title | json }},
     "description": {{ description | json }},
     "uploadDate": "2022-08-31T08:00:00+01:00",
-    "contentUrl": {{ content_url | json }},
+    {%- if content_url != blank -%}
+      "contentUrl": {{ content_url | json }},
+    {%- endif -%}
+    {%- if duration != blank -%}
+      "duration": {{ duration | json }},
+    {%- endif -%}
     {%- if embed_url != blank -%}
       "embedUrl": {{ embed_url | json }},
     {%- endif -%}

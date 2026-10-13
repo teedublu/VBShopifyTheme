@@ -47,6 +47,9 @@ Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on 
 - Video: real thumbnail (was the "no image" placeholder), https contentUrl, no empty embedUrl, section JSON-LD title on non-audiobook pages (player video was "Transcript of Voxblock Audiobook Player Audiobook"). No script when there is nothing to describe.
 - Audiobook pages: image URL fixed (was a 404). Narrator pages: no placeholder image.
 - Check after merge: Rich Results Test on player, a pack, an audiobook product, an audiobook page, homepage; Search Console Merchant listings and Videos reports in 2–4 weeks.
+- Review 13 Oct (follow-up commit): YouTube videos get embedUrl only; video duration added; empty video script check hardened; gift cards (digital and physical) get no shipping/returns; fixed 1024 × 1024 image size claims removed.
+- **Open before merge:** Shopify gives free UK delivery from £24.00 (Free Shipping ≥ £24.00, Standard £3.50 up to £24.99), but the site says over £25 and this PR uses £25. Travel Case and Headphones (£24.99) would show £3.50 here but ship free. Align Shopify to £25 or set `free_delivery_from` to 2400.
+- **Open before merge:** Explorer Bundle + Voxblock Player (£99.99, type Accessories) gets the 30-day policy; schools packs and accessories assumed 30 days, customer pays.
 - PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
 
 ## 2026-10-12: Children's cassette player page (build)

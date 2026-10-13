@@ -11,8 +11,13 @@ Gift cards ship nothing, so they get no shippingDetails: callers check product.g
 {%- endcomment -%}
 {%- liquid
   assign offer_price = price | default: product.price
+  comment
+    Must match the Shopify "Domestic" shipping rates (Settings > Shipping). On 13 Oct 2026 Shopify gave free delivery
+    from £24.00 while the site copy says over £25: keep this number equal to Shopify's.
+  endcomment
+  assign free_delivery_from = 2500
   assign shipping_rate = 3.5
-  if offer_price >= 2500
+  if offer_price >= free_delivery_from
     assign shipping_rate = 0
   endif
 -%}

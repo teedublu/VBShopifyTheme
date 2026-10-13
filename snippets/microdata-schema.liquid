@@ -56,7 +56,8 @@ This file should just render snippet for anything else
                 "mpn": {{ variant.barcode | json }},
               {%- endif -%}
             {%- endif -%}
-            {%- unless product.gift_card? -%}
+            {%- comment -%}No shipping or returns claims for gift cards, digital or physical{%- endcomment -%}
+            {%- unless product.gift_card? or product.type contains 'Gift Card' -%}
               {%- render 'microdata-shippingdetails', product: product, price: variant.price -%},
               {%- render 'microdata-returnpolicy', product: product -%},
             {%- endunless -%}
@@ -107,9 +108,7 @@ This file should just render snippet for anything else
         "@type": "ImageObject",
         "url": "https:{{ page_image | image_url: width: 1024 }}",
         "image": "https:{{ page_image | image_url: width: 1024 }}",
-        "name": {{ page_image.alt | json }},
-        "width": "1024",
-        "height": "1024"
+        "name": {{ page_image.alt | json }}
       }
     {%- endcapture -%}
   {%- endunless -%}
@@ -128,9 +127,7 @@ This file should just render snippet for anything else
       "@type": "ImageObject",
       "url": "https:{{ page_image | image_url: width: 1024 }}",
       "image": "https:{{ page_image | image_url: width: 1024 }}",
-      "name": {{ page_image.alt | json }},
-      "width": "1024",
-      "height": "1024"
+      "name": {{ page_image.alt | json }}
     },
     "author": {
       "@type": "Person",
