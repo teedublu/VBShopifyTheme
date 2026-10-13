@@ -3406,6 +3406,14 @@ var QuickBuyDrawer = class extends Drawer {
     });
   }
   _onVariantAdded(event) {
+    if (document.getElementById("cart-drawer")?.hasAttribute("open")) {
+      // Voxblock: added while the cart drawer is open (its recommendations). Close quick buy and let the open cart
+      // drawer refresh, instead of stacking an "Added to your cart" panel on top of the cart. (Quick buy is moved to
+      // <body> when it opens, so test the cart drawer's state, not where quick buy sits.)
+      this._hasLoaded = false;
+      this.hide();
+      return;
+    }
     event.detail.blockCartDrawerOpening = true;
     const contentShadow = this.shadowRoot.querySelector('[part="content"]'), fromHeight = contentShadow.clientHeight;
     animate7(contentShadow.children, { opacity: 0, visibility: "hidden" }, { duration: 0.15 });
