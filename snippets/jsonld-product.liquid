@@ -7,8 +7,8 @@ microdata-audiobook-as-product (13 Oct 2026).
 * product: the product
 
 - @id is the product URL + "#product"; other blocks (collection lists, audiobook pages) point to it.
-- Brand is Voxblock for every product: Voxblock makes the blocks and players. The audio publisher is the Shopify
-  vendor on audiobooks and stays out of Product.
+- Brand is Voxblock for every product: Voxblock is the publisher of its audiobooks and makes the players (owner,
+  13 Oct 2026). The Shopify vendor field is internal only and is never used in structured data.
 - sku, gtin and category are left out when blank; a barcode goes out as gtin only when it is 8, 12, 13 or 14 digits.
 - Each Offer carries shipping and returns (snippets microdata-shippingdetails, microdata-returnpolicy) except gift
   cards. No priceValidUntil: prices have no end date.
