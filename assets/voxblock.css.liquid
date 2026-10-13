@@ -1037,3 +1037,18 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .pack-contents__book-body { flex-grow: 1; }
   .pack-contents__play { margin-top: auto; padding-top: 10px; }
 }
+
+/* Basket line items (cart drawer and /cart): every product image sits in the same square box, so tall audiobook
+   covers are no bigger than the player or accessories. Theme-wide, not per section. */
+.line-item__media-wrapper {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line-item__media-wrapper > .line-item__media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
