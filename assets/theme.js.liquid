@@ -3406,6 +3406,13 @@ var QuickBuyDrawer = class extends Drawer {
     });
   }
   _onVariantAdded(event) {
+    if (this.closest("cart-drawer")) {
+      // Voxblock: opened from the cart drawer's recommendations. Close quick buy and let the open cart drawer refresh,
+      // instead of stacking an "Added to your cart" panel on top of the cart.
+      this._hasLoaded = false;
+      this.hide();
+      return;
+    }
     event.detail.blockCartDrawerOpening = true;
     const contentShadow = this.shadowRoot.querySelector('[part="content"]'), fromHeight = contentShadow.clientHeight;
     animate7(contentShadow.children, { opacity: 0, visibility: "hidden" }, { duration: 0.15 });
