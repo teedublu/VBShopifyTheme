@@ -17,7 +17,9 @@
 {
   "@context": "http://schema.org",
   "@type": "Product",
-  "productID": {{ current_variant.sku | json }},
+  {%- if current_variant.sku != blank -%}
+    "productID": {{ current_variant.sku | json }},
+  {%- endif -%}
   "additionalType": "http://www.productontology.org/id/Audiobook",
   {%- if product.metafields.book.uri != blank -%}
       "@id": "{{ product.metafields.book.uri }}",
@@ -41,16 +43,22 @@
     {%- endfor -%}
 
   ],
-  "sku": {{ current_variant.sku | json }},
+  {%- if current_variant.sku != blank -%}
+    "sku": {{ current_variant.sku | json }},
+  {%- endif -%}
   "name": {{ product.title | json }},
   "brand": {
       "@type": "Brand",
       "name": "Voxblock"
   },
   "description": {{ product.description | strip_html | json }},
-  "category": "",
+  {%- if product.type != blank -%}
+    "category": {{ product.type | json }},
+  {%- endif -%}
   "url": "{{ shop.url }}{{ product.url }}",
-  "gtin13": {{ current_variant.barcode | json }},
+  {%- if is_valid_gtin_length -%}
+    "{{ gtin_option }}": {{ current_variant.barcode | json }},
+  {%- endif -%}
   
   "image": {
     "@type": "ImageObject",

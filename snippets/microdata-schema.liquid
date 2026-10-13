@@ -82,7 +82,9 @@ This file should just render snippet for anything else
       "description": {{ product.description | strip_html | json }},
       "category": {{ product.type | json }},
       "url": "{{ shop.url }}{{ product.url }}",
-      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      {%- if product.selected_or_first_available_variant.sku != blank -%}
+        "sku": {{ product.selected_or_first_available_variant.sku | json }},
+      {%- endif -%}
       {%- if product.selected_or_first_available_variant.barcode != blank -%}
         {%- if is_valid_global_gtin_length -%}
           "gtin": {{ product.selected_or_first_available_variant.barcode | json }},

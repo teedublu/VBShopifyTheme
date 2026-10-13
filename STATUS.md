@@ -50,6 +50,7 @@ Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on 
 - Review 13 Oct (follow-up commit): YouTube videos get embedUrl only; video duration added; empty video script check hardened; gift cards (digital and physical) get no shipping/returns; fixed 1024 × 1024 image size claims removed.
 - Free delivery in JSON-LD follows Shopify's Domestic rates: free from £24.00, £3.50 below (owner, 13 Oct). Accessories and schools packs: 30 days, customer pays (owner confirmed).
 - Explorer Bundle + Voxblock Player retyped to Starter Pack by the owner (13 Oct), so it gets the 100-day policy.
+- Identifiers: sku, productID and GTIN left out when blank (native bundles have none); barcode only as a GTIN of valid length. Audiobook bundle pages now have one Product (the audiobook section outputs Product only for type Audiobooks). Charging Plug barcode (failed GTIN-8 check) removed in Shopify by the owner.
 - PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
 
 ## 2026-10-12: Children's cassette player page (build)
