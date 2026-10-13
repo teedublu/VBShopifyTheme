@@ -109,12 +109,13 @@
   </div>
 </div>
 
-{%- comment -%}On the FAQ page, we also output the content with JSON microdata for SEO{%- endcomment -%}
-
+{%- comment -%}FAQPage JSON-LD, unless "Include in structured data" is off (one FAQPage per page; @id {canonical}#faq){%- endcomment -%}
+{%- if section.settings.include_jsonld != false and section.blocks.size > 0 -%}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": {{ canonical_url | append: '#faq' | json }},
     "mainEntity": [
       {%- for block in section.blocks -%}
         {
@@ -129,6 +130,7 @@
     ]
   }
   </script>
+{%- endif -%}
 {%- endif -%}
 
 {% schema %}
@@ -163,6 +165,13 @@
     {
       "type": "paragraph",
       "content": "Structured data is automatically created on FAQ page to improve SEO. [Learn more](https://developers.google.com/search/docs/advanced/structured-data/faqpage)"
+    },
+    {
+      "type": "checkbox",
+      "id": "include_jsonld",
+      "label": "Include in structured data",
+      "info": "Adds these questions to the page's FAQPage JSON-LD. Google expects one FAQPage per page: on a page with several FAQ sections, leave this on for one.",
+      "default": true
     },
     {
       "type": "checkbox",

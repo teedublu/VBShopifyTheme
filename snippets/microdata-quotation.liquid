@@ -1,22 +1,16 @@
+{%- comment -%}JSON-LD Quotation: points at the character page's "#character" node and the audiobook page's "#audiobook" node{%- endcomment -%}
 {
   "@context": "https://schema.org",
   "@type": "Quotation",
-  "text": {{ quote.content | json }},
+  "text": {{ quote.content | strip_html | strip_newlines | strip | json }},
   "spokenByCharacter": {
-    "@type": "Person",
-    "name": {{ character.name | json }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ character.system.url | prepend: shop.url | json }}
-    }
+    "@id": {{ character.system.url | prepend: shop.url | append: '#character' | json }},
+    "name": {{ character.name.value | default: character.name | append: '' | json }}
   },
   "isPartOf": {
     "@type": "Audiobook",
-    "name": {{ audiobook.title | json}},
-    "url": {{ audiobook.system.url | prepend: shop.url | json }},
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": {{ audiobook.system.url | prepend: shop.url | json }}
-    }
+    "@id": {{ audiobook.system.url | prepend: shop.url | append: '#audiobook' | json }},
+    "name": {{ audiobook.title.value | default: audiobook.title | append: '' | json }},
+    "url": {{ audiobook.system.url | prepend: shop.url | json }}
   }
 }

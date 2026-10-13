@@ -1,14 +1,33 @@
-{%- assign photo = character.photos.value | first -%}
+{%- comment -%}
+JSON-LD for a character page. Characters are fictional, so the type is Thing (not Person), described as a
+character in its main book: subjectOf points at that audiobook page's "#audiobook" node. @id is the page +
+"#character" (quotes point here).
+{%- endcomment -%}
+{%- liquid
+  assign photo = character.photos.value | first
+  assign page_url = character.system.url | prepend: shop.url
+  assign main_book = character.main_book.value
+  assign character_description = character.description.value | default: character.page_description.value
+-%}
 {
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "name": {{ character.name | json }},
-  "description": {{ character.description | json }},
-  "image": "{{ photo  | image_url | prepend: 'https:' }}",
-  "memberOf": {
-    "@type": "CreativeWork",
-    "name": "{{ character.main_book.value.title }}"
-  },
-  "url": "{{ shop.domain | append: character.system.url | prepend: 'https://' }}"
+  "@context": "https://schema.org",
+  "@type": "Thing",
+  "@id": {{ page_url | append: '#character' | json }},
+  "url": {{ page_url | json }},
+  "name": {{ character.name.value | default: character.name | append: '' | json }},
+  "additionalType": "https://www.wikidata.org/wiki/Q95074"
+  {%- if character_description != blank -%},
+  "description": {{ character_description | json }}
+  {%- endif -%}
+  {%- if photo != blank -%},
+  "image": {{ photo | image_url: width: 1200 | prepend: 'https:' | json }}
+  {%- endif -%}
+  {%- if main_book != blank -%},
+  "subjectOf": {
+    "@type": "Audiobook",
+    "@id": {{ main_book.system.url | prepend: shop.url | append: '#audiobook' | json }},
+    "name": {{ main_book.title.value | json }},
+    "url": {{ main_book.system.url | prepend: shop.url | json }}
+  }
+  {%- endif -%}
 }
-

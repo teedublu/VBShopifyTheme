@@ -1,7 +1,19 @@
+{%- comment -%}JSON-LD Organization for a publisher page (an audio publisher, not Voxblock); @id is the page + "#organization"{%- endcomment -%}
+{%- liquid
+  assign page_url = publisher.system.url | prepend: shop.url
+  assign publisher_logo = publisher.logo.value
+  assign publisher_website = publisher.website.value | default: publisher.url.value
+-%}
 {
-  "@context": "http://schema.org/",
+  "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "{{ publisher.name }}",
-  "image": "{{ publisher.logo |img_url:'300x' }}",
-  "url": "{{ publisher.system.url | prepend: shop.url }}"
+  "@id": {{ page_url | append: '#organization' | json }},
+  "url": {{ page_url | json }},
+  "name": {{ publisher.name.value | default: publisher.name | append: '' | json }}
+  {%- if publisher_logo != blank -%},
+  "logo": {{ publisher_logo | image_url: width: 600 | prepend: 'https:' | json }}
+  {%- endif -%}
+  {%- if publisher_website != blank -%},
+  "sameAs": [{{ publisher_website | append: '' | json }}]
+  {%- endif -%}
 }
