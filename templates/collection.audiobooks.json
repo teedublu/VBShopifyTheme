@@ -93,7 +93,8 @@
         "cycle_speed": 6,
         "background": "#f2f2f2",
         "background_gradient": ""
-      }
+      },
+      "disabled": true
     },
     "banner": {
       "type": "collection-banner",
@@ -124,7 +125,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/bestseller-image-link-category-200x150.jpg",
-            "link_text": "Best Sellers",
+            "link_text": "Bestsellers",
             "url_params": "filter.p.m.custom.badges=Bestseller"
           }
         },
@@ -132,7 +133,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/new-image-link-category-200x150.jpg",
-            "link_text": "New Releases",
+            "link_text": "New releases",
             "url_params": "filter.p.m.custom.badges=New"
           }
         },
@@ -140,7 +141,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/under5s-image-link-category-200x150.jpg",
-            "link_text": "Under 5's",
+            "link_text": "Under 5s",
             "url_params": "filter.p.m.book.age_groups=Under+5%27s"
           }
         },
@@ -148,7 +149,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/5-8years-image-link-category-200x150.jpg",
-            "link_text": "5-8 years",
+            "link_text": "5–8 years",
             "url_params": "filter.p.m.book.age_groups=5+to+8+years"
           }
         },
@@ -156,7 +157,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/8-10years-image-link-category-200x150.jpg",
-            "link_text": "8-10 years",
+            "link_text": "8–10 years",
             "url_params": "filter.p.m.book.age_groups=8+to+10+years"
           }
         },
@@ -164,7 +165,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/10-teens-image-link-category-200x150.jpg",
-            "link_text": "10-teens",
+            "link_text": "10 to teens",
             "url_params": "filter.p.m.book.age_groups=10+to+teens"
           }
         },
@@ -283,9 +284,28 @@
             "overlay_color": "#000000",
             "overlay_opacity": 13
           }
+        },
+        "promotion_image_roalddahl": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 7,
+            "column_span": "2",
+            "image": "shopify://shop_images/banner-roald-dahl-desk-26.1.0.png",
+            "mobile_image": "shopify://shop_images/banner-mob-roald-dahl-26.1.0.png",
+            "title": "Explore Roald Dahl",
+            "content": "",
+            "link_url": "shopify://collections/roald-dahl-selection",
+            "link_text": "Shop now",
+            "heading_tag": "h2",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#269ea1",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
         }
       },
       "block_order": [
+        "promotion_image_roalddahl",
         "promotion_image_KGVD4D",
         "promotion_video_79qxG8",
         "promotion_image_4VEyzT",
@@ -330,13 +350,35 @@
         "enable_watermark": false,
         "watermark_opacity": 6
       }
+    },
+    "age_intro": {
+      "type": "collection-age-intro",
+      "settings": {
+        "background": "#fff7f0",
+        "eyebrow": "Audiobooks",
+        "intro_line": "350+ unabridged stories for toddlers to teens, ready to play on Voxblock.",
+        "default_pack": "",
+        "trust_rating": "4.9 on Trustpilot",
+        "trust_delivery": "Free delivery over £25",
+        "trust_guarantee": "Money-back guarantee",
+        "trust_guarantee_url": "shopify://pages/voxblock-happiness-guarantee",
+        "show_pack": false,
+        "pack_heading": "New to Voxblock? Start here",
+        "pack_note": "Bumper and charging cable included.",
+        "packs_url": "shopify://collections/voxblock-starter-pack-collection",
+        "player_handle": "voxblock-player",
+        "hero_image": "",
+        "hero_image_alt": "A child's hand placing an audiobook block on the Voxblock player",
+        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery."
+      }
     }
   },
   "order": [
-    "slideshow_Q4e7Wj",
-    "banner",
+    "age_intro",
     "collection_link_blocks_HpwJbj",
     "main",
-    "image_with_text_overlay_LzDB3n"
+    "image_with_text_overlay_LzDB3n",
+    "slideshow_Q4e7Wj",
+    "banner"
   ]
 }

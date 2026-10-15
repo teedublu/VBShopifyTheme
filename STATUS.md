@@ -312,3 +312,11 @@ decide 4 vs 5 per row on desktop; 30-day PostHog re-read after launch.
 - Live now: /pages/kids-audio-player and /pages/audiobook-player-for-kids are unpublished, with 301 redirects to /.
 - /pages/reasons-to-buy-voxblock becomes the Voxblock reviews page (template page.reasons-to-buy, PR #79). After merge, set its template in admin.
 - A screen-free page draft is parked (not committed); only revisit it if the homepage loses screen-free rankings.
+
+## 2026-10-15: /collections/audiobooks header (draft, stacked on #91)
+Branch `claude/audiobooks-collection-header` (base `claude/theme-collections`). Why: the 3-slide carousel filled the first mobile screen, the page had no H1, and only 12 of 3,596 sessions (0.3%, 30 days to 15 Oct) clicked a slide, against 126 (3.5%) for the icon row.
+- Template `collection.audiobooks`: carousel switched off (kept in the template, disabled); new short `collection-age-intro` band at the top (H1, one line, trust row; pack card off because these visitors are mostly owners), then the icon row, then the grid. Roald Dahl moves into the grid as a promo tile at position 7, same images and link.
+- H1 comes from the collection metafield `landing.heading` (set in admin: "Children's audiobooks"); without it, the collection title.
+- Icon row labels in sentence case (Bestsellers, New releases, Under 5s, 5–8 years, 8–10 years, 10 to teens). `collection-link-blocks` now sends `age_collection_click` with target `link:<label>`; image alt emptied (the label is the link text).
+- Measure 14 days after launch: bounce and single-page rate for sessions landing here (28.7% / 51.1% before), icon-row clicks, Roald Dahl collection visits from this page, player or pack ATC per session.
+- Performance review: /collections/audiobooks (the carousel image was the LCP element).

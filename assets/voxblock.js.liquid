@@ -234,7 +234,8 @@ document.addEventListener('click', (event) => {
 // ----------------------------------------------------------------------------------------------------------------
 // AGE COLLECTION TEMPLATE (sections/collection-age-intro.liquid, snippets/collection-howto-promo.liquid)
 // PostHog `age_collection_click` { target, collection } for every element with data-age-track
-// (tab:<handle>, starter_add, pack_title, all_packs, player, howto_packs, howto_player).
+// (tab:<handle>, starter_add, pack_title, all_packs, player, howto_packs, howto_player; link:<label> on the
+// collection link blocks, e.g. link:5-8-years).
 // ----------------------------------------------------------------------------------------------------------------
 document.addEventListener('click', (event) => {
     const el = event.target.closest('[data-age-track]');
