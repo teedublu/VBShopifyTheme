@@ -307,7 +307,7 @@
                     {%- assign image = object.logo.value | default: object.logo -%}
                   {%- elsif object.image != blank -%}
                     {%- assign image = object.image.value | default: object.image -%}
-                  {%- elsif object.photos != blank -%}
+                  {%- elsif object.photos != blank and object.system.type != 'author' and object.system.type != 'narrator' -%}
                     {%- assign image = object.photos.value | first -%}
                   {%- elsif object.product != blank and object.product.value != blank -%}
                     {%- assign image = object.product.value.featured_image -%}
