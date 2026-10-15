@@ -39,6 +39,16 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-15: Author and narrator pages (compact intro, books near the top)
+Branch `claude/author-narrator-pages`, draft PR, draft theme `VBShopifyTheme/claude/author-narrator-pages` (id 200079049088, a duplicate of live with the changed files pushed by API). **Awaiting owner check, phone and desktop.**
+- New section `person-intro` replaces the tall banner with the giant initials circle: eyebrow, photo only when one is uploaded (56px phone, 80px desktop), H1 name, first 30 words of the bio with "Read more" to the full bio (#bio), trust row. Same `.age-intro` / `.age-pack` styles as the age collections.
+- Starter pack: "Person pack" block override (Roald Dahl, Julia Donaldson, Enid Blyton set), else the published pack holding most of the person's books (main book + first 24 in their collection), else the player. Card on desktop (1000px+), one-line pack strip on phones. Hidden for signed-in player owners.
+- Card markup moved from `collection-age-intro` into `snippets/starter-pack-card` (shared; age collection card output checked identical to live).
+- Books straight after the intro (24, #books, H2 "Audiobooks by / narrated by <name>"); full bio gets an H2 "About <name>"; FAQ and promo copy rewritten to the copy rules ("no app" removed, sentence case, plain tone); per-section orange heading text on the book row cleared.
+- Tracking: `age_collection_click` with collection `author:<handle>` / `narrator:<handle>`; targets strip, read_bio, pack_title, starter_add / player_add, all_packs, player.
+- Data notes: Enid Blyton's collection holds Famous Five bundles, not the books in the Famous Five pack; some bios start with photo credits or effusive copy (Julia Donaldson, Sarah Ovens).
+- Performance review: `/pages/author/roald-dahl`, `/pages/narrator/sarah-ovens` (pack match loops over the pack collection on each render).
+
 ## 2026-10-15: Theme collections (dinosaurs, mystery, funny...) on the age template
 Branch `claude/theme-collections`, draft PR, **awaiting owner check on a draft theme**. Template `collection.audiobooks-landing-cat` (age + ~45 theme/series/seasonal collections).
 - Theme collections (no "Age collection" block) read H1, intro line and starter pack from collection metafields `landing.heading`, `landing.intro`, `landing.starter_pack` (definitions created in admin 15 Oct); fallback to the collection title and section defaults.
