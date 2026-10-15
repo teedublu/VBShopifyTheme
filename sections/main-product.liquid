@@ -115,6 +115,11 @@ quick buy information in a template, that will be extracted in JS, but ensure it
   <div class="quick-buy-drawer__info">
     {%- comment -%}We only show a limited set of information in the quick buy{%- endcomment -%}
 
+    {%- comment -%}
+      Choose first, then add: the variant picker always comes before the add button here, whatever the block order on
+      the product page. No dynamic checkout (Shop Pay) button in quick buy: it is opened from carts and product
+      grids to add something, not to check out straight away.
+    {%- endcomment -%}
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when '@app' -%}
@@ -122,10 +127,14 @@ quick buy information in a template, that will be extracted in JS, but ensure it
 
         {%- when 'variant_picker' -%}
           {%- render 'variant-picker', product: product, form_id: product_form_id, update_url: false, hide_sold_out_variants: block.settings.hide_sold_out_variants, hide_size_chart: true, force_dropdown_as_block: true, block: block -%}
-
-        {%- when 'buy_buttons' -%}
-          {%- render 'buy-buttons', product: product, form_id: product_form_id, show_payment_button: block.settings.show_payment_button, button_size: 'lg' -%}
       {%- endcase -%}
+    {%- endfor -%}
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'buy_buttons' -%}
+        {%- render 'buy-buttons', product: product, form_id: product_form_id, show_payment_button: false, button_size: 'lg' -%}
+        {%- break -%}
+      {%- endif -%}
     {%- endfor -%}
   </div>
 </template>

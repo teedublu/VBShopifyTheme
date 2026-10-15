@@ -104,15 +104,36 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       elsif request.page_type == 'index'
         # Homepage targets the "kids audiobook player" search group (see briefs/homepage-kids-player.md)
         assign resolved_page_title = 'Kids Audiobook Player | Screen-Free Audio Player | Voxblock'
-        assign resolved_page_description = 'Voxblock is the screen-free audiobook player for kids aged 3–14+. No wifi, downloads or subscriptions: pop in a story, press play. Free UK delivery over £25.'
+        assign resolved_page_description = 'The screen-free audiobook player for kids, toddlers to teens. No wifi, downloads or subscriptions: pop in a story, press play. Free UK delivery over £25.'
       elsif request.page_type == 'page' and page.handle == 'kids-audiobook-player-starter-pack'
         # Google Ads landing page: targets starter-pack searches so it doesn't compete with the homepage for "kids audiobook player"
         assign resolved_page_title = 'Audiobook Starter Packs: Player + First Stories | Voxblock'
-        assign resolved_page_description = 'Start with a Voxblock starter pack: the screen-free audiobook player plus your first audiobooks, for children aged 3 to 14+. Free UK delivery over £25.'
+        assign resolved_page_description = 'Start with a Voxblock starter pack: the screen-free audiobook player plus your first audiobooks, for toddlers to teens. Free UK delivery over £25.'
       elsif request.page_type == 'page' and page.handle == 'reasons-to-buy-voxblock'
         # Brand reviews / consideration page: targets "voxblock reviews" so it supports the homepage rather than competing for player searches
         assign resolved_page_title = 'Voxblock Reviews: Why Parents Choose Voxblock'
-        assign resolved_page_description = 'Read Voxblock reviews from UK parents and the seven reasons families choose our screen-free audiobook player for children aged 3 to 14+. 100-day guarantee.'
+        assign resolved_page_description = 'Read Voxblock reviews from UK parents and the seven reasons families choose our screen-free audiobook player, for toddlers to teens. 100-day guarantee.'
+      elsif request.page_type == 'page' and page.handle == 'childrens-cd-player-alternative'
+        # Children's CD player alternative page (briefs/childrens-cd-player-page.md): "kids" allowed in the meta description only
+        assign resolved_page_title = "Children's CD Player Alternative: Audiobooks | Voxblock"
+        assign resolved_page_description = 'Looking for a kids CD player? Voxblock is the screen-free audiobook player children work themselves. No discs to scratch, no wifi, 16-hour battery.'
+      elsif request.page_type == 'page' and template.suffix == 'childrens-cassette-player-alternative'
+        # Children's cassette player alternative (briefs/childrens-cassette-player-page.md). Keyed on the template, not the
+        # handle, so the existing /pages/modern-cassette-player keeps its title until its template is switched in admin.
+        assign resolved_page_title = "Children's Cassette Player Alternative | Voxblock"
+        assign resolved_page_description = 'Looking for a kids cassette player? Voxblock is the screen-free audiobook player children work themselves. No tapes to tangle, no wifi, 16-hour battery.'
+      elsif request.page_type == 'page' and template.suffix == 'reduce-screen-time'
+        # Parent's guide: targets "how to reduce screen time (for kids)"; "how much screen time" stays with the blog post.
+        # Keyed on the template, not the handle, so the live /pages/reduce-screen-time keeps its title and meta until its
+        # template is switched in admin (it is on landing-page-problem today).
+        assign resolved_page_title = 'How to Reduce Screen Time for Kids: 7 Ways | Voxblock'
+        assign resolved_page_description = "Seven practical ways to reduce your child's screen time, based on UK guidance, with screen-free swaps for bedtime, car journeys and quiet time."
+      endif
+
+      # Collections: use the admin SEO title explicitly. On 15 Oct the dinosaurs collection kept rendering its plain title
+      # through page_title although its SEO title was set (mystery, set the same way, worked).
+      if request.page_type == 'collection' and collection.metafields.global.title_tag != blank
+        assign resolved_page_title = collection.metafields.global.title_tag
       endif
 
       # Series pages: "<Series> Audiobooks in Order | Voxblock" when the series has a reading order, else "for Kids"

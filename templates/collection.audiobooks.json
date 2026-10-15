@@ -9,112 +9,25 @@
  */
 {
   "sections": {
-    "slideshow_Q4e7Wj": {
-      "type": "slideshow",
-      "blocks": {
-        "image_yXy8xr": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/banner-roald-dahl-desk-26.1.0.png",
-            "mobile_image": "shopify://shop_images/banner-mob-roald-dahl-26.1.0.png",
-            "content_max_width": 600,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "",
-            "title": "Explore Roald Dahl",
-            "heading_tag": "h2",
-            "button_text": "Shop now",
-            "button_link": "shopify://collections/roald-dahl-selection",
-            "text_color": "#269ea1",
-            "button_background": "",
-            "button_text_color": "",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_YGxQ7h": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/audiobooks-banner-edu-audio-v1.26.png",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "DISCOVER",
-            "title": "Educational Audio",
-            "heading_tag": "h1",
-            "button_text": "Discover here",
-            "button_link": "shopify://collections/educational-audio",
-            "text_color": "#269ea1",
-            "button_background": "",
-            "button_text_color": "",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "image_yPdRD4": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/audiobook-banner-new-releases-desk-26.1.0.png",
-            "mobile_image": "shopify://shop_images/audiobook-banner-new-releases-mob-26.1.0.png",
-            "content_max_width": 520,
-            "mobile_text_position": "place-self-start-end text-end",
-            "desktop_text_position": "sm:place-self-center-end sm:text-end",
-            "subheading": "Explore our audiobooks",
-            "title": "Discover all-time classics or new favourites",
-            "heading_tag": "h2",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#269ea1",
-            "button_background": "",
-            "button_text_color": "",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        }
-      },
-      "block_order": [
-        "image_yXy8xr",
-        "image_YGxQ7h",
-        "image_yPdRD4"
-      ],
+    "age_intro": {
+      "type": "collection-age-intro",
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "image_size": "sm",
-        "controls_type": "numbers",
-        "transition_type": "fade",
-        "autoplay": false,
-        "cycle_speed": 6,
-        "background": "#f2f2f2",
-        "background_gradient": ""
-      }
-    },
-    "banner": {
-      "type": "collection-banner",
-      "disabled": true,
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "enable_parallax": true,
-        "link_objects": true,
-        "show_collection_title": true,
-        "show_collection_description": true,
-        "show_collection_image": true,
-        "collection_title_size": "h1",
-        "image_size": "sm",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "featured_product": "",
-        "featured_product_heading": "Featured product",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 30
+        "background": "#fff7f0",
+        "eyebrow": "",
+        "intro_line": "Screen-free audiobooks children can play themselves, from first stories to teen favourites. 350+ titles and growing.",
+        "default_pack": "",
+        "hero_image_alt": "A child's hand placing an audiobook block on the Voxblock player",
+        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery.",
+        "trust_rating": "4.9 on Trustpilot",
+        "trust_delivery": "",
+        "trust_guarantee": "100-day guarantee",
+        "trust_guarantee_url": "shopify://pages/voxblock-happiness-guarantee",
+        "show_grid_head": false,
+        "show_pack": false,
+        "pack_heading": "New to Voxblock? Start here",
+        "pack_note": "Bumper and charging cable included.",
+        "packs_url": "shopify://collections/voxblock-starter-pack-collection",
+        "player_handle": "voxblock-player"
       }
     },
     "collection_link_blocks_HpwJbj": {
@@ -124,7 +37,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/bestseller-image-link-category-200x150.jpg",
-            "link_text": "Best Sellers",
+            "link_text": "Bestsellers",
             "url_params": "filter.p.m.custom.badges=Bestseller"
           }
         },
@@ -132,7 +45,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/new-image-link-category-200x150.jpg",
-            "link_text": "New Releases",
+            "link_text": "New releases",
             "url_params": "filter.p.m.custom.badges=New"
           }
         },
@@ -140,7 +53,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/under5s-image-link-category-200x150.jpg",
-            "link_text": "Under 5's",
+            "link_text": "Under 5s",
             "url_params": "filter.p.m.book.age_groups=Under+5%27s"
           }
         },
@@ -148,7 +61,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/5-8years-image-link-category-200x150.jpg",
-            "link_text": "5-8 years",
+            "link_text": "5–8 years",
             "url_params": "filter.p.m.book.age_groups=5+to+8+years"
           }
         },
@@ -156,7 +69,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/8-10years-image-link-category-200x150.jpg",
-            "link_text": "8-10 years",
+            "link_text": "8–10 years",
             "url_params": "filter.p.m.book.age_groups=8+to+10+years"
           }
         },
@@ -164,7 +77,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/10-teens-image-link-category-200x150.jpg",
-            "link_text": "10-teens",
+            "link_text": "10 to teens",
             "url_params": "filter.p.m.book.age_groups=10+to+teens"
           }
         },
@@ -212,6 +125,24 @@
     "main": {
       "type": "main-collection",
       "blocks": {
+        "promotion_image_roalddahl": {
+          "type": "promotion_image",
+          "settings": {
+            "position": 7,
+            "column_span": "2",
+            "image": "shopify://shop_images/banner-roald-dahl-desk-26.1.0.png",
+            "mobile_image": "shopify://shop_images/banner-mob-roald-dahl-26.1.0.png",
+            "title": "Explore Roald Dahl",
+            "content": "",
+            "link_url": "shopify://collections/roald-dahl-selection",
+            "link_text": "Shop now",
+            "heading_tag": "h2",
+            "text_position": "place-self-start-end text-end",
+            "text_color": "#269ea1",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
         "promotion_image_KGVD4D": {
           "type": "promotion_image",
           "disabled": true,
@@ -286,6 +217,7 @@
         }
       },
       "block_order": [
+        "promotion_image_roalddahl",
         "promotion_image_KGVD4D",
         "promotion_video_79qxG8",
         "promotion_image_4VEyzT",
@@ -299,6 +231,7 @@
         "show_sort_by": true,
         "sticky_filters": true,
         "card_style": "default",
+        "grid_heading": "",
         "age_bar_enabled": false,
         "age_filter_param": "filter.p.m.book.age_groups",
         "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
@@ -330,13 +263,123 @@
         "enable_watermark": false,
         "watermark_opacity": 6
       }
+    },
+    "slideshow_Q4e7Wj": {
+      "type": "slideshow",
+      "blocks": {
+        "image_yXy8xr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/banner-roald-dahl-desk-26.1.0.png",
+            "mobile_image": "shopify://shop_images/banner-mob-roald-dahl-26.1.0.png",
+            "content_max_width": 600,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "",
+            "title": "Explore Roald Dahl",
+            "heading_tag": "h2",
+            "button_text": "Shop now",
+            "button_link": "shopify://collections/roald-dahl-selection",
+            "text_color": "#269ea1",
+            "button_background": "",
+            "button_text_color": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_YGxQ7h": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/audiobooks-banner-edu-audio-v1.26.png",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "DISCOVER",
+            "title": "Educational Audio",
+            "heading_tag": "h1",
+            "button_text": "Discover here",
+            "button_link": "shopify://collections/educational-audio",
+            "text_color": "#269ea1",
+            "button_background": "",
+            "button_text_color": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_yPdRD4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/audiobook-banner-new-releases-desk-26.1.0.png",
+            "mobile_image": "shopify://shop_images/audiobook-banner-new-releases-mob-26.1.0.png",
+            "content_max_width": 520,
+            "mobile_text_position": "place-self-start-end text-end",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "Explore our audiobooks",
+            "title": "Discover all-time classics or new favourites",
+            "heading_tag": "h2",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#269ea1",
+            "button_background": "",
+            "button_text_color": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_yXy8xr",
+        "image_YGxQ7h",
+        "image_yPdRD4"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "image_size": "sm",
+        "controls_type": "numbers",
+        "transition_type": "fade",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": true,
+        "link_objects": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h1",
+        "image_size": "sm",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
     }
   },
   "order": [
-    "slideshow_Q4e7Wj",
-    "banner",
+    "age_intro",
     "collection_link_blocks_HpwJbj",
     "main",
-    "image_with_text_overlay_LzDB3n"
+    "image_with_text_overlay_LzDB3n",
+    "slideshow_Q4e7Wj",
+    "banner"
   ]
 }

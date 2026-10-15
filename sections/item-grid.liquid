@@ -28,7 +28,10 @@
           {% liquid
             assign item_title = item.name.value | default: item.title.value
             assign item_description = item.description.value | default: item.summary.value
-            assign item_image = item.photos.value | first | default: 'collection-apparel-1'
+            assign item_image = 'collection-apparel-1'
+            if item.system.type != 'author' and item.system.type != 'narrator'
+              assign item_image = item.photos.value | first | default: 'collection-apparel-1'
+            endif
             assign item_page = item.product.url
             assign item_url = '/pages/character/' | append: item.system.handle
 

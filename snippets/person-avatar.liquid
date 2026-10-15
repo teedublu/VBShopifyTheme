@@ -1,9 +1,17 @@
+{%- comment -%}
+  Authors and narrators always show initials: their uploaded photos have no confirmed licence (owner, 15 Oct 2026),
+  so the photos field and any image passed in are ignored for those two types.
+{%- endcomment -%}
 {% if metaobject_to_use == blank %}
   {%  assign metaobject_to_use = metaobject%}
 {% endif %}
-{% if image_to_use == blank %}
+{%- assign avatar_type = metaobject_to_use.system.type -%}
+{%- if avatar_type == 'author' or avatar_type == 'narrator' -%}
+  {%- assign image_to_use = blank -%}
+  {%- if avatar_display == 'image' or avatar_display == blank -%}{%- assign avatar_display = 'initials' -%}{%- endif -%}
+{%- elsif image_to_use == blank -%}
   {%  assign image_to_use = metaobject_to_use.photos.value | first%}
-{% endif %}
+{%- endif -%}
 {% assign image_alt = metaobject_to_use.name | default: metaobject_to_use.title.value | default: metaobject_to_use.system.handle | strip %}
 
 <div class="person-image person-image--{{ metaobject_to_use.system.type }} place-self-center" style="border-radius: {{ radius }}%; height:{{ max_width }}px; width: {{ max_width }}px; overflow:hidden; background: {{ avatar_bg_color }}; display: flex; align-items: center; justify-content: center;">

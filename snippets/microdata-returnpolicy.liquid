@@ -1,24 +1,34 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+JSON-LD hasMerchantReturnPolicy for one Offer (no surrounding braces: render inside an Offer object)
+
+* product: the product
+
+Returns (owner, 13 Oct 2026):
+- Player and starter packs/bundles (product types "Player", "Starter Pack"): 100-day money-back guarantee, free, by post.
+- Everything else (audiobooks, audiobook bundles, accessories, schools packs): 30 days, customer pays return postage.
+Country code is ISO 3166-1 ("GB", not "UK").
+----------------------------------------------------------------------------------------------------------------------
+{%- endcomment -%}
 {%- case product.type -%}
-    
-    {%- when 'Starter Pack' -%}
-        "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "UK",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 100,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn",
-            "returnLabelSource": "ReturnLabelDownloadAndPrint",
-            "refundType": "FullRefund"
-        }
-    {%- else -%}
-        "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "UK",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
-            "refundType": "FullRefund"
-        }
+  {%- when 'Player', 'Starter Pack' -%}
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "GB",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 100,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "refundType": "https://schema.org/FullRefund"
+    }
+  {%- else -%}
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "GB",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+      "refundType": "https://schema.org/FullRefund"
+    }
 {%- endcase -%}

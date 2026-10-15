@@ -29,6 +29,8 @@
         {%- for block in section.blocks -%}
           {% assign image = nil %}
           {% assign image_url = nil %}
+          {% assign avatar_display = nil %}
+          {% assign metaobject_to_use = nil %}
 
           {%- case block.type -%}
             
@@ -48,7 +50,7 @@
                   {% assign avatar_display = 'initials' %}
                   {% assign content = author.bio | metafield_tag | strip_html | truncate: 200 %}
                   {% assign title = author.name %}
-                  {% assign image = author.photos.value | first %}
+                  {% assign image = blank %}
                   {% assign link_url = author.system.url %}
                   {% assign link_text = 'read more' %}
                   {% assign found = author %}
@@ -59,7 +61,7 @@
                   {% assign avatar_display = 'initials' %}
                   {% assign content = narrator.bio | metafield_tag | strip_html | truncate: 200 %}
                   {% assign title = narrator.name %}
-                  {% assign image = narrator.photos.value | first %}
+                  {% assign image = blank %}
                   {% assign link_url = narrator.system.url %}
                   {% assign link_text = 'read more' %}
                   {% assign found = narrator %}
@@ -106,7 +108,17 @@
               {%- unless block.settings.use_object and found == nil -%}
               <div class="multi-column__item justify-{{ section.settings.text_alignment }} snap-start" style="--multi-column-item-column-count: span {{ 12.0 | divided_by: block.settings.column_size | round }}" {{ block.shopify_attributes }}>
 
-                {%- if image!=nil -%}
+                {%- comment -%}Authors and narrators: initials only (no licensed photos), see snippets/person-avatar{%- endcomment -%}
+                {%- liquid
+                  assign show_avatar = false
+                  if image != nil and image != blank
+                    assign show_avatar = true
+                  endif
+                  if avatar_display == 'initials' and metaobject_to_use != blank
+                    assign show_avatar = true
+                  endif
+                -%}
+                {%- if show_avatar -%}
                   
                   {% render 'person-avatar',
                       metaobject: metaobject_to_use,

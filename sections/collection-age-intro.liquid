@@ -8,13 +8,17 @@ Replaces the tall orange collection banner and the image link blocks on the age 
 1. Short cream band: eyebrow, H1, one line, trust row (rating, delivery, guarantee). The collection description is NOT
    shown here; it moves to the "About" section under the grid (sections/collection-about.liquid).
 2. Age tabs: one per "Age collection" block, linking to that collection; the current one is marked aria-current.
-3. "New to Voxblock? Start here": the starter pack chosen for this collection, with colour swatches, live price,
-   Save % and an add-to-basket button, plus "See all packs" and "Player only" links. Hidden for signed-in customers who
+3. "New to Voxblock? Start here": the starter pack chosen for this collection (snippets/starter-pack-card.liquid), with
+   colour swatches, live price, Save % and an add-to-basket button, plus "See all packs" and "Player only" links. Hidden for signed-in customers who
    already bought a player (snippets/customer-owns-player.liquid).
 4. "Already have a player?" line with the story count, introducing the grid.
 
 Each "Age collection" block ties a collection to its tab label, starter pack and wording. A collection using this
-template without a block (e.g. Children's Mystery Audiobooks) gets the section defaults and the default starter pack.
+template without a block is a theme collection (dinosaurs, mystery, funny, seasonal, series...). For those:
+* the H1, intro line and photo come from the collection's own metafields, set in Shopify admin on each collection:
+  landing.heading, landing.intro, landing.hero_image (each falls back to the collection title or section defaults)
+* the card shows the player (not an age pack), or the product in landing.starter_pack if one is set
+* no age tabs: age filtering is left to the grid's Filters, so there is one set of controls
 Prices are read live; nothing is hard-coded.
 
 Tracking: PostHog `age_collection_click` { target, collection } via data-age-track (voxblock.js).
@@ -30,6 +34,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
   endfor
 
   assign heading = collection.title
+  assign hero_image = section.settings.hero_image
   assign eyebrow = section.settings.eyebrow
   assign intro_line = section.settings.intro_line
   assign age_text = ''
@@ -48,6 +53,22 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     if current.settings.starter_pack != blank
       assign pack = current.settings.starter_pack
     endif
+  else
+    assign landing = collection.metafields.landing
+    if landing.heading != blank
+      assign heading = landing.heading.value
+    endif
+    if landing.intro != blank
+      assign intro_line = landing.intro.value
+    endif
+    assign pack = all_products[section.settings.player_handle]
+    if landing.starter_pack != blank and landing.starter_pack.value != blank
+      assign pack = landing.starter_pack.value
+    endif
+
+    if landing.hero_image != blank
+      assign hero_image = landing.hero_image.value
+    endif
   endif
 
   capture owns_player
@@ -58,25 +79,6 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     assign show_pack = true
   endif
 
-  if show_pack
-    assign pack_variant = pack.variants | sort: 'price' | first
-    assign save_pct = 0
-    if pack_variant.compare_at_price > pack_variant.price
-      assign save_pct = pack_variant.compare_at_price | minus: pack_variant.price | times: 100.0 | divided_by: pack_variant.compare_at_price | round
-    endif
-
-    assign contents_line = pack.metafields.pack.contents.value | strip
-    if contents_line == blank
-      assign pack_books = pack.metafields.bundles.products.value
-      if pack_books.size > 0
-        assign contents_line = 'collection.pack_card.contents_count' | t: count: pack_books.size
-      endif
-    endif
-  endif
-
-  assign player = all_products[section.settings.player_handle]
-  assign player_variant = player.variants | sort: 'price' | first
-  assign player_price = player_variant.price | money
   assign collection_key = collection.handle | escape
 -%}
 
@@ -106,7 +108,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
           {%- endif -%}
         </ul>
 
-        {%- if section.blocks.size > 0 -%}
+        {%- if current != nil and section.blocks.size > 0 -%}
           <nav class="age-intro__tabs" aria-label="{{ 'collection.age_intro.tabs_label' | t | escape }}">
             {%- for block in section.blocks -%}
               {%- if block.settings.collection != blank -%}
@@ -122,88 +124,26 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
       </div>
 
       {%- if show_pack -%}
-        <div class="age-pack" data-variant-card>
-          <div class="age-pack__head">
-            <span>{{ section.settings.pack_heading | escape }}</span>
-            {%- if save_pct > 0 -%}<span class="age-pack__save">{{ 'product.general.discount_badge_html' | t: savings: save_pct | append: '%' }}</span>{%- endif -%}
-          </div>
-
-          <div class="age-pack__body">
-            <a href="{{ pack.url }}" class="age-pack__media" tabindex="-1" aria-hidden="true">
-              {%- if pack.featured_media -%}
-                {{- pack.featured_media | image_url: width: 400 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 120px, 170px', widths: '120,170,240,340,400', alt: '' -}}
-              {%- endif -%}
-            </a>
-            <div class="age-pack__info">
-              <h2 class="age-pack__title"><a href="{{ pack.url }}" data-age-track="pack_title">{{ pack.title | escape }}</a></h2>
-              <p class="age-pack__contents">
-                {%- if contents_line != blank -%}{{ contents_line }}{%- if age_text != blank -%}, {{ age_text | escape }}{%- endif -%}. {% endif -%}
-                {{- section.settings.pack_note | escape -}}
-              </p>
-              <p class="age-pack__prices">
-                {%- if pack.price_varies -%}<span class="age-pack__from">{{ 'collection.pack_card.from' | t }}</span> {% endif -%}
-                <span class="age-pack__price"><span class="sr-only">{{ 'product.price.sale_price' | t }}</span>{{ pack_variant.price | money }}</span>
-                {%- if pack_variant.compare_at_price > pack_variant.price -%}
-                  <s class="age-pack__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
-                {%- endif -%}
-              </p>
-            </div>
-          </div>
-
-          <div class="age-pack__buy">
-            {%- comment -%}Colour swatches: same markup as the pack card (snippets/product-card-pack.liquid){%- endcomment -%}
-            {%- if settings.product_color_display == 'swatch' -%}
-              {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
-              {%- for color_label in color_label_list -%}
-                {%- if pack.options_by_name[color_label] != blank -%}
-                  {%- assign product_option = pack.options_by_name[color_label] -%}
-                  {%- capture name -%}swatch-{{ section.id }}-{{ pack.id }}-{{ product_option.position }}{%- endcapture -%}
-                  <fieldset class="age-pack__swatches h-stack gap-0.5" data-variant-swatches>
-                    <legend class="sr-only">{{ product_option.name }}</legend>
-                    {%- liquid
-                      for option_value in product_option.values limit: 4
-                        if forloop.first or pack.selected_or_first_available_variant.matched and option_value == product_option.selected_value
-                          assign selected = true
-                        else
-                          assign selected = false
-                        endif
-                        assign swatch_variant = pack.variants | where: 'title', option_value | first
-                        if swatch_variant.metafields.bumper.colour
-                          render 'option-value', type: 'swatch', value: option_value, color: swatch_variant.metafields.bumper.colour, name: name, selected: selected, size: 'sm'
-                        elsif option_value.swatch.color
-                          render 'option-value', type: 'swatch', value: option_value, color: option_value.swatch.color, name: name, selected: selected, size: 'sm'
-                        else
-                          render 'option-value', type: 'swatch', value: option_value, name: name, selected: selected, size: 'sm'
-                        endif
-                      endfor
-                    -%}
-                  </fieldset>
-                  {%- break -%}
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endif -%}
-
-            {%- form 'product', pack, is: 'product-form', class: 'age-pack__form' -%}
-              <input type="hidden" name="id" value="{{ pack.selected_or_first_available_variant.id }}" data-pack-variant-id>
-              {%- capture variant_map -%}{%- for v in pack.variants -%}{{ v.title | escape }}={{ v.id }}{% unless forloop.last %};{% endunless %}{%- endfor -%}{%- endcapture -%}
-              <input type="hidden" data-pack-variant-map value="{{ variant_map }}">
-              <button type="submit" class="series-button series-button--block" data-age-track="starter_add">{{ 'collection.age_intro.add_pack' | t }}</button>
-            {%- endform -%}
-
-            <p class="age-pack__links">
-              {%- if section.settings.packs_url != blank -%}
-                <a href="{{ section.settings.packs_url }}" data-age-track="all_packs">{{ 'collection.age_intro.all_packs' | t }}</a>
-              {%- endif -%}
-              {%- if player != blank and player_variant.price > 0 -%}
-                <a href="{{ player_variant.url }}" data-age-track="player">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a>
-              {%- endif -%}
-            </p>
-          </div>
+        {%- render 'starter-pack-card',
+          pack: pack,
+          section_id: section.id,
+          heading: section.settings.pack_heading,
+          note: section.settings.pack_note,
+          packs_url: section.settings.packs_url,
+          player_handle: section.settings.player_handle,
+          player_line: section.settings.player_line,
+          age_text: age_text
+        -%}
+      {%- elsif hero_image != blank -%}
+        {%- comment -%}No pack card (player owners, or pack switched off): show the photo of a hand placing a story on the player. Desktop only, so the grid stays high on phones.{%- endcomment -%}
+        <div class="age-intro__media">
+          {{- hero_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 460px, 1px', widths: '460,700,900', alt: section.settings.hero_image_alt -}}
         </div>
       {%- endif -%}
     </div>
   </div>
 
+  {%- if section.settings.show_grid_head -%}
   <div class="container age-intro__grid-head">
     <p class="age-intro__grid-title">
       {%- if show_pack -%}{{ 'collection.age_intro.have_player' | t }}{%- else -%}{{ 'collection.age_intro.stories_heading' | t }}{%- endif -%}
@@ -216,6 +156,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
       {%- endif -%}
     </p>
   </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -229,12 +170,19 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Audiobooks" },
     { "type": "textarea", "id": "intro_line", "label": "Intro line", "default": "Stories that play on Voxblock, the screen-free audiobook player." },
     { "type": "product", "id": "default_pack", "label": "Starter pack" },
+    { "type": "header", "content": "Photo" },
+    { "type": "image_picker", "id": "hero_image", "label": "Photo", "info": "Desktop only, when the card is hidden. Override: landing.hero_image." },
+    { "type": "text", "id": "hero_image_alt", "label": "Photo alt text", "default": "A child's hand placing an audiobook block on the Voxblock player" },
+    { "type": "header", "content": "Theme collections (no block)" },
+    { "type": "paragraph", "content": "Collections without an age block read their H1, intro line and photo from the collection metafields landing.heading, landing.intro and landing.hero_image. Their card shows the player (or the product in landing.starter_pack), and they have no age tabs: the grid's Filters handle age." },
+    { "type": "text", "id": "player_line", "label": "Player card line", "default": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery." },
     { "type": "header", "content": "Trust row" },
     { "type": "text", "id": "trust_rating", "label": "Rating", "default": "4.9 on Trustpilot" },
     { "type": "text", "id": "trust_delivery", "label": "Delivery", "default": "Free delivery over £25" },
     { "type": "text", "id": "trust_guarantee", "label": "Guarantee", "default": "Money-back guarantee" },
     { "type": "url", "id": "trust_guarantee_url", "label": "Guarantee link" },
     { "type": "header", "content": "Starter pack card" },
+    { "type": "checkbox", "id": "show_grid_head", "label": "Show the \"Stories\" line above the grid", "default": true, "info": "Turn off where the grid shows its own product count." },
     { "type": "checkbox", "id": "show_pack", "label": "Show the starter pack card", "default": true, "info": "Never shown to signed-in customers who have already bought a player." },
     { "type": "text", "id": "pack_heading", "label": "Card heading", "default": "New to Voxblock? Start here" },
     { "type": "text", "id": "pack_note", "label": "Line after the contents", "default": "Bumper and charging cable included." },

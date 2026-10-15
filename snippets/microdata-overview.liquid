@@ -1,15 +1,26 @@
-{%- assign handle = audiogramme.system.handle -%}
-{%- assign product = all_products[handle] -%}
-
+{%- comment -%}
+JSON-LD Article for a story overview page. Image from the overview's product; no publish dates (they were
+hard-coded to 2024-05-10 for every page). Author and publisher: the Voxblock Organization.
+{%- endcomment -%}
+{%- liquid
+  assign overview_product = overview.product.value | default: all_products[overview.system.handle]
+  assign page_url = overview.system.url | prepend: shop.url
+-%}
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": {{ overview.page_title | json }},
-  "description": {{ overview.page_description.value | json }},
-  "image": "{{ product.featured_image | image_url: '300x' | prepend: 'https:'  }}",
-  "articleBody": {{ overview.about | metafield_tag | strip_html | json }},
-  "author": {%- render 'microdata-snippet-publisher' -%},
-  "publisher": {%- render 'microdata-snippet-publisher' -%},
-  "datePublished": "2024-05-10",
-  "dateModified": "2024-05-10"
+  "@id": {{ page_url | append: '#article' | json }},
+  "url": {{ page_url | json }},
+  "mainEntityOfPage": {{ page_url | json }},
+  "headline": {{ overview.page_title.value | default: overview.name.value | append: '' | json }},
+  {%- if overview.page_description.value != blank -%}
+    "description": {{ overview.page_description.value | json }},
+  {%- endif -%}
+  {%- if overview_product.featured_image != blank -%}
+    "image": {{ overview_product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+  {%- endif -%}
+  "articleBody": {{ overview.about | metafield_tag | strip_html | strip_newlines | strip | json }},
+  "inLanguage": "en-GB",
+  "author": {%- render 'jsonld-org-ref' -%},
+  "publisher": {%- render 'jsonld-org-ref' -%}
 }

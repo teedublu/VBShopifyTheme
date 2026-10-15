@@ -73,6 +73,14 @@ Optional (all off unless set, so other pages using this section are unchanged):
     assign column_1_product = section.settings.column_1_product
     assign cta_collection = section.settings.cta_collection
     assign sticky = section.settings.sticky_header
+
+    if section.settings.cta_track != blank
+      assign cta_track = section.settings.cta_track
+      assign sticky_track = section.settings.cta_track | append: '_sticky'
+    else
+      assign cta_track = 'table_cta'
+      assign sticky_track = 'table_sticky_cta'
+    endif
   -%}
 
   <style>
@@ -331,7 +339,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                   {%- if sticky_price != blank -%}<span class="ct-sticky__price">{{ sticky_price }}</span>{%- endif -%}
                 </span>
                 {%- if i == feature_col and cta_collection != blank -%}
-                  {%- render 'vs-cta', collection: cta_collection, text: section.settings.sticky_button_text, track: 'table_sticky_cta' -%}
+                  {%- render 'vs-cta', collection: cta_collection, text: section.settings.sticky_button_text, track: sticky_track -%}
                 {%- endif -%}
               </div>
             {%- endfor -%}
@@ -384,7 +392,7 @@ Optional (all off unless set, so other pages using this section are unchanged):
                     {%- if column_link -%}</a>{%- endif -%}
 
                     {%- if i == feature_col and cta_collection != blank -%}
-                      <span class="ct-column__cta">{%- render 'vs-cta', collection: cta_collection, text: section.settings.column_1_button_text, track: 'table_cta' -%}</span>
+                      <span class="ct-column__cta">{%- render 'vs-cta', collection: cta_collection, text: section.settings.column_1_button_text, track: cta_track -%}</span>
                     {%- endif -%}
                   {%- else -%}
                     {{ section.settings[column_key] | escape }}
@@ -661,6 +669,12 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "id": "column_1_button_text",
       "label": "Highlighted column button text",
       "default": "Shop now"
+    },
+    {
+      "type": "text",
+      "id": "cta_track",
+      "label": "Button tracking name",
+      "info": "Optional PostHog target for the button (vs_yoto_click). The sticky header button adds _sticky. Blank keeps table_cta and table_sticky_cta."
     },
     {
       "type": "checkbox",

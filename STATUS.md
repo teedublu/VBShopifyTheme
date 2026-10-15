@@ -13,7 +13,8 @@ Contrast problems are fixed in the theme colour settings, never patched per sect
 - Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
 - "Children" in body copy; "kids" only where people search with it (title tag, meta description, an FAQ question).
 - No "no apps" claims (a Voxblock app is coming for MYO): say no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes stay as written.
-- Facts: ages 3 to 14+, battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
+- Tone (owner, 15 Oct): plain, simple and direct. No over-effusive marketing phrasing ("dive into", "captivating", "spark imagination", "thrilling", "bring to life"). Say what the books are, who they suit and how they play.
+- Facts: age range in copy is "toddlers to teens" (owner, 12 Oct; minimum age 3 stays in factual age answers), battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
 
 ## Performance: pages to check in the next site performance review
 Owner's standing request (9 Oct): every page we improve gets its performance checked in the next site performance
@@ -26,6 +27,8 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - /pages/voxblock-vs-yoto (vs-hero) and /collections/voxblock-starter-pack-collection (pack redesign), both improved
   earlier.
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
+- Children's CD player page `/pages/childrens-cd-player-alternative` (new template, once the page exists in admin).
+- Children's cassette player page `/pages/modern-cassette-player` (new template, once switched in admin).
 
 ## Open: site-wide colour contrast (owner: must be resolved)
 Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for large headings and buttons):
@@ -35,6 +38,119 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-15: Author and narrator pages (compact intro, books near the top)
+Branch `claude/author-narrator-pages`, draft PR, draft theme `VBShopifyTheme/claude/author-narrator-pages` (id 200079049088, a duplicate of live with the changed files pushed by API). **Awaiting owner check, phone and desktop.**
+- New section `person-intro` replaces the tall banner with the giant initials circle: eyebrow, small initials circle (52px phone, 72px desktop; never a photo, see below), H1 name, first 30 words of the bio with "Read more" to the full bio (#bio), trust row. Same `.age-intro` / `.age-pack` styles as the age collections.
+- Starter pack: "Person pack" block override (Roald Dahl, Julia Donaldson, Enid Blyton set), else the published pack holding most of the person's books (main book + first 24 in their collection), else the player. Card on desktop (1000px+), one-line pack strip on phones. Hidden for signed-in player owners.
+- Card markup moved from `collection-age-intro` into `snippets/starter-pack-card` (shared; age collection card output checked identical to live).
+- Books straight after the intro (24, #books, H2 "Audiobooks by / narrated by <name>"); full bio gets an H2 "About <name>"; FAQ and promo copy rewritten to the copy rules ("no app" removed, sentence case, plain tone); per-section orange heading text on the book row cleared.
+- Tracking: `age_collection_click` with collection `author:<handle>` / `narrator:<handle>`; targets strip, read_bio, pack_title, starter_add / player_add, all_packs, player.
+- Photos (owner, 15 Oct): author and narrator photos were taken down after a complaint about an unlicensed image; no provenance, so **initials only** for now (sourcing licensed photos may come later). Nothing reads the author/narrator photos field any more: `person-intro`; Person JSON-LD in `microdata-author` / `microdata-narrator` (the photo URL was still published on the live site); `person-avatar` forces initials for both types (covers the index lists, the old hero and the audiobook-page author/narrator boxes); `metaobjects-list`, `multi-column-audiobooks`, `metaobject-header` and `item-grid` skip the photos field for both types. Character art is a separate case and unchanged. The files themselves are still in Shopify Files and the metaobject photos fields: owner to remove.
+- Data notes: Enid Blyton's collection holds Famous Five bundles, not the books in the Famous Five pack; some bios start with photo credits or effusive copy (Julia Donaldson, Sarah Ovens).
+- Performance review: `/pages/author/roald-dahl`, `/pages/narrator/sarah-ovens` (pack match loops over the pack collection on each render).
+
+## 2026-10-15: Theme collections (dinosaurs, mystery, funny...) on the age template
+Branch `claude/theme-collections`, draft PR, **awaiting owner check on a draft theme**. Template `collection.audiobooks-landing-cat` (age + ~45 theme/series/seasonal collections).
+- Theme collections (no "Age collection" block) read H1, intro line and starter pack from collection metafields `landing.heading`, `landing.intro`, `landing.starter_pack` (definitions created in admin 15 Oct); fallback to the collection title and section defaults.
+- Their age buttons now filter the same collection (Search & Discovery `filter.p.m.book.age_groups`, with counts, "All ages" first, empty ages hidden, rel=nofollow) instead of linking to the age collections. Age collections keep their tabs.
+- "More story themes" row above the About text, from `landing.related` (labels from `landing.short_name`).
+- Grid: "How it works" video card (same as the starter pack collection) at position 3; the "How Voxblock works" row moved from 7 to 12.
+- Filled in admin for dinosaurs only (live theme ignores these fields until merge). Dinosaurs and dragons collections share one rule ("Dinosaurs & Dragons"), so they hold the same 22 stories: owner to decide merge or split.
+- Collection `<title>` now reads the admin SEO title (`global.title_tag`) directly in `layout/theme.liquid`: on 15 Oct the dinosaurs collection kept showing its plain title on the live site although its SEO title was set.
+- Admin 15 Oct: mystery collection SEO title, meta, description and landing fields set ("best mystery audiobooks for kids": 10,609 impressions, 0 clicks in 90 days). Duplicate collections awaiting owner approval to merge: dragons > dinosaurs, mysteries > mystery, action > adventure, magic > fantasy, musical stories > music.
+- Admin 15 Oct: theme copy (SEO title, meta, description with age-sorted picks, landing heading/intro/short name/related, 3-question `landing.faq`) set on adventure, fantasy, funny, bedtime calm, facts and learning, short stories, music, unicorns, wellbeing, favourite characters; FAQ added to mystery and dinosaurs. Collection FAQ renders in `collection-about` with FAQPage JSON-LD. Fairies = unicorns (same rule): redirect fairies > unicorns created, owner to untick Online Store on fairies.
+- Performance review: `/collections/childrens-dinosaurs-audiobooks` (video card in the grid).
+- Sync note: Shopify's GitHub sync silently rejected `collection-age-intro` while a schema `header` had 60 characters; it synced once shortened. Keep schema header content short (under 50 characters) and check the file's checksum on the draft theme after pushing.
+
+## 2026-10-13: Product-group SEO fixes
+Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a draft theme**. Audit and full list: LPS `claude/seo-fixes-product-group.md`.
+- H1s: kids starter pack page (`page.adwords-generic` hero now H1 "Audiobook starter packs: stories they can play themselves"), accessories collection (H1 "Headphones and accessories for Voxblock"), how it works ("How the Voxblock audiobook player works"; step titles H3). Starter pack collection H1 now leads with "Audiobook starter packs"; product grid gets a screen-reader H2 (new `grid_heading` setting on `main-collection`, empty by default).
+- Starter pack collection FAQ: owner-support questions replaced with six pre-purchase questions ("Questions before you buy").
+- Copy rules: "no app(s)" removed (pack template, how it works), "£15" delivery line fixed, sentence case on eyebrows/buttons/labels, "kids" to "children" in body copy, player ages "3 to 5 / 5 to 8 / 8 years to teens", typos.
+- Breadcrumbs: player and accessories products now Home > product; packs Home > Starter packs > pack; starter pack and accessories collections Home > collection (was Home > Our Content > Audiobooks > ...). BreadcrumbList JSON-LD follows.
+- Homepage meta trimmed to 153 characters (`layout/theme.liquid`).
+- Done in admin 13 Oct (not in this PR): SEO titles/metas on 18 published packs, player, starter pack and accessories collections, how it works page; player image alts.
+- Not done: option name "Color" to "Colour" (product images use `#Color_<value>` alt tags for the variant-image mapping; renaming the option would break it). Basket Suggestions collection still holds unpublished packs (cart drawer links 404); remove them in admin.
+- Cart drawer recommendations: one list for empty and filled carts, read from a collection (theme editor › Cart drawer › Recommendations collection, default Basket Suggestions; up to 10, in the collection's manual order), new snippet `cart-recommendations`. Players and packs are left out when the cart already has a player or pack. The player prompt now offers the player only (no starter pack: the shopper already has stories in the cart); its player is a product picker (`player_prompt_player`), replacing the typed handles. Basket Suggestions (13 Oct): player, Gruffalo pack, headphones, travel case, Charlie and the Chocolate Factory, A Bear Called Paddington, Peter Pan.
+- Basket images: line items and small product cards use one square image box (`voxblock.css`), so tall audiobook covers no longer dwarf the player and accessories.
+- Performance review: starter pack collection, how it works, player, pack products.
+
+## 2026-10-13: Hotfix, Organization JSON-LD snippet rejected by Shopify
+After #89 merged, Shopify's GitHub sync rejected `snippets/jsonld-organization.liquid`, so every page printed "Liquid error (snippets/microdata-schema line 16): Could not find asset snippets/jsonld-organization.liquid" in its head. Cause: a quoted string containing a closing brace inside an output tag (the search target); Shopify ends an output tag at the first closing brace. Fix: build the string with assign. Rule for this theme: no braces inside quoted strings in output tags; check with a Shopify-style tokenizer scan, not only a local Liquid renderer.
+
+## 2026-10-13: Structured data, PR B (JSON-LD consistency)
+Branch `claude/jsonld-fixes-b`, stacked on PR A (`claude/jsonld-fixes-a`, #87), draft PR, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md` items 7–14.
+- One Organization node on every page (`snippets/jsonld-organization`, @id `{shop}/#organization`, from Settings > Brand); WebSite on the homepage only. Other blocks point to it (`snippets/jsonld-org-ref`) for publisher, seller and author.
+- One Product generator: `snippets/jsonld-product`, rendered in the layout for every product page (audiobooks included). Removed: `microdata-audiobook-as-product`, `microdata-product-variants`, `microdata-organisation`, `microdata-snippet-bisac_codes`, `microdata-snippet-publisher`. Brand "Voxblock" for every product: Voxblock is the publisher; the Shopify vendor is internal only and never used in structured data (owner, 13 Oct).
+- @id scheme: product `{url}#product`, audiobook `{page}#audiobook`, author/narrator `{page}#person`, character `{page}#character`, series `{page}#series`, collection `{url}#collection`, FAQ `{canonical}#faq`, article `{url}#article`.
+- Audiobook pages: all authors and narrators; offer points at the Product; ISBN only when a 978/979 13-digit barcode; duration from the book metafield; print edition as `exampleOfWork`; BISAC/Thema list fixed; removed `potentialAction`, Shopify publish date, block height/width, fixed 5-minute sample duration.
+- Characters are `Thing` (fictional character) with `subjectOf` their main audiobook; quotes point at them.
+- Collections: list of product pages (was every item typed Audiobook with a `#audiobook` URL). No `nextPage`/`previousPage`.
+- FAQ sections: new "Include in structured data" setting (default on); every FAQPage on a page shares @id `{canonical}#faq`, so the FAQ page's seven sections form one entity.
+- Video section: new "Upload date" setting (blank keeps 2022-08-31).
+- Every value through `| json`; https everywhere; no `priceValidUntil`; blog dates with time zone.
+- Owner to do: set "Upload date" on each video section; change the Organization description in Settings > Brand (it says "no need for any apps").
+
+## 2026-10-13: Structured data fixes, PR A (JSON-LD correctness)
+Branch `claude/jsonld-fixes-a`, draft PR into `main`, **awaiting owner check on its draft theme**. Review: LPS `claude/jsonld-review.md`.
+- Shipping: `GB` (was `UK`, invalid); £3.50 under £24, free from £24 (matches Shopify rates). Unconfirmed order cut-off time removed.
+- Returns: `GB`; player and starter packs/bundles 100 days, free, by post; everything else 30 days, customer pays (owner, 13 Oct).
+- Player, pack and other non-audiobook product pages now carry shippingDetails and hasMerchantReturnPolicy (they had none). Gift cards excluded. Weight uses UN/CEFACT codes, omitted when 0.
+- Product JSON-LD only on /products/ pages: removed from `featured-audiobook-light` (audiobook, author, narrator, read-along pages) and from the audiogramme graph (owner agreed, 13 Oct).
+- Video: real thumbnail (was the "no image" placeholder), https contentUrl, no empty embedUrl, section JSON-LD title on non-audiobook pages (player video was "Transcript of Voxblock Audiobook Player Audiobook"). No script when there is nothing to describe.
+- Audiobook pages: image URL fixed (was a 404). Narrator pages: no placeholder image.
+- Check after merge: Rich Results Test on player, a pack, an audiobook product, an audiobook page, homepage; Search Console Merchant listings and Videos reports in 2–4 weeks.
+- Review 13 Oct (follow-up commit): YouTube videos get embedUrl only; video duration added; empty video script check hardened; gift cards (digital and physical) get no shipping/returns; fixed 1024 × 1024 image size claims removed.
+- Free delivery in JSON-LD follows Shopify's Domestic rates: free from £24.00, £3.50 below (owner, 13 Oct). Accessories and schools packs: 30 days, customer pays (owner confirmed).
+- Explorer Bundle + Voxblock Player retyped to Starter Pack by the owner (13 Oct), so it gets the 100-day policy.
+- Identifiers: sku, productID and GTIN left out when blank (native bundles have none); barcode only as a GTIN of valid length. Audiobook bundle pages now have one Product (the audiobook section outputs Product only for type Audiobooks). Charging Plug barcode (failed GTIN-8 check) removed in Shopify by the owner.
+- PR B (next): Organization node with @id, @id scheme, one product snippet, `| json` escaping, hard-coded dates, unused snippets, one FAQPage per page, character typing.
+
+## 2026-10-12: Children's cassette player page (build)
+Branch `claude/childrens-cassette-player-page` (stacked on the CD page branch, PR #83), draft theme
+`VBShopifyTheme/claude/childrens-cassette-player-page`, draft PR, **awaiting owner check**. Record: `briefs/childrens-cassette-player-page.md`.
+- Rebuilds the existing `/pages/modern-cassette-player` (live since Feb 2024, a text essay, 1,429 impressions, 0 clicks) on a new
+  template `page.childrens-cassette-player-alternative`, targeting "children's cassette player" (260 a month, 480 in Nov) with
+  "modern cassette player" (140) secondary. Same structure and copy rules as the CD page.
+- Title/meta are keyed on the template suffix, so nothing changes on the live page until its template is switched in admin.
+- Admin after merge: switch that page's template, add to the Compare menu.
+
+## 2026-10-12: Children's CD player page (build)
+Branch `claude/childrens-cd-player-page`, draft theme `VBShopifyTheme/claude/childrens-cd-player-page`, draft PR into `main`,
+**awaiting owner check on the draft theme**. Brief: LPS `briefs/brief-childrens-cd-player-page.md`. Full record,
+differences from the brief and open questions: `briefs/childrens-cd-player-page.md`.
+- New template `page.childrens-cd-player-alternative` (alternative-page structure): hero, trust row, "why parents still
+  look for a CD player", comparison table vs a children's CD player, how it works, four age packs, three reviews, closing
+  band, 6-question FAQ, cross-links, small print. Title/meta set in `layout/theme.liquid`. One FAQ line added on the homepage.
+- Shared sections: `story-steps` gets an optional `anchor_id`; `comparison-table` an optional `cta_track`. Both off by default.
+- Tracking: PostHog `vs_yoto_click` targets `cd_page_hero`, `cd_page_table`, `cd_page_pack`.
+- Admin: page created unpublished 12 Oct (handle `childrens-cd-player-alternative`, this template); publish after merge.
+  Then add to the Compare menu and link from the 90s childhood blog post. Open: URL choice, hero photo, CD/tape reviews (see the brief file).
+- Copy note: the brief says "toddlers to teens" (12 Oct) while the copy rules above say "ages 3 to 14+"; the page follows the brief.
+
+## 2026-10-12: Reviews page section, "toddlers to teens" copy (build)
+Branch `claude/reviews-section-toddlers-teens`, PR into `main`, **awaiting owner check on its draft theme**.
+- `page.reasons-to-buy` (Voxblock reviews page): homepage "Reading for pleasure / Connectivity free / Travel companion"
+  image carousel (`multiple-images-with-text`) added after the reasons cards. Copy fix in both copies: "Designed with
+  kids in mind" and "rough and tumble kids" → "children" (body-copy rule).
+- Age range "3 to 14+" → "toddlers to teens" (owner, 12 Oct): homepage hero line, age heading and FAQ answer;
+  reviews page; both alternative pages; homepage, starter pack and reviews meta descriptions in `layout/theme.liquid`.
+  Factual "made for children aged 3 and over" answers unchanged.
+- `/pages/reduce-screen-time` rebuilt as a parent's guide, new template `page.reduce-screen-time` (hero, quick answer
+  citing the DfE under-5s guidance of March 2026, seven ways as benefit cards, why audiobooks, reviews, four best-seller
+  packs, 6-question FAQ, links to the screen-time blog posts). Title/meta override in `layout/theme.liquid`, keyed on the
+  template suffix so it only applies once the page's template is switched: "How to Reduce Screen Time for Kids: 7 Ways | Voxblock". Targets how to reduce screen time (480/mo UK), reduce /
+  reducing screen time (210 each), less screen time (70, Jan peak 320); "how much screen time is too much" (720) and
+  "screen time recommendations by age" (590) stay with the blog post, linked from the FAQ. **After merge (admin):** set
+  the page's template to `reduce-screen-time` (it is on `landing-page-problem` today). Preview before then with
+  `?view=reduce-screen-time`.
+- Starter pack blocks on the homepage and reviews page pointed at unpublished `-pack-set` products, so they fell back to
+  the collection order (no Gruffalo). Now the four best-sellers: Gruffalo, Little Listeners, Roald Dahl, Percy Jackson.
+  `product.player.json` "Frequently bought together": the five unpublished `-set` packs removed from its list (no visible
+  change; it already showed the six published items).
+- Admin, done 12 Oct (not theme): Mouse character metaobject moved to the `gruffalo` template (story hero, classroom
+  band, FAQ); checked live: one H1 "Mouse in The Gruffalo", title/meta unchanged.
 
 ## 2026-10-12: Product title, price and breadcrumbs consistent (build)
 Branch `claude/product-title-price-crumbs`, draft PR #85, draft theme 199895646592 (duplicate of live + changed files by API). Starts from main after the owner's admin reorder of the player and
@@ -236,3 +352,12 @@ decide 4 vs 5 per row on desktop; 30-day PostHog re-read after launch.
 - Live now: /pages/kids-audio-player and /pages/audiobook-player-for-kids are unpublished, with 301 redirects to /.
 - /pages/reasons-to-buy-voxblock becomes the Voxblock reviews page (template page.reasons-to-buy, PR #79). After merge, set its template in admin.
 - A screen-free page draft is parked (not committed); only revisit it if the homepage loses screen-free rankings.
+
+## 2026-10-15: /collections/audiobooks header (draft, stacked on #91)
+Branch `claude/audiobooks-collection-header` (base `claude/theme-collections`). Why: the 3-slide carousel filled the first mobile screen, the page had no H1, and only 12 of 3,596 sessions (0.3%, 30 days to 15 Oct) clicked a slide, against 126 (3.5%) for the icon row.
+- Template `collection.audiobooks`: carousel switched off (kept in the template, disabled); new short `collection-age-intro` band at the top (H1, one line, trust row; pack card off because these visitors are mostly owners), then the icon row, then the grid. Roald Dahl moves into the grid as a promo tile at position 7, same images and link.
+- H1 comes from the collection metafield `landing.heading` (set in admin: "Children's audiobooks"); without it, the collection title.
+- Icon row labels in sentence case (Bestsellers, New releases, Under 5s, 5–8 years, 8–10 years, 10 to teens). `collection-link-blocks` now sends `age_collection_click` with target `link:<label>`; image alt emptied (the label is the link text).
+- Measure 14 days after launch: bounce and single-page rate for sessions landing here (28.7% / 51.1% before), icon-row clicks, Roald Dahl collection visits from this page, player or pack ATC per session.
+- Performance review: /collections/audiobooks (the carousel image was the LCP element).
+- 15 Oct, after #92 went live unchecked (no errors; first products now ~560px down on a 375px phone, was ~925px). Follow-up branch `claude/audiobooks-collection-fixes`: Roald Dahl tile text moved to the top of the image (it sat across the books at the bottom); eyebrow removed (it repeated the H1 "Audiobooks"); new `show_grid_head` setting on `collection-age-intro` (default on) switched off here, as the grid already prints "396 products". Trust row cut to two items so it fits one line on phones 360px and wider: "4.9 on Trustpilot" and "100-day guarantee" (delivery dropped here: the announcement bar above already says free UK delivery over £25). Still open (admin): collection metafield `landing.heading` = "Children's audiobooks".

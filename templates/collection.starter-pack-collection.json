@@ -14,7 +14,7 @@
       "settings": {
         "background": "#fff7f0",
         "eyebrow": "Starter packs",
-        "heading": "Stories they can hold. Everything to start, in one box.",
+        "heading": "Audiobook starter packs: everything to start, in one box.",
         "text": "Voxblock is a screen-free audiobook player. Your child puts a story block on the player and presses play. No downloads, no subscription.",
         "desktop_suffix": "British designed.",
         "image": "shopify://shop_images/SP_Page-Hero_Image-mob-1300x1600.jpg",
@@ -58,7 +58,7 @@
           "settings": {
             "position": 3,
             "column_span": "1",
-            "title": "Our Starter Packs",
+            "title": "Our starter packs",
             "content": "<p>The easiest way to start your child’s screen-free listening journey.</p><p>Ready to play straight from the box with stories they’ll love.</p><p>Includes a Voxblock player, one to three audiobooks, a bumper, and a charging cable.</p><p>No Wi-Fi. No Apps. Just Stories.</p>",
             "link_url": "",
             "link_text": "",
@@ -82,6 +82,7 @@
         "show_sort_by": true,
         "sticky_filters": true,
         "card_style": "pack",
+        "grid_heading": "All starter packs and intro packs",
         "age_bar_enabled": true,
         "age_filter_param": "filter.p.m.book.age_groups",
         "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
@@ -293,37 +294,61 @@
     "faq_t9iAtE": {
       "type": "faq",
       "blocks": {
-        "item_d4JLhf": {
+        "item_whats_in": {
           "type": "item",
           "settings": {
-            "title": "How do I set up my player?",
-            "content": "<p>Depending on the model you can find the on/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.</p>"
+            "title": "What's in a starter pack?",
+            "content": "<p>The Voxblock player, a protective bumper in the colour you choose, a USB-C charging cable and three audiobooks picked for one age group, for less than buying them separately. Intro packs are the player plus one audiobook.</p>"
           }
         },
-        "item_Xxne47": {
+        "item_which": {
           "type": "item",
           "settings": {
-            "title": "Do I need an internet connection to use my player?",
-            "content": "<p>Nope. We are completely connectivity free.</p>"
+            "title": "Which pack should I choose?",
+            "content": "<p>Start with your child's age: use the age buttons above the packs. Every pack uses the same player, so you can add more audiobooks any time from our library of 350+.</p>"
           }
         },
-        "item_P64kBq": {
+        "item_wifi": {
           "type": "item",
           "settings": {
-            "title": "What is the best way to charge my player?",
-            "content": "<ul><li>use the USB C charging cable provided</li><li>charge using a USB adapter in a wall socket</li><li>allow the player to charge fully e.g. overnight</li><li>switch off the player when not in use</li></ul>"
+            "title": "Does it need wifi or a subscription?",
+            "content": "<p>No. Each story is stored on its own audiobook block, so there is nothing to download, stream or set up, and no subscription. Slot in a book and press play.</p>"
+          }
+        },
+        "item_age": {
+          "type": "item",
+          "settings": {
+            "title": "What age is Voxblock for?",
+            "content": "<p>Toddlers to teens. The player is made for children aged 3 and over, and most 3-year-olds can choose and play a story on their own.</p>"
+          }
+        },
+        "item_battery": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>Up to 16 hours of listening on a full charge. It charges with the USB-C cable in the box.</p>"
+          }
+        },
+        "item_returns": {
+          "type": "item",
+          "settings": {
+            "title": "What if it isn't right for us?",
+            "content": "<p>Every player comes with a 100-day money-back guarantee, and UK delivery is free on orders over £25.</p>"
           }
         }
       },
       "block_order": [
-        "item_d4JLhf",
-        "item_Xxne47",
-        "item_P64kBq"
+        "item_whats_in",
+        "item_which",
+        "item_wifi",
+        "item_age",
+        "item_battery",
+        "item_returns"
       ],
       "settings": {
         "full_width": true,
         "subheading": "",
-        "title": "FAQs",
+        "title": "Questions before you buy",
         "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
