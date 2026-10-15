@@ -297,7 +297,7 @@
             "link_url": "shopify://collections/roald-dahl-selection",
             "link_text": "Shop now",
             "heading_tag": "h2",
-            "text_position": "place-self-end-start text-start",
+            "text_position": "place-self-start-end text-end",
             "text_color": "#269ea1",
             "overlay_color": "#000000",
             "overlay_opacity": 0
@@ -355,7 +355,7 @@
       "type": "collection-age-intro",
       "settings": {
         "background": "#fff7f0",
-        "eyebrow": "Audiobooks",
+        "eyebrow": "",
         "intro_line": "350+ unabridged stories for toddlers to teens, ready to play on Voxblock.",
         "default_pack": "",
         "trust_rating": "4.9 on Trustpilot",
@@ -369,7 +369,8 @@
         "player_handle": "voxblock-player",
         "hero_image": "",
         "hero_image_alt": "A child's hand placing an audiobook block on the Voxblock player",
-        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery."
+        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery.",
+        "show_grid_head": false
       }
     }
   },
