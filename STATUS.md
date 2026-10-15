@@ -47,6 +47,7 @@ Branch `claude/theme-collections`, draft PR, **awaiting owner check on a draft t
 - Grid: "How it works" video card (same as the starter pack collection) at position 3; the "How Voxblock works" row moved from 7 to 12.
 - Filled in admin for dinosaurs only (live theme ignores these fields until merge). Dinosaurs and dragons collections share one rule ("Dinosaurs & Dragons"), so they hold the same 22 stories: owner to decide merge or split.
 - Performance review: `/collections/childrens-dinosaurs-audiobooks` (video card in the grid).
+- Sync note: Shopify's GitHub sync silently rejected `collection-age-intro` while a schema `header` had 60 characters; it synced once shortened. Keep schema header content short (under 50 characters) and check the file's checksum on the draft theme after pushing.
 
 ## 2026-10-13: Product-group SEO fixes
 Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a draft theme**. Audit and full list: LPS `claude/seo-fixes-product-group.md`.
