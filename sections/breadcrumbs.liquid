@@ -68,7 +68,8 @@
   }
 </style>
 
-{%- assign title = page.metafields.global.title_tag | default: page.title -%}
+{%- comment -%}Crumb labels use the SEO title (index pages are titled "List of ... (MO)" in admin) without the " | Voxblock" brand tail.{%- endcomment -%}
+{%- assign title = page.metafields.global.title_tag | default: page.title | split: ' | ' | first -%}
 
 {%- assign metaobject_type = blank -%}
 {%- if metaobject != blank -%}
@@ -123,7 +124,7 @@
           if list_page != blank
             assign parent_page = pages[list_page]
             if parent_page != blank
-              assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+              assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title | split: ' | ' | first
               assign crumbs = crumbs | append: crumb_item_sep | append: parent_page.url | append: crumb_part_sep | append: parent_title
             endif
           endif
@@ -254,7 +255,7 @@
         if list_page != blank
           assign parent_page = pages[list_page]
           if parent_page != blank
-            assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+            assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title | split: ' | ' | first
             if list_page == 'audiobooks' and read_along_parent_title != blank
               assign parent_title = 'Audiobooks'
             endif

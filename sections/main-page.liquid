@@ -4,7 +4,8 @@
   }
 </style>
 
-{%- assign title = page.metafields.global.title_tag | default: page.title -%}
+{%- comment -%}H1 uses the SEO title (some pages are titled "List of ... (MO)" in admin) without the " | Voxblock" brand tail.{%- endcomment -%}
+{%- assign title = page.metafields.global.title_tag | default: page.title | split: ' | ' | first -%}
 
 
 <div class="container">
