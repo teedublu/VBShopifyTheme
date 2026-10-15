@@ -368,11 +368,19 @@
             "handle": "julia-donaldson",
             "product": "gruffalo-and-friends-starter-pack"
           }
+        },
+        "person_pack_enid_blyton": {
+          "type": "person_pack",
+          "settings": {
+            "handle": "enid-blyton",
+            "product": "famous-five-starter-pack"
+          }
         }
       },
       "block_order": [
         "person_pack_roald_dahl",
-        "person_pack_julia_donaldson"
+        "person_pack_julia_donaldson",
+        "person_pack_enid_blyton"
       ]
     }
   },
