@@ -743,8 +743,13 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .age-intro__tab:hover { border-color: var(--brand-heading); color: var(--brand-heading); }
 .age-intro__tab[aria-current="page"] { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; }
 .age-intro__tab:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.collection-related { margin-bottom: 24px; }
+.collection-faq { margin-bottom: 24px; }
+.collection-related__title { margin: 0 0 10px; font-size: 17px; font-weight: 700; color: var(--brand-heading); }
+.collection-related .age-intro__tabs { flex-wrap: wrap; overflow: visible; margin-top: 0; }
 
 /* Starter pack card */
+.age-intro__media { display: none; }
 .age-pack { border: 2px solid var(--brand-heading); border-radius: 18px; background: #fff; overflow: hidden; align-self: start; }
 .age-pack__head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 14px; background: var(--brand-heading); color: #fff; font-size: 13px; font-weight: 600; }
 .age-pack__save { padding: 2px 9px; border-radius: 999px; background: #fff; color: var(--brand-heading); font-size: 12px; white-space: nowrap; }
@@ -808,6 +813,8 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
   .age-intro__lede { font-size: 17px; line-height: 26px; }
   .age-intro__trust { font-size: 14px; }
   .age-pack { max-width: 520px; justify-self: end; }
+  .age-intro__media { display: block; justify-self: end; width: 100%; max-width: 460px; }
+  .age-intro__media img { display: block; width: 100%; height: auto; border-radius: 18px; }
   .age-pack__media { width: 160px; height: 160px; }
   .age-pack__title { font-size: 19px; line-height: 25px; }
   .age-pack__price { font-size: 24px; }

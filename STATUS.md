@@ -13,6 +13,7 @@ Contrast problems are fixed in the theme colour settings, never patched per sect
 - Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
 - "Children" in body copy; "kids" only where people search with it (title tag, meta description, an FAQ question).
 - No "no apps" claims (a Voxblock app is coming for MYO): say no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes stay as written.
+- Tone (owner, 15 Oct): plain, simple and direct. No over-effusive marketing phrasing ("dive into", "captivating", "spark imagination", "thrilling", "bring to life"). Say what the books are, who they suit and how they play.
 - Facts: age range in copy is "toddlers to teens" (owner, 12 Oct; minimum age 3 stays in factual age answers), battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
 
 ## Performance: pages to check in the next site performance review
@@ -37,6 +38,19 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-15: Theme collections (dinosaurs, mystery, funny...) on the age template
+Branch `claude/theme-collections`, draft PR, **awaiting owner check on a draft theme**. Template `collection.audiobooks-landing-cat` (age + ~45 theme/series/seasonal collections).
+- Theme collections (no "Age collection" block) read H1, intro line and starter pack from collection metafields `landing.heading`, `landing.intro`, `landing.starter_pack` (definitions created in admin 15 Oct); fallback to the collection title and section defaults.
+- Their age buttons now filter the same collection (Search & Discovery `filter.p.m.book.age_groups`, with counts, "All ages" first, empty ages hidden, rel=nofollow) instead of linking to the age collections. Age collections keep their tabs.
+- "More story themes" row above the About text, from `landing.related` (labels from `landing.short_name`).
+- Grid: "How it works" video card (same as the starter pack collection) at position 3; the "How Voxblock works" row moved from 7 to 12.
+- Filled in admin for dinosaurs only (live theme ignores these fields until merge). Dinosaurs and dragons collections share one rule ("Dinosaurs & Dragons"), so they hold the same 22 stories: owner to decide merge or split.
+- Collection `<title>` now reads the admin SEO title (`global.title_tag`) directly in `layout/theme.liquid`: on 15 Oct the dinosaurs collection kept showing its plain title on the live site although its SEO title was set.
+- Admin 15 Oct: mystery collection SEO title, meta, description and landing fields set ("best mystery audiobooks for kids": 10,609 impressions, 0 clicks in 90 days). Duplicate collections awaiting owner approval to merge: dragons > dinosaurs, mysteries > mystery, action > adventure, magic > fantasy, musical stories > music.
+- Admin 15 Oct: theme copy (SEO title, meta, description with age-sorted picks, landing heading/intro/short name/related, 3-question `landing.faq`) set on adventure, fantasy, funny, bedtime calm, facts and learning, short stories, music, unicorns, wellbeing, favourite characters; FAQ added to mystery and dinosaurs. Collection FAQ renders in `collection-about` with FAQPage JSON-LD. Fairies = unicorns (same rule): redirect fairies > unicorns created, owner to untick Online Store on fairies.
+- Performance review: `/collections/childrens-dinosaurs-audiobooks` (video card in the grid).
+- Sync note: Shopify's GitHub sync silently rejected `collection-age-intro` while a schema `header` had 60 characters; it synced once shortened. Keep schema header content short (under 50 characters) and check the file's checksum on the draft theme after pushing.
 
 ## 2026-10-13: Product-group SEO fixes
 Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a draft theme**. Audit and full list: LPS `claude/seo-fixes-product-group.md`.
@@ -298,3 +312,11 @@ decide 4 vs 5 per row on desktop; 30-day PostHog re-read after launch.
 - Live now: /pages/kids-audio-player and /pages/audiobook-player-for-kids are unpublished, with 301 redirects to /.
 - /pages/reasons-to-buy-voxblock becomes the Voxblock reviews page (template page.reasons-to-buy, PR #79). After merge, set its template in admin.
 - A screen-free page draft is parked (not committed); only revisit it if the homepage loses screen-free rankings.
+
+## 2026-10-15: /collections/audiobooks header (draft, stacked on #91)
+Branch `claude/audiobooks-collection-header` (base `claude/theme-collections`). Why: the 3-slide carousel filled the first mobile screen, the page had no H1, and only 12 of 3,596 sessions (0.3%, 30 days to 15 Oct) clicked a slide, against 126 (3.5%) for the icon row.
+- Template `collection.audiobooks`: carousel switched off (kept in the template, disabled); new short `collection-age-intro` band at the top (H1, one line, trust row; pack card off because these visitors are mostly owners), then the icon row, then the grid. Roald Dahl moves into the grid as a promo tile at position 7, same images and link.
+- H1 comes from the collection metafield `landing.heading` (set in admin: "Children's audiobooks"); without it, the collection title.
+- Icon row labels in sentence case (Bestsellers, New releases, Under 5s, 5–8 years, 8–10 years, 10 to teens). `collection-link-blocks` now sends `age_collection_click` with target `link:<label>`; image alt emptied (the label is the link text).
+- Measure 14 days after launch: bounce and single-page rate for sessions landing here (28.7% / 51.1% before), icon-row clicks, Roald Dahl collection visits from this page, player or pack ATC per session.
+- Performance review: /collections/audiobooks (the carousel image was the LCP element).
