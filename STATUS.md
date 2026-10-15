@@ -46,6 +46,8 @@ Branch `claude/theme-collections`, draft PR, **awaiting owner check on a draft t
 - "More story themes" row above the About text, from `landing.related` (labels from `landing.short_name`).
 - Grid: "How it works" video card (same as the starter pack collection) at position 3; the "How Voxblock works" row moved from 7 to 12.
 - Filled in admin for dinosaurs only (live theme ignores these fields until merge). Dinosaurs and dragons collections share one rule ("Dinosaurs & Dragons"), so they hold the same 22 stories: owner to decide merge or split.
+- Collection `<title>` now reads the admin SEO title (`global.title_tag`) directly in `layout/theme.liquid`: on 15 Oct the dinosaurs collection kept showing its plain title on the live site although its SEO title was set.
+- Admin 15 Oct: mystery collection SEO title, meta, description and landing fields set ("best mystery audiobooks for kids": 10,609 impressions, 0 clicks in 90 days). Duplicate collections awaiting owner approval to merge: dragons > dinosaurs, mysteries > mystery, action > adventure, magic > fantasy, musical stories > music.
 - Performance review: `/collections/childrens-dinosaurs-audiobooks` (video card in the grid).
 - Sync note: Shopify's GitHub sync silently rejected `collection-age-intro` while a schema `header` had 60 characters; it synced once shortened. Keep schema header content short (under 50 characters) and check the file's checksum on the draft theme after pushing.
 
