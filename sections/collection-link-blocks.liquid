@@ -69,9 +69,9 @@ LIQUID
 
   <div class="collection-links scroll-container">
     {% for block in section.blocks %}
-      <a href="{{ collection_url | append: '?' | append: block.settings.url_params }}" class="link-block" aria-label="Link to {{ block.settings.link_text }}">
+      <a href="{{ collection_url | append: '?' | append: block.settings.url_params }}" class="link-block" data-age-track="link:{{ block.settings.link_text | handleize }}" {{ block.shopify_attributes }}>
         {% if block.settings.image %}
-          <img src="{{ block.settings.image | img_url: '300x300' }}" alt="{{ block.settings.heading }}">
+          <img src="{{ block.settings.image | img_url: '300x300' }}" alt="" width="300" height="225">
         {% endif %}
         <span>{{ block.settings.link_text }}</span>
       </a>
