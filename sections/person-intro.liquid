@@ -1,0 +1,241 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PERSON INTRO (author and narrator pages: templates/metaobject/author.json, narrator.json)
+----------------------------------------------------------------------------------------------------------------------
+
+Replaces the tall coloured banner with the giant initials circle. Same band and card styles as the age collections
+(.age-intro / .age-pack in voxblock.css), so nothing is styled per page. From top to bottom:
+1. Eyebrow ("Audiobook author" / "Audiobook narrator"), the person's photo (only when one is uploaded, small), the H1
+   name, the first words of the bio with a "Read more" link down to the full bio, trust row and the book count.
+2. "New to Voxblock? Start here" card (snippets/starter-pack-card.liquid), desktop only. On phones a one-line strip
+   links to the same pack instead, so the books start near the top of the first screen.
+   Which pack: a "Person pack" block whose handle matches this person; otherwise the first published starter pack in
+   the starter pack collection that contains one of this person's books (their main book or the first 24 books in
+   their collection), 3-story packs before intro packs; otherwise the player. Hidden for signed-in player owners.
+The books follow straight after this section (featured-collection in the template).
+
+Tracking: the same PostHog `age_collection_click` event as the age collections (voxblock.js), with collection
+"author:<handle>" or "narrator:<handle>" and targets pack_title, starter_add / player_add, all_packs, player, strip,
+read_bio.
+{%- endcomment -%}
+
+{%- liquid
+  assign person = metaobject
+  assign person_type = person.system.type
+  assign person_handle = person.system.handle
+  assign name = person.name.value | default: person.name
+
+  assign photo = person.photos.value | first
+  if photo == blank and person.photo != blank
+    assign photo = person.photo.value
+  endif
+
+  assign bio_text = person.bio | metafield_text | strip_newlines | strip
+  assign bio_words = bio_text | split: ' '
+  assign bio_short = bio_text | truncatewords: section.settings.bio_words, '…'
+  assign bio_is_cut = false
+  if bio_words.size > section.settings.bio_words
+    assign bio_is_cut = true
+  endif
+
+  assign person_collection = person.collection.value
+  assign book_count = 0
+  if person_collection != blank
+    assign book_count = person_collection.products_count
+  endif
+
+  # Starter pack: block override, then a pack that contains one of this person's books, then the player.
+  assign pack = blank
+  for block in section.blocks
+    if block.settings.handle != blank and block.settings.product != blank
+      assign block_handle = block.settings.handle | strip | downcase
+      if block_handle == person_handle
+        assign pack = block.settings.product
+        break
+      endif
+    endif
+  endfor
+
+  if pack == blank and section.settings.match_packs
+    assign book_ids = ','
+    if person.main_book.value != blank
+      assign book_ids = book_ids | append: person.main_book.value.id | append: ','
+    endif
+    if person_collection != blank
+      for book in person_collection.products limit: 24
+        assign book_ids = book_ids | append: book.id | append: ','
+      endfor
+    endif
+
+    if book_ids != ','
+      assign pack_collection = collections[section.settings.packs_collection]
+      for min_books in (1..2) reversed
+        for candidate in pack_collection.products limit: 60
+          if candidate.available == false or candidate.handle == section.settings.player_handle
+            continue
+          endif
+          assign candidate_books = candidate.metafields.bundles.products.value
+          if candidate_books.size < min_books
+            continue
+          endif
+          for candidate_book in candidate_books
+            assign needle = ',' | append: candidate_book.id | append: ','
+            if book_ids contains needle
+              assign pack = candidate
+              break
+            endif
+          endfor
+          if pack != blank
+            break
+          endif
+        endfor
+        if pack != blank
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  if pack == blank
+    assign pack = all_products[section.settings.player_handle]
+  endif
+
+  capture owns_player
+    render 'customer-owns-player'
+  endcapture
+  assign show_pack = false
+  if section.settings.show_pack and pack != blank and pack.available and owns_player == blank
+    assign show_pack = true
+  endif
+
+  assign pack_variant = pack.variants | sort: 'price' | first
+  assign pack_price = pack_variant.price | money
+  assign pack_is_player = false
+  if pack.handle == section.settings.player_handle
+    assign pack_is_player = true
+  endif
+
+  assign track_key = person_type | append: ':' | append: person_handle | escape
+-%}
+
+<section class="age-intro person-intro" style="--age-intro-bg: {{ section.settings.background }};" data-age-collection="{{ track_key }}" {{ section.shopify_attributes }}>
+  <div class="age-intro__band">
+    <div class="container age-intro__band-inner">
+      <div class="age-intro__text">
+        {%- if section.settings.eyebrow != blank -%}<p class="age-intro__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+
+        <div class="person-intro__head">
+          {%- if photo != blank and section.settings.show_photo -%}
+            <div class="person-intro__photo">
+              {{- photo | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'eager', width: 80, height: 80, alt: name -}}
+            </div>
+          {%- endif -%}
+          <h1 class="age-intro__title">{{ name | escape }}</h1>
+        </div>
+
+        {%- if bio_short != blank -%}
+          <p class="age-intro__lede">
+            {{ bio_short | escape }}
+            {%- if bio_is_cut and section.settings.bio_anchor != blank %}
+              <a href="#{{ section.settings.bio_anchor | escape }}" class="person-intro__more" data-age-track="read_bio">{{ section.settings.read_more | escape }}</a>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+
+        <ul class="age-intro__trust" role="list">
+          {%- if section.settings.trust_rating != blank -%}
+            <li>{%- render 'icon' with 'rating-star', width: 14, height: 14 -%}<span>{{ section.settings.trust_rating }}</span></li>
+          {%- endif -%}
+          {%- if section.settings.trust_delivery != blank -%}
+            <li>{%- render 'icon' with 'picto-truck', width: 16, height: 16, stroke_width: 2 -%}<span>{{ section.settings.trust_delivery | escape }}</span></li>
+          {%- endif -%}
+          {%- if section.settings.trust_guarantee != blank -%}
+            <li>{%- render 'icon' with 'picto-shield', width: 16, height: 16, stroke_width: 2 -%}
+              {%- if section.settings.trust_guarantee_url != blank -%}
+                <a href="{{ section.settings.trust_guarantee_url }}">{{ section.settings.trust_guarantee | escape }}</a>
+              {%- else -%}
+                <span>{{ section.settings.trust_guarantee | escape }}</span>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+        </ul>
+
+        {%- if show_pack -%}
+          <p class="person-intro__strip">
+            <span>{{ section.settings.strip_text | escape }}</span>
+            <a href="{{ pack.url }}" data-age-track="strip">
+              {%- if pack_is_player -%}
+                {{- 'collection.pack_intro.player_link' | t: price: pack_price -}}
+              {%- else -%}
+                {{- pack.title | escape }}, {{ pack_price -}}
+              {%- endif -%}
+            </a>
+          </p>
+        {%- endif -%}
+      </div>
+
+      {%- if show_pack -%}
+        <div class="person-intro__card">
+          {%- render 'starter-pack-card',
+            pack: pack,
+            section_id: section.id,
+            heading: section.settings.pack_heading,
+            note: section.settings.pack_note,
+            packs_url: section.settings.packs_url,
+            player_handle: section.settings.player_handle,
+            player_line: section.settings.player_line
+          -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if book_count > 0 and section.settings.count_text != blank -%}
+    <div class="container age-intro__grid-head">
+      <p class="age-intro__grid-title">{{ section.settings.count_text | replace: '[count]', book_count | replace: '[name]', name | escape }}</p>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Person intro",
+  "tag": "div",
+  "class": "shopify-section--age-intro",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Band background", "default": "#fff7f0" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Audiobook author" },
+    { "type": "checkbox", "id": "show_photo", "label": "Show the photo when one is uploaded", "default": true, "info": "No initials circle when there is no photo." },
+    { "type": "range", "id": "bio_words", "label": "Bio words shown", "min": 15, "max": 60, "step": 5, "default": 30 },
+    { "type": "text", "id": "read_more", "label": "Read more link", "default": "Read more" },
+    { "type": "text", "id": "bio_anchor", "label": "Full bio anchor", "default": "bio", "info": "Anchor ID set on the full bio section below." },
+    { "type": "text", "id": "count_text", "label": "Line above the books", "default": "[count] audiobooks by [name] on Voxblock", "info": "[count] and [name] are filled in." },
+    { "type": "header", "content": "Trust row" },
+    { "type": "text", "id": "trust_rating", "label": "Rating", "default": "4.9 on Trustpilot" },
+    { "type": "text", "id": "trust_delivery", "label": "Delivery", "default": "Free delivery over £25" },
+    { "type": "text", "id": "trust_guarantee", "label": "Guarantee", "default": "Money-back guarantee" },
+    { "type": "url", "id": "trust_guarantee_url", "label": "Guarantee link" },
+    { "type": "header", "content": "Starter pack card" },
+    { "type": "checkbox", "id": "show_pack", "label": "Show the starter pack card", "default": true, "info": "Never shown to signed-in customers who have already bought a player." },
+    { "type": "checkbox", "id": "match_packs", "label": "Pick a pack with this person's books", "default": true },
+    { "type": "text", "id": "packs_collection", "label": "Packs collection handle", "default": "voxblock-starter-pack-collection" },
+    { "type": "text", "id": "pack_heading", "label": "Card heading", "default": "New to Voxblock? Start here" },
+    { "type": "text", "id": "pack_note", "label": "Line after the contents", "default": "Bumper and charging cable included." },
+    { "type": "url", "id": "packs_url", "label": "\"See all packs\" link" },
+    { "type": "text", "id": "strip_text", "label": "Phone strip text", "default": "New to Voxblock? Start with" },
+    { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player" },
+    { "type": "text", "id": "player_line", "label": "Player card line", "default": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery." }
+  ],
+  "blocks": [
+    {
+      "type": "person_pack",
+      "name": "Person pack",
+      "settings": [
+        { "type": "text", "id": "handle", "label": "Author or narrator handle", "info": "e.g. roald-dahl" },
+        { "type": "product", "id": "product", "label": "Starter pack to feature" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Person intro" }]
+}
+{% endschema %}

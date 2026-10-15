@@ -1,0 +1,133 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STARTER PACK CARD ("New to Voxblock? Start here")
+----------------------------------------------------------------------------------------------------------------------
+
+One starter pack (or the player) with colour swatches, live price, Save % and an add-to-basket button, plus
+"See all packs" and "Player only" links. Moved out of sections/collection-age-intro.liquid (15 Oct 2026) so the age and
+theme collections and the author and narrator pages (sections/person-intro.liquid) share one card.
+
+Parameters:
+* pack          product to show (required)
+* section_id    used to make the swatch radio names unique
+* heading       card heading, e.g. "New to Voxblock? Start here"
+* note          line after the contents, e.g. "Bumper and charging cable included."
+* packs_url     "See all packs" link (optional)
+* player_handle handle of the player product, for the "Player only" link and to tell when the card IS the player
+* player_line   contents line used when the card shows the player
+* age_text      optional, e.g. "ages 5–8", appended to the contents line
+* track_prefix  optional, added before each data-age-track value (blank on the collections)
+
+Prices are read live; nothing is hard-coded.
+Tracking: data-age-track values starter_add / player_add, pack_title, all_packs, player (voxblock.js).
+{%- endcomment -%}
+
+{%- liquid
+  assign pack_variant = pack.variants | sort: 'price' | first
+  assign save_pct = 0
+  if pack_variant.compare_at_price > pack_variant.price
+    assign save_pct = pack_variant.compare_at_price | minus: pack_variant.price | times: 100.0 | divided_by: pack_variant.compare_at_price | round
+  endif
+
+  assign contents_line = pack.metafields.pack.contents.value | strip
+  if pack.handle == player_handle
+    assign contents_line = player_line | strip
+  endif
+  if contents_line == blank
+    assign pack_books = pack.metafields.bundles.products.value
+    if pack_books.size > 0
+      assign contents_line = 'collection.pack_card.contents_count' | t: count: pack_books.size
+    endif
+  endif
+
+  assign player = all_products[player_handle]
+  assign card_is_player = false
+  if player != blank and pack.id == player.id
+    assign card_is_player = true
+  endif
+  assign player_variant = player.variants | sort: 'price' | first
+  assign player_price = player_variant.price | money
+-%}
+
+<div class="age-pack" data-variant-card>
+  <div class="age-pack__head">
+    <span>{{ heading | escape }}</span>
+    {%- if save_pct > 0 -%}<span class="age-pack__save">{{ 'product.general.discount_badge_html' | t: savings: save_pct | append: '%' }}</span>{%- endif -%}
+  </div>
+
+  <div class="age-pack__body">
+    <a href="{{ pack.url }}" class="age-pack__media" tabindex="-1" aria-hidden="true">
+      {%- if pack.featured_media -%}
+        {{- pack.featured_media | image_url: width: 400 | image_tag: loading: 'eager', sizes: '(max-width: 699px) 120px, 170px', widths: '120,170,240,340,400', alt: '' -}}
+      {%- endif -%}
+    </a>
+    <div class="age-pack__info">
+      <h2 class="age-pack__title"><a href="{{ pack.url }}" data-age-track="{{ track_prefix }}pack_title">{{ pack.title | escape }}</a></h2>
+      <p class="age-pack__contents">
+        {%- if card_is_player -%}
+          {{- contents_line | escape -}}
+        {%- else -%}
+          {%- if contents_line != blank -%}{{ contents_line }}{%- if age_text != blank -%}, {{ age_text | escape }}{%- endif -%}. {% endif -%}
+          {{- note | escape -}}
+        {%- endif -%}
+      </p>
+      <p class="age-pack__prices">
+        {%- if pack.price_varies -%}<span class="age-pack__from">{{ 'collection.pack_card.from' | t }}</span> {% endif -%}
+        <span class="age-pack__price"><span class="sr-only">{{ 'product.price.sale_price' | t }}</span>{{ pack_variant.price | money }}</span>
+        {%- if pack_variant.compare_at_price > pack_variant.price -%}
+          <s class="age-pack__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
+        {%- endif -%}
+      </p>
+    </div>
+  </div>
+
+  <div class="age-pack__buy">
+    {%- comment -%}Colour swatches: same markup as the pack card (snippets/product-card-pack.liquid){%- endcomment -%}
+    {%- if settings.product_color_display == 'swatch' -%}
+      {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+      {%- for color_label in color_label_list -%}
+        {%- if pack.options_by_name[color_label] != blank -%}
+          {%- assign product_option = pack.options_by_name[color_label] -%}
+          {%- capture name -%}swatch-{{ section_id }}-{{ pack.id }}-{{ product_option.position }}{%- endcapture -%}
+          <fieldset class="age-pack__swatches h-stack gap-0.5" data-variant-swatches>
+            <legend class="sr-only">{{ product_option.name }}</legend>
+            {%- liquid
+              for option_value in product_option.values limit: 4
+                if forloop.first or pack.selected_or_first_available_variant.matched and option_value == product_option.selected_value
+                  assign selected = true
+                else
+                  assign selected = false
+                endif
+                assign swatch_variant = pack.variants | where: 'title', option_value | first
+                if swatch_variant.metafields.bumper.colour
+                  render 'option-value', type: 'swatch', value: option_value, color: swatch_variant.metafields.bumper.colour, name: name, selected: selected, size: 'sm'
+                elsif option_value.swatch.color
+                  render 'option-value', type: 'swatch', value: option_value, color: option_value.swatch.color, name: name, selected: selected, size: 'sm'
+                else
+                  render 'option-value', type: 'swatch', value: option_value, name: name, selected: selected, size: 'sm'
+                endif
+              endfor
+            -%}
+          </fieldset>
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- form 'product', pack, is: 'product-form', class: 'age-pack__form' -%}
+      <input type="hidden" name="id" value="{{ pack.selected_or_first_available_variant.id }}" data-pack-variant-id>
+      {%- capture variant_map -%}{%- for v in pack.variants -%}{{ v.title | escape }}={{ v.id }}{% unless forloop.last %};{% endunless %}{%- endfor -%}{%- endcapture -%}
+      <input type="hidden" data-pack-variant-map value="{{ variant_map }}">
+      <button type="submit" class="series-button series-button--block" data-age-track="{{ track_prefix }}{% if card_is_player %}player_add{% else %}starter_add{% endif %}">{%- if card_is_player -%}{{ 'collection.age_intro.add_player' | t }}{%- else -%}{{ 'collection.age_intro.add_pack' | t }}{%- endif -%}</button>
+    {%- endform -%}
+
+    <p class="age-pack__links">
+      {%- if packs_url != blank -%}
+        <a href="{{ packs_url }}" data-age-track="{{ track_prefix }}all_packs">{{ 'collection.age_intro.all_packs' | t }}</a>
+      {%- endif -%}
+      {%- if player != blank and player_variant.price > 0 and card_is_player == false -%}
+        <a href="{{ player_variant.url }}" data-age-track="{{ track_prefix }}player">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a>
+      {%- endif -%}
+    </p>
+  </div>
+</div>

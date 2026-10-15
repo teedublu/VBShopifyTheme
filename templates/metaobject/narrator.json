@@ -9,67 +9,6 @@
  */
 {
   "sections": {
-    "image_with_text_overlay_Dg7w6q": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "image_6TVgaD": {
-          "type": "image",
-          "settings": {
-            "max_width": 200,
-            "radius": 50,
-            "avatar_display": "initials",
-            "avatar_bg_color": "#ffb74a",
-            "initials_font_size": 120,
-            "initials_color": "#ffffff"
-          }
-        },
-        "subheading_7LMNib": {
-          "type": "subheading",
-          "settings": {
-            "text": "AUDIOBOOK NARRATOR",
-            "subheading_tag": "subheading",
-            "subheading_tag_html": "p"
-          }
-        },
-        "text_h3sJ2p": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>Explore stories narrated by {{ metaobject.name.value }} and listen screen-free on Voxblock.</p>"
-          }
-        },
-        "heading_BEKdDd": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.name.value }}",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "image_6TVgaD",
-        "subheading_7LMNib",
-        "text_h3sJ2p",
-        "heading_BEKdDd"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "background": "#ff9e57",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "enable_watermark": true,
-        "watermark_opacity": 6
-      }
-    },
     "breadcrumbs_pWhnx7": {
       "type": "breadcrumbs",
       "settings": {
@@ -84,9 +23,18 @@
           "settings": {
             "content": "{{ metaobject.bio | metafield_tag }}"
           }
+        },
+        "about_heading": {
+          "type": "heading",
+          "settings": {
+            "text": "About {{ metaobject.name.value }}",
+            "heading_tag": "h3",
+            "heading_tag_html": "h2"
+          }
         }
       },
       "block_order": [
+        "about_heading",
         "richtext_xYiXJe"
       ],
       "settings": {
@@ -96,13 +44,14 @@
         "text_position": "start",
         "background": "",
         "background_gradient": "",
-        "text_color": ""
+        "text_color": "",
+        "anchor_id": "bio"
       }
     },
     "listen_to_voice_7VfQm2": {
       "type": "listen-to-voice",
       "settings": {
-        "eyebrow": "Hear The Voice",
+        "eyebrow": "Hear the voice",
         "heading": "Hear how [name] sounds",
         "content": "Press play to hear a sample from [title] and get a feel for [name]'s storytelling before you choose a story.",
         "play_label": "Play sample",
@@ -183,21 +132,22 @@
         "full_width": false,
         "stack_products": false,
         "show_progress_bar": true,
-        "products_count": 6,
+        "products_count": 24,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 5,
-        "subheading": "More audiobooks",
-        "title": "More stories narrated by {{ metaobject.name.value }}",
+        "subheading": "On Voxblock",
+        "title": "Audiobooks narrated by {{ metaobject.name.value }}",
         "content": "",
         "link_url": "",
         "link_text": "See all",
         "background": "",
         "background_gradient": "",
-        "text_color": "#ff9e57",
+        "text_color": "",
         "heading_color": "",
         "heading_gradient": "",
         "product_card_background": "",
-        "product_card_text_color": ""
+        "product_card_text_color": "",
+        "anchor_id": "books"
       }
     },
     "microdata_kKw6gU": {
@@ -220,13 +170,13 @@
             "icon": "none",
             "icon_width": 68,
             "subheading": "",
-            "title": "A simple way to keep listening",
-            "content": "<p>If your child enjoys {{ metaobject.name.value }}'s storytelling, Voxblock makes it easy to keep listening without apps, downloads or screens. Just choose a story, pop it in and press play.</p>",
+            "title": "Listen on Voxblock",
+            "content": "<p>Every audiobook here plays on Voxblock, the screen-free audiobook player. Your child puts a story on the player and presses play: no downloads, no streaming, no wifi.</p>",
             "link_text": "See how Voxblock works",
             "link_url": "shopify://pages/how-does-it-work",
-            "background": "#ffffff",
+            "background": "",
             "background_gradient": "",
-            "text_color": "#565656",
+            "text_color": "",
             "heading_text_color": "",
             "text_gradient": "",
             "button_background": "",
@@ -248,43 +198,43 @@
         "item_dpCpac": {
           "type": "item",
           "settings": {
-            "title": "What audiobooks are narrated by {{ metaobject.name.value }}?",
-            "content": "<p>On Voxblock {{ metaobject.name.value }} has narrated a selection of screen-free audiobooks.</p>"
+            "title": "What audiobooks has {{ metaobject.name.value }} narrated on Voxblock?",
+            "content": "<p>Every audiobook narrated by {{ metaobject.name.value }} on Voxblock is listed at the top of this page. Each one is unabridged and plays on the Voxblock player.</p>"
           }
         },
         "item_JwG9hG": {
           "type": "item",
           "settings": {
-            "title": "Can children listen to {{ metaobject.name.value }} audiobooks without a screen?",
-            "content": "<p>Yes. Voxblock lets children listen without apps, downloads or screen time, making it a simple way to enjoy audiobooks narrated by {{ metaobject.name.value }}.</p>"
+            "title": "Can children listen to {{ metaobject.name.value }} without a screen?",
+            "content": "<p>Yes. Your child puts the story on the Voxblock player and presses play. There is no screen, nothing to download and no wifi.</p>"
           }
         },
         "item_c3zFfM": {
           "type": "item",
           "settings": {
-            "title": "How can I hear how {{ metaobject.name.value }} sounds?",
-            "content": "<p>Press play in the sample section above to hear {{ metaobject.name.value }}'s voice reading one of the featured audiobooks.</p>"
+            "title": "How can I hear {{ metaobject.name.value }} before I buy?",
+            "content": "<p>Press play in the sample section on this page to hear {{ metaobject.name.value }} reading one of the audiobooks.</p>"
           }
         },
         "item_M9imEA": {
           "type": "item",
           "settings": {
-            "title": "What age group are these audiobooks suitable for?",
-            "content": "<p>Age suitability depends on the title. Check the featured audiobook details and any related stories on this page for guidance on age range, themes and listening level.</p>"
+            "title": "What age are these audiobooks for?",
+            "content": "<p>It depends on the book. Each audiobook page shows its age range; Voxblock itself suits toddlers to teens.</p>"
           }
         },
         "item_Q6mYtN": {
           "type": "item",
           "settings": {
             "title": "What is a Voxblock?",
-            "content": "<p>A Voxblock is a physical audiobook format designed to make listening straightforward. Pick a story, pop it into the player and press play. There are no apps to open, no downloads to manage and no Wi-Fi needed to get started.</p>"
+            "content": "<p>Voxblock is a screen-free audiobook player for children. Each story comes on its own small block: your child puts it on the player and presses play. There is nothing to download, no streaming and no wifi.</p>"
           }
         },
         "item_f8RmLp": {
           "type": "item",
           "settings": {
-            "title": "Why listen to audiobooks narrated by {{ metaobject.name.value }} on Voxblock?",
-            "content": "<p>With a physical audiobook, you or your child can simply pick up the Voxblock and press play. There is no app, no download and no Wi-Fi step in the way, just a simple listening experience that feels immediate and satisfying.</p>"
+            "title": "Do I need a player to listen?",
+            "content": "<p>Yes. Voxblock audiobooks play on the Voxblock player. If you are new to Voxblock, a starter pack gives you the player and three stories together.</p>"
           }
         }
       },
@@ -298,9 +248,9 @@
       ],
       "settings": {
         "full_width": true,
-        "subheading": "Questions about listening to {{ metaobject.name.value }}",
-        "title": "Helpful answers",
-        "content": "<p>If you are exploring audiobooks narrated by {{ metaobject.name.value }}, here are a few useful things to know before you listen on Voxblock.</p>",
+        "subheading": "Questions parents ask",
+        "title": "Listening to {{ metaobject.name.value }} on Voxblock",
+        "content": "",
         "team_avatar_width": 160,
         "support_hours": "",
         "answer_time": "",
@@ -333,15 +283,42 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "person_intro": {
+      "type": "person-intro",
+      "settings": {
+        "background": "#fff7f0",
+        "eyebrow": "Audiobook narrator",
+        "show_photo": true,
+        "bio_words": 30,
+        "read_more": "Read more",
+        "bio_anchor": "bio",
+        "count_text": "[count] audiobooks narrated by [name] on Voxblock",
+        "trust_rating": "4.9 on Trustpilot",
+        "trust_delivery": "Free delivery over £25",
+        "trust_guarantee": "100-day money-back guarantee",
+        "trust_guarantee_url": "shopify://pages/voxblock-happiness-guarantee",
+        "show_pack": true,
+        "match_packs": true,
+        "packs_collection": "voxblock-starter-pack-collection",
+        "pack_heading": "New to Voxblock? Start here",
+        "pack_note": "Bumper and charging cable included.",
+        "packs_url": "shopify://collections/voxblock-starter-pack-collection",
+        "strip_text": "New to Voxblock? Start with",
+        "player_handle": "voxblock-player",
+        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery."
+      },
+      "blocks": {},
+      "block_order": []
     }
   },
   "order": [
-    "image_with_text_overlay_Dg7w6q",
     "breadcrumbs_pWhnx7",
-    "rich_text_FGW9TQ",
-    "listen_to_voice_7VfQm2",
-    "featured_audiobook_light_eXXMXA",
+    "person_intro",
     "featured_collection_dyWK9t",
+    "rich_text_FGW9TQ",
+    "featured_audiobook_light_eXXMXA",
+    "listen_to_voice_7VfQm2",
     "media_with_text_ciY3Ct",
     "faq_PWkrrR",
     "newsletter_jK33Dy",
