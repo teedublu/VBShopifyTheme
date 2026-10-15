@@ -12,7 +12,8 @@ the pack's `bundles.products` metafield with its cover, narrator, length, ages a
   play through the shared player in voxblock.js and send `sample_played` { title } like every other sample button.
 - Book length reads book.duration as hours.minutes ("3.15" = 3 h 15 m).
 
-Accepts: product (the pack), opts (the section's settings)
+Accepts: product (the pack), opts (the section's or block's settings), in_buy_column (true when rendered as the
+`pack_contents` block in the product buy column: compact heading, phone layout at every width)
 {%- endcomment -%}
 
 {%- assign pack = product -%}
@@ -27,9 +28,18 @@ Accepts: product (the pack), opts (the section's settings)
   {%- assign total_minutes = h | times: 60 | plus: m | plus: total_minutes -%}
 {%- endfor -%}
 
-<div class="pack-contents" id="whats-in-the-box" data-pack-contents>
+<div class="pack-contents{% if in_buy_column %} pack-contents--column{% endif %}" id="whats-in-the-box" data-pack-contents>
   {%- capture intro -%}{%- if opts.intro != blank -%}<p>{{ opts.intro | escape }}</p>{%- endif -%}{%- endcapture -%}
-  {%- render 'section-header', subheading: opts.eyebrow, heading: opts.heading, content: intro -%}
+  {%- if in_buy_column -%}
+    {%- comment -%}Buy column: a smaller heading than a section's, so it sits below the product title (H1){%- endcomment -%}
+    <div class="pack-contents__head prose">
+      {%- if opts.eyebrow != blank -%}<p class="subheading">{{ opts.eyebrow | escape }}</p>{%- endif -%}
+      {%- if opts.heading != blank -%}<h2 class="h4">{{ opts.heading | escape }}</h2>{%- endif -%}
+      {{- intro -}}
+    </div>
+  {%- else -%}
+    {%- render 'section-header', subheading: opts.eyebrow, heading: opts.heading, content: intro -%}
+  {%- endif -%}
 
   <div class="pack-contents__body">
   {%- capture kit -%}

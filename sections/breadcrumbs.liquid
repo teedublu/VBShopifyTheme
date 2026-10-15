@@ -1,70 +1,89 @@
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
+  /* Compact breadcrumbs (12 Oct 2026). Phone: one back link to the parent page, one line. Desktop: the full trail on one
+     line, current page truncated. The BreadcrumbList JSON-LD below is unchanged. */
   .breadcrumbs_section {
-    padding-top: 1em;
-    padding-bottom: 1em;
+    --section-spacing-block: .5rem; /* the theme's own section spacing variable, so no padding override is needed */
   }
 
   .breadcrumbs {
     margin: 0;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    color: rgb(var(--text-color) / .75);
   }
 
   .breadcrumbs__list {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    white-space: nowrap;
   }
 
   .breadcrumbs__item {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
   }
 
-  .breadcrumbs__item:not(:last-child):after {
-    border-style: solid;
-    border-width: .10em .10em 0 0;
-    content: '';
-    display: inline-block;
-    height: .20em;
-    margin: 0 .20em;
-    position: relative;
-    transform: rotate(45deg);
-    vertical-align: middle;
-    width: .20em;
+  .breadcrumbs__item:last-child {
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    content: '\203A';
+    margin-inline: .4em;
+    opacity: .6;
   }
 
   .breadcrumbs__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .breadcrumbs__link:hover {
     text-decoration: underline;
   }
 
   .breadcrumbs__current {
     color: inherit;
     font-weight: normal;
-    text-decoration: none;
-  }
-
-  .breadcrumbs__item:first-child .breadcrumbs__link {
-    position: relative;
-    padding-left: 20px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .breadcrumbs__item:first-child .breadcrumbs__link::before {
-    content: "\2302";
-    font-size: 1.7em;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-65%);
-  }
-
-  .breadcrumbs__item:first-child .breadcrumbs__link span {
-    visibility: hidden;
-    display: inline-block;
-    width: 0;
-    height: 0;
     overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Phone: only the parent page, as a back link */
+  @media screen and (max-width: 699px) {
+    .breadcrumbs__item {
+      display: none;
+    }
+
+    .breadcrumbs__item--parent {
+      display: inline-flex;
+      flex-shrink: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .breadcrumbs__item--parent::after {
+      content: none !important;
+    }
+
+    .breadcrumbs__item--parent .breadcrumbs__link {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .breadcrumbs__item--parent .breadcrumbs__link::before {
+      content: '\2039';
+      margin-inline-end: .4em;
+    }
   }
 </style>
 
@@ -142,6 +161,11 @@
             assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
             assign crumbs = crumbs | append: crumb_item_sep | append: collections['audiobooks'].url | append: crumb_part_sep | append: collections['audiobooks'].title
           else
+            comment
+              Player, accessories, school and other products are not part of the audiobook library, so their trail starts
+              at Home rather than "Our Content" (on phones the back link would otherwise read "Our Content").
+            endcomment
+            assign crumbs = shop.secure_url | append: crumb_part_sep | append: 'Home'
             if collection.url
               assign crumbs = crumbs | append: crumb_item_sep | append: collection.url | append: crumb_part_sep | append: collection.title
             endif
@@ -351,13 +375,11 @@
           {%- assign link = crumb[0] -%}
           {%- assign text = crumb[1] -%}
 
-          <li class="breadcrumbs__item">
+          <li class="breadcrumbs__item{% if forloop.rindex == 2 %} breadcrumbs__item--parent{% endif %}">
             {% if forloop.last %}
               <span class="breadcrumbs__current">{{ text }}</span>
             {% else %}
-              <a href="{{ link }}" class="breadcrumbs__link">
-                <span>{{ text }}</span>
-              </a>
+              <a href="{{ link }}" class="breadcrumbs__link">{{ text }}</a>
             {% endif %}
           </li>
         {%- endfor -%}

@@ -152,6 +152,35 @@ Branch `claude/reviews-section-toddlers-teens`, PR into `main`, **awaiting owner
 - Admin, done 12 Oct (not theme): Mouse character metaobject moved to the `gruffalo` template (story hero, classroom
   band, FAQ); checked live: one H1 "Mouse in The Gruffalo", title/meta unchanged.
 
+## 2026-10-12: Product title, price and breadcrumbs consistent (build)
+Branch `claude/product-title-price-crumbs`, draft PR #85, draft theme 199895646592 (duplicate of live + changed files by API). Starts from main after the owner's admin reorder of the player and
+starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy buttons now straight under the price).
+- Title: every product page H1 uses the theme's Large heading size (24px phone). The title block's "Style" setting
+  now only applies in quick view (the player was Medium, 22px).
+- Price: plain, pack (bundle-price) and offer prices on the product page all use `--text-h2`, the same size as the
+  title. Before: plain prices 36px (240%), pack prices ~20px. Cards unchanged. One rule in voxblock.css.
+- Order: price block moved straight under the title in 9 templates (badge or short text sat between them):
+  accessories, audiobook, gruffalo, intro-pack-bundle, product (default), myo-product, player-senior, school-product,
+  starter-pack. pre-order (theme default, unused) left alone.
+- Breadcrumbs: phone shows one back link to the parent page ("‹ Voxblock Starter Pack Bundles"), desktop the full
+  trail on one line; smaller, quieter text; section spacing via the theme variable. 73px → 33px on phones.
+  BreadcrumbList JSON-LD unchanged in shape. Non-audiobook products (player, accessories, schools) now start at Home
+  instead of "Our Content".
+- Phone gallery on audiobook and gruffalo templates: dots like every other product (was free scroll, which shows
+  side peeks and a thumbnail strip). Desktop layouts still differ per template (grid_highlight, thumbnails left,
+  thumbnails bottom): owner to choose one.
+- Gallery opens on the selected variant's picture (snippets/product-gallery.liquid used product.selected_variant,
+  which is only set with ?variant= in the URL, so packs opened on the first image: green Gruffalo while Orange was
+  selected). Fixes every product; variant images in Shopify were already right. Checked on the draft theme.
+- Pack contents intro: "No downloads, no wifi, nothing to set up." (was "no app"). Player description was already
+  clean after the owner's admin edit.
+- Starter packs: "What's in the box" moved into the buy column (new main-product block `pack_contents`, same snippet,
+  phone layout at every width on a light panel, value line off) after the description, above the icons. Full-width
+  section removed from the template; jump link block removed; titles block (`bundle`) disabled. Owner happy (12 Oct).
+  Book titles typed into some pack descriptions in Shopify still show (Gruffalo, Roald Dahl, Bedtime, Adventure).
+- Checked on live pages at 375px with the CSS injected: pack Add to cart bottom 849 → 803px (inside the first
+  screen), player 696px. Confirmed on the draft theme: same measurements, no Liquid errors; owner to check.
+
 ## 2026-10-11: Homepage targets "kids audiobook player" searches (build)
 Branch `claude/homepage-kids-player`, PR #74 into `main`, **final check done 11 Oct, ready to merge** (draft theme 199842660736 synced).
 Full record, baseline and admin follow-ups: `briefs/homepage-kids-player.md`.

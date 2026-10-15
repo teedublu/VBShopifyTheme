@@ -26,6 +26,13 @@
           </div>
         {%- endif -%}
 
+      {%- when 'pack_contents' -%}
+        {%- if product.metafields.bundles.products.value.size > 0 -%}
+          <div class="product-info__pack-contents" {{ block.shopify_attributes }}>
+            {%- render 'pack-contents', product: product, opts: block.settings, in_buy_column: true -%}
+          </div>
+        {%- endif -%}
+
       {%- when 'bundle' -%}
         
           <div class="product-info__bundle" {{ block.shopify_attributes }}>
@@ -43,7 +50,8 @@
         {%- endif -%}
         {%- if request.page_type == 'product' -%}
           {%- capture product_title_heading -%}
-            <h1 class="product-info__title {{ block.settings.heading_tag }}">{{ product_title_text }}</h1>
+            {%- comment -%}One title size on every product page (theme heading "Large"), whatever the block's style setting says, so product pages don't drift. The style setting still applies in quick view.{%- endcomment -%}
+            <h1 class="product-info__title h2">{{ product_title_text }}</h1>
           {%- endcapture -%}
         {%- else -%}
           {%- capture product_title_heading -%}

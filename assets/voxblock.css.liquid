@@ -327,6 +327,16 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 .bundle-price--page .bundle-price__was { position: static; flex-basis: 100%; margin-top: 0; }
 .bundle-price--page [hidden] { display: none !important; }
 
+/* ---------------------------- */
+/* PRODUCT PAGE PRICE: one size on every product page */
+/* ---------------------------- */
+/* Plain prices (sale-price), pack prices (bundle-price) and offer prices (offer-price) used to render at different sizes
+   (36px vs 20px on phones). All three now use the theme's Large heading size, the same size as the product title.
+   Product cards are unaffected (they are not inside .product-info__price). */
+.product-info__price :is(sale-price.text-lg, .bundle-price__now, .offer-price__now) { font-size: var(--text-h2); line-height: 1.1; font-weight: 700; }
+.product-info__price compare-at-price, .product-info__price .offer-price__was { font-size: var(--text-base); }
+.product-info__price .bundle-price--page { row-gap: 0.25rem; }
+
 /* Anchor target for the "Choose your pack" hero button (collection.starter-pack-collection): clear the sticky header */
 #product-grid { scroll-margin-top: calc(var(--sticky-area-height, 0px) + 1rem); }
 
@@ -1013,7 +1023,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
    (sections/pack-contents.liquid, snippets/pack-contents.liquid). Layout only: headings, eyebrow, links and text take
    the site-wide styles (section-header's .subheading + .h2, bare h3/h4 for the groups and books, .text-sm, .link). Phone: kit tiles in a row of three,
    then one card per book. Desktop: kit in a 300px column, books as three cards beside it. Sample buttons are the
-   site's standard .bookpreview button. #whats-in-the-box is linked from the buy column (.pack-contents-jump).
+   site's standard .bookpreview button. Also renders in the buy column as block `pack_contents` (.pack-contents--column).
 ---------------------------------------------------------------------------------------------------------------- */
 .pack-contents { display: flex; flex-direction: column; gap: 24px; scroll-margin-top: calc(var(--header-height, 80px) + 24px); }
 .pack-contents p { margin: 0; }
@@ -1042,20 +1052,26 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .pack-contents__value svg { flex: 0 0 26px; }
 
 @media screen and (min-width: 1000px) {
-  .pack-contents { gap: 32px; }
-  .pack-contents__body { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: start; }
-  .pack-contents__kit { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .pack-contents__kit-item { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; row-gap: 2px; align-content: center; padding: 10px; border-radius: var(--rounded, 16px); background: rgb(var(--background-primary, 255 255 255)); }
-  .pack-contents__kit-media { grid-row: 1 / span 2; width: 88px; }
-  .pack-contents__kit-name { align-self: end; }
-  .pack-contents__kit-caption { align-self: start; }
-  .pack-contents__books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-  .pack-contents__book { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
-  .pack-contents__cover { flex: none; display: flex; justify-content: center; padding-top: 4px; }
-  .pack-contents__cover img { width: auto; height: 190px; }
-  .pack-contents__book-body { flex-grow: 1; }
-  .pack-contents__play { margin-top: auto; padding-top: 10px; }
+  .pack-contents:not(.pack-contents--column) { gap: 32px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__body { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 40px; align-items: start; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__kit { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__kit-item { display: grid; grid-template-columns: 88px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 14px; row-gap: 2px; align-content: center; padding: 10px; border-radius: var(--rounded, 16px); background: rgb(var(--background-primary, 255 255 255)); }
+  .pack-contents:not(.pack-contents--column) .pack-contents__kit-media { grid-row: 1 / span 2; width: 88px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__kit-name { align-self: end; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__kit-caption { align-self: start; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__books { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__book { flex-direction: column; align-items: stretch; gap: 14px; padding: 16px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__cover { flex: none; display: flex; justify-content: center; padding-top: 4px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__cover img { width: auto; height: 190px; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__book-body { flex-grow: 1; }
+  .pack-contents:not(.pack-contents--column) .pack-contents__play { margin-top: auto; padding-top: 10px; }
 }
+
+/* Buy column (block `pack_contents` in main-product): phone layout at every width (the desktop layout above is for the
+   full-width section only), on a light panel so the white kit tiles and book cards stand out. */
+.pack-contents--column { gap: 16px; padding: 16px; border-radius: var(--rounded, 16px); background: rgb(var(--text-color) / .04); }
+.pack-contents--column .pack-contents__head { display: flex; flex-direction: column; gap: 6px; }
+.pack-contents--column .pack-contents__head > * { margin: 0; }
 
 /* Basket line items (cart drawer and /cart): every product image sits in the same square box, so tall audiobook
    covers are no bigger than the player or accessories. Theme-wide, not per section. */
