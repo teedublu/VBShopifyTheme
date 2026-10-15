@@ -776,6 +776,15 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .age-intro__grid-title { margin: 0; font-size: 17px; font-weight: 700; color: var(--brand-heading); }
 .age-intro__count { margin: 0; font-size: 13px; }
 
+/* Author and narrator pages (sections/person-intro.liquid): same band and card as the age collections.
+   Phones get a one-line pack strip instead of the card, so the books start near the top. */
+.person-intro__head { display: flex; align-items: center; gap: 12px; }
+.person-intro__initials { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--brand-heading); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700; letter-spacing: 0.5px; }
+.person-intro__more { color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+.person-intro__strip { margin: 2px 0 0; font-size: 14px; line-height: 20px; }
+.person-intro__strip a { color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.person-intro__card { display: none; }
+
 /* "How Voxblock works" row inside the product grid */
 .howto-promo { grid-column: 1 / -1; display: flex; flex-direction: column; border-radius: 18px; overflow: hidden; background: #fff7f0; color: var(--brand-text); margin-block: 8px; }
 .howto-promo__media img { display: block; width: 100%; height: 210px; object-fit: cover; }
@@ -820,6 +829,9 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
   .age-pack__price { font-size: 24px; }
   .age-intro__grid-head { padding-block: 28px 8px; }
   .age-intro__grid-title { font-size: 20px; }
+  .person-intro__initials { width: 72px; height: 72px; font-size: 26px; }
+  .person-intro__strip { display: none; }
+  .person-intro__card { display: block; justify-self: end; width: 100%; max-width: 520px; }
 }
 
 /* ---------------------------- */
