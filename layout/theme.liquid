@@ -130,6 +130,12 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         assign resolved_page_description = "Seven practical ways to reduce your child's screen time, based on UK guidance, with screen-free swaps for bedtime, car journeys and quiet time."
       endif
 
+      # Collections: use the admin SEO title explicitly. On 15 Oct the dinosaurs collection kept rendering its plain title
+      # through page_title although its SEO title was set (mystery, set the same way, worked).
+      if request.page_type == 'collection' and collection.metafields.global.title_tag != blank
+        assign resolved_page_title = collection.metafields.global.title_tag
+      endif
+
       # Series pages: "<Series> Audiobooks in Order | Voxblock" when the series has a reading order, else "for Kids"
       if request.page_type == 'metaobject' and metaobject.system.type == 'series'
         assign series_title_suffix = ' Audiobooks for Kids | Voxblock'
