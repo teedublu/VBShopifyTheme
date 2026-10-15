@@ -15,11 +15,10 @@ Replaces the tall orange collection banner and the image link blocks on the age 
 
 Each "Age collection" block ties a collection to its tab label, starter pack and wording. A collection using this
 template without a block is a theme collection (dinosaurs, mystery, funny, seasonal, series...). For those:
-* the H1, intro line, starter pack and photo come from the collection's own metafields, set in Shopify admin on each
-  collection: landing.heading, landing.intro, landing.starter_pack, landing.hero_image (each falls back to the collection title or the
-  section defaults when empty)
-* the age buttons filter THIS collection (Search & Discovery filter in "Age filter parameter", with a count each)
-  instead of linking away to the age collections; values with no stories are left out
+* the H1, intro line and photo come from the collection's own metafields, set in Shopify admin on each collection:
+  landing.heading, landing.intro, landing.hero_image (each falls back to the collection title or section defaults)
+* the card shows the player (not an age pack), or the product in landing.starter_pack if one is set
+* no age tabs: age filtering is left to the grid's Filters, so there is one set of controls
 Prices are read live; nothing is hard-coded.
 
 Tracking: PostHog `age_collection_click` { target, collection } via data-age-track (voxblock.js).
@@ -62,6 +61,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     if landing.intro != blank
       assign intro_line = landing.intro.value
     endif
+    assign pack = all_products[section.settings.player_handle]
     if landing.starter_pack != blank and landing.starter_pack.value != blank
       assign pack = landing.starter_pack.value
     endif
@@ -69,9 +69,6 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     if landing.hero_image != blank
       assign hero_image = landing.hero_image.value
     endif
-
-    assign age_param = section.settings.age_filter_param | strip
-    assign age_filter = collection.filters | where: 'param_name', age_param | first
   endif
 
   capture owns_player
@@ -90,6 +87,9 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     endif
 
     assign contents_line = pack.metafields.pack.contents.value | strip
+    if pack.handle == section.settings.player_handle
+      assign contents_line = section.settings.player_line | strip
+    endif
     if contents_line == blank
       assign pack_books = pack.metafields.bundles.products.value
       if pack_books.size > 0
@@ -99,6 +99,10 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
   endif
 
   assign player = all_products[section.settings.player_handle]
+  assign card_is_player = false
+  if pack != blank and player != blank and pack.id == player.id
+    assign card_is_player = true
+  endif
   assign player_variant = player.variants | sort: 'price' | first
   assign player_price = player_variant.price | money
   assign collection_key = collection.handle | escape
@@ -130,46 +134,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
           {%- endif -%}
         </ul>
 
-        {%- if current == nil and age_filter != blank -%}
-          {%- comment -%}Theme collection: age buttons filter this collection (full page load, Shopify filter URLs){%- endcomment -%}
-          {%- liquid
-            assign chip_count = 0
-            assign any_active = false
-            for filter_value in age_filter.values
-              if filter_value.count > 0 or filter_value.active
-                assign chip_count = chip_count | plus: 1
-              endif
-              if filter_value.active
-                assign any_active = true
-              endif
-            endfor
-          -%}
-          {%- if chip_count > 1 or any_active -%}
-            {%- assign chip_lines = section.settings.age_chips | newline_to_br | split: '<br />' -%}
-            <nav class="age-intro__tabs" aria-label="{{ 'collection.age_intro.filter_label' | t | escape }}">
-              <a href="{{ collection.url }}{% if collection.sort_by != blank and collection.sort_by != collection.default_sort_by %}?sort_by={{ collection.sort_by }}{% endif %}" class="age-intro__tab" {% unless any_active %}aria-current="page"{% endunless %} rel="nofollow" data-age-track="filter:all">
-                {{- 'collection.age_intro.all_ages' | t -}}
-              </a>
-              {%- for chip_line in chip_lines -%}
-                {%- assign line_parts = chip_line | strip | split: '|' -%}
-                {%- assign chip_label = line_parts[0] | strip -%}
-                {%- assign match_label = line_parts[1] | default: line_parts[0] | strip | downcase -%}
-                {%- if chip_label == blank -%}{%- continue -%}{%- endif -%}
-                {%- for filter_value in age_filter.values -%}
-                  {%- assign value_label = filter_value.label | strip | downcase -%}
-                  {%- if value_label != match_label -%}{%- continue -%}{%- endif -%}
-                  {%- if filter_value.count > 0 or filter_value.active -%}
-                    <a href="{% if filter_value.active %}{{ filter_value.url_to_remove }}{% else %}{{ filter_value.url_to_add }}{% endif %}" class="age-intro__tab" {% if filter_value.active %}aria-current="page"{% endif %} rel="nofollow" data-age-track="filter:{{ chip_label | handleize }}">
-                      {{- chip_label | escape -}}
-                      {%- unless filter_value.active -%}<span class="age-intro__tab-count">{{ filter_value.count }}</span>{%- endunless -%}
-                    </a>
-                  {%- endif -%}
-                  {%- break -%}
-                {%- endfor -%}
-              {%- endfor -%}
-            </nav>
-          {%- endif -%}
-        {%- elsif current != nil and section.blocks.size > 0 -%}
+        {%- if current != nil and section.blocks.size > 0 -%}
           <nav class="age-intro__tabs" aria-label="{{ 'collection.age_intro.tabs_label' | t | escape }}">
             {%- for block in section.blocks -%}
               {%- if block.settings.collection != blank -%}
@@ -200,8 +165,12 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
             <div class="age-pack__info">
               <h2 class="age-pack__title"><a href="{{ pack.url }}" data-age-track="pack_title">{{ pack.title | escape }}</a></h2>
               <p class="age-pack__contents">
-                {%- if contents_line != blank -%}{{ contents_line }}{%- if age_text != blank -%}, {{ age_text | escape }}{%- endif -%}. {% endif -%}
-                {{- section.settings.pack_note | escape -}}
+                {%- if card_is_player -%}
+                  {{- contents_line | escape -}}
+                {%- else -%}
+                  {%- if contents_line != blank -%}{{ contents_line }}{%- if age_text != blank -%}, {{ age_text | escape }}{%- endif -%}. {% endif -%}
+                  {{- section.settings.pack_note | escape -}}
+                {%- endif -%}
               </p>
               <p class="age-pack__prices">
                 {%- if pack.price_varies -%}<span class="age-pack__from">{{ 'collection.pack_card.from' | t }}</span> {% endif -%}
@@ -250,14 +219,14 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
               <input type="hidden" name="id" value="{{ pack.selected_or_first_available_variant.id }}" data-pack-variant-id>
               {%- capture variant_map -%}{%- for v in pack.variants -%}{{ v.title | escape }}={{ v.id }}{% unless forloop.last %};{% endunless %}{%- endfor -%}{%- endcapture -%}
               <input type="hidden" data-pack-variant-map value="{{ variant_map }}">
-              <button type="submit" class="series-button series-button--block" data-age-track="starter_add">{{ 'collection.age_intro.add_pack' | t }}</button>
+              <button type="submit" class="series-button series-button--block" data-age-track="{% if card_is_player %}player_add{% else %}starter_add{% endif %}">{%- if card_is_player -%}{{ 'collection.age_intro.add_player' | t }}{%- else -%}{{ 'collection.age_intro.add_pack' | t }}{%- endif -%}</button>
             {%- endform -%}
 
             <p class="age-pack__links">
               {%- if section.settings.packs_url != blank -%}
                 <a href="{{ section.settings.packs_url }}" data-age-track="all_packs">{{ 'collection.age_intro.all_packs' | t }}</a>
               {%- endif -%}
-              {%- if player != blank and player_variant.price > 0 -%}
+              {%- if player != blank and player_variant.price > 0 and card_is_player == false -%}
                 <a href="{{ player_variant.url }}" data-age-track="player">{{ 'collection.pack_intro.player_link' | t: price: player_price }}</a>
               {%- endif -%}
             </p>
@@ -301,9 +270,8 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "image_picker", "id": "hero_image", "label": "Photo", "info": "A collection can use its own photo in the landing.hero_image metafield." },
     { "type": "text", "id": "hero_image_alt", "label": "Photo alt text", "default": "A child's hand placing an audiobook block on the Voxblock player" },
     { "type": "header", "content": "Theme collections (no block)" },
-    { "type": "paragraph", "content": "Collections without an age block read their H1, intro line and starter pack from the collection metafields landing.heading, landing.intro and landing.starter_pack (Shopify admin › the collection › Metafields)." },
-    { "type": "text", "id": "age_filter_param", "label": "Age filter parameter", "default": "filter.p.m.book.age_groups" },
-    { "type": "textarea", "id": "age_chips", "label": "Age buttons", "default": "Under 5|Under 5's\n5–8|5 to 8 years\n8–10|8 to 10 years\n10+|10 to teens", "info": "One per line: Button label|Label of the Search & Discovery filter value. A button is shown only when the collection has stories for that age." },
+    { "type": "paragraph", "content": "Collections without an age block read their H1, intro line and photo from the collection metafields landing.heading, landing.intro and landing.hero_image. Their card shows the player (or the product in landing.starter_pack), and they have no age tabs: the grid's Filters handle age." },
+    { "type": "text", "id": "player_line", "label": "Player card line", "default": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery." },
     { "type": "header", "content": "Trust row" },
     { "type": "text", "id": "trust_rating", "label": "Rating", "default": "4.9 on Trustpilot" },
     { "type": "text", "id": "trust_delivery", "label": "Delivery", "default": "Free delivery over £25" },
