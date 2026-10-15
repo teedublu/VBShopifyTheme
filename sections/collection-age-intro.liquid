@@ -15,8 +15,8 @@ Replaces the tall orange collection banner and the image link blocks on the age 
 
 Each "Age collection" block ties a collection to its tab label, starter pack and wording. A collection using this
 template without a block is a theme collection (dinosaurs, mystery, funny, seasonal, series...). For those:
-* the H1, intro line and starter pack come from the collection's own metafields, set in Shopify admin on each
-  collection: landing.heading, landing.intro, landing.starter_pack (each falls back to the collection title or the
+* the H1, intro line, starter pack and photo come from the collection's own metafields, set in Shopify admin on each
+  collection: landing.heading, landing.intro, landing.starter_pack, landing.hero_image (each falls back to the collection title or the
   section defaults when empty)
 * the age buttons filter THIS collection (Search & Discovery filter in "Age filter parameter", with a count each)
   instead of linking away to the age collections; values with no stories are left out
@@ -35,6 +35,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
   endfor
 
   assign heading = collection.title
+  assign hero_image = section.settings.hero_image
   assign eyebrow = section.settings.eyebrow
   assign intro_line = section.settings.intro_line
   assign age_text = ''
@@ -63,6 +64,10 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     endif
     if landing.starter_pack != blank and landing.starter_pack.value != blank
       assign pack = landing.starter_pack.value
+    endif
+
+    if landing.hero_image != blank
+      assign hero_image = landing.hero_image.value
     endif
 
     assign age_param = section.settings.age_filter_param | strip
@@ -258,6 +263,11 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
             </p>
           </div>
         </div>
+      {%- elsif hero_image != blank -%}
+        {%- comment -%}No pack card (player owners, or pack switched off): show the photo of a hand placing a story on the player. Desktop only, so the grid stays high on phones.{%- endcomment -%}
+        <div class="age-intro__media">
+          {{- hero_image | image_url: width: 900 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 460px, 1px', widths: '460,700,900', alt: section.settings.hero_image_alt -}}
+        </div>
       {%- endif -%}
     </div>
   </div>
@@ -287,6 +297,9 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Audiobooks" },
     { "type": "textarea", "id": "intro_line", "label": "Intro line", "default": "Stories that play on Voxblock, the screen-free audiobook player." },
     { "type": "product", "id": "default_pack", "label": "Starter pack" },
+    { "type": "header", "content": "Photo (shown when the starter pack card is not, desktop only)" },
+    { "type": "image_picker", "id": "hero_image", "label": "Photo", "info": "A collection can use its own photo in the landing.hero_image metafield." },
+    { "type": "text", "id": "hero_image_alt", "label": "Photo alt text", "default": "A child's hand placing an audiobook block on the Voxblock player" },
     { "type": "header", "content": "Theme collections (no block)" },
     { "type": "paragraph", "content": "Collections without an age block read their H1, intro line and starter pack from the collection metafields landing.heading, landing.intro and landing.starter_pack (Shopify admin › the collection › Metafields)." },
     { "type": "text", "id": "age_filter_param", "label": "Age filter parameter", "default": "filter.p.m.book.age_groups" },
