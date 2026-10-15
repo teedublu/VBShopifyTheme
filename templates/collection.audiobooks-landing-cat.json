@@ -95,21 +95,20 @@
         "promotion_video_CHwxAJ": {
           "type": "promotion_video",
           "settings": {
-            "position": 1,
+            "position": 3,
             "column_span": "1",
-            "video": "shopify://files/videos/how does it work_mobile.mp4",
+            "video": "shopify://files/videos/how does it work_desktop.mp4",
             "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "",
+            "title": "How it works",
             "content": "",
-            "link_url": "shopify://collections/audiobooks",
-            "link_text": "",
+            "link_url": "shopify://pages/how-does-it-work",
+            "link_text": "Learn more",
             "heading_tag": "h4",
             "text_position": "place-self-end-start text-start",
             "text_color": "#ffffff",
             "overlay_color": "#000000",
-            "overlay_opacity": 0
-          },
-          "disabled": true
+            "overlay_opacity": 20
+          }
         },
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
@@ -132,7 +131,7 @@
         "howto_promo": {
           "type": "promotion_howto",
           "settings": {
-            "position": 7,
+            "position": 12,
             "image": "shopify://shop_images/IMG_5604.jpg",
             "image_alt": "Voxblock player playing The Gruffalo, surrounded by story blocks and drawing pens",
             "eyebrow": "How Voxblock works",
@@ -279,7 +278,9 @@
         "pack_heading": "New to Voxblock? Start here",
         "pack_note": "Bumper and charging cable included.",
         "packs_url": "shopify://collections/voxblock-starter-pack-collection",
-        "player_handle": "voxblock-player"
+        "player_handle": "voxblock-player",
+        "age_filter_param": "filter.p.m.book.age_groups",
+        "age_chips": "Under 5|Under 5's\n5–8|5 to 8 years\n8–10|8 to 10 years\n10+|10 to teens"
       }
     },
     "about": {

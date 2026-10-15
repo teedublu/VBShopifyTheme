@@ -38,6 +38,15 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-15: Theme collections (dinosaurs, mystery, funny...) on the age template
+Branch `claude/theme-collections`, draft PR, **awaiting owner check on a draft theme**. Template `collection.audiobooks-landing-cat` (age + ~45 theme/series/seasonal collections).
+- Theme collections (no "Age collection" block) read H1, intro line and starter pack from collection metafields `landing.heading`, `landing.intro`, `landing.starter_pack` (definitions created in admin 15 Oct); fallback to the collection title and section defaults.
+- Their age buttons now filter the same collection (Search & Discovery `filter.p.m.book.age_groups`, with counts, "All ages" first, empty ages hidden, rel=nofollow) instead of linking to the age collections. Age collections keep their tabs.
+- "More story themes" row above the About text, from `landing.related` (labels from `landing.short_name`).
+- Grid: "How it works" video card (same as the starter pack collection) at position 3; the "How Voxblock works" row moved from 7 to 12.
+- Filled in admin for dinosaurs only (live theme ignores these fields until merge). Dinosaurs and dragons collections share one rule ("Dinosaurs & Dragons"), so they hold the same 22 stories: owner to decide merge or split.
+- Performance review: `/collections/childrens-dinosaurs-audiobooks` (video card in the grid).
+
 ## 2026-10-13: Product-group SEO fixes
 Branch `claude/product-group-seo-fixes`, draft PR, **awaiting owner check on a draft theme**. Audit and full list: LPS `claude/seo-fixes-product-group.md`.
 - H1s: kids starter pack page (`page.adwords-generic` hero now H1 "Audiobook starter packs: stories they can play themselves"), accessories collection (H1 "Headphones and accessories for Voxblock"), how it works ("How the Voxblock audiobook player works"; step titles H3). Starter pack collection H1 now leads with "Audiobook starter packs"; product grid gets a screen-reader H2 (new `grid_heading` setting on `main-collection`, empty by default).

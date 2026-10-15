@@ -5,7 +5,24 @@ COLLECTION ABOUT (age collection template)
 
 The collection description, moved out of the banner and shown under the grid in a closed <details> so it stays in the
 page (and for search engines) without pushing the products down. Nothing is shown if the description is empty.
+
+Above it, "More story themes": links to the collections in the collection's landing.related metafield (a list of
+collections, set in Shopify admin on each collection). Nothing is shown if it is empty.
 {%- endcomment -%}
+
+{%- assign related = collection.metafields.landing.related.value -%}
+{%- if related != blank and related.size > 0 -%}
+  <nav class="container collection-related" aria-labelledby="collection-related-{{ section.id }}" {{ section.shopify_attributes }}>
+    <h2 id="collection-related-{{ section.id }}" class="collection-related__title">{{ 'collection.age_intro.related_heading' | t }}</h2>
+    <div class="age-intro__tabs">
+      {%- for related_collection in related -%}
+        {%- if related_collection.id == collection.id -%}{%- continue -%}{%- endif -%}
+        {%- assign related_label = related_collection.metafields.landing.short_name.value | default: related_collection.title -%}
+        <a href="{{ related_collection.url }}" class="age-intro__tab" data-age-track="related:{{ related_collection.handle | escape }}">{{ related_label | escape }}</a>
+      {%- endfor -%}
+    </div>
+  </nav>
+{%- endif -%}
 
 {%- if collection.description != blank -%}
   <div class="container collection-about" {{ section.shopify_attributes }}>
