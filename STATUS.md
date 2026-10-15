@@ -13,6 +13,7 @@ Contrast problems are fixed in the theme colour settings, never patched per sect
 - Sentence case for every heading, eyebrow and button; only names keep capitals (Voxblock, Roald Dahl, Yoto, UK).
 - "Children" in body copy; "kids" only where people search with it (title tag, meta description, an FAQ question).
 - No "no apps" claims (a Voxblock app is coming for MYO): say no downloads, no streaming, no wifi, no subscriptions, nothing to set up. Customer quotes stay as written.
+- Tone (owner, 15 Oct): plain, simple and direct. No over-effusive marketing phrasing ("dive into", "captivating", "spark imagination", "thrilling", "bring to life"). Say what the books are, who they suit and how they play.
 - Facts: age range in copy is "toddlers to teens" (owner, 12 Oct; minimum age 3 stays in factual age answers), battery up to 16 hours, 350+ audiobooks, free UK delivery over £25, 100-day money-back guarantee. No prices hard-coded in copy.
 
 ## Performance: pages to check in the next site performance review
