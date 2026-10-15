@@ -241,6 +241,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     </div>
   </div>
 
+  {%- if section.settings.show_grid_head -%}
   <div class="container age-intro__grid-head">
     <p class="age-intro__grid-title">
       {%- if show_pack -%}{{ 'collection.age_intro.have_player' | t }}{%- else -%}{{ 'collection.age_intro.stories_heading' | t }}{%- endif -%}
@@ -253,6 +254,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
       {%- endif -%}
     </p>
   </div>
+  {%- endif -%}
 </section>
 
 {% schema %}
@@ -278,6 +280,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "text", "id": "trust_guarantee", "label": "Guarantee", "default": "Money-back guarantee" },
     { "type": "url", "id": "trust_guarantee_url", "label": "Guarantee link" },
     { "type": "header", "content": "Starter pack card" },
+    { "type": "checkbox", "id": "show_grid_head", "label": "Show the \"Stories\" line above the grid", "default": true, "info": "Turn off where the grid shows its own product count." },
     { "type": "checkbox", "id": "show_pack", "label": "Show the starter pack card", "default": true, "info": "Never shown to signed-in customers who have already bought a player." },
     { "type": "text", "id": "pack_heading", "label": "Card heading", "default": "New to Voxblock? Start here" },
     { "type": "text", "id": "pack_note", "label": "Line after the contents", "default": "Bumper and charging cable included." },
