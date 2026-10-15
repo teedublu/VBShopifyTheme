@@ -9,9 +9,10 @@ Replaces the tall coloured banner with the giant initials circle. Same band and 
    name, the first words of the bio with a "Read more" link down to the full bio, trust row and the book count.
 2. "New to Voxblock? Start here" card (snippets/starter-pack-card.liquid), desktop only. On phones a one-line strip
    links to the same pack instead, so the books start near the top of the first screen.
-   Which pack: a "Person pack" block whose handle matches this person; otherwise the first published starter pack in
-   the starter pack collection that contains one of this person's books (their main book or the first 24 books in
-   their collection), 3-story packs before intro packs; otherwise the player. Hidden for signed-in player owners.
+   Which pack: a "Person pack" block whose handle matches this person; otherwise the published pack in the starter
+   pack collection holding the most of this person's books (their main book or the first 24 books in their
+   collection; ties go to the pack earlier in the collection); otherwise the player. Hidden for signed-in player
+   owners.
 The books follow straight after this section (featured-collection in the template).
 
 Tracking: the same PostHog `age_collection_click` event as the age collections (voxblock.js), with collection
@@ -30,6 +31,7 @@ read_bio.
     assign photo = person.photo.value
   endif
 
+  # metafield_text output is already HTML-escaped, so bio_short is printed without escape
   assign bio_text = person.bio | metafield_text | strip_newlines | strip
   assign bio_words = bio_text | split: ' '
   assign bio_short = bio_text | truncatewords: section.settings.bio_words, '…'
@@ -69,28 +71,21 @@ read_bio.
 
     if book_ids != ','
       assign pack_collection = collections[section.settings.packs_collection]
-      for min_books in (1..2) reversed
-        for candidate in pack_collection.products limit: 60
-          if candidate.available == false or candidate.handle == section.settings.player_handle
-            continue
-          endif
-          assign candidate_books = candidate.metafields.bundles.products.value
-          if candidate_books.size < min_books
-            continue
-          endif
-          for candidate_book in candidate_books
-            assign needle = ',' | append: candidate_book.id | append: ','
-            if book_ids contains needle
-              assign pack = candidate
-              break
-            endif
-          endfor
-          if pack != blank
-            break
+      assign best_count = 0
+      for candidate in pack_collection.products limit: 60
+        if candidate.available == false or candidate.handle == section.settings.player_handle
+          continue
+        endif
+        assign match_count = 0
+        for candidate_book in candidate.metafields.bundles.products.value
+          assign needle = ',' | append: candidate_book.id | append: ','
+          if book_ids contains needle
+            assign match_count = match_count | plus: 1
           endif
         endfor
-        if pack != blank
-          break
+        if match_count > best_count
+          assign best_count = match_count
+          assign pack = candidate
         endif
       endfor
     endif
@@ -135,7 +130,7 @@ read_bio.
 
         {%- if bio_short != blank -%}
           <p class="age-intro__lede">
-            {{ bio_short | escape }}
+            {{ bio_short }}
             {%- if bio_is_cut and section.settings.bio_anchor != blank %}
               <a href="#{{ section.settings.bio_anchor | escape }}" class="person-intro__more" data-age-track="read_bio">{{ section.settings.read_more | escape }}</a>
             {%- endif -%}
