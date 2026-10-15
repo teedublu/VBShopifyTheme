@@ -41,11 +41,12 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 
 ## 2026-10-15: Author and narrator pages (compact intro, books near the top)
 Branch `claude/author-narrator-pages`, draft PR, draft theme `VBShopifyTheme/claude/author-narrator-pages` (id 200079049088, a duplicate of live with the changed files pushed by API). **Awaiting owner check, phone and desktop.**
-- New section `person-intro` replaces the tall banner with the giant initials circle: eyebrow, photo only when one is uploaded (56px phone, 80px desktop), H1 name, first 30 words of the bio with "Read more" to the full bio (#bio), trust row. Same `.age-intro` / `.age-pack` styles as the age collections.
+- New section `person-intro` replaces the tall banner with the giant initials circle: eyebrow, small initials circle (52px phone, 72px desktop; never a photo, see below), H1 name, first 30 words of the bio with "Read more" to the full bio (#bio), trust row. Same `.age-intro` / `.age-pack` styles as the age collections.
 - Starter pack: "Person pack" block override (Roald Dahl, Julia Donaldson, Enid Blyton set), else the published pack holding most of the person's books (main book + first 24 in their collection), else the player. Card on desktop (1000px+), one-line pack strip on phones. Hidden for signed-in player owners.
 - Card markup moved from `collection-age-intro` into `snippets/starter-pack-card` (shared; age collection card output checked identical to live).
 - Books straight after the intro (24, #books, H2 "Audiobooks by / narrated by <name>"); full bio gets an H2 "About <name>"; FAQ and promo copy rewritten to the copy rules ("no app" removed, sentence case, plain tone); per-section orange heading text on the book row cleared.
 - Tracking: `age_collection_click` with collection `author:<handle>` / `narrator:<handle>`; targets strip, read_bio, pack_title, starter_add / player_add, all_packs, player.
+- Photos (owner, 15 Oct): author and narrator photos were taken down after a complaint about an unlicensed image; no provenance, so nothing shows them. `person-intro` never reads the photos fields, and `microdata-author` / `microdata-narrator` no longer put the photo in the Person JSON-LD (it was still published on the live site). The files themselves are still in Shopify Files and the metaobject photos fields: owner to remove.
 - Data notes: Enid Blyton's collection holds Famous Five bundles, not the books in the Famous Five pack; some bios start with photo credits or effusive copy (Julia Donaldson, Sarah Ovens).
 - Performance review: `/pages/author/roald-dahl`, `/pages/narrator/sarah-ovens` (pack match loops over the pack collection on each render).
 

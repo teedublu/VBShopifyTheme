@@ -1,6 +1,5 @@
-{%- comment -%}JSON-LD Person for an author page; @id is the page + "#person" (audiobook pages point here){%- endcomment -%}
+{%- comment -%}JSON-LD Person for an author page; @id is the page + "#person" (audiobook pages point here). No image: the uploaded photos have no confirmed licence (owner, 15 Oct 2026).{%- endcomment -%}
 {%- liquid
-  assign author_image = author.photos.value | first
   assign author_description = author.bio | metafield_tag | strip_html | strip_newlines | strip
   assign page_url = author.system.url | prepend: shop.url
 -%}
@@ -11,9 +10,6 @@
   "url": {{ page_url | json }},
   "name": {{ author.name.value | default: author.name | append: '' | json }},
   "jobTitle": "Author"
-  {%- if author_image != blank -%},
-  "image": {{ author_image | image_url: width: 600 | prepend: 'https:' | json }}
-  {%- endif -%}
   {%- if author_description != blank -%},
   "description": {{ author_description | json }}
   {%- endif -%}

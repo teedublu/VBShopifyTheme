@@ -5,7 +5,7 @@ PERSON INTRO (author and narrator pages: templates/metaobject/author.json, narra
 
 Replaces the tall coloured banner with the giant initials circle. Same band and card styles as the age collections
 (.age-intro / .age-pack in voxblock.css), so nothing is styled per page. From top to bottom:
-1. Eyebrow ("Audiobook author" / "Audiobook narrator"), the person's photo (only when one is uploaded, small), the H1
+1. Eyebrow ("Audiobook author" / "Audiobook narrator"), a small initials circle, the H1
    name, the first words of the bio with a "Read more" link down to the full bio, trust row and the book count.
 2. "New to Voxblock? Start here" card (snippets/starter-pack-card.liquid), desktop only. On phones a one-line strip
    links to the same pack instead, so the books start near the top of the first screen.
@@ -26,9 +26,13 @@ read_bio.
   assign person_handle = person.system.handle
   assign name = person.name.value | default: person.name
 
-  assign photo = person.photos.value | first
-  if photo == blank and person.photo != blank
-    assign photo = person.photo.value
+  # No photos: the uploaded author and narrator photos have no confirmed licence (owner, 15 Oct 2026), so this
+  # section never reads the photos fields. Initials only.
+  assign name_parts = name | split: ' '
+  assign initials = name_parts.first | slice: 0, 1 | upcase
+  if name_parts.size > 1
+    assign last_initial = name_parts.last | slice: 0, 1 | upcase
+    assign initials = initials | append: last_initial
   endif
 
   # metafield_text output is already HTML-escaped, so bio_short is printed without escape
@@ -120,10 +124,8 @@ read_bio.
         {%- if section.settings.eyebrow != blank -%}<p class="age-intro__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
 
         <div class="person-intro__head">
-          {%- if photo != blank and section.settings.show_photo -%}
-            <div class="person-intro__photo">
-              {{- photo | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'eager', width: 80, height: 80, alt: name -}}
-            </div>
+          {%- if section.settings.show_initials -%}
+            <span class="person-intro__initials" aria-hidden="true">{{ initials | escape }}</span>
           {%- endif -%}
           <h1 class="age-intro__title">{{ name | escape }}</h1>
         </div>
@@ -200,7 +202,7 @@ read_bio.
   "settings": [
     { "type": "color", "id": "background", "label": "Band background", "default": "#fff7f0" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Audiobook author" },
-    { "type": "checkbox", "id": "show_photo", "label": "Show the photo when one is uploaded", "default": true, "info": "No initials circle when there is no photo." },
+    { "type": "checkbox", "id": "show_initials", "label": "Show the initials circle", "default": true, "info": "Photos are never shown (no confirmed licence)." },
     { "type": "range", "id": "bio_words", "label": "Bio words shown", "min": 15, "max": 60, "step": 5, "default": 30 },
     { "type": "text", "id": "read_more", "label": "Read more link", "default": "Read more" },
     { "type": "text", "id": "bio_anchor", "label": "Full bio anchor", "default": "bio", "info": "Anchor ID set on the full bio section below." },

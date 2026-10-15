@@ -1,6 +1,5 @@
-{%- comment -%}JSON-LD Person for a narrator page; @id is the page + "#person" (audiobook pages point here){%- endcomment -%}
+{%- comment -%}JSON-LD Person for a narrator page; @id is the page + "#person" (audiobook pages point here). No image: the uploaded photos have no confirmed licence (owner, 15 Oct 2026).{%- endcomment -%}
 {%- liquid
-  assign narrator_image = narrator.photos.value | first
   assign narrator_description = narrator.bio | metafield_tag | strip_html | strip_newlines | strip
   assign page_url = narrator.system.url | prepend: shop.url
 -%}
@@ -11,9 +10,6 @@
   "url": {{ page_url | json }},
   "name": {{ narrator.name.value | default: narrator.name | append: '' | json }},
   "jobTitle": "Narrator"
-  {%- if narrator_image != blank -%},
-  "image": {{ narrator_image | image_url: width: 600 | prepend: 'https:' | json }}
-  {%- endif -%}
   {%- if narrator_description != blank -%},
   "description": {{ narrator_description | json }}
   {%- endif -%}
