@@ -26,18 +26,8 @@ read_bio.
   assign person_handle = person.system.handle
   assign name = person.name.value | default: person.name
 
-  # The photos fields are never read: the uploaded author and narrator photos have no confirmed licence (owner,
-  # 15 Oct 2026). A photo shows only from a "Licensed photo" block (free licence, credit recorded); else initials.
-  assign licensed_photo = blank
-  for block in section.blocks
-    if block.type == 'licensed_photo' and block.settings.image != blank and block.settings.credit != blank
-      assign photo_handle = block.settings.handle | strip | downcase
-      if photo_handle == person_handle
-        assign licensed_photo = block
-        break
-      endif
-    endif
-  endfor
+  # No photos: the uploaded author and narrator photos have no confirmed licence (owner, 15 Oct 2026), so this
+  # section never reads the photos fields. Initials only.
   assign name_parts = name | split: ' '
   assign initials = name_parts.first | slice: 0, 1 | upcase
   if name_parts.size > 1
@@ -63,7 +53,7 @@ read_bio.
   # Starter pack: block override, then a pack that contains one of this person's books, then the player.
   assign pack = blank
   for block in section.blocks
-    if block.type == 'person_pack' and block.settings.handle != blank and block.settings.product != blank
+    if block.settings.handle != blank and block.settings.product != blank
       assign block_handle = block.settings.handle | strip | downcase
       if block_handle == person_handle
         assign pack = block.settings.product
@@ -134,11 +124,7 @@ read_bio.
         {%- if section.settings.eyebrow != blank -%}<p class="age-intro__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
 
         <div class="person-intro__head">
-          {%- if licensed_photo != blank -%}
-            <div class="person-intro__photo" {{ licensed_photo.shopify_attributes }}>
-              {{- licensed_photo.settings.image | image_url: width: 160, height: 160, crop: 'center' | image_tag: loading: 'eager', width: 72, height: 72, alt: name -}}
-            </div>
-          {%- elsif section.settings.show_initials -%}
+          {%- if section.settings.show_initials -%}
             <span class="person-intro__initials" aria-hidden="true">{{ initials | escape }}</span>
           {%- endif -%}
           <h1 class="age-intro__title">{{ name | escape }}</h1>
@@ -181,17 +167,6 @@ read_bio.
                 {{- pack.title | escape }}, {{ pack_price -}}
               {%- endif -%}
             </a>
-          </p>
-        {%- endif -%}
-
-        {%- if licensed_photo != blank -%}
-          <p class="person-intro__credit">
-            {%- if licensed_photo.settings.source_url != blank -%}
-              <a href="{{ licensed_photo.settings.source_url }}" rel="nofollow noopener" target="_blank">{{ licensed_photo.settings.credit | escape }}</a>
-            {%- else -%}
-              {{ licensed_photo.settings.credit | escape }}
-            {%- endif -%}
-            {%- if licensed_photo.settings.licence_url != blank %} (<a href="{{ licensed_photo.settings.licence_url }}" rel="nofollow noopener license" target="_blank">{{ licensed_photo.settings.licence_label | default: 'licence' | escape }}</a>){%- endif -%}
           </p>
         {%- endif -%}
       </div>
@@ -249,19 +224,6 @@ read_bio.
     { "type": "text", "id": "player_line", "label": "Player card line", "default": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery." }
   ],
   "blocks": [
-    {
-      "type": "licensed_photo",
-      "name": "Licensed photo",
-      "settings": [
-        { "type": "paragraph", "content": "Only photos with a free licence (public domain, CC0, CC BY, CC BY-SA) and a recorded source. Everyone else shows initials." },
-        { "type": "text", "id": "handle", "label": "Author or narrator handle", "info": "e.g. julia-donaldson" },
-        { "type": "image_picker", "id": "image", "label": "Photo" },
-        { "type": "text", "id": "credit", "label": "Credit line", "info": "e.g. Photo: Jane Doe, via Wikimedia Commons" },
-        { "type": "url", "id": "source_url", "label": "Source page" },
-        { "type": "text", "id": "licence_label", "label": "Licence", "info": "e.g. CC BY-SA 4.0" },
-        { "type": "url", "id": "licence_url", "label": "Licence link" }
-      ]
-    },
     {
       "type": "person_pack",
       "name": "Person pack",
