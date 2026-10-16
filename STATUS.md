@@ -39,6 +39,14 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-16: Register your player (account page)
+Branch `claude/register-player`, draft theme "Register player (claude/register-player)" (id 200131707264, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review sheet: any page `?view=player-registration-preview`.
+- New section `account-player-registration`, top of `customers/account` (shows for accounts with no orders too). Kept out of `main-customers-account` (the Black Friday branch edits it).
+- Registered players come only from trusted data: the customer's orders (Player / Starter Pack / Schools Pack / "Player Bundle"; cancelled, voided, refunded skipped) and customer metafield `players.registered` (JSON list, written by us after checking). Guarantee end = purchase date + "Guarantee length" setting (default 12 months, **owner to confirm**); 100-day money-back line while it applies.
+- No player: form posted as a Shopify contact form ("Player registration" in the store inbox, bot protection). Website orders need order number + order email; Amazon the Amazon order number; gift/shop whatever they have. Honeypot, declaration tick, nothing revealed on screen. "See the player" link for accounts without one.
+- Open: metafield definition `players.registered` (customer, JSON) to create in admin; who checks requests and fills it (manual, or a Catalyst/Flow job later).
+- Tracking: vs_yoto_click targets reg_submit (with source), reg_player_link, reg_order_link.
+
 ## 2026-10-16: Refer a friend page (3 Golden Tokens)
 Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.
 - New sections `referral-intro` (signed out: offer + button to /account; signed in: `referrals.code` with copy, share link `/discount/<code>`, WhatsApp, email; `#N/A`/blank code gets a contact line; token count behind a setting, off) and `referral-rewards` (products read live + £30 e-gift card tile); snippet `referral-token`.
