@@ -39,6 +39,15 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-16: Black Friday personal code page
+Branch `claude/black-friday-code`, draft theme (duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Mockup: claude.ai canvas "Black Friday Account Code".
+- New section `black-friday-code` on template `page.black-friday` (needs a page `/pages/black-friday` using it, created in admin after merge). Code from customer metafield `blackfriday.code`. Phases: signed out, no code, before (outlined teal countdown to the start, page reloads at zero), during (solid orange "live" countdown to the end, tier ladder with the cart's audiobook count lit, copy code, "Shop audiobooks, code applied" via `/discount/<code>`), used (found in the customer's last 20 orders' discount codes; saving + order link), ended (refer a friend).
+- Dates and tiers (15/20/25% at 1/3/5 audiobooks) are section settings; they must match the discount set up in Shopify. The discount itself is not built: a single code that steps by quantity needs a Shopify Functions discount (or an app); combining and one-use rules set on the discount.
+- `page.black-friday-preview`: all six states on one page for review (`?view=black-friday-preview`), forced by the section's "Preview state" with a sample code. Delete before or after merge; harmless if kept.
+- Account page (`main-customers-account`): a "Your Black Friday code" button for customers with the metafield, until the section setting "Show the Black Friday link until".
+- Styling: campaign colours as `--bf-*` in the Black Friday block of voxblock.css (dark panel, orange live state) — a deliberate campaign look from the agreed mockup, not section-level colour drift.
+- Performance review: `/pages/black-friday` (loops last 20 orders' discount applications for signed-in customers).
+
 ## 2026-10-16: Refer a friend page (3 Golden Tokens)
 Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.
 - New sections `referral-intro` (signed out: offer + button to /account; signed in: `referrals.code` with copy, share link `/discount/<code>`, WhatsApp, email; `#N/A`/blank code gets a contact line; token count behind a setting, off) and `referral-rewards` (products read live + £30 e-gift card tile); snippet `referral-token`.
