@@ -45,7 +45,8 @@ Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claud
 - Removed: code-resend form, Scottish Book Trust carousel, all-caps note, "Shop here" to the player. Footer trust item now "Refer a friend" (site-wide).
 - Liquid notes: `empty` is a keyword (always truthy), never a render parameter name; `url` settings only accept `/collections` defaults (Shopify silently rejected the section until they were text settings).
 - After merge (admin): page SEO title and meta still sell the old offer.
-- Performance review: `/pages/refer-a-friend`.
+- 16 Oct round 2: photographed Golden Token (`assets/golden-token.webp` 640px, `golden-token-240.webp`, cut from the owner's photo) in the hero (three fanned, float and shine animation, off for reduced motion), the offer line and a "3 Golden Tokens" badge on each reward. New section `referral-steps` (gold markers): step 1 shows the signed-in customer's code with copy and share instead of "log in to your account". Code and share UI in snippet `referral-share` (hero + step 1). "Been sent a code?" now `media-with-text` with the children's photo. Not checked signed in (needs a customer login on the preview).
+- Performance review: `/pages/refer-a-friend` (hero coin images load eagerly, 66KB webp).
 
 ## 2026-10-15: Author and narrator pages (compact intro, books near the top)
 Branch `claude/author-narrator-pages`, draft PR, draft theme `VBShopifyTheme/claude/author-narrator-pages` (id 200079049088, a duplicate of live with the changed files pushed by API). **Awaiting owner check, phone and desktop.**
