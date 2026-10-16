@@ -1294,3 +1294,27 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .bf-button { flex: 0 1 auto; }
   .bf-how__list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 }
+
+/* Black Friday: the public player offer inside the code panel. */
+.bf-player { display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: center; gap: 12px 16px; padding: 16px; border-radius: 16px; background: var(--bf-ground-2); color: #fff; }
+.bf-player__image { width: 72px; height: 72px; object-fit: contain; border-radius: 12px; background: #fff; }
+.bf-player__text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.bf-player__eyebrow { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bf-orange); }
+.bf-player__title { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 600; color: #fff; }
+.bf-player__price { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+.bf-player__now { font-size: 18px; font-weight: 700; color: #fff; }
+.bf-player__was { font-size: 14px; color: var(--bf-soft); }
+.bf-player__note { margin: 0; font-size: 13px; line-height: 1.5; color: var(--bf-soft); }
+.bf-player .bf-button { grid-column: 1 / -1; }
+.bf-button--light { background: #fff; color: var(--bf-orange-ink); }
+.bf-button--light:hover { color: var(--bf-orange-ink); }
+.bf__panel--quiet .bf-player { background: #fff7f0; color: var(--brand-text); }
+.bf__panel--quiet .bf-player__title, .bf__panel--quiet .bf-player__now { color: var(--brand-heading); }
+.bf__panel--quiet .bf-player__eyebrow { color: #a8612e; }
+.bf__panel--quiet .bf-player__was, .bf__panel--quiet .bf-player__note { color: var(--brand-text); }
+.bf__panel--quiet .bf-button--light { background: var(--bf-orange); }
+@media (min-width: 750px) {
+  .bf-player { grid-template-columns: 96px minmax(0, 1fr) auto; padding: 20px 24px; gap: 24px; }
+  .bf-player__image { width: 96px; height: 96px; }
+  .bf-player .bf-button { grid-column: auto; }
+}

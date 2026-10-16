@@ -15,6 +15,8 @@ Phase, from the section's start and end settings (UK time, e.g. 2026-11-27T00:01
 - during: "Live now · ends in" timer (solid orange), tiers with the cart's tier lit, the code, copy, shop button
 - used: a past order in customer.orders carries the code (discount_applications title) → saving + order link
 - ended: after the end time → refer a friend link
+Player offer: the public player discount (50% off, for everyone) shown in every phase but ended, priced live from the
+"Player" product (lowest variant price less "Player % off"). Display only: the discount is set up in Shopify.
 "Preview state" forces a phase (and "Preview code" stands in for the metafield) for design review only. Leave on
 "Live" on the real page.
 
@@ -175,7 +177,9 @@ bf_order, bf_refer.
         <ul class="bf-tiers" role="list">
           {%- liquid
             assign pcts = s.tier1_pct | append: ',' | append: s.tier2_pct | append: ',' | append: s.tier3_pct | split: ','
-            assign labels = s.tier1_label | append: '|' | append: s.tier2_label | append: '|' | append: s.tier3_label | split: '|'
+            assign t2_last = t2 | minus: 1
+            assign t3_last = t3 | minus: 1
+            assign labels = t1 | append: ' or ' | append: t2_last | append: ' audiobooks|' | append: t2 | append: ' or ' | append: t3_last | append: ' audiobooks|' | append: t3 | append: ' or more audiobooks' | split: '|'
           -%}
           {%- for p in pcts -%}
             {%- assign p_num = p | plus: 0 -%}
@@ -236,6 +240,30 @@ bf_order, bf_refer.
           <a class="bf-button" href="{{ s.refer_url }}" data-vs-track="bf_refer">Refer a friend</a>
         </div>
       {%- endif -%}
+
+      {%- liquid
+        assign player = s.player_product
+        assign player_off = 100 | minus: s.player_pct
+        if player != blank
+          assign player_from = player.price_min | times: player_off | divided_by: 100
+        endif
+      -%}
+      {%- if s.show_player and player != blank and phase != 'ended' -%}
+        <div class="bf-player">
+          {%- if player.featured_image -%}
+            {{ player.featured_image | image_url: width: 240 | image_tag: class: 'bf-player__image', loading: 'lazy', widths: '120, 240', sizes: '96px', alt: player.title }}
+          {%- endif -%}
+          <div class="bf-player__text">
+            <p class="bf-player__eyebrow">{% if phase == 'before' %}Also from {{ s.start_at | date: '%A' }}, for everyone{% else %}{{ s.player_eyebrow | escape }}{% endif %}</p>
+            <h2 class="bf-player__title">{{ s.player_heading | replace: '[pct]', s.player_pct | escape }}</h2>
+            <p class="bf-player__price"><span class="bf-player__now">From {{ player_from | money }}</span> <s class="bf-player__was">{{ player.price_min | money }}</s></p>
+            {%- if s.player_text != blank -%}<p class="bf-player__note">{{ s.player_text | escape }}</p>{%- endif -%}
+          </div>
+          {%- unless phase == 'before' -%}
+            <a class="bf-button bf-button--light" href="{{ player.url }}" data-vs-track="bf_player">Shop the player</a>
+          {%- endunless -%}
+        </div>
+      {%- endif -%}
     </div>
 
     {%- if phase != 'ended' and s.show_how -%}
@@ -249,13 +277,13 @@ bf_order, bf_refer.
           </li>
           <li class="bf-how__item">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>
-            <h3>Audiobooks only</h3>
-            <p>Counts and discounts audiobooks. Players, starter packs and accessories stay at their price.</p>
+            <h3>Audiobooks with your code</h3>
+            <p>Your code counts and discounts audiobooks. The player's {{ s.player_pct }}% off is a separate offer for everyone, and both work in the same order.</p>
           </li>
           <li class="bf-how__item">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             <h3>One order, this weekend</h3>
-            <p>{{ s.start_at | date: '%A %-d' }} to {{ s.end_at | date: '%A %-d %B' }}. One use, and it can't be combined with any other code.</p>
+            <p>{{ s.start_at | date: '%A %-d' }} to {{ s.end_at | date: '%A %-d %B' }}. One use, and it can't be combined with another discount code.</p>
           </li>
         </ul>
         {%- if s.terms != blank -%}<div class="bf-how__terms">{{ s.terms }}</div>{%- endif -%}
@@ -307,13 +335,10 @@ bf_order, bf_refer.
     { "type": "header", "content": "Tiers" },
     { "type": "number", "id": "tier1_min", "label": "Tier 1 from (audiobooks)", "default": 1 },
     { "type": "number", "id": "tier1_pct", "label": "Tier 1 %", "default": 15 },
-    { "type": "text", "id": "tier1_label", "label": "Tier 1 label", "default": "1 or 2 audiobooks" },
     { "type": "number", "id": "tier2_min", "label": "Tier 2 from (audiobooks)", "default": 3 },
     { "type": "number", "id": "tier2_pct", "label": "Tier 2 %", "default": 20 },
-    { "type": "text", "id": "tier2_label", "label": "Tier 2 label", "default": "3 or 4 audiobooks" },
     { "type": "number", "id": "tier3_min", "label": "Tier 3 from (audiobooks)", "default": 5 },
     { "type": "number", "id": "tier3_pct", "label": "Tier 3 %", "default": 25 },
-    { "type": "text", "id": "tier3_label", "label": "Tier 3 label", "default": "5 or more audiobooks" },
     { "type": "header", "content": "Copy" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Black Friday · just for you" },
     { "type": "text", "id": "eyebrow_before", "label": "Eyebrow before it opens", "default": "Black Friday · coming soon" },
@@ -334,6 +359,13 @@ bf_order, bf_refer.
     { "type": "text", "id": "no_code_text", "label": "No code found", "default": "We can't find a Black Friday code on your account." },
     { "type": "text", "id": "contact_text", "label": "Contact link", "default": "Contact us and we'll sort it out." },
     { "type": "text", "id": "contact_url", "label": "Contact link URL", "default": "/pages/contact-us" },
+    { "type": "header", "content": "Player offer (for everyone)" },
+    { "type": "checkbox", "id": "show_player", "label": "Show the player offer", "default": true },
+    { "type": "product", "id": "player_product", "label": "Player" },
+    { "type": "number", "id": "player_pct", "label": "Player % off", "default": 50, "info": "Display only. The discount itself is set up in Shopify." },
+    { "type": "text", "id": "player_eyebrow", "label": "Player eyebrow", "default": "Also this weekend, for everyone" },
+    { "type": "text", "id": "player_heading", "label": "Player heading", "default": "The Voxblock player, [pct]% off" },
+    { "type": "text", "id": "player_text", "label": "Player note", "default": "Add a player and audiobooks to one basket and both offers apply." },
     { "type": "checkbox", "id": "show_how", "label": "Show how it works", "default": true },
     { "type": "richtext", "id": "terms", "label": "Terms line" },
     { "type": "header", "content": "Design review only" },
