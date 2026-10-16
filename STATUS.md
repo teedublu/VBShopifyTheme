@@ -39,6 +39,14 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-16: Refer a friend page (3 Golden Tokens)
+Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.
+- New sections `referral-intro` (signed out: offer + button to /account; signed in: `referrals.code` with copy, share link `/discount/<code>`, WhatsApp, email; `#N/A`/blank code gets a contact line; token count behind a setting, off) and `referral-rewards` (products read live + £30 e-gift card tile); snippet `referral-token`.
+- Removed: code-resend form, Scottish Book Trust carousel, all-caps note, "Shop here" to the player. Footer trust item now "Refer a friend" (site-wide).
+- Liquid notes: `empty` is a keyword (always truthy), never a render parameter name; `url` settings only accept `/collections` defaults (Shopify silently rejected the section until they were text settings).
+- After merge (admin): page SEO title and meta still sell the old offer.
+- Performance review: `/pages/refer-a-friend`.
+
 ## 2026-10-15: Author and narrator pages (compact intro, books near the top)
 Branch `claude/author-narrator-pages`, draft PR, draft theme `VBShopifyTheme/claude/author-narrator-pages` (id 200079049088, a duplicate of live with the changed files pushed by API). **Awaiting owner check, phone and desktop.**
 - New section `person-intro` replaces the tall banner with the giant initials circle: eyebrow, small initials circle (52px phone, 72px desktop; never a photo, see below), H1 name, first 30 words of the bio with "Read more" to the full bio (#bio), trust row. Same `.age-intro` / `.age-pack` styles as the age collections.
