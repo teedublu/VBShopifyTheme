@@ -46,6 +46,7 @@ Branch `claude/black-friday-code`, draft theme (duplicate of live + changed file
 - Player offer (owner, 16 Oct): the public Black Friday offer is 50% off the player, for everyone, so the customer page shows it too (every phase but ended), priced live from the player product. Display only; assumes the player discount is automatic or allowed to combine with the personal code, so both apply in one order. Confirm when the discounts are set up.
 - `page.black-friday-preview`: all six states on one page for review (`?view=black-friday-preview`), forced by the section's "Preview state" with a sample code. Delete before or after merge; harmless if kept.
 - Account page (`main-customers-account`): a "Your Black Friday code" button for customers with the metafield, until the section setting "Show the Black Friday link until".
+- Styling (owner, 16 Oct): before the start the panel is orange with dark ink; while live it is black with cyan #00e1ff, glow, faint grid and an outlined "Black Friday" backdrop. Phase colour follows the clock (`bf--t-before` / `bf--t-during`).
 - Styling: campaign colours as `--bf-*` in the Black Friday block of voxblock.css (dark panel, orange live state) — a deliberate campaign look from the agreed mockup, not section-level colour drift.
 - Performance review: `/pages/black-friday` (loops last 20 orders' discount applications for signed-in customers).
 

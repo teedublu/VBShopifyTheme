@@ -15,6 +15,7 @@ Phase, from the section's start and end settings (UK time, e.g. 2026-11-27T00:01
 - during: "Live now · ends in" timer (solid orange), tiers with the cart's tier lit, the code, copy, shop button
 - used: a past order in customer.orders carries the code (discount_applications title) → saving + order link
 - ended: after the end time → refer a friend link
+Colour follows the clock (bf--t-before / bf--t-during): orange panel before the start, black and cyan while live.
 Player offer: the public player discount (50% off, for everyone) shown in every phase but ended, priced live from the
 "Player" product (lowest variant price less "Player % off"). Display only: the discount is set up in Shopify.
 "Preview state" forces a phase (and "Preview code" stands in for the metafield) for design review only. Leave on
@@ -61,6 +62,19 @@ bf_order, bf_refer.
   assign first_name = customer.first_name | default: s.preview_name | default: 'Hello'
   if forced == 'used' and used_order == nil
     assign used_saving = 1349
+  endif
+
+  if now_s < start_s
+    assign tphase = 'before'
+  elsif now_s <= end_s
+    assign tphase = 'during'
+  else
+    assign tphase = 'ended'
+  endif
+  if forced == 'before' or forced == 'during'
+    assign tphase = forced
+  elsif forced == 'used'
+    assign tphase = 'during'
   endif
 
   if forced != 'live'
@@ -127,11 +141,12 @@ bf_order, bf_refer.
   assign end_label = s.end_at | date: '%A %-d %B, %-I:%M%P'
 -%}
 
-<section class="bf bf--{{ phase }}" data-bf-phase="{{ phase }}" {{ section.shopify_attributes }}>
+<section class="bf bf--{{ phase }} bf--t-{{ tphase }}" data-bf-phase="{{ phase }}" {{ section.shopify_attributes }}>
   <div class="container">
     {%- if s.preview_label != blank and forced != 'live' -%}<p class="bf__review-label">{{ s.preview_label | escape }}</p>{%- endif -%}
 
     <div class="bf__panel{% if phase == 'used' or phase == 'ended' or phase == 'no_code' %} bf__panel--quiet{% endif %}">
+      {%- unless phase == 'used' or phase == 'ended' or phase == 'no_code' -%}<span class="bf__backdrop" aria-hidden="true">Black Friday</span>{%- endunless -%}
       <div class="bf__top">
         <div class="bf__intro">
           <p class="bf__eyebrow">{% if phase == 'before' %}{{ s.eyebrow_before | escape }}{% else %}{{ s.eyebrow | escape }}{% endif %}</p>
