@@ -3,9 +3,9 @@
 Backend for the account page's "Your players" card (`sections/account-player-registration.liquid`). The theme can't
 send email or save data to a customer, so this small service does it. **Not deployed yet.**
 
-Runs as a Catalyst Advanced I/O function in the existing project **Voxblock-Storefront** (org Voxblock), reached only
-through a **Shopify app proxy**, so every call arrives signed by Shopify with the signed-in customer's ID. No secret
-in the theme.
+Runs as extra routes on the existing **Voxblock Account** app (Google Cloud Functions), behind its app proxy
+`/apps/voxblock` (the one saved items already use), so every call arrives signed by Shopify with the signed-in
+customer's ID. No secret in the theme. Mount: `app.use('/players', require('./player-link'))`.
 
 ## Flow
 1. Signed-in customer A enters an email + where the player came from → `POST /apps/voxblock/players/request`.
@@ -49,17 +49,16 @@ Player keys match the theme: `<order id>-<line item id>-<unit>` for bought playe
 The theme never prints `peer`, `requests` or `blocked`.
 
 ## Setup (owner, in this order)
-1. **Shopify app** (the one whose client ID is already in `shopify_proxy`'s env): scopes `read_customers`,
-   `write_customers`, `read_orders`; **App proxy**: prefix `apps`, subpath `voxblock`, URL
-   `https://<catalyst domain>/server/player_link/players` → storefront path `/apps/voxblock/players`.
-   Orders older than 60 days need `read_all_orders` for linking older players.
-2. **Metafield definition** in Shopify admin: Customers → `players.data`, type JSON, storefront access **read**.
-3. **Catalyst**: deploy this folder as function `player_link` in Voxblock-Storefront (`catalyst deploy`), env vars
-   `SHOPIFY_SHOP`, `SHOPIFY_CLIENT_ID`, `SHOPIFY_CLIENT_SECRET`, `KLAVIYO_PRIVATE_KEY` (scope events:write),
-   `TOKEN_SECRET` (new random 32+ chars), `STORE_URL`, `PROXY_PATH`. Move to Production when tested.
-4. **Klaviyo**: flow on metric "Player link requested" with `klaviyo-email.html` (send one test event first so the
-   metric exists).
-5. Test on the draft theme with two test customers: request → email → Yes → both accounts → nickname → unlink.
+1. **Voxblock Account app (GCF)**: add this folder and mount it at `/players`; add env vars `KLAVIYO_PRIVATE_KEY`
+   (Klaviyo private key, scope events:write) and `TOKEN_SECRET` (new random 32+ characters); `STORE_URL` and
+   `PROXY_PATH` default correctly. Uses the app's existing `SHOPIFY_SHOP` / client ID / secret.
+2. **App scopes**: `write_customers` (already used for saved items) plus `read_orders`, and `read_all_orders` so
+   players bought more than 60 days ago can be linked (Shopify asks for a reason; "customer account features" is fine).
+3. **Metafield definition** in Shopify admin: Customers → `players.data`, type JSON, storefront access read.
+4. **Klaviyo**: send one test event so the metric "Player link requested" exists, then a flow on it with
+   `klaviyo-email.html`.
+5. Test on the draft theme with two test customers: request → email → Yes → both accounts → name → unlink → No.
+6. Merge the theme PR.
 
 ## Abuse and how it's handled
 - **Claiming someone else's player**: nothing links until the person behind that email clicks Yes.

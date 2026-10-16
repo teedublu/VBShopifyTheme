@@ -1,11 +1,12 @@
 'use strict';
 /*
- * Player link service (Catalyst project Voxblock-Storefront, Advanced I/O function, node20).
+ * Player link routes for the Voxblock Account app (Google Cloud Functions, behind the existing app proxy /apps/voxblock).
+ * Mount in that app's Express server:  app.use('/players', require('./player-link'))
  * Reached only through the Shopify app proxy: https://voxblock.co.uk/apps/voxblock/players/<route>
  * Shopify signs every proxied request and adds logged_in_customer_id, so the signed-in customer is known
  * without any secret in the theme. See README.md for routes, data and setup.
  *
- * Env: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (app with write_customers, read_orders),
+ * Env: SHOPIFY_SHOP, SHOPIFY_CLIENT_ID, SHOPIFY_CLIENT_SECRET (the app's existing values; needs write_customers, read_orders),
  *      KLAVIYO_PRIVATE_KEY, TOKEN_SECRET (long random string), STORE_URL (https://voxblock.co.uk),
  *      PROXY_PATH (/apps/voxblock/players)
  */

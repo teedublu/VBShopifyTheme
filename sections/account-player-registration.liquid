@@ -9,8 +9,8 @@ colour.
 Where players come from (trusted sources only, nothing the customer types):
 1. Their own orders: one row per player unit in line items with product type Player, Starter Pack or Schools Pack, or
    the tag "Player Bundle" (same rule as snippets/customer-owns-player). Cancelled, voided and refunded orders skipped.
-2. Customer metafield players.data (JSON), written only by the player link service (Catalyst project
-   Voxblock-Storefront, reached through the Shopify app proxy, see services/player-link/README.md):
+2. Customer metafield players.data (JSON), written only by the player link routes on the Voxblock Account app
+   (Google Cloud Functions, app proxy /apps/voxblock, see services/player-link/README.md):
    {
      "nicknames": { "<key>": "Isla" },
      "linked":  [ { "key", "bought": "YYYY-MM-DD" | null, "registered": "YYYY-MM-DD", "source", "owner": "t***@g***.com" | "", "link" } ],
