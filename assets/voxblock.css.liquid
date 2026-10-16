@@ -1111,3 +1111,100 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .cart-order__continue {
   margin-block-start: var(--spacing-6);
 }
+
+/* Refer a friend (sections/referral-intro, referral-steps, referral-rewards; snippets referral-share, referral-token).
+   Token picture: assets/golden-token.webp (640px) and golden-token-240.webp. Buttons are .series-button. */
+.referral-token { display: block; width: var(--token-size, 34px); height: var(--token-size, 34px); border-radius: 50%; filter: drop-shadow(0 2px 3px rgb(120 80 10 / 0.35)); }
+.referral-token--outline { box-sizing: border-box; border: 2px dashed #a8612e; filter: none; }
+
+.referral-hero { position: relative; overflow: hidden; background: #fff7f0; color: var(--brand-text); }
+.referral-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding-block: 12px 32px; }
+.referral-hero__visual { position: relative; height: 172px; }
+.referral-hero__glow { position: absolute; inset: -20% 0; background: radial-gradient(closest-side, rgb(255 205 110 / 0.75), rgb(255 205 110 / 0) 100%); }
+.referral-hero__coin { position: absolute; top: 50%; left: 50%; width: 118px; height: 118px; margin: -59px 0 0 -59px; animation: referral-float 6s ease-in-out infinite; }
+.referral-hero__coin .referral-token { width: 100%; height: 100%; filter: drop-shadow(0 10px 14px rgb(120 80 10 / 0.35)); }
+.referral-hero__coin::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / 0.55) 48%, transparent 60%) no-repeat; background-size: 250% 100%; background-position: 130% 0; animation: referral-shine 5s ease-in-out infinite; mix-blend-mode: screen; pointer-events: none; }
+.referral-hero__coin--1 { transform: translate(-82px, 10px) rotate(-14deg); animation-delay: -1s; }
+.referral-hero__coin--2 { z-index: 2; transform: translate(0, -6px) scale(1.12); }
+.referral-hero__coin--3 { transform: translate(82px, 12px) rotate(12deg); animation-delay: -3s; }
+.referral-hero__coin--1::after { animation-delay: 1.2s; }
+.referral-hero__coin--3::after { animation-delay: 2.4s; }
+@keyframes referral-float { 50% { margin-top: -67px; } }
+@keyframes referral-shine { 0%, 55% { background-position: 130% 0; } 85%, 100% { background-position: -30% 0; } }
+@media (prefers-reduced-motion: reduce) { .referral-hero__coin, .referral-hero__coin::after { animation: none; } }
+.referral-hero__text { position: relative; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.referral-hero__eyebrow, .referral-hero__title, .referral-hero__lede { margin: 0; }
+.referral-hero__lede { font-size: 15px; line-height: 23px; max-width: 34rem; }
+.referral-hero__offer { display: flex; align-items: center; gap: 12px; margin: 0; padding: 12px 14px; border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgb(86 86 86 / 0.1); font-size: 14px; line-height: 20px; font-weight: 600; color: var(--brand-heading); }
+.referral-hero__mini-tokens { display: inline-flex; flex: none; }
+.referral-hero__mini-tokens .referral-token + .referral-token { margin-left: -8px; }
+.referral-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.referral-hero__actions .series-button { flex: 1 1 100%; }
+.referral-hero__note { margin: 0; font-size: 13px; line-height: 20px; }
+.referral-hero__note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.referral-hero__progress { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; color: var(--brand-heading); }
+.referral-hero__progress .referral-hero__mini-tokens { gap: 6px; }
+.referral-hero__progress .referral-token + .referral-token { margin-left: 0; }
+
+.referral-share { container-type: inline-size; display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 16px; background: #fff; box-shadow: 0 5px 30px rgb(86 86 86 / 0.12); }
+.referral-share--compact { margin-top: 10px; padding: 0; background: none; box-shadow: none; }
+.referral-share__label { margin: 0; font-size: 13px; }
+.referral-share__code-row { display: flex; gap: 8px; align-items: center; }
+/* Code and buttons scale with the panel width (container units) and never wrap. */
+.referral-share__code { flex: 1 1 auto; min-width: 0; padding: 8px 10px; border: 2px dashed #e0b25a; border-radius: 12px; background: #fffaf1; font-size: 16px; font-size: clamp(13px, 7cqi, 22px); font-weight: 700; letter-spacing: 0.03em; line-height: 1.3; text-align: center; white-space: nowrap; color: var(--brand-heading); }
+.referral-share__code-row .series-button { flex: none; padding: 0 16px; white-space: nowrap; }
+.referral-share__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.referral-share__links .series-button { min-height: 44px; padding: 0 4px; font-size: 13px; font-size: clamp(11px, 4.6cqi, 14px); white-space: nowrap; }
+
+.referral-rewards { padding-block: 40px; color: var(--brand-text); }
+.referral-rewards__inner { display: flex; flex-direction: column; gap: 20px; }
+.referral-rewards__intro { margin: 8px 0 0; }
+.referral-rewards__list { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.referral-rewards__item { display: flex; align-items: center; gap: 14px; padding: 12px; border: 1px solid var(--card-border); border-radius: 16px; background: #fff; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.referral-rewards__media { flex: none; width: 96px; height: 96px; border-radius: 12px; background: #eaf4f4; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.referral-rewards__media img { width: 100%; height: 100%; object-fit: contain; }
+.referral-rewards__media--value { background: var(--brand-heading); color: #fff; font-size: 24px; font-weight: 700; }
+.referral-rewards__body { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; min-width: 0; }
+.referral-rewards__cost { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; border-radius: 999px; background: #fff3dc; font-size: 12px; font-weight: 700; color: var(--brand-heading); }
+.referral-rewards__cost-tokens { display: inline-flex; }
+.referral-rewards__cost-tokens .referral-token + .referral-token { margin-left: -9px; }
+.referral-rewards__title { font-weight: 700; color: var(--brand-heading); }
+.referral-rewards__text { font-size: 14px; line-height: 20px; }
+
+.referral-steps { padding-block: 40px; background: #f6fbfb; color: var(--brand-text); }
+.referral-steps__inner { display: flex; flex-direction: column; gap: 24px; }
+.referral-steps__intro { margin: 8px 0 0; max-width: 40rem; }
+.referral-steps__list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.referral-steps__step { display: flex; align-items: flex-start; gap: 14px; padding: 16px; border-radius: 16px; background: #fff; border: 1px solid var(--card-border); }
+.referral-steps__step--code { border: 2px solid #e0b25a; }
+.referral-steps__num { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe7a3, #f2b544 55%, #c98a1c); box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.5), 0 2px 4px rgb(120 80 10 / 0.3); color: #1d3f43; font-size: 17px; font-weight: 700; }
+.referral-steps__body { flex: 1 1 auto; min-width: 0; }
+.referral-steps__title { margin: 6px 0 2px; font-size: 17px; line-height: 1.3; color: var(--brand-heading); }
+.referral-steps__text { margin: 0; font-size: 14px; line-height: 21px; }
+
+@media screen and (min-width: 750px) {
+  .referral-hero__actions .series-button { flex: 0 0 auto; }
+  .referral-rewards { padding-block: 64px; }
+  .referral-rewards__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .referral-rewards__item { flex-direction: column; align-items: stretch; padding: 0; overflow: hidden; }
+  .referral-rewards__item:hover { transform: translateY(-4px); box-shadow: 0 5px 30px rgb(86 86 86 / 0.12); }
+  .referral-rewards__media { width: 100%; height: 220px; border-radius: 0; }
+  .referral-rewards__media--value { font-size: 56px; }
+  .referral-rewards__body { padding: 0 20px 20px; }
+  .referral-steps__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .referral-steps__step--code { grid-column: 1 / -1; }
+}
+@media screen and (min-width: 1000px) {
+  .referral-hero__inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; gap: 48px; padding-block: 56px; }
+  .referral-hero__visual { order: 2; height: 380px; }
+  .referral-hero__coin { width: 190px; height: 190px; margin: -95px 0 0 -95px; }
+  .referral-hero__coin--1 { transform: translate(-122px, 30px) rotate(-14deg); }
+  .referral-hero__coin--2 { transform: translate(0, -24px) scale(1.12); }
+  .referral-hero__coin--3 { transform: translate(122px, 34px) rotate(12deg); }
+  @keyframes referral-float { 50% { margin-top: -107px; } }
+  .referral-hero__lede { font-size: 17px; line-height: 26px; }
+  .referral-steps { padding-block: 64px; }
+  .referral-steps__list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .referral-steps__step { flex-direction: column; padding: 22px; }
+  .referral-steps__step--code { flex-direction: row; }
+}
