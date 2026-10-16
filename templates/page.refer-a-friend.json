@@ -23,8 +23,6 @@
         "eyebrow": "Refer a friend",
         "heading": "Give £10. Collect 3 Golden Tokens. Choose a reward.",
         "lede": "Share your code with friends. They get £10 off their first starter pack, and you get a Golden Token for each one who buys.",
-        "image": "shopify://shop_images/referral-lifestyle-image-v1.25.png",
-        "background": "#fff7f0",
         "show_token_count": false
       }
     },
@@ -65,34 +63,46 @@
       }
     },
     "how": {
-      "type": "story-steps",
+      "type": "referral-steps",
       "blocks": {
         "step1": {
           "type": "step",
           "settings": {
             "title": "Find your code",
-            "text": "Log in to your account. Your referral code is under Extras."
+            "text": "Log in to your account. Your referral code is under Extras.",
+            "show_code": true,
+            "title_signed_in": "Your code",
+            "text_signed_in": "Copy it or share it straight from here."
           }
         },
         "step2": {
           "type": "step",
           "settings": {
             "title": "Share it",
-            "text": "Send it to friends and family. They get £10 off their first starter pack."
+            "text": "Send it to friends and family. They get £10 off their first starter pack.",
+            "show_code": false,
+            "title_signed_in": "",
+            "text_signed_in": ""
           }
         },
         "step3": {
           "type": "step",
           "settings": {
             "title": "Get a Golden Token",
-            "text": "When a friend's starter pack order is dispatched, we post you a Golden Token."
+            "text": "When a friend's starter pack order is dispatched, we post you a Golden Token.",
+            "show_code": false,
+            "title_signed_in": "",
+            "text_signed_in": ""
           }
         },
         "step4": {
           "type": "step",
           "settings": {
             "title": "Claim your reward",
-            "text": "Once you have 3, post your token card back to us with your choice. We'll send your reward."
+            "text": "Once you have 3, post your token card back to us with your choice. We'll send your reward.",
+            "show_code": false,
+            "title_signed_in": "",
+            "text_signed_in": ""
           }
         }
       },
@@ -103,58 +113,49 @@
         "step4"
       ],
       "settings": {
-        "eyebrow": "",
         "heading": "How it works",
-        "intro": "<p>Every friend who buys a starter pack with your code earns you a Golden Token. Collect 3 and choose a reward.</p>",
+        "intro": "Every friend who buys a starter pack with your code earns you a Golden Token. Collect 3 and choose a reward.",
         "anchor_id": "how-it-works"
       }
     },
     "friend": {
-      "type": "rich-text",
+      "type": "media-with-text",
       "blocks": {
-        "h": {
-          "type": "heading",
+        "friend_image": {
+          "type": "image",
           "settings": {
-            "text": "Been sent a code?",
-            "heading_tag": "h2",
-            "heading_tag_html": "h2",
+            "image": "shopify://shop_images/referral-lifestyle-image-v1.25.png",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 120,
+            "subheading": "For friends",
+            "title": "Been sent a code?",
+            "content": "<p>You get £10 off your first starter pack: a Voxblock player and audiobooks, ready to play. Enter the code at checkout.</p><p>4.9 on Trustpilot · 100-day money-back guarantee · free UK delivery over £25</p>",
+            "link_text": "Shop starter packs",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "title_tag": "h2",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "#fff7f0",
+            "background_gradient": "",
             "text_color": "",
-            "gradient": ""
-          }
-        },
-        "t": {
-          "type": "richtext",
-          "settings": {
-            "content": "<p>You get £10 off your first starter pack: a Voxblock player and audiobooks, ready to play. Enter the code at checkout.</p><p>4.9 on Trustpilot · 100-day money-back guarantee · free UK delivery over £25</p>"
-          }
-        },
-        "b": {
-          "type": "button",
-          "settings": {
-            "style": "fill",
-            "size": "xl",
-            "text": "Shop starter packs",
-            "url": "shopify://collections/voxblock-starter-pack-collection",
-            "background": "",
-            "text_color": "",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
             "track": "raf_shop_packs"
           }
         }
       },
       "block_order": [
-        "h",
-        "t",
-        "b"
+        "friend_image"
       ],
       "settings": {
-        "full_width": false,
-        "use_mo": false,
-        "content_width": "medium",
-        "text_position": "start",
-        "anchor_id": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
+        "full_width": true,
+        "spacing": "small"
       }
     },
     "book_tokens": {
@@ -187,7 +188,7 @@
         "content_width": "medium",
         "text_position": "start",
         "anchor_id": "",
-        "background": "#fff7f0",
+        "background": "",
         "background_gradient": "",
         "text_color": ""
       }

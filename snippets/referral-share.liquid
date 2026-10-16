@@ -1,0 +1,46 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+REFERRAL SHARE (refer a friend page)
+----------------------------------------------------------------------------------------------------------------------
+The signed-in customer's referral code with Copy, Copy link, WhatsApp and Email. Renders nothing when the customer
+has no usable code. The code is read server-side from the customer metafield referrals.code (the same value the
+account's Extras card shows); blank or "#N/A" (old imported customers) counts as no code.
+
+Accepts:
+- compact: true for the smaller version inside a step card
+- label: optional text above the code
+- track_prefix: prefix for vs_yoto_click targets (default 'raf_')
+
+The share link opens /discount/<code>, which applies the code, then the starter pack collection.
+Copy needs the small script in referral-intro, which is always on the page.
+{%- endcomment -%}
+
+{%- liquid
+  assign code = ''
+  if customer
+    assign code = customer.metafields.referrals.code.value | default: customer.metafields.referrals.code | strip
+    if code contains 'N/A'
+      assign code = ''
+    endif
+  endif
+  assign prefix = track_prefix | default: 'raf_'
+-%}
+
+{%- if code != blank -%}
+  {%- liquid
+    assign share_url = shop.url | append: '/discount/' | append: code | append: '?redirect=/collections/voxblock-starter-pack-collection'
+    assign share_message = "Here's £10 off a Voxblock starter pack, the screen-free audiobook player. Use my code " | append: code | append: ' or this link: ' | append: share_url
+  -%}
+  <div class="referral-share{% if compact %} referral-share--compact{% endif %}">
+    {%- if label != blank -%}<p class="referral-share__label">{{ label | escape }}</p>{%- endif -%}
+    <div class="referral-share__code-row">
+      <span class="referral-share__code">{{ code | escape }}</span>
+      <button type="button" class="series-button" data-referral-copy="{{ code | escape }}" data-copied="Copied" data-vs-track="{{ prefix }}copy_code">Copy</button>
+    </div>
+    <div class="referral-share__links">
+      <button type="button" class="series-button series-button--secondary" data-referral-copy="{{ share_url | escape }}" data-copied="Copied" data-vs-track="{{ prefix }}copy_link">Copy link</button>
+      <a class="series-button series-button--secondary" href="https://wa.me/?text={{ share_message | url_encode }}" target="_blank" rel="noopener" data-vs-track="{{ prefix }}whatsapp">WhatsApp</a>
+      <a class="series-button series-button--secondary" href="mailto:?subject={{ '£10 off a Voxblock starter pack' | url_encode }}&amp;body={{ share_message | url_encode }}" data-vs-track="{{ prefix }}email">Email</a>
+    </div>
+  </div>
+{%- endif -%}
