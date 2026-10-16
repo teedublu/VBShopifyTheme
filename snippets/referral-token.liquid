@@ -1,8 +1,8 @@
 {%- comment -%}
-Golden Token mark for the refer a friend page. empty: true draws an outline (a token still to collect).
+Golden Token mark for the refer a friend page. outline: true draws an outline (a token still to collect).
 Decorative: callers wrap it in aria-hidden.
 {%- endcomment -%}
-{%- if empty -%}
+{%- if outline -%}
 <svg class="referral-token referral-token--empty" width="34" height="34" viewBox="0 0 34 34" focusable="false"><circle cx="17" cy="17" r="15" fill="none" stroke="#a8612e" stroke-width="2" stroke-dasharray="4 3"/></svg>
 {%- else -%}
 <svg class="referral-token" width="34" height="34" viewBox="0 0 34 34" focusable="false"><circle cx="17" cy="17" r="15" fill="#ffb74a" stroke="#a8612e" stroke-width="2"/><path d="M17 9l2.4 5 5.4.6-4 3.7 1.1 5.3L17 21l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z" fill="#fff7f0"/></svg>

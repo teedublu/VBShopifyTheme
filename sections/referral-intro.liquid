@@ -61,7 +61,7 @@ raf_whatsapp, raf_email, raf_contact.
             {%- if section.settings.show_token_count -%}
               <div class="referral-intro__progress">
                 <span class="referral-intro__tokens" aria-hidden="true">
-                  {%- for i in (1..3) -%}{%- if i <= token_count -%}{%- render 'referral-token' -%}{%- else -%}{%- render 'referral-token', empty: true -%}{%- endif -%}{%- endfor -%}
+                  {%- for i in (1..3) -%}{%- if i <= token_count -%}{%- render 'referral-token' -%}{%- else -%}{%- render 'referral-token', outline: true -%}{%- endif -%}{%- endfor -%}
                 </span>
                 <span>{{ section.settings.progress_text | replace: '[count]', token_count | escape }}</span>
               </div>
