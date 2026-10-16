@@ -1146,13 +1146,15 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .referral-hero__progress .referral-hero__mini-tokens { gap: 6px; }
 .referral-hero__progress .referral-token + .referral-token { margin-left: 0; }
 
-.referral-share { display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 16px; background: #fff; box-shadow: 0 5px 30px rgb(86 86 86 / 0.12); }
+.referral-share { container-type: inline-size; display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 16px; background: #fff; box-shadow: 0 5px 30px rgb(86 86 86 / 0.12); }
 .referral-share--compact { margin-top: 10px; padding: 0; background: none; box-shadow: none; }
 .referral-share__label { margin: 0; font-size: 13px; }
-.referral-share__code-row { display: flex; gap: 10px; align-items: center; }
-.referral-share__code { flex: 1 1 auto; min-width: 0; padding: 8px 12px; border: 2px dashed #e0b25a; border-radius: 12px; background: #fffaf1; font-size: 22px; font-weight: 700; letter-spacing: 0.06em; text-align: center; color: var(--brand-heading); overflow-wrap: anywhere; }
+.referral-share__code-row { display: flex; gap: 8px; align-items: center; }
+/* Code and buttons scale with the panel width (container units) and never wrap. */
+.referral-share__code { flex: 1 1 auto; min-width: 0; padding: 8px 10px; border: 2px dashed #e0b25a; border-radius: 12px; background: #fffaf1; font-size: 16px; font-size: clamp(13px, 7cqi, 22px); font-weight: 700; letter-spacing: 0.03em; line-height: 1.3; text-align: center; white-space: nowrap; color: var(--brand-heading); }
+.referral-share__code-row .series-button { flex: none; padding: 0 16px; white-space: nowrap; }
 .referral-share__links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.referral-share__links .series-button { min-height: 44px; padding: 0 8px; font-size: 14px; }
+.referral-share__links .series-button { min-height: 44px; padding: 0 4px; font-size: 13px; font-size: clamp(11px, 4.6cqi, 14px); white-space: nowrap; }
 
 .referral-rewards { padding-block: 40px; color: var(--brand-text); }
 .referral-rewards__inner { display: flex; flex-direction: column; gap: 20px; }

@@ -65,7 +65,7 @@ raf_email, raf_contact.
           <p class="referral-hero__note">{{ section.settings.no_code_text | escape }} <a href="{{ section.settings.contact_url }}" data-vs-track="raf_contact">{{ section.settings.contact_text | escape }}</a></p>
         {%- else -%}
           <div class="referral-hero__actions">
-            <a class="series-button" href="{{ section.settings.account_url }}" data-vs-track="raf_account">{{ section.settings.button_text | escape }}</a>
+            <a class="series-button" href="{{ section.settings.account_url | default: routes.storefront_login_url }}" data-vs-track="raf_account">{{ section.settings.button_text | escape }}</a>
           </div>
           {%- if section.settings.signed_out_note != blank -%}
             <p class="referral-hero__note">{{ section.settings.signed_out_note | escape }} {% if section.settings.how_anchor != blank %}<a href="#{{ section.settings.how_anchor | escape }}">{{ section.settings.how_text | escape }}</a>{% endif %}</p>
@@ -100,8 +100,8 @@ raf_email, raf_contact.
     { "type": "header", "content": "Signed out" },
     { "type": "text", "id": "token_line", "label": "Tokens line", "default": "3 Golden Tokens = a travel case, headphones or a £30 e-gift card" },
     { "type": "text", "id": "button_text", "label": "Button", "default": "Get my referral code" },
-    { "type": "text", "id": "account_url", "label": "Button link", "default": "/account" },
-    { "type": "text", "id": "signed_out_note", "label": "Note under button", "default": "Your code and share link are in your account, under Extras." },
+    { "type": "text", "id": "account_url", "label": "Button link", "info": "Leave empty: sign in, then come back to this page with the code showing." },
+    { "type": "text", "id": "signed_out_note", "label": "Note under button", "default": "Sign in and your code appears here, ready to copy and share." },
     { "type": "text", "id": "how_text", "label": "How it works link", "default": "How it works" },
     { "type": "text", "id": "how_anchor", "label": "How it works anchor", "default": "how-it-works" },
     { "type": "header", "content": "Signed in" },
