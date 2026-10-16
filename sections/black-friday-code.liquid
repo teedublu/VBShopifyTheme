@@ -249,7 +249,7 @@ bf_order, bf_refer.
           {%- case phase -%}
             {%- when 'no_code' -%}<p class="bf__lede">{{ s.no_code_text | escape }} <a href="{{ s.contact_url }}" data-vs-track="bf_contact">{{ s.contact_text | escape }}</a></p>
             {%- when 'used' -%}<p class="bf__lede">{% if used_order %}Used on order {{ used_order.name }}, {{ used_order.created_at | date: '%-d %B' }}.{% else %}{{ s.used_text | escape }}{% endif %}</p>
-            {%- when 'ended' -%}<p class="bf__lede">{{ s.ended_text | replace: '[end]', end_label | escape }}</p>
+            {%- when 'ended' -%}<p class="bf__lede">{% if customer %}{{ s.ended_text | replace: '[end]', end_label | escape }}{% else %}Our Black Friday offers ended on {{ end_label }}. You can still earn rewards by recommending Voxblock to a friend.{% endif %}</p>
           {%- endcase -%}
         </div>
 
