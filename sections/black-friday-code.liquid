@@ -222,7 +222,7 @@ bf_order, bf_refer.
               <span class="bf-timer__unit"><span class="bf-timer__num" data-unit="m">{% if left_m < 10 %}0{% endif %}{{ left_m }}</span><span class="bf-timer__name">mins</span></span>
               <span class="bf-timer__unit"><span class="bf-timer__num" data-unit="s">{% if left_x < 10 %}0{% endif %}{{ left_x }}</span><span class="bf-timer__name">secs</span></span>
             </div>
-            <p class="bf-timer__when">{% if phase == 'before' %}{{ start_label }}{% else %}Ends {{ end_label }}{% endif %}</p>
+            <p class="bf-timer__when">{% if phase == 'before' %}{{ start_label }}{% elsif variant == 'during' %}Test countdown. Real end: {{ end_label }}{% else %}Ends {{ end_label }}{% endif %}</p>
           </div>
         {%- endif -%}
       </div>
