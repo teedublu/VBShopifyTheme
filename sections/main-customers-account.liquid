@@ -31,7 +31,7 @@
             assign bf_now = 'now' | date: '%s' | plus: 0
             assign bf_until = section.settings.bf_until | date: '%s' | plus: 0
           -%}
-          {%- if bf_code != blank and bf_now <= bf_until -%}
+          {%- if bf_now <= bf_until and bf_code != blank or bf_now <= bf_until and customer.tags contains 'bf-test' -%}
           <div class="justify-self-center" style="text-align:center">
             <a class="series-button" href="{{ section.settings.bf_url | default: '/pages/black-friday' }}" data-vs-track="bf_account_link">Your Black Friday code: up to 25% off audiobooks</a>
           </div>

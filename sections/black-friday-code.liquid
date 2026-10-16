@@ -18,6 +18,10 @@ Phase, from the section's start and end settings (UK time, e.g. 2026-11-27T00:01
 Colour follows the clock (bf--t-before / bf--t-during): orange panel before the start, black and cyan while live.
 Player offer: the public player discount (50% off, for everyone) shown in every phase but ended, priced live from the
 "Player" product (lowest variant price less "Player % off"). Display only: the discount is set up in Shopify.
+Test bar ("Show the test bar", REMOVE BEFORE GO-LIVE): the page also renders hidden before / during / ended versions and
+a fixed "Black Friday test" switch shows one at a time (choice kept for the browser session). The switch appears on a
+preview (unpublished) theme, in the theme editor, or for customers tagged bf-test; never to others on the live theme.
+Test versions use the account's own code, or "Preview code" if it has none; the Live version counts down ~2.6 days.
 "Preview state" forces a phase (and "Preview code" stands in for the metafield) for design review only. Leave on
 "Live" on the real page.
 
@@ -64,33 +68,31 @@ bf_order, bf_refer.
     assign used_saving = 1349
   endif
 
-  if now_s < start_s
-    assign tphase = 'before'
-  elsif now_s <= end_s
-    assign tphase = 'during'
+  assign real_code = code
+  if code == blank
+    assign test_code = s.preview_code | strip
   else
-    assign tphase = 'ended'
+    assign test_code = code
   endif
-  if forced == 'before' or forced == 'during'
-    assign tphase = forced
-  elsif forced == 'used'
-    assign tphase = 'during'
+
+  if now_s < start_s
+    assign clock_phase = 'before'
+  elsif now_s <= end_s
+    assign clock_phase = 'during'
+  else
+    assign clock_phase = 'ended'
   endif
 
   if forced != 'live'
-    assign phase = forced
+    assign real_phase = forced
   elsif customer == nil
-    assign phase = 'signed_out'
+    assign real_phase = 'signed_out'
   elsif code == blank
-    assign phase = 'no_code'
+    assign real_phase = 'no_code'
   elsif used_order
-    assign phase = 'used'
-  elsif now_s < start_s
-    assign phase = 'before'
-  elsif now_s <= end_s
-    assign phase = 'during'
+    assign real_phase = 'used'
   else
-    assign phase = 'ended'
+    assign real_phase = clock_phase
   endif
 
   assign books = 0
@@ -100,7 +102,7 @@ bf_order, bf_refer.
     endif
   endfor
   if forced == 'during' and books == 0
-    assign books = s.preview_books
+    assign books = 2
   endif
 
   assign t1 = s.tier1_min | default: 1
@@ -115,12 +117,53 @@ bf_order, bf_refer.
     assign pct = s.tier1_pct
   endif
 
+  assign shop_url = s.shop_url | default: '/collections/audiobooks'
+  assign start_label = s.start_at | date: '%A %-d %B, %-I:%M%P'
+  assign end_label = s.end_at | date: '%A %-d %B, %-I:%M%P'
+
+  assign test_on = false
+  if s.test_bar and forced == 'live'
+    assign test_on = true
+  endif
+  assign variants = 'real'
+  if test_on
+    assign variants = 'real,before,during,ended'
+  endif
+  assign variants = variants | split: ','
+  assign test_tagged = false
+  if customer and customer.tags contains 'bf-test'
+    assign test_tagged = true
+  endif
+-%}
+
+{%- for variant in variants -%}
+{%- liquid
+  if variant == 'real'
+    assign phase = real_phase
+    assign code = real_code
+    if forced == 'before' or forced == 'during'
+      assign tphase = forced
+    elsif forced == 'used'
+      assign tphase = 'during'
+    else
+      assign tphase = clock_phase
+    endif
+  else
+    assign phase = variant
+    assign tphase = variant
+    assign code = test_code
+  endif
+
   if phase == 'before'
     assign target_s = start_s
     assign target_iso = s.start_at
   else
     assign target_s = end_s
     assign target_iso = s.end_at
+  endif
+  if variant == 'during'
+    assign target_s = now_s | plus: 223560
+    assign target_iso = target_s | date: '%Y-%m-%dT%H:%M:%S+00:00'
   endif
   assign left = target_s | minus: now_s
   if left < 0
@@ -131,17 +174,13 @@ bf_order, bf_refer.
   assign left_m = left | modulo: 3600 | divided_by: 60
   assign left_x = left | modulo: 60
 
-  assign shop_url = s.shop_url | default: '/collections/audiobooks'
   if code != blank
     assign apply_url = '/discount/' | append: code | append: '?redirect=' | append: shop_url
   else
     assign apply_url = shop_url
   endif
-  assign start_label = s.start_at | date: '%A %-d %B, %-I:%M%P'
-  assign end_label = s.end_at | date: '%A %-d %B, %-I:%M%P'
 -%}
-
-<section class="bf bf--{{ phase }} bf--t-{{ tphase }}" data-bf-phase="{{ phase }}" {{ section.shopify_attributes }}>
+<section class="bf bf--{{ phase }} bf--t-{{ tphase }}" data-bf-phase="{{ phase }}" data-bf-variant="{{ variant }}"{% unless variant == 'real' %} hidden{% endunless %} {{ section.shopify_attributes }}>
   <div class="container">
     {%- if s.preview_label != blank and forced != 'live' -%}<p class="bf__review-label">{{ s.preview_label | escape }}</p>{%- endif -%}
 
@@ -177,7 +216,7 @@ bf_order, bf_refer.
                 <span class="bf-timer__dot" aria-hidden="true"></span>Live now · ends in
               {%- endif -%}
             </p>
-            <div class="bf-timer__units" role="timer" aria-label="{% if phase == 'before' %}Time until your code opens{% else %}Time left to use your code{% endif %}" data-bf-timer data-target="{{ target_iso | escape }}"{% if phase == 'before' and forced == 'live' %} data-reload{% endif %}>
+            <div class="bf-timer__units" role="timer" aria-label="{% if phase == 'before' %}Time until your code opens{% else %}Time left to use your code{% endif %}" data-bf-timer data-target="{{ target_iso | escape }}"{% if phase == 'before' and forced == 'live' and variant == 'real' %} data-reload{% endif %}>
               <span class="bf-timer__unit"><span class="bf-timer__num" data-unit="d">{% if left_d < 10 %}0{% endif %}{{ left_d }}</span><span class="bf-timer__name">days</span></span>
               <span class="bf-timer__unit"><span class="bf-timer__num" data-unit="h">{% if left_h < 10 %}0{% endif %}{{ left_h }}</span><span class="bf-timer__name">hrs</span></span>
               <span class="bf-timer__unit"><span class="bf-timer__num" data-unit="m">{% if left_m < 10 %}0{% endif %}{{ left_m }}</span><span class="bf-timer__name">mins</span></span>
@@ -211,6 +250,7 @@ bf_order, bf_refer.
 
       {%- if phase == 'during' -%}
         <div class="bf-nudge">
+          {%- if variant != 'real' and real_code == blank -%}<p class="bf-test-note">Test code shown: this account has no blackfriday.code yet.</p>{%- endif -%}
           <p class="bf-nudge__text">
             {%- if books == 0 -%}
               Add an audiobook to your basket to start saving {{ s.tier1_pct }}%.
@@ -306,6 +346,19 @@ bf_order, bf_refer.
     {%- endif -%}
   </div>
 </section>
+{%- endfor -%}
+
+{%- if test_on -%}
+  <div class="bf-testbar" data-bf-testbar data-tagged="{{ test_tagged }}" data-design="{{ request.design_mode }}" hidden>
+    <span class="bf-testbar__label">Black Friday test</span>
+    <div class="bf-testbar__buttons" role="group" aria-label="Show the page as">
+      <button type="button" data-bf-show="real" aria-pressed="true">Real date</button>
+      <button type="button" data-bf-show="before" aria-pressed="false">Before</button>
+      <button type="button" data-bf-show="during" aria-pressed="false">Live</button>
+      <button type="button" data-bf-show="ended" aria-pressed="false">After</button>
+    </div>
+  </div>
+{%- endif -%}
 
 <script>
   (function () {
@@ -327,6 +380,24 @@ bf_order, bf_refer.
     }
     tick();
     setInterval(tick, 1000);
+
+    var bar = document.querySelector('[data-bf-testbar]');
+    var role = window.Shopify && window.Shopify.theme && window.Shopify.theme.role;
+    if (bar && (role && role !== 'main' || bar.getAttribute('data-tagged') === 'true' || bar.getAttribute('data-design') === 'true')) {
+      bar.hidden = false;
+      var show = function (name) {
+        document.querySelectorAll('[data-bf-variant]').forEach(function (el) { el.hidden = el.getAttribute('data-bf-variant') !== name; });
+        bar.querySelectorAll('[data-bf-show]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-bf-show') === name)); });
+        try { sessionStorage.setItem('vb-bf-test', name); } catch (e) {}
+      };
+      bar.addEventListener('click', function (event) {
+        var b = event.target.closest('[data-bf-show]');
+        if (b) show(b.getAttribute('data-bf-show'));
+      });
+      var saved = null;
+      try { saved = sessionStorage.getItem('vb-bf-test'); } catch (e) {}
+      if (saved && document.querySelector('[data-bf-variant="' + saved + '"]')) show(saved);
+    }
     document.addEventListener('click', function (event) {
       var button = event.target.closest('[data-bf-copy]');
       if (!button || !navigator.clipboard) return;
@@ -383,6 +454,8 @@ bf_order, bf_refer.
     { "type": "text", "id": "player_text", "label": "Player note", "default": "Add a player and audiobooks to one basket and both offers apply." },
     { "type": "checkbox", "id": "show_how", "label": "Show how it works", "default": true },
     { "type": "richtext", "id": "terms", "label": "Terms line" },
+    { "type": "header", "content": "Testing (remove before go-live)" },
+    { "type": "checkbox", "id": "test_bar", "label": "Show the test bar", "default": false, "info": "Before / Live / After switch for testers: shown on a preview theme, in the theme editor, or to customers tagged bf-test. Turn off before Black Friday." },
     { "type": "header", "content": "Design review only" },
     { "type": "select", "id": "preview_state", "label": "Preview state", "default": "live", "options": [
       { "value": "live", "label": "Live (real customer)" },
@@ -395,7 +468,6 @@ bf_order, bf_refer.
     ] },
     { "type": "text", "id": "preview_code", "label": "Preview code", "default": "BF26-SARAH-7K4Q" },
     { "type": "text", "id": "preview_name", "label": "Preview first name", "default": "Sarah" },
-    { "type": "number", "id": "preview_books", "label": "Preview audiobooks in basket", "default": 2 },
     { "type": "text", "id": "preview_label", "label": "Review label", "info": "Shown above the panel when a preview state is set." }
   ],
   "presets": [{ "name": "Black Friday code" }]

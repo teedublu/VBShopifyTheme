@@ -1368,3 +1368,15 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .bf-timer__dot, .bf-timer--during [data-unit="s"] { animation: none; }
   .bf-button { transition: none; }
 }
+
+/* Black Friday TEST BAR (sections/black-friday-code, setting "Show the test bar"). Remove before go-live. */
+.bf-testbar { position: fixed; z-index: 60; left: 12px; right: 12px; bottom: 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  padding: 10px 12px; border-radius: 16px; background: #fff; color: #1d3f43; border: 2px dashed #e0245e; box-shadow: 0 10px 30px rgb(0 0 0 / 0.25); font-size: 13px; }
+.bf-testbar[hidden] { display: none; }
+.bf-testbar__label { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #b3123f; }
+.bf-testbar__buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+.bf-testbar button { min-height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid #1d3f43; background: #fff; color: #1d3f43; font: inherit; font-weight: 600; cursor: pointer; }
+.bf-testbar button[aria-pressed="true"] { background: #1d3f43; color: #fff; }
+.bf-testbar button:focus-visible { outline: 2px solid #b3123f; outline-offset: 2px; }
+.bf-test-note { flex-basis: 100%; margin: 0; font-size: 12px; font-weight: 600; color: #ffb3c7; }
+@media (min-width: 750px) { .bf-testbar { left: auto; right: 20px; bottom: 80px; max-width: 520px; } }
