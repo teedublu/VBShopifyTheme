@@ -1370,3 +1370,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf-testbar button:focus-visible { outline: 2px solid #b3123f; outline-offset: 2px; }
 .bf-test-note { flex-basis: 100%; margin: 0; font-size: 12px; font-weight: 600; color: #ffb3c7; }
 @media (min-width: 750px) { .bf-testbar { left: auto; right: 20px; bottom: 80px; max-width: 520px; } }
+
+/* Black Friday: locked customer card for signed-out visitors (nothing of the book offer is revealed). */
+.bf-offer--locked { border-style: dashed; }
+.bf-offer__big--lock { color: var(--bf-accent); line-height: 1; }
+.bf--t-during .bf-offer__big--lock { filter: drop-shadow(0 0 16px rgb(0 225 255 / 0.6)); }
+.bf-ladder--blur { filter: blur(6px); opacity: 0.55; user-select: none; }
+.bf-offer__visual--locked { min-height: 120px; }
