@@ -174,7 +174,6 @@ bf_order, bf_refer.
       {%- if phase == 'signed_out' or phase == 'before' or phase == 'during' -%}
         <ul class="bf-tiers" role="list">
           {%- liquid
-            assign mins = t1 | append: ',' | append: t2 | append: ',' | append: t3 | split: ','
             assign pcts = s.tier1_pct | append: ',' | append: s.tier2_pct | append: ',' | append: s.tier3_pct | split: ','
             assign labels = s.tier1_label | append: '|' | append: s.tier2_label | append: '|' | append: s.tier3_label | split: '|'
           -%}
