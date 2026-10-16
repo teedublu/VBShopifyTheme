@@ -1,0 +1,371 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+ACCOUNT PLAYER REGISTRATION (templates/customers/account.json; review sheet templates/page.player-registration-preview.json)
+----------------------------------------------------------------------------------------------------------------------
+"Your players" card at the top of the account page, above the order list (also shows for accounts with no orders).
+
+Registered players come from two trusted sources only, never from anything the customer can type or set:
+1. Their own orders: line items with product type Player, Starter Pack or Schools Pack, or the tag "Player Bundle"
+   (same rule as snippets/customer-owns-player). Cancelled, voided and refunded orders are skipped. Up to 50 orders.
+2. Customer metafield players.registered (JSON list), written by us after checking a registration request, e.g.
+   [{"source": "Amazon", "purchased": "2026-03-01", "colour": "Blue", "ref": "203-1234567-1234567"}]
+   Storefront code cannot write customer metafields, so a customer cannot mark themselves registered.
+
+Guarantee end = purchase date + "Guarantee length" months. The 100-day money-back line shows while it still applies.
+
+No registered player: a short registration form. It posts as a Shopify contact form (bot protection applies, it
+arrives in the store inbox tagged "Player registration"); nothing is checked or revealed on screen. We check the
+details against the order, then fill players.registered, and the player shows here as registered.
+- Voxblock website order: order number AND the email used on that order (both must match, like Shopify's own order
+  lookup, so guessing an order number is not enough).
+- Amazon: Amazon order number. Shop, gift, other: whatever they have; we reply asking for a receipt photo if needed.
+- Honeypot field + "at least one of order number / order email" check before submit. After sending, the browser
+  remembers "sent" (localStorage, cosmetic only) and shows "we're checking it" instead of the form.
+- "No player yet?" link to the player product (the guarantee is the reason to buy direct).
+
+"Preview state" forces a state with sample data for design review only (page.player-registration-preview). Leave on
+"Live" on the account page.
+Clicks send vs_yoto_click { target } through data-vs-track: reg_submit, reg_player_link, reg_order_link, reg_contact.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign forced = s.preview_state | default: 'live'
+  assign months = s.guarantee_months | plus: 0
+  assign today_num = 'now' | date: '%Y%m%d' | plus: 0
+  assign now_s = 'now' | date: '%s' | plus: 0
+  assign month_lengths = '31,28,31,30,31,30,31,31,30,31,30,31' | split: ','
+
+  # Rows: "|"-delimited list of label ~ variant ~ qty ~ purchased (YYYY-MM-DD) ~ order name ~ order url ~ source
+  assign rows = ''
+
+  if forced == 'registered'
+    assign rows = 'Voxblock Audiobook Player~Blue~1~2026-02-14~#1234~#~|Roald Dahl starter pack~Orange~1~2025-11-28~#1101~#~|Voxblock Audiobook Player~Red~1~2025-06-02~~~Amazon'
+  elsif forced == 'live' and customer
+    for order in customer.orders limit: 50
+      if order.cancelled or order.financial_status == 'refunded' or order.financial_status == 'voided'
+        continue
+      endif
+      for item in order.line_items
+        assign item_type = item.product.type | downcase
+        if item_type == 'player' or item_type == 'starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
+          assign label = item.product.title | default: item.title | replace: '~', '-' | replace: '|', '/'
+          assign variant = item.variant.title | replace: '~', '-' | replace: '|', '/'
+          if variant == 'Default Title'
+            assign variant = ''
+          endif
+          assign purchased = order.created_at | date: '%Y-%m-%d'
+          assign row = label | append: '~' | append: variant | append: '~' | append: item.quantity | append: '~' | append: purchased | append: '~' | append: order.name | append: '~' | append: order.customer_url | append: '~'
+          if rows == ''
+            assign rows = row
+          else
+            assign rows = rows | append: '|' | append: row
+          endif
+        endif
+      endfor
+    endfor
+
+    assign registered = customer.metafields.players.registered.value
+    for reg in registered
+      assign purchased = reg.purchased | date: '%Y-%m-%d'
+      if purchased == blank
+        continue
+      endif
+      assign source = reg.source | default: 'Registered' | replace: '~', '-' | replace: '|', '/'
+      assign colour = reg.colour | replace: '~', '-' | replace: '|', '/'
+      assign row = 'Voxblock Audiobook Player~' | append: colour | append: '~1~' | append: purchased | append: '~~~' | append: source
+      if rows == ''
+        assign rows = row
+      else
+        assign rows = rows | append: '|' | append: row
+      endif
+    endfor
+  endif
+
+  assign show_section = false
+  if customer or forced != 'live'
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+<div class="container player-reg" id="register-player-{{ section.id }}" {{ section.shopify_attributes }}>
+  {%- if forced != 'live' -%}<p class="player-reg__review-label">Preview: {{ forced | replace: '_', ' ' }}</p>{%- endif -%}
+
+  <div class="player-reg__card">
+    {%- if rows != '' -%}
+      {%- comment -%} REGISTERED {%- endcomment -%}
+      <div class="player-reg__head">
+        {%- if s.eyebrow != blank -%}<p class="subheading">{{ s.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="h4">{{ s.registered_heading | escape }}</h2>
+        {%- if s.registered_text != blank -%}<p class="player-reg__lede">{{ s.registered_text | replace: '[months]', months | escape }}</p>{%- endif -%}
+      </div>
+
+      <ul class="player-reg__list" role="list">
+        {%- assign row_list = rows | split: '|' -%}
+        {%- for row in row_list -%}
+          {%- liquid
+            assign f = row | split: '~'
+            assign p_label = f[0]
+            assign p_variant = f[1]
+            assign p_qty = f[2] | plus: 0
+            assign p_date = f[3]
+            assign p_order = f[4]
+            assign p_url = f[5]
+            assign p_source = f[6]
+
+            assign y = p_date | slice: 0, 4 | plus: 0
+            assign m = p_date | slice: 5, 2 | plus: 0
+            assign d = p_date | slice: 8, 2 | plus: 0
+            assign total = m | minus: 1 | plus: months
+            assign end_y = total | divided_by: 12 | plus: y
+            assign end_m = total | modulo: 12 | plus: 1
+            assign idx = end_m | minus: 1
+            assign max_d = month_lengths[idx] | plus: 0
+            if end_m == 2
+              assign leap4 = end_y | modulo: 4
+              assign leap100 = end_y | modulo: 100
+              assign leap400 = end_y | modulo: 400
+              if leap4 == 0 and leap100 != 0 or leap400 == 0
+                assign max_d = 29
+              endif
+            endif
+            if d > max_d
+              assign d = max_d
+            endif
+            assign end_m_pad = end_m | prepend: '0' | slice: -2, 2
+            assign end_d_pad = d | prepend: '0' | slice: -2, 2
+            assign end_iso = end_y | append: '-' | append: end_m_pad | append: '-' | append: end_d_pad
+            assign end_num = end_iso | remove: '-' | plus: 0
+            assign active = false
+            if end_num >= today_num
+              assign active = true
+            endif
+
+            assign mb_end_s = p_date | date: '%s' | plus: 8640000
+            assign mb_active = false
+            if mb_end_s >= now_s and p_source == blank
+              assign mb_active = true
+            endif
+          -%}
+          <li class="player-reg__item">
+            <div class="player-reg__item-main">
+              <p class="player-reg__name">
+                {{ p_label | escape }}{% if p_variant != blank %}<span class="player-reg__variant"> · {{ p_variant | escape }}</span>{% endif %}{% if p_qty > 1 %}<span class="player-reg__variant"> × {{ p_qty }}</span>{% endif %}
+              </p>
+              <p class="player-reg__meta">
+                {%- if p_source != blank -%}
+                  {{ s.external_label | replace: '[source]', p_source | escape }}, {{ p_date | date: '%-d %B %Y' }}
+                {%- else -%}
+                  Bought {{ p_date | date: '%-d %B %Y' }}{% if p_order != blank %}, <a href="{{ p_url }}" data-vs-track="reg_order_link">order {{ p_order | escape }}</a>{% endif %}
+                {%- endif -%}
+              </p>
+            </div>
+            <div class="player-reg__status">
+              {%- if active -%}
+                <span class="player-reg__pill player-reg__pill--active">{{ s.active_label | escape }}</span>
+                <span class="player-reg__end">Guarantee until {{ end_iso | date: '%-d %B %Y' }}</span>
+              {%- else -%}
+                <span class="player-reg__pill">{{ s.expired_label | escape }}</span>
+                <span class="player-reg__end">Guarantee ended {{ end_iso | date: '%-d %B %Y' }}</span>
+              {%- endif -%}
+              {%- if mb_active -%}
+                <span class="player-reg__end">Money-back until {{ mb_end_s | date: '%-d %B %Y' }}</span>
+              {%- endif -%}
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if s.another_text != blank -%}
+        <p class="player-reg__foot"><a href="#player-reg-form-{{ section.id }}" data-player-reg-toggle>{{ s.another_text | escape }}</a></p>
+      {%- endif -%}
+    {%- else -%}
+      {%- comment -%} NOT REGISTERED {%- endcomment -%}
+      <div class="player-reg__head">
+        {%- if s.eyebrow != blank -%}<p class="subheading">{{ s.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="h4">{{ s.form_heading | escape }}</h2>
+        {%- if s.form_text != blank -%}<p class="player-reg__lede">{{ s.form_text | replace: '[months]', months | escape }}</p>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} FORM: open when nothing is registered; behind "Register another player" otherwise {%- endcomment -%}
+    <div class="player-reg__form-wrap" id="player-reg-form-{{ section.id }}" {% if rows != '' %}hidden{% endif %} data-player-reg>
+      {%- assign form_id = 'player-registration-' | append: section.id -%}
+      {%- form 'contact', id: form_id, class: 'player-reg__form', data-player-reg-form: '' -%}
+        {%- if form.posted_successfully? or forced == 'sent' -%}
+          {%- render 'banner', status: 'success', content: s.sent_text -%}
+          {%- if forced == 'live' -%}<script>try { localStorage.setItem('vb_player_reg_sent', String(Date.now())); } catch (e) {}</script>{%- endif -%}
+        {%- else -%}
+          {%- if form.errors -%}
+            {%- render 'banner', status: 'error', content: form.errors.messages['form'] -%}
+          {%- endif -%}
+
+          <p class="player-reg__pending" data-player-reg-pending hidden>{{ s.pending_text | escape }} <a href="#player-reg-form-{{ section.id }}" data-player-reg-again>{{ s.again_text | escape }}</a></p>
+
+          <div class="player-reg__fields" data-player-reg-fields>
+            <input type="hidden" name="contact[email]" value="{{ customer.email | default: 'preview@example.com' | escape }}">
+            <input type="hidden" name="contact[Request]" value="Player registration">
+            <input type="hidden" name="contact[Account name]" value="{{ customer.name | escape }}">
+            <input type="hidden" name="contact[Account ID]" value="{{ customer.id }}">
+            <div class="player-reg__hp" aria-hidden="true">
+              <label>Leave this empty <input type="text" name="contact[Website]" tabindex="-1" autocomplete="off" data-player-reg-hp></label>
+            </div>
+
+            {%- capture source_options -%}
+              <option value="" disabled selected></option>
+              <option value="Voxblock website">Voxblock website (another email or a guest order)</option>
+              <option value="Amazon">Amazon</option>
+              <option value="A shop">A shop</option>
+              <option value="A gift">It was a gift</option>
+              <option value="Other">Somewhere else</option>
+            {%- endcapture -%}
+            {%- render 'select', name: 'contact[Where bought]', label: 'Where did the player come from?', options: source_options, required: true -%}
+
+            <div class="player-reg__row">
+              {%- render 'input', type: 'text', name: 'contact[Order number]', label: 'Order number', maxlength: 40, autocomplete: 'off' -%}
+              {%- render 'input', type: 'email', name: 'contact[Email on the order]', label: 'Email used on the order', maxlength: 120, autocomplete: 'off' -%}
+            </div>
+            <p class="player-reg__hint" data-player-reg-hint>{{ s.hint_default | escape }}</p>
+
+            <div class="player-reg__row">
+              {%- render 'input', type: 'date', name: 'contact[Bought on]', label: 'Roughly when?', required: true -%}
+              {%- capture colour_options -%}
+                <option value="" disabled selected></option>
+                <option>No bumper</option><option>Orange</option><option>Green</option><option>Red</option><option>Blue</option><option>Not sure</option>
+              {%- endcapture -%}
+              {%- render 'select', name: 'contact[Colour]', label: 'Colour', options: colour_options -%}
+            </div>
+
+            <label class="player-reg__check">
+              <input type="checkbox" name="contact[Declaration]" value="I own this player" required>
+              <span>{{ s.declaration_text | escape }}</span>
+            </label>
+
+            <p class="player-reg__error" data-player-reg-error role="alert" hidden>{{ s.missing_text | escape }}</p>
+
+            {%- render 'button', content: s.submit_text, type: 'submit', size: 'lg', stretch: true, secondary: true -%}
+            {%- if s.privacy_text != blank -%}<p class="player-reg__small">{{ s.privacy_text | escape }}</p>{%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+
+    {%- if rows == '' and s.buy_text != blank -%}
+      <p class="player-reg__buy">
+        {{ s.buy_text | replace: '[months]', months | escape }}
+        <a href="{{ s.player_url | default: '/products/voxblock-player' }}" data-vs-track="reg_player_link">{{ s.buy_link_text | escape }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('register-player-{{ section.id }}');
+    if (!root) return;
+    var form = root.querySelector('[data-player-reg-form]');
+    var wrap = root.querySelector('[data-player-reg]');
+    var toggle = root.querySelector('[data-player-reg-toggle]');
+    if (toggle && wrap) {
+      toggle.addEventListener('click', function (e) { e.preventDefault(); wrap.hidden = false; toggle.closest('p').hidden = true; });
+    }
+    if (!form) return;
+
+    var hints = {
+      'Voxblock website': {{ s.hint_website | json }},
+      'Amazon': {{ s.hint_amazon | json }},
+      'A shop': {{ s.hint_other | json }},
+      'A gift': {{ s.hint_gift | json }},
+      'Other': {{ s.hint_other | json }}
+    };
+    var source = form.querySelector('[name="contact[Where bought]"]');
+    var orderNo = form.querySelector('[name="contact[Order number]"]');
+    var orderEmail = form.querySelector('[name="contact[Email on the order]"]');
+    var bought = form.querySelector('[name="contact[Bought on]"]');
+    var hint = form.querySelector('[data-player-reg-hint]');
+    var error = form.querySelector('[data-player-reg-error]');
+    if (bought) bought.max = new Date().toISOString().slice(0, 10);
+
+    if (source) source.addEventListener('change', function () {
+      if (hint && hints[source.value]) hint.textContent = hints[source.value];
+      var website = source.value === 'Voxblock website';
+      if (orderNo) orderNo.required = website || source.value === 'Amazon';
+      if (orderEmail) orderEmail.required = website;
+    });
+
+    form.addEventListener('submit', function (e) {
+      var hp = form.querySelector('[data-player-reg-hp]');
+      if (hp && hp.value) { e.preventDefault(); return; }
+      if (orderNo && orderEmail && !orderNo.value.trim() && !orderEmail.value.trim()) {
+        e.preventDefault();
+        if (error) error.hidden = false;
+        orderNo.focus();
+        return;
+      }
+      if (window.posthog) window.posthog.capture('vs_yoto_click', { target: 'reg_submit', source: source ? source.value : '', page: window.location.pathname });
+    });
+
+    var pending = form.querySelector('[data-player-reg-pending]');
+    var fields = form.querySelector('[data-player-reg-fields]');
+    var sentAt = null;
+    {%- if forced == 'live' -%}try { sentAt = localStorage.getItem('vb_player_reg_sent'); } catch (e) {}{%- endif -%}
+    if (pending && fields && sentAt && Date.now() - Number(sentAt) < 14 * 864e5) {
+      pending.hidden = false;
+      fields.hidden = true;
+      var again = pending.querySelector('[data-player-reg-again]');
+      if (again) again.addEventListener('click', function (e) { e.preventDefault(); pending.hidden = true; fields.hidden = false; });
+    }
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Player registration",
+  "tag": "section",
+  "class": "shopify-section--player-registration",
+  "settings": [
+    { "type": "range", "id": "guarantee_months", "label": "Guarantee length (months)", "min": 6, "max": 60, "step": 6, "default": 12, "info": "Confirm before going live. End date = purchase date + this." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Your players" },
+    { "type": "header", "content": "Registered" },
+    { "type": "text", "id": "registered_heading", "label": "Heading", "default": "Your registered players" },
+    { "type": "text", "id": "registered_text", "label": "Text", "default": "Each player has a [months]-month guarantee from the day it was bought." },
+    { "type": "text", "id": "active_label", "label": "Active label", "default": "Guaranteed" },
+    { "type": "text", "id": "expired_label", "label": "Ended label", "default": "Guarantee ended" },
+    { "type": "text", "id": "external_label", "label": "Registered elsewhere", "default": "Registered, bought from [source]" },
+    { "type": "text", "id": "another_text", "label": "Register another link", "default": "Register another player" },
+    { "type": "header", "content": "Not registered" },
+    { "type": "text", "id": "form_heading", "label": "Heading", "default": "Register your player" },
+    { "type": "textarea", "id": "form_text", "label": "Text", "default": "Got a player from Amazon, a shop or as a gift? Register it here and it gets the [months]-month Voxblock guarantee from the day it was bought." },
+    { "type": "text", "id": "hint_default", "label": "Hint (before choosing)", "default": "Give us the order number, the email used on the order, or both." },
+    { "type": "text", "id": "hint_website", "label": "Hint: Voxblock website", "default": "Order number (e.g. #1234) and the email used on that order." },
+    { "type": "text", "id": "hint_amazon", "label": "Hint: Amazon", "default": "Your Amazon order number, e.g. 203-1234567-1234567." },
+    { "type": "text", "id": "hint_gift", "label": "Hint: gift", "default": "Ask the person who gave it for the order number if you can. If not, leave it blank and we'll be in touch." },
+    { "type": "text", "id": "hint_other", "label": "Hint: shop or other", "default": "The order or receipt number if you have one. We may ask for a photo of the receipt." },
+    { "type": "text", "id": "declaration_text", "label": "Declaration", "default": "This player is mine or my family's." },
+    { "type": "text", "id": "missing_text", "label": "Missing details", "default": "Add an order number or the email used on the order." },
+    { "type": "text", "id": "submit_text", "label": "Button", "default": "Register my player" },
+    { "type": "text", "id": "privacy_text", "label": "Small print", "default": "We check the details against the order and email you within 2 working days. We use them only to register your player." },
+    { "type": "text", "id": "sent_text", "label": "Sent message", "default": "Thanks, we've got it. We'll check the details and email you within 2 working days. Once confirmed, your player shows here." },
+    { "type": "text", "id": "pending_text", "label": "Already sent", "default": "We're checking your registration and will email you soon." },
+    { "type": "text", "id": "again_text", "label": "Send again link", "default": "Register another player" },
+    { "type": "header", "content": "No player yet" },
+    { "type": "text", "id": "buy_text", "label": "Text", "default": "No player yet? Bought from us, it comes with the [months]-month guarantee and our 100-day money-back guarantee." },
+    { "type": "text", "id": "buy_link_text", "label": "Link", "default": "See the player" },
+    { "type": "text", "id": "player_url", "label": "Link URL", "default": "/products/voxblock-player" },
+    { "type": "header", "content": "Review only" },
+    {
+      "type": "select", "id": "preview_state", "label": "Preview state", "default": "live",
+      "options": [
+        { "value": "live", "label": "Live" },
+        { "value": "registered", "label": "Registered (sample)" },
+        { "value": "form", "label": "Form" },
+        { "value": "sent", "label": "Sent" }
+      ],
+      "info": "Leave on Live on the account page."
+    }
+  ],
+  "presets": [{ "name": "Player registration" }]
+}
+{% endschema %}
