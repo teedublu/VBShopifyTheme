@@ -135,7 +135,7 @@ bf_order, bf_refer.
           <p class="bf__eyebrow">{% if phase == 'before' %}{{ s.eyebrow_before | escape }}{% else %}{{ s.eyebrow | escape }}{% endif %}</p>
           <h1 class="bf__title">
             {%- case phase -%}
-              {%- when 'used' -%}{{ s.used_heading | replace: '[saving]', used_saving | money_without_trailing_zeros | escape }}
+              {%- when 'used' -%}{%- assign saving_label = used_saving | money_without_trailing_zeros -%}{{ s.used_heading | replace: '[saving]', saving_label | escape }}
               {%- when 'ended' -%}{{ s.ended_heading | escape }}
               {%- when 'before' -%}{{ s.before_heading | escape }}
               {%- else -%}{{ s.heading | escape }}
