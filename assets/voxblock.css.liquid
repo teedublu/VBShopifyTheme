@@ -1111,3 +1111,39 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .cart-order__continue {
   margin-block-start: var(--spacing-6);
 }
+
+/* Refer a friend (sections/referral-intro, referral-rewards). Shares the .age-intro band and .series-button styles. */
+.referral-intro__offer { display: flex; align-items: center; gap: 12px; margin-top: 4px; padding: 12px 14px; border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgb(86 86 86 / 0.1); font-size: 14px; line-height: 20px; color: var(--brand-heading); }
+.referral-intro__tokens { display: inline-flex; flex: none; gap: 6px; }
+.referral-token { display: block; }
+.referral-intro__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.referral-intro__actions .series-button { flex: 1 1 100%; }
+.referral-intro__note { margin: 0; font-size: 13px; line-height: 20px; }
+.referral-intro__note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.referral-intro__card { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; padding: 18px; border-radius: 16px; background: #fff; box-shadow: 0 5px 30px rgb(86 86 86 / 0.1); }
+.referral-intro__label { margin: 0; font-size: 13px; }
+.referral-intro__code-row { display: flex; gap: 10px; align-items: center; }
+.referral-intro__code { flex: 1 1 auto; min-width: 0; padding: 8px 12px; border: 2px dashed var(--card-border); border-radius: 12px; font-size: 22px; font-weight: 700; letter-spacing: 0.04em; text-align: center; color: var(--brand-heading); overflow-wrap: anywhere; }
+.referral-intro__share { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.referral-intro__share .series-button { min-height: 44px; padding: 0 8px; font-size: 14px; }
+.referral-intro__progress { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 600; color: var(--brand-heading); }
+.referral-rewards { padding-block: 36px; color: var(--brand-text); }
+.referral-rewards__inner { display: flex; flex-direction: column; gap: 20px; }
+.referral-rewards__intro { margin: 8px 0 0; }
+.referral-rewards__list { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.referral-rewards__item { display: flex; align-items: center; gap: 14px; padding: 12px; border: 1px solid var(--card-border); border-radius: 16px; }
+.referral-rewards__media { flex: none; width: 96px; height: 96px; border-radius: 12px; background: #eaf4f4; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.referral-rewards__media img { width: 100%; height: 100%; object-fit: contain; }
+.referral-rewards__media--value { background: var(--brand-heading); color: #fff; font-size: 24px; font-weight: 700; }
+.referral-rewards__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.referral-rewards__title { font-weight: 700; color: var(--brand-heading); }
+.referral-rewards__text { font-size: 14px; line-height: 20px; }
+@media screen and (min-width: 750px) {
+  .referral-intro__actions .series-button { flex: 0 0 auto; }
+  .referral-rewards { padding-block: 56px; }
+  .referral-rewards__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .referral-rewards__item { flex-direction: column; align-items: stretch; padding: 0; overflow: hidden; }
+  .referral-rewards__media { width: 100%; height: 220px; border-radius: 0; }
+  .referral-rewards__media--value { font-size: 56px; }
+  .referral-rewards__body { padding: 0 20px 20px; }
+}
