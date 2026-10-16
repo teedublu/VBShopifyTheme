@@ -40,12 +40,13 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
 ## 2026-10-16: Register your player (account page)
-Branch `claude/register-player`, draft theme "Register player (claude/register-player)" (id 200131707264, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review sheet: any page `?view=player-registration-preview`.
-- New section `account-player-registration`, top of `customers/account` (shows for accounts with no orders too). Kept out of `main-customers-account` (the Black Friday branch edits it).
-- Registered players come only from trusted data: the customer's orders (Player / Starter Pack / Schools Pack / "Player Bundle"; cancelled, voided, refunded skipped) and customer metafield `players.registered` (JSON list, written by us after checking). Guarantee end = purchase date + "Guarantee length" setting (default 12 months, **owner to confirm**); 100-day money-back line while it applies.
-- No player: form posted as a Shopify contact form ("Player registration" in the store inbox, bot protection). Website orders need order number + order email; Amazon the Amazon order number; gift/shop whatever they have. Honeypot, declaration tick, nothing revealed on screen. "See the player" link for accounts without one.
-- Open: metafield definition `players.registered` (customer, JSON) to create in admin; who checks requests and fills it (manual, or a Catalyst/Flow job later).
-- Tracking: vs_yoto_click targets reg_submit (with source), reg_player_link, reg_order_link.
+Branch `claude/register-player`, draft PR #97, draft theme "Register player (claude/register-player)" (id 200131707264, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review sheet: any page `?view=player-registration-preview`.
+- Section `account-player-registration` (+ snippet `player-reg-item`), top of `customers/account` (shows for accounts with no orders too). Kept out of `main-customers-account` (the Black Friday branch edits it).
+- Owner, 16 Oct round 2: form is just the email the player was bought with + where it came from (no order number). That email gets a Klaviyo email with Yes / No; Yes links the player into the account (lands on /account, sign-in first if needed). Players named by date bought, never pack or colour; "This player belongs to" name per player. Linked players show the other account's email masked; Unlink on any player added this way.
+- Players come from the customer's own orders (one row per unit) plus metafield `players.data` (written only by the service).
+- Backend: `services/player-link/` (Catalyst Voxblock-Storefront, Shopify app proxy `/apps/voxblock/players`, Klaviyo metric "Player link requested", email template). **Not deployed**: setup steps and abuse notes in its README. Until it is, the live form shows "Sorry, that didn't work".
+- Guarantee length is a setting (default 12 months, **owner to confirm**). Registered players run from the confirmation date (owner decision: accept, or rely on a receipt at claim time).
+- Tracking: vs_yoto_click targets reg_submit, reg_nickname, reg_unlink, reg_player_link.
 
 ## 2026-10-16: Refer a friend page (3 Golden Tokens)
 Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.

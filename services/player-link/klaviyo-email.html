@@ -1,0 +1,35 @@
+<!--
+  Klaviyo flow email for metric "Player link requested" (sent by the player link service).
+  Subject:  {% if event.is_self %}Confirm your Voxblock player{% else %}Link your Voxblock player?{% endif %}
+  Preview:  One click to add the player and its guarantee to the account.
+  Flow: trigger = metric "Player link requested", no delay, no filters, Smart Sending OFF, transactional if your
+  Klaviyo account allows it (it is a reply to a request, not marketing).
+-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;font-family:Arial,Helvetica,sans-serif;color:#1d3f43">
+  <tr><td align="center" style="padding:32px 16px">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px">
+      <tr><td style="font-size:24px;font-weight:bold;line-height:1.25;padding-bottom:14px">
+        {% if event.is_self %}Confirm your Voxblock player{% else %}Link your Voxblock player?{% endif %}
+      </td></tr>
+      <tr><td style="font-size:16px;line-height:1.55;padding-bottom:22px">
+        {% if event.is_self %}
+          You asked to register a Voxblock player ({{ event.source }}) on your account. Tap Yes and it shows in your account with its guarantee.
+        {% else %}
+          {% if event.requester_name %}{{ event.requester_name }} ({{ event.requester_email }}){% else %}{{ event.requester_email }}{% endif %}
+          would like to add the Voxblock player bought with this email to their account, so it shows there with its guarantee.
+          Your email will show partly hidden in their account, and either of you can unlink it at any time.
+        {% endif %}
+      </td></tr>
+      <tr><td style="padding-bottom:12px">
+        <a href="{{ event.yes_url }}" style="display:block;text-align:center;background:#1d3f43;color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px 20px;border-radius:999px">Yes, link it</a>
+      </td></tr>
+      <tr><td style="padding-bottom:24px">
+        <a href="{{ event.no_url }}" style="display:block;text-align:center;border:2px solid #1d3f43;color:#1d3f43;text-decoration:none;font-weight:bold;font-size:16px;padding:12px 20px;border-radius:999px">No, don't link it</a>
+      </td></tr>
+      <tr><td style="font-size:13px;line-height:1.5;color:#4b6466">
+        This link works for 7 days. If you don't know what this is, tap No or ignore this email and nothing happens.
+        Questions: hello@voxblock.co.uk
+      </td></tr>
+    </table>
+  </td></tr>
+</table>

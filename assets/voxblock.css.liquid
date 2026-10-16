@@ -1112,8 +1112,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
   margin-block-start: var(--spacing-6);
 }
 
-/* Player registration (sections/account-player-registration; account page + page.player-registration-preview).
-   Card on the account page: registered players with guarantee end dates, or the registration form. Theme colours only. */
+/* Player registration (sections/account-player-registration, snippets/player-reg-item; account page +
+   page.player-registration-preview). Players named by date bought, "belongs to" name, guarantee, unlink. Theme colours only. */
 .player-reg { padding-block: 24px 8px; }
 .player-reg__review-label { margin: 0 0 10px; font-size: 13px; font-weight: 500; color: var(--brand-heading); }
 .player-reg__card { max-width: 760px; margin-inline: auto; display: flex; flex-direction: column; gap: 18px; padding: 22px 18px; border: 1px solid var(--card-border); border-radius: 18px; background: #fff; color: var(--brand-text); }
@@ -1122,26 +1122,30 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .player-reg__lede { margin: 0; font-size: 15px; line-height: 1.55; }
 .player-reg__list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
 .player-reg__item { display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; border: 1px solid var(--card-border); border-radius: 14px; }
-.player-reg__item-main { min-width: 0; }
+.player-reg__item-main { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .player-reg__name { margin: 0; font-weight: 600; color: var(--brand-heading); }
-.player-reg__variant { font-weight: 400; color: var(--brand-text); }
-.player-reg__meta { margin: 2px 0 0; font-size: 13px; }
-.player-reg__meta a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.player-reg__meta { margin: 0; font-size: 13px; }
+.player-reg__meta[hidden], .player-reg__belongs-form[hidden], [data-unlink-confirm][hidden], .player-reg__form[hidden], [data-add-done][hidden], .player-reg__error[hidden] { display: none; }
+.player-reg__link-button { padding: 0; border: 0; background: none; font: inherit; color: var(--brand-heading); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+.player-reg__link-button--strong { font-weight: 600; }
+.player-reg__belongs-form { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+.player-reg__belongs-label { font-size: 13px; font-weight: 600; }
+.player-reg__belongs-row { display: flex; gap: 8px; align-items: stretch; }
+.player-reg__belongs-row .input { flex: 1 1 auto; min-width: 0; }
+.player-reg__small-note { margin: 0; font-size: 12px; opacity: 0.8; }
 .player-reg__status { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 13px; }
 .player-reg__pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: rgb(var(--brand-text-rgb) / 0.08); }
 .player-reg__pill--active { background: rgb(var(--brand-heading-rgb) / 0.12); color: var(--brand-heading); }
 .player-reg__pill--active::before { content: ""; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: currentColor; }
+.player-reg__unlink { font-size: 13px; }
 .player-reg__foot, .player-reg__buy { margin: 0; font-size: 14px; }
-.player-reg__foot a, .player-reg__buy a, .player-reg__pending a { color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.player-reg__buy a { color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .player-reg__buy { padding-top: 14px; border-top: 1px solid var(--card-border); }
+.player-reg__form-wrap { display: flex; flex-direction: column; gap: 12px; }
+.player-reg__form-wrap[hidden] { display: none; }
 .player-reg__form { display: flex; flex-direction: column; gap: 12px; }
-.player-reg__fields { display: flex; flex-direction: column; gap: 12px; }
-.player-reg__fields[hidden], .player-reg__pending[hidden], .player-reg__error[hidden] { display: none; }
 .player-reg__row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
-.player-reg__hint, .player-reg__small { margin: -4px 0 0; font-size: 13px; opacity: 0.85; }
-.player-reg__small { margin: 0; text-align: center; }
-.player-reg__check { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; cursor: pointer; }
-.player-reg__check input { margin-top: 3px; width: 18px; height: 18px; flex: 0 0 auto; accent-color: var(--brand-heading); }
+.player-reg__hint { margin: -4px 0 0; font-size: 13px; opacity: 0.85; }
 .player-reg__error { margin: 0; font-size: 14px; font-weight: 600; color: rgb(var(--error-text)); }
 .player-reg__pending { margin: 0; padding: 12px 14px; border-radius: 12px; background: rgb(var(--brand-heading-rgb) / 0.08); font-size: 14px; }
 .player-reg__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
