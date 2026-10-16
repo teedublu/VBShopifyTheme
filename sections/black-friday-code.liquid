@@ -258,7 +258,7 @@ bf_order, bf_refer.
           {%- if show_player -%}
             <article class="bf-offer bf-offer--player" aria-labelledby="bf-player-{{ section.id }}-{{ variant }}">
               <p class="bf-offer__tag">Offer 1 · everyone</p>
-              <p class="bf-offer__big">{{ s.player_pct }}%<span class="bf-offer__off">off</span></p>
+              <p class="bf-offer__big"><span class="bf-offer__upto">{% if s.player_pct == 50 %}half price{% else %}save{% endif %}</span>{{ s.player_pct }}%<span class="bf-offer__off">off</span></p>
               <h2 class="bf-offer__name" id="bf-player-{{ section.id }}-{{ variant }}">The Voxblock player</h2>
               <div class="bf-offer__visual bf-offer__visual--player">
                 {%- if player.featured_image -%}
