@@ -180,7 +180,13 @@ bf_order, bf_refer.
     assign key = real_key
   endif
 
-  if phase == 'before'
+  assign timer_phase = ''
+  if phase == 'before' or phase == 'during'
+    assign timer_phase = phase
+  elsif phase == 'signed_out' and tphase != 'ended'
+    assign timer_phase = tphase
+  endif
+  if timer_phase == 'before'
     assign target_s = start_s
     assign target_iso = s.start_at
   else
@@ -247,14 +253,14 @@ bf_order, bf_refer.
           {%- endcase -%}
         </div>
 
-        {%- if phase == 'before' or phase == 'during' -%}
+        {%- if timer_phase != blank -%}
           {%- liquid
             assign reload = false
-            if phase == 'before' and forced == 'live' and variant == 'real'
+            if timer_phase == 'before' and forced == 'live' and variant == 'real'
               assign reload = true
             endif
           -%}
-          {%- render 'black-friday-timer', phase: phase, variant: variant, target_iso: target_iso, left_d: left_d, left_h: left_h, left_m: left_m, left_x: left_x, start_label: start_label, end_label: end_label, reload: reload -%}
+          {%- render 'black-friday-timer', phase: timer_phase, variant: variant, target_iso: target_iso, left_d: left_d, left_h: left_h, left_m: left_m, left_x: left_x, start_label: start_label, end_label: end_label, reload: reload -%}
         {%- endif -%}
       </div>
 
@@ -262,7 +268,7 @@ bf_order, bf_refer.
         <div class="bf-offers{% unless show_player %} bf-offers--single{% endunless %}">
 
           {%- if show_player -%}
-            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: phase, uid: uid -%}
+            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid -%}
           {%- endif -%}
 
           {%- if phase == 'signed_out' -%}
