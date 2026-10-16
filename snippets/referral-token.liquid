@@ -8,5 +8,5 @@ size: display size in px (default 34). Decorative: alt is empty, callers add tex
 <span class="referral-token referral-token--outline" style="--token-size: {{ token_size }}px;"></span>
 {%- else -%}
 {%- if large -%}{%- assign token_file = 'golden-token.webp' -%}{%- else -%}{%- assign token_file = 'golden-token-240.webp' -%}{%- endif -%}
-<img class="referral-token" src="{{ token_file | asset_url }}" width="{{ token_size }}" height="{{ token_size }}" alt="" loading="{% if eager %}eager{% else %}lazy{% endif %}" style="--token-size: {{ token_size }}px;">
+<img class="referral-token" src="{{ token_file | asset_url }}" width="{{ token_size }}" height="{{ token_size }}" alt="" style="--token-size: {{ token_size }}px;">
 {%- endif -%}
