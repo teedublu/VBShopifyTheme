@@ -1226,6 +1226,152 @@
         "full_width": true,
         "spacing": "medium"
       }
+    },
+    "checklist_which_player": {
+      "type": "checklist-cards",
+      "blocks": {
+        "card_voxblock": {
+          "type": "card",
+          "settings": {
+            "title": "Choose Voxblock if…",
+            "items": "You want it working straight out of the box: no wi-fi, no account, nothing to download.\nAudiobooks matter most, from picture books for toddlers to unabridged novels for older children.\nYou want your child to choose and play stories on their own, from books they can hold and keep on a shelf.\nYou want a lower price to start: at full price, the player costs less than any Yoto player or a Toniebox 2.",
+            "marker": "tick",
+            "highlight": true
+          }
+        },
+        "card_other": {
+          "type": "card",
+          "settings": {
+            "title": "A Yoto or Toniebox may suit you better if…",
+            "items": "You want music, radio and podcasts as well as stories (Yoto).\nYou want a clock or night light in the same device.\nYou want cheaper individual stories: Yoto cards usually cost less than a Voxblock audiobook.\nYour child is under 3: the Toniebox 2 is made for ages 1 and up.",
+            "marker": "dot",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "card_voxblock",
+        "card_other"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Voxblock, Yoto or Tonies?",
+        "title": "Which player suits your family?",
+        "content": "<p>All three are screen-free. They suit different families.</p>",
+        "text_position": "start",
+        "anchor_id": "which-player"
+      }
+    },
+    "comparison_at_a_glance": {
+      "type": "comparison-table",
+      "blocks": {
+        "row_setup": {
+          "type": "row",
+          "settings": {
+            "label": "Setting up",
+            "value_1": "Nothing to set up",
+            "value_2": "App and wi-fi",
+            "value_3": "App, account and wi-fi",
+            "good_answer": "yes"
+          }
+        },
+        "row_story": {
+          "type": "row",
+          "settings": {
+            "label": "Where the story is",
+            "value_1": "On the audiobook",
+            "value_2": "On a card; audio downloads over wi-fi the first time",
+            "value_3": "On a figure; audio downloads over wi-fi the first time",
+            "good_answer": "yes"
+          }
+        },
+        "row_wifi": {
+          "type": "row",
+          "settings": {
+            "label": "Needs wi-fi to add a story",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
+        },
+        "row_screen": {
+          "type": "row",
+          "settings": {
+            "label": "Screen",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "No",
+            "good_answer": "no"
+          }
+        },
+        "row_headphones": {
+          "type": "row",
+          "settings": {
+            "label": "Headphones",
+            "value_1": "Headphone jack",
+            "value_2": "Jack or Bluetooth",
+            "value_3": "Bluetooth",
+            "good_answer": "yes"
+          }
+        },
+        "row_battery": {
+          "type": "row",
+          "settings": {
+            "label": "Battery",
+            "value_1": "Up to 16 hours",
+            "value_2": "Up to 14 hours (2024 Edition) or 16 hours (4th Gen)",
+            "value_3": "Up to 9 hours",
+            "good_answer": "yes"
+          }
+        },
+        "row_ages": {
+          "type": "row",
+          "settings": {
+            "label": "Ages, as each brand gives them",
+            "value_1": "From 3, toddlers to teens",
+            "value_2": "0 to 12+",
+            "value_3": "From 1",
+            "good_answer": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_setup",
+        "row_story",
+        "row_wifi",
+        "row_screen",
+        "row_headphones",
+        "row_battery",
+        "row_ages"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Compare",
+        "title": "Voxblock, Yoto Mini and Toniebox 2 at a glance",
+        "content": "<p>The main differences, side by side. For more detail, see <a href=\"/pages/voxblock-vs-yoto\">Voxblock vs Yoto</a> and <a href=\"/pages/voxblock-vs-tonies\">Voxblock vs Tonies</a>.</p>",
+        "text_position": "start",
+        "anchor_id": "compare",
+        "feature_heading": "",
+        "column_1": "Voxblock",
+        "highlight_column": "1",
+        "column_2": "Yoto Mini",
+        "column_3": "Toniebox 2",
+        "footnote": "Yoto and Tonies prices and details from uk.yotoplay.com and tonies.com/en-gb, checked 17 October 2026. Prices can change, so check before you buy. Yoto, Tonies and Toniebox are trademarks of their owners.",
+        "column_1_note": "Player and USB-C cable. Audiobooks sold separately or in starter packs.",
+        "column_2_price": "From £64.99",
+        "column_2_note": "2024 Edition £64.99 or 4th Gen £89.99. Cards sold separately.",
+        "column_3_price": "£104.99",
+        "column_3_note": "Toniebox 2 and USB-C cable. Tonies sold separately.",
+        "column_1_product": "voxblock-player",
+        "cta_collection": "voxblock-starter-pack-collection",
+        "column_1_button_text": "Shop now",
+        "cta_track": "home_table_cta",
+        "sticky_header": false,
+        "media_ratio": "square",
+        "media_fit": "contain",
+        "stack_on_mobile": true
+      }
     }
   },
   "order": [
@@ -1242,6 +1388,8 @@
     "image_link_blocks_9Yz7Pf",
     "testimonials_UiMYnt",
     "multiple_images_with_text_qi7tAC",
+    "checklist_which_player",
+    "comparison_at_a_glance",
     "faq_home_prepurchase",
     "featured_collection_RbaTLW",
     "image-with-text-overlay",
