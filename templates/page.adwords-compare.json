@@ -24,7 +24,7 @@
             "icon_width": 48,
             "subheading": "Yoto vs Tonies vs Voxblock",
             "title": "This screen-free audiobook player just works",
-            "content": "<p>No wifi. No downloads. No setup. Slot a book into the player, press play, and the story begins. From toddlers to teens.</p><p><em>“Best kids’ audio player for ease of use” – The Independent</em></p>",
+            "content": "<p>No wifi. No downloads. No setup. Put a book on the player, press play, and the story begins. From toddlers to teens.</p><p><em>“Best kids’ audio player for ease of use” – The Independent</em></p>",
             "link_text": "Shop the player · £49.99",
             "link_url": "/products/voxblock-player",
             "title_tag": "p",
@@ -54,11 +54,11 @@
         "row_wifi": {
           "type": "row",
           "settings": {
-            "label": "Works without wifi",
-            "value_1": "Yes",
-            "value_2": "No",
-            "value_3": "No",
-            "good_answer": "yes"
+            "label": "Needs wifi to set up or add a story",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
           }
         },
         "row_app": {
@@ -96,18 +96,18 @@
           "settings": {
             "label": "Player price",
             "value_1": "£49.99",
-            "value_2": "£89.99–£119.99",
-            "value_3": "£104.99",
+            "value_2": "£64.99–£119.99",
+            "value_3": "£59.99–£104.99",
             "good_answer": "yes"
           }
         },
         "row_age": {
           "type": "row",
           "settings": {
-            "label": "Age range",
-            "value_1": "Toddlers to teens",
-            "value_2": "Younger",
-            "value_3": "Youngest",
+            "label": "Ages, as each brand gives them",
+            "value_1": "From 3, toddlers to teens",
+            "value_2": "0 to 12+",
+            "value_3": "From 1 (Toniebox 2)",
             "good_answer": "yes"
           }
         }
@@ -131,7 +131,7 @@
         "column_1": "Voxblock",
         "column_2": "Yoto",
         "column_3": "Tonies",
-        "footnote": "Yoto prices from uk.yotoplay.com, checked 24 September 2026: Yoto Mini (4th Gen) £89.99 and Yoto Player (4th Gen) £119.99, both on pre-order. Everything else checked August 2026. Prices can change, so check before you buy. Yoto and Tonies are trademarks of their respective owners.",
+        "footnote": "Prices from uk.yotoplay.com and tonies.com/en-gb, checked 17 October 2026: Yoto Mini (2024 Edition) £64.99, Yoto Mini (4th Gen) £89.99, Yoto Player (4th Gen) £119.99; Toniebox Lite £59.99, Toniebox 2 £104.99. Prices can change, so check before you buy. Yoto and Tonies are trademarks of their respective owners.",
         "column_1_price": "",
         "column_1_note": "",
         "column_2_price": "",
@@ -158,7 +158,7 @@
           "settings": {
             "icon": "no-wifi",
             "title": "Nothing to set up",
-            "content": "<p>No wifi, no accounts, nothing to download. Charge it, slot a book in, press play. It works in the car, on the plane, and at Grandma's.</p>"
+            "content": "<p>No wifi, no accounts, nothing to download. It arrives charged: put a book on and press play. It works in the car, on the plane, and at Grandma's.</p>"
           }
         },
         "card_books": {
@@ -166,7 +166,7 @@
           "settings": {
             "icon": "book",
             "title": "Stories you can hold",
-            "content": "<p>Each audiobook is a small physical book that slots into the player. Children choose from the shelf, just like a real bookcase. 350+ titles and growing.</p>"
+            "content": "<p>Each audiobook is a small physical book that sits on the player. Children choose from the shelf, just like a real bookcase. 350+ titles and growing.</p>"
           }
         },
         "card_screen": {
@@ -515,7 +515,7 @@
         "cta_text": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Charge it, slot a book in, press play.</p>"
+            "content": "<p>It arrives charged: put a book on and press play.</p>"
           }
         },
         "cta_button": {
