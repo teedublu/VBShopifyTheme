@@ -1,0 +1,112 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PLAYER REG ITEM (sections/account-player-registration)
+----------------------------------------------------------------------------------------------------------------------
+One player in the "Your players" card. Players are named by the date they were bought (or registered), plus an
+optional "belongs to" name; never by pack or colour.
+
+* key: player key (own orders: <order id>-<line item id>-<unit>; registered: r_<id>)
+* start: YYYY-MM-DD the guarantee runs from
+* date_word: "Bought" or "Registered"
+* source: where it came from (registered players only), e.g. Amazon
+* owner: masked email of the account it is linked from (linked players only)
+* shared_with: masked email of the account this player is shared with (own players only)
+* link: link id; when set the player gets an Unlink button
+* nickname: "belongs to" name
+* months: guarantee length in months
+* money_back: true to show the 100-day money-back date while it applies
+{%- endcomment -%}
+
+{%- liquid
+  assign y = start | slice: 0, 4 | plus: 0
+  assign m = start | slice: 5, 2 | plus: 0
+  assign d = start | slice: 8, 2 | plus: 0
+  assign total = m | minus: 1 | plus: months
+  assign end_y = total | divided_by: 12 | plus: y
+  assign end_m = total | modulo: 12 | plus: 1
+  assign month_lengths = '31,28,31,30,31,30,31,31,30,31,30,31' | split: ','
+  assign idx = end_m | minus: 1
+  assign max_d = month_lengths[idx] | plus: 0
+  if end_m == 2
+    assign leap4 = end_y | modulo: 4
+    assign leap100 = end_y | modulo: 100
+    assign leap400 = end_y | modulo: 400
+    if leap4 == 0 and leap100 != 0 or leap400 == 0
+      assign max_d = 29
+    endif
+  endif
+  if d > max_d
+    assign d = max_d
+  endif
+  assign end_m_pad = end_m | prepend: '0' | slice: -2, 2
+  assign end_d_pad = d | prepend: '0' | slice: -2, 2
+  assign end_iso = end_y | append: '-' | append: end_m_pad | append: '-' | append: end_d_pad
+  assign end_num = end_iso | remove: '-' | plus: 0
+  assign today_num = 'now' | date: '%Y%m%d' | plus: 0
+  assign active = false
+  if end_num >= today_num
+    assign active = true
+  endif
+
+  assign mb_active = false
+  if money_back
+    assign mb_end_s = start | date: '%s' | plus: 8640000
+    assign now_s = 'now' | date: '%s' | plus: 0
+    if mb_end_s >= now_s
+      assign mb_active = true
+    endif
+  endif
+-%}
+
+<li class="player-reg__item" data-player-key="{{ key | escape }}">
+  <div class="player-reg__item-main">
+    <p class="player-reg__name">
+      Player {{ date_word | downcase }} {{ start | date: '%-d %B %Y' }}
+    </p>
+
+    <div class="player-reg__belongs" data-player-belongs>
+      <p class="player-reg__meta" data-belongs-view>
+        {%- if nickname != blank -%}
+          Belongs to <strong>{{ nickname | escape }}</strong> · <button type="button" class="player-reg__link-button" data-belongs-edit>Change</button>
+        {%- else -%}
+          <button type="button" class="player-reg__link-button" data-belongs-edit>Who does this player belong to?</button>
+        {%- endif -%}
+      </p>
+      <form class="player-reg__belongs-form" data-belongs-form hidden>
+        <label class="player-reg__belongs-label" for="belongs-{{ key | handle }}">This player belongs to</label>
+        <div class="player-reg__belongs-row">
+          <input id="belongs-{{ key | handle }}" class="input" type="text" name="name" value="{{ nickname | escape }}" maxlength="30" autocomplete="off" placeholder="e.g. Isla">
+          <button type="submit" class="button button--secondary button--sm">Save</button>
+        </div>
+        <p class="player-reg__small-note">A first name or nickname is plenty.</p>
+      </form>
+    </div>
+
+    {%- if source != blank or owner != blank or shared_with != blank -%}
+      <p class="player-reg__meta">
+        {%- if source != blank -%}From {{ source | escape }}{% if owner != blank or shared_with != blank %} · {% endif %}{%- endif -%}
+        {%- if owner != blank -%}Linked with {{ owner | escape }}{%- endif -%}
+        {%- if shared_with != blank -%}Shared with {{ shared_with | escape }}{%- endif -%}
+      </p>
+    {%- endif -%}
+  </div>
+
+  <div class="player-reg__status">
+    {%- if active -%}
+      <span class="player-reg__pill player-reg__pill--active">Guaranteed</span>
+      <span class="player-reg__end">Until {{ end_iso | date: '%-d %B %Y' }}</span>
+    {%- else -%}
+      <span class="player-reg__pill">Guarantee ended</span>
+      <span class="player-reg__end">{{ end_iso | date: '%-d %B %Y' }}</span>
+    {%- endif -%}
+    {%- if mb_active -%}
+      <span class="player-reg__end">Money-back until {{ mb_end_s | date: '%-d %B %Y' }}</span>
+    {%- endif -%}
+    {%- if link != blank -%}
+      <span class="player-reg__unlink" data-unlink="{{ link | escape }}">
+        <button type="button" class="player-reg__link-button" data-unlink-ask>Unlink</button>
+        <span data-unlink-confirm hidden>Unlink this player? <button type="button" class="player-reg__link-button" data-unlink-yes>Yes</button> · <button type="button" class="player-reg__link-button" data-unlink-no>No</button></span>
+      </span>
+    {%- endif -%}
+  </div>
+</li>

@@ -39,6 +39,15 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-16: Register your player (account page)
+Branch `claude/register-player`, draft PR #97, draft theme "Register player (claude/register-player)" (id 200131707264, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review sheet: any page `?view=player-registration-preview`.
+- Section `account-player-registration` (+ snippet `player-reg-item`), top of `customers/account` (shows for accounts with no orders too). Kept out of `main-customers-account` (the Black Friday branch edits it).
+- Owner, 16 Oct round 2: form is just the email the player was bought with + where it came from (no order number). That email gets a Klaviyo email with Yes / No; Yes links the player into the account (lands on /account, sign-in first if needed). Players named by date bought, never pack or colour; "This player belongs to" name per player. Linked players show the other account's email masked; Unlink on any player added this way.
+- Players come from the customer's own orders (one row per unit) plus metafield `players.data` (written only by the service).
+- Backend: `services/player-link/`, routes to add to the Voxblock Account app on Google Cloud Functions (existing app proxy `/apps/voxblock`, as saved items; owner 16 Oct: not Catalyst for now) at `/players`, Klaviyo metric "Player link requested", email template). **Not deployed**: setup steps and abuse notes in its README. Until it is, the live form shows "Sorry, that didn't work".
+- Guarantee length is a setting (default 12 months, **owner to confirm**). Registered players run from the confirmation date (owner decision: accept, or rely on a receipt at claim time).
+- Tracking: vs_yoto_click targets reg_submit, reg_nickname, reg_unlink, reg_player_link.
+
 ## 2026-10-16: Refer a friend page (3 Golden Tokens)
 Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.
 - New sections `referral-intro` (signed out: offer + button to /account; signed in: `referrals.code` with copy, share link `/discount/<code>`, WhatsApp, email; `#N/A`/blank code gets a contact line; token count behind a setting, off) and `referral-rewards` (products read live + £30 e-gift card tile); snippet `referral-token`.

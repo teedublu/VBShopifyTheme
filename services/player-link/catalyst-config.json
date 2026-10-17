@@ -1,0 +1,9 @@
+{
+  "deployment": {
+    "name": "player_link",
+    "stack": "node20",
+    "type": "advancedio",
+    "env_variables": {}
+  },
+  "execution": { "main": "index.js" }
+}

@@ -1,0 +1,328 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+ACCOUNT PLAYER REGISTRATION (templates/customers/account.json; review sheet templates/page.player-registration-preview.json)
+----------------------------------------------------------------------------------------------------------------------
+"Your players" card at the top of the account page, above the order list (also shows for accounts with no orders).
+Each player is named by the date it was bought (or registered), with an optional "belongs to" name. Never by pack or
+colour.
+
+Where players come from (trusted sources only, nothing the customer types):
+1. Their own orders: one row per player unit in line items with product type Player, Starter Pack or Schools Pack, or
+   the tag "Player Bundle" (same rule as snippets/customer-owns-player). Cancelled, voided and refunded orders skipped.
+2. Customer metafield players.data (JSON), written only by the player link routes on the Voxblock Account app
+   (Google Cloud Functions, app proxy /apps/voxblock, see services/player-link/README.md):
+   {
+     "nicknames": { "<key>": "Isla" },
+     "linked":  [ { "key", "bought": "YYYY-MM-DD" | null, "registered": "YYYY-MM-DD", "source", "owner": "t***@g***.com" | "", "link" } ],
+     "shared":  [ { "key", "with": "a***@h***.co.uk", "link" } ],
+     "pending": [ { "email": "t***@g***.com", "sent": "YYYY-MM-DD" } ]
+   }
+   linked = players this account sees through a confirmed link (owner = the other account, redacted) or registered to
+   itself (owner blank). shared = this account's own players another account has linked (shown with Unlink).
+
+Register / add a player: email + where it came from. The service emails that address (Klaviyo, metric
+"Player link requested") with Yes / No. Yes links the player into this account; the click lands on the account page
+(Shopify sends them to sign in first if needed). The screen never says whether the email has an account or a player.
+
+Calls (form posts to the app proxy; Shopify signs each request with the signed-in customer's ID):
+  POST {service_path}/request   email, source
+  POST {service_path}/nickname  key, name
+  POST {service_path}/unlink    link
+"Preview state" forces sample data for design review (page.player-registration-preview); calls are faked there.
+Clicks send vs_yoto_click { target } through data-vs-track / posthog: reg_submit, reg_player_link, reg_nickname, reg_unlink.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign forced = s.preview_state | default: 'live'
+  assign months = s.guarantee_months | plus: 0
+  assign service = s.service_path | default: '/apps/voxblock/players'
+
+  assign data = nil
+  if forced == 'live' and customer
+    assign data = customer.metafields.players.data.value
+  endif
+  assign nicknames = data.nicknames
+
+  assign player_count = 0
+  if forced == 'registered'
+    assign player_count = 3
+  elsif forced == 'live' and customer
+    for order in customer.orders limit: 50
+      if order.cancelled or order.financial_status == 'refunded' or order.financial_status == 'voided'
+        continue
+      endif
+      for item in order.line_items
+        assign item_type = item.product.type | downcase
+        if item_type == 'player' or item_type == 'starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
+          assign player_count = player_count | plus: item.quantity
+        endif
+      endfor
+    endfor
+    assign player_count = player_count | plus: data.linked.size
+  endif
+
+  assign show_section = false
+  if customer or forced != 'live'
+    assign show_section = true
+  endif
+-%}
+
+{%- if show_section -%}
+<div class="container player-reg" id="register-player-{{ section.id }}" data-player-reg-root data-service="{{ service | escape }}" data-preview="{% if forced != 'live' %}true{% endif %}" {{ section.shopify_attributes }}>
+  {%- if forced != 'live' -%}<p class="player-reg__review-label">Preview: {{ forced | replace: '_', ' ' }}</p>{%- endif -%}
+
+  <div class="player-reg__card">
+    <div class="player-reg__head">
+      {%- if s.eyebrow != blank -%}<p class="subheading">{{ s.eyebrow | escape }}</p>{%- endif -%}
+      {%- if player_count > 0 -%}
+        <h2 class="h4">{{ s.registered_heading | escape }}</h2>
+        {%- if s.registered_text != blank -%}<p class="player-reg__lede">{{ s.registered_text | replace: '[months]', months | escape }}</p>{%- endif -%}
+      {%- else -%}
+        <h2 class="h4">{{ s.form_heading | escape }}</h2>
+        {%- if s.form_text != blank -%}<p class="player-reg__lede">{{ s.form_text | replace: '[months]', months | escape }}</p>{%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- if player_count > 0 -%}
+      <ul class="player-reg__list" role="list">
+        {%- if forced == 'registered' -%}
+          {%- render 'player-reg-item', key: 'sample-1', start: '2026-09-02', date_word: 'Bought', nickname: 'Isla', shared_with: 'g***@h******.co.uk', link: 'sample-link-1', months: months, money_back: true -%}
+          {%- render 'player-reg-item', key: 'sample-2', start: '2025-11-28', date_word: 'Bought', owner: 't***@g****.com', link: 'sample-link-2', months: months -%}
+          {%- render 'player-reg-item', key: 'sample-3', start: '2025-06-02', date_word: 'Registered', source: 'Amazon', nickname: 'Rory', months: months -%}
+        {%- else -%}
+          {%- for order in customer.orders limit: 50 -%}
+            {%- if order.cancelled or order.financial_status == 'refunded' or order.financial_status == 'voided' -%}{%- continue -%}{%- endif -%}
+            {%- for item in order.line_items -%}
+              {%- assign item_type = item.product.type | downcase -%}
+              {%- if item_type == 'player' or item_type == 'starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle' -%}
+                {%- for unit in (1..item.quantity) -%}
+                  {%- capture key -%}{{ order.id }}-{{ item.id }}-{{ unit }}{%- endcapture -%}
+                  {%- assign share = data.shared | where: 'key', key | first -%}
+                  {%- assign bought = order.created_at | date: '%Y-%m-%d' -%}
+                  {%- render 'player-reg-item', key: key, start: bought, date_word: 'Bought', nickname: nicknames[key], shared_with: share.with, link: share.link, months: months, money_back: true -%}
+                {%- endfor -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+          {%- for p in data.linked -%}
+            {%- if p.bought != blank -%}
+              {%- render 'player-reg-item', key: p.key, start: p.bought, date_word: 'Bought', source: p.source, owner: p.owner, link: p.link, nickname: nicknames[p.key], months: months, money_back: true -%}
+            {%- else -%}
+              {%- render 'player-reg-item', key: p.key, start: p.registered, date_word: 'Registered', source: p.source, owner: p.owner, link: p.link, nickname: nicknames[p.key], months: months -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    {%- endif -%}
+
+    {%- liquid
+      assign pending = data.pending
+      if forced == 'registered'
+        assign pending = nil
+      endif
+    -%}
+    {%- for p in pending -%}
+      <p class="player-reg__pending">{{ s.pending_text | replace: '[email]', p.email | escape }}</p>
+    {%- endfor -%}
+
+    {%- comment -%} Register / add form: open when there are no players, behind a link otherwise {%- endcomment -%}
+    {%- if player_count > 0 -%}
+      <p class="player-reg__foot" data-add-toggle-wrap><button type="button" class="player-reg__link-button player-reg__link-button--strong" data-add-toggle>{{ s.another_text | escape }}</button></p>
+    {%- endif -%}
+
+    <div class="player-reg__form-wrap" data-add-wrap {% if player_count > 0 %}hidden{% endif %}>
+      {%- if player_count > 0 -%}<p class="player-reg__lede">{{ s.form_text | replace: '[months]', months | escape }}</p>{%- endif -%}
+
+      {%- if forced == 'sent' -%}
+        {%- render 'banner', status: 'success', content: s.sent_text -%}
+      {%- else -%}
+        <form class="player-reg__form" data-add-form novalidate>
+          <div class="player-reg__hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div class="player-reg__row">
+            {%- render 'input', type: 'email', name: 'email', label: s.email_label, maxlength: 120, autocomplete: 'email', required: true -%}
+            {%- capture source_options -%}
+              <option value="" disabled selected></option>
+              <option value="Voxblock website">Voxblock website</option>
+              <option value="Amazon">Amazon</option>
+              <option value="A shop">A shop</option>
+              <option value="A gift">It was a gift</option>
+              <option value="Other">Somewhere else</option>
+            {%- endcapture -%}
+            {%- render 'select', name: 'source', label: 'Where did it come from?', options: source_options, required: true -%}
+          </div>
+          {%- if s.email_hint != blank -%}<p class="player-reg__hint">{{ s.email_hint | escape }}</p>{%- endif -%}
+          <p class="player-reg__error" data-add-error role="alert" hidden></p>
+          {%- render 'button', content: s.submit_text, type: 'submit', size: 'lg', stretch: true, secondary: true -%}
+        </form>
+        <div data-add-done hidden>{%- render 'banner', status: 'success', content: s.sent_text -%}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if player_count == 0 and s.buy_text != blank -%}
+      <p class="player-reg__buy">
+        {{ s.buy_text | replace: '[months]', months | escape }}
+        <a href="{{ s.player_url | default: '/products/voxblock-player' }}" data-vs-track="reg_player_link">{{ s.buy_link_text | escape }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('register-player-{{ section.id }}');
+    if (!root) return;
+    var service = root.getAttribute('data-service');
+    var preview = root.getAttribute('data-preview') === 'true';
+    var failText = {{ s.error_text | json }};
+
+    function track(target) {
+      if (window.posthog) window.posthog.capture('vs_yoto_click', { target: target, page: window.location.pathname });
+    }
+
+    // POST to the app proxy (form-encoded so Shopify forwards it as-is). Preview fakes success.
+    function call(path, fields) {
+      if (preview) return new Promise(function (resolve) { setTimeout(function () { resolve({ ok: true }); }, 400); });
+      return fetch(service + path, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+        body: new URLSearchParams(fields).toString()
+      }).then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); });
+    }
+
+    // Add / register
+    var addToggle = root.querySelector('[data-add-toggle]');
+    var addWrap = root.querySelector('[data-add-wrap]');
+    if (addToggle && addWrap) addToggle.addEventListener('click', function () {
+      addWrap.hidden = false;
+      addToggle.closest('[data-add-toggle-wrap]').hidden = true;
+      var first = addWrap.querySelector('input[name="email"]');
+      if (first) first.focus();
+    });
+
+    var form = root.querySelector('[data-add-form]');
+    if (form) form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var error = form.querySelector('[data-add-error]');
+      var email = form.elements.email.value.trim();
+      var source = form.elements.source.value;
+      if (form.elements.website.value) return;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !source) {
+        error.textContent = {{ s.missing_text | json }};
+        error.hidden = false;
+        return;
+      }
+      error.hidden = true;
+      var button = form.querySelector('[type="submit"]');
+      button.disabled = true;
+      track('reg_submit');
+      call('/request', { email: email, source: source }).then(function (res) {
+        if (res && res.ok) {
+          form.hidden = true;
+          root.querySelector('[data-add-done]').hidden = false;
+        } else {
+          error.textContent = (res && res.message) || failText;
+          error.hidden = false;
+          button.disabled = false;
+        }
+      }).catch(function () { error.textContent = failText; error.hidden = false; button.disabled = false; });
+    });
+
+    // "This player belongs to"
+    root.querySelectorAll('[data-player-key]').forEach(function (item) {
+      var key = item.getAttribute('data-player-key');
+      var view = item.querySelector('[data-belongs-view]');
+      var nameForm = item.querySelector('[data-belongs-form]');
+      item.querySelectorAll('[data-belongs-edit]').forEach(function (b) {
+        b.addEventListener('click', function () { view.hidden = true; nameForm.hidden = false; nameForm.elements.name.focus(); });
+      });
+      nameForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = nameForm.elements.name.value.trim().slice(0, 30);
+        track('reg_nickname');
+        call('/nickname', { key: key, name: name }).then(function (res) {
+          if (!res || !res.ok) { alertInline(nameForm, failText); return; }
+          view.innerHTML = '';
+          if (name) {
+            view.appendChild(document.createTextNode('Belongs to '));
+            var strong = document.createElement('strong'); strong.textContent = name; view.appendChild(strong);
+            view.appendChild(document.createTextNode(' · '));
+          }
+          var edit = document.createElement('button');
+          edit.type = 'button'; edit.className = 'player-reg__link-button';
+          edit.textContent = name ? 'Change' : 'Who does this player belong to?';
+          edit.addEventListener('click', function () { view.hidden = true; nameForm.hidden = false; });
+          view.appendChild(edit);
+          nameForm.hidden = true; view.hidden = false;
+        }).catch(function () { alertInline(nameForm, failText); });
+      });
+
+      var unlink = item.querySelector('[data-unlink]');
+      if (unlink) {
+        var ask = unlink.querySelector('[data-unlink-ask]');
+        var confirmBox = unlink.querySelector('[data-unlink-confirm]');
+        ask.addEventListener('click', function () { ask.hidden = true; confirmBox.hidden = false; });
+        unlink.querySelector('[data-unlink-no]').addEventListener('click', function () { confirmBox.hidden = true; ask.hidden = false; });
+        unlink.querySelector('[data-unlink-yes]').addEventListener('click', function () {
+          track('reg_unlink');
+          call('/unlink', { link: unlink.getAttribute('data-unlink') }).then(function (res) {
+            if (res && res.ok) {
+              if (preview) { item.remove(); } else { window.location.reload(); }
+            } else { confirmBox.textContent = failText; }
+          }).catch(function () { confirmBox.textContent = failText; });
+        });
+      }
+    });
+
+    function alertInline(el, text) {
+      var p = el.querySelector('.player-reg__error') || document.createElement('p');
+      p.className = 'player-reg__error'; p.setAttribute('role', 'alert'); p.textContent = text;
+      el.appendChild(p);
+    }
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Player registration",
+  "tag": "section",
+  "class": "shopify-section--player-registration",
+  "settings": [
+    { "type": "range", "id": "guarantee_months", "label": "Guarantee length (months)", "min": 6, "max": 60, "step": 6, "default": 12, "info": "Confirm before going live. Bought players: from the order date. Registered players: from the registration date." },
+    { "type": "text", "id": "service_path", "label": "Player service path", "default": "/apps/voxblock/players", "info": "App proxy path of the player link service." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Your players" },
+    { "type": "header", "content": "Players listed" },
+    { "type": "text", "id": "registered_heading", "label": "Heading", "default": "Your registered players" },
+    { "type": "text", "id": "registered_text", "label": "Text", "default": "Each player has a [months]-month guarantee." },
+    { "type": "text", "id": "another_text", "label": "Add link", "default": "Add another player" },
+    { "type": "text", "id": "pending_text", "label": "Waiting line", "default": "Waiting for [email] to confirm." },
+    { "type": "header", "content": "Register form" },
+    { "type": "text", "id": "form_heading", "label": "Heading", "default": "Register your player" },
+    { "type": "textarea", "id": "form_text", "label": "Text", "default": "Enter the email the player was bought with. We'll email that address to confirm, then the player shows here with its [months]-month guarantee." },
+    { "type": "text", "id": "email_label", "label": "Email label", "default": "Email the player was bought with" },
+    { "type": "text", "id": "email_hint", "label": "Email hint", "default": "Bought it yourself? Use your own email." },
+    { "type": "text", "id": "missing_text", "label": "Missing details", "default": "Add an email and where the player came from." },
+    { "type": "text", "id": "submit_text", "label": "Button", "default": "Send confirmation email" },
+    { "type": "text", "id": "sent_text", "label": "Sent message", "default": "Done. If that email can confirm, we've sent it a message with a Yes button. Once they say yes, the player shows here." },
+    { "type": "text", "id": "error_text", "label": "Error message", "default": "Sorry, that didn't work. Please try again in a minute." },
+    { "type": "header", "content": "No player yet" },
+    { "type": "text", "id": "buy_text", "label": "Text", "default": "No player yet? Bought from us, it comes with the [months]-month guarantee and our 100-day money-back guarantee." },
+    { "type": "text", "id": "buy_link_text", "label": "Link", "default": "See the player" },
+    { "type": "text", "id": "player_url", "label": "Link URL", "default": "/products/voxblock-player" },
+    { "type": "header", "content": "Review only" },
+    {
+      "type": "select", "id": "preview_state", "label": "Preview state", "default": "live",
+      "options": [
+        { "value": "live", "label": "Live" },
+        { "value": "registered", "label": "Players (sample)" },
+        { "value": "form", "label": "Form" },
+        { "value": "sent", "label": "Sent" }
+      ],
+      "info": "Leave on Live on the account page."
+    }
+  ],
+  "presets": [{ "name": "Player registration" }]
+}
+{% endschema %}
