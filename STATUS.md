@@ -1,5 +1,12 @@
 # STATUS
 
+## Pricing rule (owner, 20 Oct 2026)
+The theme never calculates a price. Every price shown is the variant's real price and compare-at price from Shopify,
+so product pages, cards, cart and checkout always agree. Offers are set on the product itself (price £5.99, compare-at
+£9.99), not with tags. The tag-driven "Offer pricing" feature (`snippets/offer-price.liquid`, its JS/CSS, theme
+settings, badge colours and `OFFER_PRICING.md`) was removed after 1001 Nights showed £5.99 on cards but charged £9.99
+in the cart (tagged `offer-599`, no matching automatic discount existed).
+
 ## Working rule (owner, 11 Oct 2026)
 Style changes are theme-wide: theme settings, `css-variables`, or a shared rule in `voxblock.css`. No colour, size or
 button styling set on one section or template unless the owner explicitly agrees it, otherwise sections drift.
@@ -166,7 +173,7 @@ Branch `claude/product-title-price-crumbs`, draft PR #85, draft theme 1998956465
 starter-pack buy boxes (Shopify sync commits 2b365cf, 394c732, 4394bb8: buy buttons now straight under the price).
 - Title: every product page H1 uses the theme's Large heading size (24px phone). The title block's "Style" setting
   now only applies in quick view (the player was Medium, 22px).
-- Price: plain, pack (bundle-price) and offer prices on the product page all use `--text-h2`, the same size as the
+- Price: plain and pack (bundle-price) prices on the product page both use `--text-h2`, the same size as the
   title. Before: plain prices 36px (240%), pack prices ~20px. Cards unchanged. One rule in voxblock.css.
 - Order: price block moved straight under the title in 9 templates (badge or short text sat between them):
   accessories, audiobook, gruffalo, intro-pack-bundle, product (default), myo-product, player-senior, school-product,
