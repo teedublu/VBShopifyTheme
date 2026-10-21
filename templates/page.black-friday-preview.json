@@ -1,0 +1,60 @@
+{
+  "sections": {
+    "state_signed_out": {
+      "type": "black-friday-code",
+      "settings": {
+        "preview_state": "signed_out",
+        "preview_label": "Design review \u00b7 1. Signed out",
+        "player_product": "voxblock-player"
+      }
+    },
+    "state_before": {
+      "type": "black-friday-code",
+      "settings": {
+        "preview_state": "before",
+        "preview_label": "Design review \u00b7 2. Before it opens (orange; counts to 27 Nov 00:01)",
+        "player_product": "voxblock-player"
+      }
+    },
+    "state_during": {
+      "type": "black-friday-code",
+      "settings": {
+        "preview_state": "during",
+        "preview_label": "Design review \u00b7 3. Live (black and cyan; 2 audiobooks in the basket)",
+        "player_product": "voxblock-player"
+      }
+    },
+    "state_used": {
+      "type": "black-friday-code",
+      "settings": {
+        "preview_state": "used",
+        "preview_label": "Design review \u00b7 4. Code used",
+        "player_product": "voxblock-player"
+      }
+    },
+    "state_ended": {
+      "type": "black-friday-code",
+      "settings": {
+        "preview_state": "ended",
+        "preview_label": "Design review \u00b7 5. After it ends",
+        "player_product": "voxblock-player"
+      }
+    },
+    "state_no_code": {
+      "type": "black-friday-code",
+      "settings": {
+        "preview_state": "no_code",
+        "preview_label": "Design review \u00b7 6. Signed in, no code on the account",
+        "player_product": "voxblock-player"
+      }
+    }
+  },
+  "order": [
+    "state_signed_out",
+    "state_before",
+    "state_during",
+    "state_used",
+    "state_ended",
+    "state_no_code"
+  ]
+}
