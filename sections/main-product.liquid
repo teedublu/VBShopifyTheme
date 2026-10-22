@@ -417,8 +417,26 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "type": "checkbox",
           "id": "show_from_price",
           "label": "Show \"from\" price as the headline",
-          "info": "Headline is the lowest variant price. The selected variant's own price is shown under it. Only when variants have different prices.",
+          "info": "Headline shows \"from <lowest price>\" on load, then the selected variant's own price once a value is chosen. Only when variants have different prices.",
           "default": false
+        },
+        {
+          "type": "text",
+          "id": "from_note",
+          "label": "Note beside the \"from\" price",
+          "info": "Shown next to the headline before a value is chosen. Leave empty for none."
+        },
+        {
+          "type": "text",
+          "id": "option_note",
+          "label": "Note beside the selected price",
+          "info": "Use {option} for the chosen value, e.g. including {option} bumper. Leave empty for none."
+        },
+        {
+          "type": "text",
+          "id": "opt_out_note",
+          "label": "Note when the opt-out value is chosen",
+          "info": "Shown instead of the note above when the variant picker's opt-out value is selected."
         }
       ]
     },

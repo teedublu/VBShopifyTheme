@@ -1200,11 +1200,14 @@ html.vb-has-player .cart-player-prompt { display: none; }
    "Opt-out option value". First use: the player (bumper colour tiles, "Prefer it without the bumper?" link).
    Design canvas: "Player page variant picker". */
 /* ---------------------------- */
-/* Headline price: "from £49.99" until a value is chosen, then that variant's own price. Theme text colour, no custom colour. */
+/* Headline price: "from £49.99" until a value is chosen, then that variant's own price, plus a short note beside it that
+   follows the choice (e.g. "including red bumper"). Theme price colour (--accent-strong). */
+.product-info__headline-price { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--spacing-3); }
 .product-info__headline-price .product-info__from-price,
-.product-info__headline-price sale-price { margin: 0; font-size: var(--text-h2); line-height: 1.1; font-weight: 700; }
+.product-info__headline-price sale-price { margin: 0; font-size: var(--text-h2); line-height: 1.1; font-weight: 700; color: var(--accent-strong); }
 .product-info__headline-price[data-state="from"] price-list { display: none; }
 .product-info__headline-price[data-state="selected"] .product-info__from-price { display: none; }
+.product-info__price-note { font-size: var(--text-base); font-weight: 600; color: var(--accent-strong); }
 
 /* Values as tiles: a mini player in its bumper colour over the name, one row of four on a phone */
 .variant-picker__option-values--tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.25rem, 1fr)); gap: var(--spacing-2); }
@@ -1242,8 +1245,6 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .photo-swatch__tick { position: absolute; top: .35rem; right: .35rem; display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--photo-swatch-colour); color: #fff; font-size: .8rem; line-height: 1; box-shadow: 0 1px 4px rgb(0 0 0 / .3); opacity: 0; transform: scale(.6); transition: opacity .15s ease, transform .15s ease; }
 .photo-swatch__tick::before { content: "\2713"; }
 :checked + .photo-swatch .photo-swatch__tick { opacity: 1; transform: scale(1); }
-.photo-swatch__name { display: flex; align-items: center; justify-content: center; gap: .35rem; font-size: var(--text-sm); color: var(--brand-text); }
-:checked + .photo-swatch .photo-swatch__name { color: var(--brand-heading); font-weight: 600; }
 :focus-visible + .photo-swatch { outline: none; }
 :focus-visible + .photo-swatch .photo-swatch__frame { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
 :disabled + .photo-swatch { opacity: .5; cursor: not-allowed; }

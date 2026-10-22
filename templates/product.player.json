@@ -29,7 +29,10 @@
           "type": "price",
           "settings": {
             "show_taxes_notice": false,
-            "show_from_price": true
+            "show_from_price": true,
+            "from_note": "Choose your bumper colour",
+            "option_note": "including {option} bumper",
+            "opt_out_note": "without a bumper"
           }
         },
         "buy_buttons": {

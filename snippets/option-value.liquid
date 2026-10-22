@@ -168,7 +168,7 @@ Color swatch specific parameters:
         {{- image | image_url: width: 320 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 120px, 22vw', widths: '160,240,320', alt: value, class: 'photo-swatch__img' -}}
         <span class="photo-swatch__tick" aria-hidden="true"></span>
       </span>
-      <span class="photo-swatch__name">
+      <span class="photo-swatch__name sr-only">
         {{ label | default: value }}
       </span>
     </label>

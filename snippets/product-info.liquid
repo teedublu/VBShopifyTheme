@@ -116,9 +116,34 @@
                 The price-list below updates itself on variant change; the script only swaps which of the two is visible.
               {%- endcomment -%}
               {%- assign from_price = product.price_min | money -%}
-              <div class="product-info__headline-price" data-from-price="{{ product_form_id | escape }}" data-state="{% if product.selected_variant %}selected{% else %}from{% endif %}">
+              {%- assign picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+              {%- assign opt_out_value = picker_block.settings.opt_out_value | strip -%}
+              {%- assign headline_state = 'from' -%}
+              {%- assign headline_note = block.settings.from_note -%}
+
+              {%- if product.selected_variant -%}
+                {%- assign headline_state = 'selected' -%}
+
+                {%- if opt_out_value != blank and current_variant.option1 == opt_out_value -%}
+                  {%- assign headline_note = block.settings.opt_out_note -%}
+                {%- else -%}
+                  {%- assign headline_option = current_variant.option1 | downcase -%}
+                  {%- assign headline_note = block.settings.option_note | replace: '{option}', headline_option -%}
+                {%- endif -%}
+              {%- endif -%}
+
+              <div
+                class="product-info__headline-price"
+                data-from-price="{{ product_form_id | escape }}"
+                data-state="{{ headline_state }}"
+                data-from-note="{{ block.settings.from_note | escape }}"
+                data-option-note="{{ block.settings.option_note | escape }}"
+                data-opt-out-note="{{ block.settings.opt_out_note | escape }}"
+                data-opt-out-value="{{ opt_out_value | escape }}"
+              >
                 <p class="product-info__from-price">{{ 'product.price.from_price_lowercase' | t: price: from_price }}</p>
                 {%- render 'price-list', variant: current_variant, form_id: product_form_id, size: 'lg', block: block -%}
+                <span class="product-info__price-note" data-price-note {% if headline_note == blank %}hidden{% endif %}>{{ headline_note }}</span>
               </div>
 
               <script>
@@ -127,17 +152,34 @@
                   var root = document.querySelector('[data-from-price="' + formId + '"]');
                   if (!root) return;
 
-                  function reveal() { root.setAttribute('data-state', 'selected'); }
+                  var note = root.querySelector('[data-price-note]');
+
+                  function reveal(optionValue) {
+                    root.setAttribute('data-state', 'selected');
+
+                    var text = optionValue === root.getAttribute('data-opt-out-value')
+                      ? root.getAttribute('data-opt-out-note')
+                      : (root.getAttribute('data-option-note') || '').replace('{option}', String(optionValue || '').toLowerCase());
+
+                    note.textContent = text;
+                    note.hidden = !text;
+                  }
 
                   function bind() {
                     var form = document.forms[formId];
-                    if (form) form.addEventListener('variant:change', reveal);
+
+                    if (form) {
+                      form.addEventListener('variant:change', function (event) {
+                        var variant = event.detail && event.detail.variant;
+                        if (variant) reveal(variant.option1);
+                      });
+                    }
 
                     // Re-clicking the value that is already selected fires no variant change, so handle that click too
                     document.addEventListener('click', function (event) {
                       var label = event.target.closest && event.target.closest('label[data-option-value]');
                       var input = label && label.htmlFor ? document.getElementById(label.htmlFor) : null;
-                      if (input && input.checked) reveal();
+                      if (input && input.checked) reveal(input.value);
                     });
                   }
 
