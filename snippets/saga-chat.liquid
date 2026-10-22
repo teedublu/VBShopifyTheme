@@ -32,7 +32,7 @@ typed, same as any other message.
   <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
     data-saga-endpoint="{{ settings.saga_endpoint | default: '/apps/voxblock/saga' | escape }}"
     data-saga-opening="Hi, I’m {{ saga_title | escape }}. Are you looking at a Voxblock for a child, or do you already have one?"
-    data-saga-opening-choosing="Hi, I’m {{ saga_title | escape }}. How old is the child you’re choosing for?">
+    data-saga-opening-choosing="Hi, I’m {{ saga_title | escape }}. How old is the person you have in mind?">
     <div class="saga-dialog__actions">
       <button type="button" class="saga-dialog__icon-btn" data-saga-restart aria-label="Start a new conversation" title="Start a new conversation">
         <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.6 6.4"/><path d="M3 21v-6h6"/></svg>
@@ -86,7 +86,7 @@ typed, same as any other message.
       // age directly — the visitor just told us their intent by clicking. Anything else (a source we
       // don't recognise, including future embeds) gets the generic opening.
       var CHOOSING_SOURCES = { collection_tile: true, help_link: true };
-      var AGE_PROMPTS = ['Under 5', '5 to 8', '8 to 10', '10 to teens'];
+      var AGE_PROMPTS = ['Under 5', '5 to 8', '8 to 10', '10 to teens', 'Adult'];
       function openingFor(source) {
         if (CHOOSING_SOURCES[source]) return { text: dialog.dataset.sagaOpeningChoosing, prompts: AGE_PROMPTS };
         return { text: dialog.dataset.sagaOpening, prompts: ['Choosing for a child', 'I already have one'] };
@@ -131,13 +131,19 @@ typed, same as any other message.
         } catch (e) { return 'Open the page'; }
       }
 
-      function bubble(role, text, pending, prompts) {
+      function bubble(role, text, pending, prompts, image) {
         var el;
         if (role === 'assistant') {
           el = tpl.content.firstElementChild.cloneNode(true);
           var t = el.querySelector('.saga-bubble__text');
           if (pending) { el.classList.add('is-pending'); t.innerHTML = '<span></span><span></span><span></span>'; }
           else {
+            if (image && image.url) {
+              var img = document.createElement('img');
+              img.className = 'saga-bubble__image'; img.loading = 'lazy'; img.alt = image.alt || '';
+              img.src = image.url;
+              t.appendChild(img);
+            }
             t.appendChild(render(text));
             if (prompts && prompts.length) addPrompts(el.querySelector('[data-saga-prompts]'), prompts);
           }
@@ -218,7 +224,7 @@ typed, same as any other message.
               return fail(code);
             }
             state.messages.push({ role: 'assistant', content: res.body.reply }); save();
-            bubble('assistant', res.body.reply, false, res.body.prompts);
+            bubble('assistant', res.body.reply, false, res.body.prompts, res.body.image);
             if (res.body.ended) { state.ended = true; input.placeholder = 'Chat ended'; }
             track('saga_reply', { turn: turns(), ms: Date.now() - started, links: (res.body.reply.match(/https:\/\/voxblock\.co\.uk/g) || []).length });
           })
