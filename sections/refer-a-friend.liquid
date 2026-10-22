@@ -168,7 +168,7 @@ LIQUID
                   </div>
                 {%- endif -%}
 
-              {%- when 'share_buttons' and raf_code -%}
+              {%- when 'share_buttons' -%}
                 <div class="product-form__share {% if block.settings.alignment == 'center' %}justify-self-center{% elsif block.settings.alignment == 'end' %}justify-self-end{% endif %}" {{ block.shopify_attributes }}>
                   <div class="product-info__share-buttons">
                     <div class="share-buttons">
@@ -449,3 +449,13 @@ LIQUID
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- when 'share_buttons' and raf_code -%}"
+  to: "{%- when 'share_buttons' -%}"
+  position: 7541..7569
+{% endcomment %}
