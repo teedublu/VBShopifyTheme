@@ -11,15 +11,30 @@ and buy buttons as default_variant; the quick buy template below keeps Shopify's
 {%- assign picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
 {%- assign opt_out_value = picker_block.settings.opt_out_value | strip -%}
 
+{%- assign default_option = picker_block.settings.default_option | strip -%}
+
 {%- if product.selected_variant == nil and opt_out_value != blank and default_variant.options contains opt_out_value -%}
-  {%- for candidate in product.variants -%}
-    {%- unless candidate.options contains opt_out_value -%}
-      {%- if candidate.available -%}
+  {%- comment -%}First choice: the option set in "Preselected option value", when that variant is available{%- endcomment -%}
+  {%- if default_option != blank -%}
+    {%- for candidate in product.variants -%}
+      {%- if candidate.options contains default_option and candidate.available -%}
         {%- assign default_variant = candidate -%}
         {%- break -%}
       {%- endif -%}
-    {%- endunless -%}
-  {%- endfor -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%}Otherwise the first available variant that is not the opt-out one{%- endcomment -%}
+  {%- if default_variant.options contains opt_out_value -%}
+    {%- for candidate in product.variants -%}
+      {%- unless candidate.options contains opt_out_value -%}
+        {%- if candidate.available -%}
+          {%- assign default_variant = candidate -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
 {%- endif -%}
 
 <style>
@@ -560,6 +575,12 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "id": "opt_out_value",
           "label": "Opt-out option value",
           "info": "Exact option value to show as a quiet text link under the other values, and not to preselect (e.g. No bumper). The link shows that variant's own price. Leave empty for the normal picker."
+        },
+        {
+          "type": "text",
+          "id": "default_option",
+          "label": "Preselected option value",
+          "info": "Exact option value to open on (e.g. Blue) when the URL names no variant. Falls back to the first available value that is not the opt-out one."
         },
         {
           "type": "text",
