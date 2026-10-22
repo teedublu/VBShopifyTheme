@@ -130,12 +130,29 @@ Supported variables
               {% liquid
                 assign name = 'option' | append: option.position
 
+                # Two passes so the opt-out value always comes last: pass 1 = the other values, pass 2 = the opt-out value
+                # (only when it is shown as a tile; otherwise it is the text link rendered after the loop)
+                for pass in (1..2)
                 for value in option.values
                   assign selected = false
 
                   assign value_string = value | append: ''
 
+                  assign is_opt_out_value = false
+
                   if opt_out_layout and value_string == opt_out_value
+                    assign is_opt_out_value = true
+                  endif
+
+                  if pass == 1 and is_opt_out_value
+                    continue
+                  endif
+
+                  if pass == 2 and is_opt_out_value == false
+                    continue
+                  endif
+
+                  if pass == 2 and block.settings.opt_out_tile != true
                     continue
                   endif
 
@@ -151,17 +168,27 @@ Supported variables
                   if opt_out_layout and block.settings.photo_tiles
                     # Preferred: the product image whose alt text carries this value's tag (e.g. #Color_Blue) and the keyword
                     # (e.g. "front and back view"). Fallback: the variant's own featured photo.
-                    assign tile_keyword = block.settings.photo_tile_keyword | strip
                     assign tile_tag = '#' | append: option.name | append: '_' | append: value
+                    assign tile_keywords = block.settings.photo_tile_keyword | split: ','
 
-                    if tile_keyword != blank
+                    for tile_keyword_item in tile_keywords
+                      assign tile_keyword = tile_keyword_item | strip
+
+                      if tile_keyword == blank
+                        continue
+                      endif
+
                       for tile_media in product.media
                         if tile_media.media_type == 'image' and tile_media.alt contains tile_tag and tile_media.alt contains tile_keyword
                           assign tile_photo = tile_media
                           break
                         endif
                       endfor
-                    endif
+
+                      if tile_photo != blank
+                        break
+                      endif
+                    endfor
 
                     if tile_photo == blank
                       assign tile_photo = value.variant.featured_media | default: variant.featured_media
@@ -204,8 +231,9 @@ Supported variables
                       endif
                   endcase
                 endfor
+                endfor
 
-                if opt_out_layout
+                if opt_out_layout and block.settings.opt_out_tile != true
                   assign opt_out_selected = false
 
                   if option_selected_value == opt_out_value

@@ -1234,7 +1234,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 
 /* Photo tiles: each colour is a crop of its own product photo (the bumper off and on the player).
    Selected = a thick ring in the bumper's own colour, a tick and a lift; the rest stay bright so every colour tempts. */
-.variant-picker__option-values--photos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-2); }
+.variant-picker__option-values--photos { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--spacing-2); }
 .photo-swatch { --photo-swatch-colour: var(--brand-heading); display: flex; flex-direction: column; gap: .4rem; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .photo-swatch__frame { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 1rem; background: #fff; box-shadow: 0 0 0 1.5px var(--card-border), 0 2px 8px rgb(86 86 86 / .08); transition: transform .18s ease, box-shadow .18s ease; }
 .photo-swatch__img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .35s ease; }

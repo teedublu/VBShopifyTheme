@@ -583,6 +583,13 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "info": "Exact option value to open on (e.g. Blue) when the URL names no variant. Falls back to the first available value that is not the opt-out one."
         },
         {
+          "type": "checkbox",
+          "id": "opt_out_tile",
+          "label": "Show the opt-out value as the last tile",
+          "info": "Instead of the text link. Uses the same photo tile as the other values.",
+          "default": false
+        },
+        {
           "type": "text",
           "id": "opt_out_label",
           "label": "Opt-out link text",
@@ -605,7 +612,7 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "type": "text",
           "id": "photo_tile_keyword",
           "label": "Photo tile image keyword",
-          "info": "Picks the product image whose alt text has this value's tag (e.g. #Color_Blue) and this phrase. Leave empty to use each variant's own photo.",
+          "info": "Picks the product image whose alt text has this value's tag (e.g. #Color_Blue) and this phrase. Separate several phrases with commas to try them in order. Leave empty to use each variant's own photo.",
           "default": "front and back"
         }
       ]
