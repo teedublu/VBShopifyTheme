@@ -100,7 +100,7 @@
       {%- when 'price' -%}
         {%- comment -%}
           "From" headline (block setting): the lowest variant price (Shopify's product.price_min, not calculated), with the
-          selected variant's own live price under it, so the headline can say from £49.99 while the selected option shows £59.99.
+          selected variant's own live price once a value is chosen (shown straight away when the URL names a variant).
         {%- endcomment -%}
         {%- assign show_from_price = false -%}
 
@@ -109,18 +109,41 @@
         {%- endif -%}
 
         <div class="product-info__price {% if show_from_price %}product-info__price--from{% endif %}">
-          {%- if show_from_price -%}
-            {%- assign from_price = product.price_min | money -%}
-            <p class="product-info__from-price">{{ 'product.price.from_price_lowercase' | t: price: from_price }}</p>
-          {%- endif -%}
-
           <div class="rating-with-text">
             {%- if show_from_price -%}
-              <div class="product-info__selected-price">
-                <variant-option-value form="{{ product_form_id }}" for="option1">{{ current_variant.option1 }}</variant-option-value>
-                <span aria-hidden="true">&middot;</span>
-                {%- render 'price-list', variant: current_variant, form_id: product_form_id, block: block -%}
+              {%- comment -%}
+                Headline: "from <lowest price>" on load, then the selected variant's own price as soon as a value is chosen.
+                The price-list below updates itself on variant change; the script only swaps which of the two is visible.
+              {%- endcomment -%}
+              {%- assign from_price = product.price_min | money -%}
+              <div class="product-info__headline-price" data-from-price="{{ product_form_id | escape }}" data-state="{% if product.selected_variant %}selected{% else %}from{% endif %}">
+                <p class="product-info__from-price">{{ 'product.price.from_price_lowercase' | t: price: from_price }}</p>
+                {%- render 'price-list', variant: current_variant, form_id: product_form_id, size: 'lg', block: block -%}
               </div>
+
+              <script>
+                (function () {
+                  var formId = {{ product_form_id | json }};
+                  var root = document.querySelector('[data-from-price="' + formId + '"]');
+                  if (!root) return;
+
+                  function reveal() { root.setAttribute('data-state', 'selected'); }
+
+                  function bind() {
+                    var form = document.forms[formId];
+                    if (form) form.addEventListener('variant:change', reveal);
+
+                    // Re-clicking the value that is already selected fires no variant change, so handle that click too
+                    document.addEventListener('click', function (event) {
+                      var label = event.target.closest && event.target.closest('label[data-option-value]');
+                      var input = label && label.htmlFor ? document.getElementById(label.htmlFor) : null;
+                      if (input && input.checked) reveal();
+                    });
+                  }
+
+                  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind); else bind();
+                })();
+              </script>
             {%- else -%}
               {%- render 'price-list', variant: current_variant, form_id: product_form_id, size: 'lg', block: block, bundle_layout: true -%}
             {%- endif -%}

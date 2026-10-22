@@ -1200,9 +1200,11 @@ html.vb-has-player .cart-player-prompt { display: none; }
    "Opt-out option value". First use: the player (bumper colour tiles, "Prefer it without the bumper?" link).
    Design canvas: "Player page variant picker". */
 /* ---------------------------- */
-.product-info__from-price { margin: 0; font-size: var(--text-h2); line-height: 1.1; font-weight: 700; color: var(--accent-strong-dark); }
-.product-info__selected-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35em; margin-block-start: .35rem; font-size: var(--text-sm); color: rgb(var(--text-color) / .75); }
-.product-info__selected-price price-list { display: inline-flex; }
+/* Headline price: "from £49.99" until a value is chosen, then that variant's own price. Theme text colour, no custom colour. */
+.product-info__headline-price .product-info__from-price,
+.product-info__headline-price sale-price { margin: 0; font-size: var(--text-h2); line-height: 1.1; font-weight: 700; }
+.product-info__headline-price[data-state="from"] price-list { display: none; }
+.product-info__headline-price[data-state="selected"] .product-info__from-price { display: none; }
 
 /* Values as tiles: a mini player in its bumper colour over the name, one row of four on a phone */
 .variant-picker__option-values--tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.25rem, 1fr)); gap: var(--spacing-2); }
@@ -1241,8 +1243,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .photo-swatch__tick::before { content: "\2713"; }
 :checked + .photo-swatch .photo-swatch__tick { opacity: 1; transform: scale(1); }
 .photo-swatch__name { display: flex; align-items: center; justify-content: center; gap: .35rem; font-size: var(--text-sm); color: var(--brand-text); }
-.photo-swatch__dot { width: .7rem; height: .7rem; flex: none; border-radius: 50%; background: var(--photo-swatch-colour); box-shadow: 0 0 0 1px rgb(0 0 0 / .12); }
 :checked + .photo-swatch .photo-swatch__name { color: var(--brand-heading); font-weight: 600; }
+:focus-visible + .photo-swatch { outline: none; }
 :focus-visible + .photo-swatch .photo-swatch__frame { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
 :disabled + .photo-swatch { opacity: .5; cursor: not-allowed; }
 @media (prefers-reduced-motion: reduce) { .photo-swatch__frame, .photo-swatch__img, .photo-swatch__tick { transition: none; } }

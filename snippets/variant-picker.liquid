@@ -79,7 +79,7 @@ Supported variables
       %}
 
       <fieldset class="variant-picker__option {% if opt_out_layout %}variant-picker__option--opt-out{% endif %} no-js:hidden">
-        <div class="variant-picker__option-info">
+        <div class="variant-picker__option-info {% if opt_out_layout %}sr-only{% endif %}">
           <div class="h-stack gap-2">
             <legend class="text-subdued">{% if opt_out_layout and block.settings.option_label != blank %}{{ block.settings.option_label }}{% else %}{{ option.name }}{% endif %}:</legend>
             <variant-option-value form="{{ form_id }}" for="option{{ option.position }}">{{ option_selected_value }}</variant-option-value>
