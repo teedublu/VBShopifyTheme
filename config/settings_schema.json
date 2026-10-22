@@ -1071,7 +1071,8 @@
         "type": "text",
         "id": "saga_intro",
         "label": "Line under the name",
-        "default": "Tell me the age of the child and I’ll suggest a pack."
+        "default": "Ask me anything about Voxblock.",
+        "info": "Keep this generic — Saga opens in more than one context (starter-pack chooser today, others later), so this line shouldn't assume why the visitor is here."
       },
       {
         "type": "text",
