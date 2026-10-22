@@ -1,0 +1,164 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SAGA — the Voxblock sales assistant (Google CX Agent Studio web widget), rendered inside a theme <dialog>
+----------------------------------------------------------------------------------------------------------------------
+
+Rendered once from layout/theme.liquid. Nothing Google-hosted loads until a visitor opens the dialog, and then only if
+marketing consent has been given (Shopify customer privacy API, which Pandectes feeds). There is no floating button:
+the dialog opens from any element with `data-saga-open` or `href="#saga-chat"` — the "Ask Saga" grid tile
+(snippets/collection-saga-promo.liquid) and the collection "Help me choose" link/card (main-collection `help_url`).
+
+Theme settings (Settings → Saga chat): `saga_deployment` (the CX Agent Studio deployment name — the dialog is left
+out while it's empty), `saga_title`, `saga_intro`. PostHog: `saga_opened` {source, collection}, `saga_consent_blocked`,
+`saga_consent_granted`, `saga_closed` {seconds_open}.
+
+Widget docs: https://docs.cloud.google.com/gemini-enterprise-cx/cx-agent-studio/deploy/web-widget
+{%- endcomment -%}
+
+{%- if settings.saga_deployment != blank -%}
+  {%- assign saga_avatar = 'saga-avatar.png' | asset_url -%}
+  <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
+    data-saga-deployment="{{ settings.saga_deployment | escape }}"
+    data-saga-avatar="{{ saga_avatar }}"
+    data-saga-sdk="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/chat-messenger.js"
+    data-saga-css="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/themes/chat-messenger-default.css">
+    <form method="dialog" class="saga-dialog__close-form">
+      <button type="submit" class="saga-dialog__close" aria-label="{{ 'general.accessibility.close' | t }}">
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
+      </button>
+    </form>
+
+    <div class="saga-dialog__head">
+      <img src="{{ saga_avatar }}" width="48" height="48" alt="" class="saga-dialog__avatar" loading="lazy">
+      <div>
+        <p id="saga-chat-title" class="saga-dialog__title">{{ settings.saga_title | default: 'Saga' | escape }}</p>
+        <p class="saga-dialog__intro">{{ settings.saga_intro | default: 'Tell me the age of the child and I’ll suggest a pack.' | escape }}</p>
+      </div>
+    </div>
+
+    {%- comment -%}Shown instead of the chat while marketing consent is missing{%- endcomment -%}
+    <div class="saga-dialog__consent" data-saga-consent hidden>
+      <p>Saga runs on Google’s servers, so she only loads once you’ve allowed cookies.</p>
+      <button type="button" class="series-button" data-saga-consent-accept>Allow cookies and chat with Saga</button>
+      <p class="saga-dialog__small">Or browse the packs by age using the buttons above the grid.</p>
+    </div>
+
+    <div class="saga-dialog__body" data-saga-body hidden>
+      <p class="saga-dialog__loading" data-saga-loading>Saga is on her way…</p>
+      <chat-messenger url-allowlist="voxblock.co.uk,cdn.shopify.com">
+        <chat-messenger-container
+          chat-title="{{ settings.saga_title | default: 'Saga' | escape }}"
+          chat-title-icon="{{ saga_avatar }}"
+          bot-writing-image="{{ saga_avatar }}">
+          <chat-reset-session-button slot="titlebar-actions" title-text="Start again"></chat-reset-session-button>
+        </chat-messenger-container>
+      </chat-messenger>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var dialog = document.getElementById('saga-chat');
+      if (!dialog || !window.HTMLDialogElement) return;
+
+      var state = { sdk: false, registered: false, openedAt: 0, source: '', collection: '' };
+      var consentBox = dialog.querySelector('[data-saga-consent]');
+      var body = dialog.querySelector('[data-saga-body]');
+      var loading = dialog.querySelector('[data-saga-loading]');
+
+      function track(name, props) {
+        try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props || {}); } catch (e) {}
+      }
+
+      function marketingAllowed() {
+        try {
+          var cp = window.Shopify && window.Shopify.customerPrivacy;
+          if (!cp) return false;
+          if (typeof cp.marketingAllowed === 'function') return !!cp.marketingAllowed();
+          if (typeof cp.currentVisitorConsent === 'function') return cp.currentVisitorConsent().marketing === 'yes';
+        } catch (e) {}
+        return false;
+      }
+
+      function ensureConsentApi(cb) {
+        if (window.Shopify && window.Shopify.customerPrivacy) return cb();
+        if (window.Shopify && typeof window.Shopify.loadFeatures === 'function') {
+          window.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], function () { cb(); });
+        } else { cb(); }
+      }
+
+      function loadSdk() {
+        if (state.sdk) return;
+        state.sdk = true;
+        var css = document.createElement('link');
+        css.rel = 'stylesheet'; css.href = dialog.dataset.sagaCss;
+        document.head.appendChild(css);
+        window.addEventListener('chat-messenger-loaded', function () {
+          if (state.registered) return;
+          state.registered = true;
+          try {
+            chatSdk.registerContext(
+              chatSdk.prebuilts.ces.createContext({
+                deploymentName: dialog.dataset.sagaDeployment,
+                tokenBroker: { enableTokenBroker: true, enableRecaptcha: true },
+                enableWelcomeEvent: true
+              })
+            );
+          } catch (e) { track('saga_error', { message: String(e && e.message) }); }
+          if (loading) loading.hidden = true;
+        }, { once: true });
+        var js = document.createElement('script');
+        js.src = dialog.dataset.sagaSdk; js.defer = true;
+        js.onerror = function () { if (loading) loading.textContent = 'Saga couldn’t load. Email hello@voxblock.co.uk and we’ll help.'; track('saga_error', { message: 'sdk_load_failed' }); };
+        document.head.appendChild(js);
+      }
+
+      function showChat() {
+        consentBox.hidden = true;
+        body.hidden = false;
+        loadSdk();
+      }
+
+      function open(source, collection) {
+        state.source = source || 'unknown';
+        state.collection = collection || '';
+        state.openedAt = Date.now();
+        if (!dialog.open) dialog.showModal();
+        track('saga_opened', { source: state.source, collection: state.collection, consent: marketingAllowed() });
+        ensureConsentApi(function () {
+          if (marketingAllowed()) { showChat(); }
+          else { body.hidden = true; consentBox.hidden = false; track('saga_consent_blocked', { source: state.source }); }
+        });
+      }
+
+      // Entry points: data-saga-open="<source>" or href="#saga-chat"
+      document.addEventListener('click', function (e) {
+        var el = e.target.closest('[data-saga-open], a[href="#saga-chat"]');
+        if (!el) return;
+        e.preventDefault();
+        open(el.dataset.sagaOpen || 'help_link', el.dataset.sagaCollection || document.body.dataset.collectionHandle || '');
+      });
+
+      // Consent granted from inside the dialog: an explicit click, recorded through Shopify's API so Pandectes sees it too
+      dialog.addEventListener('click', function (e) {
+        if (!e.target.closest('[data-saga-consent-accept]')) return;
+        ensureConsentApi(function () {
+          try {
+            window.Shopify.customerPrivacy.setTrackingConsent({ marketing: true, analytics: true, preferences: true, sale_of_data: false }, function () {
+              track('saga_consent_granted', { source: state.source });
+              showChat();
+            });
+          } catch (err) { track('saga_error', { message: 'consent_api' }); }
+        });
+      });
+
+      dialog.addEventListener('close', function () {
+        if (state.openedAt) track('saga_closed', { seconds_open: Math.round((Date.now() - state.openedAt) / 1000), source: state.source });
+        state.openedAt = 0;
+      });
+
+      // Click on the backdrop closes
+      dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    })();
+  </script>
+{%- endif -%}

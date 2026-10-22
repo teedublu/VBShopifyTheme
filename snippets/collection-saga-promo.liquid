@@ -1,0 +1,31 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+"ASK SAGA" GRID TILE (main-collection block type "promotion_saga")
+----------------------------------------------------------------------------------------------------------------------
+
+One card slot in the product grid: Saga's avatar, a heading, one line and a button that opens the Saga chat dialog
+(snippets/saga-chat.liquid). Needs the Saga deployment set in theme settings; renders nothing otherwise, so the grid
+never shows a dead tile. Hidden for signed-in customers who already own a player (they're choosing books, not a pack).
+
+Supported variables: block, section
+{%- endcomment -%}
+
+{%- if settings.saga_deployment != blank -%}
+  {%- capture owns_player -%}{%- render 'customer-owns-player' -%}{%- endcapture -%}
+  {%- if owns_player == blank or block.settings.show_to_owners -%}
+    {%- assign avatar = block.settings.image -%}
+    <div id="block-{{ section.id }}-{{ block.id }}" class="saga-tile" {{ block.shopify_attributes }}>
+      <button type="button" class="saga-tile__button" data-saga-open="collection_tile" data-saga-collection="{{ collection.handle }}" aria-haspopup="dialog" aria-controls="saga-chat">
+        {%- if avatar != blank -%}
+          {{- avatar | image_url: width: 320 | image_tag: loading: 'lazy', widths: '160,240,320', sizes: '160px', class: 'saga-tile__avatar', alt: '' -}}
+        {%- else -%}
+          <img src="{{ 'saga-avatar.png' | asset_url }}" width="160" height="160" class="saga-tile__avatar" alt="" loading="lazy">
+        {%- endif -%}
+        {%- if block.settings.eyebrow != blank -%}<span class="saga-tile__eyebrow">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}
+        <span class="saga-tile__title">{{ block.settings.heading | escape }}</span>
+        {%- if block.settings.text != blank -%}<span class="saga-tile__text">{{ block.settings.text | escape }}</span>{%- endif -%}
+        <span class="series-button saga-tile__cta" aria-hidden="true">{{ block.settings.button_label | default: 'Help me choose' | escape }}</span>
+      </button>
+    </div>
+  {%- endif -%}
+{%- endif -%}
