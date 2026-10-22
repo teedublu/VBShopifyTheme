@@ -1,5 +1,27 @@
 {%- render 'section-spacing-collapsing' -%}
 
+{%- comment -%}
+Default variant. Shopify preselects the first available variant in position order. The player's first variant is
+"No bumper", and reordering variants in the admin sets every bundle that contains one to draft. So when nobody has
+chosen a variant (no ?variant= in the URL) and the picker block has an opt-out value, preselect the first available
+variant that is not the opt-out one. A ?variant= link always wins. Passed down to the gallery, product info, picker
+and buy buttons as default_variant; the quick buy template below keeps Shopify's default.
+{%- endcomment -%}
+{%- assign default_variant = product.selected_or_first_available_variant -%}
+{%- assign picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
+{%- assign opt_out_value = picker_block.settings.opt_out_value | strip -%}
+
+{%- if product.selected_variant == nil and opt_out_value != blank and default_variant.options contains opt_out_value -%}
+  {%- for candidate in product.variants -%}
+    {%- unless candidate.options contains opt_out_value -%}
+      {%- if candidate.available -%}
+        {%- assign default_variant = candidate -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endfor -%}
+{%- endif -%}
+
 <style>
   #shopify-section-{{ section.id }} {
     --product-grid: auto / minmax(0, 1fr);
@@ -42,10 +64,10 @@
 <div {% render 'section-properties', tight: true %}>
   <div class="product  {{ product.type | handleize }}">
     {%- if product.media.size > 0 -%}
-      {%- render 'product-gallery', product: product -%}
+      {%- render 'product-gallery', product: product, default_variant: default_variant -%}
     {%- endif -%}
 
-    {%- render 'product-info', product: product, update_url: true -%}
+    {%- render 'product-info', product: product, update_url: true, default_variant: default_variant -%}
   </div>
 </div>
 
@@ -61,7 +83,7 @@
       {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
     </buy-buttons>
 
-    {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+    {%- assign image = default_variant.featured_media | default: product.featured_media -%}
 
     <div class="product-quick-add__variant {% if image == blank %}no-image{% endif %} hidden sm:grid">
       {%- if image != blank -%}
@@ -78,7 +100,7 @@
         {%- endif -%}
 
         <a href="{{ product.url }}" class="bold truncate-text">{{ product.title }}</a>
-        {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
+        {%- render 'price-list', product: product, variant: default_variant, form_id: product_form_id -%}
       </div>
 
       <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" force-secondary-button>
@@ -390,6 +412,13 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "id": "show_taxes_notice",
           "label": "Show taxes notice",
           "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_from_price",
+          "label": "Show \"from\" price as the headline",
+          "info": "Headline is the lowest variant price. The selected variant's own price is shown under it. Only when variants have different prices.",
+          "default": false
         }
       ]
     },
@@ -503,6 +532,28 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "id": "size_chart_page",
           "label": "Size chart page",
           "info": "Feature a page for size option"
+        },
+        {
+          "type": "header",
+          "content": "Opt-out option"
+        },
+        {
+          "type": "text",
+          "id": "opt_out_value",
+          "label": "Opt-out option value",
+          "info": "Exact option value to show as a quiet text link under the other values, and not to preselect (e.g. No bumper). The link shows that variant's own price. Leave empty for the normal picker."
+        },
+        {
+          "type": "text",
+          "id": "opt_out_label",
+          "label": "Opt-out link text",
+          "default": "Prefer it without?"
+        },
+        {
+          "type": "text",
+          "id": "option_label",
+          "label": "Option heading",
+          "info": "Replaces the option name (e.g. Color) above the values when an opt-out option is set."
         }
       ]
     },

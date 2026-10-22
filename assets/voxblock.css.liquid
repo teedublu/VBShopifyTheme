@@ -1193,3 +1193,26 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .referral-steps__step { flex-direction: column; padding: 22px; }
   .referral-steps__step--code { flex-direction: row; }
 }
+
+/* ---------------------------- */
+/* PRODUCT PAGE: "from" price + opt-out picker */
+/* Shared components, switched on per product by block settings: price block "Show from price", variant picker
+   "Opt-out option value". First use: the player (bumper colour tiles, "Prefer it without the bumper?" link).
+   Design canvas: "Player page variant picker". */
+/* ---------------------------- */
+.product-info__from-price { margin: 0; font-size: var(--text-h2); line-height: 1.1; font-weight: 700; color: var(--accent-strong-dark); }
+.product-info__selected-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35em; margin-block-start: .35rem; font-size: var(--text-sm); color: rgb(var(--text-color) / .75); }
+.product-info__selected-price price-list { display: inline-flex; }
+
+/* Values as tiles: a large colour disc over the name, one row of four on a phone */
+.variant-picker__option-values--tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.25rem, 1fr)); gap: var(--spacing-2); }
+.variant-picker__option-values--tiles .block-swatch { flex-direction: column; justify-content: center; gap: var(--spacing-2); height: auto; min-height: 44px; padding: var(--spacing-3) var(--spacing-1); border-radius: 1rem; font-size: var(--text-sm); }
+.variant-picker__option-values--tiles .block-swatch__color { width: 2.25rem; height: 2.25rem; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .08); }
+
+/* The opt-out value: a quiet text link on its own row under the tiles, still a real radio in the same group */
+.variant-picker__option-values--tiles .opt-out-link { grid-column: 1 / -1; justify-self: start; display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35em; min-height: 44px; padding: .5rem .75rem; margin-inline-start: -.75rem; border-radius: 999px; color: var(--brand-heading); font-size: var(--text-sm); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.opt-out-link__price { font-weight: 600; }
+.opt-out-link:hover { background: rgb(var(--brand-heading-rgb) / .06); }
+:checked + .opt-out-link { background: rgb(var(--brand-heading-rgb) / .1); font-weight: 600; text-decoration: none; }
+:focus-visible + .opt-out-link { outline: 2px solid currentColor; outline-offset: 2px; }
+:disabled + .opt-out-link { opacity: .5; cursor: not-allowed; }

@@ -1,4 +1,5 @@
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
+{%- assign current_variant = default_variant | default: product.selected_or_first_available_variant -%}
 
 <safe-sticky class="product-info">
   {%- if section.settings.context_copy != blank -%}
@@ -83,8 +84,8 @@
         {%- render 'product-badges', product: product, types: 'custom', form_id: product_form_id, class: 'product-info__badge-list', block: block -%}
 
       {%- when 'sku' -%}
-        <variant-sku form="{{ product_form_id }}" class="product-info__sku text-xs text-subdued" {% if product.selected_or_first_available_variant.sku == blank %}hidden{% endif %} {{ block.shopify_attributes }}>
-          {{- 'product.general.sku' | t }} {{ product.selected_or_first_available_variant.sku -}}
+        <variant-sku form="{{ product_form_id }}" class="product-info__sku text-xs text-subdued" {% if current_variant.sku == blank %}hidden{% endif %} {{ block.shopify_attributes }}>
+          {{- 'product.general.sku' | t }} {{ current_variant.sku -}}
         </variant-sku>
         
       {%- when 'audiobook-properties' -%}
@@ -97,9 +98,32 @@
         <div {{ block.shopify_attributes }}>{%- render 'series-membership', product: product -%}</div>
 
       {%- when 'price' -%}
-        <div class="product-info__price">
+        {%- comment -%}
+          "From" headline (block setting): the lowest variant price (Shopify's product.price_min, not calculated), with the
+          selected variant's own live price under it, so the headline can say from £49.99 while the selected option shows £59.99.
+        {%- endcomment -%}
+        {%- assign show_from_price = false -%}
+
+        {%- if block.settings.show_from_price and product.price_varies -%}
+          {%- assign show_from_price = true -%}
+        {%- endif -%}
+
+        <div class="product-info__price {% if show_from_price %}product-info__price--from{% endif %}">
+          {%- if show_from_price -%}
+            {%- assign from_price = product.price_min | money -%}
+            <p class="product-info__from-price">{{ 'product.price.from_price_lowercase' | t: price: from_price }}</p>
+          {%- endif -%}
+
           <div class="rating-with-text">
-            {%- render 'price-list', variant: product.selected_or_first_available_variant, form_id: product_form_id, size: 'lg', block: block, bundle_layout: true -%}
+            {%- if show_from_price -%}
+              <div class="product-info__selected-price">
+                <variant-option-value form="{{ product_form_id }}" for="option1">{{ current_variant.option1 }}</variant-option-value>
+                <span aria-hidden="true">&middot;</span>
+                {%- render 'price-list', variant: current_variant, form_id: product_form_id, block: block -%}
+              </div>
+            {%- else -%}
+              {%- render 'price-list', variant: current_variant, form_id: product_form_id, size: 'lg', block: block, bundle_layout: true -%}
+            {%- endif -%}
             {%- render 'product-badges', types: 'offer, sold_out, discount', product: product, form_id: product_form_id, class: 'product-info__badge-list' -%}
 
             {%- comment -%}If the next block is a rating block, then we add it as part of this one to have it inline{%- endcomment -%}
@@ -137,7 +161,7 @@
           {%- capture product_installment_form_id -%}product-installment-form-{{ section.id }}-{{ product.id }}{%- endcapture -%}
 
           {%- form 'product', product, id: product_installment_form_id -%}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <input type="hidden" name="id" value="{{ current_variant.id }}">
             {{- form | payment_terms -}}
           {%- endform -%}
         </payment-terms>
@@ -178,6 +202,7 @@
         <div class="product-info__variant-picker" {{ block.shopify_attributes }}>
           {%- render 'variant-picker', 
             product: product, 
+            default_variant: current_variant,
             form_id: product_form_id,
             update_url: update_url, 
             hide_sold_out_variants: block.settings.hide_sold_out_variants, 
@@ -288,13 +313,13 @@
 
         {%- if request.page_type != 'password' -%}
           <div class="product-info__buy-buttons" {{ block.shopify_attributes }}>
-            {%- render 'buy-buttons', product: product, form_id: product_form_id, show_payment_button: block.settings.show_payment_button, show_gift_card_recipient: block.settings.show_gift_card_recipient, atc_button_background: block.settings.atc_button_background, atc_button_text_color: block.settings.atc_button_text_color, payment_button_background: block.settings.payment_button_background, payment_button_text_color: block.settings.payment_button_text_color -%}
+            {%- render 'buy-buttons', product: product, default_variant: current_variant, form_id: product_form_id, show_payment_button: block.settings.show_payment_button, show_gift_card_recipient: block.settings.show_gift_card_recipient, atc_button_background: block.settings.atc_button_background, atc_button_text_color: block.settings.atc_button_text_color, payment_button_background: block.settings.payment_button_background, payment_button_text_color: block.settings.payment_button_text_color -%}
           </div>
         {%- endif -%}
 
       {%- when 'pickup_availability' -%}
         <div class="product-info__pickup-availability" {{ block.shopify_attributes }}>
-          {%- render 'pickup-availability', product_variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
+          {%- render 'pickup-availability', product_variant: current_variant, form_id: product_form_id -%}
         </div>
 
       {%- when 'text' -%}
@@ -448,7 +473,7 @@
 
   {%- unless main_form_exists -%}
     {%- form 'product', product, id: product_form_id, hidden: true -%}
-      <input type="hidden" disabled name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <input type="hidden" disabled name="id" value="{{ current_variant.id }}">
     {%- endform -%}
   {%- endunless -%}
 </safe-sticky>

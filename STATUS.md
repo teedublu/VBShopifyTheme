@@ -46,6 +46,19 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-22: Player buy box (from price, bumper tiles, opt-out link)
+Branch `claude/player-bumper-picker`. **Not yet previewed on a draft theme: needs owner check, phone and desktop.** Design: canvas "Player page variant picker" (desktop + mobile).
+Why: since the 24 Sep reorder "No bumper" is the first variant, so the page opens on the £49.99 plain player and takes 12% of player sales (33% when it was first and £39.99); every "£49.99" ad lands on it. Reordering in the admin sets the 23 bundles containing a player variant to draft, so the order is left alone and the theme sets the default.
+- `sections/main-product.liquid`: `default_variant` = first available variant that is not the opt-out value, only when the URL has no `?variant=` and the picker block has an opt-out value. A `?variant=` link always wins (ads can still land on No bumper on purpose). Passed to gallery, product info, picker and buy buttons (the JS only re-syncs on a change, so the server render has to be right). Quick buy template and JSON-LD keep Shopify's default (JSON-LD stays on the No bumper offer, matching the Shopping feed).
+- Price block, new setting "Show from price": headline `from <product.price_min>` (Shopify's lowest variant price, not calculated) with the selected variant's own live price under it ("Blue · £59.99"). Locale key `product.price.from_price_lowercase` (English only).
+- Variant picker block, new settings "Opt-out option value / Opt-out link text / Option heading": values show as tiles (`block_swatch`, colour from the `bumper.colour` metafield as the round swatches do), and the opt-out value becomes a text link "Prefer it without the bumper? <variant price>" in the same radio group. Price is the variant's own.
+- CSS: shared rules at the end of `voxblock.css.liquid` (`.variant-picker__option-values--tiles`, `.opt-out-link`, `.product-info__from-price`).
+- `templates/product.player.json`: settings above switched on; picker now above the buttons; description cut to "No wifi. No screens. Just stories." (also drops the old "Slot in a book" wording); packs nudge shortened.
+- Not built from the mockup: the price inside the Add to cart button (the live price sits right above it), and the mini-player drawing in each tile (a large colour disc instead).
+- Check on the draft theme: default is Blue; `?variant=<no bumper id>` opens on the link selected; cart gets the right variant for each choice; Shop Pay button and sticky add bar follow the selection; "from" headline never shows when all variants cost the same.
+- Open: Shopping feed offer should stay the No bumper variant so "from £49.99" and the feed price agree.
+- Performance review: `/products/voxblock-audiobook-player` (new picker markup, no new requests).
+
 ## 2026-10-16: Refer a friend page (3 Golden Tokens)
 Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.
 - New sections `referral-intro` (signed out: offer + button to /account; signed in: `referrals.code` with copy, share link `/discount/<code>`, WhatsApp, email; `#N/A`/blank code gets a contact line; token count behind a setting, off) and `referral-rewards` (products read live + £30 e-gift card tile); snippet `referral-token`.

@@ -15,9 +15,11 @@ Supported variables
 * hide_size_chart: if set to true, size chart is always hidden
 * force_dropdown_as_block: if set to true, the dropdown selectors are replaced by blocks, which is useful for quick buy where dropdown are not convenient to use
 * form_id: the ID of the form that is listening
+* default_variant: the variant to preselect (set by the product section); falls back to Shopify's selected or first available variant
 * block: the block itself, for theme-specific options (such as selector types)
 {%- endcomment -%}
 
+{%- assign current_variant = default_variant | default: product.selected_or_first_available_variant -%}
 {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
 {%- assign size_label_list = 'general.label.size' | t | replace: ', ', ',' | downcase | split: ',' -%}
 {%- assign variant_image_options = block.settings.variant_image_options | replace: ', ', ',' | downcase | split: ',' -%}
@@ -50,13 +52,37 @@ Supported variables
         if variant_image_options contains option_downcase
           assign resolved_option_selector_style = 'variant_image'
         endif
+
+        # Selected value of this option, from the variant that is preselected (not always Shopify's first variant)
+        assign option_index = option.position | minus: 1
+        assign option_selected_value = current_variant.options[option_index] | default: option.selected_value
+
+        # Opt-out layout: the values show as tiles, and one value (e.g. No bumper) becomes a quiet text link below them
+        assign opt_out_value = block.settings.opt_out_value | strip
+        assign opt_out_layout = false
+        assign opt_out_variant = nil
+
+        if opt_out_value != blank and resolved_option_selector_style != 'dropdown'
+          assign option_values_joined = option.values | join: '||'
+
+          if option_values_joined contains opt_out_value
+            assign opt_out_layout = true
+
+            for opt_out_candidate in product.variants
+              if opt_out_candidate.options[option_index] == opt_out_value
+                assign opt_out_variant = opt_out_candidate
+                break
+              endif
+            endfor
+          endif
+        endif
       %}
 
-      <fieldset class="variant-picker__option no-js:hidden">
+      <fieldset class="variant-picker__option {% if opt_out_layout %}variant-picker__option--opt-out{% endif %} no-js:hidden">
         <div class="variant-picker__option-info">
           <div class="h-stack gap-2">
-            <legend class="text-subdued">{{ option.name }}:</legend>
-            <variant-option-value form="{{ form_id }}" for="option{{ option.position }}">{{ option.selected_value }}</variant-option-value>
+            <legend class="text-subdued">{% if opt_out_layout and block.settings.option_label != blank %}{{ block.settings.option_label }}{% else %}{{ option.name }}{% endif %}:</legend>
+            <variant-option-value form="{{ form_id }}" for="option{{ option.position }}">{{ option_selected_value }}</variant-option-value>
           </div>
 
           {%- if hide_size_chart != true and block.settings.size_chart_page != blank and size_label_list contains option_downcase -%}
@@ -81,7 +107,7 @@ Supported variables
 
           <div class="relative">
             <button type="button" class="select" aria-controls="{{ popover_id }}" aria-expanded="false">
-              <span id="{{ popover_id }}-selected-value">{{- option.selected_value -}}</span>
+              <span id="{{ popover_id }}-selected-value">{{- option_selected_value -}}</span>
               {%- render 'icon' with 'chevron-bottom', class: 'select-chevron' -%}
             </button>
 
@@ -89,24 +115,31 @@ Supported variables
               <p class="h5" slot="title">{{ option.name }}</p>
 
               <x-listbox data-option-selector class="popover-listbox" aria-owns="{{ popover_id }}-selected-value">
-                <input type="hidden" name="option{{ option.position }}" form="{{ form_id }}" value="{{ option.selected_value | escape }}">
+                <input type="hidden" name="option{{ option.position }}" form="{{ form_id }}" value="{{ option_selected_value | escape }}">
 
                 {%- for value in option.values -%}
-                  <button type="button" class="popover-listbox__option" role="option" value="{{ value | escape }}" {% if value == option.selected_value %}aria-selected="true"{% endif %} data-option-value>{{ value }}</button>
+                  {%- assign value_string = value | append: '' -%}
+                  <button type="button" class="popover-listbox__option" role="option" value="{{ value | escape }}" {% if value_string == option_selected_value %}aria-selected="true"{% endif %} data-option-value>{{ value }}</button>
                 {%- endfor -%}
               </x-listbox>
             </x-popover>
           </div>
         {%- else -%}
           <div {% unless block.settings.stack_blocks %}class="scroll-area bleed sm:unbleed"{% endunless %}>
-            <div data-option-selector class="variant-picker__option-values {% if block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
+            <div data-option-selector class="variant-picker__option-values {% if opt_out_layout %}variant-picker__option-values--tiles{% endif %} {% if block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
               {% liquid
                 assign name = 'option' | append: option.position
 
                 for value in option.values
                   assign selected = false
-  
-                  if value == option.selected_value
+
+                  assign value_string = value | append: ''
+
+                  if opt_out_layout and value_string == opt_out_value
+                    continue
+                  endif
+
+                  if value_string == option_selected_value
                     assign selected = true
                   endif
 
@@ -134,12 +167,24 @@ Supported variables
                         render 'option-value', type: 'block', value: value, image: value.swatch.image, selected: selected, name: name, form: form_id, show_swatch: true
                       elsif value.swatch.color
                         render 'option-value', type: 'block', value: value, color: value.swatch.color, selected: selected, name: name, form: form_id, show_swatch: true
+                      elsif variant.metafields.bumper.colour
+                        render 'option-value', type: 'block', value: value, color: variant.metafields.bumper.colour, selected: selected, name: name, form: form_id, show_swatch: true
                       else
                         # Use the configuration based approach for compatibility reason
                         render 'option-value', type: 'block', value: value, selected: selected, name: name, form: form_id, show_swatch: true
                       endif
                   endcase
                 endfor
+
+                if opt_out_layout
+                  assign opt_out_selected = false
+
+                  if option_selected_value == opt_out_value
+                    assign opt_out_selected = true
+                  endif
+
+                  render 'option-value', type: 'opt_out', value: opt_out_value, label: block.settings.opt_out_label, price: opt_out_variant.price, selected: opt_out_selected, name: name, form: form_id
+                endif
               %}
             </div>
           </div>

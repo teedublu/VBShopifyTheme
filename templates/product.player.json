@@ -28,7 +28,8 @@
         "price": {
           "type": "price",
           "settings": {
-            "show_taxes_notice": false
+            "show_taxes_notice": false,
+            "show_from_price": true
           }
         },
         "buy_buttons": {
@@ -49,9 +50,12 @@
             "hide_sold_out_variants": false,
             "stack_blocks": true,
             "selector_style": "block",
-            "swatch_selector_style": "swatch",
+            "swatch_selector_style": "block_swatch",
             "variant_image_options": "{{ block.repeater.label.value }}",
-            "size_chart_page": ""
+            "size_chart_page": "",
+            "opt_out_value": "No bumper",
+            "opt_out_label": "Prefer it without the bumper?",
+            "option_label": "Bumper colour"
           }
         },
         "text_B7QjHH": {
@@ -63,7 +67,7 @@
         "text_MA3Pah": {
           "type": "text",
           "settings": {
-            "text": "<p>A screen-free audiobook player children use on their own. Slot in a book and press play: no wifi, no downloads, no subscription. For toddlers to teens.</p><p><strong>No wifi. No screens. Just stories.</strong></p>"
+            "text": "<p><strong>No wifi. No screens. Just stories.</strong></p>"
           }
         },
         "image_dihJHC": {
@@ -82,7 +86,7 @@
         "packs_nudge": {
           "type": "liquid",
           "settings": {
-            "liquid": "<a href=\"#packs\" class=\"player-packs-nudge\"><strong>Want books included?</strong> A Starter Pack is the player plus three audiobooks picked for their age, for less than buying them separately. <span class=\"player-packs-nudge__cta\">See Starter Packs ↓</span></a><style>.player-packs-nudge{display:block;padding:12px 14px;border-radius:12px;background:#fff3ed;border:1px solid #ffd9bd;color:#565656;text-decoration:none;font-size:14px;line-height:1.45}.player-packs-nudge strong{color:#197177}.player-packs-nudge__cta{display:inline-block;margin-top:4px;font-weight:600;color:#e5752a;text-decoration:underline}</style>"
+            "liquid": "<a href=\"#packs\" class=\"player-packs-nudge\"><strong>Want books included?</strong> Player + 3 audiobooks for their age. <span class=\"player-packs-nudge__cta\">See Starter Packs ↓</span></a><style>.player-packs-nudge{display:block;padding:12px 14px;border-radius:12px;background:#fff3ed;border:1px solid #ffd9bd;color:#565656;text-decoration:none;font-size:14px;line-height:1.45}.player-packs-nudge strong{color:#197177}.player-packs-nudge__cta{display:inline-block;margin-top:4px;font-weight:600;color:#e5752a;text-decoration:underline}</style>"
           }
         },
         "offer_tcaCpM": {
@@ -293,8 +297,8 @@
       "block_order": [
         "title",
         "price",
-        "buy_buttons",
         "variant_picker",
+        "buy_buttons",
         "text_B7QjHH",
         "text_MA3Pah",
         "image_dihJHC",
