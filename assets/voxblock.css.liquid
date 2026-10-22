@@ -1204,10 +1204,20 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .product-info__selected-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35em; margin-block-start: .35rem; font-size: var(--text-sm); color: rgb(var(--text-color) / .75); }
 .product-info__selected-price price-list { display: inline-flex; }
 
-/* Values as tiles: a large colour disc over the name, one row of four on a phone */
+/* Values as tiles: a mini player in its bumper colour over the name, one row of four on a phone */
 .variant-picker__option-values--tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.25rem, 1fr)); gap: var(--spacing-2); }
-.variant-picker__option-values--tiles .block-swatch { flex-direction: column; justify-content: center; gap: var(--spacing-2); height: auto; min-height: 44px; padding: var(--spacing-3) var(--spacing-1); border-radius: 1rem; font-size: var(--text-sm); }
-.variant-picker__option-values--tiles .block-swatch__color { width: 2.25rem; height: 2.25rem; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .08); }
+.variant-picker__option-values--tiles { gap: var(--spacing-2-5, .625rem); padding-block: .5rem; }
+.variant-picker__option-values--tiles .block-swatch { flex-direction: column; justify-content: center; gap: var(--spacing-2); height: auto; min-height: 7rem; padding: var(--spacing-3) var(--spacing-1) var(--spacing-2); border-radius: 1rem; border-color: var(--card-border); font-size: var(--text-sm); color: var(--brand-text); cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease; }
+.variant-picker__option-values--tiles .block-swatch:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgb(86 86 86 / .14); }
+/* The colour is drawn as a small player in its bumper: coloured frame, white face, book tray */
+.variant-picker__option-values--tiles .block-swatch__color { position: relative; width: 2.75rem; height: 3.5rem; border-radius: .85rem; box-shadow: 0 3px 8px rgb(0 0 0 / .18); }
+.variant-picker__option-values--tiles .block-swatch__color::before { content: ""; position: absolute; inset: .3rem; border-radius: .6rem; background: #fff; }
+.variant-picker__option-values--tiles .block-swatch__color::after { content: ""; position: absolute; left: 50%; top: .85rem; width: 1.35rem; height: 1.6rem; transform: translateX(-50%); border-radius: .35rem; background: #eef2f2; box-shadow: inset 0 1px 3px rgb(0 0 0 / .14); }
+/* Selected: one brand ring (replaces the theme's dark ring), a tick badge, a soft tint, bolder name */
+.variant-picker__option-values--tiles .block-swatch:before { box-shadow: 0 0 0 2px var(--brand-heading); }
+.variant-picker__option-values--tiles :checked + .block-swatch { border-color: transparent; background: rgb(var(--brand-heading-rgb) / .06); color: var(--brand-heading); font-weight: 600; box-shadow: 0 6px 16px rgb(var(--brand-heading-rgb) / .18); }
+.variant-picker__option-values--tiles :checked + .block-swatch::after { content: "\2713"; position: absolute; top: -.45rem; right: -.45rem; display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: .8rem; line-height: 1; }
+.variant-picker__option-values--tiles :focus-visible + .block-swatch { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
 
 /* The opt-out value: a quiet text link on its own row under the tiles, still a real radio in the same group */
 .variant-picker__option-values--tiles .opt-out-link { grid-column: 1 / -1; justify-self: start; display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35em; min-height: 44px; padding: .5rem .75rem; margin-inline-start: -.75rem; border-radius: 999px; color: var(--brand-heading); font-size: var(--text-sm); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
