@@ -12,7 +12,12 @@ collection "Help me choose" link/card (main-collection `help_url`).
 
 Theme settings (Settings → Saga chat): `saga_enabled`, `saga_title`, `saga_intro`, `saga_endpoint`.
 PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply` {turn, ms, links},
-`saga_link_clicked` {url}, `saga_error` {code}, `saga_closed` {seconds_open, turns}.
+`saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_error` {code}, `saga_closed` {seconds_open, turns}.
+
+Quick-reply pills: the opening message always offers "Choosing for a child" / "I already have one"
+(hardcoded here — the opening line itself is hardcoded too). The backend can also attach pills to any
+reply via `prompts: [...]` in the JSON response (today only the child's-age question does); clicking one
+sends its text exactly as if typed, same as any other message.
 {%- endcomment -%}
 
 {%- if settings.saga_enabled -%}
@@ -49,7 +54,7 @@ PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply`
   </dialog>
 
   <template id="saga-bubble-template">
-    <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__text"></div></div>
+    <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__content"><div class="saga-bubble__text"></div><div class="saga-bubble__prompts" data-saga-prompts></div></div></div>
   </template>
 
   <script>
@@ -104,13 +109,16 @@ PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply`
         } catch (e) { return 'Open the page'; }
       }
 
-      function bubble(role, text, pending) {
+      function bubble(role, text, pending, prompts) {
         var el;
         if (role === 'assistant') {
           el = tpl.content.firstElementChild.cloneNode(true);
           var t = el.querySelector('.saga-bubble__text');
           if (pending) { el.classList.add('is-pending'); t.innerHTML = '<span></span><span></span><span></span>'; }
-          else t.appendChild(render(text));
+          else {
+            t.appendChild(render(text));
+            if (prompts && prompts.length) addPrompts(el.querySelector('[data-saga-prompts]'), prompts);
+          }
         } else {
           el = document.createElement('div');
           el.className = 'saga-bubble saga-bubble--user';
@@ -121,13 +129,36 @@ PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply`
         return el;
       }
 
+      // Quick-reply pills on the latest assistant bubble only; answering (or asking anything else)
+      // retires them so an old question can't be answered twice.
+      function addPrompts(row, prompts) {
+        prompts.forEach(function (p) {
+          var btn = document.createElement('button');
+          btn.type = 'button'; btn.className = 'saga-prompt'; btn.textContent = p;
+          btn.addEventListener('click', function () {
+            track('saga_prompt_clicked', { prompt: p, turn: turns() });
+            clearPrompts();
+            send(p);
+          });
+          row.appendChild(btn);
+        });
+      }
+      function clearPrompts() {
+        var rows = thread.querySelectorAll('[data-saga-prompts]');
+        for (var i = 0; i < rows.length; i++) rows[i].innerHTML = '';
+      }
+
       function paint() {
         thread.innerHTML = '';
         if (!state.messages.length) {
           state.messages.push({ role: 'assistant', content: dialog.dataset.sagaOpening });
           save();
         }
-        state.messages.forEach(function (m) { bubble(m.role, m.content); });
+        state.messages.forEach(function (m, i) {
+          var openingPrompts = i === 0 && state.messages.length === 1 && m.role === 'assistant'
+            ? ['Choosing for a child', 'I already have one'] : null;
+          bubble(m.role, m.content, false, openingPrompts);
+        });
       }
 
       function setBusy(b) { state.busy = b; sendBtn.disabled = b; input.disabled = b; dialog.classList.toggle('is-busy', b); }
@@ -141,6 +172,7 @@ PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply`
         if (state.busy || state.ended) return;
         text = text.trim().slice(0, 1000);
         if (!text) return;
+        clearPrompts();
         state.messages.push({ role: 'user', content: text }); save();
         bubble('user', text);
         track('saga_message', { turn: turns(), chars: text.length });
@@ -165,7 +197,7 @@ PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply`
               return fail(code);
             }
             state.messages.push({ role: 'assistant', content: res.body.reply }); save();
-            bubble('assistant', res.body.reply);
+            bubble('assistant', res.body.reply, false, res.body.prompts);
             if (res.body.ended) { state.ended = true; input.placeholder = 'Chat ended'; }
             track('saga_reply', { turn: turns(), ms: Date.now() - started, links: (res.body.reply.match(/https:\/\/voxblock\.co\.uk/g) || []).length });
           })
