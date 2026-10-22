@@ -1268,9 +1268,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .saga-dialog[open] { display: flex; }
 .saga-dialog::backdrop { background: rgb(0 0 0 / .5); }
 .saga-dialog [hidden] { display: none !important; }
-.saga-dialog__close-form { position: absolute; top: 10px; inset-inline-end: 10px; margin: 0; z-index: 2; }
-.saga-dialog__close { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: rgb(255 255 255 / .85); color: var(--brand-heading); cursor: pointer; }
-.saga-dialog__head { display: flex; align-items: center; gap: 12px; padding: 14px 52px 12px 16px; background: #fff7f0; border-bottom: 1px solid var(--card-border); }
+.saga-dialog__actions { position: absolute; top: 10px; inset-inline-end: 10px; display: flex; gap: 6px; z-index: 2; }
+.saga-dialog__close-form { margin: 0; }
+.saga-dialog__icon-btn { display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: rgb(255 255 255 / .85); color: var(--brand-heading); cursor: pointer; }
+.saga-dialog__head { display: flex; align-items: center; gap: 12px; padding: 14px 92px 12px 16px; background: #fff7f0; border-bottom: 1px solid var(--card-border); }
 .saga-dialog__avatar { width: 48px; height: 48px; border-radius: 50%; flex: none; }
 .saga-dialog__title { margin: 0; font-size: 17px; font-weight: 700; color: var(--brand-heading); }
 .saga-dialog__intro { margin: 2px 0 0; font-size: 13px; line-height: 17px; }

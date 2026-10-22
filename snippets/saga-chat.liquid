@@ -12,7 +12,8 @@ collection "Help me choose" link/card (main-collection `help_url`).
 
 Theme settings (Settings → Saga chat): `saga_enabled`, `saga_title`, `saga_intro`, `saga_endpoint`.
 PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply` {turn, ms, links},
-`saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_error` {code}, `saga_closed` {seconds_open, turns}.
+`saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_reset` {turn}, `saga_error` {code},
+`saga_closed` {seconds_open, turns}.
 
 Quick-reply pills: the opening message always offers "Choosing for a child" / "I already have one"
 (hardcoded here — the opening line itself is hardcoded too). The backend can also attach pills to any
@@ -26,11 +27,16 @@ sends its text exactly as if typed, same as any other message.
   <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
     data-saga-endpoint="{{ settings.saga_endpoint | default: '/apps/voxblock/saga' | escape }}"
     data-saga-opening="Hi, I’m {{ saga_title | escape }}. Are you looking at a Voxblock for a child, or do you already have one?">
-    <form method="dialog" class="saga-dialog__close-form">
-      <button type="submit" class="saga-dialog__close" aria-label="{{ 'general.accessibility.close' | t }}">
-        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
+    <div class="saga-dialog__actions">
+      <button type="button" class="saga-dialog__icon-btn" data-saga-restart aria-label="Start a new conversation" title="Start a new conversation">
+        <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.6 6.4"/><path d="M3 21v-6h6"/></svg>
       </button>
-    </form>
+      <form method="dialog" class="saga-dialog__close-form">
+        <button type="submit" class="saga-dialog__icon-btn" aria-label="{{ 'general.accessibility.close' | t }}">
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
+        </button>
+      </form>
+    </div>
 
     <div class="saga-dialog__head">
       <img src="{{ saga_avatar }}" width="48" height="48" alt="" class="saga-dialog__avatar" loading="lazy">
@@ -209,6 +215,22 @@ sends its text exactly as if typed, same as any other message.
       input.addEventListener('input', autosize);
       input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input.value); } });
       form.addEventListener('submit', function (e) { e.preventDefault(); send(input.value); });
+
+      // Drops the whole thread and repaints to just the opening bubble, same as a visitor who never
+      // opened Saga before — the conversation sent to the model next turn starts clean too.
+      function restart() {
+        track('saga_reset', { turn: turns() });
+        state.messages = [];
+        state.ended = false;
+        try { sessionStorage.removeItem(STORE); } catch (e) {}
+        setBusy(false);
+        input.value = ''; autosize();
+        input.placeholder = 'Ask something…';
+        paint();
+        input.focus();
+      }
+      var restartBtn = dialog.querySelector('[data-saga-restart]');
+      if (restartBtn) restartBtn.addEventListener('click', restart);
 
       function open(source, collection) {
         state.source = source || 'unknown';
