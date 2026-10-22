@@ -4,13 +4,13 @@
 ----------------------------------------------------------------------------------------------------------------------
 
 One card slot in the product grid: Saga's avatar, a heading, one line and a button that opens the Saga chat dialog
-(snippets/saga-chat.liquid). Needs the Saga deployment set in theme settings; renders nothing otherwise, so the grid
+(snippets/saga-chat.liquid). Renders nothing while Saga is off in theme settings, so the grid
 never shows a dead tile. Hidden for signed-in customers who already own a player (they're choosing books, not a pack).
 
 Supported variables: block, section
 {%- endcomment -%}
 
-{%- if settings.saga_deployment != blank -%}
+{%- if settings.saga_enabled -%}
   {%- capture owns_player -%}{%- render 'customer-owns-player' -%}{%- endcapture -%}
   {%- if owns_player == blank or block.settings.show_to_owners -%}
     {%- assign avatar = block.settings.image -%}

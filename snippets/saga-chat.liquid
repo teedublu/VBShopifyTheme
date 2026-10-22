@@ -1,27 +1,26 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-SAGA — the Voxblock sales assistant (Google CX Agent Studio web widget), rendered inside a theme <dialog>
+SAGA — the Voxblock sales assistant, in a theme <dialog>
 ----------------------------------------------------------------------------------------------------------------------
 
-Rendered once from layout/theme.liquid. Nothing Google-hosted loads until a visitor opens the dialog, and then only if
-marketing consent has been given (Shopify customer privacy API, which Pandectes feeds). There is no floating button:
-the dialog opens from any element with `data-saga-open` or `href="#saga-chat"` — the "Ask Saga" grid tile
-(snippets/collection-saga-promo.liquid) and the collection "Help me choose" link/card (main-collection `help_url`).
+Rendered once from layout/theme.liquid. A small chat panel of our own: the conversation lives in the browser
+(sessionStorage) and is posted whole each turn to the app proxy, `/apps/voxblock/saga` (VBStorefrontApp
+functions/shopify_proxy/saga.js), which adds the instructions and live prices and calls the model. Nothing
+third-party loads in the browser. There is no floating button: the dialog opens from any element with
+`data-saga-open` or `href="#saga-chat"` — the "Ask Saga" grid tile (snippets/collection-saga-promo.liquid) and the
+collection "Help me choose" link/card (main-collection `help_url`).
 
-Theme settings (Settings → Saga chat): `saga_deployment` (the CX Agent Studio deployment name — the dialog is left
-out while it's empty), `saga_title`, `saga_intro`. PostHog: `saga_opened` {source, collection}, `saga_consent_blocked`,
-`saga_consent_granted`, `saga_closed` {seconds_open}.
-
-Widget docs: https://docs.cloud.google.com/gemini-enterprise-cx/cx-agent-studio/deploy/web-widget
+Theme settings (Settings → Saga chat): `saga_enabled`, `saga_title`, `saga_intro`, `saga_endpoint`.
+PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply` {turn, ms, links},
+`saga_link_clicked` {url}, `saga_error` {code}, `saga_closed` {seconds_open, turns}.
 {%- endcomment -%}
 
-{%- if settings.saga_deployment != blank -%}
+{%- if settings.saga_enabled -%}
   {%- assign saga_avatar = 'saga-avatar.png' | asset_url -%}
+  {%- assign saga_title = settings.saga_title | default: 'Saga' -%}
   <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
-    data-saga-deployment="{{ settings.saga_deployment | escape }}"
-    data-saga-avatar="{{ saga_avatar }}"
-    data-saga-sdk="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/chat-messenger.js"
-    data-saga-css="https://www.gstatic.com/chat-messenger/sdk/prod/v1.16/themes/chat-messenger-default.css">
+    data-saga-endpoint="{{ settings.saga_endpoint | default: '/apps/voxblock/saga' | escape }}"
+    data-saga-opening="Hi, I’m {{ saga_title | escape }}. Are you looking at a Voxblock for a child, or do you already have one?">
     <form method="dialog" class="saga-dialog__close-form">
       <button type="submit" class="saga-dialog__close" aria-label="{{ 'general.accessibility.close' | t }}">
         <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
@@ -31,133 +30,175 @@ Widget docs: https://docs.cloud.google.com/gemini-enterprise-cx/cx-agent-studio/
     <div class="saga-dialog__head">
       <img src="{{ saga_avatar }}" width="48" height="48" alt="" class="saga-dialog__avatar" loading="lazy">
       <div>
-        <p id="saga-chat-title" class="saga-dialog__title">{{ settings.saga_title | default: 'Saga' | escape }}</p>
+        <p id="saga-chat-title" class="saga-dialog__title">{{ saga_title | escape }}</p>
         <p class="saga-dialog__intro">{{ settings.saga_intro | default: 'Tell me the age of the child and I’ll suggest a pack.' | escape }}</p>
       </div>
     </div>
 
-    {%- comment -%}Shown instead of the chat while marketing consent is missing{%- endcomment -%}
-    <div class="saga-dialog__consent" data-saga-consent hidden>
-      <p>Saga runs on Google’s servers, so she only loads once you’ve allowed cookies.</p>
-      <button type="button" class="series-button" data-saga-consent-accept>Allow cookies and chat with Saga</button>
-      <p class="saga-dialog__small">Or browse the packs by age using the buttons above the grid.</p>
-    </div>
-
-    <div class="saga-dialog__body" data-saga-body hidden>
-      <p class="saga-dialog__loading" data-saga-loading>Saga is on her way…</p>
-      <chat-messenger url-allowlist="voxblock.co.uk,cdn.shopify.com">
-        <chat-messenger-container
-          chat-title="{{ settings.saga_title | default: 'Saga' | escape }}"
-          chat-title-icon="{{ saga_avatar }}"
-          bot-writing-image="{{ saga_avatar }}">
-          <chat-reset-session-button slot="titlebar-actions" title-text="Start again"></chat-reset-session-button>
-        </chat-messenger-container>
-      </chat-messenger>
+    <div class="saga-dialog__body">
+      <div class="saga-thread" data-saga-thread role="log" aria-live="polite" aria-relevant="additions"></div>
+      <form class="saga-compose" data-saga-form>
+        <label for="saga-input" class="sr-only">Your message</label>
+        <textarea id="saga-input" class="saga-compose__input" rows="1" maxlength="1000" placeholder="Ask something…" autocomplete="off" enterkeyhint="send" data-saga-input></textarea>
+        <button type="submit" class="saga-compose__send" aria-label="Send" data-saga-send>
+          <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+      <p class="saga-dialog__small">{{ saga_title | escape }} is an AI assistant and can make mistakes. Please don’t share personal details. For orders, email hello@voxblock.co.uk.</p>
     </div>
   </dialog>
+
+  <template id="saga-bubble-template">
+    <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__text"></div></div>
+  </template>
 
   <script>
     (function () {
       var dialog = document.getElementById('saga-chat');
       if (!dialog || !window.HTMLDialogElement) return;
 
-      var state = { sdk: false, registered: false, openedAt: 0, source: '', collection: '' };
-      var consentBox = dialog.querySelector('[data-saga-consent]');
-      var body = dialog.querySelector('[data-saga-body]');
-      var loading = dialog.querySelector('[data-saga-loading]');
+      var thread = dialog.querySelector('[data-saga-thread]');
+      var form = dialog.querySelector('[data-saga-form]');
+      var input = dialog.querySelector('[data-saga-input]');
+      var sendBtn = dialog.querySelector('[data-saga-send]');
+      var tpl = document.getElementById('saga-bubble-template');
+      var STORE = 'vb_saga_thread';
+      var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false };
 
       function track(name, props) {
         try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props || {}); } catch (e) {}
       }
+      function load() { try { var s = sessionStorage.getItem(STORE); if (s) state.messages = JSON.parse(s).slice(-40); } catch (e) {} }
+      function save() { try { sessionStorage.setItem(STORE, JSON.stringify(state.messages)); } catch (e) {} }
+      function turns() { return state.messages.filter(function (m) { return m.role === 'user'; }).length; }
 
-      function marketingAllowed() {
+      // Text with bare voxblock.co.uk URLs -> paragraphs with links; nothing else is interpreted
+      function render(text) {
+        var frag = document.createDocumentFragment();
+        text.split(/\n{2,}|\n/).forEach(function (para) {
+          if (!para.trim()) return;
+          var p = document.createElement('p');
+          var re = /(https:\/\/voxblock\.co\.uk\/[^\s]*)/g, last = 0, m;
+          while ((m = re.exec(para))) {
+            p.appendChild(document.createTextNode(para.slice(last, m.index)));
+            var url = m[1].replace(/[.,)]+$/, '');
+            var a = document.createElement('a');
+            a.href = url; a.textContent = linkLabel(url); a.className = 'saga-link';
+            a.addEventListener('click', function () { track('saga_link_clicked', { url: url, turn: turns() }); });
+            p.appendChild(a);
+            last = m.index + url.length;
+          }
+          p.appendChild(document.createTextNode(para.slice(last)));
+          frag.appendChild(p);
+        });
+        return frag;
+      }
+      function linkLabel(url) {
         try {
-          var cp = window.Shopify && window.Shopify.customerPrivacy;
-          if (!cp) return false;
-          if (typeof cp.marketingAllowed === 'function') return !!cp.marketingAllowed();
-          if (typeof cp.currentVisitorConsent === 'function') return cp.currentVisitorConsent().marketing === 'yes';
-        } catch (e) {}
-        return false;
+          var path = new URL(url).pathname;
+          if (path.indexOf('/products/') === 0) return 'See this pack';
+          if (path.indexOf('/collections/') === 0) return 'See the packs';
+          if (path.indexOf('/pages/character/') === 0) return 'Listen to the sample';
+          if (path.indexOf('/pages/voxblock-vs-yoto') === 0 || path.indexOf('/pages/compare') === 0) return 'See the comparison';
+          return 'Open the page';
+        } catch (e) { return 'Open the page'; }
       }
 
-      function ensureConsentApi(cb) {
-        if (window.Shopify && window.Shopify.customerPrivacy) return cb();
-        if (window.Shopify && typeof window.Shopify.loadFeatures === 'function') {
-          window.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], function () { cb(); });
-        } else { cb(); }
+      function bubble(role, text, pending) {
+        var el;
+        if (role === 'assistant') {
+          el = tpl.content.firstElementChild.cloneNode(true);
+          var t = el.querySelector('.saga-bubble__text');
+          if (pending) { el.classList.add('is-pending'); t.innerHTML = '<span></span><span></span><span></span>'; }
+          else t.appendChild(render(text));
+        } else {
+          el = document.createElement('div');
+          el.className = 'saga-bubble saga-bubble--user';
+          var u = document.createElement('div'); u.className = 'saga-bubble__text'; u.textContent = text; el.appendChild(u);
+        }
+        thread.appendChild(el);
+        thread.scrollTop = thread.scrollHeight;
+        return el;
       }
 
-      function loadSdk() {
-        if (state.sdk) return;
-        state.sdk = true;
-        var css = document.createElement('link');
-        css.rel = 'stylesheet'; css.href = dialog.dataset.sagaCss;
-        document.head.appendChild(css);
-        window.addEventListener('chat-messenger-loaded', function () {
-          if (state.registered) return;
-          state.registered = true;
-          try {
-            chatSdk.registerContext(
-              chatSdk.prebuilts.ces.createContext({
-                deploymentName: dialog.dataset.sagaDeployment,
-                tokenBroker: { enableTokenBroker: true, enableRecaptcha: true },
-                enableWelcomeEvent: true
-              })
-            );
-          } catch (e) { track('saga_error', { message: String(e && e.message) }); }
-          if (loading) loading.hidden = true;
-        }, { once: true });
-        var js = document.createElement('script');
-        js.src = dialog.dataset.sagaSdk; js.defer = true;
-        js.onerror = function () { if (loading) loading.textContent = 'Saga couldn’t load. Email hello@voxblock.co.uk and we’ll help.'; track('saga_error', { message: 'sdk_load_failed' }); };
-        document.head.appendChild(js);
+      function paint() {
+        thread.innerHTML = '';
+        if (!state.messages.length) {
+          state.messages.push({ role: 'assistant', content: dialog.dataset.sagaOpening });
+          save();
+        }
+        state.messages.forEach(function (m) { bubble(m.role, m.content); });
       }
 
-      function showChat() {
-        consentBox.hidden = true;
-        body.hidden = false;
-        loadSdk();
+      function setBusy(b) { state.busy = b; sendBtn.disabled = b; input.disabled = b; dialog.classList.toggle('is-busy', b); }
+
+      function fail(code, text) {
+        track('saga_error', { code: code, turn: turns() });
+        bubble('assistant', text || 'Sorry, something went wrong on my side. Try again in a moment, or email hello@voxblock.co.uk.');
       }
+
+      function send(text) {
+        if (state.busy || state.ended) return;
+        text = text.trim().slice(0, 1000);
+        if (!text) return;
+        state.messages.push({ role: 'user', content: text }); save();
+        bubble('user', text);
+        track('saga_message', { turn: turns(), chars: text.length });
+        input.value = ''; autosize();
+        setBusy(true);
+        var pending = bubble('assistant', '', true);
+        var started = Date.now();
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 30000);
+        fetch(dialog.dataset.sagaEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ messages: state.messages, page: { collection: state.collection, path: location.pathname } }),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
+          .then(function (res) {
+            pending.remove();
+            if (!res.ok || !res.body || !res.body.reply) {
+              var code = (res.body && res.body.error) || ('http_' + res.status);
+              if (code === 'slow_down') return fail(code, 'One at a time — give me a moment, then try again.');
+              if (code === 'saga_not_configured') return fail(code, 'I’m not switched on yet. Email hello@voxblock.co.uk and the team will help.');
+              return fail(code);
+            }
+            state.messages.push({ role: 'assistant', content: res.body.reply }); save();
+            bubble('assistant', res.body.reply);
+            if (res.body.ended) { state.ended = true; input.placeholder = 'Chat ended'; }
+            track('saga_reply', { turn: turns(), ms: Date.now() - started, links: (res.body.reply.match(/https:\/\/voxblock\.co\.uk/g) || []).length });
+          })
+          .catch(function (e) { pending.remove(); fail(e && e.name === 'AbortError' ? 'timeout' : 'network'); })
+          .then(function () { if (timer) clearTimeout(timer); setBusy(false); input.focus(); });
+      }
+
+      function autosize() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; }
+      input.addEventListener('input', autosize);
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input.value); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); send(input.value); });
 
       function open(source, collection) {
         state.source = source || 'unknown';
         state.collection = collection || '';
         state.openedAt = Date.now();
+        load(); paint();
         if (!dialog.open) dialog.showModal();
-        track('saga_opened', { source: state.source, collection: state.collection, consent: marketingAllowed() });
-        ensureConsentApi(function () {
-          if (marketingAllowed()) { showChat(); }
-          else { body.hidden = true; consentBox.hidden = false; track('saga_consent_blocked', { source: state.source }); }
-        });
+        track('saga_opened', { source: state.source, collection: state.collection, resumed: turns() > 0 });
+        setTimeout(function () { input.focus(); }, 50);
       }
 
-      // Entry points: data-saga-open="<source>" or href="#saga-chat"
       document.addEventListener('click', function (e) {
         var el = e.target.closest('[data-saga-open], a[href="#saga-chat"]');
         if (!el) return;
         e.preventDefault();
-        open(el.dataset.sagaOpen || 'help_link', el.dataset.sagaCollection || document.body.dataset.collectionHandle || '');
-      });
-
-      // Consent granted from inside the dialog: an explicit click, recorded through Shopify's API so Pandectes sees it too
-      dialog.addEventListener('click', function (e) {
-        if (!e.target.closest('[data-saga-consent-accept]')) return;
-        ensureConsentApi(function () {
-          try {
-            window.Shopify.customerPrivacy.setTrackingConsent({ marketing: true, analytics: true, preferences: true, sale_of_data: false }, function () {
-              track('saga_consent_granted', { source: state.source });
-              showChat();
-            });
-          } catch (err) { track('saga_error', { message: 'consent_api' }); }
-        });
+        open(el.dataset.sagaOpen || 'help_link', el.dataset.sagaCollection || '');
       });
 
       dialog.addEventListener('close', function () {
-        if (state.openedAt) track('saga_closed', { seconds_open: Math.round((Date.now() - state.openedAt) / 1000), source: state.source });
+        if (state.openedAt) track('saga_closed', { seconds_open: Math.round((Date.now() - state.openedAt) / 1000), source: state.source, turns: turns() });
         state.openedAt = 0;
       });
-
-      // Click on the backdrop closes
       dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
     })();
   </script>

@@ -1052,26 +1052,33 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Saga is the Voxblock sales assistant (Google CX Agent Studio). She opens in a dialog from the \"Ask Saga\" grid tile and from any \"Help me choose\" link set to #saga-chat. Nothing loads until a visitor opens her, and only with marketing consent."
+        "content": "Saga is the Voxblock sales assistant. She opens in a dialog from the \"Ask Saga\" grid tile and from any \"Help me choose\" link set to #saga-chat. The chat runs through the Voxblock Account app proxy (/apps/voxblock/saga); nothing third-party loads in the browser."
       },
       {
-        "type": "text",
-        "id": "saga_deployment",
-        "label": "Deployment name",
-        "info": "From CX Agent Studio → Deploy → the web widget channel: projects/…/locations/eu/apps/…/deployments/…. Empty switches Saga off everywhere.",
-        "default": "projects/19296515540/locations/eu/apps/c9c7a06c-0709-4127-bab7-f2e1d835c239/deployments/33ce3a8f-2366-46fb-ad9f-c786f2fbae3b"
+        "type": "checkbox",
+        "id": "saga_enabled",
+        "label": "Enable Saga",
+        "default": true,
+        "info": "Off removes the tile, the links' target and the dialog everywhere."
       },
       {
         "type": "text",
         "id": "saga_title",
-        "label": "Dialog title",
+        "label": "Name",
         "default": "Saga"
       },
       {
         "type": "text",
         "id": "saga_intro",
-        "label": "Line under the title",
+        "label": "Line under the name",
         "default": "Tell me the age of the child and I’ll suggest a pack."
+      },
+      {
+        "type": "text",
+        "id": "saga_endpoint",
+        "label": "Endpoint",
+        "default": "/apps/voxblock/saga",
+        "info": "App proxy path. Leave as is unless the proxy subpath changes."
       }
     ]
   },
