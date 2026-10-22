@@ -126,7 +126,7 @@ Supported variables
           </div>
         {%- else -%}
           <div {% unless block.settings.stack_blocks %}class="scroll-area bleed sm:unbleed"{% endunless %}>
-            <div data-option-selector class="variant-picker__option-values {% if opt_out_layout %}variant-picker__option-values--tiles{% endif %} {% if block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
+            <div data-option-selector class="variant-picker__option-values {% if opt_out_layout %}variant-picker__option-values--tiles {% if block.settings.photo_tiles %}variant-picker__option-values--photos{% endif %}{% endif %} {% if block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
               {% liquid
                 assign name = 'option' | append: option.position
 
@@ -146,6 +146,19 @@ Supported variables
                   
                   assign variant = product.variants | where:'title',value | first
                   
+                  assign tile_photo = nil
+
+                  if opt_out_layout and block.settings.photo_tiles
+                    assign tile_photo = value.variant.featured_media | default: variant.featured_media
+                  endif
+
+                  if tile_photo != blank
+                    # Photo tile: the variant's own product photo, cropped in CSS to show the bumper
+                    assign tile_colour = value.swatch.color | default: variant.metafields.bumper.colour
+                    render 'option-value', type: 'photo', value: value, image: tile_photo, color: tile_colour, selected: selected, name: name, form: form_id
+                    continue
+                  endif
+
                   case resolved_option_selector_style
                     when 'variant_image'
                       render 'option-value', type: 'thumbnail', value: value, image: value.variant.featured_media, selected: selected, name: name, form: form_id, bordered: true

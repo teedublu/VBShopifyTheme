@@ -11,7 +11,7 @@ Supported variables
 ********************************************
 
 
-* type: control the presentational type of the swatch. Can be "swatch", "block", "thumbnail" or "opt_out". [REQUIRED]
+* type: control the presentational type of the swatch. Can be "swatch", "block", "thumbnail", "photo" or "opt_out". [REQUIRED]
 * value: the value submitted to the server [REQUIRED]
 * name: the name attribute when field is submitted to the server [REQUIRED]
 * selected: if set to true, this swatch is preselected
@@ -34,6 +34,11 @@ Block swatch specific parameters
 * colors: an optional list of color drop (if not set, the theme will use the config based approach as a fallback). When more
           than one color is given, a conic gradient is generated. It supports up to 4 colors.
 * image: an optional image used as the background (if not set, the theme will use the config based approach as a fallback)
+
+Photo specific parameters (a tile that crops a product photo, with the colour name over it):
+
+* image: the photo (required)
+* color: optional colour shown as a dot next to the name and as the selected ring
 
 Opt-out specific parameters (a quiet text link that selects one value, e.g. "Prefer it without the bumper? £49.99"):
 
@@ -156,6 +161,18 @@ Color swatch specific parameters:
         <span>{{ label | default: value }}</span>
       </label>
     {%- endif -%}
+
+  {%- when 'photo' -%}
+    <label class="photo-swatch" for="{{ id | escape }}" data-option-value {% if color != blank %}style="--photo-swatch-colour: {{ color | escape }}"{% endif %}>
+      <span class="photo-swatch__frame">
+        {{- image | image_url: width: 320 | image_tag: loading: 'lazy', sizes: '(min-width: 1000px) 120px, 22vw', widths: '160,240,320', alt: value, class: 'photo-swatch__img' -}}
+        <span class="photo-swatch__tick" aria-hidden="true"></span>
+      </span>
+      <span class="photo-swatch__name">
+        {%- if color != blank -%}<span class="photo-swatch__dot" aria-hidden="true"></span>{%- endif -%}
+        {{ label | default: value }}
+      </span>
+    </label>
 
   {%- when 'opt_out' -%}
     <label class="opt-out-link" for="{{ id | escape }}" data-option-value>
