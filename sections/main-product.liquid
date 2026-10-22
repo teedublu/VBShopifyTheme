@@ -561,6 +561,13 @@ quick buy information in a template, that will be extracted in JS, but ensure it
           "label": "Show each value as a photo tile",
           "info": "With an opt-out option set: crops each value's own variant photo into the tile. Values without a variant photo fall back to the plain tile.",
           "default": true
+        },
+        {
+          "type": "text",
+          "id": "photo_tile_keyword",
+          "label": "Photo tile image keyword",
+          "info": "Picks the product image whose alt text has this value's tag (e.g. #Color_Blue) and this phrase. Leave empty to use each variant's own photo.",
+          "default": "front and back"
         }
       ]
     },

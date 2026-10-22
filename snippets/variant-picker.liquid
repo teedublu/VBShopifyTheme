@@ -149,7 +149,23 @@ Supported variables
                   assign tile_photo = nil
 
                   if opt_out_layout and block.settings.photo_tiles
-                    assign tile_photo = value.variant.featured_media | default: variant.featured_media
+                    # Preferred: the product image whose alt text carries this value's tag (e.g. #Color_Blue) and the keyword
+                    # (e.g. "front and back view"). Fallback: the variant's own featured photo.
+                    assign tile_keyword = block.settings.photo_tile_keyword | strip
+                    assign tile_tag = '#' | append: option.name | append: '_' | append: value
+
+                    if tile_keyword != blank
+                      for tile_media in product.media
+                        if tile_media.media_type == 'image' and tile_media.alt contains tile_tag and tile_media.alt contains tile_keyword
+                          assign tile_photo = tile_media
+                          break
+                        endif
+                      endfor
+                    endif
+
+                    if tile_photo == blank
+                      assign tile_photo = value.variant.featured_media | default: variant.featured_media
+                    endif
                   endif
 
                   if tile_photo != blank

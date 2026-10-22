@@ -1227,16 +1227,16 @@ html.vb-has-player .cart-player-prompt { display: none; }
 :focus-visible + .opt-out-link { outline: 2px solid currentColor; outline-offset: 2px; }
 :disabled + .opt-out-link { opacity: .5; cursor: not-allowed; }
 
-/* Photo tiles: each colour is a crop of its own product photo (child's hand, the story card, the coloured bumper edge).
+/* Photo tiles: each colour is a crop of its own product photo (the bumper off and on the player).
    Selected = a thick ring in the bumper's own colour, a tick and a lift; the rest stay bright so every colour tempts. */
 .variant-picker__option-values--photos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-2); }
 .photo-swatch { --photo-swatch-colour: var(--brand-heading); display: flex; flex-direction: column; gap: .4rem; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.photo-swatch__frame { position: relative; display: block; aspect-ratio: 1 / 1.08; overflow: hidden; border-radius: 1rem; background: #fff; box-shadow: 0 0 0 1.5px var(--card-border), 0 2px 8px rgb(86 86 86 / .08); transition: transform .18s ease, box-shadow .18s ease; }
-.photo-swatch__img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.4); transform-origin: 50% 60%; transition: transform .35s ease; }
+.photo-swatch__frame { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 1rem; background: #fff; box-shadow: 0 0 0 1.5px var(--card-border), 0 2px 8px rgb(86 86 86 / .08); transition: transform .18s ease, box-shadow .18s ease; }
+.photo-swatch__img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .35s ease; }
 .photo-swatch:hover .photo-swatch__frame { transform: translateY(-2px); box-shadow: 0 0 0 1.5px var(--photo-swatch-colour), 0 8px 18px rgb(86 86 86 / .16); }
-.photo-swatch:hover .photo-swatch__img { transform: scale(1.5); }
+.photo-swatch:hover .photo-swatch__img { transform: scale(1.08); }
 :checked + .photo-swatch .photo-swatch__frame { box-shadow: 0 0 0 3px var(--photo-swatch-colour), 0 10px 22px rgb(86 86 86 / .2); transform: translateY(-2px); }
-:checked + .photo-swatch .photo-swatch__img { transform: scale(1.5); }
+:checked + .photo-swatch .photo-swatch__img { transform: scale(1.08); }
 .photo-swatch__tick { position: absolute; top: .35rem; right: .35rem; display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--photo-swatch-colour); color: #fff; font-size: .8rem; line-height: 1; box-shadow: 0 1px 4px rgb(0 0 0 / .3); opacity: 0; transform: scale(.6); transition: opacity .15s ease, transform .15s ease; }
 .photo-swatch__tick::before { content: "\2713"; }
 :checked + .photo-swatch .photo-swatch__tick { opacity: 1; transform: scale(1); }
