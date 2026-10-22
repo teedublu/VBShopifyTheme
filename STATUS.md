@@ -46,6 +46,20 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-22: Player buy box (from price, photo colour tiles, opt-out link)
+Branch `claude/player-bumper-picker`, **draft PR #100** (https://github.com/teedublu/VBShopifyTheme/pull/100), draft theme "Player buy box (claude/player-bumper-picker)" (id 200444903808, files checksum-verified against the branch head). **Awaiting owner check on phone and desktop before marking ready.** Design: canvas "Player page variant picker" (desktop + mobile; predates the photo tiles, not updated).
+Why: since the 24 Sep reorder "No bumper" is the first variant, so the page opened on the £49.99 plain player and took 12% of player sales (33% when it was first and £39.99); every "£49.99" ad lands on it. Reordering in the admin sets the 23 bundles containing a player variant to draft, so the order is left alone and the theme sets the default.
+- Default: variant picker block setting "Preselected option value" (player = Orange), else the first available non-opt-out value; only when the URL has no `?variant=` (a `?variant=` link always wins, ads can still land on No bumper on purpose). Passed to gallery, product info, picker and buy buttons.
+- Headline (Price block, "Show from price"): `from <product.price_min>` on load, then the selected variant's own price once a value is chosen, theme price colour (`--accent-strong`). Note beside it from three Price block settings (from note, "including {option} bumper", opt-out note). Small inline script swaps state on `variant:change` and on re-click of the selected value.
+- Colour chooser: photo tiles (`option-value` type `photo`) using the product image whose alt has `#Color_<value>` + keyword "front and back view" (setting "Photo tile image keyword"), fallback the variant's own photo. Names screen-reader only; the picker's own "Bumper colour: X" label is visually hidden.
+- Opt-out: "Prefer it without the bumper? <variant price>" text link in the same radio group.
+- CSS at the end of `voxblock.css.liquid`; locale key `product.price.from_price_lowercase` (English only).
+- Not checked in a live browser: headline/note switching, opt-out, cart variant, Shop Pay button and sticky bar following the selection.
+- Fragile: tile images rely on image alt text keeping `#Color_<value>` and "front and back view".
+- Open: Shopping feed offer should stay the No bumper variant so "from £49.99" and the feed price agree.
+- Open, separate: a test cart showed a 12.5% product discount (-£7.49) on the player. Not a code or automatic discount; likeliest the UpPromote Affiliate app's discount function (live 20 Oct 14:34), unconfirmed. Check its referral discount and any affiliate cookie.
+- Performance review: `/products/voxblock-audiobook-player` (new picker markup, no new requests).
+
 ## 2026-10-16: Refer a friend page (3 Golden Tokens)
 Branch `claude/refer-a-friend`, draft PR #96, draft theme "Refer a friend (claude/refer-a-friend)" (id 200116863360, duplicate of live + changed files by API). **Awaiting owner check, phone and desktop.** Review: LPS `claude/refer-a-friend-review.md`; data plan: LPS `claude/referrals-catalyst-plan.md`.
 - New sections `referral-intro` (signed out: offer + button to /account; signed in: `referrals.code` with copy, share link `/discount/<code>`, WhatsApp, email; `#N/A`/blank code gets a contact line; token count behind a setting, off) and `referral-rewards` (products read live + £30 e-gift card tile); snippet `referral-token`.

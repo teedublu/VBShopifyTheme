@@ -1,5 +1,6 @@
 {%- comment -%}Open on the picture of the variant the picker shows as selected. product.selected_variant is only set when the URL has ?variant=, so without it the gallery opened on the product's first image (e.g. a green pack while Orange was selected).{%- endcomment -%}
-{%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+{%- assign current_variant = default_variant | default: product.selected_or_first_available_variant -%}
+{%- assign default_media = current_variant.featured_media | default: product.featured_media -%}
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 {%- capture product_gallery_id -%}product-gallery-{{ product.id }}-{{ section.id }}{%- endcapture -%}

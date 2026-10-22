@@ -1193,3 +1193,59 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .referral-steps__step { flex-direction: column; padding: 22px; }
   .referral-steps__step--code { flex-direction: row; }
 }
+
+/* ---------------------------- */
+/* PRODUCT PAGE: "from" price + opt-out picker */
+/* Shared components, switched on per product by block settings: price block "Show from price", variant picker
+   "Opt-out option value". First use: the player (bumper colour tiles, "Prefer it without the bumper?" link).
+   Design canvas: "Player page variant picker". */
+/* ---------------------------- */
+/* Headline price: "from £49.99" until a value is chosen, then that variant's own price, plus a short note beside it that
+   follows the choice (e.g. "including red bumper"). Theme price colour (--accent-strong). */
+.product-info__headline-price { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--spacing-3); }
+.product-info__headline-price .product-info__from-price,
+.product-info__headline-price sale-price { margin: 0; font-size: var(--text-h2); line-height: 1.1; font-weight: 700; color: var(--accent-strong); }
+.product-info__headline-price[data-state="from"] price-list { display: none; }
+.product-info__headline-price[data-state="selected"] .product-info__from-price { display: none; }
+.product-info__price-note { font-size: var(--text-base); font-weight: 600; color: var(--accent-strong); }
+
+/* Values as tiles: a mini player in its bumper colour over the name, one row of four on a phone */
+.variant-picker__option-values--tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(4.25rem, 1fr)); gap: var(--spacing-2); }
+.variant-picker__option-values--tiles { gap: var(--spacing-2-5, .625rem); padding-block: .5rem; }
+.variant-picker__option-values--tiles .block-swatch { flex-direction: column; justify-content: center; gap: var(--spacing-2); height: auto; min-height: 7rem; padding: var(--spacing-3) var(--spacing-1) var(--spacing-2); border-radius: 1rem; border-color: var(--card-border); font-size: var(--text-sm); color: var(--brand-text); cursor: pointer; transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease; }
+.variant-picker__option-values--tiles .block-swatch:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgb(86 86 86 / .14); }
+/* The colour is drawn as a small player in its bumper: coloured frame, white face, book tray */
+.variant-picker__option-values--tiles .block-swatch__color { position: relative; width: 2.75rem; height: 3.5rem; border-radius: .85rem; box-shadow: 0 3px 8px rgb(0 0 0 / .18); }
+.variant-picker__option-values--tiles .block-swatch__color::before { content: ""; position: absolute; inset: .3rem; border-radius: .6rem; background: #fff; }
+.variant-picker__option-values--tiles .block-swatch__color::after { content: ""; position: absolute; left: 50%; top: .85rem; width: 1.35rem; height: 1.6rem; transform: translateX(-50%); border-radius: .35rem; background: #eef2f2; box-shadow: inset 0 1px 3px rgb(0 0 0 / .14); }
+/* Selected: one brand ring (replaces the theme's dark ring), a tick badge, a soft tint, bolder name */
+.variant-picker__option-values--tiles .block-swatch:before { box-shadow: 0 0 0 2px var(--brand-heading); }
+.variant-picker__option-values--tiles :checked + .block-swatch { border-color: transparent; background: rgb(var(--brand-heading-rgb) / .06); color: var(--brand-heading); font-weight: 600; box-shadow: 0 6px 16px rgb(var(--brand-heading-rgb) / .18); }
+.variant-picker__option-values--tiles :checked + .block-swatch::after { content: "\2713"; position: absolute; top: -.45rem; right: -.45rem; display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: .8rem; line-height: 1; }
+.variant-picker__option-values--tiles :focus-visible + .block-swatch { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
+
+/* The opt-out value: a quiet text link on its own row under the tiles, still a real radio in the same group */
+.variant-picker__option-values--tiles .opt-out-link { grid-column: 1 / -1; justify-self: start; display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35em; min-height: 44px; padding: .5rem .75rem; margin-inline-start: -.75rem; border-radius: 999px; color: var(--brand-heading); font-size: var(--text-sm); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.opt-out-link__price { font-weight: 600; }
+.opt-out-link:hover { background: rgb(var(--brand-heading-rgb) / .06); }
+:checked + .opt-out-link { background: rgb(var(--brand-heading-rgb) / .1); font-weight: 600; text-decoration: none; }
+:focus-visible + .opt-out-link { outline: 2px solid currentColor; outline-offset: 2px; }
+:disabled + .opt-out-link { opacity: .5; cursor: not-allowed; }
+
+/* Photo tiles: each colour is a crop of its own product photo (the bumper off and on the player).
+   Selected = a thick ring in the bumper's own colour, a tick and a lift; the rest stay bright so every colour tempts. */
+.variant-picker__option-values--photos { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--spacing-2); }
+.photo-swatch { --photo-swatch-colour: var(--brand-heading); display: flex; flex-direction: column; gap: .4rem; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.photo-swatch__frame { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 1rem; background: #fff; box-shadow: 0 0 0 1.5px var(--card-border), 0 2px 8px rgb(86 86 86 / .08); transition: transform .18s ease, box-shadow .18s ease; }
+.photo-swatch__img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .35s ease; }
+.photo-swatch:hover .photo-swatch__frame { transform: translateY(-2px); box-shadow: 0 0 0 1.5px var(--photo-swatch-colour), 0 8px 18px rgb(86 86 86 / .16); }
+.photo-swatch:hover .photo-swatch__img { transform: scale(1.08); }
+:checked + .photo-swatch .photo-swatch__frame { box-shadow: 0 0 0 3px var(--photo-swatch-colour), 0 10px 22px rgb(86 86 86 / .2); transform: translateY(-2px); }
+:checked + .photo-swatch .photo-swatch__img { transform: scale(1.08); }
+.photo-swatch__tick { position: absolute; top: .35rem; right: .35rem; display: grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--photo-swatch-colour); color: #fff; font-size: .8rem; line-height: 1; box-shadow: 0 1px 4px rgb(0 0 0 / .3); opacity: 0; transform: scale(.6); transition: opacity .15s ease, transform .15s ease; }
+.photo-swatch__tick::before { content: "\2713"; }
+:checked + .photo-swatch .photo-swatch__tick { opacity: 1; transform: scale(1); }
+:focus-visible + .photo-swatch { outline: none; }
+:focus-visible + .photo-swatch .photo-swatch__frame { outline: 2px solid var(--brand-heading); outline-offset: 3px; }
+:disabled + .photo-swatch { opacity: .5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .photo-swatch__frame, .photo-swatch__img, .photo-swatch__tick { transition: none; } }

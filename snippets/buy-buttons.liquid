@@ -18,6 +18,7 @@ Supported variables
 * payment_button_background: the custom dynamic checkout button background
 * payment_button_text_color: the custom dynamic checkout button text color
 * form_id: if specified, define the form ID linked to this input
+* default_variant: the variant to preselect (set by the product section); falls back to Shopify's selected or first available variant
 {%- endcomment -%}
 
 {%- assign variant_picker_block = section.blocks | where: 'type', 'variant_picker' | first -%}
@@ -29,13 +30,15 @@ Supported variables
   {%- assign show_payment_button = false -%}
 {%- endif -%}
 
+{%- assign current_variant = default_variant | default: product.selected_or_first_available_variant -%}
+
 {%- form 'product', product, is: 'product-form', id: form_id -%}
-  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ product.selected_or_first_available_variant.id }}">
+  <input type="hidden" {% if variant_picker_block != blank %}disabled{% endif %} name="id" value="{{ current_variant.id }}">
 
   {%- assign button_disabled = false -%}
   {%- assign button_size = button_size | default: 'xl' -%}
 
-  {%- if product.selected_or_first_available_variant.available -%}
+  {%- if current_variant.available -%}
     {%- if product.template_suffix contains 'pre-order' -%}
       {%- capture button_content -%}{{ 'product.general.pre_order_button' | t }}{%- endcapture -%}
     {%- else -%}
@@ -81,7 +84,7 @@ Supported variables
 
         <style>
           #shopify-section-{{ section.id }} .shopify-payment-button {
-          {%- unless product.selected_or_first_available_variant.available -%}
+          {%- unless current_variant.available -%}
             display: none;
           {%- endunless -%}
 
