@@ -15,10 +15,15 @@ PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply`
 `saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_reset` {turn}, `saga_error` {code},
 `saga_closed` {seconds_open, turns}.
 
-Quick-reply pills: the opening message always offers "Choosing for a child" / "I already have one"
-(hardcoded here — the opening line itself is hardcoded too). The backend can also attach pills to any
-reply via `prompts: [...]` in the JSON response (today only the child's-age question does); clicking one
-sends its text exactly as if typed, same as any other message.
+Quick-reply pills: the opening question and its pills depend on how the dialog was opened (`source`, set by
+`data-saga-open` on the trigger element). Both of today's entry points — the "Ask Saga" grid tile
+(collection_tile) and the filter-bar "Help me choose" link (help_link) — already mean "choosing a pack", so
+their opening skips straight to the age question with age-band pills instead of asking "choosing or already
+own one", which the visitor just told us by clicking. Any other/future source (e.g. a books-flavoured embed,
+For code 12 item 7) falls back to the generic two-way opening. See `openingFor()`.
+The backend can also attach pills to any reply via `prompts: [...]` in the JSON response (today only the
+child's-age question does, when the generic opening was used); clicking one sends its text exactly as if
+typed, same as any other message.
 {%- endcomment -%}
 
 {%- if settings.saga_enabled -%}
@@ -26,7 +31,8 @@ sends its text exactly as if typed, same as any other message.
   {%- assign saga_title = settings.saga_title | default: 'Saga' -%}
   <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
     data-saga-endpoint="{{ settings.saga_endpoint | default: '/apps/voxblock/saga' | escape }}"
-    data-saga-opening="Hi, I’m {{ saga_title | escape }}. Are you looking at a Voxblock for a child, or do you already have one?">
+    data-saga-opening="Hi, I’m {{ saga_title | escape }}. Are you looking at a Voxblock for a child, or do you already have one?"
+    data-saga-opening-choosing="Hi, I’m {{ saga_title | escape }}. How old is the child you’re choosing for?">
     <div class="saga-dialog__actions">
       <button type="button" class="saga-dialog__icon-btn" data-saga-restart aria-label="Start a new conversation" title="Start a new conversation">
         <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.6 6.4"/><path d="M3 21v-6h6"/></svg>
@@ -75,6 +81,16 @@ sends its text exactly as if typed, same as any other message.
       var tpl = document.getElementById('saga-bubble-template');
       var STORE = 'vb_saga_thread';
       var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false };
+
+      // Entry points that already mean "choosing a pack" skip the two-way opening question and ask
+      // age directly — the visitor just told us their intent by clicking. Anything else (a source we
+      // don't recognise, including future embeds) gets the generic opening.
+      var CHOOSING_SOURCES = { collection_tile: true, help_link: true };
+      var AGE_PROMPTS = ['Under 5', '5 to 8', '8 to 10', '10 to teens'];
+      function openingFor(source) {
+        if (CHOOSING_SOURCES[source]) return { text: dialog.dataset.sagaOpeningChoosing, prompts: AGE_PROMPTS };
+        return { text: dialog.dataset.sagaOpening, prompts: ['Choosing for a child', 'I already have one'] };
+      }
 
       function track(name, props) {
         try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props || {}); } catch (e) {}
@@ -157,13 +173,12 @@ sends its text exactly as if typed, same as any other message.
       function paint() {
         thread.innerHTML = '';
         if (!state.messages.length) {
-          state.messages.push({ role: 'assistant', content: dialog.dataset.sagaOpening });
+          state.messages.push({ role: 'assistant', content: openingFor(state.source).text });
           save();
         }
         state.messages.forEach(function (m, i) {
-          var openingPrompts = i === 0 && state.messages.length === 1 && m.role === 'assistant'
-            ? ['Choosing for a child', 'I already have one'] : null;
-          bubble(m.role, m.content, false, openingPrompts);
+          var isOpening = i === 0 && state.messages.length === 1 && m.role === 'assistant';
+          bubble(m.role, m.content, false, isOpening ? openingFor(state.source).prompts : null);
         });
       }
 
@@ -191,7 +206,7 @@ sends its text exactly as if typed, same as any other message.
         fetch(dialog.dataset.sagaEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ messages: state.messages, page: { collection: state.collection, path: location.pathname } }),
+          body: JSON.stringify({ messages: state.messages, page: { collection: state.collection, path: location.pathname, source: state.source } }),
           signal: ctrl ? ctrl.signal : undefined
         }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
           .then(function (res) {
