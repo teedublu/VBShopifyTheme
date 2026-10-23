@@ -21,8 +21,32 @@ only way to do it on Shopify right now.
       {%- assign alt_parts = media.alt | split: '#' -%}
 
       {%- assign media_group_parts = alt_parts.last | split: '_' -%}
-      {%- assign option = product.options_by_name[media_group_parts.first] -%}
-      {%- assign option_value = option.selected_value | downcase -%}
+
+      {%- comment -%}
+      Match the tag's group name (#Color_Green -> "Color") to the product's option name loosely, so "Colour" and "Color" are
+      the same and an option called "Voxblock Audiobook Player (Color)" counts as "Color". An exact name wins over a partial one.
+      The same rule is in _getFilteredMediaIndexes in assets/theme.js.liquid, keep them in step.
+      {%- endcomment -%}
+      {%- assign group_name = media_group_parts.first | strip | downcase | replace: 'colour', 'color' -%}
+      {%- assign option_value = '' -%}
+      {%- assign option_found = false -%}
+      {%- for product_option in product.options_with_values -%}
+        {%- assign product_option_name = product_option.name | downcase | replace: 'colour', 'color' -%}
+        {%- if product_option_name == group_name -%}
+          {%- assign option_value = product_option.selected_value | downcase -%}
+          {%- assign option_found = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if option_found == false and group_name != blank -%}
+        {%- for product_option in product.options_with_values -%}
+          {%- assign product_option_name = product_option.name | downcase | replace: 'colour', 'color' -%}
+          {%- if product_option_name contains group_name -%}
+            {%- assign option_value = product_option.selected_value | downcase -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
 
       {%- assign downcase_group_value = media_group_parts.last | strip | downcase -%}
 
