@@ -12,18 +12,20 @@ collection "Help me choose" link/card (main-collection `help_url`).
 
 Theme settings (Settings → Saga chat): `saga_enabled`, `saga_title`, `saga_intro`, `saga_endpoint`.
 PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply` {turn, ms, links},
-`saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_reset` {turn}, `saga_error` {code},
-`saga_closed` {seconds_open, turns}.
+`saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_faq_clicked` {question}, `saga_reset` {turn},
+`saga_error` {code}, `saga_closed` {seconds_open, turns}.
 
-Quick-reply pills: the opening question and its pills depend on how the dialog was opened (`source`, set by
-`data-saga-open` on the trigger element). Both of today's entry points — the "Ask Saga" grid tile
-(collection_tile) and the filter-bar "Help me choose" link (help_link) — already mean "choosing a pack", so
-their opening skips straight to the age question with age-band pills instead of asking "choosing or already
-own one", which the visitor just told us by clicking. Any other/future source (e.g. a books-flavoured embed,
-For code 12 item 7) falls back to the generic two-way opening. See `openingFor()`.
-The backend can also attach pills to any reply via `prompts: [...]` in the JSON response (today only the
-child's-age question does, when the generic opening was used); clicking one sends its text exactly as if
-typed, same as any other message.
+Opening is the same plain, open-ended line everywhere ("Hi, I'm Saga. How can I help?"), no matter which
+entry point opened the dialog — deliberately: it costs the visitor a little more typing than jumping straight
+to an age question, but it means Saga hears what they actually want to know before narrowing in, rather than
+assuming "choosing a pack" from the click alone (decided 23 Oct, superseding the earlier age-pill-on-open
+behaviour). `data-saga-open`'s `source` value is still sent to the backend and still logged on `saga_opened`,
+for analytics only.
+The backend can attach pills to any reply via `prompts: [...]` in the JSON response (e.g. the age question,
+once the model actually needs an age to recommend a pack); clicking one sends its text exactly as if typed,
+same as any other message. Separately, the opening screen only (hidden the moment any message is sent) shows
+a collapsed "People also ask" list of a few starter questions for anyone who'd rather tap than type —
+`.saga-faq` below; clicking an item sends it exactly like typing it.
 {%- endcomment -%}
 
 {%- if settings.saga_enabled -%}
@@ -31,8 +33,7 @@ typed, same as any other message.
   {%- assign saga_title = settings.saga_title | default: 'Saga' -%}
   <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
     data-saga-endpoint="{{ settings.saga_endpoint | default: '/apps/voxblock/saga' | escape }}"
-    data-saga-opening="Hi, I’m {{ saga_title | escape }}. Are you looking at a Voxblock for a child, or do you already have one?"
-    data-saga-opening-choosing="Hi, I’m {{ saga_title | escape }}. How old is the person you have in mind?">
+    data-saga-opening="Hi, I’m {{ saga_title | escape }}. How can I help?">
     <div class="saga-dialog__actions">
       <button type="button" class="saga-dialog__icon-btn" data-saga-restart aria-label="Start a new conversation" title="Start a new conversation">
         <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.6 6.4"/><path d="M3 21v-6h6"/></svg>
@@ -54,6 +55,16 @@ typed, same as any other message.
 
     <div class="saga-dialog__body">
       <div class="saga-thread" data-saga-thread role="log" aria-live="polite" aria-relevant="additions"></div>
+      <details class="saga-faq" data-saga-faq>
+        <summary class="saga-faq__summary">People also ask</summary>
+        <div class="saga-faq__list">
+          <button type="button" class="saga-faq__item">How old does my child need to be?</button>
+          <button type="button" class="saga-faq__item">How much does a starter pack cost?</button>
+          <button type="button" class="saga-faq__item">How does delivery work?</button>
+          <button type="button" class="saga-faq__item">Is this better than Yoto or Tonies?</button>
+          <button type="button" class="saga-faq__item">Do you do anything for schools?</button>
+        </div>
+      </details>
       <form class="saga-compose" data-saga-form>
         <label for="saga-input" class="sr-only">Your message</label>
         <textarea id="saga-input" class="saga-compose__input" rows="1" maxlength="1000" placeholder="Ask something…" autocomplete="off" enterkeyhint="send" data-saga-input></textarea>
@@ -83,15 +94,7 @@ typed, same as any other message.
       var TYPES_STORE = 'vb_saga_seen_types';
       var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false, seenTypes: {} };
 
-      // Entry points that already mean "choosing a pack" skip the two-way opening question and ask
-      // age directly — the visitor just told us their intent by clicking. Anything else (a source we
-      // don't recognise, including future embeds) gets the generic opening.
-      var CHOOSING_SOURCES = { collection_tile: true, help_link: true };
-      var AGE_PROMPTS = ['Under 5', '5 to 8', '8 to 10', '10 to teens', 'Adult'];
-      function openingFor(source) {
-        if (CHOOSING_SOURCES[source]) return { text: dialog.dataset.sagaOpeningChoosing, prompts: AGE_PROMPTS };
-        return { text: dialog.dataset.sagaOpening, prompts: ['Choosing for a child', 'I already have one'] };
-      }
+      var faq = dialog.querySelector('[data-saga-faq]');
 
       function track(name, props) {
         try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props || {}); } catch (e) {}
@@ -190,13 +193,11 @@ typed, same as any other message.
       function paint() {
         thread.innerHTML = '';
         if (!state.messages.length) {
-          state.messages.push({ role: 'assistant', content: openingFor(state.source).text });
+          state.messages.push({ role: 'assistant', content: dialog.dataset.sagaOpening });
           save();
         }
-        state.messages.forEach(function (m, i) {
-          var isOpening = i === 0 && state.messages.length === 1 && m.role === 'assistant';
-          bubble(m.role, m.content, false, isOpening ? openingFor(state.source).prompts : null);
-        });
+        state.messages.forEach(function (m) { bubble(m.role, m.content); });
+        if (faq) faq.hidden = turns() > 0;
       }
 
       function setBusy(b) { state.busy = b; sendBtn.disabled = b; input.disabled = b; dialog.classList.toggle('is-busy', b); }
@@ -211,6 +212,7 @@ typed, same as any other message.
         text = text.trim().slice(0, 1000);
         if (!text) return;
         clearPrompts();
+        if (faq) faq.hidden = true;
         state.messages.push({ role: 'user', content: text }); save();
         bubble('user', text);
         track('saga_message', { turn: turns(), chars: text.length });
@@ -267,6 +269,16 @@ typed, same as any other message.
       }
       var restartBtn = dialog.querySelector('[data-saga-restart]');
       if (restartBtn) restartBtn.addEventListener('click', restart);
+
+      if (faq) {
+        faq.addEventListener('click', function (e) {
+          var btn = e.target.closest('.saga-faq__item');
+          if (!btn) return;
+          var question = btn.textContent.trim();
+          track('saga_faq_clicked', { question: question, turn: turns() });
+          send(question);
+        });
+      }
 
       function open(source, collection) {
         state.source = source || 'unknown';

@@ -1303,6 +1303,15 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .saga-bubble.is-pending span { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-heading); opacity: .35; animation: saga-dot 1.2s infinite; }
 .saga-bubble.is-pending span:nth-child(2) { animation-delay: .2s; } .saga-bubble.is-pending span:nth-child(3) { animation-delay: .4s; }
 @keyframes saga-dot { 0%, 80%, 100% { opacity: .35; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+.saga-faq { margin: 0 14px; padding: 8px 0; border-top: 1px solid var(--card-border); }
+.saga-faq[hidden] { display: none; }
+.saga-faq__summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 600; color: var(--brand-heading); }
+.saga-faq__summary::-webkit-details-marker { display: none; }
+.saga-faq__summary::after { content: '▾'; font-size: 10px; transition: transform .15s ease; }
+.saga-faq[open] .saga-faq__summary::after { transform: rotate(180deg); }
+.saga-faq__list { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.saga-faq__item { text-align: left; padding: 8px 11px; border: 1px solid var(--card-border); border-radius: 10px; background: #fff; color: var(--brand-text); font: inherit; font-size: 13px; cursor: pointer; }
+.saga-faq__item:hover, .saga-faq__item:focus-visible { background: #fff7f0; border-color: var(--brand-heading); }
 .saga-compose { display: flex; align-items: flex-end; gap: 8px; margin: 0; padding: 8px 12px; border-top: 1px solid var(--card-border); }
 .saga-compose__input { flex: 1; resize: none; min-height: 44px; max-height: 120px; padding: 11px 14px; border: 1px solid var(--card-border); border-radius: 22px; font: inherit; font-size: 16px; line-height: 20px; color: var(--brand-text); background: #fff; }
 .saga-compose__input:focus { outline: 2px solid var(--brand-heading); outline-offset: 1px; }
