@@ -80,7 +80,8 @@ typed, same as any other message.
       var sendBtn = dialog.querySelector('[data-saga-send]');
       var tpl = document.getElementById('saga-bubble-template');
       var STORE = 'vb_saga_thread';
-      var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false };
+      var TYPES_STORE = 'vb_saga_seen_types';
+      var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false, seenTypes: {} };
 
       // Entry points that already mean "choosing a pack" skip the two-way opening question and ask
       // age directly — the visitor just told us their intent by clicking. Anything else (a source we
@@ -97,6 +98,16 @@ typed, same as any other message.
       }
       function load() { try { var s = sessionStorage.getItem(STORE); if (s) state.messages = JSON.parse(s).slice(-40); } catch (e) {} }
       function save() { try { sessionStorage.setItem(STORE, JSON.stringify(state.messages)); } catch (e) {} }
+      function loadSeenTypes() { try { var s = sessionStorage.getItem(TYPES_STORE); state.seenTypes = s ? JSON.parse(s) : {}; } catch (e) { state.seenTypes = {}; } }
+      // One persistent visitor repeating the same kind of question all through a session shouldn't flood
+      // the "what sort of questions are people asking" analysis — track each type once per session; the
+      // first time it's seen, true (go ahead and track it); every later occurrence, false (skip it).
+      function markTypeSeen(type) {
+        if (!type || state.seenTypes[type]) return false;
+        state.seenTypes[type] = true;
+        try { sessionStorage.setItem(TYPES_STORE, JSON.stringify(state.seenTypes)); } catch (e) {}
+        return true;
+      }
       function turns() { return state.messages.filter(function (m) { return m.role === 'user'; }).length; }
 
       // Text with bare voxblock.co.uk URLs -> paragraphs with links; nothing else is interpreted
@@ -227,6 +238,9 @@ typed, same as any other message.
             bubble('assistant', res.body.reply, false, res.body.prompts, res.body.image);
             if (res.body.ended) { state.ended = true; input.placeholder = 'Chat ended'; }
             track('saga_reply', { turn: turns(), ms: Date.now() - started, links: (res.body.reply.match(/https:\/\/voxblock\.co\.uk/g) || []).length });
+            if (res.body.meta && markTypeSeen(res.body.meta.type)) {
+              track('saga_question_type', { type: res.body.meta.type, sentiment: res.body.meta.sentiment, turn: turns() });
+            }
           })
           .catch(function (e) { pending.remove(); fail(e && e.name === 'AbortError' ? 'timeout' : 'network'); })
           .then(function () { if (timer) clearTimeout(timer); setBusy(false); input.focus(); });
@@ -243,7 +257,8 @@ typed, same as any other message.
         track('saga_reset', { turn: turns() });
         state.messages = [];
         state.ended = false;
-        try { sessionStorage.removeItem(STORE); } catch (e) {}
+        state.seenTypes = {};
+        try { sessionStorage.removeItem(STORE); sessionStorage.removeItem(TYPES_STORE); } catch (e) {}
         setBusy(false);
         input.value = ''; autosize();
         input.placeholder = 'Ask something…';
@@ -257,7 +272,7 @@ typed, same as any other message.
         state.source = source || 'unknown';
         state.collection = collection || '';
         state.openedAt = Date.now();
-        load(); paint();
+        load(); loadSeenTypes(); paint();
         if (!dialog.open) dialog.showModal();
         track('saga_opened', { source: state.source, collection: state.collection, resumed: turns() > 0 });
         setTimeout(function () { input.focus(); }, 50);
