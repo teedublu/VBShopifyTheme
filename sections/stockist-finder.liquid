@@ -82,7 +82,7 @@ fab_invite_pin, fab_empty_suggest.
             <p class="stockist-card__address" data-card-address></p>
             <p class="stockist-card__note" data-card-note>{{ section.settings.card_note | escape }}</p>
             <div class="stockist-card__actions">
-              <a class="button button--sm" href="#" target="_blank" rel="noopener" data-card-directions data-vs-track="fab_directions">{{ section.settings.directions_text | escape }}</a>
+              <a class="button button--sm" href="#" target="_blank" rel="nofollow noopener" data-card-directions data-vs-track="fab_directions">{{ section.settings.directions_text | escape }}</a>
               <a class="button button--sm button--outline" href="#" target="_blank" rel="noopener" data-card-website data-vs-track="fab_website">{{ section.settings.website_text | escape }}</a>
             </div>
           </div>
@@ -125,7 +125,7 @@ fab_invite_pin, fab_empty_suggest.
                 <span class="stockist-row__distance" data-distance hidden></span>
               </button>
               <span class="stockist-row__links">
-                <a href="https://www.google.com/maps/search/?api=1&amp;query={{ maps_query | url_encode }}" target="_blank" rel="noopener" data-vs-track="fab_directions">{{ section.settings.directions_text | escape }}</a>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query={{ maps_query | url_encode }}" target="_blank" rel="nofollow noopener" data-vs-track="fab_directions">{{ section.settings.directions_text | escape }}</a>
                 {%- if s_website != blank -%}<a href="{{ s_website }}" target="_blank" rel="noopener" data-vs-track="fab_website">{{ web_label | escape }}</a>{%- endif -%}
               </span>
             </li>

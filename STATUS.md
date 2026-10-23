@@ -53,6 +53,7 @@ Branch `claude/find-a-bookshop`, draft PR, draft theme "Find a bookshop (claude/
 - `stockist-suggest` and `stockist-join` are Shopify contact forms (to the store contact email), hidden field "Form" = "Bookshop suggestion" / "Stockist enquiry". Two contact forms on one page: thank-you shows for the form named in the redirect hash (snippet `stockist-form-thanks-script`).
 - Benefit copy (owner, 23 Oct): demo players, table-top displays, POS cards, marketing material; no minimum order, fair margin, a real person to speak to.
 - Not done: Darling Reads appears in the old photo carousel but not in the shop list (owner to confirm). Page admin SEO title/meta still "Find a Bookshop".
+- Links: Google Maps "Directions" links are rel=nofollow (utility, not endorsement); bookshop website links stay followed (owner asked 23 Oct; nofollow would not keep link value on our page).
 - Tracking (vs_yoto_click targets): fab_hero_find, fab_hero_join, fab_hero_tile, fab_row, fab_pin, fab_directions, fab_website, fab_locate, fab_postcode, fab_invite_pin, fab_empty_suggest, fab_suggest_submit, fab_shop_packs, fab_enquiry_submit, fab_enquiry_email.
 - Performance review: `/pages/find-a-bookshop` (Leaflet ~40KB + tiles, lazy).
 
