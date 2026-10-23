@@ -1,0 +1,307 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SAGA — the Voxblock sales assistant, in a theme <dialog>
+----------------------------------------------------------------------------------------------------------------------
+
+Rendered once from layout/theme.liquid. A small chat panel of our own: the conversation lives in the browser
+(sessionStorage) and is posted whole each turn to the app proxy, `/apps/voxblock/saga` (VBStorefrontApp
+functions/shopify_proxy/saga.js), which adds the instructions and live prices and calls the model. Nothing
+third-party loads in the browser. There is no floating button: the dialog opens from any element with
+`data-saga-open` or `href="#saga-chat"` — the "Ask Saga" grid tile (snippets/collection-saga-promo.liquid) and the
+collection "Help me choose" link/card (main-collection `help_url`).
+
+Theme settings (Settings → Saga chat): `saga_enabled`, `saga_title`, `saga_intro`, `saga_endpoint`.
+PostHog: `saga_opened` {source, collection}, `saga_message` {turn}, `saga_reply` {turn, ms, links},
+`saga_link_clicked` {url}, `saga_prompt_clicked` {prompt}, `saga_faq_clicked` {question}, `saga_reset` {turn},
+`saga_error` {code}, `saga_closed` {seconds_open, turns}.
+
+Opening is the same plain, open-ended line everywhere ("Hi, I'm Saga. How can I help?"), no matter which
+entry point opened the dialog — deliberately: it costs the visitor a little more typing than jumping straight
+to an age question, but it means Saga hears what they actually want to know before narrowing in, rather than
+assuming "choosing a pack" from the click alone (decided 23 Oct, superseding the earlier age-pill-on-open
+behaviour). `data-saga-open`'s `source` value is still sent to the backend and still logged on `saga_opened`,
+for analytics only.
+The backend can attach pills to any reply via `prompts: [...]` in the JSON response (e.g. the age question,
+once the model actually needs an age to recommend a pack); clicking one sends its text exactly as if typed,
+same as any other message. Separately, the opening screen only (hidden the moment any message is sent) shows
+a collapsed "People also ask" list of a few starter questions for anyone who'd rather tap than type —
+`.saga-faq` below; clicking an item sends it exactly like typing it.
+{%- endcomment -%}
+
+{%- if settings.saga_enabled -%}
+  {%- assign saga_avatar = 'saga-avatar.png' | asset_url -%}
+  {%- assign saga_title = settings.saga_title | default: 'Saga' -%}
+  <dialog id="saga-chat" class="saga-dialog" aria-labelledby="saga-chat-title"
+    data-saga-endpoint="{{ settings.saga_endpoint | default: '/apps/voxblock/saga' | escape }}"
+    data-saga-opening="Hi, I’m {{ saga_title | escape }}. How can I help?">
+    <div class="saga-dialog__actions">
+      <button type="button" class="saga-dialog__icon-btn" data-saga-restart aria-label="Start a new conversation" title="Start a new conversation">
+        <svg aria-hidden="true" focusable="false" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 1 2.6 6.4"/><path d="M3 21v-6h6"/></svg>
+      </button>
+      <form method="dialog" class="saga-dialog__close-form">
+        <button type="submit" class="saga-dialog__icon-btn" aria-label="{{ 'general.accessibility.close' | t }}">
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m2 2 10 10M12 2 2 12"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="saga-dialog__head">
+      {%- render 'saga-avatar', id: 'saga-head', class: 'saga-dialog__avatar', size: 48 -%}
+      <div>
+        <p id="saga-chat-title" class="saga-dialog__title">{{ saga_title | escape }}</p>
+        <p class="saga-dialog__intro">{{ settings.saga_intro | default: 'Ask me anything about Voxblock.' | escape }}</p>
+      </div>
+    </div>
+
+    <div class="saga-dialog__body">
+      <div class="saga-thread" data-saga-thread role="log" aria-live="polite" aria-relevant="additions"></div>
+      <details class="saga-faq" data-saga-faq>
+        <summary class="saga-faq__summary">People also ask</summary>
+        <div class="saga-faq__list">
+          <button type="button" class="saga-faq__item">How old does my child need to be?</button>
+          <button type="button" class="saga-faq__item">How much does a starter pack cost?</button>
+          <button type="button" class="saga-faq__item">How does delivery work?</button>
+          <button type="button" class="saga-faq__item">Is this better than Yoto or Tonies?</button>
+          <button type="button" class="saga-faq__item">Do you do anything for schools?</button>
+        </div>
+      </details>
+      <form class="saga-compose" data-saga-form>
+        <label for="saga-input" class="sr-only">Your message</label>
+        <textarea id="saga-input" class="saga-compose__input" rows="1" maxlength="1000" placeholder="Ask something…" autocomplete="off" enterkeyhint="send" data-saga-input></textarea>
+        <button type="submit" class="saga-compose__send" aria-label="Send" data-saga-send>
+          <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+      <p class="saga-dialog__small">{{ saga_title | escape }} is an AI assistant and can make mistakes. Please don’t share personal details. For orders, email hello@voxblock.co.uk.</p>
+    </div>
+  </dialog>
+
+  <template id="saga-bubble-template">
+    <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__content"><div class="saga-bubble__text"></div><div class="saga-bubble__prompts" data-saga-prompts></div></div></div>
+  </template>
+
+  <script>
+    (function () {
+      var dialog = document.getElementById('saga-chat');
+      if (!dialog || !window.HTMLDialogElement) return;
+
+      var thread = dialog.querySelector('[data-saga-thread]');
+      var form = dialog.querySelector('[data-saga-form]');
+      var input = dialog.querySelector('[data-saga-input]');
+      var sendBtn = dialog.querySelector('[data-saga-send]');
+      var tpl = document.getElementById('saga-bubble-template');
+      var STORE = 'vb_saga_thread';
+      var TYPES_STORE = 'vb_saga_seen_types';
+      var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false, seenTypes: {} };
+
+      var faq = dialog.querySelector('[data-saga-faq]');
+
+      function track(name, props) {
+        try { if (window.posthog && typeof posthog.capture === 'function') posthog.capture(name, props || {}); } catch (e) {}
+      }
+      function load() { try { var s = sessionStorage.getItem(STORE); if (s) state.messages = JSON.parse(s).slice(-40); } catch (e) {} }
+      function save() { try { sessionStorage.setItem(STORE, JSON.stringify(state.messages)); } catch (e) {} }
+      function loadSeenTypes() { try { var s = sessionStorage.getItem(TYPES_STORE); state.seenTypes = s ? JSON.parse(s) : {}; } catch (e) { state.seenTypes = {}; } }
+      // One persistent visitor repeating the same kind of question all through a session shouldn't flood
+      // the "what sort of questions are people asking" analysis — track each type once per session; the
+      // first time it's seen, true (go ahead and track it); every later occurrence, false (skip it).
+      function markTypeSeen(type) {
+        if (!type || state.seenTypes[type]) return false;
+        state.seenTypes[type] = true;
+        try { sessionStorage.setItem(TYPES_STORE, JSON.stringify(state.seenTypes)); } catch (e) {}
+        return true;
+      }
+      function turns() { return state.messages.filter(function (m) { return m.role === 'user'; }).length; }
+
+      // Text with bare voxblock.co.uk URLs -> paragraphs with links; nothing else is interpreted
+      function render(text) {
+        var frag = document.createDocumentFragment();
+        text.split(/\n{2,}|\n/).forEach(function (para) {
+          if (!para.trim()) return;
+          var p = document.createElement('p');
+          var re = /(https:\/\/voxblock\.co\.uk\/[^\s]*)/g, last = 0, m;
+          while ((m = re.exec(para))) {
+            p.appendChild(document.createTextNode(para.slice(last, m.index)));
+            var url = m[1].replace(/[.,)]+$/, '');
+            var a = document.createElement('a');
+            a.href = url; a.textContent = linkLabel(url); a.className = 'saga-link';
+            a.addEventListener('click', function () { track('saga_link_clicked', { url: url, turn: turns() }); });
+            p.appendChild(a);
+            last = m.index + url.length;
+          }
+          p.appendChild(document.createTextNode(para.slice(last)));
+          frag.appendChild(p);
+        });
+        return frag;
+      }
+      function linkLabel(url) {
+        try {
+          var path = new URL(url).pathname;
+          if (path.indexOf('/products/') === 0) return 'See this pack';
+          if (path.indexOf('/collections/') === 0) return 'See the packs';
+          if (path.indexOf('/pages/character/') === 0) return 'Listen to the sample';
+          if (path.indexOf('/pages/voxblock-vs-yoto') === 0 || path.indexOf('/pages/compare') === 0) return 'See the comparison';
+          return 'Open the page';
+        } catch (e) { return 'Open the page'; }
+      }
+
+      function bubble(role, text, pending, prompts, image) {
+        var el;
+        if (role === 'assistant') {
+          el = tpl.content.firstElementChild.cloneNode(true);
+          var t = el.querySelector('.saga-bubble__text');
+          if (pending) { el.classList.add('is-pending'); t.innerHTML = '<span></span><span></span><span></span>'; }
+          else {
+            if (image && image.url) {
+              var img = document.createElement('img');
+              img.className = 'saga-bubble__image'; img.loading = 'lazy'; img.alt = image.alt || '';
+              img.src = image.url;
+              t.appendChild(img);
+            }
+            t.appendChild(render(text));
+            if (prompts && prompts.length) addPrompts(el.querySelector('[data-saga-prompts]'), prompts);
+          }
+        } else {
+          el = document.createElement('div');
+          el.className = 'saga-bubble saga-bubble--user';
+          var u = document.createElement('div'); u.className = 'saga-bubble__text'; u.textContent = text; el.appendChild(u);
+        }
+        thread.appendChild(el);
+        thread.scrollTop = thread.scrollHeight;
+        return el;
+      }
+
+      // Quick-reply pills on the latest assistant bubble only; answering (or asking anything else)
+      // retires them so an old question can't be answered twice.
+      function addPrompts(row, prompts) {
+        prompts.forEach(function (p) {
+          var btn = document.createElement('button');
+          btn.type = 'button'; btn.className = 'saga-prompt'; btn.textContent = p;
+          btn.addEventListener('click', function () {
+            track('saga_prompt_clicked', { prompt: p, turn: turns() });
+            clearPrompts();
+            send(p);
+          });
+          row.appendChild(btn);
+        });
+      }
+      function clearPrompts() {
+        var rows = thread.querySelectorAll('[data-saga-prompts]');
+        for (var i = 0; i < rows.length; i++) rows[i].innerHTML = '';
+      }
+
+      function paint() {
+        thread.innerHTML = '';
+        if (!state.messages.length) {
+          state.messages.push({ role: 'assistant', content: dialog.dataset.sagaOpening });
+          save();
+        }
+        state.messages.forEach(function (m) { bubble(m.role, m.content); });
+        if (faq) faq.hidden = turns() > 0;
+      }
+
+      function setBusy(b) { state.busy = b; sendBtn.disabled = b; input.disabled = b; dialog.classList.toggle('is-busy', b); }
+
+      function fail(code, text) {
+        track('saga_error', { code: code, turn: turns() });
+        bubble('assistant', text || 'Sorry, something went wrong on my side. Try again in a moment, or email hello@voxblock.co.uk.');
+      }
+
+      function send(text) {
+        if (state.busy || state.ended) return;
+        text = text.trim().slice(0, 1000);
+        if (!text) return;
+        clearPrompts();
+        if (faq) faq.hidden = true;
+        state.messages.push({ role: 'user', content: text }); save();
+        bubble('user', text);
+        track('saga_message', { turn: turns(), chars: text.length });
+        input.value = ''; autosize();
+        setBusy(true);
+        var pending = bubble('assistant', '', true);
+        var started = Date.now();
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = ctrl && setTimeout(function () { ctrl.abort(); }, 30000);
+        fetch(dialog.dataset.sagaEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ messages: state.messages, page: { collection: state.collection, path: location.pathname, source: state.source } }),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, body: j }; }); })
+          .then(function (res) {
+            pending.remove();
+            if (!res.ok || !res.body || !res.body.reply) {
+              var code = (res.body && res.body.error) || ('http_' + res.status);
+              if (code === 'slow_down') return fail(code, 'One at a time — give me a moment, then try again.');
+              if (code === 'saga_not_configured') return fail(code, 'I’m not switched on yet. Email hello@voxblock.co.uk and the team will help.');
+              return fail(code);
+            }
+            state.messages.push({ role: 'assistant', content: res.body.reply }); save();
+            bubble('assistant', res.body.reply, false, res.body.prompts, res.body.image);
+            if (res.body.ended) { state.ended = true; input.placeholder = 'Chat ended'; }
+            track('saga_reply', { turn: turns(), ms: Date.now() - started, links: (res.body.reply.match(/https:\/\/voxblock\.co\.uk/g) || []).length });
+            if (res.body.meta && markTypeSeen(res.body.meta.type)) {
+              track('saga_question_type', { type: res.body.meta.type, sentiment: res.body.meta.sentiment, turn: turns() });
+            }
+          })
+          .catch(function (e) { pending.remove(); fail(e && e.name === 'AbortError' ? 'timeout' : 'network'); })
+          .then(function () { if (timer) clearTimeout(timer); setBusy(false); input.focus(); });
+      }
+
+      function autosize() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; }
+      input.addEventListener('input', autosize);
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(input.value); } });
+      form.addEventListener('submit', function (e) { e.preventDefault(); send(input.value); });
+
+      // Drops the whole thread and repaints to just the opening bubble, same as a visitor who never
+      // opened Saga before — the conversation sent to the model next turn starts clean too.
+      function restart() {
+        track('saga_reset', { turn: turns() });
+        state.messages = [];
+        state.ended = false;
+        state.seenTypes = {};
+        try { sessionStorage.removeItem(STORE); sessionStorage.removeItem(TYPES_STORE); } catch (e) {}
+        setBusy(false);
+        input.value = ''; autosize();
+        input.placeholder = 'Ask something…';
+        paint();
+        input.focus();
+      }
+      var restartBtn = dialog.querySelector('[data-saga-restart]');
+      if (restartBtn) restartBtn.addEventListener('click', restart);
+
+      if (faq) {
+        faq.addEventListener('click', function (e) {
+          var btn = e.target.closest('.saga-faq__item');
+          if (!btn) return;
+          var question = btn.textContent.trim();
+          track('saga_faq_clicked', { question: question, turn: turns() });
+          send(question);
+        });
+      }
+
+      function open(source, collection) {
+        state.source = source || 'unknown';
+        state.collection = collection || '';
+        state.openedAt = Date.now();
+        load(); loadSeenTypes(); paint();
+        if (!dialog.open) dialog.showModal();
+        track('saga_opened', { source: state.source, collection: state.collection, resumed: turns() > 0 });
+        setTimeout(function () { input.focus(); }, 50);
+      }
+
+      document.addEventListener('click', function (e) {
+        var el = e.target.closest('[data-saga-open], a[href="#saga-chat"]');
+        if (!el) return;
+        e.preventDefault();
+        open(el.dataset.sagaOpen || 'help_link', el.dataset.sagaCollection || '');
+      });
+
+      dialog.addEventListener('close', function () {
+        if (state.openedAt) track('saga_closed', { seconds_open: Math.round((Date.now() - state.openedAt) / 1000), source: state.source, turns: turns() });
+        state.openedAt = 0;
+      });
+      dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    })();
+  </script>
+{%- endif -%}

@@ -155,6 +155,8 @@
                       
                       {%- if block.type == 'promotion_howto' -%}
                         {%- render 'collection-howto-promo', block: block, section: section -%}
+                      {%- elsif block.type == 'promotion_saga' -%}
+                        {%- render 'collection-saga-promo', block: block, section: section -%}
                       {%- else -%}
                         {%- render 'collection-promo-item', product: product, block: block, section: section -%}
                       {%- endif -%}
@@ -594,6 +596,21 @@
         { "type": "url", "id": "packs_url", "label": "Main button link" },
         { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Second button: \"Player only\" with the cheapest variant's price." }
       ]
+    },
+    {
+      "type": "promotion_saga",
+      "name": "Ask Saga tile",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "One card slot that opens the Saga chat. Left out while Settings → Saga chat is off. Hidden for signed-in customers who already own a player." },
+        { "type": "range", "id": "position", "min": 1, "max": 50, "label": "Position in grid (shown before this product)", "default": 2 },
+        { "type": "image_picker", "id": "image", "label": "Avatar", "info": "Leave empty to use the built-in Saga avatar." },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Not sure which pack?" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Ask Saga" },
+        { "type": "text", "id": "text", "label": "Line", "default": "Tell her the child's age and she'll suggest one." },
+        { "type": "text", "id": "button_label", "label": "Button text", "default": "Help me choose" },
+        { "type": "checkbox", "id": "show_to_owners", "label": "Also show to customers who own a player", "default": false }
+      ]
     }
   ],
   "settings": [
@@ -730,7 +747,7 @@
       "type": "url",
       "id": "help_url",
       "label": "\"Help me choose\" link",
-      "info": "Leave empty until the chooser exists: the link (desktop filter bar) and card (mobile, after the grid) are then left out."
+      "info": "Use #saga-chat to open the Saga dialog (Settings → Saga chat). Leave empty to hide the link (desktop filter bar) and card (mobile, after the grid)."
     },
     {
       "type": "checkbox",
