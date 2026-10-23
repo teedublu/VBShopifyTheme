@@ -4,7 +4,8 @@ SAGA AVATAR (inline SVG)
 ----------------------------------------------------------------------------------------------------------------------
 
 Saga's avatar: the player's speaker grill (orange slots) around the white Voxblock V on a teal circle. Drawn inline so
-it can animate and react to hover; styles and keyframes live in assets/voxblock.css.liquid ("SAGA AVATAR").
+it can animate and react to hover; its styles and keyframes are in the <style> inside the svg (global, so they also catch the
+tile hover); repeating it when the avatar renders twice is harmless.
 
 Always on: a soft peach sheen sweeps across the slots every 5 s, and a warm glow behind the V breathes (SVG animate).
 On hover: the V flips once and the slots draw in and spread twice. Hover fires on the avatar itself, or on any
@@ -23,6 +24,23 @@ Supported variables:
 {%- assign sa_uid = id | default: 'saga' | handleize -%}
 {%- assign sa_size = size | default: 160 -%}
 <svg class="saga-avatar {{ class }}" width="{{ sa_size }}" height="{{ sa_size }}" viewBox="0 0 480 480" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .saga-avatar { display: block; }
+    .saga-avatar .sa-s { transform-box: fill-box; }
+    .saga-avatar .sa-l { transform-origin: right center; }
+    .saga-avatar .sa-r { transform-origin: left center; }
+    .saga-avatar .sa-v { transform-box: view-box; transform-origin: 240px 240px; }
+    .saga-avatar .sa-disc { opacity: .75; transition: opacity .3s; }
+    :is(.saga-avatar:hover, [data-saga-avatar-hover]:is(:hover, :focus-visible) .saga-avatar) .sa-disc { opacity: 1; }
+    :is(.saga-avatar:hover, [data-saga-avatar-hover]:is(:hover, :focus-visible) .saga-avatar) .sa-v { animation: saga-av-flip .7s cubic-bezier(.65, 0, .35, 1) 1; }
+    :is(.saga-avatar:hover, [data-saga-avatar-hover]:is(:hover, :focus-visible) .saga-avatar) .sa-s { animation: saga-av-nudge .9s ease-in-out 2; }
+    :is(.saga-avatar.is-talking, .saga-dialog.is-busy .saga-avatar) .sa-s { animation: saga-av-nudge 1.2s ease-in-out infinite; }
+    .saga-avatar .sa-s.sa-d1 { animation-delay: .1s; }
+    .saga-avatar .sa-s.sa-d2 { animation-delay: .2s; }
+    @keyframes saga-av-flip { 0% { transform: scaleX(1); } 50% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
+    @keyframes saga-av-nudge { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(.62); } }
+    @media (prefers-reduced-motion: reduce) { .saga-avatar *, .saga-avatar { animation: none !important; transition: none !important; } }
+  </style>
   <defs>
     <linearGradient id="sa-sheen-{{ sa_uid }}" gradientUnits="userSpaceOnUse" x1="-260" y1="150" x2="-60" y2="330">
       <stop offset="0" stop-color="#ff9e57"/><stop offset=".34" stop-color="#ff9e57"/>
