@@ -1,0 +1,70 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+SAGA AVATAR (inline SVG)
+----------------------------------------------------------------------------------------------------------------------
+
+Saga's avatar: the player's speaker grill (orange slots) around the white Voxblock V on a teal circle. Drawn inline so
+it can animate and react to hover; styles and keyframes live in assets/voxblock.css.liquid ("SAGA AVATAR").
+
+Always on: a soft peach sheen sweeps across the slots every 5 s, and a warm glow behind the V breathes (SVG animate).
+On hover: the V flips once and the slots draw in and spread twice. Hover fires on the avatar itself, or on any
+ancestor marked data-saga-avatar-hover (the grid tile button), including keyboard focus.
+Talking: the slots pulse while the chat dialog has is-busy (a reply is pending), or whenever the svg has is-talking.
+prefers-reduced-motion stops the flip, the pulse and the transitions.
+
+The static fallback image is assets/saga-avatar.png (same artwork, used for the many small chat bubbles).
+
+Supported variables:
+  id     required when the avatar appears more than once on a page; makes the gradient/filter ids unique
+  class  extra classes for the <svg> (it is sized by CSS; width/height attributes are the fallback)
+  size   fallback width/height in px (default 160)
+{%- endcomment -%}
+
+{%- assign sa_uid = id | default: 'saga' | handleize -%}
+{%- assign sa_size = size | default: 160 -%}
+<svg class="saga-avatar {{ class }}" width="{{ sa_size }}" height="{{ sa_size }}" viewBox="0 0 480 480" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sa-sheen-{{ sa_uid }}" gradientUnits="userSpaceOnUse" x1="-260" y1="150" x2="-60" y2="330">
+      <stop offset="0" stop-color="#ff9e57"/><stop offset=".34" stop-color="#ff9e57"/>
+      <stop offset=".5" stop-color="#ffc193"/>
+      <stop offset=".66" stop-color="#ff9e57"/><stop offset="1" stop-color="#ff9e57"/>
+      <animate attributeName="x1" values="-260;480;480" keyTimes="0;.45;1" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="-60;680;680" keyTimes="0;.45;1" dur="5s" repeatCount="indefinite"/>
+    </linearGradient>
+    <filter id="sa-glow-{{ sa_uid }}" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="b">
+        <animate attributeName="stdDeviation" values="3;9;3" dur="3.6s" repeatCount="indefinite"/>
+      </feGaussianBlur>
+      <feFlood flood-color="#ffe9d2" flood-opacity=".55">
+        <animate attributeName="flood-opacity" values=".25;.75;.25" dur="3.6s" repeatCount="indefinite"/>
+      </feFlood>
+      <feComposite in2="b" operator="in" result="g"/>
+      <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="sa-disc-{{ sa_uid }}" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff7f0" stop-opacity=".2"/><stop offset="1" stop-color="#fff7f0" stop-opacity=".08"/>
+    </radialGradient>
+  </defs>
+  <circle cx="240" cy="240" r="240" fill="#197177"/>
+  <g fill="none" stroke="url(#sa-sheen-{{ sa_uid }})" stroke-width="18" stroke-linecap="round">
+    <line class="sa-s sa-l sa-d2" x1="77" y1="176" x2="176.6" y2="176"/>
+    <line class="sa-s sa-r sa-d2" x1="303.4" y1="176" x2="403" y2="176"/>
+    <line class="sa-s sa-l sa-d1" x1="53" y1="208" x2="153.3" y2="208"/>
+    <line class="sa-s sa-r sa-d1" x1="326.7" y1="208" x2="427" y2="208"/>
+    <line class="sa-s sa-l" x1="53" y1="240" x2="147" y2="240"/>
+    <line class="sa-s sa-r" x1="333" y1="240" x2="427" y2="240"/>
+    <line class="sa-s sa-l sa-d1" x1="53" y1="272" x2="153.3" y2="272"/>
+    <line class="sa-s sa-r sa-d1" x1="326.7" y1="272" x2="427" y2="272"/>
+    <line class="sa-s sa-l sa-d2" x1="77" y1="304" x2="176.6" y2="304"/>
+    <line class="sa-s sa-r sa-d2" x1="303.4" y1="304" x2="403" y2="304"/>
+  </g>
+  <circle class="sa-disc" cx="240" cy="240" r="72" fill="url(#sa-disc-{{ sa_uid }})"/>
+  <g class="sa-v">
+    <g filter="url(#sa-glow-{{ sa_uid }})">
+      <g transform="translate(180 196.2) scale(0.246)" fill="#ffffff">
+        <rect x="-3.5" y="107.5" width="363" height="141" rx="30" transform="rotate(45 178 178)"/>
+        <circle cx="391" cy="98" r="96"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1310,3 +1310,20 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .saga-compose__send:disabled { opacity: .5; cursor: default; }
 .saga-dialog__body .saga-dialog__small { margin: 0; padding: 0 14px 10px; }
 @media screen and (max-width: 600px) { .saga-dialog { width: 100vw; height: 100dvh; max-height: none; border-radius: 0; } }
+
+/* SAGA AVATAR (snippets/saga-avatar.liquid): hover flip + slot nudge, "is-talking" pulse. Sheen and glow are SVG animate. */
+.saga-avatar { display: block; }
+.saga-avatar .sa-s { transform-box: fill-box; }
+.saga-avatar .sa-l { transform-origin: right center; }
+.saga-avatar .sa-r { transform-origin: left center; }
+.saga-avatar .sa-v { transform-box: view-box; transform-origin: 240px 240px; }
+.saga-avatar .sa-disc { opacity: .75; transition: opacity .3s; }
+:is(.saga-avatar:hover, [data-saga-avatar-hover]:is(:hover, :focus-visible) .saga-avatar) .sa-disc { opacity: 1; }
+:is(.saga-avatar:hover, [data-saga-avatar-hover]:is(:hover, :focus-visible) .saga-avatar) .sa-v { animation: saga-av-flip .7s cubic-bezier(.65, 0, .35, 1) 1; }
+:is(.saga-avatar:hover, [data-saga-avatar-hover]:is(:hover, :focus-visible) .saga-avatar) .sa-s { animation: saga-av-nudge .9s ease-in-out 2; }
+:is(.saga-avatar.is-talking, .saga-dialog.is-busy .saga-avatar) .sa-s { animation: saga-av-nudge 1.2s ease-in-out infinite; }
+.saga-avatar .sa-s.sa-d1 { animation-delay: .1s; }
+.saga-avatar .sa-s.sa-d2 { animation-delay: .2s; }
+@keyframes saga-av-flip { 0% { transform: scaleX(1); } 50% { transform: scaleX(-1); } 100% { transform: scaleX(1); } }
+@keyframes saga-av-nudge { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(.62); } }
+@media (prefers-reduced-motion: reduce) { .saga-avatar *, .saga-avatar { animation: none !important; transition: none !important; } }

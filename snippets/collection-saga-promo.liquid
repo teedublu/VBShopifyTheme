@@ -15,12 +15,12 @@ Supported variables: block, section
   {%- if owns_player == blank or block.settings.show_to_owners -%}
     {%- assign avatar = block.settings.image -%}
     <div id="block-{{ section.id }}-{{ block.id }}" class="saga-tile" {{ block.shopify_attributes }}>
-      <button type="button" class="saga-tile__button" data-saga-open="collection_tile" data-saga-collection="{{ collection.handle }}" aria-haspopup="dialog" aria-controls="saga-chat">
+      <button type="button" class="saga-tile__button" data-saga-avatar-hover data-saga-open="collection_tile" data-saga-collection="{{ collection.handle }}" aria-haspopup="dialog" aria-controls="saga-chat">
         <span class="saga-tile__avatar-wrap">
           {%- if avatar != blank -%}
             {{- avatar | image_url: width: 320 | image_tag: loading: 'lazy', widths: '160,240,320', sizes: '160px', class: 'saga-tile__avatar', alt: '' -}}
           {%- else -%}
-            <img src="{{ 'saga-avatar.png' | asset_url }}" width="160" height="160" class="saga-tile__avatar" alt="" loading="lazy">
+            {%- render 'saga-avatar', id: block.id, class: 'saga-tile__avatar', size: 160 -%}
           {%- endif -%}
         </span>
         {%- if block.settings.eyebrow != blank -%}<span class="saga-tile__eyebrow">{{ block.settings.eyebrow | escape }}</span>{%- endif -%}

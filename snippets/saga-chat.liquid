@@ -45,7 +45,7 @@ typed, same as any other message.
     </div>
 
     <div class="saga-dialog__head">
-      <img src="{{ saga_avatar }}" width="48" height="48" alt="" class="saga-dialog__avatar" loading="lazy">
+      {%- render 'saga-avatar', id: 'saga-head', class: 'saga-dialog__avatar', size: 48 -%}
       <div>
         <p id="saga-chat-title" class="saga-dialog__title">{{ saga_title | escape }}</p>
         <p class="saga-dialog__intro">{{ settings.saga_intro | default: 'Ask me anything about Voxblock.' | escape }}</p>
