@@ -7,8 +7,8 @@ and longitude, website, shopfront photo). "Invite pin" blocks put dashed "Your b
 link to the stockist section (#join).
 
 - The list is rendered in Liquid, so it works without JavaScript and is what search engines read.
-- The map is Leaflet 1.9.4 (cdnjs) with raster tiles from the "Map tiles" setting (default CARTO Voyager, OpenStreetMap
-  data). Both load only when the section comes near the screen.
+- The map is Leaflet 1.9.4 (cdnjs) with raster tiles from the "Map tiles" setting (default OpenStreetMap's standard tiles,
+  credited; a keyed style such as CARTO or Stadia can go in the setting later). Both load only when the section comes near the screen.
 - Search: text filters by name, street, town and postcode. A UK postcode or postcode district (EH10 4DF, EH10) is
   looked up on postcodes.io and the list is sorted by distance. "Use my location" does the same with the browser's
   location. Country chips come from the regions the shops use.
@@ -313,7 +313,7 @@ fab_invite_pin, fab_empty_suggest.
   function fitVisible() {
     var pts = shops.filter(function (s) { return !s.row.hidden && !isNaN(s.lat); }).map(function (s) { return [s.lat, s.lng]; });
     if (!state.region) invites.forEach(function (p) { pts.push([p.lat, p.lng]); });
-    if (pts.length) map.fitBounds(pts, { padding: [40, 40], maxZoom: 10 });
+    if (pts.length) { map.invalidateSize(); map.fitBounds(pts, { padding: [24, 24], maxZoom: 10 }); }
   }
   function ensureMap() {
     if (mapPromise) return mapPromise;
@@ -322,8 +322,8 @@ fab_invite_pin, fab_empty_suggest.
       loadAsset('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js' })
     ])).then(function () {
       L = window.L;
-      map = L.map(mapEl, { scrollWheelZoom: false, zoomControl: true, attributionControl: true });
-      L.tileLayer(config.tiles, { attribution: config.attribution, maxZoom: 18, subdomains: 'abcd' }).addTo(map);
+      map = L.map(mapEl, { scrollWheelZoom: false, zoomControl: true, attributionControl: true, zoomSnap: 0.25 });
+      L.tileLayer(config.tiles, { attribution: config.attribution, maxZoom: 19 }).addTo(map);
       shops.forEach(function (s) {
         if (isNaN(s.lat) || isNaN(s.lng)) return;
         var icon = L.divIcon({ className: 'stockist-marker', html: '<span class="stockist-pin"></span>', iconSize: [28, 28], iconAnchor: [14, 14] });
@@ -333,7 +333,7 @@ fab_invite_pin, fab_empty_suggest.
       });
       invites.forEach(function (p) {
         var icon = L.divIcon({ className: 'stockist-marker stockist-marker--invite', html: '<span class="stockist-pin stockist-pin--invite">+</span><span class="stockist-invite-label">' + String(p.label).replace(/</g, '&lt;') + '</span>', iconSize: [28, 28], iconAnchor: [14, 14] });
-        var m = L.marker([p.lat, p.lng], { icon: icon, title: p.label, keyboard: true }).addTo(map);
+        var m = L.marker([p.lat, p.lng], { icon: icon, title: p.label, alt: p.label, keyboard: true }).addTo(map);
         m.on('click', function () { track('fab_invite_pin'); location.hash = config.inviteLink.replace(/^#/, ''); });
       });
       fitVisible();
@@ -369,8 +369,8 @@ fab_invite_pin, fab_empty_suggest.
     { "type": "text", "id": "postcode_not_found", "label": "Postcode not found", "default": "We couldn't find that postcode. Try a town name." },
     { "type": "header", "content": "Map" },
     { "type": "text", "id": "map_label", "label": "Map label (screen readers)", "default": "Map of bookshops that stock Voxblock" },
-    { "type": "text", "id": "tiles_url", "label": "Map tiles", "default": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" },
-    { "type": "text", "id": "tiles_attribution", "label": "Map credit", "default": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors &copy; <a href=\"https://carto.com/attributions\">CARTO</a>" },
+    { "type": "text", "id": "tiles_url", "label": "Map tiles", "default": "https://tile.openstreetmap.org/{z}/{x}/{y}.png" },
+    { "type": "text", "id": "tiles_attribution", "label": "Map credit", "default": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors" },
     { "type": "text", "id": "legend_shop", "label": "Legend, shop", "default": "Stocks Voxblock" },
     { "type": "text", "id": "legend_invite", "label": "Legend, invite pin", "default": "Could be your shop" },
     { "type": "text", "id": "invite_link", "label": "Invite pin link", "default": "#join" },

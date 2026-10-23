@@ -1309,7 +1309,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .stockist-pin--legend { width: 12px; height: 12px; margin: 0; border-width: 2px; }
 .stockist-pin--invite { display: grid; place-items: center; width: 22px; height: 22px; margin: 3px; background: #fff7f0; border: 2px dashed #a8612e; box-shadow: none; color: #a8612e; font-size: 15px; font-weight: 700; line-height: 1; }
 .stockist-pin--invite.stockist-pin--legend { width: 12px; height: 12px; margin: 0; font-size: 0; }
-.stockist-invite-label { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; font-weight: 600; color: #a8612e; background: #fff; border-radius: 10px; padding: 2px 8px; box-shadow: 0 2px 8px rgb(86 86 86 / .12); }
+.stockist-invite-label { display: none; position: absolute; top: 30px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; font-weight: 600; color: #a8612e; background: #fff; border-radius: 10px; padding: 2px 8px; box-shadow: 0 2px 8px rgb(86 86 86 / .12); }
 .stockist-card { position: absolute; z-index: 600; left: 12px; right: 12px; bottom: 12px; max-width: 400px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 5px 30px rgb(86 86 86 / .2); }
 .stockist-card[hidden] { display: none; }
 .stockist-card__photo { display: none; }
@@ -1388,4 +1388,6 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .stockist-join { padding-block: var(--spacing-16); }
   .stockist-join__bottom { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--spacing-14); }
 }
+.stockist-marker--invite:hover .stockist-invite-label, .stockist-marker--invite:focus .stockist-invite-label { display: block; }
+.stockist-marker--invite:hover { z-index: 2000 !important; }
 @media (prefers-reduced-motion: reduce) { .stockist-pin, .stockist-row { transition: none; } }
