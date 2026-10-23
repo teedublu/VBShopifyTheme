@@ -1,0 +1,68 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STOCKIST HERO (templates/page.stockists.json, /pages/find-a-bookshop)
+----------------------------------------------------------------------------------------------------------------------
+Top of the find a bookshop page: H1, intro, a button to the map (#finder) and one to the stockist section (#join).
+On the right: small stat tiles (blocks) and a dark tile asking bookshops to join.
+Clicks send vs_yoto_click { target }: fab_hero_find, fab_hero_join, fab_hero_tile.
+{%- endcomment -%}
+
+<section class="stockist-hero" {{ section.shopify_attributes }}>
+  <div class="container stockist-hero__inner">
+    <div class="stockist-hero__text">
+      {%- if section.settings.eyebrow != blank -%}<p class="subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h1 class="stockist-hero__title">{{ section.settings.heading | escape }}</h1>
+      {%- if section.settings.lede != blank -%}<p class="stockist-hero__lede">{{ section.settings.lede | escape }}</p>{%- endif -%}
+      <div class="stockist-hero__actions">
+        {%- render 'button', content: section.settings.find_text, href: section.settings.find_anchor, size: 'lg', track: 'fab_hero_find' -%}
+        {%- render 'button', content: section.settings.join_text, href: section.settings.join_anchor, size: 'lg', style: 'outline', track: 'fab_hero_join' -%}
+      </div>
+    </div>
+
+    <div class="stockist-hero__side">
+      {%- for block in section.blocks -%}
+        <div class="stockist-hero__stat" {{ block.shopify_attributes }}>
+          <span class="stockist-hero__stat-number">{{ block.settings.number | escape }}</span>
+          <span class="stockist-hero__stat-label">{{ block.settings.label | escape }}</span>
+        </div>
+      {%- endfor -%}
+      {%- if section.settings.tile_text != blank -%}
+        <a class="stockist-hero__tile" href="{{ section.settings.join_anchor }}" data-vs-track="fab_hero_tile">
+          <span>{{ section.settings.tile_text | escape }}</span>
+          <span class="stockist-hero__tile-link">{{ section.settings.tile_link | escape }} →</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stockist hero",
+  "tag": "div",
+  "class": "shopify-section--stockist-hero",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find a bookshop" },
+    { "type": "text", "id": "heading", "label": "Heading (H1)", "default": "Try Voxblock at an independent bookshop near you" },
+    { "type": "textarea", "id": "lede", "label": "Intro", "default": "Pick up a player, hear a story and choose your child's next audiobook in person. Every shop on the map is an independent bookshop that stocks Voxblock." },
+    { "type": "text", "id": "find_text", "label": "Map button", "default": "Find my nearest bookshop" },
+    { "type": "text", "id": "find_anchor", "label": "Map button link", "default": "#finder" },
+    { "type": "text", "id": "join_text", "label": "Join button", "default": "Run a bookshop? Stock Voxblock" },
+    { "type": "text", "id": "join_anchor", "label": "Join button link", "default": "#join" },
+    { "type": "text", "id": "tile_text", "label": "Join tile", "default": "Is your bookshop missing from the map?" },
+    { "type": "text", "id": "tile_link", "label": "Join tile link text", "default": "Join us" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "12" },
+        { "type": "text", "id": "label", "label": "Label", "default": "independent bookshops" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Stockist hero" }]
+}
+{% endschema %}
