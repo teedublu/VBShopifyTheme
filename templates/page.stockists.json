@@ -36,178 +36,6 @@
     "finder": {
       "type": "stockist-finder",
       "blocks": {
-        "shop_edinburgh": {
-          "type": "shop",
-          "settings": {
-            "name": "The Edinburgh Bookshop",
-            "street": "176 Bruntsfield Place",
-            "town": "Edinburgh",
-            "postcode": "EH10 4DF",
-            "region": "Scotland",
-            "latitude": "55.9351",
-            "longitude": "-3.2083",
-            "website": "https://www.edinburghbookshop.com",
-            "website_label": ""
-          }
-        },
-        "shop_nightowl": {
-          "type": "shop",
-          "settings": {
-            "name": "Night Owl Books",
-            "street": "1 Bridge St",
-            "town": "East Linton",
-            "postcode": "EH40 3AG",
-            "region": "Scotland",
-            "latitude": "55.9857",
-            "longitude": "-2.6562",
-            "website": "https://nightowlbooks.co.uk/",
-            "website_label": "",
-            "image": "shopify://shop_images/stockist-night-owl-link-v1.25.png"
-          }
-        },
-        "shop_readingroom": {
-          "type": "shop",
-          "settings": {
-            "name": "The Reading Room",
-            "street": "8–10 High St",
-            "town": "Melrose",
-            "postcode": "TD6 9PA",
-            "region": "Scotland",
-            "latitude": "55.5985",
-            "longitude": "-2.7193",
-            "website": "https://www.thereadingroommelrose.com/",
-            "website_label": "",
-            "image": "shopify://shop_images/stockist-reading-room-link-v1.25.png"
-          }
-        },
-        "shop_mainstreet": {
-          "type": "shop",
-          "settings": {
-            "name": "The Mainstreet Trading Company",
-            "street": "23 Main St, St Boswells",
-            "town": "Melrose",
-            "postcode": "TD6 0AT",
-            "region": "Scotland",
-            "latitude": "55.5740",
-            "longitude": "-2.6510",
-            "website": "https://www.mainstreetbooks.co.uk/",
-            "website_label": "",
-            "image": "shopify://shop_images/stockist-mainstreet-link-v1.25.png"
-          }
-        },
-        "shop_wedale": {
-          "type": "shop",
-          "settings": {
-            "name": "The Wedale Bookshop",
-            "street": "231 Galashiels Rd, Stow",
-            "town": "Galashiels",
-            "postcode": "TD1 2RE",
-            "region": "Scotland",
-            "latitude": "55.6930",
-            "longitude": "-2.8650",
-            "website": "https://wedalebooks.scot/",
-            "website_label": ""
-          }
-        },
-        "shop_heron": {
-          "type": "shop",
-          "settings": {
-            "name": "Heron and Willow",
-            "street": "4 Canongate",
-            "town": "Jedburgh",
-            "postcode": "TD8 6AJ",
-            "region": "Scotland",
-            "latitude": "55.4780",
-            "longitude": "-2.5530",
-            "website": "https://heronandwillow.scot/",
-            "website_label": ""
-          }
-        },
-        "shop_wee": {
-          "type": "shop",
-          "settings": {
-            "name": "The Wee Bookshop",
-            "street": "56 Bridge St",
-            "town": "Dollar",
-            "postcode": "FK14 7DG",
-            "region": "Scotland",
-            "latitude": "56.1620",
-            "longitude": "-3.6710",
-            "website": "https://www.weebookshop.co.uk/",
-            "website_label": "",
-            "image": "shopify://shop_images/stockist-wee-bookshop-link-v1.25.png"
-          }
-        },
-        "shop_bookhouse": {
-          "type": "shop",
-          "settings": {
-            "name": "The Bookhouse",
-            "street": "41 Gray St, Broughty Ferry",
-            "town": "Dundee",
-            "postcode": "DD5 2BJ",
-            "region": "Scotland",
-            "latitude": "56.4670",
-            "longitude": "-2.8730",
-            "website": "https://thebookhousebroughtyferry.co.uk/",
-            "website_label": ""
-          }
-        },
-        "shop_daydreams": {
-          "type": "shop",
-          "settings": {
-            "name": "Daydreams Bookshop",
-            "street": "Unit 2, 38 Stewart St, Milngavie",
-            "town": "Glasgow",
-            "postcode": "G62 6BY",
-            "region": "Scotland",
-            "latitude": "55.9420",
-            "longitude": "-4.3160",
-            "website": "https://www.instagram.com/daydreams_bookshop/",
-            "website_label": "Instagram"
-          }
-        },
-        "shop_stripey": {
-          "type": "shop",
-          "settings": {
-            "name": "The Stripey Badger",
-            "street": "7 The Square",
-            "town": "Grassington",
-            "postcode": "BD23 5AQ",
-            "region": "England",
-            "latitude": "54.0710",
-            "longitude": "-1.9980",
-            "website": "https://www.thestripeybadger.co.uk/",
-            "website_label": ""
-          }
-        },
-        "shop_bookstop": {
-          "type": "shop",
-          "settings": {
-            "name": "The Book Stop",
-            "street": "334 Skircoat Green Rd",
-            "town": "Halifax",
-            "postcode": "HX3 0LX",
-            "region": "England",
-            "latitude": "53.7060",
-            "longitude": "-1.8570",
-            "website": "https://www.thebook-stop.com",
-            "website_label": ""
-          }
-        },
-        "shop_nantwich": {
-          "type": "shop",
-          "settings": {
-            "name": "The Nantwich Bookshop",
-            "street": "46 High St",
-            "town": "Nantwich",
-            "postcode": "CW5 5AS",
-            "region": "England",
-            "latitude": "53.0670",
-            "longitude": "-2.5210",
-            "website": "https://nantwichbookshop.co.uk/",
-            "website_label": ""
-          }
-        },
         "invite_newcastle": {
           "type": "invite",
           "settings": {
@@ -234,18 +62,6 @@
         }
       },
       "block_order": [
-        "shop_edinburgh",
-        "shop_nightowl",
-        "shop_readingroom",
-        "shop_mainstreet",
-        "shop_wedale",
-        "shop_heron",
-        "shop_wee",
-        "shop_bookhouse",
-        "shop_daydreams",
-        "shop_stripey",
-        "shop_bookstop",
-        "shop_nantwich",
         "invite_newcastle",
         "invite_manchester",
         "invite_aberdeen"
@@ -281,8 +97,8 @@
           "type": "benefit",
           "settings": {
             "icon": "display",
-            "title": "Display and samples",
-            "text": "[What we send new stockists: demo player, shelf display, point-of-sale cards]"
+            "title": "Displays and marketing",
+            "text": "Demo players, table-top displays, point-of-sale cards and marketing material."
           }
         },
         "benefit_terms": {
@@ -290,7 +106,7 @@
           "settings": {
             "icon": "terms",
             "title": "Simple trade terms",
-            "text": "[Minimum first order] · [trade margin] · [how to reorder]"
+            "text": "No minimum order, a fair margin and a real person to speak to."
           }
         },
         "photo_nightowl": {
