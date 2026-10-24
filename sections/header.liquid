@@ -254,6 +254,45 @@ the underlying logic of the menu.
             </div>
           {%- endif -%}
 
+          {%- liquid
+            assign help_menu = section.settings.help_menu
+          -%}
+          {%- if settings.saga_enabled or help_menu.links.size > 0 -%}
+            {%- capture help_popover_id -%}header-help-popover-{{ section.id }}{%- endcapture -%}
+            <div class="relative">
+              <button type="button" class="tap-area sm:block" aria-controls="{{ help_popover_id }}" aria-expanded="false">
+                <span class="sr-only">Help</span>
+                {%- render 'icon' with 'help' -%}
+              </button>
+
+              <x-popover id="{{ help_popover_id }}" class="popover help-popover" anchor-horizontal="end" anchor-vertical="end">
+                <p class="h5" slot="title">Need help?</p>
+
+                {%- if settings.saga_enabled -%}
+                  <button type="button" is="close-button" class="help-popover__chat" data-saga-open="header_help">
+                    {%- render 'saga-avatar', id: 'header-help', class: 'help-popover__chat-avatar', size: 32 -%}
+                    <span class="help-popover__chat-text">
+                      <span class="bold">Ask {{ settings.saga_title | default: 'Saga' }}</span>
+                      <span class="help-popover__chat-sub">Get an instant answer</span>
+                    </span>
+                    {%- render 'icon' with 'chevron-right-small', direction_aware: true, width: 14, height: 14 -%}
+                  </button>
+                {%- endif -%}
+
+                {%- if help_menu.links.size > 0 -%}
+                  {%- if settings.saga_enabled -%}
+                    <p class="help-popover__divider text-sm">Or browse help topics</p>
+                  {%- endif -%}
+                  <ul class="v-stack gap-2" role="list">
+                    {%- for link in help_menu.links -%}
+                      <li><a href="{{ link.url }}" class="inline-block link-faded">{{ link.title }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </x-popover>
+            </div>
+          {%- endif -%}
+
           <a href="{{ routes.search_url }}" class="hidden tap-area sm:block" aria-controls="search-drawer">
             <span class="sr-only">{{ 'header.general.open_search' | t }}</span>
             {%- render 'icon' with 'search' -%}
@@ -393,6 +432,17 @@ the underlying logic of the menu.
       "id": "secondary_menu",
       "label": "Secondary menu",
       "info": "This menu won't show dropdown items. For best results, limit the number of links to 1 or 2."
+    },
+    {
+      "type": "header",
+      "content": "Help"
+    },
+    {
+      "type": "link_list",
+      "id": "help_menu",
+      "label": "Help menu",
+      "default": "footer-help",
+      "info": "Shown in the header's (?) popover, above Ask Saga. Defaults to the same menu as the footer's Help column."
     },
     {
       "type": "select",

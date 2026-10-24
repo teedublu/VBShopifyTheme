@@ -102,6 +102,16 @@ saved-books-count:empty { opacity: 0; }
 .header__saved-books.is-bumping svg path { animation: saved-books-heart-fill .8s ease-out; }
 .header__saved-books.is-bumping saved-books-count { animation: saved-books-count-pop .6s ease-out .15s; }
 
+/* Header (?) popover: Ask Saga first, then the same Help menu as the footer's Help column */
+.help-popover { --popover-content-max-width: 300px; }
+.help-popover::part(body) { text-align: left; padding: var(--spacing-3) var(--spacing-4); }
+.help-popover__chat { display: flex; align-items: center; gap: 10px; width: 100%; margin: 0; padding: 10px; border: 1px solid var(--card-border); border-radius: 12px; background: #fff7f0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.help-popover__chat:hover, .help-popover__chat:focus-visible { border-color: var(--brand-heading); }
+.help-popover__chat-avatar { flex: none; }
+.help-popover__chat-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.help-popover__chat-sub { font-size: 12px; opacity: .75; }
+.help-popover__divider { margin: 14px 0 8px; font-size: 12px; opacity: .65; }
+
 /* "Saved" / "Removed" message: saved-books.js sets "top" to just below the header. The z-index clears sticky bars such
    as the collection "Sort by" bar (500) but stays under drawers (999) */
 .saved-books-toast {
