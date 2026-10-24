@@ -26,6 +26,11 @@ once the model actually needs an age to recommend a pack); clicking one sends it
 same as any other message. Separately, the opening screen only (hidden the moment any message is sent) shows
 a collapsed "People also ask" list of a few starter questions for anyone who'd rather tap than type —
 `.saga-faq` below; clicking an item sends it exactly like typing it.
+A reply can also carry `suggestions: [{url,title,price,kind,image}]` — one product the reply linked to, in
+order, rendered as a tappable `.saga-card` (image + title + price + CTA) in a horizontal-scroll row,
+`.saga-cards`, instead of a bare link; the card's own URL is stripped out of the prose text so it isn't
+shown twice. A single pack recommendation is a one-card row; recommending individual audiobooks can
+surface several.
 {%- endcomment -%}
 
 {%- if settings.saga_enabled -%}
@@ -72,12 +77,12 @@ a collapsed "People also ask" list of a few starter questions for anyone who'd r
           <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         </button>
       </form>
-      <p class="saga-dialog__small">{{ saga_title | escape }} is an AI assistant and can make mistakes. Please don’t share personal details. For orders, email hello@voxblock.co.uk.</p>
+      <p class="saga-dialog__small">{{ saga_title | escape }} is an AI assistant and can make mistakes. Please don’t share personal details.</p>
     </div>
   </dialog>
 
   <template id="saga-bubble-template">
-    <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__content"><div class="saga-bubble__text"></div><div class="saga-bubble__prompts" data-saga-prompts></div></div></div>
+    <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__content"><div class="saga-bubble__text"></div><div class="saga-cards" data-saga-cards hidden></div><div class="saga-bubble__prompts" data-saga-prompts></div></div></div>
   </template>
 
   <script>
@@ -145,20 +150,47 @@ a collapsed "People also ask" list of a few starter questions for anyone who'd r
         } catch (e) { return 'Open the page'; }
       }
 
-      function bubble(role, text, pending, prompts, image) {
+      // Suggestion cards: one per product the reply links to (a single pack is a one-card row; an audiobook
+      // recommendation can be several), each tappable through to its product page.
+      var CARD_CTA = { pack: 'See this pack', player: 'See the player', adult: 'See the player', audiobook: 'See this book' };
+      function renderCards(row, suggestions) {
+        suggestions.forEach(function (s) {
+          var a = document.createElement('a');
+          a.className = 'saga-card'; a.href = s.url;
+          a.addEventListener('click', function () { track('saga_link_clicked', { url: s.url, turn: turns() }); });
+          if (s.image && s.image.url) {
+            var img = document.createElement('img');
+            img.className = 'saga-card__image'; img.loading = 'lazy'; img.alt = s.image.alt || s.title || '';
+            img.src = s.image.url;
+            a.appendChild(img);
+          }
+          var body = document.createElement('div'); body.className = 'saga-card__body';
+          var title = document.createElement('div'); title.className = 'saga-card__title'; title.textContent = s.title || '';
+          body.appendChild(title);
+          if (s.price) { var price = document.createElement('div'); price.className = 'saga-card__price'; price.textContent = s.price; body.appendChild(price); }
+          var cta = document.createElement('div'); cta.className = 'saga-card__cta'; cta.textContent = CARD_CTA[s.kind] || 'See this pack';
+          body.appendChild(cta);
+          a.appendChild(body);
+          row.appendChild(a);
+        });
+        row.hidden = !suggestions.length;
+      }
+
+      function bubble(role, text, pending, prompts, suggestions) {
         var el;
         if (role === 'assistant') {
           el = tpl.content.firstElementChild.cloneNode(true);
           var t = el.querySelector('.saga-bubble__text');
           if (pending) { el.classList.add('is-pending'); t.innerHTML = '<span></span><span></span><span></span>'; }
           else {
-            if (image && image.url) {
-              var img = document.createElement('img');
-              img.className = 'saga-bubble__image'; img.loading = 'lazy'; img.alt = image.alt || '';
-              img.src = image.url;
-              t.appendChild(img);
-            }
-            t.appendChild(render(text));
+            // A link already shown as a card below shouldn't also appear as a bare link inline — the model
+            // writes links as full URLs on their own, so dropping the substring leaves a blank paragraph that
+            // render() already skips.
+            var cardUrls = (suggestions || []).map(function (s) { return s.url; });
+            var cleaned = text;
+            cardUrls.forEach(function (u) { cleaned = cleaned.split(u).join(''); });
+            t.appendChild(render(cleaned));
+            if (suggestions && suggestions.length) renderCards(el.querySelector('[data-saga-cards]'), suggestions);
             if (prompts && prompts.length) addPrompts(el.querySelector('[data-saga-prompts]'), prompts);
           }
         } else {
@@ -237,7 +269,7 @@ a collapsed "People also ask" list of a few starter questions for anyone who'd r
               return fail(code);
             }
             state.messages.push({ role: 'assistant', content: res.body.reply }); save();
-            bubble('assistant', res.body.reply, false, res.body.prompts, res.body.image);
+            bubble('assistant', res.body.reply, false, res.body.prompts, res.body.suggestions);
             if (res.body.ended) { state.ended = true; input.placeholder = 'Chat ended'; }
             track('saga_reply', { turn: turns(), ms: Date.now() - started, links: (res.body.reply.match(/https:\/\/voxblock\.co\.uk/g) || []).length });
             if (res.body.meta && markTypeSeen(res.body.meta.type)) {
