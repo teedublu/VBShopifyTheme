@@ -1,0 +1,64 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STOCKIST SUGGEST (templates/page.stockists.json, /pages/find-a-bookshop)
+----------------------------------------------------------------------------------------------------------------------
+"No bookshop near you yet?" band. A short Shopify contact form (sent to the store's contact email) where a customer
+names a bookshop they'd like to see Voxblock in, plus a button to the starter packs.
+The email subject line is set by the hidden "Form" field: "Bookshop suggestion".
+Shopify redirects a posted contact form back with ?contact_posted=true#<form id>; the thank-you line shows only for
+the form named in the hash (two contact forms share the page).
+Clicks send vs_yoto_click { target }: fab_suggest_submit, fab_shop_packs.
+{%- endcomment -%}
+
+{%- capture form_id -%}suggest-form-{{ section.id }}{%- endcapture -%}
+
+<section id="{{ section.settings.anchor | default: 'suggest' | escape }}" class="stockist-suggest" {{ section.shopify_attributes }}>
+  <div class="container stockist-suggest__inner">
+    <div class="stockist-suggest__text">
+      <h2 class="h3">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.text != blank -%}<p>{{ section.settings.text | escape }}</p>{%- endif -%}
+    </div>
+
+    {%- form 'contact', id: form_id, class: 'stockist-suggest__form' -%}
+      <input type="hidden" name="contact[Form]" value="Bookshop suggestion">
+      {%- if form.posted_successfully? -%}
+        <p class="stockist-form-thanks" data-form-thanks="{{ form_id }}" hidden>{{ section.settings.thanks | escape }}</p>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <p class="stockist-form-error" role="alert">{{ form.errors.translated_fields[form.errors.first] | capitalize }} {{ form.errors.messages[form.errors.first] }}</p>
+      {%- endif -%}
+      <div class="stockist-suggest__fields">
+        {%- render 'input', type: 'text', name: 'contact[Suggested bookshop]', label: section.settings.shop_label, required: true -%}
+        {%- render 'input', type: 'email', name: 'contact[email]', label: section.settings.email_label, value: customer.email, required: true, autocomplete: 'email' -%}
+      </div>
+      <div class="stockist-suggest__actions">
+        <button type="submit" class="button button--outline" data-vs-track="fab_suggest_submit">{{ section.settings.submit_text | escape }}</button>
+        {%- if section.settings.shop_link != blank -%}
+          {%- render 'button', content: section.settings.shop_text, href: section.settings.shop_link, track: 'fab_shop_packs' -%}
+        {%- endif -%}
+      </div>
+    {%- endform -%}
+  </div>
+</section>
+
+{%- render 'stockist-form-thanks-script' -%}
+
+{% schema %}
+{
+  "name": "Stockist suggest",
+  "tag": "div",
+  "class": "shopify-section--stockist-suggest",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (no #)", "default": "suggest" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "No bookshop near you yet?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Tell us which bookshop you'd like to see Voxblock in and we'll get in touch with them. Or order online: free UK delivery over £25 and a 100-day money-back guarantee." },
+    { "type": "text", "id": "shop_label", "label": "Bookshop field", "default": "Bookshop and town" },
+    { "type": "text", "id": "email_label", "label": "Email field", "default": "Your email (we'll tell you when they stock it)" },
+    { "type": "text", "id": "submit_text", "label": "Submit button", "default": "Suggest it" },
+    { "type": "text", "id": "thanks", "label": "Thank-you line", "default": "Thank you. We'll get in touch with them and let you know." },
+    { "type": "text", "id": "shop_text", "label": "Shop button", "default": "Shop starter packs" },
+    { "type": "url", "id": "shop_link", "label": "Shop button link", "default": "/collections/all" }
+  ],
+  "presets": [{ "name": "Stockist suggest" }]
+}
+{% endschema %}

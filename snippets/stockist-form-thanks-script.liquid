@@ -1,0 +1,24 @@
+{%- comment -%}
+Shows the thank-you line of the contact form that was just posted, on pages with more than one contact form
+(stockist-suggest, stockist-join). Shopify redirects back with ?contact_posted=true#<form id>; every contact form sees
+form.posted_successfully?, so each renders its thank-you hidden and this script shows the one named in the hash
+(the first one if the hash names none). Rendered by each section; runs once per page.
+{%- endcomment -%}
+<script>
+  (function () {
+    if (window.__stockistThanks) return;
+    window.__stockistThanks = true;
+    function show() {
+      var all = document.querySelectorAll('[data-form-thanks]');
+      if (!all.length) return;
+      var id = location.hash.replace('#', '');
+      var match = null;
+      all.forEach(function (el) { if (el.getAttribute('data-form-thanks') === id) match = el; });
+      var el = match || all[0];
+      el.hidden = false;
+      var form = el.closest('form');
+      if (form) form.classList.add('is-sent');
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', show); else show();
+  })();
+</script>
