@@ -118,11 +118,14 @@ surface several.
       }
       function turns() { return state.messages.filter(function (m) { return m.role === 'user'; }).length; }
 
-      // Text with bare voxblock.co.uk URLs -> paragraphs with links; nothing else is interpreted
-      function render(text) {
+      // Text with bare voxblock.co.uk URLs -> paragraphs with links; nothing else is interpreted. `cardUrls`
+      // drops a whole paragraph that mentions one of them — a link already shown as a card below shouldn't
+      // also appear as a bare link (or whatever else the model put on the same line, like a repeated price).
+      function render(text, cardUrls) {
         var frag = document.createDocumentFragment();
         text.split(/\n{2,}|\n/).forEach(function (para) {
           if (!para.trim()) return;
+          if (cardUrls && cardUrls.some(function (u) { return para.indexOf(u) !== -1; })) return;
           var p = document.createElement('p');
           var re = /(https:\/\/voxblock\.co\.uk\/[^\s]*)/g, last = 0, m;
           while ((m = re.exec(para))) {
@@ -183,13 +186,8 @@ surface several.
           var t = el.querySelector('.saga-bubble__text');
           if (pending) { el.classList.add('is-pending'); t.innerHTML = '<span></span><span></span><span></span>'; }
           else {
-            // A link already shown as a card below shouldn't also appear as a bare link inline — the model
-            // writes links as full URLs on their own, so dropping the substring leaves a blank paragraph that
-            // render() already skips.
             var cardUrls = (suggestions || []).map(function (s) { return s.url; });
-            var cleaned = text;
-            cardUrls.forEach(function (u) { cleaned = cleaned.split(u).join(''); });
-            t.appendChild(render(cleaned));
+            t.appendChild(render(text, cardUrls));
             if (suggestions && suggestions.length) renderCards(el.querySelector('[data-saga-cards]'), suggestions);
             if (prompts && prompts.length) addPrompts(el.querySelector('[data-saga-prompts]'), prompts);
           }
