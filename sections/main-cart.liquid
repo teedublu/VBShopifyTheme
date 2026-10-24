@@ -24,6 +24,15 @@
           {%- endif -%}
         </div>
 
+        {%- liquid
+          assign gift_wrap_variant_id = 0
+          for block in section.blocks
+            if block.type == 'cart_gift_wrap'
+              assign gift_wrap_variant_id = all_products[block.settings.gift_wrap_handle].variants.first.id
+            endif
+          endfor
+        -%}
+
         <div class="cart-order">
           <div class="cart-order__summary">
             {%- comment -%}
@@ -42,6 +51,7 @@
 
               <tbody class="order-summary__body">
                 {%- for line_item in cart.items -%}
+                  {%- if line_item.variant_id == gift_wrap_variant_id -%}{%- continue -%}{%- endif -%}
                   {%- assign line_max_quantity = '' -%}
 
                   {%- if line_item.variant.inventory_management != blank and line_item.variant.inventory_policy == 'deny' -%}

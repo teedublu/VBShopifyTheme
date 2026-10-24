@@ -37,9 +37,17 @@
         {%- endif -%}
       </div>
 
+      {%- liquid
+        assign gift_wrap_variant_id = 0
+        if section.settings.show_gift_wrap
+          assign gift_wrap_variant_id = all_products[section.settings.gift_wrap_handle].variants.first.id
+        endif
+      -%}
+
       <div class="v-stack gap-6 sm:gap-8">
         <div class="cart-drawer__line-items">
           {%- for line_item in cart.items -%}
+            {%- if line_item.variant_id == gift_wrap_variant_id -%}{%- continue -%}{%- endif -%}
             {%- render 'line-item', line_item: line_item, show_desktop_quantity: true -%}
           {%- endfor -%}
         </div>

@@ -33,10 +33,12 @@ Supported variables:
     endif
   -%}
 
+  {%- assign formatted_price = variant.price | money -%}
+
   <gift-wrap-option class="gift-wrap-option v-stack gap-3" data-variant-id="{{ variant.id }}">
     <label class="gift-wrap-option__toggle h-stack items-center gap-3">
       <input type="checkbox" name="gift_wrap" {% if is_added %}checked{% endif %}>
-      <span>{{ 'cart.gift_wrap.label_html' | t: price: variant.price | money }}</span>
+      <span>{{ 'cart.gift_wrap.label_html' | t: price: formatted_price }}</span>
     </label>
 
     <div class="gift-wrap-option__message" {% unless is_added %}hidden{% endunless %}>
