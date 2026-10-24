@@ -1304,14 +1304,19 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .saga-bubble__text p { margin: 0; } .saga-bubble__text p + p { margin-top: 8px; }
 .saga-cards { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; padding: 2px 2px 4px; margin: -2px -2px 0; }
 .saga-cards[hidden] { display: none; }
-.saga-card { flex: none; scroll-snap-align: start; width: 128px; height: 212px; display: flex; flex-direction: column; border: 1px solid var(--card-border); border-radius: 12px; background: #fff; overflow: hidden; text-decoration: none; color: inherit; }
-.saga-card:hover, .saga-card:focus-visible { border-color: var(--brand-heading); }
-.saga-card__image { display: block; flex: none; width: 100%; height: 96px; object-fit: contain; background: #fff7f0; }
-.saga-card__body { flex: 1; min-height: 0; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+.saga-card { flex: none; scroll-snap-align: start; width: 128px; height: 212px; display: flex; flex-direction: column; border: 1px solid var(--card-border); border-radius: 12px; background: #fff; overflow: hidden; }
+.saga-card:hover, .saga-card:has(:focus-visible) { border-color: var(--brand-heading); }
+.saga-card__figure { position: relative; flex: none; }
+.saga-card__image-link { display: block; }
+.saga-card__image { display: block; width: 100%; height: 96px; object-fit: contain; background: #fff7f0; }
+.saga-card__body { flex: 1; min-height: 0; padding: 8px; display: flex; flex-direction: column; gap: 4px; text-decoration: none; color: inherit; }
 .saga-card__title { flex: none; min-height: 30px; font-size: 12px; font-weight: 600; line-height: 15px; color: var(--brand-heading); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .saga-card__price { flex: none; font-size: 12px; font-weight: 700; color: #C2560F; }
 .saga-card__cta { flex: none; margin-top: auto; padding: 5px 0; border-radius: 999px; background: #ff9e57; color: #fff; font-size: 11px; font-weight: 700; text-align: center; }
-.saga-card:hover .saga-card__cta, .saga-card:focus-visible .saga-card__cta { background: #C2560F; }
+.saga-card:hover .saga-card__cta, .saga-card:has(:focus-visible) .saga-card__cta { background: #C2560F; }
+/* The overlay heart (.save-book--overlay, global rules) is sized for a full product card; shrink it a touch
+   to fit this one's small 96px-tall image without crowding it. */
+.saga-card .save-book--overlay { width: 26px; height: 26px; inset-block-end: 4px; inset-inline-end: 4px; }
 .saga-bubble__prompts { display: flex; flex-wrap: wrap; gap: 6px; }
 .saga-bubble__prompts:empty { display: none; }
 .saga-prompt { padding: 6px 12px; border: 1px solid var(--brand-heading); border-radius: 999px; background: #fff; color: var(--brand-heading); font-size: 13px; font-weight: 600; line-height: 1.3; cursor: pointer; }

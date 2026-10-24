@@ -26,11 +26,13 @@ once the model actually needs an age to recommend a pack); clicking one sends it
 same as any other message. Separately, the opening screen only (hidden the moment any message is sent) shows
 a collapsed "People also ask" list of a few starter questions for anyone who'd rather tap than type —
 `.saga-faq` below; clicking an item sends it exactly like typing it.
-A reply can also carry `suggestions: [{url,title,price,kind,image}]` — one product the reply linked to, in
+A reply can also carry `suggestions: [{url,title,price,kind,image,id}]` — one product the reply linked to, in
 order, rendered as a tappable `.saga-card` (image + title + price + CTA) in a horizontal-scroll row,
 `.saga-cards`, instead of a bare link; the card's own URL is stripped out of the prose text so it isn't
 shown twice. A single pack recommendation is a one-card row; recommending individual audiobooks can
-surface several.
+surface several. When a card's product resolved an `id`, it also gets the theme's own save-for-later heart
+(a `save-book-button` built in JS, same markup as snippets/save-book-button.liquid — no separate save logic
+of Saga's own, so a card's heart shares state with every other heart on the site).
 {%- endcomment -%}
 
 {%- if settings.saga_enabled -%}
@@ -85,6 +87,15 @@ surface several.
     <div class="saga-bubble"><img class="saga-bubble__avatar" src="{{ saga_avatar }}" width="28" height="28" alt="" loading="lazy"><div class="saga-bubble__content"><div class="saga-bubble__text"></div><div class="saga-cards" data-saga-cards hidden></div><div class="saga-bubble__prompts" data-saga-prompts></div></div></div>
   </template>
 
+  {%- comment -%}
+  The theme's own "save for later" heart (snippets/save-book-button.liquid, behaviour in assets/saved-books.js) needs
+  its icon markup, which only Liquid can render (it depends on settings.icon_stroke_width / icon_style); a card's
+  heart button is otherwise built entirely in JS, so this template exists purely to clone that icon from.
+  {%- endcomment -%}
+  <template id="saga-save-heart-template">
+    {%- render 'icon' with 'picto-love', width: 16, height: 16 -%}
+  </template>
+
   <script>
     (function () {
       var dialog = document.getElementById('saga-chat');
@@ -95,6 +106,7 @@ surface several.
       var input = dialog.querySelector('[data-saga-input]');
       var sendBtn = dialog.querySelector('[data-saga-send]');
       var tpl = document.getElementById('saga-bubble-template');
+      var heartTpl = document.getElementById('saga-save-heart-template');
       var STORE = 'vb_saga_thread';
       var TYPES_STORE = 'vb_saga_seen_types';
       var state = { messages: [], openedAt: 0, source: '', collection: '', busy: false, ended: false, seenTypes: {} };
@@ -154,29 +166,65 @@ surface several.
       }
 
       // Suggestion cards: one per product the reply links to (a single pack is a one-card row; an audiobook
-      // recommendation can be several), each tappable through to its product page.
+      // recommendation can be several), each tappable through to its product page. The figure (image + a
+      // save-for-later heart) and the body (title/price/CTA) are two separate links rather than one big
+      // anchor wrapping everything, so the heart's own <button> never ends up nested inside an <a> — the
+      // same split the theme's own product cards use (snippets/product-card-default.liquid).
       var CARD_CTA = { pack: 'See this pack', player: 'See the player', adult: 'See the player', audiobook: 'See this book' };
+      function cardLink(href) {
+        var a = document.createElement('a');
+        a.href = href;
+        a.addEventListener('click', function () { track('saga_link_clicked', { url: href, turn: turns() }); });
+        return a;
+      }
       function renderCards(row, suggestions) {
         suggestions.forEach(function (s) {
-          var a = document.createElement('a');
-          a.className = 'saga-card'; a.href = s.url;
-          a.addEventListener('click', function () { track('saga_link_clicked', { url: s.url, turn: turns() }); });
+          var card = document.createElement('div');
+          card.className = 'saga-card';
+
+          var figure = document.createElement('div');
+          figure.className = 'saga-card__figure';
+          var imageLink = cardLink(s.url);
+          imageLink.className = 'saga-card__image-link';
           if (s.image && s.image.url) {
             var img = document.createElement('img');
             img.className = 'saga-card__image'; img.loading = 'lazy'; img.alt = s.image.alt || s.title || '';
             img.src = s.image.url;
-            a.appendChild(img);
+            imageLink.appendChild(img);
           }
-          var body = document.createElement('div'); body.className = 'saga-card__body';
+          figure.appendChild(imageLink);
+          if (s.id) figure.appendChild(saveHeart(s));
+          card.appendChild(figure);
+
+          var body = cardLink(s.url);
+          body.className = 'saga-card__body';
           var title = document.createElement('div'); title.className = 'saga-card__title'; title.textContent = s.title || '';
           body.appendChild(title);
           if (s.price) { var price = document.createElement('div'); price.className = 'saga-card__price'; price.textContent = s.price; body.appendChild(price); }
           var cta = document.createElement('div'); cta.className = 'saga-card__cta'; cta.textContent = CARD_CTA[s.kind] || 'See this pack';
           body.appendChild(cta);
-          a.appendChild(body);
-          row.appendChild(a);
+          card.appendChild(body);
+
+          row.appendChild(card);
         });
         row.hidden = !suggestions.length;
+      }
+
+      // The theme's own "save for later" heart (save-book-button custom element, assets/saved-books.js) —
+      // building the exact same markup here means a Saga card's heart stays in sync with every other heart
+      // on the site (localStorage, account sync, the header count, the toast) with no new JS of its own.
+      function saveHeart(s) {
+        var el = document.createElement('save-book-button');
+        el.className = 'save-book save-book--overlay';
+        el.setAttribute('product-id', s.id);
+        el.setAttribute('product-title', s.title || '');
+        el.setAttribute('product-type', '');
+        var btn = document.createElement('button');
+        btn.type = 'button'; btn.className = 'save-book__button tap-area';
+        btn.setAttribute('aria-pressed', 'false'); btn.setAttribute('aria-label', 'Save ' + (s.title || ''));
+        if (heartTpl) btn.appendChild(heartTpl.content.cloneNode(true));
+        el.appendChild(btn);
+        return el;
       }
 
       function bubble(role, text, pending, prompts, suggestions) {
