@@ -46,6 +46,14 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-10-24: Gift wrap + message, paid add-on (cart drawer + cart page)
+Branch `claude/gift-wrap-message`, draft PR, draft theme "VBShopifyTheme/claude/gift-wrap-message" (id 200593965440, duplicate of live + changed files pushed via Shopify CLI). **Awaiting owner check.**
+- New product "Gift Wrap & Message" (`gift-wrap-message`, £5.00, single variant, inventory not tracked, published to Online Store only — not added to any collection or nav). One add-on per order, not per pack/line item, and not bundled into any starter-pack SKU.
+- `snippets/gift-wrap-option.liquid`: checkbox + message box reflecting current cart state. `<gift-wrap-option>` custom element (`assets/voxblock.js.liquid`) adds/removes the product and writes the message as a "Gift message" line item property on that same line via cart/change.js, following the theme's own cart:prepare-bundled-sections / cart:change convention (same pattern as ProductForm/LineItemQuantity in theme.js).
+- Shown in both `sections/cart-drawer.liquid` (toggle in section settings, default on) and `sections/main-cart.liquid` (new "Gift wrap" block, added to `templates/cart.json`).
+- Message shows automatically on the order, packing slip and confirmation email as a line item property — no notification template change needed.
+- Not done: the gift-wrap product isn't excluded from on-site search results (only kept out of collections/nav); if the product or its variant is ever deleted the option just stops showing, no separate error handling.
+
 ## 2026-10-23: Find a bookshop page (map, stockist enquiry)
 Branch `claude/find-a-bookshop`, draft PR, draft theme "Find a bookshop (claude/find-a-bookshop)" (id 200531444096, duplicate of live + changed files by API, checksums verified). **Awaiting owner check, phone and desktop.** Design: canvas "Find a bookshop redesign".
 - `templates/page.stockists.json` (the template /pages/find-a-bookshop uses) now: `stockist-hero`, `stockist-finder`, `stockist-suggest`, `stockist-join`. Old banner, page body, multi-column list and photo carousel removed.
