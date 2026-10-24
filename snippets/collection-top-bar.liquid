@@ -148,6 +148,10 @@ Supported variables
           </x-popover>
         </facet-sort-by>
       {%- endif -%}
+
+      {%- if section.settings.help_url != blank -%}
+        <a href="{{ section.settings.help_url }}" class="top-bar__help">{{ 'collection.pack_bar.help_link' | t }}</a>
+      {%- endif -%}
     </div>
   {%- endif -%}
 
