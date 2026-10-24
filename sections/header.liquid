@@ -255,7 +255,7 @@ the underlying logic of the menu.
           {%- endif -%}
 
           {%- liquid
-            assign help_menu = section.settings.help_menu
+            assign help_menu = section.settings.help_menu | default: linklists['footer-help']
           -%}
           {%- if settings.saga_enabled or help_menu.links.size > 0 -%}
             {%- capture help_popover_id -%}header-help-popover-{{ section.id }}{%- endcapture -%}
@@ -441,8 +441,7 @@ the underlying logic of the menu.
       "type": "link_list",
       "id": "help_menu",
       "label": "Help menu",
-      "default": "footer-help",
-      "info": "Shown in the header's (?) popover, above Ask Saga. Defaults to the same menu as the footer's Help column."
+      "info": "Shown in the header's (?) popover, above Ask Saga. Leave blank to use the same menu as the footer's Help column (footer-help)."
     },
     {
       "type": "select",
