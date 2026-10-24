@@ -1294,20 +1294,20 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .saga-bubble__text p { margin: 0; } .saga-bubble__text p + p { margin-top: 8px; }
 .saga-cards { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; padding: 2px 2px 4px; margin: -2px -2px 0; }
 .saga-cards[hidden] { display: none; }
-.saga-card { flex: none; scroll-snap-align: start; width: 128px; display: flex; flex-direction: column; border: 1px solid var(--card-border); border-radius: 12px; background: #fff; overflow: hidden; text-decoration: none; color: inherit; }
+.saga-card { flex: none; scroll-snap-align: start; width: 128px; height: 212px; display: flex; flex-direction: column; border: 1px solid var(--card-border); border-radius: 12px; background: #fff; overflow: hidden; text-decoration: none; color: inherit; }
 .saga-card:hover, .saga-card:focus-visible { border-color: var(--brand-heading); }
-.saga-card__image { display: block; width: 100%; height: 96px; object-fit: contain; background: #fff7f0; }
-.saga-card__body { padding: 8px; display: flex; flex-direction: column; gap: 4px; }
-.saga-card__title { font-size: 12px; font-weight: 600; line-height: 15px; color: var(--brand-heading); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.saga-card__price { font-size: 12px; font-weight: 700; color: #C2560F; }
-.saga-card__cta { margin-top: 2px; padding: 5px 0; border-radius: 999px; background: #ff9e57; color: #fff; font-size: 11px; font-weight: 700; text-align: center; }
+.saga-card__image { display: block; flex: none; width: 100%; height: 96px; object-fit: contain; background: #fff7f0; }
+.saga-card__body { flex: 1; min-height: 0; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
+.saga-card__title { flex: none; min-height: 30px; font-size: 12px; font-weight: 600; line-height: 15px; color: var(--brand-heading); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.saga-card__price { flex: none; font-size: 12px; font-weight: 700; color: #C2560F; }
+.saga-card__cta { flex: none; margin-top: auto; padding: 5px 0; border-radius: 999px; background: #ff9e57; color: #fff; font-size: 11px; font-weight: 700; text-align: center; }
 .saga-card:hover .saga-card__cta, .saga-card:focus-visible .saga-card__cta { background: #C2560F; }
 .saga-bubble__prompts { display: flex; flex-wrap: wrap; gap: 6px; }
 .saga-bubble__prompts:empty { display: none; }
 .saga-prompt { padding: 6px 12px; border: 1px solid var(--brand-heading); border-radius: 999px; background: #fff; color: var(--brand-heading); font-size: 13px; font-weight: 600; line-height: 1.3; cursor: pointer; }
 .saga-prompt:hover, .saga-prompt:focus-visible { background: var(--brand-heading); color: #fff; }
-.saga-link { display: block; width: fit-content; max-width: 100%; margin: 8px 0; padding: 8px 14px; border-radius: 999px; background: #ff9e57; color: #fff; font-weight: 700; font-size: 14px; text-decoration: none; }
-.saga-link:hover { background: #C2560F; }
+.saga-link { display: block; width: fit-content; max-width: 100%; margin: 6px 0; padding: 0; background: none; color: var(--brand-heading); font-weight: 700; font-size: 14px; text-decoration: underline; text-underline-offset: 2px; }
+.saga-link:hover { color: #C2560F; }
 .saga-bubble.is-pending .saga-bubble__text { display: flex; gap: 4px; padding: 14px; }
 .saga-bubble.is-pending span { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-heading); opacity: .35; animation: saga-dot 1.2s infinite; }
 .saga-bubble.is-pending span:nth-child(2) { animation-delay: .2s; } .saga-bubble.is-pending span:nth-child(3) { animation-delay: .4s; }
