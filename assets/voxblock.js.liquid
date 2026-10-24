@@ -381,16 +381,40 @@ document.addEventListener('variant:change', (event) => {
 // cart:prepare-bundled-sections convention (see ProductForm / LineItemQuantity in theme.js) so the cart drawer and
 // cart page totals refresh exactly like any other basket edit.
 // ----------------------------------------------------------------------------------------------------------------
-const giftWrapUpdateCart = async (url, body) => {
+// Remove/update always target the cart line by its *line key* (data-line-key, set by the Liquid snippet from the
+// real cart each render), never by variant ID: a bare variant ID is ambiguous once more than one line of the same
+// variant could exist (e.g. two different "Gift message" values), and matching the wrong one is how a toggle can
+// silently leave a stray line behind instead of updating/removing it.
+const giftWrapBundledSections = () => {
     const sections = [];
     document.documentElement.dispatchEvent(new CustomEvent('cart:prepare-bundled-sections', { bubbles: true, detail: { sections } }));
-    const cart = await (await fetch(url, {
+    return sections;
+};
+const giftWrapDispatchCartChange = (cart) => {
+    document.documentElement.dispatchEvent(new CustomEvent('cart:change', { bubbles: true, detail: { baseEvent: 'gift-wrap:change', cart } }));
+};
+// cart/add.js's response is the added line item(s), not the full cart (no item_count/total_price) — fetch cart.js
+// separately and attach the rendered `sections` from the add response, exactly like ProductForm in theme.js.
+const giftWrapAddToCart = async (variantId) => {
+    const sections = giftWrapBundledSections();
+    const addResponse = await (await fetch(`${Shopify.routes.root}cart/add.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: variantId, quantity: 1, properties: { 'Gift message': '' } }], sections }),
+    })).json();
+    const cart = await (await fetch(`${Shopify.routes.root}cart.js`)).json();
+    cart.sections = addResponse.sections;
+    giftWrapDispatchCartChange(cart);
+};
+// cart/change.js's response is already the full cart.
+const giftWrapChangeCart = async (body) => {
+    const sections = giftWrapBundledSections();
+    const cart = await (await fetch(`${Shopify.routes.root}cart/change.js`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...body, sections }),
     })).json();
-    document.documentElement.dispatchEvent(new CustomEvent('cart:change', { bubbles: true, detail: { baseEvent: 'gift-wrap:change', cart } }));
-    return cart;
+    giftWrapDispatchCartChange(cart);
 };
 
 class GiftWrapOption extends HTMLElement {
@@ -402,32 +426,26 @@ class GiftWrapOption extends HTMLElement {
         this.removeEventListener('change', this._onChange);
     }
     _onChange(event) {
-        const variantId = Number(this.dataset.variantId);
         if (event.target.matches('[name="gift_wrap"]')) {
-            this._toggle(variantId, event.target.checked);
+            this._toggle(event.target.checked);
         } else if (event.target.matches('[name="gift_wrap_message"]')) {
-            this._setMessage(variantId, event.target.value);
+            this._setMessage(event.target.value);
         }
     }
-    _toggle(variantId, add) {
+    _toggle(add) {
         const messageBox = this.querySelector('.gift-wrap-option__message');
         if (messageBox) messageBox.hidden = !add;
         if (add) {
-            giftWrapUpdateCart(`${Shopify.routes.root}cart/add.js`, {
-                items: [{ id: variantId, quantity: 1, properties: { 'Gift message': '' } }],
-            });
-        } else {
-            giftWrapUpdateCart(`${Shopify.routes.root}cart/change.js`, { id: variantId, quantity: 0 });
+            giftWrapAddToCart(Number(this.dataset.variantId));
+        } else if (this.dataset.lineKey) {
+            giftWrapChangeCart({ id: this.dataset.lineKey, quantity: 0 });
         }
     }
-    _setMessage(variantId, message) {
+    _setMessage(message) {
+        if (!this.dataset.lineKey) return; // not added yet (or still mid-add): nothing to attach the message to
         clearTimeout(this._messageTimer);
         this._messageTimer = setTimeout(() => {
-            giftWrapUpdateCart(`${Shopify.routes.root}cart/change.js`, {
-                id: variantId,
-                quantity: 1,
-                properties: { 'Gift message': message },
-            });
+            giftWrapChangeCart({ id: this.dataset.lineKey, quantity: 1, properties: { 'Gift message': message } });
         }, 400);
     }
 }
