@@ -259,7 +259,7 @@ the underlying logic of the menu.
           -%}
           {%- if settings.saga_enabled or help_menu.links.size > 0 -%}
             {%- capture help_popover_id -%}header-help-popover-{{ section.id }}{%- endcapture -%}
-            <div class="relative">
+            <div class="relative header__help-trigger">
               <button type="button" class="tap-area sm:block" aria-controls="{{ help_popover_id }}" aria-expanded="false">
                 <span class="sr-only">Help</span>
                 {%- render 'icon' with 'help' -%}

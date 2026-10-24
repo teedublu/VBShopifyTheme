@@ -103,6 +103,7 @@ saved-books-count:empty { opacity: 0; }
 .header__saved-books.is-bumping saved-books-count { animation: saved-books-count-pop .6s ease-out .15s; }
 
 /* Header (?) popover: Ask Saga first, then the same Help menu as the footer's Help column */
+.header__help-trigger { display: inline-flex; align-items: center; }
 .help-popover { --popover-content-max-width: 300px; }
 .help-popover::part(body) { text-align: left; padding: var(--spacing-3) var(--spacing-4); }
 .help-popover__chat { display: flex; align-items: center; gap: 10px; width: 100%; margin: 0; padding: 10px; border: 1px solid var(--card-border); border-radius: 12px; background: #fff7f0; font: inherit; color: inherit; text-align: left; cursor: pointer; }
