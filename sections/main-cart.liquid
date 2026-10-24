@@ -140,6 +140,11 @@
                       {%- render 'input', name: 'note', multiline: 3, label: order_note, value: cart.note, maxlength: block.settings.maxlength -%}
                     </cart-note>
 
+                  {%- when 'cart_gift_wrap' -%}
+                    <div {{ block.shopify_attributes }}>
+                      {%- render 'gift-wrap-option', product_handle: block.settings.gift_wrap_handle, max_length: block.settings.max_length -%}
+                    </div>
+
                   {%- when 'text' -%}
                     {%- if block.settings.content != blank -%}
                       <div class="prose text-subdued" {{ block.shopify_attributes }}>
@@ -230,6 +235,24 @@
           "type": "number",
           "id": "max_length",
           "label": "Maximum number of characters"
+        }
+      ]
+    },
+    {
+      "type": "cart_gift_wrap",
+      "name": "Gift wrap",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "gift_wrap_handle",
+          "label": "Gift wrap product (product handle)",
+          "default": "gift-wrap-message"
+        },
+        {
+          "type": "number",
+          "id": "max_length",
+          "label": "Maximum number of characters for the message"
         }
       ]
     },

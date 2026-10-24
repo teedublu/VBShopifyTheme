@@ -19,6 +19,12 @@
             "show_shipping_text": false
           }
         },
+        "gift_wrap": {
+          "type": "cart_gift_wrap",
+          "settings": {
+            "gift_wrap_handle": "gift-wrap-message"
+          }
+        },
         "checkout_button": {
           "type": "checkout_button",
           "settings": {
@@ -32,6 +38,7 @@
       },
       "block_order": [
         "totals",
+        "gift_wrap",
         "checkout_button",
         "accelerated_buttons_bfJjUA"
       ],

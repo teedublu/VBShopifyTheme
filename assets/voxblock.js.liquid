@@ -372,3 +372,63 @@ document.addEventListener('variant:change', (event) => {
         images.forEach((img) => { img.hidden = img !== match; });
     });
 });
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// GIFT WRAP OPTION (snippets/gift-wrap-option.liquid, cart drawer + cart page)
+// A single paid add-on: ticking the checkbox adds the gift-wrap product to the basket; the message box (shown once
+// ticked) writes a "Gift message" line item property onto that same line. Follows the theme's own cart:change /
+// cart:prepare-bundled-sections convention (see ProductForm / LineItemQuantity in theme.js) so the cart drawer and
+// cart page totals refresh exactly like any other basket edit.
+// ----------------------------------------------------------------------------------------------------------------
+const giftWrapUpdateCart = async (url, body) => {
+    const sections = [];
+    document.documentElement.dispatchEvent(new CustomEvent('cart:prepare-bundled-sections', { bubbles: true, detail: { sections } }));
+    const cart = await (await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...body, sections }),
+    })).json();
+    document.documentElement.dispatchEvent(new CustomEvent('cart:change', { bubbles: true, detail: { baseEvent: 'gift-wrap:change', cart } }));
+    return cart;
+};
+
+class GiftWrapOption extends HTMLElement {
+    connectedCallback() {
+        this._onChange = this._onChange.bind(this);
+        this.addEventListener('change', this._onChange);
+    }
+    disconnectedCallback() {
+        this.removeEventListener('change', this._onChange);
+    }
+    _onChange(event) {
+        const variantId = Number(this.dataset.variantId);
+        if (event.target.matches('[name="gift_wrap"]')) {
+            this._toggle(variantId, event.target.checked);
+        } else if (event.target.matches('[name="gift_wrap_message"]')) {
+            this._setMessage(variantId, event.target.value);
+        }
+    }
+    _toggle(variantId, add) {
+        const messageBox = this.querySelector('.gift-wrap-option__message');
+        if (messageBox) messageBox.hidden = !add;
+        if (add) {
+            giftWrapUpdateCart(`${Shopify.routes.root}cart/add.js`, {
+                items: [{ id: variantId, quantity: 1, properties: { 'Gift message': '' } }],
+            });
+        } else {
+            giftWrapUpdateCart(`${Shopify.routes.root}cart/change.js`, { id: variantId, quantity: 0 });
+        }
+    }
+    _setMessage(variantId, message) {
+        clearTimeout(this._messageTimer);
+        this._messageTimer = setTimeout(() => {
+            giftWrapUpdateCart(`${Shopify.routes.root}cart/change.js`, {
+                id: variantId,
+                quantity: 1,
+                properties: { 'Gift message': message },
+            });
+        }, 400);
+    }
+}
+if (!window.customElements.get('gift-wrap-option')) window.customElements.define('gift-wrap-option', GiftWrapOption);

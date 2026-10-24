@@ -1,0 +1,47 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+GIFT WRAP OPTION (cart drawer: sections/cart-drawer.liquid · cart page: sections/main-cart.liquid "Gift wrap" block)
+----------------------------------------------------------------------------------------------------------------------
+One paid add-on covering gift wrap AND a message together, as a single cart line (not a bundle, not per line item:
+whatever's in the basket gets wrapped as one order). Ticking the checkbox adds `product_handle`'s product to the
+basket; the message box (shown once ticked) writes a "Gift message" line item property onto that same line via
+cart/change.js, so it travels with the order to the packing slip/notification rather than living as a separate cart
+attribute. Behaviour: the <gift-wrap-option> custom element in voxblock.js (GIFT WRAP OPTION section).
+Needs: a real product (one variant, inventory not tracked) created once in Admin; its handle is passed in.
+
+Supported variables:
+* product_handle: handle of the gift-wrap product (required)
+* max_length: optional max length for the message box
+{%- endcomment -%}
+
+{%- liquid
+  assign gift_product = all_products[product_handle]
+  assign variant = gift_product.variants.first
+-%}
+
+{%- if variant != blank and variant.available -%}
+  {%- liquid
+    assign existing_item = blank
+    for item in cart.items
+      if item.variant_id == variant.id
+        assign existing_item = item
+      endif
+    endfor
+    assign is_added = false
+    if existing_item != blank
+      assign is_added = true
+    endif
+  -%}
+
+  <gift-wrap-option class="gift-wrap-option v-stack gap-3" data-variant-id="{{ variant.id }}">
+    <label class="gift-wrap-option__toggle h-stack items-center gap-3">
+      <input type="checkbox" name="gift_wrap" {% if is_added %}checked{% endif %}>
+      <span>{{ 'cart.gift_wrap.label_html' | t: price: variant.price | money }}</span>
+    </label>
+
+    <div class="gift-wrap-option__message" {% unless is_added %}hidden{% endunless %}>
+      {%- assign message_label = 'cart.gift_wrap.message_label' | t -%}
+      {%- render 'input', name: 'gift_wrap_message', multiline: 3, label: message_label, value: existing_item.properties['Gift message'], maxlength: max_length -%}
+    </div>
+  </gift-wrap-option>
+{%- endif -%}

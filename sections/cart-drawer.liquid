@@ -44,6 +44,10 @@
           {%- endfor -%}
         </div>
 
+        {%- if section.settings.show_gift_wrap -%}
+          {%- render 'gift-wrap-option', product_handle: section.settings.gift_wrap_handle -%}
+        {%- endif -%}
+
         {%- if section.settings.player_prompt_enabled -%}
           {%- assign prompt_player = section.settings.player_prompt_player | default: all_products['voxblock-player'] -%}
           {%- render 'cart-player-prompt', player: prompt_player -%}
@@ -166,6 +170,22 @@
       "id": "show_checkout_button",
       "label": "Show checkout button",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Gift wrap"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gift_wrap",
+      "label": "Show gift wrap option",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "gift_wrap_handle",
+      "label": "Gift wrap product (product handle)",
+      "default": "gift-wrap-message"
     },
     {
       "type": "header",

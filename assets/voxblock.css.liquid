@@ -1391,3 +1391,13 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .stockist-marker--invite:hover .stockist-invite-label, .stockist-marker--invite:focus .stockist-invite-label { display: block; }
 .stockist-marker--invite:hover { z-index: 2000 !important; }
 @media (prefers-reduced-motion: reduce) { .stockist-pin, .stockist-row { transition: none; } }
+
+
+/* ----------------------------------------------------------------------------------------------------------------
+   GIFT WRAP OPTION (snippets/gift-wrap-option.liquid, cart drawer + cart page)
+   ---------------------------------------------------------------------------------------------------------------- */
+.gift-wrap-option { padding: 14px 16px; border-radius: var(--rounded, 16px); border: 1px solid rgb(0 0 0 / 0.08); }
+.gift-wrap-option__toggle { cursor: pointer; }
+.gift-wrap-option__toggle input[type="checkbox"] { flex: none; }
+.gift-wrap-option__message[hidden] { display: none; }
+.gift-wrap-option__message { padding-top: 2px; }
