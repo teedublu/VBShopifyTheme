@@ -1,5 +1,16 @@
 # STATUS
 
+## Inline store trust badge, replacing the floating Google widget (25 Oct 2026)
+Branch `claude/inline-store-trust-badge`, draft theme `VBShopifyTheme/claude/inline-store-trust-badge` (#200601698688).
+Removed the Google "Top Quality Store" floating widget (`gstatic.com/shopping/merchant/merchantwidget.js`, fixed
+bottom-left on every page) from `layout/theme.liquid`. It rendered Google's own live Merchant Center score, which the
+theme has no API access to, so it's replaced with a new `store_trust` product-info block (`snippets/store-trust-badge.liquid`,
+schema in `sections/main-product.liquid`): same rating, review count and shipping/returns/pricing/payment/website rows,
+as merchant-editable theme settings rather than a "Top Quality Store on Google" claim. Added to the starter pack
+product template (`templates/product.starter-pack.json`) to try out; not yet on any other template.
+**ARCHITECTURE.md needs a line once this merges** (Google Merchant widget removed from `layout/theme.liquid`,
+under "Marketing & analytics" / Google Ads + Merchant Center) — not done yet since the branch isn't live.
+
 ## Pricing rule (owner, 20 Oct 2026)
 The theme never calculates a price. Every price shown is the variant's real price and compare-at price from Shopify,
 so product pages, cards, cart and checkout always agree. Offers are set on the product itself (price £5.99, compare-at
