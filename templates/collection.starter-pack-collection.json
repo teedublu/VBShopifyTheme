@@ -68,9 +68,21 @@
             "overlay_color": "#ffb74a",
             "overlay_opacity": 100
           }
+        },
+        "promotion_saga_tile": {
+          "type": "promotion_saga",
+          "settings": {
+            "position": 15,
+            "eyebrow": "Not sure which pack?",
+            "heading": "Ask Saga",
+            "text": "Tell her the child's age and she'll suggest one.",
+            "button_label": "Help me choose",
+            "show_to_owners": false
+          }
         }
       },
       "block_order": [
+        "promotion_saga_tile",
         "promotion_video_FFXEJa",
         "promotion_image_gkWQ36"
       ],
@@ -88,7 +100,7 @@
         "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
         "gift_button_label": "Gift sets",
         "gift_filter_param": "filter.p.m.pack.gift_set",
-        "help_url": "",
+        "help_url": "#saga-chat",
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": true,

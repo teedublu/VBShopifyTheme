@@ -121,6 +121,17 @@
     "main": {
       "type": "main-collection",
       "blocks": {
+        "promotion_saga_older_listener": {
+          "type": "promotion_saga",
+          "settings": {
+            "position": 2,
+            "eyebrow": "Looking for something to listen to?",
+            "heading": "Ask Saga",
+            "text": "Tell her what kind of book you enjoy and she'll suggest a few titles.",
+            "button_label": "Find a title",
+            "show_to_owners": true
+          }
+        },
         "promotion_image_6nMiVT": {
           "type": "promotion_image",
           "settings": {
@@ -140,6 +151,7 @@
         }
       },
       "block_order": [
+        "promotion_saga_older_listener",
         "promotion_image_6nMiVT"
       ],
       "settings": {
@@ -149,6 +161,7 @@
         "filter_layout": "sidebar",
         "show_sort_by": true,
         "sticky_filters": true,
+        "help_url": "#saga-chat",
         "show_filters": false,
         "show_filter_group_name": false,
         "show_filter_values_count": true,

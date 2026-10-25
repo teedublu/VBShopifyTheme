@@ -87,7 +87,17 @@ Supported variables
   <div class="pack-bar__meta">
     <p class="pack-bar__count" aria-live="polite">{{ 'collection.pack_bar.count' | t: count: results.products_count }}</p>
 
-    {%- if section.settings.help_url != blank -%}
+    {%- liquid
+      assign show_help_link = false
+      if section.settings.help_url != blank
+        if section.settings.help_url == '#saga-chat'
+          assign show_help_link = settings.saga_enabled
+        else
+          assign show_help_link = true
+        endif
+      endif
+    -%}
+    {%- if show_help_link -%}
       <a href="{{ section.settings.help_url }}" class="pack-bar__help">{{ 'collection.pack_bar.help_link' | t }}</a>
     {%- endif -%}
 

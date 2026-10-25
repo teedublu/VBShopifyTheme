@@ -1048,6 +1048,42 @@
     ]
   },
   {
+    "name": "Saga chat",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Saga is the Voxblock sales assistant. She opens in a dialog from the \"Ask Saga\" grid tile and from any \"Help me choose\" link set to #saga-chat. The chat runs through the Voxblock Account app proxy (/apps/voxblock/saga); nothing third-party loads in the browser."
+      },
+      {
+        "type": "checkbox",
+        "id": "saga_enabled",
+        "label": "Enable Saga",
+        "default": true,
+        "info": "Off removes the tile, the links' target and the dialog everywhere."
+      },
+      {
+        "type": "text",
+        "id": "saga_title",
+        "label": "Name",
+        "default": "Saga"
+      },
+      {
+        "type": "text",
+        "id": "saga_intro",
+        "label": "Line under the name",
+        "default": "Ask me anything about Voxblock.",
+        "info": "Keep this generic — Saga opens in more than one context (starter-pack chooser today, others later), so this line shouldn't assume why the visitor is here."
+      },
+      {
+        "type": "text",
+        "id": "saga_endpoint",
+        "label": "Endpoint",
+        "default": "/apps/voxblock/saga",
+        "info": "App proxy path. Leave as is unless the proxy subpath changes."
+      }
+    ]
+  },
+  {
     "name": "Favicon",
     "settings": [
       {
