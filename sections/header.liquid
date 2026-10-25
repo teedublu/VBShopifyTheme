@@ -84,6 +84,18 @@ the underlying logic of the menu.
       --------------------------------------------------------------------------------------------------------------------
       {%- endcomment -%}
 
+      {%- liquid
+        assign help_menu = section.settings.help_menu | default: linklists['footer-help']
+        assign show_help_trigger = false
+        if settings.saga_enabled or help_menu.links.size > 0
+          assign show_help_trigger = true
+          capture help_popover_id
+            echo 'header-help-popover-'
+            echo section.id
+          endcapture
+        endif
+      -%}
+
       <div class="header__main-nav">
         <div class="header__icon-list">
           <button type="button" class="tap-area {% if section.settings.layout != 'drawer' %}lg:hidden{% endif %}" aria-controls="header-sidebar-menu">
@@ -95,6 +107,13 @@ the underlying logic of the menu.
             <span class="sr-only">{{ 'header.general.open_search' | t }}</span>
             {%- render 'icon' with 'search' -%}
           </a>
+
+          {%- if show_help_trigger -%}
+            <button type="button" class="tap-area sm:hidden" aria-controls="{{ help_popover_id }}" aria-expanded="false">
+              <span class="sr-only">Help</span>
+              {%- render 'icon' with 'help' -%}
+            </button>
+          {%- endif -%}
 
           {%- if section.settings.layout != 'drawer' and section.settings.menu.links.size > 0 -%}
             <nav class="header__link-list {% if section.settings.layout == 'logo_left_navigation_center' %}justify-center{% endif %} wrap" role="navigation">
@@ -254,13 +273,9 @@ the underlying logic of the menu.
             </div>
           {%- endif -%}
 
-          {%- liquid
-            assign help_menu = section.settings.help_menu | default: linklists['footer-help']
-          -%}
-          {%- if settings.saga_enabled or help_menu.links.size > 0 -%}
-            {%- capture help_popover_id -%}header-help-popover-{{ section.id }}{%- endcapture -%}
+          {%- if show_help_trigger -%}
             <div class="relative header__help-trigger">
-              <button type="button" class="tap-area sm:block" aria-controls="{{ help_popover_id }}" aria-expanded="false">
+              <button type="button" class="hidden tap-area sm:block" aria-controls="{{ help_popover_id }}" aria-expanded="false">
                 <span class="sr-only">Help</span>
                 {%- render 'icon' with 'help' -%}
               </button>
