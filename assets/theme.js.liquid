@@ -3247,18 +3247,19 @@ var ProductGallery = class extends HTMLElement {
   }
   _getFilteredMediaIndexes(product, variant) {
     const filteredMediaIds = [];
+    const normalizeOptionName = (name) => (name || "").trim().toLowerCase().replace(/colour/g, "color");
     product["media"].forEach((media) => {
       let matchMedia = variant["featured_media"] && media["position"] === variant["featured_media"]["position"];
       if (media["alt"]?.includes("#") && media["alt"] !== product["title"]) {
         if (!matchMedia) {
           const altParts = media["alt"].split("#"), mediaGroupParts = altParts.pop().split("_");
-          product["options"].forEach((option) => {
-            if (option["name"].toLowerCase() === mediaGroupParts[0].toLowerCase()) {
-              if (variant["options"][option["position"] - 1].toLowerCase() !== mediaGroupParts[1].trim().toLowerCase()) {
-                filteredMediaIds.push(media["position"] - 1);
-              }
+          const groupName = normalizeOptionName(mediaGroupParts[0]);
+          const option = product["options"].find((option2) => normalizeOptionName(option2["name"]) === groupName) || (groupName ? product["options"].find((option2) => normalizeOptionName(option2["name"]).includes(groupName)) : null);
+          if (option && mediaGroupParts[1] !== void 0) {
+            if (variant["options"][option["position"] - 1].toLowerCase() !== mediaGroupParts[1].trim().toLowerCase()) {
+              filteredMediaIds.push(media["position"] - 1);
             }
-          });
+          }
         }
       }
     });
