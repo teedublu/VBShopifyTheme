@@ -382,11 +382,6 @@
           </div>
         {%- endif -%}
 
-      {%- when 'store_trust' -%}
-        <div class="product-info__store-trust" {{ block.shopify_attributes }}>
-          {%- render 'store-trust-badge', block: block -%}
-        </div>
-
       {%- when 'pickup_availability' -%}
         <div class="product-info__pickup-availability" {{ block.shopify_attributes }}>
           {%- render 'pickup-availability', product_variant: current_variant, form_id: product_form_id -%}
