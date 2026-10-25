@@ -7490,6 +7490,7 @@ split-lines {
   padding: var(--spacing-5);
   border: 1px solid rgb(var(--border-color));
   border-radius: var(--rounded-sm);
+  font-family: Roboto, var(--text-font-family);
   flex-direction: column;
   display: flex;
 }
@@ -7503,7 +7504,14 @@ split-lines {
 }
 
 .store-trust__heading {
+  gap: var(--spacing-2);
+  align-items: center;
   margin: 0;
+  display: flex;
+}
+
+.store-trust__seal {
+  flex-shrink: 0;
 }
 
 .store-trust__rating, .store-trust__rating-link {

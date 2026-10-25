@@ -156,6 +156,19 @@
         <path d="M7.5 0L9.58587 5.2731L15 5.72949L10.875 9.44483L12.1353 15L7.5 12.0231L2.86475 15L4.125 9.44483L0 5.72949L5.41414 5.2731L7.5 0Z" fill="currentColor"></path>
       </svg>
 
+    {%- when 'trust-seal' -%}
+      {%- comment -%}
+      Original four-colour "verified" seal for store-trust-badge.liquid: a pinwheel in blue/red/yellow/green with a
+      white star, not a copy of any third-party trademark or badge artwork.
+      {%- endcomment -%}
+      <svg role="presentation" focusable="false" width="{{ width | default: 28 }}" height="{{ height | default: 28 }}" class="{{ class | strip }}" viewBox="0 0 40 40">
+        <path fill="#4285F4" d="M20,20 L36,20 A16,16 0 0 1 20,36 Z"></path>
+        <path fill="#EA4335" d="M20,20 L20,36 A16,16 0 0 1 4,20 Z"></path>
+        <path fill="#FBBC05" d="M20,20 L4,20 A16,16 0 0 1 20,4 Z"></path>
+        <path fill="#34A853" d="M20,20 L20,4 A16,16 0 0 1 36,20 Z"></path>
+        <path fill="#ffffff" d="M20,11.5 21.94,17.33 28.08,17.37 23.14,21.02 25,26.88 20,23.3 15,26.88 16.86,21.02 11.92,17.37 18.06,17.33 Z"></path>
+      </svg>
+
     {%- when 'play-button' -%}
       <svg role="presentation" fill="none" focusable="false" width="{{ width | default: 48 }}" height="{{ height | default: 48 }}" class="{{ class | strip }}" viewBox="0 0 48 48">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M24 48C10.745 48 0 37.255 0 24S10.745 0 24 0s24 10.745 24 24-10.745 24-24 24Zm-3-19.15a.3.3 0 0 0 .462.253l7.545-4.85a.3.3 0 0 0 0-.505l-7.545-4.85a.3.3 0 0 0-.462.252v9.7Z" fill="currentColor"></path>

@@ -38,7 +38,10 @@ Supported variables
   {%- if block.settings.heading != blank or block.settings.rating != blank -%}
     <div class="store-trust__header">
       {%- if block.settings.heading != blank -%}
-        <p class="store-trust__heading bold">{{ block.settings.heading | escape }}</p>
+        <p class="store-trust__heading bold">
+          {%- render 'icon' with 'trust-seal', width: 20, height: 20, class: 'store-trust__seal' -%}
+          {{ block.settings.heading | escape }}
+        </p>
       {%- endif -%}
 
       {%- if block.settings.rating != blank -%}
