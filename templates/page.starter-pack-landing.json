@@ -1,0 +1,286 @@
+{
+  "sections": {
+    "hero": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_a1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SP_Page-Hero_Image-3200x1300.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "Ready out of the box",
+            "title": "Press play. No wifi needed, wherever you go.",
+            "content": "<p>Every Voxblock starter pack comes ready to use: insert a story block and press play. No downloads, no subscription, no setup. Free UK delivery over £25 &middot; 100-day money-back guarantee.</p>",
+            "link_text": "Shop starter packs",
+            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "background": "#fff7f0",
+            "background_gradient": "",
+            "text_color": "#565656",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": "",
+            "title_tag": "h1",
+            "link2_text": "See how it works",
+            "link2_url": "shopify://pages/how-does-it-work",
+            "track": "starter_pack_landing_hero_cta"
+          }
+        }
+      },
+      "block_order": [
+        "image_a1"
+      ],
+      "settings": {
+        "full_width": true,
+        "spacing": "medium"
+      }
+    },
+    "reasons": {
+      "type": "benefit-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "play",
+            "title": "Ready out of the box",
+            "content": "<p>Slot in a block, press play. Nothing to charge or install before the first story.</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "No wifi, ever",
+            "content": "<p>No downloads, no account and no subscription &mdash; it works exactly the same at home, in the car, or on a plane.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Built for journeys",
+            "content": "<p>Up to 16 hours of battery, with a speaker and a headphone jack, light enough for little hands to carry.</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "A library that grows with them",
+            "content": "<p>350+ audiobooks for toddlers to teens, from picture books to teen fiction.</p>"
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "No risk",
+            "content": "<p>A 100-day money-back guarantee, and free UK delivery over £25.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Why Voxblock",
+        "title": "Everything to start, in one box",
+        "content": "",
+        "text_alignment": "start",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "icon_background": "",
+        "icon_color": "",
+        "icon_accent": ""
+      }
+    },
+    "packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "gruffalo-and-friends-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "famous-five-starter-pack",
+          "bedtime-stories-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "Where to start",
+        "title": "Begin with our starter packs",
+        "content": "",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
+        "link_text": "View all starter packs",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_t1": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Priya (Feb, 2025)",
+            "title": "Long journeys without screens",
+            "content": "<p>We bought Voxblock for a long car journey over half term and it honestly saved us. No fighting over tablets, no complaints about boredom. The kids took turns choosing stories and the drive felt much shorter. It now lives permanently in the car.</p>"
+          }
+        },
+        "testimonial_t2": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Hannah (Jan, 2026)",
+            "title": "Doesn't need me",
+            "content": "<p>I love that my son doesn't need me to set anything up. It's given him a sense of independence and responsibility that I didn't expect from something so simple.</p>"
+          }
+        },
+        "testimonial_t3": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Ian (Feb, 2025)",
+            "title": "So easy to use, no downloads required, charge up and ready to go!",
+            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books. Very easy order process, delivered 3 days after purchase. Would highly recommend.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_t1",
+        "testimonial_t2",
+        "testimonial_t3"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "Reviews",
+        "title": "What parents say",
+        "content": "<p>Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "item_wifi": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need wifi or a subscription?",
+            "content": "<p>No. Each story is stored on its own audiobook block, so there is nothing to download, stream or set up, and no subscription. Slot in a book and press play.</p>"
+          }
+        },
+        "item_whats_in": {
+          "type": "item",
+          "settings": {
+            "title": "What's in a starter pack?",
+            "content": "<p>The Voxblock player, a protective bumper in the colour you choose, a USB-C charging cable and audiobooks picked for one age group, for less than buying them separately.</p>"
+          }
+        },
+        "item_which": {
+          "type": "item",
+          "settings": {
+            "title": "Which pack should I choose?",
+            "content": "<p>Start with your child's age. Every pack uses the same player, so you can add more audiobooks any time from our library of 350+.</p>"
+          }
+        },
+        "item_returns": {
+          "type": "item",
+          "settings": {
+            "title": "What if it isn't right for us?",
+            "content": "<p>Every player comes with a 100-day money-back guarantee, and UK delivery is free on orders over £25.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_wifi",
+        "item_whats_in",
+        "item_which",
+        "item_returns"
+      ],
+      "name": "Questions before you buy",
+      "settings": {
+        "include_jsonld": true,
+        "full_width": true,
+        "subheading": "",
+        "title": "Before you buy",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    },
+    "sticky_cta": {
+      "type": "custom-html",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "html": "<div id=\"sticky-mobile-cta\" class=\"sticky-mobile-cta\" aria-hidden=\"true\"><a href=\"/collections/voxblock-starter-pack-collection\" class=\"button button--lg w-full\" data-vs-track=\"starter_pack_landing_sticky_cta\">Shop starter packs</a></div><style>.sticky-mobile-cta{position:fixed;inset-inline:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));background:#fff;box-shadow:0 -4px 14px rgba(0,0,0,0.1);transform:translateY(100%);transition:transform .25s ease;}.sticky-mobile-cta.is-visible{transform:translateY(0);}.sticky-mobile-cta .button{display:block;text-align:center;}@media screen and (min-width:750px){.sticky-mobile-cta{display:none;} }</style><script>(function(){var bar=document.getElementById('sticky-mobile-cta');var heroButton=document.querySelector('[data-vs-track=\"starter_pack_landing_hero_cta\"]');if(!bar||!heroButton||!('IntersectionObserver' in window))return;var heroVisible=true;var nearFooter=false;function update(){bar.classList.toggle('is-visible', !heroVisible && !nearFooter);}new IntersectionObserver(function(entries){entries.forEach(function(entry){heroVisible=entry.isIntersecting;});update();},{rootMargin:'0px 0px -10% 0px'}).observe(heroButton);var footer=document.querySelector('.footer');if(footer){new IntersectionObserver(function(entries){entries.forEach(function(entry){nearFooter=entry.isIntersecting;});update();}).observe(footer);} })();</script>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "reasons",
+    "packs",
+    "testimonials",
+    "faq",
+    "sticky_cta"
+  ]
+}
