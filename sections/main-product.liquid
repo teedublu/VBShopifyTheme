@@ -796,6 +796,92 @@ quick buy information in a template, that will be extracted in JS, but ensure it
       ]
     },
     {
+      "type": "store_trust",
+      "name": "Store trust badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Inline card replacing the old floating \"Top Quality Store\" widget. These are hand-maintained claims about the store, not a live feed — update them when the underlying facts change."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Store rating"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Rating",
+          "default": "5.0"
+        },
+        {
+          "type": "number",
+          "id": "review_count",
+          "label": "Review count",
+          "default": 216
+        },
+        {
+          "type": "url",
+          "id": "reviews_url",
+          "label": "Reviews link"
+        },
+        {
+          "type": "header",
+          "content": "Trust rows"
+        },
+        {
+          "type": "text",
+          "id": "shipping_status",
+          "label": "Shipping",
+          "default": "Exceptional"
+        },
+        {
+          "type": "text",
+          "id": "returns_status",
+          "label": "Returns",
+          "default": "Exceptional"
+        },
+        {
+          "type": "text",
+          "id": "returns_note",
+          "label": "Returns note",
+          "default": "Free 100-day returns for most items"
+        },
+        {
+          "type": "text",
+          "id": "pricing_status",
+          "label": "Competitive pricing",
+          "default": "Exceptional"
+        },
+        {
+          "type": "text",
+          "id": "payment_status",
+          "label": "Payment options",
+          "default": "Exceptional"
+        },
+        {
+          "type": "text",
+          "id": "payment_note",
+          "label": "Payment note",
+          "default": "PayPal, Apple Pay + 3 more"
+        },
+        {
+          "type": "text",
+          "id": "website_status",
+          "label": "Website quality",
+          "default": "Exceptional"
+        },
+        {
+          "type": "text",
+          "id": "source_note",
+          "label": "Source note",
+          "info": "Small print under the card, e.g. how these figures are worked out."
+        }
+      ]
+    },
+    {
       "type": "pickup_availability",
       "name": "Pickup availability",
       "limit": 1,

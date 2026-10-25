@@ -1,0 +1,118 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORE TRUST BADGE
+----------------------------------------------------------------------------------------------------------------------
+
+Inline replacement for the floating Google "Top Quality Store" widget (removed from layout/theme.liquid: it loaded
+https://www.gstatic.com/shopping/merchant/merchantwidget.js and rendered a badge fixed to the bottom-left of every
+page). That widget pulled Google's own live Merchant Center scoring, which this theme has no API access to, so this
+card shows the same categories as merchant-maintained copy instead of a "Top Quality Store on Google" claim.
+
+********************************************
+Supported variables
+********************************************
+
+* block: the block whose settings drive this card (required)
+{%- endcomment -%}
+
+{%- liquid
+  assign rows = ''
+  if block.settings.shipping_status != blank
+    assign rows = rows | append: '1'
+  endif
+  if block.settings.returns_status != blank
+    assign rows = rows | append: '1'
+  endif
+  if block.settings.pricing_status != blank
+    assign rows = rows | append: '1'
+  endif
+  if block.settings.payment_status != blank
+    assign rows = rows | append: '1'
+  endif
+  if block.settings.website_status != blank
+    assign rows = rows | append: '1'
+  endif
+-%}
+
+<div class="store-trust">
+  {%- if block.settings.heading != blank or block.settings.rating != blank -%}
+    <div class="store-trust__header">
+      {%- if block.settings.heading != blank -%}
+        <p class="store-trust__heading bold">{{ block.settings.heading | escape }}</p>
+      {%- endif -%}
+
+      {%- if block.settings.rating != blank -%}
+        {%- capture rating_inner -%}
+          <span class="store-trust__rating-value bold">{{ block.settings.rating }}</span>
+          <div class="rating__stars" role="img" aria-label="{{ 'general.rating.info' | t: rating_value: block.settings.rating, rating_max: 5 }}">
+            {%- render 'icon' with 'rating-star', width: 14, height: 14, class: 'rating__star' -%}
+          </div>
+          {%- if block.settings.review_count > 0 -%}
+            <span class="store-trust__review-count text-sm text-subdued">{{- 'product.rating_count' | t: count: block.settings.review_count -}}</span>
+          {%- endif -%}
+        {%- endcapture -%}
+
+        <div class="store-trust__rating">
+          {%- if block.settings.reviews_url != blank -%}
+            <a href="{{ block.settings.reviews_url }}" class="store-trust__rating-link">{{ rating_inner }}</a>
+          {%- else -%}
+            {{ rating_inner }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if rows != blank -%}
+    <ul class="store-trust__list" role="list">
+      {%- if block.settings.shipping_status != blank -%}
+        <li class="store-trust__row">
+          <span class="store-trust__row-label">{{ 'product.store_trust.shipping' | t }}</span>
+          <span class="text-with-icon text-success">{%- render 'icon' with 'success' -%}{{ block.settings.shipping_status | escape }}</span>
+        </li>
+      {%- endif -%}
+
+      {%- if block.settings.returns_status != blank -%}
+        <li class="store-trust__row">
+          <span class="store-trust__row-label">
+            {{ 'product.store_trust.returns' | t }}
+            {%- if block.settings.returns_note != blank -%}
+              <span class="store-trust__row-note text-sm text-subdued">{{ block.settings.returns_note | escape }}</span>
+            {%- endif -%}
+          </span>
+          <span class="text-with-icon text-success">{%- render 'icon' with 'success' -%}{{ block.settings.returns_status | escape }}</span>
+        </li>
+      {%- endif -%}
+
+      {%- if block.settings.pricing_status != blank -%}
+        <li class="store-trust__row">
+          <span class="store-trust__row-label">{{ 'product.store_trust.pricing' | t }}</span>
+          <span class="text-with-icon text-success">{%- render 'icon' with 'success' -%}{{ block.settings.pricing_status | escape }}</span>
+        </li>
+      {%- endif -%}
+
+      {%- if block.settings.payment_status != blank -%}
+        <li class="store-trust__row">
+          <span class="store-trust__row-label">
+            {{ 'product.store_trust.payment' | t }}
+            {%- if block.settings.payment_note != blank -%}
+              <span class="store-trust__row-note text-sm text-subdued">{{ block.settings.payment_note | escape }}</span>
+            {%- endif -%}
+          </span>
+          <span class="text-with-icon text-success">{%- render 'icon' with 'success' -%}{{ block.settings.payment_status | escape }}</span>
+        </li>
+      {%- endif -%}
+
+      {%- if block.settings.website_status != blank -%}
+        <li class="store-trust__row">
+          <span class="store-trust__row-label">{{ 'product.store_trust.website' | t }}</span>
+          <span class="text-with-icon text-success">{%- render 'icon' with 'success' -%}{{ block.settings.website_status | escape }}</span>
+        </li>
+      {%- endif -%}
+    </ul>
+  {%- endif -%}
+
+  {%- if block.settings.source_note != blank -%}
+    <p class="store-trust__source text-sm text-subdued">{{ block.settings.source_note | escape }}</p>
+  {%- endif -%}
+</div>
