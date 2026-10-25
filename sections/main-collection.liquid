@@ -206,7 +206,17 @@
                 </product-list>
               </reveal-items>
 
-              {%- if section.settings.help_url != blank -%}
+              {%- liquid
+                assign show_help_card = false
+                if section.settings.help_url != blank
+                  if section.settings.help_url == '#saga-chat'
+                    assign show_help_card = settings.saga_enabled
+                  else
+                    assign show_help_card = true
+                  endif
+                endif
+              -%}
+              {%- if show_help_card -%}
                 {%- comment -%}"Help me choose" card after the grid on mobile (on desktop the link sits in the filter bar){%- endcomment -%}
                 <div class="pack-help">
                   <p class="pack-help__title">{{ 'collection.pack_bar.help_title' | t }}</p>

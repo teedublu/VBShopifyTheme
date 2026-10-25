@@ -149,7 +149,17 @@ Supported variables
         </facet-sort-by>
       {%- endif -%}
 
-      {%- if section.settings.help_url != blank -%}
+      {%- liquid
+        assign show_help_link = false
+        if section.settings.help_url != blank
+          if section.settings.help_url == '#saga-chat'
+            assign show_help_link = settings.saga_enabled
+          else
+            assign show_help_link = true
+          endif
+        endif
+      -%}
+      {%- if show_help_link -%}
         <a href="{{ section.settings.help_url }}" class="top-bar__help">{{ 'collection.pack_bar.help_link' | t }}</a>
       {%- endif -%}
     </div>
