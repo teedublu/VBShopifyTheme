@@ -28,19 +28,17 @@
           {% liquid
             assign item_title = item.name.value | default: item.title.value
             assign item_description = item.description.value | default: item.summary.value
-            assign item_image = 'collection-apparel-1'
+            # No stand-in picture: a missing photo used to pass the string 'collection-apparel-1' to image_url, which
+            # printed "Liquid error: invalid url input" in place of the image. Cards with no photo now show no image.
+            # Authors and narrators never show photos (no confirmed licence, owner 15 Oct 2026).
+            assign item_image = blank
             if item.system.type != 'author' and item.system.type != 'narrator'
-              assign item_image = item.photos.value | first | default: 'collection-apparel-1'
+              assign item_image = item.photos.value | first
             endif
-            assign item_page = item.product.url
-            assign item_url = '/pages/character/' | append: item.system.handle
-
-            if item_page != blank
-              assign item_link = item_page.url
-            elsif item_url != blank
-              assign item_link = item_url
-            else
-              assign item_link = blank
+            # The item's own page (characters, authors, narrators...), else its product
+            assign item_link = item.system.url
+            if item_link == blank and item.product.value != blank
+              assign item_link = item.product.value.url
             endif
           %}
 

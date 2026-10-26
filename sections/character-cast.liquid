@@ -5,12 +5,17 @@ CHARACTER CAST ("Meet the others", templates/metaobject/character.json)
 
 The other characters from this character's main book (character field `main_book`, an audiobook entry), as the same
 cards the series page uses (snippets/character-card.liquid). The character whose page this is is left out. Hidden
-when the character has no main book or the book has no other characters.
+when the character has no main book or the book has no other characters. On an audiobook page
+(templates/metaobject/audiobook.story.json) it lists that book's characters instead.
 {%- endcomment -%}
 
 {%- liquid
   assign current_handle = metaobject.system.handle
+  # On a character page: the main book's cast, without this character. On an audiobook page: the book's own cast.
   assign main_book = metaobject.main_book.value
+  if metaobject.system.type == 'audiobook'
+    assign main_book = metaobject
+  endif
   assign cast = main_book.characters.value
   assign others = 0
   for character in cast
@@ -19,7 +24,8 @@ when the character has no main book or the book has no other characters.
     endif
   endfor
   assign book_title = main_book.title.value | default: main_book.product.value.title
-  assign intro = section.settings.intro | replace: '[book]', book_title | replace: '[name]', metaobject.name.value
+  assign book_short = book_title | split: ':' | first | strip
+  assign intro = section.settings.intro | replace: '[book_short]', book_short | replace: '[book]', book_title | replace: '[name]', metaobject.name.value
 -%}
 
 {%- if others > 0 -%}
@@ -50,7 +56,7 @@ when the character has no main book or the book has no other characters.
   "class": "shopify-section--character-cast",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Meet the others" },
-    { "type": "text", "id": "intro", "label": "Intro", "default": "The other characters in [book].", "info": "[book] is the character's main book, [name] the character." },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "The other characters in [book].", "info": "[book] is the character's main book (or this audiobook), [name] the character." },
     { "type": "text", "id": "link_label", "label": "Link text", "info": "Optional, e.g. a link to the full cast page." },
     { "type": "url", "id": "link_url", "label": "Link" },
     { "type": "range", "id": "limit", "label": "Most characters to show", "min": 2, "max": 12, "step": 1, "default": 8 }

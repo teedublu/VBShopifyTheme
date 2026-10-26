@@ -36,6 +36,7 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
 - Children's CD player page `/pages/childrens-cd-player-alternative` (new template, once the page exists in admin).
 - Children's cassette player page `/pages/modern-cassette-player` (new template, once switched in admin).
+- Story templates (character.story / audiobook.story): pack match loops the starter pack collection (60 products) twice per page. Sample: /pages/character/dave-pigeon, the Dave Pigeon audiobook page.
 
 ## Open: site-wide colour contrast (owner: must be resolved)
 Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for large headings and buttons):
@@ -45,6 +46,15 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-26: Dave Pigeon story pages (character + audiobook) on the Gruffalo layout
+Branch `claude/dave-pigeon-story-pages`, draft PR, draft theme "Dave Pigeon story pages (claude/dave-pigeon-story-pages)" (id 200663368064, duplicate of live + 9 files by API, checksums verified). **Awaiting owner check, then merge, then the admin steps below.**
+- New templates `templates/metaobject/character.story.json` and `audiobook.story.json`: same sections as the Gruffalo pages (story hero with sample, starter pack card and "just the audiobook", cast cards, FAQ, "At home" band), but every setting falls back to the page's own data, so any character or audiobook can use them by setting its template to `story`. Preview without changing anything: add `?view=story` to the page URL.
+- `story-hero` / `story-home-band`: empty audiobook = the page's book (audiobook entry's product, or the character's `main_book`); empty artwork = character photo, else the 3D book cover; empty intro = character description, else the book's short blurb; "Find the pack that holds this story" (`snippets/story-pack-handle.liquid`, first pack in the starter pack collection whose `bundles.products` holds the book: Young Explorers for Dave Pigeon). Text settings take [name], [name_in_book], [book], [book_short], [author], [narrator], [more]. Gruffalo pages unchanged (checked: character, Owl, Mouse, cast page).
+- `faq`: questions and answers on metaobject pages can use [name], [book], [book_short], [book_url], [author] (" by [author]" drops out when there is none). Text without them prints as before.
+- `character-cast`: on an audiobook page lists that book's characters; intro takes [book_short].
+- Bug fixes, all pages: `item-grid` printed "Liquid error: invalid url input" for every character with no photo (fallback image was a string); it now shows no image and links via the entry's own URL. Default `character.json`: "View Audiobook" linked to an empty href (`main_book.value.url` does not exist); now links to the book's product page. Copy: "no apps", "kids", "over 200 titles" fixed in that template.
+- Admin, after merge (not done; live content): set template `story` on characters dave-pigeon and skipper-dave-pigeon and on the audiobook entry; add bios (drafted in the PR); page titles "Dave Pigeon: Character Guide | Voxblock" and "Skipper in Dave Pigeon: Character Guide | Voxblock".
 
 ## 2026-10-23: Pack pages show the chosen colour's picture (colour option name match)
 Branch `claude/gallery-colour-option-match`, draft PR, draft theme `VBShopifyTheme/claude/gallery-colour-option-match` (id 200533246336, duplicate of live + two files by API, checksums verified). **Awaiting owner check, then merge.** Brief: `briefs/gallery-colour-option-match.md`.

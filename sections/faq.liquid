@@ -16,6 +16,31 @@
   {%- assign show_section = false -%}
 {%- endif -%}
 
+{%- comment -%}
+On metaobject pages (character, audiobook) questions and answers can use [name] (the character or book), [book] (the
+character's main book, or the audiobook), [book_short] (the title before any colon), [book_url] and [author].
+Text without these words is printed unchanged.
+{%- endcomment -%}
+{%- liquid
+  assign faq_work = blank
+  if metaobject.system.type == 'audiobook'
+    assign faq_work = metaobject
+  elsif metaobject.main_book.value != blank
+    assign faq_work = metaobject.main_book.value
+  endif
+  assign t_name = metaobject.name.value | default: metaobject.title.value | strip
+  assign t_book = faq_work.title.value | default: faq_work.product.value.title | strip
+  assign t_book_short = t_book | split: ':' | first | strip
+  assign t_book_url = faq_work.product.value.url | default: faq_work.system.url
+  assign t_author_obj = faq_work.authors.value | first
+  assign t_author = t_author_obj.name.value | default: t_author_obj.name | strip
+  # " by [author]" drops out cleanly when the book has no author entry
+  assign t_by_author = ''
+  if t_author != blank
+    assign t_by_author = ' by ' | append: t_author
+  endif
+-%}
+
 {%- if show_section -%}
 <style>
   #shopify-section-{{ section.id }} {
@@ -33,11 +58,12 @@
 
       {%- if section.settings.title != blank -%}
         <h2 class="h2">
-          {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+          {%- assign faq_title = section.settings.title | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -%}
+          {%- render 'styled-text', content: faq_title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
         </h2>
       {%- endif -%}
 
-      {{- section.settings.content -}}
+      {{- section.settings.content | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -}}
     {%- endcapture -%}
 
     {%- capture subcontent -%}
@@ -93,10 +119,11 @@
           {%- for block in section.blocks -%}
             {%- if block.settings.title != blank and block.settings.content != blank -%}
               {%- capture accordion_content -%}
-                <div class="prose">{{ block.settings.content }}</div>
+                <div class="prose">{{ block.settings.content | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author }}</div>
               {%- endcapture -%}
+              {%- assign item_title = block.settings.title | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -%}
 
-              {%- render 'accordion', title: block.settings.title, content: accordion_content, block: block -%}
+              {%- render 'accordion', title: item_title, content: accordion_content, block: block -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -120,10 +147,10 @@
       {%- for block in section.blocks -%}
         {
           "@type": "Question",
-          "name": {{ block.settings.title | json }},
+          "name": {{ block.settings.title | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author | json }},
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": {{ block.settings.content | strip_html | strip_newlines | strip | json }}
+            "text": {{ block.settings.content | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author | strip_html | strip_newlines | strip | json }}
           }
         }{% unless forloop.last %},{% endunless %}
       {%- endfor -%}

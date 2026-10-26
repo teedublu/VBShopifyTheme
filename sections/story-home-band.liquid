@@ -1,6 +1,6 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-STORY HOME BAND ("Listen to The Gruffalo audiobook, screen-free", end of the Gruffalo character + cast pages)
+STORY HOME BAND (end of the Gruffalo character + cast pages, and the story templates character.story / audiobook.story)
 ----------------------------------------------------------------------------------------------------------------------
 The last word for parents: the audiobook cover (the 3D cover image, which ranks in Google Images, so keep it), one
 line on how it works, the starter pack button with its live price and "already have a Voxblock?" with the
@@ -9,27 +9,64 @@ Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
 {%- endcomment -%}
 
 {%- liquid
-  assign pack = section.settings.pack
+  # Empty settings fall back to the story behind the page: an audiobook entry itself or a character's main book
+  # (same rules as sections/story-hero.liquid). Text settings can use [name], [book], [book_short] and [author].
+  assign work = blank
+  if metaobject.system.type == 'audiobook'
+    assign work = metaobject
+  elsif metaobject.main_book.value != blank
+    assign work = metaobject.main_book.value
+  endif
+
   assign book = section.settings.audiobook
+  if book == blank and work != blank
+    assign book = work.product.value
+  endif
+
+  assign pack = section.settings.pack
+  if pack == blank and section.settings.match_pack and book != blank
+    capture pack_handle
+      render 'story-pack-handle', book: book, packs_collection: section.settings.packs_collection, player_handle: 'voxblock-player'
+    endcapture
+    assign pack_handle = pack_handle | strip
+    if pack_handle != blank
+      assign pack = all_products[pack_handle]
+    endif
+  endif
   if pack != blank
     assign pack_variant = pack.variants | sort: 'price' | first
     assign pack_price = pack_variant.price | money
   endif
   assign book_price = book.price | money
+
+  assign t_name = metaobject.name.value | default: metaobject.title.value | strip
+  assign t_book = work.title.value | default: book.title | strip
+  assign t_book_short = t_book | split: ':' | first | strip
+  assign t_author_obj = work.authors.value | first
+  assign t_author = t_author_obj.name.value | default: t_author_obj.name | strip
+
+  assign image = section.settings.image
   assign image_alt = section.settings.image_alt | default: section.settings.image.alt
+  if image == blank and book.featured_media != blank
+    assign image = book.featured_media.preview_image
+    assign image_alt = t_book | append: ' audiobook cover'
+  endif
+
+  assign heading = section.settings.heading | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book]', t_book
+  assign text = section.settings.text | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book]', t_book | replace: '[author]', t_author
 -%}
 
 <section class="story-home-band" style="--story-home-bg: {{ section.settings.background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
   <div class="container story-home-band__inner">
-    {%- if section.settings.image != blank -%}
+    {%- if image != blank -%}
       <div class="story-home-band__media">
-        {{- section.settings.image | image_url: width: 836 | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 50vw, 280px', widths: '240,400,600,836', alt: image_alt -}}
+        {{- image | image_url: width: 836 | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 50vw, 280px', widths: '240,400,600,836', alt: image_alt -}}
       </div>
     {%- endif -%}
     <div class="story-home-band__text">
       {%- if section.settings.eyebrow != blank -%}<p class="story-home-band__eyebrow subheading">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
-      <h2 class="story-home-band__title">{{ section.settings.heading | escape }}</h2>
-      {%- if section.settings.text != blank -%}<div class="story-home-band__intro">{{ section.settings.text }}</div>{%- endif -%}
+      <h2 class="story-home-band__title">{{ heading | escape }}</h2>
+      {%- if text != blank -%}<div class="story-home-band__intro">{{ text }}</div>{%- endif -%}
       <div class="story-home-band__actions">
         {%- if pack != blank and pack.available -%}
           <a href="{{ pack.url }}" class="series-button" data-story-track="band_pack">{{ section.settings.pack_label | escape }} {{ pack_price }}</a>
@@ -52,11 +89,13 @@ Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "image_alt", "label": "Image description" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "At home" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Listen to The Gruffalo audiobook, screen-free" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Listen to The Gruffalo audiobook, screen-free", "info": "Can use [name], [book] and [book_short]." },
     { "type": "richtext", "id": "text", "label": "Text" },
     { "type": "product", "id": "pack", "label": "Starter pack" },
+    { "type": "checkbox", "id": "match_pack", "label": "Find the pack that holds this story", "default": false, "info": "Used when no starter pack is picked above." },
+    { "type": "text", "id": "packs_collection", "label": "Collection to find the pack in", "default": "voxblock-starter-pack-collection" },
     { "type": "text", "id": "pack_label", "label": "Starter pack button (price follows)", "default": "Starter pack" },
-    { "type": "product", "id": "audiobook", "label": "Audiobook" },
+    { "type": "product", "id": "audiobook", "label": "Audiobook", "info": "Empty: this page's audiobook. Image empty: its cover." },
     { "type": "text", "id": "audiobook_label", "label": "Audiobook link (price follows)", "default": "The audiobook," }
   ],
   "presets": [{ "name": "Story home band" }]

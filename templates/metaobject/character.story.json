@@ -1,0 +1,178 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "story_hero": {
+      "type": "story-hero",
+      "settings": {
+        "background": "#fff7f0",
+        "image": "",
+        "image_alt": "",
+        "audiobook": "",
+        "play_label": "Hear [book_short]",
+        "pause_label": "Playing sample",
+        "sample_note": "A short sample, read by [narrator]. Free, no sign-up.",
+        "pack": "",
+        "pack_contents": "Voxblock player + [book_short] and [more] more stories",
+        "schools_url": "",
+        "secondary_label": "",
+        "secondary_url": "",
+        "heading_others": "",
+        "eyebrow": "Character guide",
+        "heading": "[name_in_book]",
+        "intro": "",
+        "main_handle": "",
+        "home_label": "At home",
+        "show_classroom": false,
+        "classroom_label": "In the classroom",
+        "classroom_title": "Bring audiobooks into your classroom",
+        "classroom_text": "Whole-class listening and screen-free reading corners. Get ideas and school offers by email.",
+        "signup_list_id": "XRcgpd",
+        "classroom_link_label": "School packages, with 10% off for schools",
+        "signup_source": "Story page: classroom card",
+        "match_pack": true,
+        "packs_collection": "voxblock-starter-pack-collection"
+      }
+    },
+    "cast": {
+      "type": "character-cast",
+      "settings": {
+        "heading": "Who else is in the story?",
+        "intro": "The other characters in [book_short].",
+        "link_label": "",
+        "link_url": "",
+        "limit": 8
+      }
+    },
+    "character_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "bio": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "{%- if metaobject.bio != blank -%}<p class=\"subheading\">Character guide</p><h2 class=\"h2\">More about {{ metaobject.name.value | escape }}</h2>{{ metaobject.bio | metafield_tag }}{%- endif -%}"
+          }
+        }
+      },
+      "block_order": [
+        "bio"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "character_faq": {
+      "type": "faq",
+      "blocks": {
+        "who": {
+          "type": "item",
+          "settings": {
+            "title": "Who is [name]?",
+            "content": "<p>{{ metaobject.description.value }}</p>"
+          }
+        },
+        "book": {
+          "type": "item",
+          "settings": {
+            "title": "What book is [name] from?",
+            "content": "<p>[name] is a character in <a href=\"[book_url]\">[book]</a> by [author].</p>"
+          }
+        },
+        "listen": {
+          "type": "item",
+          "settings": {
+            "title": "Can children listen to [book_short] without a screen?",
+            "content": "<p>Yes. [book] is a Voxblock audiobook: a small block that children put on the Voxblock player, then press play. No screen, no downloads and no wifi.</p>"
+          }
+        },
+        "player": {
+          "type": "item",
+          "settings": {
+            "title": "Do I need a Voxblock player?",
+            "content": "<p>Yes. Voxblock audiobooks play on the Voxblock player. If you don't have one yet, a starter pack has the player and a set of stories in one box.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "who",
+        "book",
+        "listen",
+        "player"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about [name]",
+        "content": "<p>Short answers for parents and children.</p>",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": "",
+        "hide_on_metaobject_handle": ""
+      }
+    },
+    "home_band": {
+      "type": "story-home-band",
+      "settings": {
+        "background": "#fff7f0",
+        "image": "",
+        "image_alt": "",
+        "eyebrow": "At home",
+        "heading": "Listen to [book_short], screen-free",
+        "text": "<p>Your child puts the story block on the Voxblock player and presses play. No screen, no downloads, no subscription.</p>",
+        "pack": "",
+        "pack_label": "Starter pack",
+        "audiobook": "",
+        "audiobook_label": "The audiobook,",
+        "match_pack": true,
+        "packs_collection": "voxblock-starter-pack-collection"
+      }
+    },
+    "microdata": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "character"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "story_hero",
+    "cast",
+    "character_intro",
+    "character_faq",
+    "home_band",
+    "microdata"
+  ]
+}

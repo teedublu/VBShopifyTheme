@@ -88,19 +88,19 @@
         "subheading_f7YiN3": {
           "type": "subheading",
           "settings": {
-            "text": "Listen to {{ metaobject.name.value }} Stories on Voxblock"
+            "text": "Listen to {{ metaobject.name.value }} stories on Voxblock"
           }
         },
         "richtext_gUTnq9": {
           "type": "richtext",
           "settings": {
-            "content": "<p>Bring {{ metaobject.name.value }} to life with Voxblock — the screen-free audiobook player that lets kids explore stories independently. No apps, no setup, just pop in the block and they’re instantly listening. Perfect for growing curiosity without adding more screen time.</p>"
+            "content": "<p>Voxblock is a screen-free audiobook player that children use on their own. Each story is a block: they put it on the player and press play. No downloads, no wifi and nothing to set up.</p>"
           }
         },
         "liquid_a7ceGe": {
           "type": "liquid",
           "settings": {
-            "liquid": "<a href=\"{{ metaobject.main_book.value.url }}\" class=\"button\">\n  View Audiobook \n</a>"
+            "liquid": "{%- assign vb_book = metaobject.main_book.value -%}{%- assign vb_book_url = vb_book.product.value.url | default: vb_book.system.url -%}{%- if vb_book_url != blank -%}<a href=\"{{ vb_book_url }}\" class=\"button\">View the audiobook</a>{%- endif -%}"
           }
         }
       },
@@ -175,7 +175,7 @@
             "icon_width": 68,
             "subheading": "",
             "title": "Listen with Voxblock",
-            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p><p>Children can listen to stories about {{ metaobject.name.value }} without needing a screen, an app or downloads.</p><p>So simple to use.</p>",
+            "content": "<p>Our audiobooks are designed to play on the screen-free audiobook player from Voxblock.</p><p>Children can listen to stories about {{ metaobject.name.value }} without a screen, downloads or wifi.</p><p>So simple to use.</p>",
             "link_text": "Learn more",
             "link_url": "shopify://products/voxblock-player",
             "background": "#ffffff",
@@ -248,7 +248,7 @@
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
+            "content": "<p>More than 350 audiobooks for toddlers to teens, from picture books to novels, with new titles added regularly. <a href=\"/collections/audiobooks\">Browse the library</a>.</p>"
           }
         },
         "item_c3zFfM": {
