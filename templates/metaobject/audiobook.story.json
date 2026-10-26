@@ -454,6 +454,10 @@
         "debug": false,
         "object_type": "audiobook"
       }
+    },
+    "story_books": {
+      "type": "story-books",
+      "settings": {}
     }
   },
   "order": [
@@ -461,6 +465,7 @@
     "story_hero",
     "about",
     "featured_audiobook",
+    "story_books",
     "cast",
     "chapters",
     "details",

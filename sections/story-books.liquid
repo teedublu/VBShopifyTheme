@@ -1,0 +1,302 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY BOOKS (character.story and audiobook.story templates: "Audiobooks with Dave Pigeon")
+----------------------------------------------------------------------------------------------------------------------
+Every audiobook a character appears in, the series, author and narrator pages, and the bundles that hold the books,
+built from the shop's data so the same section serves any character or audiobook. Same cards and styles as the
+series page (series-book, series-whole, series-chip in voxblock.css), so nothing is styled per page.
+
+Where it comes from:
+* The book: on a character page its `main_book`; on an audiobook page the audiobook itself.
+* The series: the first published Series entry holding that book (snippets/story-series-handle.liquid).
+* The books: the series' books (its `books` list, else its collection's products linked to an audiobook entry).
+  On a character page only the books whose audiobook entry lists this character, plus the main book; on an audiobook
+  page the other books in the series. No series: just the main book on a character page, nothing on an audiobook page.
+* Links: the series page, then each author and narrator of the listed books (their page, else their collection),
+  duplicates removed.
+* Bundles: the series' `bundle` (else a collection product titled "<series> Audiobook Bundle", "-set" copies
+  skipped), shown when it holds one of the books, then up to "Most packs" starter packs from the packs collection
+  that hold one of the books. Prices are read live; the saving is the bundle's books bought singly minus its price.
+
+Tracking: the shared `story_hero_click` event (voxblock.js reads data-story-track inside [data-story-page]), targets
+books_title, books_add, books_series, books_author, books_narrator, books_bundle, books_pack.
+{%- endcomment -%}
+
+{%- liquid
+  assign is_audiobook_page = false
+  if metaobject.system.type == 'audiobook'
+    assign is_audiobook_page = true
+    assign base_book = metaobject
+  else
+    assign base_book = metaobject.main_book.value
+  endif
+  assign base_product = base_book.product.value
+  assign current_handle = metaobject.system.handle
+  assign t_name = metaobject.name.value | default: metaobject.title.value | strip
+
+  assign series = blank
+  if base_product != blank
+    capture series_handle
+      render 'story-series-handle', product: base_product
+    endcapture
+    assign series_handle = series_handle | strip
+    if series_handle != blank
+      assign series = shop.metaobjects.series[series_handle]
+    endif
+  endif
+
+  assign source_books = blank
+  assign has_book_list = false
+  if series != blank
+    assign source_books = series.books.value
+    if source_books != blank
+      assign has_book_list = true
+    else
+      assign source_books = series.collection.value.products
+    endif
+  endif
+
+  # Ids of the books to list, in series order, as ",id,id,"
+  assign book_ids = ','
+  assign book_count = 0
+  # Handles of the books whose authors and narrators get links (listed books, plus this book on an audiobook page)
+  assign people_handles = ''
+  if base_product != blank
+    assign people_handles = base_product.handle | append: ','
+  endif
+  if series != blank
+    for book in source_books
+      assign ab = book.metafields.book.audiobook.value
+      if has_book_list == false and ab == blank
+        continue
+      endif
+      assign include = false
+      if is_audiobook_page
+        if book.id != base_product.id
+          assign include = true
+        endif
+      else
+        if book.id == base_product.id
+          assign include = true
+        else
+          for c in ab.characters.value
+            if c.system.handle == current_handle
+              assign include = true
+              break
+            endif
+          endfor
+        endif
+      endif
+      if include
+        assign book_ids = book_ids | append: book.id | append: ','
+        assign book_count = book_count | plus: 1
+        if book.id != base_product.id
+          assign people_handles = people_handles | append: book.handle | append: ','
+        endif
+      endif
+    endfor
+  elsif is_audiobook_page == false and base_product != blank
+    assign book_ids = book_ids | append: base_product.id | append: ','
+    assign book_count = 1
+  endif
+
+  # Author and narrator links across the listed books (and this book on an audiobook page)
+  assign people_seen = ','
+  assign people_list = people_handles | split: ','
+  capture people_chips
+    for people_handle in people_list
+      assign ab = all_products[people_handle].metafields.book.audiobook.value
+      for person in ab.authors.value
+        assign key = ',a:' | append: person.system.handle | append: ','
+        if people_seen contains key
+          continue
+        endif
+        assign people_seen = people_seen | append: key
+        assign link = person.system.url | default: person.collection.value.url
+        assign person_name = person.name.value | escape
+        if link != blank
+          echo '<li><a href="' | append: link | append: '" class="series-chip series-chip--link" data-story-track="books_author">' | append: section.settings.author_label | append: ' ' | append: person_name | append: '</a></li>'
+        endif
+      endfor
+      for person in ab.narrators.value
+        assign key = ',n:' | append: person.system.handle | append: ','
+        if people_seen contains key
+          continue
+        endif
+        assign people_seen = people_seen | append: key
+        assign link = person.system.url | default: person.collection.value.url
+        assign person_name = person.name.value | escape
+        if link != blank
+          echo '<li><a href="' | append: link | append: '" class="series-chip series-chip--link" data-story-track="books_narrator">' | append: section.settings.narrator_label | append: ' ' | append: person_name | append: '</a></li>'
+        endif
+      endfor
+    endfor
+  endcapture
+
+  # Bundles: the series bundle, then starter packs holding one of the books
+  assign bundle = blank
+  if series != blank
+    assign bundle = series.bundle.value
+    if bundle == blank and series.collection.value != blank
+      assign name_key = series.name.value | downcase
+      for candidate in series.collection.value.products
+        assign candidate_title = candidate.title | downcase
+        assign tail = candidate.handle | slice: -4, 4
+        if candidate.available and tail != '-set' and candidate_title contains name_key and candidate_title contains 'audiobook bundle'
+          assign bundle = candidate
+          break
+        endif
+      endfor
+    endif
+  endif
+  assign bundle_count = 0
+  assign bundle_singles = 0
+  assign bundle_holds = false
+  if bundle != blank
+    for part in bundle.metafields.bundles.products.value
+      assign bundle_count = bundle_count | plus: 1
+      assign bundle_singles = bundle_singles | plus: part.price
+      assign needle = ',' | append: part.id | append: ','
+      if book_ids contains needle or part.id == base_product.id
+        assign bundle_holds = true
+      endif
+    endfor
+  endif
+  assign bundle_saving = 0
+  if bundle_singles > bundle.price
+    assign bundle_saving = bundle_singles | minus: bundle.price
+  endif
+
+  assign pack_handles = ''
+  assign pack_total = 0
+  if section.settings.max_packs > 0
+    assign pack_collection = collections[section.settings.packs_collection]
+    for candidate in pack_collection.products limit: 60
+      if candidate.available == false or candidate.handle == 'voxblock-player'
+        continue
+      endif
+      for part in candidate.metafields.bundles.products.value
+        assign needle = ',' | append: part.id | append: ','
+        if book_ids contains needle or part.id == base_product.id
+          assign pack_handles = pack_handles | append: candidate.handle | append: ','
+          assign pack_total = pack_total | plus: 1
+          break
+        endif
+      endfor
+      if pack_total >= section.settings.max_packs
+        break
+      endif
+    endfor
+  endif
+  assign pack_list = pack_handles | split: ','
+
+  if is_audiobook_page
+    assign heading = ''
+    if series != blank
+      assign heading = section.settings.heading_audiobook | replace: '[series]', series.name.value
+    endif
+  else
+    assign heading = section.settings.heading | replace: '[name]', t_name
+  endif
+  assign intro = ''
+  if is_audiobook_page == false and book_count > 1
+    assign intro = section.settings.intro_many | replace: '[name]', t_name | replace: '[count]', book_count
+  endif
+-%}
+
+{%- if book_count > 0 or bundle_holds or pack_total > 0 -%}
+<section class="series-books story-books" style="--series-chip-bg: {{ section.settings.chip_background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
+  <div class="container v-stack gap-6">
+    <div class="series-books__head">
+      <div class="series-books__head-text">
+        {%- if heading != blank -%}<h2 class="series-heading">{{ heading | escape }}</h2>{%- endif -%}
+        {%- if intro != blank -%}<p class="series-books__intro">{{ intro | escape }}</p>{%- endif -%}
+      </div>
+    </div>
+
+    {%- if series != blank or people_chips != blank -%}
+      <ul class="series-hero__chips story-books__links" role="list">
+        {%- if series != blank -%}
+          <li><a href="{{ series.system.url }}" class="series-chip series-chip--link" data-story-track="books_series">{{ section.settings.series_label | replace: '[series]', series.name.value | escape }}</a></li>
+        {%- endif -%}
+        {{- people_chips -}}
+      </ul>
+    {%- endif -%}
+
+    {%- if book_count > 0 -%}
+      <ol class="series-books__list" role="list">
+        {%- if series == blank -%}
+          {%- render 'story-book-card', book: base_product, blurb_words: section.settings.blurb_words, ages_label: section.settings.ages_label, sample_label: section.settings.sample_label -%}
+        {%- endif -%}
+        {%- for book in source_books -%}
+          {%- assign needle = ',' | append: book.id | append: ',' -%}
+          {%- unless book_ids contains needle -%}{%- continue -%}{%- endunless -%}
+          {%- render 'story-book-card', book: book, blurb_words: section.settings.blurb_words, ages_label: section.settings.ages_label, sample_label: section.settings.sample_label -%}
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+
+    {%- if bundle_holds or pack_total > 0 -%}
+      <div class="story-books__bundles v-stack gap-3">
+        <h3 class="series-book__title">{{ section.settings.bundles_heading | replace: '[name]', t_name | escape }}</h3>
+        {%- if bundle_holds and bundle.available -%}
+          <div class="series-whole">
+            <div class="series-whole__text">
+              <p class="series-whole__title">{{ bundle.title | escape }}</p>
+              <p class="series-whole__meta">
+                {%- if bundle_count > 0 -%}{{ section.settings.bundle_count_label | replace: '[count]', bundle_count | escape }} · {% endif -%}
+                <span class="series-whole__price">{{ bundle.price | money }}</span>
+                {%- if bundle_saving > 0 %} · <span class="series-whole__saving">{{ section.settings.saving_label | escape }}{{ bundle_saving | money }}</span>{%- endif -%}
+              </p>
+            </div>
+            <a href="{{ bundle.url }}" class="series-button series-button--primary series-button--small" data-story-track="books_bundle">{{ section.settings.bundle_button | escape }}</a>
+          </div>
+        {%- endif -%}
+        {%- for handle in pack_list -%}
+          {%- assign pack = all_products[handle] -%}
+          {%- if pack == blank -%}{%- continue -%}{%- endif -%}
+          {%- assign pack_variant = pack.variants | sort: 'price' | first -%}
+          <div class="series-whole">
+            <div class="series-whole__text">
+              <p class="series-whole__title">{{ pack.title | escape }}</p>
+              <p class="series-whole__meta">{{ section.settings.pack_label | escape }} · <span class="series-whole__price">{{ pack_variant.price | money }}</span></p>
+            </div>
+            <a href="{{ pack.url }}" class="series-button series-button--secondary series-button--small" data-story-track="books_pack">{{ section.settings.pack_button | escape }}</a>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Story books",
+  "tag": "div",
+  "class": "shopify-section--story-books",
+  "settings": [
+    { "type": "paragraph", "content": "Books, series, author and narrator links and bundles for this character or audiobook. All read from the shop's data." },
+    { "type": "text", "id": "heading", "label": "Heading on character pages", "default": "Audiobooks with [name]" },
+    { "type": "text", "id": "intro_many", "label": "Intro when in several books", "default": "[name] is in [count] audiobooks." },
+    { "type": "text", "id": "heading_audiobook", "label": "Heading on audiobook pages", "default": "More [series] audiobooks" },
+    { "type": "text", "id": "series_label", "label": "Series link", "default": "The [series] series" },
+    { "type": "text", "id": "author_label", "label": "Author link prefix", "default": "By" },
+    { "type": "text", "id": "narrator_label", "label": "Narrator link prefix", "default": "Read by" },
+    { "type": "text", "id": "ages_label", "label": "Age label", "default": "Ages" },
+    { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Hear a sample" },
+    { "type": "range", "id": "blurb_words", "label": "Blurb words", "min": 10, "max": 60, "step": 2, "default": 26 },
+    { "type": "color", "id": "chip_background", "label": "Link pill background", "default": "#fff7f0" },
+    { "type": "header", "content": "Bundles" },
+    { "type": "text", "id": "bundles_heading", "label": "Heading", "default": "Bundles with [name]" },
+    { "type": "text", "id": "bundle_count_label", "label": "Bundle count", "default": "[count] audiobooks" },
+    { "type": "text", "id": "saving_label", "label": "Saving prefix", "default": "Save " },
+    { "type": "text", "id": "bundle_button", "label": "Bundle button", "default": "See the bundle" },
+    { "type": "text", "id": "packs_collection", "label": "Starter pack collection", "default": "voxblock-starter-pack-collection" },
+    { "type": "range", "id": "max_packs", "label": "Most starter packs", "min": 0, "max": 4, "step": 1, "default": 2 },
+    { "type": "text", "id": "pack_label", "label": "Starter pack line", "default": "Player + stories" },
+    { "type": "text", "id": "pack_button", "label": "Starter pack button", "default": "See the pack" }
+  ],
+  "presets": [{ "name": "Story books" }]
+}
+{% endschema %}

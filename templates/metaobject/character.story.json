@@ -93,8 +93,8 @@
         "book": {
           "type": "item",
           "settings": {
-            "title": "What book is [name] from?",
-            "content": "<p>[name] is a character in <a href=\"[book_url]\">[book]</a> by [author].</p>"
+            "title": "Which audiobooks is [name] in?",
+            "content": "<p>[books_sentence]</p>"
           }
         },
         "listen": {
@@ -164,11 +164,16 @@
         "debug": false,
         "object_type": "character"
       }
+    },
+    "story_books": {
+      "type": "story-books",
+      "settings": {}
     }
   },
   "order": [
     "breadcrumbs",
     "story_hero",
+    "story_books",
     "cast",
     "character_intro",
     "character_faq",

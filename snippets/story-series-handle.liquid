@@ -1,0 +1,38 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY SERIES HANDLE (breadcrumbs, sections/story-books.liquid)
+----------------------------------------------------------------------------------------------------------------------
+Prints the handle of the first published Series entry that holds a given audiobook product, else nothing. Capture its
+output, then read shop.metaobjects.series[handle]. Same matching rule as snippets/series-membership.liquid: the
+series' `books` list, else its collection's products that are linked to an audiobook entry.
+Input: product (the audiobook product).
+{%- endcomment -%}
+{%- liquid
+  assign found = ''
+  if product != blank
+    for series in shop.metaobjects.series.values
+      if series.system.url == blank
+        continue
+      endif
+      assign list = series.books.value
+      assign from_list = true
+      if list == blank
+        assign list = series.collection.value.products
+        assign from_list = false
+      endif
+      for book in list
+        if from_list == false and book.metafields.book.audiobook.value == blank
+          continue
+        endif
+        if book.id == product.id
+          assign found = series.system.handle
+          break
+        endif
+      endfor
+      if found != ''
+        break
+      endif
+    endfor
+  endif
+  echo found
+-%}
