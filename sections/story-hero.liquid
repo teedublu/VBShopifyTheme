@@ -1,6 +1,6 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-STORY HERO (Gruffalo character and cast pages, and the story templates: character.story.json, audiobook.story.json)
+STORY HERO (Gruffalo character and cast pages, and the default character and audiobook templates: character.json, audiobook.json)
 ----------------------------------------------------------------------------------------------------------------------
 
 Most visitors to these pages come from Google (often Images), look for ~10 seconds and scroll about a quarter of the
@@ -15,7 +15,7 @@ On the character template the H1 and intro above are for the main character (set
 Owl, Fox and Snake, which share the template, get "[name] in The Gruffalo" and their own description instead.
 Prices and the saving are read live from the products; nothing is hard-coded.
 
-Story templates (character.story / audiobook.story, first used for Dave Pigeon, 26 Oct 2026): every empty setting
+Story templates (the default character.json / audiobook.json since 26 Oct 2026, first built for Dave Pigeon): every empty setting
 falls back to the page's own story, so one template serves any character or audiobook. Audiobook = the audiobook
 entry's product or the character's main book; artwork = character photo, else the audiobook cover; intro = the
 character's description, else the audiobook's short blurb; starter pack = "Find the pack that holds this story"
@@ -29,11 +29,14 @@ Why two routes: Gruffalo pages get far more weekday-daytime and desktop visits t
 {%- liquid
   # The story behind the page: an audiobook entry itself, or a character's main book. Used for the fallbacks below
   # and the [book] / [book_short] / [author] / [narrator] / [more] words in the text settings.
+  # snippets/story-work-handle.liquid also covers older characters without a main book.
   assign work = blank
-  if metaobject.system.type == 'audiobook'
-    assign work = metaobject
-  elsif metaobject.main_book.value != blank
-    assign work = metaobject.main_book.value
+  capture work_handle
+    render 'story-work-handle', entry: metaobject
+  endcapture
+  assign work_handle = work_handle | strip
+  if work_handle != blank
+    assign work = shop.metaobjects.audiobook[work_handle]
   endif
 
   assign book = section.settings.audiobook
@@ -86,11 +89,24 @@ Why two routes: Gruffalo pages get far more weekday-daytime and desktop visits t
   assign t_author = t_author_obj.name.value | default: t_author_obj.name | strip
   assign t_narrator_obj = work.narrators.value | first
   assign t_narrator = t_narrator_obj.name.value | default: t_narrator_obj.name | strip
-  # [name_in_book]: "Skipper in Dave Pigeon", or just "Dave Pigeon" when the name is already in the book title
+  # [name_in_book]: "Skipper in Dave Pigeon". Uses the series name when the book is in a series, which keeps the
+  # H1 short ("Annabeth Chase in Percy Jackson", not the full book title), else the book title before any colon.
+  # Just the name when one holds the other (Dave Pigeon, Percy Jackson, Paddington Bear in Paddington).
+  assign t_where = t_book_short
+  if section.settings.heading contains '[name_in_book]' and book != blank
+    capture hero_series_handle
+      render 'story-series-handle', product: book
+    endcapture
+    assign hero_series_handle = hero_series_handle | strip
+    if hero_series_handle != blank
+      assign hero_series = shop.metaobjects.series[hero_series_handle]
+      assign t_where = hero_series.name.value | default: hero_series.title.value | default: t_book_short | strip
+    endif
+  endif
   assign t_name_in_book = t_name
-  if t_book_short != blank and t_book_short != t_name
-    unless t_book_short contains t_name
-      assign t_name_in_book = t_name | append: ' in ' | append: t_book_short
+  if t_where != blank and t_where != t_name
+    unless t_where contains t_name or t_name contains t_where
+      assign t_name_in_book = t_name | append: ' in ' | append: t_where
     endunless
   endif
 

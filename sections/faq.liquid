@@ -20,14 +20,19 @@
 On metaobject pages (character, audiobook) questions and answers can use [name] (the character or book), [book] (the
 character's main book, or the audiobook), [book_short] (the title before any colon), [book_url], [author] and
 [books_sentence] (which books a character is in, plain text).
-Text without these words is printed unchanged.
+Text without these words is printed unchanged. Questions using [book] or [book_short] are left out on a page with no
+book (a character not yet linked to an audiobook).
 {%- endcomment -%}
 {%- liquid
   assign faq_work = blank
-  if metaobject.system.type == 'audiobook'
-    assign faq_work = metaobject
-  elsif metaobject.main_book.value != blank
-    assign faq_work = metaobject.main_book.value
+  if metaobject != blank
+    capture work_handle
+      render 'story-work-handle', entry: metaobject
+    endcapture
+    assign work_handle = work_handle | strip
+    if work_handle != blank
+      assign faq_work = shop.metaobjects.audiobook[work_handle]
+    endif
   endif
   assign t_name = metaobject.name.value | default: metaobject.title.value | strip
   assign t_book = faq_work.title.value | default: faq_work.product.value.title | strip
@@ -141,6 +146,7 @@ Text without these words is printed unchanged.
       <div class="section-stack__main" >
         <div {% render 'surface', class: 'accordion-box rounded', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
           {%- for block in section.blocks -%}
+            {%- if t_book == blank and metaobject != blank -%}{%- if block.settings.title contains '[book' or block.settings.content contains '[books_sentence]' -%}{%- continue -%}{%- endif -%}{%- endif -%}
             {%- if block.settings.title != blank and block.settings.content != blank -%}
               {%- capture accordion_content -%}
                 <div class="prose">{{ block.settings.content | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author }}</div>
@@ -168,7 +174,10 @@ Text without these words is printed unchanged.
     "@type": "FAQPage",
     "@id": {{ canonical_url | append: '#faq' | json }},
     "mainEntity": [
+      {%- assign faq_first = true -%}
       {%- for block in section.blocks -%}
+        {%- if t_book == blank and metaobject != blank -%}{%- if block.settings.title contains '[book' or block.settings.content contains '[books_sentence]' -%}{%- continue -%}{%- endif -%}{%- endif -%}
+        {%- unless faq_first -%},{%- endunless -%}{%- assign faq_first = false -%}
         {
           "@type": "Question",
           "name": {{ block.settings.title | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author | json }},
@@ -176,7 +185,7 @@ Text without these words is printed unchanged.
             "@type": "Answer",
             "text": {{ block.settings.content | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author | strip_html | strip_newlines | strip | json }}
           }
-        }{% unless forloop.last %},{% endunless %}
+        }
       {%- endfor -%}
     ]
   }

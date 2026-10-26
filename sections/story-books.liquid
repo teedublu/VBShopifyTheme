@@ -1,6 +1,6 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-STORY BOOKS (character.story and audiobook.story templates: "Audiobooks with Dave Pigeon")
+STORY BOOKS (default character.json and audiobook.json templates: "Audiobooks with Dave Pigeon")
 ----------------------------------------------------------------------------------------------------------------------
 Every audiobook a character appears in, the series, author and narrator pages, and the bundles that hold the books,
 built from the shop's data so the same section serves any character or audiobook. Same cards and styles as the
@@ -28,7 +28,14 @@ books_title, books_add, books_series, books_author, books_narrator, books_bundle
     assign is_audiobook_page = true
     assign base_book = metaobject
   else
-    assign base_book = metaobject.main_book.value
+    assign base_book = blank
+    capture work_handle
+      render 'story-work-handle', entry: metaobject
+    endcapture
+    assign work_handle = work_handle | strip
+    if work_handle != blank
+      assign base_book = shop.metaobjects.audiobook[work_handle]
+    endif
   endif
   assign base_product = base_book.product.value
   assign current_handle = metaobject.system.handle

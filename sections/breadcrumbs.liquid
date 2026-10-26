@@ -296,7 +296,13 @@
         # Otherwise a character goes through its main book, with the title cut at the first colon.
         assign crumb_book = blank
         if metaobject_type == 'character'
-          assign crumb_book = metaobject.main_book.value
+          capture crumb_work_handle
+            render 'story-work-handle', entry: metaobject
+          endcapture
+          assign crumb_work_handle = crumb_work_handle | strip
+          if crumb_work_handle != blank
+            assign crumb_book = shop.metaobjects.audiobook[crumb_work_handle]
+          endif
         elsif metaobject_type == 'audiobook'
           assign crumb_book = metaobject
         endif

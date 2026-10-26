@@ -9,76 +9,45 @@
  */
 {
   "sections": {
-    "image_with_text_overlay_qgF8Xk": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_zXAhUW": {
-          "type": "subheading",
-          "settings": {
-            "text": "AUDIOBOOK",
-            "subheading_tag": "subheading",
-            "subheading_tag_html": "p"
-          }
-        },
-        "heading_THzjKE": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobject.title.value }}",
-            "scale_with": false,
-            "heading_tag": "h1",
-            "heading_tag_html": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_zXAhUW",
-        "heading_THzjKE"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "md",
-        "mobile_text_position": "place-self-end-start text-start",
-        "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ffffff",
-        "background": "#4cb6ac",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
-      }
-    },
-    "breadcrumbs_DL4tEL": {
+    "breadcrumbs": {
       "type": "breadcrumbs",
       "settings": {
         "heading": "Breadcrumbs"
       }
     },
-    "rich_text_rDm4QR": {
-      "type": "rich-text",
-      "blocks": {
-        "richtext_zQg6yT": {
-          "type": "richtext",
-          "settings": {
-            "content": "{{ metaobject.long_blurb | metafield_tag }}"
-          }
-        }
-      },
-      "block_order": [
-        "richtext_zQg6yT"
-      ],
+    "story_hero": {
+      "type": "story-hero",
       "settings": {
-        "full_width": false,
-        "use_mo": true,
-        "content_width": "medium",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
+        "background": "#fff7f0",
+        "image": "",
+        "image_alt": "",
+        "audiobook": "",
+        "play_label": "Hear a sample",
+        "pause_label": "Playing sample",
+        "sample_note": "Read by [narrator]. Free, no sign-up.",
+        "pack": "",
+        "pack_contents": "Voxblock player + [book_short] and [more] more stories",
+        "schools_url": "",
+        "secondary_label": "",
+        "secondary_url": "",
+        "heading_others": "",
+        "eyebrow": "Audiobook",
+        "heading": "[name]",
+        "intro": "",
+        "main_handle": "",
+        "home_label": "At home",
+        "show_classroom": false,
+        "classroom_label": "In the classroom",
+        "classroom_title": "Bring audiobooks into your classroom",
+        "classroom_text": "Whole-class listening and screen-free reading corners. Get ideas and school offers by email.",
+        "signup_list_id": "XRcgpd",
+        "classroom_link_label": "School packages, with 10% off for schools",
+        "signup_source": "Story page: classroom card",
+        "match_pack": true,
+        "packs_collection": "voxblock-starter-pack-collection"
       }
     },
-    "featured_audiobook_light_DTXA9d": {
+    "featured_audiobook": {
       "type": "featured-audiobook-light",
       "blocks": {
         "text_zKRhDf": {
@@ -91,12 +60,6 @@
           "type": "title",
           "settings": {
             "heading_tag": "h2"
-          }
-        },
-        "text_YANb9V": {
-          "type": "text",
-          "settings": {
-            "text": "<p></p>{{ metaobject.concise_blurb | metafield_tag }}"
           }
         },
         "price_CwqEwb": {
@@ -129,7 +92,6 @@
       "block_order": [
         "text_zKRhDf",
         "title_6dDQLi",
-        "text_YANb9V",
         "price_CwqEwb",
         "audiobook_properties_zBPQaJ",
         "buy_buttons_4CYw8F"
@@ -145,7 +107,48 @@
         "text_color": ""
       }
     },
-    "audiobook_chapters_yCUz7W": {
+    "about": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "text": "About the audiobook"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "What happens in the story",
+            "heading_tag": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "copy": {
+          "type": "richtext",
+          "settings": {
+            "content": "{{ metaobject.long_blurb | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "subheading",
+        "heading",
+        "copy"
+      ],
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "chapters": {
       "type": "audiobook-chapters",
       "settings": {
         "full_width": true,
@@ -159,20 +162,17 @@
         "heading_gradient": ""
       }
     },
-    "item_grid_mVMXgC": {
-      "type": "item-grid",
-      "name": "Item grid",
+    "cast": {
+      "type": "character-cast",
       "settings": {
         "heading": "Meet the characters",
-        "intro": "<p>Explore the main characters and learn more about their roles in the story.</p>",
-        "source_mode": "metaobject_list",
-        "metaobject_items": "{{ metaobject.characters.value }}",
-        "product_items": [],
-        "items_limit": 12,
-        "button_label": "Read more"
+        "intro": "Who's who in [book_short].",
+        "link_label": "",
+        "link_url": "",
+        "limit": 8
       }
     },
-    "audiobook_productdata_zmqU7J": {
+    "details": {
       "type": "audiobook-productdata",
       "blocks": {
         "preview_J6rbiA": {
@@ -362,32 +362,25 @@
       ],
       "settings": {}
     },
-    "microdata_kKw6gU": {
-      "type": "microdata",
-      "settings": {
-        "debug": false,
-        "object_type": "audiobook"
-      }
-    },
-    "faq_book_Ji9KrX": {
+    "faq": {
       "type": "faq-book",
       "blocks": {
         "item_bmzGFg": {
           "type": "item",
           "settings": {
-            "title": "What reading level is the audiobook \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.title.value }}",
+            "title": "What reading level is \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.reading_level | metafield_text }}",
             "check_for_richtext": "",
-            "content": "<p>Although listening is different to reading {{ metaobject.title.value }} is considered to appeal to </p>{{ metaobject.reading_level | metafield_tag }}"
+            "content": "<p>Listening is different from reading, but as a book \"{{ metaobject.title.value }}\" is usually matched to this reading level:</p>{{ metaobject.reading_level | metafield_tag }}"
           }
         },
         "item_xCAt3F": {
           "type": "item",
           "settings": {
-            "title": "What is the best way to listen to \"{{ metaobject.title.value }}\" ?",
+            "title": "What is the best way to listen to \"{{ metaobject.title.value }}\"?",
             "check_for_text": "{{ metaobject.title.value }}",
             "check_for_richtext": "",
-            "content": "<p>Listen using the screen-free Voxblock audiobook player. With no apps or downloads, its the simplest way to get kids listening to {{ metaobject.title.value }} and many other great stories.</p>"
+            "content": "<p>On the Voxblock player. The audiobook is a small block: children put it on the player and press play. No screen, no downloads and no wifi, so they can choose and play it on their own.</p>"
           }
         },
         "item_kwQGtG": {
@@ -402,10 +395,10 @@
         "item_xERghq": {
           "type": "item",
           "settings": {
-            "title": "What are the key themes in audiobook  \"{{ metaobject.title.value }}\"?",
-            "check_for_text": "{{ metaobject.interest_level | metafield_text }}",
+            "title": "What are the main themes of \"{{ metaobject.title.value }}\"?",
+            "check_for_text": "{{ metaobject.content_themes | metafield_text }}",
             "check_for_richtext": "",
-            "content": "<p>The audiobook \"{{ metaobject.title.value }}\" has the following key themes featured throughout the plot:</p>{{ metaobject.content_themes | metafield_tag }}"
+            "content": "<p>The main themes in \"{{ metaobject.title.value }}\":</p>{{ metaobject.content_themes | metafield_tag }}"
           }
         }
       },
@@ -418,7 +411,7 @@
       "settings": {
         "full_width": true,
         "subheading": "Questions about \"{{ metaobject.title.value }}\"",
-        "title": "Voxblock answers",
+        "title": "Listening answers",
         "content": "",
         "book_image": false,
         "book_image_width": 80,
@@ -437,17 +430,47 @@
         "accordion_background": "",
         "accordion_text_color": ""
       }
+    },
+    "home_band": {
+      "type": "story-home-band",
+      "settings": {
+        "background": "#fff7f0",
+        "image": "",
+        "image_alt": "",
+        "eyebrow": "At home",
+        "heading": "Listen to [book_short], screen-free",
+        "text": "<p>Your child puts the story block on the Voxblock player and presses play. No screen, no downloads, no subscription.</p>",
+        "pack": "",
+        "pack_label": "Starter pack",
+        "audiobook": "",
+        "audiobook_label": "The audiobook,",
+        "match_pack": true,
+        "packs_collection": "voxblock-starter-pack-collection"
+      }
+    },
+    "microdata": {
+      "type": "microdata",
+      "settings": {
+        "debug": false,
+        "object_type": "audiobook"
+      }
+    },
+    "story_books": {
+      "type": "story-books",
+      "settings": {}
     }
   },
   "order": [
-    "image_with_text_overlay_qgF8Xk",
-    "breadcrumbs_DL4tEL",
-    "rich_text_rDm4QR",
-    "featured_audiobook_light_DTXA9d",
-    "audiobook_chapters_yCUz7W",
-    "item_grid_mVMXgC",
-    "audiobook_productdata_zmqU7J",
-    "microdata_kKw6gU",
-    "faq_book_Ji9KrX"
+    "breadcrumbs",
+    "story_hero",
+    "about",
+    "featured_audiobook",
+    "story_books",
+    "cast",
+    "chapters",
+    "details",
+    "faq",
+    "home_band",
+    "microdata"
   ]
 }

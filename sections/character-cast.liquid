@@ -1,20 +1,24 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-CHARACTER CAST ("Meet the others", templates/metaobject/character.json)
+CHARACTER CAST ("Meet the others", templates/metaobject/character.json, audiobook.json)
 ----------------------------------------------------------------------------------------------------------------------
 
 The other characters from this character's main book (character field `main_book`, an audiobook entry), as the same
 cards the series page uses (snippets/character-card.liquid). The character whose page this is is left out. Hidden
 when the character has no main book or the book has no other characters. On an audiobook page
-(templates/metaobject/audiobook.story.json) it lists that book's characters instead.
+(templates/metaobject/audiobook.json) it lists that book's characters instead.
 {%- endcomment -%}
 
 {%- liquid
   assign current_handle = metaobject.system.handle
   # On a character page: the main book's cast, without this character. On an audiobook page: the book's own cast.
-  assign main_book = metaobject.main_book.value
-  if metaobject.system.type == 'audiobook'
-    assign main_book = metaobject
+  assign main_book = blank
+  capture work_handle
+    render 'story-work-handle', entry: metaobject
+  endcapture
+  assign work_handle = work_handle | strip
+  if work_handle != blank
+    assign main_book = shop.metaobjects.audiobook[work_handle]
   endif
   assign cast = main_book.characters.value
   assign others = 0

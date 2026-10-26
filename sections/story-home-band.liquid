@@ -1,10 +1,10 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-STORY HOME BAND (end of the Gruffalo character + cast pages, and the story templates character.story / audiobook.story)
+STORY HOME BAND (end of the Gruffalo character + cast pages, and the default character and audiobook templates)
 ----------------------------------------------------------------------------------------------------------------------
 The last word for parents: the audiobook cover (the 3D cover image, which ranks in Google Images, so keep it), one
 line on how it works, the starter pack button with its live price and "already have a Voxblock?" with the
-audiobook's live price. Nothing is hard-coded.
+audiobook's live price. Nothing is hard-coded. Hidden when the page has no audiobook and no pack.
 Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
 {%- endcomment -%}
 
@@ -12,10 +12,12 @@ Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
   # Empty settings fall back to the story behind the page: an audiobook entry itself or a character's main book
   # (same rules as sections/story-hero.liquid). Text settings can use [name], [book], [book_short] and [author].
   assign work = blank
-  if metaobject.system.type == 'audiobook'
-    assign work = metaobject
-  elsif metaobject.main_book.value != blank
-    assign work = metaobject.main_book.value
+  capture work_handle
+    render 'story-work-handle', entry: metaobject
+  endcapture
+  assign work_handle = work_handle | strip
+  if work_handle != blank
+    assign work = shop.metaobjects.audiobook[work_handle]
   endif
 
   assign book = section.settings.audiobook
@@ -56,6 +58,7 @@ Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
   assign text = section.settings.text | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book]', t_book | replace: '[author]', t_author
 -%}
 
+{%- if book != blank or pack != blank -%}
 <section class="story-home-band" style="--story-home-bg: {{ section.settings.background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
   <div class="container story-home-band__inner">
     {%- if image != blank -%}
@@ -78,6 +81,7 @@ Tracking: PostHog `story_hero_click` { target: band_pack | band_audiobook }.
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
