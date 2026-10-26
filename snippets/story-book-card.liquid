@@ -1,0 +1,46 @@
+{%- comment -%}
+STORY BOOK CARD (sections/story-books.liquid): one audiobook as the series page's book row (series-book styles in
+voxblock.css): cover, title, short blurb, ages, price, Add to cart and sample. Inputs: book (product), blurb_words,
+ages_label, sample_label.
+{%- endcomment -%}
+{%- liquid
+  assign ab = book.metafields.book.audiobook.value
+  assign blurb = ab.concise_blurb | metafield_tag | strip_html | strip
+  if blurb == blank
+    assign blurb = book.description | strip_html | strip
+  endif
+  assign book_age = ab.reading_level.value | first | downcase | remove: 'years' | remove: 'year' | strip | replace: '-', '–'
+-%}
+<li class="series-book">
+  <div class="series-book__media">
+    <a href="{{ book.url }}" tabindex="-1" aria-hidden="true" data-story-track="books_title">
+      {%- if book.featured_media -%}
+        {%- capture cover_alt -%}{{ book.title }} audiobook cover{%- endcapture -%}
+        {{- book.featured_media | image_url: width: 300 | image_tag: loading: 'lazy', sizes: '(max-width: 699px) 88px, 120px', widths: '88,120,176,240,300', alt: cover_alt -}}
+      {%- endif -%}
+    </a>
+  </div>
+  <div class="series-book__body">
+    <h3 class="series-book__title"><a href="{{ book.url }}" data-story-track="books_title">{{ book.title | escape }}</a></h3>
+    {%- if blurb != blank -%}<p class="series-book__blurb">{{ blurb | truncatewords: blurb_words }}</p>{%- endif -%}
+    {%- if book_age != blank -%}<p class="series-book__meta"><span>{{ ages_label | escape }} {{ book_age | escape }}</span></p>{%- endif -%}
+  </div>
+  <div class="series-book__buy">
+    <p class="series-book__price">
+      {%- if book.compare_at_price > book.price -%}<s class="series-book__was">{{ book.compare_at_price | money }}</s> {% endif -%}
+      {{ book.price | money }}
+    </p>
+    {%- if book.available -%}
+      {%- form 'product', book, is: 'product-form' -%}
+        <input type="hidden" name="id" value="{{ book.selected_or_first_available_variant.id }}">
+        <button type="submit" is="custom-button" class="series-button series-button--primary series-button--small series-button--block" data-story-track="books_add">{{ 'product.general.add_to_cart_button' | t }}</button>
+      {%- endform -%}
+    {%- endif -%}
+    {%- if book.metafields.book.preview != blank -%}
+      <button type="button" class="bookpreview series-button series-button--secondary series-button--small series-button--block" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ book.metafields.book.preview | file_url }}" data-title="{{ book.title | escape }}">
+        <span class="playpause" aria-hidden="true"></span>
+        <span class="series-button__label">{{ sample_label | escape }}<span class="sr-only">: {{ book.title | escape }}</span></span>
+      </button>
+    {%- endif -%}
+  </div>
+</li>
