@@ -1,0 +1,42 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP ICON (help pages: sections/help-cards)
+----------------------------------------------------------------------------------------------------------------------
+Stroke icons in the same hand-drawn style as sections/benefit-cards (24px grid, 2px stroke, .accent lines in the
+eyebrow colour). Param: icon. Unknown names print nothing.
+{%- endcomment -%}
+
+{%- case icon -%}
+  {%- when 'player' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="2.5" width="14" height="19" rx="3.5"/><rect x="8" y="5.5" width="8" height="7" rx="1.5"/><circle class="accent" cx="12" cy="17" r="1.8"/></svg>
+  {%- when 'lights' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="5"/><path class="accent" d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/><path d="M11 10l2.5 2-2.5 2z" fill="currentColor"/></svg>
+  {%- when 'battery' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="7" width="17" height="10" rx="2"/><path d="M22 10.5v3"/><path class="accent" d="M6 10.5v3M9.5 10.5v3M13 10.5v3"/></svg>
+  {%- when 'truck' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v10h-11z"/><path d="M13.5 9.5h4l3.5 3.5v3.5h-7.5"/><circle class="accent" cx="6.5" cy="17.5" r="1.8"/><circle class="accent" cx="17" cy="17.5" r="1.8"/></svg>
+  {%- when 'shield' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.5l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10v-6z"/><path class="accent" d="M8.5 12l2.5 2.5 4.5-4.5" stroke-width="2.4"/></svg>
+  {%- when 'wrench' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.5 6.5a4 4 0 0 0 5 5l1-1a5.5 5.5 0 0 1-7.2 5.2L7 22a2.1 2.1 0 0 1-3-3l6.3-6.3A5.5 5.5 0 0 1 15.5 5.5z"/><circle class="accent" cx="5.5" cy="20.5" r=".6" fill="currentColor"/></svg>
+  {%- when 'recycle' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 19H4.5a2 2 0 0 1-1.7-3l3.7-6.4"/><path d="M11 5.5l1.2-2a2 2 0 0 1 3.4 0l3.7 6.4"/><path d="M17 19h2.5a2 2 0 0 0 1.7-3"/><path class="accent" d="M4 7.5l2.5 2 1-3M16 19l-2.5 2.5V16.5M19.5 7.5l-.2 3.2-3.2-.7"/></svg>
+  {%- when 'chat' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9l-5 4z"/><path class="accent" d="M8 9.5h8M8 12.5h5"/></svg>
+  {%- when 'question' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path class="accent" d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .9-1 1.7v.5"/><circle class="accent" cx="12" cy="17" r=".6" fill="currentColor"/></svg>
+  {%- when 'download' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3.5h8l4 4v13H6z"/><path d="M14 3.5v4h4"/><path class="accent" d="M12 10.5v6M9.5 14l2.5 2.5 2.5-2.5"/></svg>
+  {%- when 'book' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5h6.5a2 2 0 0 1 2 2V20a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 4.5h-6.5a2 2 0 0 0-2 2V20a1.5 1.5 0 0 1 1.5-1.5H20z"/><path class="accent" d="M6.5 8.5h3M6.5 11.5h3"/></svg>
+  {%- when 'gift' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="8.5" width="17" height="4" rx="1"/><path d="M5 12.5v8h14v-8"/><path class="accent" d="M12 8.5v12M12 8.5c-1-3-4.5-4-5-2s2.5 2 5 2c2.5 0 5.5 0 5-2s-4-1-5 2"/></svg>
+  {%- when 'moon' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/><path class="accent" d="M16 3.5v3M14.5 5h3"/></svg>
+  {%- when 'ear' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 10a6 6 0 0 1 12 0c0 3-2 4-2.5 6a3 3 0 0 1-5.5 1"/><path class="accent" d="M10 10a2 2 0 0 1 4 0c0 1.5-1.5 2-1.5 3.5"/></svg>
+  {%- when 'check' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path class="accent" d="M7.5 12.5l3 3 6-6" stroke-width="2.4"/></svg>
+  {%- when 'box' -%}
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 8l9-4.5L21 8v9l-9 4.5L3 17z"/><path d="M3 8l9 4.5L21 8M12 12.5V21.5"/><path class="accent" d="M7.5 5.75l9 4.5"/></svg>
+{%- endcase -%}

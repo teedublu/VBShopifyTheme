@@ -1,0 +1,37 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PLAYER LIGHT ICON (help pages: sections/quick-fixes, sections/player-lights)
+----------------------------------------------------------------------------------------------------------------------
+A small picture of one light on the current player (no switch on the back):
+- group 'play': a play button glowing in the light's colour
+- group 'battery': the battery light, drawn as a battery whose bar is the light's colour (the real light is a plain
+  cut-out strip that shows no charge level, so the bar is always full width)
+Params: group ('play' | 'battery'), led (off, blue, blue_dim, green, orange, pink, yellow_green, red),
+animation (none, blink, fast, pulse, flash, fade). Animations run only while the pointer is over a .qf-host element
+(voxblock.css), so the page never flashes on its own.
+Colours are the real LED colours, defined once in voxblock.css (--led-*).
+{%- endcomment -%}
+
+{%- liquid
+  assign led_key = led | default: 'off'
+  assign led_var = 'var(--led-' | append: led_key | replace: '_', '-' | append: ')'
+  assign anim_class = ''
+  if animation != blank and animation != 'none'
+    assign anim_class = 'qf-anim--' | append: animation
+  endif
+-%}
+
+{%- if group == 'battery' -%}
+  <svg class="player-light-icon player-light-icon--battery{% if led_key == 'off' %} is-off{% endif %}" aria-hidden="true" focusable="false" width="28" height="16" viewBox="0 0 28 16">
+    <rect class="player-light-icon__case" x="1" y="2" width="22" height="12" rx="3"/>
+    <rect class="player-light-icon__tip" x="23.5" y="5.5" width="3" height="5" rx="1"/>
+    {%- if led_key != 'off' -%}
+      <rect class="player-light-icon__bar {{ anim_class }}" x="3.5" y="4.5" width="17" height="7" rx="1.5" style="fill: {{ led_var }}"/>
+    {%- endif -%}
+  </svg>
+{%- else -%}
+  <svg class="player-light-icon player-light-icon--play{% if led_key == 'off' %} is-off{% endif %}" aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 22 22">
+    <circle class="player-light-icon__ring {{ anim_class }}" cx="11" cy="11" r="9" style="--icon-led: {{ led_var }}"/>
+    <path class="player-light-icon__arrow" d="M9 7l6 4-6 4z"/>
+  </svg>
+{%- endif -%}

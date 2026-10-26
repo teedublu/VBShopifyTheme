@@ -1,81 +1,54 @@
 /*
- * ------------------------------------------------------------
+ * ------------------------------------------------------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * ------------------------------------------------------------
+ * ------------------------------------------------------------------------------------------------------------
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "hero": {
+      "type": "help-hero",
       "settings": {
-        "content_width": "80ch",
-        "show_title": true
+        "heading": "Questions about Voxblock",
+        "trail_label": "FAQs",
+        "parent_url": "/pages/help",
+        "intro": "<p>Ages, the audiobooks, the player, safety and delivery. For how-to help, see <a href=\"/pages/player-guide\">using your player</a> and <a href=\"/pages/quick-fixes\">quick fixes</a>.</p>"
       }
     },
-    "image_with_text_overlay_rDk6zQ": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "subheading_rA9VLz": {
-          "type": "subheading",
-          "settings": {
-            "text": "EVERYTHING YOU NEED TO KNOW",
-            "subheading_tag": "subheading",
-            "subheading_tag_html": "p"
-          }
-        },
-        "heading_mFb8PP": {
-          "type": "heading",
-          "settings": {
-            "text": "FAQs",
-            "scale_with": false,
-            "heading_tag": "h0",
-            "heading_tag_html": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_rA9VLz",
-        "heading_mFb8PP"
-      ],
-      "settings": {
-        "full_width": true,
-        "allow_transparent_header": true,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "md",
-        "image": "shopify://shop_images/blue-question-mark-orange-background.png",
-        "mobile_text_position": "place-self-end-start text-start",
-        "desktop_text_position": "sm:place-self-end-start sm:text-start",
-        "text_color": "#ffffff",
-        "background": "#eaeaea",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 5
-      }
-    },
-    "faq_tnEfFh": {
+    "faq_audiobooks": {
       "type": "faq",
+      "settings": {
+        "title": "The audiobooks",
+        "include_jsonld": true,
+        "full_width": true,
+        "text_position": "start"
+      },
       "blocks": {
-        "item_KypYRy": {
-          "type": "item",
-          "settings": {
-            "title": "Will I lose my place in the story if I remove a block?",
-            "content": "<p>No, the player will return to the same point next time you listen to that story.</p>"
-          }
-        },
-        "item_kiVBt8": {
+        "item_01": {
           "type": "item",
           "settings": {
             "title": "What stories are available?",
-            "content": "<p>We are focussing on delivering world-class stories for children aged 3 and up. We have over 200 titles and are regularly expanding and updating our array of content, so keep an eye on our website!</p>"
+            "content": "<p>Stories for children aged 3 to teens, from picture books to novels. We have more than 350 titles and add new ones every month. <a href=\"/collections/all\">See them all</a></p>"
           }
         },
-        "item_9M3j6U": {
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "title": "How do the audiobooks work?",
+            "content": "<p>Each audiobook is a book-shaped block with the whole story stored on it. Place it on the player and press play. There’s nothing to download or stream, and no wifi or subscription.</p>"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "title": "Will I lose my place in the story if I remove a block?",
+            "content": "<p>No. The player returns to the same point next time you listen to that story.</p>"
+          }
+        },
+        "item_04": {
           "type": "item",
           "settings": {
             "title": "What are the blocks made of?",
@@ -84,335 +57,196 @@
         }
       },
       "block_order": [
-        "item_KypYRy",
-        "item_kiVBt8",
-        "item_9M3j6U"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "The audiobooks",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "#ffffff",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04"
+      ]
     },
-    "faq_GgNMAJ": {
+    "faq_player": {
       "type": "faq",
-      "blocks": {
-        "item_tp4QTi": {
-          "type": "item",
-          "settings": {
-            "title": "How do I set up my player?",
-            "content": "<p>Depending on the model you can find the on/off switch in the recess where your block connects to the player. If you have the latest model then you turn the player on/off by holding the main button for 1 to 2 seconds. Then simply pop in your chosen block, and press play. Use the arrow buttons to jump to the next or previous chapters, and the + and - to adjust the volume.</p>"
-          }
-        },
-        "item_MtR74C": {
-          "type": "item",
-          "settings": {
-            "title": "How do I use my Voxblock player?",
-            "content": "<p>The controls are very simple, read all about them <a href=\"/pages/how-does-it-work\" title=\"How does it work\">here</a></p>"
-          }
-        },
-        "item_hEnQNp": {
-          "type": "item",
-          "settings": {
-            "title": "Do I need an internet connection to use my player?",
-            "content": "<p>Nope. We are completely connectivity free.</p>"
-          }
-        },
-        "item_hHnVzq": {
-          "type": "item",
-          "settings": {
-            "title": "Does the player need batteries?",
-            "content": "<p>You can recharge the Voxblock player using a USB-C cable. Find out more about charging <a href=\"/pages/charging-your-voxblock\" title=\"Charging Your Voxblock\">here</a>.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_tp4QTi",
-        "item_MtR74C",
-        "item_hEnQNp",
-        "item_hHnVzq"
-      ],
       "settings": {
-        "full_width": true,
-        "subheading": "",
         "title": "The player",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
-    },
-    "faq_7DNJPa": {
-      "type": "faq",
-      "blocks": {
-        "item_LBCKh7": {
-          "type": "item",
-          "settings": {
-            "title": "What is the best way to charge my player?",
-            "content": "<ul><li>use the USB C charging cable provided</li><li>charge using a USB adapter in a wall socket</li><li>allow the player to charge fully e.g. overnight</li><li>switch off the player when not in use</li></ul>"
-          }
-        },
-        "item_NfcCGb": {
-          "type": "item",
-          "settings": {
-            "title": "Can I charge my player using a laptop charger?",
-            "content": "<p>No. Laptop chargers should be avoided. </p>"
-          }
-        },
-        "item_GChHNj": {
-          "type": "item",
-          "settings": {
-            "title": "Can I charge my player in the car?",
-            "content": "<p>No. Car chargers should be avoided as they don't charge the player properly. </p>"
-          }
-        },
-        "item_3mXn8F": {
-          "type": "item",
-          "settings": {
-            "title": "Does the USB cable work when charging through a multi USB port?",
-            "content": "<p>No. The best way is to plug the cable directly into a USB mains plug and into a wall socket. </p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_LBCKh7",
-        "item_NfcCGb",
-        "item_GChHNj",
-        "item_3mXn8F"
-      ],
-      "settings": {
+        "include_jsonld": false,
         "full_width": true,
-        "subheading": "",
-        "title": "Charging your player",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
-    },
-    "faq_EHcqEk": {
-      "type": "faq",
-      "blocks": {
-        "item_DTGWLG": {
-          "type": "item",
-          "settings": {
-            "title": "The player is stuck on a pink light",
-            "content": "<p>You are stuck in travel mode. Press the two volume buttons at the same time until the blue light appears.</p>"
-          }
-        },
-        "item_WCpz3E": {
-          "type": "item",
-          "settings": {
-            "title": "The player is stuck on an orange light",
-            "content": "<p>You are in bedtime mode. Press the two chapter buttons at the same time until the blue light appears.</p>"
-          }
-        },
-        "item_mBNq67": {
-          "type": "item",
-          "settings": {
-            "title": "How do I switch the player off?",
-            "content": "<p>The player switches itself off after 5 minutes of inactivity but if you would like to switch it off before this, do a long press on the play button.</p>"
-          }
-        }
+        "text_position": "start"
       },
-      "block_order": [
-        "item_DTGWLG",
-        "item_WCpz3E",
-        "item_mBNq67"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "Troubleshooting",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": ""
-      }
-    },
-    "faq_UE4NYB": {
-      "type": "faq",
       "blocks": {
-        "item_N94364": {
-          "type": "item",
-          "settings": {
-            "title": "Can I recycle the Voxblock packaging?",
-            "content": "<p>Absolutely, all our packaging is made of card and paper. No plastic here.</p>"
-          }
-        },
-        "item_4c79Qg": {
-          "type": "item",
-          "settings": {
-            "title": "How long will my Voxblock player last?",
-            "content": "<p>Designed with the minimum number of component parts, our players are designed to be simple and straightforward, and live a long and happy life.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "item_N94364",
-        "item_4c79Qg"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "Sustainability",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
-    },
-    "faq_4fmFXn": {
-      "type": "faq",
-      "blocks": {
-        "item_8PrxDF": {
+        "item_01": {
           "type": "item",
           "settings": {
             "title": "What age is Voxblock suitable for?",
             "content": "<p>Our audiobooks range from picture books for 3 year olds to novels for teenagers. The player is made for children aged 3 and over, who can use it on their own.</p>"
           }
         },
-        "item_Mzx6tK": {
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "title": "Do I need an internet connection or an account?",
+            "content": "<p>No. The player has no internet connection and nothing to set up. The stories are stored on the blocks.</p>"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "title": "Does the player need batteries?",
+            "content": "<p>No. It has a built-in rechargeable battery that gives up to 16 hours of listening. Charge it with the USB-C cable and a wall plug. <a href=\"/pages/player-guide#charging\">How to charge</a></p>"
+          }
+        },
+        "item_04": {
+          "type": "item",
+          "settings": {
+            "title": "How do I set up my player?",
+            "content": "<p>Press the play button for a second to switch it on, place a book on the player and press play. If your player has an on/off switch on the back, flip it down first. <a href=\"/pages/player-guide\">Using your player</a></p>"
+          }
+        },
+        "item_05": {
+          "type": "item",
+          "settings": {
+            "title": "Can my child use headphones?",
+            "content": "<p>Yes. Plug wired headphones into the headphone socket and the speaker switches off. <a href=\"/pages/player-guide#sound\">Volume and headphones</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04",
+        "item_05"
+      ]
+    },
+    "faq_lights": {
+      "type": "faq",
+      "settings": {
+        "title": "Lights and quick fixes",
+        "include_jsonld": false,
+        "full_width": true,
+        "text_position": "start"
+      },
+      "blocks": {
+        "item_01": {
+          "type": "item",
+          "settings": {
+            "title": "Why is the play button pink?",
+            "content": "<p>Pink means travel mode, which locks the buttons for packing. It glows pink for a few seconds and then looks switched off. Hold − and + together for a second until the light turns blue. <a href=\"/pages/quick-fixes#light-pink\">Travel mode</a></p>"
+          }
+        },
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "title": "Why is the play button orange?",
+            "content": "<p>Orange means bedtime mode: the story stops after 20 minutes. Press both arrow buttons together until you hear a tone and the light turns blue. <a href=\"/pages/quick-fixes#light-orange\">Bedtime mode</a></p>"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "title": "Nothing happens when I press the buttons",
+            "content": "<p>If the play button glows pink for a few seconds, it’s travel mode: hold − and + together. Otherwise charge it overnight from a wall plug. <a href=\"/pages/quick-fixes\">More quick fixes</a></p>"
+          }
+        },
+        "item_04": {
+          "type": "item",
+          "settings": {
+            "title": "How do I switch the player off?",
+            "content": "<p>Hold the play button for about 3 seconds. It also switches itself off a few minutes after a story stops.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04"
+      ]
+    },
+    "faq_safety": {
+      "type": "faq",
+      "settings": {
+        "title": "Safety",
+        "include_jsonld": false,
+        "full_width": true,
+        "text_position": "start"
+      },
+      "blocks": {
+        "item_01": {
           "type": "item",
           "settings": {
             "title": "How can I control what my child is listening to?",
-            "content": "<p>There is no internet connection in the player, so all children can listen to are the stories stored on the blocks. No privacy concerns, and no risk of inappropriate content.</p>"
+            "content": "<p>There is no internet connection in the player, so children can only listen to the stories on the blocks. No privacy concerns, and no risk of unsuitable content.</p>"
           }
         }
       },
       "block_order": [
-        "item_8PrxDF",
-        "item_Mzx6tK"
-      ],
-      "settings": {
-        "full_width": true,
-        "subheading": "",
-        "title": "Safety",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
+        "item_01"
+      ]
     },
-    "faq_QGtYmk": {
+    "faq_sustainability": {
       "type": "faq",
+      "settings": {
+        "title": "Sustainability",
+        "include_jsonld": false,
+        "full_width": true,
+        "text_position": "start"
+      },
       "blocks": {
-        "item_VqBhRc": {
+        "item_01": {
           "type": "item",
           "settings": {
-            "title": "Do you ship outside of the UK?",
-            "content": "<p>We currently only offer shipping to the UK and Australia.</p>"
+            "title": "Can I recycle the Voxblock packaging?",
+            "content": "<p>Yes. All our packaging is card and paper, with no plastic.</p>"
           }
         },
-        "item_9qNAG7": {
+        "item_02": {
           "type": "item",
           "settings": {
-            "title": "Do you ship to Ireland and Europe?",
-            "content": "<p>We currently don’t allow customers to place orders to Ireland and Europe through our website directly. However if you would like to enquire about placing an order, please contact hello@voxblock.co.uk</p>"
+            "title": "How long will my Voxblock player last?",
+            "content": "<p>The player is built from as few parts as possible, so it’s simple to repair. It has a 2-year guarantee, and we repair players for life after that. When you’re finished with it, send it back free and we’ll pass it on to another child. <a href=\"/pages/delivery-and-returns#repairs\">Repairs and reuse</a></p>"
           }
         }
       },
       "block_order": [
-        "item_VqBhRc",
-        "item_9qNAG7"
-      ],
+        "item_01",
+        "item_02"
+      ]
+    },
+    "faq_delivery": {
+      "type": "faq",
       "settings": {
+        "title": "Delivery and returns",
+        "include_jsonld": false,
         "full_width": true,
-        "subheading": "",
-        "title": "Shipping",
-        "content": "",
-        "team_avatar_width": 160,
-        "support_hours": "",
-        "answer_time": "",
-        "button_text": "",
-        "button_url": "",
-        "text_position": "start",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "#565656",
-        "heading_color": "",
-        "heading_gradient": "",
-        "button_background": "",
-        "button_text_color": "",
-        "accordion_background": "#ffffff",
-        "accordion_text_color": "#565656"
-      }
+        "text_position": "start"
+      },
+      "blocks": {
+        "item_01": {
+          "type": "item",
+          "settings": {
+            "title": "Do you deliver outside the UK?",
+            "content": "<p>We deliver across the UK and to Australia. <a href=\"/pages/delivery-and-returns#delivery\">Delivery rates and times</a></p>"
+          }
+        },
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "title": "Do you deliver to Ireland and Europe?",
+            "content": "<p>Not through our website yet. If you’d like to order, email <a href=\"mailto:hello@voxblock.co.uk\">hello@voxblock.co.uk</a>.</p>"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "title": "Can I return my player?",
+            "content": "<p>Yes. Players and starter packs bought from our website have a 100-day Happiness Guarantee: send it back in its original packaging for a full refund. <a href=\"/pages/delivery-and-returns\">Guarantee and returns</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03"
+      ]
     },
     "newsletter_3FNKnQ": {
       "type": "newsletter",
@@ -429,18 +263,26 @@
         "button_background": "",
         "button_text_color": ""
       }
+    },
+    "contact": {
+      "type": "help-contact",
+      "settings": {
+        "heading": "Still not right?",
+        "button_text": "Contact us",
+        "button_url": "/pages/contact-us",
+        "text": "<p>Can’t find your answer? We reply Monday to Friday, usually within 24 hours.</p>"
+      }
     }
   },
   "order": [
-    "main",
-    "image_with_text_overlay_rDk6zQ",
-    "faq_tnEfFh",
-    "faq_GgNMAJ",
-    "faq_7DNJPa",
-    "faq_EHcqEk",
-    "faq_UE4NYB",
-    "faq_4fmFXn",
-    "faq_QGtYmk",
-    "newsletter_3FNKnQ"
+    "hero",
+    "faq_audiobooks",
+    "faq_player",
+    "faq_lights",
+    "faq_safety",
+    "faq_sustainability",
+    "faq_delivery",
+    "newsletter_3FNKnQ",
+    "contact"
   ]
 }

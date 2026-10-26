@@ -1,0 +1,37 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP CONTACT (help pages)
+----------------------------------------------------------------------------------------------------------------------
+"Still not right?" band at the foot of a help page: what to tell us, reply times, and a button to the contact page.
+Clicks send help_click { target, page } (voxblock.js).
+{%- endcomment -%}
+
+<section class="help-contact" id="{{ section.settings.anchor | default: 'contact' | escape }}" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="help-contact__card">
+      <div class="help-contact__text">
+        <h2 class="h4">{{ section.settings.heading | escape }}</h2>
+        {{ section.settings.text }}
+      </div>
+      {%- if section.settings.button_text != blank -%}
+        <a class="button" href="{{ section.settings.button_url | default: '/pages/contact-us' }}" data-help-track="contact_band">{{ section.settings.button_text | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Help contact",
+  "tag": "div",
+  "class": "shopify-section--help-contact",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (no #)", "default": "contact" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Still not right?" },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Tell us what you can see on the play button and battery light, and what you've tried. We reply Monday to Friday, usually within 24 hours.</p>" },
+    { "type": "text", "id": "button_text", "label": "Button", "default": "Contact us" },
+    { "type": "url", "id": "button_url", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Help contact" }]
+}
+{% endschema %}

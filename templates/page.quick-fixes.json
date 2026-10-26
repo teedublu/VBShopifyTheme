@@ -1,0 +1,510 @@
+/*
+ * ------------------------------------------------------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "help-hero",
+      "settings": {
+        "heading": "Quick fixes for your Voxblock",
+        "trail_label": "Quick fixes",
+        "intro": "<p>Most things are fixed with one or two button presses. Pick what you can see on your player.</p>",
+        "parent_url": "/pages/help",
+        "parent_title": "Help centre",
+        "joined": true
+      }
+    },
+    "quick_fixes": {
+      "type": "quick-fixes",
+      "settings": {
+        "default_state": "pink"
+      },
+      "blocks": {
+        "state_01": {
+          "type": "state",
+          "settings": {
+            "state_id": "off",
+            "group": "play",
+            "label": "No light",
+            "led": "off",
+            "animation": "none",
+            "other_led": "off",
+            "book_on": false,
+            "caption": "Press play",
+            "eyebrow": "Play button: no light",
+            "title": "Switched off",
+            "meaning": "The player switches itself off a few minutes after a story stops, to save the battery.",
+            "fix_heading": "Switch it on",
+            "steps": "Press the play button. It glows blue.\nGlows pink for a few seconds, then goes dark? It’s in travel mode: hold − and + together.\nNo light at all? Charge it with the USB-C cable and a wall plug.",
+            "done": "Blue: it’s on and ready. Place a book and press play.",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Press play to switch it on.",
+            "press_play": true,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_02": {
+          "type": "state",
+          "settings": {
+            "state_id": "pulse",
+            "group": "play",
+            "label": "Slow dim blue",
+            "led": "blue_dim",
+            "animation": "pulse",
+            "other_led": "off",
+            "book_on": true,
+            "caption": "Press play",
+            "eyebrow": "Play button: slow, dim blue",
+            "title": "Resting",
+            "meaning": "Nothing has played for a minute, so the player is resting. It switches itself off a few minutes later.",
+            "fix_heading": "Carry on listening",
+            "steps": "Press play, or place a book on the player.",
+            "done": "Green: the story is playing.",
+            "more_label": "Using your player",
+            "more_link": "/pages/player-guide",
+            "short": "Resting before it switches off. Press play.",
+            "press_play": true,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_03": {
+          "type": "state",
+          "settings": {
+            "state_id": "blue",
+            "group": "play",
+            "label": "Blue",
+            "led": "blue",
+            "animation": "none",
+            "other_led": "off",
+            "book_on": true,
+            "caption": "Press play",
+            "eyebrow": "Play button: blue",
+            "title": "Paused, or no book on the player",
+            "meaning": "The player is on and waiting for a story.",
+            "fix_heading": "Start the story",
+            "steps": "Place a book on the player and press play.\nBook on but still blue? Lift it off, wipe the connector on the book and the player with a dry cloth, and put it back.",
+            "done": "Green: the story is playing.",
+            "more_label": "Using your player",
+            "more_link": "/pages/player-guide",
+            "short": "Place a book and press play.",
+            "press_play": true,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_04": {
+          "type": "state",
+          "settings": {
+            "state_id": "green",
+            "group": "play",
+            "label": "Green",
+            "led": "green",
+            "animation": "none",
+            "other_led": "off",
+            "book_on": true,
+            "caption": "Press + to turn it up",
+            "eyebrow": "Play button: green",
+            "title": "The story is playing",
+            "meaning": "All is well. If you can’t hear anything, it’s usually the volume or the headphones.",
+            "fix_heading": "Can’t hear it?",
+            "steps": "Press the + button a few times to turn it up.\nCheck nothing is plugged into the headphone socket: with headphones in, the sound goes to them.",
+            "done": "",
+            "more_label": "Volume and headphones",
+            "more_link": "/pages/player-guide#sound",
+            "short": "Playing. No sound? Press + or check the headphone socket.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": true
+          }
+        },
+        "state_05": {
+          "type": "state",
+          "settings": {
+            "state_id": "orange",
+            "group": "play",
+            "label": "Orange",
+            "led": "orange",
+            "animation": "none",
+            "other_led": "off",
+            "book_on": true,
+            "caption": "Press both arrows together",
+            "eyebrow": "Play button: orange",
+            "title": "Bedtime mode is on",
+            "meaning": "The story plays for 20 minutes, then the player pauses on its own. If it stopped after 20 minutes, that’s bedtime mode working.",
+            "fix_heading": "Switch bedtime mode off",
+            "steps": "Press both arrow buttons together until you hear a tone.\nThe play button turns blue. Press it to carry on listening.",
+            "done": "Blue: bedtime mode is off.",
+            "more_label": "More about bedtime mode",
+            "more_link": "/pages/player-guide#bedtime",
+            "short": "Bedtime mode. Press both arrows together to switch it off.",
+            "press_play": false,
+            "press_left": true,
+            "press_right": true,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_06": {
+          "type": "state",
+          "settings": {
+            "state_id": "pink",
+            "group": "play",
+            "label": "Pink, then dark",
+            "led": "pink",
+            "animation": "fade",
+            "other_led": "off",
+            "book_on": false,
+            "caption": "Hold − and + together",
+            "eyebrow": "Play button: pink, then goes dark",
+            "title": "Travel mode is on",
+            "meaning": "Travel mode stops the player switching on in a bag. It glows pink for a few seconds, then looks switched off, and the buttons won’t play anything until you switch travel mode off.",
+            "fix_heading": "Switch travel mode off",
+            "steps": "Hold both volume buttons (− and +) together for a second, until you hear a tone.\nThe play button turns blue and the player works again.",
+            "done": "Blue: travel mode is off.",
+            "more_label": "More about travel mode",
+            "more_link": "/pages/player-guide#travel",
+            "short": "Travel mode. Hold − and + together to unlock.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": true,
+            "press_plus": true
+          }
+        },
+        "state_07": {
+          "type": "state",
+          "settings": {
+            "state_id": "volume",
+            "group": "play",
+            "label": "Quick yellow-green flash",
+            "led": "yellow_green",
+            "animation": "flash",
+            "other_led": "off",
+            "book_on": true,
+            "caption": "Volume buttons",
+            "eyebrow": "Play button: quick yellow-green flash",
+            "title": "Changing the volume",
+            "meaning": "When you press − or +, the play button flashes yellow-green for a moment. It’s brighter the louder it is, then goes back to its usual colour.",
+            "fix_heading": "",
+            "steps": "",
+            "done": "Nothing to do.",
+            "more_label": "",
+            "more_link": "",
+            "short": "You’re changing the volume. Nothing to do.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": true,
+            "press_plus": true
+          }
+        },
+        "state_08": {
+          "type": "state",
+          "settings": {
+            "state_id": "battery-off",
+            "group": "battery",
+            "label": "Off",
+            "led": "off",
+            "animation": "none",
+            "other_led": "green",
+            "book_on": true,
+            "caption": "Battery light off",
+            "eyebrow": "Battery light: off",
+            "title": "Nothing to worry about",
+            "meaning": "The battery light shows for about 10 seconds after you switch the player on, then goes off to save power. It stays on only when the battery is low or the player is charging.",
+            "fix_heading": "",
+            "steps": "",
+            "done": "",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Normal: it only shows for 10 seconds.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_09": {
+          "type": "state",
+          "settings": {
+            "state_id": "battery-green",
+            "group": "battery",
+            "label": "Green",
+            "led": "green",
+            "animation": "none",
+            "other_led": "blue",
+            "book_on": true,
+            "caption": "Battery light green",
+            "eyebrow": "Battery light: green",
+            "title": "Plenty of charge",
+            "meaning": "There’s enough battery to keep listening. A full charge gives up to 16 hours.",
+            "fix_heading": "",
+            "steps": "",
+            "done": "",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Enough charge to keep listening.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_10": {
+          "type": "state",
+          "settings": {
+            "state_id": "battery-red",
+            "group": "battery",
+            "label": "Red",
+            "led": "red",
+            "animation": "none",
+            "other_led": "green",
+            "book_on": true,
+            "caption": "Charge from a wall plug",
+            "eyebrow": "Battery light: red",
+            "title": "Time to charge",
+            "meaning": "The battery is low, so the light stays on. Charge it before the story stops.",
+            "fix_heading": "Charge it",
+            "steps": "Plug in the USB-C cable that came with it.\nUse a USB wall plug, not a laptop, car charger or USB hub.\nLeave it to charge fully, for example overnight.",
+            "done": "Flashing green: it’s charging.",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Low battery. Charge from a wall plug.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_11": {
+          "type": "state",
+          "settings": {
+            "state_id": "battery-red-flashing",
+            "group": "battery",
+            "label": "Fast red flashing",
+            "led": "red",
+            "animation": "fast",
+            "other_led": "off",
+            "book_on": true,
+            "caption": "Charge it now",
+            "eyebrow": "Battery light: fast red flashing",
+            "title": "Battery empty",
+            "meaning": "The battery has run out. The player saves your place in the story and switches itself off.",
+            "fix_heading": "Charge it",
+            "steps": "Plug it in with the USB-C cable and a wall plug.\nLeave it to charge, ideally overnight. Your place in the story is kept.",
+            "done": "Flashing green: it’s charging.",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Out of battery. Charge it; your place is saved.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_12": {
+          "type": "state",
+          "settings": {
+            "state_id": "charging",
+            "group": "battery",
+            "label": "Flashing green",
+            "led": "green",
+            "animation": "blink",
+            "other_led": "off",
+            "book_on": false,
+            "caption": "Charging",
+            "eyebrow": "Battery light: flashing green",
+            "title": "Charging",
+            "meaning": "The player is charging. The light stops flashing and stays green when it’s full.",
+            "fix_heading": "Plugged in but not flashing?",
+            "steps": "Use a USB wall plug, not a laptop, car charger or USB hub.\nTry another USB-C cable.\nLeave it plugged in overnight and check again.",
+            "done": "",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Charging. Goes steady when full.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "state_13": {
+          "type": "state",
+          "settings": {
+            "state_id": "charged",
+            "group": "battery",
+            "label": "Steady green, plugged in",
+            "led": "green",
+            "animation": "none",
+            "other_led": "off",
+            "book_on": false,
+            "caption": "Fully charged",
+            "eyebrow": "Battery light: steady green while plugged in",
+            "title": "Fully charged",
+            "meaning": "The battery is full. You can unplug it.",
+            "fix_heading": "",
+            "steps": "",
+            "done": "Ready for up to 16 hours of listening.",
+            "more_label": "Charging your player",
+            "more_link": "/pages/player-guide#charging",
+            "short": "Full. Unplug and listen.",
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false
+          }
+        },
+        "earlier_fix_14": {
+          "type": "earlier_fix",
+          "settings": {
+            "title": "It won’t turn on",
+            "steps": "Flip the switch on the back down.\nPlace a book or press play to wake it.\nStill nothing? Charge it overnight from a wall plug.",
+            "text": ""
+          }
+        },
+        "earlier_fix_15": {
+          "type": "earlier_fix",
+          "settings": {
+            "title": "A book won’t play",
+            "steps": "Lift the book off.\nWipe the connector on the book and the player with a dry cloth.\nPut it back and press play.",
+            "text": ""
+          }
+        },
+        "earlier_fix_16": {
+          "type": "earlier_fix",
+          "settings": {
+            "title": "It won’t charge",
+            "steps": "Use a USB wall plug, not a laptop, car charger or USB hub.\nTry another USB-C cable.\nLeave it plugged in overnight.",
+            "text": ""
+          }
+        },
+        "earlier_fix_17": {
+          "type": "earlier_fix",
+          "settings": {
+            "title": "To switch it off",
+            "steps": "",
+            "text": "Flip the switch on the back up. It also goes to sleep by itself when no story is playing."
+          }
+        }
+      },
+      "block_order": [
+        "state_01",
+        "state_02",
+        "state_03",
+        "state_04",
+        "state_05",
+        "state_06",
+        "state_07",
+        "state_08",
+        "state_09",
+        "state_10",
+        "state_11",
+        "state_12",
+        "state_13",
+        "earlier_fix_14",
+        "earlier_fix_15",
+        "earlier_fix_16",
+        "earlier_fix_17"
+      ]
+    },
+    "more_help": {
+      "type": "help-cards",
+      "settings": {
+        "heading": "More help",
+        "layout": "links"
+      },
+      "blocks": {
+        "card_01": {
+          "type": "card",
+          "settings": {
+            "icon": "player",
+            "title": "Using your player",
+            "text": "Buttons, bedtime and travel mode, headphones.",
+            "link": "/pages/player-guide"
+          }
+        },
+        "card_02": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Charging",
+            "text": "How to charge, how long it lasts, what the battery light means.",
+            "link": "/pages/player-guide#charging"
+          }
+        },
+        "card_03": {
+          "type": "card",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivery and orders",
+            "text": "Delivery times and rates, UK and Australia.",
+            "link": "/pages/delivery-and-returns#delivery"
+          }
+        },
+        "card_04": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "Guarantee and repairs",
+            "text": "100-day Happiness Guarantee, 2-year guarantee and repairs for life.",
+            "link": "/pages/delivery-and-returns"
+          }
+        },
+        "card_05": {
+          "type": "card",
+          "settings": {
+            "icon": "question",
+            "title": "FAQs",
+            "text": "Ages, audiobooks, safety and more.",
+            "link": "/pages/voxblock-faq"
+          }
+        }
+      },
+      "block_order": [
+        "card_01",
+        "card_02",
+        "card_03",
+        "card_04",
+        "card_05"
+      ]
+    },
+    "contact": {
+      "type": "help-contact",
+      "settings": {
+        "heading": "Still not right?",
+        "button_text": "Contact us",
+        "button_url": "/pages/contact-us",
+        "text": "<p>Tell us what you can see on the play button and battery light, and what you’ve tried. We reply Monday to Friday, usually within 24 hours. Your player has a 2-year guarantee, so if it needs a repair we pay the postage both ways.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "quick_fixes",
+    "more_help",
+    "contact"
+  ]
+}

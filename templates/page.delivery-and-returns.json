@@ -1,0 +1,293 @@
+/*
+ * ------------------------------------------------------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "help-hero",
+      "settings": {
+        "heading": "Delivery, guarantee and repairs",
+        "trail_label": "Delivery and returns",
+        "parent_url": "/pages/help",
+        "intro": "<p>Free UK delivery over £25, 100 days to make sure Voxblock is right for you, and repairs for the life of your player.</p>"
+      },
+      "blocks": {
+        "jump_01": {
+          "type": "jump",
+          "settings": {
+            "label": "100-day guarantee",
+            "url": "#happiness-guarantee"
+          }
+        },
+        "jump_02": {
+          "type": "jump",
+          "settings": {
+            "label": "Repairs",
+            "url": "#repairs"
+          }
+        },
+        "jump_03": {
+          "type": "jump",
+          "settings": {
+            "label": "Sending a player back",
+            "url": "#send-back"
+          }
+        },
+        "jump_04": {
+          "type": "jump",
+          "settings": {
+            "label": "Delivery",
+            "url": "#delivery"
+          }
+        },
+        "jump_05": {
+          "type": "jump",
+          "settings": {
+            "label": "Australia",
+            "url": "#australia"
+          }
+        },
+        "jump_06": {
+          "type": "jump",
+          "settings": {
+            "label": "Audiobook returns",
+            "url": "#audiobooks"
+          }
+        }
+      },
+      "block_order": [
+        "jump_01",
+        "jump_02",
+        "jump_03",
+        "jump_04",
+        "jump_05",
+        "jump_06"
+      ]
+    },
+    "promise": {
+      "type": "help-cards",
+      "settings": {
+        "heading": "Our promise",
+        "layout": "tiles",
+        "anchor": "promise"
+      },
+      "blocks": {
+        "card_01": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "100-day Happiness Guarantee",
+            "text": "Not for you? Send it back within 100 days for a full refund. We pay the postage.",
+            "link": "/pages/delivery-and-returns#happiness-guarantee"
+          }
+        },
+        "card_02": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "2-year guarantee",
+            "text": "If it stops working, we repair or replace it and pay the postage both ways.",
+            "link": "/pages/delivery-and-returns#repairs"
+          }
+        },
+        "card_03": {
+          "type": "card",
+          "settings": {
+            "icon": "wrench",
+            "title": "Repairs for life",
+            "text": "After 2 years, or after an accident, post it to us. We repair it and post it back free.",
+            "link": "/pages/delivery-and-returns#repairs"
+          }
+        },
+        "card_04": {
+          "type": "card",
+          "settings": {
+            "icon": "recycle",
+            "title": "Free return for reuse",
+            "text": "Finished with it? Send it back free and we’ll pass it on to another child.",
+            "link": "/pages/delivery-and-returns#reuse"
+          }
+        }
+      },
+      "block_order": [
+        "card_01",
+        "card_02",
+        "card_03",
+        "card_04"
+      ]
+    },
+    "guarantee": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "happiness-guarantee",
+        "heading": "100-day Happiness Guarantee",
+        "tinted": true,
+        "content": "<p>Buy a Voxblock player or starter pack from our website and you have 100 days to listen, play and explore. If it’s not for you, for any reason, send it back in its original packaging and we’ll give you a full refund. Get in touch and we’ll email you a prepaid label.</p>",
+        "note": "<p>The Happiness Guarantee is for UK orders from our website. Bought somewhere else? See <a href=\"#register\">players bought elsewhere</a>.</p>"
+      }
+    },
+    "repairs": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "repairs",
+        "heading": "Repairs: 2-year guarantee and repairs for life",
+        "content": "<p><strong>In the first 2 years:</strong> if your player stops working, we repair or replace it, and we pay the postage both ways.</p><p><strong>After 2 years, or after an accident:</strong> post it to us, and we repair it and post it back free.</p><p>Before you send it, try the <a href=\"/pages/quick-fixes\">quick fixes</a>: most problems are a button press, like travel mode.</p>"
+      }
+    },
+    "reuse": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "reuse",
+        "heading": "Finished with your player?",
+        "tinted": true,
+        "content": "<p>Please don’t throw it away. Send it back to us free: we check it, repair it if it needs it, and pass it on to another child. Parts we can’t reuse are recycled properly. We take players back from the UK and Australia.</p>"
+      }
+    },
+    "send_back": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "send-back",
+        "heading": "How to send a player back",
+        "steps": "Tell us what’s happening, with your order number or the email you ordered with.\nIf we’re paying the postage, we email you a prepaid label to print and stick on.\nPack the player in a padded envelope or small box. A4, C5, 180 × 265 mm and 160 × 230 mm envelopes all fit.\nDrop it at a Post Office or Royal Mail drop-off point.",
+        "note": "<p>We pay the postage for returns within 100 days, repairs within 2 years and players sent back for reuse. For repairs after 2 years, you post it to us and we post it back free.</p>",
+        "link_text": "Start a return or repair",
+        "link_url": "/pages/contact-us"
+      }
+    },
+    "delivery": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "delivery",
+        "heading": "Delivery",
+        "tinted": true,
+        "content": "<p>We dispatch orders the next working day, Monday to Friday (not bank holidays). Orders in by 10am usually go the same day.</p>",
+        "table_head_1": "UK delivery",
+        "table_head_2": "Cost and time from dispatch",
+        "note": "<p>School orders aren’t dispatched on Fridays, because schools are closed at the weekend.</p>"
+      },
+      "blocks": {
+        "row_01": {
+          "type": "row",
+          "settings": {
+            "label": "Orders over £25",
+            "value": "Free"
+          }
+        },
+        "row_02": {
+          "type": "row",
+          "settings": {
+            "label": "Standard",
+            "value": "£3.50, 2 to 3 working days"
+          }
+        },
+        "row_03": {
+          "type": "row",
+          "settings": {
+            "label": "Premium",
+            "value": "£7.50, 1 to 2 working days"
+          }
+        }
+      },
+      "block_order": [
+        "row_01",
+        "row_02",
+        "row_03"
+      ]
+    },
+    "australia": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "australia",
+        "heading": "Delivery to Australia",
+        "content": "<p>We send orders from the UK by Royal Mail Tracked and Signed. Delivery usually takes 3 to 17 working days. Import duties, taxes and customs fees are paid by the customer.</p>",
+        "table_head_1": "Order weight",
+        "table_head_2": "Cost",
+        "note": "<p>The 100-day Happiness Guarantee and Book Tokens are for UK orders. If your player develops a fault, <a href=\"/pages/contact-us\">contact us</a> and we’ll sort it out.</p>"
+      },
+      "blocks": {
+        "row_01": {
+          "type": "row",
+          "settings": {
+            "label": "Up to 4.3 lb (about 2 kg)",
+            "value": "£7.00"
+          }
+        },
+        "row_02": {
+          "type": "row",
+          "settings": {
+            "label": "4.3 to 11 lb (2 to 5 kg)",
+            "value": "£25.00"
+          }
+        },
+        "row_03": {
+          "type": "row",
+          "settings": {
+            "label": "11 to 44 lb (5 to 20 kg)",
+            "value": "£50.00"
+          }
+        }
+      },
+      "block_order": [
+        "row_01",
+        "row_02",
+        "row_03"
+      ]
+    },
+    "audiobooks": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "audiobooks",
+        "heading": "Returning audiobooks and accessories",
+        "tinted": true,
+        "content": "<p>You can return audiobooks, accessories and school packs within 30 days. Please get in touch first. The postage back to us is yours to pay.</p><p>If something arrives damaged or doesn’t work, tell us and we’ll put it right at our cost.</p>"
+      }
+    },
+    "register": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "register",
+        "heading": "Bought your player somewhere else?",
+        "content": "<p>Players bought on Amazon, in a bookshop or given as a gift can be registered with us, so we can look after it if it ever needs a repair.</p>",
+        "link_text": "Register your player",
+        "link_url": "/pages/register-your-player"
+      }
+    },
+    "rights": {
+      "type": "help-topic",
+      "settings": {
+        "anchor": "your-rights",
+        "heading": "Your rights",
+        "content": "<p>Your statutory rights are not affected. Full terms are in our <a href=\"/policies/refund-policy\">refund policy</a>.</p>"
+      }
+    },
+    "contact": {
+      "type": "help-contact",
+      "settings": {
+        "heading": "Still not right?",
+        "button_text": "Contact us",
+        "button_url": "/pages/contact-us",
+        "text": "<p>Questions about an order, a return or a repair? We reply Monday to Friday, usually within 24 hours.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "promise",
+    "guarantee",
+    "repairs",
+    "reuse",
+    "send_back",
+    "delivery",
+    "australia",
+    "audiobooks",
+    "register",
+    "rights",
+    "contact"
+  ]
+}
