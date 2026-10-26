@@ -114,7 +114,7 @@ quick_fix_model { model }).
           </div>
 
           <p class="qf-caption" data-qf-caption>{{ d_caption | escape }}</p>
-          <a class="qf-jump" href="#qf-answer" data-qf-jump><span data-qf-jump-title>{{ d_title | escape }}</span>: {{ section.settings.jump_text | escape }} <span aria-hidden="true">↓</span></a>
+          <a class="qf-jump" href="#qf-answer" data-qf-jump><span><span data-qf-jump-title>{{ d_title | escape }}</span>: {{ section.settings.jump_text | escape }}</span> <span aria-hidden="true">↓</span></a>
           <p class="qf-hint" data-qf-hint{% unless has_anim %} hidden{% endunless %}>{{ section.settings.hint_text | escape }}</p>
           <p class="qf-footnote">{{ section.settings.footnote_text | escape }} <a href="#first-players" data-qf-model="earlier">{{ section.settings.footnote_link | escape }}</a>.</p>
 

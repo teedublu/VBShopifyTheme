@@ -434,6 +434,12 @@ document.addEventListener('click', (event) => {
             if (caption) caption.textContent = d.caption;
             if (jumpTitle) jumpTitle.textContent = d.title;
             if (hint) hint.hidden = d.hasAnim !== 'true';
+            // keep the chosen chip visible in its scrolling row (phones), without moving the page
+            const chip = root.querySelector(`.qf-chip[data-qf-pick="${id}"]`);
+            const row = chip?.parentElement;
+            if (row && row.scrollWidth > row.clientWidth) {
+                row.scrollLeft = chip.offsetLeft - row.offsetLeft - (row.clientWidth - chip.offsetWidth) / 2;
+            }
             if (source) track('quick_fix_view', { state: id, source });
             return true;
         };
