@@ -626,6 +626,8 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .series-hero__eyebrow { margin: 0; }
 .series-hero__title { margin: 0; }
 .series-hero--dark h1.series-hero__title { color: inherit; }
+/* The theme orange eyebrow is under 4:1 on dark series colours (e.g. Unicorn Academy purple): use the hero ink */
+.series-hero--dark .series-hero__eyebrow { color: inherit; }
 .series-hero__lede { margin: 0; font-size: 16px; line-height: 24px; max-width: 40ch; }
 .series-hero__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .series-chip { padding: 5px 12px; border-radius: 999px; background: var(--series-chip-bg, rgba(255, 255, 255, 0.72)); font-size: 13px; font-weight: 500; line-height: 1.4; }

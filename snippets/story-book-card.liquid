@@ -1,7 +1,7 @@
 {%- comment -%}
 STORY BOOK CARD (sections/story-books.liquid): one audiobook as the series page's book row (series-book styles in
 voxblock.css): cover, title, short blurb, ages, price, Add to cart and sample. Inputs: book (product), blurb_words,
-ages_label, sample_label.
+ages_label, sample_label, show_buy (default true; false leaves out the price and Add to cart, e.g. on a bundle page).
 {%- endcomment -%}
 {%- liquid
   assign ab = book.metafields.book.audiobook.value
@@ -26,6 +26,7 @@ ages_label, sample_label.
     {%- if book_age != blank -%}<p class="series-book__meta"><span>{{ ages_label | escape }} {{ book_age | escape }}</span></p>{%- endif -%}
   </div>
   <div class="series-book__buy">
+    {%- if show_buy != false -%}
     <p class="series-book__price">
       {%- if book.compare_at_price > book.price -%}<s class="series-book__was">{{ book.compare_at_price | money }}</s> {% endif -%}
       {{ book.price | money }}
@@ -35,6 +36,7 @@ ages_label, sample_label.
         <input type="hidden" name="id" value="{{ book.selected_or_first_available_variant.id }}">
         <button type="submit" is="custom-button" class="series-button series-button--primary series-button--small series-button--block" data-story-track="books_add">{{ 'product.general.add_to_cart_button' | t }}</button>
       {%- endform -%}
+    {%- endif -%}
     {%- endif -%}
     {%- if book.metafields.book.preview != blank -%}
       <button type="button" class="bookpreview series-button series-button--secondary series-button--small series-button--block" aria-controls="product-sample" aria-expanded="false" data-mp3="{{ book.metafields.book.preview | file_url }}" data-title="{{ book.title | escape }}">
