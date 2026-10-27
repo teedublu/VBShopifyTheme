@@ -51,7 +51,7 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
 ## 2026-10-26: Help pages (help centre, player guide, quick fixes, delivery and returns, FAQ, contact)
 Branch `claude/help-pages`, draft PR, draft theme "Help pages (claude/help-pages)" (id 200687190400, duplicate of live + changed files by API, checksums verified). **Awaiting owner check, then merge, then the admin steps in the brief.** Brief: `briefs/help-pages.md`.
 - Six pages replace twelve plus the Gorgias help centre. New templates `page.help`, `page.player-guide`, `page.quick-fixes`, `page.delivery-and-returns`; `page.faq` and `page.contact` rebuilt. New pages created in admin **unpublished** (handles help, player-guide, quick-fixes, delivery-and-returns).
-- Quick fixes: interactive player drawing (play button glow, battery strip, buttons to press outlined) with a chip per light; links `/pages/quick-fixes#light-<id>` for customer service and Saga. Never V1/V2.
+- Quick fixes: real player photo (Files: quick-fixes-player-front.webp, orange bumper; quick-fixes-book-charlie.webp, cover straightened from the 3D render) with the play button glow, battery strip and buttons to press placed over it by % (drawing kept as fallback; added 27 Oct) with a chip per light; links `/pages/quick-fixes#light-<id>` for customer service and Saga. Never V1/V2.
 - Titles/metas by template suffix in `layout/theme.liquid`. Redirects, menus, publishing and Gorgias retirement not done.
 
 ## 2026-10-26: Dave Pigeon story pages (character + audiobook) on the Gruffalo layout
