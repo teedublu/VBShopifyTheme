@@ -409,7 +409,6 @@ document.addEventListener('click', (event) => {
         if (!player || !answers.length) return;
         const caption = root.querySelector('[data-qf-caption]');
         const jumpTitle = root.querySelector('[data-qf-jump-title]');
-        const hint = root.querySelector('[data-qf-hint]');
         const picks = Array.from(root.querySelectorAll('[data-qf-pick]'));
         const byId = (id) => answers.find((a) => a.dataset.qfState === id);
 
@@ -433,7 +432,6 @@ document.addEventListener('click', (event) => {
             player.setAttribute('aria-label', `Voxblock player, ${d.eyebrow.toLowerCase()}${d.press ? ', with the buttons to press outlined' : ''}`);
             if (caption) caption.textContent = d.caption;
             if (jumpTitle) jumpTitle.textContent = d.title;
-            if (hint) hint.hidden = d.hasAnim !== 'true';
             // keep the chosen chip visible in its scrolling row (phones), without moving the page
             const chip = root.querySelector(`.qf-chip[data-qf-pick="${id}"]`);
             const row = chip?.parentElement;

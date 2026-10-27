@@ -1610,18 +1610,26 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .player-light-icon.is-off .player-light-icon__case { stroke: #8a9a9b; stroke-dasharray: 3 2.5; }
 .player-light-icon__tip { fill: var(--brand-text); }
 
-/* Light movements: only under the pointer, never with reduced motion */
+/* Light movements: the quick-fixes player always shows the chosen light's; icons only under the pointer. Never with
+   reduced motion. */
 @keyframes led-blink { 0%, 100% { opacity: 1; } 50% { opacity: .1; } }
 @keyframes led-fast { 0%, 100% { opacity: 1; } 50% { opacity: .05; } }
 @keyframes led-pulse { 0%, 100% { opacity: .25; } 50% { opacity: .9; } }
 @keyframes led-flash { 0%, 70%, 100% { opacity: .05; } 10%, 40% { opacity: 1; } }
 @keyframes led-fade { 0%, 75% { opacity: 1; } 100% { opacity: .05; } }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .qf-host:hover .qf-anim--blink, .qf-player:hover[data-play-anim="blink"] .qf-player__glow, .qf-player:hover[data-strip-anim="blink"] .qf-player__strip { animation: led-blink 1s ease-in-out infinite; }
-  .qf-host:hover .qf-anim--fast, .qf-player:hover[data-play-anim="fast"] .qf-player__glow, .qf-player:hover[data-strip-anim="fast"] .qf-player__strip { animation: led-fast .25s linear infinite; }
-  .qf-host:hover .qf-anim--pulse, .qf-player:hover[data-play-anim="pulse"] .qf-player__glow, .qf-player:hover[data-strip-anim="pulse"] .qf-player__strip { animation: led-pulse 5s ease-in-out infinite; }
-  .qf-host:hover .qf-anim--flash, .qf-player:hover[data-play-anim="flash"] .qf-player__glow, .qf-player:hover[data-strip-anim="flash"] .qf-player__strip { animation: led-flash 2s ease-out infinite; }
-  .qf-host:hover .qf-anim--fade, .qf-player:hover[data-play-anim="fade"] .qf-player__glow, .qf-player:hover[data-strip-anim="fade"] .qf-player__strip { animation: led-fade 4s ease-in-out infinite; }
+  .qf-host:hover .qf-anim--blink { animation: led-blink 1s ease-in-out infinite; }
+  .qf-host:hover .qf-anim--fast { animation: led-fast .25s linear infinite; }
+  .qf-host:hover .qf-anim--pulse { animation: led-pulse 5s ease-in-out infinite; }
+  .qf-host:hover .qf-anim--flash { animation: led-flash 2s ease-out infinite; }
+  .qf-host:hover .qf-anim--fade { animation: led-fade 4s ease-in-out infinite; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .qf-player[data-play-anim="blink"] .qf-player__glow, .qf-player[data-strip-anim="blink"] .qf-player__strip { animation: led-blink 1s ease-in-out infinite; }
+  .qf-player[data-play-anim="fast"] .qf-player__glow, .qf-player[data-strip-anim="fast"] .qf-player__strip { animation: led-fast .25s linear infinite; }
+  .qf-player[data-play-anim="pulse"] .qf-player__glow, .qf-player[data-strip-anim="pulse"] .qf-player__strip { animation: led-pulse 5s ease-in-out infinite; }
+  .qf-player[data-play-anim="flash"] .qf-player__glow, .qf-player[data-strip-anim="flash"] .qf-player__strip { animation: led-flash 2s ease-out infinite; }
+  .qf-player[data-play-anim="fade"] .qf-player__glow, .qf-player[data-strip-anim="fade"] .qf-player__strip { animation: led-fade 4s ease-in-out infinite; }
 }
 
 /* QUICK FIXES (sections/quick-fixes; script in voxblock.js) */
@@ -1676,8 +1684,6 @@ html.vb-has-player .cart-player-prompt { display: none; }
 
 .qf-caption { margin: 0; font-size: 13px; line-height: 1.5; text-align: center; max-width: 280px; }
 .qf-jump { display: none; align-items: center; gap: 6px; min-height: 44px; font-size: 1rem; font-weight: 500; color: var(--brand-heading); }
-.qf-hint { margin: 0; font-size: 12px; text-align: center; }
-@media (hover: none) { .qf-hint { display: none; } }
 .qf-footnote { margin: 0 0 var(--spacing-2); font-size: 12px; line-height: 1.5; text-align: center; max-width: 320px; }
 .qf-footnote a { color: var(--brand-heading); }
 .qf-row { align-self: stretch; display: flex; flex-direction: column; gap: 8px; min-width: 0; }

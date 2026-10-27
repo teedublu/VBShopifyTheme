@@ -16,8 +16,8 @@ Blocks:
   (e.g. #light-pink for travel mode; use these links in customer service replies and Saga).
 - "First players fix": short fixes shown under "Player look different?". Link: /pages/quick-fixes#first-players
 
-Animations (flashing, pulsing) run only while the pointer is over the player, a chip or a tile, and never with
-prefers-reduced-motion. Light colours and the light reference: LPS project doc claude/player-lights-reference.md.
+Animations (flashing, pulsing): the player always shows the chosen light's movement; chips and tiles only while the
+pointer is over them. Never with prefers-reduced-motion. Light colours and the light reference: LPS project doc claude/player-lights-reference.md.
 Styles: voxblock.css "HELP PAGES". Script: voxblock.js "QUICK FIXES" (PostHog quick_fix_view { state, source },
 quick_fix_model { model }).
 {%- endcomment -%}
@@ -83,10 +83,6 @@ quick_fix_model { model }).
                     assign press = press | append: ' plus'
                   endif
                   assign press = press | strip
-                  assign has_anim = false
-                  if s.animation != 'none'
-                    assign has_anim = true
-                  endif
                   assign d_title = s.title
                   assign d_caption = s.caption
                   assign d_eyebrow = s.eyebrow
@@ -133,7 +129,6 @@ quick_fix_model { model }).
 
           <p class="qf-caption" data-qf-caption>{{ d_caption | escape }}</p>
           <a class="qf-jump" href="#qf-answer" data-qf-jump><span><span data-qf-jump-title>{{ d_title | escape }}</span>: {{ section.settings.jump_text | escape }}</span> <span aria-hidden="true">↓</span></a>
-          <p class="qf-hint" data-qf-hint{% unless has_anim %} hidden{% endunless %}>{{ section.settings.hint_text | escape }}</p>
           <p class="qf-footnote">{{ section.settings.footnote_text | escape }} <a href="#first-players" data-qf-model="earlier">{{ section.settings.footnote_link | escape }}</a>.</p>
 
           {%- assign groups = 'play,battery' | split: ',' -%}
@@ -195,7 +190,7 @@ quick_fix_model { model }).
               <article class="qf-answer{% if bid == default_id %} is-active{% endif %}" id="light-{{ bid }}" data-qf-state="{{ bid }}"
                 data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
                 data-press="{{ press }}" data-book="{{ s.book_on }}" data-caption="{{ s.caption | escape }}" data-eyebrow="{{ s.eyebrow | escape }}"
-                data-title="{{ s.title | escape }}" data-has-anim="{% if s.animation != 'none' %}true{% else %}false{% endif %}"
+                data-title="{{ s.title | escape }}"
                 aria-labelledby="light-{{ bid }}-title" {{ block.shopify_attributes }}>
                 <p class="qf-answer__eyebrow qf-host">
                   {%- render 'player-light-icon', group: s.group, led: s.led, animation: s.animation -%}
@@ -322,7 +317,6 @@ quick_fix_model { model }).
     { "type": "text", "id": "play_row_title", "label": "Play button row", "default": "Play button" },
     { "type": "text", "id": "battery_row_title", "label": "Battery light row", "default": "Battery light" },
     { "type": "text", "id": "jump_text", "label": "Phone link to the answer", "default": "what to do", "info": "Shown on phones as '<light title>: what to do ↓'" },
-    { "type": "text", "id": "hint_text", "label": "Flashing hint", "default": "Point at the player to see it flash." },
     { "type": "text", "id": "footnote_text", "label": "Footnote", "default": "Player look different? If yours has an on/off switch on the back," },
     { "type": "text", "id": "footnote_link", "label": "Footnote link", "default": "see the fixes for our first players" },
     { "type": "header", "content": "All the lights" },
