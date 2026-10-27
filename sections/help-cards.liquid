@@ -1,0 +1,104 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+HELP CARDS (help pages)
+----------------------------------------------------------------------------------------------------------------------
+A heading over a grid of cards. Each card: optional icon, title, short text, optional link (the whole card is the
+link) or "Opens Saga" (the help assistant). Used for the help centre topic tiles, "More help" links, the four-part
+after-sales promise (cards without links) and the rewards strip.
+Layout "Tiles" = icon cards (help centre, promise); "Links" = compact link cards ("More help").
+Clicks send help_click { target, page } (voxblock.js).
+{%- endcomment -%}
+
+{%- if section.blocks.size > 0 -%}
+<section class="help-cards help-cards--{{ section.settings.layout }}{% if section.settings.tinted %} help-band--tinted{% endif %}" id="{{ section.settings.anchor | escape }}" {{ section.shopify_attributes }}>
+  <div class="container help-cards__inner">
+    {%- if section.settings.heading != blank or section.settings.intro != blank -%}
+      <div class="help-cards__head">
+        {%- if section.settings.heading != blank -%}<h2 class="h3">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        {%- if section.settings.intro != blank -%}<div class="help-cards__intro">{{ section.settings.intro }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="help-cards__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign b = block.settings
+          assign tag = 'div'
+          if b.saga
+            assign tag = 'button'
+          elsif b.link != blank
+            assign tag = 'a'
+          endif
+          assign track = b.title | handleize
+        -%}
+        <{{ tag }} class="help-card{% if tag != 'div' %} help-card--link{% endif %}"
+          {%- if tag == 'a' %} href="{{ b.link }}" data-help-track="{{ track }}"{% endif -%}
+          {%- if tag == 'button' %} type="button" data-saga-open="help_cards" data-help-track="{{ track }}"{% endif %} {{ block.shopify_attributes }}>
+          {%- if b.icon != 'none' -%}
+            <span class="help-card__icon">{%- render 'help-icon', icon: b.icon -%}</span>
+          {%- endif -%}
+          <span class="help-card__body">
+            <span class="help-card__title">{{ b.title | escape }}{% if tag != 'div' and section.settings.layout == 'links' %} <span aria-hidden="true">→</span>{% endif %}</span>
+            {%- if b.text != blank -%}<span class="help-card__text">{{ b.text | escape }}</span>{%- endif -%}
+          </span>
+        </{{ tag }}>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footnote != blank -%}
+      <div class="help-cards__footnote">{{ section.settings.footnote }}</div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Help cards",
+  "tag": "div",
+  "class": "shopify-section--help-cards",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (no #)" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "More help" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "select", "id": "layout", "label": "Layout", "default": "links", "options": [
+      { "value": "links", "label": "Links" },
+      { "value": "tiles", "label": "Tiles with icons" }
+    ] },
+    { "type": "checkbox", "id": "tinted", "label": "Tinted background", "default": false },
+    { "type": "richtext", "id": "footnote", "label": "Note under the cards" }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "none", "options": [
+          { "value": "none", "label": "None" },
+          { "value": "player", "label": "Player" },
+          { "value": "lights", "label": "Lights" },
+          { "value": "battery", "label": "Battery" },
+          { "value": "truck", "label": "Delivery" },
+          { "value": "shield", "label": "Guarantee" },
+          { "value": "wrench", "label": "Repair" },
+          { "value": "recycle", "label": "Reuse" },
+          { "value": "chat", "label": "Contact" },
+          { "value": "question", "label": "Question" },
+          { "value": "download", "label": "Download" },
+          { "value": "book", "label": "Book" },
+          { "value": "gift", "label": "Gift" },
+          { "value": "moon", "label": "Bedtime" },
+          { "value": "ear", "label": "Listening" },
+          { "value": "check", "label": "Tick" },
+          { "value": "box", "label": "Box" }
+        ] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Using your player" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "saga", "label": "Opens Saga instead of a link", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Help cards" }]
+}
+{% endschema %}

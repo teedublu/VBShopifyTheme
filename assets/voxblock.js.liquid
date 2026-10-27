@@ -372,3 +372,117 @@ document.addEventListener('variant:change', (event) => {
         images.forEach((img) => { img.hidden = img !== match; });
     });
 });
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// HELP PAGES (sections/help-hero, help-cards, help-topic, help-contact, player-lights, quick-fixes)
+// PostHog `help_click` { target, page } for every element with data-help-track
+// ----------------------------------------------------------------------------------------------------------------
+document.addEventListener('click', (event) => {
+    const el = event.target.closest?.('[data-help-track]');
+    if (!el || typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+    try {
+        window.posthog.capture('help_click', { target: el.dataset.helpTrack, page: window.location.pathname });
+    } catch (e) { /* analytics must never get in the way */ }
+});
+
+
+// ----------------------------------------------------------------------------------------------------------------
+// QUICK FIXES (sections/quick-fixes.liquid)
+// Picking a light (chip, "at a glance" tile, or a link to #light-<id>) lights the player drawing and shows that
+// light's answer. "Player look different?" (#first-players) swaps to the fixes for our first players.
+// Without this script every answer shows and the chips are plain links to them.
+// PostHog: quick_fix_view { state, source: chip | tile | link }, quick_fix_model { model }
+// ----------------------------------------------------------------------------------------------------------------
+(() => {
+    const roots = document.querySelectorAll('[data-qf]');
+    if (!roots.length) return;
+
+    const track = (name, props) => {
+        if (typeof window.posthog === 'undefined' || typeof window.posthog.capture !== 'function') return;
+        try { window.posthog.capture(name, props); } catch (e) { /* never block the page */ }
+    };
+
+    roots.forEach((root) => {
+        const player = root.querySelector('[data-qf-player]');
+        const answers = Array.from(root.querySelectorAll('[data-qf-state]'));
+        if (!player || !answers.length) return;
+        const caption = root.querySelector('[data-qf-caption]');
+        const jumpTitle = root.querySelector('[data-qf-jump-title]');
+        const picks = Array.from(root.querySelectorAll('[data-qf-pick]'));
+        const byId = (id) => answers.find((a) => a.dataset.qfState === id);
+
+        const select = (id, source) => {
+            const answer = byId(id);
+            if (!answer) return false;
+            answers.forEach((a) => a.classList.toggle('is-active', a === answer));
+            picks.forEach((p) => {
+                if (p.dataset.qfPick === id) p.setAttribute('aria-current', 'true');
+                else p.removeAttribute('aria-current');
+            });
+            const d = answer.dataset;
+            player.dataset.playLed = d.playLed;
+            player.dataset.playAnim = d.playAnim;
+            player.dataset.stripLed = d.stripLed;
+            player.dataset.stripAnim = d.stripAnim;
+            player.dataset.press = d.press;
+            player.dataset.book = d.book;
+            player.dataset.cable = d.cable;
+            player.style.setProperty('--qf-play', `var(--led-${d.playLed.replace(/_/g, '-')})`);
+            player.style.setProperty('--qf-strip', `var(--led-${d.stripLed.replace(/_/g, '-')})`);
+            player.setAttribute('aria-label', `Voxblock player, ${d.eyebrow.toLowerCase()}${d.press && !player.classList.contains('qf-player--photo') ? ', with the buttons to press outlined' : ''}`);
+            if (caption) caption.textContent = d.caption;
+            if (jumpTitle) jumpTitle.textContent = d.title;
+            // keep the chosen chip visible in its scrolling row (phones), without moving the page
+            const chip = root.querySelector(`.qf-chip[data-qf-pick="${id}"]`);
+            const row = chip?.parentElement;
+            if (row && row.scrollWidth > row.clientWidth) {
+                row.scrollLeft = chip.offsetLeft - row.offsetLeft - (row.clientWidth - chip.offsetWidth) / 2;
+            }
+            if (source) track('quick_fix_view', { state: id, source });
+            return true;
+        };
+
+        const setModel = (model, fromUser) => {
+            root.dataset.model = model;
+            if (fromUser) track('quick_fix_model', { model });
+        };
+
+        const fromHash = (source) => {
+            const hash = decodeURIComponent(window.location.hash.slice(1));
+            if (hash === 'first-players') { setModel('earlier', !!source); return true; }
+            if (hash.startsWith('light-') && select(hash.slice(6), source)) {
+                setModel('current', false);
+                return true;
+            }
+            return false;
+        };
+
+        root.classList.add('is-ready');
+        if (!fromHash('link')) select(root.dataset.default || answers[0].dataset.qfState, null);
+
+        root.addEventListener('click', (event) => {
+            const pick = event.target.closest('[data-qf-pick]');
+            if (pick) {
+                event.preventDefault();
+                select(pick.dataset.qfPick, pick.dataset.qfSource || 'chip');
+                history.replaceState(null, '', `#light-${pick.dataset.qfPick}`);
+                // tiles sit below the player: bring the player (and the answer beside it) back into view
+                if (pick.dataset.qfSource === 'tile') {
+                    const target = window.matchMedia('(max-width: 999px)').matches ? root.querySelector('#qf-answer') : player;
+                    target.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+                }
+                return;
+            }
+            const modelLink = event.target.closest('[data-qf-model]');
+            if (modelLink) {
+                event.preventDefault();
+                setModel(modelLink.dataset.qfModel, true);
+                history.replaceState(null, '', modelLink.dataset.qfModel === 'earlier' ? '#first-players' : window.location.pathname + window.location.search);
+                root.scrollIntoView({ block: 'start' });
+            }
+        });
+
+        window.addEventListener('hashchange', () => { fromHash('link'); });
+    });
+})();

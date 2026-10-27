@@ -36,6 +36,7 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - Homepage `/` (homepage-kids-player): new FAQ section, rewritten hero and Meet Voxblock copy.
 - Children's CD player page `/pages/childrens-cd-player-alternative` (new template, once the page exists in admin).
 - Children's cassette player page `/pages/modern-cassette-player` (new template, once switched in admin).
+- Help pages (help-pages branch): /pages/quick-fixes (interactive section, 13 answers in the page), /pages/player-guide (picture-led, 7 images), /pages/help, /pages/delivery-and-returns, /pages/voxblock-faq, /pages/contact-us. Once published.
 - Story layout, now the default character.json / audiobook.json (every character and audiobook page except Gruffalo, bestseller and musical-story templates): pack match loops the starter pack collection (60 products) twice per page; characters with no `main_book` also scan their collection and the series lists in each of six sections. Samples: /pages/character/dave-pigeon, /pages/character/alex-rider (no main_book), /pages/audiobook/matilda (no series).
 
 ## Open: site-wide colour contrast (owner: must be resolved)
@@ -46,6 +47,12 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 - Cream stats ("350+", "30.5m") on the orange impact band (1.9:1): homepage.
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
+
+## 2026-10-26: Help pages (help centre, player guide, quick fixes, delivery and returns, FAQ, contact)
+Branch `claude/help-pages`, draft PR, draft theme "Help pages (claude/help-pages)" (id 200687190400, duplicate of live + changed files by API, checksums verified). **Awaiting owner check, then merge, then the admin steps in the brief.** Brief: `briefs/help-pages.md`.
+- Six pages replace twelve plus the Gorgias help centre. New templates `page.help`, `page.player-guide`, `page.quick-fixes`, `page.delivery-and-returns`; `page.faq` and `page.contact` rebuilt. New pages created in admin **unpublished** (handles help, player-guide, quick-fixes, delivery-and-returns).
+- Quick fixes: real player photo (Files: quick-fixes-player-front.webp, orange bumper; quick-fixes-book-charlie.webp, cover straightened from the 3D render) with the play button glow, battery strip and buttons to press placed over it by % (drawing kept as fallback; added 27 Oct) with a chip per light; links `/pages/quick-fixes#light-<id>` for customer service and Saga. Never V1/V2.
+- Titles/metas by template suffix in `layout/theme.liquid`. Redirects, menus, publishing and Gorgias retirement not done.
 
 ## 2026-10-26: Dave Pigeon story pages (character + audiobook) on the Gruffalo layout
 Branch `claude/dave-pigeon-story-pages`, draft PR, draft theme "Dave Pigeon story pages (claude/dave-pigeon-story-pages)" (id 200663368064, duplicate of live + 9 files by API, checksums verified). **Awaiting owner check, then merge, then the admin steps below.**

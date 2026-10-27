@@ -1,0 +1,417 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+QUICK FIXES (templates/page.quick-fixes.json, /pages/quick-fixes)
+----------------------------------------------------------------------------------------------------------------------
+"What can you see on your player?" A photo of the current player (no switch on the back; a drawing if no photo is set)
+with one row of chips for the play button light and one for the battery light. Picking a chip lights the player (play button glow, battery
+strip at the bottom right; on the drawing only, the buttons to press outlined) and shows what it means and how to fix it beside it on
+desktop; on phones a "<title>: what to do ↓" link under the player jumps to the answer.
+Then: every light at a glance, the "colour that isn't listed" note (workshop test mode: how to get out only, never how
+to get in), and the 30-second restart. "Player look different?" swaps the whole section to short fixes for our first
+players (on/off switch on the back). Never call the players V1/V2 on the site.
+
+Blocks:
+- "Light" (one per state; group play or battery). The answer for each light is rendered in the page, so it works
+  without JavaScript (all answers show, the chips jump to them) and can be linked: /pages/quick-fixes#light-<id>
+  (e.g. #light-pink for travel mode; use these links in customer service replies and Saga).
+- "First players fix": short fixes shown under "Player look different?". Link: /pages/quick-fixes#first-players
+
+Animations (flashing, pulsing): the player always shows the chosen light's movement; chips and tiles only while the
+pointer is over them. Never with prefers-reduced-motion. Light colours and the light reference: LPS project doc claude/player-lights-reference.md.
+Styles: voxblock.css "HELP PAGES". Script: voxblock.js "QUICK FIXES" (PostHog quick_fix_view { state, source },
+quick_fix_model { model }).
+{%- endcomment -%}
+
+{%- liquid
+  assign default_id = section.settings.default_state | handleize
+  assign first_id = ''
+  assign default_found = false
+  for block in section.blocks
+    if block.type == 'state'
+      assign bid = block.settings.state_id | handleize
+      if first_id == ''
+        assign first_id = bid
+      endif
+      if bid == default_id
+        assign default_found = true
+      endif
+    endif
+  endfor
+  unless default_found
+    assign default_id = first_id
+  endunless
+-%}
+
+<section class="qf" id="{{ section.settings.anchor | default: 'what-you-can-see' | escape }}" data-qf data-model="current" data-default="{{ default_id }}" {{ section.shopify_attributes }}>
+
+  {%- comment -%} ---------- Current players ---------- {%- endcomment -%}
+  <div class="qf-current">
+    <div class="qf-top">
+      <div class="container qf-layout">
+        <div class="qf-col qf-col--player">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'state' -%}
+              {%- assign bid = block.settings.state_id | handleize -%}
+              {%- if bid == default_id -%}
+                {%- liquid
+                  assign s = block.settings
+                  if s.group == 'battery'
+                    assign p_led = s.other_led
+                    assign p_anim = 'none'
+                    assign b_led = s.led
+                    assign b_anim = s.animation
+                  else
+                    assign p_led = s.led
+                    assign p_anim = s.animation
+                    assign b_led = 'off'
+                    assign b_anim = 'none'
+                  endif
+                  assign press = ''
+                  if s.press_play
+                    assign press = press | append: ' play'
+                  endif
+                  if s.press_left
+                    assign press = press | append: ' left'
+                  endif
+                  if s.press_right
+                    assign press = press | append: ' right'
+                  endif
+                  if s.press_minus
+                    assign press = press | append: ' minus'
+                  endif
+                  if s.press_plus
+                    assign press = press | append: ' plus'
+                  endif
+                  assign press = press | strip
+                  assign d_title = s.title
+                  assign d_caption = s.caption
+                  assign d_eyebrow = s.eyebrow
+                  assign d_book = s.book_on
+                  assign d_cable = s.cable
+                -%}
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- capture player_alt -%}Voxblock player, {{ d_eyebrow | downcase }}{% if press != blank and section.settings.player_image == blank %}, with the buttons to press outlined{% endif %}{%- endcapture -%}
+          <div class="qf-player qf-host{% if section.settings.player_image != blank %} qf-player--photo{% endif %}" role="img" aria-label="{{ player_alt | escape }}" data-qf-player
+            data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
+            data-press="{{ press }}" data-book="{{ d_book }}" data-cable="{{ d_cable }}"
+            style="--qf-play: var(--led-{{ p_led | replace: '_', '-' }}); --qf-strip: var(--led-{{ b_led | replace: '_', '-' }});">
+            {%- if section.settings.player_image != blank -%}
+              {%- comment -%} Photo of the player: the lights and outlines sit over it, placed by % of the photo (voxblock.css) {%- endcomment -%}
+              {{ section.settings.player_image | image_url: width: 642 | image_tag: class: 'qf-player__photo', widths: '320, 480, 642', sizes: '(min-width: 1000px) 280px, 240px', alt: '', loading: 'eager' }}
+              <span class="qf-player__book" aria-hidden="true">
+                {%- if section.settings.book_image != blank -%}
+                  {{ section.settings.book_image | image_url: width: 450 | image_tag: widths: '200, 300, 450', sizes: '(min-width: 1000px) 164px, 140px', alt: '', loading: 'eager' }}
+                {%- else -%}
+                  {{ section.settings.book_label | escape }}
+                {%- endif -%}
+              </span>
+              <span class="qf-key qf-key--left" aria-hidden="true"></span>
+              <span class="qf-key qf-key--minus" aria-hidden="true"></span>
+              <span class="qf-key qf-key--play" aria-hidden="true"><span class="qf-player__glow"></span></span>
+              <span class="qf-key qf-key--plus" aria-hidden="true"></span>
+              <span class="qf-key qf-key--right" aria-hidden="true"></span>
+              <span class="qf-player__strip" aria-hidden="true"></span>
+              <svg class="qf-player__cable" aria-hidden="true" focusable="false" viewBox="0 0 40 100" width="40" height="100">
+                <defs><linearGradient id="qf-cable-fade-{{ section.id }}" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#fff"/><stop offset=".72" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="qf-cable-mask-{{ section.id }}"><rect width="40" height="100" fill="url(#qf-cable-fade-{{ section.id }})"/></mask></defs>
+                <g mask="url(#qf-cable-mask-{{ section.id }})">
+                  <path d="M20 40c0 22 12 30 12 60" fill="none" stroke="#b9c3c4" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M20 40c0 22 12 30 12 60" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+                </g>
+                <rect x="15" y="29" width="10" height="12" rx="3" fill="#fff" stroke="#b9c3c4" stroke-width="1.5"/>
+                <rect x="10" y="1" width="20" height="30" rx="6" fill="#fff" stroke="#b9c3c4" stroke-width="1.5"/>
+              </svg>
+            {%- else -%}
+            <span class="qf-player__grill" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="qf-player__dock" aria-hidden="true"><span class="qf-player__book">{{ section.settings.book_label | escape }}</span></span>
+            <span class="qf-player__keys" aria-hidden="true">
+              <span class="qf-key qf-key--left"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M7.5 2.5 4 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="qf-key qf-key--minus"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <span class="qf-key qf-key--play"><span class="qf-player__glow"></span><svg width="18" height="18" viewBox="0 0 18 18"><path d="M6 4l8 5-8 5z" fill="currentColor"/></svg></span>
+              <span class="qf-key qf-key--plus"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M3 7h8M7 3v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+              <span class="qf-key qf-key--right"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M4.5 2.5 8 6 4.5 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </span>
+            <span class="qf-player__strip-row" aria-hidden="true"><span class="qf-player__strip"></span></span>
+            {%- endif -%}
+          </div>
+
+          <p class="qf-caption" data-qf-caption>{{ d_caption | escape }}</p>
+          <a class="qf-jump" href="#qf-answer" data-qf-jump><span><span data-qf-jump-title>{{ d_title | escape }}</span>: {{ section.settings.jump_text | escape }}</span> <span aria-hidden="true">↓</span></a>
+          <p class="qf-footnote">{{ section.settings.footnote_text | escape }} <a href="#first-players" data-qf-model="earlier">{{ section.settings.footnote_link | escape }}</a>.</p>
+
+          {%- assign groups = 'play,battery' | split: ',' -%}
+          {%- for group in groups -%}
+            {%- if group == 'play' -%}{%- assign row_title = section.settings.play_row_title -%}{%- else -%}{%- assign row_title = section.settings.battery_row_title -%}{%- endif -%}
+            <div class="qf-row">
+              <h2 class="qf-row__title" id="qf-row-{{ group }}-{{ section.id }}">{{ row_title | escape }}</h2>
+              <div class="qf-chips" role="group" aria-labelledby="qf-row-{{ group }}-{{ section.id }}">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'state' and block.settings.group == group -%}
+                    {%- assign bid = block.settings.state_id | handleize -%}
+                    <a class="qf-chip qf-host" href="#light-{{ bid }}" data-qf-pick="{{ bid }}" data-qf-source="chip"{% if bid == default_id %} aria-current="true"{% endif %}>
+                      {%- render 'player-light-icon', group: group, led: block.settings.led, animation: block.settings.animation -%}
+                      <span>{{ block.settings.label | escape }}</span>
+                    </a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="qf-col qf-col--answer" id="qf-answer">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'state' -%}
+              {%- liquid
+                assign s = block.settings
+                assign bid = s.state_id | handleize
+                if s.group == 'battery'
+                  assign p_led = s.other_led
+                  assign p_anim = 'none'
+                  assign b_led = s.led
+                  assign b_anim = s.animation
+                else
+                  assign p_led = s.led
+                  assign p_anim = s.animation
+                  assign b_led = 'off'
+                  assign b_anim = 'none'
+                endif
+                assign press = ''
+                if s.press_play
+                  assign press = press | append: ' play'
+                endif
+                if s.press_left
+                  assign press = press | append: ' left'
+                endif
+                if s.press_right
+                  assign press = press | append: ' right'
+                endif
+                if s.press_minus
+                  assign press = press | append: ' minus'
+                endif
+                if s.press_plus
+                  assign press = press | append: ' plus'
+                endif
+                assign press = press | strip
+                assign steps = s.steps | newline_to_br | split: '<br />'
+              -%}
+              <article class="qf-answer{% if bid == default_id %} is-active{% endif %}" id="light-{{ bid }}" data-qf-state="{{ bid }}"
+                data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
+                data-press="{{ press }}" data-book="{{ s.book_on }}" data-cable="{{ s.cable }}" data-caption="{{ s.caption | escape }}" data-eyebrow="{{ s.eyebrow | escape }}"
+                data-title="{{ s.title | escape }}"
+                aria-labelledby="light-{{ bid }}-title" {{ block.shopify_attributes }}>
+                <p class="qf-answer__eyebrow qf-host">
+                  {%- render 'player-light-icon', group: s.group, led: s.led, animation: s.animation -%}
+                  <span>{{ s.eyebrow | escape }}</span>
+                </p>
+                <h2 class="h3 qf-answer__title" id="light-{{ bid }}-title">{{ s.title | escape }}</h2>
+                {%- if s.meaning != blank -%}<p class="qf-answer__meaning">{{ s.meaning | escape }}</p>{%- endif -%}
+                {%- if s.steps != blank -%}
+                  <div class="qf-answer__fix">
+                    {%- if s.fix_heading != blank -%}<h3 class="h5 qf-answer__fix-title">{{ s.fix_heading | escape }}</h3>{%- endif -%}
+                    <ol class="help-steps">
+                      {%- for step in steps -%}
+                        {%- assign step_text = step | strip -%}
+                        {%- if step_text != blank -%}<li>{{ step_text | escape }}</li>{%- endif -%}
+                      {%- endfor -%}
+                    </ol>
+                  </div>
+                {%- endif -%}
+                {%- if s.done != blank -%}
+                  <p class="qf-answer__done">
+                    <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18"><path d="M3.5 9.5l3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>{{ s.done | escape }}</span>
+                  </p>
+                {%- endif -%}
+                {%- if s.more_label != blank and s.more_link != blank -%}
+                  <a class="qf-answer__more" href="{{ s.more_link }}" data-help-track="qf_more_{{ bid }}">{{ s.more_label | escape }} <span aria-hidden="true">→</span></a>
+                {%- endif -%}
+              </article>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="container qf-more">
+      {%- if section.settings.glance_heading != blank -%}
+        <div class="qf-glance">
+          <h2 class="h3">{{ section.settings.glance_heading | escape }}</h2>
+          <div class="qf-glance__grid">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'state' -%}
+                {%- assign bid = block.settings.state_id | handleize -%}
+                <a class="qf-tile qf-host" href="#light-{{ bid }}" data-qf-pick="{{ bid }}" data-qf-source="tile"{% if bid == default_id %} aria-current="true"{% endif %}>
+                  <span class="qf-tile__eyebrow">
+                    {%- render 'player-light-icon', group: block.settings.group, led: block.settings.led, animation: block.settings.animation -%}
+                    <span>{{ block.settings.eyebrow | escape }}</span>
+                  </span>
+                  <span class="qf-tile__title">{{ block.settings.title | escape }}</span>
+                  <span class="qf-tile__text">{{ block.settings.short | escape }}</span>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.test_heading != blank -%}
+        <div class="qf-note" id="other-colours">
+          <h2 class="h5">{{ section.settings.test_heading | escape }}</h2>
+          <p>{{ section.settings.test_text | escape }}</p>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.restart_heading != blank -%}
+        <div class="qf-restart" id="{{ section.settings.restart_anchor | default: 'restart' | escape }}">
+          <h2 class="h3">{{ section.settings.restart_heading | escape }}</h2>
+          {%- if section.settings.restart_intro != blank -%}<div class="qf-restart__intro">{{ section.settings.restart_intro }}</div>{%- endif -%}
+          <div class="qf-restart__card">
+            <div class="qf-timeline" aria-hidden="true">
+              <span class="qf-timeline__a">{{ section.settings.timeline_1 | escape }}</span>
+              <span class="qf-timeline__b">{{ section.settings.timeline_2 | escape }}</span>
+              <span class="qf-timeline__c">{{ section.settings.timeline_3 | escape }}</span>
+            </div>
+            <div class="help-steps help-steps--grid">{{ section.settings.restart_steps }}</div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment -%} ---------- First players (on/off switch on the back) ---------- {%- endcomment -%}
+  <div class="qf-earlier" id="first-players">
+    <div class="container qf-earlier__inner">
+      <p class="qf-earlier__back"><a href="#what-you-can-see" data-qf-model="current"><span aria-hidden="true">←</span> {{ section.settings.back_text | escape }}</a></p>
+      <div class="qf-earlier__head">
+        <h2 class="h2">{{ section.settings.earlier_heading | escape }}</h2>
+        {%- if section.settings.earlier_intro != blank -%}<p>{{ section.settings.earlier_intro | escape }}</p>{%- endif -%}
+      </div>
+      <div class="qf-earlier__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'earlier_fix' -%}
+            {%- assign steps = block.settings.steps | newline_to_br | split: '<br />' -%}
+            <div class="qf-earlier__card" {{ block.shopify_attributes }}>
+              <h3 class="h5">{{ block.settings.title | escape }}</h3>
+              {%- if block.settings.steps != blank -%}
+                <ol>
+                  {%- for step in steps -%}
+                    {%- assign step_text = step | strip -%}
+                    {%- if step_text != blank -%}<li>{{ step_text | escape }}</li>{%- endif -%}
+                  {%- endfor -%}
+                </ol>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}<p>{{ block.settings.text | escape }}</p>{%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Quick fixes",
+  "tag": "div",
+  "class": "shopify-section--quick-fixes",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (no #)", "default": "what-you-can-see" },
+    { "type": "text", "id": "default_state", "label": "Light shown first (its ID)", "default": "pink", "info": "Travel mode (pink) is the light people most often email about." },
+    { "type": "header", "content": "Player" },
+    { "type": "image_picker", "id": "player_image", "label": "Player photo", "info": "Front view, cut out, cropped to the player. The lights are placed over it for quick-fixes-player-front.webp; another photo needs the positions in voxblock.css (QUICK FIXES) changed. Blank shows a drawing." },
+    { "type": "image_picker", "id": "book_image", "label": "Book on the player", "info": "Flat front cover, cut out." },
+    { "type": "text", "id": "book_label", "label": "Book label on the drawing", "default": "Your book" },
+    { "type": "text", "id": "play_row_title", "label": "Play button row", "default": "Play button" },
+    { "type": "text", "id": "battery_row_title", "label": "Battery light row", "default": "Battery light" },
+    { "type": "text", "id": "jump_text", "label": "Phone link to the answer", "default": "what to do", "info": "Shown on phones as '<light title>: what to do ↓'" },
+    { "type": "text", "id": "footnote_text", "label": "Footnote", "default": "Player look different? If yours has an on/off switch on the back," },
+    { "type": "text", "id": "footnote_link", "label": "Footnote link", "default": "see the fixes for our first players" },
+    { "type": "header", "content": "All the lights" },
+    { "type": "text", "id": "glance_heading", "label": "Heading", "default": "All the lights at a glance", "info": "Blank hides the grid." },
+    { "type": "header", "content": "Colour that isn't listed" },
+    { "type": "text", "id": "test_heading", "label": "Heading", "default": "Seeing a colour that isn't listed?" },
+    { "type": "textarea", "id": "test_text", "label": "Text", "info": "How to get out of the workshop test mode only. Don't say how to get into it.", "default": "If the play button glows white, or changes colour and buzzes each time you press a button, the player is in a checking mode we use in our workshop. Nothing is wrong and nothing is harmed. Hold the play button until the player switches off (about 5 seconds), then switch it on again as normal." },
+    { "type": "header", "content": "Restart" },
+    { "type": "text", "id": "restart_anchor", "label": "Anchor (no #)", "default": "restart" },
+    { "type": "text", "id": "restart_heading", "label": "Heading", "default": "Still stuck? Restart the player" },
+    { "type": "richtext", "id": "restart_intro", "label": "Intro", "default": "<p>Only if nothing else has worked. A restart clears the places saved on the player, so every book starts again from the beginning. Your books and their stories aren't affected.</p>" },
+    { "type": "text", "id": "timeline_1", "label": "Timeline: first part", "default": "0–3 s" },
+    { "type": "text", "id": "timeline_2", "label": "Timeline: middle", "default": "Light goes off. Keep holding…" },
+    { "type": "text", "id": "timeline_3", "label": "Timeline: end", "default": "30 s: let go" },
+    { "type": "richtext", "id": "restart_steps", "label": "Steps", "info": "Use a numbered list.", "default": "<ol><li>Press and hold the play button.</li><li>After a few seconds the light goes off. <strong>Don't let go.</strong> Letting go here only switches it off.</li><li>Keep holding for 30 seconds in total, then let go.</li><li>Press play to switch it on. The button glows blue when it's ready.</li></ol>" },
+    { "type": "header", "content": "First players" },
+    { "type": "text", "id": "back_text", "label": "Back link", "default": "Back to the player without a switch" },
+    { "type": "text", "id": "earlier_heading", "label": "Heading", "default": "Our first players" },
+    { "type": "textarea", "id": "earlier_intro", "label": "Intro", "default": "These players have an on/off switch on the back. Most problems come down to the switch, the charge or a dusty connector." }
+  ],
+  "blocks": [
+    {
+      "type": "state",
+      "name": "Light",
+      "settings": [
+        { "type": "text", "id": "state_id", "label": "ID", "info": "Short, lower case, used in links: /pages/quick-fixes#light-<ID>", "default": "blue" },
+        { "type": "select", "id": "group", "label": "Light", "default": "play", "options": [
+          { "value": "play", "label": "Play button" },
+          { "value": "battery", "label": "Battery light" }
+        ] },
+        { "type": "text", "id": "label", "label": "Chip label", "default": "Blue" },
+        { "type": "select", "id": "led", "label": "Colour", "default": "blue", "options": [
+          { "value": "off", "label": "Off" },
+          { "value": "blue", "label": "Blue" },
+          { "value": "blue_dim", "label": "Dim blue" },
+          { "value": "green", "label": "Green" },
+          { "value": "orange", "label": "Orange" },
+          { "value": "pink", "label": "Pink" },
+          { "value": "yellow_green", "label": "Yellow-green" },
+          { "value": "red", "label": "Red" }
+        ] },
+        { "type": "select", "id": "animation", "label": "Movement", "default": "none", "info": "Shown only while the pointer is over it.", "options": [
+          { "value": "none", "label": "Steady" },
+          { "value": "blink", "label": "Flashing (1 s)" },
+          { "value": "fast", "label": "Fast flashing" },
+          { "value": "pulse", "label": "Slow pulse" },
+          { "value": "flash", "label": "Quick flash" },
+          { "value": "fade", "label": "Shows, then fades to dark" }
+        ] },
+        { "type": "select", "id": "other_led", "label": "Play button colour in the drawing", "info": "Battery lights only.", "default": "off", "options": [
+          { "value": "off", "label": "Off" },
+          { "value": "blue", "label": "Blue" },
+          { "value": "green", "label": "Green" }
+        ] },
+        { "type": "checkbox", "id": "book_on", "label": "Book on the player in the drawing", "default": true },
+        { "type": "checkbox", "id": "cable", "label": "Charging cable plugged in", "info": "Player photo only. For lights that show only while it's plugged in.", "default": false },
+        { "type": "header", "content": "Buttons to outline" },
+        { "type": "checkbox", "id": "press_play", "label": "Play", "default": false },
+        { "type": "checkbox", "id": "press_left", "label": "Left arrow", "default": false },
+        { "type": "checkbox", "id": "press_right", "label": "Right arrow", "default": false },
+        { "type": "checkbox", "id": "press_minus", "label": "−", "default": false },
+        { "type": "checkbox", "id": "press_plus", "label": "+", "default": false },
+        { "type": "text", "id": "caption", "label": "Caption under the player", "default": "Press play" },
+        { "type": "header", "content": "Answer" },
+        { "type": "text", "id": "eyebrow", "label": "What you see", "default": "Play button: blue" },
+        { "type": "text", "id": "title", "label": "What it means (title)", "default": "Paused, or no book on the player" },
+        { "type": "textarea", "id": "meaning", "label": "Explanation" },
+        { "type": "text", "id": "fix_heading", "label": "Steps heading" },
+        { "type": "textarea", "id": "steps", "label": "Steps", "info": "One step per line." },
+        { "type": "text", "id": "done", "label": "How you know it worked" },
+        { "type": "text", "id": "more_label", "label": "Link text" },
+        { "type": "url", "id": "more_link", "label": "Link" },
+        { "type": "text", "id": "short", "label": "One line for 'at a glance'" }
+      ]
+    },
+    {
+      "type": "earlier_fix",
+      "name": "First players fix",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Heading", "default": "It won't turn on" },
+        { "type": "textarea", "id": "steps", "label": "Steps", "info": "One step per line." },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Quick fixes" }]
+}
+{% endschema %}
