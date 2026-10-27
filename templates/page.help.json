@@ -76,7 +76,7 @@
           "settings": {
             "icon": "chat",
             "title": "Contact us",
-            "text": "We reply Monday to Friday, usually within 24 hours.",
+            "text": "Weekdays 9am to 5pm, usually within the hour.",
             "link": "/pages/contact-us"
           }
         }
@@ -94,6 +94,9 @@
       "type": "faq",
       "settings": {
         "title": "Most asked",
+        "content": "",
+        "support_hours": "",
+        "answer_time": "",
         "include_jsonld": false,
         "full_width": true,
         "text_position": "start",
@@ -183,7 +186,7 @@
         "heading": "Can’t find what you need?",
         "button_text": "Contact us",
         "button_url": "/pages/contact-us",
-        "text": "<p>Tell us about it. We reply Monday to Friday, usually within 24 hours.</p>"
+        "text": "<p>Tell us about it. Monday to Friday, 9am to 5pm, we usually reply within the hour.</p>"
       }
     }
   },

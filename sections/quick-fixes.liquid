@@ -7,7 +7,7 @@ with one row of chips for the play button light and one for the battery light. P
 strip at the bottom right; on the drawing only, the buttons to press outlined) and shows what it means and how to fix it beside it on
 desktop; on phones a "<title>: what to do ↓" link under the player jumps to the answer.
 Then: every light at a glance, the "colour that isn't listed" note (workshop test mode: how to get out only, never how
-to get in), and the 30-second restart. "Player look different?" swaps the whole section to short fixes for our first
+to get in), and the 30-second reset. "Player look different?" swaps the whole section to short fixes for our first
 players (on/off switch on the back). Never call the players V1/V2 on the site.
 
 Blocks:
@@ -265,7 +265,7 @@ quick_fix_model { model }).
       {%- endif -%}
 
       {%- if section.settings.restart_heading != blank -%}
-        <div class="qf-restart" id="{{ section.settings.restart_anchor | default: 'restart' | escape }}">
+        <div class="qf-restart" id="{{ section.settings.restart_anchor | default: 'reset' | escape }}">
           <h2 class="h3">{{ section.settings.restart_heading | escape }}</h2>
           {%- if section.settings.restart_intro != blank -%}<div class="qf-restart__intro">{{ section.settings.restart_intro }}</div>{%- endif -%}
           <div class="qf-restart__card">
@@ -334,14 +334,14 @@ quick_fix_model { model }).
     { "type": "header", "content": "Colour that isn't listed" },
     { "type": "text", "id": "test_heading", "label": "Heading", "default": "Seeing a colour that isn't listed?" },
     { "type": "textarea", "id": "test_text", "label": "Text", "info": "How to get out of the workshop test mode only. Don't say how to get into it.", "default": "If the play button glows white, or changes colour and buzzes each time you press a button, the player is in a checking mode we use in our workshop. Nothing is wrong and nothing is harmed. Hold the play button until the player switches off (about 5 seconds), then switch it on again as normal." },
-    { "type": "header", "content": "Restart" },
-    { "type": "text", "id": "restart_anchor", "label": "Anchor (no #)", "default": "restart" },
-    { "type": "text", "id": "restart_heading", "label": "Heading", "default": "Still stuck? Restart the player" },
-    { "type": "richtext", "id": "restart_intro", "label": "Intro", "default": "<p>Only if nothing else has worked. A restart clears the places saved on the player, so every book starts again from the beginning. Your books and their stories aren't affected.</p>" },
+    { "type": "header", "content": "Reset" },
+    { "type": "text", "id": "restart_anchor", "label": "Anchor (no #)", "default": "reset" },
+    { "type": "text", "id": "restart_heading", "label": "Heading", "default": "Still stuck? Reset the player" },
+    { "type": "richtext", "id": "restart_intro", "label": "Intro", "default": "<p>Only if nothing else has worked. A reset clears the places saved on the player, so every book starts again from the beginning. Your books and their stories aren't affected.</p>" },
     { "type": "text", "id": "timeline_1", "label": "Timeline: first part", "default": "0–3 s" },
     { "type": "text", "id": "timeline_2", "label": "Timeline: middle", "default": "Light goes off. Keep holding…" },
     { "type": "text", "id": "timeline_3", "label": "Timeline: end", "default": "30 s: let go" },
-    { "type": "richtext", "id": "restart_steps", "label": "Steps", "info": "Use a numbered list.", "default": "<ol><li>Press and hold the play button.</li><li>After a few seconds the light goes off. <strong>Don't let go.</strong> Letting go here only switches it off.</li><li>Keep holding for 30 seconds in total, then let go.</li><li>Press play to switch it on. The button glows blue when it's ready.</li></ol>" },
+    { "type": "richtext", "id": "restart_steps", "label": "Steps", "info": "Use a numbered list.", "default": "<ol><li>Press and hold the play button.</li><li>After a few seconds the light goes off. <strong>Don't let go.</strong> Letting go here only switches it off.</li><li>Keep holding for 30 seconds in total, then let go.</li><li>Wait 10 seconds before switching it back on, so it starts first time.</li><li>Press play to switch it on. The button glows blue when it's ready.</li></ol>" },
     { "type": "header", "content": "First players" },
     { "type": "text", "id": "back_text", "label": "Back link", "default": "Back to the player without a switch" },
     { "type": "text", "id": "earlier_heading", "label": "Heading", "default": "Our first players" },
