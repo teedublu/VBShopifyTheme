@@ -2,8 +2,8 @@
 ----------------------------------------------------------------------------------------------------------------------
 QUICK FIXES (templates/page.quick-fixes.json, /pages/quick-fixes)
 ----------------------------------------------------------------------------------------------------------------------
-"What can you see on your player?" A drawing of the current player (no switch on the back) with one row of chips for
-the play button light and one for the battery light. Picking a chip lights the drawing (play button glow, battery
+"What can you see on your player?" A photo of the current player (no switch on the back; a drawing if no photo is set)
+with one row of chips for the play button light and one for the battery light. Picking a chip lights the player (play button glow, battery
 strip at the bottom right, the buttons to press outlined) and shows what it means and how to fix it beside it on
 desktop; on phones a "<title>: what to do ↓" link under the player jumps to the answer.
 Then: every light at a glance, the "colour that isn't listed" note (workshop test mode: how to get out only, never how
@@ -97,10 +97,27 @@ quick_fix_model { model }).
           {%- endfor -%}
 
           {%- capture player_alt -%}Voxblock player, {{ d_eyebrow | downcase }}{% if press != blank %}, with the buttons to press outlined{% endif %}{%- endcapture -%}
-          <div class="qf-player qf-host" role="img" aria-label="{{ player_alt | escape }}" data-qf-player
+          <div class="qf-player qf-host{% if section.settings.player_image != blank %} qf-player--photo{% endif %}" role="img" aria-label="{{ player_alt | escape }}" data-qf-player
             data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
             data-press="{{ press }}" data-book="{{ d_book }}"
             style="--qf-play: var(--led-{{ p_led | replace: '_', '-' }}); --qf-strip: var(--led-{{ b_led | replace: '_', '-' }});">
+            {%- if section.settings.player_image != blank -%}
+              {%- comment -%} Photo of the player: the lights and outlines sit over it, placed by % of the photo (voxblock.css) {%- endcomment -%}
+              {{ section.settings.player_image | image_url: width: 642 | image_tag: class: 'qf-player__photo', widths: '320, 480, 642', sizes: '(min-width: 1000px) 280px, 240px', alt: '', loading: 'eager' }}
+              <span class="qf-player__book" aria-hidden="true">
+                {%- if section.settings.book_image != blank -%}
+                  {{ section.settings.book_image | image_url: width: 450 | image_tag: widths: '200, 300, 450', sizes: '(min-width: 1000px) 164px, 140px', alt: '', loading: 'eager' }}
+                {%- else -%}
+                  {{ section.settings.book_label | escape }}
+                {%- endif -%}
+              </span>
+              <span class="qf-key qf-key--left" aria-hidden="true"></span>
+              <span class="qf-key qf-key--minus" aria-hidden="true"></span>
+              <span class="qf-key qf-key--play" aria-hidden="true"><span class="qf-player__glow"></span></span>
+              <span class="qf-key qf-key--plus" aria-hidden="true"></span>
+              <span class="qf-key qf-key--right" aria-hidden="true"></span>
+              <span class="qf-player__strip" aria-hidden="true"></span>
+            {%- else -%}
             <span class="qf-player__grill" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="qf-player__dock" aria-hidden="true"><span class="qf-player__book">{{ section.settings.book_label | escape }}</span></span>
             <span class="qf-player__keys" aria-hidden="true">
@@ -111,6 +128,7 @@ quick_fix_model { model }).
               <span class="qf-key qf-key--right"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M4.5 2.5 8 6 4.5 9.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             </span>
             <span class="qf-player__strip-row" aria-hidden="true"><span class="qf-player__strip"></span></span>
+            {%- endif -%}
           </div>
 
           <p class="qf-caption" data-qf-caption>{{ d_caption | escape }}</p>
@@ -298,6 +316,8 @@ quick_fix_model { model }).
     { "type": "text", "id": "anchor", "label": "Anchor (no #)", "default": "what-you-can-see" },
     { "type": "text", "id": "default_state", "label": "Light shown first (its ID)", "default": "pink", "info": "Travel mode (pink) is the light people most often email about." },
     { "type": "header", "content": "Player" },
+    { "type": "image_picker", "id": "player_image", "label": "Player photo", "info": "Front view, cut out, cropped to the player. The lights are placed over it for quick-fixes-player-front.webp; another photo needs the positions in voxblock.css (QUICK FIXES) changed. Blank shows a drawing." },
+    { "type": "image_picker", "id": "book_image", "label": "Book on the player", "info": "Flat front cover, cut out." },
     { "type": "text", "id": "book_label", "label": "Book label on the drawing", "default": "Your book" },
     { "type": "text", "id": "play_row_title", "label": "Play button row", "default": "Play button" },
     { "type": "text", "id": "battery_row_title", "label": "Battery light row", "default": "Battery light" },

@@ -1653,6 +1653,26 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .qf-player__strip { display: block; width: 22px; height: 5px; border-radius: 3px; background: var(--qf-strip); box-shadow: 0 0 8px 2px color-mix(in srgb, var(--qf-strip) 55%, transparent); }
 .qf-player[data-strip-led="off"] .qf-player__strip { box-shadow: none; }
 
+/* Photo of the player (Files: quick-fixes-player-front.webp, 642 × 1022). Book, buttons and battery light are placed
+   by % of the photo, measured from it: change these if the photo changes. */
+.qf-player--photo { position: relative; display: block; width: 240px; height: auto; aspect-ratio: 642 / 1022; padding: 0; background: none; border: 0; border-radius: 0; box-shadow: none; }
+.qf-player--photo .qf-player__photo { display: block; width: 100%; height: auto; filter: drop-shadow(0 16px 24px rgb(86 86 86 / .16)); }
+.qf-player--photo .qf-player__book { position: absolute; left: 20.7%; top: 16.3%; width: 58.3%; height: auto; aspect-ratio: 450 / 660; padding: 0; border-radius: 7%; background: #237a74; overflow: visible; }
+.qf-player--photo .qf-player__book:has(img) { background: none; }
+.qf-player--photo .qf-player__book img { display: block; width: 100%; height: auto; filter: drop-shadow(0 3px 4px rgb(0 0 0 / .18)); }
+.qf-player--photo .qf-key { position: absolute; top: 84.7%; width: 11%; height: auto; aspect-ratio: 1; background: none; border: 0; transform: translate(-50%, -50%); }
+.qf-player--photo .qf-key--left { left: 19%; width: 6.6%; }
+.qf-player--photo .qf-key--minus { left: 32.2%; }
+.qf-player--photo .qf-key--play { left: 49.4%; width: 16%; }
+.qf-player--photo .qf-key--plus { left: 66.4%; }
+.qf-player--photo .qf-key--right { left: 79.4%; width: 6.8%; }
+/* the play button lit: the colour tints the button (multiply keeps the arrow showing through) and glows around it */
+.qf-player--photo .qf-player__glow { background: color-mix(in srgb, var(--qf-play) 38%, #fff); border: 0; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--qf-play) 70%, #fff), 0 0 12px 4px color-mix(in srgb, var(--qf-play) 55%, transparent); mix-blend-mode: multiply; }
+.qf-player--photo .qf-player__strip { position: absolute; left: 79.4%; top: 93.6%; width: 8%; height: auto; aspect-ratio: 4 / 1; transform: translateX(-50%); }
+@media screen and (min-width: 1000px) {
+  .qf-player--photo { width: 280px; }
+}
+
 .qf-caption { margin: 0; font-size: 13px; line-height: 1.5; text-align: center; max-width: 280px; }
 .qf-jump { display: none; align-items: center; gap: 6px; min-height: 44px; font-size: 1rem; font-weight: 500; color: var(--brand-heading); }
 .qf-hint { margin: 0; font-size: 12px; text-align: center; }
