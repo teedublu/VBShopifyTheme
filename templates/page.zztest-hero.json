@@ -1,0 +1,98 @@
+{
+  "sections": {
+    "hero": {
+      "type": "ads-intent-hero",
+      "blocks": {
+        "compare": {
+          "type": "intent",
+          "settings": {
+            "name": "yoto-vs-tonies",
+            "keywords": "yoto vs, vs yoto, tonies vs, vs tonies, toniebox vs, vs toniebox, or yoto, or tonies",
+            "ad_group_ids": "202499364640",
+            "eyebrow": "Comparing Yoto and Tonies?",
+            "title": "A simpler choice: no wifi, nothing to set up",
+            "lede": "With Voxblock, each story is stored in its own audiobook block. Slot it in and press play. Nothing to download, sync or update.",
+            "compare_text": "Compare Yoto, Tonies and Voxblock",
+            "compare_url": "shopify://pages/compare-tonies-with-yoto"
+          }
+        },
+        "tonies_price": {
+          "type": "intent",
+          "settings": {
+            "name": "toniebox-price",
+            "keywords": "toniebox sale, toniebox price, cheap toniebox, toniebox deal, toniebox black friday, tonies sale, tonies price",
+            "ad_group_ids": "207768705344",
+            "eyebrow": "Looking at Toniebox prices?",
+            "title": "Starter packs come with three stories included",
+            "lede": "The Voxblock player plus three audiobooks for their age. No wifi needed, ever: each story is stored in its own block.",
+            "compare_text": "See Voxblock vs Toniebox, side by side",
+            "compare_url": "shopify://pages/voxblock-vs-tonies"
+          }
+        },
+        "tonies": {
+          "type": "intent",
+          "settings": {
+            "name": "toniebox",
+            "keywords": "tonie",
+            "ad_group_ids": "201312689735,207768705784,198818618525",
+            "eyebrow": "Looking at a Toniebox?",
+            "title": "A Toniebox alternative that needs no wifi, ever",
+            "lede": "Each story is stored in its own audiobook block, so there's nothing to download or set up. Slot it in and press play.",
+            "compare_text": "See Voxblock vs Toniebox, side by side",
+            "compare_url": "shopify://pages/voxblock-vs-tonies"
+          }
+        },
+        "yoto": {
+          "type": "intent",
+          "settings": {
+            "name": "yoto",
+            "keywords": "yoto, jooki",
+            "eyebrow": "Looking at Yoto?",
+            "title": "A Yoto alternative that needs no wifi, ever",
+            "lede": "Each story is stored in its own audiobook block, so there's nothing to download or set up. Slot it in and press play.",
+            "compare_text": "See Voxblock vs Yoto, side by side",
+            "compare_url": "shopify://pages/voxblock-vs-yoto"
+          }
+        },
+        "generic": {
+          "type": "intent",
+          "settings": {
+            "name": "generic",
+            "keywords": "player, reader, device, machine, box, storyteller, story teller, storytelling, storybook",
+            "ad_group_ids": "198775486446,208540389588,204436663327,202330095084,203171375240",
+            "eyebrow": "Screen-free audiobook player",
+            "title": "[Keyword]: stories children play on their own",
+            "title_fallback": "An audiobook player children use on their own",
+            "lede": "Each story is a small audiobook block that slots into the player. No screen, no wifi, no downloads, no subscription."
+          }
+        }
+      },
+      "block_order": [
+        "compare",
+        "tonies_price",
+        "tonies",
+        "yoto",
+        "generic"
+      ],
+      "settings": {
+        "background": "#fff7f0",
+        "eyebrow": "Screen-free audiobook player",
+        "title": "An audiobook player children use on their own",
+        "lede": "Each story is a small audiobook block that slots into the player. No screen, no wifi, no downloads, no subscription.",
+        "page_title": "[Keyword]: player and first stories | Voxblock",
+        "trust_rating": "4.9 on Trustpilot",
+        "trust_delivery": "Free UK delivery over £25",
+        "trust_guarantee": "100-day money-back guarantee",
+        "button_text": "Choose a starter pack",
+        "packs_anchor": "packs",
+        "player_text": "Just the player, [price] →",
+        "player_handle": "voxblock-player",
+        "image": "shopify://shop_images/SP_Page-Hero_Image-3200x1300.jpg",
+        "image_alt": "Voxblock player with a green bumper playing Matilda, beside two Roald Dahl audiobooks"
+      }
+    }
+  },
+  "order": [
+    "hero"
+  ]
+}

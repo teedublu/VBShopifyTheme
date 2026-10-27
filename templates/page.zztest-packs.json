@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "packs": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "voxblock-starter-pack-collection",
+        "hide_empty": false,
+        "products": [
+          "little-listeners-starter-pack",
+          "gruffalo-and-friends-starter-pack",
+          "roald-dahl-selection-starter-pack",
+          "the-percy-jackson-starter-pack"
+        ],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 4,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "Starter packs",
+        "title": "The player plus their first three stories",
+        "content": "<p>Pick their age and a bumper colour. Every pack uses the same player, so you can add more audiobooks any time from our library of 350+.</p>",
+        "link_url": "shopify://collections/voxblock-starter-pack-collection",
+        "link_text": "See all starter packs",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": "",
+        "card_style": "pack",
+        "card_show_titles": true,
+        "anchor_id": "packs"
+      }
+    }
+  },
+  "order": [
+    "packs"
+  ]
+}

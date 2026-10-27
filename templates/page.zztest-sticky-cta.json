@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "sticky_cta": {
+      "type": "custom-html",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "html": "<div id=\"sticky-mobile-cta\" class=\"sticky-mobile-cta\" aria-hidden=\"true\"><a href=\"#packs\" class=\"button button--lg w-full\" data-vs-track=\"sticky_packs\">Choose a starter pack</a></div><style>.sticky-mobile-cta{position:fixed;inset-inline:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));background:#fff;box-shadow:0 -4px 14px rgba(0,0,0,0.1);transform:translateY(100%);transition:transform .25s ease;}.sticky-mobile-cta.is-visible{transform:translateY(0);}.sticky-mobile-cta .button{display:block;text-align:center;}@media screen and (min-width:750px){.sticky-mobile-cta{display:none;} }</style><script>(function(){var bar=document.getElementById('sticky-mobile-cta');var heroButton=document.querySelector('[data-vs-track=\"hero_packs\"]');if(!bar||!heroButton||!('IntersectionObserver' in window))return;var heroVisible=true;var nearFooter=false;function update(){bar.classList.toggle('is-visible', !heroVisible && !nearFooter);}new IntersectionObserver(function(entries){entries.forEach(function(entry){heroVisible=entry.isIntersecting;});update();},{rootMargin:'0px 0px -10% 0px'}).observe(heroButton);var footer=document.querySelector('.footer');if(footer){new IntersectionObserver(function(entries){entries.forEach(function(entry){nearFooter=entry.isIntersecting;});update();}).observe(footer);} })();</script>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "sticky_cta"
+  ]
+}

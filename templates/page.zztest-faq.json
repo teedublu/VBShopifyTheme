@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "item_wifi": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need wifi or a subscription?",
+            "content": "<p>No. Each story is stored on its own audiobook block, so there is nothing to download, stream or set up, and no subscription. Slot in a book and press play.</p>"
+          }
+        },
+        "item_charge": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need charging before we start?",
+            "content": "<p>No. It arrives ready to play: slot in a story and press play. When it does need a charge, the battery lasts up to 16 hours of listening.</p>"
+          }
+        },
+        "item_whats_in": {
+          "type": "item",
+          "settings": {
+            "title": "What's in a starter pack?",
+            "content": "<p>The Voxblock player, a protective bumper in the colour you choose, a USB-C charging cable and audiobooks picked for one age group, for less than buying them separately.</p>"
+          }
+        },
+        "item_which": {
+          "type": "item",
+          "settings": {
+            "title": "Which pack should I choose?",
+            "content": "<p>Start with your child's age. Every pack uses the same player, so you can add more audiobooks any time from our library of 350+.</p>"
+          }
+        },
+        "item_vs": {
+          "type": "item",
+          "settings": {
+            "title": "How is it different from a Toniebox or Yoto?",
+            "content": "<p>Voxblock never needs wifi: each story is stored in its own audiobook block, so there is nothing to download or set up, and nothing for a child to get stuck on. Compare <a href=\"/pages/voxblock-vs-yoto\">Voxblock and Yoto</a> or <a href=\"/pages/voxblock-vs-tonies\">Voxblock and Toniebox</a> side by side.</p>"
+          }
+        },
+        "item_returns": {
+          "type": "item",
+          "settings": {
+            "title": "What if it isn't right for us?",
+            "content": "<p>Every player comes with a 100-day money-back guarantee, and UK delivery is free on orders over £25.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_wifi",
+        "item_charge",
+        "item_whats_in",
+        "item_which",
+        "item_vs",
+        "item_returns"
+      ],
+      "name": "Questions before you buy",
+      "settings": {
+        "include_jsonld": true,
+        "full_width": true,
+        "subheading": "",
+        "title": "Before you buy",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

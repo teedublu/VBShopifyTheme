@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "reasons": {
+      "type": "benefit-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "play",
+            "title": "Ready out of the box",
+            "content": "<p>Slot in a block, press play. Nothing to charge or install before the first story.</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "No wifi, ever",
+            "content": "<p>No downloads, no account and no subscription &mdash; it works exactly the same at home, in the car, or on a plane.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Built for journeys",
+            "content": "<p>Up to 16 hours of battery, with a speaker and a headphone jack, light enough for little hands to carry.</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "A library that grows with them",
+            "content": "<p>350+ audiobooks for toddlers to teens, from picture books to teen fiction.</p>"
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "No risk",
+            "content": "<p>A 100-day money-back guarantee, and free UK delivery over £25.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Why Voxblock",
+        "title": "Everything to start, in one box",
+        "content": "",
+        "text_alignment": "start",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "icon_background": "",
+        "icon_color": "",
+        "icon_accent": ""
+      }
+    }
+  },
+  "order": [
+    "reasons"
+  ]
+}

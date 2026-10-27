@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_independent": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": false,
+            "rating": 5,
+            "author": "The Independent",
+            "title": "Best kids’ audio player for ease of use",
+            "content": "<p>What we found incredibly refreshing is there’s no app, no download, no wifi setup. The Voxblock is ready and raring to go.</p>"
+          }
+        },
+        "testimonial_t2": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Hannah (Jan, 2026)",
+            "title": "Doesn't need me",
+            "content": "<p>I love that my son doesn't need me to set anything up. It's given him a sense of independence and responsibility that I didn't expect from something so simple.</p>"
+          }
+        },
+        "testimonial_t1": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Priya (Feb, 2025)",
+            "title": "Long journeys without screens",
+            "content": "<p>We bought Voxblock for a long car journey over half term and it honestly saved us. No fighting over tablets, no complaints about boredom. The kids took turns choosing stories and the drive felt much shorter. It now lives permanently in the car.</p>"
+          }
+        },
+        "quote_laura": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Laura (Jan, 2026)",
+            "title": "Great audio books",
+            "content": "<p>My kids have loved using Voxblock and actually explained to me how they work. My daughter listened to ‘I am Rebel’ while she knitted, and finished it in a couple of sittings!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "quote_independent",
+        "testimonial_t2",
+        "testimonial_t1",
+        "quote_laura"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "Reviews",
+        "title": "What parents say",
+        "content": "<p>Read all our Trustpilot reviews <a href=\"https://www.trustpilot.com/review/voxblock.co.uk\" title=\"Our Trustpilot reviews\">here</a>.</p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "testimonials"
+  ]
+}

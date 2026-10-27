@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "competitors": {
+      "type": "benefit-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "No wifi, ever",
+            "content": "<p>The story is stored in the block, so there's nothing to download, sync or update, at home or away.</p>"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "icon": "play",
+            "title": "Nothing for you to set up",
+            "content": "<p>No account to make and no app to pair. It arrives ready: slot in a story and press play.</p>"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "You own every story",
+            "content": "<p>Each audiobook is a block you keep, unabridged, from picture books to teen fiction.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "Looking at a Toniebox or Yoto?",
+        "title": "How Voxblock is different",
+        "content": "<p><a href=\"/pages/voxblock-vs-yoto\" data-vs-track=\"strip_yoto\">Voxblock vs Yoto</a> · <a href=\"/pages/voxblock-vs-tonies\" data-vs-track=\"strip_tonies\">Voxblock vs Toniebox</a></p>",
+        "text_alignment": "start",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "",
+        "card_text_color": "",
+        "card_heading_color": "",
+        "icon_background": "",
+        "icon_color": "",
+        "icon_accent": ""
+      }
+    }
+  },
+  "order": [
+    "competitors"
+  ]
+}
