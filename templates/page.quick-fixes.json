@@ -1,11 +1,11 @@
 /*
- * ------------------------------------------------------------------------------------------------------------
+ * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * ------------------------------------------------------------------------------------------------------------
+ * ------------------------------------------------------------
  */
 {
   "sections": {
@@ -13,20 +13,20 @@
       "type": "help-hero",
       "settings": {
         "heading": "Quick fixes for your Voxblock",
-        "trail_label": "Quick fixes",
         "intro": "<p>Most things are fixed with one or two button presses. Pick what you can see on your player.</p>",
         "parent_url": "/pages/help",
         "parent_title": "Help centre",
-        "joined": true
+        "trail_label": "Quick fixes",
+        "joined": true,
+        "show_saga": false,
+        "saga_text": "Ask Saga for an instant answer",
+        "button_text": "",
+        "button_url": "",
+        "jump_label": "On this page"
       }
     },
     "quick_fixes": {
       "type": "quick-fixes",
-      "settings": {
-        "default_state": "pink",
-        "player_image": "shopify://shop_images/quick-fixes-player-front.webp",
-        "book_image": "shopify://shop_images/quick-fixes-book-charlie.webp"
-      },
       "blocks": {
         "state_01": {
           "type": "state",
@@ -38,6 +38,12 @@
             "animation": "none",
             "other_led": "off",
             "book_on": false,
+            "cable": false,
+            "press_play": true,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Press play",
             "eyebrow": "Play button: no light",
             "title": "Switched off",
@@ -47,12 +53,7 @@
             "done": "Blue: it’s on and ready. Place a book and press play.",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Press play to switch it on.",
-            "press_play": true,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Press play to switch it on."
           }
         },
         "state_02": {
@@ -65,6 +66,12 @@
             "animation": "pulse",
             "other_led": "off",
             "book_on": true,
+            "cable": false,
+            "press_play": true,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Press play",
             "eyebrow": "Play button: slow, dim blue",
             "title": "Resting",
@@ -74,12 +81,7 @@
             "done": "Green: the story is playing.",
             "more_label": "Using your player",
             "more_link": "/pages/player-guide",
-            "short": "Resting before it switches off. Press play.",
-            "press_play": true,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Resting before it switches off. Press play."
           }
         },
         "state_03": {
@@ -92,6 +94,12 @@
             "animation": "none",
             "other_led": "off",
             "book_on": true,
+            "cable": false,
+            "press_play": true,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Press play",
             "eyebrow": "Play button: blue",
             "title": "Paused, or no book on the player",
@@ -101,12 +109,7 @@
             "done": "Green: the story is playing.",
             "more_label": "Using your player",
             "more_link": "/pages/player-guide",
-            "short": "Place a book and press play.",
-            "press_play": true,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Place a book and press play."
           }
         },
         "state_04": {
@@ -119,6 +122,12 @@
             "animation": "none",
             "other_led": "off",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": true,
             "caption": "Press + to turn it up",
             "eyebrow": "Play button: green",
             "title": "The story is playing",
@@ -128,12 +137,7 @@
             "done": "",
             "more_label": "Volume and headphones",
             "more_link": "/pages/player-guide#sound",
-            "short": "Playing. No sound? Press + or check the headphone socket.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": true
+            "short": "Playing. No sound? Press + or check the headphone socket."
           }
         },
         "state_05": {
@@ -146,6 +150,12 @@
             "animation": "none",
             "other_led": "off",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": true,
+            "press_right": true,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Press both arrows together",
             "eyebrow": "Play button: orange",
             "title": "Bedtime mode is on",
@@ -155,12 +165,7 @@
             "done": "Blue: bedtime mode is off.",
             "more_label": "More about bedtime mode",
             "more_link": "/pages/player-guide#bedtime",
-            "short": "Bedtime mode. Press both arrows together to switch it off.",
-            "press_play": false,
-            "press_left": true,
-            "press_right": true,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Bedtime mode. Press both arrows together to switch it off."
           }
         },
         "state_06": {
@@ -173,6 +178,12 @@
             "animation": "fade",
             "other_led": "off",
             "book_on": false,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": true,
+            "press_plus": true,
             "caption": "Hold − and + together",
             "eyebrow": "Play button: pink, then goes dark",
             "title": "Travel mode is on",
@@ -182,12 +193,7 @@
             "done": "Blue: travel mode is off.",
             "more_label": "More about travel mode",
             "more_link": "/pages/player-guide#travel",
-            "short": "Travel mode. Hold − and + together to unlock.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": true,
-            "press_plus": true
+            "short": "Travel mode. Hold − and + together to unlock."
           }
         },
         "state_07": {
@@ -200,6 +206,12 @@
             "animation": "flash",
             "other_led": "off",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": true,
+            "press_plus": true,
             "caption": "Volume buttons",
             "eyebrow": "Play button: quick yellow-green flash",
             "title": "Changing the volume",
@@ -209,12 +221,7 @@
             "done": "Nothing to do.",
             "more_label": "",
             "more_link": "",
-            "short": "You’re changing the volume. Nothing to do.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": true,
-            "press_plus": true
+            "short": "You’re changing the volume. Nothing to do."
           }
         },
         "state_08": {
@@ -227,6 +234,12 @@
             "animation": "none",
             "other_led": "green",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Battery light off",
             "eyebrow": "Battery light: off",
             "title": "Nothing to worry about",
@@ -236,12 +249,7 @@
             "done": "",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Normal: it only shows for 10 seconds.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Normal: it only shows for 10 seconds."
           }
         },
         "state_09": {
@@ -254,6 +262,12 @@
             "animation": "none",
             "other_led": "blue",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Battery light green",
             "eyebrow": "Battery light: green",
             "title": "Plenty of charge",
@@ -263,12 +277,7 @@
             "done": "",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Enough charge to keep listening.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Enough charge to keep listening."
           }
         },
         "state_10": {
@@ -281,6 +290,12 @@
             "animation": "none",
             "other_led": "green",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Charge from a wall plug",
             "eyebrow": "Battery light: red",
             "title": "Time to charge",
@@ -290,12 +305,7 @@
             "done": "Flashing green: it’s charging.",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Low battery. Charge from a wall plug.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Low battery. Charge from a wall plug."
           }
         },
         "state_11": {
@@ -308,6 +318,12 @@
             "animation": "fast",
             "other_led": "off",
             "book_on": true,
+            "cable": false,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Charge it now",
             "eyebrow": "Battery light: fast red flashing",
             "title": "Battery empty",
@@ -317,12 +333,7 @@
             "done": "Flashing green: it’s charging.",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Out of battery. Charge it; your place is saved.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Out of battery. Charge it; your place is saved."
           }
         },
         "state_12": {
@@ -336,6 +347,11 @@
             "other_led": "off",
             "book_on": false,
             "cable": true,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Charging",
             "eyebrow": "Battery light: flashing green",
             "title": "Charging",
@@ -345,12 +361,7 @@
             "done": "",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Charging. Goes steady when full.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Charging. Goes steady when full."
           }
         },
         "state_13": {
@@ -364,6 +375,11 @@
             "other_led": "off",
             "book_on": false,
             "cable": true,
+            "press_play": false,
+            "press_left": false,
+            "press_right": false,
+            "press_minus": false,
+            "press_plus": false,
             "caption": "Fully charged",
             "eyebrow": "Battery light: steady green while plugged in",
             "title": "Fully charged",
@@ -373,12 +389,7 @@
             "done": "Ready for up to 16 hours of listening.",
             "more_label": "Charging your player",
             "more_link": "/pages/player-guide#charging",
-            "short": "Full. Unplug and listen.",
-            "press_play": false,
-            "press_left": false,
-            "press_right": false,
-            "press_minus": false,
-            "press_plus": false
+            "short": "Full. Unplug and listen."
           }
         },
         "earlier_fix_14": {
@@ -432,14 +443,35 @@
         "earlier_fix_15",
         "earlier_fix_16",
         "earlier_fix_17"
-      ]
+      ],
+      "settings": {
+        "anchor": "what-you-can-see",
+        "default_state": "pink",
+        "player_image": "shopify://shop_images/quick-fixes-player-front.webp",
+        "book_image": "shopify://shop_images/quick-fixes-book-charlie.webp",
+        "book_label": "Your book",
+        "play_row_title": "Play button",
+        "battery_row_title": "Battery light",
+        "jump_text": "what to do",
+        "footnote_text": "Player look different? If yours has an on/off switch on the back,",
+        "footnote_link": "see the fixes for our first players",
+        "glance_heading": "All the lights at a glance",
+        "test_heading": "Seeing a colour that isn't listed?",
+        "test_text": "If the play button glows white, or changes colour and buzzes each time you press a button, the player is in a checking mode we use in our workshop. Nothing is wrong and nothing is harmed. Hold the play button until the player switches off and keep holding for about 30 seconds, then switch it on again as normal.",
+        "restart_anchor": "restart",
+        "restart_heading": "Still stuck? Restart the player",
+        "restart_intro": "<p>Only if nothing else has worked. A restart clears the places saved on the player, so every book starts again from the beginning. Your books and their stories aren't affected.</p>",
+        "timeline_1": "0–3 s",
+        "timeline_2": "Light goes off. Keep holding…",
+        "timeline_3": "30 s: let go",
+        "restart_steps": "<ol><li>Press and hold the play button.</li><li>After a few seconds the light goes off. <strong>Don't let go.</strong> Letting go here only switches it off.</li><li>Keep holding for 30 seconds in total, then let go.</li><li>Press play to switch it on. The button glows blue when it's ready.</li></ol>",
+        "back_text": "Back to the player without a switch",
+        "earlier_heading": "Our first players",
+        "earlier_intro": "These players have an on/off switch on the back. Most problems come down to the switch, the charge or a dusty connector."
+      }
     },
     "more_help": {
       "type": "help-cards",
-      "settings": {
-        "heading": "More help",
-        "layout": "links"
-      },
       "blocks": {
         "card_01": {
           "type": "card",
@@ -447,7 +479,8 @@
             "icon": "player",
             "title": "Using your player",
             "text": "Buttons, bedtime and travel mode, headphones.",
-            "link": "/pages/player-guide"
+            "link": "/pages/player-guide",
+            "saga": false
           }
         },
         "card_02": {
@@ -456,7 +489,8 @@
             "icon": "battery",
             "title": "Charging",
             "text": "How to charge, how long it lasts, what the battery light means.",
-            "link": "/pages/player-guide#charging"
+            "link": "/pages/player-guide#charging",
+            "saga": false
           }
         },
         "card_03": {
@@ -465,7 +499,8 @@
             "icon": "truck",
             "title": "Delivery and orders",
             "text": "Delivery times and rates, UK and Australia.",
-            "link": "/pages/delivery-and-returns#delivery"
+            "link": "/pages/delivery-and-returns#delivery",
+            "saga": false
           }
         },
         "card_04": {
@@ -474,7 +509,8 @@
             "icon": "shield",
             "title": "Guarantee and repairs",
             "text": "100-day Happiness Guarantee, 2-year guarantee and repairs for life.",
-            "link": "/pages/delivery-and-returns"
+            "link": "/pages/delivery-and-returns",
+            "saga": false
           }
         },
         "card_05": {
@@ -483,7 +519,8 @@
             "icon": "question",
             "title": "FAQs",
             "text": "Ages, audiobooks, safety and more.",
-            "link": "/pages/voxblock-faq"
+            "link": "/pages/voxblock-faq",
+            "saga": false
           }
         }
       },
@@ -493,15 +530,24 @@
         "card_03",
         "card_04",
         "card_05"
-      ]
+      ],
+      "settings": {
+        "anchor": "",
+        "heading": "More help",
+        "intro": "",
+        "layout": "links",
+        "tinted": false,
+        "footnote": ""
+      }
     },
     "contact": {
       "type": "help-contact",
       "settings": {
+        "anchor": "contact",
         "heading": "Still not right?",
+        "text": "<p>Tell us what you can see on the play button and battery light, and what you’ve tried. We reply Monday to Friday, usually within 24 hours. Your player has a 2-year guarantee, so if it needs a repair we pay the postage both ways.</p>",
         "button_text": "Contact us",
-        "button_url": "/pages/contact-us",
-        "text": "<p>Tell us what you can see on the play button and battery light, and what you’ve tried. We reply Monday to Friday, usually within 24 hours. Your player has a 2-year guarantee, so if it needs a repair we pay the postage both ways.</p>"
+        "button_url": "/pages/contact-us"
       }
     }
   },
