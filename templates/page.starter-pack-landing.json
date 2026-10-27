@@ -15,8 +15,8 @@
             "subheading": "Ready out of the box",
             "title": "Press play. No wifi needed, wherever you go.",
             "content": "<p>Every Voxblock starter pack comes ready to use: insert a story block and press play. No downloads, no subscription, no setup. Free UK delivery over £25 &middot; 100-day money-back guarantee.</p>",
-            "link_text": "Shop starter packs",
-            "link_url": "shopify://collections/voxblock-starter-pack-collection",
+            "link_text": "Choose a starter pack",
+            "link_url": "#packs",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
@@ -120,8 +120,8 @@
           "bedtime-stories-starter-pack"
         ],
         "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
+        "stack_products": true,
+        "show_progress_bar": false,
         "products_count": 4,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
@@ -136,7 +136,10 @@
         "heading_color": "",
         "heading_gradient": "",
         "product_card_background": "",
-        "product_card_text_color": ""
+        "product_card_text_color": "",
+        "anchor_id": "packs",
+        "card_style": "pack",
+        "card_show_titles": true
       }
     },
     "testimonials": {
@@ -164,22 +167,22 @@
             "content": "<p>I love that my son doesn't need me to set anything up. It's given him a sense of independence and responsibility that I didn't expect from something so simple.</p>"
           }
         },
-        "testimonial_t3": {
+        "quote_laura": {
           "type": "testimonial",
           "settings": {
             "round_avatar": true,
             "show_rating": true,
             "rating": 5,
-            "author": "Ian (Feb, 2025)",
-            "title": "So easy to use, no downloads required, charge up and ready to go!",
-            "content": "<p>Bought Starter Pack which is a good offer, so easy to use, like the fact no downloads, just charge up and ready to go, lightweight for mobile use, good selection of colours and books. Very easy order process, delivered 3 days after purchase. Would highly recommend.</p>"
+            "author": "Laura (Jan, 2026)",
+            "title": "Great audio books",
+            "content": "<p>My kids have loved using Voxblock and actually explained to me how they work. My daughter listened to ‘I am Rebel’ while she knitted, and finished it in a couple of sittings!</p>"
           }
         }
       },
       "block_order": [
         "testimonial_t1",
         "testimonial_t2",
-        "testimonial_t3"
+        "quote_laura"
       ],
       "settings": {
         "full_width": true,
@@ -228,10 +231,18 @@
             "title": "What if it isn't right for us?",
             "content": "<p>Every player comes with a 100-day money-back guarantee, and UK delivery is free on orders over £25.</p>"
           }
+        },
+        "item_charge": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need charging before we start?",
+            "content": "<p>No. It arrives ready to play: slot in a story and press play. When it does need a charge, the battery lasts up to 16 hours of listening.</p>"
+          }
         }
       },
       "block_order": [
         "item_wifi",
+        "item_charge",
         "item_whats_in",
         "item_which",
         "item_returns"
@@ -268,7 +279,7 @@
         "full_width": true,
         "remove_vertical_spacing": true,
         "remove_horizontal_spacing": true,
-        "html": "<div id=\"sticky-mobile-cta\" class=\"sticky-mobile-cta\" aria-hidden=\"true\"><a href=\"/collections/voxblock-starter-pack-collection\" class=\"button button--lg w-full\" data-vs-track=\"starter_pack_landing_sticky_cta\">Shop starter packs</a></div><style>.sticky-mobile-cta{position:fixed;inset-inline:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));background:#fff;box-shadow:0 -4px 14px rgba(0,0,0,0.1);transform:translateY(100%);transition:transform .25s ease;}.sticky-mobile-cta.is-visible{transform:translateY(0);}.sticky-mobile-cta .button{display:block;text-align:center;}@media screen and (min-width:750px){.sticky-mobile-cta{display:none;} }</style><script>(function(){var bar=document.getElementById('sticky-mobile-cta');var heroButton=document.querySelector('[data-vs-track=\"starter_pack_landing_hero_cta\"]');if(!bar||!heroButton||!('IntersectionObserver' in window))return;var heroVisible=true;var nearFooter=false;function update(){bar.classList.toggle('is-visible', !heroVisible && !nearFooter);}new IntersectionObserver(function(entries){entries.forEach(function(entry){heroVisible=entry.isIntersecting;});update();},{rootMargin:'0px 0px -10% 0px'}).observe(heroButton);var footer=document.querySelector('.footer');if(footer){new IntersectionObserver(function(entries){entries.forEach(function(entry){nearFooter=entry.isIntersecting;});update();}).observe(footer);} })();</script>",
+        "html": "<div id=\"sticky-mobile-cta\" class=\"sticky-mobile-cta\" aria-hidden=\"true\"><a href=\"#packs\" class=\"button button--lg w-full\" data-vs-track=\"starter_pack_landing_sticky_cta\">Choose a starter pack</a></div><style>.sticky-mobile-cta{position:fixed;inset-inline:0;bottom:0;z-index:40;padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px));background:#fff;box-shadow:0 -4px 14px rgba(0,0,0,0.1);transform:translateY(100%);transition:transform .25s ease;}.sticky-mobile-cta.is-visible{transform:translateY(0);}.sticky-mobile-cta .button{display:block;text-align:center;}@media screen and (min-width:750px){.sticky-mobile-cta{display:none;} }</style><script>(function(){var bar=document.getElementById('sticky-mobile-cta');var heroButton=document.querySelector('[data-vs-track=\"starter_pack_landing_hero_cta\"]');if(!bar||!heroButton||!('IntersectionObserver' in window))return;var heroVisible=true;var nearFooter=false;function update(){bar.classList.toggle('is-visible', !heroVisible && !nearFooter);}new IntersectionObserver(function(entries){entries.forEach(function(entry){heroVisible=entry.isIntersecting;});update();},{rootMargin:'0px 0px -10% 0px'}).observe(heroButton);var footer=document.querySelector('.footer');if(footer){new IntersectionObserver(function(entries){entries.forEach(function(entry){nearFooter=entry.isIntersecting;});update();}).observe(footer);} })();</script>",
         "background": "",
         "background_gradient": "",
         "text_color": ""
