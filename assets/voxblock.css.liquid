@@ -1675,6 +1675,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .qf-player--photo .qf-key--play { --qf-key: 16%; left: 49.4%; }
 .qf-player--photo .qf-key--plus { left: 66.4%; }
 .qf-player--photo .qf-key--right { --qf-key: 6.8%; left: 79.4%; }
+/* no outlines on the photo: next to the real lights they read as another light (the caption says what to press) */
+.qf-player--photo .qf-key { outline: none !important; }
 /* the play button lit: the colour tints the button (multiply keeps the arrow showing through) and glows around it */
 .qf-player--photo .qf-player__glow { background: color-mix(in srgb, var(--qf-play) 38%, #fff); border: 0; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--qf-play) 70%, #fff), 0 0 12px 4px color-mix(in srgb, var(--qf-play) 55%, transparent); mix-blend-mode: multiply; }
 .qf-player--photo .qf-player__strip { position: absolute; left: 79.4%; top: 93.6%; width: 8%; height: auto; aspect-ratio: 4 / 1; transform: translateX(-50%); }

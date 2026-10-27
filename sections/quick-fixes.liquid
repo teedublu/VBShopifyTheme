@@ -4,7 +4,7 @@ QUICK FIXES (templates/page.quick-fixes.json, /pages/quick-fixes)
 ----------------------------------------------------------------------------------------------------------------------
 "What can you see on your player?" A photo of the current player (no switch on the back; a drawing if no photo is set)
 with one row of chips for the play button light and one for the battery light. Picking a chip lights the player (play button glow, battery
-strip at the bottom right, the buttons to press outlined) and shows what it means and how to fix it beside it on
+strip at the bottom right; on the drawing only, the buttons to press outlined) and shows what it means and how to fix it beside it on
 desktop; on phones a "<title>: what to do ↓" link under the player jumps to the answer.
 Then: every light at a glance, the "colour that isn't listed" note (workshop test mode: how to get out only, never how
 to get in), and the 30-second restart. "Player look different?" swaps the whole section to short fixes for our first
@@ -92,7 +92,7 @@ quick_fix_model { model }).
             {%- endif -%}
           {%- endfor -%}
 
-          {%- capture player_alt -%}Voxblock player, {{ d_eyebrow | downcase }}{% if press != blank %}, with the buttons to press outlined{% endif %}{%- endcapture -%}
+          {%- capture player_alt -%}Voxblock player, {{ d_eyebrow | downcase }}{% if press != blank and section.settings.player_image == blank %}, with the buttons to press outlined{% endif %}{%- endcapture -%}
           <div class="qf-player qf-host{% if section.settings.player_image != blank %} qf-player--photo{% endif %}" role="img" aria-label="{{ player_alt | escape }}" data-qf-player
             data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
             data-press="{{ press }}" data-book="{{ d_book }}"
