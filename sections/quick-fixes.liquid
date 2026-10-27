@@ -265,7 +265,7 @@ quick_fix_model { model }).
       {%- endif -%}
 
       {%- if section.settings.restart_heading != blank -%}
-        <div class="qf-restart" id="{{ section.settings.restart_anchor | default: 'restart' | escape }}">
+        <div class="qf-restart" id="{{ section.settings.restart_anchor | default: 'reset' | escape }}">
           <h2 class="h3">{{ section.settings.restart_heading | escape }}</h2>
           {%- if section.settings.restart_intro != blank -%}<div class="qf-restart__intro">{{ section.settings.restart_intro }}</div>{%- endif -%}
           <div class="qf-restart__card">
