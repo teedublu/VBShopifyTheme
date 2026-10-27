@@ -427,6 +427,7 @@ document.addEventListener('click', (event) => {
             player.dataset.stripAnim = d.stripAnim;
             player.dataset.press = d.press;
             player.dataset.book = d.book;
+            player.dataset.cable = d.cable;
             player.style.setProperty('--qf-play', `var(--led-${d.playLed.replace(/_/g, '-')})`);
             player.style.setProperty('--qf-strip', `var(--led-${d.stripLed.replace(/_/g, '-')})`);
             player.setAttribute('aria-label', `Voxblock player, ${d.eyebrow.toLowerCase()}${d.press && !player.classList.contains('qf-player--photo') ? ', with the buttons to press outlined' : ''}`);

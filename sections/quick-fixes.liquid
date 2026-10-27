@@ -87,6 +87,7 @@ quick_fix_model { model }).
                   assign d_caption = s.caption
                   assign d_eyebrow = s.eyebrow
                   assign d_book = s.book_on
+                  assign d_cable = s.cable
                 -%}
               {%- endif -%}
             {%- endif -%}
@@ -95,7 +96,7 @@ quick_fix_model { model }).
           {%- capture player_alt -%}Voxblock player, {{ d_eyebrow | downcase }}{% if press != blank and section.settings.player_image == blank %}, with the buttons to press outlined{% endif %}{%- endcapture -%}
           <div class="qf-player qf-host{% if section.settings.player_image != blank %} qf-player--photo{% endif %}" role="img" aria-label="{{ player_alt | escape }}" data-qf-player
             data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
-            data-press="{{ press }}" data-book="{{ d_book }}"
+            data-press="{{ press }}" data-book="{{ d_book }}" data-cable="{{ d_cable }}"
             style="--qf-play: var(--led-{{ p_led | replace: '_', '-' }}); --qf-strip: var(--led-{{ b_led | replace: '_', '-' }});">
             {%- if section.settings.player_image != blank -%}
               {%- comment -%} Photo of the player: the lights and outlines sit over it, placed by % of the photo (voxblock.css) {%- endcomment -%}
@@ -113,6 +114,15 @@ quick_fix_model { model }).
               <span class="qf-key qf-key--plus" aria-hidden="true"></span>
               <span class="qf-key qf-key--right" aria-hidden="true"></span>
               <span class="qf-player__strip" aria-hidden="true"></span>
+              <svg class="qf-player__cable" aria-hidden="true" focusable="false" viewBox="0 0 40 100" width="40" height="100">
+                <defs><linearGradient id="qf-cable-fade-{{ section.id }}" x1="0" y1="0" x2="0" y2="1"><stop offset=".6" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="qf-cable-mask-{{ section.id }}"><rect width="40" height="100" fill="url(#qf-cable-fade-{{ section.id }})"/></mask></defs>
+                <g mask="url(#qf-cable-mask-{{ section.id }})">
+                  <path d="M20 40c0 22 12 30 12 60" fill="none" stroke="#b9c3c4" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M20 40c0 22 12 30 12 60" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/>
+                </g>
+                <rect x="15" y="29" width="10" height="12" rx="3" fill="#fff" stroke="#b9c3c4" stroke-width="1.5"/>
+                <rect x="10" y="1" width="20" height="30" rx="6" fill="#fff" stroke="#b9c3c4" stroke-width="1.5"/>
+              </svg>
             {%- else -%}
             <span class="qf-player__grill" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="qf-player__dock" aria-hidden="true"><span class="qf-player__book">{{ section.settings.book_label | escape }}</span></span>
@@ -189,7 +199,7 @@ quick_fix_model { model }).
               -%}
               <article class="qf-answer{% if bid == default_id %} is-active{% endif %}" id="light-{{ bid }}" data-qf-state="{{ bid }}"
                 data-play-led="{{ p_led }}" data-play-anim="{{ p_anim }}" data-strip-led="{{ b_led }}" data-strip-anim="{{ b_anim }}"
-                data-press="{{ press }}" data-book="{{ s.book_on }}" data-caption="{{ s.caption | escape }}" data-eyebrow="{{ s.eyebrow | escape }}"
+                data-press="{{ press }}" data-book="{{ s.book_on }}" data-cable="{{ s.cable }}" data-caption="{{ s.caption | escape }}" data-eyebrow="{{ s.eyebrow | escape }}"
                 data-title="{{ s.title | escape }}"
                 aria-labelledby="light-{{ bid }}-title" {{ block.shopify_attributes }}>
                 <p class="qf-answer__eyebrow qf-host">
@@ -372,6 +382,7 @@ quick_fix_model { model }).
           { "value": "green", "label": "Green" }
         ] },
         { "type": "checkbox", "id": "book_on", "label": "Book on the player in the drawing", "default": true },
+        { "type": "checkbox", "id": "cable", "label": "Charging cable plugged in", "info": "Player photo only. For lights that show only while it's plugged in.", "default": false },
         { "type": "header", "content": "Buttons to outline" },
         { "type": "checkbox", "id": "press_play", "label": "Play", "default": false },
         { "type": "checkbox", "id": "press_left", "label": "Left arrow", "default": false },

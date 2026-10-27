@@ -1515,8 +1515,9 @@ html.vb-has-player .cart-player-prompt { display: none; }
 
 /* Numbered steps: orange numbers (state steps from a textarea, restart steps from rich text) */
 .help-steps ol, ol.help-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: help-step; }
-.help-steps li { counter-increment: help-step; display: flex; gap: 12px; align-items: flex-start; line-height: 1.6; margin: 0; }
-.help-steps li::before { content: counter(help-step); flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
+/* number placed beside the text (not flex), so bold or linked words stay inside the sentence */
+.help-steps li { counter-increment: help-step; position: relative; min-height: 28px; padding-left: 40px; line-height: 1.6; margin: 0; }
+.help-steps li::before { content: counter(help-step); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
 .help-steps--grid ol { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
 
 /* HERO */
@@ -1679,6 +1680,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .qf-player--photo[data-press] .qf-key { outline: none; }
 /* the play button lit: the colour tints the button (multiply keeps the arrow showing through) and glows around it */
 .qf-player--photo .qf-player__glow { background: color-mix(in srgb, var(--qf-play) 38%, #fff); border: 0; box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--qf-play) 70%, #fff), 0 0 12px 4px color-mix(in srgb, var(--qf-play) 55%, transparent); mix-blend-mode: multiply; }
+/* charging cable: USB-C port on the bottom edge, below the battery light (player_charging_graphic in Files) */
+.qf-player--photo .qf-player__cable { position: absolute; left: 79.4%; top: 99.6%; width: 16%; height: auto; margin-left: -8%; visibility: hidden; }
+.qf-player--photo[data-cable="true"] { margin-bottom: 40px; }
+.qf-player--photo[data-cable="true"] .qf-player__cable { visibility: visible; }
 .qf-player--photo .qf-player__strip { position: absolute; left: 79.4%; top: 93.6%; width: 8%; height: auto; aspect-ratio: 4 / 1; transform: translateX(-50%); }
 @media screen and (min-width: 1000px) {
   .qf-player--photo { width: 280px; }
@@ -1726,9 +1731,9 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .qf-restart__card { border: 1px solid var(--card-border); border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 20px; background: #fff7f0; }
 .qf-timeline { display: flex; align-items: stretch; min-height: 56px; border-radius: 12px; overflow: hidden; border: 1px solid var(--card-border); background: #fff; font-size: 13px; font-weight: 600; }
 .qf-timeline > span { display: flex; align-items: center; padding: 6px 10px; }
-.qf-timeline__a { flex: 3 1 0; justify-content: center; text-align: center; background: var(--led-blue); color: #fff; }
+.qf-timeline__a { flex: 3 0 auto; white-space: nowrap; justify-content: center; text-align: center; background: var(--led-blue); color: #fff; }
 .qf-timeline__b { flex: 27 1 0; background: var(--help-tint); border-left: 2px solid #fff; font-weight: 500; }
-.qf-timeline__c { flex: 0 0 auto; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); }
+.qf-timeline__c { flex: 0 0 auto; white-space: nowrap; background: var(--accent-strong); color: rgb(var(--accent-strong-text)); }
 
 .qf-earlier__inner { display: flex; flex-direction: column; gap: var(--spacing-6); padding-block: var(--spacing-8) var(--spacing-10); }
 .qf-earlier__head { display: flex; flex-direction: column; gap: 8px; }
