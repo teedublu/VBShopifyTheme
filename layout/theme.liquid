@@ -109,6 +109,15 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         # Google Ads landing page: targets starter-pack searches so it doesn't compete with the homepage for "kids audiobook player"
         assign resolved_page_title = 'Audiobook Starter Packs: Player + First Stories | Voxblock'
         assign resolved_page_description = 'Start with a Voxblock starter pack: the screen-free audiobook player plus your first audiobooks, for toddlers to teens. Free UK delivery over £25.'
+      elsif request.page_type == 'page' and template.suffix == 'starter-pack-google'
+        # Google Ads landing page (noindex, see below). The H1 and <title> follow the ad's keyword in the browser
+        # (sections/ads-intent-hero.liquid); this is the title without JavaScript or a usable keyword.
+        assign resolved_page_title = 'Audiobook Player for Kids: Starter Packs | Voxblock'
+        assign resolved_page_description = 'The screen-free audiobook player children use on their own, with their first three stories. No wifi, downloads or subscription. Free UK delivery over £25.'
+      elsif request.page_type == 'page' and template.suffix == 'starter-pack-landing'
+        # Meta ads landing page (noindex, see below)
+        assign resolved_page_title = 'Voxblock Starter Packs: Ready Out of the Box'
+        assign resolved_page_description = 'A Voxblock starter pack is the screen-free audiobook player plus three stories for their age. No wifi, nothing to set up. Free UK delivery over £25.'
       elsif request.page_type == 'page' and page.handle == 'reasons-to-buy-voxblock'
         # Brand reviews / consideration page: targets "voxblock reviews" so it supports the homepage rather than competing for player searches
         assign resolved_page_title = 'Voxblock Reviews: Why Parents Choose Voxblock'
@@ -174,6 +183,11 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     {%- if resolved_page_description -%}
       <meta name="description" content="{{ resolved_page_description | escape }}">
+    {%- endif -%}
+
+    {%- comment -%}Paid landing pages: kept out of search so they never compete with the SEO pages (LPS paid-landing-pages){%- endcomment -%}
+    {%- if request.page_type == 'page' and template.suffix == 'starter-pack-google' or request.page_type == 'page' and template.suffix == 'starter-pack-landing' -%}
+      <meta name="robots" content="noindex, nofollow">
     {%- endif -%}
 
     <link rel="canonical" href="{{ resolved_canonical_url }}">

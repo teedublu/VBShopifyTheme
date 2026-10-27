@@ -11,7 +11,7 @@ Each product type has own product card if needed or product-card-default
 
 {%- comment -%}The starter pack collection redesign opts in to the pack card through the main-collection "Product card style" setting{%- endcomment -%}
 {%- if section.settings.card_style == 'pack' -%}
-  {%- render 'product-card-pack', product: product, card_index: card_index -%}
+  {%- render 'product-card-pack', product: product, card_index: card_index, show_titles: section.settings.card_show_titles -%}
 {%- else -%}
 {%- case product.type -%}
   {%- when 'Audiobooks' -%}

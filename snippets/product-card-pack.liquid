@@ -13,6 +13,8 @@ Supported variables
 
 * product: the pack to render
 * card_index: 1-based position in the grid (the first few images load eagerly)
+* show_titles: true = always name every book ("Player + The Gruffalo, Room on the Broom, ..."), however long the list.
+  Paid landing pages set it (featured-collection "Name every book"); elsewhere long lists fall back to a count.
 
 Data used (all optional, the line is simply left out if missing):
 * contents line: metafield pack.contents (text, overrides everything), else the books in bundles.products
@@ -53,7 +55,7 @@ Data used (all optional, the line is simply left out if missing):
     assign pack_books = product.metafields.bundles.products.value
     if pack_books.size > 0
       assign book_titles = pack_books | map: 'title' | join: ', '
-      if book_titles.size <= 40
+      if book_titles.size <= 40 or show_titles
         assign contents_line = 'collection.pack_card.contents_named' | t: titles: book_titles
       else
         assign contents_line = 'collection.pack_card.contents_count' | t: count: pack_books.size
