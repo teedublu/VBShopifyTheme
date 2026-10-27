@@ -54,7 +54,8 @@ so every later event (add to cart, checkout) can be split by intent. Clicks: vs_
         <div class="ads-hero__actions">
           <a href="#{{ section.settings.packs_anchor | escape }}" class="button" data-vs-track="hero_packs">{{ section.settings.button_text | escape }}</a>
           {%- if player != blank and player_variant.price > 0 -%}
-            <a href="{{ player_variant.url }}" class="ads-hero__player" data-vs-track="hero_player">{{ section.settings.player_text | replace: '[price]', player_variant.price | money_without_trailing_zeros }}</a>
+            {%- assign player_price = player_variant.price | money -%}
+            <a href="{{ player_variant.url }}" class="ads-hero__player" data-vs-track="hero_player">{{ section.settings.player_text | replace: '[price]', player_price }}</a>
           {%- endif -%}
         </div>
       </div>
