@@ -63,22 +63,26 @@ If a figure cannot be read (no matching product), that price is simply left out.
   assign starter_price = starter_min | money
   assign player_price = player.price_min | money
 
-  # DISPLAY MEDIA: prefer the colour-tagged on-site photo over featured_media, since the featured/position-1 image
-  # may be a plain white-background photo kept for the shopping feed (see product-card-pack.liquid for the same logic).
+  # DISPLAY MEDIA: swap a white-background shopping-feed featured photo for the colour-tagged on-site photo;
+  # leave every other product's featured photo alone (same gate as product-card-pack.liquid).
   assign intro_display_media = intro_img_product.featured_media
-  for media in intro_img_product.media
-    if media.alt contains '#Color_'
-      assign intro_display_media = media
-      break
-    endif
-  endfor
+  if intro_img_product.featured_media.alt contains '(shopping feed image)'
+    for media in intro_img_product.media
+      if media.alt contains '#Color_' or media.alt contains '#Colour_'
+        assign intro_display_media = media
+        break
+      endif
+    endfor
+  endif
   assign starter_display_media = starter_img_product.featured_media
-  for media in starter_img_product.media
-    if media.alt contains '#Color_'
-      assign starter_display_media = media
-      break
-    endif
-  endfor
+  if starter_img_product.featured_media.alt contains '(shopping feed image)'
+    for media in starter_img_product.media
+      if media.alt contains '#Color_' or media.alt contains '#Colour_'
+        assign starter_display_media = media
+        break
+      endif
+    endfor
+  endif
 -%}
 
 <section class="pack-intro" style="--pack-intro-bg: {{ section.settings.background }};" {{ section.shopify_attributes }}>
