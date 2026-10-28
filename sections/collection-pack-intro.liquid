@@ -62,6 +62,23 @@ If a figure cannot be read (no matching product), that price is simply left out.
   assign intro_price = intro_min | money
   assign starter_price = starter_min | money
   assign player_price = player.price_min | money
+
+  # DISPLAY MEDIA: prefer the colour-tagged on-site photo over featured_media, since the featured/position-1 image
+  # may be a plain white-background photo kept for the shopping feed (see product-card-pack.liquid for the same logic).
+  assign intro_display_media = intro_img_product.featured_media
+  for media in intro_img_product.media
+    if media.alt contains '#Color_'
+      assign intro_display_media = media
+      break
+    endif
+  endfor
+  assign starter_display_media = starter_img_product.featured_media
+  for media in starter_img_product.media
+    if media.alt contains '#Color_'
+      assign starter_display_media = media
+      break
+    endif
+  endfor
 -%}
 
 <section class="pack-intro" style="--pack-intro-bg: {{ section.settings.background }};" {{ section.shopify_attributes }}>
@@ -83,8 +100,8 @@ If a figure cannot be read (no matching product), that price is simply left out.
     <div class="pack-intro__explainer">
       <div class="pack-intro__tiles">
         <a href="#product-grid" class="pack-intro__tile" data-pack-scroll="intro" aria-label="{{ 'collection.pack_intro.scroll_to' | t: title: section.settings.intro_title | escape }}">
-          {%- if intro_img_product.featured_media -%}
-            <div class="pack-intro__tile-media">{{- intro_img_product.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
+          {%- if intro_display_media -%}
+            <div class="pack-intro__tile-media">{{- intro_display_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
           {%- endif -%}
           <div class="pack-intro__tile-text">
           <p class="pack-intro__tile-title">{{ section.settings.intro_title | escape }}</p>
@@ -97,8 +114,8 @@ If a figure cannot be read (no matching product), that price is simply left out.
           </div>
         </a>
         <a href="#product-grid" class="pack-intro__tile" data-pack-scroll="starter" aria-label="{{ 'collection.pack_intro.scroll_to' | t: title: section.settings.starter_title | escape }}">
-          {%- if starter_img_product.featured_media -%}
-            <div class="pack-intro__tile-media">{{- starter_img_product.featured_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
+          {%- if starter_display_media -%}
+            <div class="pack-intro__tile-media">{{- starter_display_media | image_url: width: 240 | image_tag: loading: 'eager', sizes: '88px', widths: '88,176,240', alt: '' -}}</div>
           {%- endif -%}
           <div class="pack-intro__tile-text">
           <p class="pack-intro__tile-title">{{ section.settings.starter_title | escape }}</p>

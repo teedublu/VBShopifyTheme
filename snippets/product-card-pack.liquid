@@ -106,12 +106,23 @@ Data used (all optional, the line is simply left out if missing):
   if card_index > 0 and card_index <= 4
     assign image_loading = 'eager'
   endif
+
+  # DISPLAY MEDIA: prefer the colour-tagged on-site photo over product.featured_media. Some packs keep a plain
+  # white-background image as the featured/position-1 photo for the shopping feed, with the real on-site photo
+  # (transparent background) tagged #Color_X further down the media list - use that one here when it exists.
+  assign display_media = product.featured_media
+  for media in product.media
+    if media.alt contains '#Color_'
+      assign display_media = media
+      break
+    endif
+  endfor
 -%}
 
 <product-card handle="{{ product.handle | escape }}" class="pack-card" data-pack-kind="{{ pack_kind }}">
   <div class="pack-card__media">
-    {%- if product.featured_media -%}
-      {{- product.featured_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
+    {%- if display_media -%}
+      {{- display_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
     {%- endif -%}
 
     {%- if save_pct > 0 -%}
