@@ -1307,6 +1307,14 @@ html.vb-has-player .cart-player-prompt { display: none; }
 /* Buttons, and the "applied automatically" line on the audiobook card. */
 .bf-code { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .bf-offer__auto { margin: 0; font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--bf-text); }
+/* Before it opens: nudge to start a list with the saved-books heart, with a live count. */
+.bf-offer__save-title { margin: 0; font-size: 18px; line-height: 1.3; font-weight: 800; color: var(--bf-text); }
+.bf-offer__saved { display: inline-flex; align-self: flex-start; align-items: center; gap: 6px; margin: 0; padding: 6px 12px; border-radius: 999px; border: 1px dashed var(--bf-accent); font-size: 13px; font-weight: 700; color: var(--bf-soft); }
+.bf-offer__saved svg { color: var(--bf-accent); opacity: 0.45; }
+.bf-offer__saved--some { border-style: solid; color: var(--bf-text); }
+.bf-offer__saved--some svg { opacity: 1; }
+.bf-offer__saved-link { align-self: center; font-size: 14px; font-weight: 700; color: var(--bf-text); }
+.bf-offer__saved-link[hidden] { display: none; }
 .bf-button:focus-visible { outline: 2px solid var(--bf-text); outline-offset: 3px; }
 .bf-button { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 26px; border-radius: 999px;
   background: var(--bf-accent); color: var(--bf-accent-ink); font-size: 16px; font-weight: 800; text-decoration: none; text-align: center; transition: transform 0.15s ease, box-shadow 0.15s ease; }

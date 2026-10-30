@@ -14,11 +14,13 @@ Phase, from the section's start and end settings (UK time, e.g. 2026-11-27T00:01
 - signed_out: a locked "customer exclusive" card (no book discount shown) with a sign-in button that returns here, then
   the player offer; before the start the player card also holds an email sign-up (Shopify customer form, tags below)
 - not_eligible: signed in with no orders → the same locked card, without the sign-in button
-- before: "Opens in" timer, the book tiers, "comes off automatically from [start] while you're signed in"
+- before: "Opens in" timer, the book tiers, and a nudge to start a list with the saved-books heart (count of saved
+  books, link to the list) so it's ready when it opens
 - during: "Live now · ends in" timer, tiers with the basket's tier lit, how many more reach the next tier, shop button
 - ended: after the end time → refer a friend link
 Colour follows the clock (bf--t-before / bf--t-during): orange panel before the start, black and cyan while live.
-Card order (owner, 30 Oct): customers first, then everyone (prospects).
+Card order (owner, 30 Oct): customers first, then everyone (prospects). Signed in, the cards are "Offer 1 · Stock up on
+books" and "Offer 2 · Add a player"; signed out, "existing customers" and "everyone".
 Player offer: the public player discount (50% off, for everyone) shown in every phase but ended, priced live from the
 "Player" product (lowest variant price less "Player % off"). Display only: the discount is set up in Shopify. More than
 "Reveal the player offer" days before the start, its percentage and price are blurred (bf-offer--veiled).
@@ -158,6 +160,10 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
   if phase == 'signed_out' and tphase == 'before' and s.show_signup
     assign signup = true
   endif
+  assign signed_in = true
+  if phase == 'signed_out'
+    assign signed_in = false
+  endif
 
   assign timer_phase = ''
   if phase == 'before' or phase == 'during'
@@ -239,7 +245,7 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
           {%- render 'black-friday-locked', cfg: s, uid: uid, mode: phase, sign_in_url: sign_in_url -%}
           {%- else -%}
           <article class="bf-offer bf-offer--books" aria-labelledby="bf-books-{{ uid }}">
-            <p class="bf-offer__tag">Offer 1 · for you</p>
+            <p class="bf-offer__tag">Offer 1 · {{ s.books_tag | escape }}</p>
             <p class="bf-offer__big"><span class="bf-offer__upto">up to</span>{{ s.tier3_pct }}%<span class="bf-offer__off">off</span></p>
             <h2 class="bf-offer__name" id="bf-books-{{ uid }}">Audiobooks</h2>
             <div class="bf-offer__visual">
@@ -275,16 +281,20 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
                 </p>
                 <p class="bf-offer__auto">{{ s.auto_text | escape }}</p>
                 <a class="bf-button" href="{{ shop_url }}" data-vs-track="bf_shop">{{ s.shop_text | escape }}</a>
+                <a class="bf-offer__saved-link" href="{{ s.saved_url }}" data-bf-saved-link hidden data-vs-track="bf_saved">{{ s.saved_link_text | escape }} (<span data-bf-saved-count>0</span>)</a>
               {%- else -%}
-                <p class="bf-offer__auto">{{ s.auto_before_text | replace: '[start]', start_day | escape }}</p>
-                <span class="bf-offer__soon">Opens {{ s.start_at | date: '%A' }}</span>
+                <p class="bf-offer__save-title">{{ s.save_heading | escape }}</p>
+                <p class="bf-offer__auto">{{ s.save_text | replace: '[start]', start_day | escape }}</p>
+                <p class="bf-offer__saved" data-bf-saved><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.1C1 8.7 2.8 5 6.3 5c2.1 0 3.4 1.1 4.2 2.3h3c.8-1.2 2.1-2.3 4.2-2.3 3.5 0 5.3 3.7 3.9 6.9C19.5 16.4 12 21 12 21z"/></svg><span data-bf-saved-text>{{ s.saved_none_text | escape }}</span></p>
+                <a class="bf-button" href="{{ shop_url }}" data-vs-track="bf_start_saving">{{ s.save_button | escape }}</a>
+                <a class="bf-offer__saved-link" href="{{ s.saved_url }}" data-bf-saved-link hidden data-vs-track="bf_saved">{{ s.saved_link_text | escape }} (<span data-bf-saved-count>0</span>)</a>
               {%- endif -%}
             </div>
           </article>
           {%- endif -%}
 
           {%- if show_player -%}
-            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid, veiled: veiled, reveal_label: reveal_label, signup: signup -%}
+            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid, veiled: veiled, reveal_label: reveal_label, signup: signup, signed_in: signed_in -%}
           {%- endif -%}
         </div>
 
@@ -330,6 +340,22 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     tick();
     setInterval(tick, 1000);
 
+    // Saved books (assets/saved-books.js keeps the IDs in localStorage and fires saved-books:change): the audiobook
+    // card shows how many are saved and links to the list once there are some.
+    var savedText = {{ s.saved_some_text | json }};
+    var savedNone = {{ s.saved_none_text | json }};
+    function savedCount() {
+      try { return JSON.parse(localStorage.getItem('voxblock:saved-books') || '[]').length; } catch (e) { return 0; }
+    }
+    function showSaved() {
+      var n = savedCount();
+      document.querySelectorAll('[data-bf-saved-text]').forEach(function (el) { el.textContent = n > 0 ? savedText.replace('[count]', n).replace('[books]', n === 1 ? 'book' : 'books') : savedNone; });
+      document.querySelectorAll('[data-bf-saved]').forEach(function (el) { el.classList.toggle('bf-offer__saved--some', n > 0); });
+      document.querySelectorAll('[data-bf-saved-count]').forEach(function (el) { el.textContent = n; });
+      document.querySelectorAll('[data-bf-saved-link]').forEach(function (el) { el.hidden = n === 0; });
+    }
+    document.addEventListener('saved-books:change', showSaved);
+
     // Tests: ?before, ?before=5 (days to go), ?live, ?after. Swaps in one of the inert <template> copies.
     var root = document.querySelector('[data-bf-root]');
     var params = new URLSearchParams(window.location.search);
@@ -361,6 +387,7 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
       real.replaceWith(view);
       tick();
     }
+    showSaved();
   })();
 </script>
 
@@ -387,7 +414,15 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     { "type": "text", "id": "before_heading", "label": "Heading before it opens", "default": "2 Black Friday offers, coming soon" },
     { "type": "text", "id": "signed_out_heading", "label": "Heading signed out", "default": "Black Friday: half price player" },
     { "type": "text", "id": "signed_out_before_heading", "label": "Heading signed out, before it opens", "default": "Black Friday is coming" },
-    { "type": "text", "id": "auto_before_text", "label": "Audiobook offer, before it opens", "default": "No code needed. From [start] it comes off automatically in your basket while you're signed in." },
+    { "type": "text", "id": "books_tag", "label": "Audiobook card tag (signed in)", "default": "Stock up on books" },
+    { "type": "text", "id": "player_tag", "label": "Player card tag (signed in)", "default": "Add a player" },
+    { "type": "text", "id": "save_heading", "label": "Before it opens: heading", "default": "Start your list now" },
+    { "type": "text", "id": "save_text", "label": "Before it opens: text", "default": "Tap the heart on any audiobook to save it. From [start], buy them together and the discount comes off automatically." },
+    { "type": "text", "id": "save_button", "label": "Before it opens: button", "default": "Start saving audiobooks" },
+    { "type": "text", "id": "saved_none_text", "label": "Saved count, none yet", "default": "Nothing saved yet" },
+    { "type": "text", "id": "saved_some_text", "label": "Saved count", "default": "[count] [books] saved so far", "info": "[count] is the number, [books] is book or books." },
+    { "type": "text", "id": "saved_link_text", "label": "Link to the saved list", "default": "Your saved books" },
+    { "type": "text", "id": "saved_url", "label": "Saved list page", "default": "/pages/saved-books" },
     { "type": "text", "id": "auto_text", "label": "Audiobook offer, while live", "default": "No code needed. It comes off automatically in your basket while you're signed in." },
     { "type": "text", "id": "locked_heading", "label": "Customer card heading (signed out)", "default": "Customer exclusive" },
     { "type": "text", "id": "not_eligible_text", "label": "Customer card text (signed in, no orders yet)", "default": "For customers who have ordered from us before." },

@@ -2,10 +2,11 @@
 Black Friday: the player offer card (for everyone, prospects) in sections/black-friday-code.
 Accepts: cfg (the section's settings), player (product), player_from (discounted price in pence), phase, uid,
 veiled (true: percentage and price blurred until cfg.reveal_days before the start; the section's script toggles it for
-?before=N tests), reveal_label (the reveal date), signup (true: email sign-up in the card; signed out, before it opens).
+?before=N tests), reveal_label (the reveal date), signup (true: email sign-up in the card; signed out, before it opens),
+signed_in (true: tag reads cfg.player_tag, "Add a player", instead of "everyone").
 {%- endcomment -%}
 <article class="bf-offer bf-offer--player{% if veiled %} bf-offer--veiled{% endif %}" aria-labelledby="bf-player-{{ uid }}">
-  <p class="bf-offer__tag">Offer 2 · everyone</p>
+  <p class="bf-offer__tag">Offer 2 · {% if signed_in %}{{ cfg.player_tag | escape }}{% else %}everyone{% endif %}</p>
   <p class="bf-offer__big" data-bf-veil{% if veiled %} aria-hidden="true"{% endif %}><span class="bf-offer__upto">{% if cfg.player_pct == 50 %}half price{% else %}save{% endif %}</span>{{ cfg.player_pct }}%<span class="bf-offer__off">off</span></p>
   <h2 class="bf-offer__name" id="bf-player-{{ uid }}">The Voxblock player</h2>
   <div class="bf-offer__visual bf-offer__visual--player">
