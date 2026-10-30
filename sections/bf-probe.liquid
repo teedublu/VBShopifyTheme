@@ -1,0 +1,12 @@
+<div>probe</div>
+{% schema %}
+{
+  "name": "BF probe",
+  "settings": [
+    { "type": "number", "id": "reveal_days", "label": "Reveal the player offer (days before it opens)", "default": 2, "info": "Before this, the player's percentage and price are blurred." },
+    { "type": "header", "content": "Design review only" },
+    { "type": "paragraph", "content": "To test a phase add ?before, ?before=5 (days to go), ?live or ?after to the page URL. Works on a preview theme, in the theme editor, or for customers tagged bf-test." },
+    { "type": "text", "id": "signup_heading", "label": "Heading", "default": "New to Voxblock? Get a reminder when it opens" }
+  ]
+}
+{% endschema %}
