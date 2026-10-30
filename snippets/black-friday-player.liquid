@@ -1,20 +1,42 @@
 {%- comment -%}
-Black Friday: the player offer card (for everyone) in sections/black-friday-code.
-Accepts: cfg (the section's settings), player (product), player_from (discounted price in pence), phase, uid.
+Black Friday: the player offer card (for everyone, prospects) in sections/black-friday-code.
+Accepts: cfg (the section's settings), player (product), player_from (discounted price in pence), phase, uid,
+veiled (true: percentage and price blurred until cfg.reveal_days before the start; the section's script toggles it for
+?before=N tests), reveal_label (the reveal date), signup (true: email sign-up in the card; signed out, before it opens).
 {%- endcomment -%}
-<article class="bf-offer bf-offer--player" aria-labelledby="bf-player-{{ uid }}">
-  <p class="bf-offer__tag">Offer 1 · everyone</p>
-  <p class="bf-offer__big"><span class="bf-offer__upto">{% if cfg.player_pct == 50 %}half price{% else %}save{% endif %}</span>{{ cfg.player_pct }}%<span class="bf-offer__off">off</span></p>
+<article class="bf-offer bf-offer--player{% if veiled %} bf-offer--veiled{% endif %}" aria-labelledby="bf-player-{{ uid }}">
+  <p class="bf-offer__tag">Offer 2 · everyone</p>
+  <p class="bf-offer__big" data-bf-veil{% if veiled %} aria-hidden="true"{% endif %}><span class="bf-offer__upto">{% if cfg.player_pct == 50 %}half price{% else %}save{% endif %}</span>{{ cfg.player_pct }}%<span class="bf-offer__off">off</span></p>
   <h2 class="bf-offer__name" id="bf-player-{{ uid }}">The Voxblock player</h2>
   <div class="bf-offer__visual bf-offer__visual--player">
     {%- if player.featured_image -%}
       {{ player.featured_image | image_url: width: 480 | image_tag: class: 'bf-offer__player-img', loading: 'lazy', widths: '240, 480', sizes: '(min-width: 750px) 220px, 160px', alt: '' }}
     {%- endif -%}
-    <p class="bf-offer__price"><span class="bf-offer__now">{{ player_from | money }}</span><s class="bf-offer__was">{{ player.price_min | money }}</s></p>
+    <p class="bf-offer__price" data-bf-veil{% if veiled %} aria-hidden="true"{% endif %}><span class="bf-offer__now">{{ player_from | money }}</span><s class="bf-offer__was">{{ player.price_min | money }}</s></p>
   </div>
   <div class="bf-offer__action">
     {%- if phase == 'before' -%}
-      <span class="bf-offer__soon">Opens {{ cfg.start_at | date: '%A' }}</span>
+      <span class="bf-offer__soon bf-offer__soon--veiled">Offer revealed {{ reveal_label }}</span>
+      {%- if signup -%}
+        {%- assign form_id = 'bf-signup-' | append: uid -%}
+        {%- form 'customer', id: form_id, class: 'bf-signup' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="bf-signup__done" role="status">{{ cfg.signup_success | escape }}</p>
+          {%- else -%}
+            <p class="bf-signup__title">{{ cfg.signup_heading | escape }}</p>
+            {%- if form.errors -%}<p class="bf-signup__error" role="alert">{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}</p>{%- endif -%}
+            <input type="hidden" name="contact[tags]" value="{{ cfg.signup_tags | escape }}">
+            <div class="bf-signup__row">
+              <label class="sr-only" for="{{ form_id }}-email">Email</label>
+              <input class="bf-signup__input" id="{{ form_id }}-email" type="email" name="contact[email]" placeholder="Your email" autocomplete="email" enterkeyhint="send" required>
+              <button type="submit" class="bf-button" data-vs-track="bf_signup">{{ cfg.signup_button | escape }}</button>
+            </div>
+            <p class="bf-signup__text">{{ cfg.signup_text | escape }}</p>
+          {%- endif -%}
+        {%- endform -%}
+      {%- else -%}
+        <span class="bf-offer__soon bf-offer__soon--open">Opens {{ cfg.start_at | date: '%A' }}</span>
+      {%- endif -%}
     {%- else -%}
       <a class="bf-button" href="{{ player.url }}" data-vs-track="bf_player">Shop the player</a>
     {%- endif -%}
