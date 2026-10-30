@@ -1,6 +1,8 @@
 {%- comment -%}
-Black Friday: the locked "customer exclusive" card shown to signed-out visitors in sections/black-friday-code.
-Shows none of the book offer (blurred ladder, ??%). Accepts: cfg (the section's settings), uid (unique id).
+Black Friday: the locked "customer exclusive" card in sections/black-friday-code, for visitors who don't get the
+audiobook offer. Shows none of the book offer (blurred ladder, ??%).
+Accepts: cfg (the section's settings), uid (unique id), mode ('signed_out': sign-in button that returns to the page;
+'not_eligible': signed in with no orders, no button), sign_in_url.
 {%- endcomment -%}
 <article class="bf-offer bf-offer--locked" aria-labelledby="bf-books-{{ uid }}">
   <p class="bf-offer__tag">Offer 2 · existing customers</p>
@@ -16,7 +18,11 @@ Shows none of the book offer (blurred ladder, ??%). Accepts: cfg (the section's 
     </div>
   </div>
   <div class="bf-offer__action">
-    <p class="bf-offer__nudge">{{ cfg.locked_text | escape }}</p>
-    <a class="bf-button" href="{{ cfg.account_url | default: routes.storefront_login_url }}" data-vs-track="bf_sign_in">{{ cfg.sign_in_text | escape }}</a>
+    {%- if mode == 'not_eligible' -%}
+      <p class="bf-offer__nudge">{{ cfg.not_eligible_text | escape }}</p>
+    {%- else -%}
+      <p class="bf-offer__nudge">{{ cfg.locked_text | escape }}</p>
+      <a class="bf-button" href="{{ sign_in_url }}" data-vs-track="bf_sign_in">{{ cfg.sign_in_text | escape }}</a>
+    {%- endif -%}
   </div>
 </article>

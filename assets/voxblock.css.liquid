@@ -1214,8 +1214,8 @@ html.vb-has-player .cart-player-prompt { display: none; }
 
 /* Black Friday code (sections/black-friday-code; templates page.black-friday, page.black-friday-preview).
    Campaign look (owner, 16 Oct): before the start the panel is orange with dark ink; while live it is black with cyan
-   and a glow. Two offers get equal billing as side-by-side cards: the player (everyone) and audiobooks (personal code,
-   shown as a ladder of book stacks). Every colour is a --bf-* variable set per clock phase, so it restyles in one place. */
+   and a glow. Two offers get equal billing as side-by-side cards: the player (everyone) and audiobooks (existing
+   customers, applied automatically while signed in; shown as a ladder of book stacks). Every colour is a --bf-* variable set per clock phase, so it restyles in one place. */
 .bf { --bf-ground: #10282b; --bf-card: #17353a; --bf-text: #fff; --bf-soft: #d9e6e7; --bf-line: #2f4f53;
   --bf-accent: #ff9e57; --bf-accent-ink: #1d3f43; --bf-glow: transparent;
   padding-block: 24px 48px; color: var(--brand-text); }
@@ -1304,17 +1304,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf-ladder__step--active .bf-ladder__books i { background: var(--bf-accent-ink); }
 .bf-ladder__step--active .bf-ladder__unit { color: var(--bf-accent-ink); }
 
-/* Code and buttons. */
+/* Buttons, and the "applied automatically" line on the audiobook card. */
 .bf-code { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-.bf-code__box { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 8px 8px 8px 20px; border: 2px dashed var(--bf-accent); border-radius: 999px; }
-.bf-code__label { grid-column: 1; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bf-soft); }
-.bf-code__value { grid-column: 1; font-size: 19px; font-weight: 800; letter-spacing: 0.08em; color: var(--bf-text); overflow-wrap: anywhere; }
-.bf--t-during .bf-code__value { color: var(--bf-accent); text-shadow: 0 0 14px rgb(0 225 255 / 0.45); }
-.bf-code__copy { grid-column: 2; grid-row: 1 / span 2; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: #fff; color: #000; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
-.bf-code__box--locked { padding-right: 18px; }
-.bf-code__box--locked .bf-code__value { opacity: 0.6; }
-.bf-code__lock { grid-column: 2; grid-row: 1 / span 2; }
-.bf-code__copy:focus-visible, .bf-button:focus-visible { outline: 2px solid var(--bf-text); outline-offset: 3px; }
+.bf-offer__auto { margin: 0; font-size: 14px; line-height: 1.5; font-weight: 600; color: var(--bf-text); }
+.bf-button:focus-visible { outline: 2px solid var(--bf-text); outline-offset: 3px; }
 .bf-button { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 26px; border-radius: 999px;
   background: var(--bf-accent); color: var(--bf-accent-ink); font-size: 16px; font-weight: 800; text-decoration: none; text-align: center; transition: transform 0.15s ease, box-shadow 0.15s ease; }
 .bf--t-during .bf-button { box-shadow: 0 0 26px rgb(0 225 255 / 0.5); }
@@ -1323,7 +1316,7 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf-button--quiet, .bf-button--quiet:hover { background: #237a74; color: #fff; box-shadow: none !important; }
 .bf-code .bf-button { flex: 1 1 100%; }
 
-/* Quiet panels (no code, used, ended) keep the offer cards readable on white. */
+/* Quiet panel (ended) keep the offer cards readable on white. */
 .bf__panel--quiet .bf-offer { --bf-text: #1d3f43; --bf-soft: #4a4a4a; --bf-accent: #ff9e57; --bf-accent-ink: #1d3f43; background: #fff7f0; border-color: #f3e2d3; box-shadow: none; }
 .bf__panel--quiet .bf-offer__big { color: #1d3f43; text-shadow: none; }
 .bf__panel--quiet .bf-button:not(.bf-button--quiet) { background: #ff9e57; color: #1d3f43; box-shadow: none; }
@@ -1371,7 +1364,6 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf-testbar button { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid #1d3f43; background: #fff; color: #1d3f43; font: inherit; font-weight: 600; cursor: pointer; }
 .bf-testbar button[aria-pressed="true"] { background: #1d3f43; color: #fff; }
 .bf-testbar button:focus-visible { outline: 2px solid #b3123f; outline-offset: 2px; }
-.bf-test-note { flex-basis: 100%; margin: 0; font-size: 12px; font-weight: 600; color: #ffb3c7; }
 @media (min-width: 750px) { .bf-testbar { left: auto; right: 20px; bottom: 80px; max-width: 520px; } }
 
 /* Black Friday: locked customer card for signed-out visitors (nothing of the book offer is revealed). */
@@ -1380,6 +1372,21 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf--t-during .bf-offer__big--lock { filter: drop-shadow(0 0 16px rgb(0 225 255 / 0.6)); }
 .bf-ladder--blur { filter: blur(6px); opacity: 0.55; user-select: none; }
 .bf-offer__visual--locked { min-height: 120px; }
+
+/* Black Friday: email sign-up for signed-out visitors before it opens (Shopify customer form, tagged for the list). */
+.bf-signup { display: grid; gap: 14px; padding: 20px; border-radius: 20px; background: var(--bf-card); border: 1px solid var(--bf-line); color: var(--bf-text); }
+.bf-signup__title { margin: 0; font-size: 20px; line-height: 1.25; font-weight: 700; color: var(--bf-text); }
+.bf-signup__text { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: var(--bf-soft); }
+.bf-signup__row { display: flex; flex-direction: column; gap: 10px; }
+.bf-signup__input { width: 100%; min-height: 54px; padding: 0 22px; border-radius: 999px; border: 2px solid var(--bf-accent); background: #fff; color: #1d3f43; font: inherit; font-size: 16px; box-sizing: border-box; }
+.bf-signup__input:focus-visible { outline: 2px solid var(--bf-text); outline-offset: 3px; }
+.bf-signup__done, .bf-signup__error { margin: 0; font-size: 15px; line-height: 1.5; font-weight: 600; }
+.bf-signup__error { margin-bottom: 10px; color: #b3123f; }
+@media (min-width: 750px) {
+  .bf-signup { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: center; gap: 28px; padding: 24px 28px; }
+  .bf-signup__row { flex-direction: row; }
+  .bf-signup__row .bf-button { flex: 0 0 auto; }
+}
 
 /* ---------------------------- */
 /* PRODUCT PAGE: "from" price + opt-out picker */

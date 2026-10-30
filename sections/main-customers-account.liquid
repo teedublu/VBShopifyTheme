@@ -26,16 +26,6 @@
             <h1 class="h5">Your referral code : {{ customer.metafields.referrals.code }}</h1>
           </div>
           {% endif %}
-          {%- liquid
-            assign bf_code = customer.metafields.blackfriday.code.value | default: customer.metafields.blackfriday.code | strip
-            assign bf_now = 'now' | date: '%s' | plus: 0
-            assign bf_until = section.settings.bf_until | date: '%s' | plus: 0
-          -%}
-          {%- if bf_now <= bf_until and bf_code != blank or bf_now <= bf_until and customer.tags contains 'bf-test' -%}
-          <div class="justify-self-center" style="text-align:center">
-            <a class="series-button" href="{{ section.settings.bf_url | default: '/pages/black-friday' }}" data-vs-track="bf_account_link">Your Black Friday code: up to 25% off audiobooks</a>
-          </div>
-          {%- endif -%}
         </div>
 
         {%- paginate customer.orders by 16 -%}
@@ -127,11 +117,6 @@
   "name": "Customer account",
   "class": "shopify-section--main-customers-account",
   "tag": "section",
-  "settings": [
-    { "type": "header", "content": "Black Friday" },
-    { "type": "text", "id": "bf_until", "label": "Show the Black Friday link until", "default": "2026-11-30T23:59:00+00:00", "info": "Shown only to customers with a blackfriday.code metafield." },
-    { "type": "text", "id": "bf_url", "label": "Black Friday page", "default": "/pages/black-friday" }
-  ],
   "blocks": [
     {
       "type": "@app"

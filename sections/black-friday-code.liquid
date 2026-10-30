@@ -1,19 +1,21 @@
 {%- comment -%}
 ----------------------------------------------------------------------------------------------------------------------
-BLACK FRIDAY CODE (templates/page.black-friday.json; review sheet templates/page.black-friday-preview.json)
+BLACK FRIDAY OFFERS (templates/page.black-friday.json; review sheet templates/page.black-friday-preview.json)
 ----------------------------------------------------------------------------------------------------------------------
-A signed-in customer's personal Black Friday audiobook code, shown like the refer a friend page.
+The Black Friday page: the player offer for everyone, and a stepped audiobook discount for existing customers.
 
-Code: customer metafield blackfriday.code (single line text), one unique code per customer. The discount itself is set
-up in Shopify (customer-eligible, audiobooks only, one use, no combining, dates matching the settings below). This
-section only shows it.
+No codes (owner, 30 Oct): the audiobook discount is three automatic discounts in Shopify (one per tier, minimum
+quantity 1 / 3 / 5 on the hidden "BF 2026 individual audiobooks" collection, product type Audiobooks only, so bundles
+never count), limited to the customer segment "BF 2026 existing customers" (at least one order). It comes off in the
+basket while the customer is signed in. "Existing customer" here means the same thing: signed in with an order.
+Goals beyond sales: get existing customers to sign in, and get new visitors onto the email list.
 
 Phase, from the section's start and end settings (UK time, e.g. 2026-11-27T00:01:00+00:00):
 - signed_out: the player offer, plus a locked "customer exclusive" card (no book discount shown) with a sign-in button
-- no_code: signed in, metafield blank → contact line
-- before: "Opens in" timer (outlined teal), tiers, code masked; the page reloads when the timer reaches zero
-- during: "Live now · ends in" timer (solid orange), tiers with the cart's tier lit, the code, copy, shop button
-- used: a past order in customer.orders carries the code (discount_applications title) → saving + order link
+  that returns here; before the start, also an email sign-up for a reminder (Shopify customer form, tags below)
+- not_eligible: signed in with no orders → the same locked card, without the sign-in button
+- before: "Opens in" timer, the book tiers, "comes off automatically from [start] while you're signed in"
+- during: "Live now · ends in" timer, tiers with the basket's tier lit, how many more reach the next tier, shop button
 - ended: after the end time → refer a friend link
 Colour follows the clock (bf--t-before / bf--t-during): orange panel before the start, black and cyan while live.
 Player offer: the public player discount (50% off, for everyone) shown in every phase but ended, priced live from the
@@ -21,59 +23,27 @@ Player offer: the public player discount (50% off, for everyone) shown in every 
 Test bar ("Show the test bar", REMOVE BEFORE GO-LIVE): the page also renders hidden before / during / ended versions and
 a fixed "Black Friday test" switch shows one at a time (choice kept for the browser session). The switch appears on a
 preview (unpublished) theme, in the theme editor, or for customers tagged bf-test; never to others on the live theme.
-Test versions use the account's own code, or "Preview code" if it has none; the Live version counts down ~2.6 days.
-"Preview state" forces a phase (and "Preview code" stands in for the metafield) for design review only. Leave on
-"Live" on the real page.
+The Live version counts down ~2.6 days.
+"Preview state" forces a phase for design review only. Leave on "Live" on the real page.
 
-Cart count: audiobooks (product type "Audiobooks") in the cart at render time; the nudge says how many more reach the
-next tier. Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_copy_code, bf_shop, bf_contact,
-bf_order, bf_refer.
+Basket count: audiobooks (product type "Audiobooks"; bundles are "Audiobooks Bundle") in the cart at render time.
+Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signup, bf_shop, bf_player, bf_refer.
 {%- endcomment -%}
 
 {%- liquid
   assign s = section.settings
   assign forced = s.preview_state
 
-  assign code = ''
-  if customer
-    assign code = customer.metafields.blackfriday.code.value | default: customer.metafields.blackfriday.code | strip
-  endif
-  if forced != 'live' and forced != 'signed_out' and forced != 'no_code'
-    assign code = s.preview_code | strip
+  assign eligible = false
+  if customer and customer.orders_count > 0
+    assign eligible = true
   endif
 
   assign now_s = 'now' | date: '%s' | plus: 0
   assign start_s = s.start_at | date: '%s' | plus: 0
   assign end_s = s.end_at | date: '%s' | plus: 0
 
-  assign used_order = nil
-  assign used_saving = 0
-  if customer and code != blank
-    assign code_up = code | upcase
-    for order in customer.orders limit: 20
-      for da in order.discount_applications
-        if da.type == 'discount_code'
-          assign title_up = da.title | upcase
-          if title_up == code_up
-            assign used_order = order
-            assign used_saving = da.total_allocated_amount
-          endif
-        endif
-      endfor
-    endfor
-  endif
-
   assign first_name = customer.first_name | default: s.preview_name | default: 'Hello'
-  if forced == 'used' and used_order == nil
-    assign used_saving = 1349
-  endif
-
-  assign real_code = code
-  if code == blank
-    assign test_code = s.preview_code | strip
-  else
-    assign test_code = code
-  endif
 
   if now_s < start_s
     assign clock_phase = 'before'
@@ -87,10 +57,8 @@ bf_order, bf_refer.
     assign real_phase = forced
   elsif customer == nil
     assign real_phase = 'signed_out'
-  elsif code == blank
-    assign real_phase = 'no_code'
-  elsif used_order
-    assign real_phase = 'used'
+  elsif eligible == false
+    assign real_phase = 'not_eligible'
   else
     assign real_phase = clock_phase
   endif
@@ -120,6 +88,13 @@ bf_order, bf_refer.
   assign shop_url = s.shop_url | default: '/collections/audiobooks'
   assign start_label = s.start_at | date: '%A %-d %B, %-I:%M%P'
   assign end_label = s.end_at | date: '%A %-d %B, %-I:%M%P'
+  assign start_day = s.start_at | date: '%A %-d %B'
+  if s.account_url != blank
+    assign sign_in_url = s.account_url
+  else
+    assign return_path = request.path | url_encode
+    assign sign_in_url = '/customer_authentication/login?return_to=' | append: return_path
+  endif
 
   assign test_on = false
   if s.test_bar and forced == 'live'
@@ -128,7 +103,7 @@ bf_order, bf_refer.
   assign real_key = ''
   if real_phase == 'before' or real_phase == 'during' or real_phase == 'ended'
     assign real_key = real_phase
-  elsif real_phase == 'signed_out'
+  elsif real_phase == 'signed_out' or real_phase == 'not_eligible'
     assign real_key = clock_phase
   endif
   assign variants = 'real'
@@ -158,20 +133,20 @@ bf_order, bf_refer.
 {%- liquid
   if variant == 'real'
     assign phase = real_phase
-    assign code = real_code
     if forced == 'before' or forced == 'during'
       assign tphase = forced
-    elsif forced == 'used'
-      assign tphase = 'during'
     else
       assign tphase = clock_phase
     endif
   else
     assign phase = variant
     assign tphase = variant
-    assign code = test_code
-    if customer == nil and variant != 'ended' and forced == 'live'
-      assign phase = 'signed_out'
+    if variant != 'ended' and forced == 'live'
+      if customer == nil
+        assign phase = 'signed_out'
+      elsif eligible == false
+        assign phase = 'not_eligible'
+      endif
     endif
   endif
   assign uid = section.id | append: '-' | append: variant
@@ -179,11 +154,15 @@ bf_order, bf_refer.
   if variant == 'real'
     assign key = real_key
   endif
+  assign locked = false
+  if phase == 'signed_out' or phase == 'not_eligible'
+    assign locked = true
+  endif
 
   assign timer_phase = ''
   if phase == 'before' or phase == 'during'
     assign timer_phase = phase
-  elsif phase == 'signed_out' and tphase != 'ended'
+  elsif locked and tphase != 'ended'
     assign timer_phase = tphase
   endif
   if timer_phase == 'before'
@@ -205,19 +184,13 @@ bf_order, bf_refer.
   assign left_h = left | modulo: 86400 | divided_by: 3600
   assign left_m = left | modulo: 3600 | divided_by: 60
   assign left_x = left | modulo: 60
-
-  if code != blank
-    assign apply_url = '/discount/' | append: code | append: '?redirect=' | append: shop_url
-  else
-    assign apply_url = shop_url
-  endif
 -%}
 <section class="bf bf--{{ phase }} bf--t-{{ tphase }}" data-bf-phase="{{ phase }}" data-bf-variant="{{ variant }}" data-bf-key="{{ key }}"{% unless variant == 'real' %} hidden{% endunless %} {{ section.shopify_attributes }}>
   <div class="container">
     {%- if s.preview_label != blank and forced != 'live' -%}<p class="bf__review-label">{{ s.preview_label | escape }}</p>{%- endif -%}
     {%- liquid
       assign quiet = false
-      if phase == 'used' or phase == 'ended' or phase == 'no_code'
+      if phase == 'ended'
         assign quiet = true
       endif
       assign player = s.player_product
@@ -236,21 +209,15 @@ bf_order, bf_refer.
 
       <div class="bf__top">
         <div class="bf__intro">
-          <p class="bf__eyebrow">{% if phase == 'before' %}{{ s.eyebrow_before | escape }}{% elsif customer or forced != 'live' %}{{ s.eyebrow | replace: '[name]', first_name | escape }}{% else %}Black Friday{% endif %}</p>
+          <p class="bf__eyebrow">{% if phase == 'before' %}{{ s.eyebrow_before | escape }}{% elsif phase == 'signed_out' %}Black Friday{% else %}{{ s.eyebrow | replace: '[name]', first_name | escape }}{% endif %}</p>
           <h1 class="bf__title">
-            {%- case phase -%}
-              {%- when 'used' -%}{%- assign saving_label = used_saving | money_without_trailing_zeros -%}{{ s.used_heading | replace: '[saving]', saving_label | escape }}
-              {%- when 'ended' -%}{{ s.ended_heading | escape }}
-              {%- when 'before' -%}{{ s.before_heading | escape }}
-              {%- when 'signed_out' -%}{% if tphase == 'before' %}{{ s.signed_out_before_heading | escape }}{% else %}{{ s.signed_out_heading | escape }}{% endif %}
-              {%- else -%}{{ s.heading | escape }}
-            {%- endcase -%}
+            {%- if phase == 'ended' -%}{{ s.ended_heading | escape }}
+            {%- elsif phase == 'before' -%}{{ s.before_heading | escape }}
+            {%- elsif locked -%}{% if tphase == 'before' %}{{ s.signed_out_before_heading | escape }}{% else %}{{ s.signed_out_heading | escape }}{% endif %}
+            {%- else -%}{{ s.heading | escape }}
+            {%- endif -%}
           </h1>
-          {%- case phase -%}
-            {%- when 'no_code' -%}<p class="bf__lede">{{ s.no_code_text | escape }} <a href="{{ s.contact_url }}" data-vs-track="bf_contact">{{ s.contact_text | escape }}</a></p>
-            {%- when 'used' -%}<p class="bf__lede">{% if used_order %}Used on order {{ used_order.name }}, {{ used_order.created_at | date: '%-d %B' }}.{% else %}{{ s.used_text | escape }}{% endif %}</p>
-            {%- when 'ended' -%}<p class="bf__lede">{% if customer %}{{ s.ended_text | replace: '[end]', end_label | escape }}{% else %}Our Black Friday offers ended on {{ end_label }}. You can still earn rewards by recommending Voxblock to a friend.{% endif %}</p>
-          {%- endcase -%}
+          {%- if phase == 'ended' -%}<p class="bf__lede">{{ s.ended_text | replace: '[end]', end_label | escape }}</p>{%- endif -%}
         </div>
 
         {%- if timer_phase != blank -%}
@@ -271,13 +238,13 @@ bf_order, bf_refer.
             {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid -%}
           {%- endif -%}
 
-          {%- if phase == 'signed_out' -%}
-          {%- render 'black-friday-locked', cfg: s, uid: uid -%}
+          {%- if locked -%}
+          {%- render 'black-friday-locked', cfg: s, uid: uid, mode: phase, sign_in_url: sign_in_url -%}
           {%- else -%}
-          <article class="bf-offer bf-offer--books" aria-labelledby="bf-books-{{ section.id }}-{{ variant }}">
-            <p class="bf-offer__tag">Offer {% if show_player %}2{% else %}1{% endif %} · just for you</p>
+          <article class="bf-offer bf-offer--books" aria-labelledby="bf-books-{{ uid }}">
+            <p class="bf-offer__tag">Offer {% if show_player %}2{% else %}1{% endif %} · for you</p>
             <p class="bf-offer__big"><span class="bf-offer__upto">up to</span>{{ s.tier3_pct }}%<span class="bf-offer__off">off</span></p>
-            <h2 class="bf-offer__name" id="bf-books-{{ section.id }}-{{ variant }}">Audiobooks</h2>
+            <h2 class="bf-offer__name" id="bf-books-{{ uid }}">Audiobooks</h2>
             <div class="bf-offer__visual">
               <ol class="bf-ladder" aria-label="More audiobooks, bigger saving">
                 {%- liquid
@@ -301,43 +268,53 @@ bf_order, bf_refer.
               </ol>
             </div>
             <div class="bf-offer__action">
-              {%- case phase -%}
-                {%- when 'during' -%}
-                  <p class="bf-offer__nudge">
-                    {%- if books == 0 -%}Basket: 0 audiobooks
-                    {%- elsif books < t2 -%}{%- assign more = t2 | minus: books -%}Basket: {{ books }}. Add {{ more }} for {{ s.tier2_pct }}%
-                    {%- elsif books < t3 -%}{%- assign more = t3 | minus: books -%}Basket: {{ books }}. Add {{ more }} for {{ s.tier3_pct }}%
-                    {%- else -%}Basket: {{ books }}. Top saving
-                    {%- endif -%}
-                  </p>
-                  {%- if variant != 'real' and real_code == blank -%}<p class="bf-test-note">Test code: this account has no blackfriday.code.</p>{%- endif -%}
-                  <div class="bf-code__box">
-                    <span class="bf-code__label">Your code</span>
-                    <span class="bf-code__value">{{ code | escape }}</span>
-                    <button type="button" class="bf-code__copy" data-bf-copy="{{ code | escape }}" data-vs-track="bf_copy_code">Copy</button>
-                  </div>
-                  <a class="bf-button" href="{{ apply_url }}" data-vs-track="bf_shop">{{ s.shop_text | escape }}</a>
-                {%- when 'before' -%}
-                  <div class="bf-code__box bf-code__box--locked">
-                    <span class="bf-code__label">Your code</span>
-                    <span class="bf-code__value" aria-label="Hidden until it opens">{{ code | slice: 0, 5 }}•••••-••••</span>
-                    <svg class="bf-code__lock" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-                  </div>
-                {%- when 'used' -%}
-                  {%- if used_order -%}<a class="bf-button bf-button--quiet" href="{{ used_order.customer_url }}" data-vs-track="bf_order">View order</a>{%- else -%}<span class="bf-offer__soon">Code used</span>{%- endif -%}
-                {%- when 'no_code' -%}
-                  <a class="bf-button bf-button--quiet" href="{{ s.contact_url }}" data-vs-track="bf_contact">Contact us</a>
-              {%- endcase -%}
+              {%- if phase == 'during' -%}
+                <p class="bf-offer__nudge">
+                  {%- if books == 0 -%}Basket: 0 audiobooks
+                  {%- elsif books < t2 -%}{%- assign more = t2 | minus: books -%}Basket: {{ books }}. Add {{ more }} for {{ s.tier2_pct }}%
+                  {%- elsif books < t3 -%}{%- assign more = t3 | minus: books -%}Basket: {{ books }}. Add {{ more }} for {{ s.tier3_pct }}%
+                  {%- else -%}Basket: {{ books }}. Top saving
+                  {%- endif -%}
+                </p>
+                <p class="bf-offer__auto">{{ s.auto_text | escape }}</p>
+                <a class="bf-button" href="{{ shop_url }}" data-vs-track="bf_shop">{{ s.shop_text | escape }}</a>
+              {%- else -%}
+                <p class="bf-offer__auto">{{ s.auto_before_text | replace: '[start]', start_day | escape }}</p>
+                <span class="bf-offer__soon">Opens {{ s.start_at | date: '%A' }}</span>
+              {%- endif -%}
             </div>
           </article>
           {%- endif -%}
         </div>
 
+        {%- if phase == 'signed_out' and tphase == 'before' and s.show_signup -%}
+          {%- assign form_id = 'bf-signup-' | append: uid -%}
+          {%- form 'customer', id: form_id, class: 'bf-signup' -%}
+            {%- if form.posted_successfully? -%}
+              <p class="bf-signup__done" role="status">{{ s.signup_success | escape }}</p>
+            {%- else -%}
+              <div>
+                <h2 class="bf-signup__title">{{ s.signup_heading | escape }}</h2>
+                <p class="bf-signup__text">{{ s.signup_text | escape }}</p>
+              </div>
+              <div>
+                {%- if form.errors -%}<p class="bf-signup__error" role="alert">{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}</p>{%- endif -%}
+                <input type="hidden" name="contact[tags]" value="{{ s.signup_tags | escape }}">
+                <div class="bf-signup__row">
+                  <label class="sr-only" for="{{ form_id }}-email">Email</label>
+                  <input class="bf-signup__input" id="{{ form_id }}-email" type="email" name="contact[email]" placeholder="Your email" autocomplete="email" enterkeyhint="send" required>
+                  <button type="submit" class="bf-button" data-vs-track="bf_signup">{{ s.signup_button | escape }}</button>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endform -%}
+        {%- endif -%}
+
         <ul class="bf-chips" role="list">
-          {%- unless phase == 'signed_out' -%}
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Book code works on your account only</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Both offers in one basket</li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18l-2 12H5z"/><path d="M8 6a4 4 0 0 1 8 0"/></svg>One order</li>
+          {%- unless locked -%}
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Applied while you're signed in</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>No code needed</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18l-2 12H5z"/><path d="M8 6a4 4 0 0 1 8 0"/></svg>Both offers in one basket</li>
           {%- endunless -%}
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>{{ s.start_at | date: '%a %-d' }} – {{ s.end_at | date: '%a %-d %b' }}</li>
         </ul>
@@ -402,26 +379,18 @@ bf_order, bf_refer.
       try { saved = sessionStorage.getItem('vb-bf-test'); } catch (e) {}
       if (saved) show(saved);
     }
-    document.addEventListener('click', function (event) {
-      var button = event.target.closest('[data-bf-copy]');
-      if (!button || !navigator.clipboard) return;
-      navigator.clipboard.writeText(button.getAttribute('data-bf-copy')).then(function () {
-        button.textContent = 'Copied';
-        setTimeout(function () { button.textContent = 'Copy'; }, 2000);
-      });
-    });
   })();
 </script>
 
 {% schema %}
 {
-  "name": "Black Friday code",
+  "name": "Black Friday offers",
   "tag": "div",
   "class": "shopify-section--black-friday-code",
   "settings": [
     { "type": "header", "content": "Dates (UK time)" },
-    { "type": "text", "id": "start_at", "label": "Opens", "default": "2026-11-27T00:01:00+00:00", "info": "Must match the discount's start date in Shopify." },
-    { "type": "text", "id": "end_at", "label": "Ends", "default": "2026-11-30T23:59:00+00:00", "info": "Must match the discount's end date in Shopify." },
+    { "type": "text", "id": "start_at", "label": "Opens", "default": "2026-11-27T00:01:00+00:00", "info": "Must match the start of the three BF 2026 audiobook discounts in Shopify." },
+    { "type": "text", "id": "end_at", "label": "Ends", "default": "2026-11-30T23:59:00+00:00", "info": "Must match the end of the three BF 2026 audiobook discounts in Shopify." },
     { "type": "header", "content": "Tiers" },
     { "type": "number", "id": "tier1_min", "label": "Tier 1 from (audiobooks)", "default": 1 },
     { "type": "number", "id": "tier1_pct", "label": "Tier 1 %", "default": 15 },
@@ -436,20 +405,25 @@ bf_order, bf_refer.
     { "type": "text", "id": "before_heading", "label": "Heading before it opens", "default": "2 Black Friday offers, coming soon" },
     { "type": "text", "id": "signed_out_heading", "label": "Heading signed out", "default": "Black Friday: half price player" },
     { "type": "text", "id": "signed_out_before_heading", "label": "Heading signed out, before it opens", "default": "Black Friday is coming" },
+    { "type": "text", "id": "auto_before_text", "label": "Audiobook offer, before it opens", "default": "No code needed. From [start] it comes off automatically in your basket while you're signed in." },
+    { "type": "text", "id": "auto_text", "label": "Audiobook offer, while live", "default": "No code needed. It comes off automatically in your basket while you're signed in." },
     { "type": "text", "id": "locked_heading", "label": "Customer card heading (signed out)", "default": "Customer exclusive" },
-    { "type": "text", "id": "locked_text", "label": "Customer card text (signed out)", "default": "Existing customers only. Sign in to see your offer." },
-    { "type": "text", "id": "sign_in_text", "label": "Sign-in button", "default": "Sign in" },
-    { "type": "text", "id": "account_url", "label": "Sign-in link", "info": "Leave empty for the store's sign-in page." },
-    { "type": "text", "id": "shop_text", "label": "Shop button", "default": "Shop audiobooks, code applied" },
+    { "type": "text", "id": "locked_text", "label": "Customer card text (signed out)", "default": "Ordered from us before? Sign in to see your offer. It comes off automatically in your basket while you're signed in." },
+    { "type": "text", "id": "not_eligible_text", "label": "Customer card text (signed in, no orders yet)", "default": "This one is for customers who have ordered from us before." },
+    { "type": "text", "id": "sign_in_text", "label": "Sign-in button", "default": "Sign in to see your offer" },
+    { "type": "text", "id": "account_url", "label": "Sign-in link", "info": "Leave empty to sign in and come back to this page." },
+    { "type": "text", "id": "shop_text", "label": "Shop button", "default": "Shop audiobooks" },
     { "type": "text", "id": "shop_url", "label": "Shop link", "default": "/collections/audiobooks" },
-    { "type": "text", "id": "used_heading", "label": "Heading once used", "default": "You saved [saving] on audiobooks" },
-    { "type": "text", "id": "used_text", "label": "Text once used", "default": "Your Black Friday code has been used. Enjoy the listening." },
     { "type": "text", "id": "ended_heading", "label": "Heading after it ends", "default": "Black Friday has ended" },
-    { "type": "text", "id": "ended_text", "label": "Text after it ends", "default": "Your code expired on [end]. You can still earn rewards by recommending Voxblock to a friend." },
+    { "type": "text", "id": "ended_text", "label": "Text after it ends", "default": "Our Black Friday offers ended on [end]. You can still earn rewards by recommending Voxblock to a friend." },
     { "type": "text", "id": "refer_url", "label": "Refer a friend link", "default": "/pages/refer-a-friend" },
-    { "type": "text", "id": "no_code_text", "label": "No code found", "default": "We can't find a Black Friday code on your account." },
-    { "type": "text", "id": "contact_text", "label": "Contact link", "default": "Contact us and we'll sort it out." },
-    { "type": "text", "id": "contact_url", "label": "Contact link URL", "default": "/pages/contact-us" },
+    { "type": "header", "content": "Email sign-up (signed out, before it opens)" },
+    { "type": "checkbox", "id": "show_signup", "label": "Show the sign-up", "default": true },
+    { "type": "text", "id": "signup_heading", "label": "Heading", "default": "New to Voxblock? Get a reminder" },
+    { "type": "text", "id": "signup_text", "label": "Text", "default": "We'll email you when Black Friday opens, with the odd bit of news after. Unsubscribe any time." },
+    { "type": "text", "id": "signup_button", "label": "Button", "default": "Remind me" },
+    { "type": "text", "id": "signup_success", "label": "Thank you message", "default": "Thanks, you're on the list. We'll email you when it opens." },
+    { "type": "text", "id": "signup_tags", "label": "Customer tags", "default": "newsletter,bf-2026-signup", "info": "Added to the customer in Shopify, so the sign-ups can be found and emailed." },
     { "type": "header", "content": "Player offer (for everyone)" },
     { "type": "checkbox", "id": "show_player", "label": "Show the player offer", "default": true },
     { "type": "product", "id": "player_product", "label": "Player" },
@@ -462,16 +436,14 @@ bf_order, bf_refer.
     { "type": "select", "id": "preview_state", "label": "Preview state", "default": "live", "options": [
       { "value": "live", "label": "Live (real customer)" },
       { "value": "signed_out", "label": "Signed out" },
-      { "value": "no_code", "label": "No code" },
+      { "value": "not_eligible", "label": "Signed in, no orders yet" },
       { "value": "before", "label": "Before it opens" },
       { "value": "during", "label": "During" },
-      { "value": "used", "label": "Code used" },
       { "value": "ended", "label": "After it ends" }
     ] },
-    { "type": "text", "id": "preview_code", "label": "Preview code", "default": "BF26-SARAH-7K4Q" },
     { "type": "text", "id": "preview_name", "label": "Preview first name", "default": "Sarah" },
     { "type": "text", "id": "preview_label", "label": "Review label", "info": "Shown above the panel when a preview state is set." }
   ],
-  "presets": [{ "name": "Black Friday code" }]
+  "presets": [{ "name": "Black Friday offers" }]
 }
 {% endschema %}

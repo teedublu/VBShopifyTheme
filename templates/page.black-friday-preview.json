@@ -4,7 +4,7 @@
       "type": "black-friday-code",
       "settings": {
         "preview_state": "signed_out",
-        "preview_label": "Design review \u00b7 1. Signed out",
+        "preview_label": "Design review · 1. Signed out (before it opens: with the email sign-up)",
         "player_product": "voxblock-player"
       }
     },
@@ -12,7 +12,7 @@
       "type": "black-friday-code",
       "settings": {
         "preview_state": "before",
-        "preview_label": "Design review \u00b7 2. Before it opens (orange; counts to 27 Nov 00:01)",
+        "preview_label": "Design review · 2. Existing customer, before it opens (orange; counts to 27 Nov 00:01)",
         "player_product": "voxblock-player"
       }
     },
@@ -20,15 +20,7 @@
       "type": "black-friday-code",
       "settings": {
         "preview_state": "during",
-        "preview_label": "Design review \u00b7 3. Live (black and cyan; 2 audiobooks in the basket)",
-        "player_product": "voxblock-player"
-      }
-    },
-    "state_used": {
-      "type": "black-friday-code",
-      "settings": {
-        "preview_state": "used",
-        "preview_label": "Design review \u00b7 4. Code used",
+        "preview_label": "Design review · 3. Existing customer, live (black and cyan; 2 audiobooks in the basket)",
         "player_product": "voxblock-player"
       }
     },
@@ -36,15 +28,15 @@
       "type": "black-friday-code",
       "settings": {
         "preview_state": "ended",
-        "preview_label": "Design review \u00b7 5. After it ends",
+        "preview_label": "Design review · 4. After it ends",
         "player_product": "voxblock-player"
       }
     },
-    "state_no_code": {
+    "state_not_eligible": {
       "type": "black-friday-code",
       "settings": {
-        "preview_state": "no_code",
-        "preview_label": "Design review \u00b7 6. Signed in, no code on the account",
+        "preview_state": "not_eligible",
+        "preview_label": "Design review · 5. Signed in, no orders yet",
         "player_product": "voxblock-player"
       }
     }
@@ -53,8 +45,7 @@
     "state_signed_out",
     "state_before",
     "state_during",
-    "state_used",
     "state_ended",
-    "state_no_code"
+    "state_not_eligible"
   ]
 }
