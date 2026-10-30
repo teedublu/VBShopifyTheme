@@ -1,0 +1,126 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+ADULT WAITLIST ("Big news for adult listeners", templates/page.audiobook-player-elderly.json)
+----------------------------------------------------------------------------------------------------------------------
+Badge, H2 and text, then two cards: buy the player now (same live price and product form as section player-offer),
+or leave an email to hear first.
+
+* "Teaser only" (on by default): the whole section starts hidden (class "teaser-only") and shows when the page's
+  teaser flag is on for the visitor (sections/player-offer.liquid, setting "Teaser flag"; preview with ?teaser=1).
+* Sign-up: Klaviyo client subscriptions API, like snippets/school-signup.liquid, handled in assets/voxblock.js
+  (`[data-waitlist]`). Profile properties: source, interest and buying_for (when a "Who's it for?" answer is picked).
+  PostHog `myo_waitlist_signup` { page, buying_for, flag_variant }. With no Klaviyo list ID the sign-up card is not
+  shown and the buy card spans the row.
+{%- endcomment -%}
+
+{%- liquid
+  assign product = section.settings.product
+  assign variant = blank
+  if product != blank
+    assign wanted = section.settings.variant_title | strip | downcase
+    for v in product.variants
+      assign v_title = v.title | downcase
+      if v_title == wanted
+        assign variant = v
+        break
+      endif
+    endfor
+    if variant == blank
+      assign variant = product.selected_or_first_available_variant
+    endif
+  endif
+  assign list_id = section.settings.list_id | strip
+  assign input_id = 'waitlist-email-' | append: section.id
+-%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<div class="adult-waitlist{% if section.settings.teaser_only %} teaser-only{% endif %}" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
+  <div {% render 'section-properties' %}>
+    <div class="section-stack">
+      <div class="adult-waitlist__head">
+        {%- if section.settings.badge != blank -%}<p class="adult-waitlist__badge">{{ section.settings.badge | escape }}</p>{%- endif -%}
+        <h2 class="h2">{{ section.settings.heading | escape }}</h2>
+        {%- if section.settings.text != blank -%}<div class="prose">{{ section.settings.text }}</div>{%- endif -%}
+      </div>
+
+      <div class="adult-waitlist__cards{% if list_id == blank %} adult-waitlist__cards--single{% endif %}">
+        <div class="adult-waitlist__card">
+          <h3 class="h5">{{ section.settings.buy_title | escape }}</h3>
+          {%- if section.settings.buy_text != blank -%}<p>{{ section.settings.buy_text | escape }}</p>{%- endif -%}
+          {%- if variant != blank -%}
+            <p class="adult-waitlist__price">{{ variant.price | money }}</p>
+            {%- if variant.available -%}
+              {%- form 'product', product, is: 'product-form' -%}
+                <input type="hidden" name="id" value="{{ variant.id }}">
+                <button type="submit" class="button button--lg" data-player-offer-button>{{ section.settings.buy_button_text | escape }}</button>
+              {%- endform -%}
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+
+        {%- if list_id != blank -%}
+          <form class="adult-waitlist__card adult-waitlist__form" novalidate data-waitlist data-list-id="{{ list_id | escape }}" data-company-id="TKFEPz" data-source="{{ section.settings.source | escape }}" data-interest="{{ section.settings.interest | escape }}">
+            <h3 class="h5">{{ section.settings.form_title | escape }}</h3>
+            {%- if section.settings.form_text != blank -%}<p>{{ section.settings.form_text | escape }}</p>{%- endif -%}
+            <div class="adult-waitlist__fields">
+              <label for="{{ input_id }}" class="adult-waitlist__label">{{ section.settings.email_label | escape }}</label>
+              <input id="{{ input_id }}" class="input" type="email" name="email" autocomplete="email" inputmode="email" required>
+              <fieldset class="adult-waitlist__who">
+                <legend class="adult-waitlist__label">{{ section.settings.who_label | escape }}</legend>
+                <label><input type="radio" name="buying_for" value="me"> {{ section.settings.who_me | escape }}</label>
+                <label><input type="radio" name="buying_for" value="someone-else"> {{ section.settings.who_other | escape }}</label>
+              </fieldset>
+              <button type="submit" class="button button--lg">{{ section.settings.form_button_text | escape }}</button>
+            </div>
+            <p class="adult-waitlist__status" role="status" aria-live="polite" hidden
+              data-thanks="{{ section.settings.thanks | escape }}"
+              data-error="{{ 'collection.school_signup.error' | t | escape }}"
+              data-invalid="{{ 'collection.school_signup.invalid' | t | escape }}"></p>
+            {%- if section.settings.small_print != blank -%}<div class="adult-waitlist__small">{{ section.settings.small_print }}</div>{%- endif -%}
+          </form>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Adult waitlist",
+  "class": "shopify-section--adult-waitlist",
+  "tag": "section",
+  "settings": [
+    { "type": "checkbox", "id": "teaser_only", "label": "Show only with the teaser", "default": true, "info": "Hidden until the page's teaser flag (set on the Player offer section) is on for the visitor." },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID", "default": "big-news" },
+    { "type": "text", "id": "badge", "label": "Badge", "default": "Coming soon" },
+    { "type": "text", "id": "heading", "label": "Heading (H2)", "default": "Big news for adult listeners" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "header", "content": "Buy card" },
+    { "type": "text", "id": "buy_title", "label": "Heading", "default": "Start listening now" },
+    { "type": "text", "id": "buy_text", "label": "Text" },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "variant_title", "label": "Variant title", "default": "No bumper" },
+    { "type": "text", "id": "buy_button_text", "label": "Button text", "default": "Add player to basket" },
+    { "type": "header", "content": "Sign-up card" },
+    { "type": "text", "id": "list_id", "label": "Klaviyo list ID", "info": "The card shows only when this is set." },
+    { "type": "text", "id": "source", "label": "Source", "default": "elderly-page", "info": "Klaviyo custom source and profile property." },
+    { "type": "text", "id": "interest", "label": "Interest", "info": "Klaviyo profile property.", "default": "myo-adult" },
+    { "type": "text", "id": "form_title", "label": "Heading", "default": "Not ready yet? Hear first" },
+    { "type": "text", "id": "form_text", "label": "Text" },
+    { "type": "text", "id": "email_label", "label": "Email label", "default": "Email address" },
+    { "type": "text", "id": "who_label", "label": "Question", "default": "Who's it for? (optional)" },
+    { "type": "text", "id": "who_me", "label": "First answer", "default": "Me" },
+    { "type": "text", "id": "who_other", "label": "Second answer", "default": "A parent or grandparent" },
+    { "type": "text", "id": "form_button_text", "label": "Button text", "default": "Tell me first" },
+    { "type": "text", "id": "thanks", "label": "Thank-you message", "default": "Thanks. We'll email you as soon as the new titles are ready." },
+    { "type": "richtext", "id": "small_print", "label": "Small print" },
+    { "type": "header", "content": "Colours" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    { "type": "color", "id": "background", "label": "Background" },
+    { "type": "color_background", "id": "background_gradient", "label": "Background gradient" },
+    { "type": "color", "id": "text_color", "label": "Text" }
+  ],
+  "presets": [ { "name": "Adult waitlist" } ]
+}
+{% endschema %}

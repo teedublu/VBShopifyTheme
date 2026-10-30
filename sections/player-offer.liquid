@@ -1,0 +1,148 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PLAYER OFFER (templates/page.audiobook-player-elderly.json)
+----------------------------------------------------------------------------------------------------------------------
+Hero with its own buy button for one player variant: eyebrow, H1, short text, the variant's price (read live, never
+typed), "Add player to basket" (the theme's product form, so the cart drawer opens as everywhere else), a second
+link, a trust line, an optional teaser pill and a photo.
+
+* Variant: the product's variant whose title matches "Variant title" (default "No bumper"), else its first available
+  variant. The same variant is used by the "band" layout and the mobile sticky bar.
+* Layout "band": the same buy button as a closing band (heading, price line, button), no photo.
+* Sticky bar (phones only): appears once this section's button scrolls out of view, hides again when any other
+  [data-player-offer-button] is on screen (assets/voxblock.js).
+* Teaser pill: rendered with class "teaser-only", hidden until the PostHog flag named in "Teaser flag" is on for the
+  visitor (or ?teaser=1). Clicks send PostHog `teaser_pill_clicked` { page, flag_variant }.
+* No Product JSON-LD or microdata: this section is used on content pages that must stay out of the Merchant Center
+  crawl.
+{%- endcomment -%}
+
+{%- liquid
+  assign product = section.settings.product
+  assign variant = blank
+  if product != blank
+    assign wanted = section.settings.variant_title | strip | downcase
+    for v in product.variants
+      assign v_title = v.title | downcase
+      if v_title == wanted
+        assign variant = v
+        break
+      endif
+    endfor
+    if variant == blank
+      assign variant = product.selected_or_first_available_variant
+    endif
+  endif
+  assign layout = section.settings.layout
+-%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<div class="player-offer player-offer--{{ layout }}" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %} {% if section.settings.teaser_flag != blank %}data-teaser-flag="{{ section.settings.teaser_flag | escape }}"{% endif %}>
+  <div {% render 'section-properties' %}>
+    <div class="player-offer__inner">
+      <div class="player-offer__text">
+        {%- if section.settings.eyebrow != blank -%}<p class="subheading player-offer__eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+
+        {%- if layout == 'hero' -%}
+          <h1 class="h2 player-offer__heading">{{ section.settings.heading | escape }}</h1>
+        {%- else -%}
+          <h2 class="h2 player-offer__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}<div class="prose player-offer__body">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if variant != blank -%}
+          <p class="player-offer__price">
+            <span class="player-offer__amount">{{ variant.price | money }}</span>
+            {%- if section.settings.price_note != blank -%}<span class="player-offer__note">{{ section.settings.price_note | escape }}</span>{%- endif -%}
+          </p>
+
+          <div class="player-offer__actions">
+            {%- if variant.available -%}
+              {%- form 'product', product, is: 'product-form', class: 'player-offer__form' -%}
+                <input type="hidden" name="id" value="{{ variant.id }}">
+                <button type="submit" class="button button--lg player-offer__button" data-player-offer-button>{{ section.settings.button_text | escape }}</button>
+              {%- endform -%}
+            {%- else -%}
+              <button type="button" class="button button--lg player-offer__button" disabled>{{ 'product.general.sold_out_button' | t }}</button>
+            {%- endif -%}
+            {%- if section.settings.link_text != blank -%}
+              <a class="button button--lg button--outline player-offer__link" href="{{ section.settings.link_url | default: '#' }}">{{ section.settings.link_text | escape }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.trust_text != blank -%}<p class="player-offer__trust">{{ section.settings.trust_text | escape }}</p>{%- endif -%}
+
+        {%- if section.settings.teaser_text != blank -%}
+          <a class="player-offer__teaser teaser-only" href="{{ section.settings.teaser_url | default: '#' }}" data-teaser-pill>
+            {%- if section.settings.teaser_badge != blank -%}<span class="player-offer__teaser-badge">{{ section.settings.teaser_badge | escape }}</span>{%- endif -%}
+            <span class="player-offer__teaser-text">{{ section.settings.teaser_text | escape }}</span>
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if layout == 'hero' and section.settings.image != blank -%}
+        <div class="player-offer__media">
+          {%- assign image_alt = section.settings.image_alt | default: section.settings.image.alt -%}
+          {{- section.settings.image | image_url: width: 1400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '(max-width: 999px) 100vw, 50vw', widths: '400,600,800,1000,1200,1400', alt: image_alt, class: 'player-offer__image rounded' -}}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if layout == 'hero' and section.settings.show_sticky_bar and variant != blank and variant.available -%}
+    <div class="player-offer-sticky" data-player-offer-sticky hidden>
+      <p class="player-offer-sticky__label">
+        <span>{{ section.settings.sticky_label | escape }}</span>
+        <strong>{{ variant.price | money }}</strong>
+      </p>
+      {%- form 'product', product, is: 'product-form', class: 'player-offer-sticky__form' -%}
+        <input type="hidden" name="id" value="{{ variant.id }}">
+        <button type="submit" class="button player-offer-sticky__button">{{ section.settings.sticky_button_text | escape }}</button>
+      {%- endform -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Player offer",
+  "class": "shopify-section--player-offer",
+  "tag": "section",
+  "settings": [
+    { "type": "select", "id": "layout", "label": "Layout", "options": [ { "value": "hero", "label": "Hero (H1, photo, sticky bar)" }, { "value": "band", "label": "Band (H2, no photo)" } ], "default": "hero" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "An audiobook player that's simple to use", "info": "H1 in the hero layout, H2 in the band layout." },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "header", "content": "Buy button" },
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "variant_title", "label": "Variant title", "default": "No bumper", "info": "The button adds this variant and shows its price, read live. Falls back to the first available variant." },
+    { "type": "text", "id": "price_note", "label": "Text after the price" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Add player to basket" },
+    { "type": "text", "id": "link_text", "label": "Second button text" },
+    { "type": "url", "id": "link_url", "label": "Second button link", "info": "An anchor on the page works, e.g. #books." },
+    { "type": "text", "id": "trust_text", "label": "Trust line" },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID" },
+    { "type": "header", "content": "Photo (hero layout)" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "info": "Leave empty to use the alt text from Files." },
+    { "type": "header", "content": "Teaser pill" },
+    { "type": "text", "id": "teaser_badge", "label": "Badge" },
+    { "type": "text", "id": "teaser_text", "label": "Text", "info": "Leave empty for no pill." },
+    { "type": "url", "id": "teaser_url", "label": "Link" },
+    { "type": "text", "id": "teaser_flag", "label": "Teaser flag", "info": "PostHog feature flag key. Everything marked \"teaser only\" on the page shows only when this flag is on for the visitor. Preview with ?teaser=1." },
+    { "type": "header", "content": "Sticky bar (phones, hero layout)" },
+    { "type": "checkbox", "id": "show_sticky_bar", "label": "Show sticky add-to-basket bar", "default": true },
+    { "type": "text", "id": "sticky_label", "label": "Label", "default": "Voxblock player" },
+    { "type": "text", "id": "sticky_button_text", "label": "Button text", "default": "Add to basket" },
+    { "type": "header", "content": "Colours" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    { "type": "color", "id": "background", "label": "Background" },
+    { "type": "color_background", "id": "background_gradient", "label": "Background gradient" },
+    { "type": "color", "id": "text_color", "label": "Text" }
+  ],
+  "presets": [ { "name": "Player offer" } ]
+}
+{% endschema %}
