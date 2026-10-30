@@ -1,0 +1,200 @@
+/*
+ * ------------------------------------------------------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "help-hero",
+      "settings": {
+        "heading": "How can we help?",
+        "show_saga": true,
+        "intro": "<p>Setting up and using your player, quick fixes, delivery and our guarantee. Most answers take under a minute.</p>",
+        "button_text": "Track my order",
+        "button_url": "/account"
+      }
+    },
+    "topics": {
+      "type": "help-cards",
+      "settings": {
+        "heading": "",
+        "layout": "tiles"
+      },
+      "blocks": {
+        "card_01": {
+          "type": "card",
+          "settings": {
+            "icon": "player",
+            "title": "Using your player",
+            "text": "Buttons, bedtime and travel mode, headphones and the quick start guide.",
+            "link": "/pages/player-guide"
+          }
+        },
+        "card_02": {
+          "type": "card",
+          "settings": {
+            "icon": "lights",
+            "title": "Quick fixes",
+            "text": "A light you don’t recognise, no sound, or a book that won’t play.",
+            "link": "/pages/quick-fixes"
+          }
+        },
+        "card_03": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Charging",
+            "text": "How to charge, how long it lasts, and the battery light.",
+            "link": "/pages/player-guide#charging"
+          }
+        },
+        "card_04": {
+          "type": "card",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivery and orders",
+            "text": "Free UK delivery over £25, dispatch times and Australia.",
+            "link": "/pages/delivery-and-returns#delivery"
+          }
+        },
+        "card_05": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "Guarantee and repairs",
+            "text": "100-day Happiness Guarantee, 2-year guarantee and repairs for life.",
+            "link": "/pages/delivery-and-returns"
+          }
+        },
+        "card_06": {
+          "type": "card",
+          "settings": {
+            "icon": "chat",
+            "title": "Contact us",
+            "text": "Weekdays 9am to 5pm, usually within the hour.",
+            "link": "/pages/contact-us"
+          }
+        }
+      },
+      "block_order": [
+        "card_01",
+        "card_02",
+        "card_03",
+        "card_04",
+        "card_05",
+        "card_06"
+      ]
+    },
+    "most_asked": {
+      "type": "faq",
+      "settings": {
+        "title": "Most asked",
+        "content": "",
+        "support_hours": "",
+        "answer_time": "",
+        "include_jsonld": false,
+        "full_width": true,
+        "text_position": "start",
+        "button_text": "All FAQs",
+        "button_url": "/pages/voxblock-faq"
+      },
+      "blocks": {
+        "item_01": {
+          "type": "item",
+          "settings": {
+            "title": "The play button is pink, or the player looks dead",
+            "content": "<p>That’s usually travel mode, which locks the buttons. Hold − and + together for a second until you hear a tone and the play button turns blue. <a href=\"/pages/quick-fixes#light-pink\">More about the lights</a></p>"
+          }
+        },
+        "item_02": {
+          "type": "item",
+          "settings": {
+            "title": "How do I charge my player?",
+            "content": "<p>Use the USB-C cable that came with it and a USB wall plug, like a phone charger. The battery light flashes green while it charges. A full charge gives up to 16 hours of listening. <a href=\"/pages/player-guide#charging\">Charging</a></p>"
+          }
+        },
+        "item_03": {
+          "type": "item",
+          "settings": {
+            "title": "When will my order arrive?",
+            "content": "<p>We dispatch orders the next working day. Standard UK delivery takes 2 to 3 working days from dispatch, and premium 1 to 2. <a href=\"/pages/delivery-and-returns#delivery\">Delivery</a></p>"
+          }
+        },
+        "item_04": {
+          "type": "item",
+          "settings": {
+            "title": "Can I return my player?",
+            "content": "<p>Yes. Players and starter packs bought from our website have a 100-day Happiness Guarantee: send it back in its original packaging for a full refund, and we’ll email you a prepaid label. <a href=\"/pages/delivery-and-returns#happiness-guarantee\">Our guarantee</a></p>"
+          }
+        },
+        "item_05": {
+          "type": "item",
+          "settings": {
+            "title": "My player has stopped working",
+            "content": "<p>Try the <a href=\"/pages/quick-fixes\">quick fixes</a> first: most things are a button press. If it still isn’t right, tell us. Within 2 years we repair or replace it and pay the postage both ways, and we repair players for life after that.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_01",
+        "item_02",
+        "item_03",
+        "item_04",
+        "item_05"
+      ]
+    },
+    "rewards": {
+      "type": "help-cards",
+      "settings": {
+        "heading": "Rewards",
+        "layout": "links",
+        "tinted": true
+      },
+      "blocks": {
+        "card_01": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "Book Tokens",
+            "text": "Collect the tokens that come with audiobooks from our website. Ten tokens on the collection card get a free audiobook.",
+            "link": "/pages/voxblock-tokens-collect-for-free-audiobooks"
+          }
+        },
+        "card_02": {
+          "type": "card",
+          "settings": {
+            "icon": "gift",
+            "title": "Refer a friend",
+            "text": "Share your link and earn Golden Tokens when friends buy. Separate from Book Tokens.",
+            "link": "/pages/refer-a-friend"
+          }
+        }
+      },
+      "block_order": [
+        "card_01",
+        "card_02"
+      ]
+    },
+    "contact": {
+      "type": "help-contact",
+      "settings": {
+        "heading": "Can’t find what you need?",
+        "button_text": "Contact us",
+        "button_url": "/pages/contact-us",
+        "text": "<p>Tell us about it. Monday to Friday, 9am to 5pm, we usually reply within the hour.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "topics",
+    "most_asked",
+    "rewards",
+    "contact"
+  ]
+}

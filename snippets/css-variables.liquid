@@ -162,8 +162,6 @@ note that this may have impact on different places.
     {%- assign badge_just_brightness = settings.badge_just | color_brightness -%}
     {%- assign badge_book_brightness = settings.badge_book | color_brightness -%}
     {%- assign badge_black_brightness = settings.badge_black | color_brightness -%}
-    {%- assign badge_offer_brightness = settings.badge_offer | color_brightness -%}
-    {%- assign badge_offer_sale_brightness = settings.badge_offer_sale | color_brightness -%}
     {%- assign badge_bundle_brightness = settings.badge_bundle | color_brightness -%}
 
     --accent: {{ settings.primary_button_background.rgb }};
@@ -185,12 +183,6 @@ note that this may have impact on different places.
     --badge-black: {{ settings.badge_black }};
     --badge-black-rgb: {{ settings.badge_black.rgb }};
     --badge-black-text: {% if badge_black_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
-    --badge-offer: {{ settings.badge_offer }};
-    --badge-offer-rgb: {{ settings.badge_offer.rgb }};
-    --badge-offer-text: {% if badge_offer_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
-    --badge-offer-sale: {{ settings.badge_offer_sale }};
-    --badge-offer-sale-rgb: {{ settings.badge_offer_sale.rgb }};
-    --badge-offer-sale-text: {% if badge_offer_sale_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};
     --badge-bundle: {{ settings.badge_bundle }};
     --badge-bundle-rgb: {{ settings.badge_bundle.rgb }};
     --badge-bundle-text: {% if badge_bundle_brightness < 150 %}255 255 255{% else %}0 0 0{% endif %};

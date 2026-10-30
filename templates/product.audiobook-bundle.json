@@ -58,12 +58,20 @@
           "settings": {
             "collapse_content": false
           }
+        },
+        "author_narrator": {
+          "type": "author_narrator",
+          "settings": {
+            "show_author": true,
+            "show_narrator": true
+          }
         }
       },
       "block_order": [
         "title",
         "price",
         "audiobook_properties_cU6Htk",
+        "author_narrator",
         "buy_buttons",
         "badges",
         "description"
@@ -267,10 +275,22 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0
       }
+    },
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "heading": "Breadcrumbs"
+      }
+    },
+    "bundle_books": {
+      "type": "bundle-books",
+      "settings": {}
     }
   },
   "order": [
+    "breadcrumbs",
     "main",
+    "bundle_books",
     "tabs_qeFVd8",
     "related_products_NbRnrP",
     "recently_viewed_products_FXQk8b",

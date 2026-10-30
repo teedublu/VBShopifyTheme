@@ -1,0 +1,62 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY WORK HANDLE (story-hero, story-books, story-home-band, faq, breadcrumbs, character-cast)
+----------------------------------------------------------------------------------------------------------------------
+Prints the handle of the audiobook entry a story page is about, else nothing. Capture its output, then read
+shop.metaobjects.audiobook[handle]. Input: entry (the page's metaobject). Other entry types print nothing.
+
+* An audiobook entry: itself.
+* A character with a `main_book`: that book.
+* A character without one (older entries such as Alex Rider, Paddington Bear, Horrid Henry): the first product in the
+  character's `collection` that is linked to an audiobook entry, else the first audiobook in a published series
+  whose `characters` list holds this character.
+{%- endcomment -%}
+{%- liquid
+  assign found = ''
+  if entry != blank
+    if entry.system.type == 'audiobook'
+      assign found = entry.system.handle
+    elsif entry.system.type != 'character'
+      # other entry types (author, series, narrator...) have no story book
+      assign found = ''
+    elsif entry.main_book.value != blank
+      assign found = entry.main_book.value.system.handle
+    else
+      for candidate in entry.collection.value.products limit: 24
+        assign candidate_work = candidate.metafields.book.audiobook.value
+        if candidate_work != blank
+          assign found = candidate_work.system.handle
+          break
+        endif
+      endfor
+
+      if found == ''
+        for series in shop.metaobjects.series.values
+          if series.system.url == blank
+            continue
+          endif
+          assign list = series.books.value
+          if list == blank
+            assign list = series.collection.value.products
+          endif
+          for candidate in list
+            assign candidate_work = candidate.metafields.book.audiobook.value
+            for person in candidate_work.characters.value
+              if person.system.handle == entry.system.handle
+                assign found = candidate_work.system.handle
+                break
+              endif
+            endfor
+            if found != ''
+              break
+            endif
+          endfor
+          if found != ''
+            break
+          endif
+        endfor
+      endif
+    endif
+  endif
+  echo found
+-%}

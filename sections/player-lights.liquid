@@ -1,0 +1,93 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PLAYER LIGHTS (templates/page.player-guide.json, #lights)
+----------------------------------------------------------------------------------------------------------------------
+What every light on the current player means, in two lists: play button and battery light. Each line links to its
+quick fix (/pages/quick-fixes#light-<id>), where the steps live, so the steps are written once.
+Same light icons as the quick fixes page (snippets/player-light-icon); they flash only under the pointer.
+{%- endcomment -%}
+
+<section class="player-lights" id="{{ section.settings.anchor | default: 'lights' | escape }}" {{ section.shopify_attributes }}>
+  <div class="container player-lights__inner">
+    <div class="player-lights__head">
+      <h2 class="h3">{{ section.settings.heading | escape }}</h2>
+      {%- if section.settings.intro != blank -%}<div class="prose">{{ section.settings.intro }}</div>{%- endif -%}
+    </div>
+
+    <div class="player-lights__groups">
+      {%- assign groups = 'play,battery' | split: ',' -%}
+      {%- for group in groups -%}
+        {%- if group == 'play' -%}{%- assign group_title = section.settings.play_title -%}{%- else -%}{%- assign group_title = section.settings.battery_title -%}{%- endif -%}
+        <div class="player-lights__group">
+          <h3 class="h5">{{ group_title | escape }}</h3>
+          <ul class="player-lights__list">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.group == group -%}
+                <li class="player-lights__item qf-host" {{ block.shopify_attributes }}>
+                  {%- render 'player-light-icon', group: group, led: block.settings.led, animation: block.settings.animation -%}
+                  <span class="player-lights__text">
+                    <strong>{{ block.settings.label | escape }}</strong>
+                    <span>{{ block.settings.meaning | escape }}</span>
+                    {%- if block.settings.link != blank -%}
+                      <a href="{{ block.settings.link }}" data-help-track="lights_{{ block.settings.label | handleize }}">{{ section.settings.link_text | escape }}</a>
+                    {%- endif -%}
+                  </span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Player lights",
+  "tag": "div",
+  "class": "shopify-section--player-lights",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor (no #)", "default": "lights" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What the lights mean" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "play_title", "label": "Play button heading", "default": "Play button" },
+    { "type": "text", "id": "battery_title", "label": "Battery light heading", "default": "Battery light (bottom right)" },
+    { "type": "text", "id": "link_text", "label": "Link text", "default": "What to do" }
+  ],
+  "blocks": [
+    {
+      "type": "light",
+      "name": "Light",
+      "settings": [
+        { "type": "select", "id": "group", "label": "Light", "default": "play", "options": [
+          { "value": "play", "label": "Play button" },
+          { "value": "battery", "label": "Battery light" }
+        ] },
+        { "type": "select", "id": "led", "label": "Colour", "default": "blue", "options": [
+          { "value": "off", "label": "Off" },
+          { "value": "blue", "label": "Blue" },
+          { "value": "blue_dim", "label": "Dim blue" },
+          { "value": "green", "label": "Green" },
+          { "value": "orange", "label": "Orange" },
+          { "value": "pink", "label": "Pink" },
+          { "value": "yellow_green", "label": "Yellow-green" },
+          { "value": "red", "label": "Red" }
+        ] },
+        { "type": "select", "id": "animation", "label": "Movement", "default": "none", "options": [
+          { "value": "none", "label": "Steady" },
+          { "value": "blink", "label": "Flashing (1 s)" },
+          { "value": "fast", "label": "Fast flashing" },
+          { "value": "pulse", "label": "Slow pulse" },
+          { "value": "flash", "label": "Quick flash" },
+          { "value": "fade", "label": "Shows, then fades to dark" }
+        ] },
+        { "type": "text", "id": "label", "label": "What you see", "default": "Blue" },
+        { "type": "text", "id": "meaning", "label": "What it means", "default": "On, and waiting for a story." },
+        { "type": "url", "id": "link", "label": "Quick fix link", "info": "/pages/quick-fixes#light-<ID>" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Player lights" }]
+}
+{% endschema %}

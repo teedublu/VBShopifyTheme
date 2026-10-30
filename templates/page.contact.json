@@ -1,29 +1,82 @@
 /*
- * ------------------------------------------------------------
+ * ------------------------------------------------------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
  *
  * This file may be updated by the Shopify admin theme editor
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
- * ------------------------------------------------------------
+ * ------------------------------------------------------------------------------------------------------------
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
+    "hero": {
+      "type": "help-hero",
       "settings": {
-        "content_width": "80ch",
-        "show_title": true
+        "heading": "Get in touch",
+        "trail_label": "Contact us",
+        "parent_url": "/pages/help",
+        "intro": "<p>Many answers are a minute away below. If yours isn’t, send us a message.</p>",
+        "show_saga": true
       }
+    },
+    "quick_answers": {
+      "type": "help-cards",
+      "settings": {
+        "heading": "Quick answers",
+        "layout": "links"
+      },
+      "blocks": {
+        "card_01": {
+          "type": "card",
+          "settings": {
+            "icon": "lights",
+            "title": "What the lights mean",
+            "text": "Pink, orange, flashing red: most are fixed with a button press.",
+            "link": "/pages/quick-fixes"
+          }
+        },
+        "card_02": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Charging",
+            "text": "How to charge and what the battery light means.",
+            "link": "/pages/player-guide#charging"
+          }
+        },
+        "card_03": {
+          "type": "card",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivery",
+            "text": "Dispatch times, UK rates and Australia.",
+            "link": "/pages/delivery-and-returns#delivery"
+          }
+        },
+        "card_04": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "Returns and repairs",
+            "text": "100-day guarantee, 2-year guarantee and repairs for life.",
+            "link": "/pages/delivery-and-returns"
+          }
+        }
+      },
+      "block_order": [
+        "card_01",
+        "card_02",
+        "card_03",
+        "card_04"
+      ]
     },
     "contact": {
       "type": "contact",
       "settings": {
         "full_width": true,
-        "subheading": "Contact Us",
-        "title": "Get in touch, we'd love to hear from you.",
-        "content": "<p>We'd love to hear your thoughts and comments, or just have a nice chat. Fill in the form below or drop us a line at hello@voxblock.co.uk</p><p>If you've got a specific question, you might find it answered on our <a href=\"https://voxblock.myshopify.com/pages/voxblock-faq\" title=\"Voxblock FAQ\">FAQ page</a>.</p><h4>Office hours</h4><p>Our office hours are Mon-Fri 9am till 5pm.</p><p>Please allow a 24hr window for response.</p>",
+        "subheading": "",
+        "title": "Send us a message",
+        "content": "<p>Fill in the form or email <a href=\"mailto:hello@voxblock.co.uk\">hello@voxblock.co.uk</a>. Monday to Friday, 9am to 5pm, we usually reply within the hour.</p><p>Writing about your player? Tell us what you can see on the play button and battery light, and what you’ve tried.</p>",
         "text_position": "center",
         "contact_form_size": "large",
         "background": "",
@@ -35,11 +88,33 @@
         "contact_text_color": "#565656",
         "button_background": "",
         "button_text_color": ""
-      }
+      },
+      "blocks": {
+        "topic": {
+          "type": "dropdown",
+          "settings": {
+            "title": "What is it about?",
+            "values": "Order or delivery, Help with my player, Return guarantee or repair, Schools, Something else"
+          }
+        },
+        "order": {
+          "type": "text",
+          "settings": {
+            "title": "Order number (if you have one)",
+            "use_long_text": false,
+            "required": false
+          }
+        }
+      },
+      "block_order": [
+        "topic",
+        "order"
+      ]
     }
   },
   "order": [
-    "main",
+    "hero",
+    "quick_answers",
     "contact"
   ]
 }

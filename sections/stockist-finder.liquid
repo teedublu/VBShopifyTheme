@@ -1,0 +1,566 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STOCKIST FINDER (templates/page.stockists.json, /pages/find-a-bookshop)
+----------------------------------------------------------------------------------------------------------------------
+Map and list of the bookshops that stock Voxblock. Shops come from the "Stockist" metaobject (Shopify admin > Content >
+Metaobjects > Stockist: name, street, town, postcode, country, latitude, longitude, website, link label, shopfront
+photo, "Show on the map"); listed in the order Shopify returns them, up to 250. "Invite pin" blocks put dashed "Your bookshop here?" markers on the map that
+link to the stockist section (#join).
+
+- The list is rendered in Liquid, so it works without JavaScript and is what search engines read.
+- The map is Leaflet 1.9.4 (cdnjs) with raster tiles from the "Map tiles" setting (default OpenStreetMap's standard tiles,
+  credited; a keyed style such as CARTO or Stadia can go in the setting later). Both load only when the section comes near the screen.
+- Search: text filters by name, street, town and postcode. A UK postcode or postcode district (EH10 4DF, EH10) is
+  looked up on postcodes.io and the list is sorted by distance. "Use my location" does the same with the browser's
+  location. Country chips come from the regions the shops use.
+Clicks send vs_yoto_click { target }: fab_row, fab_pin, fab_directions, fab_website, fab_locate, fab_postcode,
+fab_invite_pin, fab_empty_suggest.
+{%- endcomment -%}
+
+{%- liquid
+  assign invite_blocks = section.blocks | where: 'type', 'invite'
+  assign shop_count = 0
+  assign region_list = ''
+  paginate shop.metaobjects.stockist.values by 250
+    for st in shop.metaobjects.stockist.values
+      if st.show.value == false
+        continue
+      endif
+      assign shop_count = shop_count | plus: 1
+      assign region_list = region_list | append: st.country.value | append: '|'
+    endfor
+  endpaginate
+  assign regions = region_list | split: '|' | uniq
+-%}
+
+<section id="{{ section.settings.anchor | default: 'finder' | escape }}" class="stockist-finder" data-stockist-finder="{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="container">
+    <div class="stockist-finder__grid">
+
+      <div class="stockist-finder__controls">
+        <form class="stockist-finder__search" role="search" data-stockist-search>
+          <label class="stockist-finder__label" for="stockist-q-{{ section.id }}">{{ section.settings.search_label | escape }}</label>
+          <div class="stockist-finder__search-row">
+            <input id="stockist-q-{{ section.id }}" class="input" type="search" name="q" autocomplete="postal-code" placeholder="{{ section.settings.search_placeholder | escape }}" data-stockist-q>
+            <button type="button" class="stockist-finder__locate" aria-label="{{ section.settings.locate_label | escape }}" title="{{ section.settings.locate_label | escape }}" data-stockist-locate data-vs-track="fab_locate">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            </button>
+          </div>
+        </form>
+
+        {%- if regions.size > 1 -%}
+          <div class="stockist-finder__chips" role="group" aria-label="{{ section.settings.region_group_label | escape }}">
+            <button type="button" class="stockist-chip" aria-pressed="true" data-stockist-region="">{{ section.settings.all_label | escape }} <span>{{ shop_count }}</span></button>
+            {%- for region in regions -%}
+              {%- assign region_count = 0 -%}
+              {%- assign region_marker = '|' | append: region_list -%}
+              {%- assign region_count = region_marker | split: region | size | minus: 1 -%}
+              <button type="button" class="stockist-chip" aria-pressed="false" data-stockist-region="{{ region | escape }}">{{ region | escape }} <span>{{ region_count }}</span></button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <p class="stockist-finder__count" aria-live="polite" data-stockist-count
+           data-all="{{ section.settings.count_all | replace: '[count]', shop_count | escape }}"
+           data-some="{{ section.settings.count_some | escape }}"
+           data-near="{{ section.settings.count_near | escape }}"
+           data-not-found="{{ section.settings.postcode_not_found | escape }}"
+           data-total="{{ shop_count }}">{{ section.settings.count_all | replace: '[count]', shop_count | escape }}</p>
+      </div>
+
+      <div class="stockist-finder__map" data-stockist-map-wrap>
+        <div class="stockist-finder__map-canvas" data-stockist-map aria-label="{{ section.settings.map_label | escape }}" role="region"></div>
+        <div class="stockist-finder__legend" aria-hidden="true">
+          <span><span class="stockist-pin stockist-pin--legend"></span>{{ section.settings.legend_shop | escape }}</span>
+          {%- if invite_blocks.size > 0 -%}<span><span class="stockist-pin stockist-pin--invite stockist-pin--legend"></span>{{ section.settings.legend_invite | escape }}</span>{%- endif -%}
+        </div>
+        <div class="stockist-card" data-stockist-card hidden>
+          <div class="stockist-card__photo" data-card-photo hidden></div>
+          <div class="stockist-card__body">
+            <button type="button" class="stockist-card__close" aria-label="{{ section.settings.close_label | escape }}" data-card-close>×</button>
+            <p class="stockist-card__name" data-card-name></p>
+            <p class="stockist-card__address" data-card-address></p>
+            <p class="stockist-card__note" data-card-note>{{ section.settings.card_note | escape }}</p>
+            <div class="stockist-card__actions">
+              <a class="button button--sm" href="#" target="_blank" rel="nofollow noopener" data-card-directions data-vs-track="fab_directions">{{ section.settings.directions_text | escape }}</a>
+              <a class="button button--sm button--outline" href="#" target="_blank" rel="noopener" data-card-website data-vs-track="fab_website">{{ section.settings.website_text | escape }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stockist-finder__list-wrap">
+        <ul class="stockist-finder__list" role="list" data-stockist-list>
+          {%- paginate shop.metaobjects.stockist.values by 250 -%}
+          {%- for st in shop.metaobjects.stockist.values -%}
+            {%- liquid
+              if st.show.value == false
+                continue
+              endif
+              assign s_name = st.name.value
+              assign s_country = st.country.value
+              assign s_website = st.website.value
+              assign s_photo = st.photo.value
+              capture address
+                echo st.street.value | append: ', ' | append: st.town.value | append: ' ' | append: st.postcode.value
+              endcapture
+              capture maps_query
+                echo s_name | append: ' ' | append: st.postcode.value
+              endcapture
+              assign web_label = st.website_label.value | default: section.settings.website_text
+            -%}
+            <li class="stockist-row" data-stockist-row data-id="{{ st.system.handle }}" data-region="{{ s_country | escape }}"
+                data-lat="{{ st.latitude.value }}" data-lng="{{ st.longitude.value }}"
+                data-name="{{ s_name | escape }}" data-address="{{ address | strip | escape }}"
+                data-search="{{ s_name | append: ' ' | append: address | downcase | escape }}"
+                data-directions="https://www.google.com/maps/search/?api=1&amp;query={{ maps_query | url_encode }}"
+                data-website="{{ s_website }}" data-website-label="{{ web_label | escape }}"
+                {% if s_photo != blank %}data-photo="{{ s_photo | image_url: width: 720 }}" data-photo-alt="{{ s_photo.alt | default: s_name | escape }}"{% endif %}>
+              <button type="button" class="stockist-row__select" data-stockist-select data-vs-track="fab_row">
+                <span class="stockist-row__top">
+                  <span class="stockist-row__name">{{ s_name | escape }}</span>
+                  <span class="stockist-row__region">{{ s_country | escape }}</span>
+                </span>
+                <span class="stockist-row__address">{{ address | strip | escape }}</span>
+                <span class="stockist-row__distance" data-distance hidden></span>
+              </button>
+              <span class="stockist-row__links">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query={{ maps_query | url_encode }}" target="_blank" rel="nofollow noopener" data-vs-track="fab_directions">{{ section.settings.directions_text | escape }}</a>
+                {%- if s_website != blank -%}<a href="{{ s_website }}" target="_blank" rel="noopener" data-vs-track="fab_website">{{ web_label | escape }}</a>{%- endif -%}
+              </span>
+            </li>
+          {%- endfor -%}
+          {%- endpaginate -%}
+        </ul>
+        <div class="stockist-finder__empty" data-stockist-empty hidden>
+          <p class="stockist-finder__empty-title">{{ section.settings.empty_title | escape }}</p>
+          <p>{{ section.settings.empty_text | escape }}</p>
+          {%- if section.settings.empty_link_text != blank -%}<a href="{{ section.settings.empty_link }}" data-vs-track="fab_empty_suggest">{{ section.settings.empty_link_text | escape }} →</a>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/json" data-stockist-invites>
+    [{%- for block in invite_blocks -%}{"lat": {{ block.settings.latitude | strip | default: '0' | json }}, "lng": {{ block.settings.longitude | strip | default: '0' | json }}, "label": {{ block.settings.label | json }} }{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+  </script>
+  <script type="application/json" data-stockist-config>
+    {"tiles": {{ section.settings.tiles_url | json }}, "attribution": {{ section.settings.tiles_attribution | json }}, "inviteLink": {{ section.settings.invite_link | json }}, "postcodeApi": "https://api.postcodes.io"}
+  </script>
+</section>
+
+<script>
+(function () {
+  var root = document.querySelector('[data-stockist-finder="{{ section.id }}"]');
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = '1';
+
+  var config = JSON.parse(root.querySelector('[data-stockist-config]').textContent);
+  var invites = JSON.parse(root.querySelector('[data-stockist-invites]').textContent).map(function (p) {
+    return { lat: parseFloat(p.lat), lng: parseFloat(p.lng), label: p.label };
+  }).filter(function (p) { return !isNaN(p.lat) && !isNaN(p.lng); });
+  var rows = Array.prototype.slice.call(root.querySelectorAll('[data-stockist-row]'));
+  var list = root.querySelector('[data-stockist-list]');
+  var input = root.querySelector('[data-stockist-q]');
+  var countEl = root.querySelector('[data-stockist-count]');
+  var emptyEl = root.querySelector('[data-stockist-empty]');
+  var card = root.querySelector('[data-stockist-card]');
+  var chips = Array.prototype.slice.call(root.querySelectorAll('[data-stockist-region]'));
+  var mapEl = root.querySelector('[data-stockist-map]');
+
+  var shops = rows.map(function (row, i) {
+    return { row: row, id: row.dataset.id, index: i, region: row.dataset.region, lat: parseFloat(row.dataset.lat), lng: parseFloat(row.dataset.lng), search: row.dataset.search || '' };
+  });
+  var state = { region: '', q: '', origin: null, selected: null };
+  var map = null, markers = {}, L = null;
+
+  function track(target) {
+    try { if (window.posthog) window.posthog.capture('vs_yoto_click', { target: target, page: location.pathname }); } catch (e) {}
+  }
+  function miles(a, b) {
+    var R = 3958.8, toRad = Math.PI / 180;
+    var dLat = (b.lat - a.lat) * toRad, dLng = (b.lng - a.lng) * toRad;
+    var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(a.lat * toRad) * Math.cos(b.lat * toRad) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  function fmtMiles(m) { return (m < 10 ? m.toFixed(1) : Math.round(m)) + ' miles'; }
+  var postcodeRe = /^[a-z]{1,2}\d[a-z\d]?(\s*\d[a-z]{2})?$/i;
+
+  function apply() {
+    var shown = [];
+    shops.forEach(function (s) {
+      var ok = (!state.region || s.region === state.region) && (state.origin || !state.q || s.search.indexOf(state.q) !== -1);
+      s.row.hidden = !ok;
+      if (ok) shown.push(s);
+      var d = s.row.querySelector('[data-distance]');
+      if (state.origin && !isNaN(s.lat)) {
+        s.dist = miles(state.origin, s);
+        d.textContent = fmtMiles(s.dist);
+        d.hidden = false;
+      } else { s.dist = null; d.hidden = true; }
+      if (markers[s.id]) markers[s.id].getElement() && markers[s.id].getElement().classList.toggle('is-dimmed', !ok);
+    });
+    var ordered = shops.slice().sort(function (a, b) {
+      if (state.origin) return a.dist - b.dist;
+      return a.index - b.index;
+    });
+    ordered.forEach(function (s) { list.appendChild(s.row); });
+    emptyEl.hidden = shown.length > 0;
+    var total = countEl.dataset.total;
+    if (state.origin && state.originLabel) {
+      countEl.textContent = countEl.dataset.near.replace('[place]', state.originLabel);
+    } else if (shown.length == total) {
+      countEl.textContent = countEl.dataset.all;
+    } else {
+      countEl.textContent = countEl.dataset.some.replace('[shown]', shown.length).replace('[count]', total);
+    }
+    if (map && state.origin) {
+      var nearest = ordered.filter(function (s) { return !s.row.hidden; }).slice(0, 3);
+      var pts = nearest.map(function (s) { return [s.lat, s.lng]; });
+      pts.push([state.origin.lat, state.origin.lng]);
+      map.flyToBounds(pts, { padding: [48, 48], maxZoom: 11 });
+      if (nearest[0]) select(nearest[0].id, false);
+    }
+  }
+
+  function select(id, fromMap) {
+    state.selected = id;
+    shops.forEach(function (s) {
+      var on = s.id === id;
+      s.row.classList.toggle('is-selected', on);
+      var el = markers[s.id] && markers[s.id].getElement();
+      if (el) { el.classList.toggle('is-selected', on); markers[s.id].setZIndexOffset(on ? 1000 : 0); }
+    });
+    var s = shops.filter(function (x) { return x.id === id; })[0];
+    if (!s) { card.hidden = true; return; }
+    var d = s.row.dataset;
+    card.querySelector('[data-card-name]').textContent = d.name;
+    card.querySelector('[data-card-address]').textContent = d.address;
+    card.querySelector('[data-card-directions]').href = d.directions;
+    var web = card.querySelector('[data-card-website]');
+    web.hidden = !d.website; web.href = d.website || '#'; web.textContent = d.websiteLabel;
+    var photo = card.querySelector('[data-card-photo]');
+    if (d.photo) { photo.innerHTML = ''; var img = new Image(); img.src = d.photo; img.alt = d.photoAlt || ''; img.loading = 'lazy'; photo.appendChild(img); photo.hidden = false; }
+    else { photo.hidden = true; photo.innerHTML = ''; }
+    card.hidden = false;
+    if (fromMap) {
+      var top = s.row.offsetTop - list.offsetTop;
+      if (list.scrollHeight > list.clientHeight) list.scrollTo({ top: top - 8, behavior: 'smooth' });
+    } else if (map && !isNaN(s.lat)) {
+      map.flyTo([s.lat, s.lng], Math.max(map.getZoom(), 9), { duration: 0.6 });
+    }
+  }
+
+  // List
+  rows.forEach(function (row) {
+    row.querySelector('[data-stockist-select]').addEventListener('click', function () { select(row.dataset.id, false); });
+  });
+  card.querySelector('[data-card-close]').addEventListener('click', function () { card.hidden = true; select(null); });
+
+  // Region chips
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      state.region = chip.dataset.stockistRegion;
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      apply();
+      if (map) fitVisible();
+    });
+  });
+
+  // Search
+  function lookupPostcode(q) {
+    var clean = q.replace(/\s+/g, '').toUpperCase();
+    var full = clean.length > 4 && /\d[A-Z]{2}$/.test(clean);
+    var url = config.postcodeApi + (full ? '/postcodes/' : '/outcodes/') + encodeURIComponent(clean);
+    return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      if (!j || !j.result) return null;
+      var res = j.result;
+      return { lat: res.latitude, lng: res.longitude, label: full ? res.postcode : res.outcode };
+    }).catch(function () { return null; });
+  }
+  var timer;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    var q = input.value.trim().toLowerCase();
+    timer = setTimeout(function () {
+      state.q = q; state.origin = null; state.originLabel = null;
+      apply();
+    }, 150);
+  });
+  root.querySelector('[data-stockist-search]').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!postcodeRe.test(q)) { state.q = q.toLowerCase(); state.origin = null; apply(); return; }
+    lookupPostcode(q).then(function (o) {
+      if (!o) { countEl.textContent = countEl.dataset.notFound; return; }
+      state.q = ''; state.origin = { lat: o.lat, lng: o.lng }; state.originLabel = o.label;
+      track('fab_postcode');
+      ensureMap().then(function () { apply(); });
+    });
+  });
+  input.addEventListener('blur', function () {
+    var q = input.value.trim();
+    if (postcodeRe.test(q) && !state.origin) root.querySelector('[data-stockist-search]').requestSubmit();
+  });
+
+  // Location
+  root.querySelector('[data-stockist-locate]').addEventListener('click', function () {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      state.q = ''; input.value = '';
+      state.origin = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      state.originLabel = 'you';
+      ensureMap().then(function () { apply(); });
+    });
+  });
+
+  // Map (lazy)
+  var mapPromise = null;
+  function loadAsset(tag, attrs) {
+    return new Promise(function (resolve, reject) {
+      var el = document.createElement(tag);
+      Object.keys(attrs).forEach(function (k) { el[k] = attrs[k]; });
+      el.onload = resolve; el.onerror = reject;
+      document.head.appendChild(el);
+    });
+  }
+  function fitVisible() {
+    var pts = shops.filter(function (s) { return !s.row.hidden && !isNaN(s.lat); }).map(function (s) { return [s.lat, s.lng]; });
+    if (!state.region) invites.forEach(function (p) { pts.push([p.lat, p.lng]); });
+    if (pts.length) { map.invalidateSize(); map.fitBounds(pts, { padding: [24, 24], maxZoom: 10 }); }
+  }
+  function ensureMap() {
+    if (mapPromise) return mapPromise;
+    mapPromise = (window.L ? Promise.resolve() : Promise.all([
+      loadAsset('link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css' }),
+      loadAsset('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js' })
+    ])).then(function () {
+      L = window.L;
+      map = L.map(mapEl, { scrollWheelZoom: false, zoomControl: true, attributionControl: true, zoomSnap: 0.25 });
+      L.tileLayer(config.tiles, { attribution: config.attribution, maxZoom: 19 }).addTo(map);
+      shops.forEach(function (s) {
+        if (isNaN(s.lat) || isNaN(s.lng)) return;
+        var icon = L.divIcon({ className: 'stockist-marker', html: '<span class="stockist-pin"></span>', iconSize: [28, 28], iconAnchor: [14, 14] });
+        var m = L.marker([s.lat, s.lng], { icon: icon, title: s.row.dataset.name, keyboard: true, riseOnHover: true }).addTo(map);
+        m.on('click', function () { select(s.id, true); track('fab_pin'); });
+        markers[s.id] = m;
+      });
+      invites.forEach(function (p) {
+        var icon = L.divIcon({ className: 'stockist-marker stockist-marker--invite', html: '<span class="stockist-pin stockist-pin--invite">+</span><span class="stockist-invite-label">' + String(p.label).replace(/</g, '&lt;') + '</span>', iconSize: [28, 28], iconAnchor: [14, 14] });
+        var m = L.marker([p.lat, p.lng], { icon: icon, title: p.label, alt: p.label, keyboard: true }).addTo(map);
+        m.on('click', function () { track('fab_invite_pin'); location.hash = config.inviteLink.replace(/^#/, ''); });
+      });
+      fitVisible();
+      apply();
+      if (state.selected) select(state.selected, true);
+    }).catch(function () { root.classList.add('stockist-finder--no-map'); });
+    return mapPromise;
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); ensureMap(); }
+    }, { rootMargin: '400px' });
+    io.observe(root);
+  } else { ensureMap(); }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Stockist finder",
+  "tag": "div",
+  "class": "shopify-section--stockist-finder",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor (no #)",
+      "default": "finder"
+    },
+    {
+      "type": "text",
+      "id": "search_label",
+      "label": "Search label",
+      "default": "Search by town, postcode or shop name"
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "e.g. Melrose or EH10 4DF"
+    },
+    {
+      "type": "text",
+      "id": "locate_label",
+      "label": "Location button label",
+      "default": "Use my location"
+    },
+    {
+      "type": "text",
+      "id": "region_group_label",
+      "label": "Country filter label",
+      "default": "Filter by country"
+    },
+    {
+      "type": "text",
+      "id": "all_label",
+      "label": "All chip",
+      "default": "All"
+    },
+    {
+      "type": "text",
+      "id": "count_all",
+      "label": "Count, all shown",
+      "info": "[count] = number of shops",
+      "default": "[count] bookshops stock Voxblock"
+    },
+    {
+      "type": "text",
+      "id": "count_some",
+      "label": "Count, filtered",
+      "info": "[shown] and [count]",
+      "default": "Showing [shown] of [count] bookshops"
+    },
+    {
+      "type": "text",
+      "id": "count_near",
+      "label": "Count, sorted by distance",
+      "info": "[place] = postcode or 'you'",
+      "default": "Nearest to [place] first"
+    },
+    {
+      "type": "text",
+      "id": "postcode_not_found",
+      "label": "Postcode not found",
+      "default": "We couldn't find that postcode. Try a town name."
+    },
+    {
+      "type": "header",
+      "content": "Map"
+    },
+    {
+      "type": "text",
+      "id": "map_label",
+      "label": "Map label (screen readers)",
+      "default": "Map of bookshops that stock Voxblock"
+    },
+    {
+      "type": "text",
+      "id": "tiles_url",
+      "label": "Map tiles",
+      "default": "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+    },
+    {
+      "type": "text",
+      "id": "tiles_attribution",
+      "label": "Map credit",
+      "default": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+    },
+    {
+      "type": "text",
+      "id": "legend_shop",
+      "label": "Legend, shop",
+      "default": "Stocks Voxblock"
+    },
+    {
+      "type": "text",
+      "id": "legend_invite",
+      "label": "Legend, invite pin",
+      "default": "Could be your shop"
+    },
+    {
+      "type": "text",
+      "id": "invite_link",
+      "label": "Invite pin link",
+      "default": "#join"
+    },
+    {
+      "type": "header",
+      "content": "Shop card"
+    },
+    {
+      "type": "text",
+      "id": "card_note",
+      "label": "Card note",
+      "default": "Stocks the player, starter packs and audiobooks"
+    },
+    {
+      "type": "text",
+      "id": "directions_text",
+      "label": "Directions",
+      "default": "Directions"
+    },
+    {
+      "type": "text",
+      "id": "website_text",
+      "label": "Website",
+      "default": "Website"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Close label",
+      "default": "Close"
+    },
+    {
+      "type": "header",
+      "content": "No results"
+    },
+    {
+      "type": "text",
+      "id": "empty_title",
+      "label": "Title",
+      "default": "No bookshop there yet"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Text",
+      "default": "Tell us your favourite local bookshop and we will ask them, or order online with free UK delivery over £25."
+    },
+    {
+      "type": "text",
+      "id": "empty_link_text",
+      "label": "Link text",
+      "default": "Suggest a bookshop"
+    },
+    {
+      "type": "text",
+      "id": "empty_link",
+      "label": "Link",
+      "default": "#suggest"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "invite",
+      "name": "Invite pin",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Your bookshop here?"
+        },
+        {
+          "type": "text",
+          "id": "latitude",
+          "label": "Latitude",
+          "default": "54.97"
+        },
+        {
+          "type": "text",
+          "id": "longitude",
+          "label": "Longitude",
+          "default": "-1.61"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stockist finder"
+    }
+  ]
+}
+{% endschema %}

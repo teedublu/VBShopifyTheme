@@ -125,6 +125,17 @@
     "main": {
       "type": "main-collection",
       "blocks": {
+        "promotion_saga_audiobooks": {
+          "type": "promotion_saga",
+          "settings": {
+            "position": 2,
+            "eyebrow": "Looking for a story?",
+            "heading": "Ask Saga",
+            "text": "Tell her the age and what they love, and she'll suggest a few titles.",
+            "button_label": "Find a story",
+            "show_to_owners": true
+          }
+        },
         "promotion_image_roalddahl": {
           "type": "promotion_image",
           "settings": {
@@ -184,11 +195,11 @@
           "settings": {
             "position": 19,
             "column_span": "2",
-            "image": "shopify://shop_images/audiobooks-new-ad-v2.png",
-            "mobile_image": "shopify://shop_images/audiobooks-new-ad-v2.png",
+            "image": "shopify://shop_images/audiobooks-new-ad-v3.png",
+            "mobile_image": "shopify://shop_images/audiobooks-new-ad-v3.png",
             "title": "New in",
-            "content": "<p>Howl's Moving Castle</p>",
-            "link_url": "shopify://products/howls-moving-castle",
+            "content": "<p>Lottie Brooks</p>",
+            "link_url": "shopify://products/the-extremely-embarrassing-life-of-lottie-brooks",
             "link_text": "Shop here",
             "heading_tag": "h3",
             "text_position": "place-self-end-start text-start",
@@ -217,6 +228,7 @@
         }
       },
       "block_order": [
+        "promotion_saga_audiobooks",
         "promotion_image_roalddahl",
         "promotion_image_KGVD4D",
         "promotion_video_79qxG8",
@@ -237,7 +249,7 @@
         "age_buttons": "Under 5|Under 5's\n5 to 8|5 to 8 years\n8 to 10|8 to 10 years\n10 to teens|10 to teens",
         "gift_button_label": "Gift sets",
         "gift_filter_param": "filter.p.m.pack.gift_set",
-        "help_url": "",
+        "help_url": "#saga-chat",
         "show_filters": true,
         "show_filter_group_name": false,
         "show_filter_values_count": true,

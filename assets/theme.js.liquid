@@ -3241,24 +3241,47 @@ var ProductGallery = class extends HTMLElement {
     const filteredIndexes = this._getFilteredMediaIndexes(event.detail.product, event.detail.variant);
     this._carousels.forEach((carousel) => carousel.dispatchEvent(new CustomEvent("carousel:filter", { detail: { filteredIndexes } })));
     this._pageDots.forEach((pageDots) => pageDots.dispatchEvent(new CustomEvent("control:filter", { detail: { filteredIndexes } })));
-    if (event.detail.variant["featured_media"] && event.detail.previousVariant["featured_media"] && event.detail.previousVariant["featured_media"]["id"] !== event.detail.variant["featured_media"]["id"] || !event.detail.previousVariant["featured_media"] && event.detail.variant["featured_media"]) {
-      this._carousels.forEach((carousel) => carousel.select(event.detail.variant["featured_media"]["position"] - 1, { animate: false }));
+    const targetMedia = this._getDisplayMedia(event.detail.product, event.detail.variant);
+    if (targetMedia && (event.detail.previousVariant["featured_media"] ? event.detail.previousVariant["featured_media"]["id"] !== event.detail.variant["featured_media"]?.["id"] : !!event.detail.variant["featured_media"])) {
+      this._carousels.forEach((carousel) => carousel.select(targetMedia["position"] - 1, { animate: false }));
     }
+  }
+  _getDisplayMedia(product, variant) {
+    const featured = variant["featured_media"];
+    if (!featured || !featured["alt"]?.includes("(shopping feed image)")) return featured;
+    const normalizeOptionName = (name) => (name || "").trim().toLowerCase().replace(/colour/g, "color");
+    for (const media of product["media"]) {
+      if (media["alt"]?.includes("#") && media["alt"] !== product["title"]) {
+        const altParts = media["alt"].split("#"), mediaGroupParts = altParts.pop().split("_");
+        const groupName = normalizeOptionName(mediaGroupParts[0]);
+        const option = product["options"].find((option2) => normalizeOptionName(option2["name"]) === groupName) || (groupName ? product["options"].find((option2) => normalizeOptionName(option2["name"]).includes(groupName)) : null);
+        if (option && mediaGroupParts[1] !== void 0 && variant["options"][option["position"] - 1].toLowerCase() === mediaGroupParts[1].trim().toLowerCase()) {
+          return media;
+        }
+      }
+    }
+    return featured;
   }
   _getFilteredMediaIndexes(product, variant) {
     const filteredMediaIds = [];
+    const normalizeOptionName = (name) => (name || "").trim().toLowerCase().replace(/colour/g, "color");
+    const defaultMedia = this._getDisplayMedia(product, variant);
     product["media"].forEach((media) => {
-      let matchMedia = variant["featured_media"] && media["position"] === variant["featured_media"]["position"];
+      if (media["alt"]?.includes("(shopping feed image)")) {
+        filteredMediaIds.push(media["position"] - 1);
+        return;
+      }
+      let matchMedia = defaultMedia && media["position"] === defaultMedia["position"];
       if (media["alt"]?.includes("#") && media["alt"] !== product["title"]) {
         if (!matchMedia) {
           const altParts = media["alt"].split("#"), mediaGroupParts = altParts.pop().split("_");
-          product["options"].forEach((option) => {
-            if (option["name"].toLowerCase() === mediaGroupParts[0].toLowerCase()) {
-              if (variant["options"][option["position"] - 1].toLowerCase() !== mediaGroupParts[1].trim().toLowerCase()) {
-                filteredMediaIds.push(media["position"] - 1);
-              }
+          const groupName = normalizeOptionName(mediaGroupParts[0]);
+          const option = product["options"].find((option2) => normalizeOptionName(option2["name"]) === groupName) || (groupName ? product["options"].find((option2) => normalizeOptionName(option2["name"]).includes(groupName)) : null);
+          if (option && mediaGroupParts[1] !== void 0) {
+            if (variant["options"][option["position"] - 1].toLowerCase() !== mediaGroupParts[1].trim().toLowerCase()) {
+              filteredMediaIds.push(media["position"] - 1);
             }
-          });
+          }
         }
       }
     });

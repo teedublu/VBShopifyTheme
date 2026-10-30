@@ -374,12 +374,15 @@
                     </div>
                 {% endif %}
             {% when 'book_page' %}
+                {%- comment -%}Bundles and other products with no audiobook entry have no page to link to: no empty row{%- endcomment -%}
+                {%- if audiobook_metaobject.system.url != blank -%}
                 <div class="detail-row">
                     <div class="detail-label">{{ block.settings.title }}</div>
                     <div class="detail-value">
                         {{ audiobook_metaobject.title | link_to: audiobook_metaobject.system.url, title: audiobook_metaobject.title , class: 'book link' }}
                     </div>
                 </div>
+                {%- endif -%}
             
         {% endcase %}
     {% endfor %}

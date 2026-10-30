@@ -1,5 +1,45 @@
 {%- comment -%}Open on the picture of the variant the picker shows as selected. product.selected_variant is only set when the URL has ?variant=, so without it the gallery opened on the product's first image (e.g. a green pack while Orange was selected).{%- endcomment -%}
-{%- assign default_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+{%- assign current_variant = default_variant | default: product.selected_or_first_available_variant -%}
+{%- assign default_media = current_variant.featured_media | default: product.featured_media -%}
+{%- comment -%}
+Some packs keep a plain white-background photo as each variant's assigned image for the shopping feed (see
+product-card-pack.liquid for the matching collection-card logic); the on-site gallery should show the real
+(transparent background) photo instead, tagged #OptionName_Value same as the other colour photos below. Reuses
+the same option-name matching as the filtering loop further down - keep them in step.
+{%- endcomment -%}
+{%- if default_media.alt contains '(shopping feed image)' -%}
+  {%- for media in product.media -%}
+    {%- if media.alt contains '#' and media.alt != product.title -%}
+      {%- assign alt_parts = media.alt | split: '#' -%}
+      {%- assign media_group_parts = alt_parts.last | split: '_' -%}
+      {%- assign group_name = media_group_parts.first | strip | downcase | replace: 'colour', 'color' -%}
+      {%- assign option_value = '' -%}
+      {%- assign option_found = false -%}
+      {%- for product_option in product.options_with_values -%}
+        {%- assign product_option_name = product_option.name | downcase | replace: 'colour', 'color' -%}
+        {%- if product_option_name == group_name -%}
+          {%- assign option_value = product_option.selected_value | downcase -%}
+          {%- assign option_found = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if option_found == false and group_name != blank -%}
+        {%- for product_option in product.options_with_values -%}
+          {%- assign product_option_name = product_option.name | downcase | replace: 'colour', 'color' -%}
+          {%- if product_option_name contains group_name -%}
+            {%- assign option_value = product_option.selected_value | downcase -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- assign downcase_group_value = media_group_parts.last | strip | downcase -%}
+      {%- if option_value == downcase_group_value -%}
+        {%- assign default_media = media -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 {%- capture product_gallery_id -%}product-gallery-{{ product.id }}-{{ section.id }}{%- endcapture -%}
@@ -16,12 +56,41 @@ only way to do it on Shopify right now.
 
 {%- if product.variants.size > 1 -%}
   {%- for media in product.media -%}
+    {%- if media.alt contains '(shopping feed image)' -%}
+      {%- assign media_position = media.position | sort -%}
+      {%- assign filtered_indexes = filtered_indexes | concat: media_position -%}
+      {%- continue -%}
+    {%- endif -%}
     {%- if media.alt contains '#' and media.alt != product.title -%}
       {%- assign alt_parts = media.alt | split: '#' -%}
 
       {%- assign media_group_parts = alt_parts.last | split: '_' -%}
-      {%- assign option = product.options_by_name[media_group_parts.first] -%}
-      {%- assign option_value = option.selected_value | downcase -%}
+
+      {%- comment -%}
+      Match the tag's group name (#Color_Green -> "Color") to the product's option name loosely, so "Colour" and "Color" are
+      the same and an option called "Voxblock Audiobook Player (Color)" counts as "Color". An exact name wins over a partial one.
+      The same rule is in _getFilteredMediaIndexes in assets/theme.js.liquid, keep them in step.
+      {%- endcomment -%}
+      {%- assign group_name = media_group_parts.first | strip | downcase | replace: 'colour', 'color' -%}
+      {%- assign option_value = '' -%}
+      {%- assign option_found = false -%}
+      {%- for product_option in product.options_with_values -%}
+        {%- assign product_option_name = product_option.name | downcase | replace: 'colour', 'color' -%}
+        {%- if product_option_name == group_name -%}
+          {%- assign option_value = product_option.selected_value | downcase -%}
+          {%- assign option_found = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if option_found == false and group_name != blank -%}
+        {%- for product_option in product.options_with_values -%}
+          {%- assign product_option_name = product_option.name | downcase | replace: 'colour', 'color' -%}
+          {%- if product_option_name contains group_name -%}
+            {%- assign option_value = product_option.selected_value | downcase -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
 
       {%- assign downcase_group_value = media_group_parts.last | strip | downcase -%}
 

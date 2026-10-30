@@ -87,7 +87,8 @@
   }
 </style>
 
-{%- assign title = page.metafields.global.title_tag | default: page.title -%}
+{%- comment -%}Crumb labels use the SEO title (index pages are titled "List of ... (MO)" in admin) without the " | Voxblock" brand tail.{%- endcomment -%}
+{%- assign title = page.metafields.global.title_tag | default: page.title | split: ' | ' | first -%}
 
 {%- assign metaobject_type = blank -%}
 {%- if metaobject != blank -%}
@@ -142,7 +143,7 @@
           if list_page != blank
             assign parent_page = pages[list_page]
             if parent_page != blank
-              assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+              assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title | split: ' | ' | first
               assign crumbs = crumbs | append: crumb_item_sep | append: parent_page.url | append: crumb_part_sep | append: parent_title
             endif
           endif
@@ -278,7 +279,7 @@
         if list_page != blank
           assign parent_page = pages[list_page]
           if parent_page != blank
-            assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title
+            assign parent_title = parent_page.metafields.global.title_tag | default: parent_page.title | split: ' | ' | first
             if list_page == 'audiobooks' and read_along_parent_title != blank
               assign parent_title = 'Audiobooks'
             endif
@@ -290,12 +291,55 @@
           assign crumbs = crumbs | append: crumb_item_sep | append: read_along_parent_url | append: crumb_part_sep | append: read_along_parent_title
         endif
 
-        if metaobject_type == 'character' and metaobject.main_book.value != blank
-          assign main_book = metaobject.main_book.value
-          assign main_book_title = main_book.title | default: main_book.name
+        # Characters and audiobooks in a series go through the series page, which keeps the trail short:
+        # Characters > Dave Pigeon > Skipper, Audiobooks > Dave Pigeon > How to Deal with Bad Cats...
+        # Otherwise a character goes through its main book, with the title cut at the first colon.
+        assign crumb_book = blank
+        if metaobject_type == 'character'
+          capture crumb_work_handle
+            render 'story-work-handle', entry: metaobject
+          endcapture
+          assign crumb_work_handle = crumb_work_handle | strip
+          if crumb_work_handle != blank
+            assign crumb_book = shop.metaobjects.audiobook[crumb_work_handle]
+          endif
+        elsif metaobject_type == 'audiobook'
+          assign crumb_book = metaobject
+        endif
+        assign crumb_series = blank
+        if crumb_book != blank and crumb_book.product.value != blank
+          capture crumb_series_handle
+            render 'story-series-handle', product: crumb_book.product.value
+          endcapture
+          assign crumb_series_handle = crumb_series_handle | strip
+          if crumb_series_handle != blank
+            assign crumb_series = shop.metaobjects.series[crumb_series_handle]
+          endif
+        endif
 
-          if main_book.system.url != blank and main_book_title != blank
-            assign crumbs = crumbs | append: crumb_item_sep | append: main_book.system.url | append: crumb_part_sep | append: main_book_title
+        if crumb_series != blank
+          # Dave Pigeon the character under the Dave Pigeon series: "Dave Pigeon series > Dave Pigeon", not the name twice
+          assign crumb_series_name = crumb_series.name.value | append: ''
+          assign crumb_name = metaobject.name.value | append: ''
+          if metaobject_type == 'character' and crumb_series_name == crumb_name
+            assign crumb_series_name = crumb_series_name | append: ' series'
+          endif
+          assign crumbs = crumbs | append: crumb_item_sep | append: crumb_series.system.url | append: crumb_part_sep | append: crumb_series_name
+          # "Dave Pigeon: How to Deal with..." under the Dave Pigeon crumb reads "How to Deal with..."
+          if metaobject_type == 'audiobook'
+            assign title = title | append: ''
+            assign series_prefix = crumb_series.name.value | append: ':'
+            if title contains series_prefix
+              assign title_rest = title | remove_first: series_prefix | strip
+              if title_rest != blank
+                assign title = title_rest
+              endif
+            endif
+          endif
+        elsif metaobject_type == 'character' and crumb_book != blank
+          assign main_book_title = crumb_book.title | default: crumb_book.name | split: ':' | first | strip
+          if crumb_book.system.url != blank and main_book_title != blank
+            assign crumbs = crumbs | append: crumb_item_sep | append: crumb_book.system.url | append: crumb_part_sep | append: main_book_title
           endif
         endif
 

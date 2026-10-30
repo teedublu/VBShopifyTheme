@@ -16,6 +16,60 @@
   {%- assign show_section = false -%}
 {%- endif -%}
 
+{%- comment -%}
+On metaobject pages (character, audiobook) questions and answers can use [name] (the character or book), [book] (the
+character's main book, or the audiobook), [book_short] (the title before any colon), [book_url], [author] and
+[books_sentence] (which books a character is in, plain text).
+Text without these words is printed unchanged. Questions using [book] or [book_short] are left out on a page with no
+book (a character not yet linked to an audiobook).
+{%- endcomment -%}
+{%- liquid
+  assign faq_work = blank
+  if metaobject != blank
+    capture work_handle
+      render 'story-work-handle', entry: metaobject
+    endcapture
+    assign work_handle = work_handle | strip
+    if work_handle != blank
+      assign faq_work = shop.metaobjects.audiobook[work_handle]
+    endif
+  endif
+  assign t_name = metaobject.name.value | default: metaobject.title.value | strip
+  assign t_book = faq_work.title.value | default: faq_work.product.value.title | strip
+  assign t_book_short = t_book | split: ':' | first | strip
+  assign t_book_url = faq_work.product.value.url | default: faq_work.system.url
+  assign t_author_obj = faq_work.authors.value | first
+  assign t_author = t_author_obj.name.value | default: t_author_obj.name | strip
+  # " by [author]" drops out cleanly when the book has no author entry
+  assign t_by_author = ''
+  if t_author != blank
+    assign t_by_author = ' by ' | append: t_author
+  endif
+  # [books_sentence]: "Skipper is in the Dave Pigeon audiobooks by Swapna Haddow.", or with no series "Skipper is a
+  # character in <book> by <author>." Plain text: Shopify escapes HTML put into a rich text setting by replace.
+  # Only worked out when a question uses it.
+  assign t_books_sentence = ''
+  assign faq_text = section.settings.content
+  for block in section.blocks
+    assign faq_text = faq_text | append: block.settings.content
+  endfor
+  if faq_work != blank and faq_text contains '[books_sentence]'
+    capture faq_series_handle
+      render 'story-series-handle', product: faq_work.product.value
+    endcapture
+    assign faq_series_handle = faq_series_handle | strip
+    assign faq_series = blank
+    if faq_series_handle != blank
+      assign faq_series = shop.metaobjects.series[faq_series_handle]
+    endif
+    if faq_series != blank
+      assign t_books_sentence = t_name | append: ' is in the ' | append: faq_series.name.value | append: ' audiobooks' | append: t_by_author | append: '.'
+    else
+      assign t_books_sentence = t_name | append: ' is a character in ' | append: t_book | append: t_by_author | append: '.'
+    endif
+  endif
+-%}
+
 {%- if show_section -%}
 <style>
   #shopify-section-{{ section.id }} {
@@ -33,11 +87,12 @@
 
       {%- if section.settings.title != blank -%}
         <h2 class="h2">
-          {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
+          {%- assign faq_title = section.settings.title | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -%}
+          {%- render 'styled-text', content: faq_title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
         </h2>
       {%- endif -%}
 
-      {{- section.settings.content -}}
+      {{- section.settings.content | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -}}
     {%- endcapture -%}
 
     {%- capture subcontent -%}
@@ -91,12 +146,14 @@
       <div class="section-stack__main" >
         <div {% render 'surface', class: 'accordion-box rounded', background: section.settings.accordion_background, text_color: section.settings.accordion_text_color, background_fallback: 'bg-secondary' %}>
           {%- for block in section.blocks -%}
+            {%- if t_book == blank and metaobject != blank -%}{%- if block.settings.title contains '[book' or block.settings.content contains '[books_sentence]' -%}{%- continue -%}{%- endif -%}{%- endif -%}
             {%- if block.settings.title != blank and block.settings.content != blank -%}
               {%- capture accordion_content -%}
-                <div class="prose">{{ block.settings.content }}</div>
+                <div class="prose">{{ block.settings.content | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author }}</div>
               {%- endcapture -%}
+              {%- assign item_title = block.settings.title | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -%}
 
-              {%- render 'accordion', title: block.settings.title, content: accordion_content, block: block -%}
+              {%- render 'accordion', title: item_title, content: accordion_content, block: block -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -117,15 +174,18 @@
     "@type": "FAQPage",
     "@id": {{ canonical_url | append: '#faq' | json }},
     "mainEntity": [
+      {%- assign faq_first = true -%}
       {%- for block in section.blocks -%}
+        {%- if t_book == blank and metaobject != blank -%}{%- if block.settings.title contains '[book' or block.settings.content contains '[books_sentence]' -%}{%- continue -%}{%- endif -%}{%- endif -%}
+        {%- unless faq_first -%},{%- endunless -%}{%- assign faq_first = false -%}
         {
           "@type": "Question",
-          "name": {{ block.settings.title | json }},
+          "name": {{ block.settings.title | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author | json }},
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": {{ block.settings.content | strip_html | strip_newlines | strip | json }}
+            "text": {{ block.settings.content | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author | strip_html | strip_newlines | strip | json }}
           }
-        }{% unless forloop.last %},{% endunless %}
+        }
       {%- endfor -%}
     ]
   }

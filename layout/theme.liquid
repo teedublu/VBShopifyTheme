@@ -109,6 +109,15 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         # Google Ads landing page: targets starter-pack searches so it doesn't compete with the homepage for "kids audiobook player"
         assign resolved_page_title = 'Audiobook Starter Packs: Player + First Stories | Voxblock'
         assign resolved_page_description = 'Start with a Voxblock starter pack: the screen-free audiobook player plus your first audiobooks, for toddlers to teens. Free UK delivery over £25.'
+      elsif request.page_type == 'page' and template.suffix == 'starter-pack-google'
+        # Google Ads landing page (noindex, see below). The H1 and <title> follow the ad's keyword in the browser
+        # (sections/ads-intent-hero.liquid); this is the title without JavaScript or a usable keyword.
+        assign resolved_page_title = 'Audiobook Player for Kids: Starter Packs | Voxblock'
+        assign resolved_page_description = 'The screen-free audiobook player children use on their own, with their first three stories. No wifi, downloads or subscription. Free UK delivery over £25.'
+      elsif request.page_type == 'page' and template.suffix == 'starter-pack-landing'
+        # Meta ads landing page (noindex, see below)
+        assign resolved_page_title = 'Voxblock Starter Packs: Ready Out of the Box'
+        assign resolved_page_description = 'A Voxblock starter pack is the screen-free audiobook player plus three stories for their age. No wifi, nothing to set up. Free UK delivery over £25.'
       elsif request.page_type == 'page' and page.handle == 'reasons-to-buy-voxblock'
         # Brand reviews / consideration page: targets "voxblock reviews" so it supports the homepage rather than competing for player searches
         assign resolved_page_title = 'Voxblock Reviews: Why Parents Choose Voxblock'
@@ -128,6 +137,26 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         # template is switched in admin (it is on landing-page-problem today).
         assign resolved_page_title = 'How to Reduce Screen Time for Kids: 7 Ways | Voxblock'
         assign resolved_page_description = "Seven practical ways to reduce your child's screen time, based on UK guidance, with screen-free swaps for bedtime, car journeys and quiet time."
+      elsif request.page_type == 'page' and template.suffix == 'help'
+        # Help pages (briefs/help-pages.md): brand searchers see these titles, so they lead with the task or the good
+        # news, never the failure ("not working", "returns"). Keyed on the template so admin titles can't drift.
+        assign resolved_page_title = 'Voxblock Help Centre: Guides, Delivery and Contact'
+        assign resolved_page_description = 'Setting up, using and charging your Voxblock, delivery, our 100-day guarantee, and how to reach us. Most answers take under a minute.'
+      elsif request.page_type == 'page' and template.suffix == 'player-guide'
+        assign resolved_page_title = 'Voxblock Player Guide: Buttons, Lights and Charging'
+        assign resolved_page_description = 'Everything the buttons and lights do, bedtime and travel mode, headphones and charging, with the printable quick start guide.'
+      elsif request.page_type == 'page' and template.suffix == 'quick-fixes'
+        assign resolved_page_title = 'Voxblock Quick Fixes: Lights, Charging and Sound'
+        assign resolved_page_description = "Light stuck on a colour, not charging or a book that won't play? Most things are fixed in a minute. Here's how, step by step."
+      elsif request.page_type == 'page' and template.suffix == 'delivery-and-returns'
+        assign resolved_page_title = 'Delivery, 100-Day Guarantee and Free Repairs | Voxblock'
+        assign resolved_page_description = 'Free UK delivery over £25. Try a player or starter pack for 100 days, with a 2-year guarantee and repairs for life after that.'
+      elsif request.page_type == 'page' and template.suffix == 'faq'
+        assign resolved_page_title = 'Voxblock FAQs: Ages, Audiobooks, Delivery and More'
+        assign resolved_page_description = 'Common questions about Voxblock: ages, how the audiobook blocks work, no wifi or downloads, the lights, safety and delivery.'
+      elsif request.page_type == 'page' and template.suffix == 'contact'
+        assign resolved_page_title = 'Contact Voxblock: Email and Help Form'
+        assign resolved_page_description = 'Get in touch with the Voxblock team. Monday to Friday, 9am to 5pm, we usually reply within the hour. Many answers are in our help centre.'
       endif
 
       # Collections: use the admin SEO title explicitly. On 15 Oct the dinosaurs collection kept rendering its plain title
@@ -154,6 +183,11 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
     {%- if resolved_page_description -%}
       <meta name="description" content="{{ resolved_page_description | escape }}">
+    {%- endif -%}
+
+    {%- comment -%}Paid landing pages: kept out of search so they never compete with the SEO pages (LPS paid-landing-pages){%- endcomment -%}
+    {%- if request.page_type == 'page' and template.suffix == 'starter-pack-google' or request.page_type == 'page' and template.suffix == 'starter-pack-landing' -%}
+      <meta name="robots" content="noindex, nofollow">
     {%- endif -%}
 
     <link rel="canonical" href="{{ resolved_canonical_url }}">
@@ -276,19 +310,6 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
           }
         });
     </script>
-    <!-- BEGIN MerchantWidget Code -->
-    <script id='merchantWidgetScript'
-            src="https://www.gstatic.com/shopping/merchant/merchantwidget.js"
-            defer>
-    </script>
-    <script type="text/javascript">
-      merchantWidgetScript.addEventListener('load', function () {
-        merchantwidget.start({
-         position: 'LEFT_BOTTOM'
-       });
-      });
-    </script>
-    <!-- END MerchantWidget Code -->
     
   </head>
   <body class="{% if settings.show_page_transition %}page-transition{% endif %} {% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}"><!-- Google Tag Manager (noscript) -->
@@ -322,5 +343,6 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       {%- endif -%}
     </main>
     {%- render 'back-in-stock' -%}
+    {%- render 'saga-chat' -%}
   </body>
 </html>

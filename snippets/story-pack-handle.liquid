@@ -1,0 +1,34 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY PACK HANDLE (used by sections/story-hero.liquid and sections/story-home-band.liquid)
+----------------------------------------------------------------------------------------------------------------------
+Prints the handle of the starter pack that contains a given audiobook, so a story page can offer "this story in a
+starter pack" without a pack being picked by hand for every character or book. Capture its output (render inside a
+capture), then look the handle up in all_products. Inputs: book (the audiobook product), packs_collection (collection
+handle), player_handle (left out of the match).
+
+Looks through the first 60 products of the packs collection, skips the player and anything unavailable, and prints
+the first pack whose `bundles.products` list holds the book (packs earlier in the collection win). Prints nothing
+when no pack holds it. Same matching rule as the author and narrator pages (sections/person-intro.liquid).
+{%- endcomment -%}
+{%- liquid
+  assign found = ''
+  if book != blank and packs_collection != blank
+    assign pack_collection = collections[packs_collection]
+    for candidate in pack_collection.products limit: 60
+      if candidate.available == false or candidate.handle == player_handle
+        continue
+      endif
+      for candidate_book in candidate.metafields.bundles.products.value
+        if candidate_book.id == book.id
+          assign found = candidate.handle
+          break
+        endif
+      endfor
+      if found != ''
+        break
+      endif
+    endfor
+  endif
+  echo found
+-%}

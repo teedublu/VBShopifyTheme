@@ -1,0 +1,234 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+ADS INTENT HERO (Google Ads landing page: templates/page.starter-pack-google.json)
+----------------------------------------------------------------------------------------------------------------------
+
+Short first screen for paid search: eyebrow, H1, one line, trust row, "Choose a starter pack" (jumps to #packs) and
+"Just the player" with its live price. No photo on phones, so the pack grid starts in the first screen.
+
+THE HEADLINE FOLLOWS THE SEARCH
+Google Ads final URLs carry utm_term = the matched keyword ({keyword}) and utm_content = the ad group ID. A small inline
+script, run straight after the H1 is parsed (before first paint), picks an "Intent" block and swaps the eyebrow, H1,
+line and comparison link, and the <title>:
+1. the first block whose "Keywords" list has a phrase contained in the cleaned keyword;
+2. else the first block listing the ad group ID;
+3. else the server-rendered default (section settings). Without JavaScript the default shows.
+[Keyword] / [keyword] in a block's headline is replaced by the cleaned search keyword (capitalised / as typed) only if it
+passes the safety check (letters only, 2–6 words, 40 characters max, no competitor names); otherwise the block's
+"Headline without keyword" is used. Cleaning: filler words dropped (best, cheap, buy, uk, sale, price, online, top),
+"screen free" -> "screen-free", "audio book" -> "audiobook", "childrens" -> "children's".
+The choice is kept for the visit (sessionStorage), so a reload or "back" without the URL parameters keeps the headline.
+
+The page is noindex (layout/theme.liquid), so swapping the H1 has no SEO effect.
+
+Tracking: PostHog super properties for the visit, lp_intent (block name, or "default") and lp_keyword (cleaned keyword),
+so every later event (add to cart, checkout) can be split by intent. Clicks: vs_yoto_click via data-vs-track.
+{%- endcomment -%}
+
+{%- liquid
+  assign player = all_products[section.settings.player_handle]
+  assign player_variant = player.variants | sort: 'price' | first
+-%}
+
+<section class="age-intro ads-hero" style="--age-intro-bg: {{ section.settings.background }};" {{ section.shopify_attributes }}>
+  <div class="age-intro__band">
+    <div class="container age-intro__band-inner">
+      <div class="age-intro__text">
+        <p class="age-intro__eyebrow subheading" data-intent-eyebrow>{{ section.settings.eyebrow | escape }}</p>
+        <h1 class="age-intro__title" data-intent-title>{{ section.settings.title | escape }}</h1>
+        <p class="age-intro__lede" data-intent-lede>{{ section.settings.lede | escape }}</p>
+        <p class="ads-hero__compare" data-intent-compare hidden><a href="" data-vs-track="hero_compare"></a></p>
+
+        <ul class="age-intro__trust" role="list">
+          {%- if section.settings.trust_rating != blank -%}
+            <li>{%- render 'icon' with 'rating-star', width: 14, height: 14 -%}<span>{{ section.settings.trust_rating | escape }}</span></li>
+          {%- endif -%}
+          {%- if section.settings.trust_delivery != blank -%}
+            <li>{%- render 'icon' with 'picto-truck', width: 16, height: 16, stroke_width: 2 -%}<span>{{ section.settings.trust_delivery | escape }}</span></li>
+          {%- endif -%}
+          {%- if section.settings.trust_guarantee != blank -%}
+            <li>{%- render 'icon' with 'picto-shield', width: 16, height: 16, stroke_width: 2 -%}<span>{{ section.settings.trust_guarantee | escape }}</span></li>
+          {%- endif -%}
+        </ul>
+
+        <div class="ads-hero__actions">
+          <a href="#{{ section.settings.packs_anchor | escape }}" class="button" data-vs-track="hero_packs">{{ section.settings.button_text | escape }}</a>
+          {%- if player != blank and player_variant.price > 0 -%}
+            {%- assign player_price = player_variant.price | money -%}
+            <a href="{{ player_variant.url }}" class="ads-hero__player" data-vs-track="hero_player">{{ section.settings.player_text | replace: '[price]', player_price }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.image != blank -%}
+        <div class="age-intro__media">
+          {{- section.settings.image | image_url: width: 900 | image_tag: loading: 'eager', sizes: '(min-width: 1000px) 460px, 1px', widths: '460,700,900', alt: section.settings.image_alt -}}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- capture intents_json -%}
+  [
+  {%- for block in section.blocks -%}
+    {
+      "name": {{ block.settings.name | json }},
+      "keywords": {{ block.settings.keywords | downcase | split: ',' | json }},
+      "adGroups": {{ block.settings.ad_group_ids | remove: ' ' | split: ',' | json }},
+      "eyebrow": {{ block.settings.eyebrow | json }},
+      "title": {{ block.settings.title | json }},
+      "titleFallback": {{ block.settings.title_fallback | json }},
+      "lede": {{ block.settings.lede | json }},
+      "compareText": {{ block.settings.compare_text | json }},
+      "compareUrl": {{ block.settings.compare_url | json }}
+    }{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+  ]
+{%- endcapture -%}
+
+<script>
+(function () {
+  var intents = {{ intents_json }};
+  var pageTitle = {{ section.settings.page_title | json }};
+  var storeKey = 'vbIntent:' + location.pathname;
+  var root = document.getElementById('shopify-section-{{ section.id }}');
+  if (!root) return;
+
+  var BRANDS = /(yoto|tonie|jooki|amazon|echo|alexa)/;
+  var FILLER = /\b(best|cheap|cheapest|buy|uk|sale|sales|price|prices|online|top|deal|deals|shop)\b/g;
+
+  function clean(raw) {
+    if (!raw) return '';
+    var k = String(raw).replace(/\+/g, ' ').toLowerCase();
+    k = k.replace(/[^a-z0-9' -]/g, ' ').replace(FILLER, ' ');
+    k = k.replace(/\bscreen ?free\b/g, 'screen-free').replace(/\baudio book/g, 'audiobook').replace(/\bchildrens\b/g, "children's");
+    return k.replace(/\s+/g, ' ').trim();
+  }
+  function usable(k) {
+    if (!k || k.length > 40 || /[0-9]/.test(k) || BRANDS.test(k)) return false;
+    var words = k.split(' ').length;
+    return words >= 2 && words <= 6;
+  }
+  function fill(text, k) {
+    var cap = k.charAt(0).toUpperCase() + k.slice(1);
+    return text.replace(/\[Keyword\]/g, cap).replace(/\[keyword\]/g, k);
+  }
+  function pick(keyword, adGroup) {
+    var i, j;
+    if (keyword) {
+      for (i = 0; i < intents.length; i++) {
+        for (j = 0; j < intents[i].keywords.length; j++) {
+          var phrase = intents[i].keywords[j].trim();
+          if (phrase && keyword.indexOf(phrase) !== -1) return intents[i];
+        }
+      }
+    }
+    if (adGroup) {
+      for (i = 0; i < intents.length; i++) {
+        if (intents[i].adGroups.indexOf(adGroup) !== -1) return intents[i];
+      }
+    }
+    return null;
+  }
+
+  var state = null;
+  try {
+    var params = new URLSearchParams(location.search);
+    var term = params.get('utm_term');
+    var adGroup = (params.get('utm_content') || '').trim();
+    if (term || adGroup) {
+      var keyword = clean(term);
+      // Match on the keyword as typed (filler words kept, so "toniebox sale" can match); show the cleaned one.
+      var typed = term ? String(term).replace(/\+/g, ' ').toLowerCase().replace(/[^a-z0-9' -]/g, ' ').replace(/\s+/g, ' ').trim() : '';
+      var intent = pick(typed, adGroup);
+      state = { name: intent ? intent.name : 'default', keyword: keyword };
+      if (intent) {
+        var useKeyword = intent.title.indexOf('[') !== -1 && usable(keyword);
+        state.eyebrow = intent.eyebrow;
+        state.title = useKeyword ? fill(intent.title, keyword) : (intent.titleFallback || intent.title.replace(/\[[Kk]eyword\]:?\s*/g, ''));
+        state.lede = intent.lede;
+        state.compareText = intent.compareText;
+        state.compareUrl = intent.compareUrl;
+        if (useKeyword && pageTitle) state.pageTitle = fill(pageTitle, keyword);
+      }
+      try { sessionStorage.setItem(storeKey, JSON.stringify(state)); } catch (e) {}
+    } else {
+      try { state = JSON.parse(sessionStorage.getItem(storeKey) || 'null'); } catch (e) {}
+    }
+  } catch (e) { state = null; }
+  if (!state) return;
+
+  function set(sel, text) {
+    var el = root.querySelector(sel);
+    if (el && text) el.textContent = text;
+  }
+  set('[data-intent-eyebrow]', state.eyebrow);
+  set('[data-intent-title]', state.title);
+  set('[data-intent-lede]', state.lede);
+  if (state.compareText && state.compareUrl) {
+    var wrap = root.querySelector('[data-intent-compare]');
+    var link = wrap && wrap.querySelector('a');
+    if (link) { link.textContent = state.compareText; link.href = state.compareUrl; wrap.hidden = false; }
+  }
+  if (state.pageTitle) document.title = state.pageTitle;
+
+  function tag() {
+    var ph = window.posthog;
+    if (!ph) return false;
+    try {
+      var props = { lp_intent: state.name, lp_keyword: state.keyword || null };
+      if (typeof ph.register_for_session === 'function') ph.register_for_session(props);
+      else if (typeof ph.register === 'function') ph.register(props);
+      return true;
+    } catch (e) { return false; }
+  }
+  if (!tag()) window.addEventListener('load', tag);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Ads intent hero",
+  "tag": "div",
+  "class": "shopify-section--ads-hero",
+  "settings": [
+    { "type": "color", "id": "background", "label": "Band background", "default": "#fff7f0" },
+    { "type": "paragraph", "content": "Default wording: shown without JavaScript, and when no Intent block matches the ad's keyword or ad group." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Screen-free audiobook player" },
+    { "type": "text", "id": "title", "label": "Heading (H1)", "default": "An audiobook player children use on their own" },
+    { "type": "textarea", "id": "lede", "label": "Line", "default": "Each story is a small audiobook block that slots into the player. No screen, no wifi, no downloads, no subscription." },
+    { "type": "text", "id": "page_title", "label": "Browser title when the keyword is used", "default": "[Keyword]: player and first stories | Voxblock", "info": "[Keyword] = the search keyword. The default title is set in layout/theme.liquid." },
+    { "type": "header", "content": "Trust row" },
+    { "type": "text", "id": "trust_rating", "label": "Rating", "default": "4.9 on Trustpilot" },
+    { "type": "text", "id": "trust_delivery", "label": "Delivery", "default": "Free UK delivery over £25" },
+    { "type": "text", "id": "trust_guarantee", "label": "Guarantee", "default": "100-day money-back guarantee" },
+    { "type": "header", "content": "Actions" },
+    { "type": "text", "id": "button_text", "label": "Button", "default": "Choose a starter pack" },
+    { "type": "text", "id": "packs_anchor", "label": "Button jumps to (anchor ID)", "default": "packs" },
+    { "type": "text", "id": "player_text", "label": "Player link", "default": "Just the player, [price] →", "info": "[price] = the player's live price (cheapest variant)." },
+    { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player" },
+    { "type": "header", "content": "Photo (desktop only)" },
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "image_alt", "label": "Photo alt text", "default": "Voxblock player with an audiobook block in it, beside two more audiobooks" }
+  ],
+  "blocks": [
+    {
+      "type": "intent",
+      "name": "Intent",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name (for PostHog lp_intent)", "default": "generic" },
+        { "type": "textarea", "id": "keywords", "label": "Keywords", "info": "Comma-separated phrases. Matches when the ad's keyword contains one. Blocks are checked top to bottom: put narrower ones (\"yoto vs\") above broader ones (\"yoto\")." },
+        { "type": "text", "id": "ad_group_ids", "label": "Google Ads ad group IDs", "info": "Comma-separated. Used when no block's keywords match." },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "title", "label": "Headline", "info": "[Keyword] or [keyword] inserts the search keyword when it is safe to show." },
+        { "type": "text", "id": "title_fallback", "label": "Headline without keyword", "info": "Used when the keyword can't be shown. Leave empty if the headline has no [Keyword]." },
+        { "type": "textarea", "id": "lede", "label": "Line" },
+        { "type": "text", "id": "compare_text", "label": "Comparison link text" },
+        { "type": "url", "id": "compare_url", "label": "Comparison link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Ads intent hero" }]
+}
+{% endschema %}

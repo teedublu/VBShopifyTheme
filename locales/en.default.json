@@ -127,14 +127,11 @@
       "bought_separately": "Bought separately {{ price }}",
       "worth": "Worth {{ price }}"
     },
-    "offer": {
-      "sale_badge": "Sale · save {{ percent }}%",
-      "from": "From"
-    },
     "price": {
       "regular_price": "Regular price",
       "sale_price": "Sale price",
-      "from_price_html": "From {{ price_min }}"
+      "from_price_html": "From {{ price_min }}",
+      "from_price_lowercase": "from {{ price }}"
     },
     "quantity": {
       "label": "Quantity",
@@ -172,10 +169,10 @@
         "one": "{{ count }} pack",
         "other": "{{ count }} packs"
       },
-      "help_link": "Not sure? Help me choose",
-      "help_title": "Not sure which pack?",
-      "help_text": "Three quick questions about your child and we'll suggest one.",
-      "help_button": "Help me choose"
+      "help_link": "Not sure? Ask Saga",
+      "help_title": "Not sure what to choose?",
+      "help_text": "Tell Saga what you're looking for and she'll help you pick.",
+      "help_button": "Ask Saga"
     },
     "pack_card": {
       "bestseller": "Bestseller",

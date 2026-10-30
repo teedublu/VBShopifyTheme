@@ -1,0 +1,160 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+BUNDLE BOOKS (audiobook bundle product pages, templates/product.audiobook-bundle.json)
+----------------------------------------------------------------------------------------------------------------------
+What a bundle holds, read from the product's `bundles.products` list, so every audiobook bundle with that list gets it
+with nothing set per product. (Shopify's native bundle components can't be read in Liquid on a product page, and the
+"-set" twin products that hold some lists aren't published, so those bundles need the list on the bundle itself.)
+* the books, as the series page's book rows (snippets/story-book-card.liquid, no price or Add to cart: the bundle is
+  what's for sale here), each with its cover, short blurb, ages, sample and a link to the book
+* links to the series page (the first published series holding the first book, snippets/story-series-handle.liquid),
+  then the authors and narrators (the bundle's own `book.authors` / `book.narrators`, else the books'), duplicates
+  removed, at most "Most author and narrator links" (mixed bundles can have a dozen narrators)
+* the characters across the books (their audiobook entries' `characters`), as the series page's character cards
+Hidden when the product has no bundle list. Same styles as the series page (voxblock.css); nothing is styled here.
+Tracking: the shared `story_hero_click` event (data-story-track inside [data-story-page]): books_title,
+books_series, books_author, books_narrator.
+{%- endcomment -%}
+
+{%- liquid
+  assign books = product.metafields.bundles.products.value
+  assign book_count = books.size | default: 0
+
+  if book_count > 0
+    assign first_book = books | first
+    capture series_handle
+      render 'story-series-handle', product: first_book
+    endcapture
+    assign series_handle = series_handle | strip
+    assign series = blank
+    if series_handle != blank
+      assign series = shop.metaobjects.series[series_handle]
+    endif
+
+    # People: the bundle's own entries, else each book's; one chip per person and role
+    assign people_seen = ','
+    assign people_count = 0
+    capture people_chips
+      for round in (1..2)
+        for source in books
+          if round == 1
+            if product.metafields.book.authors.value != blank
+              assign people = product.metafields.book.authors.value
+            else
+              assign people = source.metafields.book.audiobook.value.authors.value
+            endif
+            assign role = 'a'
+            assign label = section.settings.author_label
+            assign track = 'books_author'
+          else
+            if product.metafields.book.narrators.value != blank
+              assign people = product.metafields.book.narrators.value
+            else
+              assign people = source.metafields.book.audiobook.value.narrators.value
+            endif
+            assign role = 'n'
+            assign label = section.settings.narrator_label
+            assign track = 'books_narrator'
+          endif
+          for person in people
+            assign key = ',' | append: role | append: ':' | append: person.system.handle | append: ','
+            if people_seen contains key or people_count >= section.settings.max_people
+              continue
+            endif
+            assign people_count = people_count | plus: 1
+            assign people_seen = people_seen | append: key
+            assign link = person.system.url | default: person.collection.value.url
+            assign person_name = person.name.value | default: person.name | escape
+            if link != blank and person_name != blank
+              echo '<li><a href="' | append: link | append: '" class="series-chip series-chip--link" data-story-track="' | append: track | append: '">' | append: label | append: ' ' | append: person_name | append: '</a></li>'
+            endif
+          endfor
+        endfor
+      endfor
+    endcapture
+
+    # Characters across the books, first appearance wins
+    assign character_seen = ','
+    assign character_count = 0
+    capture character_cards
+      for source in books
+        for character in source.metafields.book.audiobook.value.characters.value
+          assign key = ',' | append: character.system.handle | append: ','
+          if character_seen contains key or character_count >= section.settings.max_characters
+            continue
+          endif
+          assign character_seen = character_seen | append: key
+          assign character_count = character_count | plus: 1
+          render 'character-card', character: character
+        endfor
+      endfor
+    endcapture
+
+    assign series_name = series.name.value | default: series.title.value
+    assign intro = section.settings.intro | replace: '[count]', book_count
+    assign characters_heading = section.settings.characters_heading
+    if series_name != blank
+      assign characters_heading = section.settings.characters_heading_series | replace: '[series]', series_name
+    endif
+  endif
+-%}
+
+{%- if book_count > 0 -%}
+<section class="series-books story-books bundle-books" style="--series-chip-bg: {{ section.settings.chip_background }};" data-story-page="{{ request.path | escape }}" {{ section.shopify_attributes }}>
+  <div class="container v-stack gap-6">
+    <div class="series-books__head">
+      <div class="series-books__head-text">
+        {%- if section.settings.heading != blank -%}<h2 class="series-heading">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        {%- if intro != blank -%}<p class="series-books__intro">{{ intro | escape }}</p>{%- endif -%}
+      </div>
+    </div>
+
+    {%- if series != blank or people_chips != blank -%}
+      <ul class="series-hero__chips story-books__links" role="list">
+        {%- if series != blank -%}
+          <li><a href="{{ series.system.url }}" class="series-chip series-chip--link" data-story-track="books_series">{{ section.settings.series_label | replace: '[series]', series_name | escape }}</a></li>
+        {%- endif -%}
+        {{- people_chips -}}
+      </ul>
+    {%- endif -%}
+
+    <ol class="series-books__list" role="list">
+      {%- for book in books -%}
+        {%- render 'story-book-card', book: book, blurb_words: section.settings.blurb_words, ages_label: section.settings.ages_label, sample_label: section.settings.sample_label, show_buy: false -%}
+      {%- endfor -%}
+    </ol>
+
+    {%- if character_count > 0 -%}
+      <div class="bundle-books__characters">
+        <h2 class="series-heading">{{ characters_heading | escape }}</h2>
+        <ul class="character-cards" role="list">{{ character_cards }}</ul>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Bundle books",
+  "tag": "div",
+  "class": "shopify-section--bundle-books",
+  "settings": [
+    { "type": "paragraph", "content": "The books in this bundle (product field bundles.products), with series, author and narrator links and the characters. All read from the shop's data." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What's in this bundle" },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "[count] audiobooks, each on its own block.", "info": "[count] = number of books in the bundle." },
+    { "type": "text", "id": "series_label", "label": "Series link", "default": "The [series] series" },
+    { "type": "text", "id": "author_label", "label": "Author link prefix", "default": "By" },
+    { "type": "text", "id": "narrator_label", "label": "Narrator link prefix", "default": "Read by" },
+    { "type": "text", "id": "ages_label", "label": "Age label", "default": "Ages" },
+    { "type": "text", "id": "sample_label", "label": "Sample button", "default": "Hear a sample" },
+    { "type": "range", "id": "blurb_words", "label": "Blurb words", "min": 10, "max": 60, "step": 2, "default": 30 },
+    { "type": "color", "id": "chip_background", "label": "Link pill background", "default": "#fff7f0" },
+    { "type": "text", "id": "characters_heading", "label": "Characters heading", "default": "Characters in this bundle" },
+    { "type": "text", "id": "characters_heading_series", "label": "Characters heading (series bundle)", "default": "[series] characters" },
+    { "type": "range", "id": "max_people", "label": "Most author and narrator links", "min": 2, "max": 12, "step": 1, "default": 6 },
+    { "type": "range", "id": "max_characters", "label": "Most characters", "min": 0, "max": 16, "step": 1, "default": 8 }
+  ],
+  "presets": [{ "name": "Bundle books" }]
+}
+{% endschema %}

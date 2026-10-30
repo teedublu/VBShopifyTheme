@@ -13,6 +13,8 @@ Supported variables
 
 * product: the pack to render
 * card_index: 1-based position in the grid (the first few images load eagerly)
+* show_titles: true = always name every book ("Player + The Gruffalo, Room on the Broom, ..."), however long the list.
+  Paid landing pages set it (featured-collection "Name every book"); elsewhere long lists fall back to a count.
 
 Data used (all optional, the line is simply left out if missing):
 * contents line: metafield pack.contents (text, overrides everything), else the books in bundles.products
@@ -53,7 +55,7 @@ Data used (all optional, the line is simply left out if missing):
     assign pack_books = product.metafields.bundles.products.value
     if pack_books.size > 0
       assign book_titles = pack_books | map: 'title' | join: ', '
-      if book_titles.size <= 40
+      if book_titles.size <= 40 or show_titles
         assign contents_line = 'collection.pack_card.contents_named' | t: titles: book_titles
       else
         assign contents_line = 'collection.pack_card.contents_count' | t: count: pack_books.size
@@ -104,12 +106,50 @@ Data used (all optional, the line is simply left out if missing):
   if card_index > 0 and card_index <= 4
     assign image_loading = 'eager'
   endif
+
+  # DISPLAY MEDIA: only when the featured photo is a white-background shopping-feed image (alt contains
+  # "(shopping feed image)"), swap it for the colour-tagged on-site photo (#Color_X or #Colour_X). Every other
+  # product keeps its featured photo as-is - an unconditional swap replaced composite hero shots (e.g. The
+  # Ultimate Gift Bundle) with whichever colour photo happened to be tagged first.
+  assign display_media = product.featured_media
+  if product.featured_media.alt contains '(shopping feed image)'
+    # Match the colour of the variant the card opens on (its swatch is pre-selected), not just the first tagged photo:
+    # several packs list Red or Green first in media while Orange is the first variant.
+    assign card_variant = product.selected_or_first_available_variant
+    assign card_colour = ''
+    for option in product.options_with_values
+      assign option_name = option.name | downcase
+      if option_name contains 'col'
+        assign card_colour = card_variant.options[forloop.index0] | downcase | strip
+        break
+      endif
+    endfor
+    assign colour_fallback = blank
+    assign colour_matched = false
+    for media in product.media
+      if media.alt contains '#Color_' or media.alt contains '#Colour_'
+        if colour_fallback == blank
+          assign colour_fallback = media
+        endif
+        assign tag_parts = media.alt | split: '_'
+        assign tag_colour = tag_parts.last | downcase | strip
+        if card_colour != blank and tag_colour == card_colour
+          assign display_media = media
+          assign colour_matched = true
+          break
+        endif
+      endif
+    endfor
+    if colour_matched == false and colour_fallback != blank
+      assign display_media = colour_fallback
+    endif
+  endif
 -%}
 
 <product-card handle="{{ product.handle | escape }}" class="pack-card" data-pack-kind="{{ pack_kind }}">
   <div class="pack-card__media">
-    {%- if product.featured_media -%}
-      {{- product.featured_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
+    {%- if display_media -%}
+      {{- display_media | image_url: width: 640 | image_tag: loading: image_loading, sizes: '(max-width: 699px) 45vw, (max-width: 1399px) 22vw, 260px', widths: '240,320,480,640', alt: product.title, class: 'pack-card__image product-card__image product-card__image--primary' -}}
     {%- endif -%}
 
     {%- if save_pct > 0 -%}

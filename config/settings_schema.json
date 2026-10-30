@@ -386,18 +386,6 @@
       },
       {
         "type": "color",
-        "id": "badge_offer",
-        "label": "Online offer badge",
-        "default": "#1E4A4C"
-      },
-      {
-        "type": "color",
-        "id": "badge_offer_sale",
-        "label": "Offer sale badge",
-        "default": "#C8232C"
-      },
-      {
-        "type": "color",
         "id": "badge_bundle",
         "label": "Bundle saves badge",
         "default": "#0F7B63"
@@ -918,65 +906,6 @@
     ]
   },
   {
-    "name": "Offer pricing",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "Shows an automatic-discount offer price (e.g. £5.99 instead of £9.99) on product cards, search results and product pages for products carrying the offer tag. Cart and checkout always use Shopify's real discount data."
-      },
-      {
-        "type": "checkbox",
-        "id": "offer_enabled",
-        "label": "Show offer price on storefront",
-        "default": false,
-        "info": "Display only. Turning this off does NOT stop the discount: also disable the automatic discount in Shopify admin."
-      },
-      {
-        "type": "text",
-        "id": "offer_tag",
-        "label": "Offer product tag",
-        "default": "offer-599",
-        "info": "Must match the product tag used by the \"Offer – £5.99\" smart collection that the automatic discount targets."
-      },
-      {
-        "type": "number",
-        "id": "offer_amount_off",
-        "label": "Amount off per item (pence)",
-        "default": 400,
-        "info": "MUST match the amount of the automatic discount in Shopify admin (400 = £4.00 off). Value is in minor currency units."
-      },
-      {
-        "type": "header",
-        "content": "Second offer (optional)"
-      },
-      {
-        "type": "text",
-        "id": "offer_tag_2",
-        "label": "Second offer product tag",
-        "default": "offer-799",
-        "info": "For a second price point (e.g. 7.99 products listed at 9.99). Leave empty to disable."
-      },
-      {
-        "type": "number",
-        "id": "offer_amount_off_2",
-        "label": "Second offer: amount off per item (pence)",
-        "default": 200,
-        "info": "MUST match the second automatic discount (200 = 2.00 off). If a product has both tags the larger amount is used."
-      },
-      {
-        "type": "header",
-        "content": "Badge"
-      },
-      {
-        "type": "text",
-        "id": "offer_badge_label",
-        "label": "Offer badge label",
-        "default": "Online offer",
-        "info": "Use the same wording as the automatic discount title so the cart matches."
-      }
-    ]
-  },
-  {
     "name": "Bundle pricing",
     "settings": [
       {
@@ -1115,6 +1044,42 @@
         "type": "url",
         "id": "social_21buttons",
         "label": "21 Buttons"
+      }
+    ]
+  },
+  {
+    "name": "Saga chat",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Saga is the Voxblock sales assistant. She opens in a dialog from the \"Ask Saga\" grid tile and from any \"Help me choose\" link set to #saga-chat. The chat runs through the Voxblock Account app proxy (/apps/voxblock/saga); nothing third-party loads in the browser."
+      },
+      {
+        "type": "checkbox",
+        "id": "saga_enabled",
+        "label": "Enable Saga",
+        "default": true,
+        "info": "Off removes the tile, the links' target and the dialog everywhere."
+      },
+      {
+        "type": "text",
+        "id": "saga_title",
+        "label": "Name",
+        "default": "Saga"
+      },
+      {
+        "type": "text",
+        "id": "saga_intro",
+        "label": "Line under the name",
+        "default": "Ask me anything about Voxblock.",
+        "info": "Keep this generic — Saga opens in more than one context (starter-pack chooser today, others later), so this line shouldn't assume why the visitor is here."
+      },
+      {
+        "type": "text",
+        "id": "saga_endpoint",
+        "label": "Endpoint",
+        "default": "/apps/voxblock/saga",
+        "info": "App proxy path. Leave as is unless the proxy subpath changes."
       }
     ]
   },
