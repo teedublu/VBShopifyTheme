@@ -26,10 +26,6 @@
         "anchor_id": "",
         "image": "shopify://shop_images/player-adults-lifestyle.png",
         "image_alt": "Older man in an armchair listening to an audiobook on a Voxblock player with headphones",
-        "teaser_badge": "Big news for adult listeners",
-        "teaser_text": "Same simple player, far more books. Find out more",
-        "teaser_url": "#big-news",
-        "teaser_flag": "elderly-myo-teaser",
         "show_sticky_bar": true,
         "sticky_label": "Voxblock player",
         "sticky_button_text": "Add to basket",
@@ -255,37 +251,6 @@
         "product_card_text_color": ""
       }
     },
-    "big_news": {
-      "type": "adult-waitlist",
-      "settings": {
-        "teaser_only": true,
-        "anchor_id": "big-news",
-        "badge": "Coming soon",
-        "heading": "Big news for adult listeners",
-        "text": "<p>Something new is on its way: the same simple, hold-it-in-your-hand way to listen, with a much larger choice of titles for grown-ups. It works with the Voxblock player you can buy today.</p>",
-        "buy_title": "Start listening now",
-        "buy_text": "Get the player and a few classics today. It's ready for what's coming, so there's no need to wait.",
-        "product": "audiobook-player-elderly",
-        "variant_title": "No bumper",
-        "buy_button_text": "Add player to basket",
-        "list_id": "",
-        "source": "elderly-page",
-        "interest": "myo-adult",
-        "form_title": "Not ready yet? Hear first",
-        "form_text": "Leave your email and we'll tell you as soon as the new titles are ready.",
-        "email_label": "Email address",
-        "who_label": "Who's it for? (optional)",
-        "who_me": "Me",
-        "who_other": "A parent or grandparent",
-        "form_button_text": "Tell me first",
-        "thanks": "Thanks. We'll email you as soon as the new titles are ready.",
-        "small_print": "<p>We'll email you about this and other Voxblock news. Unsubscribe at any time. <a href=\"/policies/privacy-policy\" title=\"Privacy policy\">Privacy policy</a></p>",
-        "full_width": true,
-        "background": "#197177",
-        "background_gradient": "",
-        "text_color": "#ffffff"
-      }
-    },
     "gift": {
       "type": "media-with-text",
       "settings": {
@@ -496,64 +461,49 @@
           "type": "item",
           "settings": {
             "title": "What is the easiest way for an elderly person to listen to audiobooks?",
-            "content": "<p>A player that needs no screen, no wi-fi and no account. With Voxblock, each audiobook is a block: put it on the player and press play. The player remembers where you stopped.</p>",
-            "teaser_only": false
+            "content": "<p>A player that needs no screen, no wi-fi and no account. With Voxblock, each audiobook is a block: put it on the player and press play. The player remembers where you stopped.</p>"
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
             "title": "Is there a device that just plays audiobooks?",
-            "content": "<p>Yes. The Voxblock player only plays audiobooks. There are no notifications, adverts or menus to get in the way.</p>",
-            "teaser_only": false
+            "content": "<p>Yes. The Voxblock player only plays audiobooks. There are no notifications, adverts or menus to get in the way.</p>"
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
             "title": "Does it need wi-fi or a smartphone?",
-            "content": "<p>No. The stories are on the blocks, so there's nothing to download or stream and no phone to pair.</p>",
-            "teaser_only": false
+            "content": "<p>No. The stories are on the blocks, so there's nothing to download or stream and no phone to pair.</p>"
           }
         },
         "item_4": {
           "type": "item",
           "settings": {
             "title": "Is it suitable for someone with poor eyesight?",
-            "content": "<p>There's no screen or small text to read. The play button glows, so it's easy to find.</p>",
-            "teaser_only": false
+            "content": "<p>There's no screen or small text to read. The play button glows, so it's easy to find.</p>"
           }
         },
         "item_5": {
           "type": "item",
           "settings": {
             "title": "What audiobooks are there for adults?",
-            "content": "<p>Classics such as Pride and Prejudice, Jane Eyre, Emma and Three Men in a Boat. <a href=\"/collections/audiobooks-for-older-listeners\" title=\"Audiobooks for older listeners\">See audiobooks for older listeners</a>.</p>",
-            "teaser_only": false
-          }
-        },
-        "item_6": {
-          "type": "item",
-          "settings": {
-            "title": "Will there be more audiobooks for adults?",
-            "content": "<p>Yes. Big news is coming for adult listeners: the same simple player with a much larger choice of titles. It works with the player you can buy today. <a href=\"#big-news\" title=\"Big news for adult listeners\">Leave your email to hear first</a>.</p>",
-            "teaser_only": true
+            "content": "<p>Classics such as Pride and Prejudice, Jane Eyre, Emma and Three Men in a Boat. <a href=\"/collections/audiobooks-for-older-listeners\" title=\"Audiobooks for older listeners\">See audiobooks for older listeners</a>.</p>"
           }
         },
         "item_7": {
           "type": "item",
           "settings": {
             "title": "How long does the battery last?",
-            "content": "<p>Up to 16 hours of listening on a charge. It charges with the USB-C cable in the box.</p>",
-            "teaser_only": false
+            "content": "<p>Up to 16 hours of listening on a charge. It charges with the USB-C cable in the box.</p>"
           }
         },
         "item_8": {
           "type": "item",
           "settings": {
             "title": "What if it isn't right for them?",
-            "content": "<p>You have 100 days to return the player, free and by post, in its original packaging.</p>",
-            "teaser_only": false
+            "content": "<p>You have 100 days to return the player, free and by post, in its original packaging.</p>"
           }
         }
       },
@@ -563,7 +513,6 @@
         "item_3",
         "item_4",
         "item_5",
-        "item_6",
         "item_7",
         "item_8"
       ]
@@ -583,10 +532,6 @@
         "link_url": "",
         "trust_text": "",
         "anchor_id": "",
-        "teaser_badge": "",
-        "teaser_text": "",
-        "teaser_url": "",
-        "teaser_flag": "",
         "show_sticky_bar": false,
         "sticky_label": "",
         "sticky_button_text": "",
@@ -599,12 +544,11 @@
   },
   "order": [
     "hero",
+    "books",
     "steps",
     "steps_link",
     "story",
     "why",
-    "books",
-    "big_news",
     "gift",
     "compare",
     "press",

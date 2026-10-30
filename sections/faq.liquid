@@ -153,9 +153,7 @@ book (a character not yet linked to an audiobook).
               {%- endcapture -%}
               {%- assign item_title = block.settings.title | replace: '[books_sentence]', t_books_sentence | replace: ' by [author]', t_by_author | replace: '[name]', t_name | replace: '[book_short]', t_book_short | replace: '[book_url]', t_book_url | replace: '[book]', t_book | replace: '[author]', t_author -%}
 
-              {%- comment -%}"Teaser only" questions start hidden (snippets/teaser-flag.liquid shows them) and stay out of the JSON-LD{%- endcomment -%}
-              {%- if block.settings.teaser_only -%}{%- assign item_class = 'teaser-only' -%}{%- else -%}{%- assign item_class = '' -%}{%- endif -%}
-              {%- render 'accordion', title: item_title, content: accordion_content, block: block, class: item_class -%}
+              {%- render 'accordion', title: item_title, content: accordion_content, block: block -%}
             {%- endif -%}
           {%- endfor -%}
         </div>
@@ -179,7 +177,6 @@ book (a character not yet linked to an audiobook).
       {%- assign faq_first = true -%}
       {%- for block in section.blocks -%}
         {%- if t_book == blank and metaobject != blank -%}{%- if block.settings.title contains '[book' or block.settings.content contains '[books_sentence]' -%}{%- continue -%}{%- endif -%}{%- endif -%}
-        {%- if block.settings.teaser_only -%}{%- continue -%}{%- endif -%}
         {%- unless faq_first -%},{%- endunless -%}{%- assign faq_first = false -%}
         {
           "@type": "Question",
@@ -220,13 +217,6 @@ book (a character not yet linked to an audiobook).
           "id": "content",
           "label": "Answer",
           "default": "<p>Write content to answer to common questions your customers may have about your products, shipping policies..</p>"
-        },
-        {
-          "type": "checkbox",
-          "id": "teaser_only",
-          "label": "Show only with the teaser",
-          "info": "Hidden until the PostHog teaser flag is on for the visitor. Left out of the FAQ structured data.",
-          "default": false
         }
       ]
     }

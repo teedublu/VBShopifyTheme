@@ -4,15 +4,13 @@ PLAYER OFFER (templates/page.audiobook-player-elderly.json)
 ----------------------------------------------------------------------------------------------------------------------
 Hero with its own buy button for one player variant: eyebrow, H1, short text, the variant's price (read live, never
 typed), "Add player to basket" (the theme's product form, so the cart drawer opens as everywhere else), a second
-link, a trust line, an optional teaser pill and a photo.
+link, a trust line and a photo.
 
 * Variant: the product's variant whose title matches "Variant title" (default "No bumper"), else its first available
   variant. The same variant is used by the "band" layout and the mobile sticky bar.
 * Layout "band": the same buy button as a closing band (heading, price line, button), no photo.
 * Sticky bar (phones only): appears once this section's button scrolls out of view, hides again when any other
   [data-player-offer-button] is on screen (assets/voxblock.js).
-* Teaser pill: rendered with class "teaser-only", hidden until the PostHog flag named in "Teaser flag" is on for the
-  visitor (or ?teaser=1). Clicks send PostHog `teaser_pill_clicked` { page, flag_variant }.
 * No Product JSON-LD or microdata: this section is used on content pages that must stay out of the Merchant Center
   crawl.
 {%- endcomment -%}
@@ -38,7 +36,7 @@ link, a trust line, an optional teaser pill and a photo.
 
 {%- render 'section-spacing-collapsing' -%}
 
-<div class="player-offer player-offer--{{ layout }}" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %} {% if section.settings.teaser_flag != blank %}data-teaser-flag="{{ section.settings.teaser_flag | escape }}"{% endif %}>
+<div class="player-offer player-offer--{{ layout }}" {% if section.settings.anchor_id != blank %}id="{{ section.settings.anchor_id | escape }}"{% endif %}>
   <div {% render 'section-properties' %}>
     <div class="player-offer__inner">
       <div class="player-offer__text">
@@ -74,13 +72,6 @@ link, a trust line, an optional teaser pill and a photo.
         {%- endif -%}
 
         {%- if section.settings.trust_text != blank -%}<p class="player-offer__trust">{{ section.settings.trust_text | escape }}</p>{%- endif -%}
-
-        {%- if section.settings.teaser_text != blank -%}
-          <a class="player-offer__teaser teaser-only" href="{{ section.settings.teaser_url | default: '#' }}" data-teaser-pill>
-            {%- if section.settings.teaser_badge != blank -%}<span class="player-offer__teaser-badge">{{ section.settings.teaser_badge | escape }}</span>{%- endif -%}
-            <span class="player-offer__teaser-text">{{ section.settings.teaser_text | escape }}</span>
-          </a>
-        {%- endif -%}
       </div>
 
       {%- if layout == 'hero' and section.settings.image != blank -%}
@@ -128,11 +119,6 @@ link, a trust line, an optional teaser pill and a photo.
     { "type": "header", "content": "Photo (hero layout)" },
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "text", "id": "image_alt", "label": "Image alt text", "info": "Leave empty to use the alt text from Files." },
-    { "type": "header", "content": "Teaser pill" },
-    { "type": "text", "id": "teaser_badge", "label": "Badge" },
-    { "type": "text", "id": "teaser_text", "label": "Text", "info": "Leave empty for no pill." },
-    { "type": "url", "id": "teaser_url", "label": "Link" },
-    { "type": "text", "id": "teaser_flag", "label": "Teaser flag", "info": "PostHog feature flag key. Everything marked \"teaser only\" on the page shows only when this flag is on for the visitor. Preview with ?teaser=1." },
     { "type": "header", "content": "Sticky bar (phones, hero layout)" },
     { "type": "checkbox", "id": "show_sticky_bar", "label": "Show sticky add-to-basket bar", "default": true },
     { "type": "text", "id": "sticky_label", "label": "Label", "default": "Voxblock player" },
