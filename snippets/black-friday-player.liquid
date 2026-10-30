@@ -1,0 +1,22 @@
+{%- comment -%}
+Black Friday: the player offer card (for everyone) in sections/black-friday-code.
+Accepts: cfg (the section's settings), player (product), player_from (discounted price in pence), phase, uid.
+{%- endcomment -%}
+<article class="bf-offer bf-offer--player" aria-labelledby="bf-player-{{ uid }}">
+  <p class="bf-offer__tag">Offer 1 · everyone</p>
+  <p class="bf-offer__big"><span class="bf-offer__upto">{% if cfg.player_pct == 50 %}half price{% else %}save{% endif %}</span>{{ cfg.player_pct }}%<span class="bf-offer__off">off</span></p>
+  <h2 class="bf-offer__name" id="bf-player-{{ uid }}">The Voxblock player</h2>
+  <div class="bf-offer__visual bf-offer__visual--player">
+    {%- if player.featured_image -%}
+      {{ player.featured_image | image_url: width: 480 | image_tag: class: 'bf-offer__player-img', loading: 'lazy', widths: '240, 480', sizes: '(min-width: 750px) 220px, 160px', alt: '' }}
+    {%- endif -%}
+    <p class="bf-offer__price"><span class="bf-offer__now">{{ player_from | money }}</span><s class="bf-offer__was">{{ player.price_min | money }}</s></p>
+  </div>
+  <div class="bf-offer__action">
+    {%- if phase == 'before' -%}
+      <span class="bf-offer__soon">Opens {{ cfg.start_at | date: '%A' }}</span>
+    {%- else -%}
+      <a class="bf-button" href="{{ player.url }}" data-vs-track="bf_player">Shop the player</a>
+    {%- endif -%}
+  </div>
+</article>

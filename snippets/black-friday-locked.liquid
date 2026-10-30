@@ -1,0 +1,28 @@
+{%- comment -%}
+Black Friday: the locked "customer exclusive" card in sections/black-friday-code, for visitors who don't get the
+audiobook offer. Shows none of the book offer (blurred ladder, ??%).
+Accepts: cfg (the section's settings), uid (unique id), mode ('signed_out': sign-in button that returns to the page;
+'not_eligible': signed in with no orders, no button), sign_in_url.
+{%- endcomment -%}
+<article class="bf-offer bf-offer--locked" aria-labelledby="bf-books-{{ uid }}">
+  <p class="bf-offer__tag">Offer 2 · existing customers</p>
+  <div class="bf-offer__big bf-offer__big--lock" aria-hidden="true">
+    <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor"/></svg>
+  </div>
+  <h2 class="bf-offer__name" id="bf-books-{{ uid }}">{{ cfg.locked_heading | escape }}</h2>
+  <div class="bf-offer__visual bf-offer__visual--locked" aria-hidden="true">
+    <div class="bf-ladder bf-ladder--blur">
+      <span class="bf-ladder__step"><span class="bf-ladder__pct">??%</span><span class="bf-ladder__books"><i></i></span></span>
+      <span class="bf-ladder__step"><span class="bf-ladder__pct">??%</span><span class="bf-ladder__books"><i></i><i></i><i></i></span></span>
+      <span class="bf-ladder__step"><span class="bf-ladder__pct">??%</span><span class="bf-ladder__books"><i></i><i></i><i></i><i></i><i></i></span></span>
+    </div>
+  </div>
+  <div class="bf-offer__action">
+    {%- if mode == 'not_eligible' -%}
+      <p class="bf-offer__nudge">{{ cfg.not_eligible_text | escape }}</p>
+    {%- else -%}
+      <p class="bf-offer__nudge">{{ cfg.locked_text | escape }}</p>
+      <a class="bf-button" href="{{ sign_in_url }}" data-vs-track="bf_sign_in">{{ cfg.sign_in_text | escape }}</a>
+    {%- endif -%}
+  </div>
+</article>
