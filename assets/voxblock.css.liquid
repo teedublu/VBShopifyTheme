@@ -1365,6 +1365,14 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf-offer__visual--locked { min-height: 120px; }
 .bf-ladder--blur { filter: blur(5px); opacity: 0.8; user-select: none; }
 .bf-offer--locked .bf-ladder__books i { background: currentColor; }
+.bf-offer--locked .bf-offer__visual--locked { align-items: center; }
+.bf-offer--locked .bf-ladder__books { gap: 4px; }
+.bf-offer--locked .bf-ladder__books i { width: 60px; height: 14px; }
+.bf-offer--locked .bf-ladder__pct { font-size: 34px; }
+@media (min-width: 750px) {
+  .bf-offer--locked .bf-ladder__books i { width: 76px; height: 18px; border-radius: 4px; }
+  .bf-offer--locked .bf-ladder__pct { font-size: 46px; }
+}
 .bf-offer--locked .bf-button, .bf-offer--locked .bf-button:hover { background: var(--bf-accent-ink); color: var(--bf-accent); box-shadow: none; }
 
 /* Black Friday: player card veiled until a couple of days before (percentage and price blurred). */
