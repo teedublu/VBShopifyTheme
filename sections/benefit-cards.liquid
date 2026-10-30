@@ -128,7 +128,7 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
             </span>
 
             {%- if block.settings.title != blank -%}
-              <p class="h4 benefit-card__title">{{ block.settings.title | escape }}</p>
+              {%- assign card_tag = section.settings.card_heading_tag | default: 'p' -%}<{{ card_tag }} class="h4 benefit-card__title">{{ block.settings.title | escape }}</{{ card_tag }}>
             {%- endif -%}
 
             {%- if block.settings.content != blank -%}
@@ -178,6 +178,7 @@ Icons are inline SVG so they take the section's icon colours and need no uploade
       "id": "content",
       "label": "Content"
     },
+    { "type": "select", "id": "card_heading_tag", "label": "Card heading tag", "options": [ { "value": "p", "label": "Paragraph" }, { "value": "h3", "label": "H3" } ], "default": "p", "info": "H3 when the card titles are topics the page should be found for." },
     {
       "type": "select",
       "id": "text_alignment",

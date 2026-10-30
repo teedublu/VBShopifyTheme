@@ -1780,3 +1780,35 @@ html.vb-has-player .cart-player-prompt { display: none; }
 @media screen and (min-width: 1000px) {
   .player-lights__groups { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--spacing-14); }
 }
+
+/* PLAYER OFFER (sections/player-offer): hero or closing band with a buy button for one player variant. Colours come
+   from the section background and the theme's buttons; text sizes from the theme's h1/h2 and prose. */
+.player-offer { scroll-margin-top: calc(var(--header-height, 0px) + 24px); }
+.player-offer__inner { display: grid; gap: var(--spacing-8); align-items: center; }
+.player-offer__text { display: flex; flex-direction: column; gap: var(--spacing-4); align-items: flex-start; }
+.player-offer__text > * { margin: 0; }
+.player-offer__eyebrow + .player-offer__heading { margin-block-start: calc(-1 * var(--spacing-2)); }
+.player-offer__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.player-offer__amount { font-size: 1.75rem; line-height: 1.2; font-weight: 700; color: rgb(var(--heading-color)); }
+.player-offer__note { font-size: .9375rem; }
+.player-offer__actions { display: flex; flex-wrap: wrap; gap: 12px; width: 100%; }
+.player-offer__trust { font-size: .875rem; line-height: 1.5; font-weight: 500; }
+.player-offer__image { width: 100%; height: auto; display: block; }
+.player-offer--band .player-offer__inner { justify-items: center; text-align: center; }
+.player-offer--band .player-offer__text { align-items: center; }
+.player-offer--band .player-offer__actions { justify-content: center; }
+.player-offer-sticky { position: fixed; inset-inline: 0; bottom: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px var(--container-gutter, 20px) calc(10px + env(safe-area-inset-bottom)); background: rgb(var(--background-primary)); box-shadow: 0 -2px 12px rgb(0 0 0 / .12); }
+.player-offer-sticky[hidden] { display: none; }
+.player-offer-sticky__label { margin: 0; display: flex; flex-direction: column; font-size: .875rem; line-height: 1.3; }
+.player-offer-sticky__label strong { font-size: 1.125rem; color: var(--brand-heading); }
+@media screen and (max-width: 699px) {
+  .player-offer__actions > * { flex: 1 1 100%; }
+  .player-offer__actions .button { width: 100%; }
+}
+@media screen and (min-width: 700px) {
+  .player-offer-sticky { display: none !important; }
+}
+@media screen and (min-width: 1000px) {
+  .player-offer--hero .player-offer__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-14); }
+}
+

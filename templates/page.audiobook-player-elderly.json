@@ -9,167 +9,239 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "hero": {
+      "type": "player-offer",
       "settings": {
-        "content_width": "80ch",
-        "show_title": true
+        "layout": "hero",
+        "eyebrow": "Simple listening for older readers",
+        "heading": "An audiobook player for the elderly that's simple to use",
+        "text": "<p>Put an audiobook on the player and press play. No screen, no wi-fi, no passwords and no downloads. Built-in speaker, headphone jack and up to 16 hours of battery.</p>",
+        "product": "audiobook-player-elderly",
+        "variant_title": "No bumper",
+        "price_note": "Voxblock player, ready to play out of the box",
+        "button_text": "Add player to basket",
+        "link_text": "Choose audiobooks",
+        "link_url": "#books",
+        "trust_text": "4.9 on Trustpilot · IndyBest best budget buy 2025 · 100-day free returns · Free UK delivery over £25",
+        "anchor_id": "",
+        "image": "shopify://shop_images/player-adults-lifestyle.png",
+        "image_alt": "Older man in an armchair listening to an audiobook on a Voxblock player with headphones",
+        "show_sticky_bar": true,
+        "sticky_label": "Voxblock player",
+        "sticky_button_text": "Add to basket",
+        "full_width": true,
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": ""
       }
     },
-    "featured_product_wP4963": {
-      "type": "featured-product",
+    "steps": {
+      "type": "story-steps",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Three steps, nothing to learn",
+        "intro": "<p>Each audiobook is its own physical block, so choosing a story is like taking a book off the shelf.</p>",
+        "anchor_id": "how-it-works"
+      },
       "blocks": {
-        "vendor_48wK9T": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "title_EkciRc": {
-          "type": "title",
+        "step_1": {
+          "type": "step",
           "settings": {
-            "heading_tag": "h2"
+            "title": "Choose a book",
+            "text": "Pick the audiobook block you want from the shelf."
           }
         },
-        "badges_MiVmWf": {
-          "type": "badges",
-          "settings": {}
-        },
-        "price_xWJjND": {
-          "type": "price",
+        "step_2": {
+          "type": "step",
           "settings": {
-            "show_taxes_notice": false
+            "title": "Put it on the player",
+            "text": "No menus, no searching, no logging in."
           }
         },
-        "rating_AePCkr": {
-          "type": "rating",
+        "step_3": {
+          "type": "step",
           "settings": {
-            "show_empty": false
+            "title": "Press play",
+            "text": "The player remembers where you stopped, so the next listen picks up from there."
           }
-        },
-        "separator_JmfYBc": {
-          "type": "separator",
-          "settings": {}
-        },
-        "description_HrPt8R": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
-        },
-        "variant_picker_WRqDWk": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": ""
-          }
-        },
-        "buy_buttons_7hyT74": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "pickup_availability_9qWqhd": {
-          "type": "pickup_availability",
-          "settings": {}
         }
       },
       "block_order": [
-        "vendor_48wK9T",
-        "title_EkciRc",
-        "badges_MiVmWf",
-        "price_xWJjND",
-        "rating_AePCkr",
-        "separator_JmfYBc",
-        "description_HrPt8R",
-        "variant_picker_WRqDWk",
-        "buy_buttons_7hyT74",
-        "pickup_availability_9qWqhd"
-      ],
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "steps_link": {
+      "type": "rich-text",
       "settings": {
-        "full_width": true,
-        "product": "voxblock-player",
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "large",
+        "text_position": "start",
+        "anchor_id": "",
         "background": "",
         "background_gradient": "",
-        "text_color": "",
-        "input_background": "rgba(0,0,0,0)",
-        "input_text_color": ""
-      }
-    },
-    "featured_collection_hy8bdk": {
-      "type": "featured-collection",
+        "text_color": ""
+      },
       "blocks": {
-        "promotion_video_dq9Qdc": {
-          "type": "promotion_video",
+        "link": {
+          "type": "richtext",
           "settings": {
-            "position": 4,
-            "column_span": "1",
-            "video": "shopify://files/videos/how does it work_desktop.mp4",
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "How Voxblock works",
-            "content": "",
-            "link_url": "shopify://pages/how-does-it-work",
-            "link_text": "Read more",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
-          }
-        },
-        "promotion_image_xREMmQ": {
-          "type": "promotion_image",
-          "settings": {
-            "position": 1,
-            "column_span": "1",
-            "image": "shopify://shop_images/player-adults-lifestyle.png",
-            "title": "Audiobooks for Adults",
-            "content": "<p>Simple and easy to use</p>",
-            "link_url": "",
-            "link_text": "",
-            "heading_tag": "h4",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "content": "<p><a href=\"/pages/how-does-it-work\" title=\"How Voxblock works\">See how Voxblock works →</a></p>"
           }
         }
       },
       "block_order": [
-        "promotion_video_dq9Qdc",
-        "promotion_image_xREMmQ"
-      ],
+        "link"
+      ]
+    },
+    "story": {
+      "type": "rich-text",
+      "settings": {
+        "full_width": false,
+        "use_mo": false,
+        "content_width": "medium",
+        "text_position": "start",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      },
+      "blocks": {
+        "eyebrow": {
+          "type": "subheading",
+          "settings": {
+            "text": "Our story"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "text": "Made for children, just as good for grown-ups",
+            "heading_tag": "h2",
+            "heading_tag_html": "h2",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "text": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>We designed Voxblock for children. It had to be simple enough for a three-year-old to choose a story and play it on their own, with no screen and nothing to set up. Most of the people who buy it are still families.</p><p>What we learnt is that the things that make it easy for a small child make it easy for anyone: one book at a time, a play button that glows, and nothing to log in to. More and more, people are buying it for a parent or grandparent, or for themselves.</p><p><a href=\"/\" title=\"Voxblock for children\">See Voxblock for children →</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "heading",
+        "text"
+      ]
+    },
+    "why": {
+      "type": "benefit-cards",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Why Voxblock suits older listeners",
+        "content": "",
+        "card_heading_tag": "h3",
+        "text_alignment": "start",
+        "background": "#eaf4f4",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "#ffffff",
+        "card_text_color": "",
+        "card_heading_color": "#197177",
+        "icon_background": "#e9f6f4",
+        "icon_color": "#197177",
+        "icon_accent": "#ff9e57"
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "no-screen",
+            "title": "No screens, no fuss",
+            "content": "<p>There's nothing to swipe or tap and no passwords to remember. Anyone who finds a smartphone or tablet hard work can listen on their own.</p>"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "hands",
+            "title": "Something to hold",
+            "content": "<p>Every audiobook is a block you can pick up, like a book from a shelf. It's easy to see what's there and easy to choose.</p>"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "battery",
+            "title": "Easy to carry from room to room",
+            "content": "<p>It's light and rechargeable, with up to 16 hours of listening on a charge. Take it to the armchair, the kitchen or the garden.</p>"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "no-wifi",
+            "title": "Works without wi-fi",
+            "content": "<p>No internet connection, no streaming and no account. Nothing about the listener is collected.</p>"
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "ear",
+            "title": "Speaker or headphones",
+            "content": "<p>Listen out loud through the built-in speaker, or plug in headphones to listen quietly.</p>"
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "icon": "book",
+            "title": "A library that grows with you",
+            "content": "<p>Start with a few favourites and add more over time. Books can be kept, lent to friends or shared with grandchildren.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6"
+      ]
+    },
+    "books": {
+      "type": "featured-collection",
       "settings": {
         "collection": "audiobooks-for-older-listeners",
         "hide_empty": false,
-        "products": [],
+        "products": [
+          "pride-and-prejudice",
+          "three-men-in-a-boat",
+          "jane-eyre",
+          "around-the-world-in-eighty-days"
+        ],
         "full_width": true,
         "stack_products": true,
         "show_progress_bar": false,
-        "products_count": 11,
+        "products_count": 4,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
+        "products_per_row_desktop": 4,
+        "card_style": "default",
+        "card_show_titles": false,
+        "anchor_id": "books",
         "subheading": "",
-        "title": "A selection of titles",
-        "content": "<p>A curated collection of adult classics, chosen for nostalgia and immersive listening.</p>",
+        "title": "Classics to start with",
+        "content": "",
         "link_url": "shopify://collections/audiobooks-for-older-listeners",
-        "link_text": "View all",
+        "link_text": "See all audiobooks for older listeners",
         "background": "",
         "background_gradient": "",
         "text_color": "",
@@ -178,11 +250,310 @@
         "product_card_background": "",
         "product_card_text_color": ""
       }
+    },
+    "gift": {
+      "type": "media-with-text",
+      "settings": {
+        "full_width": true,
+        "spacing": "small"
+      },
+      "blocks": {
+        "gift_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/player-main-image-adults.png",
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "start",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 120,
+            "subheading": "",
+            "title": "Buying for a parent or grandparent?",
+            "title_tag": "h2",
+            "content": "<p>It arrives ready to play, with nothing to set up and no need to charge it first. Give it with a couple of their favourite books and they can start listening straight away.</p><ul><li>100 days to change your mind, with free returns by post</li><li>2-year guarantee, and we'll repair it after that</li><li>USB-C charging cable included</li><li>Free UK delivery on orders over £25</li></ul>",
+            "link_text": "",
+            "link_url": "",
+            "link2_text": "",
+            "link2_url": "",
+            "background": "",
+            "background_gradient": "",
+            "text_color": "",
+            "heading_text_color": "",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "gift_image"
+      ]
+    },
+    "compare": {
+      "type": "comparison-table",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Voxblock compared with a tablet or smart speaker",
+        "content": "<p>The usual ways to listen to audiobooks, side by side.</p>",
+        "text_position": "start",
+        "anchor_id": "compare",
+        "feature_heading": "",
+        "column_1": "Voxblock",
+        "highlight_column": "1",
+        "column_2": "Tablet or phone",
+        "column_3": "Smart speaker",
+        "footnote": "",
+        "column_1_note": "",
+        "column_2_price": "",
+        "column_2_note": "",
+        "column_3_price": "",
+        "column_3_note": "",
+        "column_1_product": "audiobook-player-elderly",
+        "cta_collection": "",
+        "column_1_button_text": "",
+        "cta_track": "elderly_table",
+        "sticky_header": false,
+        "column_1_short": "Voxblock",
+        "column_2_short": "Tablet",
+        "column_3_short": "Speaker",
+        "sticky_button_text": "",
+        "media_ratio": "square",
+        "media_fit": "contain",
+        "stack_on_mobile": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "chart_background": "#ffffff",
+        "chart_text_color": "",
+        "tick_color": "#4cb6ac",
+        "cross_color": "#c9c9c9"
+      },
+      "blocks": {
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Needs wi-fi",
+            "value_1": "No",
+            "value_2": "To download or stream",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "Account or password",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "Yes",
+            "good_answer": "no"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "Screen to find your way around",
+            "value_1": "No",
+            "value_2": "Yes",
+            "value_3": "No, by voice",
+            "good_answer": "no"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "How you choose a book",
+            "value_1": "Pick up a block",
+            "value_2": "Search in an app",
+            "value_3": "Say the title",
+            "good_answer": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4"
+      ]
+    },
+    "press": {
+      "type": "press",
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "background": "#fff7f0",
+        "background_gradient": "",
+        "text_color": "#565656",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "#ffffff",
+        "logo_item_border": ""
+      },
+      "blocks": {
+        "quote_independent": {
+          "type": "quote",
+          "settings": {
+            "logo": "shopify://shop_images/INDY-Best-AFI.png",
+            "logo_width": 350,
+            "author": "Best budget buy · IndyBest, The Independent · Abby Driver, 2025 · Rated 4.9 on Trustpilot",
+            "content": "Easy setup … Straightforward to use.",
+            "show_rating": false,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "quote_independent"
+      ]
+    },
+    "reviews": {
+      "type": "testimonials",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "What buyers say",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "",
+        "testimonial_card_text_color": ""
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "include_jsonld": true,
+        "full_width": true,
+        "subheading": "",
+        "title": "Questions about the player",
+        "content": "",
+        "team_avatar_width": 160,
+        "support_hours": "",
+        "answer_time": "",
+        "show_on_metaobject_handle": "",
+        "hide_on_metaobject_handle": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      },
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "What is the easiest way for an elderly person to listen to audiobooks?",
+            "content": "<p>A player that needs no screen, no wi-fi and no account. With Voxblock, each audiobook is a block: put it on the player and press play. The player remembers where you stopped.</p>"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "Is there a device that just plays audiobooks?",
+            "content": "<p>Yes. The Voxblock player only plays audiobooks. There are no notifications, adverts or menus to get in the way.</p>"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "Does it need wi-fi or a smartphone?",
+            "content": "<p>No. The stories are on the blocks, so there's nothing to download or stream and no phone to pair.</p>"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "title": "Is it suitable for someone with poor eyesight?",
+            "content": "<p>There's no screen or small text to read. The play button glows, so it's easy to find.</p>"
+          }
+        },
+        "item_5": {
+          "type": "item",
+          "settings": {
+            "title": "What audiobooks are there for adults?",
+            "content": "<p>Classics such as Pride and Prejudice, Jane Eyre, Emma and Three Men in a Boat. <a href=\"/collections/audiobooks-for-older-listeners\" title=\"Audiobooks for older listeners\">See audiobooks for older listeners</a>.</p>"
+          }
+        },
+        "item_7": {
+          "type": "item",
+          "settings": {
+            "title": "How long does the battery last?",
+            "content": "<p>Up to 16 hours of listening on a charge. It charges with the USB-C cable in the box.</p>"
+          }
+        },
+        "item_8": {
+          "type": "item",
+          "settings": {
+            "title": "What if it isn't right for them?",
+            "content": "<p>You have 100 days to return the player, free and by post, in its original packaging.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_7",
+        "item_8"
+      ]
+    },
+    "closing": {
+      "type": "player-offer",
+      "settings": {
+        "layout": "band",
+        "eyebrow": "",
+        "heading": "Audiobooks without the fiddly tech",
+        "text": "",
+        "product": "audiobook-player-elderly",
+        "variant_title": "No bumper",
+        "price_note": "Free UK delivery over £25 · 100-day free returns",
+        "button_text": "Add player to basket",
+        "link_text": "",
+        "link_url": "",
+        "trust_text": "",
+        "anchor_id": "",
+        "show_sticky_bar": false,
+        "sticky_label": "",
+        "sticky_button_text": "",
+        "full_width": true,
+        "background": "#197177",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
     }
   },
   "order": [
-    "main",
-    "featured_product_wP4963",
-    "featured_collection_hy8bdk"
+    "hero",
+    "books",
+    "steps",
+    "steps_link",
+    "story",
+    "why",
+    "gift",
+    "compare",
+    "press",
+    "reviews",
+    "faq",
+    "closing"
   ]
 }
