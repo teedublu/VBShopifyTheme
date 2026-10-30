@@ -11,21 +11,19 @@ basket while the customer is signed in. "Existing customer" here means the same 
 Goals beyond sales: get existing customers to sign in, and get new visitors onto the email list.
 
 Phase, from the section's start and end settings (UK time, e.g. 2026-11-27T00:01:00+00:00):
-- signed_out: a locked "customer exclusive" card (no book discount shown) with a sign-in button that returns here, then
-  the player offer; before the start the player card also holds an email sign-up (Shopify customer form, tags below)
+- signed_out: the player offer, plus a locked "customer exclusive" card (no book discount shown) with a sign-in button
+  that returns here; before the start, also an email sign-up for a reminder (Shopify customer form, tags below)
 - not_eligible: signed in with no orders → the same locked card, without the sign-in button
 - before: "Opens in" timer, the book tiers, "comes off automatically from [start] while you're signed in"
 - during: "Live now · ends in" timer, tiers with the basket's tier lit, how many more reach the next tier, shop button
 - ended: after the end time → refer a friend link
 Colour follows the clock (bf--t-before / bf--t-during): orange panel before the start, black and cyan while live.
-Card order (owner, 30 Oct): customers first, then everyone (prospects).
 Player offer: the public player discount (50% off, for everyone) shown in every phase but ended, priced live from the
-"Player" product (lowest variant price less "Player % off"). Display only: the discount is set up in Shopify. More than
-"Reveal the player offer" days before the start, its percentage and price are blurred (bf-offer--veiled).
-Testing with URL parameters (replaces the test bar, owner 30 Oct): ?before, ?before=5 (5 days to go: veil and countdown
-follow), ?live, ?after. The page carries inert <template> copies of the three phases and the script swaps one in.
-Honoured on a preview (unpublished) theme, in the theme editor, or for customers tagged bf-test; ignored otherwise.
-The ?live copy counts down ~2.6 days.
+"Player" product (lowest variant price less "Player % off"). Display only: the discount is set up in Shopify.
+Test bar ("Show the test bar", REMOVE BEFORE GO-LIVE): the page also renders hidden before / during / ended versions and
+a fixed "Black Friday test" switch shows one at a time (choice kept for the browser session). The switch appears on a
+preview (unpublished) theme, in the theme editor, or for customers tagged bf-test; never to others on the live theme.
+The Live version counts down ~2.6 days.
 "Preview state" forces a phase for design review only. Leave on "Live" on the real page.
 
 Basket count: audiobooks (product type "Audiobooks"; bundles are "Audiobooks Bundle") in the cart at render time.
@@ -98,11 +96,10 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     assign sign_in_url = '/customer_authentication/login?return_to=' | append: return_path
   endif
 
-  assign reveal_days = s.reveal_days | default: 2
-  assign reveal_s = reveal_days | times: 86400
-  assign reveal_s = start_s | minus: reveal_s
-  assign reveal_label = reveal_s | date: '%A %-d %B'
-
+  assign test_on = false
+  if s.test_bar and forced == 'live'
+    assign test_on = true
+  endif
   assign real_key = ''
   if real_phase == 'before' or real_phase == 'during' or real_phase == 'ended'
     assign real_key = real_phase
@@ -110,8 +107,20 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     assign real_key = clock_phase
   endif
   assign variants = 'real'
-  if forced == 'live'
-    assign variants = 'real,before,during,ended'
+  if test_on
+    for v in (1..3)
+      case v
+        when 1
+          assign vname = 'before'
+        when 2
+          assign vname = 'during'
+        else
+          assign vname = 'ended'
+      endcase
+      if vname != real_key
+        assign variants = variants | append: ',' | append: vname
+      endif
+    endfor
   endif
   assign variants = variants | split: ','
   assign test_tagged = false
@@ -120,7 +129,6 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
   endif
 -%}
 
-<div class="bf-root" data-bf-root data-tester="{{ test_tagged }}" data-design="{{ request.design_mode }}" data-start="{{ s.start_at | escape }}" data-reveal-days="{{ reveal_days }}">
 {%- for variant in variants -%}
 {%- liquid
   if variant == 'real'
@@ -150,14 +158,6 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
   if phase == 'signed_out' or phase == 'not_eligible'
     assign locked = true
   endif
-  assign veiled = false
-  if variant == 'real' and tphase == 'before' and now_s < reveal_s
-    assign veiled = true
-  endif
-  assign signup = false
-  if phase == 'signed_out' and tphase == 'before' and s.show_signup
-    assign signup = true
-  endif
 
   assign timer_phase = ''
   if phase == 'before' or phase == 'during'
@@ -185,8 +185,7 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
   assign left_m = left | modulo: 3600 | divided_by: 60
   assign left_x = left | modulo: 60
 -%}
-{%- unless variant == 'real' -%}<template data-bf-test="{{ variant }}">{%- endunless -%}
-<section class="bf bf--{{ phase }} bf--t-{{ tphase }}" data-bf-phase="{{ phase }}" data-bf-variant="{{ variant }}" data-bf-key="{{ key }}" {{ section.shopify_attributes }}>
+<section class="bf bf--{{ phase }} bf--t-{{ tphase }}" data-bf-phase="{{ phase }}" data-bf-variant="{{ variant }}" data-bf-key="{{ key }}"{% unless variant == 'real' %} hidden{% endunless %} {{ section.shopify_attributes }}>
   <div class="container">
     {%- if s.preview_label != blank and forced != 'live' -%}<p class="bf__review-label">{{ s.preview_label | escape }}</p>{%- endif -%}
     {%- liquid
@@ -235,11 +234,15 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
       {%- unless phase == 'ended' -%}
         <div class="bf-offers{% unless show_player %} bf-offers--single{% endunless %}">
 
+          {%- if show_player -%}
+            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid -%}
+          {%- endif -%}
+
           {%- if locked -%}
           {%- render 'black-friday-locked', cfg: s, uid: uid, mode: phase, sign_in_url: sign_in_url -%}
           {%- else -%}
           <article class="bf-offer bf-offer--books" aria-labelledby="bf-books-{{ uid }}">
-            <p class="bf-offer__tag">Offer 1 · for you</p>
+            <p class="bf-offer__tag">Offer {% if show_player %}2{% else %}1{% endif %} · for you</p>
             <p class="bf-offer__big"><span class="bf-offer__upto">up to</span>{{ s.tier3_pct }}%<span class="bf-offer__off">off</span></p>
             <h2 class="bf-offer__name" id="bf-books-{{ uid }}">Audiobooks</h2>
             <div class="bf-offer__visual">
@@ -282,11 +285,30 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
             </div>
           </article>
           {%- endif -%}
-
-          {%- if show_player -%}
-            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid, veiled: veiled, reveal_label: reveal_label, signup: signup -%}
-          {%- endif -%}
         </div>
+
+        {%- if phase == 'signed_out' and tphase == 'before' and s.show_signup -%}
+          {%- assign form_id = 'bf-signup-' | append: uid -%}
+          {%- form 'customer', id: form_id, class: 'bf-signup' -%}
+            {%- if form.posted_successfully? -%}
+              <p class="bf-signup__done" role="status">{{ s.signup_success | escape }}</p>
+            {%- else -%}
+              <div>
+                <h2 class="bf-signup__title">{{ s.signup_heading | escape }}</h2>
+                <p class="bf-signup__text">{{ s.signup_text | escape }}</p>
+              </div>
+              <div>
+                {%- if form.errors -%}<p class="bf-signup__error" role="alert">{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}</p>{%- endif -%}
+                <input type="hidden" name="contact[tags]" value="{{ s.signup_tags | escape }}">
+                <div class="bf-signup__row">
+                  <label class="sr-only" for="{{ form_id }}-email">Email</label>
+                  <input class="bf-signup__input" id="{{ form_id }}-email" type="email" name="contact[email]" placeholder="Your email" autocomplete="email" enterkeyhint="send" required>
+                  <button type="submit" class="bf-button" data-vs-track="bf_signup">{{ s.signup_button | escape }}</button>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endform -%}
+        {%- endif -%}
 
         <ul class="bf-chips" role="list">
           {%- unless locked -%}
@@ -305,9 +327,18 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     </div>
   </div>
 </section>
-{%- unless variant == 'real' -%}</template>{%- endunless -%}
 {%- endfor -%}
-</div>
+
+{%- if test_on -%}
+  <div class="bf-testbar" data-bf-testbar data-tagged="{{ test_tagged }}" data-design="{{ request.design_mode }}" hidden>
+    <span class="bf-testbar__label">Black Friday test</span>
+    <div class="bf-testbar__buttons" role="group" aria-label="Show the page as">
+      <button type="button" data-bf-show="before" aria-pressed="{% if real_key == 'before' %}true{% else %}false{% endif %}">Before</button>
+      <button type="button" data-bf-show="during" aria-pressed="{% if real_key == 'during' %}true{% else %}false{% endif %}">Live</button>
+      <button type="button" data-bf-show="ended" aria-pressed="{% if real_key == 'ended' %}true{% else %}false{% endif %}">After</button>
+    </div>
+  </div>
+{%- endif -%}
 
 <script>
   (function () {
@@ -330,35 +361,23 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     tick();
     setInterval(tick, 1000);
 
-    // Tests: ?before, ?before=5 (days to go), ?live, ?after. Swaps in one of the inert <template> copies.
-    var root = document.querySelector('[data-bf-root]');
-    var params = new URLSearchParams(window.location.search);
-    var test = params.has('before') ? 'before' : params.has('live') ? 'during' : params.has('after') ? 'ended' : '';
+    var bar = document.querySelector('[data-bf-testbar]');
     var role = window.Shopify && window.Shopify.theme && window.Shopify.theme.role;
-    var allowed = root && (role && role !== 'main' || root.getAttribute('data-tester') === 'true' || root.getAttribute('data-design') === 'true');
-    var tpl = test && allowed && root.querySelector('template[data-bf-test="' + test + '"]');
-    if (tpl) {
-      var real = root.querySelector('[data-bf-variant="real"]');
-      var view = tpl.content.firstElementChild.cloneNode(true);
-      var label = test === 'during' ? 'live' : test === 'ended' ? 'after' : 'before';
-      if (test === 'before') {
-        var start = Date.parse(root.getAttribute('data-start'));
-        var days = parseFloat(params.get('before'));
-        if (isNaN(days)) days = Math.max(1, Math.ceil((start - Date.now()) / 86400000));
-        var target = new Date(Date.now() + days * 86400000).toISOString();
-        view.querySelectorAll('[data-bf-timer]').forEach(function (t) { t.setAttribute('data-target', target); t.removeAttribute('data-reload'); });
-        var veil = days > parseFloat(root.getAttribute('data-reveal-days'));
-        view.querySelectorAll('.bf-offer--player').forEach(function (card) {
-          card.classList.toggle('bf-offer--veiled', veil);
-          card.querySelectorAll('[data-bf-veil]').forEach(function (el) { if (veil) { el.setAttribute('aria-hidden', 'true'); } else { el.removeAttribute('aria-hidden'); } });
-        });
-        label += ', ' + days + (days === 1 ? ' day' : ' days') + ' to go';
-      }
-      var note = document.createElement('p');
-      note.className = 'bf__review-label';
-      note.textContent = 'Test view: ' + label;
-      view.querySelector('.container').prepend(note);
-      real.replaceWith(view);
+    if (bar && (role && role !== 'main' || bar.getAttribute('data-tagged') === 'true' || bar.getAttribute('data-design') === 'true')) {
+      bar.hidden = false;
+      var show = function (name) {
+        var target = document.querySelector('[data-bf-variant="' + name + '"]') || document.querySelector('[data-bf-variant="real"][data-bf-key="' + name + '"]') || document.querySelector('[data-bf-variant="real"]');
+        document.querySelectorAll('[data-bf-variant]').forEach(function (el) { el.hidden = el !== target; });
+        bar.querySelectorAll('[data-bf-show]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-bf-show') === name)); });
+        try { sessionStorage.setItem('vb-bf-test', name); } catch (e) {}
+      };
+      bar.addEventListener('click', function (event) {
+        var b = event.target.closest('[data-bf-show]');
+        if (b) show(b.getAttribute('data-bf-show'));
+      });
+      var saved = null;
+      try { saved = sessionStorage.getItem('vb-bf-test'); } catch (e) {}
+      if (saved) show(saved);
     }
   })();
 </script>
@@ -389,7 +408,8 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     { "type": "text", "id": "auto_before_text", "label": "Audiobook offer, before it opens", "default": "No code needed. From [start] it comes off automatically in your basket while you're signed in." },
     { "type": "text", "id": "auto_text", "label": "Audiobook offer, while live", "default": "No code needed. It comes off automatically in your basket while you're signed in." },
     { "type": "text", "id": "locked_heading", "label": "Customer card heading (signed out)", "default": "Customer exclusive" },
-    { "type": "text", "id": "not_eligible_text", "label": "Customer card text (signed in, no orders yet)", "default": "For customers who have ordered from us before." },
+    { "type": "text", "id": "locked_text", "label": "Customer card text (signed out)", "default": "Ordered from us before? Sign in to see your offer. It comes off automatically in your basket while you're signed in." },
+    { "type": "text", "id": "not_eligible_text", "label": "Customer card text (signed in, no orders yet)", "default": "This one is for customers who have ordered from us before." },
     { "type": "text", "id": "sign_in_text", "label": "Sign-in button", "default": "Sign in to see your offer" },
     { "type": "text", "id": "account_url", "label": "Sign-in link", "info": "Leave empty to sign in and come back to this page." },
     { "type": "text", "id": "shop_text", "label": "Shop button", "default": "Shop audiobooks" },
@@ -399,8 +419,8 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     { "type": "text", "id": "refer_url", "label": "Refer a friend link", "default": "/pages/refer-a-friend" },
     { "type": "header", "content": "Email sign-up (player card)" },
     { "type": "checkbox", "id": "show_signup", "label": "Show the sign-up", "default": true },
-    { "type": "text", "id": "signup_heading", "label": "Heading", "default": "New to Voxblock? Get a reminder when it opens" },
-    { "type": "text", "id": "signup_text", "label": "Small print", "default": "Plus the odd bit of news. Unsubscribe any time." },
+    { "type": "text", "id": "signup_heading", "label": "Heading", "default": "New to Voxblock? Get a reminder" },
+    { "type": "text", "id": "signup_text", "label": "Text", "default": "We'll email you when Black Friday opens, with the odd bit of news after. Unsubscribe any time." },
     { "type": "text", "id": "signup_button", "label": "Button", "default": "Remind me" },
     { "type": "text", "id": "signup_success", "label": "Thank you message", "default": "Thanks, you're on the list. We'll email you when it opens." },
     { "type": "text", "id": "signup_tags", "label": "Customer tags", "default": "newsletter,bf-2026-signup", "info": "Added to the customer in Shopify, so the sign-ups can be found and emailed." },
@@ -408,11 +428,11 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     { "type": "checkbox", "id": "show_player", "label": "Show the player offer", "default": true },
     { "type": "product", "id": "player_product", "label": "Player" },
     { "type": "number", "id": "player_pct", "label": "Player % off", "default": 50, "info": "Display only. The discount itself is set up in Shopify." },
-    { "type": "number", "id": "reveal_days", "label": "Reveal the player offer (days before it opens)", "default": 2, "info": "Before this, the player's percentage and price are blurred." },
     { "type": "text", "id": "player_heading", "label": "Player heading", "default": "The Voxblock player, [pct]% off" },
     { "type": "richtext", "id": "terms", "label": "Terms line" },
+    { "type": "header", "content": "Testing (remove before go-live)" },
+    { "type": "checkbox", "id": "test_bar", "label": "Show the test bar", "default": false, "info": "Before / Live / After switch for testers: shown on a preview theme, in the theme editor, or to customers tagged bf-test. Turn off before Black Friday." },
     { "type": "header", "content": "Design review only" },
-    { "type": "paragraph", "content": "To test a phase add ?before, ?before=5 (days to go), ?live or ?after to the page URL. Works on a preview theme, in the theme editor, or for customers tagged bf-test." },
     { "type": "select", "id": "preview_state", "label": "Preview state", "default": "live", "options": [
       { "value": "live", "label": "Live (real customer)" },
       { "value": "signed_out", "label": "Signed out" },
