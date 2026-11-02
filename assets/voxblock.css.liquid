@@ -1988,3 +1988,69 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .player-offer--hero .player-offer__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-14); }
 }
 
+
+/* ---------------------------- */
+/* STORY WORD QUIZ              */
+/* ---------------------------- */
+/* sections/story-word-quiz.liquid. Brand heading teal for right answers, accent orange for a wrong pick: no new
+   colours. Buttons are the theme .button and .series-button. */
+.swq { color: var(--brand-text); padding-block: var(--spacing-8); }
+.swq__card { max-width: 44rem; margin-inline: auto; background: #fff; border: 1px solid var(--card-border); border-radius: 24px; padding: 28px 18px; }
+.swq__panel { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-4); text-align: center; }
+.swq__panel[hidden] { display: none; }
+.swq__eyebrow { margin: 0; font-size: var(--text-sm); font-weight: 600; color: var(--accent-strong); }
+.swq__title, .swq__tier, .swq__signup-title, .swq__books-title { margin: 0; color: var(--brand-heading); }
+.swq__intro { max-width: 34rem; font-size: 1.0625rem; line-height: 1.6; }
+.swq__intro p { margin: 0; }
+.swq__challenge { margin: 0; padding: 10px 16px; border-radius: 12px; background: color-mix(in srgb, var(--brand-heading) 10%, #fff); color: var(--brand-heading); font-weight: 600; }
+.swq__challenge[hidden], .swq__versus[hidden], .swq__copied[hidden], .swq__reveal[hidden], .swq__hear[hidden] { display: none; }
+.swq__facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: var(--text-sm); }
+.swq__facts li { padding: 4px 12px; border-radius: 999px; border: 1px solid var(--card-border); }
+
+.swq__progress { width: 100%; display: flex; justify-content: space-between; font-size: var(--text-sm); }
+.swq__bar { width: 100%; height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--brand-heading) 12%, #fff); overflow: hidden; }
+.swq__bar span { display: block; height: 100%; width: 0; background: var(--brand-heading); transition: width .3s ease; }
+.swq__ask { margin: var(--spacing-2) 0 0; font-size: var(--text-sm); font-weight: 600; }
+.swq__word { margin: 0; font-size: clamp(2rem, 8vw, 3rem); font-weight: 700; line-height: 1.1; color: var(--brand-heading); overflow-wrap: anywhere; }
+.swq__word:focus { outline: none; }
+.swq__options { width: 100%; display: grid; gap: 10px; }
+.swq__option { width: 100%; min-height: 56px; padding: 12px 16px; border-radius: 16px; border: 2px solid var(--card-border); background: #fff; color: var(--brand-text); font: inherit; font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer; }
+.swq__option:hover:not([disabled]) { border-color: var(--brand-heading); }
+.swq__option:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.swq__option[disabled] { cursor: default; }
+.swq__option.is-right { border-color: var(--brand-heading); background: color-mix(in srgb, var(--brand-heading) 10%, #fff); }
+.swq__option.is-wrong { border-color: var(--accent-strong); background: color-mix(in srgb, var(--accent-strong) 12%, #fff); }
+.swq__reveal { width: 100%; display: flex; flex-direction: column; align-items: center; gap: var(--spacing-3); padding-top: var(--spacing-3); border-top: 1px solid var(--card-border); }
+.swq__verdict { margin: 0; font-size: 1.125rem; font-weight: 700; }
+.swq__verdict.is-right { color: var(--brand-heading); }
+.swq__source { display: flex; align-items: center; gap: 14px; text-align: left; }
+.swq__cover { flex: 0 0 72px; width: 72px; height: 72px; border-radius: 10px; object-fit: cover; }
+.swq__cover[hidden] { display: none; }
+.swq__note, .swq__from { margin: 0; line-height: 1.5; }
+.swq__from { font-size: var(--text-sm); }
+.swq__from[hidden] { display: none; }
+
+.swq__score { margin: 0; font-size: clamp(2.25rem, 9vw, 3.25rem); font-weight: 700; line-height: 1; color: var(--brand-heading); }
+.swq__tier-line, .swq__versus { margin: 0; }
+.swq__versus { font-weight: 600; }
+.swq__share { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.swq__copied { margin: 0; font-size: var(--text-sm); }
+.swq__signup { width: 100%; display: grid; gap: 12px; margin-top: var(--spacing-4); padding: 20px 16px; border-radius: 16px; background: color-mix(in srgb, var(--brand-heading) 8%, #fff); }
+.swq__signup-text, .swq__signup-done, .swq__signup-error { margin: 4px 0 0; }
+.swq__signup-done { font-weight: 600; color: var(--brand-heading); }
+.swq__signup-row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.swq__signup-input { flex: 1 1 220px; min-height: 48px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--card-border); background: #fff; font: inherit; }
+.swq__books-title { margin-top: var(--spacing-4); }
+.swq__books { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.swq__book { height: 100%; display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 16px; border: 1px solid var(--card-border); color: var(--brand-text); text-decoration: none; text-align: left; }
+.swq__book:hover { border-color: var(--brand-heading); }
+.swq__book img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 10px; }
+.swq__book-title { font-weight: 600; line-height: 1.3; color: var(--brand-heading); }
+.swq__book-tag { font-size: var(--text-xs, .75rem); }
+.swq__book-tag--new { font-weight: 600; color: var(--brand-heading); }
+@media screen and (min-width: 700px) {
+  .swq__card { padding: 40px 48px; }
+  .swq__options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .swq__books { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { .swq__bar span { transition: none; } }

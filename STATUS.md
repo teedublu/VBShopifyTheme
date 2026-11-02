@@ -49,6 +49,19 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-11-02: Story word quiz (prototype, branch only)
+Branch `claude/story-word-quiz`. Template `story-word-quiz` (`sections/story-word-quiz.liquid`, styles and script under
+"STORY WORD QUIZ" in voxblock.css / voxblock.js). Replaces the old off-site `literacy-quiz` repo (adult exam words,
+Supabase leaderboard): 10 words from audiobooks we sell (3 easy, 4 medium, 3 hard), no timer, the book's cover and a
+note after each answer, score + title, the books behind the round (missed words first), "Challenge a friend" link
+(`?c=<seed>.<score>` replays the same words), WhatsApp, email sign-up (customer form, tags `newsletter,word-quiz`).
+PostHog `word_quiz_*` events. 26 words as blocks; each block names its audiobook.
+- Not checked against the book text yet: every word/note pairing (most are well-known lines). Least certain: Edward Lear
+  selection includes "The Owl and the Pussy-cat" (runcible), Paddington's hard stare taught by Aunt Lucy, the
+  Hattifatteners note (Finn Family Moomintroll).
+- Open (owner): page in admin + social share image, launch timing (suggested: World Book Day, 4 March 2027), whether
+  quiz sign-ups get a Klaviyo welcome flow, real narrator clips instead of the browser voice for "Hear it".
+
 ## 2026-10-30: Black Friday offers page (no codes; sign in for the audiobook offer)
 Branch `claude/black-friday-code`, PR #98, draft theme "VBShopifyTheme/claude/black-friday-code" (id 200864465280, GitHub-connected). Merged to live 30 Oct; page `/pages/black-friday` (template `black-friday`) created, published, not linked from the site.
 - Goals beyond sales (owner, 30 Oct): get existing customers to sign in; get new visitors onto the email list.
