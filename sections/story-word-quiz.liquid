@@ -1,0 +1,220 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+STORY WORD QUIZ (templates/page.story-word-quiz.json)
+----------------------------------------------------------------------------------------------------------------------
+"How well do you know the words in your child's stories?" A parent gets 10 words from audiobooks we sell, four
+meanings each, no timer. After each answer: the meaning, a line about where the word comes from and the book's cover.
+At the end: a score out of 10, a title, the books behind the words (missed words first), a share link and an
+email sign-up. Replaces the old literacy-quiz prototype (adult exam words, off-site, Supabase leaderboard).
+
+Blocks: "Word" (one per word: the word, its meaning, three wrong answers, level, the audiobook it comes from and a
+note). Each round takes "Easy / Medium / Hard words per round" from the blocks at random and plays them easy first.
+Only use a word if it really is in that audiobook: the note is shown as fact.
+
+Challenge links: Share adds ?c=<seed>.<score> to the page URL. Opening that link plays the same words in the same
+order with the same answers and shows "A friend scored 7 out of 10 on these words". Changing the blocks changes
+which words a seed picks, so older links then give different words.
+
+Email sign-up: Shopify customer form (tags setting), like the Black Friday page. The page reloads after the form
+posts, so the result is kept in sessionStorage for the visit and shown again with the form's message.
+Works without JavaScript only as far as the intro (the quiz needs it).
+Styles: voxblock.css "STORY WORD QUIZ". Script: voxblock.js "STORY WORD QUIZ". PostHog: word_quiz_start
+{ challenge }, word_quiz_answer { word, correct, position }, word_quiz_finish { score, total, challenge },
+word_quiz_share { method }, word_quiz_book_click { book, place }, word_quiz_signup.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign form_id = 'swq-signup-' | append: section.id
+-%}
+
+<section class="swq" data-swq
+  data-easy="{{ s.easy_count }}" data-medium="{{ s.medium_count }}" data-hard="{{ s.hard_count }}"
+  data-share-text="{{ s.share_text | escape }}"
+  data-challenge-text="{{ s.challenge_text | escape }}"
+  data-tiers="{{ s.tier_1 | escape }}|{{ s.tier_2 | escape }}|{{ s.tier_3 | escape }}|{{ s.tier_4 | escape }}"
+  data-tier-lines="{{ s.tier_1_line | escape }}|{{ s.tier_2_line | escape }}|{{ s.tier_3_line | escape }}|{{ s.tier_4_line | escape }}">
+  <div class="container">
+    <div class="swq__card">
+
+      {%- comment -%} Intro {%- endcomment -%}
+      <div class="swq__panel" data-swq-panel="intro">
+        {%- if s.eyebrow != blank -%}<p class="swq__eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+        <h1 class="swq__title">{{ s.heading | escape }}</h1>
+        <p class="swq__challenge" data-swq-challenge hidden></p>
+        <div class="swq__intro">{{ s.intro }}</div>
+        <ul class="swq__facts" role="list">
+          <li>{{ s.easy_count | plus: s.medium_count | plus: s.hard_count }} words</li>
+          <li>Four answers each</li>
+          <li>No timer</li>
+        </ul>
+        <button type="button" class="button button--lg" data-swq-start>{{ s.start_text | escape }}</button>
+        <noscript><p class="swq__note">The quiz needs JavaScript switched on.</p></noscript>
+      </div>
+
+      {%- comment -%} One question at a time {%- endcomment -%}
+      <div class="swq__panel" data-swq-panel="question" hidden>
+        <div class="swq__progress">
+          <span data-swq-count></span>
+          <span data-swq-running></span>
+        </div>
+        <div class="swq__bar" aria-hidden="true"><span data-swq-bar></span></div>
+        <p class="swq__ask">What does this word mean?</p>
+        <p class="swq__word" data-swq-word></p>
+        <button type="button" class="series-button series-button--secondary series-button--small swq__hear" data-swq-hear hidden>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+          Hear it
+        </button>
+        <div class="swq__options" role="group" aria-label="Answers" data-swq-options></div>
+
+        <div class="swq__reveal" data-swq-reveal hidden>
+          <p class="swq__verdict" role="status" data-swq-verdict></p>
+          <div class="swq__source">
+            <img class="swq__cover" data-swq-cover alt="" width="80" height="80" loading="lazy">
+            <div>
+              <p class="swq__note" data-swq-note></p>
+              <p class="swq__from" data-swq-from>From <strong data-swq-book></strong></p>
+            </div>
+          </div>
+          <button type="button" class="button" data-swq-next>Next word</button>
+        </div>
+      </div>
+
+      {%- comment -%} Result {%- endcomment -%}
+      <div class="swq__panel" data-swq-panel="result" hidden>
+        <p class="swq__eyebrow">Your score</p>
+        <p class="swq__score"><span data-swq-score></span> out of <span data-swq-total></span></p>
+        <h2 class="swq__tier" data-swq-tier></h2>
+        <p class="swq__tier-line" data-swq-tier-line></p>
+        <p class="swq__versus" data-swq-versus hidden></p>
+
+        <div class="swq__share">
+          <button type="button" class="button" data-swq-share>{{ s.share_button | escape }}</button>
+          <a class="series-button series-button--secondary" href="#" target="_blank" rel="noopener" data-swq-whatsapp>WhatsApp</a>
+          <button type="button" class="series-button series-button--secondary" data-swq-again>New words</button>
+        </div>
+        <p class="swq__copied" role="status" data-swq-copied hidden>Link copied. Paste it to a friend.</p>
+
+        {%- form 'customer', id: form_id, class: 'swq__signup' -%}
+          {%- if form.posted_successfully? -%}
+            <p class="swq__signup-done" role="status" data-swq-posted>{{ s.signup_success | escape }}</p>
+          {%- else -%}
+            <div>
+              <h2 class="swq__signup-title">{{ s.signup_heading | escape }}</h2>
+              <p class="swq__signup-text">{{ s.signup_text | escape }}</p>
+            </div>
+            {%- if form.errors -%}<p class="swq__signup-error" role="alert" data-swq-posted>{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}</p>{%- endif -%}
+            <input type="hidden" name="contact[tags]" value="{{ s.signup_tags | escape }}">
+            <div class="swq__signup-row">
+              <label class="sr-only" for="{{ form_id }}-email">Email</label>
+              <input class="swq__signup-input" id="{{ form_id }}-email" type="email" name="contact[email]" placeholder="Your email" autocomplete="email" enterkeyhint="send" required>
+              <button type="submit" class="button" data-swq-signup>{{ s.signup_button | escape }}</button>
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+
+        <h2 class="swq__books-title">{{ s.books_heading | escape }}</h2>
+        <ul class="swq__books" role="list" data-swq-books></ul>
+        {%- if s.shop_url != blank -%}
+          <a class="series-button series-button--secondary" href="{{ s.shop_url }}" data-swq-shop>{{ s.shop_text | escape }}</a>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+
+  <script type="application/json" data-swq-words>
+    [
+      {%- for block in section.blocks -%}
+        {%- if block.settings.word == blank or block.settings.meaning == blank -%}{%- continue -%}{%- endif -%}
+        {%- assign book = block.settings.book -%}
+        {
+          "id": {{ block.id | json }},
+          "word": {{ block.settings.word | json }},
+          "meaning": {{ block.settings.meaning | json }},
+          "wrong": {{ block.settings.wrong_1 | append: '|' | append: block.settings.wrong_2 | append: '|' | append: block.settings.wrong_3 | split: '|' | json }},
+          "level": {{ block.settings.level | json }},
+          "note": {{ block.settings.note | json }},
+          "book": {
+            "title": {{ book.title | default: '' | json }},
+            "url": {{ book.url | default: '' | json }},
+            "image": {% if book.featured_image %}{{ book.featured_image | image_url: width: 300 | json }}{% else %}""{% endif %}
+          }
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Story word quiz",
+  "tag": "div",
+  "class": "shopify-section--story-word-quiz",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Story word quiz" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Do you know the words in your child's stories?" },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Ten words from books children love, from Peter Rabbit to The BFG. Pick what each one means, then see how you did and share the same words with a friend.</p>" },
+    { "type": "text", "id": "start_text", "label": "Start button", "default": "Start the quiz" },
+    { "type": "header", "content": "Words per round" },
+    { "type": "range", "id": "easy_count", "label": "Easy", "min": 0, "max": 6, "step": 1, "default": 3 },
+    { "type": "range", "id": "medium_count", "label": "Medium", "min": 0, "max": 6, "step": 1, "default": 4 },
+    { "type": "range", "id": "hard_count", "label": "Hard", "min": 0, "max": 6, "step": 1, "default": 3 },
+    { "type": "header", "content": "Result titles" },
+    { "type": "text", "id": "tier_1", "label": "0 to 3 right", "default": "Story starter" },
+    { "type": "text", "id": "tier_1_line", "label": "0 to 3 line", "default": "Plenty of new words to find together at bedtime." },
+    { "type": "text", "id": "tier_2", "label": "4 to 6 right", "default": "Story explorer" },
+    { "type": "text", "id": "tier_2_line", "label": "4 to 6 line", "default": "You know your way round a bedtime story." },
+    { "type": "text", "id": "tier_3", "label": "7 to 8 right", "default": "Word collector" },
+    { "type": "text", "id": "tier_3_line", "label": "7 to 8 line", "default": "Most of these words hold no fear for you." },
+    { "type": "text", "id": "tier_4", "label": "9 or 10 right", "default": "Word wizard" },
+    { "type": "text", "id": "tier_4_line", "label": "9 or 10 line", "default": "You know your snozzcumbers from your silflay." },
+    { "type": "header", "content": "Sharing" },
+    { "type": "text", "id": "share_button", "label": "Share button", "default": "Challenge a friend" },
+    {
+      "type": "text", "id": "share_text", "label": "Share message",
+      "default": "I scored [score] out of [total] on Voxblock's story word quiz. Do you know what [word] means?",
+      "info": "[score], [total] and [word] (a word from the round) are filled in. The link to the same words is added after it."
+    },
+    {
+      "type": "text", "id": "challenge_text", "label": "Challenge banner",
+      "default": "A friend scored [score] out of [total] on these words. Can you beat them?",
+      "info": "Shown to people who open a shared link."
+    },
+    { "type": "header", "content": "Email sign-up" },
+    { "type": "text", "id": "signup_heading", "label": "Heading", "default": "More story words by email" },
+    { "type": "text", "id": "signup_text", "label": "Text", "default": "New quizzes and audiobook ideas from Voxblock. Unsubscribe any time." },
+    { "type": "text", "id": "signup_button", "label": "Button", "default": "Sign up" },
+    { "type": "text", "id": "signup_success", "label": "Thank you message", "default": "Thanks, you're on the list." },
+    { "type": "text", "id": "signup_tags", "label": "Customer tags", "default": "newsletter,word-quiz", "info": "Added to the customer in Shopify, so quiz sign-ups can be found and emailed." },
+    { "type": "header", "content": "Books" },
+    { "type": "text", "id": "books_heading", "label": "Heading", "default": "The books behind your words" },
+    { "type": "url", "id": "shop_url", "label": "Shop link", "default": "/collections/all" },
+    { "type": "text", "id": "shop_text", "label": "Shop link text", "default": "See all audiobooks" }
+  ],
+  "blocks": [
+    {
+      "type": "word",
+      "name": "Word",
+      "settings": [
+        { "type": "text", "id": "word", "label": "Word" },
+        { "type": "text", "id": "meaning", "label": "Meaning (the right answer)" },
+        { "type": "text", "id": "wrong_1", "label": "Wrong answer 1" },
+        { "type": "text", "id": "wrong_2", "label": "Wrong answer 2" },
+        { "type": "text", "id": "wrong_3", "label": "Wrong answer 3" },
+        {
+          "type": "select", "id": "level", "label": "Level", "default": "medium",
+          "options": [
+            { "value": "easy", "label": "Easy" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "hard", "label": "Hard" }
+          ]
+        },
+        { "type": "product", "id": "book", "label": "Audiobook it comes from" },
+        { "type": "text", "id": "note", "label": "Note", "info": "Where the word comes up in the book. Shown after the answer, so keep it true and short." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Story word quiz" }]
+}
+{% endschema %}
