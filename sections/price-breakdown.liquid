@@ -20,7 +20,7 @@ An optional note sits underneath the cards for small print such as "in fairness"
   {%- assign show_media = false -%}
   {%- assign any_cta = false -%}
   {%- for block in section.blocks -%}
-    {%- if block.settings.cta_collection != blank -%}{%- assign any_cta = true -%}{%- endif -%}
+    {%- if block.settings.cta_collection != blank or block.settings.cta_product != blank -%}{%- assign any_cta = true -%}{%- endif -%}
     {%- if block.settings.image != blank -%}
       {%- assign show_media = true -%}
     {%- endif -%}
@@ -219,7 +219,9 @@ An optional note sits underneath the cards for small print such as "in fairness"
             {%- comment -%}Every card gets the same footer, so totals line up; cards without a button keep the space (desktop){%- endcomment -%}
             {%- if any_cta -%}
               <div class="price-card__footer">
-                {%- if block.settings.cta_collection != blank -%}
+                {%- if block.settings.cta_product != blank -%}
+                  {%- render 'vs-add-to-cart', product: block.settings.cta_product, text: block.settings.cta_text, track: 'pack_card_add' -%}
+                {%- elsif block.settings.cta_collection != blank -%}
                   {%- render 'vs-cta', collection: block.settings.cta_collection, text: block.settings.cta_text, track: 'pack_card_cta' -%}
                 {%- endif -%}
               </div>
@@ -413,6 +415,12 @@ An optional note sits underneath the cards for small print such as "in fairness"
           "id": "cta_collection",
           "label": "Button collection (optional)",
           "info": "Shows the page's button: links to this collection, \"from\" its cheapest product. Cards without one keep the same space so totals line up."
+        },
+        {
+          "type": "product",
+          "id": "cta_product",
+          "label": "Button adds this product to the basket (optional)",
+          "info": "Overrides the collection: the button adds the product's first available variant and shows its live price."
         },
         {
           "type": "text",
