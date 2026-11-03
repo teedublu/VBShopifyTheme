@@ -11,6 +11,8 @@ Variables:
 * text: button text. Defaults to "Shop now".
 * show_from: true to add " · from £x" (the cheapest product in the collection, live). Default false.
 * full: true for the full-size button. Default is the slim one used on cards and in the sticky header.
+* href: optional link that replaces the collection link (e.g. the player page).
+* price: optional amount in cents; adds " · £x" (used with href, e.g. the player's live price).
 * track: PostHog target name, sent as vs_yoto_click { target, page } (voxblock.js).
 {%- endcomment -%}
 
@@ -35,7 +37,8 @@ Variables:
   assign label = text | default: 'Shop now'
 -%}
 
-<a class="button {% if full %}button--lg{% else %}button--sm{% endif %} w-full vs-cta{% unless full %} vs-cta--slim{% endunless %}" href="{{ collection.url }}" data-vs-track="{{ track | default: 'cta' }}">
+<a class="button {% if full %}button--lg{% else %}button--sm{% endif %} w-full vs-cta{% unless full %} vs-cta--slim{% endunless %}" href="{{ href | default: collection.url }}" data-vs-track="{{ track | default: 'cta' }}">
   {{- label | escape -}}
+  {%- if price > 0 -%}<span class="vs-cta__from"> · {{ price | money }}</span>{%- endif -%}
   {%- if show_from and from_cents > 0 -%}<span class="vs-cta__from"> · from {{ from_cents | money }}</span>{%- endif -%}
 </a>

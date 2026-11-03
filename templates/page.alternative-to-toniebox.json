@@ -25,11 +25,11 @@
             "icon_width": 120,
             "subheading": "Voxblock vs Toniebox · UK prices checked 11 October 2026",
             "title": "A Toniebox alternative with no wi-fi and no setup",
-            "content": "<p>Looking for a Tonies alternative? Voxblock is a screen-free audiobook player for children aged 3 and up. Each story lives inside a solid cardboard audiobook, so there is nothing to download and no account to make. The player is £49.99, £55 less than a Toniebox 2.</p><p>No wi-fi · 16-hour battery · 100-day money-back guarantee · British designed</p>",
-            "link_text": "Shop starter packs · from £69.99",
+            "content": "<p>The Gruffalo, Room on the Broom and The Smartest Giant in Town, with a player: <strong>£69.99</strong> on Voxblock, <strong>£149.96</strong> on a Toniebox 2. No wi-fi, no account, nothing to download. For children aged 3 and up.</p><p>No wi-fi · 16-hour battery · 100-day money-back guarantee · British designed</p>",
+            "link_text": "Add the Gruffalo pack",
             "link_url": "shopify://collections/voxblock-starter-pack-collection",
             "title_tag": "h1",
-            "link2_text": "See the full comparison",
+            "link2_text": "Compare the players",
             "link2_url": "#players",
             "background": "#fff7f0",
             "background_gradient": "",
@@ -38,7 +38,8 @@
             "text_gradient": "",
             "button_background": "",
             "button_text_color": "",
-            "track": "alt_toniebox_hero"
+            "track": "alt_toniebox_hero",
+            "cart_product": "gruffalo-and-friends-starter-pack"
           }
         }
       },
@@ -88,7 +89,7 @@
           "settings": {
             "icon": "check",
             "title": "Price",
-            "content": "<p>A Toniebox 2 is £104.99 and each Tonie £14.99. Voxblock is £49.99, and audiobooks £9.99.</p>"
+            "content": "<p>A Toniebox 2 is £104.99 and a Tonie £14.99. The Voxblock player is £49.99, and The Gruffalo audiobook £9.99.</p>"
           }
         },
         "why_2": {
@@ -146,10 +147,10 @@
         "row_1": {
           "type": "row",
           "settings": {
-            "label": "Price difference",
-            "value_1": "Best value",
-            "value_2": "£55 more",
-            "value_3": "£10 more",
+            "label": "Player + 3 Gruffalo stories",
+            "value_1": "£69.99",
+            "value_2": "£149.96",
+            "value_3": "£104.96",
             "good_answer": "yes"
           }
         },
@@ -302,7 +303,7 @@
         "column_3_note": "Toniebox Lite, Creative-Tonie.",
         "column_1_product": "voxblock-player",
         "cta_collection": "voxblock-starter-pack-collection",
-        "column_1_button_text": "Shop now",
+        "column_1_button_text": "Player on its own",
         "sticky_header": true,
         "column_1_short": "Voxblock",
         "column_2_short": "Toniebox 2",
@@ -318,7 +319,8 @@
         "chart_background": "#ffffff",
         "chart_text_color": "",
         "tick_color": "#4cb6ac",
-        "cross_color": "#c9c9c9"
+        "cross_color": "#c9c9c9",
+        "cta_to_product": true
       }
     },
     "bundles": {
@@ -336,9 +338,10 @@
             "total": "£69.99",
             "difference": "Best value",
             "cta_collection": "voxblock-starter-pack-collection",
-            "cta_text": "Shop now",
+            "cta_text": "Add to basket",
             "link_text": "",
-            "link_url": ""
+            "link_url": "",
+            "cta_product": "gruffalo-and-friends-starter-pack"
           }
         },
         "card_2": {
@@ -374,8 +377,8 @@
       },
       "block_order": [
         "card_voxblock",
-        "card_2",
-        "card_3"
+        "card_3",
+        "card_2"
       ],
       "settings": {
         "full_width": true,
@@ -405,7 +408,7 @@
             "title": "Choose Voxblock if…",
             "marker": "tick",
             "highlight": true,
-            "items": "You want it working straight out of the box: no wi-fi, no account, no downloads\nYou want them listening on their own: they pick a real audiobook they can hold, put it on and press play\nYou want it to last beyond picture books, with unabridged novels for older children\nPrice matters: £55 less than a Toniebox 2, and each story is £5 less"
+            "items": "You want it working straight out of the box: no wi-fi, no account, no downloads\nYou want them listening on their own: they pick a real audiobook they can hold, put it on and press play\nYou want it to last beyond picture books, with unabridged novels for older children\nPrice matters: £55 less than a Toniebox 2, and The Gruffalo is £5 less than its Tonie"
           }
         },
         "card_other": {
@@ -601,7 +604,7 @@
           "type": "item",
           "settings": {
             "title": "Is there a cheaper alternative to a Toniebox?",
-            "content": "<p>Yes. The Voxblock player is £49.99 against £104.99 for the Toniebox 2, and each audiobook is £9.99 against £14.99 for a Tonie.</p>"
+            "content": "<p>Yes. The Voxblock player is £49.99 against £104.99 for the Toniebox 2. Audiobooks start at £5.99, and The Gruffalo is £9.99 against £14.99 for the Tonie.</p>"
           }
         },
         "item_2": {
@@ -645,6 +648,13 @@
             "title": "Can I add my own recordings?",
             "content": "<p>Not yet, but it's coming soon. Tonies offers this with a Creative-Tonie.</p>"
           }
+        },
+        "item_8": {
+          "type": "item",
+          "settings": {
+            "title": "Is there a Toniebox for adults?",
+            "content": "<p>Voxblock works the same way for older listeners: no screen and no wi-fi, just put an audiobook on and press play. See our <a href=\"/collections/audiobooks-for-older-listeners\">audiobooks for older listeners</a>.</p>"
+          }
         }
       },
       "block_order": [
@@ -654,7 +664,8 @@
         "item_4",
         "item_5",
         "item_6",
-        "item_7"
+        "item_7",
+        "item_8"
       ],
       "settings": {
         "full_width": true,
@@ -738,14 +749,54 @@
         "background_gradient": "",
         "text_color": ""
       }
+    },
+    "library": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "collection": "audiobooks",
+        "hide_empty": false,
+        "products": [
+          "the-gruffalo",
+          "room-on-the-broom",
+          "storytime-with-peppa",
+          "a-bear-called-paddington",
+          "bing-playtime-stories-and-songs",
+          "the-tale-of-peter-rabbit-and-other-stories",
+          "horrid-henry-and-friends",
+          "matilda"
+        ],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 8,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "card_style": "default",
+        "card_show_titles": false,
+        "anchor_id": "stories",
+        "subheading": "350+ audiobooks, from picture books to unabridged novels",
+        "title": "Stories your child may already know",
+        "content": "",
+        "link_url": "shopify://collections/audiobooks",
+        "link_text": "See all audiobooks",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
     }
   },
   "order": [
     "hero",
     "press",
+    "bundles",
+    "library",
     "why",
     "players",
-    "bundles",
     "differences",
     "features",
     "starter_packs",

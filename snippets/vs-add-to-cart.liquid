@@ -1,0 +1,43 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VS ADD TO CART (comparison and landing pages)
+----------------------------------------------------------------------------------------------------------------------
+A theme button that adds one product straight to the basket (the theme's product form, so the cart drawer opens as it
+does on product pages). The price is read live from the product, never typed into the copy. Sold out: the button is
+replaced by a link to the product page.
+
+Variables:
+* product: the product to add [REQUIRED]
+* text: button text; " · £x" (the variant's live price) is appended. Defaults to "Add to basket".
+* full: true for the full-size (xl) button used in heroes. Default is the slim card button.
+* track: PostHog target name, sent as vs_yoto_click { target, page } (voxblock.js).
+{%- endcomment -%}
+
+{%- liquid
+  assign add_variant = product.selected_or_first_available_variant
+  assign label = text | default: 'Add to basket'
+  capture button_content
+    echo label | escape
+    if add_variant.price > 0
+      echo ' · '
+      echo add_variant.price | money
+    endif
+  endcapture
+  if full
+    assign add_size = 'xl'
+    assign add_stretch = false
+  else
+    assign add_size = 'sm'
+    assign add_stretch = true
+  endif
+-%}
+
+{%- if product.available -%}
+  {%- form 'product', product, is: 'product-form', class: 'vs-add-to-cart' -%}
+    <input type="hidden" name="id" value="{{ add_variant.id }}">
+    <input type="hidden" name="quantity" value="1">
+    {%- render 'button', type: 'submit', content: button_content, size: add_size, stretch: add_stretch, track: track -%}
+  {%- endform -%}
+{%- else -%}
+  {%- render 'button', href: product.url, content: product.title, size: add_size, stretch: add_stretch, style: 'outline', track: track -%}
+{%- endif -%}

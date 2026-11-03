@@ -391,7 +391,9 @@ Optional (all off unless set, so other pages using this section are unchanged):
                     {%- endif -%}
                     {%- if column_link -%}</a>{%- endif -%}
 
-                    {%- if i == feature_col and cta_collection != blank -%}
+                    {%- if i == feature_col and section.settings.cta_to_product and column_1_product != blank -%}
+                      <span class="ct-column__cta">{%- render 'vs-cta', href: column_1_product.url, price: column_1_product.price_min, text: section.settings.column_1_button_text, track: cta_track -%}</span>
+                    {%- elsif i == feature_col and cta_collection != blank -%}
                       <span class="ct-column__cta">{%- render 'vs-cta', collection: cta_collection, text: section.settings.column_1_button_text, track: cta_track -%}</span>
                     {%- endif -%}
                   {%- else -%}
@@ -663,6 +665,13 @@ Optional (all off unless set, so other pages using this section are unchanged):
       "id": "cta_collection",
       "label": "Button collection (optional)",
       "info": "Adds the page's button under the highlighted column (and in the sticky header): links here, showing \"from\" its cheapest product."
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_to_product",
+      "label": "Column button goes to the Voxblock product",
+      "info": "The highlighted column's button links to the Voxblock product above and shows its live price, instead of the collection. The sticky header button still uses the collection.",
+      "default": false
     },
     {
       "type": "text",
