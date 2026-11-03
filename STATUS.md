@@ -38,6 +38,7 @@ review, phone first (Lighthouse / Core Web Vitals, plus server render time). Add
 - Children's cassette player page `/pages/modern-cassette-player` (new template, once switched in admin).
 - Help pages (help-pages branch): /pages/quick-fixes (interactive section, 13 answers in the page), /pages/player-guide (picture-led, 7 images), /pages/help, /pages/delivery-and-returns, /pages/voxblock-faq, /pages/contact-us. Once published.
 - Elderly page `/pages/audiobook-player-for-the-elderly` (claude/elderly-page): new hero and sections, children's product gallery (11 images at 2048px) removed. Record the mobile Lighthouse baseline from the live page before merging.
+- Toniebox alternative page `/pages/alternative-to-toniebox` (PR #116, branch claude/toniebox-alternative-conversion): Gruffalo pack add-to-basket hero, price breakdown moved up, new 8-product stories strip (featured-collection, product list). Record the mobile Lighthouse baseline from the live page before merging. Meta description updated live 3 Nov.
 - Story layout, now the default character.json / audiobook.json (every character and audiobook page except Gruffalo, bestseller and musical-story templates): pack match loops the starter pack collection (60 products) twice per page; characters with no `main_book` also scan their collection and the series lists in each of six sections. Samples: /pages/character/dave-pigeon, /pages/character/alex-rider (no main_book), /pages/audiobook/matilda (no series).
 
 ## Open: site-wide colour contrast (owner: must be resolved)
