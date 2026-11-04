@@ -778,11 +778,50 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
 .age-pack__from { font-size: 13px; }
 .age-pack__price { font-size: 20px; font-weight: 700; color: var(--accent-strong); }
 .age-pack__was { font-size: 13px; color: #6b6b6b; }
+.age-pack__benefits { margin: 0; padding: 4px 14px 2px; list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13px; line-height: 18px; }
+.age-pack__benefits li { display: flex; align-items: flex-start; gap: 8px; }
+.age-pack__benefits svg { flex: none; margin-top: 2px; color: var(--brand-heading); }
 .age-pack__buy { display: flex; flex-direction: column; gap: 10px; padding: 6px 14px 14px; }
 .age-pack__swatches { border: 0; margin: 0; padding: 0; }
 .age-pack__form { margin: 0; }
 .age-pack__links { margin: 0; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; font-size: 13px; }
 .age-pack__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
+/* Round 2 (Nov 2026): "See how it works" button and video dialog, player owner question, theme chips, sticky bar */
+.age-intro__video-button { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border: 1.5px solid var(--brand-heading); border-radius: 999px; background: #fff; color: var(--brand-heading); font-size: 14px; font-weight: 600; cursor: pointer; }
+.age-intro__video-button:hover { background: var(--brand-heading); color: #fff; }
+.age-intro__video-button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.age-intro__video-button[hidden] { display: none; }
+.age-video { width: min(92vw, 720px); padding: 0; border: 0; border-radius: 18px; background: #000; overflow: hidden; }
+.age-video::backdrop { background: rgb(0 0 0 / .6); }
+.age-video__player, .age-video video { display: block; width: 100%; height: auto; }
+.age-video__close { position: absolute; top: 8px; right: 8px; z-index: 1; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 50%; background: #fff; color: var(--brand-heading); cursor: pointer; }
+.age-intro__offer { display: flex; flex-direction: column; gap: 12px; min-width: 0; align-self: start; }
+.age-choice { display: flex; flex-direction: column; gap: 8px; }
+.age-choice__question { margin: 0; font-size: 15px; line-height: 21px; font-weight: 700; color: var(--brand-heading); }
+.age-choice__buttons { display: flex; gap: 8px; }
+.age-choice__button { flex: 1 1 0; min-height: 44px; padding: 0 12px; border: 1.5px solid var(--brand-heading); border-radius: 999px; background: #fff; color: var(--brand-heading); font-size: 14px; font-weight: 600; cursor: pointer; }
+.age-choice__button[aria-pressed="true"] { background: var(--brand-heading); color: #fff; }
+.age-choice__button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
+.age-choice__owner { display: none; margin: 0; font-size: 14px; }
+.age-choice__owner a { display: inline-flex; align-items: center; min-height: 44px; color: var(--brand-heading); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.vb-has-player .age-choice__owner { display: block; }
+.vb-has-player [data-owner-pack], .vb-has-player [data-age-sticky] { display: none !important; }
+.age-intro__chips { padding-block: 4px 0; }
+.age-intro__chips .age-intro__tab { min-height: 40px; padding: 0 14px; font-size: 13px; }
+.age-intro__chips .age-intro__tab[aria-current] { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; }
+.age-intro__sticky .series-button { flex: none; padding: 0 20px; }
+
+/* Collection sign-up (sections/collection-signup.liquid) */
+.collection-signup { margin-block: 28px 8px; }
+.collection-signup__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 20px 16px; border-radius: 16px; background: #fff7f0; }
+.collection-signup__title { margin: 0 0 4px; font-size: 18px; line-height: 24px; font-weight: 700; color: var(--brand-heading); }
+.collection-signup__line { margin: 0; font-size: 14px; line-height: 21px; }
+.collection-signup__small { margin: 8px 0 0; font-size: 12px; line-height: 17px; }
+@media screen and (min-width: 1000px) {
+  .collection-signup__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 40px; padding: 28px 32px; }
+  .collection-signup__title { font-size: 22px; line-height: 28px; }
+}
 
 /* Line above the grid */
 .age-intro__grid-head { padding-block: 18px 6px; }
@@ -835,6 +874,8 @@ a.pack-intro__tile:focus-visible { outline: 2px solid var(--brand-heading); outl
   .age-intro__lede { font-size: 17px; line-height: 26px; }
   .age-intro__trust { font-size: 14px; }
   .age-pack { max-width: 520px; justify-self: end; }
+  .age-intro__offer { justify-self: end; width: 100%; max-width: 520px; }
+  .age-intro__offer .age-pack { max-width: none; }
   .age-intro__media { display: block; justify-self: end; width: 100%; max-width: 460px; }
   .age-intro__media img { display: block; width: 100%; height: auto; border-radius: 18px; }
   .age-pack__media { width: 160px; height: 160px; }

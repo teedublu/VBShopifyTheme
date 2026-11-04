@@ -17,6 +17,7 @@ Parameters:
 * player_line   contents line used when the card shows the player
 * age_text      optional, e.g. "ages 5–8", appended to the contents line
 * track_prefix  optional, added before each data-age-track value (blank on the collections)
+* benefits      optional, one benefit per line, shown as a ticked list under the price (age collections)
 
 Prices are read live; nothing is hard-coded.
 Tracking: data-age-track values starter_add / player_add, pack_title, all_packs, player (voxblock.js).
@@ -80,6 +81,18 @@ Tracking: data-age-track values starter_add / player_add, pack_title, all_packs,
       </p>
     </div>
   </div>
+
+  {%- assign benefit_lines = benefits | newline_to_br | split: '<br />' -%}
+  {%- if benefits != blank -%}
+    <ul class="age-pack__benefits" role="list">
+      {%- for benefit in benefit_lines -%}
+        {%- assign benefit = benefit | strip -%}
+        {%- if benefit != blank -%}
+          <li><svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>{{ benefit | escape }}</li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
 
   <div class="age-pack__buy">
     {%- comment -%}Colour swatches: same markup as the pack card (snippets/product-card-pack.liquid){%- endcomment -%}
