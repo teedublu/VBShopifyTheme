@@ -1,0 +1,61 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+COLLECTION SIGN-UP (age collection template, under the grid)
+----------------------------------------------------------------------------------------------------------------------
+
+For visitors who browse the stories but aren't ready to buy: a heading, one line and an email field that subscribes
+them to a Klaviyo list (snippets/school-signup.liquid, the same client subscriptions call). The Klaviyo source is
+"Age collection: <collection handle>", so sign-ups can be split by age band.
+
+Nothing is shown until a Klaviyo list id is set, and it is never shown to signed-in customers who already bought a
+player (snippets/customer-owns-player.liquid).
+
+Tracking: PostHog `collection_signup` { page, form } (voxblock.js).
+{%- endcomment -%}
+
+{%- capture owns_player -%}{%- render 'customer-owns-player' -%}{%- endcapture -%}
+{%- assign list_id = section.settings.list_id | strip -%}
+
+{%- if list_id != blank and owns_player == blank -%}
+  {%- assign signup_source = 'Age collection: ' | append: collection.handle -%}
+  <div class="container collection-signup" {{ section.shopify_attributes }}>
+    <div class="collection-signup__inner">
+      <div class="collection-signup__text">
+        {%- if section.settings.heading != blank -%}<h2 class="collection-signup__title">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<p class="collection-signup__line">{{ section.settings.text | escape }}</p>{%- endif -%}
+      </div>
+      <div class="collection-signup__form">
+        {%- render 'school-signup',
+          form_id: 'age',
+          list_id: list_id,
+          source: signup_source,
+          label: section.settings.label,
+          placeholder: section.settings.placeholder,
+          button: section.settings.button,
+          thanks: section.settings.thanks,
+          event: 'collection_signup'
+        -%}
+        {%- if section.settings.small_print != blank -%}<p class="collection-signup__small">{{ section.settings.small_print | escape }}</p>{%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Collection sign-up",
+  "tag": "section",
+  "class": "shopify-section--collection-signup",
+  "settings": [
+    { "type": "text", "id": "list_id", "label": "Klaviyo list id", "info": "The section is hidden until this is set." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choosing a Christmas present?" },
+    { "type": "textarea", "id": "text", "label": "Line", "default": "Get our list of favourite stories for this age, plus last order dates for Christmas." },
+    { "type": "text", "id": "label", "label": "Field label (screen readers)", "default": "Email address" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "Your email" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Send me the list" },
+    { "type": "text", "id": "thanks", "label": "Thank-you message", "default": "Thanks, it's on its way to your inbox." },
+    { "type": "text", "id": "small_print", "label": "Small print", "default": "We'll also send occasional news and offers. Unsubscribe any time." }
+  ],
+  "presets": [{ "name": "Collection sign-up" }]
+}
+{% endschema %}

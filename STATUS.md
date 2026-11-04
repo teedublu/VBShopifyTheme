@@ -49,6 +49,20 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-11-04: Age collections round 2 (cold searchers who don't know the player)
+Branch `claude/age-collection-round-2`. Plan: LPS `claude/age-collection-round-2-plan.md`; mockups: design canvas "Age collection page redesign". Template `collection.audiobooks-landing-cat` (5-8, 8-10, 10+, under 5 and the theme collections). **Awaiting owner check, then merge, then the admin steps below.**
+- Why: 76-88% of sessions on the age pages start there, 85-90% from organic search, ~80% on phones; ~62% leave after one page and only 5-10% reach anything about the player. Searchers expect free or streamed audio.
+- Intro line on all four age blocks: "Every story here is a block your child puts on the Voxblock player and presses play. No screen, no downloads, no subscription."
+- "See how it works" button under the intro line opens the how-it-works video (`how does it work_desktop.mp4`) in a dialog. The grid's video tile (position 3) is disabled; the "How Voxblock works" row moves from position 12 to 5 (after 4 products, two rows on phones).
+- "Does your child already have a Voxblock player?" Yes / No above the pack card. Yes hides the pack card, the sticky bar and the basket prompt in this browser (same `vb_has_player` key and `vb-has-player` class as the basket prompt). PostHog `owner_choice` { answer, collection } + person property `vb_says_has_player`.
+- Theme chips above the grid from Search & Discovery filters (setting "Chips above the grid", Label|Filter|Value per line): Bestsellers, Bedtime, Giggles and belly laughs, Family favourites, Fantasy and magic, Action and adventure. Missing values are left out per collection. PostHog `age_collection_click` target `chip:<label>`.
+- Phone sticky bar (pack name, live price, "View pack") once the pack card scrolls away; never for owners. Shares `.player-offer-sticky`.
+- New section `collection-signup` under the grid ("Choosing a Christmas present?", Klaviyo via `snippets/school-signup.liquid`, source "Age collection: <handle>", PostHog `collection_signup`). **Hidden until a Klaviyo list id is set** (owner: list, and the story list it promises). `school-signup` snippet now takes optional wording and event name; school pages unchanged.
+- Basket prompt unchanged (already live: player only + "I already have a player").
+- Admin, after merge (not done, live data): `landing.faq` on audiobooks-5-8-years, -8-10-years, -10-to-teens (questions in the plan: how does my child listen; subscription or downloads; which starter pack; 100-day guarantee; no prices in answers); rewrite each collection description ("Dive into a world of wonder..." breaks the copy rules) and meta description.
+- Measure: player or pack add-to-cart per organic entry session, single-page rate, `owner_choice`, chip clicks. Re-read round 1 (~8 Nov) before merging for a clean baseline.
+- Performance review: add /collections/audiobooks-5-8-years (video loads only on click, preload none).
+
 ## 2026-10-30: Black Friday offers page (no codes; sign in for the audiobook offer)
 Branch `claude/black-friday-code`, PR #98, draft theme "VBShopifyTheme/claude/black-friday-code" (id 200864465280, GitHub-connected). Merged to live 30 Oct; page `/pages/black-friday` (template `black-friday`) created, published, not linked from the site.
 - Goals beyond sales (owner, 30 Oct): get existing customers to sign in; get new visitors onto the email list.

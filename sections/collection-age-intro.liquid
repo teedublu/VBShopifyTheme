@@ -13,6 +13,17 @@ Replaces the tall orange collection banner and the image link blocks on the age 
    already bought a player (snippets/customer-owns-player.liquid).
 4. "Already have a player?" line with the story count, introducing the grid.
 
+Round 2 (Nov 2026, LPS claude/age-collection-round-2-plan.md; design canvas "Age collection page redesign"):
+* "See how it works" button under the intro line opens the how-it-works video in a dialog (setting howto_video).
+* "Does your child already have a Voxblock player?" Yes/No above the pack card. "Yes" hides the pack card and the
+  phone sticky bar in this browser, using the same localStorage key as the basket prompt (vb_has_player), so
+  answering here also stops the basket prompt, and "I already have a player" there answers this. PostHog
+  `owner_choice` { answer, collection } (voxblock.js).
+* Theme chips above the grid (setting chip_filters): one-tap links to Search & Discovery filter values, e.g.
+  Bedtime. A chip whose filter value does not exist for this collection is left out.
+* Phone sticky bar (pack name, live price, "View pack") once the pack card has scrolled up out of view; never for
+  owners. Shares the .player-offer-sticky styles.
+
 Each "Age collection" block ties a collection to its tab label, starter pack and wording. A collection using this
 template without a block is a theme collection (dinosaurs, mystery, funny, seasonal, series...). For those:
 * the H1, intro line and photo come from the collection's own metafields, set in Shopify admin on each collection:
@@ -90,6 +101,13 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
         <h1 class="age-intro__title">{{ heading | escape }}</h1>
         {%- if intro_line != blank -%}<p class="age-intro__lede">{{ intro_line | escape }}</p>{%- endif -%}
 
+        {%- if section.settings.howto_video != blank -%}
+          <button type="button" class="age-intro__video-button" data-age-video-open aria-controls="age-video-{{ section.id }}" data-age-track="howto_video">
+            {%- render 'icon' with 'play-video', width: 12, height: 12 -%}
+            <span>{{ section.settings.howto_video_label | escape }}</span>
+          </button>
+        {%- endif -%}
+
         <ul class="age-intro__trust" role="list">
           {%- if section.settings.trust_rating != blank -%}
             <li>{%- render 'icon' with 'rating-star', width: 14, height: 14 -%}<span>{{ section.settings.trust_rating }}</span></li>
@@ -124,6 +142,18 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
       </div>
 
       {%- if show_pack -%}
+        <div class="age-intro__offer">
+        {%- if section.settings.show_owner_choice -%}
+          <div class="age-choice" data-owner-choice>
+            <p class="age-choice__question" id="age-choice-{{ section.id }}">{{ section.settings.owner_question | escape }}</p>
+            <div class="age-choice__buttons" role="group" aria-labelledby="age-choice-{{ section.id }}">
+              <button type="button" class="age-choice__button" data-owner-answer="no" aria-pressed="true">{{ section.settings.owner_no | escape }}</button>
+              <button type="button" class="age-choice__button" data-owner-answer="yes" aria-pressed="false">{{ section.settings.owner_yes | escape }}</button>
+            </div>
+            <p class="age-choice__owner">{{ section.settings.owner_yes_text | escape }} <a href="#product-grid" data-age-track="owner_stories">{{ section.settings.owner_yes_link | escape }}</a></p>
+          </div>
+        {%- endif -%}
+        <div class="age-intro__pack" data-owner-pack>
         {%- render 'starter-pack-card',
           pack: pack,
           section_id: section.id,
@@ -134,6 +164,8 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
           player_line: section.settings.player_line,
           age_text: age_text
         -%}
+        </div>
+        </div>
       {%- elsif hero_image != blank -%}
         {%- comment -%}No pack card (player owners, or pack switched off): show the photo of a hand placing a story on the player. Desktop only, so the grid stays high on phones.{%- endcomment -%}
         <div class="age-intro__media">
@@ -146,7 +178,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
   {%- if section.settings.show_grid_head -%}
   <div class="container age-intro__grid-head">
     <p class="age-intro__grid-title">
-      {%- if show_pack -%}{{ 'collection.age_intro.have_player' | t }}{%- else -%}{{ 'collection.age_intro.stories_heading' | t }}{%- endif -%}
+      {%- if show_pack and section.settings.show_owner_choice == false -%}{{ 'collection.age_intro.have_player' | t }}{%- else -%}{{ 'collection.age_intro.stories_heading' | t }}{%- endif -%}
     </p>
     <p class="age-intro__count">
       {%- if age_text != blank -%}
@@ -156,6 +188,61 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
       {%- endif -%}
     </p>
   </div>
+  {%- endif -%}
+
+  {%- comment -%}Theme chips: "Button label|Filter label|Value label" per line, matched against the collection's filters{%- endcomment -%}
+  {%- liquid
+    assign chip_lines = section.settings.chip_filters | newline_to_br | split: '<br />'
+    assign chip_count = 0
+  -%}
+  {%- capture chips_html -%}
+    {%- for chip_line in chip_lines -%}
+      {%- assign chip_parts = chip_line | strip | split: '|' -%}
+      {%- if chip_parts.size < 3 -%}{%- continue -%}{%- endif -%}
+      {%- assign chip_label = chip_parts[0] | strip -%}
+      {%- assign chip_filter_label = chip_parts[1] | strip | downcase -%}
+      {%- assign chip_value_label = chip_parts[2] | strip | downcase -%}
+      {%- for filter in collection.filters -%}
+        {%- assign this_filter_label = filter.label | strip | downcase -%}
+        {%- if this_filter_label != chip_filter_label -%}{%- continue -%}{%- endif -%}
+        {%- for filter_value in filter.values -%}
+          {%- assign this_value_label = filter_value.label | strip | downcase -%}
+          {%- if this_value_label == chip_value_label and filter_value.count > 0 or this_value_label == chip_value_label and filter_value.active -%}
+            {%- assign chip_count = chip_count | plus: 1 -%}
+            {%- if filter_value.active -%}
+              <a href="{{ filter_value.url_to_remove }}#product-grid" class="age-intro__tab" aria-current="true" data-age-track="chip_off:{{ chip_label | handleize }}">{{ chip_label | escape }}</a>
+            {%- else -%}
+              <a href="{{ filter_value.url_to_add }}#product-grid" class="age-intro__tab" data-age-track="chip:{{ chip_label | handleize }}">{{ chip_label | escape }}</a>
+            {%- endif -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- break -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if chip_count > 0 -%}
+    <nav class="container age-intro__chips" aria-label="{{ section.settings.chips_label | escape }}">
+      <div class="age-intro__tabs">{{ chips_html }}</div>
+    </nav>
+  {%- endif -%}
+
+  {%- if show_pack and section.settings.show_sticky_bar -%}
+    {%- assign sticky_variant = pack.variants | sort: 'price' | first -%}
+    <div class="player-offer-sticky age-intro__sticky" data-age-sticky hidden>
+      <p class="player-offer-sticky__label">
+        <span>{{ pack.title | escape }}</span>
+        <strong>{%- if pack.price_varies -%}{{ 'collection.pack_card.from' | t }} {% endif -%}{{ sticky_variant.price | money }}</strong>
+      </p>
+      <a href="{{ pack.url }}" class="series-button" data-age-track="sticky_pack">{{ section.settings.sticky_button_text | escape }}</a>
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.howto_video != blank -%}
+    <dialog class="age-video" id="age-video-{{ section.id }}" aria-label="{{ section.settings.howto_video_label | escape }}" data-age-video>
+      <button type="button" class="age-video__close" data-age-video-close aria-label="{{ 'general.accessibility.close' | t | escape }}">{%- render 'icon' with 'close' -%}</button>
+      {{- section.settings.howto_video | video_tag: controls: true, playsinline: true, preload: 'none', muted: false, image_size: '800x', class: 'age-video__player' -}}
+    </dialog>
   {%- endif -%}
 </section>
 
@@ -187,7 +274,23 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "text", "id": "pack_heading", "label": "Card heading", "default": "New to Voxblock? Start here" },
     { "type": "text", "id": "pack_note", "label": "Line after the contents", "default": "Bumper and charging cable included." },
     { "type": "url", "id": "packs_url", "label": "\"See all packs\" link" },
-    { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Used for the \"Player only\" price and link (cheapest variant)." }
+    { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Used for the \"Player only\" price and link (cheapest variant)." },
+    { "type": "header", "content": "How it works video" },
+    { "type": "video", "id": "howto_video", "label": "Video", "info": "Shown in a pop-up from a button under the intro line. Leave empty to hide the button." },
+    { "type": "text", "id": "howto_video_label", "label": "Button label", "default": "See how it works" },
+    { "type": "header", "content": "Player owner question" },
+    { "type": "checkbox", "id": "show_owner_choice", "label": "Ask if they already have a player", "default": true, "info": "Above the pack card. \"Yes\" hides the pack card, sticky bar and basket prompt in this browser." },
+    { "type": "text", "id": "owner_question", "label": "Question", "default": "Does your child already have a Voxblock player?" },
+    { "type": "text", "id": "owner_no", "label": "\"No\" button", "default": "No, how do I start?" },
+    { "type": "text", "id": "owner_yes", "label": "\"Yes\" button", "default": "Yes, show me stories" },
+    { "type": "text", "id": "owner_yes_text", "label": "Line after \"Yes\"", "default": "Tap play on any cover to hear a sample." },
+    { "type": "text", "id": "owner_yes_link", "label": "Link after \"Yes\"", "default": "See the stories" },
+    { "type": "header", "content": "Phone sticky bar" },
+    { "type": "checkbox", "id": "show_sticky_bar", "label": "Show the pack in a bar at the bottom of the screen", "default": true, "info": "Phones only, once the pack card has scrolled out of view. Never for player owners." },
+    { "type": "text", "id": "sticky_button_text", "label": "Button", "default": "View pack" },
+    { "type": "header", "content": "Theme chips" },
+    { "type": "textarea", "id": "chip_filters", "label": "Chips above the grid", "info": "One per line: Button label|Filter label|Value label, e.g. Bedtime|Categories|Bedtime. Chips appear only when that filter value exists in this collection (Search & Discovery)." },
+    { "type": "text", "id": "chips_label", "label": "Chips label (screen readers)", "default": "Story themes" }
   ],
   "blocks": [
     {

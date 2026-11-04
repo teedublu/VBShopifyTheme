@@ -240,6 +240,83 @@ if (cartDrawerEl && playerPromptObserver) {
 
 
 // ----------------------------------------------------------------------------------------------------------------
+// AGE COLLECTION ROUND 2 (sections/collection-age-intro.liquid)
+// 1. "Does your child already have a Voxblock player?" Yes / No. Shares the basket prompt's localStorage key
+//    (vb_has_player) and <html> class (vb-has-player): "Yes" hides the pack card, the phone sticky bar and the basket
+//    prompt in this browser; "No" clears it. PostHog `owner_choice` { answer, collection } and the person property
+//    `vb_says_has_player`.
+// 2. Phone sticky bar: shown once the pack card has scrolled up out of view, never while the visitor says they own a
+//    player (CSS hides it from 700px up).
+// 3. "See how it works" video in a <dialog>; closing it pauses the video.
+// ----------------------------------------------------------------------------------------------------------------
+(() => {
+    const choice = document.querySelector('[data-owner-choice]');
+    const collection = () => document.querySelector('[data-age-collection]')?.dataset.ageCollection || null;
+    const ownsPlayer = () => document.documentElement.classList.contains('vb-has-player');
+
+    const syncChoice = () => {
+        if (!choice) return;
+        const yes = ownsPlayer();
+        choice.querySelectorAll('[data-owner-answer]').forEach((button) => {
+            button.setAttribute('aria-pressed', String((button.dataset.ownerAnswer === 'yes') === yes));
+        });
+    };
+    syncChoice();
+
+    if (choice) {
+        choice.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-owner-answer]');
+            if (!button) return;
+            const yes = button.dataset.ownerAnswer === 'yes';
+            try {
+                if (yes) window.localStorage.setItem(PLAYER_PROMPT_KEY, '1');
+                else window.localStorage.removeItem(PLAYER_PROMPT_KEY);
+            } catch (e) { /* storage blocked: the choice still applies on this page */ }
+            document.documentElement.classList.toggle('vb-has-player', yes);
+            syncChoice();
+            updateSticky();
+            if (typeof window.posthog !== 'undefined') {
+                try {
+                    window.posthog.capture('owner_choice', { answer: yes ? 'yes' : 'no', collection: collection() });
+                    if (typeof window.posthog.setPersonProperties === 'function') window.posthog.setPersonProperties({ vb_says_has_player: yes });
+                } catch (e) { /* analytics must never block the page */ }
+            }
+        });
+    }
+
+    const sticky = document.querySelector('[data-age-sticky]');
+    const packCard = document.querySelector('[data-owner-pack] .age-pack');
+    let packAbove = false;
+    function updateSticky() {
+        if (!sticky) return;
+        sticky.hidden = !(packAbove && !ownsPlayer());
+    }
+    if (sticky && packCard && 'IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            packAbove = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+            updateSticky();
+        }).observe(packCard);
+    }
+
+    const video = document.querySelector('[data-age-video]');
+    if (video && typeof video.showModal === 'function') {
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('[data-age-video-open]')) {
+                video.showModal();
+                video.querySelector('video')?.play().catch(() => { /* autoplay refused: the controls are there */ });
+            } else if (event.target.closest('[data-age-video-close]') || event.target === video) {
+                video.close();
+            }
+        });
+        video.addEventListener('close', () => video.querySelector('video')?.pause());
+    } else {
+        // No <dialog> support: hide the button rather than show one that does nothing
+        document.querySelectorAll('[data-age-video-open]').forEach((button) => { button.hidden = true; });
+    }
+})();
+
+
+// ----------------------------------------------------------------------------------------------------------------
 // CART DRAWER VIEWS: Shopify's standard `cart_viewed` only fires on the /cart page, and almost nobody goes there,
 // so the drawer was invisible in PostHog. Each time the drawer finishes opening, publish the custom Shopify
 // customer event `vb_cart_drawer_viewed` { source: 'drawer', trigger, item_count, total_price, page }; the custom
@@ -333,7 +410,7 @@ document.addEventListener('submit', async (event) => {
         try {
             if (window.posthog && typeof window.posthog.capture === 'function') {
                 const page = form.closest('[data-story-page]')?.dataset.storyPage || window.location.pathname;
-                window.posthog.capture('school_signup', { page, form: form.dataset.form });
+                window.posthog.capture(form.dataset.event || 'school_signup', { page, form: form.dataset.form });
             }
         } catch (e) { /* analytics must never block the sign-up */ }
     } catch (error) {
