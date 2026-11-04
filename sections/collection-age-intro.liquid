@@ -162,7 +162,8 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
           packs_url: section.settings.packs_url,
           player_handle: section.settings.player_handle,
           player_line: section.settings.player_line,
-          age_text: age_text
+          age_text: age_text,
+          benefits: section.settings.pack_benefits
         -%}
         </div>
         </div>
@@ -273,6 +274,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "checkbox", "id": "show_pack", "label": "Show the starter pack card", "default": true, "info": "Never shown to signed-in customers who have already bought a player." },
     { "type": "text", "id": "pack_heading", "label": "Card heading", "default": "New to Voxblock? Start here" },
     { "type": "text", "id": "pack_note", "label": "Line after the contents", "default": "Bumper and charging cable included." },
+    { "type": "textarea", "id": "pack_benefits", "label": "Ticked list under the price", "info": "One per line. No prices: they are read live elsewhere on the card." },
     { "type": "url", "id": "packs_url", "label": "\"See all packs\" link" },
     { "type": "text", "id": "player_handle", "label": "Player product handle", "default": "voxblock-player", "info": "Used for the \"Player only\" price and link (cheapest variant)." },
     { "type": "header", "content": "How it works video" },
@@ -282,7 +284,7 @@ Tracking: PostHog `age_collection_click` { target, collection } via data-age-tra
     { "type": "checkbox", "id": "show_owner_choice", "label": "Ask if they already have a player", "default": true, "info": "Above the pack card. \"Yes\" hides the pack card, sticky bar and basket prompt in this browser." },
     { "type": "text", "id": "owner_question", "label": "Question", "default": "Does your child already have a Voxblock player?" },
     { "type": "text", "id": "owner_no", "label": "\"No\" button", "default": "No, how do I start?" },
-    { "type": "text", "id": "owner_yes", "label": "\"Yes\" button", "default": "Yes, show me stories" },
+    { "type": "text", "id": "owner_yes", "label": "\"Yes\" button", "default": "Yes, show stories" },
     { "type": "text", "id": "owner_yes_text", "label": "Line after \"Yes\"", "default": "Tap play on any cover to hear a sample." },
     { "type": "text", "id": "owner_yes_link", "label": "Link after \"Yes\"", "default": "See the stories" },
     { "type": "header", "content": "Phone sticky bar" },
