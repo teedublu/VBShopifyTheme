@@ -36,6 +36,59 @@
         "show_title": true
       }
     },
+    "benefit_cards_byHCTV": {
+      "type": "benefit-cards",
+      "blocks": {
+        "card_reiKKN": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Find the key",
+            "content": "<p>Find the key below to help you crack the code</p>"
+          }
+        },
+        "card_eTY4yd": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Match the symbols",
+            "content": "<p>Match the symbols to the code found on our advert in The Week Junior</p>"
+          }
+        },
+        "card_TXNmtV": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "title": "Enter your code",
+            "content": "<p>Get a parent to enter your solved code and details into the form at the bottom of the page to enter</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_reiKKN",
+        "card_eTY4yd",
+        "card_TXNmtV"
+      ],
+      "name": "Benefit cards",
+      "settings": {
+        "full_width": true,
+        "subheading": "The Week Junior Competition",
+        "title": "Crack the code in three simple steps",
+        "content": "",
+        "card_heading_tag": "p",
+        "text_alignment": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "card_background": "#ffffff",
+        "card_text_color": "",
+        "card_heading_color": "#197177",
+        "icon_background": "#e9f6f4",
+        "icon_color": "#197177",
+        "icon_accent": "#ff9e57"
+      }
+    },
     "image_with_text_overlay_6JXtLd": {
       "type": "image-with-text-overlay",
       "settings": {
@@ -70,6 +123,7 @@
           "settings": {
             "text": "Nominate your school",
             "heading_tag": "h1",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -92,6 +146,7 @@
           "settings": {
             "text": "Nominations open on the 5th March",
             "heading_tag": "h3",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -123,6 +178,7 @@
           "settings": {
             "image": "shopify://shop_images/WBD-Landing-Page-schools.png",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "start",
             "text_position": "place-self-center text-center",
             "icon": "none",
@@ -132,6 +188,10 @@
             "content": "<p>1 of five mini school packs worth <strong>£410</strong>.</p><p>The packs include:</p><ul><li>5x Voxblock audiobooks with bumpers</li><li>10x audiobooks</li><li>1x charging bank</li><li>1x aux cable</li><li>and school resources</li></ul><p>Good Luck!</p>",
             "link_text": "",
             "link_url": "",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
+            "track": "",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
@@ -192,6 +252,7 @@
           "settings": {
             "text": "Our 2026 Winners",
             "heading_tag": "h1",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -240,6 +301,7 @@
           "settings": {
             "image": "shopify://shop_images/WBD-Landing-Page-SBT.png",
             "media_width": 50,
+            "stacked_media_max_width": 0,
             "media_position": "start",
             "text_position": "place-self-center text-center",
             "icon": "none",
@@ -249,6 +311,10 @@
             "content": "<p>We are thrilled to have the <strong>Scottish Book Trust </strong>partnering with us for Stories for Schools!</p><p>The Scottish Book Trust is a national charity dedicated to changing lives through reading, writing, and books. One of their key messages is simple but powerful: <a href=\"https://www.scottishbooktrust.com/articles/all-reading-is-good-reading-audiobooks\" title=\"All Reading is Good Reading - Scottish Book Trust Blog\">all reading is good reading.</a></p><p>They are also the organisation behind the brilliant <a href=\"https://www.scottishbooktrust.com/authors-live-on-demand\" title=\"Author Live on Demand - Scottish Book Trust\">Authors Live</a> events, where they have interviewed some of the amazing authors featured on the Voxblock bookshelf.</p><p></p><p></p>",
             "link_text": "",
             "link_url": "",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
+            "track": "",
             "background": "#fff7f0",
             "background_gradient": "",
             "text_color": "#565656",
@@ -275,6 +341,7 @@
           "settings": {
             "text": "What else to expect",
             "heading_tag": "h1",
+            "heading_tag_html": "p",
             "text_color": "",
             "gradient": ""
           }
@@ -408,6 +475,7 @@
   "order": [
     "image_with_text_overlay_zpPtRn",
     "main",
+    "benefit_cards_byHCTV",
     "image_with_text_overlay_6JXtLd",
     "rich_text_YjGbKd",
     "media_with_text_H6XCn6",
