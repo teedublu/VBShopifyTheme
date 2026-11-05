@@ -9,28 +9,49 @@
  */
 {
   "sections": {
-    "image_with_text_overlay_zpPtRn": {
-      "type": "image-with-text-overlay",
+    "media_with_text_dTYR7D": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_bAJbzt": {
+          "type": "image",
+          "settings": {
+            "media_width": 50,
+            "stacked_media_max_width": 0,
+            "media_position": "end",
+            "text_position": "place-self-center-start text-start",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "THE WEEK JUNIOR COMPETITION",
+            "title": "Crack the Code",
+            "content": "<p>You spotted our advert in The Week Junior. Use the codebreaker key below to crack the secret code, then enter it for a chance to win The Wild Robot Intro Pack.</p>",
+            "link_text": "",
+            "link_url": "",
+            "title_tag": "p",
+            "link2_text": "",
+            "link2_url": "",
+            "track": "",
+            "background": "#FFF7F0",
+            "background_gradient": "",
+            "text_color": "#464545",
+            "heading_text_color": "#269EA1",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_bAJbzt"
+      ],
+      "name": "Media with text",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "image": "shopify://shop_images/WBD-header-image-web-v2.26_d58461e7-ec71-490b-90c8-d3b801744706.png",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "background": "#eaeaea",
-        "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "enable_watermark": false,
-        "watermark_opacity": 6
+        "spacing": "small"
       }
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "content_width": "80ch",
         "show_title": true
@@ -89,8 +110,53 @@
         "icon_accent": "#ff9e57"
       }
     },
+    "rich_text_B7JC3N": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_LDKynM": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_HV89Dd": {
+          "type": "heading",
+          "settings": {
+            "text": "Closing date: 30th November",
+            "heading_tag": "h1",
+            "heading_tag_html": "p",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_KGCQUR": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>This competition is free to enter, any entries after the closing date will not be counted.</p><p>For full terms and condition, <a href=\"/pages/competition-t-cs\" title=\"Competition Terms and Conditions\">please click here.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_LDKynM",
+        "heading_HV89Dd",
+        "richtext_KGCQUR"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "image_with_text_overlay_6JXtLd": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
@@ -159,6 +225,7 @@
         "richtext_t7PU3Q",
         "heading_Udigpq"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -184,7 +251,7 @@
             "icon": "none",
             "icon_width": 48,
             "subheading": "",
-            "title": "What your school will receive:",
+            "title": "What's the prize?",
             "content": "<p>1 of five mini school packs worth <strong>£410</strong>.</p><p>The packs include:</p><ul><li>5x Voxblock audiobooks with bumpers</li><li>10x audiobooks</li><li>1x charging bank</li><li>1x aux cable</li><li>and school resources</li></ul><p>Good Luck!</p>",
             "link_text": "",
             "link_url": "",
@@ -282,6 +349,7 @@
         "richtext_zcHxNX",
         "richtext_XQYefQ"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "use_mo": true,
@@ -328,6 +396,7 @@
       "block_order": [
         "image_hiXKyi"
       ],
+      "disabled": true,
       "settings": {
         "full_width": false,
         "spacing": "small"
@@ -473,9 +542,10 @@
     }
   },
   "order": [
-    "image_with_text_overlay_zpPtRn",
+    "media_with_text_dTYR7D",
     "main",
     "benefit_cards_byHCTV",
+    "rich_text_B7JC3N",
     "image_with_text_overlay_6JXtLd",
     "rich_text_YjGbKd",
     "media_with_text_H6XCn6",
