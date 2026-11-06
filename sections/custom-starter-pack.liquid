@@ -17,7 +17,7 @@ pack can't be bought without books; Shopify refuses it because the pack variants
   the collection must be on the Online Store channel). This must be the same collection the app's book list is
   built from, or the app will refuse a book the page offers. Sold-out books can't be picked.
 * "Books per pack" must match the app's pack settings (3 for the £79.99 pack).
-* Filters: search (title, author tags), "♥ Liked" (books the visitor has hearted anywhere on the site,
+* Filters (pills first, search box under them): search (title, author tags), "♥ Liked" (books the visitor has hearted anywhere on the site,
   assets/saved-books.js; always shown so people learn they can like books and find them here, with the count; empty
   state explains it), age chips. Each book card has the site's heart too (save-book-button), so liking works here.
 * Summary: a row of pictures, the player in the chosen colour then one cover per book (titles on hover and for
@@ -152,11 +152,11 @@ custom_starter_pack_error { reason }.
             <h2 class="h5 custom-starter-pack__step-title" id="pack-books-{{ section.id }}"><span class="custom-starter-pack__step-number">2</span> {{ s.books_heading | replace: '[books]', required | escape }}</h2>
 
             <div class="custom-starter-pack__filters">
+              <div class="custom-starter-pack__chips" role="group" aria-label="Filter audiobooks" data-pack-chips></div>
               <label class="custom-starter-pack__search">
                 <span class="sr-only">{{ s.search_placeholder | escape }}</span>
                 <input type="search" class="input" placeholder="{{ s.search_placeholder | escape }}" autocomplete="off" data-pack-search>
               </label>
-              <div class="custom-starter-pack__chips" role="group" aria-label="Filter audiobooks" data-pack-chips></div>
             </div>
 
             {%- comment -%}The theme's heart icon, cloned by the script into the Liked chip and each book's heart{%- endcomment -%}
@@ -217,7 +217,7 @@ custom_starter_pack_error { reason }.
     { "type": "text", "id": "colour_heading", "label": "Step 1 heading", "default": "Choose a player" },
     { "type": "text", "id": "books_heading", "label": "Step 2 heading", "default": "Choose any [books] audiobooks" },
     { "type": "text", "id": "search_placeholder", "label": "Search box", "default": "Search by title or author" },
-    { "type": "textarea", "id": "age_filters", "label": "Age filters", "default": "Under 5 = under 5, 3-5\n5 to 8 = 5-8\n8 to 10 = 8-10\n10+ = 10 plus", "info": "One per line: label = product tags (comma separated). Leave empty for no age filters." },
+    { "type": "textarea", "id": "age_filters", "label": "Age filters", "default": "Under 5 = under 5, 3-5\n5 to 8 = 5-8\n8 to 10 = 8-10\n10+ = 10 plus\nAdults = adult", "info": "One per line: label = product tags (comma separated). Leave empty for no age filters." },
     { "type": "text", "id": "liked_label", "label": "Liked filter", "default": "Liked", "info": "Always shown next to All, with the heart and a count of liked books that can go in the pack." },
     { "type": "text", "id": "liked_empty_text", "label": "Liked filter, nothing liked yet", "default": "Tap the heart on any audiobook, here or anywhere on the site, and it will be waiting here when you come back to build your pack." },
     { "type": "text", "id": "no_results_text", "label": "No results", "default": "No audiobooks match. Try another search or filter." },
