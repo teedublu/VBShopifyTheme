@@ -158,8 +158,11 @@ class PackBuilder extends ElementBase {
             const value = chip.dataset.chip;
             if (value === 'saved') {
                 this.filter.saved = !this.filter.saved;
+            } else if (value === 'all') {
+                this.filter.age = null;
+                this.filter.saved = false;
             } else {
-                this.filter.age = value === 'all' || this.filter.age === value ? null : value;
+                this.filter.age = this.filter.age === value ? null : value;
             }
             this.renderChips();
             this.renderGrid();
@@ -240,14 +243,15 @@ class PackBuilder extends ElementBase {
     renderChips() {
         const saved = readSavedIds();
         const savedEligible = this.books.filter((b) => saved.includes(b.productId)).length;
-        const chips = [{ value: 'all', label: 'All', pressed: !this.filter.age }];
+        const chips = [{ value: 'all', label: 'All', pressed: !this.filter.age && !this.filter.saved }];
+        // Liked = books hearted with the save button; only offered when some of them can go in the pack
+        if (savedEligible) chips.push({ value: 'saved', label: `♥ ${this.messages.liked || 'Liked'} (${savedEligible})`, pressed: this.filter.saved, liked: true });
         for (const age of this.ageFilters) chips.push({ value: age.label, label: age.label, pressed: this.filter.age === age.label });
-        if (savedEligible) chips.push({ value: 'saved', label: `Saved (${savedEligible})`, pressed: this.filter.saved });
 
         this.chips.replaceChildren(...chips.map((chip) => {
             const button = document.createElement('button');
             button.type = 'button';
-            button.className = 'pack-builder__chip';
+            button.className = `pack-builder__chip${chip.liked ? ' pack-builder__chip--liked' : ''}`;
             button.dataset.chip = chip.value;
             button.setAttribute('aria-pressed', String(chip.pressed));
             button.textContent = chip.label;

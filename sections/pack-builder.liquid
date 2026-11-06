@@ -2,7 +2,7 @@
 ----------------------------------------------------------------------------------------------------------------------
 PACK BUILDER (templates/product.pack-builder.json)
 ----------------------------------------------------------------------------------------------------------------------
-"Build your own starter pack": the customer picks a bumper colour (the pack product's variants) and any N audiobooks
+"Build your own starter pack": the customer picks a player (bumper colour = the pack product's variants) and any N audiobooks
 from one collection, then adds ONE line to the basket: the pack variant with the hidden property `_pack_books`
 (book variant IDs) and a visible "Books" property (titles, for the basket). The Mix and Match Packs app
 (teedublu/VBPackApp, Codek Ltd partner org) splits that line at checkout into the player in that colour and the
@@ -17,7 +17,8 @@ pack can't be bought without books; Shopify refuses it because the pack variants
   the collection must be on the Online Store channel). This must be the same collection the app's book list is
   built from, or the app will refuse a book the page offers. Sold-out books can't be picked.
 * "Books per pack" must match the app's pack settings (3 for the £79.99 pack).
-* Filters: search (title, author tags), "Saved" (the visitor's saved items, assets/saved-books.js), age chips.
+* Filters: search (title, author tags), "Liked" (books the visitor has hearted, assets/saved-books.js; only shown when
+  they have liked at least one of these books, with the count), age chips.
 * Links can preselect books: ?books=<handle>,<handle> or ?book=<handle> (e.g. "Start a pack with this book").
 Script: assets/pack-builder.js (logic tested with node). Styles: voxblock.css "PACK BUILDER".
 PostHog: pack_builder_book { action, book, count }, pack_builder_add { colour, books, worth, price },
@@ -69,6 +70,7 @@ pack_builder_error { reason }.
     "addBook": "Add",
     "addedBook": "Added",
     "noResults": {{ s.no_results_text | json }},
+    "liked": {{ s.liked_label | json }},
     "loadError": "Sorry, the audiobooks didn't load. Please refresh the page.",
     "cartError": {{ s.cart_error_text | json }},
     "worth": {{ s.worth_text | json }},
@@ -195,11 +197,12 @@ pack_builder_error { reason }.
     { "type": "header", "content": "Text" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Build your own starter pack" },
     { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the product title." },
-    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Pick a bumper colour and any [books] audiobooks. You get the Voxblock player in its bumper, the charging cable and your [books] books, all for one price.</p>", "info": "[books] = books per pack." },
-    { "type": "text", "id": "colour_heading", "label": "Step 1 heading", "default": "Choose a bumper colour" },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Choose your player and any [books] audiobooks. You get the Voxblock player in its bumper, the charging cable and your [books] books, all for one price.</p>", "info": "[books] = books per pack." },
+    { "type": "text", "id": "colour_heading", "label": "Step 1 heading", "default": "Choose a player" },
     { "type": "text", "id": "books_heading", "label": "Step 2 heading", "default": "Choose any [books] audiobooks" },
     { "type": "text", "id": "search_placeholder", "label": "Search box", "default": "Search by title or author" },
     { "type": "textarea", "id": "age_filters", "label": "Age filters", "default": "Under 5 = under 5, 3-5\n5 to 8 = 5-8\n8 to 10 = 8-10\n10+ = 10 plus", "info": "One per line: label = product tags (comma separated). Leave empty for no age filters." },
+    { "type": "text", "id": "liked_label", "label": "Liked filter", "default": "Liked", "info": "Shown next to All, with a count, only when the visitor has liked (hearted) any of these books." },
     { "type": "text", "id": "no_results_text", "label": "No results", "default": "No audiobooks match. Try another search or filter." },
     { "type": "text", "id": "summary_heading", "label": "Summary heading", "default": "Your pack" },
     { "type": "text", "id": "includes_text", "label": "Included line", "default": "Player with bumper, charging cable and your audiobooks" },
