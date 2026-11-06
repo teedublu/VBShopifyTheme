@@ -1,0 +1,221 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PACK BUILDER (templates/product.pack-builder.json)
+----------------------------------------------------------------------------------------------------------------------
+"Build your own starter pack": the customer picks a bumper colour (the pack product's variants) and any N audiobooks
+from one collection, then adds ONE line to the basket: the pack variant with the hidden property `_pack_books`
+(book variant IDs) and a visible "Books" property (titles, for the basket). The Mix and Match Packs app
+(teedublu/VBPackApp, Codek Ltd partner org) splits that line at checkout into the player in that colour and the
+books, each at its pack price, so orders, stock and Zoho see the real items.
+
+Used as the pack product's own template, so the product page IS the builder: there is no plain "Add to cart" (the
+pack can't be bought without books; Shopify refuses it because the pack variants require components).
+
+* Pack price: the selected pack variant's price, read live. "Worth" = the matching player variant's price (from
+  "Player product", matched by variant title, e.g. Orange) + the chosen books' own prices.
+* Books: every product in "Books collection" (loaded in the browser from /collections/<handle>/products.json, so
+  the collection must be on the Online Store channel). This must be the same collection the app's book list is
+  built from, or the app will refuse a book the page offers. Sold-out books can't be picked.
+* "Books per pack" must match the app's pack settings (3 for the £79.99 pack).
+* Filters: search (title, author tags), "Saved" (the visitor's saved items, assets/saved-books.js), age chips.
+* Links can preselect books: ?books=<handle>,<handle> or ?book=<handle> (e.g. "Start a pack with this book").
+Script: assets/pack-builder.js (logic tested with node). Styles: voxblock.css "PACK BUILDER".
+PostHog: pack_builder_book { action, book, count }, pack_builder_add { colour, books, worth, price },
+pack_builder_error { reason }.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign pack = product
+  if s.pack_product != blank
+    assign pack = s.pack_product
+  endif
+  assign required = s.books_required
+  assign heading = s.heading | default: pack.title
+  assign player = s.player_product
+  assign first_variant = pack.selected_or_first_available_variant
+  assign collection_handle = s.books_collection.handle | default: 'pack-eligible-audiobooks'
+-%}
+
+{%- capture variants_json -%}
+  [
+  {%- for v in pack.variants -%}
+    {%- liquid
+      assign player_variant = blank
+      if player != blank
+        for pv in player.variants
+          if pv.title == v.title
+            assign player_variant = pv
+            break
+          endif
+        endfor
+      endif
+    -%}
+    {"id":{{ v.id }},"title":{{ v.title | json }},"price":{{ v.price }},"available":{{ v.available }},"playerPrice":{% if player_variant != blank %}{{ player_variant.price }}{% else %}0{% endif %}}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+  ]
+{%- endcapture -%}
+
+{%- capture messages_json -%}
+  {
+    "chooseMore": {{ s.choose_more_text | json }},
+    "chooseOneMore": {{ s.choose_one_more_text | json }},
+    "add": {{ s.button_text | json }},
+    "adding": "Adding…",
+    "full": {{ s.full_text | json }},
+    "added": "[book] added. [count] of [total] chosen.",
+    "removed": "[book] removed. [count] of [total] chosen.",
+    "soldOut": "Sold out",
+    "addBook": "Add",
+    "addedBook": "Added",
+    "noResults": {{ s.no_results_text | json }},
+    "loadError": "Sorry, the audiobooks didn't load. Please refresh the page.",
+    "cartError": {{ s.cart_error_text | json }},
+    "worth": {{ s.worth_text | json }},
+    "details": "About this book",
+    "remove": "Remove [book]",
+    "slot": "Book [n]"
+  }
+{%- endcapture -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<div class="pack-builder">
+  <div {% render 'section-properties' %}>
+    <pack-builder class="pack-builder__inner"
+      data-collection="{{ collection_handle | escape }}"
+      data-required="{{ required }}"
+      data-age-filters="{{ s.age_filters | escape }}"
+      data-variants="{{ variants_json | strip_newlines | escape }}"
+      data-messages="{{ messages_json | strip_newlines | escape }}"
+      data-currency="{{ cart.currency.iso_code }}"
+      data-product-url="{{ pack.url }}">
+
+      <header class="pack-builder__header">
+        {%- if s.eyebrow != blank -%}<p class="subheading pack-builder__eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+        <h1 class="h2 pack-builder__heading">{{ heading | escape }}</h1>
+        {%- if s.intro != blank -%}
+          <div class="prose pack-builder__intro">{{ s.intro | replace: '[books]', required }}</div>
+        {%- endif -%}
+      </header>
+
+      <div class="pack-builder__layout">
+        <div class="pack-builder__main">
+
+          {%- comment -%} Step 1: bumper colour = pack variant {%- endcomment -%}
+          <fieldset class="pack-builder__step pack-builder__colours">
+            <legend class="h5 pack-builder__step-title"><span class="pack-builder__step-number">1</span> {{ s.colour_heading | escape }}</legend>
+            <div class="pack-builder__colour-list">
+              {%- for v in pack.variants -%}
+                {%- liquid
+                  assign colour_image = v.featured_image
+                  if colour_image == blank and player != blank
+                    for pv in player.variants
+                      if pv.title == v.title
+                        assign colour_image = pv.featured_image
+                        break
+                      endif
+                    endfor
+                  endif
+                  assign colour_key = v.title | handleize
+                -%}
+                <label class="pack-builder__colour pack-builder__colour--{{ colour_key }}">
+                  <input type="radio" name="pack-colour-{{ section.id }}" value="{{ v.id }}" {% if v.id == first_variant.id %}checked{% endif %} {% unless v.available %}disabled{% endunless %} data-pack-colour>
+                  <span class="pack-builder__colour-card">
+                    {%- if colour_image != blank -%}
+                      {{- colour_image | image_url: width: 240 | image_tag: loading: 'lazy', sizes: '120px', class: 'pack-builder__colour-image', alt: '' -}}
+                    {%- else -%}
+                      <span class="pack-builder__colour-dot" aria-hidden="true"></span>
+                    {%- endif -%}
+                    <span class="pack-builder__colour-name">{{ v.title | escape }}{% unless v.available %} ({{ 'product.general.sold_out_button' | t }}){% endunless %}</span>
+                  </span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+
+          {%- comment -%} Step 2: books {%- endcomment -%}
+          <section class="pack-builder__step pack-builder__books" aria-labelledby="pack-books-{{ section.id }}">
+            <h2 class="h5 pack-builder__step-title" id="pack-books-{{ section.id }}"><span class="pack-builder__step-number">2</span> {{ s.books_heading | replace: '[books]', required | escape }}</h2>
+
+            <div class="pack-builder__filters">
+              <label class="pack-builder__search">
+                <span class="sr-only">{{ s.search_placeholder | escape }}</span>
+                <input type="search" class="input" placeholder="{{ s.search_placeholder | escape }}" autocomplete="off" data-pack-search>
+              </label>
+              <div class="pack-builder__chips" role="group" aria-label="Filter audiobooks" data-pack-chips></div>
+            </div>
+
+            <ul class="pack-builder__grid" role="list" data-pack-grid aria-busy="true">
+              <li class="pack-builder__loading">Loading audiobooks…</li>
+            </ul>
+            <p class="pack-builder__empty" data-pack-empty hidden></p>
+            <noscript><p class="pack-builder__note">Choosing books needs JavaScript switched on.</p></noscript>
+          </section>
+        </div>
+
+        {%- comment -%} Summary: sticky beside the books on desktop, a bar at the bottom on phones {%- endcomment -%}
+        <aside class="pack-builder__summary" aria-label="Your pack">
+          <div class="pack-builder__summary-card">
+            <p class="h5 pack-builder__summary-title">{{ s.summary_heading | escape }}</p>
+            <ol class="pack-builder__slots" role="list" data-pack-slots>
+              {%- for i in (1..required) -%}
+                <li class="pack-builder__slot"><span class="pack-builder__slot-empty">Book {{ i }}</span></li>
+              {%- endfor -%}
+            </ol>
+            <p class="pack-builder__includes">{{ s.includes_text | escape }}</p>
+            <div class="pack-builder__price">
+              <span class="pack-builder__amount" data-pack-price>{{ first_variant.price | money }}</span>
+              <span class="pack-builder__worth" data-pack-worth hidden></span>
+            </div>
+            <button type="button" class="button button--lg pack-builder__add" data-pack-add disabled>
+              {{- s.choose_more_text | replace: '[n]', required | escape -}}
+            </button>
+            <p class="pack-builder__status" role="status" aria-live="polite" data-pack-status></p>
+            {%- if s.trust_text != blank -%}<p class="pack-builder__trust">{{ s.trust_text | escape }}</p>{%- endif -%}
+          </div>
+        </aside>
+      </div>
+    </pack-builder>
+  </div>
+</div>
+
+<script type="module" src="{{ 'pack-builder.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Pack builder",
+  "class": "shopify-section--pack-builder",
+  "tag": "section",
+  "settings": [
+    { "type": "product", "id": "pack_product", "label": "Pack product", "info": "Leave empty on the pack's own product page (it uses that product). Its variants are the bumper colours." },
+    { "type": "product", "id": "player_product", "label": "Player product", "info": "Gives each colour's picture and the player's own price for the \"worth\" line. Matched by variant title (Orange, Green…)." },
+    { "type": "collection", "id": "books_collection", "label": "Books collection", "info": "Must be the same collection as the app's book list, and on the Online Store channel." },
+    { "type": "range", "id": "books_required", "label": "Books per pack", "min": 1, "max": 6, "step": 1, "default": 3, "info": "Must match the app's pack settings." },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Build your own starter pack" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the product title." },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Pick a bumper colour and any [books] audiobooks. You get the Voxblock player in its bumper, the charging cable and your [books] books, all for one price.</p>", "info": "[books] = books per pack." },
+    { "type": "text", "id": "colour_heading", "label": "Step 1 heading", "default": "Choose a bumper colour" },
+    { "type": "text", "id": "books_heading", "label": "Step 2 heading", "default": "Choose any [books] audiobooks" },
+    { "type": "text", "id": "search_placeholder", "label": "Search box", "default": "Search by title or author" },
+    { "type": "textarea", "id": "age_filters", "label": "Age filters", "default": "Under 5 = under 5, 3-5\n5 to 8 = 5-8\n8 to 10 = 8-10\n10+ = 10 plus", "info": "One per line: label = product tags (comma separated). Leave empty for no age filters." },
+    { "type": "text", "id": "no_results_text", "label": "No results", "default": "No audiobooks match. Try another search or filter." },
+    { "type": "text", "id": "summary_heading", "label": "Summary heading", "default": "Your pack" },
+    { "type": "text", "id": "includes_text", "label": "Included line", "default": "Player with bumper, charging cable and your audiobooks" },
+    { "type": "text", "id": "worth_text", "label": "Worth line", "default": "Worth [worth], you save [save]", "info": "[worth] = player + books at their own prices. Hidden when there is no saving." },
+    { "type": "text", "id": "choose_more_text", "label": "Button while choosing", "default": "Choose [n] more books", "info": "[n] = books still to choose." },
+    { "type": "text", "id": "choose_one_more_text", "label": "Button with one to go", "default": "Choose 1 more book" },
+    { "type": "text", "id": "button_text", "label": "Add button", "default": "Add pack to basket" },
+    { "type": "text", "id": "full_text", "label": "Pack full message", "default": "Your pack is full. Remove a book to swap it." },
+    { "type": "text", "id": "cart_error_text", "label": "Basket error", "default": "Sorry, that pack couldn't be added. One of the books may have just sold out, so please check your choices and try again." },
+    { "type": "text", "id": "trust_text", "label": "Trust line", "default": "No downloads, no subscription, no screen." },
+    { "type": "header", "content": "Colours" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    { "type": "color", "id": "background", "label": "Background" },
+    { "type": "color_background", "id": "background_gradient", "label": "Background gradient" },
+    { "type": "color", "id": "text_color", "label": "Text" }
+  ],
+  "presets": [ { "name": "Pack builder" } ]
+}
+{% endschema %}
