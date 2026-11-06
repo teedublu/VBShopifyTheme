@@ -1,0 +1,241 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+CUSTOM STARTER PACK (templates/product.custom-starter-pack.json)
+----------------------------------------------------------------------------------------------------------------------
+Custom Starter Pack: the customer picks a player (bumper colour = the pack product's variants) and any N audiobooks
+from one collection, then adds ONE line to the basket: the pack variant with the hidden property `_pack_books`
+(book variant IDs); no visible property, as basket and checkout list the books themselves. The Mix and Match Packs app
+(teedublu/VBPackApp, Codek Ltd partner org) splits that line at checkout into the player in that colour and the
+books, each at its pack price, so orders, stock and Zoho see the real items.
+
+Used as the pack product's own template, so the product page IS the builder: there is no plain "Add to cart" (the
+pack can't be bought without books; Shopify refuses it because the pack variants require components).
+
+* Pack price: the selected pack variant's price, read live. "Worth" = the matching player variant's price (from
+  "Player product", matched by variant title, e.g. Orange) + the chosen books' own prices.
+* Books: every product in "Books collection" (loaded in the browser from /collections/<handle>/products.json, so
+  the collection must be on the Online Store channel). This must be the same collection the app's book list is
+  built from, or the app will refuse a book the page offers. Sold-out books can't be picked.
+* "Books per pack" must match the app's pack settings (3 for the £79.99 pack).
+* Filters (pills first, search box under them): search (title, author tags), "♥ Liked" (books the visitor has hearted anywhere on the site,
+  assets/saved-books.js; always shown so people learn they can like books and find them here, with the count; empty
+  state explains it), age chips. Each book card has the site's heart too (save-book-button), so liking works here.
+* Summary: a row of pictures, the player in the chosen colour then one cover per book (titles on hover and for
+  screen readers, × to remove); an empty slot is a "+ Book 2" tile that jumps to the book list.
+* Links can preselect books: ?books=<handle>,<handle> or ?book=<handle> (e.g. "Start a pack with this book").
+Script: assets/custom-starter-pack.js (logic tested with node). Styles: voxblock.css "CUSTOM STARTER PACK".
+PostHog: custom_starter_pack_book { action, book, count }, custom_starter_pack_add { colour, books, worth, price },
+custom_starter_pack_error { reason }.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign pack = product
+  if s.pack_product != blank
+    assign pack = s.pack_product
+  endif
+  assign required = s.books_required
+  assign heading = s.heading | default: pack.title
+  assign player = s.player_product
+  assign first_variant = pack.selected_or_first_available_variant
+  assign collection_handle = s.books_collection.handle | default: 'pack-eligible-audiobooks'
+-%}
+
+{%- capture variants_json -%}
+  [
+  {%- for v in pack.variants -%}
+    {%- liquid
+      assign player_variant = blank
+      if player != blank
+        for pv in player.variants
+          if pv.title == v.title
+            assign player_variant = pv
+            break
+          endif
+        endfor
+      endif
+    -%}
+    {%- liquid
+      assign player_image = player_variant.featured_image | default: player.featured_image | default: v.featured_image
+    -%}
+    {"id":{{ v.id }},"title":{{ v.title | json }},"price":{{ v.price }},"available":{{ v.available }},"playerPrice":{% if player_variant != blank %}{{ player_variant.price }}{% else %}0{% endif %},"playerImage":{% if player_image != blank %}{{ player_image | image_url: width: 240 | json }}{% else %}""{% endif %}}{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+  ]
+{%- endcapture -%}
+
+{%- capture messages_json -%}
+  {
+    "chooseMore": {{ s.choose_more_text | json }},
+    "chooseOneMore": {{ s.choose_one_more_text | json }},
+    "add": {{ s.button_text | json }},
+    "adding": "Adding…",
+    "full": {{ s.full_text | json }},
+    "added": "[book] added. [count] of [total] chosen.",
+    "removed": "[book] removed. [count] of [total] chosen.",
+    "soldOut": "Sold out",
+    "addBook": "Add",
+    "addedBook": "Added",
+    "noResults": {{ s.no_results_text | json }},
+    "liked": {{ s.liked_label | json }},
+    "likedEmpty": {{ s.liked_empty_text | json }},
+    "save": "Like [book]",
+    "loadError": "Sorry, the audiobooks didn't load. Please refresh the page.",
+    "cartError": {{ s.cart_error_text | json }},
+    "worth": {{ s.worth_text | json }},
+    "details": "About this book",
+    "remove": "Remove [book]",
+    "slot": "Book [n]",
+    "pickSlot": "Choose book [n]",
+    "player": "Voxblock player, [colour]"
+  }
+{%- endcapture -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<div class="custom-starter-pack">
+  <div {% render 'section-properties' %}>
+    <custom-starter-pack class="custom-starter-pack__inner"
+      data-collection="{{ collection_handle | escape }}"
+      data-required="{{ required }}"
+      data-age-filters="{{ s.age_filters | escape }}"
+      data-variants="{{ variants_json | strip_newlines | escape }}"
+      data-messages="{{ messages_json | strip_newlines | escape }}"
+      data-currency="{{ cart.currency.iso_code }}"
+      data-product-url="{{ pack.url }}">
+
+      <header class="custom-starter-pack__header">
+        {%- if s.eyebrow != blank -%}<p class="subheading custom-starter-pack__eyebrow">{{ s.eyebrow | escape }}</p>{%- endif -%}
+        <h1 class="h2 custom-starter-pack__heading">{{ heading | escape }}</h1>
+        {%- if s.intro != blank -%}
+          <div class="prose custom-starter-pack__intro">{{ s.intro | replace: '[books]', required }}</div>
+        {%- endif -%}
+      </header>
+
+      <div class="custom-starter-pack__layout">
+        <div class="custom-starter-pack__main">
+
+          {%- comment -%} Step 1: bumper colour = pack variant {%- endcomment -%}
+          <fieldset class="custom-starter-pack__step custom-starter-pack__colours">
+            <legend class="h5 custom-starter-pack__step-title"><span class="custom-starter-pack__step-number">1</span> {{ s.colour_heading | escape }}</legend>
+            <div class="custom-starter-pack__colour-list" style="--pack-colours: {{ pack.variants.size }}">
+              {%- for v in pack.variants -%}
+                {%- liquid
+                  assign colour_image = blank
+                  if player != blank
+                    for pv in player.variants
+                      if pv.title == v.title
+                        assign colour_image = pv.featured_image
+                        break
+                      endif
+                    endfor
+                  endif
+                  assign colour_image = colour_image | default: v.featured_image
+                  assign colour_key = v.title | handleize
+                -%}
+                <label class="custom-starter-pack__colour custom-starter-pack__colour--{{ colour_key }}">
+                  <input type="radio" name="pack-colour-{{ section.id }}" value="{{ v.id }}" {% if v.id == first_variant.id %}checked{% endif %} {% unless v.available %}disabled{% endunless %} data-pack-colour>
+                  <span class="custom-starter-pack__colour-card">
+                    {%- if colour_image != blank -%}
+                      {{- colour_image | image_url: width: 240 | image_tag: loading: 'lazy', sizes: '120px', class: 'custom-starter-pack__colour-image', alt: '' -}}
+                    {%- else -%}
+                      <span class="custom-starter-pack__colour-dot" aria-hidden="true"></span>
+                    {%- endif -%}
+                    <span class="custom-starter-pack__colour-name">{{ v.title | escape }}{% unless v.available %} ({{ 'product.general.sold_out_button' | t }}){% endunless %}</span>
+                  </span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+
+          {%- comment -%} Step 2: books {%- endcomment -%}
+          <section class="custom-starter-pack__step custom-starter-pack__books" aria-labelledby="pack-books-{{ section.id }}">
+            <h2 class="h5 custom-starter-pack__step-title" id="pack-books-{{ section.id }}"><span class="custom-starter-pack__step-number">2</span> {{ s.books_heading | replace: '[books]', required | escape }}</h2>
+
+            <div class="custom-starter-pack__filters">
+              <div class="custom-starter-pack__chips" role="group" aria-label="Filter audiobooks" data-pack-chips></div>
+              <label class="custom-starter-pack__search">
+                <span class="sr-only">{{ s.search_placeholder | escape }}</span>
+                <input type="search" class="input" placeholder="{{ s.search_placeholder | escape }}" autocomplete="off" data-pack-search>
+              </label>
+            </div>
+
+            {%- comment -%}The theme's heart icon, cloned by the script into the Liked chip and each book's heart{%- endcomment -%}
+            <template data-pack-heart>{%- render 'icon' with 'picto-love', width: 20, height: 20 -%}</template>
+
+            <ul class="custom-starter-pack__grid" role="list" data-pack-grid aria-busy="true">
+              <li class="custom-starter-pack__loading">Loading audiobooks…</li>
+            </ul>
+            <p class="custom-starter-pack__empty" data-pack-empty hidden></p>
+            <noscript><p class="custom-starter-pack__note">Choosing books needs JavaScript switched on.</p></noscript>
+          </section>
+        </div>
+
+        {%- comment -%} Summary: sticky beside the books on desktop, a bar at the bottom on phones {%- endcomment -%}
+        <aside class="custom-starter-pack__summary" aria-label="Your pack">
+          <div class="custom-starter-pack__summary-card">
+            <p class="h5 custom-starter-pack__summary-title">{{ s.summary_heading | escape }}</p>
+            <ol class="custom-starter-pack__slots" role="list" style="--pack-tiles: {{ required | plus: 1 }}" data-pack-slots>
+              <li class="custom-starter-pack__slot custom-starter-pack__slot--player"></li>
+              {%- for i in (1..required) -%}
+                <li class="custom-starter-pack__slot is-empty"><span class="custom-starter-pack__slot-pick"><span class="custom-starter-pack__slot-plus" aria-hidden="true">+</span>Book {{ i }}</span></li>
+              {%- endfor -%}
+            </ol>
+            <p class="custom-starter-pack__includes">{{ s.includes_text | escape }}</p>
+            <div class="custom-starter-pack__price">
+              <span class="custom-starter-pack__amount" data-pack-price>{{ first_variant.price | money }}</span>
+              <span class="custom-starter-pack__worth" data-pack-worth hidden></span>
+            </div>
+            <button type="button" class="button button--lg custom-starter-pack__add" data-pack-add disabled>
+              {{- s.choose_more_text | replace: '[n]', required | escape -}}
+            </button>
+            <p class="custom-starter-pack__status" role="alert" data-pack-status></p>
+            <p class="sr-only" role="status" aria-live="polite" data-pack-announce></p>
+            {%- if s.trust_text != blank -%}<p class="custom-starter-pack__trust">{{ s.trust_text | escape }}</p>{%- endif -%}
+          </div>
+        </aside>
+      </div>
+    </custom-starter-pack>
+  </div>
+</div>
+
+<script type="module" src="{{ 'custom-starter-pack.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Custom starter pack",
+  "class": "shopify-section--custom-starter-pack",
+  "tag": "section",
+  "settings": [
+    { "type": "product", "id": "pack_product", "label": "Pack product", "info": "Leave empty on the pack's own product page (it uses that product). Its variants are the bumper colours." },
+    { "type": "product", "id": "player_product", "label": "Player product", "info": "Gives each colour's picture and the player's own price for the \"worth\" line. Matched by variant title (Orange, Green…)." },
+    { "type": "collection", "id": "books_collection", "label": "Books collection", "info": "Must be the same collection as the app's book list, and on the Online Store channel." },
+    { "type": "range", "id": "books_required", "label": "Books per pack", "min": 1, "max": 6, "step": 1, "default": 3, "info": "Must match the app's pack settings." },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Customise your pack" },
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Leave empty to use the product title." },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Choose your player and any [books] audiobooks. You get the Voxblock player in its bumper, the charging cable and your [books] books, all for one price.</p>", "info": "[books] = books per pack." },
+    { "type": "text", "id": "colour_heading", "label": "Step 1 heading", "default": "Choose a player" },
+    { "type": "text", "id": "books_heading", "label": "Step 2 heading", "default": "Choose any [books] audiobooks" },
+    { "type": "text", "id": "search_placeholder", "label": "Search box", "default": "Search by title or author" },
+    { "type": "textarea", "id": "age_filters", "label": "Age filters", "default": "Under 5 = under 5, 3-5\n5 to 8 = 5-8\n8 to 10 = 8-10\n10+ = 10 plus\nAdults = adult", "info": "One per line: label = product tags (comma separated). Leave empty for no age filters." },
+    { "type": "text", "id": "liked_label", "label": "Liked filter", "default": "Liked", "info": "Always shown next to All, with the heart and a count of liked books that can go in the pack." },
+    { "type": "text", "id": "liked_empty_text", "label": "Liked filter, nothing liked yet", "default": "Tap the heart on any audiobook, here or anywhere on the site, and it will be waiting here when you come back to build your pack." },
+    { "type": "text", "id": "no_results_text", "label": "No results", "default": "No audiobooks match. Try another search or filter." },
+    { "type": "text", "id": "summary_heading", "label": "Summary heading", "default": "Your pack" },
+    { "type": "text", "id": "includes_text", "label": "Included line", "default": "Player with bumper, charging cable and your audiobooks" },
+    { "type": "text", "id": "worth_text", "label": "Worth line", "default": "Worth [worth], you save [save]", "info": "[worth] = player + books at their own prices. Hidden when there is no saving." },
+    { "type": "text", "id": "choose_more_text", "label": "Button while choosing", "default": "Choose [n] more books", "info": "[n] = books still to choose." },
+    { "type": "text", "id": "choose_one_more_text", "label": "Button with one to go", "default": "Choose 1 more book" },
+    { "type": "text", "id": "button_text", "label": "Add button", "default": "Add pack to basket" },
+    { "type": "text", "id": "full_text", "label": "Pack full message", "default": "Your pack is full. Remove a book to swap it." },
+    { "type": "text", "id": "cart_error_text", "label": "Basket error", "default": "Sorry, that pack couldn't be added. One of the books may have just sold out, so please check your choices and try again." },
+    { "type": "text", "id": "trust_text", "label": "Trust line", "default": "No downloads, no subscription, no screen." },
+    { "type": "header", "content": "Colours" },
+    { "type": "checkbox", "id": "full_width", "label": "Full width", "default": true },
+    { "type": "color", "id": "background", "label": "Background" },
+    { "type": "color_background", "id": "background_gradient", "label": "Background gradient" },
+    { "type": "color", "id": "text_color", "label": "Text" }
+  ],
+  "presets": [ { "name": "Custom starter pack" } ]
+}
+{% endschema %}

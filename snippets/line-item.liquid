@@ -17,10 +17,25 @@ Supported variables
   {%- assign line_max_quantity = line_item.variant.inventory_quantity -%}
 {%- endif -%}
 
+{%- comment -%}
+  Custom starter pack (a bundle split at checkout): show the player in the chosen colour as the line's picture, not the
+  pack product's own picture. The books are listed under the title.
+{%- endcomment -%}
+{%- liquid
+  assign line_image = line_item.image
+  for component in line_item.item_components
+    assign component_type = component.product.type | downcase
+    if component_type == 'player' and component.image != blank
+      assign line_image = component.image
+      break
+    endif
+  endfor
+-%}
+
 <line-item class="line-item">
-  {%- if line_item.image != blank -%}
+  {%- if line_image != blank -%}
     <div class="line-item__media-wrapper">
-      {{- line_item.image | image_url: width: line_item.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 80px, 96px', widths: '80,96,160,192', class: 'line-item__media rounded-xs' -}}
+      {{- line_image | image_url: width: line_image.width | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 80px, 96px', widths: '80,96,160,192', class: 'line-item__media rounded-xs' -}}
 
       <pill-loader class="pill-loader"></pill-loader>
     </div>
@@ -56,6 +71,11 @@ Supported variables
             {%- continue -%}
           {%- endif -%}
 
+          {%- comment -%}Custom starter pack: the books show as covers below. (Packs added before 6 Nov also carry a visible "Books" property.){%- endcomment -%}
+          {%- if property.first == 'Books' and line_item.item_components != blank -%}
+            {%- continue -%}
+          {%- endif -%}
+
           <li class="text-sm text-subdued">
             {%- if property.last contains '/uploads/' -%}
               <a href="{{ property.last }}" class="link">{{ property.last | split: '/' | last }}</a>
@@ -66,6 +86,25 @@ Supported variables
         {%- endfor -%}
       </ul>
     {%- endunless -%}
+
+    {%- comment -%}
+      Bundles split at checkout (e.g. the custom starter pack, sections/custom-starter-pack): show the parts, except the
+      player (its colour is already the variant title above). Cart only; orders list the parts as their own lines.
+    {%- endcomment -%}
+    {%- if line_item.item_components != blank -%}
+      <ul class="line-item__components" role="list">
+        {%- for component in line_item.item_components -%}
+          {%- assign component_type = component.product.type | downcase -%}
+          {%- if component_type == 'player' -%}{%- continue -%}{%- endif -%}
+          <li class="line-item__component">
+            {%- if component.image != blank -%}
+              {{- component.image | image_url: width: 96 | image_tag: loading: 'lazy', sizes: '40px', widths: '48,96', class: 'line-item__component-cover', alt: '' -}}
+            {%- endif -%}
+            <span class="line-item__component-title text-sm">{{ component.product.title | default: component.title }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
 
     <div class="text-sm text-subdued sm:hidden">
       {%- if line_item.url_to_remove -%}

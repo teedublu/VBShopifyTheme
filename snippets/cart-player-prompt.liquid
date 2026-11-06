@@ -19,7 +19,7 @@ Tracking: PostHog `cart_player_prompt` { action: shown | add_player | dismiss } 
   assign has_player = false
   for item in cart.items
     assign item_type = item.product.type | downcase
-    if item_type == 'player' or item_type == 'starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
+    if item_type == 'player' or item_type == 'starter pack' or item_type == 'custom starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
       assign has_player = true
     elsif item_type == 'audiobooks' or item_type == 'audiobooks bundle' or item_type == 'older audiobooks'
       assign has_story = true
