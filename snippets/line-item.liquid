@@ -17,10 +17,25 @@ Supported variables
   {%- assign line_max_quantity = line_item.variant.inventory_quantity -%}
 {%- endif -%}
 
+{%- comment -%}
+  Custom starter pack (a bundle split at checkout): show the player in the chosen colour as the line's picture, not the
+  pack product's own picture. The books are listed under the title.
+{%- endcomment -%}
+{%- liquid
+  assign line_image = line_item.image
+  for component in line_item.item_components
+    assign component_type = component.product.type | downcase
+    if component_type == 'player' and component.image != blank
+      assign line_image = component.image
+      break
+    endif
+  endfor
+-%}
+
 <line-item class="line-item">
-  {%- if line_item.image != blank -%}
+  {%- if line_image != blank -%}
     <div class="line-item__media-wrapper">
-      {{- line_item.image | image_url: width: line_item.image.width | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 80px, 96px', widths: '80,96,160,192', class: 'line-item__media rounded-xs' -}}
+      {{- line_image | image_url: width: line_image.width | image_tag: loading: 'lazy', sizes: '(max-width: 740px) 80px, 96px', widths: '80,96,160,192', class: 'line-item__media rounded-xs' -}}
 
       <pill-loader class="pill-loader"></pill-loader>
     </div>
