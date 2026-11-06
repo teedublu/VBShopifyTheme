@@ -1,5 +1,5 @@
-// pack-builder.js (sections/pack-builder.liquid)
-// "Build your own starter pack": choose a bumper colour (pack variant) and N audiobooks, then add ONE basket line:
+// custom-starter-pack.js (sections/custom-starter-pack.liquid)
+// Custom Starter Pack: choose a bumper colour (pack variant) and N audiobooks, then add ONE basket line:
 // the pack variant with `_pack_books` (book variant IDs) and "Books" (titles). The Mix and Match Packs app splits it at
 // checkout into the player and the books. The pure helpers in PackLogic are tested with node (no DOM needed).
 
@@ -109,7 +109,7 @@ function imageUrl(src, width) {
 // (A plain class outside the browser, so node can import PackLogic for tests)
 const ElementBase = typeof HTMLElement === 'undefined' ? class {} : HTMLElement;
 
-class PackBuilder extends ElementBase {
+class CustomStarterPack extends ElementBase {
     connectedCallback() {
         if (this._started) return;
         this._started = true;
@@ -201,7 +201,7 @@ class PackBuilder extends ElementBase {
             this.grid.removeAttribute('aria-busy');
             this.empty.textContent = this.messages.loadError;
             this.empty.hidden = false;
-            track('pack_builder_error', { reason: 'load' });
+            track('custom_starter_pack_error', { reason: 'load' });
             return;
         }
 
@@ -221,7 +221,7 @@ class PackBuilder extends ElementBase {
         if (index >= 0) {
             const [book] = this.chosen.splice(index, 1);
             this.say(PackLogic.fill(this.messages.removed, { ...values, book: book.title, count: this.chosen.length }));
-            track('pack_builder_book', { action: 'remove', book: book.handle, count: this.chosen.length });
+            track('custom_starter_pack_book', { action: 'remove', book: book.handle, count: this.chosen.length });
         } else {
             const book = this.books.find((b) => b.variantId === variantId);
             if (!book || !book.available) return;
@@ -234,7 +234,7 @@ class PackBuilder extends ElementBase {
             }
             this.chosen.push(book);
             this.say(PackLogic.fill(this.messages.added, { ...values, book: book.title, count: this.chosen.length }));
-            track('pack_builder_book', { action: 'add', book: book.handle, count: this.chosen.length });
+            track('custom_starter_pack_book', { action: 'add', book: book.handle, count: this.chosen.length });
         }
         this.render();
     }
@@ -261,7 +261,7 @@ class PackBuilder extends ElementBase {
         this.chips.replaceChildren(...chips.map((chip) => {
             const button = document.createElement('button');
             button.type = 'button';
-            button.className = `pack-builder__chip${chip.liked ? ' pack-builder__chip--liked' : ''}`;
+            button.className = `custom-starter-pack__chip${chip.liked ? ' custom-starter-pack__chip--liked' : ''}`;
             button.dataset.chip = chip.value;
             button.setAttribute('aria-pressed', String(chip.pressed));
             if (chip.liked) button.append(this.heartIcon());
@@ -286,7 +286,7 @@ class PackBuilder extends ElementBase {
     // The site's own heart (assets/saved-books.js defines <save-book-button>), so liking here is the same as anywhere
     heartButton(book) {
         const wrapper = document.createElement('save-book-button');
-        wrapper.className = 'save-book save-book--overlay pack-builder__heart';
+        wrapper.className = 'save-book save-book--overlay custom-starter-pack__heart';
         wrapper.setAttribute('product-id', String(book.productId));
         wrapper.setAttribute('product-title', book.title);
         wrapper.setAttribute('product-type', 'Audiobooks');
@@ -315,11 +315,11 @@ class PackBuilder extends ElementBase {
         this.grid.replaceChildren(...visible.map((book) => {
             const picked = chosenIds.includes(book.variantId);
             const li = document.createElement('li');
-            li.className = `pack-builder__book${picked ? ' is-chosen' : ''}${!book.available ? ' is-sold-out' : ''}${full && !picked ? ' is-dimmed' : ''}`;
+            li.className = `custom-starter-pack__book${picked ? ' is-chosen' : ''}${!book.available ? ' is-sold-out' : ''}${full && !picked ? ' is-dimmed' : ''}`;
 
             const button = document.createElement('button');
             button.type = 'button';
-            button.className = 'pack-builder__book-button';
+            button.className = 'custom-starter-pack__book-button';
             button.dataset.book = book.variantId;
             button.setAttribute('aria-pressed', String(picked));
             button.disabled = !book.available;
@@ -331,19 +331,19 @@ class PackBuilder extends ElementBase {
                 img.loading = 'lazy';
                 img.width = 300;
                 img.height = 300;
-                img.className = 'pack-builder__cover';
+                img.className = 'custom-starter-pack__cover';
                 button.append(img);
             }
             const title = document.createElement('span');
-            title.className = 'pack-builder__book-title';
+            title.className = 'custom-starter-pack__book-title';
             title.textContent = book.title;
             const action = document.createElement('span');
-            action.className = 'pack-builder__book-action';
+            action.className = 'custom-starter-pack__book-action';
             action.textContent = !book.available ? this.messages.soldOut : picked ? this.messages.addedBook : this.messages.addBook;
             button.append(title, action);
 
             const link = document.createElement('a');
-            link.className = 'pack-builder__book-link';
+            link.className = 'custom-starter-pack__book-link';
             link.href = `${root}products/${book.handle}`;
             link.target = '_blank';
             link.rel = 'noopener';
@@ -363,7 +363,7 @@ class PackBuilder extends ElementBase {
         const items = [];
         for (let i = 0; i < this.required; i += 1) {
             const li = document.createElement('li');
-            li.className = 'pack-builder__slot';
+            li.className = 'custom-starter-pack__slot';
             const book = this.chosen[i];
             if (book) {
                 li.classList.add('is-filled');
@@ -371,22 +371,22 @@ class PackBuilder extends ElementBase {
                     const img = document.createElement('img');
                     img.src = imageUrl(book.image, 160);
                     img.alt = '';
-                    img.className = 'pack-builder__slot-cover';
+                    img.className = 'custom-starter-pack__slot-cover';
                     li.append(img);
                 }
                 const name = document.createElement('span');
-                name.className = 'pack-builder__slot-title';
+                name.className = 'custom-starter-pack__slot-title';
                 name.textContent = book.title;
                 const remove = document.createElement('button');
                 remove.type = 'button';
-                remove.className = 'pack-builder__slot-remove';
+                remove.className = 'custom-starter-pack__slot-remove';
                 remove.dataset.remove = book.variantId;
                 remove.setAttribute('aria-label', PackLogic.fill(this.messages.remove, { book: book.title }));
                 remove.innerHTML = '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
                 li.append(name, remove);
             } else {
                 const empty = document.createElement('span');
-                empty.className = 'pack-builder__slot-empty';
+                empty.className = 'custom-starter-pack__slot-empty';
                 empty.textContent = PackLogic.fill(this.messages.slot, { n: i + 1 });
                 li.append(empty);
             }
@@ -442,7 +442,7 @@ class PackBuilder extends ElementBase {
             if (!response.ok) throw Object.assign(new Error(body.description || 'add failed'), { status: response.status });
 
             const { worth } = PackLogic.worth(variant.playerPrice, this.chosen, variant.price);
-            track('pack_builder_add', { colour: variant.title, books: this.chosen.map((b) => b.handle), worth: worth / 100, price: variant.price / 100 });
+            track('custom_starter_pack_add', { colour: variant.title, books: this.chosen.map((b) => b.handle), worth: worth / 100, price: variant.price / 100 });
 
             if (window.themeVariables?.settings?.cartType === 'page') {
                 window.location.href = `${root}cart`;
@@ -455,7 +455,7 @@ class PackBuilder extends ElementBase {
             this.say('');
         } catch (e) {
             this.say(this.messages.cartError);
-            track('pack_builder_error', { reason: 'add', status: e.status || null, message: String(e.message || '').slice(0, 120) });
+            track('custom_starter_pack_error', { reason: 'add', status: e.status || null, message: String(e.message || '').slice(0, 120) });
             document.dispatchEvent(new CustomEvent('cart:refresh'));
         } finally {
             this._adding = false;
@@ -464,6 +464,6 @@ class PackBuilder extends ElementBase {
     }
 }
 
-if (typeof window !== 'undefined' && window.customElements && !window.customElements.get('pack-builder')) {
-    window.customElements.define('pack-builder', PackBuilder);
+if (typeof window !== 'undefined' && window.customElements && !window.customElements.get('custom-starter-pack')) {
+    window.customElements.define('custom-starter-pack', CustomStarterPack);
 }

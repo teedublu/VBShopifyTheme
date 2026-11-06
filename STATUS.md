@@ -49,21 +49,29 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
-## 2026-11-06: Build-your-own starter pack page (branch claude/byo-pack-builder, NOT live)
-- New product template `product.pack-builder` + section `pack-builder` + `assets/pack-builder.js` + voxblock.css
-  "PACK BUILDER". The pack product's own page is the builder: bumper colour (pack variants) + any 3 audiobooks from
+## 2026-11-06: Custom Starter Pack page (branch claude/byo-pack-builder, NOT live)
+- **Name chosen 6 Nov: "Custom Starter Pack"** (button/links "Customise your pack"; page title/SEO "Custom Audiobook
+  Starter Pack"). Not "build/make/create your own" (clashes with Make Your Own books), not "personalised" (implies the
+  child's name printed on it). Everything was renamed from "pack builder": template, section, script, CSS, custom
+  element `<custom-starter-pack>`, PostHog events `custom_starter_pack_*`, product type **Custom Starter Pack**.
+- New product template `product.custom-starter-pack` + section `custom-starter-pack` + `assets/custom-starter-pack.js`
+  + voxblock.css "CUSTOM STARTER PACK". The pack product's own page is the builder: bumper colour (pack variants) + any 3 audiobooks from
   a collection, live pack price (£79.99 = the variant's price) and "Worth £X, you save £Y" (player variant price +
   the books' own prices, display only; the basket charges the variant price). Adds ONE line: the pack variant with
   `_pack_books` (book variant IDs) and "Books" (titles, shown in the cart drawer).
 - Needs the Mix and Match Packs app (teedublu/VBPackApp, Codek Ltd partner org, public + limited visibility) to split
   the line at checkout; on Grow only App Store apps' functions run. Not installable on the live store until Shopify
   reviews the app. Tested on dev store voxtest4 (theme #191513526568, preview
-  `/products/build-your-own-pack?view=pack-builder&preview_theme_id=191513526568`): colour, search, age chips, full
-  pack message, worth £97.96 / save £17.97, add opens the drawer, line split (`has_components`); app test order #1001
-  had player £54.00 + books £5.99/£10/£10.
+  `/products/build-your-own-pack?view=pack-builder&preview_theme_id=191513526568`, tested before the rename):
+  colour, search, age chips, full pack message, worth £97.96 / save £17.97, add opens the drawer, line split
+  (`has_components`); app test order #1001 had player £54.00 + books £5.99/£10/£10.
+- After the rename, the voxtest4 pack product still needs: title "Custom Starter Pack", handle `custom-starter-pack`,
+  product type "Custom Starter Pack", template `product.custom-starter-pack`; then push this branch to the dev theme
+  and re-test.
 - To go live: app approved and installed; collection "Pack eligible audiobooks" (product type = Audiobooks) on the
-  Online Store; pack product "Build Your Own Starter Pack" (4 colours, £79.99, variants require components) using
-  this template; book list synced; hide the pack from search/collections.
+  Online Store; pack product "Custom Starter Pack" (handle `custom-starter-pack`, product type "Custom Starter Pack",
+  4 colours, £79.99, variants require components) using this template; book list synced; hide the pack from
+  search/collections.
 
 ## 2026-11-04: Age collections round 2 (cold searchers who don't know the player)
 **Merged to live 4 Nov (PR #117).** Owner checked the preview. Still to do: the admin steps below, and delete the draft theme "Age collections round 2" (id 201222128000) in Shopify admin.

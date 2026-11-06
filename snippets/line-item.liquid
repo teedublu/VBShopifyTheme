@@ -56,7 +56,7 @@ Supported variables
             {%- continue -%}
           {%- endif -%}
 
-          {%- comment -%}Build-your-own pack: the books show as covers below instead{%- endcomment -%}
+          {%- comment -%}Custom starter pack: the books show as covers below instead{%- endcomment -%}
           {%- if property.first == 'Books' and line_item.item_components != blank -%}
             {%- continue -%}
           {%- endif -%}
@@ -73,7 +73,7 @@ Supported variables
     {%- endunless -%}
 
     {%- comment -%}
-      Bundles split at checkout (e.g. the build-your-own pack, sections/pack-builder): show the parts, except the
+      Bundles split at checkout (e.g. the custom starter pack, sections/custom-starter-pack): show the parts, except the
       player (its colour is already the variant title above). Cart only; orders list the parts as their own lines.
     {%- endcomment -%}
     {%- if line_item.item_components != blank -%}
