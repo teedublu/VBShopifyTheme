@@ -151,6 +151,7 @@ class CustomStarterPack extends ElementBase {
         this.slots.addEventListener('click', (event) => {
             const button = event.target.closest('[data-remove]');
             if (button) this.toggle(Number(button.dataset.remove));
+            else if (event.target.closest('[data-pick]')) this.goToBooks();
         });
         this.chips.addEventListener('click', (event) => {
             const chip = event.target.closest('[data-chip]');
@@ -359,40 +360,72 @@ class CustomStarterPack extends ElementBase {
         this.empty.hidden = visible.length > 0;
     }
 
+    // The pack as pictures: the player in the chosen colour, then one cover per book. Titles show on hover (title)
+    // and are the covers' alt text; an empty slot is a "+ Book 2" tile that takes you to the book list.
     renderSlots() {
+        const cover = (src, alt, width) => {
+            const img = document.createElement('img');
+            img.src = imageUrl(src, width);
+            img.alt = alt;
+            img.className = 'custom-starter-pack__slot-cover';
+            img.loading = 'lazy';
+            return img;
+        };
         const items = [];
+
+        const variant = this.variant;
+        const player = document.createElement('li');
+        player.className = 'custom-starter-pack__slot custom-starter-pack__slot--player';
+        if (variant) {
+            const label = PackLogic.fill(this.messages.player, { colour: variant.title });
+            player.title = label;
+            if (variant.playerImage) player.append(cover(variant.playerImage, label, 240));
+        }
+        items.push(player);
+
         for (let i = 0; i < this.required; i += 1) {
             const li = document.createElement('li');
             li.className = 'custom-starter-pack__slot';
             const book = this.chosen[i];
             if (book) {
                 li.classList.add('is-filled');
+                li.title = book.title;
                 if (book.image) {
-                    const img = document.createElement('img');
-                    img.src = imageUrl(book.image, 160);
-                    img.alt = '';
-                    img.className = 'custom-starter-pack__slot-cover';
-                    li.append(img);
+                    li.append(cover(book.image, book.title, 240));
+                } else {
+                    const name = document.createElement('span');
+                    name.className = 'custom-starter-pack__slot-name';
+                    name.textContent = book.title;
+                    li.append(name);
                 }
-                const name = document.createElement('span');
-                name.className = 'custom-starter-pack__slot-title';
-                name.textContent = book.title;
                 const remove = document.createElement('button');
                 remove.type = 'button';
                 remove.className = 'custom-starter-pack__slot-remove';
                 remove.dataset.remove = book.variantId;
                 remove.setAttribute('aria-label', PackLogic.fill(this.messages.remove, { book: book.title }));
-                remove.innerHTML = '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-                li.append(name, remove);
+                remove.innerHTML = '<svg aria-hidden="true" width="10" height="10" viewBox="0 0 12 12"><path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+                li.append(remove);
             } else {
-                const empty = document.createElement('span');
-                empty.className = 'custom-starter-pack__slot-empty';
-                empty.textContent = PackLogic.fill(this.messages.slot, { n: i + 1 });
-                li.append(empty);
+                li.classList.add('is-empty');
+                const pick = document.createElement('button');
+                pick.type = 'button';
+                pick.className = 'custom-starter-pack__slot-pick';
+                pick.dataset.pick = '';
+                pick.setAttribute('aria-label', PackLogic.fill(this.messages.pickSlot, { n: i + 1 }));
+                pick.innerHTML = '<span class="custom-starter-pack__slot-plus" aria-hidden="true">+</span>';
+                pick.append(PackLogic.fill(this.messages.slot, { n: i + 1 }));
+                li.append(pick);
             }
             items.push(li);
         }
         this.slots.replaceChildren(...items);
+    }
+
+    // An empty slot takes you to the books (and the search box, so typing starts a search)
+    goToBooks() {
+        const books = this.querySelector('.custom-starter-pack__books');
+        books?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+        this.querySelector('[data-pack-search]')?.focus({ preventScroll: true });
     }
 
     renderSummary() {
