@@ -537,7 +537,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* Sold-out cards: greyed-out add to cart (same size as the live button) plus a "More coming soon" pill just above the price row */
 .icon-circle--disabled, .pack-card__add-button--disabled { background: rgb(var(--text-color) / .12); color: rgb(var(--text-color) / .38); cursor: not-allowed; }
 .icon-circle--disabled { display: block; border: 0; font: inherit; }
-.product-card__row.buy-price > .icon-circle--disabled { flex: none; }
+.product-card__row.buy-price > .icon-circle--disabled, .product-card__row.buy-price > .pack-card__add-button { flex: none; } /* the Custom Starter Pack card links to its page with the same round button */
 .coming-soon-row { order: 8; margin-top: auto; }
 .coming-soon-row + .product-card__row.buy-price { margin-top: 0; }
 .pack-card__buy > .coming-soon-row { order: 0; margin-top: 0; } /* pack card orders by DOM position: pill sits right above the price row, price row stays pinned to the bottom */
