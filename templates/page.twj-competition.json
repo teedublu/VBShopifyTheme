@@ -111,6 +111,49 @@
         "icon_accent": "#ff9e57"
       }
     },
+    "rich_text_WJtmPR": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_WNTB4m": {
+          "type": "subheading",
+          "settings": {
+            "text": "Subheading"
+          }
+        },
+        "heading_GBeqPp": {
+          "type": "heading",
+          "settings": {
+            "text": "Parents’ hint",
+            "heading_tag": "h1",
+            "heading_tag_html": "p",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_wjRNRB": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Each symbol stands for a letter of the alphabet, from A to Z. Match the symbols in the puzzle and write the letters down in order to read the secret code.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_WNTB4m",
+        "heading_GBeqPp",
+        "richtext_wjRNRB"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "use_mo": true,
+        "content_width": "small",
+        "text_position": "center",
+        "anchor_id": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "rich_text_B7JC3N": {
       "type": "rich-text",
       "blocks": {
@@ -534,6 +577,7 @@
     "media_with_text_dTYR7D",
     "main",
     "benefit_cards_byHCTV",
+    "rich_text_WJtmPR",
     "rich_text_B7JC3N",
     "image_with_text_overlay_6JXtLd",
     "rich_text_YjGbKd",
