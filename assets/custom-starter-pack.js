@@ -368,7 +368,6 @@ class CustomStarterPack extends ElementBase {
             img.src = imageUrl(src, width);
             img.alt = alt;
             img.className = 'custom-starter-pack__slot-cover';
-            img.loading = 'lazy';
             return img;
         };
         const items = [];
