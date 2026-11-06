@@ -132,6 +132,7 @@ class CustomStarterPack extends ElementBase {
         this.worthEl = this.querySelector('[data-pack-worth]');
         this.addButton = this.querySelector('[data-pack-add]');
         this.status = this.querySelector('[data-pack-status]');
+        this.announcer = this.querySelector('[data-pack-announce]');
 
         this.querySelectorAll('[data-pack-colour]').forEach((input) => input.addEventListener('change', () => this.render()));
 
@@ -240,7 +241,15 @@ class CustomStarterPack extends ElementBase {
         this.render();
     }
 
+    // Book added/removed and "pack full": for screen readers only, so the summary never changes height.
+    // Choosing again also clears a basket error.
     say(text) {
+        if (this.announcer) this.announcer.textContent = text || '';
+        this.showError('');
+    }
+
+    // Shown on screen: only when the pack couldn't go in the basket.
+    showError(text) {
         this.status.textContent = text || '';
     }
 
@@ -484,9 +493,9 @@ class CustomStarterPack extends ElementBase {
             cart.sections = body.sections;
             this.dispatchEvent(new CustomEvent('variant:add', { bubbles: true, detail: { items: body.items || [body], cart } }));
             document.documentElement.dispatchEvent(new CustomEvent('cart:change', { bubbles: true, detail: { baseEvent: 'variant:add', cart } }));
-            this.say('');
+            this.showError('');
         } catch (e) {
-            this.say(this.messages.cartError);
+            this.showError(this.messages.cartError);
             track('custom_starter_pack_error', { reason: 'add', status: e.status || null, message: String(e.message || '').slice(0, 120) });
             document.dispatchEvent(new CustomEvent('cart:refresh'));
         } finally {
