@@ -73,6 +73,8 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
   video won't sync). `product.player` still fails to sync there (variant_image_options metafield setting).
 - Homepage (`templates/index.json`): Custom Starter Pack is the 5th card in "Begin with our starter packs" (after the 4
   curated packs). This goes to the live homepage when this branch merges, so only merge once the pack exists on live.
+- `layout/password.liquid` (one line) was added by shopify[bot] because voxtest4 is password-protected; main has no
+  password layout. Delete it from the branch just before merging (after disconnecting voxtest4's theme from GitHub).
 - Pack cards: the Custom Starter Pack uses the starter pack card, but its round button links to the pack page instead
   of adding to the basket (it can't be added without books).
 - To go live: app approved and installed; collection "Pack eligible audiobooks" (product type = Audiobooks) on the
