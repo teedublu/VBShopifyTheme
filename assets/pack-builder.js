@@ -169,6 +169,15 @@ class PackBuilder extends ElementBase {
         });
         this.addButton.addEventListener('click', () => this.addToCart());
 
+        // A heart tapped here or in another tab: update the Liked count, and the list when it's showing liked books
+        const onLikesChanged = () => {
+            if (!this.books.length) return;
+            this.renderChips();
+            if (this.filter.saved) this.renderGrid();
+        };
+        document.addEventListener('saved-books:change', onLikesChanged);
+        window.addEventListener('storage', (event) => { if (event.key === SAVED_KEY) onLikesChanged(); });
+
         this.load();
     }
 
@@ -244,8 +253,9 @@ class PackBuilder extends ElementBase {
         const saved = readSavedIds();
         const savedEligible = this.books.filter((b) => saved.includes(b.productId)).length;
         const chips = [{ value: 'all', label: 'All', pressed: !this.filter.age && !this.filter.saved }];
-        // Liked = books hearted with the save button; only offered when some of them can go in the pack
-        if (savedEligible) chips.push({ value: 'saved', label: `♥ ${this.messages.liked || 'Liked'} (${savedEligible})`, pressed: this.filter.saved, liked: true });
+        // Liked = books hearted with the site's save button. Always offered, so people learn they can like books and
+        // find them here; the count is how many liked books can go in the pack.
+        chips.push({ value: 'saved', label: `${this.messages.liked || 'Liked'}${savedEligible ? ` (${savedEligible})` : ''}`, pressed: this.filter.saved, liked: true });
         for (const age of this.ageFilters) chips.push({ value: age.label, label: age.label, pressed: this.filter.age === age.label });
 
         this.chips.replaceChildren(...chips.map((chip) => {
@@ -254,9 +264,40 @@ class PackBuilder extends ElementBase {
             button.className = `pack-builder__chip${chip.liked ? ' pack-builder__chip--liked' : ''}`;
             button.dataset.chip = chip.value;
             button.setAttribute('aria-pressed', String(chip.pressed));
-            button.textContent = chip.label;
+            if (chip.liked) button.append(this.heartIcon());
+            button.append(document.createTextNode(chip.label));
             return button;
         }));
+    }
+
+    heartIcon() {
+        const template = this.querySelector('[data-pack-heart]');
+        const svg = template?.content.firstElementChild?.cloneNode(true);
+        if (svg) {
+            svg.setAttribute('aria-hidden', 'true');
+            return svg;
+        }
+        const span = document.createElement('span');
+        span.textContent = '♥';
+        span.setAttribute('aria-hidden', 'true');
+        return span;
+    }
+
+    // The site's own heart (assets/saved-books.js defines <save-book-button>), so liking here is the same as anywhere
+    heartButton(book) {
+        const wrapper = document.createElement('save-book-button');
+        wrapper.className = 'save-book save-book--overlay pack-builder__heart';
+        wrapper.setAttribute('product-id', String(book.productId));
+        wrapper.setAttribute('product-title', book.title);
+        wrapper.setAttribute('product-type', 'Audiobooks');
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'save-book__button tap-area';
+        button.setAttribute('aria-pressed', 'false');
+        button.setAttribute('aria-label', PackLogic.fill(this.messages.save, { book: book.title }));
+        button.append(this.heartIcon());
+        wrapper.append(button);
+        return wrapper;
     }
 
     renderGrid() {
@@ -309,11 +350,12 @@ class PackBuilder extends ElementBase {
             link.textContent = this.messages.details;
             link.setAttribute('aria-label', `${this.messages.details}: ${book.title} (opens in a new tab)`);
 
-            li.append(button, link);
+            li.append(button, this.heartButton(book), link);
             return li;
         }));
 
-        this.empty.textContent = this.messages.noResults;
+        const nothingLiked = this.filter.saved && !this.books.some((b) => readSavedIds().includes(b.productId));
+        this.empty.textContent = nothingLiked ? this.messages.likedEmpty : this.messages.noResults;
         this.empty.hidden = visible.length > 0;
     }
 

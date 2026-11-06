@@ -2061,7 +2061,11 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .pack-builder__chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .pack-builder__chip { padding: 6px 14px; border: 1px solid var(--card-border); border-radius: 999px; background: rgb(var(--background-primary)); font-size: .875rem; line-height: 1.4; cursor: pointer; }
 .pack-builder__chip[aria-pressed="true"] { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; }
+.pack-builder__chip--liked { display: inline-flex; align-items: center; gap: 6px; }
+.pack-builder__chip--liked svg { width: 16px; height: 16px; flex: none; }
 .pack-builder__chip--liked:not([aria-pressed="true"]) { border-color: var(--brand-heading); color: var(--brand-heading); font-weight: 500; }
+.pack-builder__book { position: relative; }
+.pack-builder__book .save-book--overlay { inset-block-start: 14px; inset-block-end: auto; inset-inline-end: 14px; }
 
 .pack-builder__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
 .pack-builder__loading { grid-column: 1 / -1; padding: var(--spacing-8) 0; text-align: center; opacity: .7; }
