@@ -8,16 +8,17 @@ Product recommendations (default: Basket Suggestions), in the collection's own o
 
 Rules:
 * A product already in the cart is not shown.
-* Players and packs are not shown when the cart already holds a player, a starter/intro pack, a schools pack or a
-  player bundle (no second player), or when the "Stories play on a Voxblock player" prompt is showing (it already
-  offers the player; the carousel then offers accessories and stories). Same rules as cart-player-prompt.
+* Players and packs are not shown when the cart already holds a player, a starter/intro pack, a build-your-own pack
+  (product type Pack Builder), a schools pack or a player bundle (no second player), or when the "Stories play on a
+  Voxblock player" prompt is showing (it already offers the player; the carousel then offers accessories and
+  stories). Same rules as cart-player-prompt.
 
 Supported variables:
 * drawer_section: the cart-drawer section (for its settings)
 {%- endcomment -%}
 
 {%- liquid
-  assign player_types = 'player|starter pack|schools pack' | split: '|'
+  assign player_types = 'player|starter pack|pack builder|schools pack' | split: '|'
 
   assign story_types = 'audiobooks|audiobooks bundle|older audiobooks' | split: '|'
 
