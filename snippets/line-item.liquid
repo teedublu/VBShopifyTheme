@@ -71,7 +71,7 @@ Supported variables
             {%- continue -%}
           {%- endif -%}
 
-          {%- comment -%}Custom starter pack: the books show as covers below instead{%- endcomment -%}
+          {%- comment -%}Custom starter pack: the books show as covers below. (Packs added before 6 Nov also carry a visible "Books" property.){%- endcomment -%}
           {%- if property.first == 'Books' and line_item.item_components != blank -%}
             {%- continue -%}
           {%- endif -%}

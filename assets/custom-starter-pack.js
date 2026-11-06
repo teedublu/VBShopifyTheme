@@ -1,7 +1,7 @@
 // custom-starter-pack.js (sections/custom-starter-pack.liquid)
 // Custom Starter Pack: choose a bumper colour (pack variant) and N audiobooks, then add ONE basket line:
-// the pack variant with `_pack_books` (book variant IDs) and "Books" (titles). The Mix and Match Packs app splits it at
-// checkout into the player and the books. The pure helpers in PackLogic are tested with node (no DOM needed).
+// the pack variant with the hidden property `_pack_books` (book variant IDs). The Mix and Match Packs app splits it into
+// the player and the books, which the basket and checkout then list (so no visible "Books" property: it repeated them). The pure helpers in PackLogic are tested with node (no DOM needed).
 
 const SAVED_KEY = 'voxblock:saved-books'; // product IDs saved with the heart button (assets/saved-books.js)
 
@@ -63,7 +63,6 @@ export const PackLogic = {
             quantity: 1,
             properties: {
                 _pack_books: chosen.map((book) => book.variantId).join(','),
-                Books: chosen.map((book) => book.title).join(' · '),
             },
         };
     },
