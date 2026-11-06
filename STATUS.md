@@ -65,9 +65,16 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
   `/products/build-your-own-pack?view=pack-builder&preview_theme_id=191513526568`, tested before the rename):
   colour, search, age chips, full pack message, worth £97.96 / save £17.97, add opens the drawer, line split
   (`has_components`); app test order #1001 had player £54.00 + books £5.99/£10/£10.
-- After the rename, the voxtest4 pack product still needs: title "Custom Starter Pack", handle `custom-starter-pack`,
-  product type "Custom Starter Pack", template `product.custom-starter-pack`; then push this branch to the dev theme
-  and re-test.
+- voxtest4 (6 Nov): live theme is GitHub-connected to this branch ("VBShopifyTheme/claude/byo-pack-builder", #191516049704).
+  Pack renamed there (title, handle `custom-starter-pack`, type, template). Store set up to look like live: main menu
+  (player, starter packs, audiobooks, accessories), collections `voxblock-starter-pack-collection` (live's 27 packs,
+  Custom Starter Pack first), `audiobooks`, `accessories-for-voxblock`; packs and player use live's templates; the 8
+  videos and 87 images the templates reference were copied to Files under live's filenames (templates with a missing
+  video won't sync). `product.player` still fails to sync there (variant_image_options metafield setting).
+- Homepage (`templates/index.json`): Custom Starter Pack is the 5th card in "Begin with our starter packs" (after the 4
+  curated packs). This goes to the live homepage when this branch merges, so only merge once the pack exists on live.
+- Pack cards: the Custom Starter Pack uses the starter pack card, but its round button links to the pack page instead
+  of adding to the basket (it can't be added without books).
 - To go live: app approved and installed; collection "Pack eligible audiobooks" (product type = Audiobooks) on the
   Online Store; pack product "Custom Starter Pack" (handle `custom-starter-pack`, product type "Custom Starter Pack",
   4 colours, £79.99, variants require components) using this template; book list synced; hide the pack from
