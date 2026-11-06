@@ -56,6 +56,11 @@ Supported variables
             {%- continue -%}
           {%- endif -%}
 
+          {%- comment -%}Build-your-own pack: the books show as covers below instead{%- endcomment -%}
+          {%- if property.first == 'Books' and line_item.item_components != blank -%}
+            {%- continue -%}
+          {%- endif -%}
+
           <li class="text-sm text-subdued">
             {%- if property.last contains '/uploads/' -%}
               <a href="{{ property.last }}" class="link">{{ property.last | split: '/' | last }}</a>
@@ -66,6 +71,25 @@ Supported variables
         {%- endfor -%}
       </ul>
     {%- endunless -%}
+
+    {%- comment -%}
+      Bundles split at checkout (e.g. the build-your-own pack, sections/pack-builder): show the parts, except the
+      player (its colour is already the variant title above). Cart only; orders list the parts as their own lines.
+    {%- endcomment -%}
+    {%- if line_item.item_components != blank -%}
+      <ul class="line-item__components" role="list">
+        {%- for component in line_item.item_components -%}
+          {%- assign component_type = component.product.type | downcase -%}
+          {%- if component_type == 'player' -%}{%- continue -%}{%- endif -%}
+          <li class="line-item__component">
+            {%- if component.image != blank -%}
+              {{- component.image | image_url: width: 96 | image_tag: loading: 'lazy', sizes: '40px', widths: '48,96', class: 'line-item__component-cover', alt: '' -}}
+            {%- endif -%}
+            <span class="line-item__component-title text-sm">{{ component.product.title | default: component.title }}</span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
 
     <div class="text-sm text-subdued sm:hidden">
       {%- if line_item.url_to_remove -%}

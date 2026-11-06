@@ -2132,3 +2132,10 @@ html.vb-has-player .cart-player-prompt { display: none; }
   .pack-builder__layout { grid-template-columns: minmax(0, 1fr) 340px; gap: var(--spacing-10); }
   .pack-builder__summary { position: sticky; top: calc(var(--header-height, 0px) + 20px); }
 }
+
+/* BASKET BUNDLE PARTS (snippets/line-item): a bundle split at checkout, e.g. the build-your-own pack, lists its books
+   as small covers with titles under the pack line (cart drawer and cart page). */
+.line-item__components { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.line-item__component { display: flex; align-items: center; gap: 10px; }
+.line-item__component-cover { width: 40px; height: 40px; object-fit: contain; flex: none; border-radius: 4px; }
+.line-item__component-title { line-height: 1.3; }
