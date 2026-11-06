@@ -117,7 +117,7 @@ custom_starter_pack_error { reason }.
           {%- comment -%} Step 1: bumper colour = pack variant {%- endcomment -%}
           <fieldset class="custom-starter-pack__step custom-starter-pack__colours">
             <legend class="h5 custom-starter-pack__step-title"><span class="custom-starter-pack__step-number">1</span> {{ s.colour_heading | escape }}</legend>
-            <div class="custom-starter-pack__colour-list">
+            <div class="custom-starter-pack__colour-list" style="--pack-colours: {{ pack.variants.size }}">
               {%- for v in pack.variants -%}
                 {%- liquid
                   assign colour_image = blank
