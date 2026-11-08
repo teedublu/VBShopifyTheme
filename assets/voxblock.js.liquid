@@ -590,3 +590,20 @@ document.addEventListener('click', (event) => {
         window.addEventListener('hashchange', () => { fromHash('link'); });
     });
 })();
+
+// ----------------------------------------------------------------------------------------------------------------
+// FREE SHIPPING BAR (snippets/free-shipping-bar.liquid): the "reached" look (filled bar, tick badge) on top of the
+// stock free-shipping-bar custom element. Reads the same threshold/total-price attributes that element keeps
+// current on every cart:change, so this never touches assets/theme.js.liquid.
+// ----------------------------------------------------------------------------------------------------------------
+(() => {
+    const sync = (bar) => {
+        const threshold = parseFloat(bar.getAttribute('threshold'));
+        const total = parseFloat(bar.getAttribute('total-price'));
+        const reached = Number.isFinite(threshold) && Number.isFinite(total) && threshold > 0 && total >= threshold;
+        bar.classList.toggle('free-shipping-bar--reached', reached);
+    };
+    const syncAll = () => document.querySelectorAll('.free-shipping-bar').forEach(sync);
+    syncAll();
+    document.addEventListener('cart:change', syncAll);
+})();
