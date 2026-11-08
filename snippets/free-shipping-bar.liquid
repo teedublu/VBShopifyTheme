@@ -31,12 +31,26 @@ Supported variables
   endfor
 
   assign calculated_total_price = calculated_total_price | minus: total_cart_discount
+  assign free_shipping_threshold = settings.cart_free_shipping_threshold | times: 100.0
+  assign free_shipping_reached = false
+  if free_shipping_threshold > 0 and calculated_total_price >= free_shipping_threshold
+    assign free_shipping_reached = true
+  endif
 -%}
 
 {%- if cart.requires_shipping and cart.currency.iso_code == 'GBP' -%}
-  <free-shipping-bar class="free-shipping-bar" threshold="{{ settings.cart_free_shipping_threshold | times: 100.0 }}" total-price="{{ calculated_total_price }}" reached-message="{{ 'cart.free_shipping_bar.limit_reached_html' | t | escape }}" unreached-message="{{ 'cart.free_shipping_bar.limit_unreached_html' | t | escape }}">
-    {%- comment -%}The span below is the placeholder where the content will be inserted in JS{%- endcomment -%}
-    <span>&nbsp;</span>
+  {%- comment -%}
+    --progress and the reached/unreached text are kept live by the stock <free-shipping-bar> element (its own JS,
+    assets/theme.js.liquid) on every cart change. The icon badge and "reached" look (voxblock.css,
+    assets/voxblock.js.liquid "FREE SHIPPING BAR") are ours, added on top without touching that stock element.
+    The icon below is an <i>, not a <span>: the stock JS does querySelector('span') for the message placeholder,
+    first match wins, so there must be exactly one <span> in here — the placeholder itself.
+  {%- endcomment -%}
+  <free-shipping-bar class="free-shipping-bar{% if free_shipping_reached %} free-shipping-bar--reached{% endif %}" threshold="{{ free_shipping_threshold }}" total-price="{{ calculated_total_price }}" reached-message="{{ 'cart.free_shipping_bar.limit_reached_html' | t | escape }}" unreached-message="{{ 'cart.free_shipping_bar.limit_unreached_html' | t | escape }}">
+    <div class="free-shipping-bar__row">
+      <i class="free-shipping-bar__icon" aria-hidden="true">{%- render 'icon' with 'picto-truck', width: 18, height: 18 -%}</i>
+      <span>&nbsp;</span>
+    </div>
 
     <progress-bar class="progress-bar" role="progressbar" aria-valuemin="0" style="--progress: 0"></progress-bar>
   </free-shipping-bar>
