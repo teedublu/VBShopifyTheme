@@ -4,6 +4,7 @@
 // the player and the books, which the basket and checkout then list (so no visible "Books" property: it repeated them). The pure helpers in PackLogic are tested with node (no DOM needed).
 
 const SAVED_KEY = 'voxblock:saved-books'; // product IDs saved with the heart button (assets/saved-books.js)
+const MIN_SAVE_TO_SHOW = 800; // pence: a saving under this isn't worth a line of its own
 
 export const PackLogic = {
     // "Under 5 = under 5, 3-5\n5 to 8 = 5-8" -> [{ label, tags: ['under 5', '3-5'] }, ...]
@@ -487,7 +488,7 @@ class CustomStarterPack extends ElementBase {
 
         const { worth, save } = PackLogic.worth(variant.playerPrice, this.chosen, variant.price);
         const complete = this.chosen.length === this.required;
-        this.worthEl.hidden = !(complete && save > 0);
+        this.worthEl.hidden = !(complete && save >= MIN_SAVE_TO_SHOW);
         this.worthEl.textContent = PackLogic.fill(this.messages.worth, {
             worth: this.money.format(worth / 100),
             save: this.money.format(save / 100),
