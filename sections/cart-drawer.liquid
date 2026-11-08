@@ -94,7 +94,18 @@
               assign free_shipping_reached = true
             endif
           -%}
-          {%- if free_shipping_reached -%}
+          {%- if cart.currency.iso_code == 'GBP' -%}
+            {%- comment -%}
+              UK/EU: prices already include VAT, so there's never tax left "to calculate" — only shipping might
+              still be unknown. The generic strings below read as the US "sales tax calculated at checkout"
+              framing, wrong here regardless of the shop's taxes_included setting.
+            {%- endcomment -%}
+            {%- if free_shipping_reached -%}
+              <p class="text-subdued text-sm">{{ 'cart.general.vat_included_free_shipping' | t }}</p>
+            {%- else -%}
+              <p class="text-subdued text-sm">{{ 'cart.general.vat_included_shipping_at_checkout' | t }}</p>
+            {%- endif -%}
+          {%- elsif free_shipping_reached -%}
             {%- if cart.taxes_included -%}
               <p class="text-subdued text-sm">{{ 'cart.general.taxes_included_free_shipping' | t }}</p>
             {%- else -%}
