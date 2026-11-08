@@ -82,6 +82,22 @@ One change in theme colour settings (accent, secondary button, band backgrounds)
   4 colours, £79.99, variants require components) using this template; book list synced; hide the pack from
   search/collections.
 
+## 2026-11-08: Custom Starter Pack now reads the app's pack_config, not theme settings
+The 6 Nov version above read a specific "Player product" and "Books collection" from THEME SECTION SETTINGS, matched
+to the pack's own variants by colour NAME STRING — it predated the app's `pack_config` metafield entirely.
+`sections/custom-starter-pack.liquid` and `assets/custom-starter-pack.js` now fetch
+`GET <App URL>/public/pack?shop=...&id=...` (new public, unauthenticated endpoint on the Mix and Match Packs app
+backend) and use whatever that bundle's own `pack_config` says: which collection, how many books, and each colour's
+real player variant's price/photo (resolved server-side by GID, never guessed by title). "Manage" on a bundle in the
+app's admin is what actually controls this page now. The two settings that remain in the section schema (`App URL`,
+`Books per pack`) are infrastructure/fallback only — see the comment at the top of the section file. `voxblock.css.liquid`
+and `snippets/line-item.liquid` are unchanged (already correct). Applied directly to this branch since it's what
+voxtest4's theme is GitHub-connected to.
+Still needed on voxtest4 before this works end to end: redeploy `pack_app` (the new `/public/pack` route) and
+re-save the bundle's collection once in Manage (old `pack_config` only has `collectionId`, not the `collectionHandle`
+this reads) — the product's template assignment and the player product's "Player" type (for `line-item.liquid`) were
+already done per the 6 Nov entry above, so no admin changes needed there.
+
 ## 2026-11-04: Age collections round 2 (cold searchers who don't know the player)
 **Merged to live 4 Nov (PR #117).** Owner checked the preview. Still to do: the admin steps below, and delete the draft theme "Age collections round 2" (id 201222128000) in Shopify admin.
 Branch `claude/age-collection-round-2`, draft PR #117, draft theme "Age collections round 2 (claude/age-collection-round-2)" (id 201222128000, duplicate of live + the 6 changed files from commit 94bf6f6, checksums verified). Plan: LPS `claude/age-collection-round-2-plan.md`; mockups: design canvas "Age collection page redesign". Template `collection.audiobooks-landing-cat` (5-8, 8-10, 10+, under 5 and the theme collections). 

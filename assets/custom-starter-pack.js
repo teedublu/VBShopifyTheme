@@ -113,8 +113,14 @@ class CustomStarterPack extends ElementBase {
         if (this._started) return;
         this._started = true;
 
-        this.required = Number(this.dataset.required) || 3;
-        this.variants = JSON.parse(this.dataset.variants || '[]');
+        this.appUrl = this.dataset.appUrl;
+        this.shop = this.dataset.shop;
+        this.productId = this.dataset.productId;
+        this.fallbackCollection = this.dataset.fallbackCollection;
+        this.fallbackRequired = Number(this.dataset.fallbackRequired) || 3;
+        this.required = this.fallbackRequired; // replaced once the app's own config loads
+        this.collectionHandle = this.fallbackCollection;
+        this.variants = [];
         this.messages = JSON.parse(this.dataset.messages || '{}');
         this.ageFilters = PackLogic.parseAgeFilters(this.dataset.ageFilters);
         this.money = new Intl.NumberFormat('en-GB', { style: 'currency', currency: this.dataset.currency || 'GBP' });
@@ -187,11 +193,50 @@ class CustomStarterPack extends ElementBase {
         return this.variants.find((v) => String(v.id) === checked?.value) || this.variants[0];
     }
 
+    // The app's own answer for this bundle: books-per-pack, collection, and each colour's real player price/photo
+    // (resolved server-side from pack_config by variant GID, never guessed by matching product titles here).
+    // Fallback dataset values stand in only until this resolves, or if it fails outright.
+    async loadConfig() {
+        if (!this.appUrl || !this.shop || !this.productId) return false;
+        try {
+            const base = this.appUrl.replace(/\/+$/, '');
+            const url = `${base}/public/pack?shop=${encodeURIComponent(this.shop)}&id=${encodeURIComponent(this.productId)}`;
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const data = await response.json();
+            if (!Array.isArray(data.variants) || !data.variants.length) throw new Error('no variants');
+            this.required = Number(data.required) || this.fallbackRequired;
+            this.collectionHandle = data.collectionHandle || this.fallbackCollection;
+            this.bookPricing = data.bookPricing || null;
+            this.variants = data.variants.map((v) => ({
+                id: Number(v.id),
+                title: v.title,
+                price: Math.round(Number(v.price) * 100),
+                available: Boolean(v.available),
+                playerPrice: Math.round(Number(v.playerPrice || 0) * 100),
+                playerImage: v.playerImage || '',
+            }));
+            return true;
+        } catch (e) {
+            track('custom_starter_pack_error', { reason: 'config' });
+            return false;
+        }
+    }
+
     async load() {
+        const configOk = await this.loadConfig();
+        if (!configOk) {
+            this.grid.innerHTML = '';
+            this.grid.removeAttribute('aria-busy');
+            this.empty.textContent = this.messages.loadError;
+            this.empty.hidden = false;
+            return;
+        }
+
         const root = window.Shopify?.routes?.root || '/';
         try {
             for (let page = 1; page <= 10; page += 1) {
-                const response = await fetch(`${root}collections/${encodeURIComponent(this.dataset.collection)}/products.json?limit=250&page=${page}`);
+                const response = await fetch(`${root}collections/${encodeURIComponent(this.collectionHandle)}/products.json?limit=250&page=${page}`);
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 const { products } = await response.json();
                 this.books.push(...products.map((p) => PackLogic.toBook(p)).filter(Boolean));
