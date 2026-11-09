@@ -607,3 +607,115 @@ document.addEventListener('click', (event) => {
     syncAll();
     document.addEventListener('cart:change', syncAll);
 })();
+
+// ----------------------------------------------------------------------------------------------------------------
+// PRODUCT GROUP PICKER (snippets/product-group-picker.liquid, GRO HANDOFF item 19): separate products shown as one
+// product with a choice. Each pill is a plain link (the no-JS fallback); here a click fetches that product's page and
+// swaps the page in place, the way the theme editor reloads a section, so the theme's custom elements (form, gallery,
+// price, buy buttons) set themselves up again. Every template section in <main> whose HTML changed is replaced, plus
+// the title, description, canonical and social tags in <head>. A sibling on a different template, or any error,
+// falls back to the plain link. Shopify's own product_viewed only fires on a full page load, so the swap publishes
+// vb_product_viewed instead (the VoxHog pixel sends it to PostHog as product_viewed).
+// ----------------------------------------------------------------------------------------------------------------
+class ProductGroupPicker extends HTMLElement {
+    connectedCallback() {
+        this.addEventListener('click', this._onClick);
+    }
+
+    disconnectedCallback() {
+        this.removeEventListener('click', this._onClick);
+    }
+
+    _onClick = (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link || !this.contains(link)) return;
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (link.classList.contains('is-selected') || this.hasAttribute('aria-busy')) return;
+        ProductGroupPicker.show(new URL(link.href, window.location.origin));
+    };
+
+    static async show(url) {
+        const picker = document.querySelector('product-group-picker');
+        picker?.setAttribute('aria-busy', 'true');
+        try {
+            const response = await fetch(url.pathname, { credentials: 'same-origin' });
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const newMain = doc.getElementById('main');
+            const main = document.getElementById('main');
+            const newSections = newMain ? [...newMain.querySelectorAll('.shopify-section')] : [];
+            // Different template (or no sections): its sections won't line up with this page's, so load it normally
+            if (!main || newSections.length === 0 || newSections.some((section) => !document.getElementById(section.id))) {
+                throw new Error('template differs');
+            }
+
+            newSections.forEach((newSection) => {
+                const section = document.getElementById(newSection.id);
+                if (!section || section.innerHTML === newSection.innerHTML) return;
+                const replacement = document.importNode(newSection, true);
+                // Scripts inserted this way don't run: swap each for a fresh copy so inline set-up code runs again
+                replacement.querySelectorAll('script').forEach((oldScript) => {
+                    const type = (oldScript.getAttribute('type') || '').toLowerCase();
+                    if (type && type !== 'text/javascript' && type !== 'module') return; // JSON, JSON-LD: data only
+                    const script = document.createElement('script');
+                    [...oldScript.attributes].forEach((attr) => script.setAttribute(attr.name, attr.value));
+                    script.textContent = oldScript.textContent;
+                    oldScript.replaceWith(script);
+                });
+                section.replaceWith(replacement);
+            });
+
+            ProductGroupPicker.syncHead(doc);
+
+            const params = new URLSearchParams(window.location.search);
+            params.delete('variant');
+            const query = params.toString();
+            window.history.replaceState({}, '', url.pathname + (query ? `?${query}` : '') + window.location.hash);
+
+            try { window.Shopify?.PaymentButton?.init?.(); } catch (e) { /* buy-it-now button set-up is best effort */ }
+
+            const newPicker = document.querySelector('product-group-picker');
+            newPicker?.querySelector('a.is-selected')?.focus({ preventScroll: true });
+            ProductGroupPicker.publishView(newPicker);
+        } catch (error) {
+            window.location.assign(url.pathname + window.location.search);
+        } finally {
+            picker?.removeAttribute('aria-busy');
+        }
+    }
+
+    static syncHead(doc) {
+        if (doc.title) document.title = doc.title;
+        const selectors = [
+            'meta[name="description"]',
+            'link[rel="canonical"]',
+            'meta[property^="og:"]',
+            'meta[name^="twitter:"]',
+        ];
+        selectors.forEach((selector) => {
+            document.head.querySelectorAll(selector).forEach((element) => element.remove());
+            doc.head.querySelectorAll(selector).forEach((element) => document.head.appendChild(document.importNode(element, true)));
+        });
+    }
+
+    static publishView(picker) {
+        if (!picker || !window.Shopify?.analytics?.publish) return;
+        const data = picker.dataset;
+        try {
+            window.Shopify.analytics.publish('vb_product_viewed', {
+                product_id: data.productId,
+                product_handle: data.productHandle,
+                title: data.productTitle,
+                product_type: data.productType,
+                variant_id: data.variantId,
+                price: Number(data.price),
+                product_group: data.group,
+                trigger: 'group_picker',
+                page: window.location.pathname,
+            });
+        } catch (e) { /* never block the page */ }
+    }
+}
+
+if (!window.customElements.get('product-group-picker')) window.customElements.define('product-group-picker', ProductGroupPicker);
