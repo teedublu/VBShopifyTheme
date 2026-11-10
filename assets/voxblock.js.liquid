@@ -611,20 +611,46 @@ document.addEventListener('click', (event) => {
 // ----------------------------------------------------------------------------------------------------------------
 // PRODUCT GROUP PICKER (snippets/product-group-picker.liquid, GRO HANDOFF item 19): separate products shown as one
 // product with a choice. Each pill is a plain link (the no-JS fallback); here a click fetches that product's page and
-// swaps the page in place, the way the theme editor reloads a section, so the theme's custom elements (form, gallery,
+// swaps the page in place (pages are fetched ahead of time: on idle, and on hover/touch/focus of a pill, which also warms
+// its first photos), the way the theme editor reloads a section, so the theme's custom elements (form, gallery,
 // price, buy buttons) set themselves up again. Every template section in <main> whose HTML changed is replaced, plus
 // the title, description, canonical, social tags and JSON-LD in <head>. A sibling on a different template, or any error,
 // falls back to the plain link. Shopify's own product_viewed only fires on a full page load, so the swap publishes
 // vb_product_viewed instead (the VoxHog pixel sends it to PostHog as product_viewed).
 // ----------------------------------------------------------------------------------------------------------------
 class ProductGroupPicker extends HTMLElement {
+    // Parsed sibling pages, by path, shared across swaps: fetched ahead of time so a click only has to swap the DOM
+    static pages = new Map();
+
     connectedCallback() {
         this.addEventListener('click', this._onClick);
+        this.addEventListener('pointerover', this._onIntent);
+        this.addEventListener('touchstart', this._onIntent, { passive: true });
+        this.addEventListener('focusin', this._onIntent);
+        // Once the page has settled, fetch the other products' pages (HTML only; skipped on Save-Data)
+        if (!navigator.connection?.saveData) {
+            const idle = window.requestIdleCallback || ((callback) => setTimeout(callback, 1500));
+            idle(() => this._links().forEach((link) => ProductGroupPicker.load(link.pathname, 'low').catch(() => {})), { timeout: 4000 });
+        }
     }
 
     disconnectedCallback() {
         this.removeEventListener('click', this._onClick);
+        this.removeEventListener('pointerover', this._onIntent);
+        this.removeEventListener('touchstart', this._onIntent);
+        this.removeEventListener('focusin', this._onIntent);
     }
+
+    _links() {
+        return [...this.querySelectorAll('a[href]:not(.is-selected)')];
+    }
+
+    // Hover, touch or focus on a pill: make sure its page is loading and warm up its first photos
+    _onIntent = (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link || !this.contains(link) || link.classList.contains('is-selected')) return;
+        ProductGroupPicker.load(link.pathname).then(ProductGroupPicker.warmImages).catch(() => {});
+    };
 
     _onClick = (event) => {
         const link = event.target.closest('a[href]');
@@ -632,16 +658,44 @@ class ProductGroupPicker extends HTMLElement {
         if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
         if (link.classList.contains('is-selected') || this.hasAttribute('aria-busy')) return;
-        ProductGroupPicker.show(new URL(link.href, window.location.origin));
+        // Show the choice straight away; the rest of the page follows
+        this.querySelectorAll('a.is-selected').forEach((selected) => selected.classList.remove('is-selected'));
+        link.classList.add('is-selected');
+        const currentValue = this.querySelector('.variant-picker__option-info span');
+        if (currentValue) currentValue.textContent = link.textContent.trim();
+        ProductGroupPicker.show(new URL(link.href, window.location.origin), this);
     };
 
-    static async show(url) {
-        const picker = document.querySelector('product-group-picker');
+    static load(path, priority = 'high') {
+        if (!ProductGroupPicker.pages.has(path)) {
+            const page = fetch(path, { credentials: 'same-origin', priority })
+                .then((response) => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.text();
+                })
+                .then((html) => new DOMParser().parseFromString(html, 'text/html'));
+            page.catch(() => ProductGroupPicker.pages.delete(path));
+            ProductGroupPicker.pages.set(path, page);
+        }
+        return ProductGroupPicker.pages.get(path);
+    }
+
+    // Load the new page's first gallery photos at the size the gallery will ask for, so they show at once after the swap
+    static warmImages(doc) {
+        const images = [...doc.querySelectorAll('#main product-gallery img')].slice(0, 2);
+        return Promise.all(images.map((source) => {
+            const image = new Image();
+            if (source.sizes) image.sizes = source.sizes;
+            if (source.srcset) image.srcset = source.srcset;
+            image.src = source.src;
+            return image.decode().catch(() => {});
+        }));
+    }
+
+    static async show(url, picker) {
         picker?.setAttribute('aria-busy', 'true');
         try {
-            const response = await fetch(url.pathname, { credentials: 'same-origin' });
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const doc = await ProductGroupPicker.load(url.pathname);
             const newMain = doc.getElementById('main');
             const main = document.getElementById('main');
             const newSections = newMain ? [...newMain.querySelectorAll('.shopify-section')] : [];
@@ -649,6 +703,9 @@ class ProductGroupPicker extends HTMLElement {
             if (!main || newSections.length === 0 || newSections.some((section) => !document.getElementById(section.id))) {
                 throw new Error('template differs');
             }
+
+            // Give the photos a moment so the gallery doesn't flash empty (no wait when they were warmed already)
+            await Promise.race([ProductGroupPicker.warmImages(doc), new Promise((resolve) => setTimeout(resolve, 300))]);
 
             newSections.forEach((newSection) => {
                 const section = document.getElementById(newSection.id);
