@@ -2030,114 +2030,6 @@ html.vb-has-player .cart-player-prompt { display: none; }
 }
 
 
-/* CUSTOM STARTER PACK (sections/custom-starter-pack, assets/custom-starter-pack.js): choose a bumper colour and N audiobooks for one pack
-   price. Theme fonts, buttons and inputs; teal from --brand-heading, card lines from --card-border. On phones the
-   summary is a bar fixed to the bottom of the screen; from 1000px it sits beside the books and sticks. */
-.custom-starter-pack__header { display: flex; flex-direction: column; gap: var(--spacing-3); max-width: 46rem; margin-block-end: var(--spacing-8); }
-.custom-starter-pack__header > * { margin: 0; }
-.custom-starter-pack__layout { display: grid; gap: var(--spacing-8); align-items: start; }
-.custom-starter-pack__main { display: flex; flex-direction: column; gap: var(--spacing-10); min-width: 0; }
-.custom-starter-pack__step { border: 0; margin: 0; padding: 0; min-width: 0; }
-.custom-starter-pack__step-title { display: flex; align-items: center; gap: 10px; margin: 0 0 var(--spacing-4); padding: 0; color: var(--brand-heading); }
-.custom-starter-pack__step-number { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: .875rem; font-weight: 700; flex: none; }
-
-/* One row of colours at any width: equal columns, no wider than 120px each */
-.custom-starter-pack__colour-list { display: grid; grid-template-columns: repeat(var(--pack-colours, 4), minmax(0, 120px)); gap: 8px; }
-.custom-starter-pack__colour { position: relative; cursor: pointer; }
-.custom-starter-pack__colour input { position: absolute; opacity: 0; inset: 0; margin: 0; }
-.custom-starter-pack__colour-card { display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; padding: 10px 6px; border: 2px solid var(--card-border); border-radius: 12px; background: rgb(var(--background-primary)); text-align: center; transition: border-color .15s, box-shadow .15s; }
-.custom-starter-pack__colour-image { width: 100%; max-width: 72px; height: auto; aspect-ratio: 1; object-fit: contain; }
-.custom-starter-pack__colour-dot { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin: 16px 0; }
-.custom-starter-pack__colour--orange .custom-starter-pack__colour-dot { background: #ff8a3d; }
-.custom-starter-pack__colour--green .custom-starter-pack__colour-dot { background: #4bb26f; }
-.custom-starter-pack__colour--red .custom-starter-pack__colour-dot { background: #e0473f; }
-.custom-starter-pack__colour--blue .custom-starter-pack__colour-dot { background: #3f7fe0; }
-.custom-starter-pack__colour-name { font-size: .875rem; font-weight: 500; line-height: 1.25; }
-@media screen and (max-width: 599px) {
-  .custom-starter-pack__colour-card { gap: 4px; padding: 8px 4px; }
-  .custom-starter-pack__colour-name { font-size: .8125rem; }
-}
-.custom-starter-pack__colour input:checked + .custom-starter-pack__colour-card { border-color: var(--brand-heading); box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand-heading) 18%, transparent); }
-.custom-starter-pack__colour input:focus-visible + .custom-starter-pack__colour-card { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
-.custom-starter-pack__colour input:disabled + .custom-starter-pack__colour-card { opacity: .45; cursor: not-allowed; }
-
-.custom-starter-pack__filters { display: flex; flex-direction: column; gap: 12px; margin-block-end: var(--spacing-5); }
-.custom-starter-pack__search .input { width: 100%; }
-.custom-starter-pack__chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.custom-starter-pack__chip { padding: 6px 14px; border: 1px solid var(--card-border); border-radius: 999px; background: rgb(var(--background-primary)); font-size: .875rem; line-height: 1.4; cursor: pointer; }
-.custom-starter-pack__chip[aria-pressed="true"] { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; }
-.custom-starter-pack__chip--liked { display: inline-flex; align-items: center; gap: 6px; }
-.custom-starter-pack__chip--liked svg { width: 16px; height: 16px; flex: none; }
-.custom-starter-pack__chip--liked:not([aria-pressed="true"]) { border-color: var(--brand-heading); color: var(--brand-heading); font-weight: 500; }
-.custom-starter-pack__book { position: relative; }
-.custom-starter-pack__book .save-book--overlay { inset-block-start: 14px; inset-block-end: auto; inset-inline-end: 14px; }
-
-.custom-starter-pack__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
-.custom-starter-pack__loading { grid-column: 1 / -1; padding: var(--spacing-8) 0; text-align: center; opacity: .7; }
-.custom-starter-pack__book { display: flex; flex-direction: column; gap: 4px; }
-.custom-starter-pack__book-button { position: relative; display: flex; flex-direction: column; gap: 8px; width: 100%; padding: 8px; border: 2px solid transparent; border-radius: 12px; background: rgb(var(--background-primary)); text-align: start; cursor: pointer; transition: border-color .15s, opacity .15s, background .15s; }
-.custom-starter-pack__book-button:hover { border-color: var(--card-border); }
-.custom-starter-pack__book-button:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
-.custom-starter-pack__cover { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; border-radius: 8px; background: rgb(var(--background-secondary, 245 245 245)); }
-.custom-starter-pack__book-title { font-size: .875rem; line-height: 1.35; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em; }
-.custom-starter-pack__book-action { align-self: flex-start; padding: 3px 12px; border: 1px solid var(--brand-heading); border-radius: 999px; color: var(--brand-heading); font-size: .8125rem; font-weight: 600; }
-.custom-starter-pack__book.is-chosen .custom-starter-pack__book-button { border-color: var(--brand-heading); background: color-mix(in srgb, var(--brand-heading) 8%, rgb(var(--background-primary))); }
-.custom-starter-pack__book.is-chosen .custom-starter-pack__book-action { background: var(--brand-heading); color: #fff; }
-.custom-starter-pack__book.is-chosen .custom-starter-pack__book-action::before { content: "✓ "; }
-.custom-starter-pack__book.is-dimmed .custom-starter-pack__book-button { opacity: .55; }
-.custom-starter-pack__book.is-sold-out .custom-starter-pack__book-button { opacity: .45; cursor: not-allowed; }
-.custom-starter-pack__book.is-sold-out .custom-starter-pack__book-action { border-color: currentColor; color: inherit; }
-.custom-starter-pack__book-link { padding-inline: 10px; font-size: .75rem; text-decoration: underline; opacity: .75; }
-.custom-starter-pack__empty, .custom-starter-pack__note { margin: var(--spacing-6) 0 0; text-align: center; }
-
-.custom-starter-pack__summary-card { display: flex; flex-direction: column; gap: 12px; padding: var(--spacing-5); border: 1px solid var(--card-border); border-radius: 16px; background: rgb(var(--background-primary)); }
-.custom-starter-pack__summary-title { margin: 0; color: var(--brand-heading); }
-/* Summary row: the player then one tile per book, as pictures (titles on hover). Empty slots invite a pick. */
-.custom-starter-pack__slots { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--pack-tiles, 4), minmax(0, 1fr)); gap: 8px; }
-.custom-starter-pack__slots.is-nudged { animation: custom-starter-pack-nudge .4s; }
-.custom-starter-pack__slot { position: relative; aspect-ratio: 1; min-width: 0; border-radius: 12px; }
-.custom-starter-pack__slot--player, .custom-starter-pack__slot.is-filled { border: 1px solid var(--card-border); background: #f7f7f5; }
-.custom-starter-pack__slot--player { border-color: color-mix(in srgb, var(--brand-heading) 35%, transparent); }
-.custom-starter-pack__slot-cover { display: block; width: 100%; height: 100%; object-fit: contain; padding: 4px; border-radius: inherit; }
-.custom-starter-pack__slot-name { display: grid; place-items: center; height: 100%; padding: 6px; font-size: .6875rem; line-height: 1.2; text-align: center; overflow: hidden; }
-.custom-starter-pack__slot-remove { position: absolute; top: -6px; right: -6px; display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 1px solid var(--card-border); border-radius: 50%; background: rgb(var(--background-primary)); color: rgb(var(--text-color)); box-shadow: 0 1px 3px rgb(0 0 0 / .15); cursor: pointer; }
-.custom-starter-pack__slot-remove:hover { border-color: currentColor; }
-.custom-starter-pack__slot-remove:focus-visible, .custom-starter-pack__slot-pick:focus-visible { outline: 2px solid var(--brand-heading); outline-offset: 2px; }
-.custom-starter-pack__slot-pick { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 100%; height: 100%; padding: 4px; border: 1.5px solid color-mix(in srgb, var(--brand-heading) 30%, transparent); border-radius: inherit; background: color-mix(in srgb, var(--brand-heading) 7%, rgb(var(--background-primary))); color: var(--brand-heading); font-size: .75rem; font-weight: 600; line-height: 1.2; cursor: pointer; transition: background .15s, border-color .15s; }
-.custom-starter-pack__slot-pick:hover { background: color-mix(in srgb, var(--brand-heading) 13%, rgb(var(--background-primary))); border-color: var(--brand-heading); }
-.custom-starter-pack__slot-plus { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--brand-heading); color: #fff; font-size: 18px; font-weight: 500; line-height: 1; }
-.custom-starter-pack__includes, .custom-starter-pack__trust { margin: 0; font-size: .8125rem; line-height: 1.45; opacity: .8; }
-.custom-starter-pack__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
-.custom-starter-pack__amount { font-size: 1.75rem; line-height: 1.2; font-weight: 700; color: rgb(var(--heading-color)); }
-.custom-starter-pack__worth { font-size: .875rem; font-weight: 500; color: var(--brand-heading); }
-.custom-starter-pack__add { width: 100%; }
-.custom-starter-pack__status { margin: 0; min-height: 1.4em; font-size: .875rem; line-height: 1.4; }
-.custom-starter-pack__status:empty { min-height: 0; }
-@keyframes custom-starter-pack-nudge { 0%, 100% { transform: none; } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
-
-@media screen and (max-width: 999px) {
-  /* Phones and tablets: the summary becomes a bar fixed to the bottom, with the pack as a row of small pictures */
-  .custom-starter-pack__main { padding-bottom: 170px; }
-  .custom-starter-pack__summary { position: fixed; inset-inline: 0; bottom: 0; z-index: 20; }
-  .custom-starter-pack__summary-card { display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; padding: 10px var(--container-gutter, 16px) calc(10px + env(safe-area-inset-bottom)); border: 0; border-radius: 0; box-shadow: 0 -2px 12px rgb(0 0 0 / .12); }
-  .custom-starter-pack__summary-title, .custom-starter-pack__includes, .custom-starter-pack__trust { display: none; }
-  .custom-starter-pack__slots { grid-column: 1 / -1; grid-template-columns: repeat(var(--pack-tiles, 4), minmax(0, 64px)); justify-content: center; gap: 12px; padding-top: 6px; }
-  .custom-starter-pack__slot-plus { width: 22px; height: 22px; font-size: 16px; }
-  .custom-starter-pack__slot-pick { font-size: .6875rem; gap: 2px; }
-  .custom-starter-pack__price { flex-direction: column; gap: 0; align-self: center; }
-  .custom-starter-pack__amount { font-size: 1.25rem; }
-  .custom-starter-pack__worth { font-size: .75rem; }
-  .custom-starter-pack__add { width: auto; padding-inline: 18px; align-self: center; }
-  .custom-starter-pack__status { grid-column: 1 / -1; }
-}
-@media screen and (min-width: 700px) {
-  .custom-starter-pack__grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-}
-@media screen and (min-width: 1000px) {
-  .custom-starter-pack__layout { grid-template-columns: minmax(0, 1fr) 340px; gap: var(--spacing-10); }
-  .custom-starter-pack__summary { position: sticky; top: calc(var(--header-height, 0px) + 20px); }
-}
-
 /* BASKET BUNDLE PARTS (snippets/line-item): a bundle split at checkout, e.g. the custom starter pack, lists its books
    as small covers with titles under the pack line (cart drawer and cart page). */
 .line-item__components { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
@@ -2158,3 +2050,4 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .free-shipping-bar--reached .free-shipping-bar__icon { background: var(--brand-heading); border-color: var(--brand-heading); color: #fff; }
 .free-shipping-bar--reached .free-shipping-bar__row span:last-child { color: var(--brand-heading); font-weight: 600; }
 .free-shipping-bar--reached .progress-bar { display: none; }
+
