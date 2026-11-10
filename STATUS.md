@@ -49,6 +49,66 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-11-10: Custom Starter Pack is block-only (Voxblock Bundle Builder app block)
+- For Shopify's App Store check "Use theme app extensions" (requirement 5.1.1: neither the app nor the merchant
+  should change theme code for the app), this branch no longer has its own pack page code: removed
+  `sections/custom-starter-pack.liquid`, `assets/custom-starter-pack.js`, `templates/product.custom-starter-pack.json`
+  and their CSS (the App URL setting and the `/public/pack` calls went with them).
+- The pack page is the normal product template (`templates/product.json`) with the app's **Bundle builder** block
+  (orange buttons `#ff9e57`, cream summary `#fff7f0`, theme buy buttons hidden). Variants, collection and item prices
+  are set per bundle in the app (Manage). The basket still lists a bundle's books (`snippets/line-item.liquid`,
+  Shopify's `item_components`) — that's standard bundle display, not app code.
+- Merged main into this branch the same day (main's cart commits duplicated ones already here).
+
+## 2026-11-06: Custom Starter Pack page (branch claude/byo-pack-builder, NOT live)
+- **Name chosen 6 Nov: "Custom Starter Pack"** (button/links "Customise your pack"; page title/SEO "Custom Audiobook
+  Starter Pack"). Not "build/make/create your own" (clashes with Make Your Own books), not "personalised" (implies the
+  child's name printed on it). Everything was renamed from "pack builder": template, section, script, CSS, custom
+  element `<custom-starter-pack>`, PostHog events `custom_starter_pack_*`, product type **Custom Starter Pack**.
+- New product template `product.custom-starter-pack` + section `custom-starter-pack` + `assets/custom-starter-pack.js`
+  + voxblock.css "CUSTOM STARTER PACK". The pack product's own page is the builder: bumper colour (pack variants) + any 3 audiobooks from
+  a collection, live pack price (£79.99 = the variant's price) and "Worth £X, you save £Y" (player variant price +
+  the books' own prices, display only; the basket charges the variant price). Adds ONE line: the pack variant with
+  `_pack_books` (book variant IDs) and "Books" (titles, shown in the cart drawer).
+- Needs the Mix and Match Packs app (teedublu/VBPackApp, Codek Ltd partner org, public + limited visibility) to split
+  the line at checkout; on Grow only App Store apps' functions run. Not installable on the live store until Shopify
+  reviews the app. Tested on dev store voxtest4 (theme #191513526568, preview
+  `/products/build-your-own-pack?view=pack-builder&preview_theme_id=191513526568`, tested before the rename):
+  colour, search, age chips, full pack message, worth £97.96 / save £17.97, add opens the drawer, line split
+  (`has_components`); app test order #1001 had player £54.00 + books £5.99/£10/£10.
+- voxtest4 (6 Nov): live theme is GitHub-connected to this branch ("VBShopifyTheme/claude/byo-pack-builder", #191516049704).
+  Pack renamed there (title, handle `custom-starter-pack`, type, template). Store set up to look like live: main menu
+  (player, starter packs, audiobooks, accessories), collections `voxblock-starter-pack-collection` (live's 27 packs,
+  Custom Starter Pack first), `audiobooks`, `accessories-for-voxblock`; packs and player use live's templates; the 8
+  videos and 87 images the templates reference were copied to Files under live's filenames (templates with a missing
+  video won't sync). `product.player` still fails to sync there (variant_image_options metafield setting).
+- Homepage (`templates/index.json`): Custom Starter Pack is the 5th card in "Begin with our starter packs" (after the 4
+  curated packs). This goes to the live homepage when this branch merges, so only merge once the pack exists on live.
+- `layout/password.liquid` (one line) was added by shopify[bot] because voxtest4 is password-protected; main has no
+  password layout. Delete it from the branch just before merging (after disconnecting voxtest4's theme from GitHub).
+- Pack cards: the Custom Starter Pack uses the starter pack card, but its round button links to the pack page instead
+  of adding to the basket (it can't be added without books).
+- To go live: app approved and installed; collection "Pack eligible audiobooks" (product type = Audiobooks) on the
+  Online Store; pack product "Custom Starter Pack" (handle `custom-starter-pack`, product type "Custom Starter Pack",
+  4 colours, £79.99, variants require components) using this template; book list synced; hide the pack from
+  search/collections.
+
+## 2026-11-08: Custom Starter Pack now reads the app's pack_config, not theme settings
+The 6 Nov version above read a specific "Player product" and "Books collection" from THEME SECTION SETTINGS, matched
+to the pack's own variants by colour NAME STRING — it predated the app's `pack_config` metafield entirely.
+`sections/custom-starter-pack.liquid` and `assets/custom-starter-pack.js` now fetch
+`GET <App URL>/public/pack?shop=...&id=...` (new public, unauthenticated endpoint on the Mix and Match Packs app
+backend) and use whatever that bundle's own `pack_config` says: which collection, how many books, and each colour's
+real player variant's price/photo (resolved server-side by GID, never guessed by title). "Manage" on a bundle in the
+app's admin is what actually controls this page now. The two settings that remain in the section schema (`App URL`,
+`Books per pack`) are infrastructure/fallback only — see the comment at the top of the section file. `voxblock.css.liquid`
+and `snippets/line-item.liquid` are unchanged (already correct). Applied directly to this branch since it's what
+voxtest4's theme is GitHub-connected to.
+Still needed on voxtest4 before this works end to end: redeploy `pack_app` (the new `/public/pack` route) and
+re-save the bundle's collection once in Manage (old `pack_config` only has `collectionId`, not the `collectionHandle`
+this reads) — the product's template assignment and the player product's "Player" type (for `line-item.liquid`) were
+already done per the 6 Nov entry above, so no admin changes needed there.
+
 ## 2026-11-04: Age collections round 2 (cold searchers who don't know the player)
 **Merged to live 4 Nov (PR #117).** Owner checked the preview. Still to do: the admin steps below, and delete the draft theme "Age collections round 2" (id 201222128000) in Shopify admin.
 Branch `claude/age-collection-round-2`, draft PR #117, draft theme "Age collections round 2 (claude/age-collection-round-2)" (id 201222128000, duplicate of live + the 6 changed files from commit 94bf6f6, checksums verified). Plan: LPS `claude/age-collection-round-2-plan.md`; mockups: design canvas "Age collection page redesign". Template `collection.audiobooks-landing-cat` (5-8, 8-10, 10+, under 5 and the theme collections). 

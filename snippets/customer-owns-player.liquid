@@ -6,7 +6,8 @@ CUSTOMER OWNS PLAYER (age collection template + basket prompt)
 Outputs "true" when the signed-in customer has bought something with a player in it, otherwise nothing. Use it with
 capture:  {%- capture owns_player -%}{%- render 'customer-owns-player' -%}{%- endcapture -%}
 
-"Has a player in it" = product type Player, Starter Pack or Schools Pack, or the tag "Player Bundle".
+"Has a player in it" = product type Player, Starter Pack, Custom Starter Pack or Schools Pack, or the
+tag "Player Bundle".
 Only signed-in customers can be recognised here; everyone else is treated as new (the basket prompt also remembers
 "I already have a player" in the browser, see voxblock.js).
 {%- endcomment -%}
@@ -17,7 +18,7 @@ Only signed-in customers can be recognised here; everyone else is treated as new
     for order in customer.orders
       for item in order.line_items
         assign item_type = item.product.type | downcase
-        if item_type == 'player' or item_type == 'starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
+        if item_type == 'player' or item_type == 'starter pack' or item_type == 'custom starter pack' or item_type == 'schools pack' or item.product.tags contains 'Player Bundle'
           assign owns = true
           break
         endif

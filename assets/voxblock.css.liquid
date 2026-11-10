@@ -537,7 +537,7 @@ button.bookpreview.playing .playpause {animation: pulse-animation 2s infinite;}
 /* Sold-out cards: greyed-out add to cart (same size as the live button) plus a "More coming soon" pill just above the price row */
 .icon-circle--disabled, .pack-card__add-button--disabled { background: rgb(var(--text-color) / .12); color: rgb(var(--text-color) / .38); cursor: not-allowed; }
 .icon-circle--disabled { display: block; border: 0; font: inherit; }
-.product-card__row.buy-price > .icon-circle--disabled { flex: none; }
+.product-card__row.buy-price > .icon-circle--disabled, .product-card__row.buy-price > .pack-card__add-button { flex: none; } /* the Custom Starter Pack card links to its page with the same round button */
 .coming-soon-row { order: 8; margin-top: auto; }
 .coming-soon-row + .product-card__row.buy-price { margin-top: 0; }
 .pack-card__buy > .coming-soon-row { order: 0; margin-top: 0; } /* pack card orders by DOM position: pill sits right above the price row, price row stays pinned to the bottom */
@@ -2028,6 +2028,14 @@ html.vb-has-player .cart-player-prompt { display: none; }
 @media screen and (min-width: 1000px) {
   .player-offer--hero .player-offer__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--spacing-14); }
 }
+
+
+/* BASKET BUNDLE PARTS (snippets/line-item): a bundle split at checkout, e.g. the custom starter pack, lists its books
+   as small covers with titles under the pack line (cart drawer and cart page). */
+.line-item__components { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.line-item__component { display: flex; align-items: center; gap: 10px; }
+.line-item__component-cover { width: 40px; height: 40px; object-fit: contain; flex: none; border-radius: 4px; }
+.line-item__component-title { line-height: 1.3; }
 
 /* FREE SHIPPING BAR (snippets/free-shipping-bar.liquid): icon + message on one row, a fuller rounded progress bar,
    and a filled, badge-style look once free shipping is reached — on top of the stock .free-shipping-bar/.progress-bar
