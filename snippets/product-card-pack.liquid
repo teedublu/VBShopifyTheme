@@ -15,6 +15,10 @@ Supported variables
 * card_index: 1-based position in the grid (the first few images load eagerly)
 * show_titles: true = always name every book ("Player + The Gruffalo, Room on the Broom, ..."), however long the list.
   Paid landing pages set it (featured-collection "Name every book"); elsewhere long lists fall back to a count.
+* group_collapse: true = this card stands for the product's whole product group (custom.product_group, GRO HANDOFF
+  item 19; sections/main-collection.liquid hides the other members). The card then shows the group's name, a
+  "4 collections" line instead of the contents, the age range across the members in this collection, and an arrow
+  to the product page (where the group picker is) instead of quick add.
 
 Data used (all optional, the line is simply left out if missing):
 * contents line: metafield pack.contents (text, overrides everything), else the books in bundles.products
@@ -63,10 +67,42 @@ Data used (all optional, the line is simply left out if missing):
     endif
   endif
 
+  # PRODUCT GROUP (group_collapse): count the members in this collection and pool their age bands
+  assign card_title = product.title
+  assign group_members = 0
+  assign age_codes = product.metafields.book.age_groups.value
+  if group_collapse
+    assign product_group = product.metafields.custom.product_group.value
+    if product_group != blank
+      assign group_age_codes = ''
+      for group_product in product_group.products.value
+        if group_product == blank
+          continue
+        endif
+        assign group_product_collections = group_product.collections | map: 'handle'
+        unless group_product_collections contains collection.handle
+          continue
+        endunless
+        assign group_members = group_members | plus: 1
+        assign member_age_codes = group_product.metafields.book.age_groups.value | join: ','
+        assign group_age_codes = group_age_codes | append: ',' | append: member_age_codes
+      endfor
+
+      if group_members > 1
+        assign card_title = product_group.name.value | default: product.title
+        assign group_label = product_group.option_label.value | default: 'option' | strip | downcase | append: 's'
+        assign contents_line = 'collection.pack_card.group_options' | t: count: group_members, label: group_label
+        assign age_codes = group_age_codes | split: ','
+      else
+        assign group_members = 0
+      endif
+    endif
+  endif
+
   # AGE LINE (bands -> from/to ages)
   assign age_from = 99
   assign age_to = 0
-  for age_code in product.metafields.book.age_groups.value
+  for age_code in age_codes
     case age_code
       when '35'
         assign band_from = 3
@@ -165,7 +201,7 @@ Data used (all optional, the line is simply left out if missing):
     {%- render 'save-book-button', product: product, size: 20, overlay: true -%}
   </div>
 
-  <h3 class="pack-card__title"><a href="{{ product.url }}" class="pack-card__link" data-instant>{{ product.title }}</a></h3>
+  <h3 class="pack-card__title"><a href="{{ product.url }}" class="pack-card__link" data-instant>{{ card_title }}</a></h3>
 
   {%- if contents_line != blank -%}
     <p class="pack-card__contents">{{ contents_line }}</p>
@@ -224,7 +260,12 @@ Data used (all optional, the line is simply left out if missing):
           <s class="pack-card__was"><span class="sr-only">{{ 'product.price.regular_price' | t }}</span>{{ pack_variant.compare_at_price | money }}</s>
         {%- endif -%}
       </p>
-      {%- if product.available -%}
+      {%- if group_members > 1 -%}
+        {%- comment -%}A product group card: the choice is made on the product page, so no quick add{%- endcomment -%}
+        <div class="pack-card__add">
+          <a href="{{ product.url }}" class="pack-card__add-button" aria-label="{{ 'Choose' | escape }} {{ card_title | escape }}" data-instant>{%- render 'icon' with 'chevron-right' -%}</a>
+        </div>
+      {%- elsif product.available -%}
         {%- form 'product', product, is: 'product-form', class: 'pack-card__add' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-pack-variant-id>
           {%- capture variant_map -%}{%- for v in product.variants -%}{{ v.title | escape }}={{ v.id }}{% unless forloop.last %};{% endunless %}{%- endfor -%}{%- endcapture -%}
