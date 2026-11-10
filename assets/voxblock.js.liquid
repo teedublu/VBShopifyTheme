@@ -613,7 +613,7 @@ document.addEventListener('click', (event) => {
 // product with a choice. Each pill is a plain link (the no-JS fallback); here a click fetches that product's page and
 // swaps the page in place, the way the theme editor reloads a section, so the theme's custom elements (form, gallery,
 // price, buy buttons) set themselves up again. Every template section in <main> whose HTML changed is replaced, plus
-// the title, description, canonical and social tags in <head>. A sibling on a different template, or any error,
+// the title, description, canonical, social tags and JSON-LD in <head>. A sibling on a different template, or any error,
 // falls back to the plain link. Shopify's own product_viewed only fires on a full page load, so the swap publishes
 // vb_product_viewed instead (the VoxHog pixel sends it to PostHog as product_viewed).
 // ----------------------------------------------------------------------------------------------------------------
@@ -692,6 +692,7 @@ class ProductGroupPicker extends HTMLElement {
             'link[rel="canonical"]',
             'meta[property^="og:"]',
             'meta[name^="twitter:"]',
+            'script[type="application/ld+json"]', // Product + Organization structured data (snippets/microdata-schema.liquid)
         ];
         selectors.forEach((selector) => {
             document.head.querySelectorAll(selector).forEach((element) => element.remove());
