@@ -49,6 +49,17 @@ Measured on the draft theme 11 Oct (WCAG AA needs 4.5:1 for small text, 3:1 for 
 One change in theme colour settings (accent, secondary button, band backgrounds), then rescan every template.
 - Buttons now follow the theme everywhere (176 per-section colours cleared). Still separate from the theme button: CSS-built buttons in voxblock.css (`series-button`, `pack-chip`, `coming-soon-pill`, pack card add button) and the secondary "Add to cart" in light teal #4cb6ac. Bring these into the theme button styles in the contrast pass.
 
+## 2026-11-10: Custom Starter Pack is block-only (Voxblock Bundle Builder app block)
+- For Shopify's App Store check "Use theme app extensions" (requirement 5.1.1: neither the app nor the merchant
+  should change theme code for the app), this branch no longer has its own pack page code: removed
+  `sections/custom-starter-pack.liquid`, `assets/custom-starter-pack.js`, `templates/product.custom-starter-pack.json`
+  and their CSS (the App URL setting and the `/public/pack` calls went with them).
+- The pack page is the normal product template (`templates/product.json`) with the app's **Bundle builder** block
+  (orange buttons `#ff9e57`, cream summary `#fff7f0`, theme buy buttons hidden). Variants, collection and item prices
+  are set per bundle in the app (Manage). The basket still lists a bundle's books (`snippets/line-item.liquid`,
+  Shopify's `item_components`) — that's standard bundle display, not app code.
+- Merged main into this branch the same day (main's cart commits duplicated ones already here).
+
 ## 2026-11-06: Custom Starter Pack page (branch claude/byo-pack-builder, NOT live)
 - **Name chosen 6 Nov: "Custom Starter Pack"** (button/links "Customise your pack"; page title/SEO "Custom Audiobook
   Starter Pack"). Not "build/make/create your own" (clashes with Make Your Own books), not "personalised" (implies the
