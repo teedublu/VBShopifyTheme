@@ -340,7 +340,7 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
 
     {%- comment -%} Everything in the sale (owner, 11 Nov): only while it is live, from the bundles collection
     ("Black Friday 2026", hidden from search). Product cards show full prices; the discounts come off in the basket. {%- endcomment -%}
-    {%- if tphase == 'live' and s.show_all and s.bundles_collection != blank and s.bundles_collection.products_count > 0 -%}
+    {%- if tphase == 'during' and s.show_all and s.bundles_collection != blank and s.bundles_collection.products_count > 0 -%}
       <div class="bf-all" id="bf-all">
         <h2 class="bf-all__title">{{ s.all_heading | escape }}</h2>
         {%- if s.all_text != blank -%}<p class="bf-all__text">{{ s.all_text | escape }}</p>{%- endif -%}
