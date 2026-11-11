@@ -1430,6 +1430,31 @@ html.vb-has-player .cart-player-prompt { display: none; }
 .bf-offer--veiled .bf-offer__soon.bf-offer__soon--veiled { display: inline-flex; }
 .bf-offer--veiled .bf-offer__soon--open { display: none; }
 
+/* Black Friday: bundles to go with the player, listed inside the player card (owner, 11 Nov). Prices blur with the
+   player's until the reveal date (they sit in [data-bf-veil]). */
+.bf-bundles { display: grid; gap: 8px; padding-block: 4px 6px; border-top: 1px solid var(--bf-line); }
+.bf-bundles__title { margin: 10px 0 0; font-size: 15px; line-height: 1.35; font-weight: 700; color: var(--bf-text); }
+.bf-bundles__title [data-bf-veil] { display: inline-block; }
+.bf-bundles__list { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.bf-bundle { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 6px 8px 6px 6px; border-radius: 12px;
+  background: rgb(255 255 255 / 0.55); color: var(--bf-text); text-decoration: none; }
+.bf--t-during .bf-bundle { background: rgb(255 255 255 / 0.06); }
+.bf-bundle:hover, .bf-bundle:focus-visible { outline: 2px solid var(--bf-accent); outline-offset: 0; }
+.bf-bundle__img { width: 56px; height: 56px; object-fit: contain; }
+.bf-bundle__text { display: grid; gap: 2px; min-width: 0; }
+.bf-bundle__name { font-size: 14px; line-height: 1.25; font-weight: 700; }
+.bf-bundle__age { font-size: 12px; color: var(--bf-soft); }
+.bf-bundle__price { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+.bf-bundle__now { font-size: 16px; font-weight: 800; }
+.bf-bundle__was { font-size: 12px; color: var(--bf-soft); }
+
+/* Black Friday: everything in the sale, below the panel, only while it is live. Product cards show full prices. */
+.bf-all { display: grid; gap: 8px; margin-top: 40px; scroll-margin-top: calc(var(--header-height, 80px) + 24px); }
+.bf-all__title { margin: 0; }
+.bf-all__text { margin: 0 0 8px; opacity: 0.8; }
+.bf-all .bf-all__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media screen and (min-width: 1000px) { .bf-all .bf-all__grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; } }
+
 /* Black Friday: email sign-up inside the player card (signed out, before it opens). */
 .bf-signup { display: grid; gap: 8px; margin: 0; }
 .bf-signup__title { margin: 0; font-size: 16px; line-height: 1.35; font-weight: 700; color: var(--bf-text); }
