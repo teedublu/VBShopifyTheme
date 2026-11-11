@@ -205,9 +205,27 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
       if s.show_player and player != blank and tphase != 'ended'
         assign show_player = true
       endif
+      # The Shopify discount covers the bumpered colour variants only (owner, 11 Nov), not "No bumper": price and link
+      # use a colour variant (the dearest, first in stock), never price_min.
       if player != blank
+        assign player_variant = nil
+        for v in player.variants
+          if v.price == player.price_max and v.available
+            assign player_variant = v
+            break
+          endif
+        endfor
+        if player_variant == nil
+          for v in player.variants
+            if v.price == player.price_max
+              assign player_variant = v
+              break
+            endif
+          endfor
+        endif
+        assign player_was = player.price_max
         assign player_off = 100 | minus: s.player_pct
-        assign player_from = player.price_min | times: player_off | divided_by: 100
+        assign player_from = player_was | times: player_off | divided_by: 100
       endif
     -%}
 
@@ -294,7 +312,7 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
           {%- endif -%}
 
           {%- if show_player -%}
-            {%- render 'black-friday-player', cfg: s, player: player, player_from: player_from, phase: tphase, uid: uid, veiled: veiled, reveal_label: reveal_label, signup: signup, signed_in: signed_in -%}
+            {%- render 'black-friday-player', cfg: s, player: player, player_variant: player_variant, player_was: player_was, player_from: player_from, phase: tphase, uid: uid, veiled: veiled, reveal_label: reveal_label, signup: signup, signed_in: signed_in -%}
           {%- endif -%}
         </div>
 
@@ -443,7 +461,7 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
     { "type": "header", "content": "Player offer (for everyone)" },
     { "type": "checkbox", "id": "show_player", "label": "Show the player offer", "default": true },
     { "type": "product", "id": "player_product", "label": "Player" },
-    { "type": "number", "id": "player_pct", "label": "Player % off", "default": 50, "info": "Display only. The discount itself is set up in Shopify." },
+    { "type": "number", "id": "player_pct", "label": "Player % off", "default": 50, "info": "Display only. The discount itself is set up in Shopify (colour bumper variants, not No bumper)." },
     { "type": "number", "id": "reveal_days", "label": "Reveal the player offer (days before it opens)", "default": 2, "info": "Before this, the player's percentage and price are blurred." },
     { "type": "text", "id": "player_heading", "label": "Player heading", "default": "The Voxblock player, [pct]% off" },
     { "type": "richtext", "id": "terms", "label": "Terms line" },
