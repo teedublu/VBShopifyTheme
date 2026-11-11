@@ -77,6 +77,50 @@
     </div>
   {%- else -%}
     {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- liquid
+        # PRODUCT GROUPS (GRO HANDOFF item 19): with the pack card style and no filter active, products that share a
+        # custom.product_group show as one card, the first product of the group's list that is in this collection
+        # (snippets/product-card-pack.liquid shows it as the group). With a filter active (e.g. an age button) every
+        # matching product shows on its own, so the age bar still surfaces the right one.
+        assign group_any_filter = false
+        for group_filter in collection.filters
+          if group_filter.active_values.size > 0 or group_filter.min_value.value != blank or group_filter.max_value.value != blank
+            assign group_any_filter = true
+          endif
+        endfor
+
+        assign group_collapse = false
+        if section.settings.card_style == 'pack' and group_any_filter == false
+          assign group_collapse = true
+        endif
+
+        assign group_hidden_ids = ','
+        assign group_hidden_count = 0
+        if group_collapse
+          for product in collection.products
+            assign product_group = product.metafields.custom.product_group.value
+            if product_group == blank
+              continue
+            endif
+            assign group_first_id = 0
+            for group_product in product_group.products.value
+              if group_product == blank
+                continue
+              endif
+              assign group_product_collections = group_product.collections | map: 'handle'
+              if group_product_collections contains collection.handle
+                assign group_first_id = group_product.id
+                break
+              endif
+            endfor
+            if group_first_id != 0 and group_first_id != product.id
+              assign group_hidden_ids = group_hidden_ids | append: product.id | append: ','
+              assign group_hidden_count = group_hidden_count | plus: 1
+            endif
+          endfor
+        endif
+      -%}
+
       {%- if section.settings.grid_heading != blank -%}
         <h2 class="sr-only">{{ section.settings.grid_heading | escape }}</h2>
       {%- endif -%}
@@ -84,7 +128,7 @@
       <div id="product-grid" class="collection {% if show_filters %}collection--filters-{{ section.settings.filter_layout | escape }}{% endif %}{% if section.settings.age_bar_enabled %} collection--pack{% endif %}">
         {%- if section.settings.age_bar_enabled -%}
           {%- comment -%}Starter pack collection redesign: sticky age filter + count + sort bar (replaces the facet drawer and top bar){%- endcomment -%}
-          {%- render 'collection-age-bar', results: collection -%}
+          {%- render 'collection-age-bar', results: collection, hidden_count: group_hidden_count -%}
         {%- else -%}
         {%- if show_filters or section.settings.show_sort_by -%}
           {%- comment -%}
@@ -163,7 +207,10 @@
                       
                     {%- endfor -%}
 
-                    {%- render 'product-card', product: product, stacked: true, show_badges: true, card_index: forloop.index -%}
+                    {%- assign group_id_key = ',' | append: product.id | append: ',' -%}
+                    {%- if group_hidden_ids contains group_id_key -%}{%- continue -%}{%- endif -%}
+
+                    {%- render 'product-card', product: product, stacked: true, show_badges: true, card_index: forloop.index, group_collapse: group_collapse -%}
                     
 
 

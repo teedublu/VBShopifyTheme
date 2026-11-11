@@ -108,7 +108,8 @@
             "text_color": "#ffffff",
             "overlay_color": "#000000",
             "overlay_opacity": 20
-          }
+          },
+          "disabled": true
         },
         "promotion_image_4VEyzT": {
           "type": "promotion_image",
@@ -131,7 +132,7 @@
         "howto_promo": {
           "type": "promotion_howto",
           "settings": {
-            "position": 12,
+            "position": 5,
             "image": "shopify://shop_images/IMG_5604.jpg",
             "image_alt": "Voxblock player playing The Gruffalo, surrounded by story blocks and drawing pens",
             "eyebrow": "How Voxblock works",
@@ -217,7 +218,7 @@
             "tab_label": "Under 5",
             "heading": "Audiobooks for under 5s",
             "eyebrow": "Audiobooks · Under 5",
-            "intro_line": "Bedtime stories and songs that play on Voxblock, the screen-free audiobook player.",
+            "intro_line": "Every story here is a block your child puts on the Voxblock player and presses play. No screen, no downloads, no subscription.",
             "age_text": "under 5s",
             "starter_pack": "little-listeners-starter-pack"
           }
@@ -229,7 +230,7 @@
             "tab_label": "5–8",
             "heading": "Audiobooks for 5–8 year olds",
             "eyebrow": "Audiobooks · Ages 5–8",
-            "intro_line": "Stories that play on Voxblock, the screen-free audiobook player your child runs on their own.",
+            "intro_line": "Every story here is a block your child puts on the Voxblock player and presses play. No screen, no downloads, no subscription.",
             "age_text": "ages 5–8",
             "starter_pack": "young-explorers-starter-pack"
           }
@@ -241,7 +242,7 @@
             "tab_label": "8–10",
             "heading": "Audiobooks for 8–10 year olds",
             "eyebrow": "Audiobooks · Ages 8–10",
-            "intro_line": "Longer adventures that play on Voxblock, the screen-free audiobook player.",
+            "intro_line": "Every story here is a block your child puts on the Voxblock player and presses play. No screen, no downloads, no subscription.",
             "age_text": "ages 8–10",
             "starter_pack": "roald-dahl-selection-starter-pack"
           }
@@ -253,7 +254,7 @@
             "tab_label": "10+",
             "heading": "Audiobooks for tweens and teens",
             "eyebrow": "Audiobooks · Ages 10+",
-            "intro_line": "Gripping series that play on Voxblock, the screen-free audiobook player.",
+            "intro_line": "Every story here is a block your child puts on the Voxblock player and presses play. No screen, no downloads, no subscription.",
             "age_text": "ages 10+",
             "starter_pack": "the-percy-jackson-starter-pack"
           }
@@ -277,11 +278,37 @@
         "show_pack": true,
         "pack_heading": "New to Voxblock? Start here",
         "pack_note": "Bumper and charging cable included.",
+        "pack_benefits": "Up to 16 hours of listening on a charge\n100-day money-back guarantee\nAdd any story from this page, one at a time",
         "packs_url": "shopify://collections/voxblock-starter-pack-collection",
         "player_handle": "voxblock-player",
         "hero_image": "shopify://shop_images/press-pack-voxblock-childs-hand-placing-audiobook-in-player.jpg",
         "hero_image_alt": "A child's hand placing an audiobook block on the Voxblock player",
-        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery."
+        "player_line": "The screen-free audiobook player children use on their own, toddlers to teens. Up to 16 hours' battery.",
+        "howto_video": "shopify://files/videos/how does it work_desktop.mp4",
+        "howto_video_label": "See how it works",
+        "show_owner_choice": true,
+        "owner_question": "Does your child already have a Voxblock player?",
+        "owner_no": "No, how do I start?",
+        "owner_yes": "Yes, show stories",
+        "owner_yes_text": "Tap play on any cover to hear a sample.",
+        "owner_yes_link": "See the stories",
+        "show_sticky_bar": true,
+        "sticky_button_text": "View pack",
+        "chip_filters": "Bestsellers|Suggestions|Bestseller\nBedtime|Categories|Bedtime\nGiggles and belly laughs|Categories|Giggles & Belly Laughs\nFamily favourites|Categories|Family Favourites\nFantasy and magic|Categories|Fantasy & Magic\nAction and adventure|Categories|Action & Adventure",
+        "chips_label": "Story themes"
+      }
+    },
+    "signup": {
+      "type": "collection-signup",
+      "settings": {
+        "list_id": "",
+        "heading": "Choosing a Christmas present?",
+        "text": "Get our list of favourite stories for this age, plus last order dates for Christmas.",
+        "label": "Email address",
+        "placeholder": "Your email",
+        "button": "Send me the list",
+        "thanks": "Thanks, it's on its way to your inbox.",
+        "small_print": "We'll also send occasional news and offers. Unsubscribe any time."
       }
     },
     "about": {
@@ -297,6 +324,7 @@
     "collection_link_blocks_t7tQjD",
     "age_intro",
     "main",
+    "signup",
     "about",
     "image_with_text_overlay_qB9epV"
   ]

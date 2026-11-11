@@ -240,6 +240,83 @@ if (cartDrawerEl && playerPromptObserver) {
 
 
 // ----------------------------------------------------------------------------------------------------------------
+// AGE COLLECTION ROUND 2 (sections/collection-age-intro.liquid)
+// 1. "Does your child already have a Voxblock player?" Yes / No. Shares the basket prompt's localStorage key
+//    (vb_has_player) and <html> class (vb-has-player): "Yes" hides the pack card, the phone sticky bar and the basket
+//    prompt in this browser; "No" clears it. PostHog `owner_choice` { answer, collection } and the person property
+//    `vb_says_has_player`.
+// 2. Phone sticky bar: shown once the pack card has scrolled up out of view, never while the visitor says they own a
+//    player (CSS hides it from 700px up).
+// 3. "See how it works" video in a <dialog>; closing it pauses the video.
+// ----------------------------------------------------------------------------------------------------------------
+(() => {
+    const choice = document.querySelector('[data-owner-choice]');
+    const collection = () => document.querySelector('[data-age-collection]')?.dataset.ageCollection || null;
+    const ownsPlayer = () => document.documentElement.classList.contains('vb-has-player');
+
+    const syncChoice = () => {
+        if (!choice) return;
+        const yes = ownsPlayer();
+        choice.querySelectorAll('[data-owner-answer]').forEach((button) => {
+            button.setAttribute('aria-pressed', String((button.dataset.ownerAnswer === 'yes') === yes));
+        });
+    };
+    syncChoice();
+
+    if (choice) {
+        choice.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-owner-answer]');
+            if (!button) return;
+            const yes = button.dataset.ownerAnswer === 'yes';
+            try {
+                if (yes) window.localStorage.setItem(PLAYER_PROMPT_KEY, '1');
+                else window.localStorage.removeItem(PLAYER_PROMPT_KEY);
+            } catch (e) { /* storage blocked: the choice still applies on this page */ }
+            document.documentElement.classList.toggle('vb-has-player', yes);
+            syncChoice();
+            updateSticky();
+            if (typeof window.posthog !== 'undefined') {
+                try {
+                    window.posthog.capture('owner_choice', { answer: yes ? 'yes' : 'no', collection: collection() });
+                    if (typeof window.posthog.setPersonProperties === 'function') window.posthog.setPersonProperties({ vb_says_has_player: yes });
+                } catch (e) { /* analytics must never block the page */ }
+            }
+        });
+    }
+
+    const sticky = document.querySelector('[data-age-sticky]');
+    const packCard = document.querySelector('[data-owner-pack] .age-pack');
+    let packAbove = false;
+    function updateSticky() {
+        if (!sticky) return;
+        sticky.hidden = !(packAbove && !ownsPlayer());
+    }
+    if (sticky && packCard && 'IntersectionObserver' in window) {
+        new IntersectionObserver(([entry]) => {
+            packAbove = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+            updateSticky();
+        }).observe(packCard);
+    }
+
+    const video = document.querySelector('[data-age-video]');
+    if (video && typeof video.showModal === 'function') {
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('[data-age-video-open]')) {
+                video.showModal();
+                video.querySelector('video')?.play().catch(() => { /* autoplay refused: the controls are there */ });
+            } else if (event.target.closest('[data-age-video-close]') || event.target === video) {
+                video.close();
+            }
+        });
+        video.addEventListener('close', () => video.querySelector('video')?.pause());
+    } else {
+        // No <dialog> support: hide the button rather than show one that does nothing
+        document.querySelectorAll('[data-age-video-open]').forEach((button) => { button.hidden = true; });
+    }
+})();
+
+
+// ----------------------------------------------------------------------------------------------------------------
 // CART DRAWER VIEWS: Shopify's standard `cart_viewed` only fires on the /cart page, and almost nobody goes there,
 // so the drawer was invisible in PostHog. Each time the drawer finishes opening, publish the custom Shopify
 // customer event `vb_cart_drawer_viewed` { source: 'drawer', trigger, item_count, total_price, page }; the custom
@@ -333,7 +410,7 @@ document.addEventListener('submit', async (event) => {
         try {
             if (window.posthog && typeof window.posthog.capture === 'function') {
                 const page = form.closest('[data-story-page]')?.dataset.storyPage || window.location.pathname;
-                window.posthog.capture('school_signup', { page, form: form.dataset.form });
+                window.posthog.capture(form.dataset.event || 'school_signup', { page, form: form.dataset.form });
             }
         } catch (e) { /* analytics must never block the sign-up */ }
     } catch (error) {
@@ -513,3 +590,191 @@ document.addEventListener('click', (event) => {
         window.addEventListener('hashchange', () => { fromHash('link'); });
     });
 })();
+
+// ----------------------------------------------------------------------------------------------------------------
+// FREE SHIPPING BAR (snippets/free-shipping-bar.liquid): the "reached" look (filled bar, tick badge) on top of the
+// stock free-shipping-bar custom element. Reads the same threshold/total-price attributes that element keeps
+// current on every cart:change, so this never touches assets/theme.js.liquid.
+// ----------------------------------------------------------------------------------------------------------------
+(() => {
+    const sync = (bar) => {
+        const threshold = parseFloat(bar.getAttribute('threshold'));
+        const total = parseFloat(bar.getAttribute('total-price'));
+        const reached = Number.isFinite(threshold) && Number.isFinite(total) && threshold > 0 && total >= threshold;
+        bar.classList.toggle('free-shipping-bar--reached', reached);
+    };
+    const syncAll = () => document.querySelectorAll('.free-shipping-bar').forEach(sync);
+    syncAll();
+    document.addEventListener('cart:change', syncAll);
+})();
+
+// ----------------------------------------------------------------------------------------------------------------
+// PRODUCT GROUP PICKER (snippets/product-group-picker.liquid, GRO HANDOFF item 19): separate products shown as one
+// product with a choice. Each pill is a plain link (the no-JS fallback); here a click fetches that product's page and
+// swaps the page in place (pages are fetched ahead of time: on idle, and on hover/touch/focus of a pill, which also warms
+// its first photos), the way the theme editor reloads a section, so the theme's custom elements (form, gallery,
+// price, buy buttons) set themselves up again. Every template section in <main> whose HTML changed is replaced, plus
+// the title, description, canonical, social tags and JSON-LD in <head>. A sibling on a different template, or any error,
+// falls back to the plain link. Shopify's own product_viewed only fires on a full page load, so the swap publishes
+// vb_product_viewed instead (the VoxHog pixel sends it to PostHog as product_viewed).
+// ----------------------------------------------------------------------------------------------------------------
+class ProductGroupPicker extends HTMLElement {
+    // Parsed sibling pages, by path, shared across swaps: fetched ahead of time so a click only has to swap the DOM
+    static pages = new Map();
+
+    connectedCallback() {
+        this.addEventListener('click', this._onClick);
+        this.addEventListener('pointerover', this._onIntent);
+        this.addEventListener('touchstart', this._onIntent, { passive: true });
+        this.addEventListener('focusin', this._onIntent);
+        // Once the page has settled, fetch the other products' pages (HTML only; skipped on Save-Data)
+        if (!navigator.connection?.saveData) {
+            const idle = window.requestIdleCallback || ((callback) => setTimeout(callback, 1500));
+            idle(() => this._links().forEach((link) => ProductGroupPicker.load(link.pathname, 'low').catch(() => {})), { timeout: 4000 });
+        }
+    }
+
+    disconnectedCallback() {
+        this.removeEventListener('click', this._onClick);
+        this.removeEventListener('pointerover', this._onIntent);
+        this.removeEventListener('touchstart', this._onIntent);
+        this.removeEventListener('focusin', this._onIntent);
+    }
+
+    _links() {
+        return [...this.querySelectorAll('a[href]:not(.is-selected)')];
+    }
+
+    // Hover, touch or focus on a pill: make sure its page is loading and warm up its first photos
+    _onIntent = (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link || !this.contains(link) || link.classList.contains('is-selected')) return;
+        ProductGroupPicker.load(link.pathname).then(ProductGroupPicker.warmImages).catch(() => {});
+    };
+
+    _onClick = (event) => {
+        const link = event.target.closest('a[href]');
+        if (!link || !this.contains(link)) return;
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        if (link.classList.contains('is-selected') || this.hasAttribute('aria-busy')) return;
+        // Show the choice straight away; the rest of the page follows
+        this.querySelectorAll('a.is-selected').forEach((selected) => selected.classList.remove('is-selected'));
+        link.classList.add('is-selected');
+        const currentValue = this.querySelector('.variant-picker__option-info span');
+        if (currentValue) currentValue.textContent = link.textContent.trim();
+        ProductGroupPicker.show(new URL(link.href, window.location.origin), this);
+    };
+
+    static load(path, priority = 'high') {
+        if (!ProductGroupPicker.pages.has(path)) {
+            const page = fetch(path, { credentials: 'same-origin', priority })
+                .then((response) => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.text();
+                })
+                .then((html) => new DOMParser().parseFromString(html, 'text/html'));
+            page.catch(() => ProductGroupPicker.pages.delete(path));
+            ProductGroupPicker.pages.set(path, page);
+        }
+        return ProductGroupPicker.pages.get(path);
+    }
+
+    // Load the new page's first gallery photos at the size the gallery will ask for, so they show at once after the swap
+    static warmImages(doc) {
+        const images = [...doc.querySelectorAll('#main product-gallery img')].slice(0, 2);
+        return Promise.all(images.map((source) => {
+            const image = new Image();
+            if (source.sizes) image.sizes = source.sizes;
+            if (source.srcset) image.srcset = source.srcset;
+            image.src = source.src;
+            return image.decode().catch(() => {});
+        }));
+    }
+
+    static async show(url, picker) {
+        picker?.setAttribute('aria-busy', 'true');
+        try {
+            const doc = await ProductGroupPicker.load(url.pathname);
+            const newMain = doc.getElementById('main');
+            const main = document.getElementById('main');
+            const newSections = newMain ? [...newMain.querySelectorAll('.shopify-section')] : [];
+            // Different template (or no sections): its sections won't line up with this page's, so load it normally
+            if (!main || newSections.length === 0 || newSections.some((section) => !document.getElementById(section.id))) {
+                throw new Error('template differs');
+            }
+
+            // Give the photos a moment so the gallery doesn't flash empty (no wait when they were warmed already)
+            await Promise.race([ProductGroupPicker.warmImages(doc), new Promise((resolve) => setTimeout(resolve, 300))]);
+
+            newSections.forEach((newSection) => {
+                const section = document.getElementById(newSection.id);
+                if (!section || section.innerHTML === newSection.innerHTML) return;
+                const replacement = document.importNode(newSection, true);
+                // Scripts inserted this way don't run: swap each for a fresh copy so inline set-up code runs again
+                replacement.querySelectorAll('script').forEach((oldScript) => {
+                    const type = (oldScript.getAttribute('type') || '').toLowerCase();
+                    if (type && type !== 'text/javascript' && type !== 'module') return; // JSON, JSON-LD: data only
+                    const script = document.createElement('script');
+                    [...oldScript.attributes].forEach((attr) => script.setAttribute(attr.name, attr.value));
+                    script.textContent = oldScript.textContent;
+                    oldScript.replaceWith(script);
+                });
+                section.replaceWith(replacement);
+            });
+
+            ProductGroupPicker.syncHead(doc);
+
+            const params = new URLSearchParams(window.location.search);
+            params.delete('variant');
+            const query = params.toString();
+            window.history.replaceState({}, '', url.pathname + (query ? `?${query}` : '') + window.location.hash);
+
+            try { window.Shopify?.PaymentButton?.init?.(); } catch (e) { /* buy-it-now button set-up is best effort */ }
+
+            const newPicker = document.querySelector('product-group-picker');
+            newPicker?.querySelector('a.is-selected')?.focus({ preventScroll: true });
+            ProductGroupPicker.publishView(newPicker);
+        } catch (error) {
+            window.location.assign(url.pathname + window.location.search);
+        } finally {
+            picker?.removeAttribute('aria-busy');
+        }
+    }
+
+    static syncHead(doc) {
+        if (doc.title) document.title = doc.title;
+        const selectors = [
+            'meta[name="description"]',
+            'link[rel="canonical"]',
+            'meta[property^="og:"]',
+            'meta[name^="twitter:"]',
+            'script[type="application/ld+json"]', // Product + Organization structured data (snippets/microdata-schema.liquid)
+        ];
+        selectors.forEach((selector) => {
+            document.head.querySelectorAll(selector).forEach((element) => element.remove());
+            doc.head.querySelectorAll(selector).forEach((element) => document.head.appendChild(document.importNode(element, true)));
+        });
+    }
+
+    static publishView(picker) {
+        if (!picker || !window.Shopify?.analytics?.publish) return;
+        const data = picker.dataset;
+        try {
+            window.Shopify.analytics.publish('vb_product_viewed', {
+                product_id: data.productId,
+                product_handle: data.productHandle,
+                title: data.productTitle,
+                product_type: data.productType,
+                variant_id: data.variantId,
+                price: Number(data.price),
+                product_group: data.group,
+                trigger: 'group_picker',
+                page: window.location.pathname,
+            });
+        } catch (e) { /* never block the page */ }
+    }
+}
+
+if (!window.customElements.get('product-group-picker')) window.customElements.define('product-group-picker', ProductGroupPicker);
+

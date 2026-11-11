@@ -111,6 +111,20 @@ LIQUID
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
 
+  # AGE: the product's own book.age_lower; bundles made in the Bundles app don't carry it, so fall back to the
+  # youngest book.age_lower among the books in the bundle's bundles.products list.
+  assign age_lower = product.metafields.book.age_lower.value
+  if age_lower == blank
+    for book in product.metafields.bundles.products.value
+      assign book_age = book.metafields.book.age_lower.value
+      if book_age == blank
+        continue
+      endif
+      if age_lower == blank or book_age < age_lower
+        assign age_lower = book_age
+      endif
+    endfor
+  endif
 -%}
 <div class="audiobook_product_block larger-text"> 
 
@@ -160,7 +174,7 @@ LIQUID
       <svg viewBox="0 0 40 40">
         <circle cx="20" cy="20" r="19" />
         <text class="major" x="50%" y="{{ property_line_major_y }}" dy="{{ property_line_minor_dy }}">
-          {{ product.metafields.book.age_lower }}+
+          {{ age_lower }}+
         </text>
         <text class="minor" x="50%" y="{{ property_line_minor_y }}" dy="{{ property_line_minor_dy }}">
           Years

@@ -184,7 +184,8 @@
       },
       "age_under_5": "Under 5",
       "age_range": "Ages {{ from }}–{{ to }}",
-      "age_plus": "Ages {{ from }}+"
+      "age_plus": "Ages {{ from }}+",
+      "group_options": "{{ count }} {{ label }}"
     },
     "pack_intro": {
       "from_price": "from {{ price }}",
@@ -406,6 +407,10 @@
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\" class=\"link\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "taxes_at_checkout_free_shipping": "Taxes calculated at checkout. Free shipping applied.",
+      "taxes_included_free_shipping": "Tax included. Free shipping applied.",
+      "vat_included_shipping_at_checkout": "VAT included. Shipping calculated at checkout.",
+      "vat_included_free_shipping": "VAT included. Free shipping applied.",
       "add_order_note": "Add order note",
       "edit_order_note": "Edit order note",
       "order_note": "Order note",
