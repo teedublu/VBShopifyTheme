@@ -1,0 +1,36 @@
+{%- comment -%}
+Black Friday: the "bundles to go with it" list inside the player card (offer for everyone) in sections/black-friday-code.
+Accepts: bundles (array of products, the Audiobooks Bundle products from cfg.bundles_collection, cheapest first),
+pct (the bundle % off, display only: the discount itself is "Black Friday: 25% off the Black Friday bundles" in Shopify),
+uid. Prices and the % sit in [data-bf-veil], so they blur with the player price until the reveal date.
+Discounted price is rounded the way Shopify rounds the discount amount (to the penny), so it matches the basket.
+{%- endcomment -%}
+{%- if bundles.size > 0 -%}
+<div class="bf-bundles" aria-labelledby="bf-bundles-{{ uid }}">
+  <p class="bf-bundles__title" id="bf-bundles-{{ uid }}">Plus <span data-bf-veil>{{ pct }}%</span> off {{ bundles.size }} new audiobook bundles</p>
+  <ul class="bf-bundles__list" role="list">
+    {%- for b in bundles -%}
+      {%- liquid
+        assign was = b.price
+        assign cut = was | times: pct | divided_by: 100.0 | round
+        assign now = was | minus: cut
+        assign lo = b.metafields.book.age_lower.value
+        assign hi = b.metafields.book.age_upper.value
+        assign name = b.title | remove: ' Audiobook Bundle'
+      -%}
+      <li>
+        <a class="bf-bundle" href="{{ b.url }}" data-vs-track="bf_bundle">
+          {%- if b.featured_image -%}
+            {{ b.featured_image | image_url: width: 160 | image_tag: class: 'bf-bundle__img', loading: 'lazy', widths: '80, 160', sizes: '64px', alt: '' }}
+          {%- endif -%}
+          <span class="bf-bundle__text">
+            <span class="bf-bundle__name">{{ name | escape }}</span>
+            {%- if lo != blank -%}<span class="bf-bundle__age">{% if lo >= 10 %}Ages {{ lo }}+{% elsif hi != blank %}Ages {{ lo }}–{{ hi }}{% else %}Ages {{ lo }}+{% endif %} · 3 audiobooks</span>{%- endif -%}
+          </span>
+          <span class="bf-bundle__price" data-bf-veil><span class="bf-bundle__now">{{ now | money }}</span><s class="bf-bundle__was">{{ was | money }}</s></span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{%- endif -%}
