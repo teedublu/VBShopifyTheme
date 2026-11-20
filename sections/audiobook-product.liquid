@@ -39,6 +39,15 @@
     }
   }
 
+  {%- comment -%}Square media: every gallery image sits in a square box (object-fit: contain), so portrait book shots stay the same size as the square main image. Product page only; collection cards are not touched.{%- endcomment -%}
+  {%- if section.settings.square_media -%}
+    #shopify-section-{{ section.id }} .product-gallery__media > img {
+      aspect-ratio: 1;
+      width: 100%;
+      object-fit: contain;
+    }
+  {%- endif -%}
+
 </style>
 
 <div {% render 'section-properties', tight: true %}>
@@ -1245,6 +1254,13 @@ quick buy information in a template, that will be extracted in JS, but ensure it
         }
       ],
       "default": "carousel_thumbnails_left"
+    },
+    {
+      "type": "checkbox",
+      "id": "square_media",
+      "label": "Show media as squares",
+      "info": "Fits every image into a square frame on the product page, so portrait and square images are the same size. Collection cards are not affected.",
+      "default": false
     },
     {
       "type":"select",
