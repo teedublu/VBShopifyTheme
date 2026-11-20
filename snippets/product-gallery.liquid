@@ -155,7 +155,8 @@ only way to do it on Shopify right now.
             {%- else -%}
               {%- assign preload = false -%}
             {%- endif -%}
-            {%- if product.type == 'Audiobooks' -%}
+            {%- comment -%}Audiobook shots are capped at 300px, except when the section boxes media as squares: then the main image is shown well over 300px wide, so let it use the original's full width.{%- endcomment -%}
+            {%- if product.type == 'Audiobooks' and section.settings.square_media != true -%}
               {%- assign width = 300 -%}
             {%- endif -%}
             {%- render 'media', media: media, sizes: sizes, preload: preload, autoplay: section.settings.enable_video_autoplay, loop: section.settings.enable_video_looping, group: 'product', width: width -%}
