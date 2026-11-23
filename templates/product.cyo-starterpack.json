@@ -25,6 +25,26 @@
             "heading_tag": "h2"
           }
         },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_from_price": false,
+            "from_note": "",
+            "option_note": "",
+            "opt_out_note": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
         "voxblock_bundle_builder_pack_builder_Xny9af": {
           "type": "shopify://apps/voxblock-bundle-builder/blocks/pack-builder/01a1b15f-86e1-7089-a2a3-713b63ad4989",
           "settings": {
@@ -42,66 +62,15 @@
             "accent_text": "#ffffff",
             "summary_background": "#ffffff"
           }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false,
-            "show_from_price": false,
-            "from_note": "",
-            "option_note": "",
-            "opt_out_note": ""
-          }
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch",
-            "variant_image_options": "",
-            "size_chart_page": "",
-            "opt_out_value": "",
-            "default_option": "",
-            "opt_out_tile": false,
-            "opt_out_label": "Prefer it without?",
-            "option_label": "",
-            "photo_tiles": true,
-            "photo_tile_keyword": "front and back"
-          }
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "collapse_content": false
-          }
         }
       },
       "block_order": [
         "liquid_HaW47K",
         "title",
-        "voxblock_bundle_builder_pack_builder_Xny9af",
-        "price",
         "badges",
-        "variant_picker",
-        "buy_buttons",
-        "description"
+        "price",
+        "description",
+        "voxblock_bundle_builder_pack_builder_Xny9af"
       ],
       "settings": {
         "full_width": true,
