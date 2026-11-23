@@ -21,18 +21,41 @@
         "title": {
           "type": "title",
           "settings": {
+            "eyebrow": "",
             "heading_tag": "h2"
+          }
+        },
+        "voxblock_bundle_builder_pack_builder_Xny9af": {
+          "type": "shopify://apps/voxblock-bundle-builder/blocks/pack-builder/01a1b15f-86e1-7089-a2a3-713b63ad4989",
+          "settings": {
+            "pack_product": "",
+            "collection": "",
+            "hide_theme_buttons": true,
+            "heading": "",
+            "variant_heading": "Choose an option",
+            "items_heading": "Choose any [n] products",
+            "search_placeholder": "Search products",
+            "choose_more_text": "Choose [n] more",
+            "button_text": "Add bundle to cart",
+            "cart_error_text": "Sorry, that bundle couldn't be added. An item may have just sold out. Please check your choices and try again.",
+            "accent": "#1a1a1a",
+            "accent_text": "#ffffff",
+            "summary_background": "#ffffff"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_from_price": false,
+            "from_note": "",
+            "option_note": "",
+            "opt_out_note": ""
           }
         },
         "badges": {
           "type": "badges",
           "settings": {}
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -42,7 +65,14 @@
             "selector_style": "block",
             "swatch_selector_style": "swatch",
             "variant_image_options": "",
-            "size_chart_page": ""
+            "size_chart_page": "",
+            "opt_out_value": "",
+            "default_option": "",
+            "opt_out_tile": false,
+            "opt_out_label": "Prefer it without?",
+            "option_label": "",
+            "photo_tiles": true,
+            "photo_tile_keyword": "front and back"
           }
         },
         "buy_buttons": {
@@ -66,6 +96,7 @@
       "block_order": [
         "liquid_HaW47K",
         "title",
+        "voxblock_bundle_builder_pack_builder_Xny9af",
         "price",
         "badges",
         "variant_picker",
@@ -90,76 +121,20 @@
         "input_text_color": ""
       }
     },
-    "featured_collection_igHKRU": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "accessories-for-voxblock",
-        "hide_empty": false,
-        "products": [],
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
-        "subheading": "",
-        "title": "Our Accessories",
-        "content": "",
-        "link_url": "shopify://collections/accessories-for-voxblock",
-        "link_text": "View all",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "recently_viewed_products_Bpryzy": {
-      "type": "recently-viewed-products",
-      "settings": {
-        "full_width": false,
-        "products_count": 6,
-        "stack_products": false,
-        "show_progress_bar": true,
-        "products_per_row_mobile": "1",
-        "products_per_row_desktop": 3,
-        "subheading": "",
-        "title": "Recently viewed products",
-        "content": "",
-        "background": "",
-        "background_gradient": "",
-        "text_color": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "image_with_text_overlay_aQ9U9p": {
-      "type": "image-with-text-overlay",
+    "179545542386bfc177": {
+      "type": "apps",
       "settings": {
         "full_width": true,
-        "allow_transparent_header": false,
-        "max_width": 80,
-        "enable_parallax": false,
-        "image_size": "sm",
-        "image": "shopify://shop_images/blue-and-orange-headphones-pattern.jpg",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "background": "#eaeaea",
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
         "background_gradient": "",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "text_color": ""
       }
     }
   },
   "order": [
     "main",
-    "featured_collection_igHKRU",
-    "recently_viewed_products_Bpryzy",
-    "image_with_text_overlay_aQ9U9p"
+    "179545542386bfc177"
   ]
 }
