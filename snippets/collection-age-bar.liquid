@@ -21,6 +21,7 @@ Supported variables
 ********************************************
 
 * results: the collection
+* hidden_count: products folded into another card (product groups, sections/main-collection.liquid), left out of the count
 {%- endcomment -%}
 
 {%- liquid
@@ -85,7 +86,7 @@ Supported variables
   {%- endif -%}
 
   <div class="pack-bar__meta">
-    <p class="pack-bar__count" aria-live="polite">{{ 'collection.pack_bar.count' | t: count: results.products_count }}</p>
+    <p class="pack-bar__count" aria-live="polite">{%- assign shown_count = results.products_count | minus: hidden_count -%}{{ 'collection.pack_bar.count' | t: count: shown_count }}</p>
 
     {%- liquid
       assign show_help_link = false

@@ -1,0 +1,90 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+PRODUCT GROUP PICKER (GRO HANDOFF item 19)
+----------------------------------------------------------------------------------------------------------------------
+
+Shows separate products as if they were variants of one product (the store is on Grow, so Shopify's Combined Listings,
+a Plus feature, isn't available). Rendered by snippets/product-info.liquid in place of the variant picker when
+product.metafields.custom.product_group is set.
+
+Data (Shopify admin):
+* metaobject type product_group: name, option_label (e.g. "Collection"), products (ordered list of products)
+* on each product: custom.product_group (the entry), custom.group_option_label (pill text, e.g. "First Stories"),
+  custom.group_option_hint (line under the pills, e.g. "Under 5")
+
+Markup and classes are the theme's own variant picker (block swatches), so it looks like every other picker. Each pill is
+a plain link to that product, which is the no-JS fallback; with JS, <product-group-picker> (assets/voxblock.js.liquid)
+swaps the page in place and sends vb_product_viewed for the newly shown product.
+
+Products that aren't available (sold out, or not published so the reference is empty) are left out, except the one on
+show. Nothing renders when fewer than two products are left.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product on show [REQUIRED]
+{%- endcomment -%}
+
+{%- liquid
+  assign product_group = product.metafields.custom.product_group.value
+  assign group_label = product_group.option_label.value | default: product_group.option_label | strip
+  assign current_label = product.metafields.custom.group_option_label.value | default: product.title
+  assign current_hint = product.metafields.custom.group_option_hint.value
+
+  assign shown_count = 0
+  for group_product in product_group.products.value
+    if group_product == blank
+      continue
+    endif
+    if group_product.available or group_product.id == product.id
+      assign shown_count = shown_count | plus: 1
+    endif
+  endfor
+
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+{%- if shown_count > 1 -%}
+  <product-group-picker
+    class="product-info__product-picker"
+    data-product-id="{{ product.id }}"
+    data-product-handle="{{ product.handle | escape }}"
+    data-product-title="{{ product.title | escape }}"
+    data-product-type="{{ product.type | escape }}"
+    data-variant-id="{{ current_variant.id }}"
+    data-price="{{ current_variant.price | divided_by: 100.0 }}"
+    data-group="{{ product_group.system.handle | escape }}"
+  >
+    <div class="variant-picker">
+      <fieldset class="variant-picker__option">
+        <div class="variant-picker__option-info">
+          <div class="h-stack gap-2">
+            <legend class="text-subdued">{{ group_label | escape }}:</legend>
+            <span>{{ current_label | escape }}</span>
+          </div>
+        </div>
+
+        <div class="variant-picker__option-values wrap gap-2">
+          {%- for group_product in product_group.products.value -%}
+            {%- if group_product == blank -%}{%- continue -%}{%- endif -%}
+            {%- unless group_product.available or group_product.id == product.id -%}{%- continue -%}{%- endunless -%}
+
+            {%- assign option_label = group_product.metafields.custom.group_option_label.value | default: group_product.title -%}
+            {%- if group_product.id == product.id -%}
+              {%- assign selected = true -%}
+            {%- else -%}
+              {%- assign selected = false -%}
+            {%- endif -%}
+
+            {%- render 'option-value', type: 'block', href: group_product.url, value: option_label, selected: selected -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if current_hint != blank -%}
+          <p class="text-sm text-subdued">{{ current_hint | escape }}</p>
+        {%- endif -%}
+      </fieldset>
+    </div>
+  </product-group-picker>
+{%- endif -%}

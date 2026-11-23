@@ -264,16 +264,23 @@
         {%- endif -%}
 
       {%- when 'variant_picker' -%}
+        {%- if product.metafields.custom.product_group != blank and product.has_only_default_variant -%}
+          {%- comment -%}Separate products shown as one product with a choice (GRO HANDOFF item 19){%- endcomment -%}
+          <div class="product-info__variant-picker" {{ block.shopify_attributes }}>
+            {%- render 'product-group-picker', product: product -%}
+          </div>
+        {%- else -%}
         <div class="product-info__variant-picker" {{ block.shopify_attributes }}>
-          {%- render 'variant-picker', 
-            product: product, 
+          {%- render 'variant-picker',
+            product: product,
             default_variant: current_variant,
             form_id: product_form_id,
-            update_url: update_url, 
-            hide_sold_out_variants: block.settings.hide_sold_out_variants, 
-            block: block 
+            update_url: update_url,
+            hide_sold_out_variants: block.settings.hide_sold_out_variants,
+            block: block
           -%}
         </div>
+        {%- endif -%}
 
       {%- when 'product_variations' -%}
         {%- assign contains_product = false -%}

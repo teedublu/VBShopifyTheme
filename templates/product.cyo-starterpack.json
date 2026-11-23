@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "liquid_HaW47K": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<style>\n.product-gallery__media {padding: 0px 70px}\n</style>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "eyebrow": "",
+            "heading_tag": "h2"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false,
+            "show_from_price": false,
+            "from_note": "",
+            "option_note": "",
+            "opt_out_note": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "collapse_content": false
+          }
+        },
+        "voxblock_bundle_builder_pack_builder_Xny9af": {
+          "type": "shopify://apps/voxblock-bundle-builder/blocks/pack-builder/01a1b15f-86e1-7089-a2a3-713b63ad4989",
+          "settings": {
+            "pack_product": "",
+            "collection": "",
+            "hide_theme_buttons": true,
+            "heading": "",
+            "variant_heading": "Choose an option",
+            "items_heading": "Choose any [n] products",
+            "search_placeholder": "Search products",
+            "choose_more_text": "Choose [n] more",
+            "button_text": "Add bundle to cart",
+            "cart_error_text": "Sorry, that bundle couldn't be added. An item may have just sold out. Please check your choices and try again.",
+            "accent": "#1a1a1a",
+            "accent_text": "#ffffff",
+            "summary_background": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_HaW47K",
+        "title",
+        "badges",
+        "price",
+        "description",
+        "voxblock_bundle_builder_pack_builder_Xny9af"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 50,
+        "desktop_media_layout": "grid_highlight",
+        "mobile_media_size": "contained",
+        "mobile_carousel_control": "dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "179545542386bfc177": {
+      "type": "apps",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "179545542386bfc177"
+  ]
+}
