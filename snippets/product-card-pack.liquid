@@ -265,6 +265,15 @@ Data used (all optional, the line is simply left out if missing):
         <div class="pack-card__add">
           <a href="{{ product.url }}" class="pack-card__add-button" aria-label="{{ 'Choose' | escape }} {{ card_title | escape }}" data-instant>{%- render 'icon' with 'chevron-right' -%}</a>
         </div>
+      {%- elsif product.type == 'Custom Starter Pack' or product.type == 'Bundle' -%}
+        {%- comment -%}
+          Can't go in the basket without its books (a build-your-own bundle's variants require components).
+          Type "Bundle" is what the Mix and Match Packs app actually sets today; "Custom Starter Pack" is kept
+          for any pack set up with that type by hand.
+        {%- endcomment -%}
+        <div class="pack-card__add">
+          <a href="{{ product.url }}" class="pack-card__add-button" aria-label="{{ 'Customise your pack' | escape }} {{ product.title | escape }}" data-instant>{%- render 'icon' with 'chevron-right' -%}</a>
+        </div>
       {%- elsif product.available -%}
         {%- form 'product', product, is: 'product-form', class: 'pack-card__add' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-pack-variant-id>

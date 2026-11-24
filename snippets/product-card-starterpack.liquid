@@ -25,6 +25,9 @@ Supported variables
 {%- assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true -%}
 {%- assign show_vendor = show_vendor | default: settings.show_vendor, allow_false: true -%}
 {%- assign show_quick_buy = show_quick_buy | default: settings.show_quick_buy, allow_false: true -%}
+{%- comment -%}The Custom Starter Pack can't go in the basket without its books, so its card links to its page instead of adding{%- endcomment -%}
+{%- assign is_custom_pack = false -%}
+{%- if product.type == 'Custom Starter Pack' -%}{%- assign is_custom_pack = true -%}{%- endif -%}
 {%- assign show_secondary_image = show_secondary_image | default: settings.show_secondary_image, allow_false: true -%}
 {%- assign text_alignment = text_alignment | default: settings.product_info_alignment -%}
 
@@ -87,7 +90,7 @@ Supported variables
 
       {%- render 'save-book-button', product: product, size: 20, overlay: true -%}
 
-      {%- if show_quick_buy and product.available -%}
+      {%- if show_quick_buy and product.available and is_custom_pack == false -%}
         <div class="product-card__quick-buy">
           {%- assign quick_add_label = 'product.general.quick_add' | t -%}
 
@@ -254,7 +257,9 @@ Supported variables
 
     <div class="product-card__row buy-price">
 
-        {%- if product.available -%}
+        {%- if is_custom_pack -%}
+          <a href="{{ product.url }}" class="pack-card__add-button" aria-label="{{ 'Customise your pack' | escape }}" data-instant>{%- render 'icon' with 'chevron-right' -%}</a>
+        {%- elsif product.available -%}
         {%- form 'product', product, is: 'product-form' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           
