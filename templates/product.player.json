@@ -35,17 +35,6 @@
             "opt_out_note": "without a bumper"
           }
         },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": false,
-            "atc_button_background": "",
-            "atc_button_text_color": "",
-            "payment_button_background": "",
-            "payment_button_text_color": ""
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "repeater": "{{ product.metafields.shopify[\"color-pattern\"].value }}",
@@ -58,11 +47,22 @@
             "size_chart_page": "",
             "opt_out_value": "No bumper",
             "default_option": "Orange",
+            "opt_out_tile": true,
             "opt_out_label": "Prefer it without the bumper?",
             "option_label": "Bumper colour",
             "photo_tiles": true,
-            "photo_tile_keyword": "front and back view, front view",
-            "opt_out_tile": true
+            "photo_tile_keyword": "front and back view, front view"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": false,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
           }
         },
         "text_B7QjHH": {
@@ -348,6 +348,29 @@
         "input_text_color": ""
       }
     },
+    "blocks_jWmY4y": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_fe99adc_CrLYhQ": {
+          "type": "ai_gen_block_fe99adc",
+          "settings": {
+            "image": "shopify://shop_images/banner-black-friday-coming-soon-v1.26.png",
+            "link_url": "https://www.voxblock.co.uk/pages/black-friday",
+            "accessible_label": "View more",
+            "open_new_tab": false,
+            "desktop_width_percent": 100,
+            "image_fit": "cover",
+            "corner_radius": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_fe99adc_CrLYhQ"
+      ],
+      "name": "Clickable image",
+      "settings": {}
+    },
     "packs": {
       "type": "featured-collection",
       "settings": {
@@ -365,6 +388,7 @@
         "products_count": 4,
         "products_per_row_mobile": "2",
         "card_style": "pack",
+        "card_show_titles": false,
         "anchor_id": "packs",
         "products_per_row_desktop": 4,
         "subheading": "Want books included?",
@@ -712,7 +736,8 @@
         "overlay_color": "#000000",
         "overlay_opacity": 0,
         "jsonld_title": "Voxblock video",
-        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children."
+        "jsonld_description": "Voxblock is a simple to use screen-free audiobook player for children.",
+        "jsonld_upload_date": ""
       }
     },
     "multi_column_tVPeU4": {
@@ -960,6 +985,7 @@
         "products_count": 10,
         "products_per_row_mobile": "1",
         "card_style": "default",
+        "card_show_titles": false,
         "anchor_id": "",
         "products_per_row_desktop": 3,
         "subheading": "",
@@ -1039,6 +1065,7 @@
         "item_yMd3fQ"
       ],
       "settings": {
+        "include_jsonld": true,
         "full_width": true,
         "subheading": "",
         "title": "FAQs",
@@ -1115,6 +1142,7 @@
   "order": [
     "breadcrumbs_TMg6RL",
     "main",
+    "blocks_jWmY4y",
     "packs",
     "1765206968f91ec2c2",
     "testimonials_cFMFmx",
