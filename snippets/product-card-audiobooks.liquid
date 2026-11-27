@@ -20,6 +20,7 @@ Supported variables
 * background: the background to use for the product card (if none is passed then the one from the global setting is used)
 * text_color: the text color to use for the product card (if none is passed then the one from the global setting is used)
 * text_alignment: can be "center". If nothing is set, the theme uses the default product card setting
+* override_price / override_compare_at: display-only sale price override, see snippets/price-list.liquid
 {%- endcomment -%}
 
 {%- assign show_rating = show_rating | default: settings.show_product_rating, allow_false: true -%}
@@ -274,7 +275,7 @@ Supported variables
         {%- else -%}
           <button type="button" class="icon-circle icon-circle--disabled" disabled aria-label="{{ 'product.general.sold_out_badge' | t | escape }}">{%- render 'icon' with 'cart' -%}</button>
         {%- endif -%}
-        {%- render 'price-list', product: product, text_alignment: text_alignment, size: 'lg', bundle_layout: true -%}
+        {%- render 'price-list', product: product, text_alignment: text_alignment, size: 'lg', bundle_layout: true, override_price: override_price, override_compare_at: override_compare_at -%}
 
     </div>
   </div>

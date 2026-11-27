@@ -18,6 +18,9 @@ Supported variables
 * form_id: if specified, the prices are updated dynamically based on the form update
 * alignment: can be "center" to align the prices
 * bundle_layout: if true (product cards and the product page price block), packs/bundles with a compare-at price show the savings layout from snippets/bundle-price.liquid
+* override_price / override_compare_at: if override_price is set, it and override_compare_at are shown as the sale/compare-at
+  price instead of anything worked out from the product, variant or line item. For display-only sale pricing (e.g. Black
+  Friday products whose discount is an automatic Shopify discount, not a real compare-at price) — remove after the sale.
 {%- endcomment -%}
 
 {%- case size -%}
@@ -41,7 +44,27 @@ Supported variables
 
 <price-list {% if form_id %}role="region" aria-live="polite"{% endif %} class="price-list {% if size == 'lg' %}price-list--lg{% endif %} {% if text_alignment == 'center' %}justify-center{% endif %}" {{ block.shopify_attributes }}>
 
-  {%- if bundle_html != blank -%}
+  {%- if override_price != blank -%}
+    <sale-price class="{{ on_sale_price_classes }}">
+      <span class="sr-only">{{ 'product.price.sale_price' | t }}</span>
+
+      {%- if settings.currency_code_enabled -%}
+        {{- override_price | money_with_currency -}}
+      {%- else -%}
+        {{- override_price | money -}}
+      {%- endif -%}
+    </sale-price>
+
+    <compare-at-price class="{{ compare_at_price_classes }}">
+      <span class="sr-only">{{ 'product.price.regular_price' | t }}</span>
+
+      {%- if settings.currency_code_enabled -%}
+        {{- override_compare_at | money_with_currency -}}
+      {%- else -%}
+        {{- override_compare_at | money -}}
+      {%- endif -%}
+    </compare-at-price>
+  {%- elsif bundle_html != blank -%}
     {{- bundle_html -}}
   {%- elsif variant != blank -%}
     {%- comment -%}

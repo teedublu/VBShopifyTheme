@@ -338,15 +338,30 @@ Clicks send vs_yoto_click { target } through data-vs-track: bf_sign_in, bf_signu
       {%- endunless -%}
     </div>
 
-    {%- comment -%} Everything in the sale (owner, 11 Nov): only while it is live, from the bundles collection
-    ("Black Friday 2026", hidden from search). Product cards show full prices; the discounts come off in the basket. {%- endcomment -%}
+    {%- comment -%} Everything in the sale (owner, 11 Nov; display-only was/now added 27 Nov): only while it is live,
+    from the bundles collection ("Black Friday 2026", hidden from search). The real discounts are automatic Shopify
+    discounts that come off in the basket, not a compare-at price on the product, so cards show was/now prices worked
+    out here from the same display-only percentages as the player and bundle cards above (player_pct, bundle_pct) —
+    remove this override once the sale ends and the discounts are gone. {%- endcomment -%}
     {%- if tphase == 'during' and s.show_all and s.bundles_collection != blank and s.bundles_collection.products_count > 0 -%}
       <div class="bf-all" id="bf-all">
         <h2 class="bf-all__title">{{ s.all_heading | escape }}</h2>
         {%- if s.all_text != blank -%}<p class="bf-all__text">{{ s.all_text | escape }}</p>{%- endif -%}
         <product-list class="product-list bf-all__grid">
           {%- for product in s.bundles_collection.products -%}
-            {%- render 'product-card', product: product, stacked: true, show_badges: true, card_index: forloop.index -%}
+            {%- liquid
+              assign card_was = blank
+              assign card_now = blank
+              if player != blank and product.id == player.id
+                assign card_was = player_was
+                assign card_now = player_from
+              elsif product.type == 'Audiobooks Bundle'
+                assign card_was = product.price
+                assign card_cut = card_was | times: s.bundle_pct | divided_by: 100.0 | round
+                assign card_now = card_was | minus: card_cut
+              endif
+            -%}
+            {%- render 'product-card', product: product, stacked: true, show_badges: true, card_index: forloop.index, override_price: card_now, override_compare_at: card_was -%}
           {%- endfor -%}
         </product-list>
       </div>
