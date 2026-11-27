@@ -7,6 +7,8 @@ sections/product-card-default.liquid
 
 Each product type has own product card if needed or product-card-default
 
+* override_price / override_compare_at: display-only sale price override, see snippets/price-list.liquid
+
 {%- endcomment -%}
 
 {%- comment -%}The starter pack collection redesign opts in to the pack card through the main-collection "Product card style" setting{%- endcomment -%}
@@ -15,12 +17,12 @@ Each product type has own product card if needed or product-card-default
 {%- else -%}
 {%- case product.type -%}
   {%- when 'Audiobooks' -%}
-    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
+    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings, override_price: override_price, override_compare_at: override_compare_at -%}
   {%- when 'Audiobooks Bundle' -%}
-    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
+    {%- render 'product-card-audiobooks', product: product, stacked: true, show_badges: true, section_settings: section.settings, override_price: override_price, override_compare_at: override_compare_at -%}
   {%- when 'Starter Pack', 'Custom Starter Pack' -%}
     {%- render 'product-card-starterpack', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
   {%- else -%}
-    {%- render 'product-card-default', product: product, stacked: true, show_badges: true, section_settings: section.settings -%}
+    {%- render 'product-card-default', product: product, stacked: true, show_badges: true, section_settings: section.settings, override_price: override_price, override_compare_at: override_compare_at -%}
 {%- endcase -%}
 {%- endif -%}
